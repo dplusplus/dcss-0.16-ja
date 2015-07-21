@@ -31,3 +31,7 @@ Found %s %s.
 
 %s個の%sを見つけた。
 %%%%
+You now have %d gold piece%s.
+
+あなたは今%d枚の金貨を持っている。
+%%%%

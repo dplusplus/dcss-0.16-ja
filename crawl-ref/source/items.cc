@@ -26,6 +26,7 @@
 #include "coord.h"
 #include "coordit.h"
 #include "dactions.h"
+#include "database.h"
 #include "dbg-util.h"
 #include "decks.h"
 #include "defines.h"
@@ -1598,11 +1599,11 @@ void get_gold(const item_def& item, int quant, bool quiet)
     if (!quiet)
     {
         const string gain = quant != you.gold
-                            ? make_stringf(" (gained %d)", quant)
+                            ? make_stringf(" (新たに%d枚入手)", quant)
                             : "";
 
-        mprf("You now have %d gold piece%s%s.",
-             you.gold, you.gold != 1 ? "s" : "", gain.c_str());
+        mprf(jtrans("You now have %d gold piece%s.").c_str(),
+             you.gold, gain.c_str());
         learned_something_new(HINT_SEEN_GOLD);
     }
 }
