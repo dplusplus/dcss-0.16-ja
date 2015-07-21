@@ -19,3 +19,15 @@ Do you want to play this combination?
 
 この組み合わせで開始しますか？
 %%%%
+Found
+
+を見つけた。
+%%%%
+Found %s
+
+%sを見つけた。
+%%%%
+Found %s %s.
+
+%s個の%sを見つけた。
+%%%%
