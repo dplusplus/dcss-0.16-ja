@@ -1,0 +1,21 @@
+%%%%
+Welcome
+
+ようこそ
+%%%%
+Please select your species.
+
+あなたの種族を選んでください。
+%%%%
+Please select your background.
+
+あなたの職業を選んでください。
+%%%%
+You have a choice of weapons:
+
+武器を選んでください:
+%%%%
+Do you want to play this combination?
+
+この組み合わせで開始しますか？
+%%%%

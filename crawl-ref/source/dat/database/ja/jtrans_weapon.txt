@@ -1,0 +1,53 @@
+%%%%
+claws
+
+爪
+%%%%
+falchion
+
+ファルシオン
+%%%%
+hand axe
+
+ハンドアックス
+%%%%
+hand crossbow
+
+小型クロスボウ
+%%%%
+hunting sling
+
+小型スリング
+%%%%
+javelins
+
+ジャベリン
+%%%%
+large rocks
+
+大岩
+%%%%
+mace
+
+メイス
+%%%%
+shortbow
+
+ショートボウ
+%%%%
+short sword
+
+ショートソード
+%%%%
+spear
+
+スピア
+%%%%
+tomahawks
+
+トマホーク
+%%%%
+unarmed
+
+素手
+%%%%

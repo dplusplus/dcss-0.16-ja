@@ -119,24 +119,20 @@ static string _welcome(const newgame_def* ng)
 {
     string text;
     if (ng->species != SP_UNKNOWN)
-        text = species_name(ng->species);
+        text = jtrans(species_name(ng->species)) + "の";
     if (ng->job != JOB_UNKNOWN)
     {
-        if (!text.empty())
-            text += " ";
-        text += get_job_name(ng->job);
+        text += jtrans(get_job_name(ng->job));
     }
     if (!ng->name.empty())
     {
-        if (!text.empty())
-            text = " the " + text;
-        text = ng->name + text;
+        text = text + "『" + ng->name + "』";
     }
     else if (!text.empty())
-        text = "unnamed " + text;
-    if (!text.empty())
-        text = ", " + text;
-    text = "Welcome" + text + ".";
+        text = "名もなき" + text;
+    else
+        text = "名もなき者" + text;
+    text = jtrans("Welcome") + "、" + text + "よ。";
     return text;
 }
 
@@ -388,11 +384,11 @@ static bool _reroll_random(newgame_def* ng)
 
     string specs = chop_string(species_name(ng->species), 79, false);
 
-    cprintf("You are a%s %s %s.\n",
-            (is_vowel(specs[0])) ? "n" : "", specs.c_str(),
-            get_job_name(ng->job));
+    cprintf("あなたは%sの%sだ。",
+            jtrans(specs).c_str(), jtrans(get_job_name(ng->job)).c_str());
 
-    cprintf("\nDo you want to play this combination? (ynq) [y]");
+    cprintf(("\n" + jtrans("Do you want to play this combination?") + " (ynq) [y]").c_str());
+
     char c = getchm();
     if (key_is_escape(c) || toalower(c) == 'q')
     {
@@ -871,7 +867,7 @@ static void _prompt_species(newgame_def* ng, newgame_def* ng_choice,
     cprintf("%s", _welcome(ng).c_str());
 
     textcolour(YELLOW);
-    cprintf(" Please select your species.");
+    cprintf(jtransln("Please select your species.").c_str());
 
     _construct_species_menu(ng, defaults, freeform);
     MenuDescriptor* descriptor = new MenuDescriptor(&menu);
@@ -1271,7 +1267,7 @@ static void _prompt_job(newgame_def* ng, newgame_def* ng_choice,
     cprintf("%s", _welcome(ng).c_str());
 
     textcolour(YELLOW);
-    cprintf(" Please select your background.");
+    cprintf(jtransln("Please select your background.").c_str());
 
     _construct_backgrounds_menu(ng, defaults, freeform);
     MenuDescriptor* descriptor = new MenuDescriptor(&menu);
@@ -1448,7 +1444,7 @@ static void _construct_weapon_menu(const newgame_def* ng,
         switch (weapons[i].first)
         {
         case WPN_UNARMED:
-            text += species_has_claws(ng->species) ? "claws" : "unarmed";
+            text += species_has_claws(ng->species) ? jtrans("claws") : jtrans("unarmed");
             break;
         case WPN_THROWN:
             ASSERT(!thrown_name);
@@ -1458,7 +1454,7 @@ static void _construct_weapon_menu(const newgame_def* ng,
                 thrown_name = "tomahawks";
             else
                 thrown_name = "javelins";
-            text += thrown_name;
+            text += jtrans(thrown_name);
             break;
         default:
             text += weapon_base_name(weapons[i].first);
@@ -1624,7 +1620,7 @@ static bool _prompt_weapon(const newgame_def* ng, newgame_def* ng_choice,
     highlighter->set_visible(true);
 
     textcolour(CYAN);
-    cprintf("\nYou have a choice of weapons:  ");
+    cprintf(("\n" + jtrans("You have a choice of weapons:")).c_str());
 
     while (true)
     {
