@@ -11,6 +11,7 @@
 
 #include "areas.h"
 #include "colour.h"
+#include "database.h"
 #include "delay.h"
 #include "english.h"
 #include "hints.h"
@@ -1587,7 +1588,7 @@ void canned_msg(canned_message_type which_message)
             crawl_state.cancel_cmd_repeat();
             break;
         case MSG_OK:
-            mprf(MSGCH_PROMPT, "Okay, then.");
+            mpr_nojoin(MSGCH_PROMPT, jtrans("Okay, then."));
             crawl_state.cancel_cmd_repeat();
             break;
         case MSG_UNTHINKING_ACT:

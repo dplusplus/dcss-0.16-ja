@@ -2243,8 +2243,8 @@ void process_command(command_type cmd)
     {
         const char * const prompt
             = (Options.restart_after_game && Options.restart_after_save)
-              ? "Save game and return to main menu?"
-              : "Save game and exit?";
+              ? jtrans("Save game and return to main menu?").c_str()
+              : jtrans("Save game and exit?").c_str();
         if (yesno(prompt, true, 'n'))
             save_game(true);
         else
@@ -2253,7 +2253,7 @@ void process_command(command_type cmd)
     }
 
     case CMD_SAVE_GAME_NOW:
-        mpr("Saving game... please wait.");
+        mpr(jtrans("Saving game... please wait."));
         save_game(true);
         break;
 

@@ -43,3 +43,21 @@ Press <w>?</w> for a list of commands and other information.
 
 コマンド一覧やその他の情報を見るには <w>?</w>キー を押してください。
 %%%%
+Saving game... please wait.
+
+セーブしています……お待ちください。
+%%%%
+Save game and return to main manu?
+
+セーブしてメインメニューに戻りますか？
+%%%%
+Save game and exit?
+
+セーブして終了しますか？
+%%%%
+############### message.cc ###############
+%%%%
+Okay, then.
+
+了解。
+%%%%
