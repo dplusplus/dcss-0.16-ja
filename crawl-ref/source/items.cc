@@ -772,7 +772,7 @@ void item_check()
     {
         item_def it(*items[0]);
         string name = get_menu_colour_prefix_tags(it, DESC_A);
-        strm << "You see here " << name << '.' << endl;
+        strm << "ここには" << name << "がある。" << endl;
         _maybe_give_corpse_hint(it);
         return;
     }
