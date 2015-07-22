@@ -55,9 +55,149 @@ Save game and exit?
 
 セーブして終了しますか？
 %%%%
-############### message.cc ###############
+############################## message.cc ##############################
+%%%%
+Something appears %s!
+
+%s何かが現れた！
+%%%%
+at your feet
+
+あなたの足元に
+%%%%
+before you
+
+あなたの目の前に
+%%%%
+Nothing appears to happen.
+
+何も起こらなかったようだ。
+%%%%
+You are unaffected.
+
+あなたは影響を受けない。
+%%%%
+You resist.
+
+あなたは抵抗に成功した。
+%%%%
+You partially resist.
+
+あなたはいくらか抵抗に成功した。
+%%%%
+You are too berserk!
+
+あなたは狂暴化しすぎている！
+%%%%
+You're too confused!
+
+あなたは混乱しすぎている！
+%%%%
+You can't do that in your present form.
+
+あなたは現在の形態ではそれはできない。
+%%%%
+You aren't carrying anything.
+
+あなたは何も持ち運んでいない。
+%%%%
+You can't do that yet.
+
+あなたはまだそれをできない。
 %%%%
 Okay, then.
 
 了解。
+%%%%
+Why would you want to do that?
+
+どうしてそのようなことをしたいのですか？
+%%%%
+There's nothing there!
+
+そこには何もない！
+%%%%
+There's nothing close enough!
+
+近くには何もいない！
+%%%%
+You don't have the energy to cast that spell.
+
+あなたには魔法を唱えるための活力が足りない。
+%%%%
+The spell fizzles.
+
+呪文は失敗した。
+%%%%
+Huh?
+
+なんだって？
+%%%%
+Your mouth is %s empty.
+
+あなたの口は%s空っぽだ。
+%%%%
+You are %s empty-clawed.
+
+あなたは%s何も持っていない。
+%%%%
+You are %s empty-tentacled.
+
+あなたは%s何も持っていない。
+%%%%
+You are %s empty-handed.
+
+あなたは%s何も持っていない。
+%%%%
+You blink.
+
+あなたは瞬間移動した。
+%%%%
+You feel a strange sense of stasis.
+
+あなたは奇妙な停滞感を覚えた。
+%%%%
+You don't know any spells.
+
+あなたは呪文を一つも知らない。
+%%%%
+You feel your magic capacity increase.
+
+あなたは魔力の容量が増大するのを感じた。
+%%%%
+You feel your magic capacity decrease.
+
+あなたは魔力の容量が減少するのを感じた。
+%%%%
+You feel momentarily disoriented.
+
+あなたは一時的な見当識喪失に陥った。
+%%%%
+You're too hungry.
+
+あなたは空腹すぎる。
+%%%%
+You detect nothing.
+
+あなたは何も感知できなかった。
+%%%%
+You call on the dead to rise...
+
+あなたは死体に起き上がるよう命じた……
+%%%%
+You attempt to give life to the dead...
+
+あなたは死体に生命を与えようと試みた……
+%%%%
+You cannot move.
+
+あなたは動けない。
+%%%%
+You die...
+
+あなたは死にました……
+%%%%
+You see a ghostly outline there, and the spell fizzles.
+
+あなたはぼんやりとした輪郭を目にし、呪文は失敗した。
 %%%%
