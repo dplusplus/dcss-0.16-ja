@@ -39,3 +39,7 @@ You now have %d gold piece%s.
 
 あなたは今%d枚の金貨を持っている。
 %%%%
+Press <w>?</w> for a list of commands and other information.
+
+コマンド一覧やその他の情報を見るには <w>?</w>キー を押してください。
+%%%%

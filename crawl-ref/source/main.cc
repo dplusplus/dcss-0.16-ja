@@ -443,7 +443,7 @@ NORETURN static void _launch_game()
     _god_greeting_message(game_start);
 
     if (!crawl_state.game_is_tutorial())
-        mpr("Press <w>?</w> for a list of commands and other information.");
+        mpr(jtrans("Press <w>?</w> for a list of commands and other information."));
 
     _prep_input();
 
