@@ -3,6 +3,10 @@ Welcome
 
 ようこそ
 %%%%
+Welcome back
+
+よくぞ帰ってきた
+%%%%
 Please select your species.
 
 あなたの種族を選んでください。

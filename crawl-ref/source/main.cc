@@ -423,10 +423,10 @@ NORETURN static void _launch_game()
 
     if (!crawl_state.game_is_tutorial())
     {
-        msg::stream << "<yellow>Welcome" << (game_start? "" : " back") << ", "
-                    << you.your_name << " the "
-                    << species_name(you.species)
-                    << " " << you.class_name << ".</yellow>"
+        msg::stream << "<yellow>" << (game_start? jtrans("Welcome") : jtrans("Welcome back")) << "、"
+                    << jtrans(species_name(you.species)) << "にして"
+                    << jtrans(you.class_name)
+                    << "の『" << you.your_name << "』。</yellow>"
                     << endl;
     }
 
