@@ -1,12 +1,4 @@
 %%%%
-Welcome
-
-ようこそ
-%%%%
-Welcome back
-
-よくぞ帰ってきた
-%%%%
 Please select your species.
 
 あなたの種族を選んでください。
@@ -39,6 +31,16 @@ You now have %d gold piece%s.
 
 あなたは今%d枚の金貨を持っている。
 %%%%
+############################## main.cc ##############################
+%%%%
+Welcome
+
+ようこそ
+%%%%
+Welcome back
+
+よくぞ帰ってきた
+%%%%
 Press <w>?</w> for a list of commands and other information.
 
 コマンド一覧やその他の情報を見るには <w>?</w>キー を押してください。
@@ -54,6 +56,10 @@ Save game and return to main manu?
 Save game and exit?
 
 セーブして終了しますか？
+%%%%
+Which direction?
+
+どの方向ですか？
 %%%%
 ############################## message.cc ##############################
 %%%%
@@ -200,4 +206,62 @@ You die...
 You see a ghostly outline there, and the spell fizzles.
 
 あなたはぼんやりとした輪郭を目にし、呪文は失敗した。
+%%%%
+############################## player.cc ##############################
+%%%%
+The %s%s flies open!
+
+%s%sは突然開いた！
+%%%%
+The %s%s flies open with a bang!
+
+%s%sはバタンと音を立てて開いた！
+%%%%
+As you open the %s%s, it creaks loudly!
+
+%s%sはやかましく軋みながら開いた！
+%%%%
+You reach down and open the %s%s.
+
+あなたは下に向けて手を伸ばし、%s%sを開けた。
+%%%%
+You open the %s%s.
+
+あなたは%s%sを開けた。
+%%%%
+Something is blocking the %s!
+
+何かが%sを塞いでしまっている！
+%%%%
+There's a creature in the %s!
+
+%sにはモンスターがいる！
+%%%%
+There's something blocking the %s.
+
+何かが%sを塞いでしまっている。
+%%%%
+There's a thick-headed creature in the %s!
+
+なんだか頭の鈍い生き物が%sにいる！
+%%%%
+You slam the %s%s shut!
+
+あなたは勢いよく%s%sを閉めた！
+%%%%
+You slam the %s%s shut with a bang!
+
+あなたは%s%sをピシャッと閉めた！
+%%%%
+As you close the %s%s, it creaks loudly!
+
+扉はやかましく軋みながら閉じた！
+%%%%
+You reach down and close the %s%s.
+
+あなたは下に向けて手を伸ばし、%s%sを閉じた。
+%%%%
+You close the %s%s.
+
+あなたは%s%sを閉じた。
 %%%%
