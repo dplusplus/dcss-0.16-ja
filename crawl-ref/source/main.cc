@@ -2780,7 +2780,7 @@ static void _open_door(coord_def move)
             door_move.delta = move;
         else
         {
-            mprf(MSGCH_PROMPT, "Which direction?");
+            mpr_nojoin(MSGCH_PROMPT, jtrans("Which direction?"));
             direction_chooser_args args;
             args.restricts = DIR_DIR;
             direction(door_move, args);
@@ -2877,7 +2877,7 @@ static void _close_door()
         door_move.delta = move;
     else
     {
-        mprf(MSGCH_PROMPT, "Which direction?");
+        mpr_nojoin(MSGCH_PROMPT, jtrans("Which direction?"));
         direction_chooser_args args;
         args.restricts = DIR_DIR;
         direction(door_move, args);
