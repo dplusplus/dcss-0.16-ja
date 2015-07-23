@@ -1,0 +1,77 @@
+%%%%
+%s is too close now for your liking.
+
+%sに近づきすぎている！
+%%%%
+opens the door.
+
+は扉を開けた。
+%%%%
+opens the gate.
+
+は門を開けた。
+%%%%
+appears from thin air!
+
+はどこからともなく現れた！
+%%%%
+leaps into view!
+
+は視界に飛び込んできた！
+%%%%
+surfaces briefly.
+
+は素早く地上に出てきた。
+%%%%
+forms itself from the air.
+
+は大気中から出現した。
+%%%%
+leaps out from its hiding place under the floor!
+
+は床下の隠れ場所から現れた！
+%%%%
+surfaces.
+
+は地上に出てきた。
+%%%%
+bursts forth from the
+
+の中から突如現れた。
+%%%%
+lava
+
+溶岩
+%%%%
+water
+
+水
+%%%%
+realm of bugdom
+
+不具合の領域
+%%%%
+emerges from the water.
+
+は水の中から現れた。
+%%%%
+comes up the stairs.
+
+が階段を上がってきた。
+%%%%
+comes down the stairs.
+
+が階段を下りてきた。
+%%%%
+comes through the gate.
+
+が門を通ってきた。
+%%%%
+is thrown into view!
+
+が投げ込まれてきた！
+%%%%
+comes into view.
+
+に遭遇した。
+%%%%
