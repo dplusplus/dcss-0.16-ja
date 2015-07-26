@@ -550,14 +550,14 @@ string print_abilities()
     const vector<talent> talents = your_talents(false);
 
     if (talents.empty())
-        text += "no special abilities";
+        text += jtrans("no special abilities");
     else
     {
         for (unsigned int i = 0; i < talents.size(); ++i)
         {
             if (i)
                 text += ", ";
-            text += ability_name(talents[i].which);
+            text += jtrans(ability_name(talents[i].which));
         }
     }
 

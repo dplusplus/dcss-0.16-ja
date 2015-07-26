@@ -140,9 +140,8 @@ static TextDB AllDBs[] =
 
     TextDB("jtrans", "database/ja/",
            "jtrans.txt",
-           /*
-           "jtrans_player_race.txt",
            "jtrans_abl_show.txt",
+           /*
            "jtrans_abyss.txt",
            "jtrans_acquire.txt",
            "jtrans_actor.txt",
