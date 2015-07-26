@@ -1804,11 +1804,11 @@ static string _itosym(int level, int max = 1)
 
 static const char *s_equip_slot_names[] =
 {
-    "Weapon", "Cloak",  "Helmet", "Gloves", "Boots",
-    "Shield", "Armour", "Left Ring", "Right Ring", "Amulet",
-    "First Ring", "Second Ring", "Third Ring", "Fourth Ring",
-    "Fifth Ring", "Sixth Ring", "Seventh Ring", "Eighth Ring",
-    "Amulet Ring"
+    "武器", "クローク",  "兜/帽子", "手袋/籠手", "靴",
+    "盾", "鎧/服", "左手の指輪", "右手の指輪", "護符",
+    "1個目の指輪", "2個目の指輪", "3個目の指輪", "4個目の指輪",
+    "5個目の指輪", "6個目の指輪", "7個目の指輪", "8個目の指輪",
+    "護符に付けた指輪"
 };
 
 const char *equip_slot_to_name(int equip)
@@ -1820,13 +1820,15 @@ const char *equip_slot_to_name(int equip)
         || equip >= EQ_RING_ONE && equip <= EQ_RING_EIGHT
         || equip == EQ_RING_AMULET)
     {
-        return "Ring";
+        return "指輪";
     }
 
-    if (equip == EQ_BOOTS
-        && (you.species == SP_CENTAUR || you.species == SP_NAGA))
+    if (equip == EQ_BOOTS)
     {
-        return "Barding";
+        if (you.species == SP_CENTAUR)
+            return "馬甲";
+        else if(you.species == SP_NAGA)
+            return "具装";
     }
 
     if (equip < 0 || equip >= NUM_EQUIP)
@@ -1945,7 +1947,7 @@ static void _print_overview_screen_equip(column_composer& cols,
         if (eqslot == EQ_RING_AMULET && !you_can_wear(eqslot))
             continue;
 
-        const string slot_name_lwr = lowercase_string(equip_slot_to_name(eqslot));
+        const string slot_name_lwr = equip_slot_to_name(eqslot);
 
         char slot[15] = "";
 
@@ -1970,7 +1972,7 @@ static void _print_overview_screen_equip(column_composer& cols,
                      slot,
                      equip_char,
                      colname,
-                     melded ? "melded " : "",
+                     melded ? "肉体と融合した" : "",
                      chop_string(item.name(DESC_PLAIN, true),
                                  melded ? sw - 43 : sw - 36, false).c_str(),
                      colname);
@@ -1979,41 +1981,39 @@ static void _print_overview_screen_equip(column_composer& cols,
         else if (e_order[i] == EQ_WEAPON
                  && you.skill(SK_UNARMED_COMBAT))
         {
-            snprintf(buf, sizeof buf, "%s  - Unarmed", slot);
+            snprintf(buf, sizeof buf, jtrans("%s  - Unarmed").c_str(), slot);
         }
         else if (e_order[i] == EQ_WEAPON
                  && you.form == TRAN_BLADE_HANDS)
         {
-            const bool plural = !player_mutation_level(MUT_MISSING_HAND);
-            snprintf(buf, sizeof buf, "%s  - Blade Hand%s", slot,
-                     plural ? "s" : "");
+            snprintf(buf, sizeof buf, jtrans("%s  - Blade Hand%s").c_str(), slot);
         }
         else if (e_order[i] == EQ_BOOTS
                  && (you.species == SP_NAGA || you.species == SP_CENTAUR))
         {
             snprintf(buf, sizeof buf,
-                     "<darkgrey>(no %s)</darkgrey>", slot_name_lwr.c_str());
+                     jtrans("<darkgrey>(no %s)</darkgrey>").c_str(), slot_name_lwr.c_str());
         }
         else if (!you_can_wear(e_order[i], true))
         {
             snprintf(buf, sizeof buf,
-                     "<darkgrey>(%s unavailable)</darkgrey>", slot_name_lwr.c_str());
+                     jtrans("<darkgrey>(%s unavailable)</darkgrey>").c_str(), slot_name_lwr.c_str());
         }
         else if (!you_tran_can_wear(e_order[i], true))
         {
             snprintf(buf, sizeof buf,
-                     "<darkgrey>(%s currently unavailable)</darkgrey>",
+                     jtrans("<darkgrey>(%s currently unavailable)</darkgrey>").c_str(),
                      slot_name_lwr.c_str());
         }
         else if (!you_can_wear(e_order[i]))
         {
             snprintf(buf, sizeof buf,
-                     "<darkgrey>(%s restricted)</darkgrey>", slot_name_lwr.c_str());
+                     jtrans("<darkgrey>(%s restricted)</darkgrey>").c_str(), slot_name_lwr.c_str());
         }
         else
         {
             snprintf(buf, sizeof buf,
-                     "<darkgrey>(no %s)</darkgrey>", slot_name_lwr.c_str());
+                     jtrans("<darkgrey>(no %s)</darkgrey>").c_str(), slot_name_lwr.c_str());
         }
         cols.add_formatted(2, buf, false);
     }
@@ -2539,7 +2539,7 @@ static const char* stealth_words[11] =
 
 string stealth_desc(int stealth)
 {
-    return make_stringf("%sstealthy", stealth_words[_stealth_breakpoint(stealth)]);
+    return jtrans(make_stringf("%sstealthy", stealth_words[_stealth_breakpoint(stealth)]));
 }
 
 string magic_res_adjective(int mr)
@@ -2597,11 +2597,11 @@ static string _status_mut_abilities(int sw)
                            (move_cost <  10) ? "quick" :
                            (move_cost <  13) ? "slow"
                                              : "very slow";
-        status.emplace_back(help);
+        status.emplace_back(jtrans(help));
     }
 
-    status.push_back(magic_res_adjective(player_res_magic(false))
-                     + " to hostile enchantments");
+    status.push_back(jtrans(magic_res_adjective(player_res_magic(false))
+                            + " to hostile enchantments"));
 
     // character evaluates their ability to sneak around:
     status.push_back(stealth_desc(check_stealth()));
@@ -2621,32 +2621,32 @@ static string _status_mut_abilities(int sw)
     switch (you.species)   //mv: following code shows innate abilities - if any
     {
     case SP_MERFOLK:
-        mutations.push_back(_annotate_form_based("change form in water",
+        mutations.push_back(_annotate_form_based(jtrans("change form in water"),
                                                  form_changed_physiology()));
-        mutations.push_back(_annotate_form_based("swift swim",
+        mutations.push_back(_annotate_form_based(jtrans("swift swim"),
                                                  form_changed_physiology()));
         break;
 
     case SP_MINOTAUR:
-        mutations.push_back(_annotate_form_based("retaliatory headbutt",
+        mutations.push_back(_annotate_form_based(jtrans("retaliatory headbutt"),
                                                  !form_keeps_mutations()));
         break;
 
     case SP_NAGA:
         // breathe poison replaces spit poison:
         if (!player_mutation_level(MUT_BREATHE_POISON))
-            mutations.emplace_back("spit poison");
+            mutations.emplace_back(jtrans("spit poison"));
 
         if (you.experience_level > 12)
         {
-            mutations.push_back(_annotate_form_based("constrict 1",
+            mutations.push_back(_annotate_form_based(jtrans("constrict 1"),
                                                      !form_keeps_mutations()));
         }
         AC_change += you.experience_level / 3;
         break;
 
     case SP_GHOUL:
-        mutations.emplace_back("rotting body");
+        mutations.emplace_back(jtrans("rotting body"));
         break;
 
     case SP_TENGU:
@@ -2655,87 +2655,87 @@ static string _status_mut_abilities(int sw)
             string help = "able to fly";
             if (you.experience_level > 14)
                 help += " continuously";
-            mutations.push_back(help);
+            mutations.push_back(jtrans(help));
         }
         break;
 
     case SP_MUMMY:
-        mutations.emplace_back("no food or potions");
-        mutations.emplace_back("fire vulnerability");
+        mutations.emplace_back(jtrans("no food or potions"));
+        mutations.emplace_back(jtrans("fire vulnerability"));
         if (you.experience_level > 12)
         {
             string help = "in touch with death";
             if (you.experience_level > 25)
                 help = "strongly " + help;
-            mutations.push_back(help);
+            mutations.push_back(jtrans(help));
         }
-        mutations.emplace_back("restore body");
+        mutations.emplace_back(jtrans("restore body"));
         break;
 
     case SP_VAMPIRE:
-        mutations.emplace_back("bottle blood");
+        mutations.emplace_back(jtrans("bottle blood"));
         break;
 
     case SP_DEEP_DWARF:
-        mutations.emplace_back("damage resistance");
-        mutations.emplace_back("recharge devices");
+        mutations.emplace_back(jtrans("damage resistance"));
+        mutations.emplace_back(jtrans("recharge devices"));
         break;
 
     case SP_FELID:
-        mutations.emplace_back("paw claws");
+        mutations.emplace_back(jtrans("paw claws"));
         break;
 
     case SP_RED_DRACONIAN:
-        mutations.push_back(_dragon_abil("breathe fire"));
+        mutations.push_back(_dragon_abil(jtrans("breathe fire")));
         break;
 
     case SP_WHITE_DRACONIAN:
-        mutations.push_back(_dragon_abil("breathe frost"));
+        mutations.push_back(_dragon_abil(jtrans("breathe frost")));
         break;
 
     case SP_GREEN_DRACONIAN:
-        mutations.push_back(_dragon_abil("breathe noxious fumes"));
+        mutations.push_back(_dragon_abil(jtrans("breathe noxious fumes")));
         break;
 
     case SP_YELLOW_DRACONIAN:
-        mutations.push_back(_dragon_abil("spit acid"));
-        mutations.push_back(_annotate_form_based("acid resistance",
+        mutations.push_back(_dragon_abil(jtrans("spit acid")));
+        mutations.push_back(_annotate_form_based(jtrans("acid resistance"),
                                                  !form_keeps_mutations()
                                                   && you.form != TRAN_DRAGON));
         break;
 
     case SP_GREY_DRACONIAN:
-        mutations.emplace_back("walk through water");
+        mutations.emplace_back(jtrans("walk through water"));
         AC_change += 5;
         break;
 
     case SP_BLACK_DRACONIAN:
-        mutations.push_back(_dragon_abil("breathe lightning"));
+        mutations.push_back(_dragon_abil(jtrans("breathe lightning")));
         if (you.experience_level >= 14)
-            mutations.emplace_back("able to fly continuously");
+            mutations.emplace_back(jtrans("able to fly continuously"));
         break;
 
     case SP_PURPLE_DRACONIAN:
-        mutations.push_back(_dragon_abil("breathe power"));
+        mutations.push_back(_dragon_abil(jtrans("breathe power")));
         break;
 
     case SP_MOTTLED_DRACONIAN:
-        mutations.push_back(_dragon_abil("breathe sticky flames"));
+        mutations.push_back(_dragon_abil(jtrans("breathe sticky flames")));
         break;
 
     case SP_PALE_DRACONIAN:
-        mutations.push_back(_dragon_abil("breathe steam"));
+        mutations.push_back(_dragon_abil(jtrans("breathe steam")));
         break;
 
     case SP_FORMICID:
-        mutations.emplace_back("permanent stasis");
-        mutations.emplace_back("dig shafts and tunnels");
-        mutations.emplace_back("four strong arms");
+        mutations.emplace_back(jtrans("permanent stasis"));
+        mutations.emplace_back(jtrans("dig shafts and tunnels"));
+        mutations.emplace_back(jtrans("four strong arms"));
         break;
 
     case SP_GARGOYLE:
         if (you.experience_level >= 14)
-            mutations.emplace_back("able to fly continuously");
+            mutations.emplace_back(jtrans("able to fly continuously"));
         AC_change += 2 + you.experience_level * 2 / 5
                        + max(0, you.experience_level - 7) * 2 / 5;
         break;
@@ -2755,7 +2755,7 @@ static string _status_mut_abilities(int sw)
     if (you.species == SP_OGRE || you.species == SP_TROLL
         || player_genus(GENPC_DRACONIAN) || you.species == SP_SPRIGGAN)
     {
-        mutations.emplace_back("unfitting armour");
+        mutations.emplace_back(jtrans("unfitting armour"));
     }
 
     if (player_genus(GENPC_DRACONIAN))
@@ -2766,24 +2766,24 @@ static string _status_mut_abilities(int sw)
 
     if (you.species == SP_FELID)
     {
-        mutations.emplace_back("no armour");
-        mutations.emplace_back("no weapons or thrown items");
+        mutations.emplace_back(jtrans("no armour"));
+        mutations.emplace_back(jtrans("no weapons or thrown items"));
     }
 
     if (you.species == SP_OCTOPODE)
     {
-        mutations.emplace_back("almost no armour");
-        mutations.emplace_back("amphibious");
+        mutations.emplace_back(jtrans("almost no armour"));
+        mutations.emplace_back(jtrans("amphibious"));
         mutations.push_back(_annotate_form_based(
-            make_stringf("%d rings", you.has_tentacles(false)),
+            make_stringf(jtrans("%d rings").c_str(), you.has_tentacles(false)),
             !get_form()->slot_available(EQ_RING_EIGHT)));
         mutations.push_back(_annotate_form_based(
-            make_stringf("constrict %d", you.has_tentacles(false)),
+            make_stringf(jtrans("constrict %d").c_str(), you.has_tentacles(false)),
             !form_keeps_mutations()));
     }
 
     if (beogh_water_walk())
-        mutations.emplace_back("walk on water");
+        mutations.emplace_back(jtrans("walk on water"));
 
     string current;
     for (unsigned i = 0; i < NUM_MUTATIONS; ++i)
@@ -2795,12 +2795,12 @@ static string _status_mut_abilities(int sw)
         const int level = player_mutation_level(mut);
         const bool lowered = level < you.mutation[mut];
 
-        current = mutation_name(mut);
+        current = jtrans(mutation_name(mut));
 
         if (mutation_max_levels(mut) > 1)
         {
             ostringstream ostr;
-            ostr << ' ' << level;
+            ostr << " Lv" << level;
 
             current += ostr.str();
         }
@@ -2826,7 +2826,7 @@ static string _status_mut_abilities(int sw)
     }
 
     if (mutations.empty())
-        text +=  "no striking features";
+        text += jtrans("no striking features");
     else
     {
         text += comma_separated_line(mutations.begin(), mutations.end(),
@@ -2843,7 +2843,7 @@ static string _status_mut_abilities(int sw)
     // print the Orb
     //--------------
     if (player_has_orb())
-        text += "\n<w>0:</w> Orb of Zot";
+        text += ("\n" + jtrans("<w>0:</w> Orb of Zot"));
 
     //--------------
     // print runes
@@ -2854,10 +2854,9 @@ static string _status_mut_abilities(int sw)
             runes.emplace_back(rune_type_name(i));
     if (!runes.empty())
     {
-        text += make_stringf("\n<w>%s:</w> %d/%d rune%s: %s",
+        text += make_stringf(("\n" + jtrans("<w>%s:</w> %d/%d rune: %s")).c_str(),
                     stringize_glyph(get_item_symbol(SHOW_ITEM_MISCELLANY)).c_str(),
                     (int)runes.size(), you.obtainable_runes,
-                    you.obtainable_runes == 1 ? "" : "s",
                     comma_separated_line(runes.begin(), runes.end(),
                                          ", ", ", ").c_str());
     }

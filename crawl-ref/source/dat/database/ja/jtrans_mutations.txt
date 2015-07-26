@@ -1,0 +1,3387 @@
+%%%%
+tough skin
+
+強靱な皮膚
+%%%%
+You have tough skin (AC +1).
+
+あなたは強靭な皮膚を持っている。(AC +1)
+%%%%
+You have very tough skin (AC +2).
+
+あなたは非常に強靭な皮膚を持っている。(AC +2)
+%%%%
+You have extremely tough skin (AC +3).
+
+あなたは極めて強靭な皮膚を持っている。(AC +3)
+%%%%
+Your skin toughens.
+
+あなたの皮膚は強靭になった。
+%%%%
+Your skin feels delicate.
+
+あなたの皮膚は柔らかくなった。
+%%%%
+strong
+
+怪力
+%%%%
+Your muscles are strong. (Str +2)
+
+あなたの筋肉は強い。(腕力 +2)
+%%%%
+Your muscles are very strong. (Str +4)
+
+あなたの筋肉は非常に強い。(腕力 +4)
+%%%%
+clever
+
+叡智
+%%%%
+Your mind is acute. (Int +2)
+
+あなたの精神は鋭い。(知力 +2)
+%%%%
+Your mind is very acute. (Int +4)
+
+あなたの精神は非常に鋭い。(知力 +4)
+%%%%
+agile 機敏
+%%%%
+You are agile. (Dex +2)
+
+あなたは機敏だ。(器用 +2)
+%%%%
+You are very agile. (Dex +4)
+
+あなたは非常に機敏だ。(器用 +4)
+%%%%
+Your system is resistant to poisons.
+
+あなたの体は毒に対する耐性を持っている。
+%%%%
+poison resistance
+
+毒耐性
+%%%%
+You feel resistant to poisons.
+
+あなたは毒に強くなったようだ。
+%%%%
+You feel less resistant to poisons.
+
+あなたは毒に弱くなったようだ。
+%%%%
+Your digestive system is specialised to digest meat.
+
+あなたの消化器系統は肉の消化に特化している。
+%%%%
+Your digestive system is highly specialised to digest meat.
+
+あなたの消化器系統は肉の消化にとても特化している。
+%%%%
+carnivore
+
+肉食性
+%%%%
+You are carnivorous and can eat meat at any time.
+
+あなたは肉食性であり、いつでも肉を食べられる。
+%%%%
+You hunger for flesh.
+
+あなたは肉に飢えている。
+%%%%
+herbivore
+
+草食性
+%%%%
+You digest meat inefficiently.
+
+あなたは肉をうまく消化できない。
+%%%%
+You digest meat very inefficiently.
+
+あなたは肉をほとんど消化できない。
+%%%%
+You are a herbivore.
+
+あなたは草食性だ。
+%%%%
+You hunger for vegetation.
+
+あなたは野菜に飢えている。
+%%%%
+fire resistance
+
+火炎耐性
+%%%%
+Your flesh is heat resistant.
+
+あなたの体は熱に耐性がある。
+%%%%
+Your flesh is very heat resistant.
+
+あなたの体は熱にかなりの耐性がある。
+%%%%
+Your flesh is almost immune to the effects of heat.
+
+あなたの体は熱の影響をほぼ無効化する。
+%%%%
+You feel resistant to heat.
+
+あなたは熱に強くなったようだ。
+%%%%
+You feel more resistant to heat.
+
+あなたはさらに熱に強くなったようだ。
+%%%%
+You no longer feel heat resistant.
+
+あなたはもはや熱に強くなくなったようだ。
+%%%%
+You feel less heat resistant.
+
+あなたは少し熱に強くなくなったようだ。
+%%%%
+cold resistance
+
+冷気耐性
+%%%%
+Your flesh is cold resistant.
+
+あなたの体は冷気に耐性がある。
+%%%%
+Your flesh is very cold resistant.
+
+あなたの体は冷気にかなりの耐性がある。
+%%%%
+Your flesh is almost immune to the effects of cold.
+
+あなたの体は冷気の影響をほぼ無効化する。
+%%%%
+You feel resistant to cold.
+
+あなたは冷気に強くなったようだ。
+%%%%
+You feel more resistant to cold.
+
+あなたはさらに冷気に強くなったようだ。
+%%%%
+You no longer feel cold resistant.
+
+あなたはもはや冷気に強くなくなったようだ。
+%%%%
+You feel less cold resistant.
+
+あなたは少し冷気に強くなくなったようだ。
+%%%%
+heat vulnerability
+
+熱に弱い
+%%%%
+You are vulnerable to heat.
+
+あなたは熱に弱い。
+%%%%
+You are very vulnerable to heat.
+
+あなたはかなり熱に弱い。
+%%%%
+You are extremely vulnerable to heat.
+
+あなたはきわめて熱に弱い。
+%%%%
+You feel vulnerable to heat.
+
+あなたは熱に弱くなったようだ。
+%%%%
+You no longer feel vulnerable to heat.
+
+あなたはもはや熱に弱くなくなったようだ。
+%%%%
+You feel less vulnerable to heat.
+
+あなたは少し熱に弱くなくなったようだ。
+%%%%
+cold vulnerability
+
+冷気に弱い
+%%%%
+You are vulnerable to cold.
+
+あなたは冷気に弱い。
+%%%%
+You are very vulnerable to cold.
+
+あなたはかなり冷気に弱い。
+%%%%
+You are extremely vulnerable to cold.
+
+あなたはきわめて冷気に弱い。
+%%%%
+You feel vulnerable to cold.
+
+あなたは冷気に弱くなったようだ。
+%%%%
+You no longer feel vulnerable to cold.
+
+あなたはもはや冷気に弱くなくなったようだ。
+%%%%
+You feel less vulnerable to cold.
+
+あなたは少し熱に弱くなくなったようだ。
+%%%%
+demonic guardian
+
+悪魔の従者
+%%%%
+A weak demonic guardian rushes to your aid.
+
+下級悪魔の守護者があなたを助けにやってくる。
+%%%%
+A demonic guardian rushes to your aid.
+
+悪魔の守護者があなたを助けにやってくる。
+%%%%
+A powerful demonic guardian rushes to your aid.
+
+強大な悪魔の守護者があなたを助けにやってくる。
+%%%%
+You feel the presence of a demonic guardian.
+
+あなたは悪魔の守護者の存在を感じた。
+%%%%
+Your guardian grows in power.
+
+あなたの守護者は力を増した。
+%%%%
+Your demonic guardian is gone.
+
+あなたの守護者はいなくなった。
+%%%%
+Your demonic guardian is weakened.
+
+あなたの守護者は弱くなった。
+%%%%
+electricity resistance
+
+電撃耐性
+%%%%
+You are resistant to electric shocks.
+
+あなたは電撃への耐性を持っている。
+%%%%
+You feel insulated.
+
+あなたは絶縁化されたようだ。
+%%%%
+You feel conductive.
+
+あなたは導電体に戻ったようだ。
+%%%%
+electricity vulnerability
+
+電撃に弱い
+%%%%
+You are vulnerable to electric shocks.
+
+あなたは電撃に弱い。
+%%%%
+You feel vulnerable to electricity.
+
+あなたは電撃に弱くなったようだ。
+%%%%
+You feel less vulnerable to electricity.
+
+あなたは電撃に弱くなくなったようだ。
+%%%%
+regeneration
+
+再生
+%%%%
+Your natural rate of healing is unusually fast.
+
+あなたの自然治癒速度は著しく速い。
+%%%%
+You heal very quickly.
+
+あなたは非常に速く治癒する。
+%%%%
+You regenerate.
+
+あなたは再生能力がある。
+%%%%
+You begin to heal more quickly.
+
+あなたはより速く傷が癒えるようになった。
+%%%%
+You begin to regenerate.
+
+あなたは再生能力を身につけた。
+%%%%
+Your rate of healing slows.
+
+あなたの治癒速度は遅くなった。
+%%%%
+slow healing
+
+遅再生
+%%%%
+You heal slowly when monsters are visible.
+
+あなたはモンスターが見えている間回復が遅くなる。
+%%%%
+You do not heal naturally when monsters are visible.
+
+あなたはモンスターが見えている間自然に回復しない。
+%%%%
+You do not heal naturally.
+
+あなたは自然回復しない。
+%%%%
+Your natural healing is weakened.
+
+あなたの自然回復力は弱くなった。
+%%%%
+You stop healing.
+
+あなたは回復しなくなった。
+%%%%
+Your natural healing is strengthened.
+
+あなたの自然回復力が強まった。
+%%%%
+fast metabolism
+
+速消化
+%%%%
+You have a fast metabolism.
+
+あなたの新陳代謝は速い。
+%%%%
+You have a very fast metabolism.
+
+あなたの新陳代謝は非常に速い。
+%%%%
+Your metabolism is lightning-fast.
+
+あなたの新陳代謝はとてつもなく速い。
+%%%%
+You feel a little hungry.
+
+あなたは少し空腹を感じた。
+%%%%
+Your metabolism slows.
+
+あなたの新陳代謝は遅くなった。
+%%%%
+slow metabolism
+
+遅消化
+%%%%
+You have a slow metabolism.
+
+あなたの新陳代謝は遅い。
+%%%%
+You need consume almost no food.
+
+あなたは食料を食べる必要がほとんどない。
+%%%%
+Your metabolism slows.
+
+あなたの新陳代謝は遅くなった。
+%%%%
+weak
+
+非力
+%%%%
+You are weak. (Str -2)
+
+あなたは力が弱い。(腕力 -2)
+%%%%
+You are very weak. (Str -4)
+
+あなたはとても力が弱い。(腕力 -4)
+%%%%
+dopey
+
+愚鈍
+%%%%
+You are dopey. (Int -2)
+
+あなたは愚かだ。(知力 -2)
+%%%%
+You are very dopey. (Int -4)
+
+あなたはとても愚かだ。(知力 -4)
+%%%%
+clumsy
+
+不器用
+%%%%
+You are clumsy. (Dex -2)
+
+あなたは不器用だ。(器用 -2)
+%%%%
+You are very clumsy. (Dex -4)
+
+あなたはとても不器用だ。(器用 -4)
+%%%%
+teleport control
+
+瞬間移動制御
+%%%%
+You can control translocations.
+
+あなたは空間転位を制御することができる。
+%%%%
+You feel controlled.
+
+あなたは制御の力を感じた。
+%%%%
+You feel random.
+
+あなたは制御の衰えを感じた。
+%%%%
+teleportitis
+
+不随意瞬間移動
+%%%%
+You are occasionally teleported to nearby monsters.
+
+あなたはたまにモンスターの近くに瞬間移動する。
+%%%%
+You are sometimes teleported to nearby monsters.
+
+あなたは時々モンスターの近くに瞬間移動する。
+%%%%
+You are often teleported to nearby monsters.
+
+あなたは頻繁にモンスターの近くに瞬間移動する。
+%%%%
+You feel weirdly uncertain.
+
+あなたは奇妙な不安定さを感じた。
+%%%%
+You feel even more weirdly uncertain.
+
+あなたはさらなる奇妙な不安定さを感じた。
+%%%%
+You feel stable.
+
+あなたは安定したような気分になった。
+%%%%
+
+%%%%
+magic resistance
+
+魔法防御
+%%%%
+You are resistant to hostile enchantments.
+
+あなたは敵対的な魔法に対する耐性がある。
+%%%%
+You are highly resistant to hostile enchantments.
+
+あなたは敵対的な魔法に対して高い耐性がある。
+%%%%
+You are extremely resistant to the effects of hostile enchantments.
+
+あなたは敵対的な魔法の効力に対して極めて耐性がある。
+%%%%
+You feel resistant to hostile enchantments.
+
+あなたは敵対的な魔法に対する耐性を得たようだ。
+%%%%
+You feel more resistant to hostile enchantments.
+
+あなたは敵対的な魔法に対する更なる耐性を得たようだ。
+%%%%
+You feel almost impervious to the effects of hostile enchantments.
+
+あなたは敵対的な魔法の影響をほとんど受けないようだ。
+%%%%
+You feel less resistant to hostile enchantments.
+
+あなたは敵対的な魔法に対する耐性が薄れたようだ。
+%%%%
+You feel vulnerable to magic hostile enchantments.
+
+あなたは敵対的な魔法に対して脆弱になったようだ。
+%%%%
+speed
+
+俊足
+%%%%
+You cover ground quickly.
+
+あなたは素早く地面を動く。
+%%%%
+You cover ground very quickly.
+
+あなたは非常に素早く地面を動く。
+%%%%
+You cover ground extremely quickly.
+
+あなたはきわめて素早く地面を動く。
+%%%%
+You feel quick.
+
+あなたは素早くなったようだ。
+%%%%
+You feel sluggish.
+
+あなたは動きが緩慢になったようだ。
+%%%%
+slowness
+
+鈍足
+%%%%
+You cover ground slowly.
+
+あなたは地面をゆっくりと移動する。
+%%%%
+You cover ground very slowly.
+
+あなたは地面をとてもゆっくりと移動する。
+%%%%
+You cover ground extremely slowly.
+
+あなたは地面を極めてゆっくりと移動する。
+%%%%
+see invisible
+
+霊視
+%%%%
+You have supernaturally acute eyesight.
+
+あなたは超自然的な鋭い視力を持っている。
+%%%%
+Your vision sharpens.
+
+あなたの視力は鋭くなった。
+%%%%
+Your vision seems duller.
+
+あなたの視力は鈍くなった。
+%%%%
+deformed body
+
+奇形の体
+%%%%
+Armour fits poorly on your strangely shaped body.
+
+あなたの奇形の体には、鎧がうまく合わない。
+%%%%
+Your body twists and deforms.
+
+あなたの体は捩くれて奇形になった。
+%%%%
+Your body's shape seems more normal.
+
+あなたの肉体は奇形的でなくなった。
+%%%%
+spit poison
+
+毒液
+%%%%
+You can spit weak poison.
+
+あなたは弱い毒液を吐くことができる。
+%%%%
+You can spit poison.
+
+あなたは毒液を吐くことができる。
+%%%%
+You can exhale a cloud of poison.
+
+あなたは毒性の雲を吐くことができる。
+%%%%
+There is a nasty taste in your mouth for a moment.
+
+一瞬あなたの口の中で不快な味がした。
+%%%%
+You feel an ache in your throat.
+
+あなたは喉の奥が痛むのを感じた。
+%%%%
+breathe flames
+
+火のブレス
+%%%%
+You can breathe flames.
+
+あなたは火のブレスを吐くことができる。
+%%%%
+You can breathe fire.
+
+あなたは炎のブレスを吐くことができる。
+%%%%
+You can breathe blasts of fire.
+
+あなたは強烈な火炎のブレスを吐くことができる。
+%%%%
+Your throat feels hot.
+
+あなたは喉が熱くなった。
+%%%%
+A chill runs up and down your throat.
+
+あなたの喉の奥は冷たくなった。
+%%%%
+jump
+
+跳躍
+%%%%
+You can jump attack at a short distance.
+
+あなたは短距離の飛びつき攻撃ができる。
+%%%%
+You can jump attack at a medium distance.
+
+あなたは中距離の飛びつき攻撃ができる。
+%%%%
+You can jump attack at a long distance.
+
+あなたは長距離の飛びつき攻撃ができる。
+%%%%
+You feel more sure on your feet.
+
+あなたの跳躍力が高まったようだ。
+%%%%
+You feel less sure on your feet.
+
+あなたの跳躍力が弱まったようだ。
+%%%%
+blink
+
+短距離瞬間移動
+%%%%
+You can translocate small distances at will.
+
+あなたは自分の意志で瞬間移動できる。
+%%%%
+You are good at translocating small distances at will.
+
+あなたは自分の意志で上手に瞬間移動できる。
+%%%%
+You can easily translocate small distances at will.
+
+あなたは容易く自分の意志で瞬間移動できる。
+%%%%
+You feel jittery.
+
+あなたは神経質になったようだ。
+%%%%
+You feel more jittery.
+
+あなたはさらに神経質になったようだ。
+%%%%
+You feel even more jittery.
+
+あなたはさらにもっと神経質になったようだ。
+%%%%
+You feel a little less jittery.
+
+あなたは少し神経質でなくなったようだ。
+%%%%
+You feel less jittery.
+
+あなたは神経質でなくなった。
+%%%%
+strong stiff
+
+硬直した筋肉
+%%%%
+Your muscles are strong, but stiff (Str +1, Dex -1).
+
+あなたの筋肉は力強い、しかし硬すぎる。(腕力 +1, 器用 -1)
+%%%%
+Your muscles are very strong, but stiff (Str +2, Dex -2).
+
+あなたの筋肉は非常に強い、しかし硬すぎる。(腕力 +2, 器用 -2)
+%%%%
+Your muscles are extremely strong, but stiff (Str +3, Dex -3).
+
+あなたの筋肉はきわめて強い、しかし硬すぎる。(腕力 +3, 器用 -3)
+%%%%
+Your muscles feel sore.
+
+あなたは筋肉痛を覚えた。
+%%%%
+Your muscles feel loose.
+
+あなたの筋肉は弛緩した。
+%%%%
+flexible weak
+
+柔軟な筋肉
+%%%%
+Your muscles are flexible, but weak (Str -1, Dex +1).
+
+あなたの筋肉は柔軟だが弱々しい。(腕力 -1, 器用 +1).
+%%%%
+Your muscles are very flexible, but weak (Str -2, Dex +2).
+
+あなたの筋肉は非常に柔軟だが弱々しい。(腕力 -2, 器用 +2)
+%%%%
+Your muscles are extremely flexible, but weak (Str -3, Dex +3).
+
+あなたの筋肉は極めて柔軟だ、しかし弱々しい。(腕力 -3, 器用 +3)
+%%%%
+screaming
+
+叫び声
+%%%%
+You occasionally shout uncontrollably at your foes.
+
+あなたはたまに、敵に対し大声を抑えることができなくなる。
+%%%%
+You sometimes yell uncontrollably at your foes.
+
+あなたは時々、敵に対し大声を抑えることができなくなる。
+%%%%
+You frequently scream uncontrollably at your foes.
+
+あなたは頻繁に、敵に対し大声を抑えることができなくなる。
+%%%%
+You feel the urge to shout.
+
+あなたは叫びたい衝動に駆られた。
+%%%%
+You feel a strong urge to yell.
+
+あなたは叫びたいという強い衝動に駆られた。
+%%%%
+You feel a strong urge to scream.
+
+あなたは叫びたいという強烈な衝動に駆られた。
+%%%%
+Your urge to shout disappears.
+
+叫びたいという衝動は消え去った。
+%%%%
+Your urge to yell lessens.
+
+叫びたいという衝動は薄れた。
+%%%%
+Your urge to scream lessens.
+
+叫びたいという衝動は薄れた。
+%%%%
+clarity
+
+明晰
+%%%%
+You possess an exceptional clarity of mind.
+
+あなたの意思は非常に明瞭だ。
+%%%%
+Your thoughts seem clearer.
+
+あなたは思考が明瞭になったようだ。
+%%%%
+Your thinking seems confused.
+
+あなたの思考は混濁した。
+%%%%
+berserk
+
+狂乱化
+%%%%
+You tend to lose your temper in combat.
+
+あなたは戦闘中に逆上する傾向がある。
+%%%%
+You often lose your temper in combat.
+
+あなたはしばしば戦闘中に逆上する。
+%%%%
+You have an uncontrollable temper.
+
+あなたは逆上を抑えることができない。
+%%%%
+You feel a little pissed off.
+
+あなたは少し腹立ちを覚えた。
+%%%%
+You feel angry.
+
+あなたは腹立ちを覚えた。
+%%%%
+You feel extremely angry at everything!
+
+あなたは何もかもに対して非常に腹が立った！
+%%%%
+You feel a little more calm.
+
+あなたは少し穏やかになった。
+%%%%
+You feel a little less angry.
+
+あなたは少し苛立ちがおさまった。
+%%%%
+deterioration
+
+能力低下
+%%%%
+Your body sometimes deteriorates upon taking damage.
+
+あなたは傷ついた時に時々能力が低下する。
+%%%%
+Your body often deteriorates upon taking damage.
+
+あなたは傷ついた時にしばしば能力が低下する。
+%%%%
+You feel yourself wasting away.
+
+あなたは体が消耗していくのを感じた。
+%%%%
+You feel your body start to fall apart.
+
+あなたは体がボロボロになっていくのを感じた。
+%%%%
+You feel healthier.
+
+あなたは健康体になった。
+%%%%
+You feel a little healthier.
+
+あなたは少し健康体に近づいた。
+%%%%
+blurry vision
+
+ぼやけた視界
+%%%%
+Scrolls take you a little longer to read.
+
+あなたは巻物を読むのに少し時間がかかる。
+%%%%
+Scrolls take you longer to read.
+
+あなたは巻物を読むのに時間がかかる。
+%%%%
+Scrolls take you much longer to read.
+
+あなたは巻物を読むのにかなり時間がかかる。
+%%%%
+Your vision blurs.
+
+あなたの視界はぼやけた。
+%%%%
+Your vision sharpens.
+
+あなたの視力は鋭くなった。
+%%%%
+Your vision sharpens a little.
+
+あなたの視力は少し鋭くなった。
+%%%%
+mutation resistance
+
+変異への耐性
+%%%%
+You are somewhat resistant to further mutation.
+
+あなたは突然変異の進行に幾らかの抵抗力がある。
+%%%%
+You are somewhat resistant to both further mutation and mutation removal.
+
+あなたは突然変異の進行と除去の両方に幾らかの抵抗力がある。
+%%%%
+You are almost entirely resistant to further mutation and mutation removal.
+
+あなたは突然変異の進行と除去の両方をほとんど無効化する。
+%%%%
+You feel genetically stable.
+
+あなたは遺伝子的に安定した。
+%%%%
+You feel genetically immutable.
+
+あなたは遺伝子的に変化しなくなった。
+%%%%
+You feel genetically unstable.
+
+あなたは遺伝子的に不安定になった。
+%%%%
+evolution
+
+進化
+%%%%
+You evolve.
+
+あなたは進化している。
+%%%%
+You rapidly evolve.
+
+あなたは急速に進化している。
+%%%%
+You feel nature experimenting on you. Don't worry, failures die fast.
+
+あなたは自然界があなたで実験をしていると感じた。気にするな、失敗作はすぐに消え去る……
+%%%%
+Your genes go into a fast flux.
+
+あなたの遺伝子の流動が早くなった。
+%%%%
+Your wild genetic ride slows down.
+
+あなたの荒ぶる遺伝子の流動は遅くなった。
+%%%%
+frail
+
+虚弱
+%%%%
+You are frail (-10% HP).
+
+あなたは虚弱だ。(-10% HP)
+%%%%
+You are very frail (-20% HP).
+
+あなたは非常に虚弱だ。(-20% HP)
+%%%%
+You are extremely frail (-30% HP).
+
+あなたは極めて虚弱だ。(-30% HP)
+%%%%
+You feel frail.
+
+あなたは虚弱になった。
+%%%%
+You feel robust.
+
+あなたは強健になった。
+%%%%
+robust
+
+強健
+%%%%
+You are robust (+10% HP).
+
+あなたは強健だ。(+10% HP)
+%%%%
+You are very robust (+20% HP).
+
+あなたは非常に強健だ。(+20% HP)
+%%%%
+You are extremely robust (+30% HP).
+
+あなたは極めて強健だ。(+30% HP)
+%%%%
+unbreathing
+
+無呼吸
+%%%%
+You can survive without breathing.
+
+あなたは呼吸を必要としない。
+
+%%%%
+You feel breathless.
+
+あなたは呼吸を必要としなくなったようだ。
+%%%%
+torment resistance
+
+苦痛への耐性
+%%%%
+You are immune to unholy pain and torment.
+
+あなたは邪悪な苦痛に免疫がある。
+%%%%
+You feel a strange anaesthesia.
+
+あなたは奇妙な無感覚状態になった。
+%%%%
+negative energy resistance
+
+負のエネルギーへの耐性
+%%%%
+You resist negative energy.
+
+あなたは負のエネルギーに耐性がある。
+%%%%
+You are quite resistant to negative energy.
+
+あなたは負のエネルギーに非常に耐性がある。
+%%%%
+You are immune to negative energy.
+
+あなたは負のエネルギーの影響を無効化する。
+%%%%
+You feel resistant to negative energy.
+
+あなたは負のエネルギーに強くなったようだ。
+%%%%
+You feel more resistant to negative energy.
+
+あなたは負のエネルギーにさらに強くなったようだ。
+%%%%
+restore body
+
+朽ちた体の回復
+%%%%
+You can restore your body by infusing magical energy.
+
+あなたは魔力を注ぎ込むことにより回復できる。
+%%%%
+You can now infuse your body with magic to restore decomposition.
+
+あなたは今や、腐敗した肉体を回復するために肉体に魔力を充填できる。
+%%%%
+in touch with death
+
+死への接触
+%%%%
+strongly in touch with death
+
+死への強き接触
+%%%%
+You are in touch with the powers of death.
+
+あなたは死の力との接触を持っている。
+%%%%
+You are strongly in touch with the powers of death.
+
+あなたは死の力との強い接触を持っている。
+%%%%
+You feel more in touch with the powers of death.
+
+あなたは死の力との接触をより強めた。
+%%%%
+able to fly
+
+一時的飛行
+%%%%
+able to fly continuously
+
+継続的飛行
+%%%%
+You can fly.
+
+あなたは空を飛べる。
+%%%%
+You can fly continuously.
+
+あなたは継続して空を飛べる。
+%%%%
+You have gained the ability to fly.
+
+あなたは飛行能力を得た。
+%%%%
+You can now fly continuously.
+
+あなたは今や継続して空を飛べる。
+%%%%
+hurl hellfire
+
+地獄の業火
+%%%%
+You can hurl blasts of hellfire.
+
+あなたは地獄の業火を放つことができる。
+%%%%
+You smell fire and brimstone.
+
+あなたは火と硫黄の匂いを嗅いだ。
+%%%%
+horns
+
+角
+%%%%
+You have a pair of small horns on your head.
+
+あなたの頭には一対の小さな角がある。
+%%%%
+You have a pair of horns on your head.
+
+あなたの頭には一対の角がある。
+%%%%
+You have a pair of large horns on your head.
+
+あなたの頭には一対の大きな角がある。
+%%%%
+A pair of horns grows on your head!
+
+あなたの頭に一対の角が生えてきた！
+%%%%
+The horns on your head grow some more.
+
+あなたの角が幾らか成長した。
+%%%%
+The horns on your head shrink away.
+
+あなたの頭にある角が収縮して消えた。
+%%%%
+The horns on your head shrink a bit.
+
+あなたの頭にある角が少し小さくなった。
+%%%%
+beak
+
+嘴
+%%%%
+You have a beak for a mouth.
+
+あなたは嘴を持っている
+%%%%
+Your mouth lengthens and hardens into a beak!
+
+あなたの口は伸び、堅い嘴になった！
+%%%%
+Your beak shortens and softens into a mouth.
+
+あなたの嘴は短くなり、柔らかい口になった。
+%%%%
+claws
+
+爪
+%%%%
+You have sharp fingernails.
+
+あなたの爪は鋭い。
+%%%%
+You have very sharp fingernails.
+
+あなたの爪は非常に鋭い。
+%%%%
+You have claws for hands.
+
+あなたは手に鉤爪が生えている。
+%%%%
+Your fingernails lengthen.
+
+あなたの爪は伸びていった。
+%%%%
+Your fingernails sharpen.
+
+あなたの爪は鋭くなった。
+%%%%
+Your hands twist into claws.
+
+あなたの手は鉤爪に変化した。
+%%%%
+Your fingernails shrink to normal size.
+
+あなたの爪は普通の大きさに縮んでしまった。
+%%%%
+Your fingernails look duller.
+
+あなたの爪は鋭さを失った。
+%%%%
+Your hands feel fleshier.
+
+あなたの鉤爪は指に変化した。
+%%%%
+fangs
+
+牙
+%%%%
+You have very sharp teeth.
+
+あなたはとても鋭い歯を持っている。
+%%%%
+You have extremely sharp teeth.
+
+あなたは極めて鋭い歯を持っている。
+%%%%
+You have razor-sharp teeth.
+
+あなたは剃刀のように鋭い歯を持っている。
+%%%%
+Your teeth lengthen and sharpen.
+
+あなたの歯は伸び、鋭くなった。
+%%%%
+Your teeth lengthen and sharpen some more.
+
+あなたの歯は伸び、さらに鋭くなった。
+%%%%
+Your teeth grow very long and razor-sharp.
+
+あなたの歯はとても長くなり、剃刀のように鋭くなった。
+%%%%
+Your teeth shrink to normal size.
+
+あなたの歯は普通の大きさに戻った。
+%%%%
+Your teeth shrink and become duller.
+
+あなたの歯は縮小し、鋭さを失った。
+%%%%
+hooves
+
+蹄
+%%%%
+You have large cloven feet.
+
+あなたは大きな割れた蹄を持っている。
+%%%%
+You have hoof-like feet.
+
+あなたは蹄のような足を持っている。
+%%%%
+You have hooves in place of feet.
+
+あなたは足の替わりに蹄が生えている。
+%%%%
+Your feet thicken and deform.
+
+あなたの足は分厚く変形した。
+%%%%
+Your feet have mutated into hooves.
+
+あなたの足は蹄の様に変化した。
+%%%%
+Your hooves expand and flesh out into feet!
+
+あなたの蹄が普通の足に変化した！
+%%%%
+Your hooves look more like feet.
+
+あなたの蹄は足の様になった。
+%%%%
+antennae
+
+触角
+%%%%
+You have a pair of small antennae on your head.
+
+あなたは頭に小さな二本の触角を持っている。
+%%%%
+You have a pair of antennae on your head.
+
+あなたは頭に二本の触角を持っている。
+%%%%
+You have a pair of large antennae on your head (SInv).
+
+あなたは頭に二本の大きな触角を持っている。(霊視)
+%%%%
+A pair of antennae grows on your head!
+
+二本の触角があなたの頭に生えた！
+%%%%
+The antennae on your head grow some more.
+
+あなたの頭の触角は少し成長した。
+%%%%
+The antennae on your head shrink away.
+
+あなたの頭の触角は消え去った。
+%%%%
+The antennae on your head shrink a bit.
+
+あなたの頭の触角は少し縮んだ。
+%%%%
+talons
+
+足爪
+%%%%
+You have sharp toenails.
+
+あなたは鋭い足の爪を持っている。
+%%%%
+You have razor-sharp toenails.
+
+あなたは剃刀のように鋭い足の爪を持っている
+%%%%
+You have claws for feet.
+
+あなたは足に鉤爪を持っている。
+%%%%
+Your toenails lengthen and sharpen.
+
+あなたの足の爪は伸び、鋭くなった。
+%%%%
+Your feet stretch into talons.
+
+あなたの足は伸縮し、鉤爪になった。
+%%%%
+Your talons dull and shrink into feet."
+
+あなたの足の爪は鋭さを失い、縮んだ。
+%%%%
+Your talons look more like feet.
+
+あなたの爪は少し足のようになった。
+%%%%
+tentacle spike
+
+棘付き触手
+%%%%
+One of your tentacles bears a spike.
+
+あなたの触手の一つは棘を持っている。
+%%%%
+One of your tentacles bears a nasty spike.
+
+あなたの触手の一つは恐ろしい棘を持っている。
+%%%%
+One of your tentacles bears a large vicious spike.
+
+あなたの触手の一つは大きな汚らしい棘を持っている。
+%%%%
+One of your lower tentacles grows a sharp spike.
+
+あなたの触手の一つに鋭利な棘が生えてきた。
+%%%%
+Your tentacle spike grows bigger.
+
+あなたの触手の棘は大きくなった。
+%%%%
+Your tentacle spike grows even bigger.
+
+あなたの触手の棘はさらに大きくなった。
+%%%%
+Your tentacle spike disappears.
+
+あなたの触手の棘は消え去った。
+%%%%
+Your tentacle spike becomes smaller.
+
+あなたの触手の棘は小さくなった。
+%%%%
+Your tentacle spike recedes somewhat.
+
+あなたの触手の棘は少し小さくなった。
+%%%%
+breathe poison
+
+毒のブレス
+%%%%
+You can exhale a cloud of poison.
+
+あなたは毒性の雲を吐き出すことができる。
+%%%%
+You taste something nasty.
+
+あなたの口の中に不快な味がした。
+%%%%
+Your breath is less nasty.
+
+あなたの吐息はそれほど厄介ではなくなった。
+%%%%
+constrict 1
+
+触手拘束
+%%%%
+You can use your snake-like lower body to constrict enemies.
+
+あなたは蛇のような尻尾で敵を拘束できる。
+%%%%
+Your tail grows strong enough to constrict your enemies.
+
+あなたの尻尾は敵を拘束するのに足るほど強く成長した。
+%%%%
+stinger
+
+棘の尻尾
+%%%%
+Your tail ends in a poisonous barb.
+
+あなたの尻尾の先には毒のある棘が生えている。
+%%%%
+Your tail ends in a sharp poisonous barb.
+
+あなたの尻尾の先には毒のある鋭い棘が生えている。
+%%%%
+Your tail ends in a wickedly sharp and poisonous barb.
+
+あなたの尻尾の先には毒のある凶悪な棘が生えている。
+%%%%
+A poisonous barb forms on the end of your tail.
+
+あなたの尻尾の先に毒のある棘が生えてきた。
+%%%%
+The barb on your tail looks sharper.
+
+あなたの尻尾の棘は鋭くなった。
+%%%%
+The barb on your tail looks very sharp.
+
+あなたの尻尾の棘は非常に鋭くなった。
+%%%%
+The barb on your tail disappears.
+
+あなたの尻尾の棘は消え去った。
+%%%%
+The barb on your tail seems less sharp.
+
+あなたの尻尾の棘は少し鋭くなくなったようだ。
+%%%%
+big wings
+
+力強い翼
+%%%%
+Your large and strong wings let you fly indefinitely.
+
+あなたは大きくて力強い翼でいつまでも飛ぶことができる。
+%%%%
+Your wings grow larger and stronger.
+
+あなたの翼は大きく力強く成長した。
+%%%%
+Your wings shrivel and weaken.
+
+あなたの翼は弱まり、縮まった。
+%%%%
+rot immunity
+
+腐敗耐性
+%%%%
+You are immune to rotting.
+
+あなたは腐敗しない。
+%%%%
+You feel immune to rotting.
+
+あなたは腐敗しなくなった。
+%%%%
+You feel vulnerable to rotting.
+
+あなたは腐敗するようになった。
+%%%%
+gourmand
+
+悪食
+%%%%
+You like to eat raw meat.
+
+あなたは生肉が好物だ。
+%%%%
+shaggy fur
+
+毛皮
+%%%%
+You are covered in fur (AC +1).
+
+あなたは毛皮で覆われている。(AC +1)
+%%%%
+You are covered in thick fur (AC +2).
+
+あなたは厚い毛皮で覆われている。(AC +2)
+%%%%
+Your thick and shaggy fur keeps you warm (AC +3, rC+).
+
+あなたの厚く、毛むくじゃらの毛皮はあなたの温もりを保つ。(AC +3, rC+)
+%%%%
+Fur sprouts all over your body.
+
+毛皮があなたの全身を包んだ。
+%%%%
+Your fur grows into a thick mane.
+
+あなたの毛皮は厚いたてがみに成長した。
+%%%%
+Your thick fur grows shaggy and warm.
+
+あなたの毛皮は毛むくじゃらに暖かく成長した。
+%%%%
+You shed all your fur.
+
+あなたの毛皮は失われた。
+%%%%
+Your thick fur recedes somewhat.
+
+あなたの厚い毛皮は失われた。
+%%%%
+Your shaggy fur recedes somewhat.
+
+あなたの毛皮は失われた。
+%%%%
+high mp
+
+魔力容量大
+%%%%
+You have an increased reservoir of magic (+10% MP).
+
+あなたの魔力の容量は増加している。(+10% MP)
+%%%%
+You have a considerably increased reservoir of magic (+20% MP).
+
+あなたの魔力の容量はかなり増加している。(+20% MP)
+%%%%
+You have a greatly increased reservoir of magic (+30% MP).
+
+あなたの魔力の容量は大いに増加している。(+30% MP)
+%%%%
+You feel more energetic.
+
+あなたは更なる魔力を感じた。
+%%%%
+You feel less energetic.
+
+あなたは魔力を失ったと感じた。
+%%%%
+low mp
+
+魔力容量小
+%%%%
+Your magical capacity is low (-10% MP).
+
+あなたの魔力の容量は少ない。(-10% MP)
+%%%%
+Your magical capacity is very low (-20% MP).
+
+あなたの魔力の容量はとても少ない。(-20% MP)
+%%%%
+Your magical capacity is extremely low (-30% MP).
+
+あなたの魔力の容量はとてつもなく少ない。(-30% MP)
+%%%%
+wild magic
+
+暴走する魔力
+%%%%
+Your spells are a little harder to cast, but a little more powerful.
+
+あなたの呪文詠唱は少し難しいが、少し強力だ。
+%%%%
+Your spells are harder to cast, but more powerful.
+
+あなたの呪文詠唱は難しいが、強力だ。
+%%%%
+Your spells are much harder to cast, but much more powerful.
+
+あなたの呪文詠唱はとても難しいが、とてつもなく強力だ。
+%%%%
+You feel less in control of your magic.
+
+あなたは魔法をコントロールできなくなったと感じた。
+%%%%
+You feel your magical power running wild!
+
+あなたは魔力が暴走していると感じた！
+%%%%
+You regain control of your magic.
+
+あなたは魔法のコントロールを取り戻した。
+%%%%
+You feel more in control of your magic.
+
+あなたは少し魔法のコントロールを取り戻した。
+%%%%
+subdued magic
+
+抑制された魔力
+%%%%
+Your spells are a little easier to cast, but a little less powerful.
+
+あなたの呪文詠唱は少し易しいが、少し威力が低い。
+%%%%
+Your spells are easier to cast, but less powerful.
+
+あなたの呪文詠唱は易しいが、威力が低い。
+%%%%
+Your spells are much easier to cast, but much less powerful.
+
+あなたの呪文詠唱はとても易しいが、とてつもなく威力が低い。
+%%%%
+Your connection to magic feels subdued.
+
+あなたは魔力が抑制されていると感じた。
+%%%%
+Your connection to magic feels more subdued.
+
+あなたは魔力がさらに抑制されていると感じた。
+%%%%
+Your connection to magic feels nearly dormant.
+
+あなたの魔力はほとんど休眠状態だ。
+%%%%
+Your magic regains its normal vibrancy.
+
+あなたは魔力の活発さを取り戻した。
+%%%%
+Your connection to magic feels less subdued.
+
+あなたは少し魔力の活発さを取り戻した。
+%%%%
+50% torment resistance
+
+苦痛への耐性(50%)
+%%%%
+You are somewhat able to resist unholy torments (1 in 2 success).
+
+あなたは時々邪悪な苦痛に抵抗できる。(1/2の確率)
+%%%%
+sense surroundings
+
+地形感知
+%%%%
+You passively map a small area around you.
+
+あなたは受動的に周辺の狭い範囲を感知する。
+%%%%
+You passively map the area around you.
+
+あなたは受動的に周辺を感知する。
+%%%%
+You passively map a large area around you.
+
+あなたは受動的に周辺の広い範囲を感知する。
+%%%%
+You feel a strange attunement to the structure of the dungeons.
+
+あなたは迷宮の構造と奇妙な同調を感じた。
+%%%%
+Your attunement to dungeon structure grows.
+
+迷宮の構造との同調が強くなった。
+%%%%
+Your attunement to dungeon structure grows further.
+
+迷宮の構造との同調がさらに強くなった。
+%%%%
+You feel slightly disoriented.
+
+あなたは軽い見当識喪失にかかった。
+%%%%
+icemail
+
+氷の鎧
+%%%%
+A meltable icy envelope protects you from harm (AC +
+
+氷の外套があなたを外敵から守っている(AC +
+%%%%
+An icy envelope takes form around you.
+
+氷の外套があなたの周りを覆った。
+%%%%
+passive freeze
+
+受動的氷結
+%%%%
+A frigid envelope surrounds you and freezes all who hurt you.
+
+極寒の外套があなたを包み、あなたを傷つける者全てを凍えさせる。
+%%%%
+Your skin feels very cold.
+
+あなたの皮膚はとても冷たくなったと感じた。
+%%%%
+nightstalker
+
+闇隠れ
+%%%%
+You are slightly more attuned to the shadows.
+
+あなたは少しだけ影に溶け込んだ。
+%%%%
+You are significantly more attuned to the shadows.
+
+あなたはさらに影に溶け込んだ。
+%%%%
+You are completely attuned to the shadows.
+
+あなたは完全に影に溶け込んだ。
+%%%%
+You slip into the darkness of the dungeon.
+
+あなたは迷宮の暗闇の中に転がり込んだ。
+%%%%
+You slip further into the darkness.
+
+あなたは闇の中に身を隠した。
+%%%%
+You are surrounded by darkness.
+
+あなたは闇に覆われている。
+%%%%
+Your affinity for the darkness vanishes.
+
+あなたの暗闇との親和性は消え去った。
+%%%%
+Your affinity for the darkness weakens.
+
+あなたの暗闇との親和性は弱くなった。
+%%%%
+spiny
+
+棘
+%%%%
+You are partially covered in sharp spines.
+
+あなたは体の一部を鋭い棘に覆われている。
+%%%%
+You are mostly covered in sharp spines.
+
+あなたは体の大部分を鋭い棘に覆われている。
+%%%%
+You are completely covered in sharp spines.
+
+あなたは完全に鋭い棘に覆われている。
+%%%%
+Sharp spines emerge from parts of your body.
+
+あなたの体の一部から鋭い棘が現れた。
+%%%%
+Sharp spines emerge from more of your body.
+
+あなたの体のさらなる部分から鋭い棘が現れた。
+%%%%
+Sharp spines emerge from your entire body.
+
+あなたの全身から鋭い棘が現れた。
+%%%%
+Your sharp spines disappear entirely.
+
+あなたの鋭い棘は完全に消えた。
+%%%%
+Your sharp spines retract somewhat.
+
+あなたの鋭い棘は幾らか消え去った。
+%%%%
+powered by death
+
+死よりの力
+%%%%
+You regenerate a little health from kills.
+
+あなたは殺害によって少し回復する。
+%%%%
+You regenerate health from kills.
+
+あなたは殺害によって回復する。
+%%%%
+You regenerate a lot of health from kills.
+
+あなたは殺害によってかなり回復する。
+%%%%
+A wave of death washes over you.
+
+死の波があなたを覆い流した。
+%%%%
+The wave of death grows in power.
+
+死の波がさらに強くなった。
+%%%%
+Your control of surrounding life forces is gone.
+
+あなたは周囲の生命力を制御できなくなった。
+%%%%
+Your control of surrounding life forces weakens.
+
+あなたの周囲の生命力を制御しにくくなった。
+%%%%
+powered by pain
+
+苦痛よりの力
+%%%%
+You sometimes gain a little power by taking damage.
+
+あなたは傷つくことによりわずかに魔力を得ることがある。
+%%%%
+You sometimes gain power by taking damage.
+
+あなたは傷つくことにより魔力を得ることがある。
+%%%%
+You are powered by pain.
+
+あなたは苦痛から魔力を得る。
+%%%%
+You feel energised by your suffering.
+
+あなたは苦痛によって魔力が供給されるのを感じた。
+%%%%
+You feel even more energised by your suffering.
+
+あなたは苦痛によってさらに魔力が供給されるのを感じた。
+%%%%
+You feel completely energised by your suffering.
+
+あなたは苦痛によっていっそう魔力が供給されるのを感じた。
+%%%%
+augmentation
+
+攻撃力の増大
+%%%%
+Your magical and physical power is slightly enhanced at high health.
+
+あなたの魔力と戦闘力はあなたの体力が高い場合においていくらか上昇する。
+%%%%
+Your magical and physical power is enhanced at high health.
+
+あなたの魔力と戦闘力はあなたの体力が高い場合において上昇する。
+%%%%
+Your magical and physical power is greatly enhanced at high health.
+
+あなたの魔力と戦闘力はあなたの体力が高い場合において大いに上昇する。
+%%%%
+You feel power flowing into your body.
+
+あなたは力が体に流れ込むのを感じた。
+%%%%
+You feel power rushing into your body.
+
+あなたは力が体に殺到するのを感じた。
+%%%%
+You feel saturated with power.
+
+あなたは戦闘力の飽和を感じた。
+%%%%
+magic shield
+
+魔力の盾
+%%%%
+When hurt, damage is shared between your health and your magic reserves.
+
+あなたが傷つくとき、ダメージが体力と魔力の双方に分配される。
+%%%%
+You feel your magical essence form a protective shroud around your flesh.
+
+あなたを包む防御のオーラが魔力を帯びているのを感じた。
+%%%%
+magic regeneration
+
+魔力回復
+%%%%
+You regenerate magic rapidly.
+
+あなたは急速に魔力が回復する。
+%%%%
+You feel your magic shroud grow more resilient.
+
+あなたの魔力はたちまち回復したようだ。
+%%%%
+magic link
+
+魔力との絆
+%%%%
+When low on magic, you restore magic in place of health.
+
+あなたは魔力が低下した際に、体力を魔力に変換する。
+%%%%
+You feel your life force and your magical essence meld.
+
+あなたは体力と魔力が一体化したように感じた。
+%%%%
+gelatinous body
+
+ゼラチン状の体
+%%%%
+Your rubbery body absorbs attacks (AC +1).
+
+あなたのゴムの体は攻撃を吸収する。(AC +1)
+%%%%
+Your pliable body absorbs attacks (AC +1, EV +1).
+
+あなたの柔軟な体は攻撃を吸収する。(AC +1, 回避 +1)
+%%%%
+Your gelatinous body deflects attacks (AC +2, EV +2).
+
+あなたのゼラチン状の体は攻撃をはね返す。(AC +2, EV +2)
+%%%%
+Your body becomes stretchy.
+
+あなたの体は伸縮するようになった。
+%%%%
+Your body becomes more malleable.
+
+あなたの体はさらに柔軟さを増した。
+%%%%
+Your body becomes viscous.
+
+あなたの体は粘着性を帯びた。
+%%%%
+Your body returns to its normal consistency.
+
+あなたの体は通常の粘度に戻った。
+%%%%
+Your body becomes less malleable.
+
+あなたの体は柔軟性を失った。
+%%%%
+Your body becomes less viscous.
+
+あなたの体は粘着性を失った。
+%%%%
+Your body is partially covered in golden eyeballs (Acc +3).
+
+あなたの体の一部は黄金の眼球で覆われている。(命中 +3)
+%%%%
+Your body is mostly covered in golden eyeballs (Acc +5).
+
+あなたの体の大部分は黄金の眼球で覆われている。(命中 +5)
+%%%%
+Your body is completely covered in golden eyeballs (Acc +7, SInv).
+
+あなたの全身は黄金の眼球で覆われている。(命中 +7, 霊視)
+%%%%
+Eyeballs grow over part of your body.
+
+あなたの体の一部に眼球が生えてきた。
+%%%%
+Eyeballs cover a large portion of your body.
+
+眼球があなたの体の大部分を覆った。
+%%%%
+Eyeballs cover you completely.
+
+眼球があなたの全身を覆った。
+%%%%
+The eyeballs on your body disappear.
+
+あなたの身体の眼球は消え去った。
+%%%%
+The eyeballs on your body recede somewhat.
+
+あなたの身体の眼球がいくらか消え去った。
+%%%%
+translucent skin
+
+半透明な体
+%%%%
+Your skin is partially translucent (Stealth, -foe acc).
+
+あなたの体は部分的に透明だ。(隠密, 敵の命中-)
+%%%%
+Your skin is mostly translucent (Stealth, -foe acc).
+
+あなたの体はほとんど透明だ。(隠密, 敵の命中-)
+%%%%
+Your skin is entirely transparent (Stealth, -foe acc).
+
+あなたの体は完全に透明だ。(隠密, 敵の命中-)
+%%%%
+Your skin becomes partially translucent.
+
+あなたの体は部分的に透明になった。
+%%%%
+Your skin becomes more translucent.
+
+あなたの体はさらに透明になった。
+%%%%
+Your skin becomes completely transparent.
+
+あなたの体は完全に透明になった。
+%%%%
+Your skin returns to its normal opacity.
+
+あなたの体は通常の透明度に戻っていった。
+%%%%
+Your skin's translucency fades.
+
+あなたの肌の透明度が低くなった。
+%%%%
+Your skin's transparency fades.
+
+あなたの肌の透明度が低くなった。
+%%%%
+pseudopods
+
+仮足
+%%%%
+Armour fits poorly on your pseudopods.
+
+鎧はあなたの仮足に合っていない。
+%%%%
+Armour fits poorly on your large pseudopods.
+
+鎧はあなたの大きな仮足に合っていない。
+%%%%
+Armour fits poorly on your massive pseudopods.
+
+鎧はあなたの重厚な仮足に合っていない。
+%%%%
+Pseudopods emerge from your body.
+
+仮足があなたの体に現れた。
+%%%%
+Your pseudopods grow in size.
+
+あなたの仮足は大きさを増した。
+%%%%
+Your pseudopods retract into your body.
+
+あなたの仮足は体の中に引っ込んだ。
+%%%%
+Your pseudopods become smaller.
+
+あなたの仮足は小さくなった。
+%%%%
+acidic bite
+
+酸の牙
+%%%%
+You have acidic saliva.
+
+あなたは酸性の唾液を出す。
+%%%%
+Acid begins to drip from your mouth.
+
+あなたの口から酸が零れ落ちた。
+%%%%
+Your mouth feels dry.
+
+あなたの口は乾燥したようだ。
+%%%%
+antimagic bite
+
+反魔法の牙
+%%%%
+Your bite disrupts and absorbs the magic of your enemies.
+
+あなたの牙は敵の魔法を阻害し、吸収する。
+%%%%
+You feel a sudden thirst for magic.
+
+あなたは突然魔力に対する飢えを感じた。
+%%%%
+Your magical appetite wanes.
+
+あなたの魔力に対する食欲は消えうせた。
+%%%%
+no device heal
+
+道具による回復不可
+%%%%
+Potions and wands are less effective at restoring your health.
+
+薬や杖による体力の回復はあまり効果がない。
+%%%%
+Potions and wands are poor at restoring your health.
+
+薬や杖による体力の回復はほとんど効果がない。
+%%%%
+Potions and wands cannot restore your health.
+
+薬や杖では体力が回復しない。
+%%%%
+Your system partially rejects artificial healing.
+
+あなたの体は人為的な回復をあまり受け付けない。
+%%%%
+Your system mostly rejects artificial healing.
+
+あなたの体は人為的な回復をほとんど受け付けない。
+%%%%
+Your system completely rejects artificial healing.
+
+あなたの体は人為的な回復をまったく受け付けない。
+%%%%
+Your system completely accepts artificial healing.
+
+あなたの体は人為的な回復を存分に受け入れる。
+%%%%
+Your system mostly accepts artificial healing.
+
+あなたの体は人為的な回復をほとんど受け入れる。
+%%%%
+Your system partly accepts artificial healing.
+
+あなたの体は人為的な回復をある程度受け入れる。
+%%%%
+repulsion field
+
+斥力場
+%%%%
+You are surrounded by a mild repulsion field (EV +2).
+
+あなたは弱い斥力場に覆われている。(回避 +2)
+%%%%
+You are surrounded by a moderate repulsion field (EV +3).
+
+あなたは斥力場に覆われている。(回避 +3)
+%%%%
+You are surrounded by a strong repulsion field (EV +4, rMsl).
+
+あなたは強力な斥力場に覆われている。(回避 +4, 飛来物防御)
+%%%%
+You begin to radiate repulsive energy.
+
+あなたは斥力を放射しはじめた。
+%%%%
+Your repulsive radiation grows stronger.
+
+あなたの斥力が更に強くなった。
+%%%%
+You feel less repulsive.
+
+あなたの斥力が弱まったようだ。
+%%%%
+icy blue scales
+
+氷のように青い鱗
+%%%%
+You are partially covered in icy blue scales (AC +1).
+
+あなたは氷のように青い鱗で部分的に覆われている。(AC +1)
+%%%%
+You are mostly covered in icy blue scales (AC +3, EV -1).
+
+あなたは氷のように青い鱗で大部分を覆われている。(AC +3, EV -1)
+%%%%
+You are completely covered in icy blue scales (AC +4, EV -1, rC+).
+
+あなたは氷のように青い鱗で完全に覆われている。(AC +4, EV -1, rC+)
+%%%%
+Icy blue scales grow over part of your body.
+
+氷のように青い鱗があなたの体の一部に生えてきた。
+%%%%
+Icy blue scales spread over more of your body.
+
+氷のように青い鱗があなたの体をさらに覆った。
+%%%%
+Icy blue scales cover your body completely.
+
+氷のように青い鱗があなたの体を完全に覆った。
+%%%%
+Your icy blue scales disappear.
+
+あなたの氷のように青い鱗が消えてしまった。
+%%%%
+Your icy blue scales recede somewhat.
+
+あなたの氷のように青い鱗がいくらか消え去った。
+%%%%
+iridescent scales
+
+玉虫色の鱗
+%%%%
+You are partially covered in iridescent scales (AC +4).
+
+あなたは玉虫色の鱗で部分的に覆われている。(AC +4)
+%%%%
+You are mostly covered in iridescent scales (AC +6).
+
+あなたは玉虫色の鱗で大部分を覆われている。(AC +6)
+%%%%
+You are completely covered in iridescent scales (AC +8).
+
+あなたは玉虫色の鱗で完全に覆われている。(AC +8)
+%%%%
+Iridescent scales grow over part of your body.
+
+玉虫色の鱗があなたの体の一部に生えてきた。
+%%%%
+Iridescent scales spread over more of your body.
+
+玉虫色の鱗があなたの体をさらに覆った。
+%%%%
+Iridescent scales cover your body completely.
+
+玉虫色の鱗があなたの体を完全に覆った。
+%%%%
+Your iridescent scales disappear.
+
+あなたの玉虫色の鱗が消えてしまった。
+%%%%
+Your iridescent scales recede somewhat.
+
+あなたの玉虫色の鱗がいくらか消え去った。
+%%%%
+large bone plates
+
+大きな骨甲
+%%%%
+You are partially covered in large bone plates (AC +2, SH +2).
+
+あなたは大きな骨甲で一部分を覆われている (AC +2, 盾 +2)
+%%%%
+You are mostly covered in large bone plates (AC +3, SH +3).
+
+あなたは大きな骨甲で大部分を覆われている。(AC +3, 盾 +3)
+%%%%
+You are completely covered in large bone plates (AC +4, SH +4).
+
+あなたは大きな骨甲で完全に覆われている。(AC +4, 盾 +4)
+%%%%
+Large bone plates grow over parts of your arms.
+
+大きな骨甲があなたの体の一部に生えてきた。
+%%%%
+Large bone plates spread over more of your arms.
+
+大きな骨甲があなたの体をさらに覆った。
+%%%%
+Large bone plates cover your arms completely.
+
+大きな骨甲があなたの体を完全に覆った。
+%%%%
+Your large bone plates disappear.
+
+あなたの大きな骨甲が消えてしまった。
+%%%%
+Your large bone plates recede somewhat.
+
+あなたの大きな骨甲がいくらか消え去った。
+%%%%
+molten scales
+
+溶岩状の鱗
+%%%%
+You are partially covered in molten scales (AC +1).
+
+あなたは溶岩状の鱗で一部分を覆われている。(AC +1)
+%%%%
+You are mostly covered in molten scales (AC +3, EV -1).
+
+あなたは溶岩状の鱗で大部分を覆われている。(AC +3, EV -1)
+%%%%
+You are completely covered in molten scales (AC +4, EV -1, rF+).
+
+あなたは溶岩状の鱗で完全に覆われている。(AC +4, EV -1, rF+)
+%%%%
+Molten scales grow over part of your body.
+
+溶岩状の鱗があなたの体の一部に生えてきた。
+%%%%
+Molten scales spread over more of your body.
+
+溶岩状の鱗があなたの体をさらに覆った。
+%%%%
+Molten scales cover your body completely.
+
+溶岩状の鱗があなたの体を完全に覆った。
+%%%%
+Your molten scales disappear.
+
+あなたの溶岩状の鱗が消えてしまった。
+%%%%
+Your molten scales recede somewhat.
+
+あなたの溶岩状の鱗がいくらか消え去った。
+%%%%
+rough black scales
+
+ざらざらの黒い鱗
+%%%%
+You are partially covered in rough black scales (AC +4, Dex -1).
+あなたはざらざらした黒い鱗で一部分を覆われている。(AC +4, Dex -1)
+%%%%
+You are mostly covered in rough black scales (AC +7, Dex -2).
+
+あなたはざらざらした黒い鱗で大部分を覆われている。(AC +7, Dex -2)
+%%%%
+You are completely covered in rough black scales (AC +10, Dex -3).
+
+あなたはざらざらした黒い鱗で完全に覆われている。(AC +10, Dex -3)
+%%%%
+Rough black scales grow over part of your body.
+
+ざらざらした黒い鱗があなたの体の一部に生えてきた。
+%%%%
+Rough black scales spread over more of your body.
+
+ざらざらした鱗があなたの体をさらに覆った。
+%%%%
+Rough black scales cover your body completely.
+
+ざらざらした黒い鱗があなたの体を完全に覆った。
+%%%%
+Your rough black scales disappear.
+
+あなたのざらざらした黒い鱗が消えてしまった。
+%%%%
+Your rough black scales recede somewhat.
+
+あなたの粗い黒い鱗がいくらか消え去った。
+%%%%
+rugged brown slaces
+
+頑丈な茶色の鱗
+%%%%
+You are partially covered in rugged brown scales (AC +1, +3% HP).
+
+あなたは頑丈な茶色の鱗で一部分を覆われている。(AC +1, +3% HP)
+%%%%
+You are mostly covered in rugged brown scales (AC +2, +5% HP).
+
+あなたは頑丈な茶色の鱗で大部分を覆われている。(AC +2, +5% HP)
+%%%%
+You are completely covered in rugged brown scales (AC +3, +7% HP).
+
+あなたは頑丈な茶色の鱗で完全に覆われている。(AC +3, +7% HP)
+%%%%
+Rugged brown scales grow over part of your body.
+
+頑丈な茶色の鱗があなたの体の一部に生えてきた。
+%%%%
+Rugged brown scales spread over more of your body.
+
+頑丈な茶色の鱗があなたの体を更に覆った。
+%%%%
+Rugged brown scales cover your body completely.
+
+頑丈な茶色の鱗があなたの体を完全に覆った。
+%%%%
+Your rugged brown scales disappear.
+
+あなたの頑丈な茶色の鱗が消えてしまった。
+%%%%
+Your rugged brown scales recede somewhat.
+
+あなたの頑丈な茶色の鱗がいくらか消え去った。
+%%%%
+slimy green sclaces
+
+ねばねばした緑の鱗
+%%%%
+You are partially covered in slimy green scales (AC +2).
+
+あなたはねばねばした緑の鱗で一部分を覆われている。(AC +2)
+%%%%
+You are mostly covered in slimy green scales (AC +3).
+
+あなたはねばねばした分を覆われている。(AC +3)
+%%%%
+You are completely covered in slimy green scales (AC +4, rPois).
+
+あなたはねばねばした緑の鱗で完全に覆われている (AC +4, 毒素耐性)
+%%%%
+Slimy green scales grow over part of your body.
+
+ねばねばした緑の鱗があなたの体の一部に生えてきた。
+%%%%
+Slimy green scales spread over more of your body.
+
+ねばねばした緑の鱗があなたの体をさらに覆った。
+%%%%
+Slimy green scales cover your body completely.
+
+ねばねばした緑の鱗があなたの体を完全に覆った。
+%%%%
+Your slimy green scales disappear.
+
+あなたのねばねばした緑の鱗が消えてしまった。
+%%%%
+Your slimy green scales recede somewhat.
+
+あなたのねばねばした緑の鱗がいくらか消え去った。
+%%%%
+thin metallic scales
+
+薄い金属性の鱗
+%%%%
+You are partially covered in thin metallic scales (AC +2).
+
+あなたは薄い金属性の鱗で一部分を覆われている。(AC +2)
+%%%%
+You are mostly covered in thin metallic scales (AC +3).
+
+あなたは薄い金属性の鱗で大部分を覆われている。(AC +3)
+%%%%
+You are completely covered in thin metallic scales (AC +4, rElec).
+
+あなたは薄い金属性の鱗で完全に覆われている。(AC +4, rElec)
+%%%%
+Thin metallic scales grow over part of your body.
+
+薄い金属性の鱗があなたの体の一部に生えてきた。
+%%%%
+Thin metallic scales spread over more of your body.
+
+薄い金属性の鱗があなたの体をさらに覆った。
+%%%%
+Thin metallic scales cover your body completely.
+
+薄い金属性の鱗があなたの体を完全に覆った。
+%%%%
+Your thin metallic scales disappear.
+
+あなたの薄い金属性の鱗が消えてしまった。
+%%%%
+Your thin metallic scales recede somewhat.
+
+あなたの薄い金属性の鱗がいくらか消え去った。
+%%%%
+thin skeletal structure
+
+薄い骨格構造
+%%%%
+You have a somewhat thin skeletal structure (Dex +2, Stealth).
+
+あなたはやや薄い骨格構造を持っている。(器用 +2, 隠密)
+%%%%
+You have a moderately thin skeletal structure (Dex +4, Stealth+).
+
+あなたは薄い骨格構造を持っている。(器用 +4, 隠密+)
+%%%%
+You have an unnaturally thin skeletal structure (Dex +6, Stealth++).
+
+あなたは不自然に薄い骨格構造を持っている。(器用 +6, 隠密++)
+%%%%
+Your bones become slightly less dense.
+
+あなたの骨はわずかに密度が低くなった。
+%%%%
+Your bones become somewhat less dense.
+
+あなたの骨はやや密度が低くなった。
+%%%%
+Your bones become less dense.
+
+あなたの骨は密度が低くなった。
+%%%%
+Your skeletal structure returns to normal.
+
+あなたの骨格構造は通常に戻った。
+%%%%
+Your skeletal structure densifies.
+
+あなたの骨格構造は密度が高くなった。
+%%%%
+yellow scales
+
+黄色の鱗
+%%%%
+You are partially covered in yellow scales (AC +2).
+
+あなたは黄色の鱗で部分的に覆われている。(AC +2)
+%%%%
+You are mostly covered in yellow scales (AC +3).
+
+あなたは黄色の鱗で大部分を覆われている。(AC +3)
+%%%%
+You are completely covered in yellow scales (AC +4, rCorr).
+
+あなたは黄色の鱗で完全に覆われている。(AC +4, 腐食耐性)
+%%%%
+Yellow scales grow over part of your body.
+
+黄色の鱗があなたの体の一部に生えてきた。
+%%%%
+Yellow scales spread over more of your body.
+
+黄色の鱗があなたの体をさらに覆った。
+%%%%
+Yellow scales cover your body completely.
+
+黄色の鱗があなたの体を完全に覆った。
+%%%%
+Your yellow scales disappear.
+
+あなたの黄色の鱗が消えてしまった。
+%%%%
+Your yellow scales recede somewhat.
+
+あなたの黄色の鱗がいくらか消え去った。
+%%%%
+camouflage
+
+迷彩
+%%%%
+Your skin changes colour to match your surroundings (Stealth).
+
+あなたの肌は周囲に合わせて色を変化させる。(隠密)
+%%%%
+Your skin blends seamlessly with your surroundings (Stealth).
+
+あなたの肌は継ぎ目無く周囲に溶け込む。(隠密)
+%%%%
+Your skin perfectly mimics your surroundings (Stealth).
+
+あなたの肌は周囲を完全に模倣する。(隠密)
+%%%%
+Your skin functions as natural camouflage.
+
+あなたの肌は迷彩の機能を得た。
+%%%%
+Your natural camouflage becomes more effective.
+
+あなたの迷彩はより効果的になった。
+%%%%
+Your skin no longer functions as natural camouflage.
+
+あなたの肌は迷彩の機能を持たなくなった。
+%%%%
+Your natural camouflage becomes less effective.
+
+あなたの迷彩の機能は薄れた。
+%%%%
+ignite blood
+
+血の発火
+%%%%
+Your demonic aura causes spilled blood to erupt in flames.
+
+あなたの悪魔的なオーラは飛び散った血を発火させる。
+%%%%
+Your blood runs red-hot!
+
+あなたの血液は赤く熱く染まった！
+%%%%
+foul stench
+
+腐敗の制御
+%%%%
+You may emit foul miasma when damaged in melee.
+
+あなたは戦闘でダメージを受けた際に汚らしい瘴気を発することがある。
+%%%%
+You frequently emit foul miasma when damaged in melee.
+
+あなたは戦闘でダメージを受けた際にしばしば汚らしい瘴気を発する。
+%%%%
+You begin to emit a foul stench of rot and decay.
+
+あなたは腐敗性の汚らしい悪臭を発し始めた。
+%%%%
+You begin to radiate miasma.
+
+あなたは瘴気を発し始めた。
+%%%%
+tendrils
+
+粘着状の蔦
+%%%%
+You are covered in slimy tendrils that may disarm your opponents.
+
+あなたは敵の武器を奪い取るねばねばした蔦に覆われている。
+%%%%
+Thin, slimy tendrils emerge from your body.
+
+細いねばねばした蔦があなたの体から生えてきた。
+%%%%
+Your tendrils retract into your body.
+
+細いねばねばした蔦はあなたの体の中に引っ込んだ。
+%%%%
+jelly sensing items
+
+アイテムを感知するジェリー
+%%%%
+You have a small jelly attached to you that senses nearby items.
+
+近くのアイテムを感知する小さなジェリーがあなたの体に付いている。
+%%%%
+Your body partially splits into a small jelly.
+
+あなたの身体の一部は分割され、小さなジェリーになった。
+%%%%
+The jelly growth is reabsorbed into your body.
+
+ジェリーはあなたの身体に再吸収された。
+%%%%
+jelly absorbing missiles
+
+飛び道具を吸収するジェリー
+%%%%
+You have a small jelly attached to you that may absorb incoming projectiles.
+
+飛来物を吸収するジェリーがあなたの体に付いている。
+%%%%
+petrification resistance
+
+石化耐性
+%%%%
+You are immune to petrification.
+
+あなたは石化に対して免疫を持っている。
+%%%%
+Your body vibrates.
+
+あなたの体は振動した。
+%%%%
+You briefly stop moving.
+
+あなたの体の振動が止まった。
+%%%%
+cling
+
+昇壁
+%%%%
+You can cling to walls.
+
+あなたは壁を登ることができる。
+%%%%
+You feel sticky.
+
+あなたは粘り強くなった。
+%%%%
+You feel slippery.
+
+あなたは滑りやすくなった。
+%%%%
+exoskeleton
+
+外骨格
+%%%%
+Your body is surrounded by an exoskeleton. (buggy)
+
+あなたの体は虫のような外骨格に覆われている。
+%%%%
+Your body is surrounded by a tough exoskeleton. (buggy)
+
+あなたの体は虫のような堅い外骨格に覆われている。
+%%%%
+Your exoskeleton hardens.
+
+あなたの外骨格は堅くなった。
+%%%%
+Your exoskeleton becomes even harder.
+
+あなたの外骨格は堅さを増した。
+%%%%
+Your exoskeleton softens.
+
+あなたの外骨格は柔らかくなった。
+%%%%
+fuming
+
+煙幕
+%%%%
+You emit clouds of smoke.
+
+あなたは煙幕を発する。
+%%%%
+You frequently emit clouds of smoke.
+
+あなたは頻繁に煙幕を発する。
+%%%%
+You fume.
+
+あなたは煙たくなった。
+%%%%
+You fume more.
+
+あなたはさらに煙たくなった。
+%%%%
+You stop fuming.
+
+あなたは煙たくなくなった。
+%%%%
+You fume less.
+
+あなたは少し煙たくなくなった。
+%%%%
+black mark
+
+黒の紋様
+%%%%
+Your melee attacks may debilitate your foes.
+
+あなたの攻撃は敵を衰弱させる。
+%%%%
+An ominous black mark forms on your body.
+
+不吉な黒の紋様があなたの体に刻まれた。
+%%%%
+cold-blood
+
+冷血
+%%%%
+You are cold-blooded and may be slowed by cold attacks.
+
+あなたは冷血動物であり、冷気攻撃を受けると動きが鈍くなる。
+%%%%
+You feel cold-blooded.
+
+あなたは血液が冷たくなったようだ
+%%%%
+You feel warm-blooded.
+
+あなたは血液が暖かくなったようだ。
+%%%%
+flame cloud immunity
+
+火炎の雲無効化
+%%%%
+You are immune to clouds of flame.
+
+あなたは火炎の雲に対して傷つかない。
+%%%%
+You feel less concerned about heat.
+
+あなたは熱気をあまり気にしなくなったようだ。
+%%%%
+freezing cloud immunity
+
+冷気の雲無効化
+%%%%
+You are immune to freezing clouds.
+
+あなたは冷気の雲に対して傷つかない。
+%%%%
+You feel less concerned about cold.
+
+あなたは冷気をあまり気にしなくなったようだ。
+%%%%
+sustain attributes
+
+能力維持
+%%%%
+Your attributes are resistant to harm.
+
+あなたの能力値は損なわれにくい。
+%%%%
+inability to drink while threatened
+
+危険時の飲用不可
+%%%%
+You cannot drink potions while threatened.
+
+あなたは危険時に薬を飲めない。
+%%%%
+You no longer can drink potions while threatened.
+
+あなたはもはや危険時に薬を飲めない。
+%%%%
+You can once more drink potions while threatened.
+
+あなたはふたたび危険時に薬を飲めるようになった。
+%%%%
+inability to read while threatened
+
+危険時の巻物使用不可
+%%%%
+You cannot read scrolls while threatened.
+
+あなたは危険時に巻物を読めない。
+%%%%
+You can no longer read scrolls while threatened.
+
+あなたはもはや危険時に巻物を読めない。
+%%%%
+You can once more read scrolls while threatened.
+
+あなたはふたたび危険時に巻物を読めるようになった。
+%%%%
+missing a hand
+
+片腕欠損
+%%%%
+You are missing a hand.
+
+あなたは片腕が欠損している。
+%%%%
+One of your hands has vanished, leaving only a stump!
+
+あなたの片腕は消滅し、付け根だけが残った！
+%%%%
+Your stump has regrown into a hand!
+
+片腕が付け根から生えてきた！
+%%%%
+no stealth
+
+隠密不可
+%%%%
+You cannot be stealthy.
+
+あなたは人目を盗むことができない。
+%%%%
+You can no longer be stealthy.
+
+あなたはもはや人目を盗むことができない。
+%%%%
+You can once more be stealthy.
+
+あなたはふたたび人目を盗むことができるようになった。
+%%%%
+inability to use devices
+
+魔道具の使用不可
+%%%%
+You cannot study or use magical devices.
+
+あなたは魔道具を使うことはできない。
+%%%%
+You can no longer study or use magical devices.
+
+あなたはもはや魔道具を使うことはできない。
+%%%%
+You can once more study and use magical devices.
+
+あなたはふたたび魔道具を使うことができるようになった。
+%%%%
+hated by all
+
+四面楚歌
+%%%%
+You are hated by all.
+
+あなたは全てに嫌われている。
+%%%%
+You are now hated by all.
+
+あなたは今や全てに嫌われている。
+%%%%
+You are no longer hated by all.
+
+あなたはもう全てには嫌われていない。
+%%%%
+cowardly
+
+臆病
+%%%%
+Your cowardice makes you less effective in combat with threatening monsters.
+
+あなたはモンスターと戦う際にあまり力を発揮できない。
+%%%%
+You have lost your courage.
+
+あなたは勇気を失った。
+%%%%
+You have regained your courage.
+
+あなたは勇気を取り戻した。
+%%%%
+inability to train dodging
+
+回避の訓練不可
+%%%%
+You cannot train Dodging skill.
+
+あなたは回避スキルを鍛えることができない。
+%%%%
+You can no longer train Dodging skill.
+
+あなたはもはや回避スキルを鍛えることができない。
+%%%%
+You can once more train Dodging skill.
+
+あなたはふたたび回避スキルを鍛えることができるようになった。
+%%%%
+inability to train armour
+
+鎧の訓練不可
+%%%%
+You cannot train Armour skill.
+
+あなたは鎧スキルを鍛えることができない。
+%%%%
+You can no longer train Armour skill.
+
+あなたはもはや鎧スキルを鍛えることができない。
+%%%%
+You can once more train Armour skill.
+
+あなたはふたたび鎧スキルを鍛えることができるようになった。
+%%%%
+no air magic
+
+風の魔術不可
+%%%%
+You cannot study or cast Air magic.
+
+あなたは風の魔術を唱えることができない。
+%%%%
+You can no longer study or cast Air magic.
+
+あなたはもはや風の魔術を唱えることができない。
+%%%%
+You can once more study and cast Air magic.
+
+あなたはふたたび風の魔術を唱えることができるようになった。
+%%%%
+no charms magic
+
+付与魔術不可
+%%%%
+You cannot study or cast Charms magic.
+
+あなたは付与魔術を唱えることができない。
+%%%%
+You can no longer study or cast Charms magic.
+
+あなたはもはや付与魔術を唱えることができない。
+%%%%
+You can once more study and cast Charms magic.
+
+あなたはふたたび付与魔術を唱えることができるようになった。
+%%%%
+no conjurations magic
+
+妖術不可
+%%%%
+You cannot study or cast Conjurations magic.
+
+あなたは妖術を唱えることができない。
+%%%%
+You can no longer study or cast Conjurations magic.
+
+あなたはもはや妖術を唱えることができない。
+%%%%
+You can once more study and cast Conjurations magic.
+
+あなたはふたたび妖術を唱えることができるようになった。
+%%%%
+no earth magic
+
+大地の魔術不可
+%%%%
+You cannot study or cast Earth magic.
+
+あなたは大地の魔術を唱えることができない。
+%%%%
+You can no longer study or cast Earth magic.
+
+あなたはもはや大地の魔術を唱えることができない。
+%%%%
+You can once more study and cast Earth magic.
+
+あなたはふたたび大地の魔術を唱えることができるようになった。
+%%%%
+no fire magic
+
+火の魔術不可
+%%%%
+You cannot study or cast Fire magic.
+
+あなたは火の魔術を唱えることができない。
+%%%%
+You can no longer study or cast Fire magic.
+
+あなたはもはや火の魔術を唱えることができない。
+%%%%
+You can once more study and cast Fire magic.
+
+あなたはふたたび火の魔術を唱えることができるようになった。
+%%%%
+no hexes magic
+
+呪術不可
+%%%%
+You cannot study or cast Hexes magic.
+
+あなたは呪術を唱えることができない。
+%%%%
+You can no longer study or cast Hexes magic.
+
+あなたはもはや呪術を唱えることができない。
+%%%%
+You can once more study and cast Hexes magic.
+
+あなたはふたたび呪術を唱えることができるようになった。
+%%%%
+no ice magic
+
+氷の魔術不可
+%%%%
+You cannot study or cast Ice magic.
+
+あなたは氷の魔術を唱えることができない。
+%%%%
+You can no longer study or cast Ice magic.
+
+あなたはもはや氷の魔術を唱えることができない。
+%%%%
+You can once more study and cast Ice magic.
+
+あなたはふたたび氷の魔術を唱えることができるようになった。
+%%%%
+no necromancy magic
+
+死霊術不可
+%%%%
+You cannot study or cast Necromancy magic.
+
+あなたは死霊術を唱えることができない。
+%%%%
+You can no longer study or cast Necromancy magic.
+
+あなたはもはや死霊術を唱えることができない。
+%%%%
+You can once more study and cast Necromancy magic.
+
+あなたはふたたび死霊術を唱えることができるようにあった。
+%%%%
+no poison magic
+
+毒の魔術不可
+%%%%
+You cannot study or cast Poison magic.
+
+あなたは毒の魔術を唱えることができない。
+%%%%
+You can no longer study or cast Poison magic.
+
+あなたはもはや毒の魔術を唱えることができない。
+%%%%
+You can once more study and cast Poison magic.
+
+あなたはふたたび毒の魔術を唱えることができるようになった。
+%%%%
+no summoning magic
+
+召喚術不可
+%%%%
+You cannot study or cast Summoning magic.
+
+あなたは召喚術を唱えることができない。
+%%%%
+You can no longer study or cast Summoning magic.
+
+あなたはもはや召喚術を唱えることができない。
+%%%%
+You can once more study and cast Summoning magic.
+
+あなたはふたたび召喚術を唱えることができるようになった。
+%%%%
+no translocations magic
+
+転位術不可
+%%%%
+You cannot study or cast Translocations magic.
+
+あなたは転位術を唱えることができない。
+%%%%
+You can no longer study or cast Translocations magic.
+
+あなたはもはや転位術を唱えることができない。
+%%%%
+You can once more study and cast Translocations magic.
+
+あなたはふたたび転位術を唱えることができるようになった。
+%%%%
+no transmutations magic
+
+変異術不可
+%%%%
+You cannot study or cast Transmutations magic.
+
+あなたは変異術を唱えることができない。
+%%%%
+You can no longer study or cast Transmutations magic.
+
+あなたはもはや変異術を唱えることができない。
+%%%%
+You can once more study and cast Transmutations magic.
+
+あなたはふたたび変異術をとなえることができるようになった。
+%%%%
+vulnerability to harm
+
+傷つきやすさ
+%%%%
+You take slightly more damage. (-3 AC)
+
+あなたはやや傷つきやすい。(AC -3)
+%%%%
+You take more damage. (-6 AC)
+
+あなたは傷つきやすい。(AC -6)
+%%%%
+You take considerably more damage. (-9 AC)
+
+あなたはかなり傷つきやすい。(AC -9)
+%%%%
+You feel more vulnerable to harm.
+
+あなたはさらに傷つきやすくなったようだ。
+%%%%
+You no longer feel extra vulnerable to harm.
+
+あなたはもはや通常より傷つきやすくなくなったようだ。
+%%%%
+You feel less vulnerable to harm.
+
+あなたは傷つきにくくなったようだ。
+%%%%
+slow reflexes
+
+回避低下
+%%%%
+You have somewhat slow reflexes. (-3 EV)
+あなたは反射神経がいくらか遅くなったようだ。(回避 -3)
+%%%%
+You have slow reflexes. (-6 EV)
+
+あなたは反射神経が遅くなったようだ。(回避 -6)
+%%%%
+You have very slow reflexes. (-9 EV)
+
+あなたは反射神経がとても遅くなったようだ。(回避 -9)
+%%%%
+Your reflexes slow.
+
+あなたの反射神経は遅くなった。
+%%%%
+Your reflexes slow further.
+
+あなたの反射神経はさらに遅くなった。
+%%%%
+You reflexes return to normal.
+
+あなたの反射神経は普通に戻った。
+%%%%
+You reflexes speed back up.
+
+あなたの反射神経が少し回復した。
+%%%%
+magic vulnerability
+
+魔法に対する脆弱性
+%%%%
+You are slightly vulnerable to magic.
+
+あなたは魔法に対してやや弱い。
+%%%%
+You are vulnerable to magic.
+
+あなたは魔法に弱い。
+%%%%
+You are extremely vulnerable to magic.
+
+あなたはきわめて魔法に弱い。
+%%%%
+You feel vulnerable to magic.
+
+あなたは魔法に弱くなったようだ。
+%%%%
+You feel more vulnerable to magic.
+
+あなたはさらに魔法に弱くなったようだ。
+%%%%
+You no longer feel vulnerable to magic.
+
+あなたはもはや魔法に弱くなくなったようだ。
+%%%%
+You feel less vulnerable to magic.
+
+あなたは少し魔法に弱くなくなった。
+%%%%
+disrupted magic
+
+魔法阻害
+%%%%
+Your casting is slightly disrupted.
+
+あなたの魔法は少し阻害されている。
+%%%%
+Your casting is disrupted.
+
+あなたの魔法は阻害されている。
+%%%%
+Your casting is seriously disrupted.
+
+あなたの魔法はひどく阻害されている。
+%%%%
+Your ability to control magic is disrupted.
+
+あなたの魔法制御能力は阻害されている。
+%%%%
+Your ability to control magic is more disrupted.
+
+あなたの魔法制御能力への阻害は強まった。
+%%%%
+Your ability to control magic is no longer disrupted.
+
+あなたの魔法制御能力はもはや阻害されていない。
+%%%%
+Your ability to control magic is less disrupted.
+
+あなたの魔法制御能力への阻害は弱まった。
+%%%%
+MP-powered wands
+
+魔力を消費する杖
+%%%%
+You expend magic power (3 MP) to strengthen your wands.
+
+あなたは杖を振るのに3MPを消費する。
+%%%%
+You feel your magical essence link to your wands.
+
+あなたの魔力と杖が繋がったようだ。
+%%%%
+Your magical essence is no longer linked to your wands.
+
+あなたの魔力と杖はもはや繋がっていない。
+%%%%
+unskilled
+
+スキル低下
+%%%%
+You are somewhat unskilled (-1 Apt).
+
+あなたはいくらか未熟だ。(スキル -1)
+%%%%
+You are unskilled (-2 Apt)
+
+あなたは未熟だ。(スキル -2)
+%%%%
+You are extremely unskilled (-3 Apt).
+
+あなたはきわめて未熟だ。(スキル -3)
+%%%%
+You feel less skilled.
+
+あなたは腕が落ちた気がした。
+%%%%
+You regain all your skill.
+
+あなたは腕を取り戻した気がした。
+%%%%
+You regain some skill.
+
+あなたはいくらか腕を取り戻した。
+%%%%
+inexperienced
+
+レベル低下
+%%%%
+You are somewhat inexperienced (-2 XL).
+
+あなたはいくらか経験を失った。(レベル -2)
+%%%%
+You are inexperienced (-4 XL)
+
+あなたは経験を失った。(レベル -4)
+%%%%
+You are extremely inexperienced (-6 XL).
+
+あなたはかなりの経験を失った。(レベル -6)
+%%%%
+You feel less experienced.
+
+あなたは経験を失ったようだ。
+%%%%
+You regain all your potential.
+
+あなたは経験を取り戻した。
+%%%%
+You regain some potential.
+
+あなたは少し経験を取り戻した。
+%%%%
+sharp paws
+
+鋭い前足
+%%%%
+Your sharp claws are effective at attacking unaware monsters.
+
+あなたの鋭い爪はこちらに気付いていないモンスターに有効だ。
+%%%%
+missing an eye
+
+失明
+%%%%
+You are missing an eye, making it more difficult to aim.
+
+あなたは片目を失い、狙いを定めることが難しくなった。
+%%%%
+Your right eye vanishes! The world loses its depth.
+
+あなたの右目は消えた！ 視界の奥行きを失った。
+%%%%
+Your right eye suddenly reappears! The world regains its depth.
+
+あなたの右目が突然戻ってきた！ 視界が奥行きを取り戻した。
+%%%%
+temperature sensitive
+温度への過敏
+%%%%
+You are sensitive to extremes of temperature (rF-, rC-).
+
+あなたは温度の高低に過敏だ。(rF-, rC-)
+%%%%
+You feel sensitive to extremes of temperature.
+
+あなたは温度の高低に過敏になったようだ。
+%%%%
+You no longer feel sensitive to extremes of temperature.
+
+あなたはもはや温度の高低に過敏ではなくなった。
+%%%%
+damage resistance
+
+ダメージへの耐性
+%%%%
+recharge devices
+
+魔道具の充填
+%%%%
+paw claws
+
+猫ひっかき
+%%%%
+acid resistance
+
+酸耐性
+%%%%
+walk through water
+
+水中歩行
+%%%%
+breathe power
+
+破壊のブレス
+%%%%
+breathe sticky flames
+
+焼夷のブレス
+%%%%
+no armour
+
+鎧不可
+%%%%
+no weapons or thrown items
+
+武器及び飛び道具不可
+%%%%
+permanent stasis
+
+恒久的停滞
+%%%%
+dig shafts and tunnels
+
+穴掘り
+%%%%
+four strong arms
+
+四本の腕
+%%%%
+rotting body
+
+腐りゆく体
+%%%%
+change form in water
+
+水棲の体
+%%%%
+swift swim
+
+俊敏な泳ぎ
+%%%%
+retaliatory headbutt
+
+反撃の頭突き
+%%%%
+no food or potions
+
+食事・薬不可
+%%%%
+fire vulnerability
+
+燃えやすい
+%%%%
+almost no armour
+
+ほとんどの防具不可
+%%%%
+amphibious
+
+水陸両生
+%%%%
+unfitting armour
+
+防具に合わない体
+%%%%
+%d rings
+
+%dつの指輪
+%%%%
+constrict 1
+
+触手拘束
+%%%%
+constrict %d
+
+触手拘束
+%%%%
+walk on water
+
+水上歩行
+%%%%
+no striking features
+
+特になし
+%%%%

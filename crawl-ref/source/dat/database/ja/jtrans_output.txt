@@ -1,0 +1,121 @@
+%%%%
+%s  - Unarmed
+
+%s  - 素手
+%%%%
+%s  - Blade Hand%s
+
+%s  - 刃の手
+%%%%
+<darkgrey>(no %s)</darkgrey>
+
+<darkgrey>(%sを装備していない)</darkgrey>
+%%%%
+<darkgrey>(%s unavailable)</darkgrey>
+
+<darkgrey>(%sを装備できない)</darkgrey>
+%%%%
+<darkgrey>(%s currently unavailable)</darkgrey>
+
+<darkgrey>(今のところ%sを装備できない)</darkgrey>
+%%%%
+<darkgrey>(%s restricted)</darkgrey>
+
+<darkgrey>(%sは制限されている)</darkgrey>
+%%%%
+very quick
+
+非常に俊敏
+%%%%
+quick
+
+俊敏
+%%%%
+slow
+
+鈍足
+%%%%
+very slow
+
+非常に鈍足
+%%%%
+immune to hostile enchantments
+
+敵対的な魔法に対し無効化
+%%%%
+not resistant to hostile enchantments
+
+敵対的な魔法に対し耐性を持たない
+%%%%
+somewhat resistant to hostile enchantments
+
+敵対的な魔法に対しいくらか耐性を持つ
+%%%%
+very resistant to hostile enchantments
+
+敵対的な魔法に対しかなり耐性を持つ
+%%%%
+extremely resistant to hostile enchantments
+
+敵対的な魔法に対しきわめて耐性を持つ
+%%%%
+incredibly resistant to hostile enchantments
+
+敵対的な魔法に対し信じがたいほど耐性を持つ
+%%%%
+almost entirely resistant to hostile enchantments
+
+敵対的な魔法に対しほとんど全てを無効化
+%%%%
+extremely unstealthy
+
+きわめて騒々しい
+%%%%
+very unstealthy
+
+かなり騒々しい
+%%%%
+unstealthy
+
+騒々しい
+%%%%
+fairly stealthy
+
+そこそこ隠密性が高い
+%%%%
+stealthy
+
+隠密性が高い
+%%%%
+quite stealthy
+
+だいぶ隠密性が高い
+%%%%
+very stealthy
+
+とても隠密性が高い
+%%%%
+extremely stealthy
+
+きわめて隠密性が高い
+%%%%
+extraordinarily stealthy
+
+並外れて隠密性が高い
+%%%%
+incredibly stealthy
+
+信じがたいほど隠密性が高い
+%%%%
+uncannily stealthy
+
+異常なまでに隠密性が高い
+%%%%
+<w>%s:</w> %d/%d rune: %s
+
+<w>%s:</w> %d/%d ルーン: %s
+%%%%
+<w>0:</w> Orb of Zot
+
+<w>0:</w> ゾットのオーブ
+%%%%

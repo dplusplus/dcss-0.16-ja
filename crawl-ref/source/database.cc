@@ -188,10 +188,8 @@ static TextDB AllDBs[] =
            "jtrans_magicspell.txt",
            */
            "jtrans_monster_name.txt",
-           /*
            "jtrans_mutations.txt",
            "jtrans_output.txt",
-           */
            "jtrans_skill_title.txt",
            "jtrans_weapon.txt",
            nullptr),
