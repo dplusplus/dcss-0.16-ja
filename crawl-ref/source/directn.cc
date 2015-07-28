@@ -3161,14 +3161,14 @@ static string _describe_monster_weapon(const monster_info& mi, bool ident)
     if (name1.empty())
         return desc;
 
-    desc += " wielding ";
     desc += name1;
 
     if (!name2.empty())
     {
-        desc += " and ";
+        desc += "と";
         desc += name2;
     }
+    desc += "を装備している";
 
     return desc;
 }
