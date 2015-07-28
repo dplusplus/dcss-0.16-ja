@@ -1498,9 +1498,9 @@ static inline bool _monster_warning(activity_interrupt_type ai,
                 god_warning = "Ashenzari warns you:";
 
             (ash_id ? god_warning : text) +=
-                " " + uppercase_first(mon->pronoun(PRONOUN_SUBJECTIVE)) + " is"
+                jtrans(uppercase_first(mon->pronoun(PRONOUN_SUBJECTIVE))) + "は"
                 + (ash_id ? " " : "")
-                + mweap + ".";
+                + mweap + "。";
         }
 
         if (msgs_buf)
