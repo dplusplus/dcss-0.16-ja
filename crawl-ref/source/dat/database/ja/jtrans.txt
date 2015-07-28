@@ -207,6 +207,12 @@ You see a ghostly outline there, and the spell fizzles.
 
 あなたはぼんやりとした輪郭を目にし、呪文は失敗した。
 %%%%
+############################## mon-act.cc ##############################
+%%%%
+moves out of view.
+
+は視界外に移動した。
+%%%%
 ############################## player.cc ##############################
 %%%%
 The %s%s flies open!
