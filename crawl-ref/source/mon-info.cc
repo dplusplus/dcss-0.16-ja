@@ -1070,12 +1070,7 @@ string monster_info::common_name(description_level_type desc) const
             ss << " shaped shifter";
     }
 
-    string s;
-    // only respect unqualified if nothing was added ("Sigmund" or "The spectral Sigmund")
-    if (!is(MB_NAME_UNQUALIFIED) || has_proper_name() || ss.str() != core)
-        s = _apply_adjusted_description(desc, ss.str());
-    else
-        s = ss.str();
+    string s = ss.str();
 
     if (desc == DESC_ITS)
         s = apostrophise(s);
