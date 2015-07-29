@@ -2,6 +2,7 @@
 
 #include "godconduct.h"
 
+#include "database.h"
 #include "fight.h"
 #include "godabil.h" // ru sac key
 #include "godwrath.h"
@@ -170,15 +171,15 @@ struct dislike_response
             static int last_glowing_lecture = -1;
             if (!level)
             {
-                simple_god_message(" is not enthusiastic about the "
-                                   "mutagenic glow surrounding you.");
+                simple_god_message(jtrans(
+                    "is not enthusiastic about the mutagenic glow surrounding you.").c_str());
             }
             else if (last_glowing_lecture != you.num_turns)
             {
                 last_glowing_lecture = you.num_turns;
                 // Increase contamination within yellow glow.
-                simple_god_message(" does not appreciate the extra "
-                                   "mutagenic glow surrounding you!");
+                simple_god_message(jtrans(
+                    "does not appreciate the extra mutagenic glow surrounding you!").c_str());
             }
         }
 
@@ -198,22 +199,26 @@ struct dislike_response
 
 /// Good gods' reaction to drinking blood.
 static const dislike_response GOOD_BLOOD_RESPONSE = {
-    2, 1, " forgives your inadvertent blood-drinking, just this once."
+    2, 1, "はあなたが不注意に血液を口にしたのを今回だけ見逃した。"
+    // " forgives your inadvertent blood-drinking, just this once."
 };
 
 /// Good gods', and Beogh's, response to cannibalism.
 static const dislike_response RUDE_CANNIBALISM_RESPONSE = {
-    5, 3, nullptr, " expects more respect for your departed relatives."
+    5, 3, nullptr, "は同胞の亡骸に対するさらなる尊崇を要求した。"
+    // " expects more respect for your departed relatives."
 };
 
 /// Zin and Ely's responses to desecrating holy remains.
 static const dislike_response GOOD_DESECRATE_HOLY_RESPONSE = {
-    1, 1, nullptr, " expects more respect for holy creatures!"
+    1, 1, nullptr, "は聖遺物へのさらなる尊崇を要求した！"
+    // " expects more respect for holy creatures!"
 };
 
 /// Zin and Ely's responses to unholy actions & necromancy.
 static const dislike_response GOOD_UNHOLY_RESPONSE = {
-    1, 1, " forgives your inadvertent unholy act, just this once."
+    1, 1, "はあなたの不注意な不浄なる振る舞いを今回だけ見逃した。"
+    // " forgives your inadvertent unholy act, just this once."
 };
 
 /// Zin and Ely's responses to the player attacking holy creatures.
@@ -228,20 +233,23 @@ static const dislike_response GOOD_KILL_HOLY_RESPONSE = {
 
 /// TSO's response to the player stabbing or poisoning monsters.
 static const dislike_response TSO_UNCHIVALRIC_RESPONSE = {
-    1, 2, " forgives your inadvertent dishonourable attack, just"
-              " this once.", nullptr, [] (const monster* victim) {
+    1, 2, "はあなたの恥ずべき攻撃を今回だけ見逃した。",
+    // " forgives your inadvertent dishonourable attack, just this once.",
+    nullptr, [] (const monster* victim) {
         return !victim || !tso_unchivalric_attack_safe_monster(victim);
     }
 };
 
 /// TSO and Ely's response to the player attacking neutral monsters.
 static const dislike_response GOOD_ATTACK_NEUTRAL_RESPONSE = {
-    1, 1, " forgives your inadvertent attack on a neutral, just this once."
+    1, 1, "はあなたの仲間への不注意な攻撃を今回だけ見逃した。"
+    // " forgives your inadvertent attack on a neutral, just this once."
 };
 
 /// Various gods' response to attacking a pal.
 static const dislike_response ATTACK_FRIEND_RESPONSE = {
-    1, 3, " forgives your inadvertent attack on an ally, just this once.",
+    1, 3, "はあなたの仲間への不注意な攻撃を今回だけ見逃した。",
+    // " forgives your inadvertent attack on an ally, just this once.",
     nullptr, [] (const monster* victim) {
         dprf("hates friend : %d", god_hates_attacking_friend(you.religion, victim));
         return god_hates_attacking_friend(you.religion, victim);
@@ -287,20 +295,23 @@ static peeve_map divine_peeves[] =
         { DID_UNHOLY, GOOD_UNHOLY_RESPONSE },
         { DID_ATTACK_FRIEND, ATTACK_FRIEND_RESPONSE },
         { DID_ATTACK_NEUTRAL, {
-            1, 0,
-            " forgives your inadvertent attack on a neutral, just this once."
+            1, 0, "はあなたの敵対していない者への不注意な攻撃を今回だけ見逃した。"
+            // " forgives your inadvertent attack on a neutral, just this once."
         } },
         { DID_ATTACK_IN_SANCTUARY, {
             1, 1
         } },
         { DID_UNCLEAN, {
-            1, 1, " forgives your inadvertent unclean act, just this once."
+            1, 1, "はあなたの不注意な不浄なる振る舞いを今回だけ見逃した。"
+            // " forgives your inadvertent unclean act, just this once."
         } },
         { DID_CHAOS, {
-            1, 1, " forgives your inadvertent chaotic act, just this once."
+            1, 1, "はあなたの不注意な混沌なる振る舞いを今回だけ見逃した。"
+            // " forgives your inadvertent chaotic act, just this once."
         } },
         { DID_DELIBERATE_MUTATING, {
-            1, 0, " forgives your inadvertent chaotic act, just this once."
+            1, 0, "はあなたの不注意な混沌なる振る舞いを今回だけ見逃した。"
+            // " forgives your inadvertent chaotic act, just this once."
         } },
         { DID_DESECRATE_SOULED_BEING, {
             5, 3
@@ -316,13 +327,16 @@ static peeve_map divine_peeves[] =
         } },
         { DID_KILL_HOLY, GOOD_KILL_HOLY_RESPONSE },
         { DID_DESECRATE_HOLY_REMAINS, {
-            1, 2, nullptr, " expects more respect for holy creatures!"
+            1, 2, nullptr, "は聖遺物へのさらなる尊崇を要求した！"
+            // " expects more respect for holy creatures!"
         } },
         { DID_NECROMANCY, {
-            1, 2, " forgives your inadvertent unholy act, just this once."
+            1, 2, "はあなたの不注意な不浄なる振る舞いを今回だけ見逃した。"
+            // " forgives your inadvertent unholy act, just this once."
         } },
         { DID_UNHOLY, {
-            1, 2, " forgives your inadvertent unholy act, just this once."
+            1, 2, "はあなたの不注意な不浄なる振る舞いを今回だけ見逃した。"
+            // " forgives your inadvertent unholy act, just this once."
         } },
         { DID_UNCHIVALRIC_ATTACK, TSO_UNCHIVALRIC_RESPONSE },
         { DID_POISON, TSO_UNCHIVALRIC_RESPONSE },
@@ -334,7 +348,8 @@ static peeve_map divine_peeves[] =
     // GOD_YREDELEMNUL,
     {
         { DID_HOLY, {
-            1, 2, " forgives your inadvertent holy act, just this once."
+            1, 2, "はあなたの不注意な神聖な振る舞いを今回だけ見逃した。"
+            // " forgives your inadvertent holy act, just this once."
         } },
     },
     // GOD_XOM,
@@ -360,7 +375,8 @@ static peeve_map divine_peeves[] =
             1, 5,
         } },
         { DID_SPELL_PRACTISE, {
-            1, 0, nullptr, " doesn't appreciate your training magic!"
+            1, 0, nullptr, "はあなたが魔法を訓練するのを喜ばない！"
+            // " doesn't appreciate your training magic!"
         } },
     },
     // GOD_NEMELEX_XOBEH,
@@ -379,8 +395,9 @@ static peeve_map divine_peeves[] =
         { DID_FRIEND_DIED, ELY_FRIEND_DEATH_RESPONSE },
         { DID_SOULED_FRIEND_DIED, ELY_FRIEND_DEATH_RESPONSE },
         { DID_KILL_LIVING, {
-            1, 2, nullptr, " does not appreciate your shedding blood"
-                            " when asking for salvation!",
+            1, 2, nullptr, "は救済を求めながら他者の血を流す行為を喜ばない！",
+            // " does not appreciate your shedding blood"
+            //                " when asking for salvation!",
             [] (const monster*) {
                 // Killing is only disapproved of during prayer.
                 return you.duration[DUR_LIFESAVING] != 0;
@@ -414,7 +431,8 @@ static peeve_map divine_peeves[] =
     // GOD_FEDHAS,
     {
         { DID_CORPSE_VIOLATION, {
-            1, 1, " forgives your inadvertent necromancy, just this once."
+            1, 1, "はあなたの不注意な死霊術を今回だけ見逃した。"
+            // " forgives your inadvertent necromancy, just this once."
         } },
         { DID_KILL_PLANT, {
             1, 0
@@ -426,8 +444,11 @@ static peeve_map divine_peeves[] =
     // GOD_CHEIBRIADOS,
     {
         { DID_HASTY, {
-            1, 1, " forgives your accidental hurry, just this once.",
-            " thinks you should slow down.", nullptr, -5
+            1, 1, "はあなたがうっかり急いでしまったのを今回だけ見逃した。",
+            // " forgives your accidental hurry, just this once.",
+            "はあなたは減速すべきだと考えている。",
+            // " thinks you should slow down.",
+            nullptr, -5
         } },
     },
     // GOD_ASHENZARI,
@@ -435,8 +456,11 @@ static peeve_map divine_peeves[] =
     // GOD_DITHMENOS,
     {
         { DID_FIRE, {
-            1, 1, " forgives your accidental fire-starting, just this once.",
-            " does not appreciate your starting fires!", nullptr, -5
+            1, 1, "はあなたがうっかり火を灯してしまったのを今回だけ見逃した。",
+            // " forgives your accidental fire-starting, just this once.",
+            "はあなたが火を灯すのを喜ばない！",
+            // " does not appreciate your starting fires!",
+            nullptr, -5
         } },
     },
     // GOD_GOZAG,
@@ -560,7 +584,8 @@ static like_response _on_kill(mon_holy_type holiness, bool god_is_good = false,
         _piety_bonus_for_holiness(holiness),
         18,
         god_is_good ? 0 : 2,
-        " accepts your kill.",
+        "はあなたの殺しを善しとした。", // jtrans()で囲うと落ちるので直接書き換え
+        // " accepts your kill.",
         special
     };
     return response;
@@ -593,11 +618,11 @@ static const like_response OKAWARU_KILL = {
         if (piety > 3200)
         {
             mprf(MSGCH_GOD, you.religion,
-                 "<white>%s is honoured by your kill.</white>",
+                 jtrans("<white>%s is honoured by your kill.</white>").c_str(),
                  uppercase_first(god_name(you.religion)).c_str());
         }
         else if (piety > 9) // might still be miniscule
-            simple_god_message(" accepts your kill.");
+            simple_god_message(jtrans("accepts your kill.").c_str());
     }
 };
 
@@ -647,7 +672,7 @@ static like_map divine_likes[] =
                                      const monster* victim)
             {
                 piety *= 2;
-                simple_god_message(" appreciates your killing of a holy being.");
+                simple_god_message(jtrans("appreciates your killing of a holy being.").c_str());
             }
         ) },
         { DID_KILL_ARTIFICIAL, _on_kill(MH_NONLIVING, false) },
@@ -699,7 +724,8 @@ static like_map divine_likes[] =
         { DID_KILL_DEMON, KILL_DEMON_RESPONSE },
         { DID_KILL_HOLY, KILL_HOLY_RESPONSE },
         { DID_KILL_WIZARD, {
-            -6, 10, 0, " appreciates your killing of a magic user."
+            -6, 10, 0, "はあなたが魔術の使い手を殺すのを喜んだ。"
+            // " appreciates your killing of a magic user."
         } },
     },
     // GOD_NEMELEX_XOBEH,
@@ -731,7 +757,8 @@ static like_map divine_likes[] =
         { DID_KILL_DEMON, KILL_DEMON_RESPONSE },
         { DID_KILL_HOLY, KILL_HOLY_RESPONSE },
         { DID_BANISH, {
-            -6, 18, 2, " claims a new guest."
+            -6, 18, 2, "は新たな訪問者を受け入れた。"
+            // " claims a new guest."
         } },
     },
     // GOD_BEOGH,
@@ -741,7 +768,8 @@ static like_map divine_likes[] =
         { DID_KILL_DEMON, KILL_DEMON_RESPONSE },
         { DID_KILL_HOLY, KILL_HOLY_RESPONSE },
         { DID_KILL_PRIEST, {
-            -6, 10, 0, " appreciates your killing of a heretic priest."
+            -6, 10, 0, "はあなたが異端の司祭を殺すのを喜んだ。"
+            // " appreciates your killing of a heretic priest."
         } },
     },
     // GOD_JIYVA,
@@ -762,11 +790,11 @@ static like_map divine_likes[] =
 
                 if (speed_delta > 0 && x_chance_in_y(speed_delta, 12))
                 {
-                    simple_god_message(" thoroughly appreciates the change of pace.");
+                    simple_god_message(jtrans("thoroughly appreciates the change of pace.").c_str());
                     piety *= 2;
                 }
                 else
-                    simple_god_message(" appreciates the change of pace.");
+                    simple_god_message(jtrans("appreciates the change of pace.").c_str());
             }
         } }
     },
@@ -791,7 +819,8 @@ static like_map divine_likes[] =
         { DID_KILL_DEMON, _on_kill(MH_DEMONIC, false, _dithmenos_kill) },
         { DID_KILL_HOLY, _on_kill(MH_HOLY, false, _dithmenos_kill) },
         { DID_KILL_FIERY, {
-            -6, 10, 0, " appreciates your extinguishing a source of fire."
+            -6, 10, 0, "はあなたが火の元を消すのを喜んだ。"
+            // appreciates your extinguishing a source of fire."
         } },
     },
     // GOD_GOZAG,
