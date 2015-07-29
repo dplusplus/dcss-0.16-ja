@@ -53,7 +53,7 @@ attack::attack(actor *attk, actor *defn, actor *blame)
       ev_margin(0), weapon(nullptr),
       damage_brand(SPWPN_NORMAL), wpn_skill(SK_UNARMED_COMBAT),
       shield(nullptr), art_props(0), unrand_entry(nullptr),
-      attacker_to_hit_penalty(0), attack_verb("bug"), verb_degree(),
+      attacker_to_hit_penalty(0), attack_verb("bug"), verb_degree(), verb_degree2(),
       no_damage_message(), special_damage_message(), aux_attack(), aux_verb(),
       attacker_armour_tohit_penalty(0), attacker_shield_tohit_penalty(0),
       defender_shield(nullptr), miscast_level(-1), miscast_type(SPTYP_NONE),
@@ -1124,9 +1124,9 @@ string attack::debug_damage_number()
 string attack::attack_strength_punctuation(int dmg)
 {
     if (dmg < HIT_WEAK)
-        return ".";
+        return "。";
     else if (dmg < HIT_MED)
-        return "!";
+        return "！";
     else if (dmg < HIT_STRONG)
         return "!!";
     else
@@ -1147,10 +1147,10 @@ string attack::attack_strength_punctuation(int dmg)
  */
 string attack::evasion_margin_adverb()
 {
-    return (ev_margin <= -20) ? " completely" :
+    return (ev_margin <= -20) ? "完全に" :
            (ev_margin <= -12) ? "" :
-           (ev_margin <= -6)  ? " closely"
-                              : " barely";
+           (ev_margin <= -6)  ? "きわどく"
+                              : "ぎりぎり";
 }
 
 void attack::stab_message()

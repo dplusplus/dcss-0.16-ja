@@ -18,6 +18,7 @@
 #include "butcher.h"
 #include "colour.h"
 #include "command.h"
+#include "database.h"
 #include "decks.h"
 #include "describe.h"
 #include "english.h"
@@ -160,8 +161,6 @@ string item_def::name(description_level_type descrip, bool terse, bool ident,
     const string auxname = name_aux(descrip, terse, ident, with_inscription,
                                     ignore_flags);
 
-    const bool startvowel     = is_vowel(auxname[0]);
-
     if (descrip == DESC_INVENTORY_EQUIP || descrip == DESC_INVENTORY)
     {
         if (in_inventory(*this)) // actually in inventory
@@ -214,9 +213,9 @@ string item_def::name(description_level_type descrip, bool terse, bool ident,
     {
         switch (descrip)
         {
-        case DESC_THE:        buff << "the "; break;
-        case DESC_YOUR:       buff << "your "; break;
-        case DESC_ITS:        buff << "its "; break;
+        case DESC_THE:        break;
+        case DESC_YOUR:       buff << jtrans("your"); break;
+        case DESC_ITS:        buff << jtrans("its"); break;
         case DESC_A:
         case DESC_INVENTORY_EQUIP:
         case DESC_INVENTORY:
@@ -238,13 +237,13 @@ string item_def::name(description_level_type descrip, bool terse, bool ident,
     {
         switch (descrip)
         {
-        case DESC_THE:        buff << "the "; break;
-        case DESC_YOUR:       buff << "your "; break;
-        case DESC_ITS:        buff << "its "; break;
+        case DESC_THE:        break;
+        case DESC_YOUR:       buff << jtrans("your"); break;
+        case DESC_ITS:        buff << jtrans("its"); break;
         case DESC_A:
         case DESC_INVENTORY_EQUIP:
         case DESC_INVENTORY:
-                              buff << (startvowel ? "an " : "a "); break;
+            break;
         case DESC_PLAIN:
         default:
             break;

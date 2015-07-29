@@ -1688,7 +1688,7 @@ bool simple_monster_message(const monster* mons, const char *event,
         && (channel == MSGCH_MONSTER_SPELL || channel == MSGCH_FRIEND_SPELL
             || mons->visible_to(&you)))
     {
-        string msg = mons->name(descrip);
+        string msg = jtrans(mons->name(descrip));
         msg += event;
         msg = apostrophise_fixup(msg);
 

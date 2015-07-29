@@ -5041,27 +5041,26 @@ string get_damage_level_string(mon_holy_type holi, mon_dam_level_type mdam)
     switch (mdam)
     {
     case MDAM_ALMOST_DEAD:
-        ss << "almost";
-        ss << (wounded_damaged(holi) ? " destroyed" : " dead");
+        ss << "ほとんど";
+        ss << (wounded_damaged(holi) ? "破壊されかけている" : "死にかけだ");
         return ss.str();
     case MDAM_SEVERELY_DAMAGED:
-        ss << "severely";
+        ss << "ひどく";
         break;
     case MDAM_HEAVILY_DAMAGED:
-        ss << "heavily";
+        ss << "すごく";
         break;
     case MDAM_MODERATELY_DAMAGED:
-        ss << "moderately";
         break;
     case MDAM_LIGHTLY_DAMAGED:
-        ss << "lightly";
+        ss << "軽く";
         break;
     case MDAM_OKAY:
     default:
-        ss << "not";
-        break;
+        ss << "傷つかなかった";
+        return ss.str();
     }
-    ss << (wounded_damaged(holi) ? " damaged" : " wounded");
+    ss << "傷ついた";
     return ss.str();
 }
 
@@ -5076,8 +5075,8 @@ void print_wounds(const monster* mons)
     mon_dam_level_type dam_level = mons_get_damage_level(mons);
     string desc = get_damage_level_string(mons->holiness(), dam_level);
 
-    desc.insert(0, " is ");
-    desc += ".";
+    desc.insert(0, "は");
+    desc += "。";
     simple_monster_message(mons, desc.c_str(), MSGCH_MONSTER_DAMAGE,
                            dam_level);
 }
