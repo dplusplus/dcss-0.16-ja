@@ -633,6 +633,72 @@ moves out of view.
 
 は視界外に移動した。
 %%%%
+############################## mon-death.cc ##############################
+%%%%
+blown up
+
+爆破された
+%%%%
+destroyed
+
+破壊された
+%%%%
+killed
+
+殺された
+%%%%
+blow up
+
+破裂させた
+%%%%
+destroy
+
+破壊した
+%%%%
+kill
+
+殺した
+%%%%
+That felt strangely unrewarding.
+
+あなたは奇妙な徒労感に襲われた。
+%%%%
+is blown up!
+
+は爆破された！
+%%%%
+is destroyed!
+
+は破壊された！
+%%%%
+dies!
+
+は死んだ！
+%%%%
+withers and dies!
+
+は枯れ果てて死んだ！
+%%%%
+fades into mist!
+
+は霧の中に消えていった！
+%%%%
+The dead kraken's tentacles slide back into the water.
+
+倒れたクラーケンの触手は水の中に滑り落ちていった。
+%%%%
+The starspawn's tentacles wither and die.
+
+落とし子の触手は枯れ果てて、崩れ落ちた。
+%%%%
+regenerates before your eyes!
+
+あなたの眼前で再生した！
+%%%%
+'s shape twists and change as
+
+の形状は捻れ、後には
+%%%%
 ############################## player.cc ##############################
 %%%%
 The %s%s flies open!
