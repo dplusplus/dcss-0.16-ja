@@ -39,9 +39,1107 @@ Found %s %s.
 
 %s個の%sを見つけた。
 %%%%
-You now have %d gold piece%s.
+############################## itemname.cc ##############################
+%%%%
+god gift
 
-あなたは今%d枚の金貨を持っている。
+下賜物
+%%%%
+(melded)
+
+(肉体と融合している)
+%%%%
+(quivered)
+
+(準備中)
+%%%%
+vampiric
+
+吸血の
+%%%%
+antimagic
+
+反魔法の
+%%%%
+enchanted
+
+魔力を帯びた
+%%%%
+of flaming
+
+火炎の
+%%%%
+of freezing
+
+冷気の
+%%%%
+of holy wrath
+
+神罰の
+%%%%
+of electrocution
+
+電撃の
+%%%%
+of venom
+
+毒液の
+%%%%
+of protection
+
+護りの
+%%%%
+of draining
+
+掠奪の
+%%%%
+of speed
+
+早業の
+%%%%
+of pain
+
+苦痛の
+%%%%
+of distortion
+
+歪曲の
+%%%%
+of chaos
+
+混沌の
+%%%%
+of evasion
+
+躱し身の
+%%%%
+of penetration
+
+貫通の
+%%%%
+of reaping
+
+刈り取りの
+%%%%
+of acid
+
+強酸の
+%%%%
+of velocity
+
+高速の
+%%%%
+of crushing
+
+粉砕の
+%%%%
+of slicing
+
+切断の
+%%%%
+of piercing
+
+貫きの
+%%%%
+of chopping
+
+分断の
+%%%%
+of slashing
+
+切れ味の
+%%%%
+cursed
+
+呪われた
+%%%%
+(curse)
+
+(呪われている)
+%%%%
+uncursed
+
+呪われていない
+%%%%
+pair of
+
+一対の
+%%%%
+runed
+
+ルーンが刻まれた
+%%%%
+glowing
+
+輝く
+%%%%
+embroidered
+
+刺繍された
+%%%%
+shiny
+
+光る
+%%%%
+dyed
+
+色で染められた
+%%%%
+of speedy slighering
+
+俊敏の
+%%%%
+of running
+
+俊足の
+%%%%
+of fire resistance
+
+耐火の
+%%%%
+of cold resistance
+
+耐冷の
+%%%%
+of poison resistance
+
+耐毒の
+%%%%
+of see invisible
+
+霊視の
+%%%%
+of invisibility
+
+透明化の
+%%%%
+of strength
+
+腕力の
+%%%%
+of dexterity
+
+器用さの
+%%%%
+of intelligence
+
+知性の
+%%%%
+of ponderousness
+
+鈍重の
+%%%%
+of flying
+
+飛行の
+%%%%
+of magic resistance
+
+耐魔法の
+%%%%
+of protection
+
+護りの
+%%%%
+of stealth
+
+隠密の
+%%%%
+of resistance
+
+耐性の
+%%%%
+of positive energy
+
+正の力の
+%%%%
+of the Archmagi
+
+大賢者の
+%%%%
+of reflection
+
+反射の
+%%%%
+of spirit shield
+
+精霊の盾の
+%%%%
+of archery
+
+射手の
+%%%%
+wand
+
+ワンド
+%%%%
+wand of flame
+
+火炎のワンド
+%%%%
+wand of frost
+
+冷気のワンド
+%%%%
+wand of slowing
+
+減速のワンド
+%%%%
+wand of hasting
+
+加速のワンド
+%%%%
+wand of magic darts
+
+魔法の矢のワンド
+%%%%
+wand of heal wounds
+
+癒しのワンド
+%%%%
+wand of paralysis
+
+麻痺のワンド
+%%%%
+wand of fire
+
+猛火のワンド
+%%%%
+wand of cold
+
+凍結のワンド
+%%%%
+wand confusion
+
+混乱のワンド
+%%%%
+wand invisibility
+
+透明化のワンド
+%%%%
+wand digging
+
+採掘のワンド
+%%%%
+wand of fireball
+
+ファイアボールのワンド
+%%%%
+wand of teleportation
+
+テレポートのワンド
+%%%%
+wand of lightning
+
+稲妻のワンド
+%%%%
+wand of polymorph
+
+変化のワンド
+%%%%
+wand of enslavement
+
+隷属のワンド
+%%%%
+wand of draining
+
+掠奪のワンド
+%%%%
+wand of random effects
+
+でたらめのワンド
+%%%%
+wand of disintegration
+
+分解のワンド
+%%%%
+{empty}
+
+{空}
+%%%%
+{recharged}
+
+{充填済み}
+%%%%
+potion
+
+薬
+%%%%
+potion of curing
+
+治療の薬
+%%%%
+potion of heal wounds
+
+怪我の治療の薬
+%%%%
+potion of haste
+
+スピードの薬
+%%%%
+potion of might
+
+怪力の薬
+%%%%
+potion of agility
+
+器用さの薬
+%%%%
+potion of brilliance
+
+知性の薬
+%%%%
+potion of flight
+
+飛行の薬
+%%%%
+potion of poison
+
+毒の薬
+%%%%
+potion of cancellation
+
+無力化の薬
+%%%%
+potion of ambrosia
+
+アンブロシアの薬
+%%%%
+potion of invisibility
+
+透明化の薬
+%%%%
+potion of degeneration
+
+能力低下の薬
+%%%%
+potion of experience
+
+経験の薬
+%%%%
+potion of magic
+
+魔力の薬
+%%%%
+potion of restore abilities
+
+能力回復の薬
+%%%%
+potion of berserk rage
+
+狂戦士の薬
+%%%%
+potion of cure mutation
+
+突然変異治療の薬
+%%%%
+potion of mutation
+
+突然変異の薬
+%%%%
+potion of blood
+
+血液の薬
+%%%%
+potion of resistance
+
+耐性の薬
+%%%%
+potion of lignification
+
+樹木化の薬
+%%%%
+potion of beneficial mutation
+
+良性突然変異の薬
+%%%%
+scroll
+
+巻物
+%%%%
+scroll of identify
+
+鑑定の巻物
+%%%%
+scroll of teleportation
+
+テレポートの巻物
+%%%%
+scroll of fear
+
+恐慌の巻物
+%%%%
+scroll of noise
+
+騒音の巻物
+%%%%
+scroll of remove curse
+
+解呪の巻物
+%%%%
+scroll of summoning
+
+召喚の巻物
+%%%%
+scroll of enchant weapon
+
+武器強化の巻物
+%%%%
+scroll of enchant armour
+
+防具強化の巻物
+%%%%
+scroll of torment
+
+拷問の巻物
+%%%%
+scroll of random uselessness
+
+無為無作為の巻物
+%%%%
+scroll of curse weapon
+
+武器呪縛の巻物
+%%%%
+scroll of curse armour
+
+防具呪縛の巻物
+%%%%
+scroll of curse jewellery
+
+装飾品呪縛の巻物
+%%%%
+scroll of immolation
+
+焼き討ちの巻物
+%%%%
+scroll of blinking
+
+瞬間移動の巻物
+%%%%
+scroll of magic mapping
+
+魔法の地図の巻物
+%%%%
+scroll of fog
+
+霧の巻物
+%%%%
+scroll of acquirement
+
+獲得の巻物
+%%%%
+scroll of brand weapon
+
+魔力の武器の巻物
+%%%%
+scroll of recharging
+
+魔力充填の巻物
+%%%%
+scroll of holy word
+
+聖なる御言葉の巻物
+%%%%
+scroll of vulnerability
+
+脆弱の巻物
+%%%%
+scroll of silence
+
+静寂の巻物
+%%%%
+scroll of amnesia
+
+忘却の巻物
+%%%%
+ring
+
+指輪
+%%%%
+ring of protection
+
+護りの指輪
+%%%%
+ring of protection from fire
+
+耐火の指輪
+%%%%
+ring of poison resistance
+
+耐毒の指輪
+%%%%
+ring of protection from cold
+
+耐冷の指輪
+%%%%
+ring of strength
+
+腕力の指輪
+%%%%
+ring of slaying
+
+殺戮の指輪
+%%%%
+ring of see invisible
+
+霊視の指輪
+%%%%
+ring of invisibility
+
+透明化の指輪
+%%%%
+ring of loudness
+
+騒音の指輪
+%%%%
+ring of teleportation
+
+テレポートの指輪
+%%%%
+ring of evasion
+
+躱し身の指輪
+%%%%
+ring of sustain abilities
+
+能力維持の指輪
+%%%%
+ring of stealth
+
+隠密の指輪
+%%%%
+ring of dexterity
+
+器用さの指輪
+%%%%
+ring of intelligence
+
+知性の指輪
+%%%%
+ring of wizardry
+
+魔術の指輪
+%%%%
+ring of magical power
+
+魔力の指輪
+%%%%
+ring of flight
+
+飛行の指輪
+%%%%
+ring of positive energy
+
+生命力保護の指輪
+%%%%
+ring of protection from magic
+
+耐魔法の指輪
+%%%%
+ring of fire
+
+炎の指輪
+%%%%
+ring of ice
+
+氷の指輪
+%%%%
+amulet
+
+護符
+%%%%
+amulet of rage
+
+怒りの護符
+%%%%
+amulet of clarity
+
+明晰の護符
+%%%%
+amulet of warding
+
+結界の護符
+%%%%
+amulet of resist corrosion
+
+腐食阻止の護符
+%%%%
+amulet of the gourmand
+
+悪食の護符
+%%%%
+amulet of inaccuracy
+
+不正確の護符
+%%%%
+amulet of resist mutation
+
+耐突然変異の護符
+%%%%
+amulet of guardian spirit
+
+守護霊の護符
+%%%%
+amulet of faith
+
+信仰の護符
+%%%%
+amulet of stasis
+
+停滞の護符
+%%%%
+amulet of regeneration
+
+再生の護符
+%%%%
+rune of Zot
+
+ゾットのルーン
+%%%%
+iron rune of Zot
+
+鉄のルーン
+%%%%
+obsidian rune of Zot
+
+黒曜石のルーン
+%%%%
+icy rune of Zot
+
+氷のルーン
+%%%%
+bone rune of Zot
+
+骨のルーン
+%%%%
+slimy rune of Zot
+
+ぬめりのルーン
+%%%%
+silver rune of Zot
+
+銀のルーン
+%%%%
+serpentine rune of Zot
+
+蛇行のルーン
+%%%%
+golden rune of Zot
+
+黄金のルーン
+%%%%
+decaying rune of Zot
+
+腐敗のルーン
+%%%%
+barnacled rune of Zot
+
+フジツボのルーン
+%%%%
+gossamer rune of Zot
+
+遊糸のルーン
+%%%%
+demonic rune of Zot
+
+悪魔のルーン
+%%%%
+abyssal rune of Zot
+
+深淵のルーン
+%%%%
+glowing rune of Zot
+
+輝きのルーン
+%%%%
+magical rune of Zot
+
+魔法のルーン
+%%%%
+fiery rune of Zot
+
+火のルーン
+%%%%
+dark rune of Zot
+
+暗黒のルーン
+%%%%
+plain
+
+普通の
+%%%%
+ornate
+
+レアな
+%%%%
+legendary
+
+伝説的な
+%%%%
+deck of cards
+
+カードのデッキ
+%%%%
+deck of escape
+
+脱出のデッキ
+%%%%
+deck of destruction
+
+破壊のデッキ
+%%%%
+deck of summoning
+
+召喚のデッキ
+%%%%
+deck of wonders
+
+不思議のデッキ
+%%%%
+deck of oddities
+
+奇妙なデッキ
+%%%%
+deck of punishment
+
+懲罰のデッキ
+%%%%
+deck of war
+
+戦争のデッキ
+%%%%
+deck of changes
+
+変幻のデッキ
+%%%%
+deck of defence
+
+守護のデッキ
+%%%%
+crystal ball of energy
+
+魔力の水晶球
+%%%%
+box of beasts
+
+獣の匣
+%%%%
+fan of gales
+
+疾風の扇
+%%%%
+lamp of fire
+
+炎のランプ
+%%%%
+lantern of shadows
+
+影のランタン
+%%%%
+horn of Geryon
+
+ゲリュオンの角笛
+%%%%
+disc of stomes
+
+嵐の円盤
+%%%%
+stone of tremors
+
+身震いの石
+%%%%
+quad damage
+
+四重ダメージ
+%%%%
+phial of floods
+
+大水の小瓶
+%%%%
+sack of spiders
+
+蜘蛛の袋
+%%%%
+phantom mirror
+
+幻影の鏡
+%%%%
+manual
+
+手引書
+%%%%
+book
+
+魔法書
+%%%%
+book of Minor Magic
+
+下級魔術の魔法書
+%%%%
+book of Conjurations
+
+妖術の魔法書
+%%%%
+book of Flames
+
+炎の魔法書
+%%%%
+book of Frost
+
+冷気の魔法書
+%%%%
+book of Summonings
+
+召喚の魔法書
+%%%%
+book of Spatial Translocations
+
+空間転位の魔法書
+%%%%
+book of Enchantments
+
+呪術の魔法書
+%%%%
+book of the Tempests
+
+天災の魔法書
+%%%%
+book of Death
+
+死の魔法書
+%%%%
+book of Hinderance
+
+万障の魔法書
+%%%%
+book of Changes
+
+小変異の魔法書
+%%%%
+book of Transfigurations
+
+変容の魔法書
+%%%%
+book of Battle
+
+戦いの魔法書
+%%%%
+book of Clouds
+
+雲烟の魔法書
+%%%%
+book of Necromancy
+
+死霊術の魔法書
+%%%%
+book of Callings
+
+招集の魔法書
+%%%%
+book of Maledictions
+
+呪詛の魔法書
+%%%%
+book of Air
+
+大気の魔法書
+%%%%
+book of the Sky
+
+蒼穹の魔法書
+%%%%
+book of the Warp
+
+次元歪曲の魔法書
+%%%%
+book of Envenomations
+
+毒害の魔法書
+%%%%
+book of Annihilations
+
+殲滅の魔法書
+%%%%
+book of Unlife
+
+反生命の魔法書
+%%%%
+book of Geomancy
+
+地占術の魔法書
+%%%%
+book of the Earth
+
+大地の魔法書
+%%%%
+book of Power
+
+力の魔法書
+%%%%
+book of Cantrips
+
+悪戯の魔法書
+%%%%
+book of Party Tricks
+
+パーティートリックの魔法書
+%%%%
+book of Debilitation
+
+衰弱の魔法書
+%%%%
+book of the Dragon
+
+ドラゴンの魔法書
+%%%%
+book of Burglary
+
+夜盗の魔法書
+%%%%
+book of Dreams
+
+夢幻の魔法書
+%%%%
+book of Alchemy
+
+錬金術の魔法書
+%%%%
+book of Beasts
+
+獣の魔法書
+%%%%
+Necronomicon
+
+ネクロノミコン
+%%%%
+Grand Grimoire
+
+グラン・グリモア
+%%%%
+Young Poisoner's Handbook
+
+初級毒殺者の手引書
+%%%%
+Fen Folio
+
+フェン・フォリオ
+%%%%
+Akashic Record
+
+アカシック・レコード
+%%%%
+rod
+
+ロッド
+%%%%
+lightning rod
+
+稲妻のロッド
+%%%%
+iron rod
+
+鉄弾のロッド
+%%%%
+rod of the swarm
+
+大群のロッド
+%%%%
+rod of lightning
+
+稲妻のロッド
+%%%%
+rod of iron
+
+鉄弾のロッド
+%%%%
+rod of shadows
+
+影の怪物のロッド
+%%%%
+rod of inaccuracy
+
+不正確の矢のロッド
+%%%%
+rod of ignition
+
+燃焼のロッド
+%%%%
+rod of clouds
+
+雲烟のロッド
+%%%%
+rod of destruction
+
+破壊のロッド
+%%%%
+staff
+
+杖
+%%%%
+staff of wizardry
+
+魔術の杖
+%%%%
+staff of power
+
+魔力の杖
+%%%%
+staff of fire
+
+火炎の杖
+%%%%
+staff of cold
+
+冷気の杖
+%%%%
+staff of poison
+
+毒素の杖
+%%%%
+staff of energy
+
+活力の杖
+%%%%
+staff of death
+
+死霊の杖
+%%%%
+staff of conjuration
+
+妖術の杖
+%%%%
+staff of air
+
+大気の杖
+%%%%
+staff of earth
+
+大地の杖
+%%%%
+staff of summoning
+
+召喚の杖
+%%%%
+gold piece
+
+金貨
+%%%%
+decaying skeleton
+
+風化した骸骨
+%%%%
+mangled
+
+切り裂かれた
+%%%%
+corpse
+
+死体
+%%%%
+skeleton
+
+骸骨
 %%%%
 ############################## main.cc ##############################
 %%%%
@@ -72,6 +1170,16 @@ Save game and exit?
 Which direction?
 
 どの方向ですか？
+%%%%
+############################## items.cc ##############################
+%%%%
+You now have %d gold piece%s.
+
+あなたは今%d枚の金貨を持っている。
+%%%%
+%s (gained %d)
+
+%s (新たに%d個入手)
 %%%%
 ############################## melee_attack.cc ##############################
 %%%%
@@ -756,6 +1864,20 @@ You reach down and close the %s%s.
 You close the %s%s.
 
 あなたは%s%sを閉じた。
+%%%%
+############################## player-act.cc ##############################
+%%%%
+paw
+
+前足
+%%%%
+tentacle
+
+触手
+%%%%
+hand
+
+手
 %%%%
 ############################## prompt.cc ##############################
 %%%%

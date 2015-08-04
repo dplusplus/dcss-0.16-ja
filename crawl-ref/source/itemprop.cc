@@ -15,6 +15,7 @@
 
 #include "artefact.h"
 #include "art-enum.h"
+#include "database.h"
 #include "decks.h"
 #include "describe.h"
 #include "godpassive.h"

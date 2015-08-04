@@ -1,5 +1,8 @@
 %%%%
-# Fighting
+Fighting
+
+戦闘
+%%%%
 Skirmisher
 
 斥候
@@ -20,7 +23,10 @@ Conqueror
 
 征服者
 %%%%
-# Short Blades
+Short Blades
+
+短剣
+%%%%
 Cutter
 
 切りかかる者
@@ -41,7 +47,10 @@ Politician
 
 策略家
 %%%%
-# Long Blades
+Long Blades
+
+長剣
+%%%%
 Slasher
 
 斬りかかる者
@@ -62,7 +71,10 @@ Swordmaster
 
 剣の達人
 %%%%
-# Axes
+Axes
+
+斧
+%%%%
 Chopper
 
 切りつける者
@@ -83,7 +95,10 @@ Axe Maniac
 
 斧の兇手
 %%%%
-# Maces & Flails
+Maces & Flails
+
+鈍器
+%%%%
 Cudgeler
 
 強打する者
@@ -104,7 +119,10 @@ Skullcrusher
 
 頭蓋粉砕者
 %%%%
-# Polearms
+Polearms
+
+長柄武器
+%%%%
 Poker
 
 貫く者
@@ -125,7 +143,10 @@ Phalangite
 
 @Adj@の千槍
 %%%%
-# Staves
+Staves
+
+棒術
+%%%%
 Twirler
 
 振りまわす者
@@ -146,7 +167,10 @@ Chief of Staff
 
 錫杖の主人
 %%%%
-# Slings
+Slings
+
+スリング
+%%%%
 Vandal
 
 野人
@@ -167,7 +191,10 @@ Slingshot
 
 @Adj@の射出人
 %%%%
-# Bows
+Bows
+
+弓
+%%%%
 Shooter
 
 射手
@@ -188,7 +215,10 @@ Merry @Genus@
 
 @Genus@の英傑
 %%%%
-# Crossbows
+Crossbows
+
+クロスボウ
+%%%%
 Bolt Thrower
 
 石弓の射手
@@ -209,7 +239,10 @@ Sniper
 
 @Adj@の名弩
 %%%%
-# Throwing
+Throwing
+
+投擲
+%%%%
 Chucker
 
 放つ者
@@ -230,7 +263,10 @@ Hawkeye
 
 @Adj@の槍投人
 %%%%
-# Armour
+Armour
+
+甲冑
+%%%%
 Covered
 
 覆われし者
@@ -251,7 +287,10 @@ Invulnerable
 
 徹さざる者
 %%%%
-# Dodging
+Dodging
+
+躱し身
+%%%%
 Ducker
 
 避ける者
@@ -272,7 +311,10 @@ Intangible
 
 無形の者
 %%%%
-# Stealth
+Stealth
+
+隠密
+%%%%
 Sneak
 
 忍び寄る者
@@ -293,7 +335,10 @@ Ninja
 
 忍者
 %%%%
-# Shields
+Shields
+
+盾
+%%%%%
 Shield-Bearer
 
 盾を帯びし者
@@ -314,7 +359,10 @@ Hoplite
 
 @Adj@の防塞
 %%%%
-# Unarmed Combat
+Unarmed Combat
+
+徒手格闘
+%%%%
 Ruffian
 
 暴漢
@@ -335,7 +383,10 @@ Wrestler
 
 @Weight@の王者
 %%%%
-# Spellcasting
+Spellcasting
+
+呪文詠唱
+%%%%
 Magician
 
 手品師
@@ -356,7 +407,10 @@ Archmage
 
 大賢者
 %%%%
-# Conjurations
+Conjurations
+
+妖術
+%%%%
 Conjurer
 
 妖術師
@@ -377,7 +431,10 @@ Annihilator
 
 殲滅者
 %%%%
-# Hexes
+Hexes
+
+呪術
+%%%%
 Vexing
 
 敵対者
@@ -398,7 +455,10 @@ Spellbinder
 
 呪縛する者
 %%%%
-# Charms
+Charms
+
+まじない
+%%%%
 Charmwright
 
 秘術師
@@ -419,7 +479,10 @@ Miracle Worker
 
 奇跡の創造主
 %%%%
-# Summonings
+Summonings
+
+召喚術
+%%%%
 Caller
 
 呼ばわる者
@@ -440,7 +503,10 @@ Hellbinder
 
 地獄を呼ぶ者
 %%%%
-# Necromancy
+Necromancy
+
+死霊術
+%%%%
 Grave Robber
 
 墓荒らし
@@ -461,7 +527,10 @@ Thanatomancer
 
 @Genus_Short@の死神
 %%%%
-# Translocations
+Translocations
+
+転位術
+%%%%
 Grasshopper
 
 跳躍者
@@ -482,7 +551,10 @@ Plane @Walker@
 
 次元渡航者
 %%%%
-# Transmutations
+Transmutations
+
+変異術
+%%%%
 Changer
 
 変化する者
@@ -503,7 +575,10 @@ Shapeless @Genus@
 
 変幻自在の@Genus@
 %%%%
-# Fire Magic
+Fire Magic
+
+炎の魔術
+%%%%
 Firebug
 
 火付け
@@ -524,7 +599,10 @@ Infernalist
 
 劫火の担い手
 %%%%
-# Ice Magic
+Ice Magic
+
+氷の魔術
+%%%%
 Chiller
 
 冷却者
@@ -545,7 +623,10 @@ Englaciator
 
 氷河の主
 %%%%
-# Air Magic
+Air Magic
+
+風の魔術
+%%%%
 Gusty
 
 突風使い
@@ -566,7 +647,10 @@ Meteorologist
 
 気象の魔術師
 %%%%
-# Earth Magic
+Earth Magic
+
+地の魔術
+%%%%
 Digger
 
 採掘者
@@ -587,7 +671,10 @@ Petrodigitator
 
 磐石の揺らし手
 %%%%
-# Poison Magic
+Poison Magic
+
+毒の魔術
+%%%%
 Stinger
 
 毒の針
@@ -608,7 +695,10 @@ Envenomancer
 
 猛毒の放ち手
 %%%%
-# Invocations
+Invocations
+
+祈祷
+%%%%
 Unbeliever
 
 不信心者
@@ -629,7 +719,10 @@ Apostate
 
 背教者
 %%%%
-# Evocations
+Evocations
+
+発動
+%%%%
 Charlatan
 
 いかさま師
@@ -650,7 +743,10 @@ Talismancer
 
 霊験の担い手
 %%%%
-# Unarmed Combat
+Unarmed Combat
+
+徒手格闘
+%%%%
 Insei
 
 門弟

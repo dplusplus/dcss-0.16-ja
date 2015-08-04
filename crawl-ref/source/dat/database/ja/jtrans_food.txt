@@ -1,0 +1,49 @@
+%%%%
+meat ration
+
+肉の保存食
+%%%%
+chunk
+
+肉
+%%%%
+beef jerky
+
+ビーフジャーキー
+%%%%
+bread ration
+
+パンの保存食
+%%%%
+fruit
+
+果物
+%%%%
+royal jelly
+
+ロイヤルゼリー
+%%%%
+pizza
+
+ピザ
+%%%%
+slice of pizza
+
+一切れのピザ
+%%%%
+poisonous
+
+有毒な
+%%%%
+mutagenic
+
+変異性の
+%%%%
+putrefying
+
+腐った
+%%%%
+chunk of flesh
+
+肉の塊
+%%%%

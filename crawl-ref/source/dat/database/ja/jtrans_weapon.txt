@@ -3,51 +3,207 @@ claws
 
 爪
 %%%%
-falchion
+unarmed
 
-ファルシオン
+素手
 %%%%
-hand axe
+club
 
-ハンドアックス
+棍棒
 %%%%
-hand crossbow
+rod
 
-小型クロスボウ
+ロッド
 %%%%
-hunting sling
+whip
 
-小型スリング
+鞭
 %%%%
-javelins
+hammer
 
-ジャベリン
-%%%%
-large rocks
-
-大岩
+ハンマー
 %%%%
 mace
 
 メイス
 %%%%
-shortbow
+flail
 
-ショートボウ
+フレイル
+%%%%
+morningstar
+
+モーニングスター
+%%%%
+demon whip
+
+悪魔の鞭
+%%%%
+sacred scourge
+
+聖なる鞭
+%%%%
+dire flail
+
+大型フレイル
+%%%%
+eveningster
+
+イブニングスター
+%%%%
+great mace
+
+大型メイス
+%%%%
+giant club
+
+巨大棍棒
+%%%%
+giant spiked club
+
+釘つき巨大棍棒
+%%%%
+dagger
+
+短剣
+%%%%
+quick blade
+
+クイックブレード
 %%%%
 short sword
 
 ショートソード
 %%%%
+rapier
+
+レイピア
+%%%%
+cutlass
+
+カトラス
+%%%%
+falchion
+
+ファルシオン
+%%%%
+long sword
+
+ロングソード
+%%%%
+scimitar
+
+シミター
+%%%%
+demon blade
+
+悪魔の刃
+%%%%
+eudemon blade
+
+悪魔祓いの刃
+%%%%
+double sword
+
+ダブルソード
+%%%%
+triple sword
+
+トリプルソード
+%%%%
+hand axe
+
+ハンドアックス
+%%%%
+war axe
+
+ウォーアックス
+%%%%
+broad axe
+
+ブロードアックス
+%%%%
+battleaxe
+
+バトルアックス
+%%%%
+executioner's axe
+
+処刑人の斧
+%%%%
 spear
 
 スピア
 %%%%
-tomahawks
+trident
 
-トマホーク
+トライデント
 %%%%
-unarmed
+halberd
 
-素手
+ハルバード
+%%%%
+scythe
+
+大鎌
+%%%%
+demon trident
+
+悪魔の三叉戟
+%%%%
+trishula
+
+トリシューラ
+%%%%
+glaive
+
+グレイブ
+%%%%
+bardiche
+
+バルディッシュ
+%%%%
+staff
+
+杖
+%%%%
+quarterstaff
+
+六尺棒
+%%%%
+lajatang
+
+ラジャタン
+%%%%
+blowgun
+
+吹き矢筒
+%%%%
+hunting sling
+
+小型スリング
+%%%%
+greatsling
+
+大型スリング
+%%%%
+hand crossbow
+
+小型クロスボウ
+%%%%
+arbalest
+
+アーバレスト
+%%%%
+triple crossbow
+
+トリプルクロスボウ
+%%%%
+shortbow
+
+ショートボウ
+%%%%
+longbow
+
+ロングボウ
 %%%%
