@@ -1,0 +1,425 @@
+%%%%
+Sulking Sword
+
+憂う剣
+%%%%
+Singing Sword
+
+謳う剣
+%%%%
+Screaming Sword
+
+叫ぶ剣
+%%%%
+Wrath of Trog
+
+トログの怒り
+%%%%
+Mace of Variability
+
+変幻のメイス
+%%%%
+Glaive of Prune
+
+プルーンのグレイブ
+%%%%
+Sword of Power
+
+力の剣
+%%%%
+Staff of Olgreb
+
+オルグレブの杖
+%%%%
+Staff of Wucad Mu
+
+ウカド・ムーの杖
+%%%%
+Vampire's Tooth
+
+吸血鬼の牙
+%%%%
+Scythe of Curses
+
+呪いの大鎌
+%%%%
+Sceptre of Torment
+
+苦悩の王笏
+%%%%
+Sword of Zonguldrok
+
+ゾングルドルックの剣
+%%%%
+Sword of Cerebov
+
+セレボブの剣
+%%%%
+Staff of Dispater
+
+ディスペータの杖
+%%%%
+Sceptre of Asmodeus
+
+アスモデウスの王笏
+%%%%
+faerie dragon armour
+
+フェアリードラゴンの鎧
+%%%%
+demon blade "Bloodbane"
+
+悪魔の刃『ブラッドベイン』
+%%%%
+scimitar of Flaming Death
+
+燃えさかる死のシミター
+%%%%
+eveningstar "Brilliance"
+
+輝けるイブニングスター
+%%%%
+demon blade "Leech"
+
+悪魔の刃『蛭』
+%%%%
+dagger of Chilly Death
+
+冷たき死のダガー
+%%%%
+dagger "Morg"
+
+ダガー『モーグ』
+%%%%
+scythe "Finisher"
+
+大鎌『とどめの一撃』
+%%%%
+greatsling "Punk"
+
+大型スリング『パンク』
+%%%%
+bow of Krishna "Sharnga"
+
+クリシュナの弓『シャーランガ』
+%%%%
+giant club "Skullcrusher"
+
+巨大棍棒『頭蓋砕き』
+%%%%
+glaive of the Guard
+
+番人のグレイブ
+%%%%
+sword of Jihad
+
+聖戦の剣
+%%%%
+arbalest "Hellfire"
+
+アーバレスト『地獄の業火』
+%%%%
+sword of the Doom Knight
+
+審判の騎士の剣
+%%%%
+morningstar "Eos"
+
+モーニングスター『エオス』
+%%%%
+spear of the Botono
+
+ボトノの槍
+%%%%
+trident of the Octopus King
+
+蛸の王のトライデント
+%%%%
+mithril axe "Arga"
+
+ミスリルの斧『アルガ』
+%%%%
+Elemental Staff
+
+元素の杖
+%%%%
+heavy crossbow "Sniper"
+
+大型クロスボウ『狙撃手』
+%%%%
+longbow "Piercer"
+
+ロングボウ『貫くもの』
+%%%%
+blowgun of the Assassin
+
+暗殺者の吹き矢筒
+%%%%
+lance "Wyrmbane"
+
+ランス『ドラゴン殺し』
+%%%%
+Spriggan's Knife
+
+スプリガンのナイフ
+%%%%
+plutonium sword
+
+プルトニウムの剣
+%%%%
+great mace "Undeadhunter"
+
+大型メイス『死者を狩るもの』
+%%%%
+whip "Snakebite"
+
+鞭『蛇の一咬み』
+%%%%
+knife of Accuracy
+
+必中のナイフ
+%%%%
+Lehudib's crystal spear
+
+レフディブの水晶槍
+%%%%
+captain's cutlass
+
+船長のカトラス
+%%%%
+storm bow
+
+嵐の弓
+%%%%
+large shield of Ignorance
+
+無知の大盾
+%%%%
+robe of Augmentation
+
+増強のローブ
+%%%%
+cloak of the Thief
+
+盗賊の外套
+%%%%
+large shield "Bullseye"
+
+大盾『ブルズアイ』
+%%%%
+crown of Dyrovepreva
+
+ダイロヴェプレヴァの王冠
+%%%%
+hat of the Bear Spirit
+
+熊の霊魂の帽子
+%%%%
+robe of Misfortune
+
+不運のローブ
+%%%%
+cloak of Flash
+
+閃光のクローク
+%%%%
+boots of the Assassin
+
+暗殺者のブーツ
+%%%%
+Lear's hauberk
+
+リア王の鎖かたびら
+%%%%
+skin of Zhor
+
+ズホルの皮
+%%%%
+salamander hide armour
+
+火蜥蜴の皮鎧
+%%%%
+gauntlets of War
+
+戦の手甲
+%%%%
+shield of Resistance
+
+耐性の盾
+%%%%
+robe of Folly
+
+愚劣のローブ
+%%%%
+Maxwell's patent armour
+
+マクスウェルの特許甲冑
+%%%%
+mask of the Dragon
+
+竜の仮面
+%%%%
+robe of Night
+
+闇夜のローブ
+%%%%
+armour of the Dragon King
+
+竜王の鎧
+%%%%
+hat of the Alchemist
+
+錬金術師の帽子
+%%%%
+fencer's gloves
+
+剣士の手袋
+%%%%
+cloak of Starlight
+
+星明かりのクローク
+%%%%
+ratskin cloak
+
+鼠の毛皮のクローク
+%%%%
+shield of the gong
+
+銅鑼の盾
+%%%%
+amulet of the Air
+
+大気の護符
+%%%%
+ring of Shadows
+
+影の指輪
+%%%%
+amulet of Cekugob
+
+セクゴブの護符
+%%%%
+amulet of the Four Winds
+
+四方位の風の護符
+%%%%
+necklace of Bloodlust
+
+血に飢えた首飾り
+%%%%
+ring of Shaolin
+
+少林寺の指輪
+%%%%
+ring of Robustness
+
+頑丈の指輪
+%%%%
+ring of the Mage
+
+賢者の指輪
+%%%%
+brooch of Shielding
+
+防護のブローチ
+%%%%
+robe of Clouds
+
+雲のローブ
+%%%%
+hat of Pondering
+
+熟考の帽子
+%%%%
+obsidian axe
+
+黒曜石の斧
+%%%%
+lightning scales
+
+稲妻の鱗の具装
+%%%%
+Black Knight's horse barding
+
+黒騎士の馬甲
+%%%%
+amulet of Vitality
+
+生命力の護符
+%%%%
+autumn katana
+
+秋日のカタナ
+%%%%
+shillelagh "Devastator"
+
+棍棒『デヴァステイター』
+%%%%
+dragonskin cloak
+
+竜の皮のクローク
+%%%%
+ring of the Octopus King
+
+蛸の王の指輪
+%%%%
+Axe of Woe
+
+悲痛の斧
+%%%%
+moon troll leather armour
+
+月世界のトロルの革鎧
+%%%%
+macabre finger necklace
+
+不気味な指のネックレス
+%%%%
+boots of the spider
+
+蜘蛛のブーツ
+%%%%
+dark maul
+
+ダークモール
+%%%%
+hat of the High Council
+
+最高会議の帽子
+%%%%
+arc blade
+
+電弧の刃
+%%%%
+demon whip "Spellbinder"
+
+悪魔の鞭『スペルバインダー』
+%%%%
+lajatang of Order
+
+秩序のラジャタン
+%%%%
+great mace "Firestarter"
+
+大型メイス『ファイアスターター』
+%%%%
+orange crystal plate armour
+
+橙水晶の鎧
+%%%%
+Majin-Bo
+
+魔神棒
+%%%%
+pair of quick blades "Gyre" and "Gimble"
+
+一対のクイックブレード『ジャイル』と『ギンブル』
+%%%%
+Maxwell's etheric cage
+
+マクスウェルのエーテル檻
+%%%%
+crown of Eternal Torment
+
+永劫なる苦痛の王冠
+%%%%

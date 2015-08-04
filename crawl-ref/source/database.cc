@@ -194,7 +194,11 @@ static TextDB AllDBs[] =
            "jtrans_mutations.txt",
            "jtrans_output.txt",
            "jtrans_skill_title.txt",
+
            "jtrans_weapon.txt",
+           "jtrans_armour.txt",
+           "jtrans_missile.txt",
+           "jtrans_food.txt",
            nullptr),
 };
 

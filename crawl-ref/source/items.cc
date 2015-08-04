@@ -1813,7 +1813,7 @@ static bool _merge_stackable_item_into_inv(const item_def &it, int quant_got,
 
         if (!quiet)
         {
-            mprf_nocap("%s (gained %d)",
+            mprf_nocap(jtrans("%s (gained %d)").c_str(),
                         get_menu_colour_prefix_tags(you.inv[inv_slot],
                                                     DESC_INVENTORY).c_str(),
                         quant_got);
