@@ -113,7 +113,7 @@ static inline double pow(int x, double y) { return std::pow((double)x, y); }
     // problems viewing games in progress. This affects how Crawl
     // clears the screen (see DGL_CLEAR_SCREEN) below.
     //
-    // #define DGAMELAUNCH
+    #define DGAMELAUNCH
 
     #define USE_UNIX_SIGNALS
 
@@ -274,7 +274,7 @@ static inline double pow(int x, double y) { return std::pow((double)x, y); }
 
     // Uses Options.macro_dir as the full path to the macro file. Mutually
     // exclusive with DGL_NAMED_MACRO_FILE.
-    #define DGL_MACRO_ABSOLUTE_PATH
+    // #define DGL_MACRO_ABSOLUTE_PATH
 
     // Makes the game ask the user to hit Enter after bailing out with
     // an error message.
