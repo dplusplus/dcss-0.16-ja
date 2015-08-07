@@ -1709,7 +1709,8 @@ string get_item_description(const item_def &item, bool verbose,
         if (need_base_desc)
         {
             string db_name = item.name(DESC_DBNAME, true, false, false);
-            string db_desc = getLongDescription(db_name);
+            string db_name_en = item.name_en(DESC_DBNAME, true, false, false);
+            string db_desc = getLongDescription(db_name_en);
 
             if (db_desc.empty())
             {
