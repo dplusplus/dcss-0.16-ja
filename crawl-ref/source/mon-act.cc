@@ -16,6 +16,7 @@
 #include "cloud.h"
 #include "colour.h"
 #include "coordit.h"
+#include "database.h"
 #include "dbg-scan.h"
 #include "delay.h"
 #include "dungeon.h"
@@ -4039,7 +4040,7 @@ static bool _do_move_monster(monster* mons, const coord_def& delta)
     // moved back out of view, leaing the player nothing to see, so give
     // this message to avoid confusion.
     if (mons->seen_context == SC_JUST_SEEN && !you.see_cell(f))
-        simple_monster_message(mons, " moves out of view.");
+        simple_monster_message(mons, jtrans("moves out of view.").c_str());
     else if (crawl_state.game_is_hints() && (mons->flags & MF_WAS_IN_VIEW)
              && !you.see_cell(f))
     {

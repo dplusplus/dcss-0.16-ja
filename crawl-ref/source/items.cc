@@ -26,6 +26,7 @@
 #include "coord.h"
 #include "coordit.h"
 #include "dactions.h"
+#include "database.h"
 #include "dbg-util.h"
 #include "decks.h"
 #include "defines.h"
@@ -46,6 +47,7 @@
 #include "itemname.h"
 #include "itemprop.h"
 #include "item_use.h"
+#include "japanese.h"
 #include "libutil.h"
 #include "macro.h"
 #include "makeitem.h"
@@ -771,7 +773,7 @@ void item_check()
     {
         item_def it(*items[0]);
         string name = get_menu_colour_prefix_tags(it, DESC_A);
-        strm << "You see here " << name << '.' << endl;
+        strm << "ここには" << name << "がある。" << endl;
         _maybe_give_corpse_hint(it);
         return;
     }
@@ -1598,11 +1600,11 @@ void get_gold(const item_def& item, int quant, bool quiet)
     if (!quiet)
     {
         const string gain = quant != you.gold
-                            ? make_stringf(" (gained %d)", quant)
+                            ? make_stringf(" (新たに%d枚入手)", quant)
                             : "";
 
-        mprf("You now have %d gold piece%s%s.",
-             you.gold, you.gold != 1 ? "s" : "", gain.c_str());
+        mprf(jtrans("You now have %d gold piece%s.").c_str(),
+             you.gold, gain.c_str());
         learned_something_new(HINT_SEEN_GOLD);
     }
 }
@@ -1812,10 +1814,12 @@ static bool _merge_stackable_item_into_inv(const item_def &it, int quant_got,
 
         if (!quiet)
         {
-            mprf_nocap("%s (gained %d)",
+            mprf_nocap(jtrans("%s (gained %d)").c_str(),
                         get_menu_colour_prefix_tags(you.inv[inv_slot],
                                                     DESC_INVENTORY).c_str(),
-                        quant_got);
+                        quant_got,
+                        counter_suffix(it)
+                       );
         }
 
         return true;

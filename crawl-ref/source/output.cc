@@ -14,6 +14,7 @@
 #include "ability.h"
 #include "branch.h"
 #include "colour.h"
+#include "database.h"
 #include "describe.h"
 #ifndef USE_TILE_LOCAL
 #include "directn.h"
@@ -549,7 +550,7 @@ void update_turn_count()
                     + (you.species == SP_LAVA_ORC)
 #endif
                     ;
-    CGOTOXY(19+6, 9 + yhack, GOTO_STAT);
+    CGOTOXY(19+10, 9 + yhack, GOTO_STAT);
 
     // Show the turn count starting from 1. You can still quit on turn 0.
     textcolour(HUD_VALUE_COLOUR);
@@ -614,7 +615,7 @@ static void _print_stats_mp(int x, int y)
 
     CGOTOXY(x, y, GOTO_STAT);
     textcolour(HUD_CAPTION_COLOUR);
-    CPRINTF(player_rotted() ? "MP: " : "Magic:  ");
+    CPRINTF("MP: ");
     textcolour(mp_colour);
     CPRINTF("%d", you.magic_points);
     if (!boosted)
@@ -718,7 +719,7 @@ static void _print_stats_hp(int x, int y)
         CPRINTF(player_rotted() ? "EP: " : "Essence: ");
     else
 #endif
-    CPRINTF(player_rotted() ? "HP: " : "Health: ");
+    CPRINTF("HP: ");
     textcolour(hp_colour);
     CPRINTF("%d", you.hp);
     if (!boosted)
@@ -788,7 +789,7 @@ static void _print_stat(stat_type stat, int x, int y)
     CGOTOXY(x+5, y, GOTO_STAT);
 
     textcolour(_get_stat_colour(stat));
-    CPRINTF("%d", you.stat(stat, false));
+    CPRINTF("%2d", you.stat(stat, false));
 
     if (you.stat_loss[stat] > 0)
         CPRINTF(" (%d)  ", you.max_stat(stat));
@@ -922,12 +923,12 @@ static void _print_stats_qv(int y)
         if (fire_warn_if_impossible(true))
         {
             col  = DARKGREY;
-            text = "Quiver unavailable";
+            text = jtrans("Quiver unavailable");
         }
         else
         {
             col  = LIGHTGREY;
-            text = "Nothing quivered";
+            text = jtrans("Nothing quivered");
         }
     }
     CGOTOXY(1, y, GOTO_STAT);
@@ -1275,8 +1276,8 @@ void print_stats()
     _print_stats_contam(1, 4);
     if (you.redraw_temperature)  { you.redraw_temperature = false;  _print_stats_temperature (1, temp_pos); }
 #endif
-    if (you.redraw_armour_class) { you.redraw_armour_class = false; _print_stats_ac (1, ac_pos); }
-    if (you.redraw_evasion)      { you.redraw_evasion = false;      _print_stats_ev (1, ev_pos); }
+    if (you.redraw_armour_class) { you.redraw_armour_class = false; _print_stats_ac (3, ac_pos); }
+    if (you.redraw_evasion)      { you.redraw_evasion = false;      _print_stats_ev (3, ev_pos); }
 
     for (int i = 0; i < NUM_STATS; ++i)
         if (you.redraw_stats[i])
@@ -1297,7 +1298,7 @@ void print_stats()
         CGOTOXY(1, 8, GOTO_STAT);
 #endif
         textcolour(Options.status_caption_colour);
-        CPRINTF("XL: ");
+        CPRINTF("Lv: ");
         textcolour(HUD_VALUE_COLOUR);
         CPRINTF("%2d ", you.experience_level);
         if (you.experience_level >= you.get_max_xl())
@@ -1305,7 +1306,7 @@ void print_stats()
         else
         {
             textcolour(Options.status_caption_colour);
-            CPRINTF("Next: ");
+            CPRINTF("次Lv: ");
             textcolour(HUD_VALUE_COLOUR);
             CPRINTF("%2d%% ", get_exp_progress());
         }
@@ -1337,7 +1338,7 @@ void print_stats()
     {
         // Increase y-value for all following lines.
         yhack++;
-        CGOTOXY(1+6, 8 + yhack, GOTO_STAT);
+        CGOTOXY(1+8, 8 + yhack, GOTO_STAT);
         textcolour(HUD_VALUE_COLOUR);
         CPRINTF("%-6d", you.gold);
     }
@@ -1406,7 +1407,7 @@ void print_stats_level()
 #endif
     cgotoxy(19, ypos, GOTO_STAT);
     textcolour(HUD_CAPTION_COLOUR);
-    CPRINTF("Place: ");
+    CPRINTF("現在地: ");
 
     textcolour(HUD_VALUE_COLOUR);
 #ifdef DEBUG_DIAGNOSTICS
@@ -1449,21 +1450,21 @@ void draw_border()
     else
 #endif
     CGOTOXY(1, ac_pos, GOTO_STAT); CPRINTF("AC:");
-    CGOTOXY(1, ev_pos, GOTO_STAT); CPRINTF("EV:");
-    CGOTOXY(1, sh_pos, GOTO_STAT); CPRINTF("SH:");
+    CGOTOXY(1, ev_pos, GOTO_STAT); CPRINTF("回避:");
+    CGOTOXY(1, sh_pos, GOTO_STAT); CPRINTF("盾:");
 
-    CGOTOXY(19, str_pos, GOTO_STAT); CPRINTF("Str:");
-    CGOTOXY(19, int_pos, GOTO_STAT); CPRINTF("Int:");
-    CGOTOXY(19, dex_pos, GOTO_STAT); CPRINTF("Dex:");
+    CGOTOXY(19, str_pos, GOTO_STAT); CPRINTF("腕力:");
+    CGOTOXY(19, int_pos, GOTO_STAT); CPRINTF("知力:");
+    CGOTOXY(19, dex_pos, GOTO_STAT); CPRINTF("器用:");
 
 #if TAG_MAJOR_VERSION == 34
     int yhack = crawl_state.game_is_zotdef() + temp;
 #else
     int yhack = crawl_state.game_is_zotdef();
 #endif
-    CGOTOXY(1, 9 + yhack, GOTO_STAT); CPRINTF("Gold:");
+    CGOTOXY(1, 9 + yhack, GOTO_STAT); CPRINTF("所持金:");
     CGOTOXY(19, 9 + yhack, GOTO_STAT);
-    CPRINTF(Options.show_game_turns ? "Time:" : "Turn:");
+    CPRINTF(Options.show_game_turns ? "経過時間:" : "経過ターン:");
     // Line 8 is exp pool, Level
 }
 
@@ -1803,11 +1804,11 @@ static string _itosym(int level, int max = 1)
 
 static const char *s_equip_slot_names[] =
 {
-    "Weapon", "Cloak",  "Helmet", "Gloves", "Boots",
-    "Shield", "Armour", "Left Ring", "Right Ring", "Amulet",
-    "First Ring", "Second Ring", "Third Ring", "Fourth Ring",
-    "Fifth Ring", "Sixth Ring", "Seventh Ring", "Eighth Ring",
-    "Amulet Ring"
+    "武器", "クローク",  "兜/帽子", "手袋/籠手", "靴",
+    "盾", "鎧/服", "左手の指輪", "右手の指輪", "護符",
+    "1個目の指輪", "2個目の指輪", "3個目の指輪", "4個目の指輪",
+    "5個目の指輪", "6個目の指輪", "7個目の指輪", "8個目の指輪",
+    "護符に付けた指輪"
 };
 
 const char *equip_slot_to_name(int equip)
@@ -1819,13 +1820,15 @@ const char *equip_slot_to_name(int equip)
         || equip >= EQ_RING_ONE && equip <= EQ_RING_EIGHT
         || equip == EQ_RING_AMULET)
     {
-        return "Ring";
+        return "指輪";
     }
 
-    if (equip == EQ_BOOTS
-        && (you.species == SP_CENTAUR || you.species == SP_NAGA))
+    if (equip == EQ_BOOTS)
     {
-        return "Barding";
+        if (you.species == SP_CENTAUR)
+            return "馬甲";
+        else if(you.species == SP_NAGA)
+            return "具装";
     }
 
     if (equip < 0 || equip >= NUM_EQUIP)
@@ -1889,7 +1892,7 @@ static string _stealth_bar(int sw)
     string bar;
     //no colouring
     bar += _determine_colour_string(0, 5);
-    bar += "Stlth  ";
+    bar += "隠密     ";
     const int stealth_num = _stealth_breakpoint(check_stealth());
     for (int i = 0; i < stealth_num; i++)
         bar += "+";
@@ -1944,7 +1947,7 @@ static void _print_overview_screen_equip(column_composer& cols,
         if (eqslot == EQ_RING_AMULET && !you_can_wear(eqslot))
             continue;
 
-        const string slot_name_lwr = lowercase_string(equip_slot_to_name(eqslot));
+        const string slot_name_lwr = equip_slot_to_name(eqslot);
 
         char slot[15] = "";
 
@@ -1969,7 +1972,7 @@ static void _print_overview_screen_equip(column_composer& cols,
                      slot,
                      equip_char,
                      colname,
-                     melded ? "melded " : "",
+                     melded ? "肉体と融合した" : "",
                      chop_string(item.name(DESC_PLAIN, true),
                                  melded ? sw - 43 : sw - 36, false).c_str(),
                      colname);
@@ -1978,41 +1981,39 @@ static void _print_overview_screen_equip(column_composer& cols,
         else if (e_order[i] == EQ_WEAPON
                  && you.skill(SK_UNARMED_COMBAT))
         {
-            snprintf(buf, sizeof buf, "%s  - Unarmed", slot);
+            snprintf(buf, sizeof buf, jtrans("%s  - Unarmed").c_str(), slot);
         }
         else if (e_order[i] == EQ_WEAPON
                  && you.form == TRAN_BLADE_HANDS)
         {
-            const bool plural = !player_mutation_level(MUT_MISSING_HAND);
-            snprintf(buf, sizeof buf, "%s  - Blade Hand%s", slot,
-                     plural ? "s" : "");
+            snprintf(buf, sizeof buf, jtrans("%s  - Blade Hand%s").c_str(), slot);
         }
         else if (e_order[i] == EQ_BOOTS
                  && (you.species == SP_NAGA || you.species == SP_CENTAUR))
         {
             snprintf(buf, sizeof buf,
-                     "<darkgrey>(no %s)</darkgrey>", slot_name_lwr.c_str());
+                     jtrans("<darkgrey>(no %s)</darkgrey>").c_str(), slot_name_lwr.c_str());
         }
         else if (!you_can_wear(e_order[i], true))
         {
             snprintf(buf, sizeof buf,
-                     "<darkgrey>(%s unavailable)</darkgrey>", slot_name_lwr.c_str());
+                     jtrans("<darkgrey>(%s unavailable)</darkgrey>").c_str(), slot_name_lwr.c_str());
         }
         else if (!you_tran_can_wear(e_order[i], true))
         {
             snprintf(buf, sizeof buf,
-                     "<darkgrey>(%s currently unavailable)</darkgrey>",
+                     jtrans("<darkgrey>(%s currently unavailable)</darkgrey>").c_str(),
                      slot_name_lwr.c_str());
         }
         else if (!you_can_wear(e_order[i]))
         {
             snprintf(buf, sizeof buf,
-                     "<darkgrey>(%s restricted)</darkgrey>", slot_name_lwr.c_str());
+                     jtrans("<darkgrey>(%s restricted)</darkgrey>").c_str(), slot_name_lwr.c_str());
         }
         else
         {
             snprintf(buf, sizeof buf,
-                     "<darkgrey>(no %s)</darkgrey>", slot_name_lwr.c_str());
+                     jtrans("<darkgrey>(no %s)</darkgrey>").c_str(), slot_name_lwr.c_str());
         }
         cols.add_formatted(2, buf, false);
     }
@@ -2020,14 +2021,14 @@ static void _print_overview_screen_equip(column_composer& cols,
 
 static string _overview_screen_title(int sw)
 {
-    string title = make_stringf(" %s ", player_title().c_str());
+    string title = jtrans(player_title(false));
 
-    string species_job = make_stringf("(%s %s)",
-                                      species_name(you.species).c_str(),
-                                      you.class_name.c_str());
+    string species_job = make_stringf("(%sの%s)",
+                                      jtrans(species_name(you.species)).c_str(),
+                                      jtrans(you.class_name).c_str());
 
     handle_real_time();
-    string time_turns = make_stringf(" Turns: %d, Time: ", you.num_turns)
+    string time_turns = make_stringf(" 経過ターン: %d プレイ時間: ", you.num_turns)
                       + make_time_string(you.real_time, true);
 
     const int char_width = strwidth(species_job);
@@ -2052,8 +2053,8 @@ static string _overview_screen_title(int sw)
 
     string text;
     text = "<yellow>";
-    text += you.your_name;
     text += title;
+    text += ("『" + you.your_name + "』");
     text += species_job;
 
     const int num_spaces = sw - linelength - 1;
@@ -2069,7 +2070,7 @@ static string _overview_screen_title(int sw)
 #ifdef WIZARD
 static string _wiz_god_powers()
 {
-    string godpowers = god_name(you.religion);
+    string godpowers = jtrans(god_name(you.religion));
     return make_stringf("%s %d (%d)", god_name(you.religion).c_str(),
                                       you.piety,
                                       you.duration[DUR_PIETY_POOL]);
@@ -2081,7 +2082,7 @@ static string _god_powers()
     if (you_worship(GOD_NO_GOD))
         return "";
 
-    const string name = god_name(you.religion);
+    const string name = jtrans(god_name(you.religion));
     if (you_worship(GOD_GOZAG))
         return colour_string(name, _god_status_colour(god_colour(you.religion)));
 
@@ -2158,10 +2159,7 @@ static vector<formatted_string> _get_overview_stats()
     column_composer cols(4, col1, col1 + col2, col1 + col2 + col3);
 
     entry.textcolour(HUD_CAPTION_COLOUR);
-    if (player_rotted())
-        entry.cprintf("HP:   ");
-    else
-        entry.cprintf("Health: ");
+    entry.cprintf("HP:   ");
 
     if (_boosted_hp())
         entry.textcolour(LIGHTBLUE);
@@ -2176,10 +2174,7 @@ static vector<formatted_string> _get_overview_stats()
     entry.clear();
 
     entry.textcolour(HUD_CAPTION_COLOUR);
-    if (player_rotted())
-        entry.cprintf("MP:   ");
-    else
-        entry.cprintf("Magic:  ");
+    entry.cprintf("MP:   ");
 
     if (_boosted_mp())
         entry.textcolour(LIGHTBLUE);
@@ -2192,10 +2187,7 @@ static vector<formatted_string> _get_overview_stats()
     entry.clear();
 
     entry.textcolour(HUD_CAPTION_COLOUR);
-    if (player_rotted())
-        entry.cprintf("Gold: ");
-    else
-        entry.cprintf("Gold:   ");
+    entry.cprintf("所持金: ");
 
     entry.textcolour(HUD_VALUE_COLOUR);
 
@@ -2205,7 +2197,7 @@ static vector<formatted_string> _get_overview_stats()
     entry.clear();
 
     entry.textcolour(HUD_CAPTION_COLOUR);
-    entry.cprintf("AC: ");
+    entry.cprintf("AC:   ");
 
     if (_boosted_ac())
         entry.textcolour(LIGHTBLUE);
@@ -2218,7 +2210,7 @@ static vector<formatted_string> _get_overview_stats()
     entry.clear();
 
     entry.textcolour(HUD_CAPTION_COLOUR);
-    entry.cprintf("EV: ");
+    entry.cprintf("回避: ");
 
     if (_boosted_ev())
         entry.textcolour(LIGHTBLUE);
@@ -2231,7 +2223,7 @@ static vector<formatted_string> _get_overview_stats()
     entry.clear();
 
     entry.textcolour(HUD_CAPTION_COLOUR);
-    entry.cprintf("SH: ");
+    entry.cprintf("盾:   ");
 
     if (_boosted_sh())
         entry.textcolour(LIGHTBLUE);
@@ -2244,7 +2236,7 @@ static vector<formatted_string> _get_overview_stats()
     entry.clear();
 
     entry.textcolour(HUD_CAPTION_COLOUR);
-    entry.cprintf("Str: ");
+    entry.cprintf("腕力: ");
 
     entry.textcolour(_get_stat_colour(STAT_STR));
 
@@ -2256,7 +2248,7 @@ static vector<formatted_string> _get_overview_stats()
     entry.clear();
 
     entry.textcolour(HUD_CAPTION_COLOUR);
-    entry.cprintf("Int: ");
+    entry.cprintf("知力: ");
 
     entry.textcolour(_get_stat_colour(STAT_INT));
 
@@ -2268,7 +2260,7 @@ static vector<formatted_string> _get_overview_stats()
     entry.clear();
 
     entry.textcolour(HUD_CAPTION_COLOUR);
-    entry.cprintf("Dex: ");
+    entry.cprintf("器用: ");
 
     entry.textcolour(_get_stat_colour(STAT_DEX));
 
@@ -2280,7 +2272,7 @@ static vector<formatted_string> _get_overview_stats()
     entry.clear();
 
     entry.textcolour(HUD_CAPTION_COLOUR);
-    entry.cprintf("XL:     ");
+    entry.cprintf("レベル:     ");
 
     entry.textcolour(HUD_VALUE_COLOUR);
     entry.cprintf("%d", you.experience_level);
@@ -2288,7 +2280,7 @@ static vector<formatted_string> _get_overview_stats()
     if (you.experience_level < you.get_max_xl())
     {
         entry.textcolour(HUD_CAPTION_COLOUR);
-        entry.cprintf("   Next: ");
+        entry.cprintf("   次レベル: ");
 
         entry.textcolour(HUD_VALUE_COLOUR);
         entry.cprintf("%d%%", get_exp_progress());
@@ -2298,7 +2290,7 @@ static vector<formatted_string> _get_overview_stats()
     entry.clear();
 
     entry.textcolour(HUD_CAPTION_COLOUR);
-    entry.cprintf("God:    ");
+    entry.cprintf("信仰: ");
 
     entry.textcolour(HUD_VALUE_COLOUR);
 
@@ -2313,12 +2305,11 @@ static vector<formatted_string> _get_overview_stats()
     entry.clear();
 
     entry.textcolour(HUD_CAPTION_COLOUR);
-    entry.cprintf("Spells: ");
+    entry.cprintf("魔法: ");
 
     entry.textcolour(HUD_VALUE_COLOUR);
-    entry.cprintf("%d memorised, %d level%s left",
-                  you.spell_no, player_spell_levels(),
-                  (player_spell_levels() == 1) ? "" : "s");
+    entry.cprintf("%d個記憶中/残り記憶力%d",
+                  you.spell_no, player_spell_levels());
 
     cols.add_formatted(3, entry.to_colour_string(), false);
     entry.clear();
@@ -2326,13 +2317,13 @@ static vector<formatted_string> _get_overview_stats()
     if (you.species == SP_FELID)
     {
         entry.textcolour(HUD_CAPTION_COLOUR);
-        entry.cprintf("Lives:  ");
+        entry.cprintf("残機: ");
 
         entry.textcolour(HUD_VALUE_COLOUR);
         entry.cprintf("%d", you.lives);
 
         entry.textcolour(HUD_CAPTION_COLOUR);
-        entry.cprintf("   Deaths: ");
+        entry.cprintf("   死亡数: ");
 
         entry.textcolour(HUD_VALUE_COLOUR);
         entry.cprintf("%d", you.deaths);
@@ -2370,20 +2361,20 @@ static vector<formatted_string> _get_overview_resistances(
     // 3 columns, splits at columns 18, 33
     column_composer cols(3, 18, 33);
     // First column, resist name is 7 chars
-    int cwidth = 7;
+    int cwidth = 9;
     string out;
 
     const int rfire = player_res_fire(calc_unid);
-    out += _resist_composer("rFire", cwidth, rfire, 3) + "\n";
+    out += _resist_composer("火炎耐性", cwidth, rfire, 3) + "\n";
 
     const int rcold = player_res_cold(calc_unid);
-    out += _resist_composer("rCold", cwidth, rcold, 3) + "\n";
+    out += _resist_composer("冷気耐性", cwidth, rcold, 3) + "\n";
 
     const int rlife = player_prot_life(calc_unid);
-    out += _resist_composer("rNeg", cwidth, rlife, 3) + "\n";
+    out += _resist_composer("衰弱耐性", cwidth, rlife, 3) + "\n";
 
     const int rpois = player_res_poison(calc_unid);
-    string rpois_string = _resist_composer("rPois", cwidth, rpois) + "\n";
+    string rpois_string = _resist_composer("毒素耐性", cwidth, rpois) + "\n";
     //XXX
     if (rpois == 3)
     {
@@ -2393,17 +2384,17 @@ static vector<formatted_string> _get_overview_resistances(
     out += rpois_string;
 
     const int relec = player_res_electricity(calc_unid);
-    out += _resist_composer("rElec", cwidth, relec) + "\n";
+    out += _resist_composer("電撃耐性", cwidth, relec) + "\n";
 
     const int rcorr = you.res_corr(calc_unid);
-    out += _resist_composer("rCorr", cwidth, rcorr) + "\n";
+    out += _resist_composer("腐蝕阻止", cwidth, rcorr) + "\n";
 
     const int rmuta = (you.rmut_from_item(calc_unid)
                        || player_mutation_level(MUT_MUTATION_RESISTANCE) == 3);
-    out += _resist_composer("rMut", cwidth, rmuta) + "\n";
+    out += _resist_composer("耐変異", cwidth, rmuta) + "\n";
 
     const int rmagi = player_res_magic(calc_unid) / MR_PIP;
-    out += _resist_composer("MR", cwidth, rmagi, 5) + "\n";
+    out += _resist_composer("魔法防御", cwidth, rmagi, 5) + "\n";
 
     out += _stealth_bar(get_number_of_cols()) + "\n";
 
@@ -2413,7 +2404,7 @@ static vector<formatted_string> _get_overview_resistances(
     out.clear();
     cwidth = 9;
     const int rinvi = you.can_see_invisible(calc_unid);
-    out += _resist_composer("SeeInvis", cwidth, rinvi) + "\n";
+    out += _resist_composer("霊視", cwidth, rinvi) + "\n";
 
     const int rclar = you.clarity(calc_unid);
     const int stasis = you.stasis(calc_unid);
@@ -2422,35 +2413,35 @@ static vector<formatted_string> _get_overview_resistances(
                              || player_mutation_level(MUT_BERSERK))
                             && !rclar && !stasis
                             && !you.is_lifeless_undead();
-    out += show_angry ? _resist_composer("Rnd*Rage", cwidth, 1, 1, false) + "\n"
-                      : _resist_composer("Clarity", cwidth, rclar) + "\n";
+    out += show_angry ? _resist_composer("突発狂乱", cwidth, 1, 1, false) + "\n"
+                      : _resist_composer("明晰", cwidth, rclar) + "\n";
 
     const int rsust = player_sust_abil(calc_unid);
-    out += _resist_composer("SustAb", cwidth, rsust) + "\n";
+    out += _resist_composer("能力維持", cwidth, rsust) + "\n";
 
     const int gourmand = you.gourmand(calc_unid);
-    out += _resist_composer("Gourm", cwidth, gourmand, 1) + "\n";
+    out += _resist_composer("悪食", cwidth, gourmand, 1) + "\n";
 
     const int rspir = you.spirit_shield(calc_unid);
-    out += _resist_composer("Spirit", cwidth, rspir) + "\n";
+    out += _resist_composer("精霊盾", cwidth, rspir) + "\n";
     const int rward = you.warding(calc_unid);
-    out += _resist_composer("Warding", cwidth, rward) + "\n";
+    out += _resist_composer("結界", cwidth, rward) + "\n";
 
     const int notele = you.no_tele(calc_unid);
     const int rrtel = !!player_teleport(calc_unid);
     if (notele && !stasis)
-        out += _resist_composer("NoTele", cwidth, 1, 1, false) + "\n";
+        out += _resist_composer("転位不可", cwidth, 1, 1, false) + "\n";
     else if (rrtel && !stasis)
-        out += _resist_composer("Rnd*Tele", cwidth, 1, 1, false) + "\n";
+        out += _resist_composer("転位誘発", cwidth, 1, 1, false) + "\n";
     else
-        out += _resist_composer("Stasis", cwidth, stasis) + "\n";
+        out += _resist_composer("停滞", cwidth, stasis) + "\n";
     cols.add_formatted(1, out, false);
 
     const int no_cast = you.no_cast(calc_unid);
     if (no_cast)
     {
         out.clear();
-        out += _resist_composer("NoCast", cwidth, 1, 1, false);
+        out += _resist_composer("魔法不可", cwidth, 1, 1, false);
         cols.add_formatted(1, out, false);
     }
 
@@ -2548,7 +2539,7 @@ static const char* stealth_words[11] =
 
 string stealth_desc(int stealth)
 {
-    return make_stringf("%sstealthy", stealth_words[_stealth_breakpoint(stealth)]);
+    return jtrans(make_stringf("%sstealthy", stealth_words[_stealth_breakpoint(stealth)]));
 }
 
 string magic_res_adjective(int mr)
@@ -2606,11 +2597,11 @@ static string _status_mut_abilities(int sw)
                            (move_cost <  10) ? "quick" :
                            (move_cost <  13) ? "slow"
                                              : "very slow";
-        status.emplace_back(help);
+        status.emplace_back(jtrans(help));
     }
 
-    status.push_back(magic_res_adjective(player_res_magic(false))
-                     + " to hostile enchantments");
+    status.push_back(jtrans(magic_res_adjective(player_res_magic(false))
+                            + " to hostile enchantments"));
 
     // character evaluates their ability to sneak around:
     status.push_back(stealth_desc(check_stealth()));
@@ -2630,32 +2621,32 @@ static string _status_mut_abilities(int sw)
     switch (you.species)   //mv: following code shows innate abilities - if any
     {
     case SP_MERFOLK:
-        mutations.push_back(_annotate_form_based("change form in water",
+        mutations.push_back(_annotate_form_based(jtrans("change form in water"),
                                                  form_changed_physiology()));
-        mutations.push_back(_annotate_form_based("swift swim",
+        mutations.push_back(_annotate_form_based(jtrans("swift swim"),
                                                  form_changed_physiology()));
         break;
 
     case SP_MINOTAUR:
-        mutations.push_back(_annotate_form_based("retaliatory headbutt",
+        mutations.push_back(_annotate_form_based(jtrans("retaliatory headbutt"),
                                                  !form_keeps_mutations()));
         break;
 
     case SP_NAGA:
         // breathe poison replaces spit poison:
         if (!player_mutation_level(MUT_BREATHE_POISON))
-            mutations.emplace_back("spit poison");
+            mutations.emplace_back(jtrans("spit poison"));
 
         if (you.experience_level > 12)
         {
-            mutations.push_back(_annotate_form_based("constrict 1",
+            mutations.push_back(_annotate_form_based(jtrans("constrict 1"),
                                                      !form_keeps_mutations()));
         }
         AC_change += you.experience_level / 3;
         break;
 
     case SP_GHOUL:
-        mutations.emplace_back("rotting body");
+        mutations.emplace_back(jtrans("rotting body"));
         break;
 
     case SP_TENGU:
@@ -2664,87 +2655,87 @@ static string _status_mut_abilities(int sw)
             string help = "able to fly";
             if (you.experience_level > 14)
                 help += " continuously";
-            mutations.push_back(help);
+            mutations.push_back(jtrans(help));
         }
         break;
 
     case SP_MUMMY:
-        mutations.emplace_back("no food or potions");
-        mutations.emplace_back("fire vulnerability");
+        mutations.emplace_back(jtrans("no food or potions"));
+        mutations.emplace_back(jtrans("fire vulnerability"));
         if (you.experience_level > 12)
         {
             string help = "in touch with death";
             if (you.experience_level > 25)
                 help = "strongly " + help;
-            mutations.push_back(help);
+            mutations.push_back(jtrans(help));
         }
-        mutations.emplace_back("restore body");
+        mutations.emplace_back(jtrans("restore body"));
         break;
 
     case SP_VAMPIRE:
-        mutations.emplace_back("bottle blood");
+        mutations.emplace_back(jtrans("bottle blood"));
         break;
 
     case SP_DEEP_DWARF:
-        mutations.emplace_back("damage resistance");
-        mutations.emplace_back("recharge devices");
+        mutations.emplace_back(jtrans("damage resistance"));
+        mutations.emplace_back(jtrans("recharge devices"));
         break;
 
     case SP_FELID:
-        mutations.emplace_back("paw claws");
+        mutations.emplace_back(jtrans("paw claws"));
         break;
 
     case SP_RED_DRACONIAN:
-        mutations.push_back(_dragon_abil("breathe fire"));
+        mutations.push_back(_dragon_abil(jtrans("breathe fire")));
         break;
 
     case SP_WHITE_DRACONIAN:
-        mutations.push_back(_dragon_abil("breathe frost"));
+        mutations.push_back(_dragon_abil(jtrans("breathe frost")));
         break;
 
     case SP_GREEN_DRACONIAN:
-        mutations.push_back(_dragon_abil("breathe noxious fumes"));
+        mutations.push_back(_dragon_abil(jtrans("breathe noxious fumes")));
         break;
 
     case SP_YELLOW_DRACONIAN:
-        mutations.push_back(_dragon_abil("spit acid"));
-        mutations.push_back(_annotate_form_based("acid resistance",
+        mutations.push_back(_dragon_abil(jtrans("spit acid")));
+        mutations.push_back(_annotate_form_based(jtrans("acid resistance"),
                                                  !form_keeps_mutations()
                                                   && you.form != TRAN_DRAGON));
         break;
 
     case SP_GREY_DRACONIAN:
-        mutations.emplace_back("walk through water");
+        mutations.emplace_back(jtrans("walk through water"));
         AC_change += 5;
         break;
 
     case SP_BLACK_DRACONIAN:
-        mutations.push_back(_dragon_abil("breathe lightning"));
+        mutations.push_back(_dragon_abil(jtrans("breathe lightning")));
         if (you.experience_level >= 14)
-            mutations.emplace_back("able to fly continuously");
+            mutations.emplace_back(jtrans("able to fly continuously"));
         break;
 
     case SP_PURPLE_DRACONIAN:
-        mutations.push_back(_dragon_abil("breathe power"));
+        mutations.push_back(_dragon_abil(jtrans("breathe power")));
         break;
 
     case SP_MOTTLED_DRACONIAN:
-        mutations.push_back(_dragon_abil("breathe sticky flames"));
+        mutations.push_back(_dragon_abil(jtrans("breathe sticky flames")));
         break;
 
     case SP_PALE_DRACONIAN:
-        mutations.push_back(_dragon_abil("breathe steam"));
+        mutations.push_back(_dragon_abil(jtrans("breathe steam")));
         break;
 
     case SP_FORMICID:
-        mutations.emplace_back("permanent stasis");
-        mutations.emplace_back("dig shafts and tunnels");
-        mutations.emplace_back("four strong arms");
+        mutations.emplace_back(jtrans("permanent stasis"));
+        mutations.emplace_back(jtrans("dig shafts and tunnels"));
+        mutations.emplace_back(jtrans("four strong arms"));
         break;
 
     case SP_GARGOYLE:
         if (you.experience_level >= 14)
-            mutations.emplace_back("able to fly continuously");
+            mutations.emplace_back(jtrans("able to fly continuously"));
         AC_change += 2 + you.experience_level * 2 / 5
                        + max(0, you.experience_level - 7) * 2 / 5;
         break;
@@ -2764,7 +2755,7 @@ static string _status_mut_abilities(int sw)
     if (you.species == SP_OGRE || you.species == SP_TROLL
         || player_genus(GENPC_DRACONIAN) || you.species == SP_SPRIGGAN)
     {
-        mutations.emplace_back("unfitting armour");
+        mutations.emplace_back(jtrans("unfitting armour"));
     }
 
     if (player_genus(GENPC_DRACONIAN))
@@ -2775,24 +2766,24 @@ static string _status_mut_abilities(int sw)
 
     if (you.species == SP_FELID)
     {
-        mutations.emplace_back("no armour");
-        mutations.emplace_back("no weapons or thrown items");
+        mutations.emplace_back(jtrans("no armour"));
+        mutations.emplace_back(jtrans("no weapons or thrown items"));
     }
 
     if (you.species == SP_OCTOPODE)
     {
-        mutations.emplace_back("almost no armour");
-        mutations.emplace_back("amphibious");
+        mutations.emplace_back(jtrans("almost no armour"));
+        mutations.emplace_back(jtrans("amphibious"));
         mutations.push_back(_annotate_form_based(
-            make_stringf("%d rings", you.has_tentacles(false)),
+            make_stringf(jtrans("%d rings").c_str(), you.has_tentacles(false)),
             !get_form()->slot_available(EQ_RING_EIGHT)));
         mutations.push_back(_annotate_form_based(
-            make_stringf("constrict %d", you.has_tentacles(false)),
+            make_stringf(jtrans("constrict %d").c_str(), you.has_tentacles(false)),
             !form_keeps_mutations()));
     }
 
     if (beogh_water_walk())
-        mutations.emplace_back("walk on water");
+        mutations.emplace_back(jtrans("walk on water"));
 
     string current;
     for (unsigned i = 0; i < NUM_MUTATIONS; ++i)
@@ -2804,12 +2795,12 @@ static string _status_mut_abilities(int sw)
         const int level = player_mutation_level(mut);
         const bool lowered = level < you.mutation[mut];
 
-        current = mutation_name(mut);
+        current = jtrans(mutation_name(mut));
 
         if (mutation_max_levels(mut) > 1)
         {
             ostringstream ostr;
-            ostr << ' ' << level;
+            ostr << " Lv" << level;
 
             current += ostr.str();
         }
@@ -2835,7 +2826,7 @@ static string _status_mut_abilities(int sw)
     }
 
     if (mutations.empty())
-        text +=  "no striking features";
+        text += jtrans("no striking features");
     else
     {
         text += comma_separated_line(mutations.begin(), mutations.end(),
@@ -2852,7 +2843,7 @@ static string _status_mut_abilities(int sw)
     // print the Orb
     //--------------
     if (player_has_orb())
-        text += "\n<w>0:</w> Orb of Zot";
+        text += ("\n" + jtrans("<w>0:</w> Orb of Zot"));
 
     //--------------
     // print runes
@@ -2863,10 +2854,9 @@ static string _status_mut_abilities(int sw)
             runes.emplace_back(rune_type_name(i));
     if (!runes.empty())
     {
-        text += make_stringf("\n<w>%s:</w> %d/%d rune%s: %s",
+        text += make_stringf(("\n" + jtrans("<w>%s:</w> %d/%d rune: %s")).c_str(),
                     stringize_glyph(get_item_symbol(SHOW_ITEM_MISCELLANY)).c_str(),
                     (int)runes.size(), you.obtainable_runes,
-                    you.obtainable_runes == 1 ? "" : "s",
                     comma_separated_line(runes.begin(), runes.end(),
                                          ", ", ", ").c_str());
     }

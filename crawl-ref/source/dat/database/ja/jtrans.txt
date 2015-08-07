@@ -1,0 +1,1901 @@
+%%%%
+you
+
+あなた
+%%%%
+your
+
+あなたの
+%%%%
+its
+
+その
+%%%%
+Please select your species.
+
+あなたの種族を選んでください。
+%%%%
+Please select your background.
+
+あなたの職業を選んでください。
+%%%%
+You have a choice of weapons:
+
+武器を選んでください:
+%%%%
+Do you want to play this combination?
+
+この組み合わせで開始しますか？
+%%%%
+Found
+
+を見つけた。
+%%%%
+Found %s
+
+%sを見つけた。
+%%%%
+Found %s %s.
+
+%s個の%sを見つけた。
+%%%%
+############################## itemname.cc ##############################
+%%%%
+god gift
+
+下賜物
+%%%%
+(melded)
+
+(肉体と融合している)
+%%%%
+(quivered)
+
+(準備中)
+%%%%
+vampiric
+
+吸血の
+%%%%
+antimagic
+
+反魔法の
+%%%%
+enchanted
+
+魔力を帯びた
+%%%%
+of flaming
+
+火炎の
+%%%%
+of freezing
+
+冷気の
+%%%%
+of holy wrath
+
+神罰の
+%%%%
+of electrocution
+
+電撃の
+%%%%
+of venom
+
+毒液の
+%%%%
+of protection
+
+護りの
+%%%%
+of draining
+
+掠奪の
+%%%%
+of speed
+
+早業の
+%%%%
+of pain
+
+苦痛の
+%%%%
+of distortion
+
+歪曲の
+%%%%
+of chaos
+
+混沌の
+%%%%
+of evasion
+
+躱し身の
+%%%%
+of penetration
+
+貫通の
+%%%%
+of reaping
+
+刈り取りの
+%%%%
+of acid
+
+強酸の
+%%%%
+of velocity
+
+高速の
+%%%%
+of crushing
+
+粉砕の
+%%%%
+of slicing
+
+切断の
+%%%%
+of piercing
+
+貫きの
+%%%%
+of chopping
+
+分断の
+%%%%
+of slashing
+
+切れ味の
+%%%%
+cursed
+
+呪われた
+%%%%
+(curse)
+
+(呪われている)
+%%%%
+uncursed
+
+呪われていない
+%%%%
+pair of
+
+一対の
+%%%%
+runed
+
+ルーンが刻まれた
+%%%%
+glowing
+
+輝く
+%%%%
+embroidered
+
+刺繍された
+%%%%
+shiny
+
+光る
+%%%%
+dyed
+
+色で染められた
+%%%%
+of speedy slighering
+
+俊敏の
+%%%%
+of running
+
+俊足の
+%%%%
+of fire resistance
+
+耐火の
+%%%%
+of cold resistance
+
+耐冷の
+%%%%
+of poison resistance
+
+耐毒の
+%%%%
+of see invisible
+
+霊視の
+%%%%
+of invisibility
+
+透明化の
+%%%%
+of strength
+
+腕力の
+%%%%
+of dexterity
+
+器用さの
+%%%%
+of intelligence
+
+知性の
+%%%%
+of ponderousness
+
+鈍重の
+%%%%
+of flying
+
+飛行の
+%%%%
+of magic resistance
+
+耐魔法の
+%%%%
+of protection
+
+護りの
+%%%%
+of stealth
+
+隠密の
+%%%%
+of resistance
+
+耐性の
+%%%%
+of positive energy
+
+正の力の
+%%%%
+of the Archmagi
+
+大賢者の
+%%%%
+of reflection
+
+反射の
+%%%%
+of spirit shield
+
+精霊の盾の
+%%%%
+of archery
+
+射手の
+%%%%
+wand
+
+ワンド
+%%%%
+wand of flame
+
+火炎のワンド
+%%%%
+wand of frost
+
+冷気のワンド
+%%%%
+wand of slowing
+
+減速のワンド
+%%%%
+wand of hasting
+
+加速のワンド
+%%%%
+wand of magic darts
+
+魔法の矢のワンド
+%%%%
+wand of heal wounds
+
+癒しのワンド
+%%%%
+wand of paralysis
+
+麻痺のワンド
+%%%%
+wand of fire
+
+猛火のワンド
+%%%%
+wand of cold
+
+凍結のワンド
+%%%%
+wand confusion
+
+混乱のワンド
+%%%%
+wand invisibility
+
+透明化のワンド
+%%%%
+wand digging
+
+採掘のワンド
+%%%%
+wand of fireball
+
+ファイアボールのワンド
+%%%%
+wand of teleportation
+
+テレポートのワンド
+%%%%
+wand of lightning
+
+稲妻のワンド
+%%%%
+wand of polymorph
+
+変化のワンド
+%%%%
+wand of enslavement
+
+隷属のワンド
+%%%%
+wand of draining
+
+掠奪のワンド
+%%%%
+wand of random effects
+
+でたらめのワンド
+%%%%
+wand of disintegration
+
+分解のワンド
+%%%%
+{empty}
+
+{空}
+%%%%
+{recharged}
+
+{充填済み}
+%%%%
+potion
+
+薬
+%%%%
+potion of curing
+
+治療の薬
+%%%%
+potion of heal wounds
+
+怪我の治療の薬
+%%%%
+potion of haste
+
+スピードの薬
+%%%%
+potion of might
+
+怪力の薬
+%%%%
+potion of agility
+
+器用さの薬
+%%%%
+potion of brilliance
+
+知性の薬
+%%%%
+potion of flight
+
+飛行の薬
+%%%%
+potion of poison
+
+毒の薬
+%%%%
+potion of cancellation
+
+無力化の薬
+%%%%
+potion of ambrosia
+
+アンブロシアの薬
+%%%%
+potion of invisibility
+
+透明化の薬
+%%%%
+potion of degeneration
+
+能力低下の薬
+%%%%
+potion of experience
+
+経験の薬
+%%%%
+potion of magic
+
+魔力の薬
+%%%%
+potion of restore abilities
+
+能力回復の薬
+%%%%
+potion of berserk rage
+
+狂戦士の薬
+%%%%
+potion of cure mutation
+
+突然変異治療の薬
+%%%%
+potion of mutation
+
+突然変異の薬
+%%%%
+potion of blood
+
+血液の薬
+%%%%
+potion of resistance
+
+耐性の薬
+%%%%
+potion of lignification
+
+樹木化の薬
+%%%%
+potion of beneficial mutation
+
+良性突然変異の薬
+%%%%
+scroll
+
+巻物
+%%%%
+scroll of identify
+
+鑑定の巻物
+%%%%
+scroll of teleportation
+
+テレポートの巻物
+%%%%
+scroll of fear
+
+恐慌の巻物
+%%%%
+scroll of noise
+
+騒音の巻物
+%%%%
+scroll of remove curse
+
+解呪の巻物
+%%%%
+scroll of summoning
+
+召喚の巻物
+%%%%
+scroll of enchant weapon
+
+武器強化の巻物
+%%%%
+scroll of enchant armour
+
+防具強化の巻物
+%%%%
+scroll of torment
+
+拷問の巻物
+%%%%
+scroll of random uselessness
+
+無為無作為の巻物
+%%%%
+scroll of curse weapon
+
+武器呪縛の巻物
+%%%%
+scroll of curse armour
+
+防具呪縛の巻物
+%%%%
+scroll of curse jewellery
+
+装飾品呪縛の巻物
+%%%%
+scroll of immolation
+
+焼き討ちの巻物
+%%%%
+scroll of blinking
+
+瞬間移動の巻物
+%%%%
+scroll of magic mapping
+
+魔法の地図の巻物
+%%%%
+scroll of fog
+
+霧の巻物
+%%%%
+scroll of acquirement
+
+獲得の巻物
+%%%%
+scroll of brand weapon
+
+魔力の武器の巻物
+%%%%
+scroll of recharging
+
+魔力充填の巻物
+%%%%
+scroll of holy word
+
+聖なる御言葉の巻物
+%%%%
+scroll of vulnerability
+
+脆弱の巻物
+%%%%
+scroll of silence
+
+静寂の巻物
+%%%%
+scroll of amnesia
+
+忘却の巻物
+%%%%
+ring
+
+指輪
+%%%%
+ring of protection
+
+護りの指輪
+%%%%
+ring of protection from fire
+
+耐火の指輪
+%%%%
+ring of poison resistance
+
+耐毒の指輪
+%%%%
+ring of protection from cold
+
+耐冷の指輪
+%%%%
+ring of strength
+
+腕力の指輪
+%%%%
+ring of slaying
+
+殺戮の指輪
+%%%%
+ring of see invisible
+
+霊視の指輪
+%%%%
+ring of invisibility
+
+透明化の指輪
+%%%%
+ring of loudness
+
+騒音の指輪
+%%%%
+ring of teleportation
+
+テレポートの指輪
+%%%%
+ring of evasion
+
+躱し身の指輪
+%%%%
+ring of sustain abilities
+
+能力維持の指輪
+%%%%
+ring of stealth
+
+隠密の指輪
+%%%%
+ring of dexterity
+
+器用さの指輪
+%%%%
+ring of intelligence
+
+知性の指輪
+%%%%
+ring of wizardry
+
+魔術の指輪
+%%%%
+ring of magical power
+
+魔力の指輪
+%%%%
+ring of flight
+
+飛行の指輪
+%%%%
+ring of positive energy
+
+生命力保護の指輪
+%%%%
+ring of protection from magic
+
+耐魔法の指輪
+%%%%
+ring of fire
+
+炎の指輪
+%%%%
+ring of ice
+
+氷の指輪
+%%%%
+amulet
+
+護符
+%%%%
+amulet of rage
+
+怒りの護符
+%%%%
+amulet of clarity
+
+明晰の護符
+%%%%
+amulet of warding
+
+結界の護符
+%%%%
+amulet of resist corrosion
+
+腐食阻止の護符
+%%%%
+amulet of the gourmand
+
+悪食の護符
+%%%%
+amulet of inaccuracy
+
+不正確の護符
+%%%%
+amulet of resist mutation
+
+耐突然変異の護符
+%%%%
+amulet of guardian spirit
+
+守護霊の護符
+%%%%
+amulet of faith
+
+信仰の護符
+%%%%
+amulet of stasis
+
+停滞の護符
+%%%%
+amulet of regeneration
+
+再生の護符
+%%%%
+rune of Zot
+
+ゾットのルーン
+%%%%
+iron rune of Zot
+
+鉄のルーン
+%%%%
+obsidian rune of Zot
+
+黒曜石のルーン
+%%%%
+icy rune of Zot
+
+氷のルーン
+%%%%
+bone rune of Zot
+
+骨のルーン
+%%%%
+slimy rune of Zot
+
+ぬめりのルーン
+%%%%
+silver rune of Zot
+
+銀のルーン
+%%%%
+serpentine rune of Zot
+
+蛇行のルーン
+%%%%
+golden rune of Zot
+
+黄金のルーン
+%%%%
+decaying rune of Zot
+
+腐敗のルーン
+%%%%
+barnacled rune of Zot
+
+フジツボのルーン
+%%%%
+gossamer rune of Zot
+
+遊糸のルーン
+%%%%
+demonic rune of Zot
+
+悪魔のルーン
+%%%%
+abyssal rune of Zot
+
+深淵のルーン
+%%%%
+glowing rune of Zot
+
+輝きのルーン
+%%%%
+magical rune of Zot
+
+魔法のルーン
+%%%%
+fiery rune of Zot
+
+火のルーン
+%%%%
+dark rune of Zot
+
+暗黒のルーン
+%%%%
+plain
+
+普通の
+%%%%
+ornate
+
+レアな
+%%%%
+legendary
+
+伝説的な
+%%%%
+deck of cards
+
+カードのデッキ
+%%%%
+deck of escape
+
+脱出のデッキ
+%%%%
+deck of destruction
+
+破壊のデッキ
+%%%%
+deck of summoning
+
+召喚のデッキ
+%%%%
+deck of wonders
+
+不思議のデッキ
+%%%%
+deck of oddities
+
+奇妙なデッキ
+%%%%
+deck of punishment
+
+懲罰のデッキ
+%%%%
+deck of war
+
+戦争のデッキ
+%%%%
+deck of changes
+
+変幻のデッキ
+%%%%
+deck of defence
+
+守護のデッキ
+%%%%
+crystal ball of energy
+
+魔力の水晶球
+%%%%
+box of beasts
+
+獣の匣
+%%%%
+fan of gales
+
+疾風の扇
+%%%%
+lamp of fire
+
+炎のランプ
+%%%%
+lantern of shadows
+
+影のランタン
+%%%%
+horn of Geryon
+
+ゲリュオンの角笛
+%%%%
+disc of stomes
+
+嵐の円盤
+%%%%
+stone of tremors
+
+身震いの石
+%%%%
+quad damage
+
+四重ダメージ
+%%%%
+phial of floods
+
+大水の小瓶
+%%%%
+sack of spiders
+
+蜘蛛の袋
+%%%%
+phantom mirror
+
+幻影の鏡
+%%%%
+manual
+
+手引書
+%%%%
+book
+
+魔法書
+%%%%
+book of Minor Magic
+
+下級魔術の魔法書
+%%%%
+book of Conjurations
+
+妖術の魔法書
+%%%%
+book of Flames
+
+炎の魔法書
+%%%%
+book of Frost
+
+冷気の魔法書
+%%%%
+book of Summonings
+
+召喚の魔法書
+%%%%
+book of Spatial Translocations
+
+空間転位の魔法書
+%%%%
+book of Enchantments
+
+呪術の魔法書
+%%%%
+book of the Tempests
+
+天災の魔法書
+%%%%
+book of Death
+
+死の魔法書
+%%%%
+book of Hinderance
+
+万障の魔法書
+%%%%
+book of Changes
+
+小変異の魔法書
+%%%%
+book of Transfigurations
+
+変容の魔法書
+%%%%
+book of Battle
+
+戦いの魔法書
+%%%%
+book of Clouds
+
+雲烟の魔法書
+%%%%
+book of Necromancy
+
+死霊術の魔法書
+%%%%
+book of Callings
+
+招集の魔法書
+%%%%
+book of Maledictions
+
+呪詛の魔法書
+%%%%
+book of Air
+
+大気の魔法書
+%%%%
+book of the Sky
+
+蒼穹の魔法書
+%%%%
+book of the Warp
+
+次元歪曲の魔法書
+%%%%
+book of Envenomations
+
+毒害の魔法書
+%%%%
+book of Annihilations
+
+殲滅の魔法書
+%%%%
+book of Unlife
+
+反生命の魔法書
+%%%%
+book of Geomancy
+
+地占術の魔法書
+%%%%
+book of the Earth
+
+大地の魔法書
+%%%%
+book of Power
+
+力の魔法書
+%%%%
+book of Cantrips
+
+悪戯の魔法書
+%%%%
+book of Party Tricks
+
+パーティートリックの魔法書
+%%%%
+book of Debilitation
+
+衰弱の魔法書
+%%%%
+book of the Dragon
+
+ドラゴンの魔法書
+%%%%
+book of Burglary
+
+夜盗の魔法書
+%%%%
+book of Dreams
+
+夢幻の魔法書
+%%%%
+book of Alchemy
+
+錬金術の魔法書
+%%%%
+book of Beasts
+
+獣の魔法書
+%%%%
+Necronomicon
+
+ネクロノミコン
+%%%%
+Grand Grimoire
+
+グラン・グリモア
+%%%%
+Young Poisoner's Handbook
+
+初級毒殺者の手引書
+%%%%
+Fen Folio
+
+フェン・フォリオ
+%%%%
+Akashic Record
+
+アカシック・レコード
+%%%%
+rod
+
+ロッド
+%%%%
+lightning rod
+
+稲妻のロッド
+%%%%
+iron rod
+
+鉄弾のロッド
+%%%%
+rod of the swarm
+
+大群のロッド
+%%%%
+rod of lightning
+
+稲妻のロッド
+%%%%
+rod of iron
+
+鉄弾のロッド
+%%%%
+rod of shadows
+
+影の怪物のロッド
+%%%%
+rod of inaccuracy
+
+不正確の矢のロッド
+%%%%
+rod of ignition
+
+燃焼のロッド
+%%%%
+rod of clouds
+
+雲烟のロッド
+%%%%
+rod of destruction
+
+破壊のロッド
+%%%%
+staff
+
+杖
+%%%%
+staff of wizardry
+
+魔術の杖
+%%%%
+staff of power
+
+魔力の杖
+%%%%
+staff of fire
+
+火炎の杖
+%%%%
+staff of cold
+
+冷気の杖
+%%%%
+staff of poison
+
+毒素の杖
+%%%%
+staff of energy
+
+活力の杖
+%%%%
+staff of death
+
+死霊の杖
+%%%%
+staff of conjuration
+
+妖術の杖
+%%%%
+staff of air
+
+大気の杖
+%%%%
+staff of earth
+
+大地の杖
+%%%%
+staff of summoning
+
+召喚の杖
+%%%%
+gold piece
+
+金貨
+%%%%
+decaying skeleton
+
+風化した骸骨
+%%%%
+mangled
+
+切り裂かれた
+%%%%
+corpse
+
+死体
+%%%%
+skeleton
+
+骸骨
+%%%%
+############################## main.cc ##############################
+%%%%
+Welcome
+
+ようこそ
+%%%%
+Welcome back
+
+よくぞ帰ってきた
+%%%%
+Press <w>?</w> for a list of commands and other information.
+
+コマンド一覧やその他の情報を見るには <w>?</w>キー を押してください。
+%%%%
+Saving game... please wait.
+
+セーブしています……お待ちください。
+%%%%
+Save game and return to main manu?
+
+セーブしてメインメニューに戻りますか？
+%%%%
+Save game and exit?
+
+セーブして終了しますか？
+%%%%
+Which direction?
+
+どの方向ですか？
+%%%%
+############################## items.cc ##############################
+%%%%
+You now have %d gold piece%s.
+
+あなたは今%d枚の金貨を持っている。
+%%%%
+%s (gained %d)
+
+%s (新たに%d%s入手)
+%%%%
+############################## melee_attack.cc ##############################
+%%%%
+clumsily bash
+
+不器用に殴打した
+%%%%
+puncture
+
+刺した
+%%%%
+impale
+
+突き刺した
+%%%%
+%%%%
+like the proverbial pig
+
+豚の丸焼きのように
+%%%%
+attack
+
+攻撃した
+%%%%
+'s weak point
+
+の弱点
+%%%%
+skewer
+
+刺し貫いた
+%%%%
+like a kebab
+
+ケバブの肉のように
+%%%%
+stick
+
+突き刺した
+%%%%
+like a pincushion
+
+針山のように
+%%%%
+perforate
+
+穴を開けた
+%%%%
+like a sieve
+
+ふるいのように
+%%%%
+slash
+
+切り払った
+%%%%
+slice
+
+切り裂いた
+%%%%
+dice
+
+細切れにした
+%%%%
+like an onion
+
+玉ねぎのように
+%%%%
+fracture
+
+打ち砕いた
+%%%%
+into splinters
+
+木っ端微塵に
+%%%%
+carve
+
+切り分けた
+%%%%
+like the proverbial ham
+
+ハムのように
+%%%%
+like a turkey
+
+七面鳥のように
+%%%%
+shave
+
+毛皮を刈り取った
+%%%%
+like a pillowcase
+
+枕カバーのように
+%%%%
+like a ripe choko
+
+熟したハヤトウリのように
+%%%%
+cut
+
+切り裂いた
+%%%%
+into ribbons
+
+リボンのように
+%%%%
+like a ham
+
+ハムのように
+%%%%
+chop
+
+ぶった切った
+%%%%
+into pieces
+
+バラバラに
+%%%%
+thump
+
+殴打した
+%%%%
+sock
+
+殴った
+%%%%
+bludgeon
+
+殴りつけた
+%%%%
+shatter
+
+粉砕した
+%%%%
+splatter
+
+変えた
+%%%%
+into a gooey mess
+
+べたべたした肉塊に
+%%%%
+crush
+
+潰した
+%%%%
+like a grape
+
+ブドウ粒のように
+%%%%
+beat
+
+叩いた
+%%%%
+like a drum
+
+太鼓のように
+%%%%
+hammer
+
+叩いた
+%%%%
+like a gong
+
+銅鑼のように
+%%%%
+pound
+
+叩きつけた
+%%%%
+like an anvil
+
+金床のように
+%%%%
+flatten
+
+ぺしゃんこにした
+%%%%
+like a pancake
+
+パンケーキのように
+%%%%
+whack
+
+ぴしゃりと打った
+%%%%
+thrash
+
+鞭打った
+%%%%
+punish
+
+懲罰した
+%%%%
+, causing immense pain
+
+激痛を与えて
+%%%%
+devastate
+
+打ちのめした
+%%%%
+scratch
+
+引っかいた
+%%%%
+claw
+
+かきむしった
+%%%%
+mangle
+
+めちゃくちゃに傷つけた
+%%%%
+eviscerate
+
+内臓をくりぬいた
+%%%%
+batter
+
+叩きのめした
+%%%%
+punch
+
+殴った
+%%%%
+pummel
+
+殴り倒した
+%%%%
+squash
+
+ぺしゃんこにした
+%%%%
+like the proverbial ant
+
+蟻のように
+%%%%
+pound
+
+叩きつけた
+%%%%
+into fine dust
+
+塵になるまで
+%%%%
+like a punching bag
+
+サンドバッグのように
+%%%%
+pulverise
+
+叩き潰した
+%%%%
+like an ant
+
+蟻のように
+%%%%
+into a bloody pulp
+
+血の塊になるまで
+%%%%
+# klown_attack
+poke
+
+小突いた
+%%%%
+prod
+
+刺した
+%%%%
+flog
+
+鞭打った
+%%%%
+pound
+
+突き砕いた
+%%%%
+slap
+
+打ちつけた
+%%%%
+tickle
+
+軽く撫でた
+%%%%
+defenestrate
+
+放り投げた
+%%%%
+sucker-punch
+
+予想外の殴打を加えた
+%%%%
+elbow
+
+肘で撃った
+%%%%
+pinch
+
+挟んだ
+%%%%
+strangle-hug
+
+締め上げた
+%%%%
+tease
+
+ぐしゃぐしゃにした
+%%%%
+eye-gouge
+
+眼を抉った
+%%%%
+karate-kick
+
+空手の蹴りを放った
+%%%%
+headlock
+
+ヘッドロックを放った
+%%%%
+wrestle
+
+取っ組み合いをした
+%%%%
+trip-wire
+
+罠にかけた
+%%%%
+kneecap
+
+肘当てを放った
+%%%%
+hit
+
+攻撃した
+%%%%
+bite
+
+噛んだ
+%%%%
+sting
+
+刺した
+%%%%
+release spore at
+
+胞子を振りまいた
+%%%%
+touch
+
+触れた
+%%%%
+engulf
+
+とりまいた
+%%%%
+peck
+
+ついばんだ
+%%%%
+headbutt
+
+頭突きをした
+%%%%
+punch
+
+殴った
+%%%%
+kick
+
+蹴った
+%%%%
+tentacle-slap
+
+触手で打ちつけた
+%%%%
+tail-slap
+
+尻尾で打ちつけた
+%%%%
+gore
+
+突き刺した
+%%%%
+constrict
+
+拘束した
+%%%%
+trample
+
+突き飛ばした
+%%%%
+trunk-slap
+
+鼻で打ちつけた
+%%%%
+pounce on
+
+襲いかかった
+%%%%
+from afar
+
+遠くから
+%%%%
+############################## message.cc ##############################
+%%%%
+Something appears %s!
+
+%s何かが現れた！
+%%%%
+at your feet
+
+あなたの足元に
+%%%%
+before you
+
+あなたの目の前に
+%%%%
+Nothing appears to happen.
+
+何も起こらなかったようだ。
+%%%%
+You are unaffected.
+
+あなたは影響を受けない。
+%%%%
+You resist.
+
+あなたは抵抗に成功した。
+%%%%
+You partially resist.
+
+あなたはいくらか抵抗に成功した。
+%%%%
+You are too berserk!
+
+あなたは狂暴化しすぎている！
+%%%%
+You're too confused!
+
+あなたは混乱しすぎている！
+%%%%
+You can't do that in your present form.
+
+あなたは現在の形態ではそれはできない。
+%%%%
+You aren't carrying anything.
+
+あなたは何も持ち運んでいない。
+%%%%
+You can't do that yet.
+
+あなたはまだそれをできない。
+%%%%
+Okay, then.
+
+了解。
+%%%%
+Why would you want to do that?
+
+どうしてそのようなことをしたいのですか？
+%%%%
+There's nothing there!
+
+そこには何もない！
+%%%%
+There's nothing close enough!
+
+近くには何もいない！
+%%%%
+You don't have the energy to cast that spell.
+
+あなたには魔法を唱えるための活力が足りない。
+%%%%
+The spell fizzles.
+
+呪文は失敗した。
+%%%%
+Huh?
+
+なんだって？
+%%%%
+Your mouth is %s empty.
+
+あなたの口は%s空っぽだ。
+%%%%
+You are %s empty-clawed.
+
+あなたは%s何も持っていない。
+%%%%
+You are %s empty-tentacled.
+
+あなたは%s何も持っていない。
+%%%%
+You are %s empty-handed.
+
+あなたは%s何も持っていない。
+%%%%
+You blink.
+
+あなたは瞬間移動した。
+%%%%
+You feel a strange sense of stasis.
+
+あなたは奇妙な停滞感を覚えた。
+%%%%
+You don't know any spells.
+
+あなたは呪文を一つも知らない。
+%%%%
+You feel your magic capacity increase.
+
+あなたは魔力の容量が増大するのを感じた。
+%%%%
+You feel your magic capacity decrease.
+
+あなたは魔力の容量が減少するのを感じた。
+%%%%
+You feel momentarily disoriented.
+
+あなたは一時的な見当識喪失に陥った。
+%%%%
+You're too hungry.
+
+あなたは空腹すぎる。
+%%%%
+You detect nothing.
+
+あなたは何も感知できなかった。
+%%%%
+You call on the dead to rise...
+
+あなたは死体に起き上がるよう命じた……
+%%%%
+You attempt to give life to the dead...
+
+あなたは死体に生命を与えようと試みた……
+%%%%
+You cannot move.
+
+あなたは動けない。
+%%%%
+You die...
+
+あなたは死にました……
+%%%%
+You see a ghostly outline there, and the spell fizzles.
+
+あなたはぼんやりとした輪郭を目にし、呪文は失敗した。
+%%%%
+############################## mon-act.cc ##############################
+%%%%
+moves out of view.
+
+は視界外に移動した。
+%%%%
+############################## mon-death.cc ##############################
+%%%%
+blown up
+
+爆破された
+%%%%
+destroyed
+
+破壊された
+%%%%
+killed
+
+殺された
+%%%%
+blow up
+
+破裂させた
+%%%%
+destroy
+
+破壊した
+%%%%
+kill
+
+殺した
+%%%%
+That felt strangely unrewarding.
+
+あなたは奇妙な徒労感に襲われた。
+%%%%
+is blown up!
+
+は爆破された！
+%%%%
+is destroyed!
+
+は破壊された！
+%%%%
+dies!
+
+は死んだ！
+%%%%
+withers and dies!
+
+は枯れ果てて死んだ！
+%%%%
+fades into mist!
+
+は霧の中に消えていった！
+%%%%
+The dead kraken's tentacles slide back into the water.
+
+倒れたクラーケンの触手は水の中に滑り落ちていった。
+%%%%
+The starspawn's tentacles wither and die.
+
+落とし子の触手は枯れ果てて、崩れ落ちた。
+%%%%
+regenerates before your eyes!
+
+あなたの眼前で再生した！
+%%%%
+'s shape twists and change as
+
+の形状は捻れ、後には
+%%%%
+############################## player.cc ##############################
+%%%%
+The %s%s flies open!
+
+%s%sは突然開いた！
+%%%%
+The %s%s flies open with a bang!
+
+%s%sはバタンと音を立てて開いた！
+%%%%
+As you open the %s%s, it creaks loudly!
+
+%s%sはやかましく軋みながら開いた！
+%%%%
+You reach down and open the %s%s.
+
+あなたは下に向けて手を伸ばし、%s%sを開けた。
+%%%%
+You open the %s%s.
+
+あなたは%s%sを開けた。
+%%%%
+Something is blocking the %s!
+
+何かが%sを塞いでしまっている！
+%%%%
+There's a creature in the %s!
+
+%sにはモンスターがいる！
+%%%%
+There's something blocking the %s.
+
+何かが%sを塞いでしまっている。
+%%%%
+There's a thick-headed creature in the %s!
+
+なんだか頭の鈍い生き物が%sにいる！
+%%%%
+You slam the %s%s shut!
+
+あなたは勢いよく%s%sを閉めた！
+%%%%
+You slam the %s%s shut with a bang!
+
+あなたは%s%sをピシャッと閉めた！
+%%%%
+As you close the %s%s, it creaks loudly!
+
+扉はやかましく軋みながら閉じた！
+%%%%
+You reach down and close the %s%s.
+
+あなたは下に向けて手を伸ばし、%s%sを閉じた。
+%%%%
+You close the %s%s.
+
+あなたは%s%sを閉じた。
+%%%%
+############################## player-act.cc ##############################
+%%%%
+paw
+
+前足
+%%%%
+tentacle
+
+触手
+%%%%
+hand
+
+手
+%%%%
+############################## prompt.cc ##############################
+%%%%
+%s[Y]es or [N]o only, please.
+
+[Y]はい [N]いいえ のみで答えてください。
+%%%%
+Choose %s[Y]es%s, [N]o, [Q]uit, or [A]ll!
+
+[Y]はい [N]いいえ [Q]キャンセル [A]全部 から選んでください。
+%%%%
+%s[Y]es%s, [N]o or [Q]uit only, please.
+
+[Y]はい [N]いいえ [Q]キャンセル のみで答えてください。
+%%%%
+############################## state.cc ##############################
+%%%%
+%s comes into view.
+
+%sに遭遇した。
+%%%%

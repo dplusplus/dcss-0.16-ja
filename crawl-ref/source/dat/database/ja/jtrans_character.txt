@@ -1,0 +1,97 @@
+%%%%
+Abyssal Knight
+
+深淵の騎士
+%%%%
+Air Elementalist
+
+風の精霊使い
+%%%%
+Arcane Marksman
+
+神秘の射撃手
+%%%%
+Artificer
+
+発動術師
+%%%%
+Assassin
+
+暗殺者
+%%%%
+Berserker
+
+狂戦士
+%%%%
+Chaos Knight
+
+混沌の騎士
+%%%%
+Conjurer
+
+妖術師
+%%%%
+Earth Elementalist
+
+地の精霊使い
+%%%%
+Enchanter
+
+呪術師
+%%%%
+Fighter
+
+戦士
+%%%%
+Fire Elementalist
+
+火の精霊使い
+%%%%
+Gladiator
+
+闘士
+%%%%
+Hunter
+
+狩人
+%%%%
+Ice Elementalist
+
+氷の精霊使い
+%%%%
+Monk
+
+修行僧
+%%%%
+Necromancer
+
+死人使い
+%%%%
+Skald
+
+吟遊詩人
+%%%%
+Summoner
+
+召喚術師
+%%%%
+Transmuter
+
+変異術師
+%%%%
+Venom Mage
+
+毒素の魔術師
+%%%%
+Wanderer
+
+放浪者
+%%%%
+Warper
+
+転位術師
+%%%%
+Wizard
+
+魔術師
+%%%%

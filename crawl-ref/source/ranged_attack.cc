@@ -9,6 +9,7 @@
 
 #include "areas.h"
 #include "coord.h"
+#include "database.h"
 #include "english.h"
 #include "env.h"
 #include "fprop.h"
@@ -253,10 +254,10 @@ bool ranged_attack::handle_phase_dodged()
 
     if (needs_message)
     {
-        mprf("%s%s misses %s%s",
-             projectile->name(DESC_THE).c_str(),
+        mprf("%sは%sから%s外れた%s",
+             jtrans(projectile->name(DESC_THE)).c_str(),
+             jtrans(defender_name(false)).c_str(),
              evasion_margin_adverb().c_str(),
-             defender_name(false).c_str(),
              attack_strength_punctuation(damage_done).c_str());
     }
 

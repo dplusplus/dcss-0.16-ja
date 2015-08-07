@@ -2147,23 +2147,23 @@ int monster_die(monster* mons, killer_type killer,
                 if (killer == KILL_YOU_CONF
                     && (anon || !invalid_monster_index(killer_index)))
                 {
-                    mprf(MSGCH_MONSTER_DAMAGE, MDAM_DEAD, "%s is %s!",
+                    mprf(MSGCH_MONSTER_DAMAGE, MDAM_DEAD, "%sは%s！",
                          mons->name(DESC_THE).c_str(),
-                         exploded                        ? "blown up" :
-                         wounded_damaged(targ_holy)     ? "destroyed"
-                                                         : "killed");
+                         exploded                   ? jtrans("blown up").c_str() :
+                         wounded_damaged(targ_holy) ? jtrans("destroyed").c_str()
+                                                    : jtrans("killed").c_str());
                 }
                 else
                 {
-                    mprf(MSGCH_MONSTER_DAMAGE, MDAM_DEAD, "You %s %s!",
-                         exploded                        ? "blow up" :
-                         wounded_damaged(targ_holy)     ? "destroy"
-                                                         : "kill",
-                         mons->name(DESC_THE).c_str());
+                    mprf(MSGCH_MONSTER_DAMAGE, MDAM_DEAD, "あなたは%sを%s！",
+                         jtrans(mons->name(DESC_THE)).c_str(),
+                         exploded                   ? jtrans("blow up").c_str() :
+                         wounded_damaged(targ_holy) ? jtrans("destroy").c_str()
+                                                    : jtrans("kill").c_str());
                 }
 
                 if ((created_friendly || was_neutral) && gives_xp)
-                    mpr("That felt strangely unrewarding.");
+                    mpr(jtrans("That felt strangely unrewarding."));
             }
 
             // Killing triggers hints mode lesson.
@@ -2258,9 +2258,9 @@ int monster_die(monster* mons, killer_type killer,
             if (death_message)
             {
                 const char* msg =
-                    exploded                     ? " is blown up!" :
-                    wounded_damaged(targ_holy)  ? " is destroyed!"
-                                                 : " dies!";
+                    exploded                   ? jtrans("is blown up!").c_str() :
+                    wounded_damaged(targ_holy) ? jtrans("is destroyed!").c_str()
+                                               : jtrans("dies!").c_str();
                 simple_monster_message(mons, msg, MSGCH_MONSTER_DAMAGE,
                                        MDAM_DEAD);
             }
@@ -2351,26 +2351,26 @@ int monster_die(monster* mons, killer_type killer,
                     if (mons_genus(mons->type) == MONS_SNAKE)
                     {
                         // Sticks to Snake
-                        simple_monster_message(mons, " withers and dies!",
+                        simple_monster_message(mons, jtrans("withers and dies!").c_str(),
                             MSGCH_MONSTER_DAMAGE, MDAM_DEAD);
                     }
                     else if (mons->type == MONS_SPECTRAL_THING)
                     {
                         // Death Channel
-                        simple_monster_message(mons, " fades into mist!");
+                        simple_monster_message(mons, jtrans("fades into mist!").c_str());
                     }
                     else
                     {
-                        string msg = " " + summoned_poof_msg(mons) + "!";
+                        string msg = summoned_poof_msg(mons) + "！";
                         simple_monster_message(mons, msg.c_str());
                     }
                 }
                 else
                 {
                     const char* msg =
-                        exploded                     ? " is blown up!" :
-                        wounded_damaged(targ_holy)  ? " is destroyed!"
-                                                     : " dies!";
+                        exploded                   ? jtrans("is blown up!").c_str() :
+                        wounded_damaged(targ_holy) ? jtrans("is destroyed!").c_str()
+                                                   : jtrans("dies!").c_str();
                     simple_monster_message(mons, msg, MSGCH_MONSTER_DAMAGE,
                                            MDAM_DEAD);
                 }
@@ -2504,9 +2504,9 @@ int monster_die(monster* mons, killer_type killer,
             && you.see_cell(mons->pos()))
         {
             if (mons_base_type(mons) == MONS_KRAKEN)
-                mpr("The dead kraken's tentacles slide back into the water.");
+                mpr(jtrans("The dead kraken's tentacles slide back into the water."));
             else if (mons->type == MONS_TENTACLED_STARSPAWN)
-                mpr("The starspawn's tentacles wither and die.");
+                mpr(jtrans("The starspawn's tentacles wither and die."));
         }
     }
     else if (mons_is_tentacle_or_tentacle_segment(mons->type)
@@ -2625,8 +2625,7 @@ int monster_die(monster* mons, killer_type killer,
                 // These numbers may need to be adjusted.
                 if (mon->heal(random2avg(24, 2) + roll_dice(2, 8)))
                 {
-                    simple_monster_message(mon,
-                                           " regenerates before your eyes!");
+                    simple_monster_message(mon, jtrans("regenerates before your eyes!").c_str());
                 }
             }
         }
@@ -2703,9 +2702,9 @@ int monster_die(monster* mons, killer_type killer,
             // something else.
             if (!(mons->flags & MF_KNOWN_SHIFTER))
             {
-                const string message = "'s shape twists and changes as "
-                                     + mons->pronoun(PRONOUN_SUBJECTIVE)
-                                     + " dies.";
+                const string message = jtrans("'s shape twists and changes as ")
+                                     + jtrans(mons->pronoun(PRONOUN_SUBJECTIVE))
+                                     + "の死体が残った。";
                 simple_monster_message(mons, message.c_str());
             }
         }
@@ -2717,11 +2716,11 @@ int monster_die(monster* mons, killer_type killer,
                                         ? mons->props["old_heads"].get_int()
                                         : mons->number;
             unwind_var<unsigned int> number(mons->number, num);
-            const string message = " returns to " +
+            const string message = "は" +
                                    mons->pronoun(PRONOUN_POSSESSIVE) +
-                                   " original shape as " +
+                                   "本来の姿に戻り、後には" +
                                    mons->pronoun(PRONOUN_SUBJECTIVE) +
-                                   " dies.";
+                                   "の死体が残った。";
             simple_monster_message(mons, message.c_str());
         }
     }

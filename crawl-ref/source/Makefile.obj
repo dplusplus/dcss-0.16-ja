@@ -90,6 +90,7 @@ item_use.o \
 itemname.o \
 itemprop.o \
 items.o \
+japanese.o \
 jobs.o \
 kills.o \
 l_colour.o \

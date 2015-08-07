@@ -19,6 +19,7 @@
 #include "butcher.h"
 #include "cloud.h"
 #include "coordit.h"
+#include "database.h"
 #include "delay.h"
 #include "english.h"
 #include "env.h"
@@ -282,10 +283,10 @@ bool melee_attack::handle_phase_dodged()
                 player_warn_miss();
             else
             {
-                mprf("%s%s misses %s%s",
-                     atk_name(DESC_THE).c_str(),
+                mprf("%sは%sへの攻撃を%s外した%s",
+                     jtrans(atk_name(DESC_THE)).c_str(),
+                     jtrans(defender_name(true)).c_str(),
                      evasion_margin_adverb().c_str(),
-                     defender_name(true).c_str(),
                      attack_strength_punctuation(damage_done).c_str());
             }
         }
@@ -484,11 +485,10 @@ bool melee_attack::handle_phase_hit()
                       : attacker->conj_verb(mons_attack_verb());
 
         // TODO: Clean this up if possible, checking atype for do / does is ugly
-        mprf("%s %s %s but %s no damage.",
-             attacker->name(DESC_THE).c_str(),
-             attack_verb.c_str(),
-             defender_name(true).c_str(),
-             attacker->is_player() ? "do" : "does");
+        mprf("%sは%sを%sが、損傷を与えなかった。",
+             jtrans(attacker->name(DESC_THE)).c_str(),
+             jtrans(defender_name(true)).c_str(),
+             jtrans(attack_verb).c_str());
     }
 
     // Check for weapon brand & inflict that damage too
@@ -1488,28 +1488,26 @@ string melee_attack::player_why_missed()
              && to_hit + attacker_shield_tohit_penalty >= ev);
 
         const item_def *armour = you.slot_item(EQ_BODY_ARMOUR, false);
-        const string armour_name = armour ? armour->name(DESC_BASENAME)
-                                          : string("armour");
+        const string armour_name = jtrans(armour ? armour->name(DESC_BASENAME)
+                                                 : string("armour"));
 
         if (armour_miss && !shield_miss)
-            return "Your " + armour_name + " prevents you from hitting ";
+            return "あなたの" + armour_name + "は敵の攻撃を防いだ。";
         else if (shield_miss && !armour_miss)
-            return "Your shield prevents you from hitting ";
+            return "あなたの盾は敵の攻撃を防いだ。";
         else
-            return "Your shield and " + armour_name
-                   + " prevent you from hitting ";
+            return "あなたの盾と" + armour_name + "は敵の攻撃を防いだ。";
     }
 
-    return "You" + evasion_margin_adverb() + " miss ";
+    return "あなたは" + jtrans(defender->name(DESC_THE))
+                      + "への攻撃を" + evasion_margin_adverb() + "外した。";
 }
 
 void melee_attack::player_warn_miss()
 {
     did_hit = false;
 
-    mprf("%s%s.",
-         player_why_missed().c_str(),
-         defender->name(DESC_THE).c_str());
+    mpr(player_why_missed());
 
     // Upset only non-sleeping non-fleeing monsters if we missed.
     if (!defender->asleep() && !mons_is_fleeing(defender->as_monster()))
@@ -1625,8 +1623,8 @@ void melee_attack::set_attack_verb(int damage)
                 && defender_visible
                 && defender_genus == MONS_HOG)
             {
-                attack_verb = "spit";
-                verb_degree = "like the proverbial pig";
+                attack_verb = "刺し貫いた"; // "spit"の訳が紛らわしいので直接書き換え
+                verb_degree2 = "like the proverbial pig";
             }
             else if (defender_genus == MONS_CRAB
                      && Options.has_fake_lang(FLANG_GRUNT))
@@ -1638,14 +1636,14 @@ void melee_attack::set_attack_verb(int damage)
             {
                 static const char * const pierce_desc[][2] =
                 {
-                    {"spit", "like a pig"},
+                    {"刺し貫いた", "like a pig"},
                     {"skewer", "like a kebab"},
                     {"stick", "like a pincushion"},
-                    {"perforate", "like a sieve"}
+//                    {"perforate", "like a sieve"} // たとえが分かりにくいのでコメントアウト
                 };
                 const int choice = random2(ARRAYSZ(pierce_desc));
                 attack_verb = pierce_desc[choice][0];
-                verb_degree = pierce_desc[choice][1];
+                verb_degree2 = pierce_desc[choice][1];
             }
         }
         break;
@@ -1658,22 +1656,22 @@ void melee_attack::set_attack_verb(int damage)
         else if (defender_genus == MONS_OGRE)
         {
             attack_verb = "dice";
-            verb_degree = "like an onion";
+            verb_degree2 = "like an onion";
         }
         else if (defender_genus == MONS_SKELETON)
         {
             attack_verb = "fracture";
-            verb_degree = "into splinters";
+            verb_degree2 = "into splinters";
         }
         else if (defender_genus == MONS_HOG)
         {
             attack_verb = "carve";
-            verb_degree = "like the proverbial ham";
+            verb_degree2 = "like the proverbial ham";
         }
         else if (defender_genus == MONS_TENGU && one_chance_in(3))
         {
             attack_verb = "carve";
-            verb_degree = "like a turkey";
+            verb_degree2 = "like a turkey";
         }
         else if ((defender_genus == MONS_YAK || defender_genus == MONS_YAKTAUR)
                  && Options.has_fake_lang(FLANG_GRUNT))
@@ -1682,7 +1680,7 @@ void melee_attack::set_attack_verb(int damage)
         {
             static const char * const slice_desc[][2] =
             {
-                {"open",    "like a pillowcase"},
+                {"切り裂いた",    "like a pillowcase"}, // "open" を直接書き換え
                 {"slice",   "like a ripe choko"},
                 {"cut",     "into ribbons"},
                 {"carve",   "like a ham"},
@@ -1690,7 +1688,7 @@ void melee_attack::set_attack_verb(int damage)
             };
             const int choice = random2(ARRAYSZ(slice_desc));
             attack_verb = slice_desc[choice][0];
-            verb_degree = slice_desc[choice][1];
+            verb_degree2 = slice_desc[choice][1];
         }
         break;
 
@@ -1702,12 +1700,12 @@ void melee_attack::set_attack_verb(int damage)
         else if (defender_genus == MONS_SKELETON)
         {
             attack_verb = "shatter";
-            verb_degree = "into splinters";
+            verb_degree2 = "into splinters";
         }
         else if (defender->type == MONS_GREAT_ORB_OF_EYES)
         {
             attack_verb = "splatter";
-            verb_degree = "into a gooey mess";
+            verb_degree2 = "into a gooey mess";
         }
         else
         {
@@ -1721,7 +1719,7 @@ void melee_attack::set_attack_verb(int damage)
             };
             const int choice = random2(ARRAYSZ(bludgeon_desc));
             attack_verb = bludgeon_desc[choice][0];
-            verb_degree = bludgeon_desc[choice][1];
+            verb_degree2 = bludgeon_desc[choice][1];
         }
         break;
 
@@ -1738,7 +1736,7 @@ void melee_attack::set_attack_verb(int damage)
             case MH_NATURAL:
             case MH_DEMONIC:
                 attack_verb = "punish";
-                verb_degree = ", causing immense pain";
+                verb_degree2 = ", causing immense pain";
                 break;
             default:
                 attack_verb = "devastate";
@@ -1797,7 +1795,7 @@ void melee_attack::set_attack_verb(int damage)
                          || mons_genus(defender->type) == MONS_FORMICID))
             {
                 attack_verb = "squash";
-                verb_degree = "like the proverbial ant";
+                verb_degree2 = "like the proverbial ant";
             }
             else
             {
@@ -2535,11 +2533,11 @@ string melee_attack::mons_attack_desc()
     if (dist > 2)
     {
         ASSERT(can_reach());
-        ret = " from afar";
+        ret = jtrans("from afar");
     }
 
     if (weapon && attacker->type != MONS_DANCING_WEAPON && attacker->type != MONS_SPECTRAL_WEAPON)
-        ret += " with " + weapon->name(DESC_A);
+        ret += (jtrans(weapon->name(DESC_A)) + "で");
 
     return ret;
 }
@@ -2551,12 +2549,12 @@ void melee_attack::announce_hit()
 
     if (attacker->is_monster())
     {
-        mprf("%s %s %s%s%s%s",
-             atk_name(DESC_THE).c_str(),
-             attacker->conj_verb(mons_attack_verb()).c_str(),
-             defender_name(true).c_str(),
-             debug_damage_number().c_str(),
+        mprf("%sは%sを%s%s%s%s",
+             jtrans(atk_name(DESC_THE)).c_str(),
+             jtrans(defender_name(true)).c_str(),
              mons_attack_desc().c_str(),
+             jtrans(attacker->conj_verb(mons_attack_verb())).c_str(),
+             debug_damage_number().c_str(),
              attack_strength_punctuation(damage_done).c_str());
     }
     else
@@ -2567,10 +2565,11 @@ void melee_attack::announce_hit()
             verb_degree = " " + verb_degree;
         }
 
-        mprf("You %s %s%s%s%s",
-             attack_verb.c_str(),
-             defender->name(DESC_THE).c_str(),
-             verb_degree.c_str(), debug_damage_number().c_str(),
+        mprf("あなたは%s%sを%s%s%s%s",
+             jtrans(defender->name(DESC_THE)).c_str(),
+             jtrans(verb_degree).c_str(),
+             jtrans(verb_degree2).c_str(),
+             jtrans(attack_verb).c_str(), debug_damage_number().c_str(),
              attack_strength_punctuation(damage_done).c_str());
     }
 }

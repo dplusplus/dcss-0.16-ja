@@ -20,6 +20,7 @@
 #include "colour.h"
 #include "command.h"
 #include "coordit.h"
+#include "database.h"
 #include "describe.h"
 #include "dungeon.h"
 #include "english.h"
@@ -2917,8 +2918,9 @@ void describe_floor()
 {
     dungeon_feature_type grid = env.map_knowledge(you.pos()).feat();
 
-    const char* prefix = "There is ";
+    string prefix = jtrans("There is");
     string feat;
+    string suffix = jtransln("here.");
 
     switch (grid)
     {
@@ -2933,8 +2935,7 @@ void describe_floor()
         break;
     }
 
-    feat = feature_description_at(you.pos(), true,
-                               DESC_A, false);
+    feat = jtrans(feature_description_at(you.pos(), true, DESC_A, false));
     if (feat.empty())
         return;
 
@@ -2944,7 +2945,8 @@ void describe_floor()
     if (feat_is_water(grid) || feat_is_lava(grid))
         return;
 
-    mprf(channel, "%s%s here.", prefix, feat.c_str());
+    mpr_nojoin(channel, prefix + feat + suffix);
+
     if (grid == DNGN_ENTER_LABYRINTH)
         mprf(MSGCH_EXAMINE, "Beware, the minotaur awaits!");
 }
@@ -3159,14 +3161,14 @@ static string _describe_monster_weapon(const monster_info& mi, bool ident)
     if (name1.empty())
         return desc;
 
-    desc += " wielding ";
     desc += name1;
 
     if (!name2.empty())
     {
-        desc += " and ";
+        desc += "と";
         desc += name2;
     }
+    desc += "を装備している";
 
     return desc;
 }

@@ -423,10 +423,10 @@ NORETURN static void _launch_game()
 
     if (!crawl_state.game_is_tutorial())
     {
-        msg::stream << "<yellow>Welcome" << (game_start? "" : " back") << ", "
-                    << you.your_name << " the "
-                    << species_name(you.species)
-                    << " " << you.class_name << ".</yellow>"
+        msg::stream << "<yellow>" << (game_start? jtrans("Welcome") : jtrans("Welcome back")) << "、"
+                    << jtrans(species_name(you.species)) << "にして"
+                    << jtrans(you.class_name)
+                    << "の『" << you.your_name << "』。</yellow>"
                     << endl;
     }
 
@@ -443,7 +443,7 @@ NORETURN static void _launch_game()
     _god_greeting_message(game_start);
 
     if (!crawl_state.game_is_tutorial())
-        mpr("Press <w>?</w> for a list of commands and other information.");
+        mpr(jtrans("Press <w>?</w> for a list of commands and other information."));
 
     _prep_input();
 
@@ -2243,8 +2243,8 @@ void process_command(command_type cmd)
     {
         const char * const prompt
             = (Options.restart_after_game && Options.restart_after_save)
-              ? "Save game and return to main menu?"
-              : "Save game and exit?";
+              ? jtrans("Save game and return to main menu?").c_str()
+              : jtrans("Save game and exit?").c_str();
         if (yesno(prompt, true, 'n'))
             save_game(true);
         else
@@ -2253,7 +2253,7 @@ void process_command(command_type cmd)
     }
 
     case CMD_SAVE_GAME_NOW:
-        mpr("Saving game... please wait.");
+        mpr(jtrans("Saving game... please wait."));
         save_game(true);
         break;
 
@@ -2780,7 +2780,7 @@ static void _open_door(coord_def move)
             door_move.delta = move;
         else
         {
-            mprf(MSGCH_PROMPT, "Which direction?");
+            mpr_nojoin(MSGCH_PROMPT, jtrans("Which direction?"));
             direction_chooser_args args;
             args.restricts = DIR_DIR;
             direction(door_move, args);
@@ -2877,7 +2877,7 @@ static void _close_door()
         door_move.delta = move;
     else
     {
-        mprf(MSGCH_PROMPT, "Which direction?");
+        mpr_nojoin(MSGCH_PROMPT, jtrans("Which direction?"));
         direction_chooser_args args;
         args.restricts = DIR_DIR;
         direction(door_move, args);

@@ -11,6 +11,7 @@
 #include <unistd.h>
 #endif
 
+#include "database.h"
 #include "dbg-util.h"
 #include "delay.h"
 #include "directn.h"
@@ -232,7 +233,7 @@ bool interrupt_cmd_repeat(activity_interrupt_type ai,
             monster_info mi(mon);
             set_auto_exclude(mon);
 
-            mprf(MSGCH_WARN, "%s comes into view.",
+            mprf(MSGCH_WARN, jtrans("%s comes into view.").c_str(),
                  get_monster_equipment_desc(mi, DESC_WEAPON).c_str());
         }
 

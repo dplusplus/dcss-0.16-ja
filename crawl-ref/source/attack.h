@@ -73,7 +73,7 @@ public:
     int     attacker_to_hit_penalty;
 
     // Attack messages
-    string     attack_verb, verb_degree;
+    string     attack_verb, verb_degree, verb_degree2;
     string     no_damage_message;
     string     special_damage_message;
     string     aux_attack, aux_verb;
