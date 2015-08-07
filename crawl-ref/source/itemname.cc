@@ -29,6 +29,7 @@
 #include "itemprop.h"
 #include "items.h"
 #include "item_use.h"
+#include "japanese.h"
 #include "libutil.h"
 #include "makeitem.h"
 #include "notes.h"
@@ -236,57 +237,7 @@ string item_def::name(description_level_type descrip, bool terse, bool ident,
                 buff << quantity;
         }
 
-        switch (base_type)
-        {
-        case OBJ_WEAPONS:
-        case OBJ_ARMOUR:
-        case OBJ_WANDS:
-        case OBJ_JEWELLERY:
-        case OBJ_MISCELLANY:
-        case OBJ_BOOKS:
-        case OBJ_RODS:
-        case OBJ_STAVES:
-        case OBJ_ORBS:
-        case OBJ_CORPSES:
-            // スタックしないものは無視
-            break;
-        case OBJ_POTIONS:
-            buff << "本の";
-            break;
-        case OBJ_FOOD:
-            buff << "個の";
-            break;
-        case OBJ_SCROLLS:
-            buff << "巻の";
-            break;
-        case OBJ_GOLD:
-            buff << "枚の";
-            break;
-        case OBJ_MISSILES:
-            switch(sub_type)
-            {
-            case MI_NEEDLE:
-            case MI_ARROW:
-            case MI_BOLT:
-            case MI_JAVELIN:
-            case MI_TOMAHAWK:
-                buff << "本の";
-                break;
-            case MI_STONE:
-            case MI_LARGE_ROCK:
-            case MI_SLING_BULLET:
-                buff << "個の";
-                break;
-            case MI_THROWING_NET:
-                buff << "枚の";
-                break;
-            default:
-                break;
-            }
-            break;
-        default:
-            break;
-        }
+        buff << counter_suffix(*this) << "の";
     }
     else
     {
