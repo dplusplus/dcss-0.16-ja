@@ -1,4 +1,12 @@
 %%%%
+You continue eating.
+
+あなたは食事を続けている。
+%%%%
+You continue drinking.
+
+あなたは吸血を続けている。
+%%%%
 %s is too close now for your liking.
 
 %sに近づきすぎている！
