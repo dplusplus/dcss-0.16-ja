@@ -16,6 +16,7 @@
 #include "artefact.h"
 #include "colour.h"
 #include "command.h"
+#include "database.h"
 #include "decks.h"
 #include "describe.h"
 #include "env.h"
@@ -353,7 +354,7 @@ void InvMenu::set_preselect(const vector<SelItem> *pre)
 
 string slot_description()
 {
-    return make_stringf("%d/%d slots", inv_count(), ENDOFPACK);
+    return make_stringf(jtrans("%d/%d slots").c_str(), inv_count(), ENDOFPACK);
 }
 
 void InvMenu::set_title(const string &s)
@@ -821,10 +822,10 @@ menu_letter InvMenu::load_items(const vector<const item_def*> &mitems,
                     const string str = "Magical Staves ";
                     subtitle += string(strwidth(str) - strwidth(subtitle),
                                        ' ');
-                    subtitle += "(select all with <w>";
+                    subtitle += jtrans("(select all with <w>");
                     for (char gly : glyphs)
                          subtitle += gly;
-                    subtitle += "</w><blue>)";
+                    subtitle += jtrans("</w><blue>)");
                 }
             }
 
@@ -1004,20 +1005,20 @@ const char *item_class_name(int type, bool terse)
     {
         switch (type)
         {
-        case OBJ_GOLD:       return "Gold";
-        case OBJ_WEAPONS:    return "Hand Weapons";
-        case OBJ_MISSILES:   return "Missiles";
-        case OBJ_ARMOUR:     return "Armour";
-        case OBJ_WANDS:      return "Wands";
-        case OBJ_FOOD:       return "Comestibles";
-        case OBJ_SCROLLS:    return "Scrolls";
-        case OBJ_JEWELLERY:  return "Jewellery";
-        case OBJ_POTIONS:    return "Potions";
-        case OBJ_BOOKS:      return "Books";
-        case OBJ_STAVES:     return "Magical Staves";
-        case OBJ_RODS:       return "Rods";
-        case OBJ_ORBS:       return "Orbs of Power";
-        case OBJ_MISCELLANY: return "Miscellaneous";
+        case OBJ_GOLD:       return "金貨";
+        case OBJ_WEAPONS:    return "手持ち武器";
+        case OBJ_MISSILES:   return "飛び道具";
+        case OBJ_ARMOUR:     return "鎧/服";
+        case OBJ_WANDS:      return "杖";
+        case OBJ_FOOD:       return "食料";
+        case OBJ_SCROLLS:    return "巻物";
+        case OBJ_JEWELLERY:  return "装飾品";
+        case OBJ_POTIONS:    return "薬";
+        case OBJ_BOOKS:      return "魔法書";
+        case OBJ_STAVES:     return "魔法の杖";
+        case OBJ_RODS:       return "ロッド";
+        case OBJ_ORBS:       return "ゾットのオーブ";
+        case OBJ_MISCELLANY: return "その他";
         }
     }
     return "";
@@ -1365,7 +1366,7 @@ vector<SelItem> prompt_invent_items(
 
         if (need_prompt)
         {
-            mprf(MSGCH_PROMPT, "%s (<w>?</w> for menu, <w>Esc</w> to quit)",
+            mprf(MSGCH_PROMPT, jtrans("%s (<w>?</w> for menu, <w>Esc</w> to quit)").c_str(),
                  prompt);
         }
 

@@ -1,30 +1,30 @@
 %%%%
 pick-up
 
-                   <h>Picking up and dropping items</h>
-<h>Item letters</h>
-Pressing an item's letter key will select the item.
-Entering a number before the letter will only select that quantity.
+                   <h>アイテムの収得と放棄</h>
+<h>アイテムの文字</h>
+アイテムの文字を押すことでアイテムを選択できる。
+数字をアイテムの文字を入力する前に入力することで量を指定できる。
 
-<h>Regular expressions</h>
-You can press <w>Ctrl-F</w> to enter a word (or a regular expression).
-All matching items will be selected.
+<h>正規表現</h>
+<w>Ctrl-F</w>を押すことで単語(もしくは正規表現)を入力できる。
+それに一致するアイテムが選択(既に選択されていた場合は選択解除)される。
 
-<h>Cursor</h>
-There are shortcuts to quickly select several items in succession:
-<w>.</w>   selects the next item and moves the cursor down
-<w>'</w>   moves the cursor down without changing selection
-The cursor is usually hidden; pressing <w>.</w> or <w>'</w> makes it appear.
+<h>カーソル</h>
+連続で入力することで素早く複数のアイテムを選択するショートカットがある。
+<w>.</w>   アイテムを選択し、カーソルを下に移動する。
+<w>'</w>   選択を変更せず、カーソルを下に移動する。
+このカーソルは普段表示されない。<w>.</w> か <w>'</w>で表示される。(Webtileでは現在表示されない)
 
-<h>Category shortcuts</h>
-You can quickly select items by type by pressing:
-<w>!</w>   potions      <w>(</w>   weapons        <w>)</w>   ammunition      <w>[</w>   armour
-<w>/</w>   wands        <w>\</w>   rods           <w>|</w>   magical staves  <w>?</w>   scrolls
-<w>"</w>   amulets      <w>=</w>   rings          <w>}</w>   miscellaneous   <w>:</w> or <w>+</w>   books
-<w>%</w>   food
-Global selects:  <w>,</w>   select all     <w>*</w>   invert all      <w>-</w>   deselect all
-Note that for dropping, the <w>,</w> command uses the <w>drop_filter</w> option, which
-narrows the range of items to be (de)selected. The default are useless items.
+<h>アイテム種別ごとの選択</h>
+以下の文字を入力することで特定の種別をまとめて選択できる。
+<w>!</w>   薬           <w>(</w>   武器           <w>)</w>   飛び道具の弾    <w>[</w>   防具
+<w>/</w>   ワンド       <w>\</w>   ロッド         <w>|</w>   魔法の杖        <w>?</w>   巻物
+<w>"</w>   護符         <w>=</w>   指輪           <w>}</w>   その他の道具    <w>:</w> または <w>+</w>   魔法書
+<w>%</w>   食料
+全体選択:  <w>,</w>   全てを選択     <w>*</w>   全てを反転      <w>-</w>   全てを選択解除
+<w>,</w>コマンドは<w>drop_filter</w>オプションを使用し、アイテムの選択の幅を狭めることに注意せよ。
+デフォルトでは価値の無いアイテムが<w>drop_filter</w>に指定されている。
 %%%%
 known-menu
 
