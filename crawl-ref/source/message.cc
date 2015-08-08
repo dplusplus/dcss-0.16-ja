@@ -1619,7 +1619,7 @@ void canned_msg(canned_message_type which_message)
         case MSG_EMPTY_HANDED_NOW:
         {
             const char* when =
-            (which_message == MSG_EMPTY_HANDED_ALREADY ? "すでに" : "今や");
+            (which_message == MSG_EMPTY_HANDED_ALREADY ? "既に" : "今や");
             if (you.species == SP_FELID)
                 mprf(jtrans("Your mouth is %s empty.").c_str(), when);
             else if (you.has_usable_claws(true))

@@ -605,3 +605,343 @@ Convert to Beogh
 ベオへの改宗
 #{ ABIL_CONVERT_TO_BEOGH, "Convert to Beogh", 0, 0, 0, 0, 0, ABFLAG_NONE},
 %%%%
+no special abilities
+
+特になし
+%%%%
+No description found.
+
+この能力の説明は見つからなかった。
+%%%%
+frowns upon the use of this ability.
+
+はこの能力の使用に難色を示した。
+%%%%
+Sorry, you're too full to transform right now.
+
+残念ながら、あなたは満腹すぎて変身できない。
+%%%%
+You're already flying!
+
+あなたは既に飛行している！
+%%%%
+Sorry, you're not good enough to have a special ability.
+
+残念ながら、あなたはまだ特殊能力を獲得していない。
+%%%%
+Use which ability? (? or * to list)
+
+どの能力を使いますか? (? または * で一覧)
+%%%%
+You can't do that.
+
+あなたはそのようなことはできない。
+%%%%
+You cannot call out to %s while silenced.
+
+静寂中は%sに祈ることができない。
+%%%%
+You don't have enough innate magic capacity to sacrifice.
+
+あなたは犠牲にできる持ち前の魔力容量が十分にない。
+%%%%
+There's no appreciative audience!
+
+耳の肥えた聴衆が一人もいない！
+%%%%
+There's already a sanctuary in place on this level.
+
+この階層には既に他の聖域がある。
+%%%%
+Nothing ails you!
+
+あなたは既に正常だ。
+%%%%
+You don't need to restore your stats or health!
+
+あなたは自身のステータスやHPを復元する必要がない。
+%%%%
+You aren't in the Abyss!
+
+あなたはアビスの中に居ない！
+%%%%
+You're already here!
+
+あなたは既に目的地にいる！
+%%%%
+You have nothing more to learn.
+
+あなたはこれ以上学ぶことはない。
+%%%%
+%s makes your neck tingle.
+
+%sはあなたの首筋をうずかせた。
+%%%%
+No corpses are in range.
+
+視界内に死体がない。
+%%%%
+It's too cloudy to do that here.
+
+ここは既に煙幕で一杯だ。
+%%%%
+You don't have enough experience to sacrifice.
+
+あなたは犠牲にするのに十分な経験を持っていない。
+%%%%
+Stopping flight right now would be fatal!
+
+今飛行を止めるのは致命的だ！
+%%%%
+Turning back right now would cause you to %s!
+
+今変身を解除すると%sしてしまう！
+%%%%
+You fail to use your ability.
+
+あなたは特殊能力の発動に失敗した。
+%%%%
+Mushrooms don't grow well in such thickets.
+
+キノコはそのような茂みでは成長しない。
+%%%%
+Center fungus circle where?
+
+どこを菌類の輪の中心にしますか？
+%%%%
+Center oklob circle where?
+
+どこをオクロブ草の輪の中心にしますか？
+%%%%
+The dungeon trembles momentarily.
+
+ダンジョンが一瞬震えた。
+%%%%
+A mystic portal forms.
+
+神秘的なポータルが形成された。
+%%%%
+A buggy portal flickers into view, then vanishes.
+
+バグのポータルは一瞬揺らめき、消え去った。
+%%%%
+The dungeon dims for a moment.
+
+ダンジョンが一瞬暗くなった。
+%%%%
+You create a living grenade.
+
+あなたは生けるグレネードを作った。
+%%%%
+You infuse your body with magical energy.
+
+あなたは魔法の活力を体に吹き込んだ。
+%%%%
+You extend your mandibles.
+
+あなたは大顎を広げた。
+%%%%
+You are already prepared to dig.
+
+あなたは既に掘る準備ができている。
+%%%%
+Are you sure you want to shaft yourself?
+
+本当に縦穴を掘りますか？
+%%%%
+Aiming: <white>Delayed Fireball</white>
+
+目標: <white>遅延式ファイアボール</white>
+%%%%
+You spit a glob of burning liquid.
+
+あなたは燃えたぎる液体の塊を吐きだした。
+%%%%
+You breathe a blast of fire
+
+あなたは強烈な火炎を吐きだした
+%%%%
+You exhale a wave of freezing cold.
+
+あなたは凍える冷気を吐きだした。
+%%%%
+You exhale a blast of poison gas.
+
+あなたは猛毒のガスを吐きだした。
+%%%%
+You breathe a wild blast of lightning!
+
+あなたは強大な稲妻の奔流を吐いた！
+%%%%
+You spit a glob of acid.
+
+あなたは酸の塊を吐き出した。
+%%%%
+You spit a bolt of dispelling energy.
+
+あなたは魔力を解除するボルトを吐き出した。
+%%%%
+You exhale a blast of scalding steam.
+
+あなたは焼けつく蒸気を吹きかけた。
+%%%%
+You exhale a blast of noxious fumes.
+
+あなたは悪臭のする雲を吹きかけた。
+%%%%
+You feel very comfortable in the air.
+
+あなたは空中にいることが非常に心地よい。
+%%%%
+You feel less transparent.
+
+あなたは透明でなくなった。
+%%%%
+You feel more buoyant.
+
+あなたはより浮力を感じた。
+%%%%
+With a swish of your cloak, you release a cloud of fog.
+
+あなたがクロークを翻すと、そこから煙幕が放出された。
+%%%%
+You stop singing.
+
+あなたは歌うのをやめた。
+%%%%
+You clear your throat and prepare to recite.
+
+あなたは咳払いし、朗読の準備をした。
+%%%%
+You cannot imprison yourself!
+
+自分自身を収監することはできない！
+%%%%
+There is no monster there to imprison!
+
+そこには収監すべきモンスターがいない！
+%%%%
+You cannot imprison that!
+
+それを収監することはできない！
+%%%%
+You cannot imprison a law-abiding creature!
+
+あなたは法を守っているモンスターを収監することはできない！
+%%%%
+There are no corpses to sacrifice!
+
+ここには生贄に捧げる死体がない。
+%%%%
+torments the living!
+
+は生ける者に苦悶を与えた！
+%%%%
+Another wave of unholy energy enters you.
+
+不浄なエネルギーがあなたの中に入った。
+%%%%
+You offer yourself to %s, and fill with unholy energy.
+
+あなたは%sに自らを差し出し、邪悪な力で満たされた。
+%%%%
+Your soul already belongs to Yredelemnul.
+
+あなたの魂はすでにイレデレンヌルのものだ。
+%%%%
+You see nothing there to enslave the soul of!
+
+そこには魂を隷属すべきものがいない！
+%%%%
+'s soul is too badly injured.
+
+の魂はひどく傷ついている。
+%%%%
+You channel some magical energy.
+
+あなたは幾らかの魔力を取り込んだ。
+%%%%
+You feel more confident with your borrowed prowess.
+
+あなたは借り物の武勇をより確かに感じた。
+%%%%
+You gain the combat prowess of a mighty hero.
+
+あなたは英雄のような戦闘の才覚を得た。
+%%%%
+%s emits a piercing whistle.
+
+%sは耳に突き刺さるような口笛を吹いた。
+%%%%
+You can now deal lightning-fast blows.
+
+あなたは神速の如き一撃を扱うことができる。
+%%%%
+You renew your call for help.
+
+あなたは生命保護の延長を求めた。
+%%%%
+You beseech %s to protect your life.
+
+あなたは%sに生命を保護してほしいと懇願した。
+%%%%
+You cannot banish yourself!
+
+自分自身を追放することはできない！
+%%%%
+You stop recalling your allies.
+
+あなたは仲間の招集を停止した。
+%%%%
+A thick mucus forms on %s.
+
+%sの上に厚い粘液が形成された。
+%%%%
+You extend your astral sight.
+
+あなたの天空からの視界は延長された。
+%%%%
+You gain astral sight.
+
+あなたは天空からの視界を得た。
+%%%%
+You're too exhausted to draw out your power.
+
+あなたは疲労しすぎており力を解放できない。
+%%%%
+You have no need to draw out power.
+
+あなたは力を解放する必要がない。
+%%%%
+You're too exhausted to power leap.
+
+あなたは疲労しすぎており跳躍できない。
+%%%%
+You're too exhausted to unleash your apocalyptic power.
+
+あなたは疲労しすぎており黙示録の力を解放できない。
+%%%%
+Really renounce your faith, foregoing its fabulous benefits?
+
+本当に信仰を放棄し、素晴らしい恩恵を手放しますか？
+%%%%
+Are you sure you won't change your mind later?
+
+後になって後悔しませんか？
+%%%%
+Sorry, you can't do that.
+
+残念ながら、あなたはそのようなことはできない。
+%%%%
+Ability - do what?                 Cost                          Failure
+
+能力 - どれを使用しますか？              コスト                    成功率
+%%%%
+Ability - describe what?           Cost                          Failure
+
+能力 - どの説明を見ますか？              コスト                    成功率
+%%%%
+Press '<w>!</w>' or '<w>?</w>' to toggle between ability selection and description.
+
+能力の選択画面と説明画面を切り替えるには'<w>!</w>' か '<w>?</w>' を押してください。
+%%%%
