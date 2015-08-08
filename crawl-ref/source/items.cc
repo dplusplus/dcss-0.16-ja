@@ -2487,10 +2487,9 @@ static string _drop_selitem_text(const vector<MenuEntry*> *s)
         }
     }
 
-    return make_stringf(" (%u%s turn%s)",
+    return make_stringf((" " + jtrans("(%u%s turn%s)")).c_str(),
                (unsigned int)s->size(),
-               extraturns? "+" : "",
-               s->size() > 1? "s" : "");
+               extraturns? "以上" : "");
 }
 
 vector<SelItem> items_for_multidrop;
@@ -2532,11 +2531,11 @@ void drop()
     }
 
     vector<SelItem> tmp_items;
-    string prompt = "Drop what? " + slot_description()
+    string prompt = jtrans("Drop what?") + " " + slot_description()
 #ifdef TOUCH_UI
                   + " (<Enter> or tap header to drop)"
 #else
-                  + " (_ for help)"
+                  + " " + jtrans("(_ for help)")
 #endif
                   ;
 
