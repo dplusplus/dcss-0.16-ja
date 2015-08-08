@@ -1366,12 +1366,12 @@ string get_ability_desc(const ability_type ability)
     string lookup = getLongDescription(name + " ability");
 
     if (lookup.empty()) // Nothing found?
-        lookup = "No description found.\n";
+        lookup = jtrans("No description found.") + "\n";
 
     if (god_hates_ability(ability, you.religion))
     {
-        lookup += uppercase_first(god_name(you.religion))
-                  + " frowns upon the use of this ability.\n";
+        lookup += jtrans(uppercase_first(god_name(you.religion)))
+                + jtrans("frowns upon the use of this ability.") + "\n";
     }
 
     ostringstream res;
@@ -1401,15 +1401,15 @@ void no_ability_msg()
     // * Vampires can't turn into bats when full of blood.
     // * Tengu can't start to fly if already flying.
     if (you.species == SP_VAMPIRE && you.experience_level >= 3)
-        mpr("Sorry, you're too full to transform right now.");
+        mpr(jtrans("Sorry, you're too full to transform right now."));
     else if (you.species == SP_TENGU && you.experience_level >= 5
              || player_mutation_level(MUT_BIG_WINGS))
     {
         if (you.flight_mode())
-            mpr("You're already flying!");
+            mpr(jtrans("You're already flying!"));
     }
     else
-        mpr("Sorry, you're not good enough to have a special ability.");
+        mpr(jtrans("Sorry, you're not good enough to have a special ability."));
 }
 
 bool activate_ability()
@@ -1451,7 +1451,7 @@ bool activate_ability()
     int selected = -1;
     while (selected < 0)
     {
-        msg::streams(MSGCH_PROMPT) << "Use which ability? (? or * to list) "
+        msg::streams(MSGCH_PROMPT) << jtrans("Use which ability? (? or * to list)")
                                    << endl;
 
         const int keyin = get_ch();
@@ -1488,7 +1488,7 @@ bool activate_ability()
             // If we can't, cancel out.
             if (selected < 0)
             {
-                mpr("You can't do that.");
+                mpr(jtrans("You can't do that."));
                 crawl_state.zero_turns_taken();
                 return false;
             }
@@ -1526,7 +1526,7 @@ static bool _check_ability_possible(const ability_def& abil,
         {
             if (!quiet)
             {
-                mprf("You cannot call out to %s while silenced.",
+                mprf(jtrans("You cannot call out to %s while silenced.").c_str(),
                      god_name(you.religion).c_str());
             }
             return false;
@@ -1557,7 +1557,7 @@ static bool _check_ability_possible(const ability_def& abil,
         && get_real_mp(false) < (int)abil.mp_cost)
     {
         if (!quiet)
-            mpr("You don't have enough innate magic capacity to sacrifice.");
+            mpr(jtrans("You don't have enough innate magic capacity to sacrifice."));
         return false;
     }
 
@@ -1571,7 +1571,7 @@ static bool _check_ability_possible(const ability_def& abil,
         if (zin_check_recite_to_monsters(quiet) != 1)
         {
             if (!quiet)
-                mpr("There's no appreciative audience!");
+                mpr(jtrans("There's no appreciative audience!"));
             return false;
         }
         return true;
@@ -1584,7 +1584,7 @@ static bool _check_ability_possible(const ability_def& abil,
         if (env.sanctuary_time)
         {
             if (!quiet)
-                mpr("There's already a sanctuary in place on this level.");
+                mpr(jtrans("There's already a sanctuary in place on this level."));
             return false;
         }
         return true;
@@ -1600,7 +1600,7 @@ static bool _check_ability_possible(const ability_def& abil,
             && !you.duration[DUR_WEAK])
         {
             if (!quiet)
-                mpr("Nothing ails you!");
+                mpr(jtrans("Nothing ails you!"));
             return false;
         }
         return true;
@@ -1612,7 +1612,7 @@ static bool _check_ability_possible(const ability_def& abil,
             && !player_rotted())
         {
             if (!quiet)
-                mpr("You don't need to restore your stats or health!");
+                mpr(jtrans("You don't need to restore your stats or health!"));
             return false;
         }
         return true;
@@ -1621,7 +1621,7 @@ static bool _check_ability_possible(const ability_def& abil,
         if (!player_in_branch(BRANCH_ABYSS))
         {
             if (!quiet)
-                mpr("You aren't in the Abyss!");
+                mpr(jtrans("You aren't in the Abyss!"));
             return false;
         }
         return true;
@@ -1633,7 +1633,7 @@ static bool _check_ability_possible(const ability_def& abil,
         if (player_in_branch(BRANCH_ABYSS) || brdepth[BRANCH_ABYSS] == -1)
         {
             if (!quiet)
-                mpr("You're already here!");
+                mpr(jtrans("You're already here!"));
             return false;
         }
         return true;
@@ -1651,7 +1651,7 @@ static bool _check_ability_possible(const ability_def& abil,
         if (all_skills_maxed(true))
         {
             if (!quiet)
-                mpr("You have nothing more to learn.");
+                mpr(jtrans("You have nothing more to learn."));
             return false;
         }
         return true;
@@ -1659,7 +1659,7 @@ static bool _check_ability_possible(const ability_def& abil,
     case ABIL_OKAWARU_FINESSE:
         if (stasis_blocks_effect(false,
                                  quiet ? nullptr
-                                       : "%s makes your neck tingle."))
+                                       : jtrans("%s makes your neck tingle.").c_str()))
         {
             return false;
         }
@@ -1676,7 +1676,7 @@ static bool _check_ability_possible(const ability_def& abil,
             if (!quiet)
             {
                 if (retval == 0)
-                    mpr("No corpses are in range.");
+                    mpr(jtrans("No corpses are in range."));
                 else
                     canned_msg(MSG_OK);
             }
@@ -1724,7 +1724,7 @@ static bool _check_ability_possible(const ability_def& abil,
         if (env.cgrid(you.pos()) != EMPTY_CLOUD)
         {
             if (!quiet)
-                mpr("It's too cloudy to do that here.");
+                mpr(jtrans("It's too cloudy to do that here."));
             return false;
         }
         return true;
@@ -1742,7 +1742,7 @@ static bool _check_ability_possible(const ability_def& abil,
         if (you.experience_level <= RU_SAC_XP_LEVELS)
         {
             if (!quiet)
-                mpr("You don't have enough experience to sacrifice.");
+                mpr(jtrans("You don't have enough experience to sacrifice."));
             return false;
         }
         return true;
@@ -1775,7 +1775,7 @@ bool activate_talent(const talent& tal)
     {
         if (is_feat_dangerous(grd(you.pos()), false, true))
         {
-            mpr("Stopping flight right now would be fatal!");
+            mpr(jtrans("Stopping flight right now would be fatal!"));
             crawl_state.zero_turns_taken();
             return false;
         }
@@ -1792,8 +1792,8 @@ bool activate_talent(const talent& tal)
     {
         if (feat_dangerous_for_form(TRAN_NONE, env.grid(you.pos())))
         {
-            mprf("Turning back right now would cause you to %s!",
-                 env.grid(you.pos()) == DNGN_LAVA ? "burn" : "drown");
+            mprf(jtrans("Turning back right now would cause you to %s!").c_str(),
+                 env.grid(you.pos()) == DNGN_LAVA ? "焼死" : "溺死");
 
             crawl_state.zero_turns_taken();
             return false;
@@ -1896,7 +1896,7 @@ bool activate_talent(const talent& tal)
             count_action(tal.is_invocation ? CACT_INVOKE : CACT_ABIL, abil.ability);
             return true;
         case SPRET_FAIL:
-            mpr("You fail to use your ability.");
+            mpr(jtrans("You fail to use your ability."));
             you.turn_is_over = true;
             return false;
         case SPRET_ABORT:
@@ -1974,10 +1974,10 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
         fail_check();
         if (count_allies() > MAX_MONSTERS / 2)
         {
-            mpr("Mushrooms don't grow well in such thickets.");
+            mpr(jtrans("Mushrooms don't grow well in such thickets."));
             return SPRET_ABORT;
         }
-        args.top_prompt="Center fungus circle where?";
+        args.top_prompt=jtrans("Center fungus circle where?");
         direction(abild, args);
         if (!abild.isValid)
         {
@@ -2032,7 +2032,7 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
 
     case ABIL_MAKE_OKLOB_CIRCLE:
         fail_check();
-        args.top_prompt = "Center oklob circle where?";
+        args.top_prompt = jtrans("Center oklob circle where?");
         direction(abild, args);
         if (!abild.isValid)
         {
@@ -2068,17 +2068,17 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
         // Early exit: don't clobber important features.
         if (feat_is_critical(grd(you.pos())))
         {
-            mpr("The dungeon trembles momentarily.");
+            mpr(jtrans("The dungeon trembles momentarily."));
             return SPRET_ABORT;
         }
 
         // Generate a portal to something.
         const map_def *mapidx = random_map_for_tag("zotdef_bazaar", false);
         if (mapidx && dgn_safe_place_map(mapidx, false, true, you.pos()))
-            mpr("A mystic portal forms.");
+            mpr(jtrans("A mystic portal forms."));
         else
         {
-            mpr("A buggy portal flickers into view, then vanishes.");
+            mpr(jtrans("A buggy portal flickers into view, then vanishes."));
             return SPRET_ABORT;
         }
 
@@ -2089,7 +2089,7 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
         fail_check();
         if (!zotdef_create_altar())
         {
-            mpr("The dungeon dims for a moment.");
+            mpr(jtrans("The dungeon dims for a moment."));
             return SPRET_ABORT;
         }
         break;
@@ -2101,14 +2101,14 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
                          you.pos(), you.pet_target,
                          0)))
         {
-            mpr("You create a living grenade.");
+            mpr(jtrans("You create a living grenade."));
         }
         if (create_monster(
                mgen_data(MONS_GIANT_SPORE, BEH_FRIENDLY, &you, 6, 0,
                          you.pos(), you.pet_target,
                          0)))
         {
-            mpr("You create a living grenade.");
+            mpr(jtrans("You create a living grenade."));
         }
         break;
 
@@ -2121,7 +2121,7 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
     case ABIL_MUMMY_RESTORATION:
     {
         fail_check();
-        mpr("You infuse your body with magical energy.");
+        mpr(jtrans("You infuse your body with magical energy."));
         bool did_restore = restore_stat(STAT_ALL, 0, false);
 
         const int oldhpmax = you.hp_max;
@@ -2150,11 +2150,11 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
         if (!you.digging)
         {
             you.digging = true;
-            mpr("You extend your mandibles.");
+            mpr(jtrans("You extend your mandibles."));
         }
         else
         {
-            mpr("You are already prepared to dig.");
+            mpr(jtrans("You are already prepared to dig."));
             return SPRET_ABORT;
         }
         break;
@@ -2163,7 +2163,7 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
         fail_check();
         if (you.can_do_shaft_ability(false))
         {
-            if (yesno("Are you sure you want to shaft yourself?", true, 'n'))
+            if (yesno(jtrans("Are you sure you want to shaft yourself?").c_str(), true, 'n'))
                 start_delay(DELAY_SHAFT_SELF, 1);
             else
                 return SPRET_ABORT;
@@ -2183,7 +2183,7 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
 
         if (!spell_direction(spd, beam, DIR_NONE, TARG_HOSTILE, beam.range,
                              true, true, false, nullptr,
-                             "Aiming: <white>Delayed Fireball</white>",
+                             jtrans("Aiming: <white>Delayed Fireball</white>").c_str(),
                              false, &tgt))
         {
             return SPRET_ABORT;
@@ -2234,13 +2234,13 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
             return SPRET_ABORT;
         }
 
-        if (stop_attack_prompt(hitfunc, "spit at", _sticky_flame_can_hit))
+        if (stop_attack_prompt(hitfunc, "吐き出し", _sticky_flame_can_hit))
             return SPRET_ABORT;
 
         fail_check();
         zapping(ZAP_BREATHE_STICKY_FLAME, (you.form == TRAN_DRAGON) ?
-                2 * you.experience_level : you.experience_level,
-            beam, false, "You spit a glob of burning liquid.");
+            2 * you.experience_level : you.experience_level,
+            beam, false, jtrans("You spit a glob of burning liquid.").c_str());
 
         zin_recite_interrupt();
         you.increase_duration(DUR_BREATH_WEAPON,
@@ -2277,8 +2277,8 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
             if (you.form == TRAN_DRAGON)
                 power += 12;
 
-            string msg = "You breathe a blast of fire";
-            msg += (power < 15) ? '.' : '!';
+            string msg = jtrans("You breathe a blast of fire");
+            msg += (power < 15) ? "。" : "！";
 
             if (!zapping(ZAP_BREATHE_FIRE, power, beam, true, msg.c_str()))
                 return SPRET_ABORT;
@@ -2290,7 +2290,7 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
                  (you.form == TRAN_DRAGON) ?
                      2 * you.experience_level : you.experience_level,
                  beam, true,
-                         "You exhale a wave of freezing cold."))
+                         jtrans("You exhale a wave of freezing cold.").c_str()))
             {
                 return SPRET_ABORT;
             }
@@ -2298,14 +2298,14 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
 
         case ABIL_BREATHE_POISON:
             if (!zapping(ZAP_BREATHE_POISON, you.experience_level, beam, true,
-                         "You exhale a blast of poison gas."))
+                         jtrans("You exhale a blast of poison gas.").c_str()))
             {
                 return SPRET_ABORT;
             }
             break;
 
         case ABIL_BREATHE_LIGHTNING:
-            mpr("You breathe a wild blast of lightning!");
+            mpr(jtrans("You breathe a wild blast of lightning!"));
             black_drac_breath();
             break;
 
@@ -2313,7 +2313,7 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
             if (!zapping(ZAP_BREATHE_ACID,
                 (you.form == TRAN_DRAGON) ?
                     2 * you.experience_level : you.experience_level,
-                beam, true, "You spit a glob of acid."))
+                    beam, true, jtrans("You spit a glob of acid.").c_str()))
             {
                 return SPRET_ABORT;
             }
@@ -2324,7 +2324,7 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
                 (you.form == TRAN_DRAGON) ?
                     2 * you.experience_level : you.experience_level,
                 beam, true,
-                         "You spit a bolt of dispelling energy."))
+                         jtrans("You spit a bolt of dispelling energy.").c_str()))
             {
                 return SPRET_ABORT;
             }
@@ -2335,7 +2335,7 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
                 (you.form == TRAN_DRAGON) ?
                     2 * you.experience_level : you.experience_level,
                 beam, true,
-                         "You spit a glob of burning liquid."))
+                         jtrans("You spit a glob of burning liquid.").c_str()))
             {
                 return SPRET_ABORT;
             }
@@ -2346,7 +2346,7 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
                 (you.form == TRAN_DRAGON) ?
                     2 * you.experience_level : you.experience_level,
                 beam, true,
-                         "You exhale a blast of scalding steam."))
+                         jtrans("You exhale a blast of scalding steam.").c_str()))
             {
                 return SPRET_ABORT;
             }
@@ -2357,7 +2357,7 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
                 (you.form == TRAN_DRAGON) ?
                     2 * you.experience_level : you.experience_level,
                 beam, true,
-                         "You exhale a blast of noxious fumes."))
+                         jtrans("You exhale a blast of noxious fumes.").c_str()))
             {
                 return SPRET_ABORT;
             }
@@ -2397,7 +2397,7 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
             you.attribute[ATTR_PERM_FLIGHT] = 1;
             float_player();
             if (you.species == SP_TENGU)
-                mpr("You feel very comfortable in the air.");
+                mpr(jtrans("You feel very comfortable in the air."));
         }
         else
             cast_fly(you.experience_level * 4);
@@ -2422,7 +2422,7 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
     case ABIL_EVOKE_TURN_VISIBLE:
         fail_check();
         ASSERT(!you.attribute[ATTR_INVIS_UNCANCELLABLE]);
-        mpr("You feel less transparent.");
+        mpr(jtrans("You feel less transparent."));
         you.duration[DUR_INVIS] = 1;
         break;
 
@@ -2436,14 +2436,14 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
             if (standing)
                 float_player();
             else
-                mpr("You feel more buoyant.");
+                mpr(jtrans("You feel more buoyant."));
         }
         else
             fly_player(you.skill(SK_EVOCATIONS, 2) + 30);
         break;
     case ABIL_EVOKE_FOG:     // cloak of the Thief
         fail_check();
-        mpr("With a swish of your cloak, you release a cloud of fog.");
+        mpr(jtrans("With a swish of your cloak, you release a cloud of fog."));
         big_cloud(random_smoke_type(), &you, you.pos(), 50, 8 + random2(8));
         break;
 
@@ -2460,7 +2460,7 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
     case ABIL_STOP_SINGING:
         fail_check();
         you.duration[DUR_SONG_OF_SLAYING] = 0;
-        mpr("You stop singing.");
+        mpr(jtrans("You stop singing."));
         break;
 
     case ABIL_STOP_FLYING:
@@ -2486,7 +2486,7 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
             you.attribute[ATTR_RECITE_SEED] = random2(2187); // 3^7
             you.attribute[ATTR_RECITE_HP]   = you.hp;
             you.duration[DUR_RECITE] = 3 * BASELINE_DELAY;
-            mprf("You clear your throat and prepare to recite.");
+            mpr(jtrans("You clear your throat and prepare to recite."));
         }
         else
         {
@@ -2509,7 +2509,7 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
 
         if (beam.target == you.pos())
         {
-            mpr("You cannot imprison yourself!");
+            mpr(jtrans("You cannot imprison yourself!"));
             return SPRET_ABORT;
         }
 
@@ -2517,19 +2517,19 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
 
         if (mons == nullptr || !you.can_see(mons))
         {
-            mpr("There is no monster there to imprison!");
+            mpr(jtrans("There is no monster there to imprison!"));
             return SPRET_ABORT;
         }
 
         if (mons_is_firewood(mons) || mons_is_conjured(mons->type))
         {
-            mpr("You cannot imprison that!");
+            mpr(jtrans("You cannot imprison that!"));
             return SPRET_ABORT;
         }
 
         if (mons->friendly() || mons->good_neutral())
         {
-            mpr("You cannot imprison a law-abiding creature!");
+            mpr(jtrans("You cannot imprison a law-abiding creature!"));
             return SPRET_ABORT;
         }
 
@@ -2581,20 +2581,20 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
         fail_check();
         if (!kiku_take_corpse())
         {
-            mpr("There are no corpses to sacrifice!");
+            mpr(jtrans("There are no corpses to sacrifice!"));
             return SPRET_ABORT;
         }
-        simple_god_message(" torments the living!");
+        simple_god_message(jtrans("torments the living!").c_str());
         torment(&you, TORMENT_KIKUBAAQUDGHA, you.pos());
         break;
 
     case ABIL_YRED_INJURY_MIRROR:
         fail_check();
         if (yred_injury_mirror())
-            mpr("Another wave of unholy energy enters you.");
+            mpr(jtrans("Another wave of unholy energy enters you."));
         else
         {
-            mprf("You offer yourself to %s, and fill with unholy energy.",
+            mprf(jtrans("You offer yourself to %s, and fill with unholy energy.").c_str(),
                  god_name(you.religion).c_str());
         }
         you.duration[DUR_MIRROR_DAMAGE] = 9 * BASELINE_DELAY
@@ -2630,7 +2630,7 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
 
         if (beam.target == you.pos())
         {
-            mpr("Your soul already belongs to Yredelemnul.");
+            mpr(jtrans("Your soul already belongs to Yredelemnul."));
             return SPRET_ABORT;
         }
 
@@ -2638,14 +2638,14 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
         if (mons == nullptr || !you.can_see(mons)
             || !ench_flavour_affects_monster(BEAM_ENSLAVE_SOUL, mons))
         {
-            mpr("You see nothing there to enslave the soul of!");
+            mpr(jtrans("You see nothing there to enslave the soul of!"));
             return SPRET_ABORT;
         }
 
         // The monster can be no more than lightly wounded/damaged.
         if (mons_get_damage_level(mons) > MDAM_LIGHTLY_DAMAGED)
         {
-            simple_monster_message(mons, "'s soul is too badly injured.");
+            simple_monster_message(mons, jtrans("'s soul is too badly injured.").c_str());
             return SPRET_ABORT;
         }
         fail_check();
@@ -2655,16 +2655,16 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
 
     case ABIL_SIF_MUNA_CHANNEL_ENERGY:
         fail_check();
-        mpr("You channel some magical energy.");
+        mpr(jtrans("You channel some magical energy."));
 
         inc_mp(1 + random2(you.skill_rdiv(SK_INVOCATIONS, 1, 4) + 2));
         break;
 
     case ABIL_OKAWARU_HEROISM:
         fail_check();
-        mprf(MSGCH_DURATION, you.duration[DUR_HEROISM]
+        mpr_nojoin(MSGCH_DURATION, jtrans(you.duration[DUR_HEROISM]
              ? "You feel more confident with your borrowed prowess."
-             : "You gain the combat prowess of a mighty hero.");
+             : "You gain the combat prowess of a mighty hero.").c_str());
 
         you.increase_duration(DUR_HEROISM,
             35 + random2(you.skill(SK_INVOCATIONS, 8)), 80);
@@ -2674,8 +2674,8 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
 
     case ABIL_OKAWARU_FINESSE:
         fail_check();
-        if (stasis_blocks_effect(true, "%s emits a piercing whistle.",
-                                 20, "%s makes your neck tingle."))
+        if (stasis_blocks_effect(true, jtrans("%s emits a piercing whistle.").c_str(),
+                                 20, jtrans("%s makes your neck tingle.").c_str()))
         {
             // Identify the amulet and spend costs - finesse will be aborted
             // for free with an identified amulet.
@@ -2686,10 +2686,10 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
         {
             // "Your [hand(s)] get{s} new energy."
             mprf(MSGCH_DURATION, "%s",
-                 you.hands_act("get", "new energy.").c_str());
+                 you.hands_act("手に入れた", "更なる力").c_str());
         }
         else
-            mprf(MSGCH_DURATION, "You can now deal lightning-fast blows.");
+            mpr_nojoin(MSGCH_DURATION, jtrans("You can now deal lightning-fast blows."));
 
         you.increase_duration(DUR_FINESSE,
             40 + random2(you.skill(SK_INVOCATIONS, 8)), 80);
@@ -2803,10 +2803,10 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
     case ABIL_ELYVILON_LIFESAVING:
         fail_check();
         if (you.duration[DUR_LIFESAVING])
-            mpr("You renew your call for help.");
+            mpr(jtrans("You renew your call for help."));
         else
         {
-            mprf("You beseech %s to protect your life.",
+            mprf(jtrans("You beseech %s to protect your life.").c_str(),
                  god_name(you.religion).c_str());
         }
         // Might be a decrease, this is intentional (like Yred).
@@ -2889,7 +2889,7 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
 
         if (beam.target == you.pos())
         {
-            mpr("You cannot banish yourself!");
+            mpr(jtrans("You cannot banish yourself!"));
             return SPRET_ABORT;
         }
 
@@ -2958,7 +2958,7 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
 
     case ABIL_STOP_RECALL:
         fail_check();
-        mpr("You stop recalling your allies.");
+        mpr(jtrans("You stop recalling your allies."));
         end_recall();
         break;
 
@@ -3022,8 +3022,8 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
         fail_check();
         const item_def* const weapon = you.weapon();
         const string msg = (weapon) ? weapon->name(DESC_YOUR)
-                                    : ("your " + you.hand_name(true));
-        mprf(MSGCH_DURATION, "A thick mucus forms on %s.", msg.c_str());
+                                    : (jtrans("your") + jtrans(you.hand_name(true)));
+        mprf(MSGCH_DURATION, jtrans("A thick mucus forms on %s.").c_str(), msg.c_str());
         you.increase_duration(DUR_SLIMIFY,
                               random2avg(you.piety / 4, 2) + 3, 100);
         break;
@@ -3061,9 +3061,9 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
     case ABIL_ASHENZARI_SCRYING:
         fail_check();
         if (you.duration[DUR_SCRYING])
-            mpr("You extend your astral sight.");
+            mpr(jtrans("You extend your astral sight."));
         else
-            mpr("You gain astral sight.");
+            mpr(jtrans("You gain astral sight."));
         you.duration[DUR_SCRYING] = 100 + random2avg(you.piety * 2, 2);
         you.xray_vision = true;
         break;
@@ -3160,7 +3160,7 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
         fail_check();
         if (you.duration[DUR_EXHAUSTED])
         {
-            mpr("You're too exhausted to draw out your power.");
+            mpr(jtrans("You're too exhausted to draw out your power."));
             return SPRET_ABORT;
         }
         if (you.hp == you.hp_max && you.magic_points == you.max_magic_points
@@ -3170,7 +3170,7 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
             && !you.petrifying()
             && !you.is_constricted())
         {
-            mpr("You have no need to draw out power.");
+            mpr(jtrans("You have no need to draw out power."));
             return SPRET_ABORT;
         }
         ru_draw_out_power();
@@ -3181,7 +3181,7 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
         fail_check();
         if (you.duration[DUR_EXHAUSTED])
         {
-            mpr("You're too exhausted to power leap.");
+            mpr(jtrans("You're too exhausted to power leap."));
             return SPRET_ABORT;
         }
         if (!ru_power_leap())
@@ -3196,7 +3196,7 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
         fail_check();
         if (you.duration[DUR_EXHAUSTED])
         {
-            mpr("You're too exhausted to unleash your apocalyptic power.");
+            mpr(jtrans("You're too exhausted to unleash your apocalyptic power."));
             return SPRET_ABORT;
         }
         if (!ru_apocalypse())
@@ -3206,9 +3206,9 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
 
     case ABIL_RENOUNCE_RELIGION:
         fail_check();
-        if (yesno("Really renounce your faith, foregoing its fabulous benefits?",
+        if (yesno(jtrans("Really renounce your faith, foregoing its fabulous benefits?").c_str(),
                   false, 'n')
-            && yesno("Are you sure you won't change your mind later?",
+            && yesno(jtrans("Are you sure you won't change your mind later?").c_str(),
                      false, 'n'))
         {
             excommunication();
@@ -3232,7 +3232,7 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
 
     case ABIL_NON_ABILITY:
         fail_check();
-        mpr("Sorry, you can't do that.");
+        mpr(jtrans("Sorry, you can't do that."));
         break;
 
     default:
@@ -3328,20 +3328,20 @@ int choose_ability_menu(const vector<talent>& talents)
     {
         // Hack like the one in spl-cast.cc:list_spells() to align the title.
         ToggleableMenuEntry* me =
-            new ToggleableMenuEntry("  Ability - do what?                 "
-                                    "Cost                          Failure",
-                                    "  Ability - describe what?           "
-                                    "Cost                          Failure",
+            new ToggleableMenuEntry(jtrans("Ability - do what?                 "
+                                    "Cost                          Failure"),
+                                    jtrans("Ability - describe what?           "
+                                    "Cost                          Failure"),
                                     MEL_ITEM);
         me->colour = BLUE;
         abil_menu.add_entry(me);
     }
 #else
     abil_menu.set_title(
-        new ToggleableMenuEntry("  Ability - do what?                 "
-                                "Cost                          Failure",
-                                "  Ability - describe what?           "
-                                "Cost                          Failure",
+        new ToggleableMenuEntry(jtrans("Ability - do what?                 "
+                                "Cost                          Failure"),
+                                jtrans("Ability - describe what?           "
+                                "Cost                          Failure"),
                                 MEL_TITLE));
 #endif
     abil_menu.set_tag("ability");
@@ -3357,9 +3357,9 @@ int choose_ability_menu(const vector<talent>& talents)
     }
     else
     {
-        abil_menu.set_more(formatted_string::parse_string(
+        abil_menu.set_more(formatted_string::parse_string(jtrans(
                            "Press '<w>!</w>' or '<w>?</w>' to toggle "
-                           "between ability selection and description."));
+                           "between ability selection and description.")));
     }
 
     int numbers[52];

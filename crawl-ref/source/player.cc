@@ -9000,19 +9000,6 @@ string player::hands_verb(const string &plural_verb) const
     return hand + " " + conjugate_verb(plural_verb, plural);
 }
 
-// Is this a character that would not normally have a preceding space when
-// it follows a word?
-static bool _is_end_punct(char c)
-{
-    switch (c)
-    {
-    case ' ': case '.': case '!': case '?':
-    case ',': case ':': case ';': case ')':
-        return true;
-    }
-    return false;
-}
-
 /**
  * Return a string describing the player's hand(s) (or equivalent) taking the
  * given action (verb).
@@ -9028,8 +9015,11 @@ static bool _is_end_punct(char c)
 string player::hands_act(const string &plural_verb,
                          const string &object) const
 {
-    const bool space = !object.empty() && !_is_end_punct(object[0]);
-    return "Your " + hands_verb(plural_verb) + (space ? " " : "") + object;
+    bool plural;
+    const string hand = hand_name(true, &plural);
+    return jtrans("Your") + hand + "は"
+                          + object + "を"
+                          + plural_verb + "。";
 }
 
 /**
