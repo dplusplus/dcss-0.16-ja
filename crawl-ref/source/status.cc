@@ -651,32 +651,32 @@ static void _describe_hunger(status_info* inf)
     {
     case HS_ENGORGED:
         inf->light_colour = LIGHTGREEN;
-        inf->light_text   = (vamp ? "Alive" : "Engorged");
+        inf->light_text   = (vamp ? "生者" : "腹一杯");
         break;
     case HS_VERY_FULL:
         inf->light_colour = GREEN;
-        inf->light_text   = "Very Full";
+        inf->light_text   = "とても満腹";
         break;
     case HS_FULL:
         inf->light_colour = GREEN;
-        inf->light_text   = "Full";
+        inf->light_text   = "満腹";
         break;
     case HS_HUNGRY:
         inf->light_colour = YELLOW;
-        inf->light_text   = (vamp ? "Thirsty" : "Hungry");
+        inf->light_text   = (vamp ? "乾いている" : "空腹");
         break;
     case HS_VERY_HUNGRY:
         inf->light_colour = YELLOW;
-        inf->light_text   = (vamp ? "Very Thirsty" : "Very Hungry");
+        inf->light_text   = (vamp ? "とても乾いている" : "とても空腹");
         break;
     case HS_NEAR_STARVING:
         inf->light_colour = YELLOW;
-        inf->light_text   = (vamp ? "Near Bloodless" : "Near Starving");
+        inf->light_text   = (vamp ? "ほとんど血液がない" : "餓死が近い");
         break;
     case HS_STARVING:
         inf->light_colour = RED;
-        inf->light_text   = (vamp ? "Bloodless" : "Starving");
-        inf->short_text   = (vamp ? "bloodless" : "starving");
+        inf->light_text   = (vamp ? "血液がない" : "餓死しかけ");
+        inf->short_text   = (vamp ? "血液がない" : "餓死しかけ");
         break;
     case HS_SATIATED: // no status light
     default:

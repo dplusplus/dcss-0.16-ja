@@ -742,14 +742,14 @@ void handle_delay()
             break;
 
         case DELAY_EAT:
-            mprf(MSGCH_MULTITURN_ACTION, "You continue eating.");
+            mpr_nojoin(MSGCH_MULTITURN_ACTION, jtrans("You continue eating."));
             break;
 
         case DELAY_FEED_VAMPIRE:
         {
             item_def &corpse = (delay.parm1 ? you.inv[delay.parm2]
                                             : mitm[delay.parm2]);
-            mprf(MSGCH_MULTITURN_ACTION, "You continue drinking.");
+            mpr_nojoin(MSGCH_MULTITURN_ACTION, jtrans("You continue drinking."));
             vampire_nutrition_per_turn(corpse, 0);
             break;
         }
