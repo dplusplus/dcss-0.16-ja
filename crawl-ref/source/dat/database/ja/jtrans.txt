@@ -1171,6 +1171,10 @@ Which direction?
 
 どの方向ですか？
 %%%%
+Unknown command.
+
+そのコマンドは存在しません。
+%%%%
 ############################## items.cc ##############################
 %%%%
 You now have %d gold piece%s.

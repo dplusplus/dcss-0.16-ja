@@ -2284,7 +2284,7 @@ void process_command(command_type cmd)
         if (crawl_state.game_is_hints())
             mpr("Unknown command. (For a list of commands type <w>?\?</w>.)");
         else // well, not examine, but...
-            mprf(MSGCH_EXAMINE_FILTER, "Unknown command.");
+            mpr_nojoin(MSGCH_EXAMINE_FILTER, jtrans("Unknown command."));
 
         break;
     }

@@ -64,6 +64,7 @@ msc += $warning:no longer ripe
 #
 msc += $boring:You start (resting|waiting)
 msc += $boring:Unknown command
+msc += $boring:そのコマンドは存在しません
 msc += $boring:disappears? in a puff of smoke
 msc += $boring:dissolves? into (sparkling lights|shadows)
 msc += $boring:crumbles away
