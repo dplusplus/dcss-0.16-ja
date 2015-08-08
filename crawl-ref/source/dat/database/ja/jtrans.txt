@@ -39,6 +39,56 @@ Found %s %s.
 
 %s個の%sを見つけた。
 %%%%
+############################## butcher.cc ##############################
+%%%%
+Desecrating this corpse would be a sin. Continue anyway?
+
+この死体を捌くことに罪を感じる。続けますか？
+%%%%
+You bottle the corpse's blood.
+
+あなたは死体の血液を採血した。
+%%%%
+There isn't anything here!
+
+ここには何もない！
+%%%%
+You butcher %s.
+
+あなたは%sを解体した。
+%%%%
+You enjoyed that.
+
+あなたはそれを楽しんだ。
+%%%%
+There isn't anything to %sbutcher here.
+
+ここには%s解体するようなものはない。
+%%%%
+bottle or
+
+採血したり
+%%%%
+There isn't anything suitable to %sbutcher here.
+
+ここには%s解体するのに適したものはない。
+%%%%
+Choose a corpse to bottle or butcher
+
+解体や採血する死体を選んでください
+%%%%
+Choose a corpse to butcher
+
+解体する死体を選んでください
+%%%%
+%s %s? [(y)es/(c)hop/(n)o/(a)ll/(q)uit/?]
+
+%s%sする？[(y)はい/(c)解体/(n)いいえ/(a)残り全部/(q)中止/?]
+%%%%
+There isn't anything else to %sbutcher here.
+
+ここには他に%s解体するようなものはない。
+%%%%
 ############################## itemname.cc ##############################
 %%%%
 god gift
