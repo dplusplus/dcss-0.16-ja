@@ -12,6 +12,7 @@
 
 #include "artefact.h"
 #include "command.h"
+#include "database.h"
 #include "directn.h"
 #include "english.h"
 #include "env.h"
@@ -136,27 +137,27 @@ void fire_target_behaviour::set_prompt()
 
     // Build the action.
     if (!active_item())
-        msg << "Firing ";
+        msg << jtrans("Firing") << " ";
     else
     {
         const launch_retval projected = is_launched(&you, you.weapon(),
                                                     *active_item());
         switch (projected)
         {
-        case LRET_FUMBLED:  msg << "Tossing away "; break;
-        case LRET_LAUNCHED: msg << "Firing ";             break;
-        case LRET_THROWN:   msg << "Throwing ";           break;
+        case LRET_FUMBLED:  msg << jtrans("Tossing away") << " "; break;
+        case LRET_LAUNCHED: msg << jtrans("Firing") << " "; break;
+        case LRET_THROWN:   msg << jtrans("Throwing") << " "; break;
         }
     }
 
     // And a key hint.
-    msg << (no_other_items ? "(i - inventory)"
-                           : "(i - inventory. (,) - cycle)")
+    msg << jtrans(no_other_items ? "(i - inventory)"
+                                 : "(i - inventory. (,) - cycle)")
         << ": ";
 
     // Describe the selected item for firing.
     if (!active_item())
-        msg << "<red>" << m_noitem_reason << "</red>";
+        msg << "<red>" << jtrans(m_noitem_reason) << "</red>";
     else
     {
         const char* colour = (selected_from_inventory ? "lightgrey" : "w");
@@ -580,7 +581,7 @@ static bool _setup_missile_beam(const actor *agent, bolt &beam, item_def &item,
         if (beam.flavour == BEAM_MISSILE)
         {
             expl->flavour = BEAM_FRAG;
-            expl->name   += " fragments";
+            expl->name   += jtrans("fragments");
 
             const string short_name =
                 item.name(DESC_BASENAME, true, false, false, false,
@@ -589,15 +590,10 @@ static bool _setup_missile_beam(const actor *agent, bolt &beam, item_def &item,
             expl->name = replace_all(expl->name, item.name(DESC_PLAIN),
                                      short_name);
         }
-        expl->name = "explosion of " + expl->name;
+        expl->name += jtrans("explosion of");
 
         beam.special_explosion = expl;
     }
-
-    if (!is_artefact(item))
-        ammo_name = article_a(ammo_name, true);
-    else
-        ammo_name = "the " + ammo_name;
 
     return false;
 }
@@ -856,11 +852,11 @@ bool throw_it(bolt &pbolt, int throw_2, dist *target)
     you.time_taken = you.attack_delay(you.weapon(), &item);
 
     // Create message.
-    mprf("You %s%s %s.",
-          teleport ? "magically " : "",
-          (projected == LRET_FUMBLED ? "toss away" :
-           projected == LRET_LAUNCHED ? "shoot" : "throw"),
-          ammo_name.c_str());
+    mprf(jtrans("You %s%s %s.").c_str(),
+         teleport ? jtrans("magically").c_str() : "",
+         ammo_name.c_str(),
+         jtrans(projected == LRET_FUMBLED ? "toss away" :
+                projected == LRET_LAUNCHED ? "shoot" : "throw").c_str());
 
     // Ensure we're firing a 'missile'-type beam.
     pbolt.pierce    = false;
@@ -925,7 +921,7 @@ bool throw_it(bolt &pbolt, int throw_2, dist *target)
         viewwindow();
         pbolt.fire();
 
-        msg::stream << item.name(DESC_THE) << " returns to your pack!"
+        msg::stream << item.name(DESC_THE) << jtrans("returns to your pack!")
                     << endl;
 
         // Player saw the item return.

@@ -344,13 +344,13 @@ string direction_chooser::build_targeting_hint_string() const
     const monster* p_target = _get_current_target();
 
     if (f_target && f_target == p_target)
-        hint_string = ", f/p - " + f_target->name(DESC_PLAIN);
+        hint_string = ", f/p - " + jtrans(f_target->name(DESC_PLAIN));
     else
     {
         if (f_target)
-            hint_string += ", f - " + f_target->name(DESC_PLAIN);
+            hint_string += ", f - " + jtrans(f_target->name(DESC_PLAIN));
         if (p_target)
-            hint_string += ", p - " + p_target->name(DESC_PLAIN);
+            hint_string += ", p - " + jtrans(p_target->name(DESC_PLAIN));
     }
 
     return hint_string;
@@ -364,7 +364,7 @@ void direction_chooser::print_top_prompt() const
 
 void direction_chooser::print_key_hints() const
 {
-    string prompt = "Press: ? - help";
+    string prompt = jtrans("Press: ? - help");
 
     if (just_looking)
     {
@@ -380,7 +380,7 @@ void direction_chooser::print_key_hints() const
         switch (restricts)
         {
         case DIR_NONE:
-            prompt += ", Shift-Dir - straight line";
+            prompt += jtrans(", Shift-Dir - straight line");
             prompt += hint_string;
             break;
         case DIR_TARGET:
@@ -1515,7 +1515,7 @@ void direction_chooser::print_target_monster_description(bool &did_cloud) const
         text = get_monster_equipment_desc(mi);
     }
     else
-        text = "Disturbance";
+        text = jtrans("Disturbance");
 
     // Build the final description string.
     if (!suffixes.empty())
@@ -1526,7 +1526,7 @@ void direction_chooser::print_target_monster_description(bool &did_cloud) const
     }
 
     mprf(MSGCH_PROMPT, "%s: <lightgrey>%s</lightgrey>",
-         target_prefix ? target_prefix : "Aim",
+         target_prefix ? target_prefix : jtrans("Aim").c_str(),
          text.c_str());
 
     // If there's a cloud here, it's been described.

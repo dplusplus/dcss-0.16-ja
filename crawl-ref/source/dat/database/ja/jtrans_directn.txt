@@ -1,6 +1,22 @@
 %%%%
 ############################## directn.cc ##############################
 %%%%
+Press: ? - help
+
+入力: ? - ヘルプ
+%%%%
+, Shift-Dir - straight line
+
+, Shift+方向 - 方向のみ指定
+%%%%
+Disturbance
+
+障害物
+%%%%
+Aim
+
+照準
+%%%%
 There is
 
 ここには
