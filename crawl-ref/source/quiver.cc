@@ -13,6 +13,7 @@
 
 #include <algorithm>
 
+#include "database.h"
 #include "env.h"
 #include "invent.h"
 #include "itemprop.h"
@@ -83,7 +84,7 @@ int player_quiver::get_fire_item(string* no_item_reason) const
     if (you.species == SP_FELID)
     {
         if (no_item_reason != nullptr)
-            *no_item_reason = "You can't grasp things well enough to throw them.";
+            *no_item_reason = jtrans("You can't grasp things well enough to throw them.");
         return -1;
     }
     int slot;
@@ -110,20 +111,20 @@ int player_quiver::get_fire_item(string* no_item_reason) const
             // nothing
         }
         else if (full_fire_order.empty())
-            *no_item_reason = "No suitable missiles.";
+            *no_item_reason = jtrans("No suitable missiles.");
         else
         {
             const int skipped_item = full_fire_order[0];
             if (skipped_item < Options.fire_items_start)
             {
                 *no_item_reason = make_stringf(
-                    "Nothing suitable (fire_items_start = '%c').",
+                    jtrans("Nothing suitable (fire_items_start = '%c').").c_str(),
                     index_to_letter(Options.fire_items_start));
             }
             else
             {
                 *no_item_reason = make_stringf(
-                    "Nothing suitable (ignored '=f'-inscribed item on '%c').",
+                    jtrans("Nothing suitable (ignored '=f'-inscribed item on '%c').").c_str(),
                     index_to_letter(skipped_item));
             }
         }

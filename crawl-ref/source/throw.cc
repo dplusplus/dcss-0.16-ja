@@ -12,6 +12,7 @@
 
 #include "artefact.h"
 #include "command.h"
+#include "database.h"
 #include "directn.h"
 #include "english.h"
 #include "env.h"
@@ -136,27 +137,27 @@ void fire_target_behaviour::set_prompt()
 
     // Build the action.
     if (!active_item())
-        msg << "Firing ";
+        msg << jtrans("Firing") << " ";
     else
     {
         const launch_retval projected = is_launched(&you, you.weapon(),
                                                     *active_item());
         switch (projected)
         {
-        case LRET_FUMBLED:  msg << "Tossing away "; break;
-        case LRET_LAUNCHED: msg << "Firing ";             break;
-        case LRET_THROWN:   msg << "Throwing ";           break;
+        case LRET_FUMBLED:  msg << jtrans("Tossing away") << " "; break;
+        case LRET_LAUNCHED: msg << jtrans("Firing") << " "; break;
+        case LRET_THROWN:   msg << jtrans("Throwing") << " "; break;
         }
     }
 
     // And a key hint.
-    msg << (no_other_items ? "(i - inventory)"
-                           : "(i - inventory. (,) - cycle)")
+    msg << jtrans(no_other_items ? "(i - inventory)"
+                                 : "(i - inventory. (,) - cycle)")
         << ": ";
 
     // Describe the selected item for firing.
     if (!active_item())
-        msg << "<red>" << m_noitem_reason << "</red>";
+        msg << "<red>" << jtrans(m_noitem_reason) << "</red>";
     else
     {
         const char* colour = (selected_from_inventory ? "lightgrey" : "w");

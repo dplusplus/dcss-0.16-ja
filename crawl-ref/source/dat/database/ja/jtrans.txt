@@ -1977,9 +1977,49 @@ Choose %s[Y]es%s, [N]o, [Q]uit, or [A]ll!
 
 [Y]はい [N]いいえ [Q]キャンセル のみで答えてください。
 %%%%
+############################## quiver.cc ##############################
+%%%%
+You can't grasp things well enough to throw them.
+
+あなたはそれを投擲できるほどしっかり掴むことができない。
+%%%%
+No suitable missiles.
+
+投擲/射撃に適した持ち物がない。
+%%%%
+Nothing suitable (fire_items_start = '%c').
+
+
+%%%%
+Nothing suitable (ignored '=f'-inscribed item on '%c').
+
+
+%%%%
 ############################## state.cc ##############################
 %%%%
 %s comes into view.
 
 %sに遭遇した。
+%%%%
+############################## throw.cc ##############################
+%%%%
+Firing
+
+射撃する
+%%%%
+Tossing away
+
+投げ捨てる
+%%%%
+Throwing
+
+投擲する
+%%%%
+(i - inventory)
+
+(i - 一覧から選択)
+%%%%
+(i - inventory. (,) - cycle)
+
+(i - 一覧から選択 , - 切り替え)
 %%%%
