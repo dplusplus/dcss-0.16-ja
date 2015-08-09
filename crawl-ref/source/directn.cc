@@ -1511,7 +1511,7 @@ void direction_chooser::print_target_monster_description(bool &did_cloud) const
     {
         monster_info mi(mon);
         // Only describe the monster if you can actually see it.
-        _append_container(suffixes, monster_description_suffixes(mi));
+        append_container_jtrans(suffixes, monster_description_suffixes(mi));
         text = get_monster_equipment_desc(mi);
     }
     else
@@ -3125,7 +3125,7 @@ string feature_description_at(const coord_def& where, bool covering,
     }
 }
 
-static string _describe_monster_weapon(const monster_info& mi, bool ident)
+static string _describe_monster_weapon(const monster_info& mi, bool ident, bool weapon_only=false)
 {
     string desc = "";
     string name1, name2;
@@ -3168,6 +3168,10 @@ static string _describe_monster_weapon(const monster_info& mi, bool ident)
         desc += "と";
         desc += name2;
     }
+
+    if (weapon_only)
+        return desc;
+
     desc += "を装備している";
 
     return desc;
@@ -3397,7 +3401,7 @@ string get_monster_equipment_desc(const monster_info& mi,
         if (print_attitude && mons_is_pghost(mi.type))
             desc = get_ghost_description(mi);
         else
-            desc = mi.full_name(mondtype);
+            desc = jtrans(mi.full_name(mondtype));
 
         if (print_attitude)
         {
@@ -3492,45 +3496,44 @@ string get_monster_equipment_desc(const monster_info& mi,
     vector<string> item_descriptions;
 
     if (!weap.empty())
-        item_descriptions.push_back(weap.substr(1)); // strip leading space
+    {
+        weap = _describe_monster_weapon(mi, level == DESC_IDENTIFIED, true);
+        item_descriptions.push_back(weap);
+    }
 
     if (mon_arm)
     {
-        const string armour_desc = make_stringf("wearing %s",
-                                                mon_arm->name(DESC_A).c_str());
+        const string armour_desc = mon_arm->name(DESC_A);
         item_descriptions.push_back(armour_desc);
     }
 
     if (mon_shd)
     {
-        const string shield_desc = make_stringf("wearing %s",
-                                                mon_shd->name(DESC_A).c_str());
+        const string shield_desc = mon_shd->name(DESC_A);
         item_descriptions.push_back(shield_desc);
     }
 
     if (mon_rng)
     {
-        const string rng_desc = make_stringf("wearing %s",
-                                             mon_rng->name(DESC_A).c_str());
+        const string rng_desc = mon_rng->name(DESC_A);
         item_descriptions.push_back(rng_desc);
     }
 
     if (mon_qvr)
     {
-        const string qvr_desc = make_stringf("quivering %s",
-                                             mon_qvr->name(DESC_A).c_str());
+        const string qvr_desc = mon_qvr->name(DESC_A);
         item_descriptions.push_back(qvr_desc);
     }
 
+    string carried_desc = "";
+
     if (mon_carry)
     {
-        string carried_desc = "carrying ";
-
         if (mon_alt)
         {
             carried_desc += mon_alt->name(DESC_A);
             if (mon_has_wand)
-                carried_desc += " and ";
+                carried_desc += "と";
         }
 
         if (mon_has_wand)
@@ -3538,19 +3541,23 @@ string get_monster_equipment_desc(const monster_info& mi,
             if (mi.props["wand_known"])
                 carried_desc += mon_wnd->name(DESC_A);
             else
-                carried_desc += "a wand";
+                carried_desc += jtrans("a wand");
         }
 
-        item_descriptions.push_back(carried_desc);
+        carried_desc += "を所持している";
     }
 
-    const string item_description = comma_separated_line(
+    const string item_description = to_separated_line(
                                                 item_descriptions.begin(),
-                                                item_descriptions.end());
+                                                item_descriptions.end(),
+                                                false);
 
     if (!item_description.empty() && !desc.empty())
-        desc += ", ";
-    return desc + item_description;
+        desc += ", " + item_description + "を装備している";
+    if (!carried_desc.empty() && !desc.empty())
+        desc += ", " + carried_desc;
+
+    return desc;
 }
 
 static bool _print_cloud_desc(const coord_def where)

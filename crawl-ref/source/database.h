@@ -51,6 +51,25 @@ string jtrans(const string &key, const bool linefeed = false);
 string jtrans_make_stringf(const string &msg, const string &subject, const string &verb, const string &object);
 string jtrans_make_stringf(const string &msg, const string &verb, const string &object);
 #define jtransln(x) (jtrans(x, true))
+template<typename C1, typename C2>
+void append_container_jtrans(C1& container_base, const C2& container_append)
+{
+    for (auto val : container_append)
+    {
+        container_base.push_back(jtrans(val));
+    }
+}
+
+template<typename Z>
+string to_separated_line(Z start, Z end, bool to_j = true)
+{
+    if (to_j)
+        return comma_separated_fn(start, end, [] (const string &s) { return jtrans(s); },
+                                  "と", "と");
+    else
+        return comma_separated_fn(start, end, [] (const string &s) { return s; },
+                                  "と", "と");
+}
 
 vector<string> getAllFAQKeys();
 string getFAQ_Question(const string &key);
