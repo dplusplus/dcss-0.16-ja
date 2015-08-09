@@ -1145,6 +1145,22 @@ merged slime creature
 
 合体したスライム
 %%%%
+large slime creature
+
+大きなスライム
+%%%%
+very large slime creature
+
+とても大きなスライム
+%%%%
+enormous slime creature
+
+巨大なスライム
+%%%%
+titanic slime creature
+
+超巨大なスライム
+%%%%
 azure jelly
 
 紺碧ジェリー
@@ -1851,9 +1867,17 @@ pillar of salt
 
 塩の柱
 %%%%
+shaped pillar of salt
+
+の形の塩の柱
+%%%%
 block of ice
 
 氷の塊
+%%%%
+shaped block of ice
+
+の形の氷の塊
 %%%%
 diamond obelisk
 
@@ -2280,4 +2304,22 @@ Asmodeus
 Ereshkigal
 
 『エレシュキガル』
+%%%%
+############################## other ##############################
+%%%%
+spectral
+
+幽体の
+%%%%
+ghost
+
+幽霊
+%%%%
+illusion
+
+幻影
+%%%%
+-headed
+
+首の
 %%%%
