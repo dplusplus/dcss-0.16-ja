@@ -2928,7 +2928,8 @@ void describe_floor()
         return;
 
     case DNGN_ENTER_SHOP:
-        prefix = "There is an entrance to ";
+        prefix = jtrans("There is an entrance to");
+        suffix = "の入口がある。";
         break;
 
     default:

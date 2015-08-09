@@ -27,7 +27,7 @@ here.
 %%%%
 There is an entrance to
 
-ここは入口だ：
+ここには
 %%%%
 a wand
 
