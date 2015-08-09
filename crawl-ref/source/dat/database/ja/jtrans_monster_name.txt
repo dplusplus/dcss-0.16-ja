@@ -1,45 +1,45 @@
 %%%%
 ############################## player species ##############################
 %%%%
-Centaur
+#Centaur
 
-セントール
+#セントール
 %%%%
-Deep Dwarf
+#Deep Dwarf
 
-闇ドワーフ
+#闇ドワーフ
 %%%%
-Demigod
+#Demigod
 
-神々の末裔
+#神々の末裔
 %%%%
-Demonspawn
+#Demonspawn
 
-悪魔の血族
+#悪魔の血族
 %%%%
-Draconian
+#Draconian
 
-ドラコニアン
+#ドラコニアン
 %%%%
-Formicid
+#Formicid
 
-フォーミシッド
+#フォーミシッド
 %%%%
-Felid
+#Felid
 
-フェリッド
+#フェリッド
 %%%%
-Ghoul
+#Ghoul
 
-グール
+#グール
 %%%%
-Gargoyle
+#Gargoyle
 
-ガーゴイル
+#ガーゴイル
 %%%%
-Halfling
+#Halfling
 
-ハーフリング
+#ハーフリング
 %%%%
 High Elf
 
@@ -49,57 +49,57 @@ Hill Orc
 
 丘オーク
 %%%%
-Human
+#Human
 
-人間
+#人間
 %%%%
-Kobold
+#Kobold
 
-コボルド
+#コボルド
 %%%%
-Merfolk
+#Merfolk
 
-水棲の民
+#水棲の民
 %%%%
-Minotaur
+#Minotaur
 
-ミノタウロス
+#ミノタウロス
 %%%%
-Mummy
+#Mummy
 
-ミイラ
+#ミイラ
 %%%%
-Naga
+#Naga
 
-ナーガ
+#ナーガ
 %%%%
-Octopode
+#Octopode
 
-オクトポード
+#オクトポード
 %%%%
-Ogre
+#Ogre
 
-オーガ
+#オーガ
 %%%%
-Spriggan
+#Spriggan
 
-スプリガン
+#スプリガン
 %%%%
-Tengu
+#Tengu
 
-天狗
+#天狗
 %%%%
-Troll
+#Troll
 
-トロル
+#トロル
 %%%%
-Vampire
+#Vampire
 
-吸血鬼
+#吸血鬼
 %%%%
-Vine Stalker
+#Vine Stalker
 
-歩き蔓
+#歩き蔓
 %%%%
 ############################## monsters ##############################
 %%%%
@@ -108,13 +108,17 @@ worker ant
 
 巨大アリ
 %%%%
+queen ant
+
+女王蟻
+%%%%
 soldier ant
 
 兵隊アリ
 %%%%
-queen ant
+formicid
 
-女王蟻
+フォーミシッド
 %%%%
 # 'b'
 bat
@@ -132,6 +136,10 @@ vampire bat
 fire bat
 
 火炎コウモリ
+%%%%
+raven
+
+ワタリガラス
 %%%%
 bennu
 
@@ -429,6 +437,7 @@ spriggan defender
 
 スプリガンの守り手
 %%%%
+# 'k'
 drake
 
 ドレイク
@@ -473,10 +482,6 @@ iguana
 basilisk
 
 バジリスク
-%%%%
-wyvern
-
-ワイバーン
 %%%%
 komodo dragon
 
@@ -557,6 +562,10 @@ orc high priest
 
 オークの大司祭
 %%%%
+lava orc
+
+溶岩オーク
+%%%%
 # 'p'
 human
 
@@ -565,10 +574,6 @@ human
 slave
 
 奴隷
-%%%%
-entropy weaver
-
-エントロピーの編み手
 %%%%
 hell knight
 
@@ -652,6 +657,10 @@ giant cockroach
 
 巨大ゴキブリ
 %%%%
+giant mite
+
+巨大ダニ
+%%%%
 scorpion
 
 巨大サソリ
@@ -697,6 +706,10 @@ crocodile
 
 クロコダイル
 %%%%
+baby alligator
+
+アリゲーターの子供
+%%%%
 alligator
 
 アリゲーター
@@ -734,6 +747,7 @@ very ugly thing
 
 甚だしく醜きもの
 %%%%
+# 'v'
 fire vortex
 
 炎の渦
@@ -900,13 +914,13 @@ profane servitor
 涜神の従者
 %%%%
 # 'B'
-beetle
+goliath beetle
 
-甲虫
+巨大甲虫
 %%%%
 boulder beetle
 
-岩石ビートル
+岩石の甲虫
 %%%%
 death scarab
 
@@ -945,9 +959,14 @@ titan
 
 タイタン
 %%%%
+# 'D'
 dragon
 
 ドラゴン
+%%%%
+wyvern
+
+ワイバーン
 %%%%
 fire dragon
 
@@ -1101,9 +1120,9 @@ harpy
 
 ハーピー
 %%%%
-mutant beast
+chimera
 
-変異せる野獣
+キメラ
 %%%%
 anubis guard
 
@@ -1151,6 +1170,7 @@ kobold demonologist
 
 コボルドの悪魔術師
 %%%%
+# 'L'
 lich
 
 リッチ
@@ -1162,6 +1182,10 @@ ancient lich
 revenant
 
 レヴナント
+%%%%
+unborn
+
+生まれざるもの
 %%%%
 # 'M'
 mummy
@@ -1213,15 +1237,15 @@ salamander firebrand
 
 サラマンダーの火の戦士
 %%%%
-salamander stormcaller
-
-サラマンダーの嵐を呼ぶ者
-%%%%
 salamander mystic
 
 サラマンダーの秘伝者
 %%%%
 # 'O'
+ogre
+
+オーガ
+%%%%
 two-headed ogre
 
 双頭のオーガ
@@ -1429,6 +1453,10 @@ wraith
 
 レイス
 %%%%
+shadow wraith
+
+影のレイス
+%%%%
 freezing wraith
 
 凍気のレイス
@@ -1556,7 +1584,7 @@ Hellbinder
 %%%%
 Cloud Mage
 
-雲の魔術師
+雲烟の魔術師
 %%%%
 player
 
@@ -1886,6 +1914,10 @@ fulminant prism
 
 劇症の角柱
 %%%%
+singularity
+
+特異点
+%%%%
 wretched star
 
 惨めな星形
@@ -1933,17 +1965,17 @@ Nessos
 
 『ネッソス』
 %%%%
-Polyphemus
-
-『ポリュペモス』
-%%%%
 Chuck
 
 『チャック』
 %%%%
 the iron giant
 
-アイアンジャイアント
+『アイアンジャイアント』
+%%%%
+Polyphemus
+
+『ポリュペモス』
 %%%%
 Antaeus
 
@@ -2027,7 +2059,7 @@ Agnes
 %%%%
 the Enchantress
 
-女付与魔術師
+『女呪術師』
 %%%%
 the royal jelly
 
@@ -2035,7 +2067,7 @@ the royal jelly
 %%%%
 Dissolution
 
-『熔解者』
+『溶解者』
 %%%%
 Gastronok
 
@@ -2108,10 +2140,6 @@ Snorg
 Purgy
 
 『パージー』
-%%%%
-moon troll
-
-月世界のトロル
 %%%%
 Jory
 
@@ -2203,7 +2231,7 @@ Norris
 %%%%
 Frederick
 
-フレデリック
+『フレデリック』
 %%%%
 Margery
 
@@ -2219,11 +2247,11 @@ Maurice
 %%%%
 Nikola
 
-ニコラ
+『ニコラ』
 %%%%
 Mnoleg
 
-ムノレグ
+『ムノレグ』
 %%%%
 Lom Lobon
 
