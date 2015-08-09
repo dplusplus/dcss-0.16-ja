@@ -1992,29 +1992,29 @@ string shop_type_name(shop_type type)
     switch (type)
     {
         case SHOP_WEAPON_ANTIQUE:
-            return "Antique Weapon";
+            return "中古武器屋";
         case SHOP_ARMOUR_ANTIQUE:
-            return "Antique Armour";
+            return "中古防具屋";
         case SHOP_WEAPON:
-            return "Weapon";
+            return "武器屋";
         case SHOP_ARMOUR:
-            return "Armour";
+            return "防具屋";
         case SHOP_JEWELLERY:
-            return "Jewellery";
+            return "装飾品店";
         case SHOP_EVOKABLES:
-            return "Gadget";
+            return "魔道具店";
         case SHOP_BOOK:
-            return "Book";
+            return "魔法書店";
         case SHOP_FOOD:
-            return "Food";
+            return "食料品店";
         case SHOP_SCROLL:
-            return "Magic Scroll";
+            return "巻物屋";
         case SHOP_GENERAL_ANTIQUE:
-            return "Assorted Antiques";
+            return "中古屋";
         case SHOP_DISTILLERY:
-            return "Distillery";
+            return "薬品店";
         case SHOP_GENERAL:
-            return "General Store";
+            return "よろず屋";
         default:
             return "Bug";
     }
@@ -2022,6 +2022,8 @@ string shop_type_name(shop_type type)
 
 static string _shop_type_suffix(shop_type type, const coord_def &where)
 {
+    return "";
+
     if (type == SHOP_GENERAL
         || type == SHOP_GENERAL_ANTIQUE
         || type == SHOP_DISTILLERY)
@@ -2053,14 +2055,14 @@ string shop_name(const coord_def& where, bool add_stop)
     string sh_name = "";
 
     if (!cshop->shop_name.empty())
-        sh_name += apostrophise(cshop->shop_name) + " ";
+        sh_name += cshop->shop_name + "の";
     else
     {
         uint32_t seed = static_cast<uint32_t>(cshop->keeper_name[0])
             | (static_cast<uint32_t>(cshop->keeper_name[1]) << 8)
             | (static_cast<uint32_t>(cshop->keeper_name[1]) << 16);
 
-        sh_name += apostrophise(make_name(seed, false)) + " ";
+        sh_name += make_name(seed, false) + "の";
     }
 
     if (!cshop->shop_type_name.empty())
@@ -2078,7 +2080,7 @@ string shop_name(const coord_def& where, bool add_stop)
     }
 
     if (add_stop)
-        sh_name += ".";
+        sh_name += "だ。";
 
     return sh_name;
 }
