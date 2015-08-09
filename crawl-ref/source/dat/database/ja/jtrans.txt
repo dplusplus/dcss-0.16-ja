@@ -1995,6 +1995,24 @@ Nothing suitable (ignored '=f'-inscribed item on '%c').
 
 
 %%%%
+############################## ranged_attack.cc ##############################
+%%%%
+%s %s %s but does no damage.
+
+%sは%sに%sが、傷つかなかった。
+%%%%
+pierces through
+
+命中し貫通した
+%%%%
+hits
+
+命中した
+%%%%
+in a vulnerable spot
+
+の弱点
+%%%%
 ############################## state.cc ##############################
 %%%%
 %s comes into view.
@@ -2022,4 +2040,36 @@ Throwing
 (i - inventory. (,) - cycle)
 
 (i - 一覧から選択 , - 切り替え)
+%%%%
+You %s%s %s.
+
+あなたは%s%sを%s。
+%%%%
+fragments
+
+の破片
+%%%%
+explosion of
+
+の爆発
+%%%%
+magically
+
+魔法の力で
+%%%%
+toss away
+
+投げ捨てた
+%%%%
+shoot
+
+射撃した
+%%%%
+throw
+
+投擲した
+%%%%
+returns to your pack!
+
+はあなたの手元に戻ってきた！
 %%%%

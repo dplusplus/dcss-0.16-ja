@@ -330,6 +330,8 @@ static string _number_to_string(unsigned number, bool in_words)
 // Naively prefix A/an to a noun.
 string article_a(const string &name, bool lowercase)
 {
+    return name;
+
     if (!name.length())
         return name;
 
