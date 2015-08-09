@@ -23,63 +23,63 @@ explore horizon
 
 # explore horizon
 %%%%
-a closed door
+closed door
 
 閉じられた扉
 %%%%
-a runed door
+runed door
 
 ルーンで封印された扉
 %%%%
-a sealed door
+sealed door
 
 封印の印が刻まれた扉
 %%%%
-a tree
+tree
 
 木
 %%%%
-a metal wall
+metal wall
 
 金属の壁
 %%%%
-a wall of green crystal
+wall of green crystal
 
 緑色の水晶の壁
 %%%%
-a rock wall
+rock wall
 
 岩の壁
 %%%%
-a wall of the weird stuff which makes up Pandemonium
+wall of the weird stuff which makes up Pandemonium
 
 パンデモニウムを構成する不気味な素材の壁
 %%%%
-a slime covered rock wall
+slime covered rock wall
 
 粘着物に覆われた岩の壁
 %%%%
-a stone wall
+stone wall
 
 石の壁
 %%%%
-an unnaturally hard rock wall
+unnaturally hard rock wall
 
 異常に硬い岩の壁
 %%%%
-a translucent rock wall
+translucent rock wall
 
 半透明の岩の壁
 %%%%
-a translucent stone wall
+translucent stone wall
 
 半透明の石の壁
 %%%%
-a translucent unnaturally hard rock wall
+translucent unnaturally hard rock wall
 
 異常に硬い半透明の岩の壁
 %%%%
-an iron grate
+iron grate
 
 鉄格子
 %%%%
@@ -91,19 +91,19 @@ the endless lava
 
 終わりなき溶岩沼
 %%%%
-an orcish idol
+orcish idol
 
 オークの像
 %%%%
-an idol of Beogh
+idol of Beogh
 
 ベオの偶像
 %%%%
-a granite statue
+granite statue
 
 花崗岩の像
 %%%%
-a portal to somewhere
+portal to somewhere
 
 どこかに続くポータル
 %%%%
@@ -123,379 +123,379 @@ the floor
 
 地面
 %%%%
-a collapsed entrance
+collapsed entrance
 
 崩壊した入口
 %%%%
-an open door
+open door
 
 開いた扉
 %%%%
-a mechanical trap
+mechanical trap
 
 機械仕掛けの罠
 %%%%
-a teleport trap
+teleport trap
 
 テレポートの罠
 %%%%
-a shadow trap
+shadow trap
 
 影の怪物の罠
 %%%%
-a dormant shadow trap
+dormant shadow trap
 
 影の怪物の罠(停止中)
 %%%%
-an alarm trap
+alarm trap
 
 警報の罠
 %%%%
-a Zot trap
+Zot trap
 
 ゾットの罠
 %%%%
-a passage of Golubria
+passage of Golubria
 
 ゴルブリアの通り道
 %%%%
-a shaft
+shaft
 
 縦穴
 %%%%
-a web
+web
 
 蜘蛛の巣
 %%%%
-a shop
+shop
 
 店
 %%%%
-an abandoned shop
+abandoned shop
 
 放棄された店
 %%%%
-an empty arch of ancient stone
+empty arch of ancient stone
 
 古代の石で造られたアーチ
 %%%%
-a detected shop or portal
+detected shop or portal
 
 感知済みの店またはポータル
 %%%%
-a stone staircase leading down
+stone staircase leading down
 
 石の下り階段
 %%%%
-a stone staircase leading up
+stone staircase leading up
 
 石の上り階段
 %%%%
-an escape hatch in the floor
+escape hatch in the floor
 
 床の脱出ハッチ
 %%%%
-an escape hatch in the ceiling
+escape hatch in the ceiling
 
 天井の脱出ハッチ
 %%%%
-a labyrinth entrance
+labyrinth entrance
 
 ラビリンスへの入口
 %%%%
-a gateway to the Iron City of Dis
+gateway to the Iron City of Dis
 
 鉄の都ディースへの門
 %%%%
-a gateway to the ashen valley of Gehenna
+gateway to the ashen valley of Gehenna
 
 灰の谷ゲヘナへの門
 %%%%
-a gateway to the freezing wastes of Cocytus
+gateway to the freezing wastes of Cocytus
 
 コキュートスの凍れる荒野への門
 %%%%
-a gateway to the decaying netherworld of Tartarus
+gateway to the decaying netherworld of Tartarus
 
 タルタロスの腐朽地獄への門
 %%%%
-a gateway to Hell
+gateway to Hell
 
 地獄への門
 %%%%
-a gateway back into the Dungeon
+gateway back into the Dungeon
 
 ダンジョンへ戻る門
 %%%%
-a one-way gate to the infinite horrors of the Abyss
+one-way gate to the infinite horrors of the Abyss
 
 アビスの無限地獄への門
 %%%%
-an exit through the horrors of the Abyss
+exit through the horrors of the Abyss
 
 アビスを通じた脱出の門
 %%%%
-a gateway leading out of the Abyss
+gateway leading out of the Abyss
 
 アビスからの出口の門
 %%%%
-a one-way gate leading to the halls of Pandemonium
+one-way gate leading to the halls of Pandemonium
 
 パンデモニウムの大広間へと続く門
 %%%%
-a gate leading to another region of Pandemonium
+gate leading to another region of Pandemonium
 
 パンデモニウムの別領域への門
 %%%%
-a gate leading out of Pandemonium
+gate leading out of Pandemonium
 
 パンデモニウムからの出口の門
 %%%%
-a gate to the Vaults
+gate to the Vaults
 
 宝物庫への門
 %%%%
-a gate leading back out of this place
+gate leading back out of this place
 
 ここから脱出する門
 %%%%
-a gate to the Realm of Zot
+gate to the Realm of Zot
 
 ゾットの領域への門
 %%%%
-a gateway to a ziggurat
+gateway to a ziggurat
 
 ジグラットへの門
 %%%%
-a flickering gateway to a bazaar
+flickering gateway to a bazaar
 
 バザールへ続く今にも消えそうな門
 %%%%
-a gateway to a bazaar
+gateway to a bazaar
 
 バザールへの門
 %%%%
-a portal to a secret trove of treasure
+portal to a secret trove of treasure
 
 秘密の埋蔵庫へのポータル
 %%%%
-a glowing drain
+glowing drain
 
 輝く排水口
 %%%%
-a sand-covered staircase
+sand-covered staircase
 
 砂に覆われた階段
 %%%%
-a flagged portal
+flagged portal
 
 旗の立てられたポータル
 %%%%
-a frozen archway
+frozen archway
 
 凍てついたアーチ
 %%%%
-a dark tunnel
+dark tunnel
 
 薄暗い隧道
 %%%%
-a magical portal
+magical portal
 
 魔法のポータル
 %%%%
-a staircase leading out of the dungeon
+staircase leading out of the dungeon
 
 ダンジョンの出口の階段
 %%%%
-a staircase to the Slime Pits
+staircase to the Slime Pits
 
 スライムの穴ぐらへの階段
 %%%%
-a staircase back to the Lair
+staircase back to the Lair
 
 獣の棲み処へ戻る階段
 %%%%
-a staircase to the Orcish Mines
+staircase to the Orcish Mines
 
 オークの坑道への階段
 %%%%
-a staircase back to the Dungeon
+staircase back to the Dungeon
 
 ダンジョンへ戻る出口の階段
 %%%%
-a staircase to the Lair
+staircase to the Lair
 
 獣の棲み処への階段
 %%%%
-a staircase to the Crypt
+staircase to the Crypt
 
 地下墓地への階段
 %%%%
-a staircase back to the Vaults
+staircase back to the Vaults
 
 宝物庫へ戻る出口の階段
 %%%%
-a staircase to the Ecumenical Temple
+staircase to the Ecumenical Temple
 
 諸宗派の寺院への階段
 %%%%
-a staircase to the Snake Pit
+staircase to the Snake Pit
 
 蛇穴への階段
 %%%%
-a staircase to the Elven Halls
+staircase to the Elven Halls
 
 エルフの大広間への階段
 %%%%
-a staircase back to the Mines
+staircase back to the Mines
 
 オークの坑道へ戻る出口の階段
 %%%%
-a staircase to the Tomb
+staircase to the Tomb
 
 霊廟への階段
 %%%%
-a staircase back to the Crypt
+staircase back to the Crypt
 
 地下墓地へ戻る出口の階段
 %%%%
-a staircase to the Swamp
+staircase to the Swamp
 
 沼への階段
 %%%%
-a staircase to the Shoals
+staircase to the Shoals
 
 浅瀬への階段
 %%%%
-a hole to the Spider Nest
+hole to the Spider Nest
 
 蜘蛛の穴ぐらの入口
 %%%%
-a staircase to the Depths
+staircase to the Depths
 
 深層への階段
 %%%%
-a detected altar
+detected altar
 
 
 %%%%
-a glowing silver altar of Zin
+glowing silver altar of Zin
 
 『ジン』の輝く銀の祭壇
 %%%%
-a glowing golden altar of the Shining One
+glowing golden altar of the Shining One
 
 『輝けるもの』の輝く黄金の祭壇
 %%%%
-an ancient bone altar of Kikubaaqudgha
+ancient bone altar of Kikubaaqudgha
 
 『キクバークッグァ』の古代の骨で造られた祭壇
 %%%%
-a basalt altar of Yredelemnul
+basalt altar of Yredelemnul
 
 『イレデレンヌル』の玄武岩で造られた祭壇
 %%%%
-a shimmering altar of Xom
+shimmering altar of Xom
 
 『ゾム』の微光が揺らめく祭壇
 %%%%
-a radiant altar of Vehumet
+radiant altar of Vehumet
 
 『ヴェフメット』の輝きを放つ祭壇
 %%%%
-an iron altar of Okawaru
+iron altar of Okawaru
 
 『オカワル』の鉄の祭壇
 %%%%
-a burning altar of Makhleb
+burning altar of Makhleb
 
 『マクレブ』の炎を上げる祭壇
 %%%%
-a deep blue altar of Sif Muna
+deep blue altar of Sif Muna
 
 『シフ・ムーナ』の紺碧の祭壇
 %%%%
-a bloodstained altar of Trog
+bloodstained altar of Trog
 
 『トログ』の血に染まった祭壇
 %%%%
-a sparkling altar of Nemelex Xobeh
+sparkling altar of Nemelex Xobeh
 
 『ネメレクス・ソベー』の煌く祭壇
 %%%%
-a white marble altar of Elyvilon
+white marble altar of Elyvilon
 
 『エリヴィロン』の白い大理石の祭壇
 %%%%
-a corrupted altar of Lugonu
+corrupted altar of Lugonu
 
 『ルゴヌ』の崩壊した祭壇
 %%%%
-a roughly hewn altar of Beogh
+roughly hewn altar of Beogh
 
 『ベオ』の乱暴に刻み造られた祭壇
 %%%%
-a viscous altar of Jiyva
+viscous altar of Jiyva
 
 『ジーヴァ』の粘着性の祭壇
 %%%%
-a blossoming altar of Fedhas
+blossoming altar of Fedhas
 
 『フェダス』の芽吹きに覆われた祭壇
 %%%%
-a snail-covered altar of Cheibriados
+snail-covered altar of Cheibriados
 
 『ケイブリアドス』の蝸牛で覆われた祭壇
 %%%%
-a shattered altar of Ashenzari
+shattered altar of Ashenzari
 
 『アシェンザリ』の砕け落ちた祭壇
 %%%%
-a shadowy altar of Dithmenos
+shadowy altar of Dithmenos
 
 『ディスメノス』の影のように黒い祭壇
 %%%%
-a opulent altar of Gozag
+opulent altar of Gozag
 
 『ゴザーグ』の絢爛たる祭壇
 %%%%
-a stormy altar of Qazlal
+stormy altar of Qazlal
 
 『クァズラル』の嵐を巻き起こす祭壇
 %%%%
-a sacrificial altar of Ru
+sacrificial altar of Ru
 
 『ルー』の生贄の祭壇
 %%%%
-a fountain of clear blue water
+fountain of clear blue water
 
 澄んだ青い水の泉
 %%%%
-a fountain of sparkling water
+fountain of sparkling water
 
 煌く水の泉
 %%%%
-a fountain of blood
+fountain of blood
 
 血の泉
 %%%%
-a dry fountain
+dry fountain
 
 枯れた泉
 %%%%
-a short-range portal
+short-range portal
 
 短距離のポータル
 %%%%
-a sealed passage leading up
+sealed passage leading up
 
 封印された上り経路
 %%%%
-a sealed passage leading down
+sealed passage leading down
 
 封印された下り経路
 %%%%
-a gateway leading deeper into the Abyss
+gateway leading deeper into the Abyss
 
 アビスの深層への門
 %%%%
