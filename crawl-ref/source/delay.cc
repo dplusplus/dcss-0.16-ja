@@ -1411,7 +1411,7 @@ static inline bool _monster_warning(activity_interrupt_type ai,
 
         string text = getMiscString(mon->name(DESC_DBNAME) + " title");
         if (text.empty())
-            text = mon->full_name(DESC_A);
+            text = jtrans(mon->full_name(DESC_A));
         else
             text = jtrans(text);
 
