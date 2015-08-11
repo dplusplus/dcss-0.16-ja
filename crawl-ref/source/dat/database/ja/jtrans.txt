@@ -147,6 +147,14 @@ e(v)oke
 
 (=)文字を調整する
 %%%%
+Replace inscription with what?
+
+銘を更新しますか？
+%%%%
+Inscribe with what?
+
+銘を付けますか？
+%%%%
 ############################## itemname.cc ##############################
 %%%%
 god gift
