@@ -1399,7 +1399,7 @@ static inline bool _monster_warning(activity_interrupt_type ai,
             && !(atype == DELAY_NOT_DELAYED))
         {
             mprf(MSGCH_WARN, jtrans("%s is too close now for your liking.").c_str(),
-                 mon->name(DESC_THE).c_str());
+                 jtrans(mon->name(DESC_THE)).c_str());
         }
     }
     else if (mon->seen_context == SC_JUST_SEEN)
