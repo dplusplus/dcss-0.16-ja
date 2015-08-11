@@ -1764,18 +1764,18 @@ static void _get_orb(const item_def &it, bool quiet)
 {
     run_animation(ANIMATION_ORB, UA_PICKUP);
 
-    mprf(MSGCH_ORB, "You pick up the Orb of Zot!");
+    mpr_nojoin(MSGCH_ORB, jtrans("You pick up the Orb of Zot!"));
     you.char_direction = GDT_ASCENDING;
 
     env.orb_pos = you.pos(); // can be wrong in wizmode
     orb_pickup_noise(you.pos(), 30);
 
-    mprf(MSGCH_WARN, "The lords of Pandemonium are not amused. Beware!");
+    mpr_nojoin(MSGCH_WARN, jtrans("The lords of Pandemonium are not amused. Beware!"));
 
     if (you_worship(GOD_CHEIBRIADOS))
-        simple_god_message(" tells them not to hurry.");
+        simple_god_message(jtrans("tells them not to hurry.").c_str());
 
-    mprf(MSGCH_ORB, "Now all you have to do is get back out of the dungeon!");
+    mpr_nojoin(MSGCH_ORB, jtrans("Now all you have to do is get back out of the dungeon!"));
 
     xom_is_stimulated(200, XM_INTRIGUED);
     invalidate_agrid(true);

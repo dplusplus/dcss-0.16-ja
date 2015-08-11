@@ -1305,6 +1305,22 @@ You feel the abyssal rune guiding you out of this place.
 
 あなたは深淵のルーンがあなたをアビスの外に導こうとしているような気がした。
 %%%%
+You pick up the Orb of Zot!
+
+あなたはゾットのオーブを手にした！
+%%%%
+The lords of Pandemonium are not amused. Beware!
+
+パンデモニウムの君主達は不機嫌になった。気をつけろ！
+%%%%
+tells them not to hurry.
+
+は彼らにあまり急ぐなと伝えた。
+%%%%
+Now all you have to do is get back out of the dungeon!
+
+今あなたがすべきことはダンジョンを脱出することのみだ！
+%%%%
 Are you sure you want to pick up this pile of gold now?
 
 本当にこの金貨の山を拾いますか？
