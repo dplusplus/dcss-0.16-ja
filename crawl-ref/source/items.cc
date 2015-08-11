@@ -866,16 +866,16 @@ void pickup_menu(int item_link)
     item_list_on_square(items, item_link);
     ASSERT(items.size());
 
-    string prompt = "Pick up what? " + slot_description()
+    string prompt = jtrans("Pick up what?") + " " + slot_description()
 #ifdef TOUCH_UI
                   + " (<Enter> or tap header to pick up)"
 #else
-                  + " (_ for help)"
+                  + " " +jtrans("(_ for help)")
 #endif
                   ;
 
     if (items.size() == 1 && items[0]->quantity > 1)
-        prompt = "Select pick up quantity by entering a number, then select the item";
+        prompt = jtrans("Select pick up quantity by entering a number, then select the item");
     vector<SelItem> selected = select_items(items, prompt.c_str(), false,
                                             MT_PICKUP);
     if (selected.empty())
@@ -907,7 +907,7 @@ void pickup_menu(int item_link)
                 if (!move_item_to_inv(j, num_to_take))
                 {
                     n_tried_pickup++;
-                    pickup_warning = "You can't carry that many items.";
+                    pickup_warning = jtrans("You can't carry that many items.");
                     if (mitm[j].defined())
                         mitm[j].flags = oldflags;
                 }
@@ -1203,11 +1203,11 @@ bool pickup_single_item(int link, int qty)
     item_def* item = &mitm[link];
     if (item_is_stationary(mitm[link]))
     {
-        mpr("You can't pick that up.");
+        mpr(jtrans("You can't pick that up."));
         return false;
     }
     if (item->base_type == OBJ_GOLD && !qty && !i_feel_safe()
-        && !yesno("Are you sure you want to pick up this pile of gold now?",
+        && !yesno(jtrans("Are you sure you want to pick up this pile of gold now?").c_str(),
                   true, 'n'))
     {
         canned_msg(MSG_OK);
@@ -1216,7 +1216,7 @@ bool pickup_single_item(int link, int qty)
     if (qty == 0 && item->quantity > 1 && item->base_type != OBJ_GOLD)
     {
         const string prompt
-                = make_stringf("Pick up how many of %s (; or enter for all)? ",
+                = make_stringf((jtrans("Pick up how many of %s (; or enter for all)?") + " ").c_str(),
                                item->name(DESC_THE, false,
                                           false, false).c_str());
 
@@ -1247,7 +1247,7 @@ bool pickup_single_item(int link, int qty)
 
     if (!pickup_succ)
     {
-        mpr("You can't carry that many items.");
+        mpr(jtrans("You can't carry that many items."));
         learned_something_new(HINT_FULL_INVENTORY);
         return false;
     }
@@ -1282,9 +1282,9 @@ void pickup(bool partial_quantity)
     you.last_pickup.clear();
 
     if (o == NON_ITEM)
-        mpr("There are no items here.");
+        mpr(jtrans("There are no items here."));
     else if (you.form == TRAN_ICE_BEAST && grd(you.pos()) == DNGN_DEEP_WATER)
-        mpr("You can't reach the bottom while floating on water.");
+        mpr(jtrans("You can't reach the bottom while floating on water."));
     // just one movable item?
     else if (num_items == 1)
     {
@@ -1304,9 +1304,9 @@ void pickup(bool partial_quantity)
     {
         int next;
         if (num_items == 0)
-            mpr("There are no objects that can be picked up here.");
+            mpr(jtrans("There are no objects that can be picked up here."));
         else
-            mpr("There are several objects here.");
+            mpr(jtrans("There are several objects here."));
         string pickup_warning;
         bool any_selectable = false;
         while (o != NON_ITEM)
@@ -1323,7 +1323,7 @@ void pickup(bool partial_quantity)
 
             if (keyin != 'a')
             {
-                string prompt = "Pick up %s? ((y)es/(n)o/(a)ll/(m)enu/*?g,/q)";
+                string prompt = jtrans("Pick up %s? ((y)es/(n)o/(a)ll/(m)enu/*?g,/q)");
 
                 mprf(MSGCH_PROMPT, prompt.c_str(),
                      get_menu_colour_prefix_tags(mitm[o],
@@ -1355,7 +1355,7 @@ void pickup(bool partial_quantity)
                 // attempt to actually pick up the object.
                 if (!move_item_to_inv(o, num_to_take))
                 {
-                    pickup_warning = "You can't carry that many items.";
+                    pickup_warning = jtrans("You can't carry that many items.");
                     mitm[o].flags = old_flags;
                 }
             }
@@ -1622,7 +1622,7 @@ static bool _put_item_in_inv(item_def& it, int quant_got, bool quiet, bool& put_
     if (item_is_stationary(it))
     {
         if (!quiet)
-            mpr("You can't pick that up.");
+            mpr(jtrans("You can't pick that up."));
         // Fake a successful pickup (return 1), so we can continue to
         // pick up anything else that might be on this square.
         return true;
@@ -1726,26 +1726,26 @@ static void _get_rune(const item_def& it, bool quiet)
     if (!quiet)
     {
         flash_view_delay(UA_PICKUP, rune_colour(it.plus), 300);
-        mprf("You pick up the %s rune and feel its power.",
-             rune_type_name(it.plus));
+        mprf(jtrans("You pick up the %s rune and feel its power.").c_str(),
+             rune_of_zot_name(rune_type_name(it.plus)).c_str());
         int nrunes = runes_in_pack();
         if (nrunes >= you.obtainable_runes)
-            mpr("You have collected all the runes! Now go and win!");
+            mpr(jtrans("You have collected all the runes! Now go and win!"));
         else if (nrunes == NUMBER_OF_RUNES_NEEDED
                  && !crawl_state.game_is_zotdef())
         {
             // might be inappropriate in new Sprints, please change it then
-            mprf("%d runes! That's enough to enter the realm of Zot.",
+            mprf(jtrans("%d runes! That's enough to enter the realm of Zot.").c_str(),
                  nrunes);
         }
         else if (nrunes > 1)
-            mprf("You now have %d runes.", nrunes);
+            mprf(jtrans("You now have %d runes.").c_str(), nrunes);
 
-        mpr("Press } to see all the runes you have collected.");
+        mpr(jtrans("Press } to see all the runes you have collected."));
     }
 
     if (it.plus == RUNE_ABYSSAL)
-        mpr("You feel the abyssal rune guiding you out of this place.");
+        mpr(jtrans("You feel the abyssal rune guiding you out of this place."));
 
     if (it.plus == RUNE_TOMB)
         add_daction(DACT_TOMB_CTELE);
@@ -1764,18 +1764,18 @@ static void _get_orb(const item_def &it, bool quiet)
 {
     run_animation(ANIMATION_ORB, UA_PICKUP);
 
-    mprf(MSGCH_ORB, "You pick up the Orb of Zot!");
+    mpr_nojoin(MSGCH_ORB, jtrans("You pick up the Orb of Zot!"));
     you.char_direction = GDT_ASCENDING;
 
     env.orb_pos = you.pos(); // can be wrong in wizmode
     orb_pickup_noise(you.pos(), 30);
 
-    mprf(MSGCH_WARN, "The lords of Pandemonium are not amused. Beware!");
+    mpr_nojoin(MSGCH_WARN, jtrans("The lords of Pandemonium are not amused. Beware!"));
 
     if (you_worship(GOD_CHEIBRIADOS))
-        simple_god_message(" tells them not to hurry.");
+        simple_god_message(jtrans("tells them not to hurry.").c_str());
 
-    mprf(MSGCH_ORB, "Now all you have to do is get back out of the dungeon!");
+    mpr_nojoin(MSGCH_ORB, jtrans("Now all you have to do is get back out of the dungeon!"));
 
     xom_is_stimulated(200, XM_INTRIGUED);
     invalidate_agrid(true);
@@ -3039,7 +3039,7 @@ static void _do_autopickup()
             else
             {
                 n_tried_pickup++;
-                pickup_warning = "Your pack is full.";
+                pickup_warning = jtrans("Your pack is full.");
                 mitm[o].flags = iflags;
             }
         }

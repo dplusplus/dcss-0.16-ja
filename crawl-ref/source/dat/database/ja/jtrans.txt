@@ -1245,6 +1245,90 @@ Unknown command.
 %%%%
 ############################## items.cc ##############################
 %%%%
+Pick up what?
+
+何を拾いますか？
+%%%%
+Select pick up quantity by entering a number, then select the item
+
+個数を指定して拾うには数字を押した後に選択してください。
+%%%%
+There are no items here.
+
+ここには何もない。
+%%%%
+You can't reach the bottom while floating on water.
+
+あなたは水に浮いている間水底に手を伸ばせない。
+%%%%
+There are no objects that can be picked up here.
+
+ここには拾える物がない。
+%%%%
+There are several objects here.
+
+ここにはいくつかの物がある。
+%%%%
+Pick up %s? ((y)es/(n)o/(a)ll/(m)enu/*?g,/q)
+
+%sを拾いますか？ ((y)はい/(n)いいえ/(a)全部/(m)一覧/*?g,/q)
+%%%%
+You can't carry that many items.
+
+あなたはこれ以上多くのアイテムを持つことはできない。
+%%%%
+You can't pick that up.
+
+あなたはそれを拾えない。
+%%%%
+You pick up the %s rune and feel its power.
+
+あなたは%sを手にし、その力を感じた。
+%%%%
+You have collected all the runes! Now go and win!
+
+あなたは全てのルーンを集めた！ 今すぐオーブを回収して脱出せよ！
+%%%%
+%d runes! That's enough to enter the realm of Zot.
+
+%d個めのルーンを手にした！ ゾットの領域に足を進めるには十分だ。
+%%%%
+You now have %d runes.
+
+あなたは今%d個のルーンを持っている。
+%%%%
+Press } to see all the runes you have collected.
+
+} を押すことであなたが集めたルーンを一覧できる。
+%%%%
+You feel the abyssal rune guiding you out of this place.
+
+あなたは深淵のルーンがあなたをアビスの外に導こうとしているような気がした。
+%%%%
+You pick up the Orb of Zot!
+
+あなたはゾットのオーブを手にした！
+%%%%
+The lords of Pandemonium are not amused. Beware!
+
+パンデモニウムの君主達は不機嫌になった。気をつけろ！
+%%%%
+tells them not to hurry.
+
+は彼らにあまり急ぐなと伝えた。
+%%%%
+Now all you have to do is get back out of the dungeon!
+
+今あなたがすべきことはダンジョンを脱出することのみだ！
+%%%%
+Are you sure you want to pick up this pile of gold now?
+
+本当にこの金貨の山を拾いますか？
+%%%%
+Pick up how many of %s (; or enter for all)?
+
+%sのうちいくつを拾いますか？(; か ENTER で全選択)
+%%%%
 You now have %d gold piece%s.
 
 あなたは今%d枚の金貨を持っている。
@@ -1264,6 +1348,10 @@ Drop what?
 (_ for help)
 
 (_ でヘルプ表示)
+%%%%
+Your pack is full.
+
+あなたの荷袋は満杯だ。
 %%%%
 ############################## melee_attack.cc ##############################
 %%%%

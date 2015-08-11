@@ -51,6 +51,7 @@ string jtrans(const string &key, const bool linefeed = false);
 string jtrans_make_stringf(const string &msg, const string &subject, const string &verb, const string &object);
 string jtrans_make_stringf(const string &msg, const string &verb, const string &object);
 #define jtransln(x) (jtrans(x, true))
+string rune_of_zot_name(const string &name);
 template<typename C1, typename C2>
 void append_container_jtrans(C1& container_base, const C2& container_append)
 {
