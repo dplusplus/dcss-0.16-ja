@@ -4455,7 +4455,7 @@ template <class C> void explore_discoveries::say_any(
         return;
     }
 
-    const string message = jtrans(comma_separated_line(coll.begin(), coll.end())) + jtrans("Found");
+    const string message = to_separated_line(coll.begin(), coll.end()) + jtrans("Found");
 
     if (strwidth(message) >= get_number_of_cols())
         mprf("Found %s %s.", number_in_words(size).c_str(), category);
