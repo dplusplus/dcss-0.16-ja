@@ -2326,7 +2326,7 @@ static bool _actions_prompt(item_def &item, bool allow_inscribe, bool do_prompt)
     highlighter->init(coord_def(0, 0), coord_def(0, 0), "highlighter");
     menu.attach_object(highlighter);
 #endif
-    string prompt = "You can ";
+    string prompt = "この" + item.name(DESC_BASENAME) + "に対し";
     int keyin;
     vector<command_type> actions;
     actions.push_back(CMD_ADJUST_INVENTORY);
@@ -2395,20 +2395,20 @@ static bool _actions_prompt(item_def &item, bool allow_inscribe, bool do_prompt)
     static map<command_type, string> act_str;
     if (act_str_init)
     {
-        act_str[CMD_WIELD_WEAPON]       = "(w)ield";
-        act_str[CMD_UNWIELD_WEAPON]     = "(u)nwield";
-        act_str[CMD_QUIVER_ITEM]        = "(q)uiver";
-        act_str[CMD_WEAR_ARMOUR]        = "(w)ear";
-        act_str[CMD_REMOVE_ARMOUR]      = "(t)ake off";
-        act_str[CMD_EVOKE]              = "e(v)oke";
-        act_str[CMD_EAT]                = "(e)at";
-        act_str[CMD_READ]               = "(r)ead";
-        act_str[CMD_WEAR_JEWELLERY]     = "(p)ut on";
-        act_str[CMD_REMOVE_JEWELLERY]   = "(r)emove";
-        act_str[CMD_QUAFF]              = "(q)uaff";
-        act_str[CMD_DROP]               = "(d)rop";
-        act_str[CMD_INSCRIBE_ITEM]      = "(i)nscribe";
-        act_str[CMD_ADJUST_INVENTORY]   = "(=)adjust";
+        act_str[CMD_WIELD_WEAPON]       = jtrans("(w)ield");
+        act_str[CMD_UNWIELD_WEAPON]     = jtrans("(u)nwield");
+        act_str[CMD_QUIVER_ITEM]        = jtrans("(q)uiver");
+        act_str[CMD_WEAR_ARMOUR]        = jtrans("(w)ear");
+        act_str[CMD_REMOVE_ARMOUR]      = jtrans("(t)ake off");
+        act_str[CMD_EVOKE]              = jtrans("e(v)oke");
+        act_str[CMD_EAT]                = jtrans("(e)at");
+        act_str[CMD_READ]               = jtrans("(r)ead");
+        act_str[CMD_WEAR_JEWELLERY]     = jtrans("(p)ut on");
+        act_str[CMD_REMOVE_JEWELLERY]   = jtrans("(r)emove");
+        act_str[CMD_QUAFF]              = jtrans("(q)uaff");
+        act_str[CMD_DROP]               = jtrans("(d)rop");
+        act_str[CMD_INSCRIBE_ITEM]      = jtrans("(i)nscribe");
+        act_str[CMD_ADJUST_INVENTORY]   = jtrans("(=)adjust");
         act_str_init = false;
     }
 
@@ -2429,12 +2429,10 @@ static bool _actions_prompt(item_def &item, bool allow_inscribe, bool do_prompt)
         tmp->set_visible(true);
 #endif
         prompt += act_str[*at];
-        if (at < actions.end() - 2)
-            prompt += ", ";
-        else if (at == actions.end() - 2)
-            prompt += " or ";
+        if (at <= actions.end() - 2)
+            prompt += "/";
     }
-    prompt += " the " + item.name(DESC_BASENAME) + ".";
+    prompt += "ことができる。";
 
     prompt = "<cyan>" + prompt + "</cyan>";
     if (do_prompt)
