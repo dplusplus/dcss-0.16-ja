@@ -654,7 +654,7 @@ static void _throw_noise(actor* act, const bolt &pbolt, const item_def &ammo)
     if (act->is_player() || you.can_see(act))
         msg = nullptr;
 
-    noisy(level, act->pos(), msg, act->mid);
+    noisy(level, act->pos(), jtrans(msg).c_str(), act->mid);
 }
 
 // throw_it - currently handles player throwing only.  Monster

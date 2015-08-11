@@ -2041,10 +2041,6 @@ Throwing
 
 (i - 一覧から選択 , - 切り替え)
 %%%%
-You %s%s %s.
-
-あなたは%s%sを%s。
-%%%%
 fragments
 
 の破片
@@ -2052,6 +2048,38 @@ fragments
 explosion of
 
 の爆発
+%%%%
+You hear a whirring sound.
+
+あなたはかすかに風切り音を聞いた。
+%%%%
+You hear a loud whirring sound.
+
+あなたは大きな風切り音を聞いた。
+%%%%
+You hear a twanging sound.
+
+あなたは弓鳴りの音を聞いた。
+%%%%
+You hear a loud twanging sound.
+
+あなたは大きな弓鳴りの音を聞いた。
+%%%%
+You hear a quiet thunk.
+
+あなたはかすかにクロスボウの発射音を聞いた。
+%%%%
+You hear a thunk.
+
+あなたはクロスボウの発射音を聞いた。
+%%%%
+You hear a triplet of thunks.
+
+あなたは三条のクロスボウの発射音を聞いた。
+%%%%
+You %s%s %s.
+
+あなたは%s%sを%s。
 %%%%
 magically
 
