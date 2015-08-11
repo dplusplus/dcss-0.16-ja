@@ -1337,6 +1337,18 @@ You now have %d gold piece%s.
 
 %s (新たに%d%s入手)
 %%%%
+Too many items on this level, not dropping the item.
+
+この階はアイテムが多すぎるため、そのアイテムを置かなかった。
+%%%%
+You drop %s.
+
+あなたは%sを置いた。
+%%%%
+No item to drop.
+
+置くアイテムがない。
+%%%%
 (%u%s turn%s)
 
 (%uターン%s消費)

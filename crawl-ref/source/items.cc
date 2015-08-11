@@ -2378,11 +2378,11 @@ bool drop_item(int item_dropped, int quant_drop)
     if (!copy_item_to_grid(you.inv[item_dropped],
                             you.pos(), quant_drop, true, true))
     {
-        mpr("Too many items on this level, not dropping the item.");
+        mpr(jtrans("Too many items on this level, not dropping the item."));
         return false;
     }
 
-    mprf("You drop %s.",
+    mprf(jtrans("You drop %s.").c_str(),
          quant_name(you.inv[item_dropped], quant_drop, DESC_A).c_str());
 
     bool quiet = silenced(you.pos());
@@ -2426,7 +2426,7 @@ void drop_last()
     }
 
     if (items_to_drop.empty())
-        mpr("No item to drop.");
+        mpr(jtrans("No item to drop."));
     else
     {
         you.last_pickup.clear();
