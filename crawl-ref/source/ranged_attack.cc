@@ -299,7 +299,7 @@ bool ranged_attack::handle_phase_hit()
         {
             mprf(jtrans("%s %s %s but does no damage.").c_str(),
                  projectile->name(DESC_THE).c_str(),
-                 defender->name(DESC_THE).c_str(),
+                 jtrans(defender->name(DESC_THE)).c_str(),
                  attack_verb.c_str());
         }
     }
