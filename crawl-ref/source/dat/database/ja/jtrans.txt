@@ -1245,6 +1245,50 @@ Unknown command.
 %%%%
 ############################## items.cc ##############################
 %%%%
+Pick up what?
+
+何を拾いますか？
+%%%%
+Select pick up quantity by entering a number, then select the item
+
+個数を指定して拾うには数字を押した後に選択してください。
+%%%%
+There are no items here.
+
+ここには何もない。
+%%%%
+You can't reach the bottom while floating on water.
+
+あなたは水に浮いている間水底に手を伸ばせない。
+%%%%
+There are no objects that can be picked up here.
+
+ここには拾える物がない。
+%%%%
+There are several objects here.
+
+ここにはいくつかの物がある。
+%%%%
+Pick up %s? ((y)es/(n)o/(a)ll/(m)enu/*?g,/q)
+
+%sを拾いますか？ ((y)はい/(n)いいえ/(a)全部/(m)一覧/*?g,/q)
+%%%%
+You can't carry that many items.
+
+あなたはこれ以上多くのアイテムを持つことはできない。
+%%%%
+You can't pick that up.
+
+あなたはそれを拾えない。
+%%%%
+Are you sure you want to pick up this pile of gold now?
+
+本当にこの金貨の山を拾いますか？
+%%%%
+Pick up how many of %s (; or enter for all)?
+
+%sのうちいくつを拾いますか？(; か ENTER で全選択)
+%%%%
 You now have %d gold piece%s.
 
 あなたは今%d枚の金貨を持っている。
@@ -1264,6 +1308,10 @@ Drop what?
 (_ for help)
 
 (_ でヘルプ表示)
+%%%%
+Your pack is full.
+
+あなたの荷袋は満杯だ。
 %%%%
 ############################## melee_attack.cc ##############################
 %%%%
