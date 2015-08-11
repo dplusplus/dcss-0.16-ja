@@ -16,6 +16,7 @@
 #include "artefact.h"
 #include "colour.h"
 #include "coordit.h"
+#include "database.h"
 #include "english.h"
 #include "env.h"
 #include "fight.h"
@@ -916,17 +917,17 @@ string monster_info::_core_name() const
                 iflags_t ignore_flags = ISFLAG_KNOW_CURSE | ISFLAG_KNOW_PLUSES;
                 bool     use_inscrip  = true;
                 const item_def& item = *inv[MSLOT_WEAPON];
-                s = type==MONS_SPECTRAL_WEAPON ? "spectral " : "";
+                s = type==MONS_SPECTRAL_WEAPON ? jtrans("spectral ") : "";
                 s += (item.name(DESC_PLAIN, false, false, use_inscrip, false,
                                 ignore_flags));
             }
             break;
 
         case MONS_PLAYER_GHOST:
-            s = apostrophise(mname) + " ghost";
+            s = mname + "の" + jtrans("ghost");
             break;
         case MONS_PLAYER_ILLUSION:
-            s = apostrophise(mname) + " illusion";
+            s = mname + "の" + jtrans("illusion");
             break;
         case MONS_PANDEMONIUM_LORD:
             s = mname;
@@ -999,12 +1000,12 @@ string monster_info::common_name(description_level_type desc) const
         else
             ss << std::to_string(num_heads);
 
-        ss << "-headed ";
+        ss << jtrans("-headed ");
     }
 
     if (mons_class_is_chimeric(type))
     {
-        ss << "chimera";
+        ss << jtrans("chimera");
         monsterentry *me = nullptr;
         if (u.ghost.acting_part != MONS_0
             && (me = get_monster_data(u.ghost.acting_part)))
@@ -1030,7 +1031,7 @@ string monster_info::common_name(description_level_type desc) const
     case MONS_ZOMBIE_LARGE:
 #endif
         if (!is(MB_NAME_ZOMBIE))
-            ss << (nocore ? "" : " ") << "zombie";
+            ss << (nocore ? "" : "の") << jtrans("zombie");
         break;
     case MONS_SKELETON:
 #if TAG_MAJOR_VERSION == 34
@@ -1038,7 +1039,7 @@ string monster_info::common_name(description_level_type desc) const
     case MONS_SKELETON_LARGE:
 #endif
         if (!is(MB_NAME_ZOMBIE))
-            ss << (nocore ? "" : " ") << "skeleton";
+            ss << (nocore ? "" : "の") << jtrans("skeleton");
         break;
     case MONS_SIMULACRUM:
 #if TAG_MAJOR_VERSION == 34
@@ -1046,17 +1047,17 @@ string monster_info::common_name(description_level_type desc) const
     case MONS_SIMULACRUM_LARGE:
 #endif
         if (!is(MB_NAME_ZOMBIE))
-            ss << (nocore ? "" : " ") << "simulacrum";
+            ss << (nocore ? "" : "の") << jtrans("simulacrum");
         break;
     case MONS_SPECTRAL_THING:
         if (nocore)
             ss << "spectre";
         break;
     case MONS_PILLAR_OF_SALT:
-        ss << (nocore ? "" : " ") << "shaped pillar of salt";
+        ss << (nocore ? "" : "の") << jtrans("shaped pillar of salt");
         break;
     case MONS_BLOCK_OF_ICE:
-        ss << (nocore ? "" : " ") << "shaped block of ice";
+        ss << (nocore ? "" : "の") << jtrans("shaped block of ice");
         break;
     default:
         break;
@@ -1067,7 +1068,7 @@ string monster_info::common_name(description_level_type desc) const
         // If momentarily in original form, don't display "shaped
         // shifter".
         if (mons_genus(type) != MONS_SHAPESHIFTER)
-            ss << " shaped shifter";
+            ss << "に変身した" << jtrans("shaped shifter");
     }
 
     string s = ss.str();
@@ -1106,7 +1107,7 @@ string monster_info::full_name(description_level_type desc, bool use_comma) cons
     {
         string s = mname + (use_comma ? ", the " : " the ") + common_name();
         if (desc == DESC_ITS)
-            s = apostrophise(s);
+            s += "の";
         return s;
     }
     else

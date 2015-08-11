@@ -261,7 +261,7 @@ Hawkeye
 %%%%
 @Adj@ Ballista
 
-@Adj@の槍投人
+@Adj@の槍投手
 %%%%
 Armour
 
