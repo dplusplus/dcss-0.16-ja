@@ -3397,7 +3397,7 @@ string get_monster_equipment_desc(const monster_info& mi,
         if (print_attitude && mons_is_pghost(mi.type))
             desc = get_ghost_description(mi);
         else
-            desc = mi.full_name(mondtype);
+            desc = jtrans(mi.full_name(mondtype));
 
         if (print_attitude)
         {
