@@ -1281,6 +1281,30 @@ You can't pick that up.
 
 あなたはそれを拾えない。
 %%%%
+You pick up the %s rune and feel its power.
+
+あなたは%sを手にし、その力を感じた。
+%%%%
+You have collected all the runes! Now go and win!
+
+あなたは全てのルーンを集めた！ 今すぐオーブを回収して脱出せよ！
+%%%%
+%d runes! That's enough to enter the realm of Zot.
+
+%d個めのルーンを手にした！ ゾットの領域に足を進めるには十分だ。
+%%%%
+You now have %d runes.
+
+あなたは今%d個のルーンを持っている。
+%%%%
+Press } to see all the runes you have collected.
+
+} を押すことであなたが集めたルーンを一覧できる。
+%%%%
+You feel the abyssal rune guiding you out of this place.
+
+あなたは深淵のルーンがあなたをアビスの外に導こうとしているような気がした。
+%%%%
 Are you sure you want to pick up this pile of gold now?
 
 本当にこの金貨の山を拾いますか？

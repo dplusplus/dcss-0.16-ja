@@ -1009,3 +1009,8 @@ string jtrans_make_stringf(const string &msg, const string &verb, const string &
 {
     return make_stringf(msg.c_str(), object.c_str(), verb.c_str());
 }
+
+string rune_of_zot_name(const string &name)
+{
+    return jtrans(name + " rune of Zot");
+}

@@ -1726,26 +1726,26 @@ static void _get_rune(const item_def& it, bool quiet)
     if (!quiet)
     {
         flash_view_delay(UA_PICKUP, rune_colour(it.plus), 300);
-        mprf("You pick up the %s rune and feel its power.",
-             rune_type_name(it.plus));
+        mprf(jtrans("You pick up the %s rune and feel its power.").c_str(),
+             rune_of_zot_name(rune_type_name(it.plus)).c_str());
         int nrunes = runes_in_pack();
         if (nrunes >= you.obtainable_runes)
-            mpr("You have collected all the runes! Now go and win!");
+            mpr(jtrans("You have collected all the runes! Now go and win!"));
         else if (nrunes == NUMBER_OF_RUNES_NEEDED
                  && !crawl_state.game_is_zotdef())
         {
             // might be inappropriate in new Sprints, please change it then
-            mprf("%d runes! That's enough to enter the realm of Zot.",
+            mprf(jtrans("%d runes! That's enough to enter the realm of Zot.").c_str(),
                  nrunes);
         }
         else if (nrunes > 1)
-            mprf("You now have %d runes.", nrunes);
+            mprf(jtrans("You now have %d runes.").c_str(), nrunes);
 
-        mpr("Press } to see all the runes you have collected.");
+        mpr(jtrans("Press } to see all the runes you have collected."));
     }
 
     if (it.plus == RUNE_ABYSSAL)
-        mpr("You feel the abyssal rune guiding you out of this place.");
+        mpr(jtrans("You feel the abyssal rune guiding you out of this place."));
 
     if (it.plus == RUNE_TOMB)
         add_daction(DACT_TOMB_CTELE);
