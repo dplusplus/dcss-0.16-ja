@@ -235,9 +235,9 @@ string item_def::name(description_level_type descrip, bool terse, bool ident,
                 buff << number_in_words(quantity);
             else
                 buff << quantity;
-        }
 
-        buff << counter_suffix(*this) << "の";
+            buff << counter_suffix(*this) << "の";
+        }
     }
     else
     {
@@ -2207,13 +2207,17 @@ string item_def::name_aux(description_level_type desc, bool terse, bool ident,
         break;
 
     case OBJ_SCROLLS:
+        if (basename)
+        {
+            buff << "巻物";
+            break;
+        }
+
         if (know_type)
             buff << jtrans(string("scroll of ") + scroll_type_name(item_typ));
         else
             buff << "『" << make_name(subtype_rnd, true) << "』と書かれた巻物";
         break;
-
-        buff << "巻物";
 
     case OBJ_JEWELLERY:
     {

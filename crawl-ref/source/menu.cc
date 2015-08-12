@@ -14,6 +14,7 @@
 #include "colour.h"
 #include "command.h"
 #include "coord.h"
+#include "database.h"
 #include "env.h"
 #include "hints.h"
 #include "invent.h"
@@ -165,7 +166,7 @@ Menu::Menu(int _flags, const string& tagname, bool text_only)
   : f_selitem(nullptr), f_drawitem(nullptr), f_keyfilter(nullptr),
     action_cycle(CYCLE_NONE), menu_action(ACT_EXAMINE), title(nullptr),
     title2(nullptr), flags(_flags), tag(tagname), first_entry(0), y_offset(0),
-    pagesize(0), max_pagesize(0), more("-more-", true), items(), sel(),
+    pagesize(0), max_pagesize(0), more(jtrans("-more-"), true), items(), sel(),
     select_filter(), highlighter(new MenuHighlighter), num(-1), lastch(0),
     alive(false), last_selected(-1)
 {

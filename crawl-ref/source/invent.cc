@@ -371,9 +371,9 @@ void InvMenu::set_title(const string &s)
         // so that get_number_of_cols returns the appropriate value.
         cgotoxy(1, 1);
 
-        stitle = "Inventory: " + slot_description();
+        stitle = jtrans("Inventory:") + " " + slot_description();
 
-        string prompt = "(_ for help)";
+        string prompt = jtrans("(_ for help)");
         stitle = stitle + string(max(0, get_number_of_cols() - strwidth(stitle)
                                         - strwidth(prompt)),
                                  ' ') + prompt;
