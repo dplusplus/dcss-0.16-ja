@@ -2217,7 +2217,7 @@ void get_item_desc(const item_def &item, describe_info &inf)
     // Don't use verbose descriptions if the item contains spells,
     // so we can actually output these spells if space is scarce.
     const bool verbose = !item.has_spells();
-    inf.body << get_item_description(item, verbose, false, true);
+    inf.body << get_item_description(item, verbose);
 }
 
 // Returns true if spells can be shown to player.
@@ -2794,7 +2794,7 @@ string get_skill_description(skill_type skill, bool need_title)
 static int _hex_chance(const spell_type spell, const int hd)
 {
     const int pow = mons_power_for_hd(spell, hd, false) / ENCH_POW_FACTOR;
-    const int chance = hex_success_chance(you.res_magic(), pow, 100);
+    const int chance = hex_success_chance(you.res_magic(), pow, 100, true);
     if (spell == SPELL_STRIP_RESISTANCE)
         return chance + (100 - chance) / 3; // ignores mr 1/3rd of the time
     return chance;
