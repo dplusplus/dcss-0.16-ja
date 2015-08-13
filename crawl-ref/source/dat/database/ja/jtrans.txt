@@ -8878,6 +8878,98 @@ You are invisible (but backlit and visible).
 
 あなたは透明化している(ただし光っている)。
 %%%%
+############################## skill-menu.cc ##############################
+%%%%
+<blue>Apt </blue>
+
+<blue>種族</blue>
+%%%%
+In automatic mode, skills are trained as you use them.
+
+自動モードでは、あなたが使用したスキルが訓練されます。
+%%%%
+In manual mode, experience is spread evenly across all activated skills.
+
+手動モードではあなたが選択したスキルに経験値が振り分けられます。
+%%%%
+Press the letter of a skill to choose whether you want to practise it. Skills marked with '-' will not be trained.
+
+
+訓練を望むスキルを選択してください。'-'の付いたスキルは訓練されません。
+%%%%
+skill_do_forcus
+#        return "Press the letter of a skill to cycle between "
+#               "<darkgrey>disabled</darkgrey> (-), enabled (+) and "
+#               "<white>focused</white> (*). Focused skills train twice as "
+#               "fast as others. ";
+
+スキルを何度か選択すると(-),(+),(*)と表示されます。(*)の状態では普段より多くの経験値が振り分けられます。
+%%%%
+Enhanced skills are in <blue>blue</blue>.
+
+補強されたスキルは<blue>青</blue>で表示されます。
+%%%%
+draining
+
+衰弱
+%%%%
+the power of Ashenzari
+
+アシェンザリの力
+%%%%
+The percentage of the experience used to train each skill is in <brown>brown</brown>.
+
+振り分けられる経験値の割合は<brown>茶色</brown>で表示されます。
+%%%%
+The percentage of the progress done before reaching next level is in <cyan>cyan</cyan>.
+
+次のレベルまでの進行度は<cyan>青緑</cyan>で表示されます。
+%%%%
+The progress of the knowledge transfer is displayed in <cyan>cyan</cyan> in front of the skill receiving the knowledge. The donating skill is marked with '*'.
+
+知識の移行の進行度は移行先になるスキルの前に<cyan>シアン</cyan>で表示されます。移行元となるスキルには * が付きます。
+%%%%
+Press the letter of a skill to read its description. Press ? for an explanation of how skills work and the various modes.
+
+スキルの説明を読むには各スキルに振られた文字を押してください。
+さらに <w>?</w> を押すことでスキルの成長の説明と各種モードについての説明が読めます。
+%%%%
+Mode
+
+モード
+%%%%
+Show
+
+表示
+%%%%
+[Help(<yellow>?</yellow>)]
+
+[ヘルプ(<yellow>?</yellow>)]
+%%%%
+Select a skill as the source of the knowledge transfer. The chosen skill will be reduced to the level shown in <brown>brown</brown>.
+
+知識の移行元となるスキルを選択してください。選択したスキルは<brown>数字</brown>のレベルまで減少します。
+%%%%
+Select a skill as the destination of the knowledge transfer. The chosen skill will be raised to the level shown in <cyan>cyan</cyan>.
+
+知識の移行先となるスキルを選択してください。選択したスキルは<cyan>数字</cyan>のレベルまで上昇します。
+%%%%
+Select the skills you want to be trained. The chosen skills will be raised to the level shown in <cyan>cyan</cyan>.
+
+鍛えたいスキルを選択してください。選択したスキルは<cyan>数字</cyan>のレベルまで上昇します。
+%%%%
+The species aptitude is in <white>white</white>.
+
+種族固有のスキル修正は<white>白</white>で表示されます。
+%%%%
+Manual usage is in <green>green</green>.
+
+手引書を持っているスキルは<green>緑色</green>で表示されます。
+%%%%
+You feel omnipotent.
+
+あなたは全能になったように思えた。
+%%%%
 ############################## terrain.cc ##############################
 %%%%
 door
