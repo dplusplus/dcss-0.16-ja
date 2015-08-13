@@ -221,54 +221,56 @@ butchering
 %%%%
 skill-menu
 
-                               <h>Skill management</h>
-You gain experience for killing monsters (and very few other activities).
-This experience is used to train skills. The skill screen allows you to
-select which skills to train.
-A skill can only be trained if there's some available means of exercising it;
-see "Training restrictions" below for details.
+                               <h>スキル管理</h>
+あなたは敵を倒すことによりスキル経験値を得る。(他の行動により、わずかに得ることもある)
+このスキル経験値はスキルの訓練に使用される。あなたはこのスキル画面で訓練するスキルを
+選択できる。
+各スキルはそれを使用できる状況においてのみ訓練できる。
+詳しくは下記の｢訓練の制限｣の項を読むこと。
 
-By pressing its letter, you can cycle if and how a skill is trained:
-<darkgrey>- deselected</darkgrey>    Skill will not be trained.
-+ selected
-<w>* focused</w>       Skill will be weighted higher for training.
+各スキルの文字を押すことにより、スキル訓練の内容を切り替えることができる。
 
-Pressing a capital letter selects that skill and deselects all the others.
-This shortcut is useful when you want to train only one skill.
+<darkgrey>- 非選択</darkgrey>   スキルは訓練されない。
++ 選択
+<w>* 集中訓練</w> スキルは重点的に訓練される。
 
-Training can be done in two modes, which are toggled with the <w>/</w> key.
-* automatic:    Skills are weighted based on your use of them.
-* manual:       Experience is spread evenly across all activated skills.
+大文字を入力することで対応するスキルのみを選択し、他のスキルを全て非選択にする。
+この操作は1つのスキルだけを訓練したいときに便利である。
 
-How fast you train a skill is governed by the following factors:
-* aptitude: Shown <white>white</white> in the Apt column. Higher numbers mean that
-      less experience is needed to advance a skill. Depends on species.
-* cross-training: Proficiency in some skills carries over to related skills.
-      The enhancer bonus for crosstraining is indicated in <blue>blue</blue>.
-* magic penalties: It is harder to learn an elemental skill if you are
-      proficient in the opposing element (Air-Earth, Ice-Fire).
-      The aptitude penalty is indicated in <red>red</red>.
+スキル訓練には2つのモードがあり、<w>/</w> キーで切り替えできる。
+* 自動: あなたの行動によりスキルに振られる経験値が変化する。
+* 手動: スキル経験値は全てのアクティブなスキルに均等に割り振られる。
 
-On top of that, there are some effects which directly modify a skill, for
-example draining or some god powers. Reduced skills are shown in <magenta>magenta</magenta>, and
-enhanced skills in <blue>blue</blue>.
-The training percentage (in <brown>brown</brown>) shows the relative
-amount of experience which will be used to train this skill.
+以下の要因によりスキル訓練の成長速度が変化する:
+* 種族補正: 種族補正の列に<white>白</white>で表示される。数字が高ければスキルを
+            成長させるのに少ない経験値で済む。種族により異なる。
+* 相互訓練: 特定のスキルを鍛えることで、関連する別のスキルへの補正を得ることが
+            ある。(例えば小剣と長剣スキル、投擲とスリングスキルなど)
+            ボーナスを得ているスキルは<blue>青</blue>で表示される。
 
-Apart from (de)selecting skills, you also have the following toggles:
-<w>/</w> :   Switch between automatic and manual training.
-<w>*</w> :   Shows all skills, even those you can't train yet.
-<w>?</w> :   Allows you to read the descriptions of skills.
-<w>_</w> :   Shows/hides skill modifiers, e.g. from god powers.
+また、衰弱状態や神の力などによってスキルの数値を直接修正する効果もある。
+減少したスキルは<magenta>紫</magenta>で、補強されたスキルは<blue>青</blue>で表示される。
 
-                               <h>Training restrictions</h>
-Fighting, Throwing, Armour, Dodging, Stealth, Unarmed Combat, and Spellcasting
-can always be trained. For the rest:
-* Weapon skills require carrying a weapon of the appropriate type.
-* Shields requires that you either be carrying a shield, or worship a deity
-      who can offer one through divine means (The Shining One).
-* Evocations requires carrying an evocable item, or worshipping Nemelex.
-* Spell schools require knowing a spell of the school.
-* Necromancy can also be trained when worshipping Kikubaaqudgha.
-* Invocations requires worshipping a god whose abilities require it.
+スキル経験値の割り振り率(<brown>茶色</brown>で表示)はスキル訓練に費やされる量に
+対する相対値を示している。
+
+スキルの選択以外にも、スキル画面で以下のようなモード切替ができる:
+
+<w>/</w> :   自動/手動訓練を切り替える。
+<w>*</w> :   今選択できないスキルを含めて全てのスキルを表示する。
+<w>?</w> :   スキルの説明を読む。
+<w>_</w> :   スキルの修正を表示/非表示する。
+
+                               <h>訓練の制限</h>
+
+戦闘、投擲、甲冑、躱し身、隠密、徒手格闘、呪文詠唱スキルはいつでも訓練できる。
+他のスキルについては以下の通り:
+
+・武器スキルはそれに応じた種別の武器を持ち運ぶ必要がある。
+・盾スキルは盾を持ち運ぶか、魔法や神の力により盾を張れる必要がある。
+・発動スキルは発動可能なアイテムを持ち運ぶか、ネメレクス・ソベーを信仰する
+  必要がある。
+・魔術スキルは対応する魔術領域の呪文を学んでいる必要がある。
+・死霊術スキルはキクバークッグァを信仰することによっても訓練できる。
+・祈祷スキルは神を信仰し能力を得る必要がある。
 %%%%
