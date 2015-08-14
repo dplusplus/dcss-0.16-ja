@@ -2251,6 +2251,70 @@ in a vulnerable spot
 
 の弱点
 %%%%
+############################## religion.cc ##############################
+%%%%
+You bow before the missionary of Beogh.
+
+あなたはベオの宣教師の前に跪いた。
+%%%%
+You %s the altar of %s.
+
+あなたは%sの祭壇の前で%s。
+%%%%
+does not accept worship from the ignorant!
+
+は無知なる者の入信を受け入れない！
+%%%%
+does not accept service from beggars like you!
+
+はあなたのような貧民の入会はお断りだ！
+%%%%
+The service fee for joining is currently %d gold; you have none.
+
+入会金は現在%dゴールドだ; あなたは一文たりとも持っていない。
+%%%%
+The service fee for joining is currently %d gold; you only have %d.
+
+入会金は現在%dゴールドだ; あなたは%dゴールドしか持っていない。
+%%%%
+does not accept worship from the loveless!
+
+は親愛無き者の入信を拒否した！
+%%%%
+does not accept worship for those who cannot deal a hand of cards!
+
+はカードデッキを操れない者の入信を拒否した！
+%%%%
+says: How dare you come in such a loathsome form!
+
+は言った: 『よくもまあそんな胸糞悪い姿でのこのこと現れたものだ！』
+%%%%
+does not accept worship from those such as you!
+
+はあなたのような者の入信を拒否した！
+%%%%
+refuses to forgive you so easily!
+
+はあなたをそう簡単に許しはしない！
+%%%%
+############################## species.cc ##############################
+%%%%
+coil in front of
+
+とぐろを巻いた
+%%%%
+curl up in front of
+
+体を丸めた
+%%%%
+sit before
+
+座った
+%%%%
+kneel at
+
+ひざまずいた
+%%%%
 ############################## state.cc ##############################
 %%%%
 %s comes into view.
@@ -2342,4 +2406,10 @@ returns to your pack!
 fails to return to your pack!
 
 はあなたの手元に戻ってきたが、うまく受け取れなかった！
+%%%%
+############################## transform.cc ##############################
+%%%%
+hover solemnly before
+
+浮かびながら姿勢を正した
 %%%%

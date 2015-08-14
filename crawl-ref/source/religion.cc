@@ -3671,12 +3671,12 @@ void join_religion(god_type which_god, bool immediate)
 void god_pitch(god_type which_god)
 {
     if (which_god == GOD_BEOGH && grd(you.pos()) != DNGN_ALTAR_BEOGH)
-        mpr("You bow before the missionary of Beogh.");
+        mpr(jtrans("You bow before the missionary of Beogh."));
     else
     {
-        mprf("You %s the altar of %s.",
-             get_form()->player_prayer_action().c_str(),
-             god_name(which_god).c_str());
+        mprf(jtrans("You %s the altar of %s.").c_str(),
+             jtrans(god_name(which_god)).c_str(),
+             jtrans(get_form()->player_prayer_action()).c_str());
     }
     more();
 
@@ -3691,22 +3691,22 @@ void god_pitch(god_type which_god)
         you.turn_is_over = false;
         if (which_god == GOD_SIF_MUNA)
         {
-            simple_god_message(" does not accept worship from the ignorant!",
+            simple_god_message(jtrans("does not accept worship from the ignorant!").c_str(),
                                which_god);
         }
         else if (which_god == GOD_GOZAG)
         {
-            simple_god_message(" does not accept service from beggars like you!",
+            simple_god_message(jtrans("does not accept service from beggars like you!").c_str(),
                                which_god);
             if (you.gold == 0)
             {
-                mprf("The service fee for joining is currently %d gold; you have"
-                     " none.", fee);
+                mprf(jtrans("The service fee for joining is currently %d gold; you have"
+                            " none.").c_str(), fee);
             }
             else
             {
-                mprf("The service fee for joining is currently %d gold; you only"
-                     " have %d.", fee, you.gold);
+                mprf(jtrans("The service fee for joining is currently %d gold; you only"
+                            " have %d.").c_str(), fee, you.gold);
             }
         }
         else if (player_mutation_level(MUT_NO_LOVE)
@@ -3714,25 +3714,25 @@ void god_pitch(god_type which_god)
                  || which_god == GOD_ELYVILON
                  || which_god == GOD_JIYVA))
         {
-            simple_god_message(" does not accept worship from the loveless!",
+            simple_god_message(jtrans("does not accept worship from the loveless!").c_str(),
                                which_god);
         }
         else if (player_mutation_level(MUT_NO_ARTIFICE)
                  && which_god == GOD_NEMELEX_XOBEH)
         {
-            simple_god_message(" does not accept worship for those who cannot "
-                              "deal a hand of cards!", which_god);
+            simple_god_message(jtrans("does not accept worship for those who cannot "
+                                      "deal a hand of cards!").c_str(), which_god);
         }
         else if (!_transformed_player_can_join_god(which_god))
         {
-            simple_god_message(" says: How dare you come in such a loathsome"
-                               " form!",
+            simple_god_message(jtrans("says: How dare you come in such a loathsome"
+                                      " form!").c_str(),
                                which_god);
         }
         else
         {
-            simple_god_message(" does not accept worship from those such as"
-                               " you!",
+            simple_god_message(jtrans("does not accept worship from those such as"
+                                      " you!").c_str(),
                                which_god);
         }
         return;
@@ -3741,7 +3741,7 @@ void god_pitch(god_type which_god)
     if (which_god == GOD_LUGONU && you.penance[GOD_LUGONU])
     {
         you.turn_is_over = false;
-        simple_god_message(" refuses to forgive you so easily!", which_god);
+        simple_god_message(jtrans("refuses to forgive you so easily!").c_str(), which_god);
         return;
     }
 
