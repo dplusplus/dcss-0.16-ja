@@ -2297,6 +2297,18 @@ refuses to forgive you so easily!
 
 はあなたをそう簡単に許しはしない！
 %%%%
+Gozag will waive the service fee if you
+
+ゴザーグは今入会するなら入会金を免除してくれるようだ。
+%%%%
+The service fee for joining is currently %d gold; you have %d.
+
+入会金は現在%dゴールドだ; あなたは%dゴールド所持している。
+%%%%
+%sDo you wish to %sjoin this religion?
+
+%sあなたは%s入信しますか？
+%%%%
 ############################## species.cc ##############################
 %%%%
 coil in front of

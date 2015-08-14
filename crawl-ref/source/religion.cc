@@ -3756,20 +3756,20 @@ void god_pitch(god_type which_god)
     {
         if (fee == 0)
         {
-            service_fee = string("Gozag will waive the service fee if you ")
-                          + (coinflip() ? "act now" : "join today") + "!\n";
+            service_fee = jtrans("Gozag will waive the service fee if you ");
         }
         else
         {
             service_fee = make_stringf(
-                    "The service fee for joining is currently %d gold; you"
-                    " have %d.\n",
+                    (jtrans("The service fee for joining is currently %d gold; you"
+                            " have %d.") + "\n").c_str(),
                     fee, you.gold);
         }
     }
-    const string prompt = make_stringf("%sDo you wish to %sjoin this religion?",
+    const string prompt = make_stringf(which_god == GOD_GOZAG ? "%sあなたは%s入会しますか？" :
+                                       jtrans("%sDo you wish to %sjoin this religion?").c_str(),
                                        service_fee.c_str(),
-                                       (you.worshipped[which_god]) ? "re" : "");
+                                       (you.worshipped[which_god]) ? "再" : "");
 
     cgotoxy(1, 21, GOTO_CRT);
     textcolour(channel_to_colour(MSGCH_PROMPT));
