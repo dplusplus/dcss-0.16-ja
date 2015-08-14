@@ -204,7 +204,7 @@ bool can_do_capstone_ability(god_type god)
 static bool _altar_prayer()
 {
     // Different message from when first joining a religion.
-    mpr("You prostrate yourself in front of the altar and pray.");
+    mpr(jtrans("You prostrate yourself in front of the altar and pray."));
 
     god_acting gdact;
 
@@ -281,7 +281,7 @@ static bool _altar_pray_or_convert()
 
     if (you.species == SP_DEMIGOD)
     {
-        mpr("A being of your status worships no god.");
+        mpr(jtrans("A being of your status worships no god."));
         return false;
     }
 
@@ -353,9 +353,9 @@ void pray(bool allow_altar_prayer)
         return;
     }
 
-    mprf(MSGCH_PRAY, "You offer a %sprayer to %s.",
-         you.cannot_speak() ? "silent " : "",
-         god_name(you.religion).c_str());
+    mprf(MSGCH_PRAY, jtrans("You offer a %sprayer to %s.").c_str(),
+         you.cannot_speak() ? "沈黙しながら" : "",
+         jtrans(god_name(you.religion)).c_str());
 
     you.turn_is_over = _offer_items()
                       || (you_worship(GOD_FEDHAS) && fedhas_fungal_bloom());
@@ -365,7 +365,7 @@ void pray(bool allow_altar_prayer)
     else if (you_worship(GOD_GOZAG))
         mprf(MSGCH_GOD, "%s", getSpeakString("Gozag prayer").c_str());
     else if (player_under_penance())
-        simple_god_message(" demands penance!");
+        simple_god_message(jtrans("demands penance!").c_str());
     else
         mprf(MSGCH_PRAY, you.religion, "%s", god_prayer_reaction().c_str());
 

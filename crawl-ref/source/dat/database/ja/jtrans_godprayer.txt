@@ -1,0 +1,17 @@
+%%%%
+You prostrate yourself in front of the altar and pray.
+
+あなたは祭壇の前でひれ伏し、祈った。
+%%%%
+A being of your status worships no god.
+
+あなたは神を信仰していない。
+%%%%
+You offer a %sprayer to %s.
+
+あなたは%s%sに祈りを捧げた。
+%%%%
+demands penance!
+
+は苦行を要求している！
+%%%%
