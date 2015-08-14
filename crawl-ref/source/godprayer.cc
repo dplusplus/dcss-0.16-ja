@@ -441,11 +441,11 @@ static bool _zin_donate_gold()
 {
     if (you.gold == 0)
     {
-        mpr("You don't have anything to sacrifice.");
+        mpr(jtrans("You don't have anything to sacrifice."));
         return false;
     }
 
-    if (!yesno("Do you wish to donate half of your money?", true, 'n'))
+    if (!yesno(jtrans("Do you wish to donate half of your money?").c_str(), true, 'n'))
     {
         canned_msg(MSG_OK);
         return false;
@@ -455,8 +455,9 @@ static bool _zin_donate_gold()
     const int donation = _gold_to_donation(donation_cost);
 
 #if defined(DEBUG_DIAGNOSTICS) || defined(DEBUG_SACRIFICE) || defined(DEBUG_PIETY)
-    mprf(MSGCH_DIAGNOSTICS, "A donation of $%d amounts to an "
-         "increase of piety by %d.", donation_cost, donation);
+    mprf(MSGCH_DIAGNOSTICS,
+         jtrans("A donation of $%d amounts to an increase of piety by %d.").c_str(),
+         donation_cost, donation);
 #endif
     // Take a note of the donation.
     take_note(Note(NOTE_DONATE_MONEY, donation_cost));
@@ -467,7 +468,7 @@ static bool _zin_donate_gold()
 
     if (donation < 1)
     {
-        simple_god_message(" finds your generosity lacking.");
+        simple_god_message(jtrans("finds your generosity lacking.").c_str());
         return false;
     }
 
@@ -481,22 +482,24 @@ static bool _zin_donate_gold()
     if (player_under_penance())
     {
         if (estimated_piety >= you.penance[GOD_ZIN])
-            mpr("You feel that you will soon be absolved of all your sins.");
+            mpr(jtrans("You feel that you will soon be absolved of all your sins."));
         else
-            mpr("You feel that your burden of sins will soon be lighter.");
+            mpr(jtrans("You feel that your burden of sins will soon be lighter."));
     }
     else
     {
-        string result = "You feel that " + god_name(GOD_ZIN) + " will soon be ";
-        result +=
+        string result = "あなたは" + jtrans(god_name(GOD_ZIN)) + "が";
+        result += jtrans(
             (estimated_piety >= piety_breakpoint(5)) ? "exalted by your worship" :
             (estimated_piety >= piety_breakpoint(4)) ? "extremely pleased with you" :
             (estimated_piety >= piety_breakpoint(3)) ? "greatly pleased with you" :
             (estimated_piety >= piety_breakpoint(2)) ? "most pleased with you" :
             (estimated_piety >= piety_breakpoint(1)) ? "pleased with you" :
             (estimated_piety >= piety_breakpoint(0)) ? "aware of your devotion"
-                                                     : "noncommittal";
-        result += (donation >= 30 && you.piety < piety_breakpoint(5)) ? "!" : ".";
+                                                     : "noncommittal");
+
+        result += "ように思えた";
+        result += (donation >= 30 && you.piety < piety_breakpoint(5)) ? "！" : "。";
 
         mpr(result);
     }

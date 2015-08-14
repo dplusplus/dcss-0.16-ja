@@ -15,3 +15,55 @@ demands penance!
 
 は苦行を要求している！
 %%%%
+You don't have anything to sacrifice.
+
+あなたは捧げるものを持っていない。
+%%%%
+Do you wish to donate half of your money?
+
+所持金の半分を寄付しますか？
+%%%%
+A donation of $%d amounts to an increase of piety by %d.
+
+$%dの寄付により信仰値が%d上昇した。
+%%%%
+finds your generosity lacking.
+
+はあなたには気前のよさが足りないと感じた。
+%%%%
+You feel that you will soon be absolved of all your sins.
+
+あなたはもうすぐ全ての罪が免除されるような気がした。
+%%%%
+You feel that your burden of sins will soon be lighter.
+
+あなたは早晩罪の重荷が軽くなるような気がした。
+%%%%
+exalted by your worship
+
+あなたの崇拝を誇りにしている
+%%%%
+extremely pleased with you
+
+あなたに極めて満足している
+%%%%
+greatly pleased with you
+
+あなたに大いに満足している
+%%%%
+most pleased with you
+
+あなたにかなり満足している
+%%%%
+pleased with you
+
+あなたに満足している
+%%%%
+aware of your devotion
+
+あなたの献身に気付いている
+%%%%
+noncommittal
+
+あなたに特別な関心を持っていない
+%%%%
