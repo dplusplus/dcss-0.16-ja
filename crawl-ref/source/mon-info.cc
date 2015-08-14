@@ -864,20 +864,20 @@ string monster_info::_core_name() const
     string s;
 
     if (is(MB_NAME_REPLACE))
-        s = mname;
+        s = jtrans(mname);
     else if (nametype == MONS_LERNAEAN_HYDRA)
-        s = "Lernaean hydra"; // TODO: put this into mon-data.h
+        s = jtrans("Lernaean hydra"); // TODO: put this into mon-data.h
     else if (nametype == MONS_ROYAL_JELLY)
-        s = "royal jelly";
+        s = jtrans("royal jelly");
     else if (mons_species(nametype) == MONS_SERPENT_OF_HELL)
-        s = "Serpent of Hell";
+        s = jtrans("Serpent of Hell");
     else if (invalid_monster_type(nametype) && nametype != MONS_PROGRAM_BUG)
         s = "INVALID MONSTER";
     else
     {
         const char* slime_sizes[] = {"buggy ", "", "large ", "very large ",
                                                "enormous ", "titanic "};
-        s = get_monster_data(nametype)->name;
+        s = jtrans(get_monster_data(nametype)->name);
 
         switch (type)
         {
