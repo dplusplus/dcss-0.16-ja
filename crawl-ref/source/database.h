@@ -47,6 +47,7 @@ string getHelpString(const string &topic);
 string getMiscString(const string &misc, const string &suffix = "");
 string getHintString(const string &key);
 
+string jtrans(const char* key, const bool linefeed = false);
 string jtrans(const string &key, const bool linefeed = false);
 string jtrans_make_stringf(const string &msg, const string &subject, const string &verb, const string &object);
 string jtrans_make_stringf(const string &msg, const string &verb, const string &object);

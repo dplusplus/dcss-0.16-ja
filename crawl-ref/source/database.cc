@@ -985,8 +985,18 @@ string getHintString(const string &key)
 
 /////////////////////////////////////////////////////////////////////////////
 // JtransDB specific functions.
+string jtrans(const char* key, const bool linefeed)
+{
+    // for string(nullptr) error
+    string str = (key == nullptr ? string() : string(key));
+
+    return jtrans(str, linefeed);
+}
+
 string jtrans(const string &key, const bool linefeed)
 {
+    if (key == "") return "";
+
     string text = _query_database(JtransDB, key, true, true);
 
     if (text == "") return key;
