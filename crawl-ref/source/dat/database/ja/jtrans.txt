@@ -2253,6 +2253,90 @@ in a vulnerable spot
 %%%%
 ############################## religion.cc ##############################
 %%%%
+welcomes you%s!
+
+はあなたの%s入信を歓迎した！
+%%%%
+begins to support your attributes as your movement slows.
+
+はあなたの速度が低下するに従って能力値を補強する。
+%%%%
+You can now bend time to slow others.
+
+あなたは時間を歪めて他者を遅くすることができるようになった。
+%%%%
+will now protect you from your own clouds.
+
+はあなた自身が発する雲によりあなたを守護する。
+%%%%
+Your unholy and evil allies forsake you.
+
+あなたの邪悪で不浄な仲間たちはあなたを見限った。
+%%%%
+Your unclean and chaotic allies forsake you.
+
+あなたの不浄で混沌じみた仲間たちはあなたを見限った。
+%%%%
+Your magic-using allies forsake you.
+
+あなたの魔術を操る仲間たちはあなたを見限った。
+%%%%
+You can now call upon Trog to burn spellbooks in your surroundings.
+
+あなたはトログの力を借りて周辺の魔法書を燃やすことができるようになった。
+%%%%
+You can now call upon Fedhas to speed up the decay of corpses.
+
+あなたはフェダスの力を借りて死体の腐敗を促進することができるようになった。
+%%%%
+The plants of the dungeon cease their hostilities.
+
+ダンジョン内の植物は攻撃性を納めた。
+%%%%
+says: Farewell. Go and aid the meek with
+
+は『さらばだ。%sと共に弱き者を助けるがいい』と言った。
+%%%%
+says: Farewell. Go and vanquish evil with
+
+は『さらばだ。%sと共に悪を打ち負かすがいい』と言った。
+%%%%
+says: Farewell. Go and enforce order with
+
+は『さらばだ。%sと共に秩序を執行するがいい』と言った。
+%%%%
+says: Your evil deeds will not go unpunished!
+
+は『汝の悪行が罪を免れることはない！』と言った。
+%%%%
+says: You will pay for your evil ways, mortal!
+
+は『定命の者よ！ 悪の道に走った償いはしてもらうぞ！』と言った。
+%%%%
+says: You will suffer for embracing such %s!
+
+は『%sを受け入れれば苦しむことになるぞ！』と言った。
+%%%%
+grants you a jelly!
+
+はジェリーをあなたに授けた！
+%%%%
+You pay a service fee of %d gold.
+
+あなたは入会金として%dゴールドを支払った。
+%%%%
+waives the service fee.
+
+は入会金を免除してくれた。
+%%%%
+offers you a free set of potion effects!
+
+は複数の薬の効果を無料で授けてくれる！
+%%%%
+You have enough gold to %s.
+
+あなたは%sのに十分な額の所持金がある。
+%%%%
 You bow before the missionary of Beogh.
 
 あなたはベオの宣教師の前に跪いた。

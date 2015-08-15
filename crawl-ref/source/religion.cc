@@ -3423,8 +3423,8 @@ void join_religion(god_type which_god, bool immediate)
                    + god_name(you.religion) + ".");
 
     simple_god_message(
-        make_stringf(" welcomes you%s!",
-                     you.worshipped[which_god] ? " back" : "").c_str());
+        make_stringf(jtrans("welcomes you%s!").c_str(),
+                     you.worshipped[which_god] ? "再" : "").c_str());
     if (!immediate)
         more();
     if (crawl_state.game_is_tutorial())
@@ -3445,10 +3445,10 @@ void join_religion(god_type which_god, bool immediate)
     // Chei worshippers start their stat gain immediately.
     if (you_worship(GOD_CHEIBRIADOS))
     {
-        simple_god_message(" begins to support your attributes as your "
-                           "movement slows.");
+        simple_god_message(jtrans("begins to support your attributes as your "
+                                  "movement slows.").c_str());
         notify_stat_change();
-        mprf(MSGCH_GOD, "You can now bend time to slow others.");
+        mpr_nojoin(MSGCH_GOD, jtrans("You can now bend time to slow others."));
     }
 
     // We disable all magical skills to avoid accidentally angering Trog.
@@ -3465,7 +3465,7 @@ void join_religion(god_type which_god, bool immediate)
 
     // Mention cloud immunity with Qazlal.
     if (you_worship(GOD_QAZLAL))
-        simple_god_message(" will now protect you from your own clouds.");
+        simple_god_message(jtrans("will now protect you from your own clouds.").c_str());
 
     // Allow training all divine ability skills immediately.
     vector<ability_type> abilities = get_god_abilities(true, true);
@@ -3482,31 +3482,31 @@ void join_religion(god_type which_god, bool immediate)
         && query_daction_counter(DACT_ALLY_UNHOLY_EVIL))
     {
         add_daction(DACT_ALLY_UNHOLY_EVIL);
-        mprf(MSGCH_MONSTER_ENCHANT, "Your unholy and evil allies forsake you.");
+        mpr_nojoin(MSGCH_MONSTER_ENCHANT, jtrans("Your unholy and evil allies forsake you."));
     }
 
     if (you_worship(GOD_ZIN)
         && query_daction_counter(DACT_ALLY_UNCLEAN_CHAOTIC))
     {
         add_daction(DACT_ALLY_UNCLEAN_CHAOTIC);
-        mprf(MSGCH_MONSTER_ENCHANT, "Your unclean and chaotic allies forsake you.");
+        mpr_nojoin(MSGCH_MONSTER_ENCHANT, jtrans("Your unclean and chaotic allies forsake you."));
     }
     else if (you_worship(GOD_TROG)
              && query_daction_counter(DACT_ALLY_SPELLCASTER))
     {
         add_daction(DACT_ALLY_SPELLCASTER);
-        mprf(MSGCH_MONSTER_ENCHANT, "Your magic-using allies forsake you.");
+        mpr_nojoin(MSGCH_MONSTER_ENCHANT, jtrans("Your magic-using allies forsake you."));
     }
 
     if (you_worship(GOD_TROG))
     {
-        mprf(MSGCH_GOD, "You can now call upon Trog to burn spellbooks in your "
-            "surroundings.");
+        mpr_nojoin(MSGCH_GOD, jtrans("You can now call upon Trog to burn spellbooks in your "
+                                     "surroundings."));
     }
     else if (you_worship(GOD_FEDHAS))
     {
-        mprf(MSGCH_GOD, "You can now call upon Fedhas to speed up the decay of corpses.");
-        mprf(MSGCH_MONSTER_ENCHANT, "The plants of the dungeon cease their hostilities.");
+        mpr_nojoin(MSGCH_GOD, jtrans("You can now call upon Fedhas to speed up the decay of corpses."));
+        mpr_nojoin(MSGCH_MONSTER_ENCHANT, jtrans("The plants of the dungeon cease their hostilities."));
         if (env.forest_awoken_until)
             for (monster_iterator mi; mi; ++mi)
                 mi->del_ench(ENCH_AWAKEN_FOREST);
@@ -3527,16 +3527,16 @@ void join_religion(god_type which_god, bool immediate)
         switch (you.religion)
         {
         case GOD_ELYVILON:
-            simple_god_message((" says: Farewell. Go and aid the meek with "
-                               + god_name(you.religion) + ".").c_str(), old_god);
+            simple_god_message(make_stringf(jtrans("says: Farewell. Go and aid the meek with").c_str(),
+                                            jtrans(god_name(you.religion)).c_str()).c_str(), old_god);
             break;
         case GOD_SHINING_ONE:
-            simple_god_message((" says: Farewell. Go and vanquish evil with "
-                               + god_name(you.religion) + ".").c_str(), old_god);
+            simple_god_message(make_stringf(jtrans("says: Farewell. Go and vanquish evil with").c_str(),
+                                            jtrans(god_name(you.religion)).c_str()).c_str(), old_god);
             break;
         case GOD_ZIN:
-            simple_god_message((" says: Farewell. Go and enforce order with "
-                               + god_name(you.religion) + ".").c_str(), old_god);
+            simple_god_message(make_stringf(jtrans("says: Farewell. Go and enforce order with").c_str(),
+                                            jtrans(god_name(you.religion)).c_str()).c_str(), old_god);
             break;
         default:
             mprf(MSGCH_ERROR, "Unknown good god.");
@@ -3550,22 +3550,22 @@ void join_religion(god_type which_god, bool immediate)
     if (old_god != GOD_ELYVILON && you.penance[GOD_ELYVILON]
         && god_hates_your_god(GOD_ELYVILON, you.religion))
     {
-        simple_god_message(" says: Your evil deeds will not go unpunished!",
+        simple_god_message(jtrans("says: Your evil deeds will not go unpunished!").c_str(),
                            GOD_ELYVILON);
         set_penance_xp_timeout();
     }
     if (old_god != GOD_SHINING_ONE && you.penance[GOD_SHINING_ONE]
         && god_hates_your_god(GOD_SHINING_ONE, you.religion))
     {
-        simple_god_message(" says: You will pay for your evil ways, mortal!",
+        simple_god_message(jtrans("says: You will pay for your evil ways, mortal!").c_str(),
                            GOD_SHINING_ONE);
         set_penance_xp_timeout();
     }
     if (old_god != GOD_ZIN && you.penance[GOD_ZIN]
         && god_hates_your_god(GOD_ZIN, you.religion))
     {
-        simple_god_message(make_stringf(" says: You will suffer for embracing such %s!",
-                                        is_chaotic_god(you.religion) ? "chaos" : "evil").c_str(),
+        simple_god_message(make_stringf(jtrans("says: You will suffer for embracing such %s!").c_str(),
+                                        is_chaotic_god(you.religion) ? "混沌" : "邪悪").c_str(),
                            GOD_ZIN);
         set_penance_xp_timeout();
     }
@@ -3593,7 +3593,7 @@ void join_religion(god_type which_god, bool immediate)
                          MHITNOT, 0, GOD_JIYVA);
 
             delayed_monster(mg);
-            simple_god_message(" grants you a jelly!");
+            simple_god_message(jtrans("grants you a jelly!").c_str());
         }
     }
 
@@ -3618,25 +3618,25 @@ void join_religion(god_type which_god, bool immediate)
         if (fee > 0)
         {
             ASSERT(you.gold >= fee);
-            mprf(MSGCH_GOD, "You pay a service fee of %d gold.", fee);
+            mprf(MSGCH_GOD, jtrans("You pay a service fee of %d gold.").c_str(), fee);
             you.gold -= fee;
             you.attribute[ATTR_GOZAG_GOLD_USED] += fee;
         }
         else
-            simple_god_message(" waives the service fee.");
+            simple_god_message(jtrans("waives the service fee.").c_str());
 
         for (size_t i = 0; i < abilities.size(); ++i)
         {
             if (abilities[i] == ABIL_GOZAG_POTION_PETITION
                 && !you.attribute[ATTR_GOZAG_FIRST_POTION])
             {
-                simple_god_message(" offers you a free set of potion effects!");
+                simple_god_message(jtrans("offers you a free set of potion effects!").c_str());
                 needs_redraw = true;
                 continue;
             }
             if (you.gold >= get_gold_cost(abilities[i])
                 && _abil_chg_message(god_gain_power_messages[you.religion][i],
-                                     "You have enough gold to %s.", i))
+                                     jtrans("You have enough gold to %s.").c_str(), i))
             {
                 needs_redraw = true;
             }
