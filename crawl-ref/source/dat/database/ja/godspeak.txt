@@ -959,15 +959,15 @@ w:1
 ゴザーグは言った：『あなたの祈りは重要だ。そのまま続けなさい』
 
 w:1
-Gozag says: Please join the back of the queue.
+# Gozag says: Please join the back of the queue.
 ゴザーグは言った：『列の後ろに並んでください』
 
 w:1
-Gozag says: This prayer may be monitored for quality assurance.
+# Gozag says: This prayer may be monitored for quality assurance.
 ゴザーグは言った：『礼拝は品質保証のため監視されています』
 
 w:1
-Gozag says: For potions, speak 1 now.
+# Gozag says: For potions, speak 1 now.
 ゴザーグは言った：『薬が欲しければ、1を押しなさい』
 %%%%
 ######################################
