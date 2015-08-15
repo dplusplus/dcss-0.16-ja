@@ -1,7 +1,55 @@
 %%%%
+Brand which weapon?
+
+どの武器を強化してもらいますか？
+%%%%
+blessed by the Shining One
+
+輝けるものに祝福されている。
+%%%%
+corrupted by Lugonu
+
+ルゴヌに崩壊と歪曲の力を与えられている。
+%%%%
+touched by the gods
+
+神の力を与えられている。
+%%%%
+Your %s shines brightly!
+
+あなたの%sは眩しく輝いた！
+%%%%
+booms: Use this gift wisely!
+
+の声が轟いた：『我が与えし物賢く使うべし！』
+%%%%
+bloodied by Kikubaaqudgha
+
+キクバークッグァに苦痛の力を与えられている。
+%%%%
 You prostrate yourself in front of the altar and pray.
 
 あなたは祭壇の前でひれ伏し、祈った。
+%%%%
+will bless one of your weapons.
+
+はあなたの武器の一つを祝福してくれる。
+%%%%
+will brand one of your weapons with the corruption of the Abyss.
+
+はあなたの武器の一つをアビスの崩壊の力により強化してくれる。
+%%%%
+will bloody your weapon with pain or grant you the Necronomicon.
+
+はあなたの武器の一つを血に染め苦痛の力によって強化するか、もしくはネクロノミコンを授けてくれる。
+%%%%
+Do you wish to receive the Necronomicon?
+
+ネクロノミコンを受け取ることを望みますか？
+%%%%
+grants you a gift!
+
+はあなたに贈り物を授けた！
 %%%%
 A being of your status worships no god.
 

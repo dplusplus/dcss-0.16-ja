@@ -83,7 +83,7 @@ string god_prayer_reaction()
 
 static bool _bless_weapon(god_type god, brand_type brand, colour_t colour)
 {
-    int item_slot = prompt_invent_item("Brand which weapon?", MT_INVLIST,
+    int item_slot = prompt_invent_item(jtrans("Brand which weapon?").c_str(), MT_INVLIST,
                                        OSEL_BLESSABLE_WEAPON, true, true, false);
 
     if (item_slot == PROMPT_NOTHING || item_slot == PROMPT_ABORT)
@@ -95,15 +95,14 @@ static bool _bless_weapon(god_type god, brand_type brand, colour_t colour)
     if (!is_brandable_weapon(wpn, brand == SPWPN_HOLY_WRATH, true))
         return false;
 
-    string prompt = "Do you wish to have " + wpn.name(DESC_YOUR)
-                       + " ";
+    string prompt = wpn.name(DESC_YOUR);
     if (brand == SPWPN_PAIN)
-        prompt += "bloodied with pain";
+        prompt += "を血に染め苦痛の力を与え";
     else if (brand == SPWPN_DISTORTION)
-        prompt += "corrupted";
+        prompt += "に崩壊と歪曲の力を与え";
     else
-        prompt += "blessed";
-    prompt += "?";
+        prompt += "を祝福し";
+    prompt += "ますか？";
 
     if (!yesno(prompt.c_str(), true, 'n'))
     {
@@ -144,22 +143,22 @@ static bool _bless_weapon(god_type god, brand_type brand, colour_t colour)
     calc_mp(); // in case the old brand was antimagic,
     you.redraw_armour_class = true; // protection,
     you.redraw_evasion = true;      // or evasion
-    string desc  = old_name + " "
-                 + (god == GOD_SHINING_ONE   ? "blessed by the Shining One" :
-                    god == GOD_LUGONU        ? "corrupted by Lugonu" :
-                    god == GOD_KIKUBAAQUDGHA ? "bloodied by Kikubaaqudgha"
-                                             : "touched by the gods");
+    string desc = old_name + " "
+                + jtrans(god == GOD_SHINING_ONE   ? "blessed by the Shining One" :
+                         god == GOD_LUGONU        ? "corrupted by Lugonu" :
+                         god == GOD_KIKUBAAQUDGHA ? "bloodied by Kikubaaqudgha"
+                                                  : "touched by the gods");
 
     take_note(Note(NOTE_ID_ITEM, 0, 0,
               wpn.name(DESC_A).c_str(), desc.c_str()));
     wpn.flags |= ISFLAG_NOTED_ID;
     wpn.props[FORCED_ITEM_COLOUR_KEY] = colour;
 
-    mprf(MSGCH_GOD, "Your %s shines brightly!", wpn.name(DESC_QUALNAME).c_str());
+    mprf(MSGCH_GOD, jtrans("Your %s shines brightly!").c_str(), wpn.name(DESC_QUALNAME).c_str());
 
     flash_view(UA_PLAYER, colour);
 
-    simple_god_message(" booms: Use this gift wisely!");
+    simple_god_message(jtrans("booms: Use this gift wisely!").c_str());
 
     if (god == GOD_SHINING_ONE)
     {
@@ -215,7 +214,7 @@ static bool _altar_prayer()
     // TSO blesses weapons with holy wrath, and demon weapons specially.
     else if (can_do_capstone_ability(GOD_SHINING_ONE))
     {
-        simple_god_message(" will bless one of your weapons.");
+        simple_god_message(jtrans("will bless one of your weapons.").c_str());
         more();
         return _bless_weapon(GOD_SHINING_ONE, SPWPN_HOLY_WRATH, YELLOW);
     }
@@ -223,7 +222,7 @@ static bool _altar_prayer()
     // Lugonu blesses weapons with distortion.
     else if (can_do_capstone_ability(GOD_LUGONU))
     {
-        simple_god_message(" will brand one of your weapons with the corruption of the Abyss.");
+        simple_god_message(jtrans("will brand one of your weapons with the corruption of the Abyss.").c_str());
         more();
         return _bless_weapon(GOD_LUGONU, SPWPN_DISTORTION, MAGENTA);
     }
@@ -234,7 +233,7 @@ static bool _altar_prayer()
         if (you.species != SP_FELID)
         {
             simple_god_message(
-                " will bloody your weapon with pain or grant you the Necronomicon.");
+                jtrans("will bloody your weapon with pain or grant you the Necronomicon.").c_str());
 
             more();
 
@@ -242,7 +241,7 @@ static bool _altar_prayer()
                 return true;
 
             // If not, ask if the player wants a Necronomicon.
-            if (!yesno("Do you wish to receive the Necronomicon?", true, 'n'))
+            if (!yesno(jtrans("Do you wish to receive the Necronomicon?").c_str(), true, 'n'))
             {
                 canned_msg(MSG_OK);
                 return false;
@@ -255,7 +254,7 @@ static bool _altar_prayer()
         if (thing_created == NON_ITEM || !move_item_to_grid(&thing_created, you.pos()))
             return false;
 
-        simple_god_message(" grants you a gift!");
+        simple_god_message(jtrans("grants you a gift!").c_str());
         more();
 
         you.one_time_ability_used.set(you.religion);
