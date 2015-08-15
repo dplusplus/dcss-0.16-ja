@@ -2732,10 +2732,10 @@ static string _god_hates_your_god_reaction(god_type god, god_type your_god)
 
         // Zin hates chaotic gods.
         if (god == GOD_ZIN && is_chaotic_god(your_god))
-            return " for chaos";
+            return "混沌に身を委ね";
 
         if (is_evil_god(your_god))
-            return " for evil";
+            return "邪悪に身を委ね";
     }
 
     return "";
@@ -2773,7 +2773,7 @@ void excommunication(god_type new_god, bool immediate)
     you.wield_change = true;
     you.redraw_quiver = true;
 
-    mpr("You have lost your religion!");
+    mpr(jtrans("You have lost your religion!"));
     if (!immediate)
         more();
 
@@ -2791,7 +2791,7 @@ void excommunication(god_type new_god, bool immediate)
     if (god_hates_your_god(old_god, new_god))
     {
         simple_god_message(
-            make_stringf(" does not appreciate desertion%s!",
+            make_stringf(jtrans("does not appreciate desertion%s!").c_str(),
                          _god_hates_your_god_reaction(old_god, new_god).c_str()).c_str(),
             old_god);
     }
@@ -2803,7 +2803,7 @@ void excommunication(god_type new_god, bool immediate)
         break;
 
     case GOD_KIKUBAAQUDGHA:
-        mprf(MSGCH_GOD, old_god, "You sense decay."); // in the state of Denmark
+        mpr_nojoin(MSGCH_GOD, old_god, jtrans("You sense decay.")); // in the state of Denmark
         add_daction(DACT_ROT_CORPSES);
         _set_penance(old_god, 30);
         break;
@@ -2812,7 +2812,7 @@ void excommunication(god_type new_god, bool immediate)
         you.duration[DUR_MIRROR_DAMAGE] = 0;
         if (query_daction_counter(DACT_ALLY_YRED_SLAVE))
         {
-            simple_god_message(" reclaims all of your granted undead slaves!",
+            simple_god_message(jtrans("reclaims all of your granted undead slaves!").c_str(),
                                GOD_YREDELEMNUL);
             add_daction(DACT_ALLY_YRED_SLAVE);
             remove_all_companions(GOD_YREDELEMNUL);
@@ -2847,9 +2847,9 @@ void excommunication(god_type new_god, bool immediate)
 
         if (query_daction_counter(DACT_ALLY_BEOGH))
         {
-            simple_god_message("'s voice booms out, \"Who do you think you "
-                               "are?\"", GOD_BEOGH);
-            mprf(MSGCH_MONSTER_ENCHANT, "All of your followers decide to abandon you.");
+            simple_god_message(jtrans("'s voice booms out, \"Who do you think you "
+                                      "are?\"").c_str(), GOD_BEOGH);
+            mpr_nojoin(MSGCH_MONSTER_ENCHANT, jtrans("All of your followers decide to abandon you."));
             add_daction(DACT_ALLY_BEOGH);
             remove_all_companions(GOD_BEOGH);
         }
@@ -2875,7 +2875,7 @@ void excommunication(god_type new_god, bool immediate)
     case GOD_SHINING_ONE:
         if (was_haloed)
         {
-            mprf(MSGCH_GOD, old_god, "Your divine halo fades away.");
+            mpr_nojoin(MSGCH_GOD, old_god, jtrans("Your divine halo fades away."));
             invalidate_agrid(true);
         }
 
@@ -2927,7 +2927,7 @@ void excommunication(god_type new_god, bool immediate)
 
         if (query_daction_counter(DACT_ALLY_SLIME))
         {
-            mprf(MSGCH_MONSTER_ENCHANT, "All of your fellow slimes turn on you.");
+            mpr_nojoin(MSGCH_MONSTER_ENCHANT, jtrans("All of your fellow slimes turn on you."));
             add_daction(DACT_ALLY_SLIME);
         }
 
@@ -2937,7 +2937,7 @@ void excommunication(god_type new_god, bool immediate)
     case GOD_FEDHAS:
         if (query_daction_counter(DACT_ALLY_PLANT))
         {
-            mprf(MSGCH_MONSTER_ENCHANT, "The plants of the dungeon turn on you.");
+            mpr_nojoin(MSGCH_MONSTER_ENCHANT, jtrans("The plants of the dungeon turn on you."));
             add_daction(DACT_ALLY_PLANT);
         }
         _set_penance(old_god, 30);
@@ -2956,7 +2956,7 @@ void excommunication(god_type new_god, bool immediate)
     case GOD_DITHMENOS:
         if (was_umbraed)
         {
-            mprf(MSGCH_GOD, old_god, "Your aura of darkness fades away.");
+            mpr_nojoin(MSGCH_GOD, old_god, jtrans("Your aura of darkness fades away."));
             invalidate_agrid(true);
         }
         _set_penance(old_god, 25);
@@ -2965,8 +2965,8 @@ void excommunication(god_type new_god, bool immediate)
     case GOD_GOZAG:
         if (you.attribute[ATTR_GOZAG_SHOPS_CURRENT])
         {
-            mprf(MSGCH_GOD, old_god, "Your funded stores close, unable to pay "
-                                     "their debts without your funds.");
+            mpr_nojoin(MSGCH_GOD, old_god, jtrans("Your funded stores close, unable to pay "
+                                                  "their debts without your funds."));
             you.attribute[ATTR_GOZAG_SHOPS_CURRENT] = 0;
         }
         invalidate_agrid(true); // gold auras
@@ -2983,29 +2983,29 @@ void excommunication(god_type new_god, bool immediate)
     case GOD_QAZLAL:
         if (old_piety >= piety_breakpoint(0))
         {
-            mprf(MSGCH_GOD, old_god, "Your storm instantly dissipates.");
+            mpr_nojoin(MSGCH_GOD, old_god, jtrans("Your storm instantly dissipates."));
             you.redraw_armour_class = true;
         }
         if (you.duration[DUR_QAZLAL_FIRE_RES])
         {
-            mprf(MSGCH_DURATION, "Your resistance to fire fades away.");
+            mpr_nojoin(MSGCH_DURATION, jtrans("Your resistance to fire fades away."));
             you.duration[DUR_QAZLAL_FIRE_RES] = 0;
         }
         if (you.duration[DUR_QAZLAL_COLD_RES])
         {
-            mprf(MSGCH_DURATION, "Your resistance to cold fades away.");
+            mpr_nojoin(MSGCH_DURATION, jtrans("Your resistance to cold fades away."));
             you.duration[DUR_QAZLAL_COLD_RES] = 0;
         }
         if (you.duration[DUR_QAZLAL_ELEC_RES])
         {
-            mprf(MSGCH_DURATION,
-                 "Your resistance to electricity fades away.");
+            mpr_nojoin(MSGCH_DURATION,
+                       jtrans("Your resistance to electricity fades away."));
             you.duration[DUR_QAZLAL_ELEC_RES] = 0;
         }
         if (you.duration[DUR_QAZLAL_AC])
         {
-            mprf(MSGCH_DURATION,
-                 "Your resistance to physical damage fades away.");
+            mpr_nojoin(MSGCH_DURATION,
+                       jtrans("Your resistance to physical damage fades away."));
             you.duration[DUR_QAZLAL_AC] = 0;
             you.redraw_armour_class = true;
         }
@@ -3013,7 +3013,7 @@ void excommunication(god_type new_god, bool immediate)
         break;
 
     case GOD_CHEIBRIADOS:
-        simple_god_message(" continues to slow your movements.", old_god);
+        simple_god_message(jtrans("continues to slow your movements.").c_str(), old_god);
         _set_penance(old_god, 25);
         redraw_screen();
         notify_stat_change();
@@ -3028,7 +3028,7 @@ void excommunication(god_type new_god, bool immediate)
     // all non-hostile holy beings that worship a good god hostile.
     if (!is_good_god(new_god) && query_daction_counter(DACT_ALLY_HOLY))
     {
-        mprf(MSGCH_MONSTER_ENCHANT, "The divine host forsakes you.");
+        mpr_nojoin(MSGCH_MONSTER_ENCHANT, jtrans("The divine host forsakes you."));
         add_daction(DACT_ALLY_HOLY);
     }
 

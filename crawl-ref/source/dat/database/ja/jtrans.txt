@@ -2253,6 +2253,78 @@ in a vulnerable spot
 %%%%
 ############################## religion.cc ##############################
 %%%%
+You have lost your religion!
+
+あなたは信仰を捨て去った！
+%%%%
+does not appreciate desertion%s!
+
+は%s棄教する行為を喜ばない！
+%%%%
+You sense decay.
+
+あなたは腐敗臭を感じた。
+%%%%
+reclaims all of your granted undead slaves!
+
+はあなたが従える不死の下僕の返還を要求した！
+%%%%
+'s voice booms out, "Who do you think you are?"
+
+の声が響いた: 『おまえは何様のつもりだ？』
+%%%%
+All of your followers decide to abandon you.
+
+従者たちはあなたを見捨てることを決意した。
+%%%%
+Your devine halo fades away.
+
+あなたの光輪は薄れていった。
+%%%%
+All of your fellow slimes turn on you.
+
+仲間のスライムたちはあなたに敵対した。
+%%%%
+The plants of the dungeon turn on you.
+
+ダンジョン内の植物はあなたに敵対した。
+%%%%
+Your aura of darkness fades away.
+
+あなたの周囲の闇のオーラは薄れていった。
+%%%%
+Your funded stores close, unable to pay their debts without your funds.
+
+あなたが投資していた店舗は閉鎖され、その負債はあなたの資本なしには返すことができない。
+%%%%
+Your storm instantly dissipates.
+
+あなたの周囲の嵐はたちまち消え去った。
+%%%%
+Your resistance to fire fades away.
+
+あなたの火への耐性は薄れていった。
+%%%%
+Your resistance to cold fades away.
+
+あなたの冷気への耐性は薄れていった。
+%%%%
+Your resistance to electricity fades away.
+
+あなたの電撃への耐性は薄れていった。
+%%%%
+Your resistance to physical damage fades away.
+
+あなたの防御力は弱まっていった。
+%%%%
+continues to slow your movements.
+
+はあなたの動きを遅くし続けている。
+%%%%
+The divine host forsakes you.
+
+神聖な神はあなたを見捨てた。
+%%%%
 welcomes you%s!
 
 はあなたの%s入信を歓迎した！
