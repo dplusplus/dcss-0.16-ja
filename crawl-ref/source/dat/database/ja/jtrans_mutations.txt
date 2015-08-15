@@ -1030,7 +1030,7 @@ You can restore your body by infusing magical energy.
 %%%%
 You can now infuse your body with magic to restore decomposition.
 
-あなたは今や、腐敗した肉体を回復するために肉体に魔力を充填できる。
+あなたは腐敗した肉体を回復するために肉体に魔力を充填できるようになった。
 %%%%
 in touch with death
 
@@ -1074,7 +1074,7 @@ You have gained the ability to fly.
 %%%%
 You can now fly continuously.
 
-あなたは今や継続して空を飛べる。
+あなたは継続して空を飛べるようになった。
 %%%%
 hurl hellfire
 
@@ -2801,7 +2801,7 @@ You are hated by all.
 %%%%
 You are now hated by all.
 
-あなたは今や全てに嫌われている。
+あなたは全てに嫌われてしまった。
 %%%%
 You are no longer hated by all.
 
