@@ -1,111 +1,279 @@
 %%%%
-the Shining One
+Ashenzari
 
-『輝けるもの』は悪との戦いに於いて力ある聖戦の神である。
-信徒やその味方は悪や不浄な生き物を無慈悲にも滅するための様々な祝福が授けられる。
-信徒は決して悪しき性質や不浄な魔術を使ってはならず、
-名誉ある戦いを通して彼らの道徳的卓越性を示すことが求められる。
-この神は撲滅すべき悪の痕跡を人々に試すことで世界の汚れを落とすを信徒に要求する。
-『輝けるもの』の信徒は信心深さを保ったままエリヴィロンかジンに改宗することができる。
+# While it seems inconceivable that the divine could be shackled, Ashenzari is
+# just that: bound to the sky for eternity, the unbudging god is all-knowing,
+# all-seeing. Devoted worshippers are allowed to grasp shreds of this knowledge
+# and foresight, but be warned: to Ashenzari, power and blessing and curse are
+# all the same thing.
+
+束縛されているというのは理解し難く思われるが、かの神が全知にして全視であるのも天へ自らを永劫に縛り付けているからである。
+敬虔な信徒はこの知識と洞察力をわずかながら得ることができるが、アシェンザリにとって力と祝福と呪いは全て同一であることに気をつけなければならない。
 %%%%
-Kikubaaqudgha
+Beogh
 
-キクバークッグァは恐るべき悪魔の神であり、
-死の力についての知識を探求する者たちが仕えている。キクバークッグァは悪であり、
-キクバークッグァは出来る限り生ける存在の殺戮を要求している。
-%%%%
-Yredelemnul
+# Beogh is an evil deity, worshipped by the cave orcs native to the dungeon. Only
+# orcs may devote their service to Beogh, and they must prove their devotion with
+# bloodshed. Especially fervent devotees of Beogh will find orcish followers
+# flocking to their banner: it is an age of signs and portents, and the orcs have
+# become increasingly certain that the coming of their Messiah is nigh.
 
-暗黒のイレデレンヌルは邪悪な神でり、
-死とアンデッドへの支配力を探求している者たちによって崇拝されている。
-信徒は聖なる物と敵対しなければならない。
-イレデレンヌルの信徒は奴隷化したアンデッドの軍勢を呼び起こすことができ、
-他にも多くの(不快ではあるが)有用な力を獲得する。イレデレンヌルは殺しを喜ぶが、
-死体については捧げられるよりも蘇生するなどして利用することを好む。
-人工物は真に生きてはいないが、死や不死に服従してもいないため、
-イレデレンヌルは人工物の破壊もまた善しとする。
-%%%%
-Vehumet
-
-ヴェフメットは破壊的な魔法の力を司る神である。
-信徒は秘術を駆使する能力を強化する様々な力を得る。そして最も寵愛を受けた者は、
-ヴェフメットの蔵書に記された恐るべき呪文を利用する資格を与えられる。
-ヴェフメットへの献身はあたう限りの虐殺と破壊とを引き起こすことをもって証明することができる。
-%%%%
-Okawaru
-
-オカワルは好戦的で強力な戦いの神である。信徒は戦いにおいて有用な数々の力と、
-褒美の品を得る。しかし信者は戦いと死体との献上をもって、
-常に信仰を証明しなくてはならない。オカワルはより強い敵に対する勇敢な偉業を好み、
-楽な勝利には小さな留意となる。その上、公正な戦いは求められず、
-手下に危害を与えることはオカワルの懲罰を受けることになる。
-%%%%
-Makhleb
-
-破壊者マクレブは混沌と暴力による死とを司る恐るべき神である。
-信者にはマクレブの名において死と苦しみを与えることで他者を洗浄することが求められ、
-新鮮な死体を破壊することでより恩恵を受けられる。
-献身的な信者は未開のエネルギーや地獄から生じた混沌の家来にも接近できるだろう。
-そして彼らは不純な世界や悪神の名誉による偽法を切り開くことをより良くできるようになるだろう。
-%%%%
-Sif Muna
-
-知識の守護者シフ・ムーナは瞑想的ではあるが強力な神であり、
-魔法の知識を探求する者たちが仕えている。
-知識の守護者は呪文の詠唱スキルを伸ばすことを評価する。
-%%%%
-Trog
-
-トログは怒りと暴力を司る古代の神である。信徒はトログの名に於いて殺すことと、
-死体を奉納することを期待される。そして見返りとして戦闘における能力と、
-時には褒美の品を得る。トログは魔術師を憎んでおり、燃える呪文書を見ることを好む。
-信者は魔法の使用が禁じられている。
-%%%%
-Elyvilon
-
-癒し手エリヴィロンは他者を助けようとするすべての良き魂を喜んで迎える。
-個々の信徒は強力な癒しの力の授与を期待できる。癒し手は平和主義の教義を掲げ、
-殺戮を避ける信徒を手助けする。エリヴィロンは武器の破壊を評価し、
-より敬虔な信徒は不浄や悪の武器を見つけて破壊することで信仰値を得る。
-エリヴィロンの信徒は信心深さを保ったまま輝けるものやジンに改宗することができる。
-%%%%
-Lugonu
-
-形なきルゴヌはアビスの混沌を享受している。
-信者は虐殺と破壊を引き起こすために異世界へと送り出され、
-この邪神の歓心を得るためにはこれらを弛まなく続けなければならない。
-%%%%
-Fedhas
-
-フェダス・マダシュは植物と菌類の神である。
-フェダスは信者に死体を腐敗させるよう要求をする。
-信者はフェダスの保護下にあるいかなる類を傷つけること、
-そして死体へ影響を与える死霊術の使用を禁止されている。
-その引き換えにフェダスは植物と菌類を成長させる幾つかの能力をもたらす。
-これらの能力は冒険者にとっても有用になるであろう。
+ベオはダンジョンに住み着くオークたちに崇拝される邪悪な神性である。
+オークのみがベオを信仰することが許され、信徒は殺戮によって己の敬虔さを証明しなければならない。特に熱心なベオの信徒は旗を掲げるオークの同志を見いだすだろう:
+それが前兆のときである。
+そしてオークたちは救世主の到来が近いことへの確信を日に日に深めている。
 %%%%
 Cheibriados
 
-ケイブリアドスは時の神秘について静思をする神である。
-この神を信仰することを選んだものは不要に急ぐことを避ける術を学び、
-彼ら自身と他者を緩徐化させ、緩徐することを拒否するものには損害を与える。
-中でも特別に敬虔な信者は一時的に時の流れと不要な干渉から解脱することができる。
-%%%%
-Ashenzari
+# Cheibriados is a god of deliberation. Those following Cheibriados travel more
+# slowly the further they progress in their faith, and are forbidden from using
+# any means to hasten themselves. In the process of so imitating their god, they
+# attain perfection of mind and body, and the mysteries of time unfold before
+# them. Especially devout followers may even momentarily abandon the flow of
+# time and its needless disturbances.
 
-束縛されているというのは理解し難く思われるが、
-かの神が全知にして全視であるのも天へ自らを永劫に縛り付けているからである。
-敬虔な信徒はこの知識と洞察力をわずかながら得ることが出来るが、
-アシェンザリにとって力と祝福と呪いは全て同一であることを気をつけなければならない。
+ケイブリアドスは緩慢と熟慮の神である。ケイブリアドスを崇める者の信仰が高まるにつれて移動は遅くなり、そしてどんな手段であっても加速することは禁じられている。
+神の動きを真似ることによって完成された心身を手に入れ、加えて時空の秘蹟が目の前に開かれる。
+中でも特別に敬虔な信徒は一時的に時の流れと不要な干渉から解脱することができる。
+%%%%
+Dithmenos
+
+# Dithmenos the Shadowed desires all to be darkness. Followers of Dithmenos gain
+# a strange and otherwordly affinity to the shadows of their environment. This
+# god despises fire, which long ago freed mortals from the tyranny of shadow; its
+# use is forbidden by worshippers. Dithmenos favours those who would instead
+# destroy sources of fire.
+
+陰影のディスメノスは全てを闇に帰そうと望んでいる。
+ディスメノスの信徒は周囲に存在する影との奇妙な類似性を獲得する。
+この神は遠い昔に定命の者を闇の支配する世界から解き放った火を嫌っている。
+ディスメノスは火の元の破壊を行うものを好む。
+%%%%
+Elyvilon
+
+# Elyvilon the Healer welcomes all kind souls prepared to help others. Those
+# individuals can expect to gain powerful healing abilities, by which they can
+# avoid bloodshed. Elyvilon appreciates exploration of the dungeon. Elyvilon's
+# followers can convert to the Shining One or Zin while keeping some piety.
+
+癒し手エリヴィロンは他者を助けようとするすべての良き魂を喜んで迎える。
+それぞれの信徒は、流血沙汰を避けるための強力な癒しの力の授与を期待できる。
+エリヴィロンはダンジョンの探索を喜ぶ。
+エリヴィロンの信徒は信心深さをいくらか保ったまま輝けるものやジンに改宗することができる。
+%%%%
+Fedhas
+
+# The god of plant and fungal life, Fedhas Madash demands that followers
+# encourage the decomposition of corpses. Fedhas also forbids followers from
+# harming any species under Fedhas' protection, and from using any necromantic
+# effects that interfere with corpses. In return Fedhas grants a number of
+# abilities that promote the growth of plants and fungi. These abilities may
+# incidentally prove useful to adventurers.
+
+植物と菌類の神であるフェダス・マダシュは死体を腐敗させるよう信徒に要求する。
+信徒はフェダスの保護下にあるいかなる種族を傷つけること、および死体へ影響を与える死霊術の使用を禁止されている。
+その引き換えにフェダスは植物と菌類を成長させる幾つかの能力をもたらす。
+これらの能力は冒険者にとっても有用になるであろう。
+%%%%
+Gozag
+
+# Gozag Ym Sagoz the Greedy teaches that the world belongs to the rich. Those
+# accepting this principle may exchange their gold for divine assistance.
+# Followers of Gozag do not earn piety; the only way to impress this god is by
+# amassing a fortune, and worshippers may request as much assistance as they can
+# afford. Fortunately, Gozag's worshippers are said to have the touch of gold.
+
+強欲なるゴザーグ・イム・サゴーズは世界は金持ちのものだと教えている。
+その原則を受け入れる者は金と引き替えに神の助力を得る。
+ゴザーグの信徒は信仰を高めることはない。この神の気を引く唯一の手段は財産を蓄積することであり、信徒の支払い能力が高ければ高いほど多くの助力を請うことができる。
+幸運にも、ゴザーグの崇拝者はいくばくかの金を持つと言われている。
 %%%%
 Jiyva
 
-ジーヴァはスライムの混沌の古代神である。
-信者は同行するスライム達にアイテムを消化させ彼らの拡散と飽食を手助けすることが要求され、
-いかなるスライムを傷つけることを禁止されている。
-ジーヴァはいずれ信者がダンジョンのいかなる場所に残したアイテムまでも消化するようになる。
-敬虔な信者達は彼らの神と同じく不定形になり、
-ジーヴァの影響下では彼らの特性は変化し続けるようになる。
+# Jiyva is the ancient deity of the slimes. Followers are expected to
+# support the spread and satiation of their fellow slimes by allowing them to
+# consume items, and are forbidden from harming any slimes. Jiyva will even
+# occasionally consume items left elsewhere in the dungeon by followers.
+# Especially favoured followers will become as shapeless as their god, as their
+# attributes and mutations shift around under Jiyva's influence.
+
+ジーヴァはスライムを司る古代の神である。
+信徒は同行するスライム達にアイテムを消化させ彼らの拡散と飽食を手助けすることが要求され、いかなるスライムを傷つけることをも禁じられている。
+ジーヴァはいずれ信徒がダンジョンのいかなる場所に残したアイテムでも消化するようになる。
+敬虔な信徒たちは彼らの神と同じく不定形になり、ジーヴァの影響下では彼らの特性は変化し続けるようになる。
+%%%%
+Kikubaaqudgha
+
+# Kikubaaqudgha is a terrible Demon-God, served by those who wish to indulge in
+# the powers of death. An evil god, Kikubaaqudgha requires the deaths of living
+# creatures and demons as often as possible. In exchange, Kikubaaqudgha offers
+# great assistance to the aspiring necromancer: spellbooks filled with dark
+# magic, protection against necromantic backlash, and an endless supply of bodies
+# taken from Kikubaaqudgha's vast mausoleum.
+
+キクバークッグァは恐るべき悪魔の神であり、死の力についての知識を探求する者たちが仕えている。キクバークッグァは悪であり、キクバークッグァは出来る限り生ける存在の殺戮を要求している。
+それと引き替えにキクバークッグァは志の高い死人使いに対し、暗黒の魔術に満ちた魔法書、死霊術の反動からの防護、そしてキクバークッグァの墳墓から限りなく供給される死体といった大いなる助力をもたらす。
+%%%%
+Lugonu
+
+# Banished to the chaotic realm of the Abyss, Lugonu the Unformed seeks followers
+# to spread bloodshed and corruption in the overworld. Those who gain Lugonu's
+# favour will be granted some of the power of the Abyss itself, allowing them to
+# call forth eldritch horrors, and even to travel between the overworld and the
+# Abyss at will.
+
+アビスの混沌の領域に追放された無形のルゴヌは殺戮と崩壊を地上に広げるための信徒を探している。
+ルゴヌの歓心を得たものはアビスそのものの力を手にし、太古のおぞましき恐怖の力を喚起することや地上とアビスとの間を自由に行き来することさえ可能にする。
+%%%%
+Makhleb
+
+# Makhleb the Destroyer is a fearsome deity of bloodshed and mortification of the
+# flesh. Followers are expected to cleanse others by inflicting suffering and
+# death on them in Makhleb's name, particularly if they kill natural creatures
+# which require blood to survive. Dedicated followers may also access the raw
+# energies and hell-spawned servants of chaos, so that they may better break the
+# impure world and its false laws for their evil god's glory.
+
+破壊者マクレブは殺戮と苦行を司る恐るべき神である。
+信徒にはマクレブの名において死と苦しみを与えることで他者を浄化することが求められ、とりわけ生存に血液を必要とする自然界の生き物を殺すことがよいとされる。
+献身的な信徒は未加工のエネルギーや地獄から生じた混沌の下僕をも操り、不純な世界や悪神の名誉による偽法をより良く切り開くことができるようになるだろう。
+%%%%
+Nemelex Xobeh
+
+# Nemelex is a strange and unpredictable trickster god, whose powers are invoked
+# through magical packs of cards painted in the ichor of demons. Followers are
+# expected to explore the world, and will receive decks of cards in return.
+# Followers are encouraged to trust in the cards and use them as
+# much as possible. However, the Trickster can ensure that fortune favours the
+# bold.
+
+ネメレクスは奇妙で予想が付かないトリックスターの神であり、その力は悪魔の体液によって描かれた魔法のカードの一式を通じて発揮される。
+信徒は世界を探索することを求められ、見返りにカードのデッキを授かる。
+加えてカードの力を信じ、できるだけ多くのカードを用いることを推奨される。
+どちらにせよトリックスターは、「幸運は勇者に味方する」ということを保証してくれる。
+%%%%
+Okawaru
+
+# Okawaru is a dangerous and powerful god of battle. Followers can gain a number
+# of powers useful in combat as well as various rewards, but must constantly
+# prove themselves by defeating other creatures. Okawaru prefers heroic feats
+# against much stronger enemies, and pays little heed to easier victories.
+# Furthermore, while fair fights are not required, harming one's allies will
+# incur Okawaru's wrath.
+
+オカワルは物騒で強力な戦いの神である。信徒は戦いにおいて有用な数々の力と褒美の品を得るが、他の生き物を打ち負かすことにより常に信仰を証明しなくてはならない。
+オカワルはより強い敵に対する勇敢な偉業を好み、楽な勝利にはあまり関心がない。
+加えて、従者を傷つけることは公正な戦いが望めないためにオカワルの怒りを買う。
+%%%%
+Qazlal
+
+# Qazlal Stormbringer is a violent god of tempests, who delights in unleashing
+# the forces of nature against the unsuspecting. Those who invite Qazlal's gaze
+# will find themselves the eye in a storm of elemental destruction, from which
+# only their God can protect them. Pious worshippers of Qazlal will gain the
+# ability to direct and control the destructive might of the storm.
+
+嵐を呼ぶ者クァズラルは凶暴な嵐の神であり、疑いを知らぬ者に自然の力を解き放つことを好む。クァズラルに目を付けられた者は元素の破壊の力のまっただなかにいることに気付くが、それはただ神があなたを護ろうとしているだけなのだ。
+クァズラルの敬虔な信徒は嵐の破壊力の制御と指向の能力を得る。
+%%%%
+Ru
+
+# Of all the gods, only Ru opposed creation. Not as folly, but as distraction.
+# Initiates of Ru can open channels to the powers underlying the visible world by
+# renouncing the fetters that bind them here. These sacrifices are not made to
+# Ru, but rather given up freely and permanently. Initiates can redirect would-be
+# attackers and retaliate against their enemies, replenish their health and
+# magic, perform a mighty leap, and unleash a massive wave of power against foes.
+
+全ての神々の中でルーのみが天地創造に反対した。愚かさゆえではなく、乱心ゆえに。
+ルーの洗礼によって目に見える世界の裏に潜む力の束縛を打ち砕き、それとの接点を開くことが可能となる。
+それらの犠牲はルーに強制されたものではなく、いつでも行うことができる。
+洗礼を受けたものは襲いかかる者の攻撃の方向を変えて反撃を行い、体力と魔力を回復し、力強い跳躍を行い、そして強大な力を敵に向かって解き放ったりする。
+%%%%
+Sif Muna
+
+# Sif Muna the Loreminder is a contemplative but powerful deity, served by those
+# who seek magical knowledge. The Loreminder appreciates the training of
+# spellcasting skills, and will reward faithful followers with a supply of
+# spellbooks taken directly from Sif Muna's legendary library.
+
+知識の守護者シフ・ムーナは瞑想にふけりがちであるが強力な神であり、魔法の知識を探求する者たちが仕えている。
+知識の守護者は呪文の詠唱スキルを伸ばすことを評価し、信仰篤い信徒にはシフ・ムーナの伝説の書庫から取り出した魔法書を見返りとして与える。
+%%%%
+the Shining One
+
+# Followers of the Shining One are bound to the code of the honourable warrior,
+# soldiers in their god's eternal crusade against evil. For forsaking dark magic
+# and underhanded tactics, the Shining One rewards them and their allies with the
+# power they need to slay demons and the undead. Especially devout warriors can
+# even call upon angels in times of need. The Shining One's followers can convert
+# to Elyvilon or Zin while keeping some piety.
+
+輝けるものの信徒は名誉ある戦士の掟により束縛されており、神の行う悪に対する永劫の聖戦に駆り出される。暗黒の魔術と卑劣な戦術を捨てることに対して輝けるものは報い、信徒とその従者に対して悪魔や不死者を討滅するのに必要な力をもたらす。
+とりわけ信仰の篤い戦士は必要に応じて神の御使いを呼ぶことができる。
+輝けるものの信徒は信心深さをいくらか保ったままエリヴィロンかジンに改宗することができる。
+%%%%
+Trog
+
+# Trog is an ancient god of anger and violence. Followers are expected to kill in
+# Trog's name and sacrifice the dead. In return, worshippers of Trog gain the
+# ability to go berserk at will in combat, and will be granted gifts of powerful
+# weapons. Trog hates all wizards, and loves to see their spellbooks burn.
+# Followers are absolutely forbidden the use of spell magic.
+
+トログは怒りと暴力を司る古代の神である。信徒はトログの名に於いて殺害し、その死体を捧げることを求められる。見返りとして信徒は自分の意志で戦闘において狂乱状態になる能力、および強力な武器の贈り物を得る。
+トログは全ての魔術師を憎んでおり、魔法書が焼けるのを見ることを好む。
+信徒は魔術の使用が厳重に禁じられている。
+%%%%
+Vehumet
+
+# Vehumet is a god of the destructive powers of magic. Followers gain various
+# useful powers to enhance their command of the hermetic arts, and the most
+# favoured stand to gain access to some of the fearsome spells in Vehumet's
+# library. One's devotion to Vehumet can be proven by the causing of as much
+# carnage and destruction as possible.
+
+ヴェフメットは破壊的な魔法の力を司る神である。
+信徒は秘術を駆使する能力を強化する様々な力を得る。そして最も寵愛を受けた者は、ヴェフメットの蔵書に記された恐るべき呪文を利用する資格を与えられる。
+ヴェフメットへの献身はあたう限りの虐殺と破壊とを引き起こすことをもって証明することができる。
+%%%%
+Xom
+
+# Xom is a wild and unpredictable god of chaos, who seeks not worshippers but
+# playthings with which to toy. Many choose to follow Xom in the hope of
+# receiving fabulous rewards and mighty powers, but Xom is nothing if not
+# capricious. There is nothing a follower can do to influence Xom's mood.
+
+ゾムは荒々しく予想の付かない混沌神であり、信徒ではなく玩具にするための慰みものを求めている。
+多くの者が強大な力と素晴らしい贈り物を得ることを求めてゾムを信仰するが、ゾムは気まぐれそのものである。
+ゾムの機嫌に影響を及ぼすことができた信徒は存在しない。
+%%%%
+Yredelemnul
+
+# Yredelemnul the Dark is a god worshipped by those who seek powers over death
+# and the undead. Followers, who must oppose all things holy, can raise legions
+# of servile undead, and gain a number of other useful (if unpleasant) powers.
+# Yredelemnul appreciates killing, but has no interest in sacrifices, preferring
+# corpses to be put to use. Destroying artificial beings is also appreciated, as
+# they are neither truly alive nor subject to death or undeath.
+
+暗黒のイレデレンヌルは邪悪な神でり、死と不死者の支配力を探求している者たちによって崇拝されている。
+聖なるものに敵対する義務を負った信徒は奴隷化した不死者の軍勢を呼び起こすことができ、さらに多くの(不快ではあるが)有用な力を獲得する。
+イレデレンヌルは殺しを喜ぶが、死体については捧げられるよりも蘇生するなどして利用することを好む。
+人工物は真に生きてはいないが、死や不死に服従してもいないため、イレデレンヌルは人工物の破壊もまた善しとする。
+%%%%
+Zin
+
+# Zin is a god of discipline. Followers must remain pure of body and soul,
+# refraining from dark magic and chaotic acts, and never consuming the flesh of
+# intelligent beings. They must also tithe a fraction of all gold gained,
+# preferably followed by donations of more. In exchange, worshippers may invoke
+# Zin's wrath upon sinners, and eventually gain various divine protections. Zin's
+# followers can convert to Elyvilon or the Shining One while keeping some piety.
+
+ジンは試練を司る神である。信徒は心身において純粋でなければならず、暗黒の魔術や混沌的行為、そして知性ある者の肉を食すことを慎まなければならない。
+加えてあなたが手にした金貨の中から十分の一税が差し引かれ、さらに寄付を行うことでより一層の歓心を得る。その代わり、信徒はジンの怒りを咎人に代行することが許され、折に触れて様々な神の加護を得る。
+ジンの信徒は信心深さをいくらか保ったままエリヴィロンか輝けるものに改宗することができる。
 %%%%
 Zin powers
 
