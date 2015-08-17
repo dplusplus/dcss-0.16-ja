@@ -3,6 +3,10 @@ Ashenzari
 
 アシェンザリ
 %%%%
+Beogh
+
+ベオ
+%%%%
 Cheibriados
 
 ケイブリアドス
@@ -23,9 +27,17 @@ Gozag
 
 ゴザーグ
 %%%%
+Jiyva
+
+ジーヴァ
+%%%%
 Kikubaaqudgha
 
 キクバークッグァ
+%%%%
+Lugonu
+
+ルゴヌ
 %%%%
 Makhleb
 
@@ -51,6 +63,10 @@ Sif Muna
 
 シフ・ムーナ
 %%%%
+The Shining One
+
+輝けるもの
+%%%%
 Trog
 
 トログ
@@ -70,8 +86,4 @@ Yredelemnul
 Zin
 
 ジン
-%%%%
-The Shining One
-
-輝けるもの
 %%%%
