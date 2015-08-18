@@ -581,3 +581,237 @@ Zin powers
 信仰心が増すにつれ信徒は変異からの保護を得る。
 さらに、ジンは信徒の生命を守るために直接介在することがある。
 %%%%
+Ashenzari wrath
+
+# Ashenzari's wrath is not like other gods'; it is constant and unrelenting for
+# its duration. Victims find their skills impaired, and their enemies divinely
+# guided - never losing track of them, never ending the hunt.
+
+アシェンザリの怒りは他の神の者と異なり、期間中は絶え間なく続く。
+犠牲者は自身のスキルが減じられ、敵は神の手によって導かれるため犠牲者を逃さず、いつまでも追いかけ続ける。
+%%%%
+Beogh wrath
+
+# Blasphemers against the word of Beogh find themselves confronted with direct
+# and physical opposition. Those who still worship Beogh find their followers
+# regularly deserting them; they, and others, are further assaulted by waves of
+# orcish warriors. When working through intermediaries fails, Beogh hurls
+# dancing electric weapons at offenders, or simply smites them - and when smiting
+# true sinners, Beogh has a heavy hand indeed!
+
+ベオの御言葉を冒涜する者はたちまち直接かつ物理的なしっぺ返しを食らう。
+彼らがまだベオを信仰している場合従者たちは彼らを見捨て、それに加えてオークの戦士たちが襲いかかってくる。
+ベオは電撃の踊る武器を罪人へと投げつけ、または単に打擲の一撃を見舞う。
+真に罪の重い罪人の場合、ベオの打撃は強烈なものとなるだろう！
+%%%%
+Cheibriados wrath
+
+# Offenders against Cheibriados are given one last chance to take it easy. They
+# may find themselves slowed and exhausted, or stepping from time at unexpected
+# moments. In dangerous moments, Chei provides them with refreshing naps. And in
+# very dangerous situations... in the full depth of time, almost anything can
+# happen. (But for those who offend Cheibriados, probably not anything good!)
+
+ケイブリアドスへの反抗者は気楽にやるための最後のチャンスを与えられる。
+彼らは減速および疲労し、予期しないタイミングで時間からの離脱を行う。
+危険な状況として、ケイブリアドスは罪人に眠気をもたらす。
+さらに危険な状況として……時間の深淵においては、ほとんど全てのことが起こりうる。
+(しかしケイブリアドスに反した者に対して、いいことは何もない！)
+%%%%
+Dithmenos wrath
+
+# When angered, Dithmenos turns the shadows against victims. Monsters emerge
+# from the darkness, both illusions woven from shadow and the very shadows
+# themselves turning against sinners. Novices are swarmed by flitting shadows and
+# illusionary trolls; experts by shadow fiends and illusionary dragons.
+# Dithmenos's subtle punishments are, if anything, more dangerous: victims find
+# the shadows ripped away from them, hunted with nowhere to hide; or find
+# themselves smothered in shadow and sleeping, perhaps forever.
+
+ディスメノスが怒りし時、影を犠牲者へと差し向ける。
+闇の中からモンスターが湧きだし、影とさらなる影から編み出された幻影が罪人の敵に回ることになる。
+初級冒険者は飛び回るシャドウや幻影のトロル、熟練者は影の魔神や幻影のドラゴンに囲まれるだろう。
+ディスメノスの巧みな懲罰はさらに危険となる。
+犠牲者は自身の影が剥ぎ取られ、隠れられるところはどこにもない状況で狩り出される。
+また、犠牲者を影で包み込み眠りに落とす……それは永遠の眠りになるかもしれない。
+%%%%
+Elyvilon wrath
+
+# Elyvilon is not a god known for wrath. Still, those earning Elyvilon's ire will
+# find themselves irritated in various ways; their weapons will be blunted, their
+# blows blocked, their thoughts confused, and, occasionally, they'll be lightly
+# poisoned, to cap it all off.
+
+エリヴィロンは怒りを知らぬ神である。とはいえ、エリヴィロンの憤りを買った者は様々な方法でいらだたせられる。
+武器は鈍くなり、攻撃は邪魔され、意識は混乱し、その上、時折軽い毒に冒すことがある。
+%%%%
+Fedhas wrath
+
+# It is Fedhas's considered opinion that offenders against the natural order
+# (Fedhas) simply need more exposure to nature to realize the error of their
+# ways. Accordingly, Fedhas provides said nature, in the form of pure elemental
+# destruction, waves of giant spores rising from nearby corpses, and, for the
+# truly incorrigible, surrounding rings of animate mushrooms and acid-spitting
+# oklobs.
+
+自然の秩序(フェダス自身)に反する者はもっと自然に身をさらし自らの過ちに気付くべきというのがフェダスの熟慮された意見だ。
+それゆえフェダスは純粋な精霊の破壊、近くの死体から生まれる巨大な胞子といった自然の洗礼を与える。
+さらに救いがたい者は動き出す茸や酸をまき散らすオクロブ草に囲まれることになる。
+%%%%
+Gozag wrath
+
+# The first of Gozag's punishments is commercial: all shops opened through
+# Gozag's intervention shut their doors forever. The disloyal are advised to
+# finish their shopping before they launch their betrayal. For as long as Gozag
+# remains angered, potions will have a chance to fail when quaffed, and any
+# foes that are encountered may be granted potions of their own to assist them
+# against the ex-worshipper.
+
+ゴザーグの最初の罰則は商業的なものである: ゴザーグの仲介により開店した全ての店は永遠に扉を閉める。
+違反者は裏切りを行う前に買い物を止めることを要請される。
+ゴザーグの怒りが続いている間、薬を飲む際に失敗することがあり、出くわした敵は元会員に対抗するために薬の力を得る。
+%%%%
+Jiyva wrath
+
+# Jiyva's vengeance is swift and gurgling. All slimes turn against those who
+# offend Jiyva, and Jiyva ensures a plentiful supply of slimes, both by calling
+# jellies to ooze from the cracks in the walls and floor, and turning other
+# nearby enemies into dangerous slimes. Victims, too, will find their own bodies
+# becoming unstable; regularly transmuting into strange forms and acquiring
+# debilitating mutations.
+
+ジーヴァの復讐は素早く、どぶどぶと音を立てる。
+全てのスライムがジーヴァに反した者に敵対し、ジーヴァは壁や床の割れ目からジェリーやウーズを呼び出したり近くの敵を危険なスライムへと変えたりすることでたくさんのスライムを増やしていく。
+犠牲者はその体が不定形になり、定期的に奇妙な形態へと変化したり、変異による衰弱を得ることになる。
+%%%%
+Kikubaaqudgha wrath
+
+# Kikubaaqudgha's wrath brings forth all the dread powers of necromancy. Victims
+# are wracked with torment, assailed by the undead, smothered in miasma, and
+# afflicted with a host of other necromantic ailments. Further, Kikubaaqudgha's
+# gifts become tainted; those that attempt to use necromantic magic to fend off
+# wrath will find it backfiring on them when least expected.
+
+キクバークッグァの怒りは死霊術の恐るべき力を生み出す。
+犠牲者は苦痛に苛まれ、不死者に襲いかかられ、瘴気に包まれ、そして他の死霊術的な様々な病に悩まされることとなる。
+さらにキクバークッグァの贈り物は腐敗していき、怒りをそらそうとして唱えられた死霊術は思いがけない時に反動が来る。
+%%%%
+Lugonu wrath
+
+# Lugonu's ire renders the barrier between reality and the Abyss weak and
+# permeable. Space warps, hurling victims across the dungeon, or even directly
+# into the Abyss; and when that's not enough, Lugonu reaches out and sends
+# minions out from the Abyss to assault the offender directly. Inexperienced
+# adventurers face small abominations and thrashing horrors; veterans fight
+# tentacled starspawn and starcursed masses. Lugonu does not forgive easily, and
+# will not allow ex-worshippers to rejoin the fold while Lugonu's wrath still
+# lasts.
+
+ルゴヌの憤りは現実とアビスの間に弱く透過性のある膜を張る。
+時空は歪曲し、犠牲者は迷宮の至る所に投げ出され、さらには直接アビスに放り込まれることさえもある。
+それでも十分でなければ、ルゴヌは外に出でて罪人を直接襲うためにアビスから使い魔を送り込む。
+初級冒険者は小型のおぞましきものやのたうち回る恐怖と出くわし、熟練者は触手の落とし子や呪われし群れと戦うことになる。
+ルゴヌは簡単には許しはせず、ルゴヌの怒りが続いている間は元信徒が再び入信する事を許可しない。
+%%%%
+Makhleb wrath
+
+# Those who invite the fury of Makhleb are buried in demons and destruction.
+# The greatest punishments are reserved for the strongest sinners; crystal spears
+# and Executioners are hurled with abandon only at those Makhleb finds truly
+# deserving!
+
+マクレブの怒りを招いた者は悪魔と破壊のまっただなかに身を置かれることとなる。
+最も重い懲罰が最も罪深い者のために取っておかれている:
+マクレブが真に認めた者に限り水晶の槍や処刑の悪魔が思うさま繰り出される！
+%%%%
+Nemelex Xobeh wrath
+
+# Nemelex Xobeh forces sinners to rely on the luck of the draw. Stacked decks are
+# immediately shuffled, and offenders are regularly forced to draw from the Deck
+# of Punishment, inflicting almost every unpleasant effect imaginable. Further,
+# attempting to draw from other decks may instead lead to drawing from the Deck
+# of Punishment.
+
+ネメレクス・ソベーは罪人にカードの引きに身を委ねることを強いる。
+積まれたデッキはただちにシャッフルされて反逆者は定期的に懲罰のデッキからカードを引くことを強制され、ありとあらゆる不快な効果に苛まれることとなる。
+そして、他のデッキからカードを引こうとすると代わりに懲罰のデッキから引くように動かされてしまう。
+%%%%
+Okawaru wrath
+
+# Okawaru's most vicious warriors are sent against rebellious servants. Novices
+# find themselves swarmed by packs of ogres and gnolls, while champions are
+# surrounded by titans and elvish blademasters.
+
+オカワルの最も危険な戦士が裏切り者の信徒に送り込まれる。
+初級冒険者はオーガやノール、熟練者はタイタンやエルフの剣豪によってたちまち囲まれるだろう。
+%%%%
+Qazlal wrath
+
+# Qazlal's wrath is swift and unmistakable. Sinners are stripped of their
+# resistances and assaulted by furious elementals, and Qazlal will create mighty
+# thunderclaps to alert their foes.
+
+クァズラルの怒りは素早く、明確である。
+罪人はその耐性を除去され、怒れる精霊に襲いかかられ、クァズラルが発する強大な雷鳴により敵を引き寄せる。
+%%%%
+Sif Muna wrath
+
+# Those in Sif Muna's ill graces find the very forces of magic rebelling against
+# them. They are confused and stupefied, their magical reserves drained, their
+# enchantments unravelled. Casting spells, too, becomes unreliable - and even
+# dangerous.
+
+シフ・ムーナの悪意に包まれたものはたちまち魔法の力に牙を剥かれることとなる。
+対象者は混乱したり知性が鈍ったりし、魔力は吸い取られ、魔法の効果は解かれる。
+魔法を唱えることに頼れなくなるばかりか、危険でさえある。
+%%%%
+the Shining One wrath
+
+# The Shining One's wrath is straightforward and unmistakable. Its victims find
+# themselves smote with holy fire, beset with holy warriors, and alternately
+# shouted at and silenced.
+
+輝けるものの怒りは率直かつ明確である。
+その犠牲者はたちまち聖なる炎、聖なる戦士たちによる包囲によって打擲され、一方で叫び声を上げたり静寂に包んだりする。
+%%%%
+Trog wrath
+
+# Trog's wrath at betrayers is incandescent. Offenders find themselves swarmed
+# by berserkers - from packs of bears to, for the most powerful, mobs of giants
+# and trolls. Their bodies decay, slow, and collapse - and sometimes, they're
+# just blasted by Trog's fiery rage directly.
+
+裏切り者に対するトログの怒りは熾烈である。罪人はたちまち狂乱した熊または巨人やトロルの群れに囲まれるだろう。
+罪人の体は腐敗、減速、そして崩壊していく――そして、トログの燃えさかる怒りが直接降り注ぐことが時々ある。
+%%%%
+Vehumet wrath
+
+# Those that anger Vehumet find destruction amply heaped upon them. Novices are
+# struck by flame and frost; archmages by firestorms and hellfire. Their own
+# conjurations, too, are wont to misfire at the worst possible moments.
+
+ヴェフメットを怒らせた者にはたちまち破壊の力が殺到する。
+初級冒険者は火炎や冷気に打たれ、大魔道師は炎の嵐や地獄の業火に焼かれる。
+自身が放つ妖術もまた、最悪の状況で失敗するといったことが常となるだろう。
+%%%%
+Yredelemnul wrath
+
+# Those who anger Yredelemnul find themselves beset by legions of the dead.
+# Novice adventurers will be assaulted by wights and zombified trolls; veterans
+# by profane servitors and skeletal dragons. The victims' own undead servants
+# desert them and crumble into dust. A variety of necromantic maladies also
+# afflict those stricken by Yredremnul's wrath.
+
+イレデレンヌルを怒らせた者はたちまち死者の軍勢に包囲される。
+初級冒険者はワイトやゾンビ化したトロル、熟練者は涜神の従者や白骨化したドラゴンに襲いかかられるだろう。
+犠牲者自身が従えていた従者は彼らを見放して塵と還っていく。
+加えてイレデレンヌルの怒りにより死霊術的な弊害が彼らを苛む。
+%%%%
+Zin wrath
+
+# Those under Zin's wrath will find their beneficial mutations stripped away,
+# their bellies empty, their enemies alerted, and their senses confounded by the
+# axioms of Law; confusion, fainting and complete paralysis will be their lot.
+
+ジンの怒りの元に良性突然変異が取り除かれ、胃袋が空になり、敵がこちらに気付きやすくなり、法理の力により混乱、卒倒、麻痺などといった効果が選ばれ信徒をまごつかせる。
+%%%%
