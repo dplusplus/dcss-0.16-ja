@@ -305,8 +305,8 @@ static void _zen_meditation()
 {
     const mon_holy_type holi = you.holiness();
     mprf(MSGCH_PRAY,
-         "You spend a moment contemplating the meaning of %s.",
-         holi == MH_NONLIVING ? "existence" : holi == MH_UNDEAD ? "unlife" : "life");
+         jtrans("You spend a moment contemplating the meaning of %s.").c_str(),
+         holi == MH_NONLIVING ? "存在する" : holi == MH_UNDEAD ? "死せる" : "生きる");
 }
 
 /**

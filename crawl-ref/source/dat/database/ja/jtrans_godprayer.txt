@@ -55,6 +55,10 @@ A being of your status worships no god.
 
 あなたは神を信仰していない。
 %%%%
+You spend a moment contemplating the meaning of %s.
+
+あなたは一瞬、%sことの意味について考えた。
+%%%%
 You offer a %sprayer to %s.
 
 あなたは%s%sに祈りを捧げた。
