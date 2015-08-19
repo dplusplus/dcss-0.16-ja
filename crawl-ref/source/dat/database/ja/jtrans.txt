@@ -1343,40 +1343,6 @@ skeleton
 
 骸骨
 %%%%
-############################## main.cc ##############################
-%%%%
-Welcome
-
-ようこそ
-%%%%
-Welcome back
-
-よくぞ帰ってきた
-%%%%
-Press <w>?</w> for a list of commands and other information.
-
-コマンド一覧やその他の情報を見るには <w>?</w>キー を押してください。
-%%%%
-Saving game... please wait.
-
-セーブしています……お待ちください。
-%%%%
-Save game and return to main manu?
-
-セーブしてメインメニューに戻りますか？
-%%%%
-Save game and exit?
-
-セーブして終了しますか？
-%%%%
-Which direction?
-
-どの方向ですか？
-%%%%
-Unknown command.
-
-そのコマンドは存在しません。
-%%%%
 ############################## invent.cc ##############################
 %%%%
 %d/%d slots
@@ -1520,6 +1486,40 @@ Drop what?
 Your pack is full.
 
 あなたの荷袋は満杯だ。
+%%%%
+############################## main.cc ##############################
+%%%%
+Welcome
+
+ようこそ
+%%%%
+Welcome back
+
+よくぞ帰ってきた
+%%%%
+Press <w>?</w> for a list of commands and other information.
+
+コマンド一覧やその他の情報を見るには <w>?</w>キー を押してください。
+%%%%
+Saving game... please wait.
+
+セーブしています……お待ちください。
+%%%%
+Save game and return to main manu?
+
+セーブしてメインメニューに戻りますか？
+%%%%
+Save game and exit?
+
+セーブして終了しますか？
+%%%%
+Which direction?
+
+どの方向ですか？
+%%%%
+Unknown command.
+
+そのコマンドは存在しません。
 %%%%
 ############################## melee_attack.cc ##############################
 %%%%
