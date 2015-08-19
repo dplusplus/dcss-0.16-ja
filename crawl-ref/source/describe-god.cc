@@ -684,7 +684,7 @@ static string _describe_god_wrath_causes(god_type which_god)
  */
 static void _print_top_line(god_type which_god, int width)
 {
-    const string godname = uppercase_first(god_name(which_god, true));
+    const string godname = jtrans(god_name(which_god, true));
     textcolour(god_colour(which_god));
     const int len = width - strwidth(godname);
     cprintf("%s%s\n", string(len / 2, ' ').c_str(), godname.c_str());
