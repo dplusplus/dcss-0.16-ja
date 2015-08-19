@@ -8,5 +8,6 @@
 #define JAPANESE_H
 
 const char * counter_suffix(const item_def &item);
+string jpluralise(const string &name, const char *prefix, const char *suffix = "");
 
 #endif

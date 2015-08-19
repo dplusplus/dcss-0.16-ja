@@ -187,9 +187,7 @@ static TextDB AllDBs[] =
            */
            "jtrans_godconduct.txt",
            "jtrans_godname.txt",
-           /*
            "jtrans_godpassive.txt",
-            */
            "jtrans_godprayer.txt",
            /*
            "jtrans_autofight_lua.txt",
