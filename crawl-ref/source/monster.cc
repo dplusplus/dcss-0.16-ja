@@ -34,6 +34,7 @@
 #include "itemname.h"
 #include "itemprop.h"
 #include "items.h"
+#include "japanese.h"
 #include "libutil.h"
 #include "makeitem.h"
 #include "message.h"
@@ -2513,7 +2514,7 @@ string monster::hand_name(bool plural, bool *can_plural) const
             str = "pincer";
         else
         {
-            str = "front ";
+            str = "前";
             return str + foot_name(plural, can_plural);
         }
         break;
@@ -2539,6 +2540,7 @@ string monster::hand_name(bool plural, bool *can_plural) const
 
     case MON_SHAPE_PLANT:
         str = "leaf";
+        *can_plural = false;
         break;
 
     case MON_SHAPE_MISC:
@@ -2558,6 +2560,7 @@ string monster::hand_name(bool plural, bool *can_plural) const
         {
             case MONS_GIANT_SPORE:
                 str = "rhizome";
+                *can_plural = false;
                 break;
 
             case MONS_GIANT_EYEBALL:
@@ -2565,21 +2568,15 @@ string monster::hand_name(bool plural, bool *can_plural) const
             case MONS_SHINING_EYE:
             case MONS_EYE_OF_DEVASTATION:
             case MONS_GOLDEN_EYE:
-                *can_plural = false;
-                // Deliberate fallthrough.
             case MONS_GREAT_ORB_OF_EYES:
                 str = "pupil";
+                *can_plural = false;
                 break;
 
             case MONS_GIANT_ORANGE_BRAIN:
             default:
-                if (rand)
-                    str = "rhizome";
-                else
-                {
-                    str        = "body";
-                    *can_plural = false;
-                }
+                str = "body";
+                *can_plural = false;
                 break;
         }
     }
@@ -2594,7 +2591,7 @@ string monster::hand_name(bool plural, bool *can_plural) const
     }
 
     if (plural && *can_plural)
-        str = pluralise(str);
+        str = jpluralise(str, "両");
 
     return str;
 }

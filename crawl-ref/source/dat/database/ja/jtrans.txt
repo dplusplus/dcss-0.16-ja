@@ -1995,6 +1995,36 @@ You see a ghostly outline there, and the spell fizzles.
 
 あなたはぼんやりとした輪郭を目にし、呪文は失敗した。
 %%%%
+############################## monster.cc ##############################
+%%%%
+pincer
+
+鋏
+%%%%
+wing
+
+翼
+%%%%
+eye-stalk
+
+目玉
+%%%%
+leaf
+
+葉
+%%%%
+rhizome
+
+地下茎
+%%%%
+pupil
+
+瞳孔
+%%%%
+body
+
+体
+%%%%
 ############################## mon-act.cc ##############################
 %%%%
 moves out of view.
