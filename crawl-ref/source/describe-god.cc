@@ -119,40 +119,40 @@ static string _describe_favour(god_type which_god)
     if (player_under_penance())
     {
         const int penance = you.penance[which_god];
-        return (penance >= 50) ? "Godly wrath is upon you!" :
-               (penance >= 20) ? "You've transgressed heavily! Be penitent!" :
-               (penance >=  5) ? "You are under penance."
-                               : "You should show more discipline.";
+        return jtrans((penance >= 50) ? "Godly wrath is upon you!" :
+                      (penance >= 20) ? "You've transgressed heavily! Be penitent!" :
+                      (penance >=  5) ? "You are under penance."
+                                      : "You should show more discipline.");
     }
 
     if (which_god == GOD_XOM)
-        return uppercase_first(describe_xom_favour());
+        return jtrans(describe_xom_favour());
 
     const int rank = which_god == GOD_GOZAG ? _gold_level()
     : _piety_level(you.piety);
 
-    const string godname = god_name(which_god);
+    const string godname = jtrans(god_name(which_god));
     switch (rank)
     {
-        case 7:  return "A prized avatar of " + godname;
-        case 6:  return "A favoured servant of " + godname + ".";
+        case 7:  return make_stringf(jtrans("A prized avatar of").c_str(), godname.c_str());
+        case 6:  return make_stringf(jtrans("A favoured servant of").c_str(), godname.c_str());
         case 5:
 
             if (you_worship(GOD_DITHMENOS))
-                return "A glorious shadow in the eyes of " + godname + ".";
+                return make_stringf(jtrans("A glorious shadow in the eyes of").c_str(), godname.c_str());
             else
-                return "A shining star in the eyes of " + godname + ".";
+                return make_stringf(jtrans("A shining star in the eyes of").c_str(), godname.c_str());
 
         case 4:
 
             if (you_worship(GOD_DITHMENOS))
-                return "A rising shadow in the eyes of " + godname + ".";
+                return make_stringf(jtrans("A rising shadow in the eyes of").c_str(), godname.c_str());
             else
-                return "A rising star in the eyes of " + godname + ".";
+                return make_stringf(jtrans("A rising star in the eyes of").c_str(), godname.c_str());
 
-        case 3:  return uppercase_first(godname) + " is most pleased with you.";
-        case 2:  return uppercase_first(godname) + " is pleased with you.";
-        default: return uppercase_first(godname) + " is noncommittal.";
+        case 3:  return godname + jtrans("is most pleased with you.");
+        case 2:  return godname + jtrans("is pleased with you.");
+        default: return godname + jtrans("is noncommittal.");
     }
 }
 
@@ -808,7 +808,7 @@ static string _god_penance_message(god_type which_god)
             which_god_penance = 2; // == "Come back to the one true church!"
     }
 
-    const string penance_message =
+    const string penance_message = jtrans(
         (which_god == GOD_NEMELEX_XOBEH
          && which_god_penance > 0 && which_god_penance <= 100)
             ? "%s doesn't play fair with you." :
@@ -817,10 +817,10 @@ static string _god_penance_message(god_type which_god)
         (which_god_penance >=  5)   ? "%s well remembers your sins." :
         (which_god_penance >   0)   ? "%s is ready to forgive your sins." :
         (you.worshipped[which_god]) ? "%s is ambivalent towards you."
-                                    : "%s is neutral towards you.";
+                                    : "%s is neutral towards you.");
 
     return make_stringf(penance_message.c_str(),
-                        uppercase_first(god_name(which_god)).c_str());
+                        jtrans(god_name(which_god)).c_str());
 }
 
 /**
@@ -1067,7 +1067,7 @@ static void _god_overview_description(god_type which_god, bool give_title)
     // something better, do it.
 
     textcolour(LIGHTGREY);
-    cprintf("\nFavour - ");
+    cprintf(("\n" + jtrans("Favour -") + " ").c_str());
     textcolour(god_colour(which_god));
 
     //mv: Player is praying at altar without appropriate religion.

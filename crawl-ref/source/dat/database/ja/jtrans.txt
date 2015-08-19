@@ -89,6 +89,92 @@ There isn't anything else to %sbutcher here.
 
 ここには他に%s解体するようなものはない。
 %%%%
+############################## describe-god.cc ##############################
+%%%%
+Godly wrath is upon you!
+
+神はあなたに激怒している！
+%%%%
+You've transgressed heavily! Be penitent!
+
+あなたは著しく道を踏み外している！ 懺悔せよ！
+%%%%
+You are under penance.
+
+あなたは懺悔の途上にある。
+%%%%
+You should show more discipline.
+
+あなたは更なる自制を示すべきだ。
+%%%%
+A prized avatar of
+
+あなたは%sの第一の化身だ。
+%%%%
+A favoured servant of
+
+あなたは%sの寵臣だ。
+%%%%
+A glorious shadow in the eyes of
+
+あなたは%sに期待されている。
+%%%%
+A shining star in the eyes of
+
+あなたは%sの期待の星だ。
+%%%%
+A rising shadow in the eyes of
+
+あなたは%sのお気に入りだ。
+%%%%
+A rising star in the eyes of
+
+あなたは%sのお気に入りだ。
+%%%%
+is most pleased with you.
+
+はあなたにとても喜んでいる。
+%%%%
+is pleased with you.
+
+はあなたに喜んでいる。
+%%%%
+is noncommittal.
+
+はあなたに何も明言しない。
+%%%%
+%s doesn't play fair with you.
+
+%sはあなたと正々堂々勝負したりはしない。
+%%%%
+%s's wrath is upon you!
+
+%sはあなたに激怒している！
+%%%%
+%s is annoyed with you.
+
+%sはあなたに苛立っている。
+%%%%
+%s well remembers your sins.
+
+%sはあなたの罪をはっきりと覚えている。
+%%%%
+%s is ready to forgive your sins.
+
+%sはあなたの罪を赦そうとしている。
+%%%%
+%s is ambivalent towards you.
+
+%sはあなたに曖昧な感情を抱いている。
+%%%%
+%s is neutral towards you.
+
+%sはあなたに対して中立である。
+%%%%
+Favour -
+
+好意 -
+%%%%
 ############################## itemname.cc ##############################
 %%%%
 (w)ield
@@ -2580,4 +2666,38 @@ fails to return to your pack!
 hover solemnly before
 
 浮かびながら姿勢を正した
+%%%%
+############################## xom.cc ##############################
+%%%%
+a very special plaything of Xom.
+
+あなたはゾムの慰みものだ。
+%%%%
+a special plaything of Xom.
+
+あなたはゾムの特別な慰みものだ。
+%%%%
+a plaything of Xom.
+
+あなたはゾムのお気に入りの慰みものだ。
+%%%%
+a toy of Xom.
+
+あなたはゾムの玩具だ。
+%%%%
+a favourite toy of Xom.
+
+あなたはゾムのお気に入りの玩具だ。
+%%%%
+a beloved toy of Xom.
+
+あなたはゾムの大切な玩具だ。
+%%%%
+Xom's teddy bear.
+
+あなたはゾムのテディベアだ。
+%%%%
+a BORING thing.
+
+あなたはゾムに飽きられてしまった。
 %%%%
