@@ -2703,11 +2703,11 @@ string monster::foot_name(bool plural, bool *can_plural) const
         if (rand && coinflip())
             return foot_name(plural, can_plural);
 
-        return plural ? "feet" : "foot";
+        return plural ? "両足" : "足";
     }
 
     if (plural && *can_plural)
-        str = pluralise(str);
+        str = jpluralise(str, "両");
 
     return str;
 }
