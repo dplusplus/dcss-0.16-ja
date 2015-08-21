@@ -107,6 +107,10 @@ double sword
 
 ダブルソード
 %%%%
+great sword
+
+グレートソード
+%%%%
 triple sword
 
 トリプルソード

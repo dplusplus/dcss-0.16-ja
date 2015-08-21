@@ -1792,7 +1792,7 @@ static string _name_weapon(const item_def &weap, description_level_type desc,
 
     if (is_artefact(weap) && !dbname)
     {
-        const string long_name = curse_prefix + get_artefact_name(weap, ident) + plus_text;
+        const string long_name = curse_prefix + jtrans(get_artefact_name(weap, ident)) + plus_text;
 
         // crop long artefact names when not controlled by webtiles -
         // webtiles displays weapon names across multiple lines
@@ -1834,7 +1834,7 @@ static string _name_weapon(const item_def &weap, description_level_type desc,
         }
 
         const string short_name
-            = curse_prefix + get_artefact_base_name(weap, true) + plus_text;
+            = curse_prefix + jtrans(get_artefact_base_name(weap, true)) + plus_text;
         dprf("short: %s", short_name.c_str());
         return short_name;
     }
@@ -1873,8 +1873,8 @@ static string _name_weapon_en(const item_def &weap, description_level_type desc,
 
     if (is_artefact(weap) && !dbname)
     {
-        const string long_name = curse_prefix + plus_text
-                                 + get_artefact_name(weap, ident);
+        const string long_name = curse_prefix
+            + jtrans(get_artefact_name(weap, ident)) + plus_text;
 
         // crop long artefact names when not controlled by webtiles -
         // webtiles displays weapon names across multiple lines
@@ -1916,7 +1916,7 @@ static string _name_weapon_en(const item_def &weap, description_level_type desc,
         }
 
         const string short_name
-            = curse_prefix + plus_text + get_artefact_base_name(weap, true);
+            = curse_prefix + jtrans(get_artefact_base_name(weap, true)) + plus_text;
         dprf("short: %s", short_name.c_str());
         return short_name;
     }
@@ -2024,7 +2024,7 @@ string item_def::name_aux(description_level_type desc, bool terse, bool ident,
 
         if (is_artefact(*this) && !dbname)
         {
-            buff << get_artefact_name(*this);
+            buff << jtrans(get_artefact_name(*this));
             break;
         }
 
@@ -2296,7 +2296,7 @@ string item_def::name_aux(description_level_type desc, bool terse, bool ident,
             break;
         }
 
-        buff << misc_type_name(item_typ, know_type);
+        buff << jtrans(misc_type_name(item_typ, know_type));
 
         if ((item_typ == MISC_BOX_OF_BEASTS
                   || item_typ == MISC_SACK_OF_SPIDERS)
@@ -2573,7 +2573,7 @@ string item_def::name_aux_en(description_level_type desc, bool terse, bool ident
 
         if (is_artefact(*this) && !dbname)
         {
-            buff << get_artefact_name(*this);
+            buff << jtrans(get_artefact_name(*this));
             break;
         }
 
