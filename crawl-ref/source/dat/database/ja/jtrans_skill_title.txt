@@ -792,6 +792,18 @@ Sabretooth
 #speciesの分類
 ##########################
 %%%%
+Elven
+
+エルフ
+%%%%
+Orcish
+
+オーク
+%%%%
+Vine
+
+蔓
+%%%%
 Demonic
 
 悪魔

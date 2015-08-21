@@ -254,92 +254,92 @@ static const char *divine_title[NUM_GODS][8] =
         "Bugbear",            "Bugged One",            "Giant Bug",                "Lord of the Bugs"},
 
     // Zin.
-    {"Blasphemer",         "Anchorite",             "Apologist",                "Pious",
-        "Devout",             "Orthodox",              "Immaculate",               "Bringer of Law"},
+    {"冒涜者",             "隠遁者"   ,             "弁証者",                   "敬虔者",
+        "導士",               "正しき者",              "無垢清浄の者",             "秩序の代行者"},
 
     // The Shining One.
-    {"Honourless",         "Acolyte",               "Righteous",                "Unflinching",
-        "Holy Warrior",       "Exorcist",              "Demon Slayer",             "Bringer of Light"},
+    {"不名誉な存在"        "侍祭",                  "高潔な者",                 "揺るがぬ者",
+        "聖戦者",             "悪を祓う者",            "悪を滅する者",             "光の代行者"},
 
     // Kikubaaqudgha -- scholarly death.
-    {"Tormented",          "Purveyor of Pain",      "Scholar of Death",         "Merchant of Misery",
-        "Artisan of Death",   "Dealer of Despair",     "Black Sun",                "Lord of Darkness"},
+    {"苦痛を受けし者",     "痛みを与える者",        "死を探求する者",           "苦痛の商人",
+        "死の芸術家",         "絶望を振り撒く者",      "黒き太陽",                 "暗黒の領主"},
 
     // Yredelemnul -- zombie death.
-    {"Traitor",            "Tainted",                "Torchbearer",             "Fey @Genus@",
-        "Black Crusader",     "Sculptor of Flesh",     "Harbinger of Death",       "Grim Reaper"},
+    {"反逆者",             "堕落者",                "松明を携えし者",           "狂気の@Genus@",
+        "黒の十字軍",         "死体を彩る者",          "死の体現者",               "永遠なる死の支配者"},
 
     // Xom.
-    {"Toy",                "Toy",                   "Toy",                      "Toy",
-        "Toy",                "Toy",                   "Toy",                      "Toy"},
+    {"ゾムの玩具",         "ゾムの玩具",            "ゾムの玩具",               "ゾムの玩具",
+        "ゾムの玩具",         "ゾムの玩具",            "ゾムの玩具",               "ゾムの玩具"},
 
     // Vehumet -- battle mage theme.
-    {"Meek",               "Sorcerer's Apprentice", "Scholar of Destruction",   "Caster of Ruination",
-        "Traumaturge",        "Battlemage",            "Warlock",                  "Luminary of Lethal Lore"},
+    {"敗北者",             "魔術師見習い",          "破壊を探求する者",         "破滅の詠唱者",
+        "魔術師",             "戦闘魔術師",            "大魔術師",                 "破壊魔術の指導者"},
 
     // Okawaru -- battle theme.
-    {"Coward",             "Struggler",             "Combatant",                "Warrior",
-        "Knight",             "Warmonger",             "Commander",                "Victor of a Thousand Battles"},
+    {"卑怯者",             "奮闘者",                "闘士",                     "武人",
+        "騎士",               "戦争屋",                "司令官",                   "千の戦の支配者"},
 
     // Makhleb -- chaos theme.
-    {"Orderly",            "Spawn of Chaos",        "Disciple of Destruction",  "Fanfare of Bloodshed",
-        "Fiendish",           "Demolition @Genus@",    "Pandemonic",               "Champion of Chaos"},
+    {"従卒",               "混沌の申し子",          "破壊者の門弟",             "虐殺の凱歌",
+        "悪魔の化身",         "@Genus@の破壊者",       "修羅",                     "混沌の代行者"},
 
     // Sif Muna -- scholarly theme.
-    {"Ignorant",           "Disciple",              "Student",                  "Adept",
-        "Scribe",             "Scholar",               "Sage",                     "Genius of the Arcane"},
+    {"愚か者",             "門弟",                  "研究者",                   "熟練者",
+        "知識を残す者",       "魔法学者",              "賢者",                     "秘術の支配者"},
 
     // Trog -- anger theme.
-    {"Puny",               "Troglodyte",            "Angry Troglodyte",         "Frenzied",
-        "@Genus@ of Prey",    "Rampant",               "Wild @Genus@",             "Bane of Scribes"},
+    {"弱者",               "世捨て人",              "怒れる奇人",               "荒れ狂う者",
+        "猛襲の@Genus@",      "猛威をふるう者",        "激怒する@Genus@",          "文明の破壊者"},
 
     // Nemelex Xobeh -- alluding to Tarot and cards.
-    {"Unlucky @Genus@",    "Pannier",               "Jester",                   "Fortune-Teller",
-        "Soothsayer",         "Magus",                 "Cardsharp",                "Hand of Fortune"},
+    {"不運な@Genus@",      "アイテム収拾人",        "道化",                     "占い師",
+        "予言者",             "カードの魔術師",        "イカサマ師",               "運命を手にする者"},
 
     // Elyvilon.
-    {"Sinner",                "Practitioner",       "Comforter",             "Caregiver",
-        "Mender",           "Pacifist",                "Purifying @Genus@",        "Bringer of Life"},
+    {"罪人",               "開業医",                "慰める者",                 "癒す者",
+        "修繕者",             "平和主義者",            "@Genus@の浄罪者",          "生命を司る者"},
 
     // Lugonu -- distortion theme.
-    {"Pure",               "Abyss-Baptised",        "Unweaver",                 "Distorting @Genus@",
-        "Agent of Entropy",   "Schismatic",            "Envoy of Void",            "Corrupter of Planes"},
+    {"純粋な者",           "深淵の洗礼を受けた者",  "瓦解させる者",             "歪んだ@Genus@",
+        "エントロピーの代行者", "乖離させる者",        "虚空の使者",               "次元の破壊者"},
 
     // Beogh -- messiah theme.
-    {"Apostate",           "Messenger",             "Proselytiser",             "Priest",
-        "Missionary",         "Evangelist",            "Apostle",                  "Messiah"},
+    {"背信者",             "伝令",                  "改宗者",                   "司祭",
+        "宣教師",             "福音伝道者",            "使徒",                    "救世主"},
 
     // Jiyva -- slime and jelly theme.
-    {"Scum",               "Squelcher",             "Ooze",                     "Jelly",
-        "Slime Creature",     "Dissolving @Genus@",    "Blob",                     "Royal Jelly"},
+    {"塵屑",               "咀嚼する者",            "ウーズ",                   "ジェリー",
+        "スライム",           "溶解せる@Genus@",       "ブロブ",                  "ロイヤルジェリー"},
 
     // Fedhas Madash -- nature theme.
-    {"@Walking@ Fertiliser", "Fungal",              "Green @Genus@",            "Cultivator",
-        "Fruitful",           "Photosynthesist",       "Green Death",              "Force of Nature"},
+    {"@Walking@肥料",      "真菌",                  "緑の@Genus@",              "繁茂させる者",
+        "実りをもたらす者",   "光合成する者",          "緑の殲滅者",               "自然の化身"},
 
     // Cheibriados -- slow theme
-    {"Hasty",              "Sluggish @Genus@",      "Deliberate",               "Unhurried",
-     "Contemplative",         "Epochal",               "Timeless",                 "@Adj@ Aeon"},
+    {"せっかち",           "のろまな@Genus@",       "熟慮者",                   "ゆっくり",
+        "瞑想者",             "時代を区切る者",        "時間超越者",               "永劫の@Adj@"},
 
     // Ashenzari -- divination theme
-    {"Star-crossed",       "Cursed",                "Initiated",                "Soothsayer",
-        "Seer",               "Oracle",                "Illuminatus",              "Omniscient"},
+    {"薄幸の者",           "呪われし者",            "秘呪に通じる者",           "予言者",
+        "千里眼",             "託宣者",                "啓示を受けし者",           "全知全能の賢者"},
 
     // Dithmenos -- darkness theme
-    {"Ember",              "Gloomy",                "Darkened",                 "Extinguished",
-        "Caliginous",         "Umbral",                "Hand of Shadow",           "Eternal Night"},
+    {"燃えさし",           "薄暗がり",              "暗転者",                   "消火者",
+        "暗黒",               "漆黒",                  "影の手",                   "永劫の夜"},
 
     // Gozag -- entrepreneur theme
-    {"Profligate",         "Pauper",                "Entrepreneur",             "Capitalist",
-        "Rich",               "Opulent",               "Tycoon",                   "Plutocrat"},
+    {"放蕩者",             "貧乏人",                "起業家",                   "資本家",
+        "裕福者",             "富裕者",                "大立者",                   "大富豪"},
 
     // Qazlal -- natural disaster theme
-    {"Unspoiled",          "@Adj@ Mishap",          "Lightning Rod",            "@Adj@ Disaster",
-        "Eye of the Storm",   "@Adj@ Catastrophe",     "@Adj@ Cataclysm",          "End of an Era"},
+    {"傷つかざる者",       "@Adj@の災難",           "避雷針",                   "@Adj@の大災害",
+        "台風の目",           "破局の@Adj@",           "大変動の@Adj@",            "紀元の終末者"},
 
     // Ru -- enlightenment theme
-    {"Sleeper",           "Questioner",             "Initiate",                 "Seeker of Truth",
-        "Walker of the Path","Lifter of the Veil",     "Drinker of Unreality",     "Transcendent"},
+    {"不覚者",             "質問者",                "秘術の伝授者",             "真実の探求者",
+        "真理の道の歩行者",   "ベールを上げる者",      "非現実を飲み干す者",       "卓越せる覚者"},
 };
 
 string god_title(god_type which_god, species_type which_species, int piety)
@@ -1055,10 +1055,10 @@ static void _god_overview_description(god_type which_god, bool give_title)
     if (you_worship(which_god))
     {
         // Print title based on piety.
-        cprintf("\nTitle  - ");
+        cprintf(("\n" + jtrans("Title  -") + " ").c_str());
         textcolour(god_colour(which_god));
 
-        string title = god_title(which_god, you.species, you.piety);
+        string title = jtrans(god_title(which_god, you.species, you.piety));
         cprintf("%s", title.c_str());
     }
 
