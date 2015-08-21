@@ -1,0 +1,205 @@
+%%%%
+Godly wrath is upon you!
+
+神はあなたに激怒している！
+%%%%
+You've transgressed heavily! Be penitent!
+
+あなたは著しく道を踏み外している！ 懺悔せよ！
+%%%%
+You are under penance.
+
+あなたは懺悔の途上にある。
+%%%%
+You should show more discipline.
+
+あなたは更なる自制を示すべきだ。
+%%%%
+A prized avatar of
+
+あなたは%sの第一の化身だ。
+%%%%
+A favoured servant of
+
+あなたは%sの寵臣だ。
+%%%%
+A glorious shadow in the eyes of
+
+あなたは%sに期待されている。
+%%%%
+A shining star in the eyes of
+
+あなたは%sの期待の星だ。
+%%%%
+A rising shadow in the eyes of
+
+あなたは%sのお気に入りだ。
+%%%%
+A rising star in the eyes of
+
+あなたは%sのお気に入りだ。
+%%%%
+is most pleased with you.
+
+はあなたにとても喜んでいる。
+%%%%
+is pleased with you.
+
+はあなたに喜んでいる。
+%%%%
+is noncommittal.
+
+はあなたに何も明言しない。
+%%%%
+%s doesn't play fair with you.
+
+%sはあなたと正々堂々勝負したりはしない。
+%%%%
+%s's wrath is upon you!
+
+%sはあなたに激怒している！
+%%%%
+%s is annoyed with you.
+
+%sはあなたに苛立っている。
+%%%%
+%s well remembers your sins.
+
+%sはあなたの罪をはっきりと覚えている。
+%%%%
+%s is ready to forgive your sins.
+
+%sはあなたの罪を赦そうとしている。
+%%%%
+%s is ambivalent towards you.
+
+%sはあなたに曖昧な感情を抱いている。
+%%%%
+%s is neutral towards you.
+
+%sはあなたに対して中立である。
+%%%%
+Granted powers:
+
+与えられた能力:
+%%%%
+(Cost)
+
+(コスト)
+%%%%
+, especially when called upon
+
+(あなたから呼びかけられた時は特に)
+%%%%
+, and always does so when called upon
+
+(あなたから呼びかけられた時はいつでも)
+%%%%
+carefully
+
+注意深く
+%%%%
+often
+
+しばしば
+%%%%
+sometimes
+
+時々
+%%%%
+occasionally
+
+たまに
+%%%%
+watches over you
+
+あなたを見守る。
+%%%%
+%s %s shields you from chaos.
+
+%sは混沌からあなたを%s見守る。
+%%%%
+completely
+
+完全に
+%%%%
+mostly
+
+ほとんど
+%%%%
+%s %s shields you from negative energy.
+
+%sは負のエネルギーからあなたを%s守る。
+%%%%
+You can call upon %s to burn spellbooks in your surroundings.
+
+あなたは%sの力を借りて周囲の魔法書を燃やすことができる。
+%%%%
+%s shields you from corrosive effects.
+
+%sはあなたを腐蝕効果から守る。
+%%%%
+when your fellow slimes consume items.
+
+仲間のスライムがアイテムを消化する際に
+%%%%
+You can pray to speed up decomposition.
+
+あなたは祈って死体の腐敗を早めることができる。
+%%%%
+You can walk through plants and fire through allied plants.
+
+あなたは植物の間を通り、仲間の植物に発射物が当たらなくなる。
+%%%%
+You are provided with a bounty of information.
+
+あなたは装備の情報を得ることができる。
+%%%%
+You can pray to corrupt scrolls of remove curse on your square.
+
+あなたは祈って解呪の巻物を呪縛の巻物に変化させることができる。
+%%%%
+%s supports your attributes (+%d).
+
+%sはあなたの能力値を強化(+%d)する。
+%%%%
+You can bend time to slow others.
+
+あなたは時間をねじ曲げ他者を遅くすることができる。
+%%%%
+some of Vehumet's most lethal spells
+
+ヴェフメットの最も危険な呪文のいくつか
+%%%%
+You passively detect gold.
+
+あなたは金貨のありかを感知することができる。
+%%%%
+turns your defeated foes' bodies to gold.
+
+は倒した敵の体を金貨に変える。
+%%%%
+Your enemies may become distracted by glittering piles of gold.
+
+あなたの敵は輝く金貨の山に惑わされる。
+%%%%
+You are immune to your own clouds.
+
+あなたは自らの出した雲で傷つかない。
+%%%%
+None.
+
+(なし)
+%%%%
+Religion
+
+信仰
+%%%%
+Title  -
+
+称号 -
+%%%%
+Favour -
+
+好意 -
+%%%%

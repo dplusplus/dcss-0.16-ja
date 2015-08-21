@@ -77,12 +77,17 @@ static bool _print_god_abil_desc(int god, int numpower)
         return false;
 
     // Don't display ability upgrades here.
-    string buf = adjust_abil_message(pmsg, false);
+    string buf = jtrans(adjust_abil_message(pmsg, false));
     if (buf.empty())
         return false;
 
     if (!isupper(pmsg[0])) // Complete sentence given?
-        buf = "You can " + buf + ".";
+    {
+        // ゴザーグの能力表示はget_gold内でも呼ばれるのでこちらで文を合わせる
+        if (god == GOD_GOZAG) buf += "こと";
+
+        buf = "あなたは" + buf + "ができる。";
+    }
 
     // This might be ABIL_NON_ABILITY for passive abilities.
     const ability_type abil = god_abilities[god][numpower];
@@ -834,9 +839,9 @@ static void _describe_god_powers(god_type which_god, int numcols)
     textcolour(LIGHTGREY);
     const char *header = "Granted powers:";
     const char *cost   = "(Cost)";
-    cprintf("\n\n%s%*s%s\n", header,
-            min(80, get_number_of_cols()) - 1 - strwidth(header) - strwidth(cost),
-            "", cost);
+    cprintf("\n\n%s%*s%s\n", jtrans(header).c_str(),
+            min(80, get_number_of_cols()) - 1 - strwidth(jtrans(header)) - strwidth(jtrans(cost)),
+            "", jtrans(cost).c_str());
     textcolour(god_colour(which_god));
 
     // mv: Some gods can protect you from harm.
@@ -867,12 +872,12 @@ static void _describe_god_powers(god_type which_god, int numcols)
                           (prot_chance >= 25) ? "sometimes"
                                               : "occasionally";
 
-        string buf = uppercase_first(god_name(which_god));
-        buf += " ";
-        buf += how;
-        buf += " watches over you";
-        buf += when;
-        buf += ".";
+
+        string buf = jtrans(god_name(which_god));
+        buf += "は";
+        buf += jtrans(how);
+        buf += jtrans("watches over you");
+        buf += jtrans(when);
 
         _print_final_god_abil_desc(which_god, buf, ABIL_NON_ABILITY);
     }
@@ -886,8 +891,8 @@ static void _describe_god_powers(god_type which_god, int numcols)
         (you.piety >= piety_breakpoint(1)) ? "sometimes" :
                                              "occasionally";
 
-        cprintf("%s %s shields you from chaos.\n",
-                uppercase_first(god_name(which_god)).c_str(), how);
+        cprintf(jtransln("%s %s shields you from chaos.").c_str(),
+               jtrans(god_name(which_god)).c_str(), jtrans(how).c_str());
     }
     else if (which_god == GOD_SHINING_ONE)
     {
@@ -899,16 +904,15 @@ static void _describe_god_powers(god_type which_god, int numcols)
             (you.piety >= piety_breakpoint(3)) ? "mostly" :
                                                  "partially";
 
-            cprintf("%s %s shields you from negative energy.\n",
-                    uppercase_first(god_name(which_god)).c_str(), how);
+            cprintf(jtransln("%s %s shields you from negative energy.").c_str(),
+                    jtrans(god_name(which_god)).c_str(), how);
         }
     }
     else if (which_god == GOD_TROG)
     {
         have_any = true;
-        string buf = "You can call upon "
-        + god_name(which_god)
-        + " to burn spellbooks in your surroundings.";
+        string buf = make_stringf(jtrans("You can call upon %s to burn spellbooks in your surroundings.").c_str(),
+                                  jtrans(god_name(which_god)).c_str());
         _print_final_god_abil_desc(which_god, buf,
                                    ABIL_TROG_BURN_SPELLBOOKS);
     }
@@ -917,18 +921,19 @@ static void _describe_god_powers(god_type which_god, int numcols)
         if (you.piety >= piety_breakpoint(2))
         {
             have_any = true;
-            cprintf("%s shields you from corrosive effects.\n",
-                    uppercase_first(god_name(which_god)).c_str());
+            cprintf(jtransln("%s shields you from corrosive effects.").c_str(),
+                    jtrans(god_name(which_god)).c_str());
         }
         if (you.piety >= piety_breakpoint(1))
         {
             have_any = true;
-            string buf = "You gain nutrition";
+            string buf = "あなたは";
+            buf += jtransln("when your fellow slimes consume items.");
             if (you.piety >= piety_breakpoint(4))
-                buf += ", power and health";
+                buf += "体力と魔力、および";
             else if (you.piety >= piety_breakpoint(3))
-                buf += " and power";
-            buf += " when your fellow slimes consume items.\n";
+                buf += "魔力および";
+            buf += "栄養を得る。";
             _print_final_god_abil_desc(which_god, buf,
                                        ABIL_NON_ABILITY);
         }
@@ -937,21 +942,21 @@ static void _describe_god_powers(god_type which_god, int numcols)
     {
         have_any = true;
         _print_final_god_abil_desc(which_god,
-                                   "You can pray to speed up decomposition.",
+                                   jtrans("You can pray to speed up decomposition."),
                                    ABIL_NON_ABILITY);
         _print_final_god_abil_desc(which_god,
-                                   "You can walk through plants and "
-                                   "fire through allied plants.",
+                                   jtrans("You can walk through plants and "
+                                          "fire through allied plants."),
                                    ABIL_NON_ABILITY);
     }
     else if (which_god == GOD_ASHENZARI)
     {
         have_any = true;
         _print_final_god_abil_desc(which_god,
-                                   "You are provided with a bounty of information.",
+                                   jtrans("You are provided with a bounty of information."),
                                    ABIL_NON_ABILITY);
         _print_final_god_abil_desc(which_god,
-                                   "You can pray to corrupt scrolls of remove curse on your square.",
+                                   jtrans("You can pray to corrupt scrolls of remove curse on your square."),
                                    ABIL_NON_ABILITY);
     }
     else if (which_god == GOD_CHEIBRIADOS)
@@ -959,11 +964,11 @@ static void _describe_god_powers(god_type which_god, int numcols)
         if (!player_under_penance())
         {
             have_any = true;
-            cprintf("%s supports your attributes (+%d).\n",
-                    uppercase_first(god_name(which_god)).c_str(),
+            cprintf(jtransln("%s supports your attributes (+%d).").c_str(),
+                    jtrans(god_name(which_god)).c_str(),
                     chei_stat_boost(you.piety));
             _print_final_god_abil_desc(which_god,
-                                       "You can bend time to slow others.",
+                                       jtrans("You can bend time to slow others."),
                                        ABIL_CHEIBRIADOS_TIME_BEND);
         }
     }
@@ -973,12 +978,14 @@ static void _describe_god_powers(god_type which_god, int numcols)
         {
             have_any = true;
 
-            const string offer = numoffers == 1
-                               ? spell_title(*you.vehumet_gifts.begin())
-                               : "some of Vehumet's most lethal spells";
+            string offer = jtrans(numoffers == 1
+                                  ? spell_title(*you.vehumet_gifts.begin())
+                                  : "some of Vehumet's most lethal spells");
+            if (numoffers == 1)
+                offer += "の呪文";
 
             _print_final_god_abil_desc(which_god,
-                                       "You can memorise " + offer + ".",
+                                       "あなたは" + offer + "を覚えることができる。",
                                        ABIL_NON_ABILITY);
         }
     }
@@ -986,23 +993,23 @@ static void _describe_god_powers(god_type which_god, int numcols)
     {
         have_any = true;
         _print_final_god_abil_desc(which_god,
-                                   "You passively detect gold.",
+                                   jtrans("You passively detect gold."),
                                    ABIL_NON_ABILITY);
         _print_final_god_abil_desc(which_god,
-                                   uppercase_first(god_name(which_god))
-                                   + " turns your defeated foes' bodies"
-                                   + " to gold.",
+                                   jtrans(god_name(which_god))
+                                   + jtrans("turns your defeated foes' bodies"
+                                            " to gold."),
                                    ABIL_NON_ABILITY);
         _print_final_god_abil_desc(which_god,
-                                   "Your enemies may become distracted by "
-                                   "glittering piles of gold.",
+                                   jtrans("Your enemies may become distracted by "
+                                          "glittering piles of gold."),
                                    ABIL_NON_ABILITY);
     }
     else if (which_god == GOD_QAZLAL)
     {
         have_any = true;
         _print_final_god_abil_desc(which_god,
-                                   "You are immune to your own clouds.",
+                                   jtrans("You are immune to your own clouds."),
                                    ABIL_NON_ABILITY);
     }
 
@@ -1030,7 +1037,7 @@ static void _describe_god_powers(god_type which_god, int numcols)
     }
 
     if (!have_any)
-        cprintf("None.\n");
+        cprintf(jtransln("None.").c_str());
 }
 
 static void _god_overview_description(god_type which_god, bool give_title)
@@ -1041,7 +1048,7 @@ static void _god_overview_description(god_type which_god, bool give_title)
     if (give_title)
     {
         textcolour(WHITE);
-        cprintf("Religion");
+        cprintf(jtrans("Religion").c_str());
         textcolour(LIGHTGREY);
     }
     // Center top line even if it already contains "Religion" (len = 8)

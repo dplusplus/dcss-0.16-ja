@@ -2239,11 +2239,11 @@ static bool _abil_chg_message(const char *pmsg, const char *youcanmsg,
     you.piety = old_piety;
 
     if (isupper(pmsg[0]))
-        god_speaks(you.religion, pm.c_str());
+        god_speaks(you.religion, jtrans(pm).c_str());
     else
     {
         god_speaks(you.religion,
-                   make_stringf(youcanmsg, pm.c_str()).c_str());
+                   make_stringf(youcanmsg, jtrans(pm).c_str()).c_str());
     }
 
     return true;

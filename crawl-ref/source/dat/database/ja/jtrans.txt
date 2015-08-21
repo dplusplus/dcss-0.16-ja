@@ -89,92 +89,6 @@ There isn't anything else to %sbutcher here.
 
 ここには他に%s解体するようなものはない。
 %%%%
-############################## describe-god.cc ##############################
-%%%%
-Godly wrath is upon you!
-
-神はあなたに激怒している！
-%%%%
-You've transgressed heavily! Be penitent!
-
-あなたは著しく道を踏み外している！ 懺悔せよ！
-%%%%
-You are under penance.
-
-あなたは懺悔の途上にある。
-%%%%
-You should show more discipline.
-
-あなたは更なる自制を示すべきだ。
-%%%%
-A prized avatar of
-
-あなたは%sの第一の化身だ。
-%%%%
-A favoured servant of
-
-あなたは%sの寵臣だ。
-%%%%
-A glorious shadow in the eyes of
-
-あなたは%sに期待されている。
-%%%%
-A shining star in the eyes of
-
-あなたは%sの期待の星だ。
-%%%%
-A rising shadow in the eyes of
-
-あなたは%sのお気に入りだ。
-%%%%
-A rising star in the eyes of
-
-あなたは%sのお気に入りだ。
-%%%%
-is most pleased with you.
-
-はあなたにとても喜んでいる。
-%%%%
-is pleased with you.
-
-はあなたに喜んでいる。
-%%%%
-is noncommittal.
-
-はあなたに何も明言しない。
-%%%%
-%s doesn't play fair with you.
-
-%sはあなたと正々堂々勝負したりはしない。
-%%%%
-%s's wrath is upon you!
-
-%sはあなたに激怒している！
-%%%%
-%s is annoyed with you.
-
-%sはあなたに苛立っている。
-%%%%
-%s well remembers your sins.
-
-%sはあなたの罪をはっきりと覚えている。
-%%%%
-%s is ready to forgive your sins.
-
-%sはあなたの罪を赦そうとしている。
-%%%%
-%s is ambivalent towards you.
-
-%sはあなたに曖昧な感情を抱いている。
-%%%%
-%s is neutral towards you.
-
-%sはあなたに対して中立である。
-%%%%
-Favour -
-
-好意 -
-%%%%
 ############################## itemname.cc ##############################
 %%%%
 (w)ield
@@ -2338,6 +2252,346 @@ in a vulnerable spot
 の弱点
 %%%%
 ############################## religion.cc ##############################
+%%%%
+recite Zin's Axioms of Law
+
+ジンの法の公理を説くこと
+%%%%
+call upon Zin for vitalisation
+
+ジンに生命の活性を請うこと
+%%%%
+call upon Zin to imprison the lawless
+
+ジンに無法者の収監を請うこと
+%%%%
+call upon Zin to create a sanctuary
+
+ジンに聖域の作成を請うこと
+%%%%
+You and your allies can gain power from killing the unholy and evil.
+
+あなたとあなたの仲間は不浄な者や邪悪な者を倒すことで力を得ることができる。
+%%%%
+call upon the Shining One for a divine shield
+
+輝けるものに神気の盾を請うこと
+%%%%
+channel blasts of cleansing flame
+
+浄化の炎を解き放つこと
+%%%%
+summon a divine warrior
+
+神聖な従者を召喚すること
+%%%%
+receive cadavers from Kikubaaqudgha
+
+死体をキクバークッグァから受け取ること
+%%%%
+Kikubaaqudgha is protecting you from necromantic miscasts and death curses.
+
+キクバークッグァはあなたを死霊術の失敗効果や死の呪いから守る。
+%%%%
+Kikubaaqudgha is protecting you from unholy torment.
+
+キクバークッグァはあなたを不浄な苦痛から守る。
+%%%%
+invoke torment by sacrificing a corpse
+
+死体を代償に苦痛の紋章を喚起すること
+%%%%
+animate legions of the dead
+
+死者の軍勢を蘇らせること
+%%%%
+animate remains
+
+死者を蘇らせること
+%%%%
+recall your undead slaves and mirror injuries on your foes
+
+不死の下僕を呼び出すことと傷を敵に跳ね返すこと
+%%%%
+drain ambient lifeforce
+
+周囲の生命力を掠奪すること
+%%%%
+enslave living souls
+
+生者の魂を隷属させること
+%%%%
+gain magical power from killing
+
+殺害によって魔力を得ること
+%%%%
+Vehumet is aiding your destructive magics.
+
+ヴェフメットはあなたの破壊的な魔法を手助けしてくれる。
+%%%%
+Vehumet is extending the range of your destructive magics.
+
+ヴェフメットはあなたの破壊的な魔法の射程を伸ばしてくれる。
+%%%%
+gain great but temporary skills
+
+一時的に戦闘系のスキルを強化すること
+%%%%
+speed up your combat
+
+一時的に攻撃速度を上昇させること
+%%%%
+gain health from killing
+
+殺害によって体力を回復すること
+%%%%
+harness Makhleb's destructive might
+
+マクレブの破壊的な力を制御すること
+%%%%
+summon a lesser servant of Makhleb
+
+マクレブの小さきしもべを召喚すること
+%%%%
+hurl Makhleb's greater destruction
+
+マクレブの大いなる破壊を浴びせること
+%%%%
+summon a greater servant of Makhleb
+
+マクレブの大いなるしもべを召喚すること
+%%%%
+tap ambient magical fields
+
+周囲の魔力を収集すること
+%%%%
+freely open your mind to new spells
+
+新しい魔法のために記憶を消去すること
+%%%%
+Sif Muna is protecting you from the effects of miscast magic.
+
+シフ・ムーナはあなたを魔法が失敗した際の効果から守る。
+%%%%
+go berserk at will
+
+自らの意志で狂戦士化すること
+%%%%
+regenerate and be protected from hostile enchantments
+
+再生能力と敵対的な魔法に対する防御を得ること
+%%%%
+call in reinforcements
+
+援軍を呼び出すこと
+%%%%
+choose one out of three cards
+
+デッキから3枚引いた中から1枚カードを選んで使うこと
+%%%%
+deal four cards at a time
+
+一度に4枚のカードを使うこと
+%%%%
+order the top five cards of a deck, losing the rest
+
+デッキの上の5枚のカードを並び替え、残りのカードを捨てること
+%%%%
+provide lesser healing for yourself
+
+自らに小さき癒しを使うこと
+%%%%
+heal and attempt to pacify others
+他者を癒やし友好化を試みること
+%%%%
+purify yourself
+
+自らを浄化すること
+%%%%
+provide greater healing for yourself
+
+自らに大いなる癒しを使うこと
+%%%%
+call upon Elyvilon for divine vigour
+
+エリヴィロンに神秘の活力を請うこと
+%%%%
+depart the Abyss
+
+アビスから離脱すること
+%%%%
+bend space around yourself
+
+周囲の空間を歪曲すること
+%%%%
+banish your foes
+
+敵をアビスに追放すること
+%%%%
+corrupt the fabric of space
+
+空間の構造を崩壊させること
+%%%%
+gate yourself to the Abyss
+
+アビスへと退避すること
+%%%%
+Beogh aids your use of armour.
+
+ベオは鎧の使用を手助けしてくれる。
+%%%%
+smite your foes
+
+敵に打擲の一撃を与えること
+%%%%
+gain orcish followers
+
+オークの従者を得ること
+%%%%
+recall your orcish followers
+
+オークの従者を呼び出すこと
+%%%%
+walk on water and give items to your follower
+
+水の上を歩き、また従者にアイテムを与えること
+%%%%
+request a jelly
+
+ジェリーを要請すること
+%%%%
+temporarily halt your jellies' item consumption
+
+一時的にジェリーがアイテムを消化するのを止めること
+%%%%
+turn your foes to slime
+
+敵をスライムへと変化させること
+%%%%
+call upon Jiyva to remove your harmful mutations
+
+ジーヴァに有害な突然変異の除去を請うこと
+%%%%
+induce evolution
+
+植物の進化を誘発すること
+%%%%
+call sunshine
+
+陽光を呼び出すこと
+%%%%
+cause a ring of plants to grow
+
+周囲に迷宮草の輪を成長させること
+%%%%
+spawn explosive spores
+
+死体から爆発する胞子を生み出すこと
+%%%%
+control the weather
+
+気候を操り、雨を降らせること
+%%%%
+Cheibriados slows and strengthens your metabolism.
+
+ケイブリアドスはあなたの代謝を遅く、そして強化する。
+%%%%
+warp the flow of time around you
+
+周囲の時間の流れを歪曲させること
+%%%%
+inflict damage on those overly hasty
+
+過度に加速している者に損傷を与えること
+%%%%
+step out of the time flow
+
+時間の流れから離脱すること
+%%%%
+The more cursed you are, the more Ashenzari supports your skills.
+
+呪縛されればされるほど、アシェンザリはさらなるスキルの支援を行う。
+
+%%%%
+Ashenzari reveals the unseen and keeps your mind clear.
+
+アシェンザリは見えざる者の存在を看破し、あなたの意識を明晰に保つ。
+%%%%
+scry through walls
+
+壁を透視する
+%%%%
+Ashenzari helps you to reconsider your skills.
+
+アシェンザリはあなたがスキルを再考するのを助ける。
+%%%%
+step into the shadows of nearby creatures
+
+近くのモンスターの影の中に潜り込むこと
+%%%%
+You now sometimes bleed smoke when heavily injured by enemies.
+
+あなたは敵から重症を受けた際に時々黒煙を生じさせる。
+%%%%
+Your shadow now sometimes tangibly mimics your actions.
+
+あなたの影は時々あなたの行動を真似る。
+%%%%
+transform into a swirling mass of shadows
+
+渦巻く影の塊へと変化すること
+%%%%
+petition Gozag for potion effects
+
+ゴザーグに薬の効果を要請する
+%%%%
+fund merchants seeking to open stores in the dungeon
+
+迷宮に店を出そうとする商人に投資する
+%%%%
+bribe branches to halt enemies' attacks and recruit allies
+
+分岐を買収して敵の攻撃を止め、傭兵を雇う
+%%%%
+You are surrounded by a storm.
+
+あなたは嵐に囲まれている。
+%%%%
+call upon nature to destroy your foes
+
+自然に働きかけて敵を討つこと
+%%%%
+give life to nearby clouds
+
+近くの雲烟に生命を与えること
+%%%%
+You adapt resistances upon receiving elemental damage.
+
+あなたは元素属性への耐性に熟達している。
+%%%%
+call upon nature's wrath in a wide area around you
+
+自然の怒りを周囲の広範囲に解き放つこと
+%%%%
+You exude an aura of power that intimidates your foes.
+
+あなたは敵を戸惑わせるオーラを発散する。
+%%%%
+Your aura of power can strike those that harm you.
+
+あなたのオーラはあなたに危害を加えるものに危害を加える。
+%%%%
+heal your body and restore your magic
+
+傷を癒し魔力を回復させること
+%%%%
+gather your power into a mighty leap
+
+力を溜めて力強い跳躍を行うこと
+%%%%
+wreak a terrible wrath on your foes
+
+敵に対し激怒の力を浴びせること
 %%%%
 You have lost your religion!
 
