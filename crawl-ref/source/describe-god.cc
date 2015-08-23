@@ -562,9 +562,9 @@ static bool _check_description_cycle(god_desc_type gdesc)
     const char* place = nullptr;
     switch (gdesc)
     {
-        case GDESC_OVERVIEW: place = "<w>Overview</w>|Powers|Wrath"; break;
-        case GDESC_DETAILED: place = "Overview|<w>Powers</w>|Wrath"; break;
-        case GDESC_WRATH:    place = "Overview|Powers|<w>Wrath</w>"; break;
+        case GDESC_OVERVIEW: place = jtrans("<w>Overview</w>|Powers|Wrath").c_str(); break;
+        case GDESC_DETAILED: place = jtrans("Overview|<w>Powers</w>|Wrath").c_str(); break;
+        case GDESC_WRATH:    place = jtrans("Overview|Powers|<w>Wrath</w>").c_str(); break;
         default: die("Unknown god description type!");
     }
     formatted_string::parse_string(make_stringf("[<w>!</w>/<w>^</w>"

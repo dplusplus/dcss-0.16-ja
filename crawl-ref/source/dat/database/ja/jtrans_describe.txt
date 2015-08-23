@@ -67,6 +67,18 @@ not bribed
 
 未買収
 %%%%
+<w>Overview</w>|Powers|Wrath
+
+<w>概要</w>|能力|神の怒り
+%%%%
+Overview|<w>Powers</w>|Wrath
+
+概要|<w>能力</w>|神の怒り
+%%%%
+Overview|Powers|<w>Wrath</w>
+
+概要|能力|<w>神の怒り</w>
+%%%%
 TSO and Ely wrath cause
 
 # uppercase_first(god_name(which_god)) +
