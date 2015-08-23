@@ -1,0 +1,237 @@
+%%%%
+Dungeon
+
+迷宮
+%%%%
+the Dungeon
+
+迷宮
+%%%%
+Temple
+
+寺院
+%%%%
+the Ecumenical Temple
+
+諸宗派の寺院
+%%%%
+Orcish Mines
+
+オークの坑道
+%%%%
+the Orcish Mines
+
+オークの坑道
+%%%%
+Elven Halls
+
+エルフの大広間
+%%%%
+the Elven Halls
+
+エルフの大広間
+%%%%
+Lair
+
+獣の棲み処
+%%%%
+the Lair of Beasts
+
+獣の棲み処
+%%%%
+Swamp
+
+沼
+%%%%
+the Swamp
+
+沼
+%%%%
+Shoals
+
+浅瀬
+%%%%
+the Shoals
+
+浅瀬
+%%%%
+Snake Pit
+
+蛇穴
+%%%%
+the Snake Pit
+
+蛇穴
+%%%%
+Spider Nest
+
+蜘蛛の穴ぐら
+%%%%
+Slime Pits
+
+スライムの穴ぐら
+%%%%
+the Pits of Slime
+
+スライムの穴ぐら
+%%%%
+Vaults
+
+宝物庫
+%%%%
+the Vaults
+
+宝物庫
+%%%%
+Crypt
+
+地下墓地
+%%%%
+the Crypt
+
+地下墓地
+%%%%
+Tomb
+
+霊廟
+%%%%
+the Tomb of the Ancients
+
+太古の霊廟
+%%%%
+Hell
+
+地獄
+%%%%
+the Vestibule of Hell
+
+地獄の玄関
+%%%%
+Dis
+
+ディース
+%%%%
+the Iron City of Dis
+
+鉄の都『ディース』
+%%%%
+Gehenna
+
+ゲヘナ
+%%%%
+Cocytus
+
+コキュトス
+%%%%
+Tartarus
+
+タルタロス
+%%%%
+Zot
+
+ゾットの領域
+%%%%
+the Realm of Zot
+
+ゾットの領域
+%%%%
+Abyss
+
+アビス
+%%%%
+the Abyss
+
+アビス
+%%%%
+Pandemonium
+
+パンデモニウム
+%%%%
+Ziggurat
+
+ジグラット
+%%%%
+a ziggurat
+
+ジグラット
+%%%%
+Labyrinth
+
+ラビリンス
+%%%%
+a labyrinth
+
+ラビリンス
+%%%%
+Bazaar
+
+バザール
+%%%%
+a bazaar
+
+バザール
+%%%%
+Trove
+
+埋蔵庫
+%%%%
+a treasure trove
+
+宝の埋蔵庫
+%%%%
+Sewer
+
+下水道
+%%%%
+a sewer
+
+下水道
+%%%%
+Ossuary
+
+納骨堂
+%%%%
+an ossuary
+
+納骨堂
+%%%%
+Bailey
+
+濠城
+%%%%
+a bailey
+
+濠城
+%%%%
+Ice Cave
+
+氷の洞穴
+%%%%
+an ice cave
+
+氷の洞穴
+%%%%
+Volcano
+
+火山
+%%%%
+a volcano
+
+火山
+%%%%
+Wizlab
+
+魔術の研究所
+%%%%
+a wizard's laboratory
+
+魔術の研究所
+%%%%
+Depths
+
+深層
+%%%%
+the Depths
+
+深層
+%%%%

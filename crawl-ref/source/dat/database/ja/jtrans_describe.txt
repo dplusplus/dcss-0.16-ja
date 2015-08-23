@@ -55,6 +55,48 @@ is noncommittal.
 
 はあなたに何も明言しない。
 %%%%
+You can bribe the following branches of the dungeon:
+
+あなたは下に記された迷宮の分岐を買収できる:
+%%%%
+Susceptibility:
+
+買収のしやすさ:
+%%%%
+not bribed
+
+未買収
+%%%%
+does not demand training of the Invocations skill. All abilities are purely based on piety.
+
+祈祷スキルの訓練を要求しない。全ての能力は純粋に信仰値に依存すること
+%%%%
+The power of Kikubaaqudgha's abilities is governed by Necromancy skill instead of Invocations.
+
+キクバークッグァの与える能力は祈祷スキルではなく死霊術スキルに左右される。
+%%%%
+elyvilon misc info
+
+# Healing hostile monsters may pacify them, turning them
+# neutral. Pacification works best on natural beasts,
+# worse on monsters of your species, worse on other
+# species, worst of all on demons and undead, and not at
+# all on sleeping or mindless monsters. If it succeeds,
+# you gain half of the monster's experience value. Pacified
+# monsters try to leave the level.
+
+敵対的なモンスターを癒すことで彼らをなだめ、友好化することができる。友好化は自然の獣に対して最も効果的に働き、次いで自分と同じ種族、他の種族となり、悪魔や不死者には最も効きづらく、眠っていたり精神構造を持たないモンスターには全く効かない。
+成功した場合、あなたはモンスターを倒した場合の経験値の半分を得る。
+中立化したモンスターはこの階層から移動しようとする。
+%%%%
+The power of Nemelex Xobeh's abilities and of the cards' effects is governed by Evocations skill instead of Invocations.
+
+ネメレクス・ソベーの与える能力とカードの効果は祈祷スキルではなく発動スキルに左右される。
+%%%%
+Note that
+
+に注意。
+%%%%
 %s doesn't play fair with you.
 
 %sはあなたと正々堂々勝負したりはしない。

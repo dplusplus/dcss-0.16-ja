@@ -445,12 +445,12 @@ extern map<branch_type, set<level_id> > stair_level;
 // XXX: apply padding programmatically?
 static const char* const bribe_susceptibility_adjectives[] =
 {
-    "none       ",
-    "very low   ",
-    "low        ",
-    "moderate   ",
-    "high       ",
-    "very high  "
+    "不可         ",
+    "かなり難しい ",
+    "難しい       ",
+    "普通         ",
+    "簡単         ",
+    "非常に簡単   ",
 };
 
 /**
@@ -483,59 +483,59 @@ static void _list_bribable_branches(vector<branch_type> &targets)
  */
 static string _describe_branch_bribability()
 {
-    string ret = "You can bribe the following branches of the dungeon:\n";
-    vector<branch_type> targets;
+    string ret = jtransln("You can bribe the following branches of the dungeon:");
+    vector<branch_type>targets;
     _list_bribable_branches(targets);
 
     size_t width = 0;
     for (branch_type br : targets)
-        width = max(width, strlen(branches[br].shortname));
+        width = max(width, (unsigned int)strwidth(jtrans(branches[br].shortname)));
 
     for (branch_type br : targets)
     {
         string line = " ";
-        line += branches[br].shortname;
+        line += jtrans(branches[br].shortname);
         line += string(width + 2 - strwidth(line), ' ');
         // XXX: move this elsewhere?
         switch (br)
         {
             case BRANCH_ORC:
-                line += "(orcs)              ";
+                line += "(オーク)              ";
                 break;
             case BRANCH_ELF:
-                line += "(elves)             ";
+                line += "(エルフ               ";
                 break;
             case BRANCH_SNAKE:
-                line += "(nagas/salamanders) ";
+                line += "(ナーガ/サラマンダー) ";
                 break;
             case BRANCH_SHOALS:
-                line += "(merfolk)           ";
+                line += "(水棲の民)            ";
                 break;
             case BRANCH_VAULTS:
-                line += "(humans)            ";
+                line += "(人間)                ";
                 break;
             case BRANCH_ZOT:
-                line += "(draconians)        ";
+                line += "(ドラコニアン)        ";
                 break;
             case BRANCH_COCYTUS:
             case BRANCH_DIS:
             case BRANCH_GEHENNA:
             case BRANCH_TARTARUS:
-                line += "(demons)            ";
+                line += "(悪魔)                ";
                 break;
             default:
-                line += "(buggy)             ";
+                line += "(buggy)               ";
                 break;
         }
 
-        line += "Susceptibility: ";
+        line += jtrans("Susceptibility:") + " ";
         const int suscept = gozag_branch_bribe_susceptibility(br);
         ASSERT(suscept >= 0
                && suscept < (int)ARRAYSZ(bribe_susceptibility_adjectives));
         line += bribe_susceptibility_adjectives[suscept];
 
         if (!branch_bribe[br])
-            line += "not bribed";
+            line += jtrans("not bribed");
         else
             line += make_stringf("$%d", branch_bribe[br]);
 
@@ -731,10 +731,11 @@ static string _get_god_misc_info(god_type which_god)
         case GOD_JIYVA:
         case GOD_TROG:
         {
-            const string piety_only = "Note that " + god_name(which_god) +
-                                      " does not demand training of the"
-                                      " Invocations skill. All abilities are"
-                                      " purely based on piety.";
+            const string piety_only = jtrans(god_name(which_god)) + "は" +
+                jtrans("does not demand training of the"
+                       " Invocations skill. All abilities are"
+                       " purely based on piety.") +
+                jtrans("Note that");
 
             if (which_god == GOD_ASHENZARI
                 && which_god == you.religion
@@ -747,22 +748,16 @@ static string _get_god_misc_info(god_type which_god)
         }
 
         case GOD_KIKUBAAQUDGHA:
-            return "The power of Kikubaaqudgha's abilities is governed by "
-                   "Necromancy skill instead of Invocations.";
+            return jtrans("The power of Kikubaaqudgha's abilities is governed by "
+                          "Necromancy skill instead of Invocations.");
 
         case GOD_ELYVILON:
-            return "Healing hostile monsters may pacify them, turning them "
-                   "neutral. Pacification works best on natural beasts, "
-                   "worse on monsters of your species, worse on other "
-                   "species, worst of all on demons and undead, and not at "
-                   "all on sleeping or mindless monsters. If it succeeds, "
-                   "you gain half of the monster's experience value. Pacified "
-                   "monsters try to leave the level.";
+            return jtrans("elyvilon misc info");
 
         case GOD_NEMELEX_XOBEH:
-            return "The power of Nemelex Xobeh's abilities and of the "
-                   "cards' effects is governed by Evocations skill "
-                   "instead of Invocations.";
+            return jtrans("The power of Nemelex Xobeh's abilities and of the "
+                          "cards' effects is governed by Evocations skill "
+                          "instead of Invocations.");
 
         case GOD_GOZAG:
             return _describe_branch_bribability();
