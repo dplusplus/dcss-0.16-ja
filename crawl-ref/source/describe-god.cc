@@ -51,11 +51,11 @@ static bool _print_final_god_abil_desc(int god, const string &final_msg,
     // "Various" instead of the cost of the first ability.
     const string cost =
     "(" +
-    (abil == ABIL_YRED_RECALL_UNDEAD_SLAVES ? "Various"
+    (abil == ABIL_YRED_RECALL_UNDEAD_SLAVES ? jtrans("Various")
                                             : make_cost_description(abil))
     + ")";
 
-    if (cost != "(None)")
+    if (cost != ("(" + jtrans("None") + ")"))
     {
         // XXX: Handle the display better when the description and cost
         // are too long for the screen.
