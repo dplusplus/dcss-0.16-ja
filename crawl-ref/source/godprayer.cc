@@ -63,20 +63,22 @@ static bool _confirm_pray_sacrifice(god_type god)
 
 string god_prayer_reaction()
 {
-    string result = uppercase_first(god_name(you.religion));
-    if (crawl_state.player_is_dead())
-        result += " was ";
-    else
-        result += " is ";
-    result +=
+    string result = jtrans(god_name(you.religion)) + "は";
+    result += jtrans(
         (you.piety >= piety_breakpoint(5)) ? "exalted by your worship" :
         (you.piety >= piety_breakpoint(4)) ? "extremely pleased with you" :
         (you.piety >= piety_breakpoint(3)) ? "greatly pleased with you" :
         (you.piety >= piety_breakpoint(2)) ? "most pleased with you" :
         (you.piety >= piety_breakpoint(1)) ? "pleased with you" :
         (you.piety >= piety_breakpoint(0)) ? "aware of your devotion"
-                                           : "noncommittal";
-    result += ".";
+                                           : "noncommittal");
+    result += "。";
+
+    if (crawl_state.player_is_dead())
+    {
+        result = replace_all(result, "ている", "ていた");
+        result = replace_all(result, "ていない", "ていなかった");
+    }
 
     return result;
 }
