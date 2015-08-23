@@ -2749,6 +2749,146 @@ you kill beings that bring fire to the dungeon
 
 迷宮へ火をもたらすものを殺すこと
 %%%%
+you perform cannibalism
+
+同種食らいをすること
+%%%%
+you desecrate holy remains
+
+聖なる遺骸を汚すこと
+%%%%
+you drink blood
+
+血液を飲むこと
+%%%%
+you use necromancy
+
+死霊術を使うこと
+%%%%
+you use unholy magic or items
+
+不浄な魔法やアイテムを使うこと
+%%%%
+you attack non-hostile holy beings
+
+敵対的でない聖なる存在を攻撃すること
+%%%%
+you or your allies kill non-hostile holy beings
+
+あなたと従者が敵対的でない聖なる存在を殺すこと
+%%%%
+you attack neutral beings
+
+中立なるものを攻撃すること
+%%%%
+you attack allies
+
+従者を攻撃すること
+%%%%
+you attack allied orcs
+
+オークの従者を攻撃すること
+%%%%
+you attack fellow slimes
+
+仲間のスライムを攻撃すること
+%%%%
+you or your allies destroy plants
+
+あなたと従者が植物を傷つけること
+%%%%
+allied flora die
+
+従えた植物が死ぬこと
+%%%%
+you use necromancy on corpses, chunks or skeletons
+
+死霊術を死体や肉片および骸骨に用いること
+%%%%
+you destroy spellbooks
+
+魔法書を破棄すること
+%%%%
+you use fiery magic or items
+
+火を伴う魔術やアイテムを使うこと
+%%%%
+you allow allies to die
+
+従者を見殺しにすること
+%%%%
+you deliberately mutate yourself
+
+わざと変異すること
+%%%%
+you transform yourself
+
+変形すること
+%%%%
+you polymorph monsters
+
+モンスターに変化すること
+%%%%
+you use unclean or chaotic magic or items
+
+不浄な、もしくは混沌なる魔術やアイテムを使うこと
+%%%%
+you butcher sentient beings
+
+意識のある存在の死体を切り刻むこと
+%%%%
+you or your allies attack monsters in a sanctuary
+
+あなたと従者が聖域の中のモンスターを攻撃すること
+%%%%
+you poison monsters
+
+モンスターを毒に冒すこと
+%%%%
+you attack intelligent monsters in an unchivalric manner
+
+モンスターを騎士道に反する行いで攻撃すること
+%%%%
+you kill living things while asking for your life to be spared
+
+生命が保護されている間に生命ある者を殺すこと
+%%%%
+you use holy magic or items
+
+聖なる魔法やアイテムを使うこと
+%%%%
+you memorise spells
+
+魔法を習得すること
+%%%%
+you attempt to cast spells
+
+魔法を唱えようとすること
+%%%%
+you train magic skills
+
+魔術系のスキルを訓練すること
+%%%%
+you desecrate orcish remains
+
+オークの遺骸を汚すこと
+%%%%
+you destroy orcish idols
+
+オークの像を破壊すること
+%%%%
+you kill slimes
+
+スライムを殺すこと
+%%%%
+you hasten yourself or others
+
+自分や他者を加速させること
+%%%%
+use unnaturally quick items
+
+不自然に素早いアイテムを使うこと
+%%%%
 You have lost your religion!
 
 あなたは信仰を捨て去った！

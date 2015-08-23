@@ -903,8 +903,8 @@ string get_god_dislikes(god_type which_god, bool /*verbose*/)
         return "";
 
     string text;
-    vector<string> dislikes;        // Piety loss
-    vector<string> really_dislikes; // Penance
+    vector<string> dislikes, dislikes_j;               // Piety loss
+    vector<string> really_dislikes, really_dislikes_j; // Penance
 
     if (god_hates_cannibalism(which_god))
         really_dislikes.emplace_back("you perform cannibalism");
@@ -1028,11 +1028,12 @@ string get_god_dislikes(god_type which_god, bool /*verbose*/)
 
     if (!dislikes.empty())
     {
-        text += uppercase_first(god_name(which_god));
-        text += " dislikes it when ";
-        text += comma_separated_line(dislikes.begin(), dislikes.end(),
-                                     " or ", ", ");
-        text += ".";
+        append_container_jtrans(dislikes_j, dislikes);
+
+        text += jtrans(god_name(which_god));
+        text += "は";
+        text += to_separated_line(dislikes.begin(), dislikes.end());
+        text += "を嫌う。";
 
         if (!really_dislikes.empty())
             text += " ";
@@ -1040,12 +1041,12 @@ string get_god_dislikes(god_type which_god, bool /*verbose*/)
 
     if (!really_dislikes.empty())
     {
-        text += uppercase_first(god_name(which_god));
-        text += " strongly dislikes it when ";
-        text += comma_separated_line(really_dislikes.begin(),
-                                     really_dislikes.end(),
-                                     " or ", ", ");
-        text += ".";
+        append_container_jtrans(really_dislikes_j, really_dislikes);
+
+        text += jtrans(god_name(which_god));
+        text += "は";
+        text += to_separated_line(really_dislikes.begin(), really_dislikes.end());
+        text += "を特に嫌う。";
     }
 
     return text;
