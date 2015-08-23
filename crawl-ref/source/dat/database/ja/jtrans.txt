@@ -2737,6 +2737,18 @@ you kill holy beings
 
 あなたが神聖な存在を殺すこと
 %%%%
+you kill the priests of other religions
+
+他宗教の司祭を殺すこと
+%%%%
+you kill wizards and other users of magic
+
+魔法使いおよび様々な魔力の使い手を殺すこと
+%%%%
+you kill beings that bring fire to the dungeon
+
+迷宮へ火をもたらすものを殺すこと
+%%%%
 You have lost your religion!
 
 あなたは信仰を捨て去った！

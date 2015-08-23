@@ -595,7 +595,7 @@ string get_god_likes(god_type which_god, bool verbose)
 
     string text = uppercase_first(god_name(which_god));
     vector<string> likes, likes_j;
-    vector<string> really_likes;
+    vector<string> really_likes, really_likes_j;
 
     // Unique/unusual piety gain methods first.
     switch (which_god)
@@ -885,13 +885,11 @@ string get_god_likes(god_type which_god, bool verbose)
 
         if (!really_likes.empty())
         {
-            text += " ";
-            text += uppercase_first(god_name(which_god));
+            append_container_jtrans(really_likes_j, really_likes);
 
-            text += " especially likes it when ";
-            text += comma_separated_line(really_likes.begin(),
-                                         really_likes.end());
-            text += ".";
+            text += " " + jtrans(god_name(which_god)) + "は";
+            text += to_separated_line(really_likes_j.begin(), really_likes_j.end());
+            text += "を特に好む。";
         }
     }
 
