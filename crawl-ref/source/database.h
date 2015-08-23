@@ -62,15 +62,44 @@ void append_container_jtrans(C1& container_base, const C2& container_append)
     }
 }
 
+/*
+ * 渡されたシーケンスの各要素を変換しながら適切に繋ぐ
+ *
+ * [a, b]       -> "aとb"
+ * [a, b, c]    -> "aとb、そしてc"
+ * [a, b, c, d] -> "aとb、c、そしてd"
+ */
+template <typename Z, typename F>
+string to_separated_fn(Z start, Z end, F stringify,
+                          const string &first = "と",
+                          const string &second = "、",
+                          const string &fin = "、そして")
+{
+    string text;
+    for (Z i = start; i != end; ++i)
+    {
+        if (i != start)
+        {
+            if (prev(i) == start)
+                text += first;
+            else if (next(i) != end)
+                text += second;
+            else
+                text += fin;
+        }
+
+        text += stringify(*i);
+    }
+    return text;
+}
+
 template<typename Z>
 string to_separated_line(Z start, Z end, bool to_j = true)
 {
-    if (to_j)
-        return comma_separated_fn(start, end, [] (const string &s) { return jtrans(s); },
-                                  "と", "と");
-    else
-        return comma_separated_fn(start, end, [] (const string &s) { return s; },
-                                  "と", "と");
+    auto stringify = to_j ? [] (const string &s) { return jtrans(s); }
+                          : [] (const string &s) { return s; };
+
+    return to_separated_fn(start, end, stringify);
 }
 
 vector<string> getAllFAQKeys();

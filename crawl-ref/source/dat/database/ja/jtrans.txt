@@ -2593,6 +2593,150 @@ wreak a terrible wrath on your foes
 
 敵に対し激怒の力を浴びせること
 %%%%
+you train your various spell casting skills
+
+様々な呪文スキルの鍛錬
+%%%%
+you promote the decay of nearby corpses by <w>p</w>raying
+
+祈って(<w>p</w>ray)周辺の死体の腐敗を促進させること
+%%%%
+you destroy spellbooks via the <w>a</w> command
+
+能力(<w>a</w>bilityコマンドで魔法書を焼くこと
+%%%%
+you explore the world
+
+あなたが世界を探索すること
+%%%%
+you sacrifice items by allowing slimes to consume them
+
+スライムに消化させることでアイテムを捧げること
+%%%%
+you kill fast things, relative to your speed
+
+あなたより素早いものを殺すこと
+%%%%
+you explore the world (preferably while bound by curses)
+
+あなたが世界を探索すること(呪縛されている場合は特に)
+%%%%
+you meet creatures to determine whether they need to be eradicated
+
+根絶対象か判断するためにモンスターを光で照らす
+%%%%
+you banish creatures to the Abyss
+
+モンスターをアビスに追放すること
+%%%%
+you collect gold
+
+金を貯めること
+%%%%
+you make personal sacrifices
+
+自らを代償に捧げること
+%%%%
+you donate money (by <w>p</w>raying at an altar)
+
+寄付(祭壇の上で<w>p</w>rayコマンドを行う)すること
+%%%%
+you bless dead orcs (by standing over their remains and <w>p</w>raying)
+
+死んだオークを弔う(遺骸の上に立って<w>p</w>rayコマンドを行う)こと
+%%%%
+you sacrifice fresh corpses (by standing over them and <w>p</w>raying)
+
+新鮮な死体を捧げる(死体の上に立って<w>p</w>rayコマンドを行う)こと
+%%%%
+you or your allies kill living beings
+
+あなたと従者が生者を殺すこと
+%%%%
+you or your god-given allies kill living beings
+
+あなたと神の与えし従者が生命ある者を殺すこと
+%%%%
+you or your undead slaves kill living beings
+
+あなたと不死の下僕が生命ある者を殺すこと
+%%%%
+you or your allied orcs kill living beings
+
+あなたとオークの従者が生命ある者を殺すこと
+%%%%
+you kill living beings
+
+あなたが生命ある者を殺すこと
+%%%%
+you or your allies kill unclean or chaotic beings
+
+あなたと従者が不浄な者や混沌なる者を殺すこと
+%%%%
+you or your allies kill living unholy or evil beings
+
+あなたと従者が不浄なる者や邪悪な存在を殺すこと
+%%%%
+you or your allies kill the undead
+
+あなたと従者が不死者を滅ぼすこと
+%%%%
+you or your allied orcs kill the undead
+
+あなたとオークの従者が不死者を滅ぼすこと
+%%%%
+you kill the undead
+
+あなたが不死者を滅ぼすこと
+%%%%
+you or your allies kill demons
+
+あなたと従者が悪魔を殺すこと
+%%%%
+you or your god-given allies kill demons
+
+あなたと神の与えし従者が悪魔を殺すこと
+%%%%
+you or your undead slaves kill demons
+
+あなたと不死の下僕が悪魔を殺すこと
+%%%%
+you or your allied orcs kill demons
+
+あなたと従者のオークが悪魔を殺すこと
+%%%%
+you kill demons
+
+あなたが悪魔を殺すこと
+%%%%
+you or your undead slaves kill artificial beings
+
+あなたと不死の下僕が人工的な怪物を滅ぼすこと
+%%%%
+you or your allies kill holy beings
+
+あなたと従者が神聖な存在を殺すこと
+%%%%
+you or your god-given allies kill holy beings
+
+あなたと神の与えし従者が神聖な存在を殺すこと
+%%%%
+your undead slaves kill holy beings
+
+あなたの不死の従者が神聖な存在を殺すこと
+%%%%
+you or your undead slaves kill holy beings
+
+あなたと不死の従者が神聖な存在を殺すこと
+%%%%
+you or your allied orcs kill holy beings
+
+あなたとオークの従者が神聖な存在を殺すこと
+%%%%
+you kill holy beings
+
+あなたが神聖な存在を殺すこと
+%%%%
 You have lost your religion!
 
 あなたは信仰を捨て去った！

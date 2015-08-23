@@ -594,7 +594,7 @@ string get_god_likes(god_type which_god, bool verbose)
         return "";
 
     string text = uppercase_first(god_name(which_god));
-    vector<string> likes;
+    vector<string> likes, likes_j;
     vector<string> really_likes;
 
     // Unique/unusual piety gain methods first.
@@ -876,9 +876,12 @@ string get_god_likes(god_type which_god, bool verbose)
         text += " doesn't like anything? This is a bug; please report it.";
     else
     {
-        text += " likes it when ";
-        text += comma_separated_line(likes.begin(), likes.end());
-        text += ".";
+        append_container_jtrans(likes_j, likes);
+
+        text = jtrans(text);
+        text += "は";
+        text += to_separated_line(likes_j.begin(), likes_j.end());
+        text += "を好む。";
 
         if (!really_likes.empty())
         {
