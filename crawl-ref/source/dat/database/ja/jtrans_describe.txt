@@ -67,6 +67,58 @@ not bribed
 
 未買収
 %%%%
+TSO and Ely wrath cause
+
+# uppercase_first(god_name(which_god)) +
+# " forgives followers who leave " + god_name(which_god)+"'s"
+# " service; however, those who take up the worship of evil"
+# " gods will be punished. (" +
+# _comma_separate_gods(evil_gods) + " are evil gods.)";
+
+%sは自らの元から去る者を赦してくれる。ただし、邪悪な神々へと改宗しようとする者には懲罰が加えられる。
+(%sは邪悪な神々である)
+%%%%
+Zin wrath cause
+
+# uppercase_first(god_name(which_god)) +
+# " does not punish followers who leave "+god_name(which_god)+
+# "'s service; however, those who take up the worship of evil"
+# " or chaotic gods will be scourged. (" +
+# _comma_separate_gods(evil_gods) + " are evil, and " +
+# _comma_separate_gods(chaotic_gods) + " are chaotic.)"
+
+%sは自らの元から去る者を罰しない。ただし、邪悪な、もしくは混沌なる神々へと改宗しようとする者には懲罰が加えられる。
+(%sは邪悪な神々、%sは混沌なる神々である)
+%%%%
+Ru wrath cause
+
+# uppercase_first(god_name(which_god)) +
+# " does not punish followers who leave "+god_name(which_god)+
+# "'s service; however, their piety will be lost even upon"
+# " rejoining, and their sacrifices remain forever.";
+
+%sは自らの元を去る者を罰しない。ただし、再入信したとしても信仰値は失われ、神に捧げた代償は永久にそのままである。
+%%%%
+Xom wrath cause
+
+# "Unfaithful ex-followers will find themselves "
+# "suffering through "+god_name(which_god)+"'s bad moods for "+
+# "so long as "+god_name(which_god)+" can be bothered to " +
+# "remember about them. Still, "+god_name(which_god)+
+# "'s caprice remains; the unfaithful are rewarded just as "+
+# "the faithful are punished."
+
+不誠実な元信徒は%sが覚えている間%sの不機嫌に苦しめられる。
+とはいえ、%sの気まぐれは健在である： 不誠実なものほど報われ、忠義者は懲罰される。
+%%%%
+default wrath cause
+
+# uppercase_first(god_name(which_god)) +
+# " does not appreciate abandonment, and will call down"
+# " fearful punishments on disloyal followers!";
+
+%sは棄教することを喜ばず、不忠義な信徒に恐るべき懲罰をもたらす！
+%%%%
 does not demand training of the Invocations skill. All abilities are purely based on piety.
 
 祈祷スキルの訓練を要求しない。全ての能力は純粋に信仰値に依存すること

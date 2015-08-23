@@ -608,19 +608,20 @@ static void _print_string_wrapped(string str, int width)
  * @param gods[in]  The enums of the gods in question.
  * @return          A comma-separated list of the given gods' names.
  */
+
 static string _comma_separate_gods(const vector<god_type> &gods)
 {
     // ugly special case to prevent foo, and bar
     if (gods.size() == 2)
-        return god_name(gods[0]) + " and " + god_name(gods[1]);
+        return jtrans(god_name(gods[0])) + "と" + jtrans(god_name(gods[1]));
 
     string names = "";
     for (unsigned int i = 0; i < gods.size() - 1; i++)
-        names += god_name(gods[i]) + ", ";
+        names += jtrans(god_name(gods[i])) + "、";
     if (gods.size() > 1)
-        names += "and ";
+        names += "そして";
     if (gods.size() > 0)
-        names += god_name(gods[gods.size()-1]);
+        names += jtrans(god_name(gods[gods.size()-1]));
     return names;
 }
 
@@ -649,35 +650,25 @@ static string _describe_god_wrath_causes(god_type which_god)
     {
         case GOD_SHINING_ONE:
         case GOD_ELYVILON:
-            return uppercase_first(god_name(which_god)) +
-                   " forgives followers who leave " + god_name(which_god)+"'s"
-                   " service; however, those who take up the worship of evil"
-                   " gods will be punished. (" +
-                   _comma_separate_gods(evil_gods) + " are evil gods.)";
-
+            return make_stringf(jtrans("TSO and Ely wrath cause").c_str(),
+                                jtrans(god_name(which_god)).c_str(),
+                                _comma_separate_gods(evil_gods).c_str());
         case GOD_ZIN:
-            return uppercase_first(god_name(which_god)) +
-                   " does not punish followers who leave "+god_name(which_god)+
-                   "'s service; however, those who take up the worship of evil"
-                   " or chaotic gods will be scourged. (" +
-                   _comma_separate_gods(evil_gods) + " are evil, and " +
-                   _comma_separate_gods(chaotic_gods) + " are chaotic.)";
+            return make_stringf(jtrans("Zin wrath cause").c_str(),
+                                jtrans(god_name(which_god)).c_str(),
+                                _comma_separate_gods(evil_gods).c_str(),
+                                _comma_separate_gods(chaotic_gods).c_str());
         case GOD_RU:
-            return uppercase_first(god_name(which_god)) +
-                   " does not punish followers who leave "+god_name(which_god)+
-                   "'s service; however, their piety will be lost even upon"
-                   " rejoining, and their sacrifices remain forever.";
+            return make_stringf(jtrans("Ru wrath cause").c_str(),
+                                jtrans(god_name(which_god)).c_str());
         case GOD_XOM:
-            return "Unfaithful ex-followers will find themselves "
-                   "suffering through "+god_name(which_god)+"'s bad moods for "+
-                   "so long as "+god_name(which_god)+" can be bothered to " +
-                   "remember about them. Still, "+god_name(which_god)+
-                   "'s caprice remains; the unfaithful are rewarded just as "+
-                   "the faithful are punished.";
+            return make_stringf(jtrans("Xom wrath cause").c_str(),
+                                jtrans(god_name(which_god)).c_str(),
+                                jtrans(god_name(which_god)).c_str(),
+                                jtrans(god_name(which_god)).c_str());
         default:
-            return uppercase_first(god_name(which_god)) +
-                   " does not appreciate abandonment, and will call down"
-                   " fearful punishments on disloyal followers!";
+            return make_stringf(jtrans("default wrath cause").c_str(),
+                                jtrans(god_name(which_god)).c_str());
     }
 }
 
