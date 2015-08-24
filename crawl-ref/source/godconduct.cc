@@ -171,15 +171,15 @@ struct dislike_response
             static int last_glowing_lecture = -1;
             if (!level)
             {
-                simple_god_message(jtrans(
-                    "is not enthusiastic about the mutagenic glow surrounding you.").c_str());
+                simple_god_message(jtransc(" is not enthusiastic about the "
+                                           "mutagenic glow surrounding you."));
             }
             else if (last_glowing_lecture != you.num_turns)
             {
                 last_glowing_lecture = you.num_turns;
                 // Increase contamination within yellow glow.
-                simple_god_message(jtrans(
-                    "does not appreciate the extra mutagenic glow surrounding you!").c_str());
+                simple_god_message(jtransc(" does not appreciate the extra "
+                                           "mutagenic glow surrounding you!"));
             }
         }
 
@@ -618,11 +618,11 @@ static const like_response OKAWARU_KILL = {
         if (piety > 3200)
         {
             mprf(MSGCH_GOD, you.religion,
-                 jtrans("<white>%s is honoured by your kill.</white>").c_str(),
+                 jtransc("<white>%s is honoured by your kill.</white>"),
                  uppercase_first(god_name(you.religion)).c_str());
         }
         else if (piety > 9) // might still be miniscule
-            simple_god_message(jtrans("accepts your kill.").c_str());
+            simple_god_message(jtransc(" accepts your kill."));
     }
 };
 
@@ -672,7 +672,7 @@ static like_map divine_likes[] =
                                      const monster* victim)
             {
                 piety *= 2;
-                simple_god_message(jtrans("appreciates your killing of a holy being.").c_str());
+                simple_god_message(jtransc(" appreciates your killing of a holy being."));
             }
         ) },
         { DID_KILL_ARTIFICIAL, _on_kill(MH_NONLIVING, false) },
@@ -790,11 +790,11 @@ static like_map divine_likes[] =
 
                 if (speed_delta > 0 && x_chance_in_y(speed_delta, 12))
                 {
-                    simple_god_message(jtrans("thoroughly appreciates the change of pace.").c_str());
+                    simple_god_message(jtransc(" thoroughly appreciates the change of pace."));
                     piety *= 2;
                 }
                 else
-                    simple_god_message(jtrans("appreciates the change of pace.").c_str());
+                    simple_god_message(jtransc(" appreciates the change of pace."));
             }
         } }
     },
