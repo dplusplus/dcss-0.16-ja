@@ -296,8 +296,8 @@ public:
     {
         const bool were_mighty = you.duration[DUR_MIGHT] > 0;
 
-        mprf(MSGCH_DURATION, jtrans("You feel %s all of a sudden.").c_str(),
-             were_mighty ? jtrans("mightier").c_str() : jtrans("very mighty").c_str());
+        mprf(MSGCH_DURATION, jtransc("You feel %s all of a sudden."),
+             jtransc(were_mighty ? "mightier" : "very mighty"));
 
         you.increase_duration(DUR_MIGHT, 35 + random2(pow), 80);
 
@@ -322,8 +322,8 @@ public:
     {
         const bool were_brilliant = you.duration[DUR_BRILLIANCE] > 0;
 
-        mprf(MSGCH_DURATION, jtrans("You feel %s all of a sudden.").c_str(),
-             were_brilliant ? jtrans("more clever").c_str() : jtrans("clever").c_str());
+        mprf(MSGCH_DURATION, jtransc("You feel %s all of a sudden."),
+             jtransc(were_brilliant ? "more clever" : "clever"));
 
         you.increase_duration(DUR_BRILLIANCE, 35 + random2(pow), 80);
 
@@ -349,8 +349,8 @@ public:
     {
         const bool were_agile = you.duration[DUR_AGILITY] > 0;
 
-        mprf(MSGCH_DURATION, jtrans("You feel %s all of a sudden.").c_str(),
-             were_agile ? jtrans("more agile").c_str() : jtrans("agile").c_str());
+        mprf(MSGCH_DURATION, jtransc("You feel %s all of a sudden."),
+             jtransc(were_agile ? "more agile" : "agile"));
 
         you.increase_duration(DUR_AGILITY, 35 + random2(pow), 80);
 
@@ -515,10 +515,10 @@ public:
                 afflictions.push_back("!!!QUAD DAMAGE!!!");
 
             mprf(MSGCH_DURATION,
-                 jtrans("You become %stransparent, but the glow from %s "
-                        "%s prevents you from becoming "
-                        "completely invisible.").c_str(),
-                 you.duration[DUR_INVIS] ? jtrans("more").c_str() : "",
+                 jtransc("You become %stransparent, but the glow from %s "
+                         "%s prevents you from becoming "
+                         "completely invisible."),
+                 you.duration[DUR_INVIS] ? jtransc("more") : "",
                  comma_separated_line(afflictions.begin(), afflictions.end()).c_str());
         }
         else
@@ -719,8 +719,8 @@ static bool _disallow_mut()
         return false;
 
     const bool normally_alive = !you.undead_state(false);
-    mprf(jtrans("You cannot mutate%s.").c_str(),
-         normally_alive ? jtrans("at present").c_str() : "");
+    mprf(jtransc("You cannot mutate%s."),
+         jtransc(normally_alive ? " at present" : ""));
     return true;
 }
 
@@ -1221,7 +1221,7 @@ bool quaff_potion(item_def &potion)
     {
         set_ident_flags(potion, ISFLAG_IDENT_MASK);
         set_ident_type(potion, ID_KNOWN_TYPE);
-        mprf(jtrans("It was a %s.").c_str(), potion.name(DESC_QUALNAME).c_str());
+        mprf(jtransc("It was a %s."), potion.name(DESC_QUALNAME).c_str());
         identify_healing_pots();
     }
 

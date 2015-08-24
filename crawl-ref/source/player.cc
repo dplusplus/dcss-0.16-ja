@@ -8767,7 +8767,7 @@ void player_open_door(coord_def doorpos)
                 mprf(berserk_open.c_str(), adj, noun);
             }
             else
-                mprf(jtrans("The %s%s flies open!").c_str(), adj, noun);
+                mprf(jtransc("The %s%s flies open!"), adj, noun);
         }
         else
         {
@@ -8780,7 +8780,7 @@ void player_open_door(coord_def doorpos)
                 mprf(MSGCH_SOUND, berserk_open.c_str(), adj, noun);
             }
             else
-                mprf(MSGCH_SOUND, jtrans("The %s%s flies open with a bang!").c_str(), adj, noun);
+                mprf(MSGCH_SOUND, jtransc("The %s%s flies open with a bang!"), adj, noun);
             noisy(15, you.pos());
         }
     }
@@ -8790,7 +8790,7 @@ void player_open_door(coord_def doorpos)
             mprf(MSGCH_SOUND, door_open_creak.c_str(), adj, noun);
         else
         {
-            mprf(MSGCH_SOUND, jtrans("As you open the %s%s, it creaks loudly!").c_str(),
+            mprf(MSGCH_SOUND, jtransc("As you open the %s%s, it creaks loudly!"),
                  adj, noun);
         }
         noisy(10, you.pos());
@@ -8803,14 +8803,14 @@ void player_open_door(coord_def doorpos)
             if (!door_airborne.empty())
                 verb = door_airborne.c_str();
             else
-                verb = jtrans("You reach down and open the %s%s.").c_str();
+                verb = jtransc("You reach down and open the %s%s.");
         }
         else
         {
             if (!door_open_verb.empty())
                 verb = door_open_verb.c_str();
             else
-                verb = jtrans("You open the %s%s.").c_str();
+                verb = jtransc("You open the %s%s.");
         }
 
         mprf(verb, adj, noun);
@@ -8882,25 +8882,25 @@ void player_close_door(coord_def doorpos)
             const bool mons_unseen = !you.can_see(mon);
             if (mons_unseen || mons_is_object(mon->type))
             {
-                mprf(jtrans("Something is blocking the %s!").c_str(), waynoun);
+                mprf(jtransc("Something is blocking the %s!"), waynoun);
                 // No free detection!
                 if (mons_unseen)
                     you.turn_is_over = true;
             }
             else
-                mprf(jtrans("There's a creature in the %s!").c_str(), waynoun);
+                mprf(jtransc("There's a creature in the %s!"), waynoun);
             return;
         }
 
         if (igrd(dc) != NON_ITEM)
         {
-            mprf(jtrans("There's something blocking the %s.").c_str(), waynoun);
+            mprf(jtransc("There's something blocking the %s."), waynoun);
             return;
         }
 
         if (you.pos() == dc)
         {
-            mprf(jtrans("There's a thick-headed creature in the %s!").c_str(), waynoun);
+            mprf(jtransc("There's a thick-headed creature in the %s!"), waynoun);
             return;
         }
     }
@@ -8917,7 +8917,7 @@ void player_close_door(coord_def doorpos)
                 mprf(berserk_close.c_str(), adj, noun);
             }
             else
-                mprf(jtrans("You slam the %s%s shut!").c_str(), adj, noun);
+                mprf(jtransc("You slam the %s%s shut!"), adj, noun);
         }
         else
         {
@@ -8931,7 +8931,7 @@ void player_close_door(coord_def doorpos)
             }
             else
             {
-                mprf(MSGCH_SOUND, jtrans("you slam the %s%s shut with a bang!").c_str(),
+                mprf(MSGCH_SOUND, jtransc("you slam the %s%s shut with a bang!"),
                                   adj, noun);
             }
 
@@ -8944,7 +8944,7 @@ void player_close_door(coord_def doorpos)
             mprf(MSGCH_SOUND, door_close_creak.c_str(), adj, noun);
         else
         {
-            mprf(MSGCH_SOUND, jtrans("As you close the %s%s, it creaks loudly!").c_str(),
+            mprf(MSGCH_SOUND, jtransc("As you close the %s%s, it creaks loudly!"),
                               adj, noun);
         }
 
@@ -8958,14 +8958,14 @@ void player_close_door(coord_def doorpos)
             if (!door_airborne.empty())
                 verb = door_airborne.c_str();
             else
-                verb = jtrans("You reach down and close the %s%s.").c_str();
+                verb = jtransc("You reach down and close the %s%s.");
         }
         else
         {
             if (!door_close_verb.empty())
                 verb = door_close_verb.c_str();
             else
-                verb = jtrans("You close the %s%s.").c_str();
+                verb = jtransc("You close the %s%s.");
         }
 
         mprf(verb, adj, noun);
