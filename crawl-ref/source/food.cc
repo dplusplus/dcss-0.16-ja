@@ -176,7 +176,7 @@ bool prompt_eat_inventory_item(int slot)
 
     if (slot == -1)
     {
-        which_inventory_slot = prompt_invent_item(jtrans("Eat which item?").c_str(),
+        which_inventory_slot = prompt_invent_item(jtransc("Eat which item?"),
                                                   MT_INVLIST, OBJ_FOOD,
                                                   true, true, true, 0, -1,
                                                   nullptr, OPER_EAT);
@@ -220,7 +220,7 @@ static bool _eat_check(bool check_hunger = true, bool silent = false)
     {
         if (!silent)
         {
-            mprf(jtrans("You're too full to %s anything.").c_str(),
+            mprf(jtransc("You're too full to %s anything."),
                  you.species == SP_VAMPIRE ? "吸血" : "食事");
             crawl_state.zero_turns_taken();
         }
@@ -569,7 +569,7 @@ int eat_from_floor(bool skip_chunks)
         {
             string item_name = get_menu_colour_prefix_tags(*item, DESC_A);
 
-            mprf(MSGCH_PROMPT, jtrans("%s %s%s? (ye/n/q/i?)").c_str(),
+            mprf(MSGCH_PROMPT, jtransc("%s %s%s? (ye/n/q/i?)"),
                  item_name.c_str(),
                  ((item->quantity > 1) ? "のうちの1つ" : ""),
                  "を食べ");
@@ -681,7 +681,7 @@ bool eat_from_inventory()
         {
             string item_name = get_menu_colour_prefix_tags(*item, DESC_A);
 
-            mprf(MSGCH_PROMPT, jtrans("%s %s%s? (ye/n/q)").c_str(),
+            mprf(MSGCH_PROMPT, jtransc("%s %s%s? (ye/n/q)"),
                  item_name.c_str(),
                  ((item->quantity > 1) ? "のうちの1つ" : ""));
 
@@ -816,7 +816,7 @@ int prompt_eat_chunks(bool only_auto)
                 return 0;
             else
             {
-                mprf(MSGCH_PROMPT, jtrans("%s %s%s? (ye/n/q/i?)").c_str(),
+                mprf(MSGCH_PROMPT, jtransc("%s %s%s? (ye/n/q/i?)"),
                      item_name.c_str(),
                      ((item->quantity > 1) ? "のうちの1つ" : ""),
                      (you.species == SP_VAMPIRE ? "から血を飲み" : "を食べ"));
@@ -993,7 +993,7 @@ static void _eat_chunk(item_def& food)
             _heal_from_food(hp_amt, true);
         }
 
-        mprf(jtrans("This raw flesh %s").c_str(), jtrans(_chunk_flavour_phrase(likes_chunks)).c_str());
+        mprf(jtransc("This raw flesh %s"), jtransc(_chunk_flavour_phrase(likes_chunks)));
         do_eat = true;
         break;
     }
@@ -1051,9 +1051,9 @@ void finished_eating_message(int food_type)
             mpr(jtrans("That meat ration really hit the spot!"));
             return;
         case FOOD_BEEF_JERKY:
-            mprf(jtrans("That beef jerky was %s!").c_str(),
-                 one_chance_in(4) ? jtrans("jerk-a-riffic").c_str()
-                                  : jtrans("delicious").c_str());
+            mprf(jtransc("That beef jerky was %s!"),
+                 one_chance_in(4) ? jtransc("jerk-a-riffic")
+                                  : jtransc("delicious"));
             return;
         default:
             break;
@@ -1098,7 +1098,7 @@ void finished_eating_message(int food_type)
         if (!Options.pizzas.empty())
         {
             const string za = Options.pizzas[random2(Options.pizzas.size())];
-            mprf(jtrans("Mmm... %s.").c_str(), trimmed_string(za).c_str());
+            mprf(jtransc("Mmm... %s."), trimmed_string(za).c_str());
             break;
         }
 
@@ -1170,7 +1170,7 @@ void vampire_nutrition_per_turn(const item_def &corpse, int feeding)
         case CE_CLEAN:
             if (start_feeding)
             {
-                mprf(jtrans("This %sblood tastes delicious!").c_str(),
+                mprf(jtransc("This %sblood tastes delicious!"),
                      mons_class_flag(mons_type, M_WARM_BLOOD) ? "温かい"
                                                               : "");
             }

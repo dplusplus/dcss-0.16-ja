@@ -1398,8 +1398,8 @@ static inline bool _monster_warning(activity_interrupt_type ai,
         if (testbits(mon->flags, MF_WAS_IN_VIEW)
             && !(atype == DELAY_NOT_DELAYED))
         {
-            mprf(MSGCH_WARN, jtrans("%s is too close now for your liking.").c_str(),
-                 jtrans(mon->name(DESC_THE)).c_str());
+            mprf(MSGCH_WARN, jtransc("%s is too close now for your liking."),
+                 jtransc(mon->name(DESC_THE)));
         }
     }
     else if (mon->seen_context == SC_JUST_SEEN)
@@ -1423,28 +1423,28 @@ static inline bool _monster_warning(activity_interrupt_type ai,
         set_auto_exclude(mon);
 
         if (at.context == SC_DOOR)
-            text += jtrans("opens the door.");
+            text += jtrans(" opens the door.");
         else if (at.context == SC_GATE)
-            text += jtrans("opens the gate.");
+            text += jtrans(" opens the gate.");
         else if (at.context == SC_TELEPORT_IN)
-            text += jtrans("appears from thin air!");
+            text += jtrans(" appears from thin air!");
         else if (at.context == SC_LEAP_IN)
-            text += jtrans("leaps into view!");
+            text += jtrans(" leaps into view!");
         // The monster surfaced and submerged in the same turn without
         // doing anything else.
         else if (at.context == SC_SURFACES_BRIEFLY)
             text += jtrans("surfaces briefly.");
         else if (at.context == SC_SURFACES)
             if (mon->type == MONS_AIR_ELEMENTAL)
-                text += jtrans("forms itself from the air.");
+                text += jtrans(" forms itself from the air.");
             else if (mon->type == MONS_TRAPDOOR_SPIDER)
-                text += jtrans("leaps out from its hiding place under the floor!");
+                text += jtrans(" leaps out from its hiding place under the floor!");
             else
-                text += jtrans("surfaces.");
+                text += jtrans(" surfaces.");
         else if (at.context == SC_FISH_SURFACES_SHOUT
               || at.context == SC_FISH_SURFACES)
         {
-            text += jtrans("bursts forth from the");
+            text += jtrans(" bursts forth from the");
             if (mons_primary_habitat(mon) == HT_LAVA)
                 text += jtrans("lava");
             else if (mons_primary_habitat(mon) == HT_WATER)
@@ -1454,19 +1454,19 @@ static inline bool _monster_warning(activity_interrupt_type ai,
             text += "。";
         }
         else if (at.context == SC_NONSWIMMER_SURFACES_FROM_DEEP)
-            text += jtrans("emerges from the water.");
+            text += jtrans(" emerges from the water.");
         else if (at.context == SC_UPSTAIRS)
-            text += jtrans("comes up the stairs.");
+            text += jtrans(" comes up the stairs.");
         else if (at.context == SC_DOWNSTAIRS)
-            text += jtrans("comes down the stairs.");
+            text += jtrans(" comes down the stairs.");
         else if (at.context == SC_ARCH)
-            text += jtrans("comes through the gate.");
+            text += jtrans(" comes through the gate.");
         else if (at.context == SC_ABYSS)
             text += _abyss_monster_creation_message(mon);
         else if (at.context == SC_THROWN_IN)
-            text += jtrans("is thrown into view!");
+            text += jtrans(" is thrown into view!");
         else
-            text += jtrans("comes into view.");
+            text += jtrans(" comes into view.");
 
         bool ash_id = mon->props.exists("ash_id") && mon->props["ash_id"];
         bool zin_id = false;
@@ -1501,7 +1501,7 @@ static inline bool _monster_warning(activity_interrupt_type ai,
                 god_warning = "Ashenzari warns you:";
 
             (ash_id ? god_warning : text) +=
-                jtrans(uppercase_first(mon->pronoun(PRONOUN_SUBJECTIVE))) + "は"
+                jtrans(mon->pronoun(PRONOUN_SUBJECTIVE)) + "は"
                 + (ash_id ? " " : "")
                 + mweap + "。";
         }

@@ -321,19 +321,19 @@ string ash_describe_bondage(int flags, bool level)
         else
         {
             // FIXME: what if you sacrificed a hand?
-            desc = make_stringf(jtrans("Your %s %s is bound but not your %s %s.").c_str(),
-                                jtrans(you.bondage[ET_WEAPON] ? "weapon" : "shield").c_str(),
-                                jtrans(you.bondage[ET_WEAPON] ? "shield" : "weapon").c_str());
+            desc = make_stringf(jtransc("Your %s %s is bound but not your %s %s."),
+                                jtransc(you.bondage[ET_WEAPON] ? "weapon" : "shield"),
+                                jtransc(you.bondage[ET_WEAPON] ? "shield" : "weapon"));
         }
     }
     else if (flags & ETF_WEAPON && you.bondage[ET_WEAPON] != -1)
     {
-        desc = make_stringf(jtransln("Your weapon %s is %sbound.").c_str(),
+        desc = make_stringf(jtranslnc("Your weapon %s is %sbound."),
                             you.bondage[ET_WEAPON] ? "いる" : "いない");
     }
     else if (flags & ETF_SHIELD && you.bondage[ET_SHIELD] != -1)
     {
-        desc = make_stringf(jtransln("Your shield %s is %sbound.").c_str(),
+        desc = make_stringf(jtranslnc("Your shield %s is %sbound."),
                                      you.bondage[ET_SHIELD] ? "いる" : "いない");
     }
 
@@ -341,7 +341,7 @@ string ash_describe_bondage(int flags, bool level)
         && you.bondage[ET_ARMOUR] == you.bondage[ET_JEWELS]
         && you.bondage[ET_ARMOUR] != -1)
     {
-        desc += make_stringf(jtransln("You are %s bound in armour and magic.").c_str(),
+        desc += make_stringf(jtranslnc("You are %s bound in armour and magic."),
                                       you.bondage[ET_ARMOUR] == 0 ? "呪縛されていない" :
                                       you.bondage[ET_ARMOUR] == 1 ? "部分的に呪縛されている"
                                                                   : "完全に呪縛されている");
@@ -350,7 +350,7 @@ string ash_describe_bondage(int flags, bool level)
     {
         if (flags & ETF_ARMOUR && you.bondage[ET_ARMOUR] != -1)
         {
-            desc += make_stringf(jtransln("You are %s bound in armour.").c_str(),
+            desc += make_stringf(jtranslnc("You are %s bound in armour."),
                                           you.bondage[ET_ARMOUR] == 0 ? "呪縛されていない" :
                                           you.bondage[ET_ARMOUR] == 1 ? "部分的に呪縛されている"
                                                                       : "完全に呪縛されている");
@@ -358,16 +358,16 @@ string ash_describe_bondage(int flags, bool level)
 
         if (flags & ETF_JEWELS && you.bondage[ET_JEWELS] != -1)
         {
-            desc += make_stringf(jtransln("You are %s bound in magic.").c_str(),
+            desc += make_stringf(jtranslnc("You are %s bound in magic."),
                                  you.bondage[ET_JEWELS] == 0 ? "呪縛されていない" :
                                  you.bondage[ET_JEWELS] == 1 ? "部分的に呪縛されている"
-                                                              : "完全に呪縛されている");
+                                                             : "完全に呪縛されている");
         }
     }
 
     if (level)
     {
-        desc += make_stringf(jtransln("You are %s bound.").c_str(),
+        desc += make_stringf(jtranslnc("You are %s bound."),
                              you.bondage_level == 0 ? "呪縛されていない" :
                              you.bondage_level == 1 ? "いくらか呪縛されている" :
                              you.bondage_level == 2 ? "かなり呪縛されている" :

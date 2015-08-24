@@ -233,7 +233,7 @@ bool interrupt_cmd_repeat(activity_interrupt_type ai,
             monster_info mi(mon);
             set_auto_exclude(mon);
 
-            mprf(MSGCH_WARN, jtrans("%s comes into view.").c_str(),
+            mprf(MSGCH_WARN, jtransc("%s comes into view."),
                  get_monster_equipment_desc(mi, DESC_WEAPON).c_str());
         }
 

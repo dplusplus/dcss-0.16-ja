@@ -85,7 +85,7 @@ string god_prayer_reaction()
 
 static bool _bless_weapon(god_type god, brand_type brand, colour_t colour)
 {
-    int item_slot = prompt_invent_item(jtrans("Brand which weapon?").c_str(), MT_INVLIST,
+    int item_slot = prompt_invent_item(jtransc("Brand which weapon?"), MT_INVLIST,
                                        OSEL_BLESSABLE_WEAPON, true, true, false);
 
     if (item_slot == PROMPT_NOTHING || item_slot == PROMPT_ABORT)
@@ -156,11 +156,11 @@ static bool _bless_weapon(god_type god, brand_type brand, colour_t colour)
     wpn.flags |= ISFLAG_NOTED_ID;
     wpn.props[FORCED_ITEM_COLOUR_KEY] = colour;
 
-    mprf(MSGCH_GOD, jtrans("Your %s shines brightly!").c_str(), wpn.name(DESC_QUALNAME).c_str());
+    mprf(MSGCH_GOD, jtransc("Your %s shines brightly!"), wpn.name(DESC_QUALNAME).c_str());
 
     flash_view(UA_PLAYER, colour);
 
-    simple_god_message(jtrans("booms: Use this gift wisely!").c_str());
+    simple_god_message(jtransc(" booms: Use this gift wisely!"));
 
     if (god == GOD_SHINING_ONE)
     {
@@ -216,7 +216,7 @@ static bool _altar_prayer()
     // TSO blesses weapons with holy wrath, and demon weapons specially.
     else if (can_do_capstone_ability(GOD_SHINING_ONE))
     {
-        simple_god_message(jtrans("will bless one of your weapons.").c_str());
+        simple_god_message(jtransc(" will bless one of your weapons."));
         more();
         return _bless_weapon(GOD_SHINING_ONE, SPWPN_HOLY_WRATH, YELLOW);
     }
@@ -224,7 +224,7 @@ static bool _altar_prayer()
     // Lugonu blesses weapons with distortion.
     else if (can_do_capstone_ability(GOD_LUGONU))
     {
-        simple_god_message(jtrans("will brand one of your weapons with the corruption of the Abyss.").c_str());
+        simple_god_message(jtransc(" will brand one of your weapons with the corruption of the Abyss."));
         more();
         return _bless_weapon(GOD_LUGONU, SPWPN_DISTORTION, MAGENTA);
     }
@@ -235,7 +235,7 @@ static bool _altar_prayer()
         if (you.species != SP_FELID)
         {
             simple_god_message(
-                jtrans("will bloody your weapon with pain or grant you the Necronomicon.").c_str());
+                jtransc(" will bloody your weapon with pain or grant you the Necronomicon."));
 
             more();
 
@@ -243,7 +243,7 @@ static bool _altar_prayer()
                 return true;
 
             // If not, ask if the player wants a Necronomicon.
-            if (!yesno(jtrans("Do you wish to receive the Necronomicon?").c_str(), true, 'n'))
+            if (!yesno(jtransc("Do you wish to receive the Necronomicon?"), true, 'n'))
             {
                 canned_msg(MSG_OK);
                 return false;
@@ -256,7 +256,7 @@ static bool _altar_prayer()
         if (thing_created == NON_ITEM || !move_item_to_grid(&thing_created, you.pos()))
             return false;
 
-        simple_god_message(jtrans("grants you a gift!").c_str());
+        simple_god_message(jtransc(" grants you a gift!"));
         more();
 
         you.one_time_ability_used.set(you.religion);
@@ -307,7 +307,7 @@ static void _zen_meditation()
 {
     const mon_holy_type holi = you.holiness();
     mprf(MSGCH_PRAY,
-         jtrans("You spend a moment contemplating the meaning of %s.").c_str(),
+         jtransc("You spend a moment contemplating the meaning of %s."),
          holi == MH_NONLIVING ? "存在する" : holi == MH_UNDEAD ? "死せる" : "生きる");
 }
 
@@ -354,9 +354,9 @@ void pray(bool allow_altar_prayer)
         return;
     }
 
-    mprf(MSGCH_PRAY, jtrans("You offer a %sprayer to %s.").c_str(),
+    mprf(MSGCH_PRAY, jtransc("You offer a %sprayer to %s."),
          you.cannot_speak() ? "沈黙しながら" : "",
-         jtrans(god_name(you.religion)).c_str());
+         jtransc(god_name(you.religion)));
 
     you.turn_is_over = _offer_items()
                       || (you_worship(GOD_FEDHAS) && fedhas_fungal_bloom());
@@ -366,7 +366,7 @@ void pray(bool allow_altar_prayer)
     else if (you_worship(GOD_GOZAG))
         mprf(MSGCH_GOD, "%s", getSpeakString("Gozag prayer").c_str());
     else if (player_under_penance())
-        simple_god_message(jtrans("demands penance!").c_str());
+        simple_god_message(jtransc(" demands penance!"));
     else
         mprf(MSGCH_PRAY, you.religion, "%s", god_prayer_reaction().c_str());
 
@@ -446,7 +446,7 @@ static bool _zin_donate_gold()
         return false;
     }
 
-    if (!yesno(jtrans("Do you wish to donate half of your money?").c_str(), true, 'n'))
+    if (!yesno(jtransc("Do you wish to donate half of your money?"), true, 'n'))
     {
         canned_msg(MSG_OK);
         return false;
@@ -457,7 +457,7 @@ static bool _zin_donate_gold()
 
 #if defined(DEBUG_DIAGNOSTICS) || defined(DEBUG_SACRIFICE) || defined(DEBUG_PIETY)
     mprf(MSGCH_DIAGNOSTICS,
-         jtrans("A donation of $%d amounts to an increase of piety by %d.").c_str(),
+         jtransc("A donation of $%d amounts to an increase of piety by %d."),
          donation_cost, donation);
 #endif
     // Take a note of the donation.
@@ -469,7 +469,7 @@ static bool _zin_donate_gold()
 
     if (donation < 1)
     {
-        simple_god_message(jtrans("finds your generosity lacking.").c_str());
+        simple_god_message(jtransc(" finds your generosity lacking."));
         return false;
     }
 

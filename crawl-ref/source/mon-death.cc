@@ -2149,17 +2149,17 @@ int monster_die(monster* mons, killer_type killer,
                 {
                     mprf(MSGCH_MONSTER_DAMAGE, MDAM_DEAD, "%sは%s！",
                          mons->name(DESC_THE).c_str(),
-                         exploded                   ? jtrans("blown up").c_str() :
-                         wounded_damaged(targ_holy) ? jtrans("destroyed").c_str()
-                                                    : jtrans("killed").c_str());
+                         exploded                   ? jtransc("blown up") :
+                         wounded_damaged(targ_holy) ? jtransc("destroyed")
+                                                    : jtransc("killed"));
                 }
                 else
                 {
                     mprf(MSGCH_MONSTER_DAMAGE, MDAM_DEAD, "あなたは%sを%s！",
-                         jtrans(mons->name(DESC_THE)).c_str(),
-                         exploded                   ? jtrans("blow up").c_str() :
-                         wounded_damaged(targ_holy) ? jtrans("destroy").c_str()
-                                                    : jtrans("kill").c_str());
+                         jtransc(mons->name(DESC_THE)),
+                         exploded                   ? jtransc("blow up") :
+                         wounded_damaged(targ_holy) ? jtransc("destroy")
+                                                    : jtransc("kill"));
                 }
 
                 if ((created_friendly || was_neutral) && gives_xp)
@@ -2258,9 +2258,9 @@ int monster_die(monster* mons, killer_type killer,
             if (death_message)
             {
                 const char* msg =
-                    exploded                   ? jtrans("is blown up!").c_str() :
-                    wounded_damaged(targ_holy) ? jtrans("is destroyed!").c_str()
-                                               : jtrans("dies!").c_str();
+                    exploded                   ? jtransc(" is blown up!") :
+                    wounded_damaged(targ_holy) ? jtransc(" is destroyed!")
+                                               : jtransc(" dies!");
                 simple_monster_message(mons, msg, MSGCH_MONSTER_DAMAGE,
                                        MDAM_DEAD);
             }
@@ -2351,13 +2351,13 @@ int monster_die(monster* mons, killer_type killer,
                     if (mons_genus(mons->type) == MONS_SNAKE)
                     {
                         // Sticks to Snake
-                        simple_monster_message(mons, jtrans("withers and dies!").c_str(),
+                        simple_monster_message(mons, jtransc(" withers and dies!"),
                             MSGCH_MONSTER_DAMAGE, MDAM_DEAD);
                     }
                     else if (mons->type == MONS_SPECTRAL_THING)
                     {
                         // Death Channel
-                        simple_monster_message(mons, jtrans("fades into mist!").c_str());
+                        simple_monster_message(mons, jtransc(" fades into mist!"));
                     }
                     else
                     {
@@ -2368,9 +2368,9 @@ int monster_die(monster* mons, killer_type killer,
                 else
                 {
                     const char* msg =
-                        exploded                   ? jtrans("is blown up!").c_str() :
-                        wounded_damaged(targ_holy) ? jtrans("is destroyed!").c_str()
-                                                   : jtrans("dies!").c_str();
+                        exploded                   ? jtransc(" is blown up!") :
+                        wounded_damaged(targ_holy) ? jtransc(" is destroyed!")
+                                                   : jtransc(" dies!");
                     simple_monster_message(mons, msg, MSGCH_MONSTER_DAMAGE,
                                            MDAM_DEAD);
                 }
@@ -2625,7 +2625,7 @@ int monster_die(monster* mons, killer_type killer,
                 // These numbers may need to be adjusted.
                 if (mon->heal(random2avg(24, 2) + roll_dice(2, 8)))
                 {
-                    simple_monster_message(mon, jtrans("regenerates before your eyes!").c_str());
+                    simple_monster_message(mon, jtransc(" regenerates before your eyes!"));
                 }
             }
         }

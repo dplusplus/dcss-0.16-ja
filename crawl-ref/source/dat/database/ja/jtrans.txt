@@ -2453,15 +2453,19 @@ It was a %s.
 %%%%
 %s[Y]es or [N]o only, please.
 
-[Y]はい [N]いいえ のみで答えてください。
+%s[Y]はい [N]いいえ のみで答えてください。
+%%%%
+Uppercase
+
+大文字の
 %%%%
 Choose %s[Y]es%s, [N]o, [Q]uit, or [A]ll!
 
-[Y]はい [N]いいえ [Q]キャンセル [A]全部 から選んでください。
+%s[Y]はい [N]いいえ [Q]キャンセル [A]全部 から選んでください。
 %%%%
 %s[Y]es%s, [N]o or [Q]uit only, please.
 
-[Y]はい [N]いいえ [Q]キャンセル のみで答えてください。
+%s[Y]はい [N]いいえ [Q]キャンセル のみで答えてください。
 %%%%
 ############################## quiver.cc ##############################
 %%%%
@@ -3339,7 +3343,7 @@ refuses to forgive you so easily!
 %%%%
 Gozag will waive the service fee if you
 
-ゴザーグは今入会するなら入会金を免除してくれるようだ。
+ゴザーグは今入会するなら入会金を免除してくれるようだ！
 %%%%
 The service fee for joining is currently %d gold; you have %d.
 

@@ -1557,9 +1557,9 @@ void canned_msg(canned_message_type which_message)
     switch (which_message)
     {
         case MSG_SOMETHING_APPEARS:
-            mprf(jtrans("Something appears %s!").c_str(),
-                 player_has_feet() ? jtrans("at your feet").c_str()
-                                   : jtrans("before you").c_str());
+            mprf(jtransc("Something appears %s!"),
+                 player_has_feet() ? jtransc("at your feet")
+                                   : jtransc("before you"));
             break;
         case MSG_NOTHING_HAPPENS:
             mpr(jtrans("Nothing appears to happen."));
@@ -1626,13 +1626,13 @@ void canned_msg(canned_message_type which_message)
             const char* when =
             (which_message == MSG_EMPTY_HANDED_ALREADY ? "既に" : "今や");
             if (you.species == SP_FELID)
-                mprf(jtrans("Your mouth is %s empty.").c_str(), when);
+                mprf(jtransc("Your mouth is %s empty."), when);
             else if (you.has_usable_claws(true))
-                mprf(jtrans("You are %s empty-clawed.").c_str(), when);
+                mprf(jtransc("You are %s empty-clawed."), when);
             else if (you.has_usable_tentacles(true))
-                mprf(jtrans("You are %s empty-tentacled.").c_str(), when);
+                mprf(jtransc("You are %s empty-tentacled."), when);
             else
-                mprf(jtrans("You are %s empty-handed.").c_str(), when);
+                mprf(jtransc("You are %s empty-handed."), when);
             break;
         }
         case MSG_YOU_BLINK:
@@ -1672,7 +1672,7 @@ void canned_msg(canned_message_type which_message)
             mpr(jtrans("You cannot move."));
             break;
         case MSG_YOU_DIE:
-            mpr_nojoin(MSGCH_PLAIN, jtrans("You die...").c_str());
+            mpr_nojoin(MSGCH_PLAIN, jtrans("You die..."));
             break;
         case MSG_GHOSTLY_OUTLINE:
             mpr(jtrans("You see a ghostly outline there, and the spell fizzles."));

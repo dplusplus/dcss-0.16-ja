@@ -1526,7 +1526,7 @@ void direction_chooser::print_target_monster_description(bool &did_cloud) const
     }
 
     mprf(MSGCH_PROMPT, "%s: <lightgrey>%s</lightgrey>",
-         target_prefix ? target_prefix : jtrans("Aim").c_str(),
+         target_prefix ? target_prefix : jtransc("Aim"),
          text.c_str());
 
     // If there's a cloud here, it's been described.

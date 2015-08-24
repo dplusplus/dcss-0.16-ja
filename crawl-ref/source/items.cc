@@ -1207,7 +1207,7 @@ bool pickup_single_item(int link, int qty)
         return false;
     }
     if (item->base_type == OBJ_GOLD && !qty && !i_feel_safe()
-        && !yesno(jtrans("Are you sure you want to pick up this pile of gold now?").c_str(),
+        && !yesno(jtransc("Are you sure you want to pick up this pile of gold now?"),
                   true, 'n'))
     {
         canned_msg(MSG_OK);
@@ -1216,7 +1216,7 @@ bool pickup_single_item(int link, int qty)
     if (qty == 0 && item->quantity > 1 && item->base_type != OBJ_GOLD)
     {
         const string prompt
-                = make_stringf((jtrans("Pick up how many of %s (; or enter for all)?") + " ").c_str(),
+            = make_stringf((jtrans("Pick up how many of %s (; or enter for all)?") + " ").c_str(),
                                item->name(DESC_THE, false,
                                           false, false).c_str());
 
@@ -1603,7 +1603,7 @@ void get_gold(const item_def& item, int quant, bool quiet)
                             ? make_stringf(" (新たに%d枚入手)", quant)
                             : "";
 
-        mprf(jtrans("You now have %d gold piece%s.").c_str(),
+        mprf(jtransc("You now have %d gold piece%s."),
              you.gold, gain.c_str());
         learned_something_new(HINT_SEEN_GOLD);
     }
@@ -1726,7 +1726,7 @@ static void _get_rune(const item_def& it, bool quiet)
     if (!quiet)
     {
         flash_view_delay(UA_PICKUP, rune_colour(it.plus), 300);
-        mprf(jtrans("You pick up the %s rune and feel its power.").c_str(),
+        mprf(jtransc("You pick up the %s rune and feel its power."),
              rune_of_zot_name(rune_type_name(it.plus)).c_str());
         int nrunes = runes_in_pack();
         if (nrunes >= you.obtainable_runes)
@@ -1735,11 +1735,11 @@ static void _get_rune(const item_def& it, bool quiet)
                  && !crawl_state.game_is_zotdef())
         {
             // might be inappropriate in new Sprints, please change it then
-            mprf(jtrans("%d runes! That's enough to enter the realm of Zot.").c_str(),
+            mprf(jtransc("%d runes! That's enough to enter the realm of Zot."),
                  nrunes);
         }
         else if (nrunes > 1)
-            mprf(jtrans("You now have %d runes.").c_str(), nrunes);
+            mprf(jtransc("You now have %d runes."), nrunes);
 
         mpr(jtrans("Press } to see all the runes you have collected."));
     }
@@ -1773,7 +1773,7 @@ static void _get_orb(const item_def &it, bool quiet)
     mpr_nojoin(MSGCH_WARN, jtrans("The lords of Pandemonium are not amused. Beware!"));
 
     if (you_worship(GOD_CHEIBRIADOS))
-        simple_god_message(jtrans("tells them not to hurry.").c_str());
+        simple_god_message(jtrans(" tells them not to hurry.").c_str());
 
     mpr_nojoin(MSGCH_ORB, jtrans("Now all you have to do is get back out of the dungeon!"));
 
@@ -1814,7 +1814,7 @@ static bool _merge_stackable_item_into_inv(const item_def &it, int quant_got,
 
         if (!quiet)
         {
-            mprf_nocap(jtrans("%s (gained %d)").c_str(),
+            mprf_nocap(jtransc("%s (gained %d)"),
                         get_menu_colour_prefix_tags(you.inv[inv_slot],
                                                     DESC_INVENTORY).c_str(),
                         quant_got,
@@ -2382,7 +2382,7 @@ bool drop_item(int item_dropped, int quant_drop)
         return false;
     }
 
-    mprf(jtrans("You drop %s.").c_str(),
+    mprf(jtransc("You drop %s."),
          quant_name(you.inv[item_dropped], quant_drop, DESC_A).c_str());
 
     bool quiet = silenced(you.pos());

@@ -139,25 +139,25 @@ static string _describe_favour(god_type which_god)
     const string godname = jtrans(god_name(which_god));
     switch (rank)
     {
-        case 7:  return make_stringf(jtrans("A prized avatar of").c_str(), godname.c_str());
-        case 6:  return make_stringf(jtrans("A favoured servant of").c_str(), godname.c_str());
+        case 7:  return make_stringf(jtransc("A prized avatar of"), godname.c_str());
+        case 6:  return make_stringf(jtransc("A favoured servant of"), godname.c_str());
         case 5:
 
             if (you_worship(GOD_DITHMENOS))
-                return make_stringf(jtrans("A glorious shadow in the eyes of").c_str(), godname.c_str());
+                return make_stringf(jtransc("A glorious shadow in the eyes of"), godname.c_str());
             else
-                return make_stringf(jtrans("A shining star in the eyes of").c_str(), godname.c_str());
+                return make_stringf(jtransc("A shining star in the eyes of"), godname.c_str());
 
         case 4:
 
             if (you_worship(GOD_DITHMENOS))
-                return make_stringf(jtrans("A rising shadow in the eyes of").c_str(), godname.c_str());
+                return make_stringf(jtransc("A rising shadow in the eyes of"), godname.c_str());
             else
-                return make_stringf(jtrans("A rising star in the eyes of").c_str(), godname.c_str());
+                return make_stringf(jtransc("A rising star in the eyes of"), godname.c_str());
 
-        case 3:  return godname + jtrans("is most pleased with you.");
-        case 2:  return godname + jtrans("is pleased with you.");
-        default: return godname + jtrans("is noncommittal.");
+        case 3:  return godname + jtrans(" is most pleased with you.");
+        case 2:  return godname + jtrans(" is pleased with you.");
+        default: return godname + jtrans(" is noncommittal.");
     }
 }
 
@@ -562,9 +562,9 @@ static bool _check_description_cycle(god_desc_type gdesc)
     const char* place = nullptr;
     switch (gdesc)
     {
-        case GDESC_OVERVIEW: place = jtrans("<w>Overview</w>|Powers|Wrath").c_str(); break;
-        case GDESC_DETAILED: place = jtrans("Overview|<w>Powers</w>|Wrath").c_str(); break;
-        case GDESC_WRATH:    place = jtrans("Overview|Powers|<w>Wrath</w>").c_str(); break;
+        case GDESC_OVERVIEW: place = jtransc("<w>Overview</w>|Powers|Wrath"); break;
+        case GDESC_DETAILED: place = jtransc("Overview|<w>Powers</w>|Wrath"); break;
+        case GDESC_WRATH:    place = jtransc("Overview|Powers|<w>Wrath</w>"); break;
         default: die("Unknown god description type!");
     }
     formatted_string::parse_string(make_stringf("[<w>!</w>/<w>^</w>"
@@ -650,25 +650,25 @@ static string _describe_god_wrath_causes(god_type which_god)
     {
         case GOD_SHINING_ONE:
         case GOD_ELYVILON:
-            return make_stringf(jtrans("TSO and Ely wrath cause").c_str(),
-                                jtrans(god_name(which_god)).c_str(),
+            return make_stringf(jtransc("TSO and Ely wrath cause"),
+                                jtransc(god_name(which_god)),
                                 _comma_separate_gods(evil_gods).c_str());
         case GOD_ZIN:
-            return make_stringf(jtrans("Zin wrath cause").c_str(),
-                                jtrans(god_name(which_god)).c_str(),
+            return make_stringf(jtransc("Zin wrath cause"),
+                                jtransc(god_name(which_god)),
                                 _comma_separate_gods(evil_gods).c_str(),
                                 _comma_separate_gods(chaotic_gods).c_str());
         case GOD_RU:
-            return make_stringf(jtrans("Ru wrath cause").c_str(),
-                                jtrans(god_name(which_god)).c_str());
+            return make_stringf(jtransc("Ru wrath cause"),
+                                jtransc(god_name(which_god)));
         case GOD_XOM:
-            return make_stringf(jtrans("Xom wrath cause").c_str(),
-                                jtrans(god_name(which_god)).c_str(),
-                                jtrans(god_name(which_god)).c_str(),
-                                jtrans(god_name(which_god)).c_str());
+            return make_stringf(jtransc("Xom wrath cause"),
+                                jtransc(god_name(which_god)),
+                                jtransc(god_name(which_god)),
+                                jtransc(god_name(which_god)));
         default:
-            return make_stringf(jtrans("default wrath cause").c_str(),
-                                jtrans(god_name(which_god)).c_str());
+            return make_stringf(jtransc("default wrath cause"),
+                                jtransc(god_name(which_god)));
     }
 }
 
@@ -811,7 +811,7 @@ static string _god_penance_message(god_type which_god)
                                     : "%s is neutral towards you.");
 
     return make_stringf(penance_message.c_str(),
-                        jtrans(god_name(which_god)).c_str());
+                        jtransc(god_name(which_god)));
 }
 
 /**
@@ -825,9 +825,9 @@ static void _describe_god_powers(god_type which_god, int numcols)
     textcolour(LIGHTGREY);
     const char *header = "Granted powers:";
     const char *cost   = "(Cost)";
-    cprintf("\n\n%s%*s%s\n", jtrans(header).c_str(),
+    cprintf("\n\n%s%*s%s\n", jtransc(header),
             min(80, get_number_of_cols()) - 1 - strwidth(jtrans(header)) - strwidth(jtrans(cost)),
-            "", jtrans(cost).c_str());
+            "", jtransc(cost));
     textcolour(god_colour(which_god));
 
     // mv: Some gods can protect you from harm.
@@ -877,8 +877,8 @@ static void _describe_god_powers(god_type which_god, int numcols)
         (you.piety >= piety_breakpoint(1)) ? "sometimes" :
                                              "occasionally";
 
-        cprintf(jtransln("%s %s shields you from chaos.").c_str(),
-               jtrans(god_name(which_god)).c_str(), jtrans(how).c_str());
+        cprintf(jtranslnc("%s %s shields you from chaos."),
+               jtransc(god_name(which_god)), jtransc(how));
     }
     else if (which_god == GOD_SHINING_ONE)
     {
@@ -890,15 +890,15 @@ static void _describe_god_powers(god_type which_god, int numcols)
             (you.piety >= piety_breakpoint(3)) ? "mostly" :
                                                  "partially";
 
-            cprintf(jtransln("%s %s shields you from negative energy.").c_str(),
-                    jtrans(god_name(which_god)).c_str(), how);
+            cprintf(jtranslnc("%s %s shields you from negative energy."),
+                    jtransc(god_name(which_god)), how);
         }
     }
     else if (which_god == GOD_TROG)
     {
         have_any = true;
-        string buf = make_stringf(jtrans("You can call upon %s to burn spellbooks in your surroundings.").c_str(),
-                                  jtrans(god_name(which_god)).c_str());
+        string buf = make_stringf(jtransc("You can call upon %s to burn spellbooks in your surroundings."),
+                                  jtransc(god_name(which_god)));
         _print_final_god_abil_desc(which_god, buf,
                                    ABIL_TROG_BURN_SPELLBOOKS);
     }
@@ -907,8 +907,8 @@ static void _describe_god_powers(god_type which_god, int numcols)
         if (you.piety >= piety_breakpoint(2))
         {
             have_any = true;
-            cprintf(jtransln("%s shields you from corrosive effects.").c_str(),
-                    jtrans(god_name(which_god)).c_str());
+            cprintf(jtranslnc("%s shields you from corrosive effects."),
+                    jtransc(god_name(which_god)));
         }
         if (you.piety >= piety_breakpoint(1))
         {
@@ -950,8 +950,8 @@ static void _describe_god_powers(god_type which_god, int numcols)
         if (!player_under_penance())
         {
             have_any = true;
-            cprintf(jtransln("%s supports your attributes (+%d).").c_str(),
-                    jtrans(god_name(which_god)).c_str(),
+            cprintf(jtranslnc("%s supports your attributes (+%d)."),
+                    jtransc(god_name(which_god)),
                     chei_stat_boost(you.piety));
             _print_final_god_abil_desc(which_god,
                                        jtrans("You can bend time to slow others."),
@@ -983,7 +983,7 @@ static void _describe_god_powers(god_type which_god, int numcols)
                                    ABIL_NON_ABILITY);
         _print_final_god_abil_desc(which_god,
                                    jtrans(god_name(which_god))
-                                   + jtrans("turns your defeated foes' bodies"
+                                   + jtrans(" turns your defeated foes' bodies"
                                             " to gold."),
                                    ABIL_NON_ABILITY);
         _print_final_god_abil_desc(which_god,
@@ -1023,7 +1023,7 @@ static void _describe_god_powers(god_type which_god, int numcols)
     }
 
     if (!have_any)
-        cprintf(jtransln("None.").c_str());
+        cprintf(jtranslnc("None."));
 }
 
 static void _god_overview_description(god_type which_god, bool give_title)
@@ -1034,7 +1034,7 @@ static void _god_overview_description(god_type which_god, bool give_title)
     if (give_title)
     {
         textcolour(WHITE);
-        cprintf(jtrans("Religion").c_str());
+        cprintf(jtransc("Religion"));
         textcolour(LIGHTGREY);
     }
     // Center top line even if it already contains "Religion" (len = 8)
