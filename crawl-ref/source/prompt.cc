@@ -125,8 +125,8 @@ bool yesno(const char *str, bool safe, int safeanswer, bool clear_after,
         {
             bool upper = !safe && (tmp == 'n' || tmp == 'y'
                                    || crawl_state.game_is_hints_tutorial());
-            const string pr = make_stringf(jtrans("%s[Y]es or [N]o only, please.").c_str(),
-                                           upper ? "Uppercase " : "");
+            const string pr = make_stringf(jtransc("%s[Y]es or [N]o only, please."),
+                                           upper ? jtransc("Uppercase ") : "");
 #ifdef TOUCH_UI
             status->text = pr;
 #else
@@ -242,8 +242,8 @@ int yesnoquit(const char* str, bool safe, int safeanswer, bool allow_all,
             {
                 bool upper = !safe && (tmp == 'n' || tmp == 'y' || tmp == 'a'
                                        || crawl_state.game_is_hints_tutorial());
-                mprf(jtrans("Choose %s[Y]es%s, [N]o, [Q]uit, or [A]ll!").c_str(),
-                     upper ? "uppercase " : "",
+                mprf(jtransc("Choose %s[Y]es%s, [N]o, [Q]uit, or [A]ll!"),
+                     upper ? jtransc("uppercase ") : "",
                      _list_alternative_yes(alt_yes, alt_yes2, false, true).c_str());
             }
         }
@@ -251,8 +251,8 @@ int yesnoquit(const char* str, bool safe, int safeanswer, bool allow_all,
         {
             bool upper = !safe && (tmp == 'n' || tmp == 'y'
                                    || crawl_state.game_is_hints_tutorial());
-            mprf(jtrans("%s[Y]es%s, [N]o or [Q]uit only, please.").c_str(),
-                 upper ? "Uppercase " : "",
+            mprf(jtransc("%s[Y]es%s, [N]o or [Q]uit only, please."),
+                 upper ? jtransc("Uppercase ") : "",
                  _list_alternative_yes(alt_yes, alt_yes2, false, true).c_str());
         }
     }
