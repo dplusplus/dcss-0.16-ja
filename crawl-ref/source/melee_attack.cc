@@ -284,8 +284,8 @@ bool melee_attack::handle_phase_dodged()
             else
             {
                 mprf("%sは%sへの攻撃を%s外した%s",
-                     jtrans(atk_name(DESC_THE)).c_str(),
-                     jtrans(defender_name(true)).c_str(),
+                     jtransc(atk_name(DESC_THE)),
+                     jtransc(defender_name(true)),
                      evasion_margin_adverb().c_str(),
                      attack_strength_punctuation(damage_done).c_str());
             }
@@ -486,9 +486,9 @@ bool melee_attack::handle_phase_hit()
 
         // TODO: Clean this up if possible, checking atype for do / does is ugly
         mprf("%sは%sを%sが、損傷を与えなかった。",
-             jtrans(attacker->name(DESC_THE)).c_str(),
-             jtrans(defender_name(true)).c_str(),
-             jtrans(attack_verb).c_str());
+             jtransc(attacker->name(DESC_THE)),
+             jtransc(defender_name(true)),
+             jtransc(attack_verb));
     }
 
     // Check for weapon brand & inflict that damage too
@@ -2533,7 +2533,7 @@ string melee_attack::mons_attack_desc()
     if (dist > 2)
     {
         ASSERT(can_reach());
-        ret = jtrans("from afar");
+        ret = jtrans(" from afar");
     }
 
     if (weapon && attacker->type != MONS_DANCING_WEAPON && attacker->type != MONS_SPECTRAL_WEAPON)
@@ -2550,10 +2550,10 @@ void melee_attack::announce_hit()
     if (attacker->is_monster())
     {
         mprf("%sは%sを%s%s%s%s",
-             jtrans(atk_name(DESC_THE)).c_str(),
-             jtrans(defender_name(true)).c_str(),
+             jtransc(atk_name(DESC_THE)),
+             jtransc(defender_name(true)),
              mons_attack_desc().c_str(),
-             jtrans(attacker->conj_verb(mons_attack_verb())).c_str(),
+             jtransc(attacker->conj_verb(mons_attack_verb())),
              debug_damage_number().c_str(),
              attack_strength_punctuation(damage_done).c_str());
     }
@@ -2566,10 +2566,10 @@ void melee_attack::announce_hit()
         }
 
         mprf("あなたは%s%sを%s%s%s%s",
-             jtrans(defender->name(DESC_THE)).c_str(),
-             jtrans(verb_degree).c_str(),
-             jtrans(verb_degree2).c_str(),
-             jtrans(attack_verb).c_str(), debug_damage_number().c_str(),
+             jtransc(defender->name(DESC_THE)),
+             jtransc(verb_degree),
+             jtransc(verb_degree2),
+             jtransc(attack_verb), debug_damage_number().c_str(),
              attack_strength_punctuation(damage_done).c_str());
     }
 }
