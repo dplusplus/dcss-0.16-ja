@@ -1981,39 +1981,39 @@ static void _print_overview_screen_equip(column_composer& cols,
         else if (e_order[i] == EQ_WEAPON
                  && you.skill(SK_UNARMED_COMBAT))
         {
-            snprintf(buf, sizeof buf, jtrans("%s  - Unarmed").c_str(), slot);
+            snprintf(buf, sizeof buf, jtransc("%s  - Unarmed"), slot);
         }
         else if (e_order[i] == EQ_WEAPON
                  && you.form == TRAN_BLADE_HANDS)
         {
-            snprintf(buf, sizeof buf, jtrans("%s  - Blade Hand%s").c_str(), slot);
+            snprintf(buf, sizeof buf, jtransc("%s  - Blade Hand%s"), slot);
         }
         else if (e_order[i] == EQ_BOOTS
                  && (you.species == SP_NAGA || you.species == SP_CENTAUR))
         {
             snprintf(buf, sizeof buf,
-                     jtrans("<darkgrey>(no %s)</darkgrey>").c_str(), slot_name_lwr.c_str());
+                     jtransc("<darkgrey>(no %s)</darkgrey>"), slot_name_lwr.c_str());
         }
         else if (!you_can_wear(e_order[i], true))
         {
             snprintf(buf, sizeof buf,
-                     jtrans("<darkgrey>(%s unavailable)</darkgrey>").c_str(), slot_name_lwr.c_str());
+                     jtransc("<darkgrey>(%s unavailable)</darkgrey>"), slot_name_lwr.c_str());
         }
         else if (!you_tran_can_wear(e_order[i], true))
         {
             snprintf(buf, sizeof buf,
-                     jtrans("<darkgrey>(%s currently unavailable)</darkgrey>").c_str(),
+                     jtransc("<darkgrey>(%s currently unavailable)</darkgrey>"),
                      slot_name_lwr.c_str());
         }
         else if (!you_can_wear(e_order[i]))
         {
             snprintf(buf, sizeof buf,
-                     jtrans("<darkgrey>(%s restricted)</darkgrey>").c_str(), slot_name_lwr.c_str());
+                     jtransc("<darkgrey>(%s restricted)</darkgrey>"), slot_name_lwr.c_str());
         }
         else
         {
             snprintf(buf, sizeof buf,
-                     jtrans("<darkgrey>(no %s)</darkgrey>").c_str(), slot_name_lwr.c_str());
+                     jtransc("<darkgrey>(no %s)</darkgrey>"), slot_name_lwr.c_str());
         }
         cols.add_formatted(2, buf, false);
     }
@@ -2024,8 +2024,8 @@ static string _overview_screen_title(int sw)
     string title = jtrans(player_title(false));
 
     string species_job = make_stringf("(%sの%s)",
-                                      jtrans(species_name(you.species)).c_str(),
-                                      jtrans(you.class_name).c_str());
+                                      jtransc(species_name(you.species)),
+                                      jtransc(you.class_name));
 
     handle_real_time();
     string time_turns = make_stringf(" 経過ターン: %d プレイ時間: ", you.num_turns)
@@ -2775,10 +2775,10 @@ static string _status_mut_abilities(int sw)
         mutations.emplace_back(jtrans("almost no armour"));
         mutations.emplace_back(jtrans("amphibious"));
         mutations.push_back(_annotate_form_based(
-            make_stringf(jtrans("%d rings").c_str(), you.has_tentacles(false)),
+            make_stringf(jtransc("%d rings"), you.has_tentacles(false)),
             !get_form()->slot_available(EQ_RING_EIGHT)));
         mutations.push_back(_annotate_form_based(
-            make_stringf(jtrans("constrict %d").c_str(), you.has_tentacles(false)),
+            make_stringf(jtransc("constrict %d"), you.has_tentacles(false)),
             !form_keeps_mutations()));
     }
 
