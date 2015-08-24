@@ -654,7 +654,7 @@ static void _throw_noise(actor* act, const bolt &pbolt, const item_def &ammo)
     if (act->is_player() || you.can_see(act))
         msg = nullptr;
 
-    noisy(level, act->pos(), jtrans(msg).c_str(), act->mid);
+    noisy(level, act->pos(), jtransc(msg), act->mid);
 }
 
 // throw_it - currently handles player throwing only.  Monster
@@ -852,11 +852,11 @@ bool throw_it(bolt &pbolt, int throw_2, dist *target)
     you.time_taken = you.attack_delay(you.weapon(), &item);
 
     // Create message.
-    mprf(jtrans("You %s%s %s.").c_str(),
-         teleport ? jtrans("magically").c_str() : "",
+    mprf(jtransc("You %s%s %s."),
+         jtransc(teleport ? "magically" : ""),
          ammo_name.c_str(),
-         jtrans(projected == LRET_FUMBLED ? "toss away" :
-                projected == LRET_LAUNCHED ? "shoot" : "throw").c_str());
+         jtransc(projected == LRET_FUMBLED ? "toss away" :
+                 projected == LRET_LAUNCHED ? "shoot" : "throw"));
 
     // Ensure we're firing a 'missile'-type beam.
     pbolt.pierce    = false;
@@ -934,7 +934,7 @@ bool throw_it(bolt &pbolt, int throw_2, dist *target)
         if (returning && item_type_known(you.inv[throw_2]))
         {
             msg::stream << item.name(DESC_THE)
-                        << jtrans("fails to return to your pack!") << endl;
+                        << jtrans(" fails to return to your pack!") << endl;
         }
         dec_inv_item_quantity(throw_2, 1);
         if (unwielded)
