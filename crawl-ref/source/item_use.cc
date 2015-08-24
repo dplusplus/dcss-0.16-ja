@@ -1707,7 +1707,7 @@ void drink(int slot)
 
     if (slot == -1)
     {
-        slot = prompt_invent_item(jtrans("Drink which item?").c_str(),
+        slot = prompt_invent_item(jtransc("Drink which item?"),
                                   MT_INVLIST, OBJ_POTIONS,
                                   true, true, true, 0, -1, nullptr,
                                   OPER_QUAFF);
@@ -1759,7 +1759,7 @@ void drink(int slot)
 
     if (alreadyknown && is_blood_potion(potion)
         && is_good_god(you.religion)
-        && !yesno(jtrans("Really drink that potion of blood?").c_str(), false, 'n'))
+        && !yesno(jtransc("Really drink that potion of blood?"), false, 'n'))
     {
         canned_msg(MSG_OK);
         return;
@@ -1782,7 +1782,7 @@ void drink(int slot)
 
     if (player_under_penance(GOD_GOZAG) && one_chance_in(3))
     {
-        simple_god_message(jtrans("petitions for your drink to fail.").c_str(), GOD_GOZAG);
+        simple_god_message(jtransc(" petitions for your drink to fail."), GOD_GOZAG);
 
         you.turn_is_over = true;
 
