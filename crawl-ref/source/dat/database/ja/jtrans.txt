@@ -3343,7 +3343,7 @@ refuses to forgive you so easily!
 %%%%
 Gozag will waive the service fee if you
 
-ゴザーグは今入会するなら入会金を免除してくれるようだ。
+ゴザーグは今入会するなら入会金を免除してくれるようだ！
 %%%%
 The service fee for joining is currently %d gold; you have %d.
 
