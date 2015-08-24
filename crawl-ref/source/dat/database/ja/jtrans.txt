@@ -1267,6 +1267,40 @@ Inventory:
 
 %s (<w>Esc</w> でキャンセル)
 %%%%
+############################## item_use.cc ##############################
+%%%%
+Use <w>e</w> to drain blood from corpses.
+
+死体から血を飲むには<w>e</w>atコマンドを使ってください。
+%%%%
+You can't drink.
+
+あなたは飲むことができない。
+%%%%
+You cannot drink potions in your current state!
+
+現状あなたは薬を飲むことができない！
+%%%%
+Drink which item?
+
+どれを飲みますか？
+%%%%
+You can't drink that!
+
+そのアイテムは飲めない！
+%%%%
+You are much too full right now.
+
+あなたは腹がいっぱいですぐには飲めない。
+%%%%
+Really drink that potion of blood?
+
+本当に血液の薬を飲みますか？
+%%%%
+petitions for your drink to fail.
+
+はあなたが飲むのを妨げた。
+%%%%
 ############################## items.cc ##############################
 %%%%
 Pick up what?
