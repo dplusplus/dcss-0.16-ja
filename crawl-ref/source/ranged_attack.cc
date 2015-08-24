@@ -255,8 +255,8 @@ bool ranged_attack::handle_phase_dodged()
     if (needs_message)
     {
         mprf("%sは%sから%s外れた%s",
-             jtrans(projectile->name(DESC_THE)).c_str(),
-             jtrans(defender_name(false)).c_str(),
+             jtransc(projectile->name(DESC_THE)),
+             jtransc(defender_name(false)),
              evasion_margin_adverb().c_str(),
              attack_strength_punctuation(damage_done).c_str());
     }
@@ -297,9 +297,9 @@ bool ranged_attack::handle_phase_hit()
         }
         else if (needs_message)
         {
-            mprf(jtrans("%s %s %s but does no damage.").c_str(),
+            mprf(jtransc("%s %s %s but does no damage."),
                  projectile->name(DESC_THE).c_str(),
-                 jtrans(defender->name(DESC_THE)).c_str(),
+                 jtransc(defender->name(DESC_THE)),
                  attack_verb.c_str());
         }
     }
@@ -840,7 +840,7 @@ bool ranged_attack::player_good_stab()
 
 void ranged_attack::set_attack_verb(int/* damage*/)
 {
-    attack_verb = attack_ignores_shield(false) ? jtrans("pierces through") : jtrans("hits");
+    attack_verb = jtrans(attack_ignores_shield(false) ? "pierces through" : "hits");
 }
 
 void ranged_attack::announce_hit()
@@ -850,9 +850,9 @@ void ranged_attack::announce_hit()
 
     mprf("%sは%s%sに%s%s%s",
          projectile->name(DESC_THE).c_str(),
-         jtrans(defender_name(false)).c_str(),
+         jtransc(defender_name(false)),
          damage_done > 0 && stab_attempt && stab_bonus > 0
-             ? jtrans("in a vulnerable spot").c_str()
+             ? jtransc("in a vulnerable spot")
              : "",
          attack_verb.c_str(),
          debug_damage_number().c_str(),
