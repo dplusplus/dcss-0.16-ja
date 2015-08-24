@@ -47,6 +47,11 @@ void mpr_nojoin(msg_channel_type channel, string text)
     _mpr(text, channel, 0, true);
 }
 
+void mpr_nojoin(msg_channel_type channel, int param, string text)
+{
+    _mpr(text, channel, param, true);
+}
+
 static bool _ends_in_punctuation(const string& text)
 {
     switch (text[text.size() - 1])

@@ -1257,40 +1257,6 @@ skeleton
 
 骸骨
 %%%%
-############################## main.cc ##############################
-%%%%
-Welcome
-
-ようこそ
-%%%%
-Welcome back
-
-よくぞ帰ってきた
-%%%%
-Press <w>?</w> for a list of commands and other information.
-
-コマンド一覧やその他の情報を見るには <w>?</w>キー を押してください。
-%%%%
-Saving game... please wait.
-
-セーブしています……お待ちください。
-%%%%
-Save game and return to main manu?
-
-セーブしてメインメニューに戻りますか？
-%%%%
-Save game and exit?
-
-セーブして終了しますか？
-%%%%
-Which direction?
-
-どの方向ですか？
-%%%%
-Unknown command.
-
-そのコマンドは存在しません。
-%%%%
 ############################## invent.cc ##############################
 %%%%
 %d/%d slots
@@ -1434,6 +1400,40 @@ Drop what?
 Your pack is full.
 
 あなたの荷袋は満杯だ。
+%%%%
+############################## main.cc ##############################
+%%%%
+Welcome
+
+ようこそ
+%%%%
+Welcome back
+
+よくぞ帰ってきた
+%%%%
+Press <w>?</w> for a list of commands and other information.
+
+コマンド一覧やその他の情報を見るには <w>?</w>キー を押してください。
+%%%%
+Saving game... please wait.
+
+セーブしています……お待ちください。
+%%%%
+Save game and return to main manu?
+
+セーブしてメインメニューに戻りますか？
+%%%%
+Save game and exit?
+
+セーブして終了しますか？
+%%%%
+Which direction?
+
+どの方向ですか？
+%%%%
+Unknown command.
+
+そのコマンドは存在しません。
 %%%%
 ############################## melee_attack.cc ##############################
 %%%%
@@ -2251,6 +2251,874 @@ in a vulnerable spot
 
 の弱点
 %%%%
+############################## religion.cc ##############################
+%%%%
+recite Zin's Axioms of Law
+
+ジンの法の公理を説くこと
+%%%%
+call upon Zin for vitalisation
+
+ジンに生命の活性を請うこと
+%%%%
+call upon Zin to imprison the lawless
+
+ジンに無法者の収監を請うこと
+%%%%
+call upon Zin to create a sanctuary
+
+ジンに聖域の作成を請うこと
+%%%%
+You and your allies can gain power from killing the unholy and evil.
+
+あなたとあなたの仲間は不浄な者や邪悪な者を倒すことで力を得ることができる。
+%%%%
+call upon the Shining One for a divine shield
+
+輝けるものに神気の盾を請うこと
+%%%%
+channel blasts of cleansing flame
+
+浄化の炎を解き放つこと
+%%%%
+summon a divine warrior
+
+神聖な従者を召喚すること
+%%%%
+receive cadavers from Kikubaaqudgha
+
+死体をキクバークッグァから受け取ること
+%%%%
+Kikubaaqudgha is protecting you from necromantic miscasts and death curses.
+
+キクバークッグァはあなたを死霊術の失敗効果や死の呪いから守る。
+%%%%
+Kikubaaqudgha is protecting you from unholy torment.
+
+キクバークッグァはあなたを不浄な苦痛から守る。
+%%%%
+invoke torment by sacrificing a corpse
+
+死体を代償に苦痛の紋章を喚起すること
+%%%%
+animate legions of the dead
+
+死者の軍勢を蘇らせること
+%%%%
+animate remains
+
+死者を蘇らせること
+%%%%
+recall your undead slaves and mirror injuries on your foes
+
+不死の下僕を呼び出すことと傷を敵に跳ね返すこと
+%%%%
+drain ambient lifeforce
+
+周囲の生命力を掠奪すること
+%%%%
+enslave living souls
+
+生者の魂を隷属させること
+%%%%
+gain magical power from killing
+
+殺害によって魔力を得ること
+%%%%
+Vehumet is aiding your destructive magics.
+
+ヴェフメットはあなたの破壊的な魔法を手助けしてくれる。
+%%%%
+Vehumet is extending the range of your destructive magics.
+
+ヴェフメットはあなたの破壊的な魔法の射程を伸ばしてくれる。
+%%%%
+gain great but temporary skills
+
+一時的に戦闘系のスキルを強化すること
+%%%%
+speed up your combat
+
+一時的に攻撃速度を上昇させること
+%%%%
+gain health from killing
+
+殺害によって体力を回復すること
+%%%%
+harness Makhleb's destructive might
+
+マクレブの破壊的な力を制御すること
+%%%%
+summon a lesser servant of Makhleb
+
+マクレブの小さきしもべを召喚すること
+%%%%
+hurl Makhleb's greater destruction
+
+マクレブの大いなる破壊を浴びせること
+%%%%
+summon a greater servant of Makhleb
+
+マクレブの大いなるしもべを召喚すること
+%%%%
+tap ambient magical fields
+
+周囲の魔力を収集すること
+%%%%
+freely open your mind to new spells
+
+新しい魔法のために記憶を消去すること
+%%%%
+Sif Muna is protecting you from the effects of miscast magic.
+
+シフ・ムーナはあなたを魔法が失敗した際の効果から守る。
+%%%%
+go berserk at will
+
+自らの意志で狂戦士化すること
+%%%%
+regenerate and be protected from hostile enchantments
+
+再生能力と敵対的な魔法に対する防御を得ること
+%%%%
+call in reinforcements
+
+援軍を呼び出すこと
+%%%%
+choose one out of three cards
+
+デッキから3枚引いた中から1枚カードを選んで使うこと
+%%%%
+deal four cards at a time
+
+一度に4枚のカードを使うこと
+%%%%
+order the top five cards of a deck, losing the rest
+
+デッキの上の5枚のカードを並び替え、残りのカードを捨てること
+%%%%
+provide lesser healing for yourself
+
+自らに小さき癒しを使うこと
+%%%%
+heal and attempt to pacify others
+他者を癒やし友好化を試みること
+%%%%
+purify yourself
+
+自らを浄化すること
+%%%%
+provide greater healing for yourself
+
+自らに大いなる癒しを使うこと
+%%%%
+call upon Elyvilon for divine vigour
+
+エリヴィロンに神秘の活力を請うこと
+%%%%
+depart the Abyss
+
+アビスから離脱すること
+%%%%
+bend space around yourself
+
+周囲の空間を歪曲すること
+%%%%
+banish your foes
+
+敵をアビスに追放すること
+%%%%
+corrupt the fabric of space
+
+空間の構造を崩壊させること
+%%%%
+gate yourself to the Abyss
+
+アビスへと退避すること
+%%%%
+Beogh aids your use of armour.
+
+ベオは鎧の使用を手助けしてくれる。
+%%%%
+smite your foes
+
+敵に打擲の一撃を与えること
+%%%%
+gain orcish followers
+
+オークの従者を得ること
+%%%%
+recall your orcish followers
+
+オークの従者を呼び出すこと
+%%%%
+walk on water and give items to your follower
+
+水の上を歩き、また従者にアイテムを与えること
+%%%%
+request a jelly
+
+ジェリーを要請すること
+%%%%
+temporarily halt your jellies' item consumption
+
+一時的にジェリーがアイテムを消化するのを止めること
+%%%%
+turn your foes to slime
+
+敵をスライムへと変化させること
+%%%%
+call upon Jiyva to remove your harmful mutations
+
+ジーヴァに有害な突然変異の除去を請うこと
+%%%%
+induce evolution
+
+植物の進化を誘発すること
+%%%%
+call sunshine
+
+陽光を呼び出すこと
+%%%%
+cause a ring of plants to grow
+
+周囲に迷宮草の輪を成長させること
+%%%%
+spawn explosive spores
+
+死体から爆発する胞子を生み出すこと
+%%%%
+control the weather
+
+気候を操り、雨を降らせること
+%%%%
+Cheibriados slows and strengthens your metabolism.
+
+ケイブリアドスはあなたの代謝を遅く、そして強化する。
+%%%%
+warp the flow of time around you
+
+周囲の時間の流れを歪曲させること
+%%%%
+inflict damage on those overly hasty
+
+過度に加速している者に損傷を与えること
+%%%%
+step out of the time flow
+
+時間の流れから離脱すること
+%%%%
+The more cursed you are, the more Ashenzari supports your skills.
+
+呪縛されればされるほど、アシェンザリはさらなるスキルの支援を行う。
+
+%%%%
+Ashenzari reveals the unseen and keeps your mind clear.
+
+アシェンザリは見えざる者の存在を看破し、あなたの意識を明晰に保つ。
+%%%%
+scry through walls
+
+壁を透視する
+%%%%
+Ashenzari helps you to reconsider your skills.
+
+アシェンザリはあなたがスキルを再考するのを助ける。
+%%%%
+step into the shadows of nearby creatures
+
+近くのモンスターの影の中に潜り込むこと
+%%%%
+You now sometimes bleed smoke when heavily injured by enemies.
+
+あなたは敵から重症を受けた際に時々黒煙を生じさせる。
+%%%%
+Your shadow now sometimes tangibly mimics your actions.
+
+あなたの影は時々あなたの行動を真似る。
+%%%%
+transform into a swirling mass of shadows
+
+渦巻く影の塊へと変化すること
+%%%%
+petition Gozag for potion effects
+
+ゴザーグに薬の効果を要請する
+%%%%
+fund merchants seeking to open stores in the dungeon
+
+迷宮に店を出そうとする商人に投資する
+%%%%
+bribe branches to halt enemies' attacks and recruit allies
+
+分岐を買収して敵の攻撃を止め、傭兵を雇う
+%%%%
+You are surrounded by a storm.
+
+あなたは嵐に囲まれている。
+%%%%
+call upon nature to destroy your foes
+
+自然に働きかけて敵を討つこと
+%%%%
+give life to nearby clouds
+
+近くの雲烟に生命を与えること
+%%%%
+You adapt resistances upon receiving elemental damage.
+
+あなたは元素属性への耐性に熟達している。
+%%%%
+call upon nature's wrath in a wide area around you
+
+自然の怒りを周囲の広範囲に解き放つこと
+%%%%
+You exude an aura of power that intimidates your foes.
+
+あなたは敵を戸惑わせるオーラを発散する。
+%%%%
+Your aura of power can strike those that harm you.
+
+あなたのオーラはあなたに危害を加えるものに危害を加える。
+%%%%
+heal your body and restore your magic
+
+傷を癒し魔力を回復させること
+%%%%
+gather your power into a mighty leap
+
+力を溜めて力強い跳躍を行うこと
+%%%%
+wreak a terrible wrath on your foes
+
+敵に対し激怒の力を浴びせること
+%%%%
+you train your various spell casting skills
+
+様々な呪文スキルの鍛錬
+%%%%
+you promote the decay of nearby corpses by <w>p</w>raying
+
+祈って(<w>p</w>ray)周辺の死体の腐敗を促進させること
+%%%%
+you destroy spellbooks via the <w>a</w> command
+
+能力(<w>a</w>bilityコマンドで魔法書を焼くこと
+%%%%
+you explore the world
+
+あなたが世界を探索すること
+%%%%
+you sacrifice items by allowing slimes to consume them
+
+スライムに消化させることでアイテムを捧げること
+%%%%
+you kill fast things, relative to your speed
+
+あなたより素早いものを殺すこと
+%%%%
+you explore the world (preferably while bound by curses)
+
+あなたが世界を探索すること(呪縛されている場合は特に)
+%%%%
+you meet creatures to determine whether they need to be eradicated
+
+根絶対象か判断するためにモンスターを光で照らす
+%%%%
+you banish creatures to the Abyss
+
+モンスターをアビスに追放すること
+%%%%
+you collect gold
+
+金を貯めること
+%%%%
+you make personal sacrifices
+
+自らを代償に捧げること
+%%%%
+you donate money (by <w>p</w>raying at an altar)
+
+寄付(祭壇の上で<w>p</w>rayコマンドを行う)すること
+%%%%
+you bless dead orcs (by standing over their remains and <w>p</w>raying)
+
+死んだオークを弔う(遺骸の上に立って<w>p</w>rayコマンドを行う)こと
+%%%%
+you sacrifice fresh corpses (by standing over them and <w>p</w>raying)
+
+新鮮な死体を捧げる(死体の上に立って<w>p</w>rayコマンドを行う)こと
+%%%%
+you or your allies kill living beings
+
+あなたと従者が生者を殺すこと
+%%%%
+you or your god-given allies kill living beings
+
+あなたと神の与えし従者が生命ある者を殺すこと
+%%%%
+you or your undead slaves kill living beings
+
+あなたと不死の下僕が生命ある者を殺すこと
+%%%%
+you or your allied orcs kill living beings
+
+あなたとオークの従者が生命ある者を殺すこと
+%%%%
+you kill living beings
+
+あなたが生命ある者を殺すこと
+%%%%
+you or your allies kill unclean or chaotic beings
+
+あなたと従者が不浄な者や混沌なる者を殺すこと
+%%%%
+you or your allies kill living unholy or evil beings
+
+あなたと従者が不浄なる者や邪悪な存在を殺すこと
+%%%%
+you or your allies kill the undead
+
+あなたと従者が不死者を滅ぼすこと
+%%%%
+you or your allied orcs kill the undead
+
+あなたとオークの従者が不死者を滅ぼすこと
+%%%%
+you kill the undead
+
+あなたが不死者を滅ぼすこと
+%%%%
+you or your allies kill demons
+
+あなたと従者が悪魔を殺すこと
+%%%%
+you or your god-given allies kill demons
+
+あなたと神の与えし従者が悪魔を殺すこと
+%%%%
+you or your undead slaves kill demons
+
+あなたと不死の下僕が悪魔を殺すこと
+%%%%
+you or your allied orcs kill demons
+
+あなたと従者のオークが悪魔を殺すこと
+%%%%
+you kill demons
+
+あなたが悪魔を殺すこと
+%%%%
+you or your undead slaves kill artificial beings
+
+あなたと不死の下僕が人工的な怪物を滅ぼすこと
+%%%%
+you or your allies kill holy beings
+
+あなたと従者が神聖な存在を殺すこと
+%%%%
+you or your god-given allies kill holy beings
+
+あなたと神の与えし従者が神聖な存在を殺すこと
+%%%%
+your undead slaves kill holy beings
+
+あなたの不死の従者が神聖な存在を殺すこと
+%%%%
+you or your undead slaves kill holy beings
+
+あなたと不死の従者が神聖な存在を殺すこと
+%%%%
+you or your allied orcs kill holy beings
+
+あなたとオークの従者が神聖な存在を殺すこと
+%%%%
+you kill holy beings
+
+あなたが神聖な存在を殺すこと
+%%%%
+you kill the priests of other religions
+
+他宗教の司祭を殺すこと
+%%%%
+you kill wizards and other users of magic
+
+魔法使いおよび様々な魔力の使い手を殺すこと
+%%%%
+you kill beings that bring fire to the dungeon
+
+迷宮へ火をもたらすものを殺すこと
+%%%%
+you perform cannibalism
+
+同種食らいをすること
+%%%%
+you desecrate holy remains
+
+聖なる遺骸を汚すこと
+%%%%
+you drink blood
+
+血液を飲むこと
+%%%%
+you use necromancy
+
+死霊術を使うこと
+%%%%
+you use unholy magic or items
+
+不浄な魔法やアイテムを使うこと
+%%%%
+you attack non-hostile holy beings
+
+敵対的でない聖なる存在を攻撃すること
+%%%%
+you or your allies kill non-hostile holy beings
+
+あなたと従者が敵対的でない聖なる存在を殺すこと
+%%%%
+you attack neutral beings
+
+中立なるものを攻撃すること
+%%%%
+you attack allies
+
+従者を攻撃すること
+%%%%
+you attack allied orcs
+
+オークの従者を攻撃すること
+%%%%
+you attack fellow slimes
+
+仲間のスライムを攻撃すること
+%%%%
+you or your allies destroy plants
+
+あなたと従者が植物を傷つけること
+%%%%
+allied flora die
+
+従えた植物が死ぬこと
+%%%%
+you use necromancy on corpses, chunks or skeletons
+
+死霊術を死体や肉片および骸骨に用いること
+%%%%
+you destroy spellbooks
+
+魔法書を破棄すること
+%%%%
+you use fiery magic or items
+
+火を伴う魔術やアイテムを使うこと
+%%%%
+you allow allies to die
+
+従者を見殺しにすること
+%%%%
+you deliberately mutate yourself
+
+わざと変異すること
+%%%%
+you transform yourself
+
+変形すること
+%%%%
+you polymorph monsters
+
+モンスターに変化すること
+%%%%
+you use unclean or chaotic magic or items
+
+不浄な、もしくは混沌なる魔術やアイテムを使うこと
+%%%%
+you butcher sentient beings
+
+意識のある存在の死体を切り刻むこと
+%%%%
+you or your allies attack monsters in a sanctuary
+
+あなたと従者が聖域の中のモンスターを攻撃すること
+%%%%
+you poison monsters
+
+モンスターを毒に冒すこと
+%%%%
+you attack intelligent monsters in an unchivalric manner
+
+モンスターを騎士道に反する行いで攻撃すること
+%%%%
+you kill living things while asking for your life to be spared
+
+生命が保護されている間に生命ある者を殺すこと
+%%%%
+you use holy magic or items
+
+聖なる魔法やアイテムを使うこと
+%%%%
+you memorise spells
+
+魔法を習得すること
+%%%%
+you attempt to cast spells
+
+魔法を唱えようとすること
+%%%%
+you train magic skills
+
+魔術系のスキルを訓練すること
+%%%%
+you desecrate orcish remains
+
+オークの遺骸を汚すこと
+%%%%
+you destroy orcish idols
+
+オークの像を破壊すること
+%%%%
+you kill slimes
+
+スライムを殺すこと
+%%%%
+you hasten yourself or others
+
+自分や他者を加速させること
+%%%%
+use unnaturally quick items
+
+不自然に素早いアイテムを使うこと
+%%%%
+You have lost your religion!
+
+あなたは信仰を捨て去った！
+%%%%
+does not appreciate desertion%s!
+
+は%s棄教する行為を喜ばない！
+%%%%
+You sense decay.
+
+あなたは腐敗臭を感じた。
+%%%%
+reclaims all of your granted undead slaves!
+
+はあなたが従える不死の下僕の返還を要求した！
+%%%%
+'s voice booms out, "Who do you think you are?"
+
+の声が響いた: 『おまえは何様のつもりだ？』
+%%%%
+All of your followers decide to abandon you.
+
+従者たちはあなたを見捨てることを決意した。
+%%%%
+Your devine halo fades away.
+
+あなたの光輪は薄れていった。
+%%%%
+All of your fellow slimes turn on you.
+
+仲間のスライムたちはあなたに敵対した。
+%%%%
+The plants of the dungeon turn on you.
+
+ダンジョン内の植物はあなたに敵対した。
+%%%%
+Your aura of darkness fades away.
+
+あなたの周囲の闇のオーラは薄れていった。
+%%%%
+Your funded stores close, unable to pay their debts without your funds.
+
+あなたが投資していた店舗は閉鎖され、その負債はあなたの資本なしには返すことができない。
+%%%%
+Your storm instantly dissipates.
+
+あなたの周囲の嵐はたちまち消え去った。
+%%%%
+Your resistance to fire fades away.
+
+あなたの火への耐性は薄れていった。
+%%%%
+Your resistance to cold fades away.
+
+あなたの冷気への耐性は薄れていった。
+%%%%
+Your resistance to electricity fades away.
+
+あなたの電撃への耐性は薄れていった。
+%%%%
+Your resistance to physical damage fades away.
+
+あなたの防御力は弱まっていった。
+%%%%
+continues to slow your movements.
+
+はあなたの動きを遅くし続けている。
+%%%%
+The divine host forsakes you.
+
+神聖な神はあなたを見捨てた。
+%%%%
+welcomes you%s!
+
+はあなたの%s入信を歓迎した！
+%%%%
+begins to support your attributes as your movement slows.
+
+はあなたの速度が低下するに従って能力値を補強する。
+%%%%
+You can now bend time to slow others.
+
+あなたは時間を歪めて他者を遅くすることができるようになった。
+%%%%
+will now protect you from your own clouds.
+
+はあなた自身が発する雲によりあなたを守護する。
+%%%%
+Your unholy and evil allies forsake you.
+
+あなたの邪悪で不浄な仲間たちはあなたを見限った。
+%%%%
+Your unclean and chaotic allies forsake you.
+
+あなたの不浄で混沌じみた仲間たちはあなたを見限った。
+%%%%
+Your magic-using allies forsake you.
+
+あなたの魔術を操る仲間たちはあなたを見限った。
+%%%%
+You can now call upon Trog to burn spellbooks in your surroundings.
+
+あなたはトログの力を借りて周辺の魔法書を燃やすことができるようになった。
+%%%%
+You can now call upon Fedhas to speed up the decay of corpses.
+
+あなたはフェダスの力を借りて死体の腐敗を促進することができるようになった。
+%%%%
+The plants of the dungeon cease their hostilities.
+
+ダンジョン内の植物は攻撃性を納めた。
+%%%%
+says: Farewell. Go and aid the meek with
+
+は『さらばだ。%sと共に弱き者を助けるがいい』と言った。
+%%%%
+says: Farewell. Go and vanquish evil with
+
+は『さらばだ。%sと共に悪を打ち負かすがいい』と言った。
+%%%%
+says: Farewell. Go and enforce order with
+
+は『さらばだ。%sと共に秩序を執行するがいい』と言った。
+%%%%
+says: Your evil deeds will not go unpunished!
+
+は『汝の悪行が罪を免れることはない！』と言った。
+%%%%
+says: You will pay for your evil ways, mortal!
+
+は『定命の者よ！ 悪の道に走った償いはしてもらうぞ！』と言った。
+%%%%
+says: You will suffer for embracing such %s!
+
+は『%sを受け入れれば苦しむことになるぞ！』と言った。
+%%%%
+grants you a jelly!
+
+はジェリーをあなたに授けた！
+%%%%
+You pay a service fee of %d gold.
+
+あなたは入会金として%dゴールドを支払った。
+%%%%
+waives the service fee.
+
+は入会金を免除してくれた。
+%%%%
+offers you a free set of potion effects!
+
+は複数の薬の効果を無料で授けてくれる！
+%%%%
+You have enough gold to %s.
+
+あなたは%sのに十分な額の所持金がある。
+%%%%
+You bow before the missionary of Beogh.
+
+あなたはベオの宣教師の前に跪いた。
+%%%%
+You %s the altar of %s.
+
+あなたは%sの祭壇の前で%s。
+%%%%
+does not accept worship from the ignorant!
+
+は無知なる者の入信を受け入れない！
+%%%%
+does not accept service from beggars like you!
+
+はあなたのような貧民の入会はお断りだ！
+%%%%
+The service fee for joining is currently %d gold; you have none.
+
+入会金は現在%dゴールドだ; あなたは一文たりとも持っていない。
+%%%%
+The service fee for joining is currently %d gold; you only have %d.
+
+入会金は現在%dゴールドだ; あなたは%dゴールドしか持っていない。
+%%%%
+does not accept worship from the loveless!
+
+は親愛無き者の入信を拒否した！
+%%%%
+does not accept worship for those who cannot deal a hand of cards!
+
+はカードデッキを操れない者の入信を拒否した！
+%%%%
+says: How dare you come in such a loathsome form!
+
+は言った: 『よくもまあそんな胸糞悪い姿でのこのこと現れたものだ！』
+%%%%
+does not accept worship from those such as you!
+
+はあなたのような者の入信を拒否した！
+%%%%
+refuses to forgive you so easily!
+
+はあなたをそう簡単に許しはしない！
+%%%%
+Gozag will waive the service fee if you
+
+ゴザーグは今入会するなら入会金を免除してくれるようだ。
+%%%%
+The service fee for joining is currently %d gold; you have %d.
+
+入会金は現在%dゴールドだ; あなたは%dゴールド所持している。
+%%%%
+%sDo you wish to %sjoin this religion?
+
+%sあなたは%s入信しますか？
+%%%%
+############################## species.cc ##############################
+%%%%
+coil in front of
+
+とぐろを巻いた
+%%%%
+curl up in front of
+
+体を丸めた
+%%%%
+sit before
+
+座った
+%%%%
+kneel at
+
+ひざまずいた
+%%%%
 ############################## state.cc ##############################
 %%%%
 %s comes into view.
@@ -2342,4 +3210,44 @@ returns to your pack!
 fails to return to your pack!
 
 はあなたの手元に戻ってきたが、うまく受け取れなかった！
+%%%%
+############################## transform.cc ##############################
+%%%%
+hover solemnly before
+
+浮かびながら姿勢を正した
+%%%%
+############################## xom.cc ##############################
+%%%%
+a very special plaything of Xom.
+
+あなたはゾムの慰みものだ。
+%%%%
+a special plaything of Xom.
+
+あなたはゾムの特別な慰みものだ。
+%%%%
+a plaything of Xom.
+
+あなたはゾムのお気に入りの慰みものだ。
+%%%%
+a toy of Xom.
+
+あなたはゾムの玩具だ。
+%%%%
+a favourite toy of Xom.
+
+あなたはゾムのお気に入りの玩具だ。
+%%%%
+a beloved toy of Xom.
+
+あなたはゾムの大切な玩具だ。
+%%%%
+Xom's teddy bear.
+
+あなたはゾムのテディベアだ。
+%%%%
+a BORING thing.
+
+あなたはゾムに飽きられてしまった。
 %%%%

@@ -63,27 +63,29 @@ static bool _confirm_pray_sacrifice(god_type god)
 
 string god_prayer_reaction()
 {
-    string result = uppercase_first(god_name(you.religion));
-    if (crawl_state.player_is_dead())
-        result += " was ";
-    else
-        result += " is ";
-    result +=
+    string result = jtrans(god_name(you.religion)) + "は";
+    result += jtrans(
         (you.piety >= piety_breakpoint(5)) ? "exalted by your worship" :
         (you.piety >= piety_breakpoint(4)) ? "extremely pleased with you" :
         (you.piety >= piety_breakpoint(3)) ? "greatly pleased with you" :
         (you.piety >= piety_breakpoint(2)) ? "most pleased with you" :
         (you.piety >= piety_breakpoint(1)) ? "pleased with you" :
         (you.piety >= piety_breakpoint(0)) ? "aware of your devotion"
-                                           : "noncommittal";
-    result += ".";
+                                           : "noncommittal");
+    result += "。";
+
+    if (crawl_state.player_is_dead())
+    {
+        result = replace_all(result, "ている", "ていた");
+        result = replace_all(result, "ていない", "ていなかった");
+    }
 
     return result;
 }
 
 static bool _bless_weapon(god_type god, brand_type brand, colour_t colour)
 {
-    int item_slot = prompt_invent_item("Brand which weapon?", MT_INVLIST,
+    int item_slot = prompt_invent_item(jtrans("Brand which weapon?").c_str(), MT_INVLIST,
                                        OSEL_BLESSABLE_WEAPON, true, true, false);
 
     if (item_slot == PROMPT_NOTHING || item_slot == PROMPT_ABORT)
@@ -95,15 +97,14 @@ static bool _bless_weapon(god_type god, brand_type brand, colour_t colour)
     if (!is_brandable_weapon(wpn, brand == SPWPN_HOLY_WRATH, true))
         return false;
 
-    string prompt = "Do you wish to have " + wpn.name(DESC_YOUR)
-                       + " ";
+    string prompt = wpn.name(DESC_YOUR);
     if (brand == SPWPN_PAIN)
-        prompt += "bloodied with pain";
+        prompt += "を血に染め苦痛の力を与え";
     else if (brand == SPWPN_DISTORTION)
-        prompt += "corrupted";
+        prompt += "に崩壊と歪曲の力を与え";
     else
-        prompt += "blessed";
-    prompt += "?";
+        prompt += "を祝福し";
+    prompt += "ますか？";
 
     if (!yesno(prompt.c_str(), true, 'n'))
     {
@@ -144,22 +145,22 @@ static bool _bless_weapon(god_type god, brand_type brand, colour_t colour)
     calc_mp(); // in case the old brand was antimagic,
     you.redraw_armour_class = true; // protection,
     you.redraw_evasion = true;      // or evasion
-    string desc  = old_name + " "
-                 + (god == GOD_SHINING_ONE   ? "blessed by the Shining One" :
-                    god == GOD_LUGONU        ? "corrupted by Lugonu" :
-                    god == GOD_KIKUBAAQUDGHA ? "bloodied by Kikubaaqudgha"
-                                             : "touched by the gods");
+    string desc = old_name + " "
+                + jtrans(god == GOD_SHINING_ONE   ? "blessed by the Shining One" :
+                         god == GOD_LUGONU        ? "corrupted by Lugonu" :
+                         god == GOD_KIKUBAAQUDGHA ? "bloodied by Kikubaaqudgha"
+                                                  : "touched by the gods");
 
     take_note(Note(NOTE_ID_ITEM, 0, 0,
               wpn.name(DESC_A).c_str(), desc.c_str()));
     wpn.flags |= ISFLAG_NOTED_ID;
     wpn.props[FORCED_ITEM_COLOUR_KEY] = colour;
 
-    mprf(MSGCH_GOD, "Your %s shines brightly!", wpn.name(DESC_QUALNAME).c_str());
+    mprf(MSGCH_GOD, jtrans("Your %s shines brightly!").c_str(), wpn.name(DESC_QUALNAME).c_str());
 
     flash_view(UA_PLAYER, colour);
 
-    simple_god_message(" booms: Use this gift wisely!");
+    simple_god_message(jtrans("booms: Use this gift wisely!").c_str());
 
     if (god == GOD_SHINING_ONE)
     {
@@ -204,7 +205,7 @@ bool can_do_capstone_ability(god_type god)
 static bool _altar_prayer()
 {
     // Different message from when first joining a religion.
-    mpr("You prostrate yourself in front of the altar and pray.");
+    mpr(jtrans("You prostrate yourself in front of the altar and pray."));
 
     god_acting gdact;
 
@@ -215,7 +216,7 @@ static bool _altar_prayer()
     // TSO blesses weapons with holy wrath, and demon weapons specially.
     else if (can_do_capstone_ability(GOD_SHINING_ONE))
     {
-        simple_god_message(" will bless one of your weapons.");
+        simple_god_message(jtrans("will bless one of your weapons.").c_str());
         more();
         return _bless_weapon(GOD_SHINING_ONE, SPWPN_HOLY_WRATH, YELLOW);
     }
@@ -223,7 +224,7 @@ static bool _altar_prayer()
     // Lugonu blesses weapons with distortion.
     else if (can_do_capstone_ability(GOD_LUGONU))
     {
-        simple_god_message(" will brand one of your weapons with the corruption of the Abyss.");
+        simple_god_message(jtrans("will brand one of your weapons with the corruption of the Abyss.").c_str());
         more();
         return _bless_weapon(GOD_LUGONU, SPWPN_DISTORTION, MAGENTA);
     }
@@ -234,7 +235,7 @@ static bool _altar_prayer()
         if (you.species != SP_FELID)
         {
             simple_god_message(
-                " will bloody your weapon with pain or grant you the Necronomicon.");
+                jtrans("will bloody your weapon with pain or grant you the Necronomicon.").c_str());
 
             more();
 
@@ -242,7 +243,7 @@ static bool _altar_prayer()
                 return true;
 
             // If not, ask if the player wants a Necronomicon.
-            if (!yesno("Do you wish to receive the Necronomicon?", true, 'n'))
+            if (!yesno(jtrans("Do you wish to receive the Necronomicon?").c_str(), true, 'n'))
             {
                 canned_msg(MSG_OK);
                 return false;
@@ -255,7 +256,7 @@ static bool _altar_prayer()
         if (thing_created == NON_ITEM || !move_item_to_grid(&thing_created, you.pos()))
             return false;
 
-        simple_god_message(" grants you a gift!");
+        simple_god_message(jtrans("grants you a gift!").c_str());
         more();
 
         you.one_time_ability_used.set(you.religion);
@@ -281,7 +282,7 @@ static bool _altar_pray_or_convert()
 
     if (you.species == SP_DEMIGOD)
     {
-        mpr("A being of your status worships no god.");
+        mpr(jtrans("A being of your status worships no god."));
         return false;
     }
 
@@ -306,8 +307,8 @@ static void _zen_meditation()
 {
     const mon_holy_type holi = you.holiness();
     mprf(MSGCH_PRAY,
-         "You spend a moment contemplating the meaning of %s.",
-         holi == MH_NONLIVING ? "existence" : holi == MH_UNDEAD ? "unlife" : "life");
+         jtrans("You spend a moment contemplating the meaning of %s.").c_str(),
+         holi == MH_NONLIVING ? "存在する" : holi == MH_UNDEAD ? "死せる" : "生きる");
 }
 
 /**
@@ -353,9 +354,9 @@ void pray(bool allow_altar_prayer)
         return;
     }
 
-    mprf(MSGCH_PRAY, "You offer a %sprayer to %s.",
-         you.cannot_speak() ? "silent " : "",
-         god_name(you.religion).c_str());
+    mprf(MSGCH_PRAY, jtrans("You offer a %sprayer to %s.").c_str(),
+         you.cannot_speak() ? "沈黙しながら" : "",
+         jtrans(god_name(you.religion)).c_str());
 
     you.turn_is_over = _offer_items()
                       || (you_worship(GOD_FEDHAS) && fedhas_fungal_bloom());
@@ -365,7 +366,7 @@ void pray(bool allow_altar_prayer)
     else if (you_worship(GOD_GOZAG))
         mprf(MSGCH_GOD, "%s", getSpeakString("Gozag prayer").c_str());
     else if (player_under_penance())
-        simple_god_message(" demands penance!");
+        simple_god_message(jtrans("demands penance!").c_str());
     else
         mprf(MSGCH_PRAY, you.religion, "%s", god_prayer_reaction().c_str());
 
@@ -441,11 +442,11 @@ static bool _zin_donate_gold()
 {
     if (you.gold == 0)
     {
-        mpr("You don't have anything to sacrifice.");
+        mpr(jtrans("You don't have anything to sacrifice."));
         return false;
     }
 
-    if (!yesno("Do you wish to donate half of your money?", true, 'n'))
+    if (!yesno(jtrans("Do you wish to donate half of your money?").c_str(), true, 'n'))
     {
         canned_msg(MSG_OK);
         return false;
@@ -455,8 +456,9 @@ static bool _zin_donate_gold()
     const int donation = _gold_to_donation(donation_cost);
 
 #if defined(DEBUG_DIAGNOSTICS) || defined(DEBUG_SACRIFICE) || defined(DEBUG_PIETY)
-    mprf(MSGCH_DIAGNOSTICS, "A donation of $%d amounts to an "
-         "increase of piety by %d.", donation_cost, donation);
+    mprf(MSGCH_DIAGNOSTICS,
+         jtrans("A donation of $%d amounts to an increase of piety by %d.").c_str(),
+         donation_cost, donation);
 #endif
     // Take a note of the donation.
     take_note(Note(NOTE_DONATE_MONEY, donation_cost));
@@ -467,7 +469,7 @@ static bool _zin_donate_gold()
 
     if (donation < 1)
     {
-        simple_god_message(" finds your generosity lacking.");
+        simple_god_message(jtrans("finds your generosity lacking.").c_str());
         return false;
     }
 
@@ -481,22 +483,24 @@ static bool _zin_donate_gold()
     if (player_under_penance())
     {
         if (estimated_piety >= you.penance[GOD_ZIN])
-            mpr("You feel that you will soon be absolved of all your sins.");
+            mpr(jtrans("You feel that you will soon be absolved of all your sins."));
         else
-            mpr("You feel that your burden of sins will soon be lighter.");
+            mpr(jtrans("You feel that your burden of sins will soon be lighter."));
     }
     else
     {
-        string result = "You feel that " + god_name(GOD_ZIN) + " will soon be ";
-        result +=
+        string result = "あなたは" + jtrans(god_name(GOD_ZIN)) + "が";
+        result += jtrans(
             (estimated_piety >= piety_breakpoint(5)) ? "exalted by your worship" :
             (estimated_piety >= piety_breakpoint(4)) ? "extremely pleased with you" :
             (estimated_piety >= piety_breakpoint(3)) ? "greatly pleased with you" :
             (estimated_piety >= piety_breakpoint(2)) ? "most pleased with you" :
             (estimated_piety >= piety_breakpoint(1)) ? "pleased with you" :
             (estimated_piety >= piety_breakpoint(0)) ? "aware of your devotion"
-                                                     : "noncommittal";
-        result += (donation >= 30 && you.piety < piety_breakpoint(5)) ? "!" : ".";
+                                                     : "noncommittal");
+
+        result += "ように思えた";
+        result += (donation >= 30 && you.piety < piety_breakpoint(5)) ? "！" : "。";
 
         mpr(result);
     }

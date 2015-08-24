@@ -118,6 +118,7 @@ static TextDB AllDBs[] =
     TextDB("misc", "database/",
             "miscname.txt", // names for miscellaneous things
             "godname.txt",  // god-related names (mostly His Xomminess)
+            "ja/jtrans_godname.txt",
             "montitle.txt", // titles for monsters (i.e. uniques)
             nullptr),
 
@@ -154,7 +155,9 @@ static TextDB AllDBs[] =
            "jtrans_attitude_change.txt",
            "jtrans_beam.txt",
            "jtrans_behold.txt",
+           */
            "jtrans_branch_data.txt",
+           /*
            "jtrans_chardump.txt",
            */
            "jtrans_character.txt",
@@ -166,8 +169,8 @@ static TextDB AllDBs[] =
            "jtrans_decks.txt",
            */
            "jtrans_delay.txt",
-           /*
            "jtrans_describe.txt",
+           /*
            "jtrans_dgn_overview.txt",
            "jtrans_dgn_shoals.txt",
            */
@@ -186,9 +189,9 @@ static TextDB AllDBs[] =
            */
            "jtrans_godconduct.txt",
            "jtrans_godname.txt",
-           /*
            "jtrans_godpassive.txt",
            "jtrans_godprayer.txt",
+           /*
            "jtrans_autofight_lua.txt",
            "jtrans_magicspell.txt",
            */

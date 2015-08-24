@@ -609,6 +609,70 @@ no special abilities
 
 特になし
 %%%%
+, Hunger
+
+, 空腹
+%%%%
+, Piety
+
+, 信仰値
+%%%%
+, Breath
+
+, 息
+%%%%
+, Delay
+
+, 時間
+%%%%
+, Pain
+
+, 苦痛
+%%%%
+, Exhaustion
+
+, 疲労
+%%%%
+, Instant
+
+, 即時
+%%%%
+, Fruit
+
+, 果物
+%%%%
+, Fruit or Piety
+
+, 果物または信仰値
+%%%%
+, Level drain
+
+, レベル減少
+%%%%
+, Stat drain
+
+, 能力値減少
+%%%%
+, Skill drain
+
+, スキル減少
+%%%%
+, %d Gold
+
+, %dゴールド
+%%%%
+, Free
+
+, 無料
+%%%%
+, Gold
+
+, 金
+%%%%
+None
+
+なし
+%%%%
 No description found.
 
 この能力の説明は見つからなかった。

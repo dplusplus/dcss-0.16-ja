@@ -25,6 +25,7 @@
 #include "itemname.h"
 #include "itemprop.h"
 #include "item_use.h"
+#include "japanese.h"
 #include "message.h"
 #include "player-stats.h"
 #include "religion.h"
@@ -568,7 +569,7 @@ string player::hand_name(bool plural, bool *can_plural) const
 
     const string singular = _hand_name_singular();
     if (plural && *can_plural)
-        return pluralise(singular);
+        return jpluralise(singular, "両");
 
     return singular;
 }

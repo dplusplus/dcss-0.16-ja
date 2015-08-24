@@ -735,14 +735,14 @@ const string make_cost_description(ability_type ability)
     string ret;
     if (abil.mp_cost)
     {
-        ret += make_stringf(", %d %sMP", abil.mp_cost,
-            abil.flags & ABFLAG_PERMANENT_MP ? "Permanent " : "");
+        ret += make_stringf(", %sMP %d",
+                            (abil.flags & ABFLAG_PERMANENT_MP ? "最大" : ""),  abil.mp_cost);
     }
 
     if (abil.hp_cost)
     {
-        ret += make_stringf(", %d %sHP", abil.hp_cost.cost(you.hp_max),
-            abil.flags & ABFLAG_PERMANENT_HP ? "Permanent " : "");
+        ret += make_stringf(", %sHP %d",
+                            (abil.flags & ABFLAG_PERMANENT_HP ? "最大" : ""),  abil.hp_cost.cost(you.hp_max));
     }
 
     if (abil.zp_cost)
@@ -752,51 +752,51 @@ const string make_cost_description(ability_type ability)
         && (you.undead_state() != US_SEMI_UNDEAD
             || you.hunger_state > HS_STARVING))
     {
-        ret += ", Hunger"; // randomised and exact amount hidden from player
+        ret += jtrans(", Hunger"); // randomised and exact amount hidden from player
     }
 
     if (abil.piety_cost || abil.flags & ABFLAG_PIETY)
-        ret += ", Piety"; // randomised and exact amount hidden from player
+        ret += jtrans(", Piety"); // randomised and exact amount hidden from player
 
     if (abil.flags & ABFLAG_BREATH)
-        ret += ", Breath";
+        ret += jtrans(", Breath");
 
     if (abil.flags & ABFLAG_DELAY)
-        ret += ", Delay";
+        ret += jtrans(", Delay");
 
     if (abil.flags & ABFLAG_PAIN)
-        ret += ", Pain";
+        ret += jtrans(", Pain");
 
     if (abil.flags & ABFLAG_EXHAUSTION)
-        ret += ", Exhaustion";
+        ret += jtrans(", Exhaustion");
 
     if (abil.flags & ABFLAG_INSTANT)
-        ret += ", Instant"; // not really a cost, more of a bonus - bwr
+        ret += jtrans(", Instant"); // not really a cost, more of a bonus - bwr
 
     if (abil.flags & ABFLAG_FRUIT)
-        ret += ", Fruit";
+        ret += jtrans(", Fruit");
 
     if (abil.flags & ABFLAG_VARIABLE_FRUIT)
-        ret += ", Fruit or Piety";
+        ret += jtrans(", Fruit or Piety");
 
     if (abil.flags & ABFLAG_LEVEL_DRAIN)
-        ret += ", Level drain";
+        ret += jtrans(", Level drain");
 
     if (abil.flags & ABFLAG_STAT_DRAIN)
-        ret += ", Stat drain";
+        ret += jtrans(", Stat drain");
 
     if (abil.flags & ABFLAG_SKILL_DRAIN)
-        ret += ", Skill drain";
+        ret += jtrans(", Skill drain");
 
     if (abil.flags & ABFLAG_GOLD)
     {
         const int amount = get_gold_cost(ability);
         if (amount)
-            ret += make_stringf(", %d Gold", amount);
+            ret += make_stringf(jtrans(", %d Gold").c_str(), amount);
         else if (ability == ABIL_GOZAG_POTION_PETITION)
-            ret += ", Free";
+            ret += jtrans(", Free");
         else
-            ret += ", Gold";
+            ret += jtrans(", Gold");
     }
 
     if (abil.flags & ABFLAG_SACRIFICE)
@@ -809,7 +809,7 @@ const string make_cost_description(ability_type ability)
 
     // If we haven't output anything so far, then the effect has no cost
     if (ret.empty())
-        return "None";
+        return jtrans("None");
 
     ret.erase(0, 2);
     return ret;

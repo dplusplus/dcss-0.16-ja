@@ -1,0 +1,29 @@
+%%%%
+Your %s %s is bound but not your %s %s.
+
+あなたの%sは呪縛されているが、%sは呪縛されていない。
+%%%%
+Your weapon %s is %sbound.
+
+あなたの武器は呪縛されて%s。
+%%%%
+Your shield %s is %sbound.
+
+あなたの盾は呪縛されて%s。
+%%%%
+You are %s bound in armour and magic.
+
+あなたは鎧と魔術は%s。
+%%%%
+You are %s bound in armour.
+
+あなたの鎧は%s。
+%%%%
+You are %s bound in magic.
+
+あなたの魔術は%s。
+%%%%
+You are %s bound.
+
+あなたは%s。
+%%%%

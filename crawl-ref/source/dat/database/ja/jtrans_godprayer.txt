@@ -1,0 +1,121 @@
+%%%%
+Brand which weapon?
+
+どの武器を強化してもらいますか？
+%%%%
+blessed by the Shining One
+
+輝けるものに祝福されている。
+%%%%
+corrupted by Lugonu
+
+ルゴヌに崩壊と歪曲の力を与えられている。
+%%%%
+touched by the gods
+
+神の力を与えられている。
+%%%%
+Your %s shines brightly!
+
+あなたの%sは眩しく輝いた！
+%%%%
+booms: Use this gift wisely!
+
+の声が轟いた：『我が与えし物賢く使うべし！』
+%%%%
+bloodied by Kikubaaqudgha
+
+キクバークッグァに苦痛の力を与えられている。
+%%%%
+You prostrate yourself in front of the altar and pray.
+
+あなたは祭壇の前でひれ伏し、祈った。
+%%%%
+will bless one of your weapons.
+
+はあなたの武器の一つを祝福してくれる。
+%%%%
+will brand one of your weapons with the corruption of the Abyss.
+
+はあなたの武器の一つをアビスの崩壊の力により強化してくれる。
+%%%%
+will bloody your weapon with pain or grant you the Necronomicon.
+
+はあなたの武器の一つを血に染め苦痛の力によって強化するか、もしくはネクロノミコンを授けてくれる。
+%%%%
+Do you wish to receive the Necronomicon?
+
+ネクロノミコンを受け取ることを望みますか？
+%%%%
+grants you a gift!
+
+はあなたに贈り物を授けた！
+%%%%
+A being of your status worships no god.
+
+あなたは神を信仰していない。
+%%%%
+You spend a moment contemplating the meaning of %s.
+
+あなたは一瞬、%sことの意味について考えた。
+%%%%
+You offer a %sprayer to %s.
+
+あなたは%s%sに祈りを捧げた。
+%%%%
+demands penance!
+
+は苦行を要求している！
+%%%%
+You don't have anything to sacrifice.
+
+あなたは捧げるものを持っていない。
+%%%%
+Do you wish to donate half of your money?
+
+所持金の半分を寄付しますか？
+%%%%
+A donation of $%d amounts to an increase of piety by %d.
+
+$%dの寄付により信仰値が%d上昇した。
+%%%%
+finds your generosity lacking.
+
+はあなたには気前のよさが足りないと感じた。
+%%%%
+You feel that you will soon be absolved of all your sins.
+
+あなたはもうすぐ全ての罪が免除されるような気がした。
+%%%%
+You feel that your burden of sins will soon be lighter.
+
+あなたは早晩罪の重荷が軽くなるような気がした。
+%%%%
+exalted by your worship
+
+あなたの崇拝を誇りにしている
+%%%%
+extremely pleased with you
+
+あなたに極めて満足している
+%%%%
+greatly pleased with you
+
+あなたに大いに満足している
+%%%%
+most pleased with you
+
+あなたにかなり満足している
+%%%%
+pleased with you
+
+あなたに満足している
+%%%%
+aware of your devotion
+
+あなたの献身に気付いている
+%%%%
+noncommittal
+
+あなたに特別な関心を持っていない
+%%%%

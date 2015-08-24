@@ -6,6 +6,7 @@
 
 #include "AppHdr.h"
 
+#include "database.h"
 #include "japanese.h"
 
 /**
@@ -57,4 +58,9 @@ const char * counter_suffix(const item_def &item)
     default:
         return "(buggy)";
     }
+}
+
+string jpluralise(const string &name, const char *prefix, const char *suffix)
+{
+    return prefix + jtrans(name) + suffix;
 }
