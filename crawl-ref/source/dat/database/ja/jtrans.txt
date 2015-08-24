@@ -27,18 +27,6 @@ Do you want to play this combination?
 
 この組み合わせで開始しますか？
 %%%%
-Found
-
-を見つけた。
-%%%%
-Found %s
-
-%sを見つけた。
-%%%%
-Found %s %s.
-
-%s個の%sを見つけた。
-%%%%
 ############################## butcher.cc ##############################
 %%%%
 Desecrating this corpse would be a sin. Continue anyway?
@@ -3216,6 +3204,44 @@ fails to return to your pack!
 hover solemnly before
 
 浮かびながら姿勢を正した
+%%%%
+############################## travel.cc ##############################
+%%%%
+Found
+
+を見つけた。
+%%%%
+Found %s
+
+%sを見つけた。
+%%%%
+Found %s %s.
+
+%dつの%sを見つけた。
+%%%%
+items
+
+アイテム
+%%%%
+shops
+
+店
+%%%%
+altars
+
+祭壇
+%%%%
+portals
+
+ポータル
+%%%%
+stairs
+
+階段
+%%%%
+runed doors
+
+ルーンが刻まれたドア
 %%%%
 ############################## xom.cc ##############################
 %%%%

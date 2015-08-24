@@ -39,6 +39,7 @@
 #include "itemname.h"
 #include "itemprop.h"
 #include "items.h"
+#include "japanese.h"
 #include "libutil.h"
 #include "macro.h"
 #include "message.h"
@@ -4451,14 +4452,16 @@ template <class C> void explore_discoveries::say_any(
 
     if (has_duplicates(coll.begin(), coll.end()))
     {
-        mprf("Found %s %s.", number_in_words(size).c_str(), category);
+        mprf("%d%sの%sを見つけた。", size, general_counter_suffix(size),
+                                     jtrans(category).c_str());
         return;
     }
 
     const string message = to_separated_line(coll.begin(), coll.end()) + jtrans("Found");
 
     if (strwidth(message) >= get_number_of_cols())
-        mprf("Found %s %s.", number_in_words(size).c_str(), category);
+        mprf("%d%sの%sを見つけた。", size, general_counter_suffix(size),
+                                     jtrans(category).c_str());
     else
         mpr(message);
 }

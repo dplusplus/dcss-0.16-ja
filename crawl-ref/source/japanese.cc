@@ -60,6 +60,20 @@ const char * counter_suffix(const item_def &item)
     }
 }
 
+/*
+ * 個数のみによって決まる汎用の助数詞を返す
+ * size <= 9 までは 1つ～9つ
+ * size > 10 は10個～
+ * アイテムその他の種類によっては無理が出るが、10以上いっぺんに出る状況は限られるので放置
+ */
+const char * general_counter_suffix(const int size)
+{
+    if (size <= 9)
+        return "つ";
+    else
+        return "個";
+}
+
 string jpluralise(const string &name, const char *prefix, const char *suffix)
 {
     return prefix + jtrans(name) + suffix;
