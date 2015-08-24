@@ -354,7 +354,7 @@ void InvMenu::set_preselect(const vector<SelItem> *pre)
 
 string slot_description()
 {
-    return make_stringf(jtrans("%d/%d slots").c_str(), inv_count(), ENDOFPACK);
+    return make_stringf(jtransc("%d/%d slots"), inv_count(), ENDOFPACK);
 }
 
 void InvMenu::set_title(const string &s)
@@ -1366,7 +1366,7 @@ vector<SelItem> prompt_invent_items(
 
         if (need_prompt)
         {
-            mprf(MSGCH_PROMPT, jtrans("%s (<w>?</w> for menu, <w>Esc</w> to quit)").c_str(),
+            mprf(MSGCH_PROMPT, jtransc("%s (<w>?</w> for menu, <w>Esc</w> to quit)"),
                  prompt);
         }
 
