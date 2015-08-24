@@ -1002,14 +1002,15 @@ string jtrans(const string &key, const bool linefeed)
 {
     if (key == "") return "";
 
-    string text = _query_database(JtransDB, key, true, true);
+    string tmp_key(key);
+    string text = _query_database(JtransDB, trim_string(tmp_key), true, true);
 
     if (text == "") return key;
 
     if (!linefeed)
     {
-        string text2(text.begin(), text.end()-1);
-        return text2;
+        string chomped_text(text.begin(), text.end()-1);
+        return chomped_text;
     }
 
     return text;
