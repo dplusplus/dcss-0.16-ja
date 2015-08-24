@@ -38,7 +38,7 @@ static bool _should_butcher(const item_def& corpse)
 {
     if (is_forbidden_food(corpse)
         && (Options.confirm_butcher == CONFIRM_NEVER
-            || !yesno(jtrans("Desecrating this corpse would be a sin. Continue anyway?").c_str(),
+            || !yesno(jtransc("Desecrating this corpse would be a sin. Continue anyway?"),
                       false, 'n', true, false)))
     {
         if (Options.confirm_butcher != CONFIRM_NEVER)
@@ -92,7 +92,7 @@ void finish_butchering(item_def& corpse, bool bottling)
     }
     else
     {
-        mprf(jtrans("You butcher %s.").c_str(),
+        mprf(jtransc("You butcher %s."),
              corpse.name(DESC_THE).c_str());
 
         butcher_corpse(corpse);
@@ -177,8 +177,8 @@ void butchery(item_def* specific_corpse)
 
     if (corpses.empty())
     {
-        mprf(jtrans("There isn't anything to %sbutcher here.").c_str(),
-             bottle_blood ? jtrans("bottle or").c_str() : "");
+        mprf(jtransc("There isn't anything to %sbutcher here."),
+             bottle_blood ? jtransc("bottle or") : "");
         return;
     }
 
@@ -192,8 +192,8 @@ void butchery(item_def* specific_corpse)
         if (Options.confirm_butcher == CONFIRM_NEVER
             && !_should_butcher(*corpses[0].first))
         {
-            mprf(jtrans("There isn't anything suitable to %sbutcher here.").c_str(),
-                 bottle_blood ? jtrans("bottle or").c_str() : "");
+            mprf(jtransc("There isn't anything suitable to %sbutcher here."),
+                 bottle_blood ? jtransc("bottle or") : "");
             return;
         }
 
@@ -212,8 +212,8 @@ void butchery(item_def* specific_corpse)
         meat.push_back(entry.first);
 
     vector<SelItem> selected =
-        select_items(meat, jtrans(bottle_blood ? "Choose a corpse to bottle or butcher"
-                                               : "Choose a corpse to butcher").c_str(),
+        select_items(meat, jtransc(bottle_blood ? "Choose a corpse to bottle or butcher"
+                                                : "Choose a corpse to butcher"),
                      false, MT_ANY, _butcher_menu_title);
     redraw_screen();
     for (SelItem sel : selected)
@@ -246,7 +246,7 @@ void butchery(item_def* specific_corpse)
             {
                 const bool can_bottle =
                     can_bottle_blood_from_corpse(it->mon_type);
-                mprf(MSGCH_PROMPT, jtrans("%s %s? [(y)es/(c)hop/(n)o/(a)ll/(q)uit/?]").c_str(),
+                mprf(MSGCH_PROMPT, jtransc("%s %s? [(y)es/(c)hop/(n)o/(a)ll/(q)uit/?]"),
                      corpse_name.c_str(),
                      can_bottle ? "から採血" : "を解体");
                 repeat_prompt = false;
@@ -288,8 +288,8 @@ void butchery(item_def* specific_corpse)
     // No point in displaying this if the player pressed 'a' above.
     if (!to_eat && !butcher_all)
     {
-        mprf(jtrans("There isn't anything else to %sbutcher here.").c_str(),
-             bottle_blood ? jtrans("bottle or ").c_str() : "");
+        mprf(jtransc("There isn't anything else to %sbutcher here."),
+             bottle_blood ? jtransc("bottle or ") : "");
     }
 #endif
 
