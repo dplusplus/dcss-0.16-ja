@@ -1267,6 +1267,40 @@ Inventory:
 
 %s (<w>Esc</w> でキャンセル)
 %%%%
+############################## item_use.cc ##############################
+%%%%
+Use <w>e</w> to drain blood from corpses.
+
+死体から血を飲むには<w>e</w>atコマンドを使ってください。
+%%%%
+You can't drink.
+
+あなたは飲むことができない。
+%%%%
+You cannot drink potions in your current state!
+
+現状あなたは薬を飲むことができない！
+%%%%
+Drink which item?
+
+どれを飲みますか？
+%%%%
+You can't drink that!
+
+そのアイテムは飲めない！
+%%%%
+You are much too full right now.
+
+あなたは腹がいっぱいですぐには飲めない。
+%%%%
+Really drink that potion of blood?
+
+本当に血液の薬を飲みますか？
+%%%%
+petitions for your drink to fail.
+
+はあなたが飲むのを妨げた。
+%%%%
 ############################## items.cc ##############################
 %%%%
 Pick up what?
@@ -2188,6 +2222,232 @@ tentacle
 hand
 
 手
+%%%%
+############################## potion.cc ##############################
+%%%%
+You feel better.
+
+あなたは気分が良くなった。
+%%%%
+You feel queasy.
+
+あなたは吐き気がした。
+%%%%
+You have no ailments to cure.
+
+あなたは病気に冒されていない。
+%%%%
+You have no ailments to cure, and can't heal while in Death's door.
+
+あなたは病気に冒されておらず、死のとば口においては回復することができない。
+%%%%
+That seemed strangely inert.
+
+どうも効かないようだ。
+%%%%
+You feel much better.
+
+あなたはかなり体調が良くなった。
+%%%%
+You cannot heal while in Death's door!
+
+あなたは死のとば口においては回復することができない！
+%%%%
+That would not heal you.
+
+それでは回復できない。
+%%%%
+This tastes like blood.
+
+これは血のような味がする。
+%%%%
+Yuck - this tastes like blood.
+
+うえっ！ これは血のような味がする。
+%%%%
+Yummy - fresh blood!
+
+うまい！ 新鮮な血液だ！
+%%%%
+This potion cannot work under stasis.
+
+この薬は停滞状態では役に立たない。
+%%%%
+You feel %s all of a sudden.
+
+あなたは突然%sなった。
+%%%%
+mightier
+
+、より力強く
+%%%%
+very mighty
+
+、非常に力強く
+%%%%
+more clever
+
+、より賢く
+%%%%
+clever
+
+賢く
+%%%%
+more agile
+
+、より素早く
+%%%%
+agile
+
+素早く
+%%%%
+You cannot fly right now.
+
+あなたは現状飛び立つことができない。
+%%%%
+That liquid tasted very nasty...
+
+この液体はひどい味がする……
+%%%%
+You feel slightly nauseous.
+
+あなたは軽い吐き気を催した。
+%%%%
+You feel magically purged.
+
+あなたは魔力と切り離されたような気がした。
+%%%%
+You feel more invigorated.
+
+あなたはさらに活力が増したようだ。
+%%%%
+You feel invigorated.
+
+あなたは活力が湧いてきたようだ。
+%%%%
+You feel briefly invigorated.
+
+あなたは一瞬活力が湧いた気がした。
+%%%%
+The ambrosia would have no effect on you.
+
+アンブロシアの薬はあなたに効果がないようだ。
+%%%%
+halo
+
+光輪
+%%%%
+magical contamination
+
+魔術的汚染
+%%%%
+corona
+
+照明の魔力
+%%%%
+liquid flames
+
+燃えたぎる液体
+%%%%
+!!!QUAD DAMAGE!!!
+
+四倍ダメージ
+%%%%
+You become %stransparent, but the glow from %s %s prevents you from becoming completely invisible.
+
+あなたは%s透明さを増したが、%sの輝きにより完全に透明化するのが妨げられている。
+%%%%
+more
+
+さらに
+%%%%
+You fade into invisibility!
+
+あなたは透明になっていった！
+%%%%
+You fade further into invisibility.
+
+あなたはさらに透明になっていった。
+%%%%
+You cannot turn invisible while glowing.
+
+あなたは輝いている間は透明化できない。
+%%%%
+You feel more experienced!
+
+あなたはより経験を積んだように感じる！
+%%%%
+A flood of memories washes over you.
+
+記憶の洪水があなたを洗い流した。
+%%%%
+Magic courses through your body.
+
+あなたは魔力に満たされた。
+%%%%
+Your magic is already full.
+
+あなたの魔力は既にいっぱいだ。
+%%%%
+You have got your breath back.
+
+あなたはブレスが吐けるようになったようだ。
+%%%%
+You feel refreshed.
+
+あなたは気分爽快になった。
+%%%%
+You feel slightly irritated.
+
+あなたは少しいらいらした。
+%%%%
+You cannot go berserk now.
+
+あなたは今は狂戦士化できない。
+%%%%
+You cannot mutate %s
+
+あなたは%s突然変異できない。
+%%%%
+at present
+
+今のところ
+%%%%
+It has a very clean taste.
+
+とても清浄な味がする。
+%%%%
+You feel extremely strange.
+
+あなたは極めて奇妙な気分になった。
+%%%%
+You feel dead inside.
+
+あなたは体の中が不活発になったと感じた。
+%%%%
+You feel fantastic!
+
+あなたは素晴らしいと感じた。
+%%%%
+You feel fantastic for a moment.
+
+あなたは一瞬素晴らしい感じがした。
+%%%%
+You feel protected.
+
+あなたは守られているような気がした。
+%%%%
+There was something very wrong with that liquid.
+
+この液体は何かとてつもなく危険な代物だ。
+%%%%
+You feel woody for a moment.
+
+あなたは一瞬樹木化したようだ。
+%%%%
+It was a %s.
+
+これは%sだ。
 %%%%
 ############################## prompt.cc ##############################
 %%%%

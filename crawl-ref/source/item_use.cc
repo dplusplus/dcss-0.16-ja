@@ -16,6 +16,7 @@
 #include "cloud.h"
 #include "colour.h"
 #include "coordit.h"
+#include "database.h"
 #include "decks.h"
 #include "delay.h"
 #include "describe.h"
@@ -1667,14 +1668,14 @@ static void _vampire_corpse_help()
         return;
 
     if (_check_blood_corpses_on_ground())
-        mpr("Use <w>e</w> to drain blood from corpses.");
+        mpr(jtrans("Use <w>e</w> to drain blood from corpses."));
 }
 
 void drink(int slot)
 {
     if (you_foodless(true))
     {
-        mpr("You can't drink.");
+        mpr(jtrans("You can't drink."));
         return;
     }
 
@@ -1700,13 +1701,13 @@ void drink(int slot)
 
     if (you.duration[DUR_NO_POTIONS])
     {
-        mpr("You cannot drink potions in your current state!");
+        mpr(jtrans("You cannot drink potions in your current state!"));
         return;
     }
 
     if (slot == -1)
     {
-        slot = prompt_invent_item("Drink which item?",
+        slot = prompt_invent_item(jtrans("Drink which item?").c_str(),
                                   MT_INVLIST, OBJ_POTIONS,
                                   true, true, true, 0, -1, nullptr,
                                   OPER_QUAFF);
@@ -1724,7 +1725,7 @@ void drink(int slot)
         if (you.species == SP_VAMPIRE && potion.base_type == OBJ_CORPSES)
             eat_food(slot);
         else
-            mpr("You can't drink that!");
+            mpr(jtrans("You can't drink that!"));
         return;
     }
 
@@ -1739,7 +1740,7 @@ void drink(int slot)
             )
         )
     {
-        mpr("You are much too full right now.");
+        mpr(jtrans("You are much too full right now."));
         return;
     }
 
@@ -1758,7 +1759,7 @@ void drink(int slot)
 
     if (alreadyknown && is_blood_potion(potion)
         && is_good_god(you.religion)
-        && !yesno("Really drink that potion of blood?", false, 'n'))
+        && !yesno(jtrans("Really drink that potion of blood?").c_str(), false, 'n'))
     {
         canned_msg(MSG_OK);
         return;
@@ -1781,7 +1782,7 @@ void drink(int slot)
 
     if (player_under_penance(GOD_GOZAG) && one_chance_in(3))
     {
-        simple_god_message(" petitions for your drink to fail.", GOD_GOZAG);
+        simple_god_message(jtrans("petitions for your drink to fail.").c_str(), GOD_GOZAG);
 
         you.turn_is_over = true;
 
