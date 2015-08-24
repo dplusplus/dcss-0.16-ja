@@ -385,7 +385,7 @@ static bool _reroll_random(newgame_def* ng)
     string specs = chop_string(species_name(ng->species), 79, false);
 
     cprintf("あなたは%sの%sだ。",
-            jtrans(specs).c_str(), jtrans(get_job_name(ng->job)).c_str());
+            jtransc(specs), jtransc(get_job_name(ng->job)));
 
     cprintf(("\n" + jtrans("Do you want to play this combination?") + " (ynq) [y]").c_str());
 
@@ -867,7 +867,7 @@ static void _prompt_species(newgame_def* ng, newgame_def* ng_choice,
     cprintf("%s", _welcome(ng).c_str());
 
     textcolour(YELLOW);
-    cprintf(jtransln("Please select your species.").c_str());
+    cprintf(jtranslnc(" Please select your species."));
 
     _construct_species_menu(ng, defaults, freeform);
     MenuDescriptor* descriptor = new MenuDescriptor(&menu);
@@ -1267,7 +1267,7 @@ static void _prompt_job(newgame_def* ng, newgame_def* ng_choice,
     cprintf("%s", _welcome(ng).c_str());
 
     textcolour(YELLOW);
-    cprintf(jtransln("Please select your background.").c_str());
+    cprintf(jtranslnc(" Please select your background."));
 
     _construct_backgrounds_menu(ng, defaults, freeform);
     MenuDescriptor* descriptor = new MenuDescriptor(&menu);
@@ -1444,7 +1444,7 @@ static void _construct_weapon_menu(const newgame_def* ng,
         switch (weapons[i].first)
         {
         case WPN_UNARMED:
-            text += species_has_claws(ng->species) ? jtrans("claws") : jtrans("unarmed");
+            text += jtrans(species_has_claws(ng->species) ? "claws" : "unarmed");
             break;
         case WPN_THROWN:
             ASSERT(!thrown_name);
@@ -1620,7 +1620,7 @@ static bool _prompt_weapon(const newgame_def* ng, newgame_def* ng_choice,
     highlighter->set_visible(true);
 
     textcolour(CYAN);
-    cprintf(("\n" + jtrans("You have a choice of weapons:")).c_str());
+    cprintf(("\n" + jtrans("You have a choice of weapons:  ")).c_str());
 
     while (true)
     {
