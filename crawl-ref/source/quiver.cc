@@ -118,13 +118,13 @@ int player_quiver::get_fire_item(string* no_item_reason) const
             if (skipped_item < Options.fire_items_start)
             {
                 *no_item_reason = make_stringf(
-                    jtrans("Nothing suitable (fire_items_start = '%c').").c_str(),
+                    jtransc("Nothing suitable (fire_items_start = '%c')."),
                     index_to_letter(Options.fire_items_start));
             }
             else
             {
                 *no_item_reason = make_stringf(
-                    jtrans("Nothing suitable (ignored '=f'-inscribed item on '%c').").c_str(),
+                    jtransc("Nothing suitable (ignored '=f'-inscribed item on '%c')."),
                     index_to_letter(skipped_item));
             }
         }
