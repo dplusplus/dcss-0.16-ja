@@ -35,6 +35,7 @@
 #include "itemname.h"
 #include "itemprop.h"
 #include "items.h"
+#include "japanese.h"
 #include "libutil.h"
 #include "mapmark.h"
 #include "message.h"
@@ -3572,7 +3573,7 @@ const char *mons_pronoun(monster_type mon_type, pronoun_type variant,
 {
     const gender_type gender = !visible ? GENDER_NEUTER
                                         : _mons_class_gender(mon_type);
-    return decline_pronoun(gender, variant);
+    return decline_pronoun_j(gender, variant);
 }
 
 // XXX: this is awful and should not exist

@@ -523,7 +523,7 @@ string player::name(description_level_type dt, bool, bool) const
 
 string player::pronoun(pronoun_type pro, bool /*force_visible*/) const
 {
-    return decline_pronoun(GENDER_YOU, pro);
+    return decline_pronoun_j(GENDER_YOU, pro);
 }
 
 string player::conj_verb(const string &verb) const

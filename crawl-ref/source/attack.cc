@@ -24,6 +24,7 @@
 #include "godconduct.h"
 #include "itemname.h"
 #include "itemprop.h"
+#include "japanese.h"
 #include "message.h"
 #include "misc.h"
 #include "mon-behv.h"
@@ -365,7 +366,7 @@ string attack::anon_name(description_level_type desc)
  */
 string attack::anon_pronoun(pronoun_type pron)
 {
-    return decline_pronoun(GENDER_NEUTER, pron);
+    return decline_pronoun_j(GENDER_NEUTER, pron);
 }
 
 /* Initializes an attack, setting up base variables and values

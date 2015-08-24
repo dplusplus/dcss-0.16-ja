@@ -244,10 +244,10 @@ string conjugate_verb(const string &verb, bool plural)
 static const char * const _pronoun_declension[][NUM_PRONOUN_CASES] =
 {
     // subj  poss    refl        obj
-    { "それ",  "その",  "それ自身",   "it"  }, // neuter
-    { "彼",  "彼の",  "彼自身",  "him" }, // masculine
-    { "彼女", "彼女の",  "彼女自身",  "her" }, // feminine
-    { "あなた", "あなたの", "あなた自身", "you" }, // 2nd person
+    { "it",  "its",  "itself",   "it"  }, // neuter
+    { "he",  "his",  "himself",  "him" }, // masculine
+    { "she", "her",  "herself",  "her" }, // feminine
+    { "you", "your", "yourself", "you" }, // 2nd person
 };
 
 const char *decline_pronoun(gender_type gender, pronoun_type variant)
