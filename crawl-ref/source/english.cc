@@ -371,6 +371,8 @@ string apply_description(description_level_type desc, const string &name,
 string thing_do_grammar(description_level_type dtype, bool add_stop,
                         bool force_article, string desc)
 {
+    add_stop = false; // ignore add_stop
+
     if (add_stop && !ends_with(desc, ".") && !ends_with(desc, "!")
         && !ends_with(desc, "?"))
     {
@@ -393,7 +395,7 @@ string thing_do_grammar(description_level_type dtype, bool add_stop,
     switch (dtype)
     {
     case DESC_THE:
-        return "the " + desc;
+        return desc;
     case DESC_A:
         return article_a(desc, true);
     case DESC_NONE:

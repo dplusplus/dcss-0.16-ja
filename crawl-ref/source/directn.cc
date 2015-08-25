@@ -369,10 +369,10 @@ void direction_chooser::print_key_hints() const
     if (just_looking)
     {
         if (you.see_cell(target()))
-            prompt += ", v - describe";
-        prompt += ", . - travel";
+            prompt += jtrans(", v - describe");
+        prompt += jtrans(", . - travel");
         if (in_bounds(target()) && env.map_knowledge(target()).item())
-            prompt += ", g - get item";
+            prompt += jtrans(", g - get item");
     }
     else
     {
@@ -386,7 +386,7 @@ void direction_chooser::print_key_hints() const
         case DIR_TARGET:
         case DIR_SHADOW_STEP:
         case DIR_LEAP:
-            prompt += ", Dir - move target cursor";
+            prompt += jtrans(", Dir - move target cursor");
             prompt += hint_string;
             break;
         case DIR_DIR:
@@ -1585,11 +1585,11 @@ void direction_chooser::print_items_description() const
         return;
 
     // Print the first item.
-    mprf(MSGCH_FLOOR_ITEMS, "%s.",
+    mprf(MSGCH_FLOOR_ITEMS, "%s",
          get_menu_colour_prefix_tags(*item, DESC_A).c_str());
 
     if (multiple_items_at(target()))
-        mprf(MSGCH_FLOOR_ITEMS, "There is something else lying underneath.");
+        mpr_nojoin(MSGCH_FLOOR_ITEMS, jtrans("There is something else lying underneath."));
 }
 
 void direction_chooser::print_floor_description(bool boring_too) const
@@ -2142,7 +2142,7 @@ bool direction_chooser::choose_direction()
 string get_terse_square_desc(const coord_def &gc)
 {
     string desc = "";
-    const char *unseen_desc = "[unseen terrain]";
+    const char *unseen_desc = jtransc("[unseen terrain]");
 
     if (gc == you.pos())
         desc = you.your_name;
@@ -2278,7 +2278,7 @@ static void _extend_move_to_edge(dist &moves)
 // cache and noted in the Dungeon (O)verview, names the stair.
 static void _describe_oos_square(const coord_def& where)
 {
-    mprf(MSGCH_EXAMINE_FILTER, "You can't see that place.");
+    mpr_nojoin(MSGCH_EXAMINE_FILTER, jtrans("You can't see that place."));
 
     if (!in_bounds(where) || !env.map_knowledge(where).seen())
     {
@@ -2890,7 +2890,7 @@ static void _describe_oos_feature(const coord_def& where)
     string desc = feature_description(env.map_knowledge(where).feat());
 
     if (!desc.empty())
-        mprf(MSGCH_EXAMINE_FILTER, "[%s]", desc.c_str());
+        mprf(MSGCH_EXAMINE_FILTER, "[%s]", jtransc(desc));
 }
 
 // Returns a vector of features matching the given pattern.
@@ -2973,8 +2973,7 @@ string feature_description(dungeon_feature_type grid, trap_type trap,
                            description_level_type dtype,
                            bool add_stop, bool base_desc)
 {
-    string desc = _base_feature_desc(grid, trap);
-    desc += cover_desc;
+    string desc = cover_desc + _base_feature_desc(grid, trap);
 
     if (grid == DNGN_FLOOR && dtype == DESC_A)
         dtype = DESC_THE;
@@ -3022,18 +3021,18 @@ string feature_description_at(const coord_def& where, bool covering,
     if (covering && you.see_cell(where))
     {
         if (is_bloodcovered(where))
-            covering_description = ", spattered with blood";
+            covering_description = jtrans(", spattered with blood");
         else if (glowing_mold(where))
-            covering_description = ", covered with glowing mold";
+            covering_description = jtrans(", covered with glowing mold");
         else if (is_moldy(where))
-            covering_description = ", covered with mold";
+            covering_description = jtrans(", covered with mold");
     }
 
     // FIXME: remove desc markers completely; only Zin walls are left.
     // They suffer, among other problems, from an information leak.
     if (!marker_desc.empty())
     {
-        marker_desc += covering_description;
+        marker_desc = covering_description + marker_desc;
 
         return thing_do_grammar(dtype, add_stop, false, marker_desc);
     }
@@ -3061,7 +3060,7 @@ string feature_description_at(const coord_def& where, bool covering,
         const char *adj, *noun;
         get_door_description(all_door.size(), &adj, &noun);
 
-        string desc;
+        string desc = covering_description;
         if (!door_desc_adj.empty())
             desc += door_desc_adj;
         else
@@ -3070,13 +3069,13 @@ string feature_description_at(const coord_def& where, bool covering,
         if (door_desc_veto.empty() || door_desc_veto != "veto")
         {
             if (grid == DNGN_OPEN_DOOR)
-                desc += "open ";
+                desc += jtrans("dooradj " "open ");
             else if (grid == DNGN_RUNED_DOOR)
-                desc += "runed ";
+                desc += jtrans("dooradj " "runed ");
             else if (grid == DNGN_SEALED_DOOR)
-                desc += "sealed ";
+                desc += jtrans("dooradj " "sealed ");
             else
-                desc += "closed ";
+                desc += jtrans("dooradj " "closed ");
         }
 
         desc += door_desc_prefix;
@@ -3087,8 +3086,6 @@ string feature_description_at(const coord_def& where, bool covering,
             desc += noun;
 
         desc += door_desc_suffix;
-
-        desc += covering_description;
 
         return thing_do_grammar(dtype, add_stop, false, desc);
     }
@@ -3118,11 +3115,11 @@ string feature_description_at(const coord_def& where, bool covering,
             dtype = DESC_THE;
         // fallthrough
     default:
-        const string featdesc = grid == grd(where)
-                              ? raw_feature_description(where)
-                              : _base_feature_desc(grid, trap);
+        const string featdesc = jtrans(grid == grd(where)
+                                       ? raw_feature_description(where)
+                                       : _base_feature_desc(grid, trap));
         return thing_do_grammar(dtype, add_stop, feat_is_trap(grid),
-                                featdesc + covering_description);
+                                covering_description + featdesc);
     }
 }
 

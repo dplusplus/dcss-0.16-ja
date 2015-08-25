@@ -5,9 +5,25 @@ Press: ? - help
 
 入力: ? - ヘルプ
 %%%%
+, v - describe
+
+, v - 解説表示
+%%%%
+, . - travel
+
+, . - 自動移動
+%%%%
+, g - get item
+
+, g - アイテムを拾う
+%%%%
 , Shift-Dir - straight line
 
 , Shift+方向 - 方向のみ指定
+%%%%
+, Dir - move target cursor
+
+, 方向 - カーソル移動
 %%%%
 Disturbance
 
@@ -16,6 +32,18 @@ Disturbance
 Aim
 
 照準
+%%%%
+There is something else lying underneath.
+
+さらにその下に何かがある。
+%%%%
+[unseen terrain]
+
+[視界外の地形]
+%%%%
+You can't see that place.
+
+あなたからはその場所は見えない。
 %%%%
 There is
 
@@ -28,6 +56,38 @@ here.
 There is an entrance to
 
 ここには
+%%%%
+, spattered with blood
+
+血の飛び散った
+%%%%
+, covered with glowing mold
+
+輝く苔に覆われた
+%%%%
+, covered with mold
+
+苔に覆われた
+%%%%
+dooradj open
+
+開かれた
+%%%%
+dooradj runed
+
+ルーンで封印された
+%%%%
+dooradj sealed
+
+封印の印が刻まれた
+%%%%
+dooradj closed
+
+閉じられた
+%%%%
+an abandoned shop
+
+打ち捨てられた店
 %%%%
 a wand
 
@@ -135,7 +195,7 @@ some shallow water
 
 浅い水脈
 %%%%
-the floor
+floor
 
 地面
 %%%%
@@ -514,4 +574,10 @@ sealed passage leading down
 gateway leading deeper into the Abyss
 
 アビスの深層への門
+%%%%
+############################## dat/des/* ##############################
+%%%%
+wall of white crystal
+
+白水晶の壁
 %%%%
