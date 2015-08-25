@@ -1245,7 +1245,7 @@ bool melee_attack::player_aux_test_hit()
         && to_hit >= evasion
         && one_chance_in(20))
     {
-        simple_god_message(" blocks your attack.", GOD_ELYVILON);
+        simple_god_message(jtransc(" blocks your attack."), GOD_ELYVILON);
         return false;
     }
 
@@ -1259,15 +1259,15 @@ bool melee_attack::player_aux_test_hit()
 
     if (to_hit >= phaseless_evasion && defender_visible)
     {
-        mprf("Your %s passes through %s as %s momentarily phases out.",
-            aux_attack.c_str(),
-            defender->name(DESC_THE).c_str(),
-            defender->pronoun(PRONOUN_SUBJECTIVE).c_str());
+        mprf(jtransc("Your %s passes through %s as %s momentarily phases out."),
+             jtransc(string("auxname ") + aux_attack),
+             jtransc(defender->name(DESC_THE)),
+             defender->pronoun(PRONOUN_SUBJECTIVE).c_str());
     }
     else
     {
-        mprf("Your %s misses %s.", aux_attack.c_str(),
-             defender->name(DESC_THE).c_str());
+        mprf(jtransc("Your %s misses %s."), jtransc(string("auxname ") + aux_attack),
+             jtransc(defender->name(DESC_THE)));
     }
 
     return false;
@@ -1403,8 +1403,8 @@ bool melee_attack::player_aux_apply(unarmed_attack_type atk)
 
         if (damage_brand == SPWPN_ACID)
         {
-            mprf("%s is splashed with acid.",
-                 defender->name(DESC_THE).c_str());
+            mprf(jtransc("%s is splashed with acid."),
+                 jtransc(defender->name(DESC_THE)));
             defender->splash_with_acid(&you);
         }
 
@@ -1426,9 +1426,9 @@ bool melee_attack::player_aux_apply(unarmed_attack_type atk)
             const bool spell_user = defender->antimagic_susceptible();
 
             antimagic_affects_defender(damage_done * 32);
-            mprf("You drain %s %s.",
-                 defender->as_monster()->pronoun(PRONOUN_POSSESSIVE).c_str(),
-                 spell_user ? "magic" : "power");
+            mprf(jtransc("You drain %s %s."),
+                 jtransc(defender->name(DESC_THE)),
+                 jtransc(spell_user ? "magic" : "power"));
 
             if (you.magic_points != you.max_magic_points
                 && !defender->as_monster()->is_summoned()
@@ -1441,7 +1441,7 @@ bool melee_attack::player_aux_apply(unarmed_attack_type atk)
                               * drain);
                 if (drain)
                 {
-                    mpr("You feel invigorated.");
+                    mpr(jtrans("You feel invigorated."));
                     inc_mp(drain);
                 }
             }
@@ -1449,10 +1449,10 @@ bool melee_attack::player_aux_apply(unarmed_attack_type atk)
     }
     else // no damage was done
     {
-        mprf("You %s %s%s.",
-             aux_verb.c_str(),
-             defender->name(DESC_THE).c_str(),
-             you.can_see(defender) ? ", but do no damage" : "");
+        mprf(jtransc("You %s %s%s."),
+             jtransc(aux_verb),
+             jtransc(defender->name(DESC_THE)),
+             jtransc(you.can_see(defender) ? ", but do no damage" : ""));
     }
 
     if (defender->as_monster()->hit_points < 1)
@@ -1466,9 +1466,9 @@ bool melee_attack::player_aux_apply(unarmed_attack_type atk)
 
 void melee_attack::player_announce_aux_hit()
 {
-    mprf("You %s %s%s%s",
-         aux_verb.c_str(),
-         defender->name(DESC_THE).c_str(),
+    mprf(jtransc("You %s %s%s%s"),
+         jtransc(defender->name(DESC_THE)),
+         jtransc(aux_verb),
          debug_damage_number().c_str(),
          attack_strength_punctuation(damage_done).c_str());
 }
@@ -3503,15 +3503,15 @@ void melee_attack::do_minotaur_retaliation()
             if (you.see_cell(defender->pos()))
             {
                 const string defname = defender->name(DESC_THE);
-                mprf("%s furiously retaliates!", defname.c_str());
+                mprf(jtransc("%s furiously retaliates!"), defname.c_str());
                 if (hurt <= 0)
                 {
-                    mprf("%s headbutts %s, but does no damage.", defname.c_str(),
+                    mprf(jtransc("%s headbutts %s, but does no damage."), defname.c_str(),
                          attacker->name(DESC_THE).c_str());
                 }
                 else
                 {
-                    mprf("%s headbutts %s%s", defname.c_str(),
+                    mprf(jtransc("%s headbutts %s%s"), defname.c_str(),
                          attacker->name(DESC_THE).c_str(),
                          attack_strength_punctuation(hurt).c_str());
                 }
@@ -3545,17 +3545,17 @@ void melee_attack::do_minotaur_retaliation()
         dmg = player_apply_final_multipliers(dmg);
         int hurt = attacker->apply_ac(dmg);
 
-        mpr("You furiously retaliate!");
+        mpr(jtrans("You furiously retaliate!"));
         dprf(DIAG_COMBAT, "Retaliation: dmg = %d hurt = %d", dmg, hurt);
         if (hurt <= 0)
         {
-            mprf("You headbutt %s, but do no damage.",
+            mprf(jtransc("You headbutt %s, but do no damage."),
                  attacker->name(DESC_THE).c_str());
             return;
         }
         else
         {
-            mprf("You headbutt %s%s",
+            mprf(jtransc("You headbutt %s%s"),
                  attacker->name(DESC_THE).c_str(),
                  attack_strength_punctuation(hurt).c_str());
             attacker->hurt(&you, hurt);

@@ -1459,6 +1459,126 @@ Unknown command.
 %%%%
 ############################## melee_attack.cc ##############################
 %%%%
+auxname constrict
+
+拘束
+%%%%
+auxname kick
+
+蹴り
+%%%%
+auxname tentacle spike
+
+棘の生えた触手
+%%%%
+auxname headbutt
+
+頭突き
+%%%%
+auxname peck
+
+ついばみ
+%%%%
+auxname tail-slap
+
+尻尾の一撃
+%%%%
+auxname punch
+
+パンチ
+%%%%
+auxname slash
+
+切り払い
+%%%%
+auxname claw
+
+爪
+%%%%
+auxname tentacle-slap
+
+触手の一撃
+%%%%
+auxname bite
+
+噛みつき
+%%%%
+auxname bludgeon
+
+殴打
+%%%%
+auxname squeeze
+
+締めつけ
+%%%%
+blocks your attack.
+
+はあなたの攻撃を防いだ。
+%%%%
+Your %s passes through %s as %s momentarily phases out.
+
+あなたの%sは一瞬にして%sに躱された。
+%%%%
+Your %s misses %s.
+
+あなたの%sは%sに躱された。
+%%%%
+%s is splashed with acid.
+
+%sは酸のしぶきを浴びた。
+%%%%
+You drain %s %s.
+
+あなたは%sの%sを吸い取った。
+%%%%
+magic
+
+呪文
+%%%%
+power
+
+魔力
+%%%%
+You feel invigorated.
+
+あなたは活力を得た。
+%%%%
+You %s %s%s.
+
+あなたは%sに%s%s。
+%%%%
+, but do no damage
+
+が、ダメージを与えられなかった
+%%%%
+You %s %s%s%s
+
+あなたは%sに%s%s%s
+%%%%
+%s furiously retaliates!
+
+%sは怒って反撃した！
+%%%%
+%s headbutts %s, but does no damage.
+
+%sは%sに頭突きをしたが、ダメージを与えられなかった。
+%%%%
+%s headbutts %s%s
+
+%sは%sに頭突きをした%s
+%%%%
+You furiously retaliate!
+
+あなたは怒って反撃した！
+%%%%
+You headbutt %s, but do no damage.
+
+あなたは%sに頭突きをしたが、ダメージを与えられなかった。
+%%%%
+You headbutt %s%s
+
+あなたは%sに頭突きをした%s
+%%%%
 clumsily bash
 
 不器用に殴打した
