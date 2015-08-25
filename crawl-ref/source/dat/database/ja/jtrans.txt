@@ -2293,6 +2293,14 @@ You open the %s%s.
 
 あなたは%s%sを開けた。
 %%%%
+doorway
+
+戸口
+%%%%
+gateway
+
+入口
+%%%%
 Something is blocking the %s!
 
 何かが%sを塞いでしまっている！

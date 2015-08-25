@@ -8864,7 +8864,15 @@ void player_close_door(coord_def doorpos)
     find_connected_identical(doorpos, all_door);
     const char *adj, *noun;
     get_door_description(all_door.size(), &adj, &noun);
-    const string waynoun_str = make_stringf("%sway", noun);
+    string waynoun_str;
+
+    if (jtrans("door") == noun)
+        waynoun_str += jtrans("doorway");
+    else if (jtrans("gate") == noun)
+        waynoun_str += jtrans("gateway");
+    else
+        waynoun_str += "buggy doorway";
+
     const char *waynoun = waynoun_str.c_str();
 
     if (!door_desc_adj.empty())

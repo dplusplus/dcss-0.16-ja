@@ -670,10 +670,10 @@ void get_door_description(int door_size, const char** adjective, const char** no
     const char* descriptions[] =
     {
         "miniscule " , "buggy door",
-        ""           , "door",
-        "large "     , "door",
-        ""           , "gate",
-        "huge "      , "gate",
+        ""           , "扉",
+        "大きな"     , "扉",
+        ""           , "門",
+        "巨大な"     , "門",
     };
 
     int max_idx = static_cast<int>(ARRAYSZ(descriptions) - 2);
