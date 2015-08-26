@@ -413,15 +413,15 @@ wand of cold
 
 凍結のワンド
 %%%%
-wand confusion
+wand of confusion
 
 混乱のワンド
 %%%%
-wand invisibility
+wand of invisibility
 
 透明化のワンド
 %%%%
-wand digging
+wand of digging
 
 採掘のワンド
 %%%%
