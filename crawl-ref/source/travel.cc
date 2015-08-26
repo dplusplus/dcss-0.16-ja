@@ -4480,7 +4480,7 @@ vector<string> explore_discoveries::apply_quantities(
     {
         const named_thing<int> &nt = v[i];
         if (nt.thing == 1)
-            things.push_back(article_a(nt.name));
+            things.push_back(nt.name);
         else
         {
             things.push_back(number_in_words(nt.thing)

@@ -30,6 +30,7 @@
 #include "invent.h"
 #include "itemprop.h"
 #include "items.h"
+#include "japanese.h"
 #include "libutil.h"
 #include "losglobal.h"
 #include "macro.h"
@@ -2978,6 +2979,19 @@ string feature_description(dungeon_feature_type grid, trap_type trap,
     if (grid == DNGN_FLOOR && dtype == DESC_A)
         dtype = DESC_THE;
 
+    return thing_do_grammar_j(dtype, add_stop, feat_is_trap(grid), desc);
+}
+
+string feature_description_en(dungeon_feature_type grid, trap_type trap,
+                           const string & cover_desc,
+                           description_level_type dtype,
+                           bool add_stop, bool base_desc)
+{
+    string desc = cover_desc + _base_feature_desc(grid, trap);
+
+    if (grid == DNGN_FLOOR && dtype == DESC_A)
+        dtype = DESC_THE;
+
     return thing_do_grammar(dtype, add_stop, feat_is_trap(grid), desc);
 }
 
@@ -3034,7 +3048,7 @@ string feature_description_at(const coord_def& where, bool covering,
     {
         marker_desc = covering_description + marker_desc;
 
-        return thing_do_grammar(dtype, add_stop, false, marker_desc);
+        return thing_do_grammar_j(dtype, add_stop, false, marker_desc);
     }
 
     if (grid == DNGN_OPEN_DOOR || feat_is_closed_door(grid))
@@ -3087,7 +3101,7 @@ string feature_description_at(const coord_def& where, bool covering,
 
         desc += door_desc_suffix;
 
-        return thing_do_grammar(dtype, add_stop, false, desc);
+        return thing_do_grammar_j(dtype, add_stop, false, desc);
     }
 
     switch (grid)
@@ -3097,7 +3111,7 @@ string feature_description_at(const coord_def& where, bool covering,
                                    covering_description, dtype,
                                    add_stop, base_desc);
     case DNGN_ABANDONED_SHOP:
-        return thing_do_grammar(dtype, add_stop, false, "an abandoned shop");
+        return thing_do_grammar_j(dtype, add_stop, false, "an abandoned shop");
 
     case DNGN_ENTER_SHOP:
         return shop_name(where, add_stop);
@@ -3118,8 +3132,127 @@ string feature_description_at(const coord_def& where, bool covering,
         const string featdesc = jtrans(grid == grd(where)
                                        ? raw_feature_description(where)
                                        : _base_feature_desc(grid, trap));
-        return thing_do_grammar(dtype, add_stop, feat_is_trap(grid),
+        return thing_do_grammar_j(dtype, add_stop, feat_is_trap(grid),
                                 covering_description + featdesc);
+    }
+}
+
+string feature_description_at_en(const coord_def& where, bool covering,
+                                 description_level_type dtype, bool add_stop,
+                                 bool base_desc)
+{
+    dungeon_feature_type grid = env.map_knowledge(where).feat();
+    trap_type trap = env.map_knowledge(where).trap();
+
+    string marker_desc = env.markers.property_at(where, MAT_ANY,
+                                                 "feature_description");
+
+    string covering_description = "";
+
+    if (covering && you.see_cell(where))
+    {
+        if (is_bloodcovered(where))
+            covering_description = ", spattered with blood";
+        else if (glowing_mold(where))
+            covering_description = ", covered with glowing mold";
+        else if (is_moldy(where))
+            covering_description = ", covered with mold";
+    }
+
+    // FIXME: remove desc markers completely; only Zin walls are left.
+    // They suffer, among other problems, from an information leak.
+    if (!marker_desc.empty())
+    {
+        marker_desc += covering_description;
+
+        return thing_do_grammar(dtype, add_stop, false, marker_desc);
+    }
+
+    if (grid == DNGN_OPEN_DOOR || feat_is_closed_door(grid))
+    {
+        const string door_desc_prefix =
+            env.markers.property_at(where, MAT_ANY,
+                                    "door_description_prefix");
+        const string door_desc_suffix =
+            env.markers.property_at(where, MAT_ANY,
+                                    "door_description_suffix");
+        const string door_desc_noun =
+            env.markers.property_at(where, MAT_ANY,
+                                    "door_description_noun");
+        const string door_desc_adj  =
+            env.markers.property_at(where, MAT_ANY,
+                                    "door_description_adjective");
+        const string door_desc_veto =
+            env.markers.property_at(where, MAT_ANY,
+                                    "door_description_veto");
+
+        set<coord_def> all_door;
+        find_connected_identical(where, all_door);
+        const char *adj, *noun;
+        get_door_description(all_door.size(), &adj, &noun);
+
+        string desc;
+        if (!door_desc_adj.empty())
+            desc += door_desc_adj;
+        else
+            desc += adj;
+
+        if (door_desc_veto.empty() || door_desc_veto != "veto")
+        {
+            if (grid == DNGN_OPEN_DOOR)
+                desc += "open ";
+            else if (grid == DNGN_RUNED_DOOR)
+                desc += "runed ";
+            else if (grid == DNGN_SEALED_DOOR)
+                desc += "sealed ";
+            else
+                desc += "closed ";
+        }
+
+        desc += door_desc_prefix;
+
+        if (!door_desc_noun.empty())
+            desc += door_desc_noun;
+        else
+            desc += noun;
+
+        desc += door_desc_suffix;
+
+        desc += covering_description;
+
+        return thing_do_grammar(dtype, add_stop, false, desc);
+    }
+
+    switch (grid)
+    {
+    case DNGN_TRAP_MECHANICAL:
+        return feature_description_en(grid, trap,
+                                   covering_description, dtype,
+                                   add_stop, base_desc);
+    case DNGN_ABANDONED_SHOP:
+        return thing_do_grammar(dtype, add_stop, false, "an abandoned shop");
+
+    case DNGN_ENTER_SHOP:
+        return shop_name(where, add_stop);
+
+#if TAG_MAJOR_VERSION == 34
+    case DNGN_ENTER_PORTAL_VAULT:
+        // Should have been handled at the top of the function.
+        return thing_do_grammar(
+            dtype, add_stop, false,
+            "UNAMED PORTAL VAULT ENTRY");
+#endif
+
+    case DNGN_FLOOR:
+        if (dtype == DESC_A)
+            dtype = DESC_THE;
+        // fallthrough
+    default:
+        const string featdesc = grid == grd(where)
+            ? raw_feature_description(where)
+            : _base_feature_desc(grid, trap);
+        return thing_do_grammar(dtype, add_stop, feat_is_trap(grid),
+                                featdesc + covering_description);
     }
 }
 

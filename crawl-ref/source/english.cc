@@ -330,8 +330,6 @@ static string _number_to_string(unsigned number, bool in_words)
 // Naively prefix A/an to a noun.
 string article_a(const string &name, bool lowercase)
 {
-    return name;
-
     if (!name.length())
         return name;
 
@@ -395,7 +393,7 @@ string thing_do_grammar(description_level_type dtype, bool add_stop,
     switch (dtype)
     {
     case DESC_THE:
-        return desc;
+        return "the " + desc;
     case DESC_A:
         return article_a(desc, true);
     case DESC_NONE:

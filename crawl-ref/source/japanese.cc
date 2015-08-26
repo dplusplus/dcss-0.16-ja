@@ -95,3 +95,25 @@ const char *decline_pronoun_j(gender_type gender, pronoun_type variant)
     ASSERT_RANGE(variant, 0, NUM_PRONOUN_CASES);
     return _pronoun_declension_j[gender][variant];
 }
+
+/*
+ * english.cc/thing_do_grammar()の代替
+ * 英語処理が必要な箇所もあるためthing_do_grammarは残す
+ */
+string thing_do_grammar_j(description_level_type dtype, bool add_stop,
+                        bool force_article, string desc)
+{
+    if (dtype == DESC_PLAIN || !force_article)
+        return desc;
+
+    switch (dtype)
+    {
+    case DESC_THE:
+    case DESC_A:
+        return desc;
+    case DESC_NONE:
+        return "";
+    default:
+        return desc;
+    }
+}
