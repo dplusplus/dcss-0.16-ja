@@ -2549,7 +2549,11 @@ void melee_attack::announce_hit()
 
     if (attacker->is_monster())
     {
-        mprf("%sは%sを%s%s%s%s",
+        // 不可視モンスターに対しては｢何かが～｣にする。
+        const char* fmt = you.can_see(attacker) ? "%sは%sを%s%s%s%s"
+                                                : "%sが%sを%s%s%s%s";
+
+        mprf(fmt,
              jtransc(atk_name(DESC_THE)),
              jtransc(defender_name(true)),
              mons_attack_desc().c_str(),
