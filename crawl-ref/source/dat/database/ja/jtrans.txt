@@ -2207,6 +2207,54 @@ moves out of view.
 %%%%
 ############################## mon-death.cc ##############################
 %%%%
+You feel the power of Trog in you as your rage grows.
+
+あなたは怒りの増大とともに、内なるトログの力を意識した。
+%%%%
+The necklace of Bloodlust glows a violent red.
+
+血に飢えた首飾りが真っ赤に輝いた。
+%%%%
+detonates feebly.
+
+は弱々しく爆散した。
+%%%%
+implodes!
+
+は圧壊した！
+%%%%
+dissipates!
+
+は四散した！
+%%%%
+vapourises!
+
+は霧散した！
+%%%%
+falls from the air.
+
+は地面に落下した。
+%%%%
+The tentacle is hauled back through the portal!
+
+触手はポータルの向こうに引き戻された！
+%%%%
+With a roar, the tentacle is hauled back through the portal!
+
+轟音と共に、触手はポータルの向こうに引き戻された！
+%%%%
+crumbles away.
+
+は崩れ落ちた。
+%%%%
+fades into the ether.
+
+はエーテルの中に溶け込んだ。
+%%%%
+exhausts itself and dries up.
+
+は消耗して涸れ果てた。
+%%%%
 blown up
 
 爆破された
@@ -2234,6 +2282,14 @@ kill
 That felt strangely unrewarding.
 
 あなたは奇妙な徒労感に襲われた。
+%%%%
+You feel a little better.
+
+あなたは少し気分が良くなった。
+%%%%
+You feel your power returning.
+
+あなたは魔力が回復したようだ。
 %%%%
 is blown up!
 

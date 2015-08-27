@@ -1916,14 +1916,14 @@ int monster_die(monster* mons, killer_type killer,
 
             you.increase_duration(DUR_BERSERK, bonus);
 
-            mprf(MSGCH_GOD, GOD_TROG,
-                 "You feel the power of Trog in you as your rage grows.");
+            mpr_nojoin(MSGCH_GOD, GOD_TROG,
+                       jtrans("You feel the power of Trog in you as your rage grows."));
         }
         else if (player_equip_unrand(UNRAND_BLOODLUST) && coinflip())
         {
             const int bonus = (2 + random2(4)) / 2;
             you.increase_duration(DUR_BERSERK, bonus);
-            mpr("The necklace of Bloodlust glows a violent red.");
+            mpr(jtrans("The necklace of Bloodlust glows a violent red."));
         }
     }
 
@@ -1954,14 +1954,14 @@ int monster_die(monster* mons, killer_type killer,
     {
         if (!silent && !hard_reset && !was_banished)
         {
-            simple_monster_message(mons, " detonates feebly.",
+            simple_monster_message(mons, jtransc(" detonates feebly."),
                                    MSGCH_MONSTER_DAMAGE, MDAM_DEAD);
             silent = true;
         }
     }
     else if (mons->type == MONS_SINGULARITY && mons->countdown <= 0)
     {
-        simple_monster_message(mons, " implodes!");
+        simple_monster_message(mons, jtransc(" implodes!"));
         invalidate_agrid();
         silent = true;
     }
@@ -1971,7 +1971,7 @@ int monster_die(monster* mons, killer_type killer,
     {
         if (!silent && !mons_reset && !was_banished)
         {
-            simple_monster_message(mons, " dissipates!",
+            simple_monster_message(mons, jtransc(" dissipates!"),
                                    MSGCH_MONSTER_DAMAGE, MDAM_DEAD);
             silent = true;
         }
@@ -1989,7 +1989,7 @@ int monster_die(monster* mons, killer_type killer,
     {
         if (!silent && !mons_reset && !was_banished)
         {
-            simple_monster_message(mons, " vapourises!",
+            simple_monster_message(mons, jtransc(" vapourises!"),
                                    MSGCH_MONSTER_DAMAGE, MDAM_DEAD);
             silent = true;
         }
@@ -2023,7 +2023,7 @@ int monster_die(monster* mons, killer_type killer,
         {
             if (!summoned_it)
             {
-                simple_monster_message(mons, " falls from the air.",
+                simple_monster_message(mons, jtransc(" falls from the air."),
                                        MSGCH_MONSTER_DAMAGE, MDAM_DEAD);
                 silent = true;
             }
@@ -2045,9 +2045,9 @@ int monster_die(monster* mons, killer_type killer,
         {
             if (you.can_see(mons))
             {
-                mprf(MSGCH_MONSTER_DAMAGE, MDAM_DEAD, silenced(mons->pos()) ?
-                    "The tentacle is hauled back through the portal!" :
-                    "With a roar, the tentacle is hauled back through the portal!");
+                mpr_nojoin(MSGCH_MONSTER_DAMAGE, MDAM_DEAD, silenced(mons->pos()) ?
+                           jtransc("The tentacle is hauled back through the portal!") :
+                           jtransc("With a roar, the tentacle is hauled back through the portal!"));
             }
             silent = true;
         }
@@ -2067,7 +2067,7 @@ int monster_die(monster* mons, killer_type killer,
     else if (mons->type == MONS_BRIAR_PATCH)
     {
         if (timeout && !silent)
-            simple_monster_message(mons, " crumbles away.");
+            simple_monster_message(mons, jtransc(" crumbles away."));
     }
     else if (mons->type == MONS_SPECTRAL_WEAPON)
     {
@@ -2078,7 +2078,7 @@ int monster_die(monster* mons, killer_type killer,
     {
         if (!silent)
         {
-            simple_monster_message(mons, " fades into the ether.",
+            simple_monster_message(mons, jtransc(" fades into the ether."),
                                    MSGCH_MONSTER_DAMAGE, MDAM_DEAD);
         }
         silent = true;
@@ -2099,7 +2099,7 @@ int monster_die(monster* mons, killer_type killer,
              && mons->mindex() == killer_index)
     {
         if (!silent)
-            simple_monster_message(mons, " exhausts itself and dries up.");
+            simple_monster_message(mons, jtransc(" exhausts itself and dries up."));
         silent = true;
     }
 
@@ -2209,13 +2209,13 @@ int monster_die(monster* mons, killer_type killer,
                 if (hp_heal && you.hp < you.hp_max
                     && !you.duration[DUR_DEATHS_DOOR])
                 {
-                    mpr("You feel a little better.");
+                    mpr(jtrans("You feel a little better."));
                     inc_hp(hp_heal);
                 }
 
                 if (mp_heal && you.magic_points < you.max_magic_points)
                 {
-                    mpr("You feel your power returning.");
+                    mpr(jtrans("You feel your power returning."));
                     inc_mp(mp_heal);
                 }
             }
