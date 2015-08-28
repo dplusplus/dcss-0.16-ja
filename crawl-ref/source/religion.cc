@@ -2414,7 +2414,7 @@ static void _gain_piety_point()
             you.redraw_title = true;
 
             if (_abil_chg_message(god_gain_power_messages[you.religion][i],
-                                  "You can now %s.", i))
+                                  jtransc("You can now %s."), i))
             {
 #ifdef USE_TILE_LOCAL
                 tiles.layout_statcol();
@@ -2424,7 +2424,7 @@ static void _gain_piety_point()
             }
 
             if (you_worship(GOD_SHINING_ONE) && i == 0)
-                mprf(MSGCH_GOD, "A divine halo surrounds you!");
+                mpr_nojoin(MSGCH_GOD, jtrans("A divine halo surrounds you!"));
 
             if (you_worship(GOD_ASHENZARI))
             {
@@ -2440,12 +2440,12 @@ static void _gain_piety_point()
             }
 
             if (you_worship(GOD_DITHMENOS) && i == 0)
-                mprf(MSGCH_GOD, "You are shrouded in an aura of darkness!");
+                mpr_nojoin(MSGCH_GOD, jtrans("You are shrouded in an aura of darkness!"));
 
             if (you_worship(GOD_QAZLAL) && i == 3)
             {
-                mprf(MSGCH_GOD, "The storm surrounding you grows powerful "
-                                "enough to repel missiles.");
+                mpr_nojoin(MSGCH_GOD, jtrans("The storm surrounding you grows powerful "
+                                             "enough to repel missiles."));
             }
         }
     }
@@ -2461,7 +2461,7 @@ static void _gain_piety_point()
     if (you_worship(GOD_CHEIBRIADOS)
         && chei_stat_boost(old_piety) < chei_stat_boost())
     {
-        simple_god_message(" raises the support of your attributes as your movement slows.");
+        simple_god_message(jtransc(" raises the support of your attributes as your movement slows."));
         notify_stat_change();
     }
 
@@ -2488,23 +2488,23 @@ static void _gain_piety_point()
             switch (you.religion)
             {
                 case GOD_ZIN:
-                    simple_god_message(" will now cure all your mutations... once.");
+                    simple_god_message(jtransc(" will now cure all your mutations... once."));
                     break;
                 case GOD_SHINING_ONE:
                     if (you.species == SP_FELID)
                         break;
-                    simple_god_message(" will now bless your weapon at an altar... once.");
+                    simple_god_message(jtransc(" will now bless your weapon at an altar... once."));
                     break;
                 case GOD_KIKUBAAQUDGHA:
-                    simple_god_message(" will now enhance your necromancy at an altar... once.");
+                    simple_god_message(jtransc(" will now enhance your necromancy at an altar... once."));
                     break;
                 case GOD_LUGONU:
                     if (you.species == SP_FELID)
                         break;
-                    simple_god_message(" will now corrupt your weapon at an altar... once.");
+                    simple_god_message(jtransc(" will now corrupt your weapon at an altar... once."));
                     break;
                 case GOD_JIYVA:
-                    simple_god_message(" will now unseal the treasures of the Slime Pits.");
+                    simple_god_message(jtransc(" will now unseal the treasures of the Slime Pits."));
                     dlua.callfn("dgn_set_persistent_var", "sb", "fix_slime_vaults", true);
                     // If we're on Slime:6, pretend we just entered the level
                     // in order to bring down the vault walls.

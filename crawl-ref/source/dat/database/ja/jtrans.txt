@@ -3393,6 +3393,46 @@ use unnaturally quick items
 
 不自然に素早いアイテムを使うこと
 %%%%
+You can now %s.
+
+あなたは%sができるようになった。
+%%%%
+A divine halo surrounds you!
+
+神聖な光輪があなたの周りに現れた！
+%%%%
+You are shrouded in an aura of darkness!
+
+あなたは暗黒のオーラに包まれた！
+%%%%
+The storm surrounding you grows powerful enough to repel missiles.
+
+あなたを包み込む嵐が勢力を増し、飛来物を弾き飛ばすほどになった。
+%%%%
+raises the support of your attributes as your movement slows.
+
+はあなたの動きが鈍くなるにつれてあなたの能力値を増強してくれる。
+%%%%
+will now cure all your mutations... once.
+
+はあなたの突然変異を全て治療してくれる(一度だけ)。
+%%%%
+will now bless your weapon at an altar... once.
+
+は祭壇であなたの武器を祝福してくれる(一度だけ)。
+%%%%
+will now enhance your necromancy at an altar... once.
+
+は祭壇であなたの死霊術を強化してくれる(一度だけ)。
+%%%%
+will now corrupt your weapon at an altar... once.
+
+は祭壇であなたの武器に崩壊の力を与えてくれる(一度だけ)。
+%%%%
+will now unseal the treasures of the Slime Pits.
+
+はスライムの穴ぐらにある宝の封印を解いた。
+%%%%
 You have lost your religion!
 
 あなたは信仰を捨て去った！
