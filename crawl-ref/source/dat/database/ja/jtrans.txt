@@ -3845,3 +3845,9 @@ a BORING thing.
 
 あなたはゾムに飽きられてしまった。
 %%%%
+############################## dat/dlua/lm_tmsg.lua ##############################
+%%%%
+The walls and floor vibrate strangely for a moment.
+
+壁と床が一瞬奇妙に振動した。
+%%%%

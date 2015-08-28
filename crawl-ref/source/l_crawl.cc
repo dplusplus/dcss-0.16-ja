@@ -16,6 +16,7 @@ module "crawl"
 #include "chardump.h"
 #include "cluautil.h"
 #include "command.h"
+#include "database.h"
 #include "delay.h"
 #include "dlua.h"
 #include "end.h"
@@ -77,7 +78,7 @@ static int crawl_mpr(lua_State *ls)
     if (ch < 0 || ch >= NUM_MESSAGE_CHANNELS)
         ch = MSGCH_PLAIN;
 
-    mprf(static_cast<msg_channel_type>(ch), "%s", message);
+    mprf(static_cast<msg_channel_type>(ch), "%s", jtransc(message));
     return 0;
 }
 
