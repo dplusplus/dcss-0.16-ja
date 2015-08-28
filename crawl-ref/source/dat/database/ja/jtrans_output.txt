@@ -1,4 +1,12 @@
 %%%%
+Quiver unavailable
+
+(射撃準備できない)
+%%%%
+Nothing quivered
+
+(射撃準備していない)
+%%%%
 %s  - Unarmed
 
 %s  - 素手
