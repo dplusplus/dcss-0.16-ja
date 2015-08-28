@@ -2329,6 +2329,50 @@ regenerates before your eyes!
 %%%%
 ############################## player.cc ##############################
 %%%%
+Welcome back to level %d!
+
+再びレベル%dになった！
+%%%%
+You have reached level 27, the final one!
+
+あなたは限界のレベル27になった！
+%%%%
+You have reached level %d, the highest you will ever reach!
+
+あなたが現状到達できる限界のレベル%dになった！
+%%%%
+You have reached level %d!
+
+あなたはレベル%dになった！
+%%%%
+If you weren't so full, you could now transform into a vampire bat.
+
+あなたは満腹でなければ吸血コウモリに変身できるようになった。
+%%%%
+You can now transform into a vampire bat.
+
+あなたは吸血コウモリに変身できるようになった。
+%%%%
+Your skin feels tougher.
+
+あなたの皮膚は丈夫になった。
+%%%%
+Your tail grows strong enough to constrict your enemies.
+
+あなたの尻尾は敵を拘束するのに十分なほど成長した。
+%%%%
+Your scales feel tougher.
+
+あなたの鱗は丈夫になった。
+%%%%
+You feel monstrous as your demonic heritage exerts itself.
+
+受け継がれし悪魔の力があなた自身に働き、強大になったと感じた。
+%%%%
+Your demonic ancestry asserts itself...
+
+あなたの悪魔的な血統が顕在化した……
+%%%%
 The %s%s flies open!
 
 %s%sは突然開いた！

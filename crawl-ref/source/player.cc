@@ -2979,7 +2979,7 @@ void level_change(bool skip_attribute_increase)
         if (new_exp <= you.max_level)
         {
             mprf(MSGCH_INTRINSIC_GAIN,
-                 "Welcome back to level %d!", new_exp);
+                 jtransc("Welcome back to level %d!"), new_exp);
 
             // No more prompts for this XL past this point.
 
@@ -2993,13 +2993,13 @@ void level_change(bool skip_attribute_increase)
             you.redraw_experience = true;
 
             if (new_exp == 27)
-                mprf(MSGCH_INTRINSIC_GAIN, "You have reached level 27, the final one!");
+                mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("You have reached level 27, the final one!"));
             else if (new_exp == you.get_max_xl())
-                mprf(MSGCH_INTRINSIC_GAIN, "You have reached level %d, the highest you will ever reach!",
+                mprf(MSGCH_INTRINSIC_GAIN, jtransc("You have reached level %d, the highest you will ever reach!"),
                         you.get_max_xl());
             else
             {
-                mprf(MSGCH_INTRINSIC_GAIN, "You have reached level %d!",
+                mprf(MSGCH_INTRINSIC_GAIN, jtransc("You have reached level %d!"),
                      new_exp);
             }
 
@@ -3093,12 +3093,12 @@ void level_change(bool skip_attribute_increase)
 
             case SP_MUMMY:
                 if (you.experience_level == 13 || you.experience_level == 26)
-                    mprf(MSGCH_INTRINSIC_GAIN, "You feel more in touch with the powers of death.");
+                    mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("You feel more in touch with the powers of death."));
 
                 if (you.experience_level == 13)  // level 13 for now -- bwr
                 {
-                    mprf(MSGCH_INTRINSIC_GAIN, "You can now infuse your body with "
-                                               "magic to restore decomposition.");
+                    mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("You can now infuse your body with "
+                                                            "magic to restore decomposition."));
                 }
                 break;
 
@@ -3107,13 +3107,13 @@ void level_change(bool skip_attribute_increase)
                 {
                     if (you.hunger_state > HS_SATIATED)
                     {
-                        mprf(MSGCH_INTRINSIC_GAIN, "If you weren't so full, "
-                             "you could now transform into a vampire bat.");
+                        mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("If you weren't so full, "
+                                                                "you could now transform into a vampire bat."));
                     }
                     else
                     {
-                        mprf(MSGCH_INTRINSIC_GAIN,
-                             "You can now transform into a vampire bat.");
+                        mpr_nojoin(MSGCH_INTRINSIC_GAIN,
+                                   jtrans("You can now transform into a vampire bat."));
                     }
                 }
                 break;
@@ -3124,15 +3124,15 @@ void level_change(bool skip_attribute_increase)
 
                 if (!(you.experience_level % 3))
                 {
-                    mprf(MSGCH_INTRINSIC_GAIN, "Your skin feels tougher.");
+                    mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("Your skin feels tougher."));
                     you.redraw_armour_class = true;
                 }
 
                 if (you.experience_level == 13)
                 {
-                    mprf(MSGCH_INTRINSIC_GAIN,
-                         "Your tail grows strong enough to constrict your "
-                         "enemies.");
+                    mpr_nojoin(MSGCH_INTRINSIC_GAIN,
+                               jtrans("Your tail grows strong enough to constrict your "
+                                      "enemies."));
                 }
                 break;
 
@@ -3197,7 +3197,7 @@ void level_change(bool skip_attribute_increase)
             case SP_PALE_DRACONIAN:
                 if (!(you.experience_level % 3))
                 {
-                    mprf(MSGCH_INTRINSIC_GAIN, "Your scales feel tougher.");
+                    mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("Your scales feel tougher."));
                     you.redraw_armour_class = true;
                 }
 
@@ -3216,7 +3216,7 @@ void level_change(bool skip_attribute_increase)
                         break;
                     case SP_BLACK_DRACONIAN:
                         perma_mutate(MUT_BIG_WINGS, 1, "draconian growth");
-                        mprf(MSGCH_INTRINSIC_GAIN, "You can now fly continuously.");
+                        mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("You can now fly continuously."));
                         break;
                     default:
                         break;
@@ -3269,8 +3269,8 @@ void level_change(bool skip_attribute_increase)
                         {
                             if (you.experience_level == level)
                             {
-                                mprf(MSGCH_MUTATION, "You feel monstrous as "
-                                     "your demonic heritage exerts itself.");
+                                mpr_nojoin(MSGCH_MUTATION, jtrans("You feel monstrous as "
+                                                                  "your demonic heritage exerts itself."));
                                 mark_milestone("monstrous", "discovered their "
                                                "monstrous ancestry!");
                             }
@@ -3291,8 +3291,8 @@ void level_change(bool skip_attribute_increase)
                     {
                         if (!gave_message)
                         {
-                            mprf(MSGCH_INTRINSIC_GAIN,
-                                 "Your demonic ancestry asserts itself...");
+                            mpr_nojoin(MSGCH_INTRINSIC_GAIN,
+                                       jtrans("Your demonic ancestry asserts itself..."));
 
                             gave_message = true;
                         }
@@ -3315,9 +3315,9 @@ void level_change(bool skip_attribute_increase)
                     modify_stat(STAT_RANDOM, 1, false, "level gain");
 
                 if (you.experience_level == 5)
-                    mprf(MSGCH_INTRINSIC_GAIN, "You have gained the ability to fly.");
+                    mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("You have gained the ability to fly."));
                 else if (you.experience_level == 14)
-                    mprf(MSGCH_INTRINSIC_GAIN, "You can now fly continuously.");
+                    mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("You can now fly continuously."));
                 break;
 
             case SP_MERFOLK:
@@ -3371,7 +3371,7 @@ void level_change(bool skip_attribute_increase)
                 if (you.experience_level == 14)
                 {
                     perma_mutate(MUT_BIG_WINGS, 1, "gargoyle growth");
-                    mprf(MSGCH_INTRINSIC_GAIN, "You can now fly continuously.");
+                    mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("You can now fly continuously."));
                 }
                 break;
 
