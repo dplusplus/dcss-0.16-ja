@@ -1303,6 +1303,18 @@ petitions for your drink to fail.
 %%%%
 ############################## items.cc ##############################
 %%%%
+Items here:
+
+ここにはアイテムがある:
+%%%%
+Things that are here:
+
+ここにはアイテムがある:
+%%%%
+There are many items here.
+
+ここにはたくさんのアイテムがある。
+%%%%
 Pick up what?
 
 何を拾いますか？

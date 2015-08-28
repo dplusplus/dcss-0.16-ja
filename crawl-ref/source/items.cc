@@ -791,7 +791,7 @@ void item_check()
         }
         sort(item_chars.begin(), item_chars.end());
 
-        string out_string = "Items here: ";
+        string out_string = jtrans("Items here: ") + " ";
         int cur_state = -1;
         string colour = "";
         for (unsigned int i = 0; i < item_chars.size(); ++i)
@@ -828,7 +828,7 @@ void item_check()
     if (items.size() <= msgwin_lines() - 1)
     {
         if (!done_init_line)
-            mpr_nojoin(MSGCH_FLOOR_ITEMS, "Things that are here:");
+            mpr_nojoin(MSGCH_FLOOR_ITEMS, jtrans("Things that are here:"));
         for (const item_def *it : items)
         {
             mprf_nocap("%s", get_menu_colour_prefix_tags(*it, DESC_A).c_str());
@@ -836,7 +836,7 @@ void item_check()
         }
     }
     else if (!done_init_line)
-        strm << "There are many items here." << endl;
+        strm << jtrans("There are many items here.") << endl;
 
     if (items.size() > 2 && crawl_state.game_is_hints_tutorial())
     {
