@@ -3723,6 +3723,18 @@ hover solemnly before
 %%%%
 ############################## travel.cc ##############################
 %%%%
+You need to eat something NOW!
+
+あなたは<lightred>今すぐ</lightred>何かを食べる必要がある！
+%%%%
+Calm down first, please.
+
+まずは怒りを鎮めてください。
+%%%%
+No exploration algorithm can help you here.
+
+ラビリンスでは自動探索は助けにならない。
+%%%%
 Found
 
 を見つけた。

@@ -3098,11 +3098,11 @@ void start_explore(bool grab_items)
 void do_explore_cmd()
 {
     if (you.hunger_state == HS_STARVING && !you_min_hunger())
-        mpr("You need to eat something NOW!");
+        mpr(jtrans("You need to eat something NOW!"));
     else if (you.berserk())
-        mpr("Calm down first, please.");
+        mpr(jtrans("Calm down first, please."));
     else if (player_in_branch(BRANCH_LABYRINTH))
-        mpr("No exploration algorithm can help you here.");
+        mpr(jtrans("No exploration algorithm can help you here."));
     else                        // Start exploring
         start_explore(Options.explore_greedy);
 }
