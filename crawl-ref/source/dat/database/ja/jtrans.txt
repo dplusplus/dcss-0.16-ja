@@ -1461,13 +1461,25 @@ Save game and exit?
 
 セーブして終了しますか？
 %%%%
+Unknown command.
+
+そのコマンドは存在しません。
+%%%%
 Which direction?
 
 どの方向ですか？
 %%%%
-Unknown command.
+You feel a strong urge to attack something.
 
-そのコマンドは存在しません。
+あなたは激しい攻撃衝動に駆られている。
+%%%%
+You feel your anger subside.
+
+あなたの怒りは流れ去っていった。
+%%%%
+Your blood rage is quickly leaving you.
+
+あなたの血に飢えた激情は速やかに消え去った。
 %%%%
 ############################## melee_attack.cc ##############################
 %%%%

@@ -2944,13 +2944,13 @@ static void _do_berserk_no_combat_penalty()
         switch (you.berserk_penalty)
         {
         case 2:
-            mprf(MSGCH_DURATION, "You feel a strong urge to attack something.");
+            mpr_nojoin(MSGCH_DURATION, jtrans("You feel a strong urge to attack something."));
             break;
         case 4:
-            mprf(MSGCH_DURATION, "You feel your anger subside.");
+            mpr_nojoin(MSGCH_DURATION, jtrans("You feel your anger subside."));
             break;
         case 6:
-            mprf(MSGCH_DURATION, "Your blood rage is quickly leaving you.");
+            mpr_nojoin(MSGCH_DURATION, jtrans("Your blood rage is quickly leaving you."));
             break;
         }
 
