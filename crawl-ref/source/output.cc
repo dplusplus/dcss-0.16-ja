@@ -880,7 +880,7 @@ static void _print_stats_wp(int y)
             else
                 wpn.plus -= 3 * you.props["corrosion_amount"].get_int();
         }
-        text = wpn.name(DESC_PLAIN, true, false, true);
+        text = wpn.name(DESC_INVENTORY, true, false, true);
     }
     else
         text = you.unarmed_attack_name();

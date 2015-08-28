@@ -411,9 +411,13 @@ Majin-Bo
 
 魔神棒
 %%%%
-pair of quick blades "Gyre" and "Gimble"
+quick blades "Gyre" and "Gimble"
 
 一対のクイックブレード『ジャイル』と『ギンブル』
+%%%%
+quick blades
+
+一対のクイックブレード
 %%%%
 Maxwell's etheric cage
 

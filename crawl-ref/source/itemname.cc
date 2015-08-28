@@ -183,7 +183,7 @@ string item_def::name(description_level_type descrip, bool terse, bool ident,
             descrip = DESC_PLAIN;
     }
 
-    if (terse && descrip != DESC_DBNAME)
+    if (terse && descrip != DESC_DBNAME && !is_artefact(*this))
         descrip = DESC_PLAIN;
 
     monster_flag_type corpse_flags;
@@ -212,6 +212,10 @@ string item_def::name(description_level_type descrip, bool terse, bool ident,
         case DESC_QUALNAME:
             break;
         }
+    }
+    else if (is_artefact(*this) && special == UNRAND_OCTOPUS_KING_RING)
+    {
+        buff << "★";
     }
     else if (quantity > 1)
     {
@@ -2250,7 +2254,7 @@ string item_def::name_aux(description_level_type desc, bool terse, bool ident,
 
         if (is_randart && !dbname)
         {
-            buff << get_artefact_name(*this);
+            buff << jtrans(get_artefact_name(*this));
             break;
         }
 
