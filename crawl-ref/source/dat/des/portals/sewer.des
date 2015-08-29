@@ -18,23 +18,23 @@ function sewer_portal(e)
 
   local messager =
     timed_msg {
-       initmsg = { "You hear the sound of rushing water.",
-                   "There is an entrance to a sewer on this level. "
-                   .. "Hurry and find it before the portal rusts away!" },
-      finalmsg = "You hear the drain falling apart.",
+       initmsg = { "あなたは水がどぼどぼと流れる音を聞いた。",
+                   "この階には下水道への入口がある。"
+                   .. "ポータルが錆びてしまう前に急いで見つけ出すのだ！" },
+      finalmsg = "あなたは排水口がばらばらに壊れる音を聞いた。",
 
-      verb = 'rusting',
-      noisemaker = 'drain',
+      verb = '軋む音',
+      noisemaker = '排水口',
       ranges = {
-        { 5000, 'slow ' },  { 4000, '' },
-        { 2500, 'brisk ' }, { 1500, 'quick ' },
-        { 0, 'rapid ' }
+        { 5000, 'かすかな' },  { 4000, '小さな' },
+        { 2500, '' }, { 1500, '大きな' },
+        { 0, '騒々しい' }
       }
     }
 
   e.lua_marker('O',
       timed_marker {
-        disappear = "The drain falls to bits.",
+        disappear = "排水口は粉々に砕けた。",
         entity = 'drain',
         turns = timeout_turns,
         single_timed = true,
