@@ -3645,6 +3645,16 @@ The service fee for joining is currently %d gold; you have %d.
 
 %sあなたは%s入信しますか？
 %%%%
+############################## rot.cc ##############################
+%%%%
+%s of the chunks of flesh in your inventory have rotted away.
+
+所持している生肉%s腐ってしまった。
+%%%%
+%s %s rot%s away.
+
+%dつの%sが腐ってしまった。
+%%%%
 ############################## skills.cc ##############################
 %%%%
 You have masterd %s!
