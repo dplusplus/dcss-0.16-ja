@@ -3821,6 +3821,18 @@ hover solemnly before
 %%%%
 ############################## travel.cc ##############################
 %%%%
+Partly explored, obstructed by runed door.
+
+部分的に探索したが、ルーンで封印された扉でふさがれている。
+%%%%
+Done exploring.
+
+探索終了。
+%%%%
+Partly explored, can't reach some %s.
+
+部分的に探索したが、%sまで到達できない。
+%%%%
 You need to eat something NOW!
 
 あなたは<lightred>今すぐ</lightred>何かを食べる必要がある！

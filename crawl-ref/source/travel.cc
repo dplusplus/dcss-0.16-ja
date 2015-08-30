@@ -816,7 +816,7 @@ static void _explore_find_target_square()
     else
     {
         if (runed_door_pause)
-            mpr("Partly explored, obstructed by runed door.");
+            mpr(jtrans("Partly explored, obstructed by runed door."));
         else
         {
             // No place to go? Report to the player.
@@ -824,20 +824,20 @@ static void _explore_find_target_square()
 
             if (!estatus)
             {
-                mpr("Done exploring.");
+                mpr(jtrans("Done exploring."));
                 learned_something_new(HINT_DONE_EXPLORE);
             }
             else
             {
                 vector<const char *> inacc;
-                if (estatus & EST_GREED_UNFULFILLED)
-                    inacc.push_back("items");
                 if (estatus & EST_PARTLY_EXPLORED)
-                    inacc.push_back("places");
+                    inacc.push_back("残りの場所");
+                if (estatus & EST_GREED_UNFULFILLED)
+                    inacc.push_back("アイテムの所");
 
-                mprf("Partly explored, can't reach some %s.",
-                    comma_separated_line(inacc.begin(),
-                                        inacc.end()).c_str());
+                mprf(jtransc("Partly explored, can't reach some %s."),
+                     to_separated_line(inacc.begin(),
+                                       inacc.end(), true, "や").c_str());
             }
         }
         stop_running();

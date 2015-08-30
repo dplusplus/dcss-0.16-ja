@@ -96,12 +96,15 @@ string to_separated_fn(Z start, Z end, F stringify,
 }
 
 template<typename Z>
-string to_separated_line(Z start, Z end, bool to_j = true)
+string to_separated_line(Z start, Z end, bool to_j = true,
+                         const string &first = "と",
+                         const string &second = "、",
+                         const string &fin = "、そして")
 {
     auto stringify = to_j ? [] (const string &s) { return jtrans(s); }
                           : [] (const string &s) { return s; };
 
-    return to_separated_fn(start, end, stringify);
+    return to_separated_fn(start, end, stringify, first, second, fin);
 }
 
 vector<string> getAllFAQKeys();
