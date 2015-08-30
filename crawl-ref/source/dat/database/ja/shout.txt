@@ -228,7 +228,8 @@ SOUND:@The_monster@は重々しくゴロゴロと音を立てた。
 %%%%
 player ghost
 
-VISUAL:@The_monster@ turns @possessive@ malevolent gaze towards you.
+# VISUAL:@The_monster@ turns @possessive@ malevolent gaze towards you.
+VISUAL:@The_monster@は@possessive@悪意のある眼差しをあなたへ向けた。
 %%%%
 Fighter player ghost
 
@@ -323,33 +324,39 @@ Wanderer player ghost
 %%%%
 'a'
 
-VISUAL:@The_monster@ twitches @possessive@ antennae in your direction.
+# VISUAL:@The_monster@ twitches @possessive@ antennae in your direction.
+VISUAL:@The_monster@は@possessive@触角をあなたの方へ向けた。
 %%%%
 'cap-B'
 
-VISUAL:@The_monster@ twitches @possessive@ antennae in your direction.
+# VISUAL:@The_monster@ twitches @possessive@ antennae in your direction.
+VISUAL:@The_monster@は@possessive@触角をあなたの方へ向けた。
 %%%%
 'cap-G'
 
-VISUAL:@The_monster@ turns @possessive@ gaze towards you.
+# VISUAL:@The_monster@ turns @possessive@ gaze towards you.
+VISUAL:@The_monster@は@possessive@眼差しをあなたへ向けた。
 %%%%
 'cap-J'
 
-VISUAL:@The_monster@ quivers.
+# VISUAL:@The_monster@ quivers.
+VISUAL:@The_monster@はぷるぷる震えた。
 ########################################
 # Shouts by monster genus
 ########################################
 %%%%
 giant slug
 
-VISUAL:@The_monster@ swivels @possessive@ eye-stalks towards you.
+# VISUAL:@The_monster@ swivels @possessive@ eye-stalks towards you.
+VISUAL:@The_monster@は@possessive@目玉をあなたの方へ向けた。
 ########################################
 # Shouts for specific monsters
 ########################################
 %%%%
 giant spore
 
-VISUAL:@The_monster@ waves @possessive@ rhizomes.
+# VISUAL:@The_monster@ waves @possessive@ rhizomes.
+VISUAL:@The_monster@は@possessive@根茎を波打たせた。
 %%%%
 # Iron imps, shadow imps and white imps copy imps.
 imp
@@ -357,11 +364,13 @@ imp
 # Shout one half the time, taunt the other half.
 @__SHOUT@
 
-SOUND:@The_monster@ @says@, "@imp_taunt@"
+# SOUND:@The_monster@ @says@, "@imp_taunt@"
+SOUND:@The_monster@は『@imp_taunt@』と@says@。
 %%%%
 moth of wrath
 
-VISUAL:@The_monster@'s fur bristles in rage as it notices you.
+# VISUAL:@The_monster@'s fur bristles in rage as it notices you.
+VISUAL:@The_monster@はあなたを見つけてその毛を怒りで逆立たせた。
 %%%%
 iron imp
 
@@ -381,5 +390,6 @@ white imp
 Polyphemus
 
 # This would also work for other monsters that are surrounded by allies.
-SOUND:@The_monster@ shouts, "Attack, my pets! Attack!"
+# SOUND:@The_monster@ shouts, "Attack, my pets! Attack!"
+SOUND:@The_monster@は『行け、お前ら！ 攻撃しろ！』と叫んだ。
 %%%%
