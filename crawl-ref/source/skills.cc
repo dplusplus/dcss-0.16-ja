@@ -15,6 +15,7 @@
 #include <sstream>
 
 #include "ability.h"
+#include "database.h"
 #include "describe-god.h"
 #include "evoke.h"
 #include "exercise.h"
@@ -267,18 +268,18 @@ static void _change_skill_level(skill_type exsk, int n)
         mprf(MSGCH_INTRINSIC_GAIN, "You have mastered %s!", skill_name(exsk));
     else if (abs(n) == 1 && you.num_turns)
     {
-        mprf(MSGCH_INTRINSIC_GAIN, "Your %s%s skill %s to level %d!",
-             specify_base ? "base " : "",
-             skill_name(exsk), (n > 0) ? "increases" : "decreases",
-             you.skills[exsk]);
+        mprf(MSGCH_INTRINSIC_GAIN, jtransc("Your %s%s skill %s to level %d!"),
+             specify_base ? "もともとの" : "",
+             jtransc(skill_name(exsk)),
+             you.skills[exsk], jtransc((n > 0) ? "increases" : "decreases"));
     }
     else if (you.num_turns)
     {
-        mprf(MSGCH_INTRINSIC_GAIN, "Your %s%s skill %s %d levels and is now "
-             "at level %d!",
-             specify_base ? "base " : "",
-             skill_name(exsk),
-             (n > 0) ? "gained" : "lost",
+        mprf(MSGCH_INTRINSIC_GAIN, jtransc("Your %s%s skill %s %d levels and is now "
+                                           "at level %d!"),
+             specify_base ? "もともとの" : "",
+             jtransc(skill_name(exsk)),
+             jtransc((n > 0) ? "gained" : "lost"),
              abs(n), you.skills[exsk]);
     }
 

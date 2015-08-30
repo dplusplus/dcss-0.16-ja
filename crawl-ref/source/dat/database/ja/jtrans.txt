@@ -3645,6 +3645,36 @@ The service fee for joining is currently %d gold; you have %d.
 
 %sあなたは%s入信しますか？
 %%%%
+############################## skills.cc ##############################
+%%%%
+You have masterd %s!
+
+あなたは%sをマスターした！
+%%%%
+Your %s%s skill %s to level %d!
+
+あなたの%s%sスキルはレベル%dに%sした！
+%%%%
+increases
+
+増加
+%%%%
+decreases
+
+減少
+%%%%
+Your %s%s skill %s %d levels and is now at level %d!
+
+あなたの%s%sスキルは%dレベル%sレベル%dになった！
+%%%%
+gained
+
+増えて
+%%%%
+lost
+
+失って
+%%%%
 ############################## species.cc ##############################
 %%%%
 coil in front of
