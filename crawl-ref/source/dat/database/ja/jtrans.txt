@@ -3755,6 +3755,24 @@ fails to return to your pack!
 
 はあなたの手元に戻ってきたが、うまく受け取れなかった！
 %%%%
+############################## timed_effect.cc ##############################
+%%%%
+You hear an odd grinding sound!
+
+あなたは奇妙な軋る音を聞いた！
+%%%%
+You hear the creaking of ancient gears!
+
+あなたはぼろぼろの歯車がキーキー言う音を聞いた！
+%%%%
+The floor suddenly vibrates beneath you!
+
+あなたの足下の床が突然振動した！
+%%%%
+You feel a sudden draft!
+
+あなたはすきま風を感じた。
+%%%%
 ############################## transform.cc ##############################
 %%%%
 hover solemnly before
@@ -3844,4 +3862,10 @@ Xom's teddy bear.
 a BORING thing.
 
 あなたはゾムに飽きられてしまった。
+%%%%
+############################## dat/dlua/lm_tmsg.lua ##############################
+%%%%
+The walls and floor vibrate strangely for a moment.
+
+壁と床が一瞬奇妙に振動した。
 %%%%

@@ -9,13 +9,12 @@ function lab_portal(e)
 
   local messager =
     timed_msg {
-      initmsg = { "You hear a distant snort.",
-                  "Hark! There is an entrance to a minotaur's labyrinth "
-                  .. "on this level. Find the entrance quickly before "
-                  .. "the gate is sealed!" },
-      finalmsg = "You hear the last, dying ticks of the clock.",
-      verb = 'ticking',
-      noisemaker = 'clock'
+      initmsg = { "遠くから牛の鼻息が聞こえてきた。",
+                  "この階にはミノタウロスの迷宮への入口がある。"
+                  .. "門が閉ざされる前に急いで入口を見つけるのだ！" },
+      finalmsg = "あなたは時計のカチカチ言う音が止まるのを聞いた。",
+      verb = 'カチカチ言う',
+      noisemaker = '時計'
     }
 
     e.lua_marker('O',

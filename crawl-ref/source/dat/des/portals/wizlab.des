@@ -79,19 +79,18 @@ function wizlab_portal (e)
 
     local messager =
       timed_msg {
-           initmsg = { "You hear the crackle of arcane power.",
-                       "There is an entrance to a wizard's laboratory on "
-                       .. "this level! Hurry and find it before the "
-                       .. "portal closes forever!" },
-        finalmsg = "The crackle of the magical portal is almost imperceptible now.",
+           initmsg = { "あなたは秘術の力がパチパチ音を立てるのを聞いた。",
+                       "この階には魔術の研究所への入口がある。"
+                       .. "ポータルが閉ざされる前に急いで見つけ出すのだ！" },
+        finalmsg = "魔法のポータルがパチパチ鳴る音はほとんど聞こえなくなった。",
 
-        verb = 'crackle',
-        noisemaker = 'magical portal'
+        verb = 'パチパチ鳴る',
+        noisemaker = '魔法のポータル'
     }
 
     e.lua_marker('O',
       timed_marker {
-        disappear = "The flow of magic halts.",
+        disappear = "魔力の流れが停止した。",
         entity = 'portal',
         turns = timeout_turns,
         single_timed = true,
@@ -125,9 +124,9 @@ function tukima_machine (data, triggerable, triggerer, marker, ev)
 
   if data.weapon_count >= 5 then
     if you.see_cell(x, y) then
-      crawl.mpr("The machine makes a dull noise.")
+      crawl.mpr("機械が鈍い音を立てている。")
     else
-      crawl.mpr("You hear a distant, dull noise.")
+      crawl.mpr("あなたは遠くで鈍い音を聞いた。")
     end
     return
   end
@@ -144,9 +143,9 @@ function tukima_machine (data, triggerable, triggerer, marker, ev)
   data.weapon_count = data.weapon_count + 1
 
   if you.see_cell(x, y) then
-    crawl.mpr("The generator hisses, and spits out a dancing weapon!")
+    crawl.mpr("装置がシューッと音を立て、踊る武器を産み出した！")
   else
-    crawl.mpr("You hear a distant hissing noise.")
+    crawl.mpr("あなたは遠くでシューッという音が鳴るのを聞いた。")
   end
 end
 
@@ -168,7 +167,7 @@ function wizlab_eringya_grow(data, triggerable, triggerer, marker, ev)
       end
     end
     if count > 0 then
-      crawl.mpr("Fruit sprouts up around you!")
+      crawl.mpr("周囲の果物が急速に成長した！")
     end
   else
     for spot in iter.adjacent_iterator() do
@@ -184,7 +183,7 @@ function wizlab_eringya_grow(data, triggerable, triggerer, marker, ev)
       end
     end
     if count > 0 then
-      crawl.mpr("Mushrooms sprout up around you!")
+      crawl.mpr("周囲のキノコが急速に成長した！")
     end
   end
 end
@@ -198,22 +197,22 @@ function wizlab_doroklohe_convert_boxes(data, triggerable, triggerer,
   if data.phase == 1 then
     data.phase = data.phase + 1
     if you.silenced() then
-      crawl.mpr("The ground shakes.", "warning")
+      crawl.mpr("地面が揺れた。", "warning")
     else
-      crawl.mpr("There is a faint hissing noise.", "warning")
+      crawl.mpr("かすかなシューッという音がした。", "warning")
     end
     return
   elseif data.phase == 2 then
     data.phase = data.phase + 1
     if you.silenced() then
-      crawl.mpr("The ground shakes.", "warning")
+      crawl.mpr("地面が揺れた。", "warning")
     else
-      crawl.mpr("There is a loud grinding noise.", "warning")
+      crawl.mpr("ギーギー言う大きな音がした。", "warning")
     end
     return
   elseif data.phase == 3 then
     data.phase = data.phase + 1
-    crawl.mpr("The walls fall away. The entombed are set free!", "warning")
+    crawl.mpr("壁が崩れ、埋葬者が解き放たれた！", "warning")
     for _, i in ipairs(dgn.find_marker_positions_by_prop("wall_drop", 1)) do
       dgn.terrain_changed(i.x, i.y, "floor", false, false, false)
       dgn.place_cloud(i.x, i.y, "black smoke", 2)
@@ -295,9 +294,9 @@ function wizlab_zonguldrok_killed_zombie(data, triggerable, triggerer,
         dgn.terrain_changed(x, y, "closed_door", false, false, false)
         data.door_appeared = true
         if you.see_cell(x, y) then
-            crawl.mpr("A door appears!")
+            crawl.mpr("扉が現れた！")
         else
-            crawl.mpr("The walls vibrate.")
+            crawl.mpr("壁が振動した。")
         end
         local gxm, gym = dgn.max_bounds()
         for p in iter.rect_iterator(dgn.point(1, 1), dgn.point(gxm-1, gym-1)) do
@@ -338,31 +337,31 @@ function wizlab_wucad_msgfn(data, triggerable, triggerer, marker, ev)
   end
 
   if data.spot == 1 then
-    crawl.mpr("Strange, shadowy figures dance through the air in front of you.", "talk_visual")
+    crawl.mpr("影のように黒い奇妙な人影があなたの目の前に現れ、踊り出した。", "talk_visual")
     data.trig = true
   elseif data.spot == 2 then
-    crawl.mpr("This room is filled with shadowy figures, quietly meditating.", "talk_visual")
+    crawl.mpr("この部屋は静かに瞑想する真っ黒な人影でいっぱいだ。", "talk_visual")
     data.trig = true
   elseif data.spot == 3 then
-    crawl.mpr("Here, spectral monks perform complicated, martial routines; they fade quickly.", "talk_visual")
+    crawl.mpr("幽体の修行僧が複雑な演武をしており、その姿は急速に薄れつつあった。", "talk_visual")
     data.trig = true
   elseif data.spot == 4 then
     if you.silenced() then
       return
     end
-    crawl.mpr("Faint laughter comes from somewhere. Too faint to be real.", "talk_visual")
+    crawl.mpr("かすかな笑い声がどこからか聞こえる。それとも幻聴かも？", "talk_visual")
     data.trig = true
   elseif data.spot == 5 then
     if you.silenced() then
       return
     end
-    crawl.mpr("There is a faint scream of pain from a crouched figure. This too fades quickly.", "talk_visual")
+    crawl.mpr("かすかな苦痛のうめき声がうずくまった人影から漏れた。その姿は急速に薄れつつある。", "talk_visual")
     data.trig = true
   elseif data.spot == 6 then
-    crawl.mpr("Grey monks gather around the fountain. They do not speak, nor look at each other.", "talk_visual")
+    crawl.mpr("灰色の修行僧が泉の周りに集っている。彼らは黙し、互いに目を向けない。", "talk_visual")
     data.trig = true
   elseif data.spot == 7 then
-    crawl.mpr("A figure sits in silent meditation. It spots you, gestures wildly, and disappears.", "talk_visual")
+    crawl.mpr("人影が静かに座って瞑想している。それはあなたを見つけるやいなや激しい身振りをし、そして消え失せた。", "talk_visual")
     data.trig = true
   end
 end
@@ -405,16 +404,16 @@ function wizlab_wucad_summon_monks(data, triggerable, triggerer, marker, ev)
   crawl.redraw_view()
 
   if count == 1 then
-    crawl.mpr("One of the shadowy figures appears more solid!", "warning")
+    crawl.mpr("人影の一つが立体化した！", "warning")
   elseif count > 1 then
-    crawl.mpr("Shadows coalesce into solid form.", "warning")
+    crawl.mpr("影の集まりが立体化した。", "warning")
   end
 end
 
 function callback.wizlab_wucad_wucad_died(data, triggerable,
                                            triggerer, marker, ev)
   dgn.persist.wucad_mu_died = true
-  crawl.mpr("The shadows inhabiting this place fade forever.", "talk_visual")
+  crawl.mpr("ここに住まう人影は永久に消え失せた。", "talk_visual")
 end
 
 function teleporter_golubria_switch_fn(data, triggerable, triggerer, marker, ev)
@@ -423,9 +422,9 @@ function teleporter_golubria_switch_fn(data, triggerable, triggerer, marker, ev)
                                                 data.teleport_spot)
 
   if you.teleport_to(my_slaves[1].x, my_slaves[1].y, true) then
-    crawl.mpr("Your surroundings suddenly seem different!")
+    crawl.mpr("突然周囲の風景が変わったようだ！")
   else
-    crawl.mpr("There is a strange hissing noise.")
+    crawl.mpr("奇妙なシューッという音がした。")
   end
 end
 

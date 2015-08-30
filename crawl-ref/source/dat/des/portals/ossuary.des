@@ -17,24 +17,24 @@ function ossuary_portal(e)
 
   local messager =
     timed_msg {
-      initmsg = { "You hear the hiss of flowing sand.",
-                  "There is an entrance to an ossuary on this level. "
-                  .. "Hurry and find it before the portal is buried!" },
-      finalmsg = "The hiss of flowing sand is almost imperceptible now.",
+      initmsg = { "あなたは砂がさらさら言う音を聞いた。",
+                  "この階には納骨堂への入口がある。"
+                  .. "ポータルが埋まってしまう前に急いで見つけ出すのだ！" },
+      finalmsg = "砂のさらさら言う音はほとんど聞こえなくなった。",
 
-      verb = 'hiss',
+      verb = 'さらさら言う',
       -- This is always preceded by an article, so...
-      noisemaker = 'avalanche of sand',
+      noisemaker = 'なだれ落ちる砂',
       ranges = {
-        { 5000, 'slow ' },  { 4000, '' },
-        { 2500, 'brisk ' }, { 1500, 'quick ' },
-        { 0, 'rapid ' }
+        { 5000, 'かすかな' },  { 4000, '小さな' },
+        { 2500, '' }, { 1500, '大きな' },
+        { 0, '騒々しい' }
       }
     }
 
   e.lua_marker('O',
       timed_marker {
-        disappear = "The hiss of flowing sand is gone.",
+        disappear = "砂のさらさら言う音は消え去った。",
         entity = 'staircase',
         turns = timeout_turns,
         single_timed = true,

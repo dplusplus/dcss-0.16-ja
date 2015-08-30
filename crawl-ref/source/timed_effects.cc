@@ -701,10 +701,10 @@ void change_labyrinth(bool msg)
                                            : random2(4));
     switch (which)
     {
-    case 0: mpr("You hear an odd grinding sound!"); break;
-    case 1: mpr("You hear the creaking of ancient gears!"); break;
-    case 2: mpr("The floor suddenly vibrates beneath you!"); break;
-    case 3: mpr("You feel a sudden draft!"); break;
+    case 0: mpr(jtrans("You hear an odd grinding sound!")); break;
+    case 1: mpr(jtrans("You hear the creaking of ancient gears!")); break;
+    case 2: mpr(jtrans("The floor suddenly vibrates beneath you!")); break;
+    case 3: mpr(jtrans("You feel a sudden draft!")); break;
     }
 }
 

@@ -50,10 +50,10 @@ function TimedMessaging:init(tmarker, cm, verbose)
     end
 
     self.range_adjectives = {
-      { sqr(30), 'very distant' },
-      { sqr(15), 'distant' },
-      { sqr(7), '$F nearby' },
-      { 0, '$F' }
+      { sqr(30), 'かなり遠くで' },
+      { sqr(15), '遠くで' },
+      { sqr(7), '近くで' },
+      { 0, '' }
     }
   end
 
@@ -139,8 +139,7 @@ function TimedMessaging:range_adjective(cm, thing)
   if string.find(adj, '$F') then
     return util.expand_entity(self.noisemaker, adj)
   else
-    return crawl.article_a(#adj == 0 and self.noisemaker
-                           or adj .. ' ' .. self.noisemaker)
+    return (#adj == 0 and self.noisemaker or adj .. self.noisemaker)
   end
 end
 
@@ -156,8 +155,8 @@ function TimedMessaging:say_message(cm, dur)
   self:proc_ranges(self.ranges, dur,
                    function (chk)
                      self:emit_message(nil,
-                                       "You hear the " .. chk[2] .. self.verb
-                                       .. " of " .. noisemaker .. ".")
+                                       "あなたは" .. noisemaker .. "が" .. self.verb
+                                       .. chk[2] .. "音を聞いた。")
                    end)
 
   self:proc_ranges(self.messages, dur,

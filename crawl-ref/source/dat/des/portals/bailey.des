@@ -17,17 +17,17 @@ function bailey_portal(e, ptype)
 
   local messager =
     timed_msg {
-      initmsg = { "You hear the roar of battle.",
-                  "There is an entrance to a bailey on this level. "
-                  .. "Hurry and find it before the portal closes forever!" },
-      finalmsg = "$F{The} has been lowered almost to the ground.",
+      initmsg = { "あなたは戦いの鬨の声を聞いた。",
+                  "この階には濠城への入口がある。"
+                  .. "ポータルが閉ざされる前に急いで見つけ出すのだ！" },
+      finalmsg = "吊るし門が地面すれすれまで下げられた。",
 
-      verb = 'creaking',
-      noisemaker = 'portcullis',
+      verb = 'キーキー言う',
+      noisemaker = '吊るし門',
         ranges = {
-          { 5000, 'faint ' },  { 4000, '' },
-          { 2500, 'steady ' }, { 1500, 'quick ' },
-          { 0, 'loud ' }
+          { 5000, 'かすかな' },  { 4000, '小さな' },
+          { 2500, '' }, { 1500, '大きな' },
+          { 0, '騒々しい' }
       }
     }
 
@@ -35,7 +35,7 @@ function bailey_portal(e, ptype)
 
   e.lua_marker('O',
       timed_marker {
-        disappear = "The portal closes with a thud.",
+        disappear = "ポータルは重い音と共に閉じられた。",
         entity = 'portcullis',
         bailey_type = ptype,
         turns = timeout_turns,
