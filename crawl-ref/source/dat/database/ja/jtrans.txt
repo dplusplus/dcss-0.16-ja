@@ -3903,6 +3903,12 @@ a BORING thing.
 
 あなたはゾムに飽きられてしまった。
 %%%%
+############################## dat/clua/autofight.lua ##############################
+%%%%
+No target in view!
+
+視界内に敵はいない！
+%%%%
 ############################## dat/dlua/lm_tmsg.lua ##############################
 %%%%
 The walls and floor vibrate strangely for a moment.
