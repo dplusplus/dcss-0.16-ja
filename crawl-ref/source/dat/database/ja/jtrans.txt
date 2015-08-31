@@ -1481,6 +1481,10 @@ Saving game... please wait.
 
 セーブしています……お待ちください。
 %%%%
+Are you sure you want to abandon this character and quit the game?
+
+本当にこのキャラクターを放棄してゲームを終了しますか？
+%%%%
 Unknown command.
 
 そのコマンドは存在しません。
@@ -2768,6 +2772,11 @@ It was a %s.
 これは%sだ。
 %%%%
 ############################## prompt.cc ##############################
+%%%%
+%s (Confirm with "yes".)
+
+%s
+(確認のため"yes"と入力してください)
 %%%%
 %s[Y]es or [N]o only, please.
 
