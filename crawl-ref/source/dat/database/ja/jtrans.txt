@@ -2495,6 +2495,52 @@ hand
 
 手
 %%%%
+############################## player-stat.cc ##############################
+%%%%
+Your experience leads to an increase in your attributes!
+
+経験によってあなたの能力は増加した！
+%%%%
+Your base attributes are Str %d, Int %d, Dex %d.
+
+あなたの基本能力値は腕力: %d、知力: %d, 器用 %dです。
+%%%%
+Increase (S)trength, (I)ntelligence, or (D)exterity?
+
+どの能力を伸ばしますか？ (S)腕力 (I)知力 (D)器用さ
+%%%%
+You feel weakend.
+
+あなたは弱くなった。
+%%%%
+You feel weaker.
+
+あなたは力が弱くなった。
+%%%%
+You feel stronger.
+
+あなたは力強くなった。
+%%%%
+You feel dopey.
+
+あなたは愚かになった。
+%%%%
+You feel stupid.
+
+あなたは愚かになった。
+%%%%
+You feel clever.
+
+あなたは賢くなった。
+%%%%
+You feel clumsy.
+
+あなたは不器用になった。
+%%%%
+You feel agile.
+
+あなたは機敏になった。
+%%%%
 ############################## potion.cc ##############################
 %%%%
 You feel better.

@@ -4,6 +4,7 @@
 
 #include "artefact.h"
 #include "clua.h"
+#include "database.h"
 #include "delay.h"
 #include "files.h"
 #include "godpassive.h"
@@ -113,18 +114,18 @@ bool attribute_increase()
     me->add_tile(tile_def(TILEG_DODGING_ON, TEX_GUI));
     pop->push_entry(me);
 #else
-    mprf(MSGCH_INTRINSIC_GAIN, "Your experience leads to an increase in your attributes!");
+    mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("Your experience leads to an increase in your attributes!"));
     learned_something_new(HINT_CHOOSE_STAT);
     if (innate_stat(STAT_STR) != you.strength()
         || innate_stat(STAT_INT) != you.intel()
         || innate_stat(STAT_DEX) != you.dex())
     {
-        mprf(MSGCH_PROMPT, "Your base attributes are Str %d, Int %d, Dex %d.",
+        mprf(MSGCH_PROMPT, jtransc("Your base attributes are Str %d, Int %d, Dex %d."),
              innate_stat(STAT_STR),
              innate_stat(STAT_INT),
              innate_stat(STAT_DEX));
     }
-    mprf(MSGCH_PROMPT, "Increase (S)trength, (I)ntelligence, or (D)exterity? ");
+    mpr_nojoin(MSGCH_PROMPT, jtrans("Increase (S)trength, (I)ntelligence, or (D)exterity? ") + " ");
 #endif
     mouse_control mc(MOUSE_MODE_PROMPT);
 
@@ -325,9 +326,10 @@ void modify_stat(stat_type which_stat, int amount, bool suppress_msg,
 
     if (!suppress_msg)
     {
-        mprf((amount > 0) ? MSGCH_INTRINSIC_GAIN : MSGCH_WARN,
-             "You feel %s.",
-             stat_desc(which_stat, (amount > 0) ? SD_INCREASE : SD_DECREASE));
+        mpr_nojoin((amount > 0) ? MSGCH_INTRINSIC_GAIN : MSGCH_WARN,
+                   jtrans(make_stringf("You feel %s.",
+                                       stat_desc(which_stat, (amount > 0) ? SD_INCREASE
+                                                                          : SD_DECREASE))));
     }
 
     you.base_stats[which_stat] += amount;
