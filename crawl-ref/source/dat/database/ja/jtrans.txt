@@ -3912,6 +3912,14 @@ fails to return to your pack!
 
 はあなたの手元に戻ってきたが、うまく受け取れなかった！
 %%%%
+shoots
+
+射撃した
+%%%%
+throws
+
+投擲した
+%%%%
 ############################## timed_effect.cc ##############################
 %%%%
 You hear an odd grinding sound!

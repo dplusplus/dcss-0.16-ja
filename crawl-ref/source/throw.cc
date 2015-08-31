@@ -1039,13 +1039,12 @@ bool mons_throw(monster* mons, bolt &beam, int msl, bool teleport)
 
     // Now, if a monster is, for some reason, throwing something really
     // stupid, it will have baseHit of 0 and damage of 0.  Ah well.
-    string msg = mons->name(DESC_THE);
+    string msg = mons->name(DESC_THE) + "は";
     if (teleport)
-        msg += " magically";
-    msg += ((projected == LRET_LAUNCHED) ? " shoots " : " throws ");
+        msg += jtrans(" magically");
 
     if (!beam.name.empty() && projected == LRET_LAUNCHED)
-        msg += article_a(beam.name);
+        msg += beam.name;
     else
     {
         // build shoot message
@@ -1054,7 +1053,9 @@ bool mons_throw(monster* mons, bolt &beam, int msl, bool teleport)
         // build beam name
         beam.name = item.name(DESC_PLAIN, false, false, false);
     }
-    msg += ".";
+    msg += "を"
+        +  jtrans((projected == LRET_LAUNCHED) ? " shoots " : " throws ")
+        +  "。";
 
     if (mons->observable())
     {
@@ -1104,11 +1105,11 @@ bool mons_throw(monster* mons, bolt &beam, int msl, bool teleport)
         // Otherwise we get "The weapon returns whence it came from!" regardless.
         if (you.see_cell(beam.target) || you.can_see(mons))
         {
-            msg::stream << "The weapon returns "
+            msg::stream << "それは"
                         << (you.can_see(mons)?
-                              ("to " + mons->name(DESC_THE))
-                            : "from whence it came")
-                        << "!" << endl;
+                              (mons->name(DESC_THE) + "の所へ")
+                            : "飛んできた方向へ")
+                        << "戻っていった！" << endl;
         }
 
         // Player saw the item return.
