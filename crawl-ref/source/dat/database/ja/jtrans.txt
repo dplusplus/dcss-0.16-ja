@@ -1449,9 +1449,25 @@ Press <w>?</w> for a list of commands and other information.
 
 コマンド一覧やその他の情報を見るには <w>?</w>キー を押してください。
 %%%%
-Saving game... please wait.
+There is nothing on the other side of the stone arch.
 
-セーブしています……お待ちください。
+石のアーチの向こう側には何もない。
+%%%%
+This shop appears to be closed.
+
+この店は閉まっているようだ。
+%%%%
+A magical barricade bars your way!
+
+魔力の障壁が行く手を塞いでいる！
+%%%%
+You can't go down here!
+
+ここでは降りられない！
+%%%%
+You can't go up here!
+
+ここでは上れない！
 %%%%
 Save game and return to main manu?
 
@@ -1460,6 +1476,10 @@ Save game and return to main manu?
 Save game and exit?
 
 セーブして終了しますか？
+%%%%
+Saving game... please wait.
+
+セーブしています……お待ちください。
 %%%%
 Unknown command.
 
@@ -3702,6 +3722,48 @@ sit before
 kneel at
 
 ひざまずいた
+%%%%
+############################## stairs.cc ##############################
+%%%%
+The hatch slams shut behind you.
+
+脱出ハッチがあなたの背後でピシャッと閉まった。
+%%%%
+The world spins around you as you enter the gateway.
+
+門をくぐると共に世界があなたを中心に回転した。
+%%%%
+A mysterious force pulls you upwards.
+
+不思議な力があなたを上に引き寄せた。
+%%%%
+You  downwards.
+
+あなたは下へと%s。
+%%%%
+You %s %s through the gate.
+
+あなたは門をくぐって%sへと%s。
+%%%%
+You %s %swards.
+
+あなたは%sへと%s。
+%%%%
+Thank you for visiting Hell. Please come again soon.
+
+地獄にお越しいただきありがとうございました。またお越しくださいませ。
+%%%%
+You fly upwards.
+
+あなたは上へと飛んだ。
+%%%%
+Welcome back to %s!
+
+よくぞ%sに戻ってきた！
+%%%%
+You sense a powerful magical force warping space.
+
+あなたは強い魔力が空間を歪めているのを感じた。
 %%%%
 ############################## state.cc ##############################
 %%%%

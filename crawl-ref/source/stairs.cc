@@ -12,6 +12,7 @@
 #include "chardump.h"
 #include "colour.h"
 #include "coordit.h"
+#include "database.h"
 #include "delay.h"
 #include "dgn-overview.h"
 #include "directn.h"
@@ -165,7 +166,7 @@ static bool _stair_moves_pre(dungeon_feature_type stair)
 static void _exit_stair_message(dungeon_feature_type stair)
 {
     if (feat_is_escape_hatch(stair))
-        mpr("The hatch slams shut behind you.");
+        mpr(jtrans("The hatch slams shut behind you."));
 }
 
 static void _climb_message(dungeon_feature_type stair, bool going_up,
@@ -175,28 +176,29 @@ static void _climb_message(dungeon_feature_type stair, bool going_up,
         return;
 
     if (feat_is_portal(stair))
-        mpr("The world spins around you as you enter the gateway.");
+        mpr(jtrans("The world spins around you as you enter the gateway."));
     else if (feat_is_escape_hatch(stair))
     {
         if (going_up)
-            mpr("A mysterious force pulls you upwards.");
+            mpr(jtrans("A mysterious force pulls you upwards."));
         else
         {
-            mprf("You %s downwards.",
-                 you.flight_mode() ? "fly" : "slide");
+            mprf(jtransc("You %s downwards."),
+                 you.flight_mode() ? "飛び込んだ" : "すべり込んだ");
         }
     }
     else if (feat_is_gate(stair))
     {
-        mprf("You %s %s through the gate.",
-             you.flight_mode() ? "fly" : "go",
-             going_up ? "up" : "down");
+        mprf(jtransc("You %s %s through the gate."),
+             going_up ? "上" : "下",
+             you.flight_mode() ? "飛んだ" : "進んだ");
     }
     else
     {
-        mprf("You %s %swards.",
-             you.flight_mode() ? "fly" : "climb",
-             going_up ? "up" : "down");
+        mprf(jtransc("You %s %swards."),
+             going_up ? "上" : "下",
+             you.flight_mode() ? "飛んだ"
+                               : (going_up ? "登った" : "降りた"));
     }
 }
 
@@ -315,13 +317,13 @@ static bool _check_stairs(const dungeon_feature_type ftype, bool down = false)
                                                  : CMD_GO_UPSTAIRS))
         {
             if (ftype == DNGN_STONE_ARCH)
-                mpr("There is nothing on the other side of the stone arch.");
+                mpr(jtrans("There is nothing on the other side of the stone arch."));
             else if (ftype == DNGN_ABANDONED_SHOP)
-                mpr("This shop appears to be closed.");
+                mpr(jtrans("This shop appears to be closed."));
             else if (down)
-                mpr("You can't go down here!");
+                mpr(jtrans("You can't go down here!"));
             else
-                mpr("You can't go up here!");
+                mpr(jtrans("You can't go up here!"));
             return false;
         }
     }
@@ -405,7 +407,7 @@ void up_stairs(dungeon_feature_type force_stair, bool wizard)
     if (old_level.branch == BRANCH_VESTIBULE
         && !player_in_branch(BRANCH_VESTIBULE))
     {
-        mpr("Thank you for visiting Hell. Please come again soon.");
+        mpr(jtrans("Thank you for visiting Hell. Please come again soon."));
     }
 
     // Fixup exits from the Hell branches.
@@ -415,7 +417,7 @@ void up_stairs(dungeon_feature_type force_stair, bool wizard)
     const dungeon_feature_type stair_taken = stair_find;
 
     if (you.flight_mode() && !feat_is_gate(stair_find))
-        mpr("You fly upwards.");
+        mpr(jtrans("You fly upwards."));
     else
         _climb_message(stair_find, true, old_level.branch);
 
@@ -423,8 +425,8 @@ void up_stairs(dungeon_feature_type force_stair, bool wizard)
 
     if (old_level.branch != you.where_are_you)
     {
-        mprf("Welcome back to %s!",
-             branches[you.where_are_you].longname);
+        mprf(jtransc("Welcome back to %s!"),
+             jtransc(branches[you.where_are_you].longname));
         if ((brdepth[old_level.branch] > 1
              || old_level.branch == BRANCH_VESTIBULE)
             && !you.branches_left[old_level.branch])
@@ -459,7 +461,7 @@ void up_stairs(dungeon_feature_type force_stair, bool wizard)
     seen_monsters_react();
 
     if (!allow_control_teleport(true))
-        mprf(MSGCH_WARN, "You sense a powerful magical force warping space.");
+        mpr_nojoin(MSGCH_WARN, jtrans("You sense a powerful magical force warping space."));
 
     request_autopickup();
 }
