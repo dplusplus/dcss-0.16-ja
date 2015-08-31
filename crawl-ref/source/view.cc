@@ -179,32 +179,23 @@ void seen_monsters_react(int stealth)
 
 static string _desc_mons_type_map(map<monster_type, int> types)
 {
-    string message;
-    unsigned int count = 1;
+    vector<string> names;
     for (const auto &entry : types)
     {
         string name;
-        description_level_type desc;
-        if (entry.second == 1)
-            desc = DESC_A;
-        else
-            desc = DESC_PLAIN;
+        description_level_type desc = DESC_PLAIN;
 
-        name = mons_type_name(entry.first, desc);
+        name = jtransc(mons_type_name(entry.first, desc));
         if (entry.second > 1)
         {
-            name = make_stringf("%d %s", entry.second,
-                                pluralise(name).c_str());
+            name = make_stringf("%d体の%s", entry.second,
+                                name.c_str());
         }
 
-        message += name;
-        if (count == types.size() - 1)
-            message += " and ";
-        else if (count < types.size())
-            message += ", ";
-        ++count;
+        names.push_back(name);
     }
-    return make_stringf("%s come into view.", message.c_str());
+    return make_stringf(jtransc("%s come into view."),
+                        to_separated_line(names.begin(), names.end(), false).c_str());
 }
 
 static monster_type _mons_genus_keep_uniques(monster_type mc)
