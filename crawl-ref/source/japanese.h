@@ -9,6 +9,10 @@
 
 #include "enum.h"
 
+const char * counter_suffix_weapon(const item_def& item);
+const char * counter_suffix_armour(const item_def& item);
+const char * counter_suffix_misc(const item_def& item);
+const char * counter_suffix_missile(const item_def& item);
 const char * counter_suffix(const item_def &item);
 const char * general_counter_suffix(const int size);
 string jpluralise(const string &name, const char *prefix, const char *suffix = "");

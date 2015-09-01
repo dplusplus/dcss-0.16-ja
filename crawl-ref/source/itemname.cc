@@ -235,12 +235,7 @@ string item_def::name(description_level_type descrip, bool terse, bool ident,
         if (descrip != DESC_BASENAME && descrip != DESC_QUALNAME
             && descrip != DESC_DBNAME)
         {
-            if (quantity_in_words)
-                buff << number_in_words(quantity);
-            else
-                buff << quantity;
-
-            buff << counter_suffix(*this) << "の";
+            buff << quantity << counter_suffix(*this) << "の";
         }
     }
     else
