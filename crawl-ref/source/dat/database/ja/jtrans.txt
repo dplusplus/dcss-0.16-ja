@@ -2621,6 +2621,62 @@ Space warps around you for a moment!
 
 一瞬あなたの周りの空間が歪んだ！
 %%%%
+%s stops flaming.
+
+%sは燃えるのを止めた。
+%%%%
+%s stops glowing.
+
+%sは輝きを止めた。
+%%%%
+%s stops crackling.
+
+%sは爆ぜるのを止めた。
+%%%%
+%s stops dripping with poison.
+
+%sは毒を滲ませるのを止めた。
+%%%%
+You feel less protected.
+
+あなたの護りは薄くなったようだ。
+%%%%
+You feel like more of a target.
+
+あなたはいい的となったような気がした。
+%%%%
+You feel your glee subside.
+
+あなたの喜びはおさまったようだ。
+%%%%
+You feel the dreadful sensation subside.
+
+あなたの恐ろしい感覚はおさまったようだ。
+%%%%
+Lugonu absorbs the residual spatial distortion as you unwield your weapon.
+
+ルゴヌはあなたが武器を手放した際の余波の空間歪曲を吸い取った。
+%%%%
+You feel magic returning to you.
+
+あなたは魔力が戻ってきたような気がした。
+%%%%
+Your temporary branding evaporates.
+
+あなたが武器にかけた魔力は消え去った。
+%%%%
+Your spectral weapon disappears as %s.
+
+幽体の武器は%sやいなや消え去った。
+%%%%
+your weapon melds
+
+あなたが武器と融合する
+%%%%
+you unwield
+
+あなたが武器を外す
+%%%%
 ############################## player-stat.cc ##############################
 %%%%
 Your experience leads to an increase in your attributes!

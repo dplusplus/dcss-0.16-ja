@@ -671,34 +671,34 @@ static void _unequip_weapon_effect(item_def& item, bool showMsgs, bool meld)
             {
             case SPWPN_FLAMING:
                 if (showMsgs)
-                    mprf("%s stops flaming.", msg.c_str());
+                    mprf(jtransc("%s stops flaming."), msg.c_str());
                 break;
 
             case SPWPN_FREEZING:
             case SPWPN_HOLY_WRATH:
                 if (showMsgs)
-                    mprf("%s stops glowing.", msg.c_str());
+                    mprf(jtransc("%s stops glowing."), msg.c_str());
                 break;
 
             case SPWPN_ELECTROCUTION:
                 if (showMsgs)
-                    mprf("%s stops crackling.", msg.c_str());
+                    mprf(jtransc("%s stops crackling."), msg.c_str());
                 break;
 
             case SPWPN_VENOM:
                 if (showMsgs)
-                    mprf("%s stops dripping with poison.", msg.c_str());
+                    mprf(jtransc("%s stops dripping with poison."), msg.c_str());
                 break;
 
             case SPWPN_PROTECTION:
                 if (showMsgs)
-                    mpr("You feel less protected.");
+                    mpr(jtrans("You feel less protected."));
                 you.redraw_armour_class = true;
                 break;
 
             case SPWPN_EVASION:
                 if (showMsgs)
-                    mpr("You feel like more of a target.");
+                    mpr(jtrans("You feel like more of a target."));
                 you.redraw_evasion = true;
                 break;
 
@@ -706,9 +706,9 @@ static void _unequip_weapon_effect(item_def& item, bool showMsgs, bool meld)
                 if (showMsgs)
                 {
                     if (you.species == SP_VAMPIRE)
-                        mpr("You feel your glee subside.");
+                        mpr(jtrans("You feel your glee subside."));
                     else
-                        mpr("You feel the dreadful sensation subside.");
+                        mpr(jtrans("You feel the dreadful sensation subside."));
                 }
                 break;
 
@@ -730,8 +730,8 @@ static void _unequip_weapon_effect(item_def& item, bool showMsgs, bool meld)
                     if (you_worship(GOD_LUGONU))
                     {
                         god_speaks(GOD_LUGONU,
-                                   "Lugonu absorbs the residual spatial "
-                                   "distortion as you unwield your weapon.");
+                                   jtransc("Lugonu absorbs the residual spatial "
+                                           "distortion as you unwield your weapon."));
                         break;
                     }
                     // Makes no sense to discourage unwielding a temporarily
@@ -745,7 +745,7 @@ static void _unequip_weapon_effect(item_def& item, bool showMsgs, bool meld)
 
             case SPWPN_ANTIMAGIC:
                 calc_mp();
-                mpr("You feel magic returning to you.");
+                mpr(jtrans("You feel magic returning to you."));
                 break;
 
                 // NOTE: When more are added here, *must* duplicate unwielding
@@ -756,7 +756,7 @@ static void _unequip_weapon_effect(item_def& item, bool showMsgs, bool meld)
             {
                 end_weapon_brand(item);
                 // We're letting this through even if hiding messages.
-                mpr("Your temporary branding evaporates.");
+                mpr(jtrans("Your temporary branding evaporates."));
             }
         }
     }
@@ -790,8 +790,8 @@ static void _unequip_weapon_effect(item_def& item, bool showMsgs, bool meld)
     monster *spectral_weapon = find_spectral_weapon(&you);
     if (spectral_weapon)
     {
-        mprf("Your spectral weapon disappears as %s.",
-             meld ? "your weapon melds" : "you unwield");
+        mprf(jtransc("Your spectral weapon disappears as %s."),
+             jtransc(meld ? "your weapon melds" : "you unwield"));
         end_spectral_weapon(spectral_weapon, false, true);
     }
 }
