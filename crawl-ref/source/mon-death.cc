@@ -2257,11 +2257,12 @@ int monster_die(monster* mons, killer_type killer,
         {
             if (death_message)
             {
-                const char* msg =
+                string msg(
                     exploded                   ? jtransc(" is blown up!") :
                     wounded_damaged(targ_holy) ? jtransc(" is destroyed!")
-                                               : jtransc(" dies!");
-                simple_monster_message(mons, msg, MSGCH_MONSTER_DAMAGE,
+                                               : jtransc(" dies!"));
+
+                simple_monster_message(mons, msg.c_str(), MSGCH_MONSTER_DAMAGE,
                                        MDAM_DEAD);
             }
 
@@ -2367,11 +2368,12 @@ int monster_die(monster* mons, killer_type killer,
                 }
                 else
                 {
-                    const char* msg =
+                    string msg(
                         exploded                   ? jtransc(" is blown up!") :
                         wounded_damaged(targ_holy) ? jtransc(" is destroyed!")
-                                                   : jtransc(" dies!");
-                    simple_monster_message(mons, msg, MSGCH_MONSTER_DAMAGE,
+                                                   : jtransc(" dies!"));
+
+                    simple_monster_message(mons, msg.c_str(), MSGCH_MONSTER_DAMAGE,
                                            MDAM_DEAD);
                 }
             }
