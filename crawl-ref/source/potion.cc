@@ -296,8 +296,9 @@ public:
     {
         const bool were_mighty = you.duration[DUR_MIGHT] > 0;
 
-        mprf(MSGCH_DURATION, jtransc("You feel %s all of a sudden."),
-             jtransc(were_mighty ? "mightier" : "very mighty"));
+        mpr_nojoin(MSGCH_DURATION,
+                   jtrans(make_stringf("You feel %s all of a sudden.",
+                                       were_mighty ? "mightier" : "very mighty")));
 
         you.increase_duration(DUR_MIGHT, 35 + random2(pow), 80);
 
@@ -322,8 +323,9 @@ public:
     {
         const bool were_brilliant = you.duration[DUR_BRILLIANCE] > 0;
 
-        mprf(MSGCH_DURATION, jtransc("You feel %s all of a sudden."),
-             jtransc(were_brilliant ? "more clever" : "clever"));
+        mpr_nojoin(MSGCH_DURATION,
+                   jtransc(make_stringf("You feel %s all of a sudden.",
+                                        were_brilliant ? "more clever" : "clever")));
 
         you.increase_duration(DUR_BRILLIANCE, 35 + random2(pow), 80);
 
@@ -349,8 +351,9 @@ public:
     {
         const bool were_agile = you.duration[DUR_AGILITY] > 0;
 
-        mprf(MSGCH_DURATION, jtransc("You feel %s all of a sudden."),
-             jtransc(were_agile ? "more agile" : "agile"));
+        mpr_nojoin(MSGCH_DURATION,
+                   jtransc(make_stringf("You feel %s all of a sudden.",
+                                        were_agile ? "more agile" : "agile")));
 
         you.increase_duration(DUR_AGILITY, 35 + random2(pow), 80);
 

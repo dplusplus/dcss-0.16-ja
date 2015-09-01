@@ -2773,33 +2773,29 @@ This potion cannot work under stasis.
 
 この薬は停滞状態では役に立たない。
 %%%%
-You feel %s all of a sudden.
+You feel mightier all of a sudden.
 
-あなたは突然%sなった。
+あなたは突然、より力強くなった。
 %%%%
-mightier
+You feel very mighty all of a sudden.
 
-、より力強く
+あなたは突然、非常に力強くなった。
 %%%%
-very mighty
+You feel more clever all of a sudden.
 
-、非常に力強く
+あなたは突然、より賢くなった。
 %%%%
-more clever
+You feel clever all of a sudden.
 
-、より賢く
+あなたは突然賢くなった。
 %%%%
-clever
+You feel more agile all of a sudden.
 
-賢く
+あなたは突然、より素早くなった。
 %%%%
-more agile
+You feel agile all of a sudden.
 
-、より素早く
-%%%%
-agile
-
-素早く
+あなたは突然素早くなった。
 %%%%
 You cannot fly right now.
 
