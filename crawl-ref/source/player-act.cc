@@ -13,6 +13,7 @@
 #include "areas.h"
 #include "art-enum.h"
 #include "coordit.h"
+#include "database.h"
 #include "dgnevent.h"
 #include "english.h"
 #include "env.h"
@@ -645,7 +646,7 @@ string player::arm_name(bool plural, bool *can_plural) const
         *can_plural = true;
 
     string adj;
-    string str = "arm";
+    string str = jtrans("arm");
 
     if (player_genus(GENPC_DRACONIAN) || species == SP_NAGA)
         adj = "scaled";
@@ -661,11 +662,16 @@ string player::arm_name(bool plural, bool *can_plural) const
     else if (form == TRAN_SHADOW)
         adj = "shadowy";
 
-    if (!adj.empty())
-        str = adj + " " + str;
-
     if (plural)
-        str = pluralise(str);
+    {
+        if (species == SP_OCTOPODE)
+            str = jpluralise(str, "両方の");
+        else
+            str = jpluralise(str, "両");
+    }
+
+    if (!adj.empty())
+        str = jtrans(adj) + str;
 
     return str;
 }

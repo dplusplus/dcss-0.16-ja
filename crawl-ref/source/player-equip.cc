@@ -8,6 +8,7 @@
 #include "areas.h"
 #include "artefact.h"
 #include "art-enum.h"
+#include "database.h"
 #include "delay.h"
 #include "english.h" // conjugate_verb
 #include "evoke.h"
@@ -410,7 +411,7 @@ static void _equip_weapon_effect(item_def& item, bool showMsgs, bool unmeld)
         if (item.sub_type == MISC_LANTERN_OF_SHADOWS)
         {
             if (showMsgs)
-                mpr("The area is filled with flickering shadows.");
+                mpr(jtrans("The area is filled with flickering shadows."));
 
             you.attribute[ATTR_SHADOWS] = 1;
             update_vision_range();
@@ -438,7 +439,7 @@ static void _equip_weapon_effect(item_def& item, bool showMsgs, bool unmeld)
             }
 
             if (get_real_mp(true) >= 50)
-                mpr("You feel your magic capacity is already quite full.");
+                mpr(jtrans("You feel your magic capacity is already quite full."));
             else
                 canned_msg(MSG_MANA_INCREASE);
 
@@ -495,68 +496,69 @@ static void _equip_weapon_effect(item_def& item, bool showMsgs, bool unmeld)
                 switch (special)
                 {
                 case SPWPN_FLAMING:
-                    mpr("It bursts into flame!");
+                    mpr(jtrans("It bursts into flame!"));
                     break;
 
                 case SPWPN_FREEZING:
-                    mpr(is_range_weapon(item) ? "It is covered in frost."
-                                              : "It glows with a cold blue light!");
+                    mpr(jtrans(is_range_weapon(item) ? "It is covered in frost."
+                                                     : "It glows with a cold blue light!"));
                     break;
 
                 case SPWPN_HOLY_WRATH:
-                    mpr("It softly glows with a divine radiance!");
+                    mpr(jtrans("It softly glows with a divine radiance!"));
                     break;
 
                 case SPWPN_ELECTROCUTION:
                     if (!silenced(you.pos()))
-                        mprf(MSGCH_SOUND, "You hear the crackle of electricity.");
+                        mpr_nojoin(MSGCH_SOUND, jtrans("You hear the crackle of electricity."));
                     else
-                        mpr("You see sparks fly.");
+                        mpr(jtrans("You see sparks fly."));
                     break;
 
                 case SPWPN_VENOM:
-                    mpr("It begins to drip with poison!");
+                    mpr(jtrans("It begins to drip with poison!"));
                     break;
 
                 case SPWPN_PROTECTION:
-                    mpr("You feel protected!");
+                    mpr(jtrans("You feel protected!"));
                     break;
 
                 case SPWPN_EVASION:
-                    mpr("You feel nimbler!");
+                    mpr(jtrans("You feel nimbler!"));
                     break;
 
                 case SPWPN_DRAINING:
-                    mpr("You sense an unholy aura.");
+                    mpr(jtrans("You sense an unholy aura."));
                     break;
 
                 case SPWPN_SPEED:
-                    mpr(you.hands_act("tingle", "!"));
+                    mpr(jtrans("hands tingle"));
                     break;
 
                 case SPWPN_VAMPIRISM:
                     if (you.species == SP_VAMPIRE)
-                        mpr("You feel a bloodthirsty glee!");
-                    else if (you.undead_state() == US_ALIVE && !you_foodless())                        mpr("You feel a dreadful hunger.");
+                        mpr(jtrans("You feel a bloodthirsty glee!"));
+                    else if (you.undead_state() == US_ALIVE && !you_foodless())
+                        mpr(jtrans("You feel a dreadful hunger."));
                     else
-                        mpr("You feel an empty sense of dread.");
+                        mpr(jtrans("You feel an empty sense of dread."));
                     break;
 
                 case SPWPN_PAIN:
                 {
                     const string your_arm = you.arm_name(false);
                     if (you.skill(SK_NECROMANCY) == 0)
-                        mpr("You have a feeling of ineptitude.");
+                        mpr(jtrans("You have a feeling of ineptitude."));
                     else if (you.skill(SK_NECROMANCY) <= 6)
-                        mprf("Pain shudders through your %s!", your_arm.c_str());
+                        mprf(jtransc("Pain shudders through your %s!"), your_arm.c_str());
                     else
-                        mprf("A searing pain shoots up your %s!", your_arm.c_str());
+                        mprf(jtransc("A searing pain shoots up your %s!"), your_arm.c_str());
                     break;
                 }
 
                 case SPWPN_CHAOS:
-                    mpr("It is briefly surrounded by a scintillating aura "
-                        "of random colours.");
+                    mpr(jtrans("It is briefly surrounded by a scintillating aura "
+                               "of random colours."));
                     break;
 
                 case SPWPN_PENETRATION:
@@ -566,23 +568,23 @@ static void _equip_weapon_effect(item_def& item, bool showMsgs, bool unmeld)
                     bool plural = true;
                     string hand = you.hand_name(true, &plural);
 
-                    mprf("Your %s briefly %s through it before you manage "
-                         "to get a firm grip on it.",
+                    mprf(jtransc("Your %s briefly %s through it before you manage "
+                                 "to get a firm grip on it."),
                          hand.c_str(), conjugate_verb("pass", plural).c_str());
                     break;
                 }
 
                 case SPWPN_REAPING:
-                    mpr("It is briefly surrounded by shifting shadows.");
+                    mpr(jtrans("It is briefly surrounded by shifting shadows."));
                     break;
 
                 case SPWPN_ANTIMAGIC:
                     // Even if your maxmp is 0.
-                    mpr("You feel magic leave you.");
+                    mpr(jtrans("You feel magic leave you."));
                     break;
 
                 case SPWPN_DISTORTION:
-                    mpr("Space warps around you for a moment!");
+                    mpr(jtrans("Space warps around you for a moment!"));
                     break;
 
                 default:

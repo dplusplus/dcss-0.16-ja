@@ -2499,6 +2499,128 @@ hand
 
 手
 %%%%
+arm
+
+腕
+%%%%
+scaled
+
+鱗に覆われた
+%%%%
+feathered
+
+羽毛に包まれた
+%%%%
+bandage-wrapped
+
+包帯に覆われた
+%%%%
+bony
+
+骨ばった
+%%%%
+shadowy
+
+影のような
+%%%%
+############################## player-equip.cc ##############################
+%%%%
+The area is filled with flickering shadows.
+
+辺りは揺らめく影で満たされた。
+%%%%
+You feel your magic capacity is already quite full.
+
+あなたの魔力は既に一杯のようだ。
+%%%%
+It bursts into flame!
+
+それは吹きあがる炎に包まれた。
+%%%%
+It is covered in frost.
+
+それは霜に覆われた。
+%%%%
+It glows with a cold blue light!
+
+それは冷たい蒼に輝いた。
+%%%%
+It softly glows with a divine radiance!
+
+それは神聖な光に柔らかく輝いた。
+%%%%
+You hear the crackle of electricity.
+
+あなたは電光の爆ぜる音を耳にした。
+%%%%
+You see sparks fly.
+
+あなたは火花が飛ぶのを目にした。
+%%%%
+It begins to drip with poison!
+
+それは毒を滴らせはじめた！
+%%%%
+You feel protected!
+
+あなたは護りの力を感じた！
+%%%%
+You feel nimbler!
+
+あなたは俊敏になったようだ！
+%%%%
+You sense an unholy aura.
+
+あなたは邪悪な霊気を感じ取った。
+%%%%
+hands tingle
+
+あなたの手はうずうずしている！
+%%%%
+You feel a bloodthirsty glee!
+
+あなたは血に飢えた喜びを感じた！
+%%%%
+You feel a dreadful hunger.
+
+あなたはひどく腹が空いた。
+%%%%
+You feel an empty sense of dread.
+
+あなたはひどく空っぽな感覚を得た。
+%%%%
+You have a feeling of ineptitude.
+
+あなたは愚かな行為をしたような気がした。
+%%%%
+Pain shudders through your %s!
+
+苦痛があなたの%sを通じ、身震いをした！
+%%%%
+A searing pain shoots up your %s!
+
+焼けつく痛みがあなたの%sを駆け上った！
+%%%%
+It is briefly surrounded by a scintillating aura of random colours.
+
+それはしばらくの間様々な色が煌くオーラに包まれた。
+%%%%
+Your %s briefly %s through it before you manage to get a firm grip on it.
+
+それをしっかり掴もうとする前にしばらくの間%sでしごいた。
+%%%%
+It is briefly surrounded by shifting shadows.
+
+それはしばらくの間ちらつく影に覆われた。
+%%%%
+You feel magic leave you.
+
+あなたは魔力が失われたような気がした。
+%%%%
+Space warps around you for a moment!
+
+一瞬あなたの周りの空間が歪んだ！
+%%%%
 ############################## player-stat.cc ##############################
 %%%%
 Your experience leads to an increase in your attributes!
