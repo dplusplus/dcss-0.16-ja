@@ -15,6 +15,7 @@
 #include "artefact.h"
 #include "branch.h"
 #include "coord.h"
+#include "database.h"
 #include "directn.h"
 #include "english.h"
 #include "env.h"
@@ -798,7 +799,12 @@ void TilesFramework::_send_player(bool force_full)
         {
             json_open_object();
             if (!status.light_text.empty())
-                json_write_string("light", status.light_text);
+            {
+                if (jtrans_has_key("dur " + status.light_text))
+                    json_write_string("light", jtrans("dur " + status.light_text));
+                else
+                    json_write_string("light", jtrans(status.light_text));
+            }
             if (!status.short_text.empty())
                 json_write_string("text", status.short_text);
             if (status.light_colour)

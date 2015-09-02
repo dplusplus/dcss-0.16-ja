@@ -1064,7 +1064,7 @@ static void _print_status_lights(int y)
         if (end_x <= crawl_view.hudsz.x)
         {
             textcolour(lights[i_light].colour);
-            CPRINTF("%s", lights[i_light].text.c_str());
+            CPRINTF("%s", jtransc(string("dur ") + lights[i_light].text));
             if (end_x < crawl_view.hudsz.x)
                 CPRINTF(" ");
             ++i_light;
@@ -1087,7 +1087,7 @@ static void _print_status_lights(int y)
         if (lights.size() == 1)
         {
             textcolour(lights[0].colour);
-            CPRINTF("%s", lights[0].text.c_str());
+            CPRINTF("%s", jtransc(string("dur ") + lights[0].text));
         }
         else
         {
@@ -1097,12 +1097,12 @@ static void _print_status_lights(int y)
                 if (i_light == lights.size() - 1
                     && strwidth(lights[i_light].text) < crawl_view.hudsz.x - wherex())
                 {
-                    CPRINTF("%s",lights[i_light].text.c_str());
+                    CPRINTF("%s", jtransc(string("dur ") + lights[i_light].text));
                 }
                 else if ((int)lights.size() > crawl_view.hudsz.x / 2)
-                    CPRINTF("%.1s",lights[i_light].text.c_str());
+                    CPRINTF("%.1s", jtrasnc(string("dur ") + lights[i_light].text));
                 else
-                    CPRINTF("%.1s ",lights[i_light].text.c_str());
+                    CPRINTF("%.1s ", jtransc(string("dur ") + lights[i_light]));
                 ++i_light;
             }
         }
@@ -2587,7 +2587,13 @@ static string _status_mut_abilities(int sw)
     for (unsigned i = 0; i <= STATUS_LAST_STATUS; ++i)
     {
         if (fill_status_info(i, &inf) && !inf.short_text.empty())
-            status.emplace_back(inf.short_text);
+        {
+            string duration_key = string("dur ") + inf.short_text;
+            if (jtrans_has_key(duration_key))
+                status.emplace_back(jtrans(duration_key));
+            else
+                status.emplace_back(jtrans(inf.short_text));
+        }
     }
 
     int move_cost = (player_speed() * player_movement_speed()) / 10;

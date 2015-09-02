@@ -204,6 +204,8 @@ static TextDB AllDBs[] =
            "jtrans_armour.txt",
            "jtrans_missile.txt",
            "jtrans_food.txt",
+
+           "jtrans_duration_data.txt",
            nullptr),
 };
 
