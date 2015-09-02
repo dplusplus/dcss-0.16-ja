@@ -1030,3 +1030,10 @@ string rune_of_zot_name(const string &name)
 {
     return jtrans(name + " rune of Zot");
 }
+
+bool jtrans_has_key(const string &key)
+{
+    if (key == "") return false;
+
+    return !(jtrans(key) == key);
+}

@@ -55,6 +55,8 @@ string jtrans_make_stringf(const string &msg, const string &verb, const string &
 #define jtransc(x) (jtrans(x).c_str())
 #define jtranslnc(x) (jtrans(x, true).c_str())
 string rune_of_zot_name(const string &name);
+bool jtrans_has_key(const string &key);
+
 template<typename C1, typename C2>
 void append_container_jtrans(C1& container_base, const C2& container_append)
 {
