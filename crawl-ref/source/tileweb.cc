@@ -668,18 +668,22 @@ void TilesFramework::_send_player(bool force_full)
     json_write_string("msg", "player");
     json_treat_as_empty();
 
-    _update_string(force_full, c.name, you.your_name, "name");
-    _update_string(force_full, c.job_title, filtered_lang(player_title()),
-                   "title");
+    string status_name = make_stringf("%s『%s』(%s)",
+                                      jtransc(player_title(false)),
+                                      you.your_name.c_str(),
+                                      jtransc(species_name(you.species)));
+
+    _update_string(force_full, c.name, status_name, "name");
+    _update_string(force_full, c.job_title, "", "title");
     _update_int(force_full, c.wizard, you.wizard, "wizard");
     _update_string(force_full, c.species, species_name(you.species),
                    "species");
     string god = "";
     if (you_worship(GOD_JIYVA))
-        god = god_name_jiyva(true);
+        god = god_name_jiyva(false);
     else if (!you_worship(GOD_NO_GOD))
         god = god_name(you.religion);
-    _update_string(force_full, c.god, god, "god");
+    _update_string(force_full, c.god, jtrans(god), "god");
     _update_int(force_full, c.under_penance, (bool) player_under_penance(), "penance");
     uint8_t prank = 0;
     if (!you_worship(GOD_NO_GOD))
