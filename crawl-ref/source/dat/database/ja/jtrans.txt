@@ -6677,6 +6677,130 @@ becomes somewhat translucent.
 's eyes start to glow.
 
 の眼が爛々と輝きだした。
+%%%
+############################## mon-info.cc ##############################
+%%%%
+very slow
+
+かなり遅い
+%%%%
+slow
+
+遅い
+%%%%
+extremely fast
+
+極めて素早い
+%%%%
+very fast
+
+かなり素早い
+%%%%
+fast
+
+素早い
+%%%%
+[adj]very slow
+
+かなり遅く
+%%%%
+[adj]slow
+
+遅く
+%%%%
+[adj]extremely fast
+
+極めて素早く
+%%%%
+[adj]very fast
+
+かなり素早く
+%%%%
+[adj]fast
+
+素早く
+%%%%
+normal
+
+普通だ
+%%%%
+says
+
+言った
+%%%%
+shouts
+
+叫んだ
+%%%%
+barks
+
+うなった
+%%%%
+roars
+
+吠えた
+%%%%
+screams
+
+叫んだ
+%%%%
+bellows
+
+大声で鳴いた
+%%%%
+trumpets
+
+パオーンと鳴いた
+%%%%
+screeches
+
+キーキー鳴いた
+%%%%
+buzzes
+
+ブンブンうなった
+%%%%
+moans
+
+うめき声を上げた
+%%%%
+gurgles
+
+ぶくぶく音を立てた
+%%%%
+croaks
+
+ゲコゲコ鳴いた
+%%%%
+growls
+
+うなった
+%%%%
+hisses
+
+シューッと音を立てた
+%%%%
+sneers
+
+嘲笑った
+%%%%
+caws
+
+モーと鳴いた
+%%%%
+rumbles
+
+重々しく言った
+%%%%
+breathes
+
+静かに言った
+%%%%
+whispers
+
+囁いた
+%%%%
+############################## mutation.cc ##############################
 %%%%
 You feel troubled.
 

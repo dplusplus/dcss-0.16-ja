@@ -4294,7 +4294,7 @@ string do_mon_str_replacements(const string &in_msg, const monster* mons,
         msg = replace_all(msg, "@says@", "buggily says");
     }
     else
-        msg = replace_all(msg, "@says@", sound_list[s_type]);
+        msg = replace_all(msg, "@says@", jtrans(sound_list[s_type]));
 
     msg = apostrophise_fixup(msg);
 
