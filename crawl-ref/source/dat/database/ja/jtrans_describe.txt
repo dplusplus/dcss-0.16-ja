@@ -1,4 +1,6 @@
 %%%%
+############################## describe-god.cc ##############################
+%%%%
 Various
 
 いろいろ
@@ -312,4 +314,18 @@ Title  -
 Favour -
 
 好意 -
+%%%%
+############################## describe-spells.cc ##############################
+%%%%
+Spells                             Type                      Level
+
+呪文名                           種類                       レベル
+%%%%
+Select a spell to read its description
+
+解説文を読むにはそれぞれの呪文を選択してください。
+%%%%
+, to memorize it or to forget it
+
+呪文を記憶/忘却したり、
 %%%%

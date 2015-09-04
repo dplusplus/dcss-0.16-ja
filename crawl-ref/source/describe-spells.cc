@@ -9,6 +9,7 @@
 #include "describe-spells.h"
 
 #include "cio.h"
+#include "database.h"
 #include "delay.h"
 #include "describe.h"
 #include "externs.h"
@@ -287,7 +288,7 @@ static string _spell_schools(spell_type spell)
 
         if (!schools.empty())
             schools += "/";
-        schools += spelltype_long_name(school_flag);
+        schools += jtrans(spelltype_short_name(school_flag));
     }
 
     return schools;
@@ -352,7 +353,7 @@ static void _describe_book(const spellbook_contents &book,
 
     // only display header for book/rod spells
     if (source_item)
-        description.cprintf("\n Spells                             Type                      Level");
+        description.cprintf(("\n " + jtrans("Spells                             Type                      Level")).c_str());
     description.cprintf("\n");
 
     // list spells in two columns, instead of one? (monster books)
@@ -372,7 +373,7 @@ static void _describe_book(const spellbook_contents &book,
                                   ' ';
         description.cprintf("%c - %s",
                             spell_letter,
-                            chop_string(spell_title(spell), 29).c_str());
+                            chop_string(tagged_jtransc("[spell]", spell_title(spell)), 29).c_str());
 
         // only display type & level for book/rod spells
         if (doublecolumn)
@@ -387,7 +388,7 @@ static void _describe_book(const spellbook_contents &book,
         }
 
         string schools =
-            source_item->base_type == OBJ_RODS ? "Evocations"
+            source_item->base_type == OBJ_RODS ? jtrans("Evocations")
                                                : _spell_schools(spell);
         description.cprintf("%s%d\n",
                             chop_string(schools, 30).c_str(),
@@ -462,10 +463,9 @@ void list_spellset(const spellset &spells, const monster_info *mon_owner,
 
     description.textcolour(LIGHTGREY);
 
-    description.cprintf("Select a spell to read its description");
     if (can_memorize)
-        description.cprintf(", to memorize it or to forget it");
-    description.cprintf(".\n");
+        description.cprintf(jtransc(", to memorize it or to forget it"));
+    description.cprintf(jtransc("Select a spell to read its description"));
 
     spell_scroller ssc(spells, mon_owner, source_item);
     ssc.wrap_formatted_string(description);

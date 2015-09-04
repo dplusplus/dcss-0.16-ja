@@ -2371,7 +2371,7 @@ static void _handle_read_book(int item_slot)
 
     if (you.stat_zero[STAT_INT])
     {
-        mpr("Reading books requires mental cohesion, which you lack.");
+        mpr(jtrans("Reading books requires mental cohesion, which you lack."));
         return;
     }
 
