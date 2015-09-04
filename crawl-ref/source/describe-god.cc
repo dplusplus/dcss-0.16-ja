@@ -964,9 +964,9 @@ static void _describe_god_powers(god_type which_god, int numcols)
         {
             have_any = true;
 
-            string offer = jtrans(numoffers == 1
-                                  ? spell_title(*you.vehumet_gifts.begin())
-                                  : "some of Vehumet's most lethal spells");
+            string offer = numoffers == 1
+                           ? tagged_jtrans("[spell]", spell_title(*you.vehumet_gifts.begin()))
+                           : jtrans("some of Vehumet's most lethal spells");
             if (numoffers == 1)
                 offer += "の呪文";
 
