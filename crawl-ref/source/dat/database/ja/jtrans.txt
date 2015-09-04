@@ -27,6 +27,16 @@ Do you want to play this combination?
 
 この組み合わせで開始しますか？
 %%%%
+############################## beam.cc ##############################
+%%%%
+The %s %s you!
+
+%sはあなた%s！
+%%%%
+The %s %s %s.
+
+%sは%s%s。
+%%%%
 ############################## butcher.cc ##############################
 %%%%
 Desecrating this corpse would be a sin. Continue anyway?

@@ -206,6 +206,7 @@ static TextDB AllDBs[] =
            "jtrans_food.txt",
 
            "jtrans_duration_data.txt",
+           "jtrans_zap_data.txt",
            nullptr),
 };
 
@@ -1038,4 +1039,12 @@ bool jtrans_has_key(const string &key)
     if (key == "") return false;
 
     return !(jtrans(key) == key);
+}
+
+string tagged_jtrans(const string &tag, const string& key, bool linefeed)
+{
+    if (jtrans_has_key(tag + key))
+        return jtrans(tag + key, linefeed);
+    else
+        return key;
 }

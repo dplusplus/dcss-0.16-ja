@@ -1,0 +1,193 @@
+%%%%
+[zap]acid
+
+強酸
+%%%%
+[zap]agony
+
+苦悶の光線
+%%%%
+[zap]ball of steam
+
+蒸気の爆裂球
+%%%%
+[zap]blast of choking fumes
+
+窒息の噴煙
+%%%%
+[zap]blast of sand
+
+砂の突風
+%%%%
+[zap]bolt of acid
+
+強酸の矢
+%%%%
+[zap]bolt of cold
+
+凍結の矢
+%%%%
+[zap]bolt of dispelling energy
+
+解呪の矢
+%%%%
+[zap]bolt of fire
+
+猛火の矢
+%%%%
+[zap]bolt of lightning
+
+稲妻の矢
+%%%%
+[zap]bolt of magma
+
+溶岩の矢
+%%%%
+[zap]bolt of negative energy
+負のエネルギーの矢
+%%%%
+[zap]bolt of poison
+
+毒液の矢
+%%%%
+[zap]burst of metal fragments
+
+鉄片の奔流
+%%%%
+[zap]crystal bolt
+
+水晶の矢
+%%%%
+[zap]crystal spear
+
+水晶の槍
+%%%%
+[zap]debugging ray
+
+debugging ray
+%%%%
+[zap]explosive bolt
+
+爆裂の矢
+%%%%
+[zap]fiery breath
+
+炎のブレス
+%%%%
+[zap]fireball
+
+ファイアボール
+%%%%
+[zap]flame tongue
+
+炎の舌先
+%%%%
+[zap]freezing breath
+
+凍結のブレス
+%%%%
+[zap]great wave of water
+
+大津波
+%%%%
+[zap]hellfire
+
+地獄の業火
+%%%%
+[zap]iron shot
+
+鉄塊の矢
+%%%%
+[zap]lance of force
+
+力場の槍
+%%%%
+[zap]large rocky blast
+
+岩つぶて
+%%%%
+[zap]magic dart
+
+魔法の矢
+%%%%
+[zap]narrow beam of energy
+
+エネルギーの光線
+%%%%
+[zap]orb of electricity
+
+電撃の爆裂球
+%%%%
+[zap]orb of energy
+
+エネルギーの爆裂球
+%%%%
+[zap]poison arrow
+
+毒の塊
+%%%%
+[zap]poison gas
+
+猛毒のガス
+%%%%
+[zap]porkalator
+
+豚化の光線
+%%%%
+[zap]puff of flame
+
+炎の塊
+%%%%
+[zap]puff of frost
+
+冷気の塊
+%%%%
+[zap]random bolt tracer
+
+%%%%
+[zap]rocky blast
+
+石つぶて
+%%%%
+[zap]searing ray
+
+焼灼の光線
+%%%%
+[zap]shard of ice
+
+氷の破片
+%%%%
+[zap]splash of liquid fire
+
+燃えたぎる液体の飛沫
+%%%%
+[zap]splash of poison
+
+毒の飛沫
+%%%%
+[zap]spray of energy
+
+エネルギーの飛沫
+%%%%
+[zap]sticky flame
+
+焼夷の炎
+%%%%
+[zap]sting
+
+毒針
+%%%%
+[zap]stone arrow
+
+石錐の矢
+%%%%
+[zap]zap
+
+稲妻の光線
+%%%%
+############################## spl-summoning.cc ##############################
+%%%%
+[zap]barrage of energy
+
+エネルギーの集中砲火
+%%%%

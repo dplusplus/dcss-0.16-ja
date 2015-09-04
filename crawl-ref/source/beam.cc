@@ -24,6 +24,7 @@
 #include "cloud.h"
 #include "colour.h"
 #include "coordit.h"
+#include "database.h"
 #include "delay.h"
 #include "directn.h"
 #include "dungeon.h"
@@ -3275,9 +3276,9 @@ bool bolt::misses_player()
     if (is_explosion || aimed_at_feet || auto_hit)
     {
         if (hit_verb.empty())
-            hit_verb = engulfs ? "engulfs" : "hits";
+            hit_verb = engulfs ? "をとりまいた" : "に命中した";
         if (flavour != BEAM_VISUAL)
-            mprf("The %s %s you!", name.c_str(), hit_verb.c_str());
+            mprf(jtransc("The %s %s you!"), tagged_jtransc("[zap]", name), hit_verb.c_str());
         return false;
     }
 
@@ -3374,10 +3375,10 @@ bool bolt::misses_player()
         int dodge_more = player_evasion(EV_IGNORE_HELPLESS);
 
         if (hit_verb.empty())
-            hit_verb = engulfs ? "engulfs" : "hits";
+            hit_verb = engulfs ? "をとりまいた" : "に命中した";
 
         if (_test_beam_hit(real_tohit, dodge_more, pierce, defl, r))
-            mprf("The %s %s you!", name.c_str(), hit_verb.c_str());
+            mprf(jtransc("The %s %s you!"), tagged_jtransc("[zap]", name), hit_verb.c_str());
         else
             mprf("Helpless, you fail to dodge the %s.", name.c_str());
 
@@ -3859,8 +3860,8 @@ void bolt::affect_player()
         if (real_flavour == BEAM_CHAOS || real_flavour == BEAM_RANDOM)
         {
             if (hit_verb.empty())
-                hit_verb = engulfs ? "engulfs" : "hits";
-            mprf("The %s %s you!", name.c_str(), hit_verb.c_str());
+                hit_verb = engulfs ? "をとりまいた" : "に命中した";
+            mprf(jtransc("The %s %s you!"), tagged_jtransc("[zap]", name), hit_verb.c_str());
         }
 
         // Irresistible portion of resistable effect; must happen before MR
@@ -4810,11 +4811,11 @@ void bolt::affect_monster(monster* mon)
         if (real_flavour == BEAM_CHAOS || real_flavour == BEAM_RANDOM)
         {
             if (hit_verb.empty())
-                hit_verb = engulfs ? "engulfs" : "hits";
+                hit_verb = engulfs ? "をとりまいた" : "に命中した";
             if (mons_near(mon))
             {
-                mprf("The %s %s %s.", name.c_str(), hit_verb.c_str(),
-                     mon->name(DESC_THE).c_str());
+                mprf(jtransc("The %s %s %s."), tagged_jtransc("[zap]", name),
+                     mon->name(DESC_THE).c_str(), hit_verb.c_str());
             }
             else if (heard && !noise_msg.empty())
                 mprf(MSGCH_SOUND, "%s", noise_msg.c_str());
@@ -4966,12 +4967,12 @@ void bolt::affect_monster(monster* mon)
     {
         // Monsters are never currently helpless in ranged combat.
         if (hit_verb.empty())
-            hit_verb = engulfs ? "engulfs" : "hits";
+            hit_verb = engulfs ? "をとりまいた" : "に命中した";
 
-        mprf("The %s %s %s.",
-             name.c_str(),
-             hit_verb.c_str(),
-             mon->name(DESC_THE).c_str());
+        mprf(jtransc("The %s %s %s."),
+             tagged_jtransc("[zap]", name),
+             mon->name(DESC_THE).c_str(),
+             jtransc(hit_verb));
 
     }
     else if (heard && !noise_msg.empty())
