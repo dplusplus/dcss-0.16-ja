@@ -2576,11 +2576,11 @@ void read(int slot)
         return;
 
     int item_slot = (slot != -1) ? slot
-                                 : prompt_invent_item("Read which item?",
-                                                       MT_INVLIST,
-                                                       OBJ_SCROLLS,
-                                                       true, true, true, 0, -1,
-                                                       nullptr, OPER_READ);
+                                 : prompt_invent_item(jtransc("Read which item?"),
+                                                      MT_INVLIST,
+                                                      OBJ_SCROLLS,
+                                                      true, true, true, 0, -1,
+                                                      nullptr, OPER_READ);
 
     if (prompt_failed(item_slot))
         return;
@@ -2606,8 +2606,8 @@ void read(int slot)
 
     if (you.stat_zero[STAT_INT] && !one_chance_in(5))
     {
-        mpr("You almost manage to decipher the scroll,"
-            " but fail in this attempt.");
+        mpr(jtrans("You almost manage to decipher the scroll,"
+                   " but fail in this attempt."));
         return;
     }
 
@@ -2640,14 +2640,13 @@ void read_scroll(int item_slot)
 {
     item_def& scroll = you.inv[item_slot];
     const scroll_type which_scroll = static_cast<scroll_type>(scroll.sub_type);
-    const int prev_quantity = scroll.quantity;
     const bool alreadyknown = item_type_known(scroll);
 
     // For cancellable scrolls leave printing this message to their
     // respective functions.
     const string pre_succ_msg =
-            make_stringf("As you read the %s, it crumbles to dust.",
-                          scroll.name(DESC_QUALNAME).c_str());
+            make_stringf(jtransc("As you read the %s, it crumbles to dust."),
+                         scroll.name(DESC_QUALNAME).c_str());
     if (!_is_cancellable_scroll(which_scroll))
     {
         mpr(pre_succ_msg);
@@ -2685,8 +2684,8 @@ void read_scroll(int item_slot)
                              == SPRET_ABORT) && alreadyknown;
         }
         else if (alreadyknown
-                 && !yesno("Your blink will be uncontrolled - continue anyway?",
-                            false, 'n'))
+                 && !yesno(jtransc("Your blink will be uncontrolled - continue anyway?"),
+                           false, 'n'))
         {
             canned_msg(MSG_OK);
             cancel_scroll = true;
@@ -2714,7 +2713,7 @@ void read_scroll(int item_slot)
         break;
 
     case SCR_ACQUIREMENT:
-        mpr("This is a scroll of acquirement!");
+        mpr(jtrans("This is a scroll of acquirement!"));
         more();
         // Identify it early in case the player checks the '\' screen.
         set_ident_type(scroll, ID_KNOWN_TYPE);
@@ -2722,12 +2721,12 @@ void read_scroll(int item_slot)
         break;
 
     case SCR_FEAR:
-        mpr("You assume a fearsome visage.");
+        mpr(jtrans("You assume a fearsome visage."));
         mass_enchantment(ENCH_FEAR, 1000);
         break;
 
     case SCR_NOISE:
-        noisy(25, you.pos(), "You hear a loud clanging noise!");
+        noisy(25, you.pos(), jtransc("You hear a loud clanging noise!"));
         break;
 
     case SCR_SUMMONING:
@@ -2735,7 +2734,7 @@ void read_scroll(int item_slot)
         break;
 
     case SCR_FOG:
-        mpr("The scroll dissolves into smoke.");
+        mpr(jtransc("The scroll dissolves into smoke."));
         big_cloud(random_smoke_type(), &you, you.pos(), 50, 8 + random2(8));
         break;
 
@@ -2743,7 +2742,7 @@ void read_scroll(int item_slot)
         if (alreadyknown && testbits(env.level_flags, LFLAG_NO_MAP))
         {
             cancel_scroll = true;
-            mpr("It would have no effect in this place.");
+            mpr(jtrans("It would have no effect in this place."));
             break;
         }
         mpr(pre_succ_msg);
@@ -2774,9 +2773,9 @@ void read_scroll(int item_slot)
         }
 
         if (had_effect)
-            mpr("The creatures around you are filled with an inner flame!");
+            mpr(jtrans("The creatures around you are filled with an inner flame!"));
         else
-            mpr("The air around you briefly surges with heat, but it dissipates.");
+            mpr(jtrans("The air around you briefly surges with heat, but it dissipates."));
 
         bad_effect = true;
         break;
@@ -2791,8 +2790,8 @@ void read_scroll(int item_slot)
             bool plural = false;
             const string weapon_name =
                 weapon ? weapon->name(DESC_YOUR)
-                       : "Your " + you.hand_name(true, &plural);
-            mprf("%s very briefly gain%s a black sheen.",
+                       : jtrans("Your ") + you.hand_name(true, &plural);
+            mprf(jtransc("%s very briefly gain%s a black sheen."),
                  weapon_name.c_str(), plural ? "" : "s");
         }
         else
@@ -2809,7 +2808,7 @@ void read_scroll(int item_slot)
         if (!alreadyknown)
         {
             mpr(pre_succ_msg);
-            mpr("It is a scroll of enchant weapon.");
+            mpr(jtrans("It is a scroll of enchant weapon."));
             // Pause to display the message before jumping to the weapon list.
             more();
         }
@@ -2821,7 +2820,7 @@ void read_scroll(int item_slot)
         if (!alreadyknown)
         {
             mpr(pre_succ_msg);
-            mpr("It is a scroll of brand weapon.");
+            mpr(jtrans("It is a scroll of brand weapon."));
             // Pause to display the message before jumping to the weapon list.
             more();
         }
@@ -2833,7 +2832,7 @@ void read_scroll(int item_slot)
         if (!alreadyknown)
         {
             mpr(pre_succ_msg);
-            mpr("It is a scroll of identify.");
+            mpr(jtrans("It is a scroll of identify."));
             more();
             // Do this here so it doesn't turn up in the ID menu.
             set_ident_type(scroll, ID_KNOWN_TYPE);
@@ -2845,7 +2844,7 @@ void read_scroll(int item_slot)
         if (!alreadyknown)
         {
             mpr(pre_succ_msg);
-            mpr("It is a scroll of recharging.");
+            mpr(jtrans("It is a scroll of recharging."));
             more();
         }
         cancel_scroll = (recharge_wand(alreadyknown, pre_succ_msg) == -1);
@@ -2855,7 +2854,7 @@ void read_scroll(int item_slot)
         if (!alreadyknown)
         {
             mpr(pre_succ_msg);
-            mpr("It is a scroll of enchant armour.");
+            mpr(jtrans("It is a scroll of enchant armour."));
             more();
         }
         cancel_scroll =
@@ -2893,7 +2892,7 @@ void read_scroll(int item_slot)
         if (!alreadyknown)
             mpr(pre_succ_msg);
         if (you.spell_no == 0)
-            mpr("You feel forgetful for a moment.");
+            mpr(jtrans("You feel forgetful for a moment."));
         else if (!alreadyknown)
             cast_selective_amnesia();
         else
@@ -2927,8 +2926,7 @@ void read_scroll(int item_slot)
         && which_scroll != SCR_ENCHANT_ARMOUR
         && which_scroll != SCR_RECHARGING)
     {
-        mprf("It %s a %s.",
-             you.inv[item_slot].quantity < prev_quantity ? "was" : "is",
+        mprf(jtransc("It %s a %s."),
              scroll_name.c_str());
     }
 
