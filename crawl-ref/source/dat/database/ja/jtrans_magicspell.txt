@@ -1,0 +1,1304 @@
+%%%%
+# extract from dat/descript/spells.txt
+%%%%
+[spell]Abjuration
+
+解放の宣誓
+%%%%
+[spell]Agony
+
+苦悶
+%%%%
+[spell]Airstrike
+
+旋風の一撃
+%%%%
+[spell]Alistair's Intoxication
+
+アリステイアの酩酊
+%%%%
+[spell]Animate Dead
+
+死霊の蘇生
+%%%%
+[spell]Animate Skeleton
+
+スケルトンの造成
+%%%%
+[spell]Apportation
+
+収拾
+%%%%
+[spell]Aura of Abjuration
+
+解放のオーラ
+%%%%
+[spell]Avatar Song
+
+# monster only
+Avatar Song
+%%%%
+[spell]Awaken Forest
+
+# monster only
+Awaken Forest
+%%%%
+[spell]Awaken Vines
+
+# monster only
+Awaken Vines
+%%%%
+[spell]Banishment
+
+アビスへの追放
+%%%%
+[spell]Battlecry
+
+# monster only
+Battlecry
+%%%%
+[spell]Beastly Appendage
+
+半獣の躰
+%%%%
+[spell]Berserker Rage
+
+# monster only
+Berserker Rage
+%%%%
+[spell]Berserk Other
+
+# monster only
+Berserk Other
+%%%%
+[spell]Black Mark
+
+# monster only
+Black Mark
+%%%%
+[spell]Blade Hands
+
+刃の手
+%%%%
+[spell]Blink Allies Away
+
+# monster only
+Blink Allies Away
+%%%%
+[spell]Blink Allies Encircling
+
+# monster only
+Blink Allies Encircling
+%%%%
+[spell]Blink Away
+
+# monster only
+Blink Away
+%%%%
+[spell]Blink Close
+
+# monster only
+Blink Close
+%%%%
+[spell]Blink Other Close
+
+# monster only
+Blink Other Close
+%%%%
+[spell]Blink Other
+
+# monster only
+Blink Other
+%%%%
+[spell]Blink Range
+
+# monster only
+%%%%
+[spell]Blink
+
+瞬間移動
+%%%%
+[spell]Blinkbolt
+
+# monster only
+Blinkbolt
+%%%%
+[spell]Bolt of Cold
+
+凍結の矢
+%%%%
+[spell]Bolt of Draining
+
+衰弱の矢
+%%%%
+[spell]Bolt of Fire
+
+猛火の矢
+%%%%
+[spell]Bolt of Inaccuracy
+
+不正確の矢
+%%%%
+[spell]Bolt of Magma
+
+溶岩の矢
+%%%%
+[spell]Borgnjor's Revivification
+
+ボーグンジョルの究極治癒
+%%%%
+[spell]Brain Feed
+
+# monster only
+
+%%%%
+[spell]Brothers in Arms
+
+戦友の召喚
+%%%%
+[spell]Call Canine Familiar
+
+犬族のしもべの召喚
+%%%%
+[spell]Call Imp
+
+インプの召喚
+%%%%
+[spell]Call Lost Soul
+
+# monster only
+Call Lost Soul
+%%%%
+[spell]Call Tide
+
+# monster only
+Call Tide
+%%%%
+[spell]Cantrip
+
+# monster only
+Cantrip
+%%%%
+[spell]Cause Fear
+
+恐慌の喚起
+%%%%
+[spell]Chain of Chaos
+
+# obsolete?
+Chain of Chaos
+%%%%
+[spell]Chain Lightning
+
+連鎖する稲妻
+%%%%
+[spell]Chaos Breath
+
+# monster only
+Chaos Breath
+%%%%
+[spell]Chaotic Mirror
+
+# monster only
+Chaotic Mirror
+%%%%
+[spell]Chilling Breath
+
+# monster only
+Chilling Breath
+%%%%
+[spell]Cigotuvi's Embrace
+
+シゴツヴィの抱擁
+%%%%
+[spell]Cleansing Flame
+
+浄化の炎
+%%%%
+[spell]Cloud Cone
+
+# monster only
+Cloud Cone
+%%%%
+[spell]Cold Breath
+
+# monster only
+Cold Breath
+%%%%
+[spell]Condensation Shield
+
+大気の盾
+%%%%
+[spell]Confuse
+
+混乱
+%%%%
+[spell]Confusing Touch
+
+混乱の一撃
+%%%%
+[spell]Confusion Gaze
+
+# monster only
+Confusion Gaze
+%%%%
+[spell]Conjure Ball Lightning
+
+魔術の球雷
+%%%%
+[spell]Conjure Flame
+
+火柱の幻出
+%%%%
+[spell]Control Teleport
+
+精密テレポート
+%%%%
+[spell]Control Undead
+
+アンデッドの指揮
+%%%%
+[spell]Control Winds
+
+# monster only
+Control Winds
+%%%%
+[spell]Controlled Blink
+
+精密瞬間移動
+%%%%
+[spell]Corona
+
+照明
+%%%%
+[spell]Corpse Rot
+
+死体の腐蝕
+%%%%
+[spell]Corrosive Bolt
+
+# monster only
+Corrosive Bolt
+%%%%
+[spell]Corrupt Body
+
+# monster only
+Corrupt Body
+%%%%
+[spell]Corrupting Pulse
+
+# monster only
+Corrupting Pulse
+%%%%
+[spell]Crystal Bolt
+
+# monster only
+Crystal Bolt
+%%%%
+[spell]Cure Poison
+
+毒の治療
+%%%%
+[spell]Darkness
+
+暗闇の喚起
+%%%%
+[spell]Dazzling Spray
+
+眩い光の放射
+%%%%
+[spell]Death Channel
+
+死の霊媒術
+%%%%
+[spell]Death Rattle
+
+# monster only
+Death Rattle
+%%%%
+[spell]Death's Door
+
+死のとば口
+%%%%
+[spell]Debugging Ray
+
+# for debug
+Debugging Ray
+%%%%
+[spell]Deflect Missiles
+
+飛来物の阻止
+%%%%
+[spell]Delayed Fireball
+
+遅延式ファイアボール
+%%%%
+[spell]Dig
+
+掘削
+%%%%
+[spell]Dimension Anchor
+
+# monster only
+Dimension Anchor
+%%%%
+[spell]Discord
+
+精神不和
+%%%%
+[spell]Disintegrate
+
+# monster only
+Disintegrate
+%%%%
+[spell]Disjunction
+
+空間分離
+%%%%
+[spell]Dispel Undead
+
+アンデッドの解呪
+%%%%
+[spell]Dispersal
+
+転送
+%%%%
+[spell]Draconian Breath
+
+ドラコニアンの息
+%%%%
+[spell]Dragon Form
+
+ドラゴンの躯
+%%%%
+[spell]Dragon's Call
+
+ドラゴンの召喚
+%%%%
+[spell]Drain Life
+
+# monster only
+Drain Life
+%%%%
+[spell]Drain Magic
+
+# monster only
+Drain Magic
+%%%%
+[spell]Draining Gaze
+
+# monster only
+Draining Gaze
+%%%%
+[spell]Druid's Call
+
+# monster only
+Druid's Call
+%%%%
+[spell]Electrical Bolt
+
+# monster only
+Electrical Bolt
+%%%%
+[spell]Energy Bolt
+
+# monster only
+Energy bolt
+%%%%
+[spell]Enslavement
+
+隷属
+%%%%
+[spell]Ensnare
+
+# monster only
+Ensnare
+%%%%
+[spell]Ensorcelled Hibernation
+
+魔法の眠り
+%%%%
+[spell]Ephemeral Infusion
+
+# monster only
+Ephemeral Infusion
+%%%%
+[spell]Excruciating Wounds
+
+苦痛の傷痕
+%%%%
+[spell]Explosive Bolt
+
+爆裂の矢
+%%%%
+[spell]Flay
+
+# monster only
+Flay
+%%%%
+[spell]Fire Breath
+
+火炎の息
+%%%%
+[spell]Fire Storm
+
+炎の嵐
+%%%%
+[spell]Fire Summon
+
+# monster only
+%%%%
+[spell]Fireball
+
+ファイアボール
+%%%%
+[spell]Flame Tongue
+
+炎の舌先
+%%%%
+[spell]Flaming Cloud
+
+# monster only
+Flaming Cloud
+%%%%
+[spell]Flash Freeze
+
+# monster only
+Flash Freeze
+%%%%
+[spell]Flight
+
+飛行
+%%%%
+[spell]Force Lance
+
+力場の槍
+%%%%
+[spell]Forceful Invitation
+
+# monster only
+Forceful Invitation
+%%%%
+[spell]Freeze
+
+氷結
+%%%%
+[spell]Freezing Cloud
+
+凍気の雲
+%%%%
+[spell]Frenzy
+
+Frenzy
+%%%%
+[spell]Fulminant Prism
+
+爆発性の晶柱
+%%%%
+[spell]Gell's Gravitas
+
+ゲルの引力
+%%%%
+[spell]Ghostly Fireball
+
+# monster only
+Ghostly Fireball
+%%%%
+[spell]Ghostly Flames
+
+# monster only
+Ghostly Flames
+%%%%
+[spell]Goblin Toss
+
+# monster only
+Goblin Toss
+%%%%
+[spell]Glaciate
+
+凍てつく嵐
+%%%%
+[spell]Grand Avatar
+
+# monster only
+Grand Avatar
+%%%%
+[spell]Haste Other
+
+# monster only
+Haste Other
+%%%%
+[spell]Haste Plants
+
+# monster only
+Haste Plants
+%%%%
+[spell]Haste
+
+加速
+%%%%
+[spell]Haunt
+
+招霊
+%%%%
+[spell]Heal Other
+
+# monster only
+Heal Other
+%%%%
+[spell]Hellfire Burst
+
+# monster only
+Hellfire Burst
+%%%%
+[spell]Hellfire
+
+地獄の業火
+%%%%
+[spell]Holy Breath
+
+# monster only
+Holy Breath
+%%%%
+[spell]Hunting Cry
+
+# monster only
+Hunting Cry
+%%%%
+[spell]Holy Flames
+
+# monster only
+Holy Flames
+%%%%
+[spell]Hydra Form
+
+ヒドラの躯
+%%%%
+[spell]Ice Form
+
+氷の躯
+%%%%
+[spell]Ignite Poison
+
+毒の燃焼
+%%%%
+[spell]Infusion
+
+魔力の装填
+%%%%
+[spell]Injury Bond
+
+# monster only
+Injury Bond
+%%%%
+[spell]Injury Mirror
+
+# monster only
+Injury Mirror
+%%%%
+[spell]Ink Cloud
+
+# monster only
+Ink Cloud
+%%%%
+[spell]Inner Flame
+
+内なる炎
+%%%%
+[spell]Invisibility
+
+透明化
+%%%%
+[spell]Invisibility Other
+
+# monster only
+Invisibility Other
+%%%%
+[spell]Iron Shot
+
+鉄塊の矢
+%%%%
+[spell]Irradiate
+
+放射の光
+%%%%
+[spell]Iskenderun's Battlesphere
+
+イスケンデルンの戦闘球
+%%%%
+[spell]Iskenderun's Mystic Blast
+
+イスケンデルンの爆破の秘術
+%%%%
+[spell]Leda's Liquefaction
+
+レダの流動術
+%%%%
+[spell]Lee's Rapid Deconstruction
+
+リーの瞬間解体術
+%%%%
+[spell]Legendary Destruction
+
+# monster only
+Legendary Destruction
+%%%%
+[spell]Lehudib's Crystal Spear
+
+レフディブの水晶槍
+%%%%
+[spell]Lightning Bolt
+
+稲妻の矢
+%%%%
+[spell]Localized Ignite Poison
+
+# monster only
+Localized Ignite Poison
+%%%%
+[spell]Magic Dart
+
+魔法の矢
+%%%%
+[spell]Major Destruction
+
+大いなる破壊
+%%%%
+[spell]Major Healing
+
+# monster only
+Major Healing
+%%%%
+[spell]Malign Gateway
+
+邪悪の通り道
+%%%%
+[spell]Malign Offering
+
+# monster only
+Malign Offering
+%%%%
+[spell]Malmutate
+
+# monster only
+Malmutate
+%%%%
+[spell]Mara Summon
+
+# monster only
+Mara Summon
+%%%%
+[spell]Mass Confusion
+
+集団の混乱
+%%%%
+# [spell]Melee
+
+# obsolete
+%%%%
+[spell]Mephitic Cloud
+
+悪臭の雲
+%%%%
+[spell]Mesmerise
+
+# monster only
+Mesmerise
+%%%%
+[spell]Metabolic Englaciation
+
+代謝の凍結
+%%%%
+[spell]Metal Splinters
+
+# monster only
+Metal Splinters
+%%%%
+[spell]Miasma Breath
+
+# monster only
+Miasma Breath
+%%%%
+[spell]Might Other
+
+# monster only
+Might Other
+%%%%
+[spell]Might
+
+怪力
+%%%%
+[spell]Minor Healing
+
+# monster only
+Minor Healing
+%%%%
+[spell]Monstrous Menagerie
+
+怪物園の開場
+%%%%
+[spell]Necromutation
+
+死者の躯
+%%%%
+[spell]Noxious Cloud
+
+# monster only
+Noxious Cloud
+%%%%
+[spell]Olgreb's Toxic Radiance
+
+オルグレブの毒気の光輪
+%%%%
+[spell]Orb of Destruction
+
+破壊の爆裂球
+%%%%
+[spell]Orb of Electricity
+
+Orb of Electricity
+%%%%
+[spell]Ozocubu's Armour
+
+オゾクブの鎧
+%%%%
+[spell]Ozocubu's Refrigeration
+
+オゾクブの瞬間凍結
+%%%%
+[spell]Pain
+
+苦痛
+%%%%
+[spell]Paralyse
+
+# monster only
+Paralyse
+%%%%
+[spell]Paralysis Gaze
+
+# monster only
+Paralysis Gaze
+%%%%
+[spell]Passage of Golubria
+
+ゴルブリアの通り道
+%%%%
+[spell]Passwall
+
+壁の透過
+%%%%
+[spell]Petrify
+
+石化
+%%%%
+[spell]Petrifying Cloud
+
+# monster only
+Petrifying Cloud
+%%%%
+[spell]Phantom Mirror
+
+# monster only
+Phantom Mirror
+%%%%
+[spell]Phase Shift
+
+位相変移
+%%%%
+[spell]Plane Rend
+
+# monster only
+Plane Rend
+%%%%
+[spell]Poison Arrow
+
+毒素の矢
+%%%%
+[spell]Poisonous Cloud
+
+猛毒の雲
+%%%%
+[spell]Polymorph
+
+# monster only
+Polymorph
+%%%%
+[spell]Porkalator
+
+# monster only
+Porkalator
+%%%%
+[spell]Portal Projectile
+
+射出物の転送
+%%%%
+[spell]Primal Wave
+
+# monster only
+Primal Wave
+%%%%
+[spell]Quicksilver Bolt
+
+# monster only
+Quicksilver Bolt
+%%%%
+[spell]Random Bolt
+
+無作為の矢
+%%%%
+[spell]Recall
+
+招来
+%%%%
+[spell]Regeneration
+
+再生
+%%%%
+[spell]Repel Missiles
+
+飛来物の防御
+%%%%
+[spell]Ring of Flames
+
+炎の円環
+%%%%
+[spell]Sandblast
+
+砂の突風
+%%%%
+[spell]Sap Magic
+
+# monster only
+Sap Magic
+%%%%
+[spell]Scattershot
+
+Scattershot
+%%%%
+[spell]Seal Doors
+
+# monster only
+Seal Doors
+%%%%
+[spell]Searing Ray
+
+焼灼の光線
+%%%%
+[spell]Searing Breath
+
+# monster only
+Searing Breath
+%%%%
+[spell]Sentinel's Mark
+
+# monster only
+Sentinel's Mark
+%%%%
+[spell]Shadow Bolt
+
+# obsolete?
+Shadow Bolt
+%%%%
+[spell]Shadow Creatures
+
+影の怪物
+%%%%
+[spell]Shadow Shard
+
+# obsolete?
+Shadow Shard
+%%%%
+[spell]Shatter
+
+粉砕
+%%%%
+[spell]Shock
+
+電撃
+%%%%
+[spell]Shroud of Golubria
+
+ゴルブリアの帷子
+%%%%
+[spell]Signal Horn
+
+# monster only
+Signal Horn
+%%%%
+[spell]Silence
+
+静寂
+%%%%
+[spell]Simulacrum
+
+幻像
+%%%%
+[spell]Singularity
+
+特異点
+%%%%
+[spell]Siren Song
+
+# monster only
+Siren Song
+%%%%
+[spell]Sleep
+
+# monster only
+Sleep
+%%%%
+[spell]Slow
+
+減速
+%%%%
+[spell]Smiting
+
+# monster only
+Smiting
+%%%%
+[spell]Song of Slaying
+
+殺戮の歌
+%%%%
+[spell]Spawn Tentacles
+
+# monster only
+Spawn Tentacles
+%%%%
+[spell]Spectral Weapon
+
+幽体の武器
+%%%%
+[spell]Spellforged Servitor
+
+魔法仕掛けの従者
+%%%%
+[spell]Spider Form
+
+蜘蛛の躯
+%%%%
+[spell]Spit Acid
+
+# monster only
+Spit Acid
+%%%%
+[spell]Spit Lava
+
+# monster only
+Spit Lava
+%%%%
+[spell]Spit Poison
+
+# monter only
+Spit Poison
+%%%%
+[spell]Static Discharge
+
+空電放射
+%%%%
+[spell]Statue Form
+
+石像の躯
+%%%%
+[spell]Steam Ball
+
+# monster only
+Steam Ball
+%%%%
+[spell]Sticks to Snakes
+
+棒切れの蛇
+%%%%
+[spell]Sticky Flame Range
+
+# monster only
+Sticky Flame Range
+%%%%
+[spell]Sticky Flame Splash
+
+# monser only
+Sticky Flame Splash
+%%%%
+[spell]Sticky Flame
+
+焼夷の炎
+%%%%
+[spell]Sting
+
+毒針
+%%%%
+[spell]Stone Arrow
+
+石錐の矢
+%%%%
+[spell]Stoneskin
+
+石の皮膚
+%%%%
+[spell]Strip Resistance
+
+# monster only
+Strip Resistance
+%%%%
+[spell]Sublimation of Blood
+
+血の昇華
+%%%%
+[spell]Summon Air Elementals
+
+# monster only
+Summon Air Elementals
+%%%%
+[spell]Summon Butterflies
+
+胡蝶の召喚
+%%%%
+[spell]Summon Demon
+
+デーモンの召喚
+%%%%
+[spell]Summon Dragon
+
+# obsolete
+Summon Dragon
+%%%%
+[spell]Summon Drakes
+
+# monster only
+Summon Drakes
+%%%%
+[spell]Summon Earth Elementals
+
+# monster only
+Summon Earth Elementals
+%%%%
+[spell]Summon Emperor Scorpions
+
+# obsolete?
+Summon Emperor Scopions
+%%%%
+[spell]Summon Eyeballs
+
+# monster only
+Summon Eyeballs
+%%%%
+[spell]Summon Fire Elementals
+
+# monster only
+Summon Fire Elementals
+%%%%
+[spell]Summon Forest
+
+ドライアドの召喚
+%%%%
+[spell]Summon Greater Demon
+
+上位デーモンの召喚
+%%%%
+[spell]Summon Guardian Golem
+
+ゴーレムの番人の召喚
+%%%%
+[spell]Summon Hell Beast
+
+# monster only
+Summon Hell Beast
+%%%%
+[spell]Summon Holies
+
+# obsolete
+Summon Holies
+%%%%
+[spell]Summon Horrible Things
+
+おぞましきものの召喚
+%%%%
+[spell]Summon Hydra
+
+ヒドラの召喚
+%%%%
+[spell]Summon Ice Beast
+
+氷の獣の召喚
+%%%%
+[spell]Summon Illusion
+
+# obsolete?
+Summon Illusion
+%%%%
+[spell]Summon Iron Elementals
+
+# monster only
+Summon Iron Elementals
+%%%%
+[spell]Summon Lightning Spire
+
+稲妻の渦巻の召喚
+%%%%
+[spell]Summon Mana Viper
+
+マナバイパーの召喚
+%%%%
+[spell]Summon Minor Demon
+
+# monster only
+Summon Minor Demon
+%%%%
+[spell]Summon Mushrooms
+
+# monster only
+Summon Mushrooms
+%%%%
+[spell]Summon Scarabs
+
+# monster only
+Summon Scarabs
+%%%%
+[spell]Summon Small Mammal
+
+# 小動物の召喚
+%%%%
+[spell]Summon Spectral Orcs
+
+# monster only
+Summon Spectral Orcs
+%%%%
+[spell]Summon Swarm
+
+Summon Swarm
+%%%%
+[spell]Summon Ufetubus
+
+# monster only
+Summon Ufetubus
+%%%%
+[spell]Summon Undead
+
+# monster only
+Summon Undead
+%%%%
+[spell]Summon Vermin
+
+# monster only
+Summon Vermin
+%%%%
+[spell]Summon Water Elementals
+
+# monster only
+Summon Water Elementals
+%%%%
+[spell]Sure Blade
+
+確かなる刃
+%%%%
+[spell]Swiftness
+
+俊足
+%%%%
+[spell]Symbol of Torment
+
+苦痛の紋章
+%%%%
+[spell]Teleport Other
+
+他者のテレポート
+%%%%
+[spell]Tentacle Throw
+
+# monster only
+Tentacle Throw
+%%%%
+[spell]Teleport Self
+
+# monster only
+Teleport Self
+%%%%
+[spell]Throw Barbs
+
+# monster only
+Throw Barbs
+%%%%
+[spell]Throw Flame
+
+火炎の投射
+%%%%
+[spell]Throw Frost
+
+冷気の投射
+%%%%
+[spell]Throw Icicle
+
+氷柱の投射
+%%%%
+[spell]Thunderbolt
+
+雷霆の矢
+%%%%
+[spell]Tomb of Doroklohe
+
+# monster only
+Tomb of Doroklohe
+%%%%
+[spell]Tornado
+
+大竜巻
+%%%%
+[spell]Trog's Hand
+
+トログの御手
+%%%%
+[spell]Tukima's Dance
+
+ツキマーの舞踏
+%%%%
+[spell]Twisted Resurrection
+
+捻れた蘇生
+%%%%
+[spell]Vampiric Draining
+
+ヴァンパイアの吸血
+%%%%
+[spell]Venom Bolt
+
+猛毒の矢
+%%%%
+[spell]Virulence
+
+# monster only
+Virulence
+%%%%
+[spell]Volley of Thorns
+
+# monster only
+Volley of Thorns
+%%%%
+[spell]Wall of Brambles
+
+# monster only
+Wall of Brambles
+%%%%
+[spell]Warp Weapon
+
+歪曲の武器
+%%%%
+[spell]Waterstrike
+
+# monster only
+Waterstrike
+%%%%
+[spell]Weave Shadows
+
+Weave Shadows
+%%%%
+[spell]Wind Blast
+
+# monster only
+Wind Blast
+%%%%
+[spell]Word of Recall
+
+# monster only
+Word of Recall
+%%%%

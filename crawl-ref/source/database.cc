@@ -193,8 +193,8 @@ static TextDB AllDBs[] =
            "jtrans_godprayer.txt",
            /*
            "jtrans_autofight_lua.txt",
-           "jtrans_magicspell.txt",
            */
+           "jtrans_magicspell.txt",
            "jtrans_monster_name.txt",
            "jtrans_mutations.txt",
            "jtrans_output.txt",
