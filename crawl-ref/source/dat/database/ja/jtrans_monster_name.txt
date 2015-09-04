@@ -1353,6 +1353,10 @@ snaplasher vine segment
 
 鞭打蔦の一部
 %%%%
+grand avatar
+
+大いなる化身
+%%%%
 # 'S'
 snake
 
