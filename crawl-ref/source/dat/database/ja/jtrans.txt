@@ -3962,6 +3962,48 @@ kneel at
 
 ひざまずいた
 %%%%
+############################## spl-summoning.cc ##############################
+%%%%
+You recall your battlesphere and imbue it with additional charge.
+
+あなたは戦闘球を呼び出し、更なる力を吹き込んだ。
+%%%%
+You imbue your battlesphere with additional charge.
+
+あなたは戦闘球に更なる力を吹き込んだ。
+%%%%
+You conjure a globe of magical energy.
+
+あなたは魔力の球体を幻出させた。
+%%%%
+conjures a globe of magical energy!
+
+は魔力の球体を幻出させた！
+%%%%
+appears!
+
+現れた！
+%%%%
+Your battlesphere expends the last of its energy and dissipates.
+
+戦闘球は最後の力を絞り出し、消滅した。
+%%%%
+Your battlesphere wavers and loses cohesion.
+
+戦闘球は揺らめき、霧消した。
+%%%%
+You feel your bond with your battlesphere wane.
+
+あなたは戦闘球との繋がりがなくなったように感じた。
+%%%%
+dissipates.
+
+は消滅した。
+%%%%
+fires!
+
+は発射した！
+%%%%
 ############################## stairs.cc ##############################
 %%%%
 The hatch slams shut behind you.
