@@ -4203,6 +4203,61 @@ kneel at
 
 ひざまずいた
 %%%%
+############################## spl-cast.cc ##############################
+%%%%
+Cast which spell? (? or * to list)
+
+どの呪文を唱えますか？ (? または * で一覧)
+%%%%
+Casting: <w>%s</w>
+
+前回唱えた魔法: <w>%s</w>
+%%%%
+Confirm with . or Enter, or press ? or * to list all spells.
+
+. またはEnterで前回のと同じ呪文を唱えるか、? または * で一覧から選択してください。
+%%%%
+You don't know that spell.
+
+あなたはその呪文は知らない。
+%%%%
+You don't have enough magic to cast that spell.
+
+その呪文を唱えるには魔力が足りない。
+%%%%
+You can't see any susceptible monsters within range! (Use <w>Z</w> to cast anyway.)
+
+射程距離内にはモンスターが見当たらない！
+(構わずに使いたい場合、<w>Z</w> コマンドを使ってください)
+%%%%
+<lightred>Casting this spell will cause instant excommunication!</lightred> Really cast?
+
+<lightred>この呪文を唱えるとたちまち神に見放されます！</lightred> それでも唱えますか？
+%%%%
+Casting this spell will put you into penance. Really cast?
+
+この呪文を唱えると神に懺悔をする羽目になります。それでも唱えますか？
+%%%%
+The spell is %s to cast%s Continue anyway?
+
+この呪文を唱えるのは%sです%s続けますか？
+%%%%
+safe
+
+安全
+%%%%
+slightly dangerous
+
+やや危険
+%%%%
+quite dangerous
+
+かなり危険
+%%%%
+very dangerous
+
+極めて危険
+%%%%
 ############################## spl-summoning.cc ##############################
 %%%%
 You recall your battlesphere and imbue it with additional charge.
