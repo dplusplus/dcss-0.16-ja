@@ -250,7 +250,7 @@ bool wield_weapon(bool auto_wield, int slot, bool show_weff_messages,
         if (!auto_wield)
         {
             item_slot = prompt_invent_item(
-                            "Wield which item (- for none, * to show all)?",
+                            jtransc("Wield which item (- for none, * to show all)?"),
                             MT_INVLIST, OSEL_WIELD,
                             true, true, true, '-', -1, nullptr, OPER_WIELD);
         }
@@ -262,14 +262,14 @@ bool wield_weapon(bool auto_wield, int slot, bool show_weff_messages,
         return false;
     else if (item_slot == you.equip[EQ_WEAPON])
     {
-        mpr("You are already wielding that!");
+        mpr(jtrans("You are already wielding that!"));
         return true;
     }
 
     // Now we really change weapons! (Most likely, at least...)
     if (you.duration[DUR_SURE_BLADE])
     {
-        mpr("The bond with your blade fades away.");
+        mpr(jtrans("The bond with your blade fades away."));
         you.duration[DUR_SURE_BLADE] = 0;
     }
     // Reset the warning counter.
@@ -284,9 +284,10 @@ bool wield_weapon(bool auto_wield, int slot, bool show_weff_messages,
             if (needs_handle_warning(*wpn, OPER_WIELD, penance))
             {
                 string prompt =
-                    "Really unwield " + wpn->name(DESC_INVENTORY) + "?";
+                    make_stringf(jtransc("Really unwield %s?"),
+                                 wpn->name(DESC_INVENTORY).c_str());
                 if (penance)
-                    prompt += " This could place you under penance!";
+                    prompt += " " + jtrans(" This could place you under penance!");
 
                 if (!yesno(prompt.c_str(), false, 'n'))
                 {
