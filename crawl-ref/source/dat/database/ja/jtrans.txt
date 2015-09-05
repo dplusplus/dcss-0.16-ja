@@ -1295,6 +1295,26 @@ That item cannot be evoked!
 %%%%
 ############################## item_use.cc ##############################
 %%%%
+Wield which item (- for none, * to show all)?
+
+どのアイテムを手に持ちますか？ (- で手を空ける, * で全アイテムから選択)
+%%%%
+You are already wielding that!
+
+あなたはそれを既に手に持っている！
+%%%%
+The bond with your blade fades away.
+
+あなたと刃の間の繋がりが薄れていった。
+%%%%
+Really unwield %s?
+
+本当に%sを手放しますか？
+%%%%
+This could place you under penance!
+
+神に懺悔をする羽目になりますよ！
+%%%%
 Use <w>e</w> to drain blood from corpses.
 
 死体から血を飲むには<w>e</w>atコマンドを使ってください。
