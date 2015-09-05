@@ -2083,8 +2083,8 @@ bool item_is_evokable(const item_def &item, bool reach, bool known,
                       bool all_wands, bool msg, bool equip)
 {
     const string error = item_is_melded(item)
-            ? "Your " + item.name(DESC_QUALNAME) + " is melded into your body."
-            : "That item can only be evoked when wielded.";
+            ? jtrans("Your ") + item.name(DESC_QUALNAME) + jtrans(" is melded into your body.")
+            : jtrans("That item can only be evoked when wielded.");
 
     if (is_unrandom_artefact(item))
     {
@@ -2115,7 +2115,7 @@ bool item_is_evokable(const item_def &item, bool reach, bool known,
         if (item.used_count == ZAPCOUNT_EMPTY)
         {
             if (msg)
-                mpr("This wand has no charges.");
+                mpr(jtrans("This wand has no charges."));
             return false;
         }
         return true;
@@ -2136,7 +2136,7 @@ bool item_is_evokable(const item_def &item, bool reach, bool known,
         }
 
         if (msg)
-            mpr("That item cannot be evoked!");
+            mpr(jtrans("That item cannot be evoked!"));
         return false;
 
     case OBJ_RODS:
@@ -2162,7 +2162,7 @@ bool item_is_evokable(const item_def &item, bool reach, bool known,
             return true;
         }
         if (msg)
-            mpr("That item cannot be evoked!");
+            mpr(jtrans("That item cannot be evoked!"));
         return false;
 
     case OBJ_MISCELLANY:
@@ -2177,7 +2177,7 @@ bool item_is_evokable(const item_def &item, bool reach, bool known,
         // else fall through
     default:
         if (msg)
-            mpr("That item cannot be evoked!");
+            mpr(jtrans("That item cannot be evoked!"));
         return false;
     }
 }
