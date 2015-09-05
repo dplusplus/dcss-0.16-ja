@@ -1595,6 +1595,38 @@ You can't go up here!
 
 ここでは上れない！
 %%%%
+You are a level %d %s %s.
+
+あなたはレベル%dの%sの%sだ。
+%%%%
+You are %d%% of the way to level %d.
+
+レベル%dまでに要する経験値が%d%%貯まっている。
+%%%%
+I'm sorry, level %d is as high as you can go.
+
+申し訳ありませんが、あなたが到達できるのはレベル%dまでです。
+%%%%
+With the way you've been playing, I'm surprised you got this far.
+
+あなたがこんなところまで到達できるとは驚きです。
+%%%%
+You'll get an extra life in %d.%02d levels' worth of XP.
+
+あと%d.%02dレベル上昇すればさらなる命を得るでしょう。
+%%%%
+If you died right now, you'd get an extra life in %d.%02d levels' worth of XP.
+
+もしあなたが今死んだ場合、あと%d.%02dレベル上昇すればさらなる命を得るでしょう。
+%%%%
+Play time:
+
+プレイ時間:
+%%%%
+turns)
+
+ターン)
+%%%%
 Save game and return to main manu?
 
 セーブしてメインメニューに戻りますか？
