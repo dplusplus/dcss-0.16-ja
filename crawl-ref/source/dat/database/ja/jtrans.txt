@@ -2511,6 +2511,37 @@ Your demonic ancestry asserts itself...
 
 あなたの悪魔的な血統が顕在化した……
 %%%%
+# player::shout_verb()より
+# ここでは叫び変異の強度によりshout < yell < screamとなるので
+# 他の文と語の対応が一貫しないが妥協
+shout
+
+大声を上げた
+%%%%
+yell
+
+叫んだ
+%%%%
+scream
+
+絶叫した
+%%%%
+meow
+
+ニャーと鳴いた
+%%%%
+yowl
+
+ニャオーンと鳴いた
+%%%%
+caterwaul
+
+ギャーギャーと鳴いた
+%%%%
+hiss
+
+フーッと鳴いた
+%%%%
 The %s%s flies open!
 
 %s%sは突然開いた！
@@ -3993,6 +4024,96 @@ The service fee for joining is currently %d gold; you have %d.
 %s %s rot%s away.
 
 %dつの%sが腐ってしまった。
+%%%%
+############################## shout.cc ##############################
+%%%%
+You feel a strong urge to %s, but you are unable to make a sound!
+
+あなたは%s衝動に駆られたが、声を出すことができない！
+%%%%
+You feel a %s rip itself from your throat, but you make no sound!
+
+あなたは%sと思ったが、音を立てることができない！
+%%%%
+You are unable to make a sound!
+
+あなたは音を立てることができない！
+%%%%
+You %s%s at %s!
+
+あなたは%s%s%s！
+%%%%
+Your resitation
+
+ジンの法理を説こうとして
+%%%%
+What do you say?
+
+何をしゃべりますか？
+%%%%
+p - Attack previous target.
+
+p - 既存の標的を攻撃
+%%%%
+Orders for allies: a - Attack new target.%s
+
+仲間への指示: a - 新たな標的を攻撃     %s
+%%%%
+r - Retreat!             s - Stop attacking.
+
+r - 退却！               s - 攻撃止め
+%%%%
+w - Wait here.           f - Follow me.
+
+w - ここで待て           f - ついてこい
+%%%%
+Anything else - Stay silent.
+
+その他のキー - 静かに待て
+%%%%
+You %s%s!
+
+あなたは%s%s！
+%%%%
+wildly
+
+荒々しく
+%%%%
+for attention
+
+注意を引きつけるように
+%%%%
+Follow me!
+
+「ついてこい！」
+%%%%
+Stop fighting!
+
+「攻撃止め！」
+%%%%
+Wait here!
+
+「ここで待て！」
+%%%%
+An ally attacking under your orders might violate sanctuary; order anyway?
+
+あなたの指示による仲間の攻撃は聖域を侵すことになる; それでも命令しますか？
+%%%%
+Gang up on whom?
+
+どれを標的にしますか？
+%%%%
+Retreat in which direction?
+
+どの方向に退却しますか？
+%%%%
+Fall back!
+
+「退却！」
+%%%%
+Attack!
+
+「攻撃！」
 %%%%
 ############################## skills.cc ##############################
 %%%%
