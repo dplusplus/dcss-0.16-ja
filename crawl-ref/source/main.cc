@@ -1763,21 +1763,21 @@ static void _take_stairs(bool down)
 
 static void _experience_check()
 {
-    mprf("You are a level %d %s %s.",
+    mprf(jtransc("You are a level %d %s %s."),
          you.experience_level,
-         species_name(you.species).c_str(),
-         you.class_name.c_str());
+         jtransc(species_name(you.species)),
+         jtransc(you.class_name));
     int perc = get_exp_progress();
 
     if (you.experience_level < you.get_max_xl())
     {
-        mprf("You are %d%% of the way to level %d.", perc,
-              you.experience_level + 1);
+        mprf(jtransc("You are %d%% of the way to level %d."),
+             you.experience_level + 1, perc);
     }
     else
     {
-        mprf("I'm sorry, level %d is as high as you can go.", you.get_max_xl());
-        mpr("With the way you've been playing, I'm surprised you got this far.");
+        mprf(jtransc("I'm sorry, level %d is as high as you can go."), you.get_max_xl());
+        mpr(jtrans("With the way you've been playing, I'm surprised you got this far."));
     }
 
     if (you.species == SP_FELID)
@@ -1795,14 +1795,14 @@ static void _experience_check()
              / (exp_needed(xl + 1) - exp_needed(xl));
         perc = (nl - xl) * 100 - perc;
         mprf(you.lives < 2 ?
-             "You'll get an extra life in %d.%02d levels' worth of XP." :
-             "If you died right now, you'd get an extra life in %d.%02d levels' worth of XP.",
+             jtransc("You'll get an extra life in %d.%02d levels' worth of XP.") :
+             jtransc("If you died right now, you'd get an extra life in %d.%02d levels' worth of XP."),
              perc / 100, perc % 100);
     }
 
     handle_real_time();
-    msg::stream << "Play time: " << make_time_string(you.real_time)
-                << " (" << you.num_turns << " turns)"
+    msg::stream << jtrans("Play time:") + " " << make_time_string(you.real_time)
+                << " (" << you.num_turns << jtrans(" turns)")
                 << endl;
 #ifdef DEBUG_DIAGNOSTICS
     if (you.gourmand())
