@@ -1911,7 +1911,7 @@ int prompt_invent_item(const char *prompt,
 
         if (need_prompt)
         {
-            mprf(MSGCH_PROMPT, "%s (<w>?</w> for menu, <w>Esc</w> to quit)",
+            mprf(MSGCH_PROMPT, jtransc("%s (<w>?</w> for menu, <w>Esc</w> to quit)"),
                  prompt);
         }
         else
