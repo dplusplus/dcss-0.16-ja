@@ -521,6 +521,46 @@ static void _set_allies_withdraw(const coord_def &target)
     }
 }
 
+static string _want_to_shout_verb(const string& verb)
+{
+    if (verb == "shout")
+        return "大声を上げたい";
+    else if (verb == "yell")
+        return "叫びたい";
+    else if (verb == "scream")
+        return "絶叫したい";
+    else if (verb == "meow")
+        return "ニャーと鳴きたい";
+    else if (verb == "yowl")
+        return "ニャオーンと鳴きたい";
+    else if (verb == "caterwaul")
+        return "ギャーギャーと鳴きたい";
+    else if (verb == "hiss")
+        return "フーッと鳴きたい";
+    else
+        return "buggy(see want_to_shout_verb()";
+}
+
+static string _shout_verb_at_present_tense(const string& verb)
+{
+    if (verb == "shout")
+        return "大声を上げる";
+    else if (verb == "yell")
+        return "叫ぶ";
+    else if (verb == "scream")
+        return "絶叫する";
+    else if (verb == "meow")
+       return "ニャーと鳴く";
+    else if (verb == "yowl")
+       return "ニャオーンと鳴く";
+    else if (verb == "caterwaul")
+        return "ギャーギャーと鳴く";
+    else if (verb == "hiss")
+        return "フーッと鳴く";
+    else
+        return "buggy(see _shout_verb_at_present_tense()";
+}
+
 void yell(const actor* mon)
 {
     ASSERT(!crawl_state.game_is_arena());
@@ -530,6 +570,7 @@ void yell(const actor* mon)
     dist targ;
 
     const string shout_verb = you.shout_verb(mon != nullptr);
+    const string want_to_shout_verb = _want_to_shout_verb(shout_verb);
     string cap_shout = shout_verb;
     cap_shout[0] = toupper(cap_shout[0]);
     const int noise_level = you.shout_volume();
@@ -540,35 +581,36 @@ void yell(const actor* mon)
         {
             if (you.paralysed() || you.duration[DUR_WATER_HOLD])
             {
-                mprf("You feel a strong urge to %s, but "
-                     "you are unable to make a sound!",
-                     shout_verb.c_str());
+                mprf(jtransc("You feel a strong urge to %s, but "
+                             "you are unable to make a sound!"),
+                     want_to_shout_verb.c_str());
             }
             else
             {
-                mprf("You feel a %s rip itself from your throat, "
-                     "but you make no sound!",
-                     shout_verb.c_str());
+                mprf(jtransc("You feel a %s rip itself from your throat, "
+                             "but you make no sound!"),
+                     want_to_shout_verb.c_str());
             }
         }
         else
-            mpr("You are unable to make a sound!");
+            mpr(jtrans("You are unable to make a sound!"));
 
         return;
     }
 
     if (mon)
     {
-        mprf("You %s%s at %s!",
-             shout_verb.c_str(),
+        mprf(jtransc("You %s%s at %s!"),
+             you.duration[DUR_RECITE] ? (mon->name(DESC_THE) + "に").c_str()
+                                      : (mon->name(DESC_THE) + "に向かって").c_str(),
              you.duration[DUR_RECITE] ? " your recitation" : "",
-             mon->name(DESC_THE).c_str());
+             shout_verb.c_str());
         noisy(noise_level, you.pos());
         return;
     }
 
-    mprf(MSGCH_PROMPT, "What do you say?");
-    mprf(" t - %s!", cap_shout.c_str());
+    mpr_nojoin(MSGCH_PROMPT, jtrans("What do you say?"));
+    mpr_nojoin(MSGCH_PLAIN, " t - " + _shout_verb_at_present_tense(shout_verb) + "！\n");
 
     if (!you.berserk())
     {
@@ -578,16 +620,18 @@ void yell(const actor* mon)
             const monster* target = &menv[you.prev_targ];
             if (target->alive() && you.can_see(target))
             {
-                previous = "   p - Attack previous target.";
+                previous = jtrans("p - Attack previous target.");
                 targ_prev = true;
             }
         }
 
-        mprf("Orders for allies: a - Attack new target.%s", previous.c_str());
-        mpr("                   r - Retreat!             s - Stop attacking.");
-        mpr("                   w - Wait here.           f - Follow me.");
+        string align = string(15, ' ');
+
+        mprf((" " + jtrans("Orders for allies: a - Attack new target.%s")).c_str(), previous.c_str());
+        mpr(align + jtrans("                   r - Retreat!             s - Stop attacking."));
+        mpr(align + jtrans("                   w - Wait here.           f - Follow me."));
     }
-    mpr(" Anything else - Stay silent.");
+    mpr("    " + jtrans(" Anything else - Stay silent."));
 
     int keyn = get_ch();
     clear_messages();
@@ -596,9 +640,9 @@ void yell(const actor* mon)
     {
     case '!':    // for players using the old keyset
     case 't':
-        mprf(MSGCH_SOUND, "You %s%s!",
-             shout_verb.c_str(),
-             you.berserk() ? " wildly" : " for attention");
+        mprf(MSGCH_SOUND, jtransc("You %s%s!"),
+             jtransc(you.berserk() ? " wildly" : " for attention"),
+             jtransc(shout_verb));
         noisy(noise_level, you.pos());
         zin_recite_interrupt();
         you.turn_is_over = true;
@@ -617,10 +661,10 @@ void yell(const actor* mon)
         {
             // Don't reset patrol points for 'Stop fighting!'
             _set_allies_patrol_point(true);
-            mpr("Follow me!");
+            mpr(jtrans("Follow me!"));
         }
         else
-            mpr("Stop fighting!");
+            mpr(jtrans("Stop fighting!"));
         break;
 
     case 'w':
@@ -630,7 +674,7 @@ void yell(const actor* mon)
             return;
         }
 
-        mpr("Wait here!");
+        mpr(jtrans("Wait here!"));
         mons_targd = MHITNOT;
         _set_allies_patrol_point();
         break;
@@ -658,8 +702,8 @@ void yell(const actor* mon)
 
         if (env.sanctuary_time > 0)
         {
-            if (!yesno("An ally attacking under your orders might violate "
-                       "sanctuary; order anyway?", false, 'n'))
+            if (!yesno(jtransc("An ally attacking under your orders might violate "
+                               "sanctuary; order anyway?"), false, 'n'))
             {
                 canned_msg(MSG_OK);
                 return;
@@ -671,7 +715,7 @@ void yell(const actor* mon)
             args.restricts = DIR_TARGET;
             args.mode = TARG_HOSTILE;
             args.needs_path = false;
-            args.top_prompt = "Gang up on whom?";
+            args.top_prompt = jtrans("Gang up on whom?");
             direction(targ, args);
         }
 
@@ -711,7 +755,7 @@ void yell(const actor* mon)
             args.restricts = DIR_TARGET;
             args.mode = TARG_ANY;
             args.needs_path = false;
-            args.top_prompt = "Retreat in which direction?";
+            args.top_prompt = jtransc("Retreat in which direction?");
             direction(targ, args);
         }
 
@@ -723,7 +767,7 @@ void yell(const actor* mon)
 
         if (targ.isValid)
         {
-            mpr("Fall back!");
+            mpr(jtrans("Fall back!"));
             mons_targd = MHITNOT;
         }
 
@@ -742,7 +786,7 @@ void yell(const actor* mon)
     _set_friendly_foes(keyn == 's' || keyn == 'w');
 
     if (mons_targd != MHITNOT && mons_targd != MHITYOU)
-        mpr("Attack!");
+        mpr(jtrans("Attack!"));
 
     noisy(noise_level, you.pos());
 }
