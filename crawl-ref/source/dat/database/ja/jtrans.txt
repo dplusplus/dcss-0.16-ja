@@ -2299,6 +2299,10 @@ You attempt to give life to the dead...
 
 あなたは死体に生命を与えようと試みた……
 %%%%
+The deck of cards disappears in a puff of smoke.
+
+カードのデッキはぽんっと煙を立てて消え去った。
+%%%%
 You cannot move.
 
 あなたは動けない。

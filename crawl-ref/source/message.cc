@@ -1666,7 +1666,7 @@ void canned_msg(canned_message_type which_message)
             mpr(jtrans("You attempt to give life to the dead..."));
             break;
         case MSG_DECK_EXHAUSTED:
-            mpr("The deck of cards disappears in a puff of smoke.");
+            mpr(jtrans("The deck of cards disappears in a puff of smoke."));
             break;
         case MSG_CANNOT_MOVE:
             mpr(jtrans("You cannot move."));
