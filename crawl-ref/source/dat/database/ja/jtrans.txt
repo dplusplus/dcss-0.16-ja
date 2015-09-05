@@ -2505,6 +2505,284 @@ regenerates before your eyes!
 
 の形状は捻れ、後には
 %%%%
+############################## mutation.cc ##############################
+%%%%
+Innate Abilities, Weirdness & Mutations
+
+先天的/超自然的/もしくは突然変異の能力
+%%%%
+plain brown
+
+茶色の
+%%%%
+You revert to your normal form in water.
+
+あなたは水中では本来の形態に戻る。
+%%%%
+You are very nimble and swift while swimming.
+
+あなたは泳いでいる間は非常に素早く軽快だ。
+%%%%
+You reflexively headbutt those who attack you in melee.
+
+あなたは近接戦闘において攻撃してきた相手に頭突きで反撃する。
+%%%%
+You cannot wear boots.
+
+あなたはブーツを履けない。
+%%%%
+You can use your snake-like lower body to constrict enemies.
+
+あなたは蛇のような尻尾で敵を拘束できる。
+%%%%
+Your serpentine skin is tough (AC +
+
+あなたは硬い蛇のような鱗を持つ(AC +
+%%%%
+).
+
+)。
+%%%%
+Your body is rotting away.
+
+あなたの体は腐敗しつつある。
+%%%%
+You thrive on raw meat.
+
+あなたは生肉を自らの糧にできる。
+%%%%
+You can fly.
+
+あなたは空を飛べる。
+%%%%
+You can fly continuously.
+
+あなたは継続して空を飛べる。
+%%%%
+You do not eat or drink.
+
+あなたは飲み食いすることができない。
+%%%%
+Your flesh is vulnerable to fire.
+
+あなたの体は炎に弱い。
+%%%%
+You are in touch with the powers of death.
+
+あなたは死の力との接触を持っている。
+%%%%
+You are strongly in touch with the powers of death.
+
+あなたは死の力との強い接触を持っている。
+%%%%
+You can restore your body by infusing magical energy.
+
+あなたは魔力を注ぎ込むことにより体を修復できる。
+%%%%
+You can breathe blasts of noxious fumes.
+
+あなたは悪臭雲のブレスを吐くことができる。
+%%%%
+lurid green
+
+毒々しい緑色の
+%%%%
+You can walk through water.
+
+あなたは水の中を歩行できる。
+%%%%
+dull iron-grey
+
+鈍い鉄色の
+%%%%
+fiery red
+
+燃えさかるように赤い
+%%%%
+You can breathe waves of freezing cold.
+
+あなたは凍える冷気のブレスを吐くことができる。
+%%%%
+You can buffet flying creatures when you breathe cold.
+
+あなたは飛行中のモンスターを氷のブレスで打ちのめすことができる。
+%%%%
+icy white
+
+氷のように白い
+%%%%
+You can breathe wild blasts of lightning.
+
+あなたは強烈な電撃のブレスを吐くことができる。
+%%%%
+glossy black
+
+光沢のある黒い
+%%%%
+You can spit globs of acid.
+
+あなたは酸の塊を吐くことができる。
+%%%%
+You can corrode armour when you spit acid.
+
+あなたは酸で鎧を腐食させることができる。
+%%%%
+You are resistant to acid.
+
+あなたは酸への耐性を持っている。
+%%%%
+golden yellow
+
+黄金色
+%%%%
+You can breathe bolts of energy.
+
+あなたはエネルギーの矢を吐くことができる。
+%%%%
+You can dispel enchantments when you breathe energy.
+
+あなたはブレスによって魔法の効果を解除することができる。
+%%%%
+rich purple
+
+紫紺の
+%%%%
+You can spit globs of burning liquid.
+
+あなたは燃えたぎる粘液の塊を吐くことができる。
+%%%%
+You can ignite nearby creatures when you spit burning liquid.
+
+あなたは燃えたぎる粘液を吐いて近くの怪物を発火させることができる。
+%%%%
+weird mottled
+
+まだら模様の
+%%%%
+You can breathe blasts of scalding steam.
+
+あなたは高熱の蒸気を吐くことができる。
+%%%%
+pale cyan-grey
+
+青緑がかった灰色の
+%%%%
+<green>You do not heal naturally.</green>
+
+<green>あなたは自然には回復しない。</green>
+%%%%
+<green>Your natural rate of healing is extremely fast.</green>
+
+<green>あなたの自然回復はとてつもなく早い。</green>
+%%%%
+<green>You heal slowly.</green>
+
+<green>あなたの自然回復は遅い。</green>
+%%%%
+<green>Your natural rate of healing is unusually fast.</green>
+
+<green>あなたの自然回復は通常より早い。</green>
+%%%%
+You can bottle blood from corpses.
+
+あなたは死体の血を採血することができる。
+%%%%
+You are resistant to damage.
+
+あなたはあらゆるダメージに耐性がある。
+%%%%
+You can recharge devices by infusing magical energy.
+
+あなたは最大MPを消費して魔道具を充填できる。
+%%%%
+You cannot wear armour.
+
+あなたは防具を装備できない。
+%%%%
+You are incapable of wielding weapons or throwing items.
+
+あなたは武器を手に持ったりアイテムを投擲したりすることができない。
+%%%%
+You cannot wear most types of armour.
+
+あなたはほとんどの防具を装備できない。
+%%%%
+You are amphibious.
+
+あなたは水中と陸上どちらでも活動できる。
+%%%%
+You can wear up to %s rings at the same time.
+
+あなたはいちどきに%dつの指輪を装備することができる。
+%%%%
+You can use your tentacles to constrict many enemies at once.
+
+あなたは触手を使って複数の敵をいちどきに拘束することができる。
+%%%%
+You are under a permanent stasis effect.
+
+あなたは恒久的な停滞状態に置かれている。
+%%%%
+You can dig through walls and to a lower floor.
+
+あなたは壁や床を掘り抜くことができる。
+%%%%
+Your four strong arms can wield two-handed weapons with a shield.
+
+あなたの四本の腕は両手武器と盾を一緒に装備することができる。
+%%%%
+You are resistant to torment.
+
+あなたは邪悪なる苦痛に対する耐性を持つ。
+%%%%
+You are immune to poison.
+
+あなたは毒を無効化する。
+%%%%
+Your stone body is very resilient (AC +
+
+あなたの石の体は攻撃をはね返す。(AC +
+%%%%
+You are tiny and cannot use many weapons and most armour.
+
+あなたの体はとても小さく、ほとんどの武器や鎧を装備できない。
+%%%%
+You are small and have problems with some larger weapons.
+
+あなたの体は小柄で、いくつかの大型武器を使うのに問題がある。
+%%%%
+You are too large for most types of armour.
+
+あなたの体は大きすぎてほとんどの防具を着ることができない。
+%%%%
+scale are
+
+鱗は
+%%%%
+very
+
+とても
+%%%%
+hard
+
+硬い
+%%%%
+Your body does not fit into most forms of armour.
+
+あなたの体はほとんどの防具に合わない。
+%%%%
+<green>You can walk on water.</green>
+
+<green>あなたは水の上を歩くことができる。</green>
+%%%%
+<green>You are immune to clouds of flame.</green>
+
+<green>あなたは火炎の雲に対して傷つかない。</green>
+%%%%
+You are rather mundane.
+
+あなたはこれといった特徴がない。
+%%%%
 ############################## player.cc ##############################
 %%%%
 Welcome back to level %d!
