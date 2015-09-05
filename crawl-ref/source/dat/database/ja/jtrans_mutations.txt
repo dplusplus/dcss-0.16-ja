@@ -47,7 +47,9 @@ Your mind is very acute. (Int +4)
 
 あなたの精神は非常に鋭い。(知力 +4)
 %%%%
-agile 機敏
+agile
+
+機敏
 %%%%
 You are agile. (Dex +2)
 
@@ -449,17 +451,17 @@ teleportitis
 
 不随意瞬間移動
 %%%%
-You are occasionally teleported to nearby monsters.
+Space occasionally distorts in your vicinity.
 
-あなたはたまにモンスターの近くに瞬間移動する。
+あなたの近くでたまに空間が歪む。
 %%%%
-You are sometimes teleported to nearby monsters.
+Space sometimes distorts in your vicinity.
 
-あなたは時々モンスターの近くに瞬間移動する。
+あなたの近くで時々空間が歪む。
 %%%%
-You are often teleported to nearby monsters.
+Space frequently distorts in your vicinity.
 
-あなたは頻繁にモンスターの近くに瞬間移動する。
+あなたの近くで頻繁に空間が歪む。
 %%%%
 You feel weirdly uncertain.
 
@@ -507,7 +509,7 @@ You feel less resistant to hostile enchantments.
 
 あなたは敵対的な魔法に対する耐性が薄れたようだ。
 %%%%
-You feel vulnerable to magic hostile enchantments.
+You feel vulnerable to hostile enchantments.
 
 あなたは敵対的な魔法に対して脆弱になったようだ。
 %%%%
@@ -587,17 +589,17 @@ spit poison
 
 毒液
 %%%%
-You can spit weak poison.
-
-あなたは弱い毒液を吐くことができる。
-%%%%
 You can spit poison.
 
 あなたは毒液を吐くことができる。
 %%%%
-You can exhale a cloud of poison.
+You can spit moderately strong poison.
 
-あなたは毒性の雲を吐くことができる。
+あなたはそこそこ強力な毒液を吐くことができる。
+%%%%
+You can spit strong poison.
+
+あなたは強力な毒液を吐くことができる。
 %%%%
 There is a nasty taste in your mouth for a moment.
 
@@ -827,13 +829,17 @@ deterioration
 
 能力低下
 %%%%
-Your body sometimes deteriorates upon taking damage.
+Your body is slowly deteriorating.
 
-あなたは傷ついた時に時々能力が低下する。
+あなたは緩やかに能力が低下していく。
 %%%%
-Your body often deteriorates upon taking damage.
+Your body is deteriorating.
 
-あなたは傷ついた時にしばしば能力が低下する。
+あなたは次第に能力が低下していく。
+%%%%
+Your body is rapidly deteriorating.
+
+あなたは急速に能力が低下していく。
 %%%%
 You feel yourself wasting away.
 
@@ -1019,62 +1025,6 @@ You feel resistant to negative energy.
 You feel more resistant to negative energy.
 
 あなたは負のエネルギーにさらに強くなったようだ。
-%%%%
-restore body
-
-朽ちた体の回復
-%%%%
-You can restore your body by infusing magical energy.
-
-あなたは魔力を注ぎ込むことにより回復できる。
-%%%%
-You can now infuse your body with magic to restore decomposition.
-
-あなたは腐敗した肉体を回復するために肉体に魔力を充填できるようになった。
-%%%%
-in touch with death
-
-死への接触
-%%%%
-strongly in touch with death
-
-死への強き接触
-%%%%
-You are in touch with the powers of death.
-
-あなたは死の力との接触を持っている。
-%%%%
-You are strongly in touch with the powers of death.
-
-あなたは死の力との強い接触を持っている。
-%%%%
-You feel more in touch with the powers of death.
-
-あなたは死の力との接触をより強めた。
-%%%%
-able to fly
-
-一時的飛行
-%%%%
-able to fly continuously
-
-継続的飛行
-%%%%
-You can fly.
-
-あなたは空を飛べる。
-%%%%
-You can fly continuously.
-
-あなたは継続して空を飛べる。
-%%%%
-You have gained the ability to fly.
-
-あなたは飛行能力を得た。
-%%%%
-You can now fly continuously.
-
-あなたは継続して空を飛べるようになった。
 %%%%
 hurl hellfire
 
@@ -1364,18 +1314,6 @@ Your breath is less nasty.
 
 あなたの吐息はそれほど厄介ではなくなった。
 %%%%
-constrict 1
-
-触手拘束
-%%%%
-You can use your snake-like lower body to constrict enemies.
-
-あなたは蛇のような尻尾で敵を拘束できる。
-%%%%
-Your tail grows strong enough to constrict your enemies.
-
-あなたの尻尾は敵を拘束するのに足るほど強く成長した。
-%%%%
 stinger
 
 棘の尻尾
@@ -1416,9 +1354,9 @@ big wings
 
 力強い翼
 %%%%
-Your large and strong wings let you fly indefinitely.
+Your wings are large and strong.
 
-あなたは大きくて力強い翼でいつまでも飛ぶことができる。
+あなたの翼は大きく、そして力強い。
 %%%%
 Your wings grow larger and stronger.
 
@@ -1564,7 +1502,7 @@ You feel more in control of your magic.
 
 あなたは少し魔法のコントロールを取り戻した。
 %%%%
-subdued magic
+placid magic
 
 抑制された魔力
 %%%%
@@ -1599,6 +1537,22 @@ Your magic regains its normal vibrancy.
 Your connection to magic feels less subdued.
 
 あなたは少し魔力の活発さを取り戻した。
+%%%%
+forlorn
+
+孤独
+%%%%
+You have difficulty communicating with the divine.
+
+あなたは神性との意思疎通が難しくなっている。
+%%%%
+You feel forlorn.
+
+あなたは孤独を感じた。
+%%%%
+You feel more spiritual.
+
+あなたはより神秘的な感じがした。
 %%%%
 50% torment resistance
 
@@ -1644,9 +1598,9 @@ icemail
 
 氷の鎧
 %%%%
-A meltable icy envelope protects you from harm (AC +
+A meltable icy envelope protects you from harm and freezing vapours (AC +
 
-氷の外套があなたを外敵から守っている(AC +
+氷の外套があなたを外敵や凍てつく大気から守っている(AC +
 %%%%
 An icy envelope takes form around you.
 
@@ -1740,17 +1694,17 @@ powered by death
 
 死よりの力
 %%%%
-You regenerate a little health from kills.
+You can steal the life force of nearby defeated enemies.
 
-あなたは殺害によって少し回復する。
+あなたは近くにある敵の屍骸から生命力を吸い取ることができる。
 %%%%
-You regenerate health from kills.
+You can steal the life force of defeated enemies.
 
-あなたは殺害によって回復する。
+あなたは敵の屍骸から生命力を吸い取ることができる。
 %%%%
-You regenerate a lot of health from kills.
+You can steal the life force of all defeated enemies in sight.
 
-あなたは殺害によってかなり回復する。
+あなたは視界内の全ての敵の屍骸から生命力を吸い取ることができる。
 %%%%
 A wave of death washes over you.
 
@@ -2164,7 +2118,7 @@ Iridescent scales spread over more of your body.
 
 玉虫色の鱗があなたの体をさらに覆った。
 %%%%
-Iridescent scales cover your body completely.
+Iridescent scales cover you completely.
 
 玉虫色の鱗があなたの体を完全に覆った。
 %%%%
@@ -2271,7 +2225,7 @@ Rough black scales spread over more of your body.
 
 ざらざらした鱗があなたの体をさらに覆った。
 %%%%
-Rough black scales cover your body completely.
+Rough black scales cover you completely.
 
 ざらざらした黒い鱗があなたの体を完全に覆った。
 %%%%
@@ -2307,7 +2261,7 @@ Rugged brown scales spread over more of your body.
 
 頑丈な茶色の鱗があなたの体を更に覆った。
 %%%%
-Rugged brown scales cover your body completely.
+Rugged brown scales cover you completely.
 
 頑丈な茶色の鱗があなたの体を完全に覆った。
 %%%%
@@ -2451,7 +2405,7 @@ Yellow scales spread over more of your body.
 
 黄色の鱗があなたの体をさらに覆った。
 %%%%
-Yellow scales cover your body completely.
+Yellow scales cover you completely.
 
 黄色の鱗があなたの体を完全に覆った。
 %%%%
@@ -2509,15 +2463,15 @@ Your blood runs red-hot!
 %%%%
 foul stench
 
-腐敗の制御
+汚らわしい悪臭
 %%%%
-You may emit foul miasma when damaged in melee.
+You emit a foul stench.
 
-あなたは戦闘でダメージを受けた際に汚らしい瘴気を発することがある。
+あなたは汚らわしい悪臭を発している。
 %%%%
-You frequently emit foul miasma when damaged in melee.
+You radiate miasma.
 
-あなたは戦闘でダメージを受けた際にしばしば汚らしい瘴気を発する。
+あなたは瘴気を発している。
 %%%%
 You begin to emit a foul stench of rot and decay.
 
@@ -2531,9 +2485,9 @@ tendrils
 
 粘着状の蔦
 %%%%
-You are covered in slimy tendrils that may disarm your opponents.
+Thin tendrils of slime have grown from your body.
 
-あなたは敵の武器を奪い取るねばねばした蔦に覆われている。
+細いねばねばした蔦があなたの体から生えている。
 %%%%
 Thin, slimy tendrils emerge from your body.
 
@@ -2655,9 +2609,9 @@ black mark
 
 黒の紋様
 %%%%
-Your melee attacks may debilitate your foes.
+Your melee attacks sometimes drain vitality from your foes.
 
-あなたの攻撃は敵を衰弱させる。
+あなたの近接攻撃はしばしば相手から生命力を奪い取る。
 %%%%
 An ominous black mark forms on your body.
 
@@ -2667,9 +2621,9 @@ cold-blood
 
 冷血
 %%%%
-You are cold-blooded and may be slowed by cold attacks.
+Your cold-blooded metabolism reacts poorly to cold.
 
-あなたは冷血動物であり、冷気攻撃を受けると動きが鈍くなる。
+あなたの冷たい血の代謝機能は冷気が苦手だ。
 %%%%
 You feel cold-blooded.
 
@@ -2703,7 +2657,7 @@ You feel less concerned about cold.
 
 あなたは冷気をあまり気にしなくなったようだ。
 %%%%
-sustain attributes
+sustain abilities
 
 能力維持
 %%%%
@@ -2811,9 +2765,9 @@ cowardly
 
 臆病
 %%%%
-Your cowardice makes you less effective in combat with threatening monsters.
+You are a coward.
 
-あなたはモンスターと戦う際にあまり力を発揮できない。
+あなたは臆病者だ。
 %%%%
 You have lost your courage.
 
@@ -3174,17 +3128,29 @@ MP-powered wands
 
 魔力を消費する杖
 %%%%
-You expend magic power (3 MP) to strengthen your wands.
+You expend magic power (3 MP) to slightly strengthen your wands.
 
-あなたは杖を振るのに3MPを消費する。
+あなたは3MPを消費してワンドの効果を少し強くする。
 %%%%
-You feel your magical essence link to your wands.
+You expend magic power (6 MP) to strengthen your wands.
 
-あなたの魔力と杖が繋がったようだ。
+あなたは6MPを消費してワンドの効果を強くする。
 %%%%
-Your magical essence is no longer linked to your wands.
+You expend magic power (9 MP) to make your wands much stronger.
 
-あなたの魔力と杖はもはや繋がっていない。
+あなたは9MPを消費してワンドの効果をさらに強くする。
+%%%%
+You feel less able to contain your magic power.
+
+あなたは自身の魔力を保持できなくなっていくのを感じた。
+%%%%
+You can contain your magic power once more.
+
+あなたは再び自身の魔力を保持できるようになった。
+%%%%
+You feel more able to contain your magic power.
+
+あなたは自身の魔力をより保持できるようになった。
 %%%%
 unskilled
 
@@ -3246,40 +3212,9 @@ sharp paws
 
 鋭い前足
 %%%%
-Your sharp claws are effective at attacking unaware monsters.
+Your paws have sharp claws that are effective at stabbing.
 
-あなたの鋭い爪はこちらに気付いていないモンスターに有効だ。
-%%%%
-missing an eye
-
-失明
-%%%%
-You are missing an eye, making it more difficult to aim.
-
-あなたは片目を失い、狙いを定めることが難しくなった。
-%%%%
-Your right eye vanishes! The world loses its depth.
-
-あなたの右目は消えた！ 視界の奥行きを失った。
-%%%%
-Your right eye suddenly reappears! The world regains its depth.
-
-あなたの右目が突然戻ってきた！ 視界が奥行きを取り戻した。
-%%%%
-temperature sensitive
-温度への過敏
-%%%%
-You are sensitive to extremes of temperature (rF-, rC-).
-
-あなたは温度の高低に過敏だ。(rF-, rC-)
-%%%%
-You feel sensitive to extremes of temperature.
-
-あなたは温度の高低に過敏になったようだ。
-%%%%
-You no longer feel sensitive to extremes of temperature.
-
-あなたはもはや温度の高低に過敏ではなくなった。
+あなたの前足には鋭い爪があり、急所を突くのに有効だ。
 %%%%
 damage resistance
 
@@ -3368,10 +3303,6 @@ unfitting armour
 %d rings
 
 %dつの指輪
-%%%%
-constrict 1
-
-触手拘束
 %%%%
 constrict %d
 
