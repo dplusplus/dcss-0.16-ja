@@ -16,6 +16,7 @@
 #include "branch.h"
 #include "cloud.h"
 #include "colour.h"
+#include "database.h"
 #include "describe.h"
 #include "directn.h"
 #include "english.h"
@@ -688,12 +689,12 @@ bool cast_a_spell(bool check_range, spell_type spell)
                 }
 
                 if (you.last_cast_spell == SPELL_NO_SPELL)
-                    mprf(MSGCH_PROMPT, "Cast which spell? (? or * to list) ");
+                    mpr_nojoin(MSGCH_PROMPT, jtrans("Cast which spell? (? or * to list) "));
                 else
                 {
-                    mprf(MSGCH_PROMPT, "Casting: <w>%s</w>",
-                         spell_title(you.last_cast_spell));
-                    mprf(MSGCH_PROMPT, "Confirm with . or Enter, or press ? or * to list all spells.");
+                    mprf(MSGCH_PROMPT, jtransc("Casting: <w>%s</w>"),
+                         tagged_jtransc("[spell]", spell_title(you.last_cast_spell)));
+                    mpr_nojoin(MSGCH_PROMPT, jtrans("Confirm with . or Enter, or press ? or * to list all spells."));
                 }
 
                 keyin = get_ch();
@@ -730,7 +731,7 @@ bool cast_a_spell(bool check_range, spell_type spell)
             spell = you.last_cast_spell;
         else if (!isaalpha(keyin))
         {
-            mpr("You don't know that spell.");
+            mpr(jtrans("You don't know that spell."));
             crawl_state.zero_turns_taken();
             return false;
         }
@@ -740,7 +741,7 @@ bool cast_a_spell(bool check_range, spell_type spell)
 
     if (spell == SPELL_NO_SPELL)
     {
-        mpr("You don't know that spell.");
+        mpr(jtrans("You don't know that spell."));
         crawl_state.zero_turns_taken();
         return false;
     }
@@ -748,7 +749,7 @@ bool cast_a_spell(bool check_range, spell_type spell)
     const int cost = spell_mana(spell);
     if (!enough_mp(cost, true))
     {
-        mpr("You don't have enough magic to cast that spell.");
+        mpr(jtrans("You don't have enough magic to cast that spell."));
         crawl_state.zero_turns_taken();
         return false;
     }
@@ -757,8 +758,8 @@ bool cast_a_spell(bool check_range, spell_type spell)
     {
         // Abort if there are no hostiles within range, but flash the range
         // markers for a short while.
-        mpr("You can't see any susceptible monsters within range! "
-            "(Use <w>Z</w> to cast anyway.)");
+        mpr(jtrans("You can't see any susceptible monsters within range! "
+                   "(Use <w>Z</w> to cast anyway.)"));
 
         if (Options.use_animations & UA_RANGE)
         {
@@ -790,9 +791,9 @@ bool cast_a_spell(bool check_range, spell_type spell)
     {
         // None currently dock just piety, right?
         if (!yesno(god_loathes_spell(spell, you.religion) ?
-            "<lightred>Casting this spell will cause instant excommunication!"
-                "</lightred> Really cast?" :
-            "Casting this spell will put you into penance. Really cast?",
+            jtransc("<lightred>Casting this spell will cause instant excommunication!"
+                    "</lightred> Really cast?") :
+            jtransc("Casting this spell will put you into penance. Really cast?"),
             true, 'n'))
         {
             canned_msg(MSG_OK);
@@ -806,10 +807,10 @@ bool cast_a_spell(bool check_range, spell_type spell)
         && Options.fail_severity_to_confirm <= severity
         && !crawl_state.disables[DIS_CONFIRMATIONS])
     {
-        string prompt = make_stringf("The spell is %s to cast%s "
-                                     "Continue anyway?",
+        string prompt = make_stringf(jtransc("The spell is %s to cast%s "
+                                             "Continue anyway?"),
                                      fail_severity_adjs[severity],
-                                     severity > 1 ? "!" : ".");
+                                     severity > 1 ? "！ " : "。");
 
         if (!yesno(prompt.c_str(), false, 'n'))
         {
