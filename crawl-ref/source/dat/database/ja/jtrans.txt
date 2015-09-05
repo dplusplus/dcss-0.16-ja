@@ -1277,6 +1277,22 @@ Inventory:
 
 %s (<w>Esc</w> でキャンセル)
 %%%%
+is melded into your body.
+
+はあなたの体と融合している。
+%%%%
+That item can only be evoked when wielded.
+
+このアイテムは手に持っているときのみ発動できる。
+%%%%
+This wand has no charges.
+
+このワンドは魔力が空っぽだ。
+%%%%
+That item cannot be evoked!
+
+このアイテムは発動できない！
+%%%%
 ############################## item_use.cc ##############################
 %%%%
 Use <w>e</w> to drain blood from corpses.
