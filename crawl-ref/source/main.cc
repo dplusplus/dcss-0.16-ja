@@ -2852,13 +2852,13 @@ static void _close_door()
 {
     if (!player_can_open_doors())
     {
-        mpr("You can't close doors in your present form.");
+        mpr(jtrans("You can't close doors in your present form."));
         return;
     }
 
     if (you.attribute[ATTR_HELD])
     {
-        mprf("You can't close doors while %s.", held_status());
+        mprf(jtransc("You can't close doors while %s."), held_status());
         return;
     }
 
@@ -2869,7 +2869,7 @@ static void _close_door()
     int num = _check_adjacent(DNGN_OPEN_DOOR, move);
     if (num == 0)
     {
-        mpr("There's nothing to close nearby.");
+        mpr(jtrans("There's nothing to close nearby."));
         return;
     }
     // move got set in _check_adjacent
@@ -2891,7 +2891,7 @@ static void _close_door()
 
     if (door_move.delta.origin())
     {
-        mpr("You can't close doors on yourself!");
+        mpr(jtrans("You can't close doors on yourself!"));
         return;
     }
 

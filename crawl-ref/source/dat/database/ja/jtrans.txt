@@ -1619,6 +1619,30 @@ Which direction?
 
 どの方向ですか？
 %%%%
+You can't close doors in your present form.
+
+現在の形態ではドアを閉めることができない。
+%%%%
+You can't close doors while %s.
+
+あなたは%s間はドアを閉めることができない。
+%%%%
+There's nothing to close nearby.
+
+閉めるものが周囲にはない。
+%%%%
+You can't close doors on yourself!
+
+体が邪魔で閉めることができない！
+%%%%
+It's already closed!
+
+既に閉まっている！
+%%%%
+There isn't anything that you can close there!
+
+ここにはあなたが閉められるものはない！
+%%%%
 You feel a strong urge to attack something.
 
 あなたは激しい攻撃衝動に駆られている。
@@ -5335,6 +5359,16 @@ You are invisible (but backlit and visible).
 
 あなたは透明化している(ただし光っている)。
 %%%%
+############################## terrain.cc ##############################
+%%%%
+door
+
+扉
+%%%%
+gate
+
+門
+%%%%
 ############################## throw.cc ##############################
 %%%%
 Firing
@@ -5452,6 +5486,16 @@ You feel a sudden draft!
 hover solemnly before
 
 浮かびながら姿勢を正した
+%%%%
+############################## traps.cc ##############################
+%%%%
+held in a net
+
+網で拘束されている
+%%%%
+caught in a web
+
+蜘蛛の巣に巻き付かれている
 %%%%
 ############################## travel.cc ##############################
 %%%%
