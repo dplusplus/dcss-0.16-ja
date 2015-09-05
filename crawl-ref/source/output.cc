@@ -2071,7 +2071,7 @@ static string _overview_screen_title(int sw)
 static string _wiz_god_powers()
 {
     string godpowers = jtrans(god_name(you.religion));
-    return make_stringf("%s %d (%d)", god_name(you.religion).c_str(),
+    return make_stringf("%s %d (%d)", jtransc(god_name(you.religion)),
                                       you.piety,
                                       you.duration[DUR_PIETY_POOL]);
 }
