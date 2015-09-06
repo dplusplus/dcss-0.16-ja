@@ -161,7 +161,7 @@ bool deviant_route_warning::warn_continue_travel(
         return true;
 
     target = dest;
-    const string prompt = make_stringf("Have to go through %s. Continue?",
+    const string prompt = make_stringf(jtransc("Have to go through %s. Continue?"),
                                        deviant.describe().c_str());
     // If the user says "Yes, shut up and take me there", we won't ask
     // again for that destination. If the user says "No", we will
@@ -555,7 +555,7 @@ static bool _is_branch_stair(const coord_def& pos)
 static bool _prompt_stop_explore(int es_why)
 {
     return !(Options.explore_stop_prompt & es_why)
-           || yesno("Stop exploring?", true, 'y', true, false);
+           || yesno(jtransc("Stop exploring?"), true, 'y', true, false);
 }
 
 #define ES_item   (Options.explore_stop & ES_ITEM)
@@ -921,15 +921,16 @@ command_type travel()
 
     if (Options.travel_key_stop && kbhit())
     {
-        mprf("Key pressed, stopping %s.", you.running.runmode_name().c_str());
+        mprf(jtransc("Key pressed, stopping %s."),
+             jtransc(you.running.runmode_name().c_str()));
         stop_running();
         return CMD_NO_CMD;
     }
 
     if (you.confused())
     {
-        mprf("You're confused, stopping %s.",
-             you.running.runmode_name().c_str());
+        mprf(jtransc("You're confused, stopping %s."),
+             jtransc(you.running.runmode_name()));
         stop_running();
         return CMD_NO_CMD;
     }
@@ -937,8 +938,8 @@ command_type travel()
     // Excluded squares are only safe if marking stairs, i.e. another level.
     if (is_excluded(you.pos()) && !is_stair_exclusion(you.pos()))
     {
-        mprf("You're in a travel-excluded area, stopping %s.",
-             you.running.runmode_name().c_str());
+        mprf(jtransc("You're in a travel-excluded area, stopping %s."),
+             jtransc(you.running.runmode_name()));
         stop_running();
         return CMD_NO_CMD;
     }
@@ -1992,7 +1993,7 @@ static string _get_trans_travel_dest(const level_pos &target,
     ostringstream dest;
 
     if (!skip_branch)
-        dest << branch;
+        dest << jtrans(branch);
     if (brdepth[branch_id] != 1)
     {
         if (!skip_branch)
@@ -2134,9 +2135,10 @@ static int _prompt_travel_branch(int prompt_flags)
                     mpr(line);
                     line = "";
                 }
-                line += make_stringf("(%c) %-14s ",
+                line += make_stringf("(%c) %-16s ",
                                      branches[br[i]].travel_shortcut,
-                                     branches[br[i]].shortname);
+                                     chop_string(jtransc(branches[br[i]].shortname),
+                                                 16).c_str());
             }
             if (!line.empty())
                 mpr(line);
@@ -2148,9 +2150,9 @@ static int _prompt_travel_branch(int prompt_flags)
             if (allow_waypoints)
             {
                 if (waypoint_list)
-                    segs.emplace_back("* - list branches");
+                    segs.emplace_back(jtrans("* - list branches"));
                 else if (waycount)
-                    segs.emplace_back("* - list waypoints");
+                    segs.emplace_back(jtrans("* - list waypoints"));
             }
 
             if (!trans_travel_dest.empty() && remember_targ)
@@ -2159,13 +2161,13 @@ static int _prompt_travel_branch(int prompt_flags)
                     make_stringf("Enter - %s", trans_travel_dest.c_str()));
             }
 
-            segs.emplace_back("? - help");
+            segs.emplace_back(jtrans("? - help"));
 
             shortcuts += comma_separated_line(segs.begin(), segs.end(),
                                               ", ", ", ");
             shortcuts += ") ";
         }
-        mprf(MSGCH_PROMPT, "Where to? %s",
+        mprf(MSGCH_PROMPT, jtransc("Where to? %s"),
              shortcuts.c_str());
 
         int keyin = get_ch();
@@ -2433,9 +2435,9 @@ static level_pos _prompt_travel_depth(const level_id &id)
     while (true)
     {
         clear_messages();
-        mprf(MSGCH_PROMPT, "What level of %s? "
-             "(default %s, ? - help) ",
-             branches[target.id.branch].longname,
+        mprf(MSGCH_PROMPT, jtransc("What level of %s? "
+                                   "(default %s, ? - help) "),
+             jtransc(branches[target.id.branch].longname),
              _get_trans_travel_dest(target, true).c_str());
 
         char buf[100];
@@ -2535,7 +2537,7 @@ static void _start_translevel_travel()
     if (level_id::current() == level_target.id
         && (level_target.pos.x == -1 || level_target.pos == you.pos()))
     {
-        mpr("You're already here!");
+        mpr(jtrans("You're already here!"));
         return ;
     }
 
@@ -2560,15 +2562,15 @@ void start_translevel_travel(const level_pos &pos)
     if (!can_travel_to(pos.id))
     {
         if (!can_travel_interlevel())
-            mpr("Sorry, you can't auto-travel out of here.");
+            mpr(jtrans("Sorry, you can't auto-travel out of here."));
         else
-            mpr("Sorry, I don't know how to get there.");
+            mpr(jtrans("Sorry, I don't know how to get there."));
         return;
     }
 
     if (pos.is_valid() && !in_bounds(pos.pos))
     {
-        mpr("Sorry, I don't know how to get there.");
+        mpr(jtrans("Sorry, I don't know how to get there."));
         return;
     }
 
@@ -2948,7 +2950,7 @@ static bool _find_transtravel_square(const level_pos &target, bool verbose)
         if (target.id != current
             || target.pos.x != -1 && target.pos != you.pos())
         {
-            mpr("Sorry, I don't know how to get there.");
+            mpr(jtrans("Sorry, I don't know how to get there."));
         }
     }
 
@@ -3034,7 +3036,7 @@ void start_explore(bool grab_items)
         {
             if (Options.auto_sacrifice == AS_PROMPT)
             {
-                mpr_nojoin(MSGCH_FLOOR_ITEMS, "Things which can be sacrificed:");
+                mpr_nojoin(MSGCH_FLOOR_ITEMS, jtrans("Things which can be sacrificed:"));
                 for (stack_iterator si(you.visible_igrd(you.pos())); si; ++si)
                     if (si->is_greedy_sacrificeable())
                         mprf_nocap("%s", get_menu_colour_prefix_tags(*si, DESC_A).c_str());
@@ -3044,7 +3046,7 @@ void start_explore(bool grab_items)
             if ((Options.auto_sacrifice == AS_YES
                  || Options.auto_sacrifice == AS_BEFORE_EXPLORE
                  || Options.auto_sacrifice == AS_PROMPT
-                    && yesno("Do you want to sacrifice the items here? ", true, 'n')))
+                    && yesno(jtransc("Do you want to sacrifice the items here? "), true, 'n')))
             {
                 pray(false);
             }
@@ -3054,9 +3056,9 @@ void start_explore(bool grab_items)
                 bool repeat_prompt = false;
                 do
                 {
-                    mprf(MSGCH_PROMPT,
-                         "There are sacrificable items here, ignore them? "
-                         "[(Y)es/(p)ray/(n)o]");
+                    mpr_nojoin(MSGCH_PROMPT,
+                               jtrans("There are sacrificable items here, ignore them? "
+                                      "[(Y)es/(p)ray/(n)o]"));
                     repeat_prompt = false;
 
                     switch (getchm(KMC_CONFIRM))
@@ -3710,7 +3712,8 @@ void TravelCache::list_waypoints() const
 
         dest = _get_trans_travel_dest(waypoints[i], false, true);
 
-        snprintf(choice, sizeof choice, "(%d) %-9s", i, dest.c_str());
+        snprintf(choice, sizeof choice, "(%d) %-17s", i,
+                 chop_string(dest, 17).c_str());
         line += choice;
         if (!(++count % 5))
         {
@@ -4525,12 +4528,12 @@ void do_interlevel_travel()
     {
         if (you.running.pos == you.pos())
         {
-            mpr("You're already here!");
+            mpr(jtrans("You're already here!"));
             return;
         }
         else if (!you.running.pos.x || !you.running.pos.y)
         {
-            mpr("Sorry, you can't auto-travel out of here.");
+            mpr(jtrans("Sorry, you can't auto-travel out of here."));
             return;
         }
 

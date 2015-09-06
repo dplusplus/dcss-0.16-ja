@@ -5583,9 +5583,29 @@ caught in a web
 %%%%
 ############################## travel.cc ##############################
 %%%%
+Have to go through %s. Continue?
+
+%sを経由しなければなりません。続けますか？
+%%%%
+Stop exploring?
+
+自動探索を中止しますか？
+%%%%
+Key pressed, stopping %s.
+
+キーが押されたため、%sを中止します。
+%%%%
+You're confused, stopping %s.
+
+混乱しているため、%sを中止します。
+%%%%
+You're in a travel-excluded area, stopping %s.
+
+自動移動禁止区域の中にいるため、%sを中止します。
+%%%%
 Partly explored, obstructed by runed door.
 
-部分的に探索したが、ルーンで封印された扉でふさがれている。
+部分的に探索したが、残りの部分はルーンで封印された扉でふさがれている。
 %%%%
 Done exploring.
 
@@ -5594,6 +5614,50 @@ Done exploring.
 Partly explored, can't reach some %s.
 
 部分的に探索したが、%sまで到達できない。
+%%%%
+* - list branches
+
+* - 分岐から選択
+%%%%
+* - list waypoints
+
+* - 中継地点リスト
+%%%%
+? - help
+
+? - ヘルプ
+%%%%
+Where to? %s
+
+どこへ向かう？ %s
+%%%%
+What level of %s? (default %s, ? - help)
+
+%sの何階ですか？ (初期値: %s階, ? - ヘルプ)
+%%%%
+You're already here!
+
+既にそこにいる！
+%%%%
+Sorry, you can't auto-travel out of here.
+
+残念ながら、自動操作でここから脱出することはできない。
+%%%%
+Sorry, I don't know how to get there.
+
+残念ながら、到達経路を割り出せません。
+%%%%
+Things which can be sacrificed:
+
+捧げ物にできる物一覧:
+%%%%
+Do you want to sacrifice the items here?
+
+ここにあるアイテムを捧げますか？
+%%%%
+There are sacrificable items here, ignore them? [(Y)es/(p)ray/(n)o]
+
+ここには捧げることができる物がある。無視しますか？ [(Y)はい/(p)捧げる/(n)いいえ]
 %%%%
 You need to eat something NOW!
 
@@ -5642,6 +5706,22 @@ stairs
 runed doors
 
 ルーンが刻まれたドア
+%%%%
+explore
+
+探索
+%%%%
+travel
+
+自動移動
+%%%%
+rest
+
+急速
+%%%%
+run
+
+移動
 %%%%
 ############################## view.cc ##############################
 %%%%
