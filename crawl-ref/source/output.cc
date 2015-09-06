@@ -1388,14 +1388,14 @@ void print_stats()
 static string _level_description_string_hud()
 {
     const PlaceInfo& place = you.get_place_info();
-    string short_name = branches[place.branch].shortname;
+    string abbrev_name = jtrans(branches[place.branch].abbrevname);
 
     if (brdepth[place.branch] > 1)
-        short_name += make_stringf(":%d", you.depth);
+        abbrev_name += make_stringf(":%d", you.depth);
     // Indefinite articles
     else if (place.branch != BRANCH_PANDEMONIUM && !is_connected_branch(place.branch))
-        short_name = article_a(short_name);
-    return short_name;
+        abbrev_name = article_a(abbrev_name);
+    return abbrev_name;
 }
 
 void print_stats_level()
