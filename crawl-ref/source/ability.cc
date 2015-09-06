@@ -3022,7 +3022,7 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
         fail_check();
         const item_def* const weapon = you.weapon();
         const string msg = (weapon) ? weapon->name(DESC_YOUR)
-                                    : (jtrans("your") + jtrans(you.hand_name(true)));
+                                    : (jtrans("your") + you.hand_name(true));
         mprf(MSGCH_DURATION, jtransc("A thick mucus forms on %s."), msg.c_str());
         you.increase_duration(DUR_SLIMIFY,
                               random2avg(you.piety / 4, 2) + 3, 100);
