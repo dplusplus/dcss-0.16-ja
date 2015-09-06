@@ -4609,6 +4609,32 @@ kneel at
 
 ひざまずいた
 %%%%
+############################## spl-book.cc ##############################
+%%%%
+Spells (Memorisation)         Type                          Failure  Level
+
+魔法一覧(魔法を習得する)      種類                        失敗率     レベル
+%%%%
+Spells (Description)          Type                          Failure  Level
+
+魔法一覧(解説文を見る)        種類                        失敗率     レベル
+%%%%
+<lightgreen>%d %slevel%s left</lightgreen>
+
+<lightgreen>残り記憶力 %d</lightgreen>
+%%%%
+, <lightmagenta>%u %sbook%s</lightmagenta>
+
+, <lightmagenta>%u冊の%s魔法書</lightmagenta>
+%%%%
+, <lightred>%u%s%s unmemorisable</lightred>
+
+, <lightred>%u%s%s unmemorisable</lightred>
+%%%%
+Toggle display with '<w>!</w>'
+
+'<w>!</w>' キーで表示切り替え
+%%%%
 ############################## spl-cast.cc ##############################
 %%%%
 Type                          Failure   Level

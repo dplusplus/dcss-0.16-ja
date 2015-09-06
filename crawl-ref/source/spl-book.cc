@@ -739,13 +739,13 @@ static spell_type _choose_mem_spell(spell_list &spells,
     }
 #else
     spell_menu.set_title(
-        new MenuEntry("     Spells (Memorisation)         Type          "
-                      "                Failure  Level",
+        new MenuEntry("     " + jtrans("Spells (Memorisation)         Type          "
+                      "                Failure  Level"),
             MEL_TITLE));
 
     spell_menu.set_title(
-        new MenuEntry("     Spells (Description)          Type          "
-                      "                Failure  Level",
+        new MenuEntry("     " + jtrans("Spells (Description)          Type          "
+                      "                Failure  Level"),
             MEL_TITLE), false);
 #endif
 
@@ -756,8 +756,8 @@ static spell_type _choose_mem_spell(spell_list &spells,
     spell_menu.menu_action  = Menu::ACT_EXECUTE;
 
     const bool shortmsg = num_unreadable > 0 && num_race > 0;
-    string more_str = make_stringf("<lightgreen>%d %slevel%s left"
-                                   "<lightgreen>",
+    string more_str = make_stringf(jtransc("<lightgreen>%d %slevel%s left"
+                                           "</lightgreen>"),
                                    player_spell_levels(),
                                    shortmsg ? "" : "spell ",
                                    (player_spell_levels() > 1
@@ -765,11 +765,9 @@ static spell_type _choose_mem_spell(spell_list &spells,
 
     if (num_unreadable > 0)
     {
-        more_str += make_stringf(", <lightmagenta>%u %sbook%s</lightmagenta>",
+        more_str += make_stringf(jtransc(", <lightmagenta>%u %sbook%s</lightmagenta>"),
                                  num_unreadable,
-                                 shortmsg ? "difficult "
-                                          : "overly difficult spell",
-                                 num_unreadable > 1 ? "s" : "");
+                                 "読めない");
     }
 
     if (num_race > 0)
@@ -784,7 +782,7 @@ static spell_type _choose_mem_spell(spell_list &spells,
 
 #ifndef USE_TILE_LOCAL
     // Tiles menus get this information in the title.
-    more_str += "   Toggle display with '<w>!</w>'";
+    more_str += " " + jtrans("Toggle display with '<w>!</w>'");
 #endif
 
     spell_menu.set_more(formatted_string::parse_string(more_str));
@@ -815,7 +813,7 @@ static spell_type _choose_mem_spell(spell_list &spells,
         desc << "<" << colour_to_str(colour) << ">";
 
         desc << left;
-        desc << chop_string(spell_title(spell), 30);
+        desc << chop_string(tagged_jtrans("[spell]", spell_title(spell)), 30);
         desc << spell_schools_string(spell);
 
         int so_far = strwidth(desc.str()) - (colour_to_str(colour).length()+2);
