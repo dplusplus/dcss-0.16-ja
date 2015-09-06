@@ -2169,12 +2169,12 @@ string spell_noise_string(spell_type spell)
     const int breakpoints[] = { 1, 2, 4, 8, 15, 20, 30 };
     COMPILE_CHECK(ARRAYSZ(noise_descriptions) == 1 + ARRAYSZ(breakpoints));
 
-    const char* desc = noise_descriptions[breakpoint_rank(noise, breakpoints,
-                                                ARRAYSZ(breakpoints))];
+    string desc = jtrans(noise_descriptions[breakpoint_rank(noise, breakpoints,
+                                                            ARRAYSZ(breakpoints))]);
 
 #ifdef WIZARD
     if (you.wizard)
-        return make_stringf("%s (%d)", desc, noise);
+        return make_stringf("%s (%d)", desc.c_str(), noise);
     else
 #endif
         return desc;

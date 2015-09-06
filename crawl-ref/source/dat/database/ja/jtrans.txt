@@ -153,6 +153,62 @@ Inscribe with what?
 
 銘を付けますか？
 %%%%
+Level: %d
+
+レベル: %d
+%%%%
+School%s: %s
+
+種類: %s
+%%%%
+Fail: %s
+
+失敗率: %s
+%%%%
+You can sustain at most %d creature%s summoned by this spell.
+
+あなたはこの呪文によって召喚したモンスターを%d体まで維持できる。
+%%%%
+frowns upon the use of this spell.
+
+はこの呪文を使うことにいい顔をしない。
+%%%%
+You'd be excommunicated if you dared to cast it!
+
+この呪文を唱えた場合神に見放される！
+%%%%
+supports the use of this spell.
+
+はこの呪文の使用を支援してくれる。
+%%%%
+The spell is scrawled in ancient runes that are beyond your current level of understanding.
+
+この呪文は太古のルーン文字で書かれており、今のあなたのレベルでは理解できない。
+%%%%
+This spell will have no effect right now:
+
+この呪文は現状では意味がない:
+%%%%
+Range :
+
+射程距離 :
+%%%%
+Chance to beat your MR: %d%%
+
+あなたの魔法防御を突破する確率: %d%%
+%%%%
+(F)orget this spell by destroying the book.
+
+(F)魔法書を破壊してこの呪文を忘却する。
+%%%%
+Sif Muna frowns upon the destroying of books.
+
+シフ・ムーナは魔法書を破壊することにいい顔をしない。
+%%%%
+(M)emorise this spell.
+
+(M)この呪文を記憶する。
+%%%%
 ############################## invent.cc ##############################
 %%%%
 %d/%d slots
@@ -4623,6 +4679,38 @@ quite dangerous
 very dangerous
 
 極めて危険
+%%%%
+Silent
+
+音を立てない
+%%%%
+Almost silent
+
+ほとんど音を立てない
+%%%%
+Quiet
+
+静か
+%%%%
+A bit loud
+
+すこし音が大きい
+%%%%
+Loud
+
+音が大きい
+%%%%
+Very loud
+
+とても音が大きい
+%%%%
+Extremely loud
+
+極めて音が大きい
+%%%%
+Deafening
+
+耳が聞こえなくなるほど音が大きい
 %%%%
 N/A
 
