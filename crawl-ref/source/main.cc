@@ -2757,7 +2757,7 @@ static void _open_door(coord_def move)
     // or the chosen direction actually contains a closed door.
     if (!player_can_open_doors())
     {
-        mpr("You can't open doors in your present form.");
+        mpr(jtrans("You can't open doors in your present form."));
         return;
     }
 
@@ -2771,7 +2771,7 @@ static void _open_door(coord_def move)
 
         if (num == 0)
         {
-            mpr("There's nothing to open nearby.");
+            mpr(jtrans("There's nothing to open nearby."));
             return;
         }
 
@@ -2805,7 +2805,7 @@ static void _open_door(coord_def move)
                                                                  MAT_ANY,
                                                                  "veto_reason");
         if (door_veto_message.empty())
-            mpr("The door is shut tight!");
+            mpr(jtrans("The door is shut tight!"));
         else
             mpr(door_veto_message);
         if (you.confused())
@@ -2834,14 +2834,14 @@ static void _open_door(coord_def move)
         if (!door_already_open.empty())
             mpr(door_already_open);
         else
-            mpr("It's already open!");
+            mpr(jtrans("It's already open!"));
         break;
     }
     case DNGN_SEALED_DOOR:
-        mpr("That door is sealed shut!");
+        mpr(jtrans("That door is sealed shut!"));
         break;
     default:
-        mpr("There isn't anything that you can open there!");
+        mpr(jtrans("There isn't anything that you can open there!"));
         break;
     }
     if (you.confused())
