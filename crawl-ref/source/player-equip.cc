@@ -33,6 +33,7 @@
 #include "spl-miscast.h"
 #include "spl-summoning.h"
 #include "spl-wpnench.h"
+#include "stringutil.h"
 #include "xom.h"
 
 static void _mark_unseen_monsters();
@@ -1144,11 +1145,11 @@ static void _equip_jewellery_effect(item_def &item, bool unmeld,
     switch (item.sub_type)
     {
     case RING_FIRE:
-        mpr("You feel more attuned to fire.");
+        mpr(jtrans("You feel more attuned to fire."));
         break;
 
     case RING_ICE:
-        mpr("You feel more attuned to ice.");
+        mpr(jtrans("You feel more attuned to ice."));
         break;
 
     case RING_SEE_INVISIBLE:
@@ -1180,7 +1181,7 @@ static void _equip_jewellery_effect(item_def &item, bool unmeld,
         if ((you.max_magic_points + 9) *
             (1.0+player_mutation_level(MUT_HIGH_MAGIC)/10.0) > 50)
         {
-            mpr("You feel your magic capacity is already quite full.");
+            mpr(jtrans("You feel your magic capacity is already quite full."));
         }
         else
             canned_msg(MSG_MANA_INCREASE);
@@ -1191,35 +1192,35 @@ static void _equip_jewellery_effect(item_def &item, bool unmeld,
 
     case RING_TELEPORTATION:
         if (you.no_tele())
-            mpr("You feel a slight, muted jump rush through you.");
+            mpr(jtrans("You feel a slight, muted jump rush through you."));
         else
             // keep in sync with player_teleport
-            mprf("You feel slightly %sjumpy.",
-                 (player_teleport(false) > 8) ? "more " : "");
+            mprf(jtransc("You feel slightly %sjumpy."),
+                 jtransc((player_teleport(false) > 8) ? "more " : ""));
         break;
 
     case AMU_FAITH:
         if (you.species == SP_DEMIGOD)
-            mpr("You feel a surge of self-confidence.");
+            mpr(jtrans("You feel a surge of self-confidence."));
         else if (you_worship(GOD_RU) && you.piety >= piety_breakpoint(5))
         {
-            simple_god_message(" says: An ascetic of your devotion"
-                               " has no use for such trinkets.");
+            simple_god_message(jtransc(" says: An ascetic of your devotion"
+                                       " has no use for such trinkets."));
         }
         else
         {
-            mprf(MSGCH_GOD, "You feel a %ssurge of divine interest.",
-                            you_worship(GOD_NO_GOD) ? "strange " : "");
+            mpr_nojoin(MSGCH_GOD, jtransc(make_stringf("You feel a %ssurge of divine interest.",
+                                                       you_worship(GOD_NO_GOD) ? "strange " : "")));
         }
 
         if (you_worship(GOD_GOZAG))
-            simple_god_message(" discounts your offered prices.");
+            simple_god_message(jtransc(" discounts your offered prices."));
         break;
 
     case AMU_THE_GOURMAND:
         // What's this supposed to achieve? (jpeg)
         you.duration[DUR_GOURMAND] = 0;
-        mpr("You feel a craving for the dungeon's cuisine.");
+        mpr(jtrans("You feel a craving for the dungeon's cuisine."));
         break;
 
     case AMU_GUARDIAN_SPIRIT:
@@ -1235,10 +1236,10 @@ static void _equip_jewellery_effect(item_def &item, bool unmeld,
             amount += 30 + random2(150);
         if (amount)
         {
-            mprf("The amulet engulfs you in a%s magical discharge!",
-                 (amount > 250) ? " massive" :
-                 (amount >  50) ? " violent" :
-                                  "");
+            mpr(jtransc(make_stringf("The amulet engulfs you in a%s magical discharge!",
+                                     (amount > 250) ? " massive" :
+                                     (amount >  50) ? " violent" :
+                                     "")));
             // XXX: This can probably be improved.
             contaminate_player(pow(amount, 0.333) * 1000, item_type_known(item));
 
@@ -1248,15 +1249,15 @@ static void _equip_jewellery_effect(item_def &item, bool unmeld,
             if (you.duration[DUR_SLOW])
                 dir--;
             if (dir > 0)
-                mprf(MSGCH_DURATION, "You abruptly slow down.");
+                mpr_nojoin(MSGCH_DURATION, jtrans("You abruptly slow down."));
             else if (dir < 0)
-                mprf(MSGCH_DURATION, "Your slowness suddenly goes away.");
+                mpr_nojoin(MSGCH_DURATION, jtrans("Your slowness suddenly goes away."));
             if (you.duration[DUR_TELEPORT])
-                mprf(MSGCH_DURATION, "You feel strangely stable.");
+                mpr_nojoin(MSGCH_DURATION, jtrans("You feel strangely stable."));
             if (you.duration[DUR_BERSERK])
-                mprf(MSGCH_DURATION, "You violently calm down.");
+                mpr_nojoin(MSGCH_DURATION, jtrans("You violently calm down."));
             if (you.duration[DUR_FINESSE])
-                mprf(MSGCH_DURATION, "You suddenly lose your finesse.");
+                mpr_nojoin(MSGCH_DURATION, jtrans("You suddenly lose your finesse."));
             you.duration[DUR_HASTE] = 0;
             you.duration[DUR_SLOW] = 0;
             you.duration[DUR_TELEPORT] = 0;
@@ -1264,7 +1265,7 @@ static void _equip_jewellery_effect(item_def &item, bool unmeld,
             you.duration[DUR_FINESSE] = 0;
         }
         else
-            mprf("You feel %s static.", you.species == SP_FORMICID ? "familiarly" : "strangely");
+            mpr(jtrans(make_stringf("You feel %s static.", you.species == SP_FORMICID ? "familiarly" : "strangely")));
     }
 
     bool new_ident = false;
@@ -1285,8 +1286,8 @@ static void _equip_jewellery_effect(item_def &item, bool unmeld,
 
     if (item.cursed() && !unmeld)
     {
-        mprf("Oops, that %s feels deathly cold.",
-             jewellery_is_amulet(item)? "amulet" : "ring");
+        mprf(jtransc("Oops, that %s feels deathly cold."),
+             jtransc(jewellery_is_amulet(item)? "amulet" : "ring"));
         learned_something_new(HINT_YOU_CURSED);
 
         int amusement = 32;
