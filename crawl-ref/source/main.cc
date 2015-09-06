@@ -2907,10 +2907,10 @@ static void _close_door()
     case DNGN_CLOSED_DOOR:
     case DNGN_RUNED_DOOR:
     case DNGN_SEALED_DOOR:
-        mpr("It's already closed!");
+        mpr(jtrans("It's already closed!"));
         break;
     default:
-        mpr("There isn't anything that you can close there!");
+        mpr(jtrans("There isn't anything that you can close there!"));
         break;
     }
     if (you.confused())
