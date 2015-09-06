@@ -923,7 +923,7 @@ bool learn_spell()
  */
 string desc_cannot_memorise_reason(spell_type spell)
 {
-    return spell_uselessness_reason(spell, false, true);
+    return jtrans(spell_uselessness_reason(spell, false, true));
 }
 
 /**

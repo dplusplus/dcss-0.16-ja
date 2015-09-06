@@ -2697,13 +2697,12 @@ static void _adjust_item(item_def &item)
 static string _player_spell_stats(const spell_type spell, bool rod)
 {
     string description;
-    description += make_stringf("\nLevel: %d", spell_difficulty(spell));
+    description += "\n" + make_stringf(jtransc("\nLevel: %d"), spell_difficulty(spell));
     if (!rod)
     {
         const string schools = spell_schools_string(spell);
-        description +=
-            make_stringf("        School%s: %s",
-                         schools.find("/") != string::npos ? "s" : "",
+        description += "        " +
+            make_stringf(jtransc("        School%s: %s"),
                          schools.c_str());
 
         if (!crawl_state.need_save
@@ -2713,16 +2712,17 @@ static string _player_spell_stats(const spell_type spell, bool rod)
         }
 
         const string failure = failure_rate_to_string(raw_spell_fail(spell));
-        description += make_stringf("        Fail: %s", failure.c_str());
+        description += "        " +
+            make_stringf(jtransc("        Fail: %s"), failure.c_str());
     }
 
-    description += "\n\nPower : ";
+    description += "\n\n魔法威力  : ";
     description += spell_power_string(spell, rod);
-    description += "\nRange : ";
+    description += "\n射程距離  : ";
     description += spell_range_string(spell, rod);
-    description += "\nHunger: ";
+    description += "\n満腹度消費: ";
     description += spell_hunger_string(spell, rod);
-    description += "\nNoise : ";
+    description += "\n騒音発生  : ";
     description += spell_noise_string(spell);
     description += "\n";
     return description;
@@ -2822,36 +2822,37 @@ static string _player_spell_desc(spell_type spell, const item_def* item)
     const int limit = summons_limit(spell);
     if (limit)
     {
-        description += "You can sustain at most " + number_in_words(limit)
-                        + " creature" + (limit > 1 ? "s" : "")
-                        + " summoned by this spell.\n";
+        description += make_stringf(jtranslnc("You can sustain at most %d"
+                                              " creature%s"
+                                              " summoned by this spell.\n"),
+                                    limit);
     }
 
     const bool rod = item && item->base_type == OBJ_RODS;
     if (god_hates_spell(spell, you.religion, rod))
     {
-        description += uppercase_first(god_name(you.religion))
-                       + " frowns upon the use of this spell.\n";
+        description += jtrans(god_name(you.religion))
+                     + jtransln(" frowns upon the use of this spell.\n");
         if (god_loathes_spell(spell, you.religion))
-            description += "You'd be excommunicated if you dared to cast it!\n";
+            description += jtransln("You'd be excommunicated if you dared to cast it!\n");
     }
     else if (god_likes_spell(spell, you.religion))
     {
-        description += uppercase_first(god_name(you.religion))
-                       + " supports the use of this spell.\n";
+        description += jtrans(god_name(you.religion))
+                     + jtransln(" supports the use of this spell.\n");
     }
 
     if (item && !player_can_memorise_from_spellbook(*item))
     {
-        description += "The spell is scrawled in ancient runes that are "
-                       "beyond your current level of understanding.\n";
+        description += jtransln("The spell is scrawled in ancient runes that are "
+                                "beyond your current level of understanding.\n");
     }
 
     if (spell_is_useless(spell, true, false, rod) && you_can_memorise(spell))
     {
-        description += "\nThis spell will have no effect right now: "
-                       + spell_uselessness_reason(spell, true, false, rod)
-                       + "\n";
+        description += "\n" + jtrans("This spell will have no effect right now:") + " "
+                     + jtrans(spell_uselessness_reason(spell, true, false, rod))
+                     + "\n";
     }
 
     return description;
@@ -2894,7 +2895,7 @@ static int _get_spell_description(const spell_type spell,
 {
     description.reserve(500);
 
-    description  = spell_title(spell);
+    description  = tagged_jtrans("[spell]", spell_title(spell));
     description += "\n\n";
     const string long_descrip = getLongDescription(string(spell_title(spell))
                                                    + " spell");
@@ -2918,14 +2919,14 @@ static int _get_spell_description(const spell_type spell,
         // (draining, malmutation, levelling up)
         const int hd = mons_class_hit_dice(mon_owner->type);
         const int range = mons_spell_range(spell, hd);
-        description += "\nRange : "
+        description += "\n" + jtrans("Range :") + " "
                        + range_string(range, range, mons_char(mon_owner->type))
                        + "\n";
 
         // only display this if the player exists (not in the main menu)
         if (crawl_state.need_save && (get_spell_flags(spell) & SPFLAG_MR_CHECK))
         {
-            description += make_stringf("Chance to beat your MR: %d%%\n",
+            description += make_stringf(jtranslnc("Chance to beat your MR: %d%%\n"),
                                         _hex_chance(spell, hd));
         }
 
@@ -2949,15 +2950,15 @@ static int _get_spell_description(const spell_type spell,
     {
         if (you.has_spell(spell))
         {
-            description += "\n(F)orget this spell by destroying the book.\n";
+            description += "\n" + jtransln("(F)orget this spell by destroying the book.\n");
             if (you_worship(GOD_SIF_MUNA))
-                description +="Sif Muna frowns upon the destroying of books.\n";
+                description += jtransln("Sif Muna frowns upon the destroying of books.\n");
             return BOOK_FORGET;
         }
         else if (player_can_memorise_from_spellbook(*item)
                  && you_can_memorise(spell))
         {
-            description += "\n(M)emorise this spell.\n";
+            description += "\n" + jtransln("(M)emorise this spell.\n");
             return BOOK_MEM;
         }
     }

@@ -87,7 +87,7 @@ There isn't anything else to %sbutcher here.
 
 ここには他に%s解体するようなものはない。
 %%%%
-############################## itemname.cc ##############################
+############################## describe.cc ##############################
 %%%%
 (w)ield
 
@@ -152,6 +152,234 @@ Replace inscription with what?
 Inscribe with what?
 
 銘を付けますか？
+%%%%
+Level: %d
+
+レベル: %d
+%%%%
+School%s: %s
+
+種類: %s
+%%%%
+Fail: %s
+
+失敗率: %s
+%%%%
+You can sustain at most %d creature%s summoned by this spell.
+
+あなたはこの呪文によって召喚したモンスターを%d体まで維持できる。
+%%%%
+frowns upon the use of this spell.
+
+はこの呪文を使うことにいい顔をしない。
+%%%%
+You'd be excommunicated if you dared to cast it!
+
+この呪文を唱えた場合神に見放される！
+%%%%
+supports the use of this spell.
+
+はこの呪文の使用を支援してくれる。
+%%%%
+The spell is scrawled in ancient runes that are beyond your current level of understanding.
+
+この呪文は太古のルーン文字で書かれており、今のあなたのレベルでは理解できない。
+%%%%
+This spell will have no effect right now:
+
+この呪文は現状では意味がない:
+%%%%
+Range :
+
+射程距離 :
+%%%%
+Chance to beat your MR: %d%%
+
+あなたの魔法防御を突破する確率: %d%%
+%%%%
+(F)orget this spell by destroying the book.
+
+(F)魔法書を破壊してこの呪文を忘却する。
+%%%%
+Sif Muna frowns upon the destroying of books.
+
+シフ・ムーナは魔法書を破壊することにいい顔をしない。
+%%%%
+(M)emorise this spell.
+
+(M)この呪文を記憶する。
+%%%%
+############################## invent.cc ##############################
+%%%%
+%d/%d slots
+
+所持枠: %d/%d
+%%%%
+Inventory:
+
+所持品一覧:
+%%%%
+(select all with <w>
+
+(<w>
+%%%%
+</w><blue>)
+
+</w> キーで一括選択/解除<blue>)
+%%%%
+%s (<w>?</w> for menu, <w>Esc</w> to quit)
+
+%s (<w>Esc</w> でキャンセル)
+%%%%
+is melded into your body.
+
+はあなたの体と融合している。
+%%%%
+That item can only be evoked when wielded.
+
+このアイテムは手に持っているときのみ発動できる。
+%%%%
+This wand has no charges.
+
+このワンドは魔力が空っぽだ。
+%%%%
+That item cannot be evoked!
+
+このアイテムは発動できない！
+%%%%
+############################## item_use.cc ##############################
+%%%%
+Wield which item (- for none, * to show all)?
+
+どのアイテムを手に持ちますか？ (- で手を空ける, * で全アイテムから選択)
+%%%%
+You are already wielding that!
+
+あなたはそれを既に手に持っている！
+%%%%
+The bond with your blade fades away.
+
+あなたと刃の間の繋がりが薄れていった。
+%%%%
+Really unwield %s?
+
+本当に%sを手放しますか？
+%%%%
+This could place you under penance!
+
+神に懺悔をする羽目になりますよ！
+%%%%
+Use <w>e</w> to drain blood from corpses.
+
+死体から血を飲むには<w>e</w>atコマンドを使ってください。
+%%%%
+You can't drink.
+
+あなたは飲むことができない。
+%%%%
+You cannot drink potions in your current state!
+
+現状あなたは薬を飲むことができない！
+%%%%
+Drink which item?
+
+どれを飲みますか？
+%%%%
+You can't drink that!
+
+そのアイテムは飲めない！
+%%%%
+You are much too full right now.
+
+あなたは腹がいっぱいですぐには飲めない。
+%%%%
+Really drink that potion of blood?
+
+本当に血液の薬を飲みますか？
+%%%%
+petitions for your drink to fail.
+
+はあなたが飲むのを妨げた。
+%%%%
+Reading books requires mental cohesion, which you lack.
+
+魔法書を読むには集中力が必要だが、今のあなたには欠けている。
+%%%%
+Read which item?
+
+どれを読みますか？
+%%%%
+You almost manage to decipher the scroll, but fail in this attempt.
+
+あなたはなんとかして巻物を解読しようとしたが、できなかった。
+%%%%
+As you read the %s, it crumbles to dust.
+
+あなたが%sを読むやいなや巻物は崩れ去った。
+%%%%
+Your blink will be uncontrolled - continue anyway?
+
+あなたは現状瞬間移動先を制御できない - それでも続けますか？
+%%%%
+This is a scroll of acquirement!
+
+これは獲得の巻物だ！
+%%%%
+You assume a fearsome visage.
+
+あなたは恐ろしげな顔つきをした。
+%%%%
+You hear a loud clanging noise!
+
+あなたは雑音が鳴り響くのを聞いた！
+%%%%
+The scroll dissolves into smoke.
+
+巻物は霧の中に溶け込んだ。
+%%%%
+It would have no effect in this place.
+
+ここでは役に立たない。
+%%%%
+The creatures around you are filled with an inner flame!
+
+周囲のモンスターの体は内なる炎に満たされた！
+%%%%
+The air around you briefly surges with heat, but it dissipates.
+
+あなたの周りの空気がしばらく熱くなったが、すぐに消え去った。
+%%%%
+%s very briefly gain%s a black sheen.
+
+%sは一瞬黒い光沢を放った。
+%%%%
+It is a scroll of enchant weapon.
+
+これは武器強化の巻物だ。
+%%%%
+It is a scroll of brand weapon.
+
+これは魔力の武器の巻物だ。
+%%%%
+It is a scroll of identify.
+
+これは鑑定の巻物だ。
+%%%%
+It is a scroll of recharging.
+
+これは魔力充填の巻物だ。
+%%%%
+It is a scroll of enchant armour.
+
+これは防具強化の巻物だ。
+%%%%
+You feel forgetful for a moment.
+
+あなたは一瞬忘れっぽくなった気がした。
+%%%%
+It %s a %s.
+
+これは%sだ。
 %%%%
 ############################## itemname.cc ##############################
 %%%%
@@ -1254,178 +1482,6 @@ corpse
 skeleton
 
 骸骨
-%%%%
-############################## invent.cc ##############################
-%%%%
-%d/%d slots
-
-所持枠: %d/%d
-%%%%
-Inventory:
-
-所持品一覧:
-%%%%
-(select all with <w>
-
-(<w>
-%%%%
-</w><blue>)
-
-</w> キーで一括選択/解除<blue>)
-%%%%
-%s (<w>?</w> for menu, <w>Esc</w> to quit)
-
-%s (<w>Esc</w> でキャンセル)
-%%%%
-is melded into your body.
-
-はあなたの体と融合している。
-%%%%
-That item can only be evoked when wielded.
-
-このアイテムは手に持っているときのみ発動できる。
-%%%%
-This wand has no charges.
-
-このワンドは魔力が空っぽだ。
-%%%%
-That item cannot be evoked!
-
-このアイテムは発動できない！
-%%%%
-############################## item_use.cc ##############################
-%%%%
-Wield which item (- for none, * to show all)?
-
-どのアイテムを手に持ちますか？ (- で手を空ける, * で全アイテムから選択)
-%%%%
-You are already wielding that!
-
-あなたはそれを既に手に持っている！
-%%%%
-The bond with your blade fades away.
-
-あなたと刃の間の繋がりが薄れていった。
-%%%%
-Really unwield %s?
-
-本当に%sを手放しますか？
-%%%%
-This could place you under penance!
-
-神に懺悔をする羽目になりますよ！
-%%%%
-Use <w>e</w> to drain blood from corpses.
-
-死体から血を飲むには<w>e</w>atコマンドを使ってください。
-%%%%
-You can't drink.
-
-あなたは飲むことができない。
-%%%%
-You cannot drink potions in your current state!
-
-現状あなたは薬を飲むことができない！
-%%%%
-Drink which item?
-
-どれを飲みますか？
-%%%%
-You can't drink that!
-
-そのアイテムは飲めない！
-%%%%
-You are much too full right now.
-
-あなたは腹がいっぱいですぐには飲めない。
-%%%%
-Really drink that potion of blood?
-
-本当に血液の薬を飲みますか？
-%%%%
-petitions for your drink to fail.
-
-はあなたが飲むのを妨げた。
-%%%%
-Reading books requires mental cohesion, which you lack.
-
-魔法書を読むには集中力が必要だが、今のあなたには欠けている。
-%%%%
-Read which item?
-
-どれを読みますか？
-%%%%
-You almost manage to decipher the scroll, but fail in this attempt.
-
-あなたはなんとかして巻物を解読しようとしたが、できなかった。
-%%%%
-As you read the %s, it crumbles to dust.
-
-あなたが%sを読むやいなや巻物は崩れ去った。
-%%%%
-Your blink will be uncontrolled - continue anyway?
-
-あなたは現状瞬間移動先を制御できない - それでも続けますか？
-%%%%
-This is a scroll of acquirement!
-
-これは獲得の巻物だ！
-%%%%
-You assume a fearsome visage.
-
-あなたは恐ろしげな顔つきをした。
-%%%%
-You hear a loud clanging noise!
-
-あなたは雑音が鳴り響くのを聞いた！
-%%%%
-The scroll dissolves into smoke.
-
-巻物は霧の中に溶け込んだ。
-%%%%
-It would have no effect in this place.
-
-ここでは役に立たない。
-%%%%
-The creatures around you are filled with an inner flame!
-
-周囲のモンスターの体は内なる炎に満たされた！
-%%%%
-The air around you briefly surges with heat, but it dissipates.
-
-あなたの周りの空気がしばらく熱くなったが、すぐに消え去った。
-%%%%
-%s very briefly gain%s a black sheen.
-
-%sは一瞬黒い光沢を放った。
-%%%%
-It is a scroll of enchant weapon.
-
-これは武器強化の巻物だ。
-%%%%
-It is a scroll of brand weapon.
-
-これは魔力の武器の巻物だ。
-%%%%
-It is a scroll of identify.
-
-これは鑑定の巻物だ。
-%%%%
-It is a scroll of recharging.
-
-これは魔力充填の巻物だ。
-%%%%
-It is a scroll of enchant armour.
-
-これは防具強化の巻物だ。
-%%%%
-You feel forgetful for a moment.
-
-あなたは一瞬忘れっぽくなった気がした。
-%%%%
-It %s a %s.
-
-これは%sだ。
 %%%%
 ############################## items.cc ##############################
 %%%%
@@ -4555,6 +4611,22 @@ kneel at
 %%%%
 ############################## spl-cast.cc ##############################
 %%%%
+Type                          Failure   Level
+
+種類                        失敗率     レベル
+%%%%
+Power         Range           Hunger    Level
+
+威力          射程        満腹度消費   レベル
+%%%%
+Press '<w>!</w>' to toggle spell view.
+
+呪文一覧の表示を切り替えるには '<w>!</w>' を押してください。
+%%%%
+Press '<w>!</w>' or '<w>I</w>' to toggle spell view.
+
+呪文一覧の表示を切り替えるには '<w>!</w>' または '<w>I</w>' を押してください。
+%%%%
 Cast which spell? (? or * to list)
 
 どの呪文を唱えますか？ (? または * で一覧)
@@ -4607,6 +4679,48 @@ quite dangerous
 very dangerous
 
 極めて危険
+%%%%
+Silent
+
+音を立てない
+%%%%
+Almost silent
+
+ほとんど音を立てない
+%%%%
+Quiet
+
+静か
+%%%%
+A bit loud
+
+すこし音が大きい
+%%%%
+Loud
+
+音が大きい
+%%%%
+Very loud
+
+とても音が大きい
+%%%%
+Extremely loud
+
+極めて音が大きい
+%%%%
+Deafening
+
+耳が聞こえなくなるほど音が大きい
+%%%%
+N/A
+
+－
+%%%%
+############################## spl-cast.h ##############################
+%%%%
+Your Spells
+
+習得済みの呪文
 %%%%
 ############################## spl-summoning.cc ##############################
 %%%%
@@ -4760,6 +4874,130 @@ Air
 Random
 
 ランダム
+%%%%
+You're too confused.
+
+あなたは混乱している。
+%%%%
+You don't have enough magic.
+
+十分な魔力が残っていない。
+%%%%
+You can't see any valid targets.
+
+有効な標的が視界内にいない。
+%%%%
+You cannot use spells of this school.
+
+この種別の魔法を使うことができない。
+%%%%
+The orb interferes with controlled teleportation.
+
+ゾットのオーブが制御されたテレポートを妨げている。
+%%%%
+cannot teleport.
+
+はテレポートできない。
+%%%%
+You're already traveling as fast as you can.
+
+あなたは既に可能な限り素早くなっている。
+%%%%
+You can't move.
+
+あなたは動けない。
+%%%%
+You can already fly whenever you want.
+
+あなたは既にいつでも空を飛ぶことができる。
+%%%%
+Your current form prevents flight.
+
+あなたの現在の形状では飛ぶことができない。
+%%%%
+You can already fly indefinitely.
+
+あなたは既に継続して飛ぶことができる。
+%%%%
+Invisibility won't help you when you glow in the dark.
+
+あなたが光を放っている限り透明化は意味がない。
+%%%%
+Darkness is useless against divine light.
+
+神気の光輪に対して暗闇の呪文は無意味だ。
+%%%%
+You're already repelling missiles.
+
+あなたは既に飛来物に対して防御している。
+%%%%
+You're already functionally a statue.
+
+あなたは既に石像のようなものだ。
+%%%%
+Your undead flesh cannot be transformed.
+
+あなたの不死の躯は変異することを許さない。
+%%%%
+Your current blood level is not sufficient.
+
+あなたは血の気がまだ十分でない。
+%%%%
+You can't regenerate without divine aid.
+
+あなたは神の助けなしでは再生できない。
+%%%%
+You're too dead to regenerate.
+
+あなたは再生するには死にすぎている。
+%%%%
+Your brain is too dead to use.
+
+あなたの脳味噌は死にすぎており使えない。
+%%%%
+This spell is useless without hands.
+
+この呪文は器用な手がないと意味がない。
+%%%%
+You must stand on solid ground to cast this.
+
+これを唱えるには固い地面の上に立つ必要がある。
+%%%%
+You are already charged.
+
+既に装填済みだ。
+%%%%
+You're too dead.
+
+あなたは死にすぎている。
+%%%%
+You can't be poisoned.
+
+あなたは毒に冒されることがない。
+%%%%
+You have no blood to sublime.
+
+あなたには昇華するための血液が流れていない。
+%%%%
+Your magic capacity is already full.
+
+あなたの魔力は既に一杯だ。
+%%%%
+You cannot make allies.
+
+あなたは仲間を作ることができない。
+%%%%
+The dungeon can only cope with one malign gateway at a time.
+
+迷宮は一度に一つの門だけしか維持できない。
+%%%%
+You need to wait for the winds to calm down.
+
+風が落ちつくまで待つ必要がある。
+%%%%
+You can only summon one forest at a time!
+
+一度に一体のドライアドしか召喚できない。
 %%%%
 ############################## stairs.cc ##############################
 %%%%
