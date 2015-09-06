@@ -4611,6 +4611,54 @@ kneel at
 %%%%
 ############################## spl-book.cc ##############################
 %%%%
+This book is beyond your current level of understanding.
+
+この魔法書は今のあなたのレベルでは理解できない。
+%%%%
+You must pick up those books before reading them.
+
+これらの魔法書を読む前に、地面から拾い上げる必要がある。
+%%%%
+You must pick up this book before reading it.
+
+この魔法書を読む前に、地面から拾い上げる必要がある。
+%%%%
+You aren't carrying or standing over any spellbooks.
+
+あなたは魔法書を持っていないし、足下にも置いていない。
+%%%%
+All of the spellbooks%s are beyond your current level of comprehension.
+
+%s全ての魔法書はあなたの理解力を越えている。
+%%%%
+you're carrying
+
+あなたが持っている
+%%%%
+None of the spellbooks you are carrying contain any spells.
+
+あなたが持っている魔法書には呪文が載っていない。
+%%%%
+You already know all available spells.
+
+あなたは既に全部の呪文を習得している。
+%%%%
+You cannot currently memorise any of the available spells because you cannot use those schools of magic.
+
+
+%%%%
+You cannot currently memorise any of the available spells because you are in %s form.
+
+あなたは%sをとっているので現状これらの呪文を記憶することができない。
+%%%%
+You cannot memorise any of the available spells because you are %s.
+
+あなたは%sなのでこれらの呪文を記憶することができない。
+%%%%
+Additionally, %u of your spellbooks are beyond your current level of understanding, and thus none of the spells in them are available to you.
+
+加えて、あなたの魔法書のうち%u冊はあなたの理解力を越えており、どの呪文も記憶することができない。
+%%%%
 Spells (Memorisation)         Type                          Failure  Level
 
 魔法一覧(魔法を習得する)      種類                        失敗率     レベル
@@ -4634,6 +4682,22 @@ Spells (Description)          Type                          Failure  Level
 Toggle display with '<w>!</w>'
 
 '<w>!</w>' キーで表示切り替え
+%%%%
+Your brain is not functional enough to learn spells.
+
+あなたの脳みそでは魔法を覚えることができない。
+%%%%
+Your head is already too full of spells!
+
+あなたはこれ以上魔法を覚えられない！
+%%%%
+You're too inexperienced to learn that spell!
+
+あなたはこの呪文を覚えるにはまだ経験が足らない！
+%%%%
+You can't memorise that many levels of magic yet!
+
+あなたはこのレベルの魔法はまだ覚えられない！
 %%%%
 ############################## spl-cast.cc ##############################
 %%%%
@@ -5830,6 +5894,66 @@ You feel a sudden draft!
 あなたはすきま風を感じた。
 %%%%
 ############################## transform.cc ##############################
+%%%%
+spider form
+
+蜘蛛の形態
+%%%%
+blade form
+
+刃の手の形態
+%%%%
+statue form
+
+石像の形態
+%%%%
+ice form
+
+氷の躯の形態
+%%%%
+dragon form
+
+ドラゴンの形態
+%%%%
+lich form
+
+リッチの形態
+%%%%
+bat form
+
+蝙蝠の形態
+%%%%
+pig form
+
+豚の形態
+%%%%
+appendage form
+
+半獣の形態
+%%%%
+tree form
+
+樹木の形態
+%%%%
+porcupine form
+
+豪猪の形態
+%%%%
+wisp form
+
+霧の形態
+%%%%
+fungus form
+
+茸の形態
+%%%%
+shadow form
+
+影の形態
+%%%%
+hydra form
+
+ヒドラの形態
 %%%%
 hover solemnly before
 
