@@ -1703,6 +1703,30 @@ Unknown command.
 
 そのコマンドは存在しません。
 %%%%
+You can't open doors in your present form.
+
+現在の形態ではドアを開けることができない。
+%%%%
+There's nothing to open nearby.
+
+開けるものが周囲にはない。
+%%%%
+The door is shut tight!
+
+ドアは固く閉ざされた！
+%%%%
+It's already open!
+
+既に開いている！
+%%%%
+That door is sealed shut!
+
+扉が封印されている！
+%%%%
+There isn't anything that you can open there!
+
+ここにはあなたが開けられるものはない！
+%%%%
 Which direction?
 
 どの方向ですか？
