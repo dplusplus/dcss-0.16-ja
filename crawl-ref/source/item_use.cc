@@ -961,9 +961,9 @@ static int _prompt_ring_to_remove(int new_ring)
 
     clear_messages();
 
-    mprf(MSGCH_PROMPT,
-         "You're wearing all the rings you can. Remove which one?");
-    mprf(MSGCH_PROMPT, "(<w>?</w> for menu, <w>Esc</w> to cancel)");
+    mpr_nojoin(MSGCH_PROMPT,
+               jtrans("You're wearing all the rings you can. Remove which one?"));
+    mpr_nojoin(MSGCH_PROMPT, jtrans("(<w>?</w> for menu, <w>Esc</w> to cancel)"));
 
     // FIXME: Needs TOUCH_UI version
 
@@ -1140,7 +1140,7 @@ bool safe_to_remove(const item_def &item, bool quiet)
         && is_feat_dangerous(feat, false, true))
     {
         if (!quiet)
-            mpr("Losing flight right now would be fatal!");
+            mpr(jtrans("Losing flight right now would be fatal!"));
         return false;
     }
 
@@ -1211,15 +1211,14 @@ static bool _swap_rings(int ring_slot)
     {
         // Shouldn't happen, because hogs and bats can't put on jewellery at
         // all and thus won't get this far.
-        mpr("You can't wear that in your present form.");
+        mpr(jtrans("You can't wear that in your present form."));
         return false;
     }
     else if (available == 0)
     {
-        mprf("You're already wearing %s cursed ring%s!%s",
-             number_in_words(cursed).c_str(),
-             (cursed == 1 ? "" : "s"),
-             (cursed > 2 ? " Isn't that enough for you?" : ""));
+        mprf(jtransc("You're already wearing %s cursed ring%s!%s"),
+             cursed,
+             (cursed > 2 ? jtransc(" Isn't that enough for you?)") : ""));
         return false;
     }
     // The simple case - only one available ring.
@@ -1260,7 +1259,7 @@ static equipment_type _choose_ring_slot()
     clear_messages();
 
     mprf(MSGCH_PROMPT,
-         "Put ring on which %s? (<w>Esc</w> to cancel)", you.hand_name(false).c_str());
+         jtransc("Put ring on which %s? (<w>Esc</w> to cancel)"), you.hand_name(false).c_str());
 
     const vector<equipment_type> slots = _current_ring_types();
     for (auto eq : slots)
@@ -1273,16 +1272,16 @@ static equipment_type _choose_ring_slot()
 
         item_def* ring = you.slot_item(eq, true);
         if (ring)
-            msg += "</w> or " + ring->name(DESC_INVENTORY);
+            msg += jtrans("</w> or ") + " " + ring->name(DESC_INVENTORY);
         else
-            msg += "</w> - no ring";
+            msg += jtrans("</w> - no ring");
 
         if (eq == EQ_LEFT_RING)
-            msg += " (left)";
+            msg += " " + jtrans("(left)");
         else if (eq == EQ_RIGHT_RING)
-            msg += " (right)";
+            msg += " " + jtrans("(right)");
         else if (eq == EQ_RING_AMULET)
-            msg += " (amulet)";
+            msg += " " + jtrans("(amulet)");
         mprf_nocap("%s", msg.c_str());
     }
     flush_prev_message();
@@ -1323,20 +1322,20 @@ static bool _puton_item(int item_slot, bool prompt_slot)
                 return !remove_ring(item_slot);
             else
             {
-                mpr("You're already wearing that object!");
+                mpr(jtrans("You're already wearing that object!"));
                 return false;
             }
         }
 
     if (item_slot == you.equip[EQ_WEAPON])
     {
-        mpr("You are wielding that object.");
+        mpr(jtrans("You are wielding that object."));
         return false;
     }
 
     if (item.base_type != OBJ_JEWELLERY)
     {
-        mpr("You can only put on jewellery.");
+        mpr(jtrans("You can only put on jewellery."));
         return false;
     }
 
@@ -1345,7 +1344,7 @@ static bool _puton_item(int item_slot, bool prompt_slot)
     if (!you_tran_can_wear(item)
         && (is_amulet || !you_can_wear(EQ_RING_AMULET)))
     {
-        mpr("You can't wear that in your present form.");
+        mpr(jtrans("You can't wear that in your present form."));
         return false;
     }
 
@@ -1464,9 +1463,9 @@ bool puton_ring(int slot, bool allow_prompt)
         item_slot = slot;
     else
     {
-        item_slot = prompt_invent_item("Put on which piece of jewellery?",
-                                        MT_INVLIST, OBJ_JEWELLERY, true, true,
-                                        true, 0, -1, nullptr, OPER_PUTON);
+        item_slot = prompt_invent_item(jtransc("Put on which piece of jewellery?"),
+                                       MT_INVLIST, OBJ_JEWELLERY, true, true,
+                                       true, 0, -1, nullptr, OPER_PUTON);
     }
 
     if (prompt_failed(item_slot))

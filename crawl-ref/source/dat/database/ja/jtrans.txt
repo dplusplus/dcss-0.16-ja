@@ -269,6 +269,70 @@ This could place you under penance!
 
 神に懺悔をする羽目になりますよ！
 %%%%
+You're wearing all the rings you can. Remove which one?
+
+あなたは指輪をこれ以上はめられない。どれを外しますか？
+%%%%
+(<w>?</w> for menu, <w>Esc</w> to cancel)
+
+(<w>?</w> で一覧から選択, <w>Esc</w> でキャンセル)
+%%%%
+Losing flight right now would be fatal!
+
+いま飛行能力を失うことは致命的だ！
+%%%%
+You can't wear that in your present form.
+
+現在の形態ではそれを身につけることができない。
+%%%%
+You're already wearing %s cursed ring%s!%s
+
+あなたは既に%dつの呪われた指輪を身につけている！ %s
+%%%%
+Isn't that enough for you?
+
+これでもまだ足らないと？
+%%%%
+Put ring on which %s? (<w>Esc</w> to cancel)
+
+どちらの%sに指輪をはめますか？ (<w>Esc</w> でキャンセル)
+%%%%
+</w> or
+
+</w> または
+%%%%
+</w> - no ring
+
+</w> - (指輪をはめていない)
+%%%%
+(left)
+
+(左)
+%%%%
+(right)
+
+(右)
+%%%%
+(amulet)
+
+(護符)
+%%%%
+You're already wearing that object!
+
+あなたは既にそれを身につけている！
+%%%%
+You are wielding that object.
+
+あなたはそれを装備している。
+%%%%
+You can only put on jewellery.
+
+身に飾ることができるのは装飾品だけだ。
+%%%%
+Put on which piece of jewellery?
+
+どの装飾品を身につけますか？
+%%%%
 Use <w>e</w> to drain blood from corpses.
 
 死体から血を飲むには<w>e</w>atコマンドを使ってください。
