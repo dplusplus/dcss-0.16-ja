@@ -5439,6 +5439,42 @@ Throwing
 
 (i - 一覧から選択 , - 切り替え)
 %%%%
+There is %s there.
+
+そこには%sがある。
+%%%%
+Fire/throw which item? (* to show all)
+
+どれを射撃/投擲しますか？ (* で全アイテムから選択)
+%%%%
+That weapon is stuck to your %s!
+
+その武器はあなたの%sに貼り付いている！
+%%%%
+You are wearing that object!
+
+あなたは今そのアイテムを装備している！
+%%%%
+You can't grasp things well enough to throw them.
+
+あなたはそのアイテムを投擲するのに十分なほどしっかり握ることができない。
+%%%%
+You cannot throw anything while held in a net.
+
+あなたは網で拘束されている間何も投擲できない。
+%%%%
+You cannot throw anything while caught in a web.
+
+あなたは蜘蛛の巣に巻き付かれている間何も投擲できない。
+%%%%
+You cannot shoot with your %s while held in a net.
+
+あなたは網で拘束されている間%sを射撃できない。
+%%%%
+You cannot shoot with your %s while caught in a web.
+
+あなたは蜘蛛の巣に巻き付かれている間%sを射撃できない。
+%%%%
 fragments
 
 の破片
