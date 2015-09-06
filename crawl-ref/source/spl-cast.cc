@@ -106,7 +106,7 @@ static string _spell_base_description(spell_type spell, bool viewing)
     desc << "<" << colour_to_str(highlight) << ">" << left;
 
     // spell name
-    desc << chop_string(spell_title(spell), 30);
+    desc << chop_string(tagged_jtrans("[spell]", spell_title(spell)), 30);
 
     // spell schools
     desc << spell_schools_string(spell);
@@ -136,7 +136,7 @@ static string _spell_extra_description(spell_type spell, bool viewing)
     desc << "<" << colour_to_str(highlight) << ">" << left;
 
     // spell name
-    desc << chop_string(spell_title(spell), 30);
+    desc << chop_string(tagged_jtrans("[spell]", spell_title(spell)), 30);
 
     // spell power, spell range, hunger level, level
     const string rangestring = spell_range_string(spell);
@@ -169,16 +169,16 @@ int list_spells(bool toggle_with_I, bool viewing, bool allow_preselect,
     ToggleableMenu spell_menu(MF_SINGLESELECT | MF_ANYPRINTABLE
                               | MF_ALWAYS_SHOW_MORE | MF_ALLOW_FORMATTING,
                               text_only);
-    string titlestring = make_stringf("%-25.25s", title.c_str());
+    string titlestring = chop_string(jtransc(title), 34);
 #ifdef USE_TILE_LOCAL
     {
         // [enne] - Hack.  Make title an item so that it's aligned.
         ToggleableMenuEntry* me =
             new ToggleableMenuEntry(
-                " " + titlestring + "         Type          "
-                "                Failure   Level",
-                " " + titlestring + "         Power         "
-                "Range           " + "Hunger" + "    Level",
+                " " + titlestring +
+                jtrans("Type                          Failure   Level"),
+                " " + titlestring +
+                jtrans("Power         Range           Hunger    Level"),
                 MEL_ITEM);
         me->colour = BLUE;
         spell_menu.add_entry(me);
@@ -186,10 +186,10 @@ int list_spells(bool toggle_with_I, bool viewing, bool allow_preselect,
 #else
     spell_menu.set_title(
         new ToggleableMenuEntry(
-            " " + titlestring + "         Type          "
-            "                Failure   Level",
-            " " + titlestring + "         Power         "
-            "Range           " + "Hunger" + "    Level",
+            " " + titlestring +
+            jtrans("Type                          Failure   Level"),
+            " " + titlestring +
+            jtrans("Power         Range           Hunger    Level"),
             MEL_TITLE));
 #endif
     spell_menu.set_highlighter(nullptr);
@@ -205,7 +205,7 @@ int list_spells(bool toggle_with_I, bool viewing, bool allow_preselect,
     if (!viewing)
         spell_menu.menu_action = Menu::ACT_EXECUTE;
     more_str += "to toggle spell view.";
-    spell_menu.set_more(formatted_string::parse_string(more_str));
+    spell_menu.set_more(formatted_string::parse_string(jtrans(more_str)));
 
     // If there's only a single spell in the offered spell list,
     // taking the selector function into account, preselect that one.
@@ -2203,7 +2203,7 @@ static string _wizard_spell_power_numeric_string(spell_type spell, bool rod)
 {
     const int cap = spell_power_cap(spell);
     if (cap == 0)
-        return "N/A";
+        return jtrans("N/A");
     const int power = min(calc_spell_power(spell, true, false, false, rod), cap);
     return make_stringf("%d (%d)", power, cap);
 }
@@ -2220,7 +2220,7 @@ string spell_power_string(spell_type spell, bool rod)
     const int capbars = power_to_barcount(spell_power_cap(spell));
     ASSERT(numbars <= capbars);
     if (numbars < 0)
-        return "N/A";
+        return jtrans("N/A");
     else
         return string(numbars, '#') + string(capbars - numbars, '.');
 }
@@ -2266,7 +2266,7 @@ string spell_range_string(spell_type spell, bool rod)
 string range_string(int range, int maxrange, ucs_t caster_char)
 {
     if (range <= 0)
-        return "N/A";
+        return jtrans("N/A");
 
     return stringize_glyph(caster_char) + string(range - 1, '-')
            + string(">") + string(maxrange - range, '.');
@@ -2284,7 +2284,7 @@ string spell_schools_string(spell_type spell)
         {
             if (already)
                 desc += "/";
-            desc += spelltype_long_name(bit);
+            desc += jtrans(spelltype_long_name(bit));
             already = true;
         }
     }

@@ -4555,6 +4555,22 @@ kneel at
 %%%%
 ############################## spl-cast.cc ##############################
 %%%%
+Type                          Failure   Level
+
+種類                        失敗率     レベル
+%%%%
+Power         Range           Hunger    Level
+
+威力          射程        満腹度消費   レベル
+%%%%
+Press '<w>!</w>' to toggle spell view.
+
+呪文一覧の表示を切り替えるには '<w>!</w>' を押してください。
+%%%%
+Press '<w>!</w>' or '<w>I</w>' to toggle spell view.
+
+呪文一覧の表示を切り替えるには '<w>!</w>' または '<w>I</w>' を押してください。
+%%%%
 Cast which spell? (? or * to list)
 
 どの呪文を唱えますか？ (? または * で一覧)
@@ -4607,6 +4623,16 @@ quite dangerous
 very dangerous
 
 極めて危険
+%%%%
+N/A
+
+－
+%%%%
+############################## spl-cast.h ##############################
+%%%%
+Your Spells
+
+習得済みの呪文
 %%%%
 ############################## spl-summoning.cc ##############################
 %%%%
