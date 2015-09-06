@@ -360,7 +360,7 @@ bool maybe_id_book(item_def &book, bool silent)
     {
         if (!silent)
         {
-            mpr("This book is beyond your current level of understanding.");
+            mpr(jtrans("This book is beyond your current level of understanding."));
             more();
         }
 
@@ -453,6 +453,11 @@ static void _index_book(item_def& book, spells_to_books &book_hash,
     }
 }
 
+static string _transform_name()
+{
+    return jtrans(transform_name() + string(" form"));
+}
+
 static bool _get_mem_list(spell_list &mem_spells,
                           spells_to_books &book_hash,
                           unsigned int &num_unreadable,
@@ -516,11 +521,11 @@ static bool _get_mem_list(spell_list &mem_spells,
         if (!just_check)
         {
             if (num_unknown > 1)
-                mprf(MSGCH_PROMPT, "You must pick up those books before reading them.");
+                mpr_nojoin(MSGCH_PROMPT, jtransc("You must pick up those books before reading them."));
             else if (num_unknown == 1)
-                mprf(MSGCH_PROMPT, "You must pick up this book before reading it.");
+                mpr_nojoin(MSGCH_PROMPT, jtransc("You must pick up this book before reading it."));
             else
-                mprf(MSGCH_PROMPT, "You aren't carrying or standing over any spellbooks.");
+                mpr_nojoin(MSGCH_PROMPT, jtransc("You aren't carrying or standing over any spellbooks."));
         }
         return false;
     }
@@ -528,16 +533,16 @@ static bool _get_mem_list(spell_list &mem_spells,
     {
         if (!just_check)
         {
-            mprf(MSGCH_PROMPT, "All of the spellbooks%s are beyond your "
-                 "current level of comprehension.",
-                 num_on_ground == 0 ? " you're carrying" : "");
+            mprf(MSGCH_PROMPT, jtransc("All of the spellbooks%s are beyond your "
+                                       "current level of comprehension."),
+                 num_on_ground == 0 ? jtransc(" you're carrying") : "");
         }
         return false;
     }
     else if (book_hash.empty())
     {
         if (!just_check)
-            mprf(MSGCH_PROMPT, "None of the spellbooks you are carrying contain any spells.");
+            mpr_nojoin(MSGCH_PROMPT, ("None of the spellbooks you are carrying contain any spells."));
         return false;
     }
 
@@ -590,26 +595,26 @@ static bool _get_mem_list(spell_list &mem_spells,
             + num_restricted;
 
     if (num_known == total)
-        mprf(MSGCH_PROMPT, "You already know all available spells.");
+        mpr_nojoin(MSGCH_PROMPT, jtrans("You already know all available spells."));
     else if (num_restricted == total || num_restricted + num_known == total)
     {
-        mpr("You cannot currently memorise any of the available "
-             "spells because you cannot use those schools of magic.");
+        mpr(jtransc("You cannot currently memorise any of the available "
+                    "spells because you cannot use those schools of magic."));
     }
     else if (num_race == total || (num_known + num_race) == total
             || num_race + num_known + num_restricted == total)
     {
         if (form)
         {
-            mprf(MSGCH_PROMPT, "You cannot currently memorise any of the "
-                 "available spells because you are in %s form.",
-                 uppercase_first(transform_name()).c_str());
+            mprf(MSGCH_PROMPT, jtransc("You cannot currently memorise any of the "
+                                       "available spells because you are in %s form."),
+                 _transform_name().c_str());
         }
         else
         {
-            mprf(MSGCH_PROMPT, "You cannot memorise any of the available "
-                 "spells because you are %s.",
-                 article_a(species_name(you.species)).c_str());
+            mprf(MSGCH_PROMPT, jtransc("You cannot memorise any of the available "
+                                       "spells because you are %s."),
+                 jtransc(species_name(you.species)));
         }
     }
     else if (num_low_levels > 0 || num_low_xl > 0)
@@ -626,9 +631,9 @@ static bool _get_mem_list(spell_list &mem_spells,
 
     if (num_unreadable)
     {
-        mprf(MSGCH_PROMPT, "Additionally, %u of your spellbooks are beyond "
-             "your current level of understanding, and thus none of the "
-             "spells in them are available to you.", num_unreadable);
+        mprf(MSGCH_PROMPT, jtransc("Additionally, %u of your spellbooks are beyond "
+                                   "your current level of understanding, and thus none of the "
+                                   "spells in them are available to you."), num_unreadable);
     }
 
     return false;
@@ -866,7 +871,7 @@ bool can_learn_spell(bool silent)
     if (you.stat_zero[STAT_INT])
     {
         if (!silent)
-            mpr("Your brain is not functional enough to learn spells.");
+            mpr(jtrans("Your brain is not functional enough to learn spells."));
         return false;
     }
 
@@ -947,25 +952,25 @@ static bool _learn_spell_checks(spell_type specspell)
 
     if (you.has_spell(specspell))
     {
-        mpr("You already know that spell!");
+        mpr(jtrans("You already know that spell!"));
         return false;
     }
 
     if (you.spell_no >= MAX_KNOWN_SPELLS)
     {
-        mpr("Your head is already too full of spells!");
+        mpr(jtrans("Your head is already too full of spells!"));
         return false;
     }
 
     if (you.experience_level < spell_difficulty(specspell))
     {
-        mpr("You're too inexperienced to learn that spell!");
+        mpr(jtrans("You're too inexperienced to learn that spell!"));
         return false;
     }
 
     if (player_spell_levels() < spell_levels_required(specspell))
     {
-        mpr("You can't memorise that many levels of magic yet!");
+        mpr(jtrans("You can't memorise that many levels of magic yet!"));
         return false;
     }
 
