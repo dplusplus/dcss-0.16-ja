@@ -3022,6 +3022,18 @@ shadowy
 
 影のような
 %%%%
+Nothing wielded
+
+(何も手に持っていない)
+%%%%
+Teeth and claws
+
+牙と爪
+%%%%
+Tentacles
+
+触手
+%%%%
 ############################## player-equip.cc ##############################
 %%%%
 The area is filled with flickering shadows.

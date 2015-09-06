@@ -883,7 +883,7 @@ static void _print_stats_wp(int y)
         text = wpn.name(DESC_INVENTORY, true, false, true);
     }
     else
-        text = you.unarmed_attack_name();
+        text = jtrans(you.unarmed_attack_name());
 
     CGOTOXY(1, y, GOTO_STAT);
     textcolour(HUD_CAPTION_COLOUR);
