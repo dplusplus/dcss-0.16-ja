@@ -253,7 +253,7 @@ static void _equip_artefact_effect(item_def &item, bool *show_msgs, bool unmeld,
                        !(msg && unknown_proprt(ARTP_DEXTERITY)));
 
     if (unknown_proprt(ARTP_MUTAGENIC) && msg)
-        mpr("You feel a build-up of mutagenic energy.");
+        mpr(jtrans("You feel a build-up of mutagenic energy."));
 
     if (!unmeld && !item.cursed() && proprt[ARTP_CURSED] > 0
          && one_chance_in(proprt[ARTP_CURSED]))

@@ -3180,6 +3180,10 @@ Tentacles
 %%%%
 ############################## player-equip.cc ##############################
 %%%%
+You feel a build-up of mutagenic energy.
+
+あなたは身体を強化する変異性のエネルギーを感じた。
+%%%%
 The area is filled with flickering shadows.
 
 辺りは揺らめく影で満たされた。
