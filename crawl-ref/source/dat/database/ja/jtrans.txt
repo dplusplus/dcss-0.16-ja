@@ -269,6 +269,70 @@ This could place you under penance!
 
 神に懺悔をする羽目になりますよ！
 %%%%
+You're wearing all the rings you can. Remove which one?
+
+あなたは指輪をこれ以上はめられない。どれを外しますか？
+%%%%
+(<w>?</w> for menu, <w>Esc</w> to cancel)
+
+(<w>?</w> で一覧から選択, <w>Esc</w> でキャンセル)
+%%%%
+Losing flight right now would be fatal!
+
+いま飛行能力を失うことは致命的だ！
+%%%%
+You can't wear that in your present form.
+
+現在の形態ではそれを身につけることができない。
+%%%%
+You're already wearing %s cursed ring%s!%s
+
+あなたは既に%dつの呪われた指輪を身につけている！ %s
+%%%%
+Isn't that enough for you?
+
+これでもまだ足らないと？
+%%%%
+Put ring on which %s? (<w>Esc</w> to cancel)
+
+どちらの%sに指輪をはめますか？ (<w>Esc</w> でキャンセル)
+%%%%
+</w> or
+
+</w> または
+%%%%
+</w> - no ring
+
+</w> - (指輪をはめていない)
+%%%%
+(left)
+
+(左)
+%%%%
+(right)
+
+(右)
+%%%%
+(amulet)
+
+(護符)
+%%%%
+You're already wearing that object!
+
+あなたは既にそれを身につけている！
+%%%%
+You are wielding that object.
+
+あなたはそれを装備している。
+%%%%
+You can only put on jewellery.
+
+身に飾ることができるのは装飾品だけだ。
+%%%%
+Put on which piece of jewellery?
+
+どの装飾品を身につけますか？
+%%%%
 Use <w>e</w> to drain blood from corpses.
 
 死体から血を飲むには<w>e</w>atコマンドを使ってください。
@@ -3116,13 +3180,17 @@ Tentacles
 %%%%
 ############################## player-equip.cc ##############################
 %%%%
+You feel a build-up of mutagenic energy.
+
+あなたは身体を強化する変異性のエネルギーを感じた。
+%%%%
 The area is filled with flickering shadows.
 
 辺りは揺らめく影で満たされた。
 %%%%
 You feel your magic capacity is already quite full.
 
-あなたの魔力は既に一杯のようだ。
+あなたの魔力は既に限界のようだ。
 %%%%
 It bursts into flame!
 
@@ -3267,6 +3335,90 @@ your weapon melds
 you unwield
 
 あなたが武器を外す
+%%%%
+You feel more attuned to fire.
+
+あなたはさらに火炎に同調した気がした。
+%%%%
+You feel more attuned to ice.
+
+あなたはさらに冷気に同調した気がした。
+%%%%
+You feel a slight, muted jump rush through you.
+
+あなたは無効化された跳躍力を感じた。
+%%%%
+You feel slightly %sjumpy.
+
+あなたは%s少し跳躍力を感じた。
+%%%%
+You feel a surge of self-confidence.
+
+あなたは自信が高まった気がした。
+%%%%
+says: An ascetic of your devotion has no use for such trinkets.
+
+は『そんなつまらない物は献身の足しにはならんぞ』と言った。
+%%%%
+You feel a surge of divine interest.
+
+あなたは神の歓心の高まりを感じた。
+%%%%
+You feel a strange surge of divine interest.
+
+あなたは神の歓心が奇妙に高まるのを感じた。
+%%%%
+discounts your offered prices.
+
+は値段を安くしてくれる。
+%%%%
+You feel a craving for the dungeon's cuisine.
+
+あなたは食欲が亢進した。
+%%%%
+The amulet engulfs you in a massive magical discharge!
+
+護符は放散する強大な魔力であなたを包んだ！
+%%%%
+The amulet engulfs you in a violent magical discharge!
+
+護符は放散する強い魔力であなたを包んだ！
+%%%%
+The amulet engulfs you in a magical discharge!
+
+護符は放散する魔力であなたを包んだ！
+%%%%
+You abruptly slow down.
+
+あなたは不意に減速した。
+%%%%
+Your slowness suddenly goes away.
+
+あなたは突然減速状態から抜け出した。
+%%%%
+You feel strangely stable.
+
+あなたは妙に安定したと感じた。
+%%%%
+You violently calm down.
+
+あなたの暴力性は収まった。
+%%%%
+You suddenly lose your finesse.
+
+あなたは早業の攻撃を繰り出せなくなった。
+%%%%
+You feel familiarly static.
+
+あなたは停滞状態に慣れ親しんでいる。
+%%%%
+You feel strangely static.
+
+あなたは奇妙な停滞状態に陥った。
+%%%%
+Oops, that %s feels deathly cold.
+
+うわ！ この%sは凄まじく冷たい！
 %%%%
 ############################## player-stat.cc ##############################
 %%%%
