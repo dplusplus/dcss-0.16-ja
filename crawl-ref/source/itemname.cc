@@ -293,7 +293,7 @@ string item_def::name(description_level_type descrip, bool terse, bool ident,
                     buff << " (";
                     buff << ((eq == EQ_LEFT_RING || eq == EQ_RING_ONE)
                              ? "左" : "右");
-                    buff << jtrans(you.hand_name(false));
+                    buff << you.hand_name(false);
                     buff << ")";
                     break;
                 default:

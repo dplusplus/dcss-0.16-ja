@@ -572,7 +572,7 @@ string player::hand_name(bool plural, bool *can_plural) const
     if (plural && *can_plural)
         return jpluralise(singular, "両");
 
-    return singular;
+    return jtrans(singular);
 }
 
 /**

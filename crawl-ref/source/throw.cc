@@ -283,7 +283,7 @@ static bool _fire_choose_item_and_target(int& slot, dist& target,
     if (teleport && cell_is_solid(target.target))
     {
         const char *feat = feat_type_name(grd(target.target));
-        mprf("There is %s there.", article_a(feat).c_str());
+        mprf(jtransc("There is %s there."), feat);
         return false;
     }
 
@@ -302,10 +302,10 @@ static int _fire_prompt_for_item()
     if (inv_count() < 1)
         return -1;
 
-    int slot = prompt_invent_item("Fire/throw which item? (* to show all)",
-                                   MT_INVLIST,
-                                   OSEL_THROWABLE, true, true, true, 0, -1,
-                                   nullptr, OPER_FIRE);
+    int slot = prompt_invent_item(jtransc("Fire/throw which item? (* to show all)"),
+                                  MT_INVLIST,
+                                  OSEL_THROWABLE, true, true, true, 0, -1,
+                                  nullptr, OPER_FIRE);
 
     if (slot == PROMPT_ABORT || slot == PROMPT_NOTHING)
         return -1;
@@ -320,12 +320,13 @@ static bool _fire_validate_item(int slot, string &err)
         && is_weapon(you.inv[slot])
         && you.inv[slot].cursed())
     {
-        err = "That weapon is stuck to your " + you.hand_name(false) + "!";
+        err = make_stringf(jtransc("That weapon is stuck to your %s !"),
+                           you.hand_name(false).c_str());
         return false;
     }
     else if (item_is_worn(slot))
     {
-        err = "You are wearing that object!";
+        err = jtrans("You are wearing that object!");
         return false;
     }
     return true;
@@ -337,7 +338,7 @@ bool fire_warn_if_impossible(bool silent)
     if (you.species == SP_FELID)
     {
         if (!silent)
-            mpr("You can't grasp things well enough to throw them.");
+            mpr(jtrans("You can't grasp things well enough to throw them."));
         return true;
     }
 
@@ -355,15 +356,17 @@ bool fire_warn_if_impossible(bool silent)
         if (!weapon || !is_range_weapon(*weapon))
         {
             if (!silent)
-                mprf("You cannot throw anything while %s.", held_status());
+                mpr(jtrans(make_stringf("You cannot throw anything while %s.",
+                                        held_status())));
             return true;
         }
         else if (weapon->sub_type != WPN_BLOWGUN)
         {
             if (!silent)
             {
-                mprf("You cannot shoot with your %s while %s.",
-                     weapon->name(DESC_BASENAME).c_str(), held_status());
+                mprf(make_stringf(jtransc("You cannot shoot with your %s while %s."),
+                                  held_status()).c_str(),
+                     weapon->name(DESC_BASENAME).c_str());
             }
             return true;
         }
