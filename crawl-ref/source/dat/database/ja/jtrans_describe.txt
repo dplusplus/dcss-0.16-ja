@@ -57,6 +57,50 @@ is noncommittal.
 
 はあなたに何も明言しない。
 %%%%
+You can have all your mutations cured.
+
+あなたは全ての突然変異を取り除くことができる。
+%%%%
+You can pray at an altar to donate money.
+
+あなたは祭壇で祈りを捧げることにより寄付することができる。
+%%%%
+You radiate a large righteous aura, and all beings within it are easier to hit.
+
+あなたは強烈に光り輝く霊気を発しており、その内部にいる全ての者に攻撃が当たりやすくなる。
+%%%%
+You radiate a righteous aura, and all beings within it are easier to hit.
+
+あなたは光り輝く霊気を発しており、その内部にいる全ての者に攻撃が当たりやすくなる。
+%%%%
+You radiate a small righteous aura, and all beings within it are easier to hit.
+
+あなたはほのかに光り輝く霊気を発しており、その内部にいる全ての者に攻撃が当たりやすくなる。
+%%%%
+You can pray at an altar to have your weapon blessed, especially a demon weapon.
+
+あなたは祭壇であなたの持つ武器(特に悪魔の手による武器)への祝福を請うことができる。
+%%%%
+You can pray at an altar to have your weapon corrupted.
+
+あなたは祭壇であなたの持つ武器に歪曲の力を請うことができる。
+%%%%
+You can pray at an altar to have your necromancy enhanced.
+
+あなたは祭壇で死霊術を強化する授かり物を請うことができる。
+%%%%
+You can pray to sacrifice all orcish remains on your square.
+
+あなたは足下にある全てのオーク族の遺骸を祈って捧げることができる。
+%%%%
+Evolving plants requires fruit, and evolving fungi requires piety.
+
+果物を消費して植物を、また信仰値を消費して菌類を進化することができる。
+%%%%
+You can pray to sacrifice all fresh corpses on your square.
+
+あなたは足下にある全ての新鮮な死体を祈って捧げることができる。
+%%%%
 You can bribe the following branches of the dungeon:
 
 あなたは下に記された迷宮の分岐を買収できる:

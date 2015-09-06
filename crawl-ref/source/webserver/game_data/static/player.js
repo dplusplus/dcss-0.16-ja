@@ -318,7 +318,7 @@ function ($, comm, enums, map_knowledge, messages, options) {
                 $("#stats_dex").prev().text("器用:");
                 $("#stats_place").prev().text("現在地:");
 
-                $("#stats_time_caption").text("経過時間:");
+                $("#stats_time_caption").text("時間:");
                 $("#stats_weapon").prev().text("手持武器:");
                 $("#stats_quiver").prev().text("射撃準備:");
             }
@@ -404,7 +404,7 @@ function ($, comm, enums, map_knowledge, messages, options) {
         if (options.get("show_game_turns") === true)
         {
             if (is_ja())
-                $("#stats_time_caption").text("経過時間:");
+                $("#stats_time_caption").text("時間:");
             else
                 $("#stats_time_caption").text("Time:");
 
@@ -414,7 +414,10 @@ function ($, comm, enums, map_knowledge, messages, options) {
         }
         else
         {
-            $("#stats_time_caption").text("Turn:");
+            if (is_ja())
+                $("#stats_time_caption").text("ターン:");
+            else
+                $("#stats_time_caption").text("Turn:");
             $("#stats_time").text(player.turn);
         }
 

@@ -1464,7 +1464,7 @@ void draw_border()
 #endif
     CGOTOXY(1, 9 + yhack, GOTO_STAT); CPRINTF("所持金:");
     CGOTOXY(19, 9 + yhack, GOTO_STAT);
-    CPRINTF(Options.show_game_turns ? "経過時間:" : "経過ターン:");
+    CPRINTF(Options.show_game_turns ? "時間:" : "ターン:");
     // Line 8 is exp pool, Level
 }
 

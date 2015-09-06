@@ -169,8 +169,8 @@ static string _religion_help(god_type god)
     {
         case GOD_ZIN:
             if (can_do_capstone_ability(god))
-                result += "You can have all your mutations cured.\n";
-            result += "You can pray at an altar to donate money.";
+                result += jtransln("You can have all your mutations cured.\n");
+            result += jtrans("You can pray at an altar to donate money.");
             break;
 
         case GOD_SHINING_ONE:
@@ -181,25 +181,28 @@ static string _religion_help(god_type god)
                 if (!result.empty())
                     result += " ";
 
-                result += "You radiate a ";
+                string msg;
+                msg += "You radiate a ";
 
                 if (halo_size > 37)
-                    result += "large ";
+                    msg += "large ";
                 else if (halo_size > 10)
-                    result += "";
+                    msg += "";
                 else
-                    result += "small ";
+                    msg += "small ";
 
-                result += "righteous aura, and all beings within it are "
-                          "easier to hit.";
+                msg += "righteous aura, and all beings within it are "
+                    "easier to hit.";
+
+                result += jtrans(msg);
             }
             if (can_do_capstone_ability(god))
             {
                 if (!result.empty())
                     result += " ";
 
-                result += "You can pray at an altar to have your weapon "
-                          "blessed, especially a demon weapon.";
+                result += jtrans("You can pray at an altar to have your weapon "
+                                 "blessed, especially a demon weapon.");
             }
             break;
         }
@@ -207,29 +210,29 @@ static string _religion_help(god_type god)
         case GOD_LUGONU:
             if (can_do_capstone_ability(god))
             {
-                result += "You can pray at an altar to have your weapon "
-                          "corrupted.";
+                result += jtrans("You can pray at an altar to have your weapon "
+                                 "corrupted.");
             }
             break;
 
         case GOD_KIKUBAAQUDGHA:
             if (can_do_capstone_ability(god))
             {
-                result += "You can pray at an altar to have your necromancy "
-                          "enhanced.";
+                result += jtrans("You can pray at an altar to have your necromancy "
+                                 "enhanced.");
             }
             break;
 
         case GOD_BEOGH:
-            result += "You can pray to sacrifice all orcish remains on your "
-                      "square.";
+            result += jtrans("You can pray to sacrifice all orcish remains on your "
+                             "square.");
             break;
 
         case GOD_FEDHAS:
             if (you.piety >= piety_breakpoint(0))
             {
-                result += "Evolving plants requires fruit, and evolving "
-                          "fungi requires piety.";
+                result += jtrans("Evolving plants requires fruit, and evolving "
+                                 "fungi requires piety.");
             }
             break;
 
@@ -242,8 +245,8 @@ static string _religion_help(god_type god)
         if (!result.empty())
             result += " ";
 
-        result += "You can pray to sacrifice all fresh corpses on your "
-                  "square.";
+        result += jtrans("You can pray to sacrifice all fresh corpses on your "
+                         "square.");
     }
 
     return result;
