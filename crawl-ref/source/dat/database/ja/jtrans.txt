@@ -5895,6 +5895,66 @@ You feel a sudden draft!
 %%%%
 ############################## transform.cc ##############################
 %%%%
+spider form
+
+蜘蛛の形態
+%%%%
+blade form
+
+刃の手の形態
+%%%%
+statue form
+
+石像の形態
+%%%%
+ice form
+
+氷の躯の形態
+%%%%
+dragon form
+
+ドラゴンの形態
+%%%%
+lich form
+
+リッチの形態
+%%%%
+bat form
+
+蝙蝠の形態
+%%%%
+pig form
+
+豚の形態
+%%%%
+appendage form
+
+半獣の形態
+%%%%
+tree form
+
+樹木の形態
+%%%%
+porcupine form
+
+豪猪の形態
+%%%%
+wisp form
+
+霧の形態
+%%%%
+fungus form
+
+茸の形態
+%%%%
+shadow form
+
+影の形態
+%%%%
+hydra form
+
+ヒドラの形態
+%%%%
 hover solemnly before
 
 浮かびながら姿勢を正した
