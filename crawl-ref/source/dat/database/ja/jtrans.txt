@@ -333,6 +333,50 @@ Put on which piece of jewellery?
 
 どの装飾品を身につけますか？
 %%%%
+You aren't wearing any unmelded rings or amulets.
+
+あなたは指輪や護符を身につけていないか、体に融合して外せない。
+%%%%
+You aren't wearing any rings or amulets.
+
+あなたは指輪や護符を身につけていない。
+%%%%
+Remove which piece of jewellery?
+
+どの装飾品を外しますか？
+%%%%
+You aren't wearing that.
+
+あなたはそれを身につけていない。
+%%%%
+That isn't a piece of jewellery.
+
+それは装飾品ではない。
+%%%%
+I don't think you really meant that.
+
+あなたが本当にそうしたいとは思えない。
+%%%%
+You can't take that off while it's melded.
+
+あなたはそれが融合している間取り外すことができない。
+%%%%
+The amulet cannot be taken off without first removing the ring!
+
+まず指輪を外してからでないとその護符は外せない！
+%%%%
+%s is stuck to you!
+
+%sはあなたから離れない！
+%%%%
+It's stuck to you!
+
+それはあなたから離れない！
+%%%%
+You remove %s.
+
+あなたは%sを外した。
+%%%%
 Use <w>e</w> to drain blood from corpses.
 
 死体から血を飲むには<w>e</w>atコマンドを使ってください。
