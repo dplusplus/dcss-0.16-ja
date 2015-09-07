@@ -269,6 +269,22 @@ This could place you under penance!
 
 神に懺悔をする羽目になりますよ！
 %%%%
+You aren't wearing that!
+
+あなたはそれを身につけていない！
+%%%%
+%s is melded into your body!
+
+%sはあなたの体と融合している！
+%%%%
+You aren't wearing that object!
+
+あなたはそれを身につけていない！
+%%%%
+%s is stuck to your body!
+
+%sはあなたの体から離れない！
+%%%%
 You're wearing all the rings you can. Remove which one?
 
 あなたは指輪をこれ以上はめられない。どれを外しますか？
@@ -1790,6 +1806,18 @@ Play time:
 turns)
 
 ターン)
+%%%%
+You can't remove your fur, sorry.
+
+残念ながら、自分の毛皮を脱ぐことはできない。
+%%%%
+You can't wear or remove anything in your present form.
+
+現在の形態では脱ぐことはできない。
+%%%%
+Take off which item?
+
+どれを脱ぎますか？
 %%%%
 Save game and return to main manu?
 

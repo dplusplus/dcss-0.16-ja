@@ -1820,18 +1820,18 @@ static void _do_remove_armour()
 {
     if (you.species == SP_FELID)
     {
-        mpr("You can't remove your fur, sorry.");
+        mpr(jtrans("You can't remove your fur, sorry."));
         return;
     }
 
     if (!form_can_wear())
     {
-        mpr("You can't wear or remove anything in your present form.");
+        mpr(jtrans("You can't wear or remove anything in your present form."));
         return;
     }
 
     int index = 0;
-    if (armour_prompt("Take off which item?", &index, OPER_TAKEOFF))
+    if (armour_prompt(jtransc("Take off which item?"), &index, OPER_TAKEOFF))
         takeoff_armour(index);
 }
 
