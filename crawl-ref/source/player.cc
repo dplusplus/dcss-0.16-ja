@@ -5481,7 +5481,7 @@ bool land_player(bool quiet)
         return false;
 
     if (!quiet)
-        mpr("You float gracefully downwards.");
+        mpr(jtrans("You float gracefully downwards."));
     if (you.species == SP_TENGU)
         you.redraw_evasion = true;
     you.attribute[ATTR_FLIGHT_UNCANCELLABLE] = 0;

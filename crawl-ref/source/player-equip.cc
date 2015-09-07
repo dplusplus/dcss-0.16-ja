@@ -1109,14 +1109,14 @@ static void _remove_amulet_of_faith(item_def &item)
     else if (!you_worship(GOD_NO_GOD)
         && !you_worship(GOD_XOM))
     {
-        simple_god_message(" seems less interested in you.");
+        simple_god_message(jtransc(" seems less interested in you."));
 
         if (you_worship(GOD_GOZAG))
         {
             you.attribute[ATTR_GOZAG_POTIONS] += 2;
             you.attribute[ATTR_GOZAG_SHOPS]   += 2;
 
-            simple_god_message(" increases your offered prices.");
+            simple_god_message(jtransc(" increases your offered prices."));
             return;
         }
 
@@ -1125,8 +1125,8 @@ static void _remove_amulet_of_faith(item_def &item)
         if (you.piety - piety_loss > 10)
         {
             mprf(MSGCH_GOD,
-                 "%s leaches power out of you as you remove it.",
-                 item.name(DESC_YOUR).c_str());
+                 jtransc("%s leaches power out of you as you remove it."),
+                 item.name(DESC_PLAIN).c_str());
             dprf("%s: piety leach: %d",
                  item.name(DESC_PLAIN).c_str(), piety_loss);
             lose_piety(piety_loss);
@@ -1398,7 +1398,7 @@ static void _unequip_jewellery_effect(item_def &item, bool mesg, bool meld,
 
     case AMU_GUARDIAN_SPIRIT:
         if (you.species == SP_DEEP_DWARF)
-            mpr("Your magic begins regenerating once more.");
+            mpr(jtransc("Your magic begins regenerating once more."));
         break;
     }
 
