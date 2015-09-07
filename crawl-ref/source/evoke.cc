@@ -489,7 +489,7 @@ void zap_wand(int slot)
 {
     if (!form_can_use_wand())
     {
-        mpr("You have no means to grasp a wand firmly enough.");
+        mpr(jtrans("You have no means to grasp a wand firmly enough."));
         return;
     }
 
@@ -518,7 +518,7 @@ void zap_wand(int slot)
 
     if (player_mutation_level(MUT_NO_ARTIFICE))
     {
-        mpr("You cannot evoke magical items.");
+        mpr(jtrans("You cannot evoke magical items."));
         return;
     }
 
@@ -530,7 +530,7 @@ void zap_wand(int slot)
         item_slot = slot;
     else
     {
-        item_slot = prompt_invent_item("Zap which item?",
+        item_slot = prompt_invent_item(jtransc("Zap which item?"),
                                        MT_INVLIST,
                                        OBJ_WANDS,
                                        true, true, true, 0, -1, nullptr,
@@ -543,7 +543,7 @@ void zap_wand(int slot)
     item_def& wand = you.inv[item_slot];
     if (wand.base_type != OBJ_WANDS)
     {
-        mpr("You can't zap that!");
+        mpr(jtrans("You can't zap that!"));
         return;
     }
 
@@ -556,7 +556,7 @@ void zap_wand(int slot)
     const bool has_charges = wand.charges > 0;
     if (!has_charges && wand.used_count == ZAPCOUNT_EMPTY)
     {
-        mpr("This wand has no charges.");
+        mpr(jtrans("This wand has no charges."));
         return;
     }
 
@@ -737,7 +737,7 @@ void zap_wand(int slot)
 
         dprf("Wasted %d charges (wand %d -> %d)", wasted_charges,
              initial_charge, wand.charges);
-        mpr("Evoking this partially-identified wand wasted a few charges.");
+        mpr(jtrans("Evoking this partially-identified wand wasted a few charges."));
     }
 
     // Zap counts count from the last recharge.
@@ -764,11 +764,11 @@ void zap_wand(int slot)
     {
         if (!item_ident(wand, ISFLAG_KNOW_PLUSES))
         {
-            mpr("Your skill with magical items lets you calculate "
-                "the power of this device...");
+            mpr(jtrans("Your skill with magical items lets you calculate "
+                       "the power of this device..."));
         }
 
-        mprf("This wand has %d charge%s left.",
+        mprf(jtransc("This wand has %d charge%s left."),
              wand.plus, wand.plus == 1 ? "" : "s");
 
         set_ident_flags(wand, ISFLAG_KNOW_PLUSES);

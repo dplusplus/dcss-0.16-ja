@@ -211,13 +211,49 @@ Sif Muna frowns upon the destroying of books.
 %%%%
 ############################## evoke.cc ##############################
 %%%%
-You cannot evoke items in this form.
+You have no means to grasp a wand firmly enough.
 
-現在の形態ではアイテムを発動できない。
+あなたにはしっかりとワンドを握る手段がない。
 %%%%
 You cannot evoke magical items.
 
 あなたは魔法のアイテムを発動できない。
+%%%%
+Zap which item?
+
+どのアイテムを振りますか？
+%%%%
+You can't zap that!
+
+あなたはそれを振れない！
+%%%%
+This wand has no charges.
+
+このワンドには魔力が残っていない。
+%%%%
+%s prevents hasting.
+
+%sは加速するのを妨げた。
+%%%%
+You cannot haste.
+
+あなたは加速できない。
+%%%%
+Evoking this partially-identified wand wasted a few charges.
+
+完全に鑑定されていないワンドを振ったため、余分に魔力を消耗した。
+%%%%
+Your skill with magical items lets you calculate the power of this device...
+
+魔法のアイテムに関する技能から、この道具の残り使用回数が判明した。
+%%%%
+This wand has %d charge%s left.
+
+このワンドの使用回数は残り%d回だ。
+%%%%
+You cannot evoke items in this form.
+
+現在の形態ではアイテムを発動できない。
 %%%%
 Evoke which item? (* to show all)
 
@@ -526,6 +562,10 @@ You feel forgetful for a moment.
 It %s a %s.
 
 これは%sだ。
+%%%%
+Your stasis keeps you stable.
+
+あなたの体質は停滞状態を維持した。
 %%%%
 ############################## itemname.cc ##############################
 %%%%
