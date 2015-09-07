@@ -3077,6 +3077,14 @@ Your demonic ancestry asserts itself...
 
 あなたの悪魔的な血統が顕在化した……
 %%%%
+You have gained the ability to fly.
+
+あなたは空を飛ぶ能力を得た。
+%%%%
+You can now fly continuously.
+
+あなたは継続的に飛ぶことができるようになった。
+%%%%
 You float gracefully downwards.
 
 あなたは優雅に下へと舞い降りていった。
