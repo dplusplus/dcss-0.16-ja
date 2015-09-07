@@ -279,6 +279,22 @@ You reach into the bag...
 
 ……すると何かが這い出てきた！
 %%%%
+You gaze into the crystal ball.
+
+あなたは水晶球にじっと見入った。
+%%%%
+using a ball of energy
+
+魔力の水晶球を使って
+%%%%
+You feel your power drain away!
+
+あなたは魔力が吸い取られていくのを感じた！
+%%%%
+You are suffused with power!
+
+あなたは魔力に満たされた！
+%%%%
 You cannot evoke items in this form.
 
 現在の形態ではアイテムを発動できない。

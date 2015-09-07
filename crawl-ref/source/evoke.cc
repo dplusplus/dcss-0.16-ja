@@ -1239,7 +1239,7 @@ static bool _ball_of_energy()
 {
     bool ret = false;
 
-    mpr("You gaze into the crystal ball.");
+    mpr(jtrans("You gaze into the crystal ball."));
 
     int use = random2(you.skill(SK_EVOCATIONS, 6));
 
@@ -1247,7 +1247,7 @@ static bool _ball_of_energy()
         lose_stat(STAT_INT, 1 + random2avg(7, 2), false, "using a ball of energy");
     else if (use < 5 && enough_mp(1, true))
     {
-        mpr("You feel your power drain away!");
+        mpr(jtrans("You feel your power drain away!"));
         dec_mp(you.magic_points);
     }
     else if (use < 10)
@@ -1259,12 +1259,12 @@ static bool _ball_of_energy()
         if (random2avg(77 - you.skill(SK_EVOCATIONS, 2), 4) > proportional
             || one_chance_in(25))
         {
-            mpr("You feel your power drain away!");
+            mpr(jtrans("You feel your power drain away!"));
             dec_mp(you.magic_points);
         }
         else
         {
-            mpr("You are suffused with power!");
+            mpr(jtrans("You are suffused with power!"));
             inc_mp(5 + random2avg(you.skill(SK_EVOCATIONS), 2));
 
             ret = true;
