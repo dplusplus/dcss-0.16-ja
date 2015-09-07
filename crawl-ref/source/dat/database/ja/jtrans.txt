@@ -251,6 +251,22 @@ This wand has %d charge%s left.
 
 このワンドの使用回数は残り%d回だ。
 %%%%
+You open the lid...
+
+あなたは蓋を開いた……
+%%%%
+...but the box appears empty, and falls apart.
+
+……しかし中は空っぽだったので、匣を捨てた。
+%%%%
+...but nothing happens.
+
+……しかし何事も起こらなかった！
+%%%%
+...and something leaps out!
+
+……すると何かが飛び出してきた！
+%%%%
 You cannot evoke items in this form.
 
 現在の形態ではアイテムを発動できない。

@@ -1078,11 +1078,11 @@ static bool _box_of_beasts_veto_mon(monster_type mon)
 
 static bool _box_of_beasts(item_def &box)
 {
-    mpr("You open the lid...");
+    mpr(jtrans("You open the lid..."));
 
     if (!box.plus)
     {
-        mpr("...but the box appears empty, and falls apart.");
+        mpr(jtrans("...but the box appears empty, and falls apart."));
         ASSERT(in_inventory(box));
         dec_inv_item_quantity(box.link, 1);
         return false;
@@ -1124,7 +1124,7 @@ static bool _box_of_beasts(item_def &box)
         else
         {
             // we weren't able to come up with acceptable monsters
-            mpr("...but nothing happens.");
+            mpr(jtrans("...but nothing happens."));
             return false;
         }
 
@@ -1132,7 +1132,7 @@ static bool _box_of_beasts(item_def &box)
 
     if (success)
     {
-        mpr("...and something leaps out!");
+        mpr(jtrans("...and something leaps out!"));
         xom_is_stimulated(10);
         did_god_conduct(DID_CHAOS, random_range(5,10));
         // Decrease charges
@@ -1148,7 +1148,7 @@ static bool _box_of_beasts(item_def &box)
     }
     else
         // Failed to create monster for some reason
-        mpr("...but nothing happens.");
+        mpr(jtrans("...but nothing happens."));
 
     return success;
 }
