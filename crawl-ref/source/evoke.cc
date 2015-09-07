@@ -1155,11 +1155,11 @@ static bool _box_of_beasts(item_def &box)
 
 static bool _sack_of_spiders(item_def &sack)
 {
-    mpr("You reach into the bag...");
+    mpr(jtrans("You reach into the bag..."));
 
     if (!sack.plus)
     {
-        mpr("...but the bag is empty, and unravels at your touch.");
+        mpr(jtrans("...but the bag is empty, and unravels at your touch."));
         ASSERT(in_inventory(sack));
         dec_inv_item_quantity(sack.link, 1);
         return false;
@@ -1167,7 +1167,7 @@ static bool _sack_of_spiders(item_def &sack)
 
     if (one_chance_in(5))
     {
-        mpr("...but nothing happens.");
+        mpr(jtrans("...but nothing happens."));
         return false;
     }
 
@@ -1191,7 +1191,7 @@ static bool _sack_of_spiders(item_def &sack)
 
     if (success)
     {
-        mpr("...and things crawl out!");
+        mpr(jtrans("...and things crawl out!"));
         // Also generate webs on hostile monsters and trap them.
         int rad = LOS_RADIUS / 2 + 2;
         for (monster_near_iterator mi(you.pos(), LOS_SOLID); mi; ++mi)
@@ -1230,7 +1230,7 @@ static bool _sack_of_spiders(item_def &sack)
     }
     else
         // Failed to create monster for some reason
-        mpr("...but nothing happens.");
+        mpr(jtrans("...but nothing happens."));
 
     return success;
 }

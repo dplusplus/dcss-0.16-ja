@@ -267,6 +267,18 @@ You open the lid...
 
 ……すると何かが飛び出してきた！
 %%%%
+You reach into the bag...
+
+あなたは袋の中を探った……
+%%%%
+...but the bag is empty, and unravels at your touch.
+
+……しかし中は空っぽだったので、袋を捨てた。
+%%%%
+...and things crawl out!
+
+……すると何かが這い出てきた！
+%%%%
 You cannot evoke items in this form.
 
 現在の形態ではアイテムを発動できない。
