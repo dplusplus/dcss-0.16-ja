@@ -160,23 +160,24 @@ void quiver_item(int slot)
         t = _get_weapon_ammo_type(weapon);
 
     you.m_quiver->set_quiver(you.inv[slot], t);
-    mprf("Quivering %s for %s.", you.inv[slot].name(DESC_INVENTORY).c_str(),
-         t == AMMO_THROW    ? "throwing" :
-         t == AMMO_BLOWGUN  ? "blowguns" :
-         t == AMMO_SLING    ? "slings" :
-         t == AMMO_BOW      ? "bows" :
-                              "crossbows");
+    mprf(jtransc("Quivering %s for %s."), you.inv[slot].name(DESC_INVENTORY).c_str(),
+         jtransc(
+             t == AMMO_THROW    ? "throwing" :
+             t == AMMO_BLOWGUN  ? "blowguns" :
+             t == AMMO_SLING    ? "slings" :
+             t == AMMO_BOW      ? "bows" :
+                                  "crossbows"));
 }
 
 void choose_item_for_quiver()
 {
     if (you.species == SP_FELID)
     {
-        mpr("You can't grasp things well enough to throw them.");
+        mpr(jtrans("You can't grasp things well enough to throw them."));
         return;
     }
 
-    int slot = prompt_invent_item("Quiver which item? (- for none, * to show all)",
+    int slot = prompt_invent_item(jtransc("Quiver which item? (- for none, * to show all)"),
                                   MT_INVLIST,
                                   OSEL_THROWABLE, true, true, true, '-',
                                   -1, nullptr, OPER_QUIVER, false);
@@ -189,12 +190,9 @@ void choose_item_for_quiver()
         ammo_t t = _get_weapon_ammo_type(you.weapon());
         you.m_quiver->empty_quiver(t);
 
-        mprf("Reset %s quiver to default.",
-             t == AMMO_THROW    ? "throwing" :
-             t == AMMO_BLOWGUN  ? "blowgun" :
-             t == AMMO_SLING    ? "sling" :
-             t == AMMO_BOW      ? "bow" :
-                                  "crossbow");
+        mprf(jtransc("Reset %s quiver to default."),
+             t == AMMO_THROW ? "投擲" : "射撃");
+                                
         return;
     }
     else
@@ -203,7 +201,7 @@ void choose_item_for_quiver()
         {
             if (you.equip[i] == slot)
             {
-                mpr("You can't quiver worn items.");
+                mpr(jtrans("You can't quiver worn items."));
                 return;
             }
         }
