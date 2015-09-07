@@ -17,6 +17,7 @@
 #include "artefact.h"
 #include "cloud.h"
 #include "coordit.h"
+#include "database.h"
 #include "decks.h"
 #include "directn.h"
 #include "dungeon.h"
@@ -2143,7 +2144,7 @@ bool evoke_item(int slot, bool check_range)
 {
     if (you.form == TRAN_WISP)
     {
-        mpr("You cannot evoke items in this form.");
+        mpr(jtrans("You cannot evoke items in this form."));
         return false;
     }
 
@@ -2158,16 +2159,16 @@ bool evoke_item(int slot, bool check_range)
     }
     else if (player_mutation_level(MUT_NO_ARTIFICE) && !reaching)
     {
-        mpr("You cannot evoke magical items.");
+        mpr(jtrans("You cannot evoke magical items."));
         return false;
     }
 
     if (slot == -1)
     {
-        slot = prompt_invent_item("Evoke which item? (* to show all)",
-                                   MT_INVLIST,
-                                   OSEL_EVOKABLE, true, true, true, 0, -1,
-                                   nullptr, OPER_EVOKE);
+        slot = prompt_invent_item(jtransc("Evoke which item? (* to show all)"),
+                                  MT_INVLIST,
+                                  OSEL_EVOKABLE, true, true, true, 0, -1,
+                                  nullptr, OPER_EVOKE);
 
         if (prompt_failed(slot))
             return false;
@@ -2271,12 +2272,12 @@ bool evoke_item(int slot, bool check_range)
 #endif
                 )
         {
-            mpr("Your reserves of magic are already full.");
+            mpr(jtrans("Your reserves of magic are already full."));
             return false;
         }
         else if (x_chance_in_y(you.skill(SK_EVOCATIONS, 100) + 1100, 4000))
         {
-            mpr("You channel some magical energy.");
+            mpr(jtrans("You channel some magical energy."));
             inc_mp(1 + random2(3));
             make_hungry(50, false, true);
             pract = 1;

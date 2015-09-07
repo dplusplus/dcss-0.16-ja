@@ -209,6 +209,28 @@ Sif Muna frowns upon the destroying of books.
 
 (M)この呪文を記憶する。
 %%%%
+############################## evoke.cc ##############################
+%%%%
+You cannot evoke items in this form.
+
+現在の形態ではアイテムを発動できない。
+%%%%
+You cannot evoke magical items.
+
+あなたは魔法のアイテムを発動できない。
+%%%%
+Evoke which item? (* to show all)
+
+どのアイテムを発動させますか？ (* で全アイテムから選択)
+%%%%
+Your reserves of magic are already full.
+
+あなたの魔力は既にいっぱいだ。
+%%%%
+You channel some magical energy.
+
+あなたはいくらか魔力を手にした。
+%%%%
 ############################## invent.cc ##############################
 %%%%
 %d/%d slots
