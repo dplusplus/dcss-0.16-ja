@@ -25,6 +25,30 @@ Press: ? - help
 
 , 方向 - カーソル移動
 %%%%
+There's something in the way.
+
+その方向には何かがある。
+%%%%
+That would be overly suicidal.
+
+それは自殺的だ。
+%%%%
+Really target yourself?
+
+本当に自分自身を狙いますか？
+%%%%
+Sorry, you can't target yourself.
+
+残念ながら、自分自身を標的にできない。
+%%%%
+Are you sure you want to fizzle?
+
+本当に取りやめますか？
+%%%%
+Sorry, you can't target what you can't see.
+
+残念ながら、見えないところを標的にはできない。
+%%%%
 Disturbance
 
 障害物

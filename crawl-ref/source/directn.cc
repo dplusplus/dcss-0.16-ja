@@ -980,9 +980,9 @@ bool direction_chooser::move_is_ok() const
         if (!cell_see_cell(you.pos(), target(), LOS_NO_TRANS))
         {
             if (you.see_cell(target()))
-                mprf(MSGCH_EXAMINE_FILTER, "There's something in the way.");
+                mpr_nojoin(MSGCH_EXAMINE_FILTER, jtrans("There's something in the way."));
             else
-                mprf(MSGCH_EXAMINE_FILTER, "Sorry, you can't target what you can't see.");
+                mpr_nojoin(MSGCH_EXAMINE_FILTER, jtrans("Sorry, you can't target what you can't see."));
             return false;
         }
 
@@ -1001,16 +1001,16 @@ bool direction_chooser::move_is_ok() const
             {
                 if (!may_target_self && (cancel_at_self || Options.allow_self_target == CONFIRM_CANCEL))
                 {
-                    mprf(MSGCH_EXAMINE_FILTER, "That would be overly suicidal.");
+                    mpr_nojoin(MSGCH_EXAMINE_FILTER, jtrans("That would be overly suicidal."));
                     return false;
                 }
                 else if (Options.allow_self_target != CONFIRM_NONE)
-                    return yesno("Really target yourself?", false, 'n');
+                    return yesno(jtransc("Really target yourself?"), false, 'n');
             }
 
             if (cancel_at_self)
             {
-                mprf(MSGCH_EXAMINE_FILTER, "Sorry, you can't target yourself.");
+                mpr_nojoin(MSGCH_EXAMINE_FILTER, jtrans("Sorry, you can't target yourself."));
                 return false;
             }
         }
@@ -1018,7 +1018,7 @@ bool direction_chooser::move_is_ok() const
 
     // Some odd cases
     if (!moves.isValid && !moves.isCancel)
-        return yesno("Are you sure you want to fizzle?", false, 'n');
+        return yesno(jtransc("Are you sure you want to fizzle?"), false, 'n');
 
     return true;
 }
