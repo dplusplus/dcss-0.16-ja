@@ -2096,12 +2096,8 @@ void get_feature_desc(const coord_def &pos, describe_info &inf)
     string db_name   = feat == DNGN_ENTER_SHOP ? "a shop" : desc_en;
     string long_desc = getLongDescription(db_name);
 
-    inf.title = uppercase_first(desc);
-    if (!ends_with(desc, ".") && !ends_with(desc, "!")
-        && !ends_with(desc, "?"))
-    {
-        inf.title += ".";
-    }
+    inf.title = desc + string(max(0, get_number_of_cols() - strwidth(desc) - strwidth(desc_en) - 1),
+                              ' ') + desc_en;
 
     // If we couldn't find a description in the database then see if
     // the feature's base name is different.
@@ -2895,7 +2891,11 @@ static int _get_spell_description(const spell_type spell,
 {
     description.reserve(500);
 
-    description  = tagged_jtrans("[spell]", spell_title(spell));
+    description = tagged_jtrans("[spell]", spell_title(spell));
+    description = description + string(max(0, get_number_of_cols()
+                                           - strwidth(description)
+                                           - strwidth(spell_title(spell)) - 1),
+                                       ' ') + spell_title(spell);
     description += "\n\n";
     const string long_descrip = getLongDescription(string(spell_title(spell))
                                                    + " spell");
@@ -3758,10 +3758,28 @@ static string _serpent_of_hell_flavour(monster_type m)
 void get_monster_db_desc(const monster_info& mi, describe_info &inf,
                          bool &has_stat_desc, bool force_seen)
 {
+    string desc, desc_en;
     if (inf.title.empty())
-        inf.title = getMiscString(mi.common_name(DESC_DBNAME) + " title");
+    {
+        auto tmplang = Options.lang_name;
+
+        desc = getMiscString(mi.common_name(DESC_DBNAME) + " title");
+        Options.lang_name = "en";
+        desc_en = getMiscString(mi.common_name_en(DESC_DBNAME) + " title");
+
+        Options.lang_name = tmplang;
+    }
+    if (desc_en.empty())
+    {
+        desc = mi.full_name(DESC_A, true);
+        desc_en = uppercase_first(mi.full_name_en(DESC_A, true));
+    }
+
     if (inf.title.empty())
-        inf.title = uppercase_first(mi.full_name(DESC_A, true)) + ".";
+        inf.title = desc + string(max(0, get_number_of_cols() - strwidth(desc)
+                                                              - strwidth(desc_en) - 1),
+                                  ' ') + desc_en;
+    inf.body << "\n";
 
     string db_name;
 
