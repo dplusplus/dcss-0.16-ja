@@ -2003,7 +2003,7 @@ static spret_type _phantom_mirror()
 
     if (!spell_direction(spd, beam, DIR_TARGET, TARG_ANY,
                          LOS_RADIUS, false, true, false, nullptr,
-                         "Aiming: <white>Phantom Mirror</white>", true,
+                         jtransc("Aiming: <white>Phantom Mirror</white>"), true,
                          &tgt))
     {
         return SPRET_ABORT;
@@ -2012,24 +2012,24 @@ static spret_type _phantom_mirror()
     if (!victim || !you.can_see(victim))
     {
         if (beam.target == you.pos())
-            mpr("You can't use the mirror on yourself.");
+            mpr(jtrans("You can't use the mirror on yourself."));
         else
-            mpr("You can't see anything there to clone.");
+            mpr(jtrans("You can't see anything there to clone."));
         return SPRET_ABORT;
     }
 
     if (!actor_is_illusion_cloneable(victim))
     {
-        mpr("The mirror can't reflect that.");
+        mpr(jtrans("The mirror can't reflect that."));
         return SPRET_ABORT;
     }
 
     if (player_will_anger_monster(victim))
     {
         if (player_mutation_level(MUT_NO_LOVE))
-            mpr("The reflection would only feel hate for you!");
+            mpr(jtrans("The reflection would only feel hate for you!"));
         else
-            simple_god_message(" forbids your reflecting this monster.");
+            simple_god_message(jtransc(" forbids your reflecting this monster."));
         return SPRET_ABORT;
     }
 
@@ -2057,7 +2057,7 @@ static spret_type _phantom_mirror()
     mon->behaviour = BEH_SEEK;
     set_nearest_monster_foe(mon);
 
-    mprf("You reflect %s with the mirror, and the mirror shatters!",
+    mprf(jtransc("You reflect %s with the mirror, and the mirror shatters!"),
          victim->name(DESC_THE).c_str());
 
     return SPRET_SUCCESS;

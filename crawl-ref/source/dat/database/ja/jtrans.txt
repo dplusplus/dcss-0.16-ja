@@ -347,6 +347,34 @@ The water rises up and takes form.
 
 水が持ち上がって動き出した。
 %%%%
+Aiming: <white>Phantom Mirror</white>
+
+発動: <white>幻影の鏡</white>
+%%%%
+You can't use the mirror on yourself.
+
+自分自身に鏡を使うことはできない。
+%%%%
+You can't see anything there to clone.
+
+鏡に映す対象が見当たらない。
+%%%%
+The mirror can't reflect that.
+
+鏡はそれを映すことができない。
+%%%%
+The reflection would only feel hate for you!
+
+鏡に映しても反感を買うだけだ！
+%%%%
+forbids your reflecting this monster.
+
+はモンスターを鏡に映すのを禁じた。
+%%%%
+You reflect %s with the mirror, and the mirror shatters!
+
+あなたが%sの姿を映すと、鏡は粉々に砕けた！
+%%%%
 You cannot evoke items in this form.
 
 現在の形態ではアイテムを発動できない。
