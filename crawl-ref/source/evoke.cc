@@ -324,26 +324,26 @@ static bool _check_crystal_ball()
 #endif
     if (you.intel() <= 1)
     {
-        mpr("You lack the intelligence to focus on the shapes in the ball.");
+        mpr(jtrans("You lack the intelligence to focus on the shapes in the ball."));
         return false;
     }
 
     if (you.confused())
     {
-        mpr("You are unable to concentrate on the shapes in the ball.");
+        mpr(jtrans("You are unable to concentrate on the shapes in the ball."));
         return false;
     }
 
     if (you.magic_points == you.max_magic_points)
     {
-        mpr("With no energy to recover, the crystal ball of energy is "
-            "presently useless to you.");
+        mpr(jtrans("With no energy to recover, the crystal ball of energy is "
+                   "presently useless to you."));
         return false;
     }
 
     if (you.skill(SK_EVOCATIONS) < 2)
     {
-        mpr("You lack the skill to use this item.");
+        mpr(jtrans("You lack the skill to use this item."));
         return false;
     }
 

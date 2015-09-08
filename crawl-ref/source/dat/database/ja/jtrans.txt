@@ -227,6 +227,22 @@ Nothing answers your call.
 
 あなたの呼びかけに応える者はいなかった。
 %%%%
+You lack the intelligence to focus on the shapes in the ball.
+
+あなたは水晶玉に向かって集中するには知性に欠けている。
+%%%%
+You are unable to concentrate on the shapes in the ball.
+
+あなたは水晶玉に向かって集中することができない。
+%%%%
+With no energy to recover, the crystal ball of energy is presently useless to you.
+
+既に魔力がいっぱいなので、魔力の水晶球を使っても今のところ無意味だ。
+%%%%
+You lack the skill to use this item.
+
+あなたはそのアイテムを使うにはスキルが足らない。
+%%%%
 You have no means to grasp a wand firmly enough.
 
 あなたにはしっかりとワンドを握る手段がない。
