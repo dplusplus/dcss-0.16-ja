@@ -137,6 +137,7 @@ Blinkbolt
 %%%%
 [spell]Bolt of Inaccuracy
 
+# rod of inaccuracy
 不正確の矢
 %%%%
 [spell]Bolt of Magma
@@ -429,6 +430,7 @@ Ephemeral Infusion
 %%%%
 [spell]Explosive Bolt
 
+# rod of ignition
 爆裂の矢
 %%%%
 [spell]Flay
@@ -845,6 +847,7 @@ Quicksilver Bolt
 %%%%
 [spell]Random Bolt
 
+# rod of destruction
 無作為の矢
 %%%%
 [spell]Recall
@@ -874,7 +877,8 @@ Sap Magic
 %%%%
 [spell]Scattershot
 
-Scattershot
+# iron rod
+散弾
 %%%%
 [spell]Seal Doors
 
@@ -1233,6 +1237,7 @@ Throw Barbs
 %%%%
 [spell]Thunderbolt
 
+# lightning rod
 雷霆の矢
 %%%%
 [spell]Tomb of Doroklohe
