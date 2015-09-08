@@ -2290,7 +2290,7 @@ bool evoke_item(int slot, bool check_range)
         did_work = true; // easier to do it this way for misc items
 
         if (player_mutation_level(MUT_NO_ARTIFICE))
-            return mpr("You cannot evoke magical items."), false;
+            return mpr(jtrans("You cannot evoke magical items.")), false;
 
         if (is_deck(item))
         {
@@ -2311,7 +2311,7 @@ bool evoke_item(int slot, bool check_range)
         case MISC_FAN_OF_GALES:
             if (!evoker_is_charged(item))
             {
-                mpr("That is presently inert.");
+                mpr(jtrans("That is presently inert."));
                 return false;
             }
             wind_blast(&you, you.skill(SK_EVOCATIONS, 10), coord_def());
@@ -2323,7 +2323,7 @@ bool evoke_item(int slot, bool check_range)
         case MISC_LAMP_OF_FIRE:
             if (!evoker_is_charged(item))
             {
-                mpr("That is presently inert.");
+                mpr(jtrans("That is presently inert."));
                 return false;
             }
             if (_lamp_of_fire())
@@ -2339,7 +2339,7 @@ bool evoke_item(int slot, bool check_range)
         case MISC_STONE_OF_TREMORS:
             if (!evoker_is_charged(item))
             {
-                mpr("That is presently inert.");
+                mpr(jtrans("That is presently inert."));
                 return false;
             }
             if (_stone_of_tremors())
@@ -2354,7 +2354,7 @@ bool evoke_item(int slot, bool check_range)
         case MISC_PHIAL_OF_FLOODS:
             if (!evoker_is_charged(item))
             {
-                mpr("That is presently inert.");
+                mpr(jtrans("That is presently inert."));
                 return false;
             }
             if (_phial_of_floods())
@@ -2369,7 +2369,7 @@ bool evoke_item(int slot, bool check_range)
         case MISC_HORN_OF_GERYON:
             if (!evoker_is_charged(item))
             {
-                mpr("That is presently inert.");
+                mpr(jtrans("That is presently inert."));
                 return false;
             }
             if (_evoke_horn_of_geryon(item))
@@ -2404,7 +2404,7 @@ bool evoke_item(int slot, bool check_range)
             break;
 
         case MISC_QUAD_DAMAGE:
-            mpr("QUAD DAMAGE!");
+            mpr(jtrans("QUAD DAMAGE!"));
             you.duration[DUR_QUAD_DAMAGE] = 30 * BASELINE_DELAY;
             ASSERT(in_inventory(item));
             dec_inv_item_quantity(item.link, 1);

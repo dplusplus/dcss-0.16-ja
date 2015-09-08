@@ -442,7 +442,15 @@ Your reserves of magic are already full.
 %%%%
 You channel some magical energy.
 
-あなたはいくらか魔力を手にした。
+あなたはいくらか魔力を補充した。
+%%%%
+That is presently inert.
+
+それは今のところ使用不能だ。
+%%%%
+QUAD DAMAGE!
+
+ダメージが4倍になった！
 %%%%
 ############################## invent.cc ##############################
 %%%%
