@@ -390,12 +390,12 @@ bool disc_of_storms()
     }
     if (x_chance_in_y(fail_rate, 100))
     {
-        mpr("The disc glows for a moment, then fades.");
+        mpr(jtrans("The disc glows for a moment, then fades."));
         return false;
     }
     if (x_chance_in_y(fail_rate, 100))
     {
-        mpr("Little bolts of electricity crackle over the disc.");
+        mpr(jtrans("Little bolts of electricity crackle over the disc."));
         return false;
     }
 
@@ -403,7 +403,7 @@ bool disc_of_storms()
         = roll_dice(2, 1 + you.skill_rdiv(SK_EVOCATIONS, 1, 7));
     ASSERT(disc_count);
 
-    mpr("The disc erupts in an explosion of electricity!");
+    mpr(jtrans("The disc erupts in an explosion of electricity!"));
     const int range = you.skill_rdiv(SK_EVOCATIONS, 1, 3) + 5; // 5--14
     const int power = 30 + you.skill(SK_EVOCATIONS, 2); // 30-84
     for (int i = 0; i < disc_count; ++i)

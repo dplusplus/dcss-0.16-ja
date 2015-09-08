@@ -243,6 +243,18 @@ You lack the skill to use this item.
 
 あなたはそのアイテムを使うにはスキルが足らない。
 %%%%
+The disc glows for a moment, then fades.
+
+円盤は一瞬だけ輝いたが、すぐに光は消えた。
+%%%%
+Little bolts of electricity crackle over the disc.
+
+小さな電光が円盤の周りでバチバチと爆ぜた。
+%%%%
+The disc erupts in an explosion of electricity!
+
+円盤は電気の爆発を放射した！
+%%%%
 You have no means to grasp a wand firmly enough.
 
 あなたにはしっかりとワンドを握る手段がない。
