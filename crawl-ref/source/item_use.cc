@@ -822,7 +822,7 @@ bool takeoff_armour(int item)
 
     if (invitem.base_type != OBJ_ARMOUR)
     {
-        mpr("You aren't wearing that!");
+        mpr(jtrans("You aren't wearing that!"));
         return false;
     }
 
@@ -835,8 +835,8 @@ bool takeoff_armour(int item)
     const equipment_type slot = get_armour_slot(invitem);
     if (item == you.equip[slot] && you.melded[slot])
     {
-        mprf("%s is melded into your body!",
-             invitem.name(DESC_YOUR).c_str());
+        mprf(jtransc("%s is melded into your body!"),
+             invitem.name(DESC_PLAIN).c_str());
         return false;
     }
 
@@ -846,7 +846,7 @@ bool takeoff_armour(int item)
             return do_wear_armour(item, true);
         else
         {
-            mpr("You aren't wearing that object!");
+            mpr(jtrans("You aren't wearing that object!"));
             return false;
         }
     }
@@ -854,7 +854,7 @@ bool takeoff_armour(int item)
     // If we get here, we're wearing the item.
     if (invitem.cursed())
     {
-        mprf("%s is stuck to your body!", invitem.name(DESC_YOUR).c_str());
+        mprf(jtransc("%s is stuck to your body!"), invitem.name(DESC_PLAIN).c_str());
         return false;
     }
 
@@ -872,7 +872,7 @@ bool takeoff_armour(int item)
     case EQ_BOOTS:
         if (item != you.equip[slot])
         {
-            mpr("You aren't wearing that!");
+            mpr(jtrans("You aren't wearing that!"));
             return false;
         }
         break;
