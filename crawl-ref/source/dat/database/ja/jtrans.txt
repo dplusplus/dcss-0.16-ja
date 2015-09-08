@@ -2074,6 +2074,14 @@ Take off which item?
 
 どれを脱ぎますか？
 %%%%
+Clearing travel trail.
+
+自動探索の足跡を消去した。
+%%%%
+Clearing level map.
+
+階層のマップを消去した。
+%%%%
 Autopickup is now %s.
 
 アイテム自動拾いを%sしました。

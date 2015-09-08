@@ -1876,12 +1876,12 @@ static void _do_clear_map()
 {
     if (Options.show_travel_trail && env.travel_trail.size())
     {
-        mpr("Clearing travel trail.");
+        mpr(jtrans("Clearing travel trail."));
         clear_travel_trail();
     }
     else
     {
-        mpr("Clearing level map.");
+        mpr(jtrans("Clearing level map."));
         clear_map();
         crawl_view.set_player_at(you.pos());
     }
