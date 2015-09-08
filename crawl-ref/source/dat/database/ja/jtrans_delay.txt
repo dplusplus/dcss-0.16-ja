@@ -83,3 +83,11 @@ comes into view.
 
 に遭遇した。
 %%%%
+Deactivating autopickup; reactivate with <w>%s</w>.
+
+アイテム自動拾いを停止しました: <w>%s</w> キーで再開できます。
+%%%%
+Reactivating autopickup.
+
+アイテム自動拾いを再開しました。
+%%%%

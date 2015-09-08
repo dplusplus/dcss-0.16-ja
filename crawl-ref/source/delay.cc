@@ -1559,7 +1559,7 @@ void autotoggle_autopickup(bool off)
         {
             Options.autopickup_on = -1;
             mprf(MSGCH_WARN,
-                 "Deactivating autopickup; reactivate with <w>%s</w>.",
+                 jtransc("Deactivating autopickup; reactivate with <w>%s</w>."),
                  command_to_string(CMD_TOGGLE_AUTOPICKUP).c_str());
         }
         if (crawl_state.game_is_hints())
@@ -1571,7 +1571,7 @@ void autotoggle_autopickup(bool off)
     else if (Options.autopickup_on < 0) // was turned off automatically
     {
         Options.autopickup_on = 1;
-        mprf(MSGCH_WARN, "Reactivating autopickup.");
+        mpr_nojoin(MSGCH_WARN, jtrans("Reactivating autopickup."));
     }
 }
 
