@@ -275,6 +275,14 @@ This wand has no charges.
 
 このワンドには魔力が残っていない。
 %%%%
+Zapping:
+
+発動:
+%%%%
+<lightred>(will waste charges)</lightred>
+
+<lightred>(余分に残り回数を消耗します)</lightred>
+%%%%
 %s prevents hasting.
 
 %sは加速するのを妨げた。
