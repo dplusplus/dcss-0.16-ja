@@ -375,6 +375,15 @@ You reflect %s with the mirror, and the mirror shatters!
 
 あなたが%sの姿を映すと、鏡は粉々に砕けた！
 %%%%
+The rod doesn't have enough magic points.
+
+ロッドには十分な魔力が込められていない。
+%%%%
+You can't see any susceptible monsters within range! (Use <w>V</w> to cast anyway.)
+
+射程距離内にはモンスターが見当たらない！
+(構わずに使いたい場合、<w>V</w> コマンドを使ってください)
+%%%%
 You cannot evoke items in this form.
 
 現在の形態ではアイテムを発動できない。

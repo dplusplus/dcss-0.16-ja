@@ -1303,8 +1303,8 @@ spret_type your_spells(spell_type spell, int powc,
                                    eff_pow);
         }
 
-        string title = "Aiming: <white>";
-        title += spell_title(spell);
+        string title = evoked ? "発動: <white>" : "詠唱: <white>";
+        title += tagged_jtrans("[spell]", spell_title(spell));
         title += "</white>";
 
         if (!spell_direction(spd, beam, dir, targ, range,

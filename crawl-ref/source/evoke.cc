@@ -2097,7 +2097,7 @@ static bool _rod_spell(item_def& irod, bool check_range)
 
     if (irod.plus < mana)
     {
-        mpr("The rod doesn't have enough magic points.");
+        mpr(jtrans("The rod doesn't have enough magic points."));
         crawl_state.zero_turns_taken();
         // Don't lose a turn for trying to evoke without enough MP - that's
         // needlessly cruel for an honest error.
@@ -2108,8 +2108,8 @@ static bool _rod_spell(item_def& irod, bool check_range)
     {
         // Abort if there are no hostiles within range, but flash the range
         // markers for a short while.
-        mpr("You can't see any susceptible monsters within range! "
-            "(Use <w>V</w> to cast anyway.)");
+        mpr(jtrans("You can't see any susceptible monsters within range! "
+                   "(Use <w>V</w> to cast anyway.)"));
 
         if (Options.use_animations & UA_RANGE)
         {
