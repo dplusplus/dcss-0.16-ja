@@ -211,6 +211,22 @@ Sif Muna frowns upon the destroying of books.
 %%%%
 ############################## evoke.cc ##############################
 %%%%
+You can't produce a sound!
+
+あなたは音を立てることができない！
+%%%%
+You produce a hideous howling noise!
+
+あなたは忌まわしくも凄まじい騒音を吹き鳴らした！
+%%%%
+%s is enraged by your holy aura!
+
+%sはあなたの神聖なるオーラに激怒した！
+%%%%
+Nothing answers your call.
+
+あなたの呼びかけに応える者はいなかった。
+%%%%
 You have no means to grasp a wand firmly enough.
 
 あなたにはしっかりとワンドを握る手段がない。

@@ -274,11 +274,11 @@ static bool _evoke_horn_of_geryon(item_def &item)
 
     if (silenced(you.pos()))
     {
-        mpr("You can't produce a sound!");
+        mpr(jtrans("You can't produce a sound!"));
         return false;
     }
 
-    mprf(MSGCH_SOUND, "You produce a hideous howling noise!");
+    mpr_nojoin(MSGCH_SOUND, jtrans("You produce a hideous howling noise!"));
     did_god_conduct(DID_UNHOLY, 3);
     int num = 1;
     if (you.skill(SK_EVOCATIONS, 10) + random2(90) > 130)
@@ -303,12 +303,12 @@ static bool _evoke_horn_of_geryon(item_def &item)
             created = true;
         if (mon && will_anger)
         {
-            mprf("%s is enraged by your holy aura!",
+            mprf(jtransc("%s is enraged by your holy aura!"),
                  mon->name(DESC_THE).c_str());
         }
     }
     if (!created)
-        mpr("Nothing answers your call.");
+        mpr(jtrans("Nothing answers your call."));
     return true;
 }
 
