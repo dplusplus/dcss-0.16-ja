@@ -2027,7 +2027,7 @@ void process_command(command_type cmd)
             Options.autopickup_on = 1;
         else
             Options.autopickup_on = 0;
-        mprf("Autopickup is now %s.", Options.autopickup_on > 0 ? "on" : "off");
+        mprf(jtransc("Autopickup is now %s."), Options.autopickup_on > 0 ? "開始" : "停止");
         break;
 
     case CMD_TOGGLE_VIEWPORT_MONSTER_HP: toggle_viewport_monster_hp(); break;

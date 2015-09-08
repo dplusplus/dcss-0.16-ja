@@ -2074,6 +2074,10 @@ Take off which item?
 
 どれを脱ぎますか？
 %%%%
+Autopickup is now %s.
+
+アイテム自動拾いを%sしました。
+%%%%
 Save game and return to main manu?
 
 セーブしてメインメニューに戻りますか？
