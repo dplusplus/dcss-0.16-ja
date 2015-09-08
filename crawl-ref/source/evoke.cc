@@ -1935,7 +1935,7 @@ static bool _phial_of_floods()
 
     if (spell_direction(target, beam, DIR_NONE, TARG_HOSTILE,
                         LOS_RADIUS, true, true, false, nullptr,
-                        "Aim the phial where?"))
+                        jtransc("Aim the phial where?")))
     {
         if (you.confused())
         {
@@ -1981,7 +1981,7 @@ static bool _phial_of_floods()
                 created = true;
         }
         if (created)
-            mpr("The water rises up and takes form.");
+            mpr(jtrans("The water rises up and takes form."));
 
         return true;
     }

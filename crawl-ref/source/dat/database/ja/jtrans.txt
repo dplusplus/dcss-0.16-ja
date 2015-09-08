@@ -339,6 +339,14 @@ The rubble rises up and takes form.
 
 瓦礫が集まって生命が吹き込まれた。
 %%%%
+Aim the phial where?
+
+小瓶をどちらに向けますか？
+%%%%
+The water rises up and takes form.
+
+水が持ち上がって動き出した。
+%%%%
 You cannot evoke items in this form.
 
 現在の形態ではアイテムを発動できない。
