@@ -1835,7 +1835,7 @@ static bool _stone_of_tremors()
             rubble_pos.push_back(*di);
     }
 
-    mpr("The dungeon trembles and rubble falls from the walls!");
+    mpr(jtrans("The dungeon trembles and rubble falls from the walls!"));
     noisy(15, you.pos());
 
     bolt rubble;
@@ -1876,7 +1876,7 @@ static bool _stone_of_tremors()
     for (coord_def pos : door_pos)
     {
         destroy_wall(pos);
-        mpr("The door collapses!");
+        mpr(jtrans("The door collapses!"));
     }
 
     // Collapse some walls and mark collapsed walls as valid elemental positions.
@@ -1911,7 +1911,7 @@ static bool _stone_of_tremors()
             created = true;
     }
     if (created)
-        mpr("The rubble rises up and takes form.");
+        mpr(jtrans("The rubble rises up and takes form."));
 
     return true;
 }

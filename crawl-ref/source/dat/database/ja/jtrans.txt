@@ -327,6 +327,18 @@ The winds coalesce and take form.
 
 風が集まって具現化した。
 %%%%
+The dungeon trembles and rubble falls from the walls!
+
+迷宮が揺れ、壁が崩れ落ちた。
+%%%%
+The door collapses!
+
+扉が崩れた！
+%%%%
+The rubble rises up and takes form.
+
+瓦礫が集まって生命が吹き込まれた。
+%%%%
 You cannot evoke items in this form.
 
 現在の形態ではアイテムを発動できない。
