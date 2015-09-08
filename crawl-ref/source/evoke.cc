@@ -1463,14 +1463,14 @@ static bool _lamp_of_fire()
     const int pow = 8 + you.skill_rdiv(SK_EVOCATIONS, 9, 4);
     if (spell_direction(target, base_beam, DIR_TARGET, TARG_HOSTILE, 8,
                         true, true, false, nullptr,
-                        "Aim the lamp in which direction?", true, nullptr))
+                        jtransc("Aim the lamp in which direction?"), true, nullptr))
     {
         if (you.confused())
             target.confusion_fuzz();
 
         did_god_conduct(DID_FIRE, 6 + random2(3));
 
-        mpr("The flames dance!");
+        mpr(jtrans("The flames dance!"));
 
         vector<bolt> beams;
         vector<coord_def> elementals;

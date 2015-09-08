@@ -295,6 +295,14 @@ You are suffused with power!
 
 あなたは魔力に満たされた！
 %%%%
+Aim the lamp in which direction?
+
+ランプをどの方向に向けますか？
+%%%%
+The flames dance!
+
+炎が舞い踊った！
+%%%%
 You cannot evoke items in this form.
 
 現在の形態ではアイテムを発動できない。
