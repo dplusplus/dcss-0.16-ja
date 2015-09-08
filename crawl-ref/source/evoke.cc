@@ -1722,26 +1722,26 @@ void wind_blast(actor* agent, int pow, coord_def target, bool card)
         const string source = card ? "card" : "fan";
 
         if (pow > 120)
-            mprf("A mighty gale blasts forth from the %s!", source.c_str());
+            mprf(jtransc("A mighty gale blasts forth from the %s!"), jtransc(source));
         else
-            mprf("A fierce wind blows from the %s.", source.c_str());
+            mprf(jtransc("A fierce wind blows from the %s."), jtransc(source));
     }
 
     noisy(8, agent->pos());
 
     if (player_affected)
-        mpr("You are blown backwards!");
+        mpr(jtrans("You are blown backwards!"));
 
     if (!affected_monsters.empty())
     {
         const string message =
-            make_stringf("%s %s blown away by the wind.",
+            make_stringf(jtransc("%s %s blown away by the wind."),
                          affected_monsters.describe().c_str(),
                          conjugate_verb("be", affected_monsters.count() > 1).c_str());
         if (strwidth(message) < get_number_of_cols() - 2)
             mpr(message);
         else
-            mpr("The monsters around you are blown away!");
+            mpr(jtrans("The monsters around you are blown away!"));
     }
 
     for (auto it : collisions)
@@ -1782,7 +1782,7 @@ static void _fan_of_gales_elementals()
             created = true;
     }
     if (created)
-        mpr("The winds coalesce and take form.");
+        mpr(jtrans("The winds coalesce and take form."));
 }
 
 static bool _is_rock(dungeon_feature_type feat)

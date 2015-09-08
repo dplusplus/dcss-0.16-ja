@@ -303,6 +303,30 @@ The flames dance!
 
 炎が舞い踊った！
 %%%%
+A mighty gale blasts forth from the %s!
+
+%sから強烈な突風が吹き出した！
+%%%%
+A fierce wind blows from the %s.
+
+%sから激しい風が吹き出した。
+%%%%
+You are blown backwards!
+
+あなたは後方に吹き飛ばされた！
+%%%%
+%s %s blown away by the wind.
+
+%sは風によって吹き飛ばされた。
+%%%%
+The monsters around you are blown away!
+
+あなたの周囲にいるモンスターは吹き飛ばされた！
+%%%%
+The winds coalesce and take form.
+
+風が集まって具現化した。
+%%%%
 You cannot evoke items in this form.
 
 現在の形態ではアイテムを発動できない。
