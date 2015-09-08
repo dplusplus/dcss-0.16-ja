@@ -1506,9 +1506,9 @@ bool remove_ring(int slot, bool announce)
     if (!has_jewellery)
     {
         if (has_melded)
-            mpr("You aren't wearing any unmelded rings or amulets.");
+            mpr(jtrans("You aren't wearing any unmelded rings or amulets."));
         else
-            mpr("You aren't wearing any rings or amulets.");
+            mpr(jtrans("You aren't wearing any rings or amulets."));
 
         return false;
     }
@@ -1522,7 +1522,7 @@ bool remove_ring(int slot, bool announce)
     if (hand_used == EQ_NONE)
     {
         const int equipn =
-            (slot == -1)? prompt_invent_item("Remove which piece of jewellery?",
+            (slot == -1)? prompt_invent_item(jtransc("Remove which piece of jewellery?"),
                                              MT_INVLIST,
                                              OBJ_JEWELLERY, true, true, true,
                                              0, -1, nullptr, OPER_REMOVE,
@@ -1535,24 +1535,24 @@ bool remove_ring(int slot, bool announce)
         hand_used = item_equip_slot(you.inv[equipn]);
         if (hand_used == EQ_NONE)
         {
-            mpr("You aren't wearing that.");
+            mpr(jtrans("You aren't wearing that."));
             return false;
         }
         else if (you.inv[equipn].base_type != OBJ_JEWELLERY)
         {
-            mpr("That isn't a piece of jewellery.");
+            mpr(jtrans("That isn't a piece of jewellery."));
             return false;
         }
     }
 
     if (you.equip[hand_used] == -1)
     {
-        mpr("I don't think you really meant that.");
+        mpr(jtrans("I don't think you really meant that."));
         return false;
     }
     else if (you.melded[hand_used])
     {
-        mpr("You can't take that off while it's melded.");
+        mpr(jtrans("You can't take that off while it's melded."));
         return false;
     }
     else if (hand_used == EQ_AMULET
@@ -1561,7 +1561,7 @@ bool remove_ring(int slot, bool announce)
         // This can be removed in the future if more ring amulets are added.
         ASSERT(player_equip_unrand(UNRAND_FINGER_AMULET));
 
-        mpr("The amulet cannot be taken off without first removing the ring!");
+        mpr(jtrans("The amulet cannot be taken off without first removing the ring!"));
         return false;
     }
 
@@ -1576,11 +1576,11 @@ bool remove_ring(int slot, bool announce)
     {
         if (announce)
         {
-            mprf("%s is stuck to you!",
-                 you.inv[you.equip[hand_used]].name(DESC_YOUR).c_str());
+            mprf(jtransc("%s is stuck to you!"),
+                 you.inv[you.equip[hand_used]].name(DESC_PLAIN).c_str());
         }
         else
-            mpr("It's stuck to you!");
+            mpr(jtrans("It's stuck to you!"));
 
         set_ident_flags(you.inv[you.equip[hand_used]], ISFLAG_KNOW_CURSE);
         return false;
@@ -1592,7 +1592,7 @@ bool remove_ring(int slot, bool announce)
     if (!_safe_to_remove_or_wear(you.inv[ring_wear_2], true))
         return false;
 
-    mprf("You remove %s.", you.inv[ring_wear_2].name(DESC_YOUR).c_str());
+    mprf(jtransc("You remove %s."), you.inv[ring_wear_2].name(DESC_PLAIN).c_str());
 #ifdef USE_TILE_LOCAL
     const unsigned int old_talents = your_talents(false).size();
 #endif

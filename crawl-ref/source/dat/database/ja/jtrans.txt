@@ -333,6 +333,50 @@ Put on which piece of jewellery?
 
 どの装飾品を身につけますか？
 %%%%
+You aren't wearing any unmelded rings or amulets.
+
+あなたは指輪や護符を身につけていないか、体に融合して外せない。
+%%%%
+You aren't wearing any rings or amulets.
+
+あなたは指輪や護符を身につけていない。
+%%%%
+Remove which piece of jewellery?
+
+どの装飾品を外しますか？
+%%%%
+You aren't wearing that.
+
+あなたはそれを身につけていない。
+%%%%
+That isn't a piece of jewellery.
+
+それは装飾品ではない。
+%%%%
+I don't think you really meant that.
+
+あなたが本当にそうしたいとは思えない。
+%%%%
+You can't take that off while it's melded.
+
+あなたはそれが融合している間取り外すことができない。
+%%%%
+The amulet cannot be taken off without first removing the ring!
+
+まず指輪を外してからでないとその護符は外せない！
+%%%%
+%s is stuck to you!
+
+%sはあなたから離れない！
+%%%%
+It's stuck to you!
+
+それはあなたから離れない！
+%%%%
+You remove %s.
+
+あなたは%sを外した。
+%%%%
 Use <w>e</w> to drain blood from corpses.
 
 死体から血を飲むには<w>e</w>atコマンドを使ってください。
@@ -3033,6 +3077,10 @@ Your demonic ancestry asserts itself...
 
 あなたの悪魔的な血統が顕在化した……
 %%%%
+You float gracefully downwards.
+
+あなたは優雅に下へと舞い降りていった。
+%%%%
 # player::shout_verb()より
 # ここでは叫び変異の強度によりshout < yell < screamとなるので
 # 他の文と語の対応が一貫しないが妥協
@@ -3336,6 +3384,18 @@ you unwield
 
 あなたが武器を外す
 %%%%
+seems less interested in you.
+
+はあなたへの興味が薄れたようだ。
+%%%%
+increases your offered prices.
+
+は値引きをやめた。
+%%%%
+%s leaches power out of you as you remove it.
+
+%sを取り外したため、神々のあなたへの興味が薄れた。
+%%%%
 You feel more attuned to fire.
 
 あなたはさらに火炎に同調した気がした。
@@ -3419,6 +3479,10 @@ You feel strangely static.
 Oops, that %s feels deathly cold.
 
 うわ！ この%sは凄まじく冷たい！
+%%%%
+Your magic begins regenerating once more.
+
+あなたの魔力は再び回復しはじめた。
 %%%%
 ############################## player-stat.cc ##############################
 %%%%
