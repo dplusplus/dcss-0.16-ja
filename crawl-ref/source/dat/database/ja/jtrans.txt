@@ -89,6 +89,10 @@ There isn't anything else to %sbutcher here.
 %%%%
 ############################## describe.cc ##############################
 %%%%
+Press '<w>!</w>' to toggle between the description and quote.
+
+解説と引用を切り替えるには '<w>!</w>' を押してください。
+%%%%
 (w)ield
 
 (w)手に持つ
@@ -208,6 +212,408 @@ Sif Muna frowns upon the destroying of books.
 (M)emorise this spell.
 
 (M)この呪文を記憶する。
+%%%%
+electricity
+
+電撃
+%%%%
+poison
+
+毒
+%%%%
+fire
+
+炎
+%%%%
+steam
+
+蒸気
+%%%%
+cold
+
+冷気
+%%%%
+acid
+
+酸
+%%%%
+rotting
+
+腐敗
+%%%%
+negative energy
+
+負のエネルギー
+%%%%
+harmless
+
+脅威ではない
+%%%%
+easy
+
+危険ではない
+%%%%
+dangerous
+
+危険
+%%%%
+extremely dangerous
+
+極めて危険
+%%%%
+deal extra acid damage
+
+酸の追加ダメージを与える
+%%%%
+blink self
+
+瞬間移動をする
+%%%%
+deal extra cold damage
+
+冷気の追加ダメージを与える
+%%%%
+cause confusion
+
+混乱させる攻撃をする
+%%%%
+drain strength
+
+腕力を奪う
+%%%%
+drain intelligence
+
+知力を奪う
+%%%%
+drain dexterity
+
+器用さを奪う
+%%%%
+drain strength, intelligence or dexterity
+
+腕力、知力、および器用さを奪う
+%%%%
+drain skills
+
+スキルを弱める攻撃をする
+%%%%
+cause electrocution
+
+感電させる
+%%%%
+deal extra fire damage
+
+炎の追加ダメージを与える
+%%%%
+cause hungering
+
+満腹度を減らす攻撃をする
+%%%%
+cause mutations
+
+変異させる攻撃をする
+%%%%
+cause paralysis
+
+麻痺させる
+%%%%
+cause poisoning
+
+毒に冒す
+%%%%
+cause strong poisoning through resistance
+
+耐性を無視して猛毒に冒す
+%%%%
+cause rotting
+
+体を腐敗させる攻撃
+%%%%
+drain health
+
+体力を奪う
+%%%%
+cause random powerful effects
+
+ランダムな効果をもたらす
+%%%%
+cause wild translocation effects
+
+歪曲の力をもたらす
+%%%%
+cause berserking
+
+狂乱化させる
+%%%%
+apply sticky flame
+
+焼夷の炎を浴びせる
+%%%%
+cause unpredictable effects
+
+予想もつかない効果をもたらす
+%%%%
+steal items
+
+アイテムを強奪する
+%%%%
+constrict
+
+拘束する
+%%%%
+deal damage from a distance
+
+離れた場所から攻撃する
+%%%%
+deal extra damage to undead and demons
+
+死者または悪魔に追加ダメージを与える
+%%%%
+drain magic
+
+魔力を奪う
+%%%%
+cause pain to the living
+
+生者に苦痛をもたらす
+%%%%
+ensnare with webbing
+
+網で絡めとる攻撃
+%%%%
+engulf with water
+
+水で包み込む
+%%%%
+deal pure fire damage
+
+純粋な炎のダメージを与える
+%%%%
+drain speed
+
+相手を減速させる
+%%%%
+reduce resistance to hostile enchantments
+
+魔法防御を軽減させる
+%%%%
+cause poisoning and weakness
+
+毒に冒して衰弱させる
+%%%%
+deal extra damage from the shadows
+
+影の中から追加ダメージを与える
+%%%%
+deal drowning damage
+
+溺れさせてダメージを与える
+%%%%
+deal extra fire damage and surround the defender with flames
+
+炎の追加ダメージを与えて相手を炎で包む
+%%%%
+cause corrosion
+
+相手を腐蝕させる
+%%%%
+drain speed and drain health
+
+相手を減速させ体力を奪う
+%%%%
+knock back the defender
+
+相手を突き飛ばす
+%%%%
+It may possess any of a vast number of diabolical powers.
+
+このモンスターはいくつかの悪魔的な能力を持っている。
+%%%%
+It has mastered any of a vast number of powerful spells.
+
+このモンスターはいくつかの強大な呪文を会得している。
+%%%%
+Select a spell to read its description.
+
+能力/呪文の解説文を読むには対応するキーを押してください。
+%%%%
+[adj]extremely slowly
+
+極めて遅く
+%%%%
+[adj]very slowly
+
+とても遅く
+%%%%
+[adj]slowly
+
+遅く
+%%%%
+[adj]extremely quickly
+
+極めて素早く
+%%%%
+[adj]very quickly
+
+とても素早く
+%%%%
+[adj]quickly
+
+素早く
+%%%%
+immune to
+
+で損傷を受けない。
+%%%%
+very resistant to
+
+に強い耐性を持つ。
+%%%%
+resistant to
+
+に耐性を持つ。
+%%%%
+is susceptible to
+
+に弱い。
+%%%%
+cannot move.
+
+はその場を動けない。
+%%%%
+is outlined in light.
+
+の輪郭は光を帯びている。
+%%%%
+is glowing with mutagenic radiation.
+
+は変異性の光を放っている。
+%%%%
+is wreathed in shadows.
+
+は影をまとっている。
+%%%%
+can see invisible.
+
+は透明なものを見ることができる。
+%%%%
+is immune to blinding.
+
+は盲目にならない。
+%%%%
+is
+
+は
+%%%%
+covers ground
+
+移動する
+%%%%
+swims
+
+泳ぐ
+%%%%
+attacks
+
+攻撃する
+%%%%
+shoots
+
+射撃する
+%%%%
+cast spells
+
+魔法を唱える
+%%%%
+uses invocations
+
+祈祷する
+%%%%
+uses natural abilities
+
+先天的な能力を使う
+%%%%
+uses special abilities
+
+特別な能力を使う
+%%%%
+uses items
+
+アイテムを使う
+%%%%
+can fly.
+
+は空を飛べる。
+%%%%
+can fly magically.
+
+は魔法の力で空を飛べる。
+%%%%
+cannot regenerate.
+
+は再生しない。
+%%%%
+regenerates quickly.
+
+は素早く再生する。
+%%%%
+It wants to drink your blood!
+
+それはあなたの血を欲している！
+%%%%
+It has come for your soul!
+
+それはあなたの魂を欲している！
+%%%%
+is incapable of using stairs.
+
+は階段を上り下りできない。
+%%%%
+is mindless.
+
+は精神構造を持たない。
+%%%%
+is not intelligent enough to pacify.
+
+は中立化するような知能を持たない。
+%%%%
+is vulnerable to silver and hated by Zin.
+
+は銀の武器に弱く、ジンに嫌われている。
+%%%%
+is too strong to be recited to.
+
+はジンの法理を説かれることに強い耐性を持つ。
+%%%%
+may be too strong to be recited to.
+
+はジンの法理を説かれることに耐性を持つ。
+%%%%
+is weak enough to be recited to.
+
+はジンの法理を説かれることに弱い。
+%%%%
+This monster has been summoned, and is thus only temporary. Killing it yields no experience, nutrition or items
+
+この召喚されたモンスターは一時的なものである。倒しても経験や栄養、アイテムは得られ
+%%%%
+, and it is incapable of using stairs
+
+ず、また階段を上り下りすることもでき
+%%%%
+This monster has been summoned in a durable way, and only partially exists. Killing it yields no experience, nutrition or items. You cannot easily abjure it, though.
+
+このモンスターは永続的な手段で召喚されているが、完全な存在というわけではない。
+このモンスターを倒しても経験や栄養、アイテムは得られない。
+あなたは簡単にはこのモンスターを送還できない。
+%%%%
+mons class leaves hide
+
+このモンスターを殺して解体すると、魔力によって鎧に強化することのできる皮を得ることがある。
+%%%%
+You have summoned too many monsters of this kind to sustain them all, and thus this one will shortly expire.
+
+あなたがこの種のモンスターを維持できないほど多く召喚するとき、このモンスターがたちまち送還される。
 %%%%
 ############################## evoke.cc ##############################
 %%%%
@@ -3086,6 +3492,53 @@ purple
 white
 
 白い
+%%%%
+############################## mon-info.cc ##############################
+%%%%
+very slow
+
+かなり遅い
+%%%%
+slow
+
+遅い
+%%%%
+extremely fast
+
+極めて素早い
+%%%%
+very fast
+
+かなり素早い
+%%%%
+fast
+
+素早い
+%%%%
+[adj]very slow
+
+かなり遅く
+%%%%
+[adj]slow
+
+遅く
+%%%%
+[adj]extremely fast
+
+極めて素早く
+%%%%
+[adj]very fast
+
+かなり素早く
+%%%%
+[adj]fast
+
+素早く
+%%%%
+normal
+
+普通だ
+>>>>>>> Stashed changes
 %%%%
 ############################## mutation.cc ##############################
 %%%%

@@ -361,6 +361,26 @@ Favour -
 %%%%
 ############################## describe-spells.cc ##############################
 %%%%
+%s has mastered %s:
+
+%sは%sを習得している:
+%%%%
+one of the following spellbooks
+
+は下記の魔法書のうち1つ
+%%%%
+the following spells
+
+下記の呪文
+%%%%
+%s possesses one of the following sets of %s abilities:
+
+%sは下記の能力群のうち1つを持っている:
+%%%%
+%s possesses the following %s abilities:
+
+%sは下記の能力を持っている:
+%%%%
 Spells                             Type                      Level
 
 呪文名                           種類                       レベル

@@ -83,25 +83,28 @@ static string _ability_type_descriptor(mon_spell_slot_flags type,
 static string _booktype_header(mon_spell_slot_flags type, size_t num_books,
                                const monster_info &mi)
 {
-    const string pronoun = uppercase_first(mi.pronoun(PRONOUN_SUBJECTIVE));
+    string pronoun = uppercase_first(mi.pronoun(PRONOUN_SUBJECTIVE));
+
+    if (pronoun == "It" || pronoun == "それ")
+        pronoun = "このモンスター";
 
     if (type == MON_SPELL_WIZARD)
     {
-        return make_stringf("\n%s has mastered %s:", pronoun.c_str(),
-                            num_books > 1 ? "one of the following spellbooks"
-                                          : "the following spells");
+        return "\n" + make_stringf(jtransc("\n%s has mastered %s:"), pronoun.c_str(),
+                                   num_books > 1 ? jtransc("one of the following spellbooks")
+                                                 : jtransc("the following spells"));
     }
 
     const string descriptor = _ability_type_descriptor(type, mi.holi);
 
     if (num_books > 1)
     {
-        return make_stringf("\n%s possesses one of the following sets of %s abilities:",
-                            pronoun.c_str(), descriptor.c_str());
+        return "\n" + make_stringf(jtransc("\n%s possesses one of the following sets of %s abilities:"),
+                                   pronoun.c_str(), descriptor.c_str());
     }
 
-    return make_stringf("\n%s possesses the following %s abilities:",
-                        pronoun.c_str(), descriptor.c_str());
+    return "\n" + make_stringf(jtransc("\n%s possesses the following %s abilities:"),
+                               pronoun.c_str(), descriptor.c_str());
 }
 
 /**

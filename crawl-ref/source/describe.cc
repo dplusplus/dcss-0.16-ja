@@ -2177,7 +2177,7 @@ static int _print_toggle_message(const describe_info &inf, int& key)
 
     const int bottom_line = min(30, get_number_of_lines());
     cgotoxy(1, bottom_line);
-    formatted_string::parse_string(_toggle_message).display();
+    formatted_string::parse_string(jtrans(_toggle_message)).display();
     if (!key)
         key = getchm();
 
@@ -3284,7 +3284,7 @@ static const char* _describe_attack_flavour(attack_flavour flavour)
     case AF_STICKY_FLAME:    return "apply sticky flame";
     case AF_CHAOS:           return "cause unpredictable effects";
     case AF_STEAL:           return "steal items";
-    case AF_CRUSH:           return "constrict";
+    case AF_CRUSH:           return "拘束してくる"; // 直接変更
     case AF_REACH:           return "deal damage from a distance";
     case AF_HOLY:            return "deal extra damage to undead and demons";
     case AF_ANTIMAGIC:       return "drain magic";
@@ -3319,7 +3319,7 @@ static string _monster_attacks_description(const monster_info& mi)
         if (!attack_flavours.count(af))
         {
             attack_flavours.insert(af);
-            const char * const desc = _describe_attack_flavour(af);
+            const char * const desc = jtransc(_describe_attack_flavour(af));
             if (desc[0]) // non-empty
                 attack_descs.push_back(desc);
         }
@@ -3330,13 +3330,12 @@ static string _monster_attacks_description(const monster_info& mi)
 
     // Assumes nothing has both AT_REACH_STING and AF_REACH.
     if (reach_sting)
-        attack_descs.emplace_back(_describe_attack_flavour(AF_REACH));
+        attack_descs.emplace_back(jtrans(_describe_attack_flavour(AF_REACH)));
 
     if (!attack_descs.empty())
     {
-        result << uppercase_first(mi.pronoun(PRONOUN_SUBJECTIVE));
-        result << " may attack to " << comma_separated_line(attack_descs.begin(), attack_descs.end());
-        result << ".\n";
+        result << "このモンスターは" << to_separated_line(attack_descs.begin(), attack_descs.end(), true, "および");
+        result << "ことがある。\n";
     }
 
     return result.str();
@@ -3346,11 +3345,11 @@ static string _monster_spells_description(const monster_info& mi)
 {
     // Show a generic message for pan lords, since they're secret.
     if (mi.type == MONS_PANDEMONIUM_LORD)
-        return "It may possess any of a vast number of diabolical powers.\n";
+        return jtransln("It may possess any of a vast number of diabolical powers.\n");
 
     // Ditto for (a)liches.
     if (mi.type == MONS_LICH || mi.type == MONS_ANCIENT_LICH)
-        return "It has mastered any of a vast number of powerful spells.\n";
+        return jtransln("It has mastered any of a vast number of powerful spells.\n");
 
     // Show monster spells and spell-like abilities.
     if (!mi.has_spells())
@@ -3358,7 +3357,8 @@ static string _monster_spells_description(const monster_info& mi)
 
     formatted_string description;
     describe_spellset(monster_spellset(mi), nullptr, description);
-    description.cprintf("Select a spell to read its description.\n");
+    description.cprintf(jtranslnc("Select a spell to read its description.\n"));
+    description.cprintf("\n");
     return description.tostring();
 }
 
@@ -3390,9 +3390,9 @@ static void _add_energy_to_string(int speed, int energy, string what,
 
     const int act_speed = (speed * 10) / energy;
     if (act_speed > 10)
-        fast.push_back(what + " " + _speed_description(act_speed));
+        fast.push_back(tagged_jtrans("[adj]", _speed_description(act_speed)) + jtrans(what));
     if (act_speed < 10)
-        slow.push_back(what + " " + _speed_description(act_speed));
+        slow.push_back(tagged_jtrans("[adj]", _speed_description(act_speed)) + jtrans(what));
 }
 
 
@@ -3441,7 +3441,7 @@ static void _print_bar(int value, int max, int scale,
 
     if (currently_disabled)
     {
-        result << " (Normal " << name << ")";
+        result << " (通常時)";
 
 #ifdef DEBUG_DIAGNOSTICS
         result << " (" << base_value << ")";
@@ -3460,7 +3460,7 @@ static void _print_bar(int value, int max, int scale,
 static void _describe_monster_ac(const monster_info& mi, ostringstream &result)
 {
     // max ac 40 (dispater)
-    _print_bar(mi.ac, 40, 5, "AC", result);
+    _print_bar(mi.ac, 40, 5, " AC ", result);
 }
 
 /**
@@ -3472,7 +3472,7 @@ static void _describe_monster_ac(const monster_info& mi, ostringstream &result)
 static void _describe_monster_ev(const monster_info& mi, ostringstream &result)
 {
     // max ev 30 (eresh) (also to make space for parens)
-    _print_bar(mi.ev, 30, 5, "EV", result, mi.base_ev);
+    _print_bar(mi.ev, 30, 5, "回避", result, mi.base_ev);
 }
 
 /**
@@ -3485,13 +3485,13 @@ static void _describe_monster_mr(const monster_info& mi, ostringstream &result)
 {
     if (mi.res_magic() == MAG_IMMUNE)
     {
-        result << "MR ∞";
+        result << "魔防 ∞\n";
         return;
     }
 
     const int max_mr = 200; // export this? is this already exported?
     const int bar_scale = MR_PIP;
-    _print_bar(mi.res_magic(), max_mr, bar_scale, "MR", result);
+    _print_bar(mi.res_magic(), max_mr, bar_scale, "魔防", result);
 }
 
 
@@ -3551,70 +3551,80 @@ static string _monster_stat_description(const monster_info& mi)
     vector<string> resist_descriptions;
     if (!extreme_resists.empty())
     {
-        const string tmp = "immune to "
-            + comma_separated_line(extreme_resists.begin(),
-                                   extreme_resists.end());
+        const string tmp =
+            to_separated_line(extreme_resists.begin(),
+                              extreme_resists.end(), true, "や", "、", "、")
+            + jtrans("immune to");
         resist_descriptions.push_back(tmp);
     }
     if (!high_resists.empty())
     {
-        const string tmp = "very resistant to "
-            + comma_separated_line(high_resists.begin(), high_resists.end());
+        const string tmp =
+            to_separated_line(high_resists.begin(),
+                              high_resists.end(), true, "や", "、", "、")
+            + jtrans("very resistant to ");
         resist_descriptions.push_back(tmp);
     }
     if (!base_resists.empty())
     {
-        const string tmp = "resistant to "
-            + comma_separated_line(base_resists.begin(), base_resists.end());
+        const string tmp =
+            to_separated_line(base_resists.begin(),
+                              base_resists.end(), true, "や", "、", "、")
+            + jtrans("resistant to ");
         resist_descriptions.push_back(tmp);
     }
 
-    const char* pronoun = mi.pronoun(PRONOUN_SUBJECTIVE);
+    string pronoun = mi.pronoun(PRONOUN_SUBJECTIVE);
+
+    if (pronoun == "It" || pronoun == "それ")
+        pronoun = "このモンスター";
 
     if (mi.threat != MTHRT_UNDEF)
     {
-        result << uppercase_first(pronoun) << " looks "
-               << _get_threat_desc(mi.threat) << ".\n";
+        result << uppercase_first(pronoun) << "は"
+               << jtrans(_get_threat_desc(mi.threat))
+               << (mi.threat < MTHRT_TOUGH ? "。\n" : "だ。\n");
     }
 
     if (!resist_descriptions.empty())
     {
-        result << uppercase_first(pronoun) << " is "
+        result << uppercase_first(pronoun) << "は"
                << comma_separated_line(resist_descriptions.begin(),
                                        resist_descriptions.end(),
-                                       "; and ", "; ")
-               << ".\n";
+                                       "\n" + pronoun + "は",
+                                       "\n" + pronoun + "は")
+               << "\n";
     }
 
     // Is monster susceptible to anything? (On a new line.)
     if (!suscept.empty())
     {
-        result << uppercase_first(pronoun) << " is susceptible to "
-               << comma_separated_line(suscept.begin(), suscept.end())
-               << ".\n";
+        result << uppercase_first(pronoun) << "は"
+               << to_separated_line(suscept.begin(), suscept.end(), true,  "や", "、", "、")
+               << jtransln(" is susceptible to ");
     }
 
     if (mons_class_flag(mi.type, M_STATIONARY)
         && !mons_is_tentacle_or_tentacle_segment(mi.type))
     {
-        result << uppercase_first(pronoun) << " cannot move.\n";
+        result << uppercase_first(pronoun) << jtransln(" cannot move.\n");
     }
 
     // Monsters can glow from both light and radiation.
     if (mons_class_flag(mi.type, M_GLOWS_LIGHT))
-        result << uppercase_first(pronoun) << " is outlined in light.\n";
+        result << uppercase_first(pronoun) << jtransln(" is outlined in light.\n");
     if (mons_class_flag(mi.type, M_GLOWS_RADIATION))
-        result << uppercase_first(pronoun) << " is glowing with mutagenic radiation.\n";
+        result << uppercase_first(pronoun) << jtransln(" is glowing with mutagenic radiation.\n");
     if (mons_class_flag(mi.type, M_SHADOW))
-        result << uppercase_first(pronoun) << " is wreathed in shadows.\n";
+        result << uppercase_first(pronoun) << jtransln(" is wreathed in shadows.\n");
 
     // Seeing invisible.
     if (mi.can_see_invisible())
-        result << uppercase_first(pronoun) << " can see invisible.\n";
+        result << uppercase_first(pronoun) << jtransln(" can see invisible.\n");
 
     // Echolocation, wolf noses, jellies, etc
     if (!mons_can_be_blinded(mi.type))
-        result << uppercase_first(pronoun) << " is immune to blinding.\n";
+        result << uppercase_first(pronoun) << jtransln(" is immune to blinding.\n");
     // XXX: could mention "immune to dazzling" here, but that's spammy, since
     // it's true of such a huge number of monsters. (undead, statues, plants).
     // Might be better to have some place where players can see holiness &
@@ -3626,8 +3636,8 @@ static string _monster_stat_description(const monster_info& mi)
     bool did_speed = false;
     if (speed != 10 && speed != 0)
     {
-        did_speed = true;
-        result << uppercase_first(pronoun) << " is " << mi.speed_description();
+        result << uppercase_first(pronoun) << jtrans(" is ") << jtrans(mi.speed_description())
+               << "。\n";
     }
     const mon_energy_usage def = DEFAULT_ENERGY;
     if (!(mi.menergy == def))
@@ -3635,7 +3645,7 @@ static string _monster_stat_description(const monster_info& mi)
         const mon_energy_usage me = mi.menergy;
         vector<string> fast, slow;
         if (!did_speed)
-            result << uppercase_first(pronoun) << " ";
+            result << uppercase_first(pronoun) << "は";
         _add_energy_to_string(speed, me.move, "covers ground", fast, slow);
         // since MOVE_ENERGY also sets me.swim
         if (me.swim != me.move)
@@ -3653,6 +3663,8 @@ static string _monster_stat_description(const monster_info& mi)
         if (mons_class_itemuse(mi.type) >= MONUSE_STARTING_EQUIPMENT)
             _add_energy_to_string(speed, me.item, "uses items", fast, slow);
 
+        const string pronoun_is = "。\n" + pronoun + "は";
+
         if (speed >= 10)
         {
             if (did_speed && fast.size() == 1)
@@ -3660,14 +3672,18 @@ static string _monster_stat_description(const monster_info& mi)
             else if (!fast.empty())
             {
                 if (did_speed)
-                    result << ", ";
-                result << comma_separated_line(fast.begin(), fast.end());
+                    result << "、";
+                result << comma_separated_line(fast.begin(), fast.end(),
+                                               pronoun_is,
+                                               pronoun_is);
             }
             if (!slow.empty())
             {
                 if (did_speed || !fast.empty())
-                    result << ", but ";
-                result << comma_separated_line(slow.begin(), slow.end());
+                    result << "が、";
+                result << comma_separated_line(slow.begin(), slow.end(),
+                                               pronoun_is,
+                                               pronoun_is);
             }
         }
         else if (speed < 10)
@@ -3677,20 +3693,24 @@ static string _monster_stat_description(const monster_info& mi)
             else if (!slow.empty())
             {
                 if (did_speed)
-                    result << ", ";
-                result << comma_separated_line(slow.begin(), slow.end());
+                    result << "、";
+                result << comma_separated_line(slow.begin(), slow.end(),
+                                               pronoun_is,
+                                               pronoun_is);
             }
             if (!fast.empty())
             {
                 if (did_speed || !slow.empty())
-                    result << ", but ";
-                result << comma_separated_line(fast.begin(), fast.end());
+                    result << "が、";
+                result << comma_separated_line(fast.begin(), fast.end(),
+                                               pronoun_is,
+                                               pronoun_is);
             }
         }
-        result << ".\n";
+        result << "。\n";
     }
     else if (did_speed)
-        result << ".\n";
+        result << "。\n";
 
     // Can the monster fly, and how?
     // This doesn't give anything away since no (very) ugly things can
@@ -3701,36 +3721,36 @@ static string _monster_stat_description(const monster_info& mi)
     case FL_NONE:
         break;
     case FL_WINGED:
-        result << uppercase_first(pronoun) << " can fly.\n";
+        result << uppercase_first(pronoun) << jtransln(" can fly.\n");
         break;
     case FL_LEVITATE:
-        result << uppercase_first(pronoun) << " can fly magically.\n";
+        result << uppercase_first(pronoun) << jtransln(" can fly magically.\n");
         break;
     }
 
     // Unusual regeneration rates.
     if (!mi.can_regenerate())
-        result << uppercase_first(pronoun) << " cannot regenerate.\n";
+        result << uppercase_first(pronoun) << jtransln(" cannot regenerate.\n");
     else if (mons_class_fast_regen(mi.type))
-        result << uppercase_first(pronoun) << " regenerates quickly.\n";
+        result << uppercase_first(pronoun) << jtransln(" regenerates quickly.\n");
 
     // Size
     static const char * const sizes[] =
     {
-        "tiny",
-        "very small",
-        "small",
+        "極めて小さい",
+        "とても小さい",
+        "小さい",
         nullptr,     // don't display anything for 'medium'
-        "large",
-        "very large",
-        "giant",
+        "大きい",
+        "とても大きい",
+        "巨大だ",
     };
     COMPILE_CHECK(ARRAYSZ(sizes) == NUM_SIZE_LEVELS);
 
     if (sizes[mi.body_size()])
     {
-        result << uppercase_first(pronoun) << " is "
-        << sizes[mi.body_size()] << ".\n";
+        result << uppercase_first(pronoun) << jtrans(" is ")
+        << sizes[mi.body_size()] << "。\n";
     }
 
     result << _monster_attacks_description(mi);
@@ -3836,12 +3856,12 @@ void get_monster_db_desc(const monster_info& mi, describe_info &inf,
     case MONS_VAMPIRE_KNIGHT:
     case MONS_VAMPIRE_MAGE:
         if (you.undead_state() == US_ALIVE && mi.attitude == ATT_HOSTILE)
-            inf.body << "\nIt wants to drink your blood!\n";
+            inf.body << "\n" + jtransln("It wants to drink your blood!\n");
         break;
 
     case MONS_REAPER:
         if (you.undead_state(false) == US_ALIVE && mi.attitude == ATT_HOSTILE)
-            inf.body <<  "\nIt has come for your soul!\n";
+            inf.body <<  "\n" + jtransln("It has come for your soul!\n");
         break;
 
     case MONS_RED_DRACONIAN:
@@ -3932,26 +3952,26 @@ void get_monster_db_desc(const monster_info& mi, describe_info &inf,
     if (!mons_class_can_use_stairs(mi.type))
     {
         inf.body << "\n" << uppercase_first(mi.pronoun(PRONOUN_SUBJECTIVE))
-                 << " is incapable of using stairs.\n";
+                 << jtransln(" is incapable of using stairs.\n");
         stair_use = true;
     }
 
     if (mi.intel() <= I_PLANT)
     {
         inf.body << uppercase_first(mi.pronoun(PRONOUN_SUBJECTIVE))
-                 << " is mindless.\n";
+                 << jtransln(" is mindless.\n");
     }
     else if (mi.intel() <= I_INSECT && you_worship(GOD_ELYVILON))
     {
         inf.body << uppercase_first(mi.pronoun(PRONOUN_SUBJECTIVE))
-                 << " is not intelligent enough to pacify.\n";
+                 << jtransln(" is not intelligent enough to pacify.\n");
     }
 
 
     if (mi.is(MB_CHAOTIC))
     {
         inf.body << uppercase_first(mi.pronoun(PRONOUN_SUBJECTIVE))
-                 << " is vulnerable to silver and hated by Zin.\n";
+                 << jtransln(" is vulnerable to silver and hated by Zin.\n");
     }
 
     if (in_good_standing(GOD_ZIN, 0))
@@ -3960,17 +3980,17 @@ void get_monster_db_desc(const monster_info& mi, describe_info &inf,
         if (check >= 0)
         {
             inf.body << uppercase_first(mi.pronoun(PRONOUN_SUBJECTIVE))
-                     << " is too strong to be recited to.";
+                     << jtrans(" is too strong to be recited to.");
         }
         else if (check >= -5)
         {
             inf.body << uppercase_first(mi.pronoun(PRONOUN_SUBJECTIVE))
-                     << " may be too strong to be recited to.";
+                     << jtrans(" may be too strong to be recited to.");
         }
         else
         {
             inf.body << uppercase_first(mi.pronoun(PRONOUN_SUBJECTIVE))
-                     << " is weak enough to be recited to.";
+                     << jtrans(" is weak enough to be recited to.");
         }
         if (you.wizard)
         {
@@ -3982,33 +4002,36 @@ void get_monster_db_desc(const monster_info& mi, describe_info &inf,
 
     if (mi.is(MB_SUMMONED))
     {
-        inf.body << "\n" << "This monster has been summoned, and is thus only "
+        inf.body << "\n" << jtrans("This monster has been summoned, and is thus only "
                        "temporary. Killing it yields no experience, nutrition "
-                       "or items";
+                       "or items");
         if (!stair_use)
-            inf.body << ", and it is incapable of using stairs";
-        inf.body << ".\n";
+            inf.body << jtrans(", and it is incapable of using stairs");
+        inf.body << "ない。\n";
     }
     else if (mi.is(MB_PERM_SUMMON))
     {
-        inf.body << "\n" << "This monster has been summoned in a durable "
+        inf.body << "\n" << jtransln("This monster has been summoned in a durable "
                        "way, and only partially exists. Killing it yields no "
                        "experience, nutrition or items. You cannot easily "
-                       "abjure it, though.\n";
+                       "abjure it, though.\n");
     }
     else if (mons_class_leaves_hide(mi.type))
     {
+        inf.body << jtransln("mons class leaves hide");
+        /*
         inf.body << "\nIf " << mi.pronoun(PRONOUN_SUBJECTIVE) << " is slain "
         "and butchered, it may be possible to recover "
         << mi.pronoun(PRONOUN_POSSESSIVE) << " hide, which can be "
         "enchanted into armour.\n";
+        */
     }
 
     if (mi.is(MB_SUMMONED_CAPPED))
     {
-        inf.body << "\n" << "You have summoned too many monsters of this kind "
-                            "to sustain them all, and thus this one will "
-                            "shortly expire.\n";
+        inf.body << "\n" << jtransln("You have summoned too many monsters of this kind "
+                                     "to sustain them all, and thus this one will "
+                                     "shortly expire.\n");
     }
 
     if (!inf.quote.empty())
@@ -4146,12 +4169,12 @@ int describe_monsters(const monster_info &mi, bool force_seen,
     if (!inf.quote.empty())
     {
         fs.add_item_formatted_string(
-                formatted_string::parse_string("\n" + _toggle_message));
+                formatted_string::parse_string("\n" + jtrans(_toggle_message)));
 
         qs.add_text(inf.title);
-        qs.add_text(inf.quote, false, get_number_of_cols() - 1);
+        qs.add_text("\n" + inf.quote, false, get_number_of_cols() - 1);
         qs.add_item_formatted_string(
-                formatted_string::parse_string("\n" + _toggle_message));
+                formatted_string::parse_string("\n" + jtrans(_toggle_message)));
     }
 
     fs.add_item_formatted_string(formatted_string::parse_string(inf.footer));
