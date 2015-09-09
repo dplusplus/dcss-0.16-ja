@@ -2329,7 +2329,12 @@ string item_def::name_aux(description_level_type desc, bool terse, bool ident,
                  << (item_typ == BOOK_MANUAL ? jtrans("manual") : jtrans("book"));
         }
         else
-            buff << jtrans(sub_type_string(*this, !dbname));
+        {
+            if (item_typ == BOOK_MANUAL)
+                buff << jtrans(skill_name(static_cast<skill_type>(plus))) << jtrans("manual of");
+            else
+                buff << jtrans(sub_type_string(*this, !dbname));
+        }
         break;
 
     case OBJ_RODS:
