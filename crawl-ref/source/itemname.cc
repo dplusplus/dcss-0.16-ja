@@ -202,10 +202,13 @@ string item_def::name(description_level_type descrip, bool terse, bool ident,
         switch (descrip)
         {
         default:
-            if (is_unrandom_artefact(*this))
-                buff << "★";
-            else if (is_artefact(*this))
-                buff << "☆";
+            if (base_type != OBJ_BOOKS)
+            {
+                if (is_unrandom_artefact(*this))
+                    buff << "★";
+                else if (is_artefact(*this))
+                    buff << "☆";
+            }
         case DESC_PLAIN:
         case DESC_DBNAME:
         case DESC_BASENAME:
