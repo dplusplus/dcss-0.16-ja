@@ -883,11 +883,12 @@ string monster_info::_core_name() const
         {
         case MONS_SLIME_CREATURE:
             ASSERT((size_t) slime_size <= ARRAYSZ(slime_sizes));
-            s = slime_sizes[slime_size] + s;
+            s = jtrans(string(slime_sizes[slime_size]) +
+                       get_monster_data(nametype)->name);
             break;
         case MONS_UGLY_THING:
         case MONS_VERY_UGLY_THING:
-            s = ugly_thing_colour_name(_colour) + " " + s;
+            s = jtrans(ugly_thing_colour_name(_colour) + " ") + s;
             break;
 
         case MONS_DRACONIAN_CALLER:
@@ -972,22 +973,22 @@ string monster_info::common_name(description_level_type desc) const
     ostringstream ss;
 
     if (props.exists("helpless"))
-        ss << "helpless ";
+        ss << jtrans("helpless ");
 
     if (is(MB_SUBMERGED))
-        ss << "submerged ";
+        ss << jtrans("submerged ");
 
     if (type == MONS_SPECTRAL_THING && !is(MB_NAME_ZOMBIE) && !nocore)
-        ss << "spectral ";
+        ss << jtrans("spectral ");
 
     if (is(MB_SPECTRALISED))
-        ss << "ghostly ";
+        ss << jtrans("ghostly ");
 
     if (type == MONS_SENSED && !mons_is_sensed(base_type))
-        ss << "sensed ";
+        ss << jtrans("sensed ");
 
     if (type == MONS_BALLISTOMYCETE)
-        ss << (is_active ? "active " : "");
+        ss << (is_active ? jtrans("active ") : "");
 
     if ((mons_genus(type) == MONS_HYDRA || mons_genus(base_type) == MONS_HYDRA)
         && type != MONS_SENSED

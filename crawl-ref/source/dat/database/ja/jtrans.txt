@@ -3048,6 +3048,33 @@ regenerates before your eyes!
 
 の形状は捻れ、後には
 %%%%
+############################## mon-util.cc ##############################
+%%%%
+# ugly_colour_names
+red
+
+赤い
+%%%%
+brown
+
+茶色の
+%%%%
+green
+
+緑色の
+%%%%
+cyan
+
+水色の
+%%%%
+purple
+
+紫色の
+%%%%
+white
+
+白い
+%%%%
 ############################## mutation.cc ##############################
 %%%%
 Innate Abilities, Weirdness & Mutations

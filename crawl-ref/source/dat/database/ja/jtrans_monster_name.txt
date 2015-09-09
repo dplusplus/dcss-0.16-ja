@@ -623,6 +623,10 @@ glowing shapeshifter
 
 暴走した変身能力者
 %%%%
+shaped shifter
+
+変身能力者
+%%%%
 Killer Klown
 
 殺人ピエロ
@@ -2326,6 +2330,26 @@ ghost
 illusion
 
 幻影
+%%%%
+helpless
+
+# helpless
+%%%%
+submerged
+
+# submerged
+%%%%
+ghostly
+
+# ghostly
+%%%%
+sensed
+
+# sensed
+%%%%
+active
+
+活発な
 %%%%
 -headed
 
