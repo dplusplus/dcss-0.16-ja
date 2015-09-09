@@ -2097,7 +2097,7 @@ void get_feature_desc(const coord_def &pos, describe_info &inf)
     string long_desc = getLongDescription(db_name);
 
     inf.title = desc + string(max(0, get_number_of_cols() - strwidth(desc) - strwidth(desc_en) - 1),
-                              ' ') + desc_en;
+                              ' ') + (desc != desc_en ? desc_en : "");
 
     // If we couldn't find a description in the database then see if
     // the feature's base name is different.
@@ -3798,7 +3798,7 @@ void get_monster_db_desc(const monster_info& mi, describe_info &inf,
     if (inf.title.empty())
         inf.title = desc + string(max(0, get_number_of_cols() - strwidth(desc)
                                                               - strwidth(desc_en) - 1),
-                                  ' ') + desc_en;
+                                  ' ') + (desc != desc_en ? desc_en : "");
     inf.body << "\n";
 
     string db_name;
