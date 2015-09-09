@@ -279,8 +279,8 @@ static void _change_skill_level(skill_type exsk, int n)
                                            "at level %d!"),
              specify_base ? "もともとの" : "",
              jtransc(skill_name(exsk)),
-             jtransc((n > 0) ? "gained" : "lost"),
-             abs(n), you.skills[exsk]);
+             abs(n), jtransc((n > 0) ? "gained" : "lost"),
+             you.skills[exsk]);
     }
 
     if (you.skills[exsk] == n && n > 0)
