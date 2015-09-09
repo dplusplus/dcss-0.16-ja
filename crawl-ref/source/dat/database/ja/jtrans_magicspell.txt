@@ -36,17 +36,17 @@
 [spell]Avatar Song
 
 # monster only
-Avatar Song
+生き神の唄
 %%%%
 [spell]Awaken Forest
 
 # monster only
-Awaken Forest
+森林の喚起
 %%%%
 [spell]Awaken Vines
 
 # monster only
-Awaken Vines
+鞭打蔦の召喚
 %%%%
 [spell]Banishment
 
@@ -55,7 +55,7 @@ Awaken Vines
 [spell]Battlecry
 
 # monster only
-Battlecry
+闘争の喊声
 %%%%
 [spell]Beastly Appendage
 
@@ -64,17 +64,17 @@ Battlecry
 [spell]Berserker Rage
 
 # monster only
-Berserker Rage
+狂戦士の怒り
 %%%%
 [spell]Berserk Other
 
 # monster only
-Berserk Other
+他者の狂戦士化
 %%%%
 [spell]Black Mark
 
 # monster only
-Black Mark
+黒の紋様
 %%%%
 [spell]Blade Hands
 
@@ -83,36 +83,37 @@ Black Mark
 [spell]Blink Allies Away
 
 # monster only
-Blink Allies Away
+盟友の退避
 %%%%
 [spell]Blink Allies Encircling
 
 # monster only
-Blink Allies Encircling
+盟友の招集
 %%%%
 [spell]Blink Away
 
 # monster only
-Blink Away
+瞬間退避
 %%%%
 [spell]Blink Close
 
 # monster only
-Blink Close
+瞬間接敵
 %%%%
 [spell]Blink Other Close
 
 # monster only
-Blink Other Close
+他者の瞬間接敵
 %%%%
 [spell]Blink Other
 
 # monster only
-Blink Other
+他者の瞬間移動
 %%%%
 [spell]Blink Range
 
 # monster only
+瞬間退避
 %%%%
 [spell]Blink
 
@@ -121,7 +122,7 @@ Blink Other
 [spell]Blinkbolt
 
 # monster only
-Blinkbolt
+雷霆の突進
 %%%%
 [spell]Bolt of Cold
 
@@ -151,7 +152,7 @@ Blinkbolt
 [spell]Brain Feed
 
 # monster only
-
+脳食らい
 %%%%
 [spell]Brothers in Arms
 
@@ -168,17 +169,17 @@ Blinkbolt
 [spell]Call Lost Soul
 
 # monster only
-Call Lost Soul
+滅亡せる霊魂の召喚
 %%%%
 [spell]Call Tide
 
 # monster only
-Call Tide
+大波の喚起
 %%%%
 [spell]Cantrip
 
 # monster only
-Cantrip
+悪戯の文言
 %%%%
 [spell]Cause Fear
 
@@ -196,17 +197,17 @@ Chain of Chaos
 [spell]Chaos Breath
 
 # monster only
-Chaos Breath
+混沌のブレス
 %%%%
 [spell]Chaotic Mirror
 
 # monster only
-Chaotic Mirror
+混沌の鏡
 %%%%
 [spell]Chilling Breath
 
 # monster only
-Chilling Breath
+冷却のブレス
 %%%%
 [spell]Cigotuvi's Embrace
 
@@ -218,13 +219,12 @@ Chilling Breath
 %%%%
 [spell]Cloud Cone
 
-# monster only
-Cloud Cone
+雲烟の放射
 %%%%
 [spell]Cold Breath
 
 # monster only
-Cold Breath
+冷気のブレス
 %%%%
 [spell]Condensation Shield
 
@@ -241,7 +241,7 @@ Cold Breath
 [spell]Confusion Gaze
 
 # monster only
-Confusion Gaze
+混乱の眼光
 %%%%
 [spell]Conjure Ball Lightning
 
@@ -262,7 +262,7 @@ Confusion Gaze
 [spell]Control Winds
 
 # monster only
-Control Winds
+風の制御
 %%%%
 [spell]Controlled Blink
 
@@ -279,22 +279,22 @@ Control Winds
 [spell]Corrosive Bolt
 
 # monster only
-Corrosive Bolt
+腐蝕の矢
 %%%%
 [spell]Corrupt Body
 
 # monster only
-Corrupt Body
+身体の崩壊
 %%%%
 [spell]Corrupting Pulse
 
 # monster only
-Corrupting Pulse
+崩壊の脈動
 %%%%
 [spell]Crystal Bolt
 
 # monster only
-Crystal Bolt
+水晶の矢
 %%%%
 [spell]Cure Poison
 
@@ -315,7 +315,7 @@ Crystal Bolt
 [spell]Death Rattle
 
 # monster only
-Death Rattle
+死の騒話
 %%%%
 [spell]Death's Door
 
@@ -341,7 +341,7 @@ Debugging Ray
 [spell]Dimension Anchor
 
 # monster only
-Dimension Anchor
+次元の碇
 %%%%
 [spell]Discord
 
@@ -350,7 +350,7 @@ Dimension Anchor
 [spell]Disintegrate
 
 # monster only
-Disintegrate
+分解
 %%%%
 [spell]Disjunction
 
@@ -379,32 +379,32 @@ Disintegrate
 [spell]Drain Life
 
 # monster only
-Drain Life
+生命の簒奪
 %%%%
 [spell]Drain Magic
 
 # monster only
-Drain Magic
+魔力の簒奪
 %%%%
 [spell]Draining Gaze
 
 # monster only
-Draining Gaze
+掠奪の眼光
 %%%%
 [spell]Druid's Call
 
 # monster only
-Druid's Call
+ドルイドの呼び声
 %%%%
 [spell]Electrical Bolt
 
 # monster only
-Electrical Bolt
+電光の矢
 %%%%
 [spell]Energy Bolt
 
 # monster only
-Energy bolt
+エネルギーの矢
 %%%%
 [spell]Enslavement
 
@@ -413,7 +413,7 @@ Energy bolt
 [spell]Ensnare
 
 # monster only
-Ensnare
+絡めとり
 %%%%
 [spell]Ensorcelled Hibernation
 
@@ -422,7 +422,7 @@ Ensnare
 [spell]Ephemeral Infusion
 
 # monster only
-Ephemeral Infusion
+束の間の治癒
 %%%%
 [spell]Excruciating Wounds
 
@@ -436,7 +436,7 @@ Ephemeral Infusion
 [spell]Flay
 
 # monster only
-Flay
+皮剥ぎ
 %%%%
 [spell]Fire Breath
 
@@ -449,6 +449,7 @@ Flay
 [spell]Fire Summon
 
 # monster only
+炎の眷属の召喚
 %%%%
 [spell]Fireball
 
@@ -461,12 +462,12 @@ Flay
 [spell]Flaming Cloud
 
 # monster only
-Flaming Cloud
+炎熱の雲
 %%%%
 [spell]Flash Freeze
 
 # monster only
-Flash Freeze
+瞬間凍結
 %%%%
 [spell]Flight
 
@@ -479,7 +480,7 @@ Flash Freeze
 [spell]Forceful Invitation
 
 # monster only
-Forceful Invitation
+強力なる誘い
 %%%%
 [spell]Freeze
 
@@ -504,17 +505,17 @@ Frenzy
 [spell]Ghostly Fireball
 
 # monster only
-Ghostly Fireball
+神霊の火球
 %%%%
 [spell]Ghostly Flames
 
 # monster only
-Ghostly Flames
+神霊の猛火
 %%%%
 [spell]Goblin Toss
 
 # monster only
-Goblin Toss
+ゴブリンの投擲
 %%%%
 [spell]Glaciate
 
@@ -523,17 +524,17 @@ Goblin Toss
 [spell]Grand Avatar
 
 # monster only
-Grand Avatar
+大いなる化身
 %%%%
 [spell]Haste Other
 
 # monster only
-Haste Other
+他者の加速
 %%%%
 [spell]Haste Plants
 
 # monster only
-Haste Plants
+植物の加速
 %%%%
 [spell]Haste
 
@@ -546,12 +547,12 @@ Haste Plants
 [spell]Heal Other
 
 # monster only
-Heal Other
+他者の治癒
 %%%%
 [spell]Hellfire Burst
 
 # monster only
-Hellfire Burst
+地獄の火球
 %%%%
 [spell]Hellfire
 
@@ -560,17 +561,17 @@ Hellfire Burst
 [spell]Holy Breath
 
 # monster only
-Holy Breath
+聖なるブレス
 %%%%
 [spell]Hunting Cry
 
 # monster only
-Hunting Cry
+狩猟の喊声
 %%%%
 [spell]Holy Flames
 
 # monster only
-Holy Flames
+神聖なる火炎
 %%%%
 [spell]Hydra Form
 
@@ -591,17 +592,17 @@ Holy Flames
 [spell]Injury Bond
 
 # monster only
-Injury Bond
+創傷の絆
 %%%%
 [spell]Injury Mirror
 
 # monster only
-Injury Mirror
+創傷の鏡
 %%%%
 [spell]Ink Cloud
 
 # monster only
-Ink Cloud
+墨の雲
 %%%%
 [spell]Inner Flame
 
@@ -614,7 +615,7 @@ Ink Cloud
 [spell]Invisibility Other
 
 # monster only
-Invisibility Other
+他者の透明化
 %%%%
 [spell]Iron Shot
 
@@ -643,7 +644,7 @@ Invisibility Other
 [spell]Legendary Destruction
 
 # monster only
-Legendary Destruction
+伝説的な破壊
 %%%%
 [spell]Lehudib's Crystal Spear
 
@@ -656,7 +657,7 @@ Legendary Destruction
 [spell]Localized Ignite Poison
 
 # monster only
-Localized Ignite Poison
+局所的毒の燃焼
 %%%%
 [spell]Magic Dart
 
@@ -669,7 +670,7 @@ Localized Ignite Poison
 [spell]Major Healing
 
 # monster only
-Major Healing
+大いなる癒し
 %%%%
 [spell]Malign Gateway
 
@@ -678,17 +679,17 @@ Major Healing
 [spell]Malign Offering
 
 # monster only
-Malign Offering
+悪意の供物
 %%%%
 [spell]Malmutate
 
 # monster only
-Malmutate
+悪性変異
 %%%%
 [spell]Mara Summon
 
 # monster only
-Mara Summon
+分身
 %%%%
 [spell]Mass Confusion
 
@@ -705,7 +706,7 @@ Mara Summon
 [spell]Mesmerise
 
 # monster only
-Mesmerise
+魅了
 %%%%
 [spell]Metabolic Englaciation
 
@@ -714,17 +715,17 @@ Mesmerise
 [spell]Metal Splinters
 
 # monster only
-Metal Splinters
+鉄片の奔流
 %%%%
 [spell]Miasma Breath
 
 # monster only
-Miasma Breath
+瘴気のブレス
 %%%%
 [spell]Might Other
 
 # monster only
-Might Other
+他者の強化
 %%%%
 [spell]Might
 
@@ -733,7 +734,7 @@ Might Other
 [spell]Minor Healing
 
 # monster only
-Minor Healing
+小さな癒し
 %%%%
 [spell]Monstrous Menagerie
 
@@ -746,7 +747,7 @@ Minor Healing
 [spell]Noxious Cloud
 
 # monster only
-Noxious Cloud
+悪臭の雲烟
 %%%%
 [spell]Olgreb's Toxic Radiance
 
@@ -775,12 +776,12 @@ Orb of Electricity
 [spell]Paralyse
 
 # monster only
-Paralyse
+麻痺
 %%%%
 [spell]Paralysis Gaze
 
 # monster only
-Paralysis Gaze
+麻痺の眼光
 %%%%
 [spell]Passage of Golubria
 
@@ -797,12 +798,12 @@ Paralysis Gaze
 [spell]Petrifying Cloud
 
 # monster only
-Petrifying Cloud
+石化の雲
 %%%%
 [spell]Phantom Mirror
 
 # monster only
-Phantom Mirror
+幻影の鏡
 %%%%
 [spell]Phase Shift
 
@@ -811,7 +812,7 @@ Phantom Mirror
 [spell]Plane Rend
 
 # monster only
-Plane Rend
+平面の損傷
 %%%%
 [spell]Poison Arrow
 
@@ -824,12 +825,12 @@ Plane Rend
 [spell]Polymorph
 
 # monster only
-Polymorph
+変化
 %%%%
 [spell]Porkalator
 
 # monster only
-Porkalator
+豚化の光線
 %%%%
 [spell]Portal Projectile
 
@@ -838,12 +839,12 @@ Porkalator
 [spell]Primal Wave
 
 # monster only
-Primal Wave
+原初の大波
 %%%%
 [spell]Quicksilver Bolt
 
 # monster only
-Quicksilver Bolt
+水銀の矢
 %%%%
 [spell]Random Bolt
 
@@ -883,7 +884,7 @@ Sap Magic
 [spell]Seal Doors
 
 # monster only
-Seal Doors
+扉の封印
 %%%%
 [spell]Searing Ray
 
@@ -892,12 +893,12 @@ Seal Doors
 [spell]Searing Breath
 
 # monster only
-Searing Breath
+焼灼のブレス
 %%%%
 [spell]Sentinel's Mark
 
 # monster only
-Sentinel's Mark
+番兵の標的
 %%%%
 [spell]Shadow Bolt
 
@@ -928,7 +929,7 @@ Shadow Shard
 [spell]Signal Horn
 
 # monster only
-Signal Horn
+角笛の警報
 %%%%
 [spell]Silence
 
@@ -945,12 +946,12 @@ Signal Horn
 [spell]Siren Song
 
 # monster only
-Siren Song
+サイレンの唄
 %%%%
 [spell]Sleep
 
 # monster only
-Sleep
+睡眠
 %%%%
 [spell]Slow
 
@@ -959,7 +960,7 @@ Sleep
 [spell]Smiting
 
 # monster only
-Smiting
+打擲の一撃
 %%%%
 [spell]Song of Slaying
 
@@ -968,7 +969,7 @@ Smiting
 [spell]Spawn Tentacles
 
 # monster only
-Spawn Tentacles
+触手の発生
 %%%%
 [spell]Spectral Weapon
 
@@ -985,17 +986,17 @@ Spawn Tentacles
 [spell]Spit Acid
 
 # monster only
-Spit Acid
+酸の唾
 %%%%
 [spell]Spit Lava
 
 # monster only
-Spit Lava
+溶岩の唾
 %%%%
 [spell]Spit Poison
 
 # monter only
-Spit Poison
+毒の唾
 %%%%
 [spell]Static Discharge
 
@@ -1008,7 +1009,7 @@ Spit Poison
 [spell]Steam Ball
 
 # monster only
-Steam Ball
+蒸気の爆裂球
 %%%%
 [spell]Sticks to Snakes
 
@@ -1017,12 +1018,12 @@ Steam Ball
 [spell]Sticky Flame Range
 
 # monster only
-Sticky Flame Range
+焼夷の炎
 %%%%
 [spell]Sticky Flame Splash
 
-# monser only
-Sticky Flame Splash
+# monster only
+焼夷の炎の飛沫
 %%%%
 [spell]Sticky Flame
 
@@ -1043,7 +1044,7 @@ Sticky Flame Splash
 [spell]Strip Resistance
 
 # monster only
-Strip Resistance
+耐性の除去
 %%%%
 [spell]Sublimation of Blood
 
@@ -1052,7 +1053,7 @@ Strip Resistance
 [spell]Summon Air Elementals
 
 # monster only
-Summon Air Elementals
+風の精霊の召喚
 %%%%
 [spell]Summon Butterflies
 
@@ -1070,12 +1071,12 @@ Summon Dragon
 [spell]Summon Drakes
 
 # monster only
-Summon Drakes
+ドレイクの召喚
 %%%%
 [spell]Summon Earth Elementals
 
 # monster only
-Summon Earth Elementals
+大地の精霊の召喚
 %%%%
 [spell]Summon Emperor Scorpions
 
@@ -1085,12 +1086,12 @@ Summon Emperor Scopions
 [spell]Summon Eyeballs
 
 # monster only
-Summon Eyeballs
+眼球の怪物の召喚
 %%%%
 [spell]Summon Fire Elementals
 
 # monster only
-Summon Fire Elementals
+火の精霊の召喚
 %%%%
 [spell]Summon Forest
 
@@ -1134,7 +1135,7 @@ Summon Illusion
 [spell]Summon Iron Elementals
 
 # monster only
-Summon Iron Elementals
+鉄の精霊の召喚
 %%%%
 [spell]Summon Lightning Spire
 
@@ -1147,50 +1148,50 @@ Summon Iron Elementals
 [spell]Summon Minor Demon
 
 # monster only
-Summon Minor Demon
+下位デーモンの召喚
 %%%%
 [spell]Summon Mushrooms
 
 # monster only
-Summon Mushrooms
+茸の怪物の召喚
 %%%%
 [spell]Summon Scarabs
 
 # monster only
-Summon Scarabs
+スカラベの召喚
 %%%%
 [spell]Summon Small Mammal
 
-# 小動物の召喚
+小動物の召喚
 %%%%
 [spell]Summon Spectral Orcs
 
 # monster only
-Summon Spectral Orcs
+オークの霊魂の召喚
 %%%%
 [spell]Summon Swarm
 
-Summon Swarm
+大群の召喚
 %%%%
 [spell]Summon Ufetubus
 
 # monster only
-Summon Ufetubus
+ウフェツバスの召喚
 %%%%
 [spell]Summon Undead
 
 # monster only
-Summon Undead
+不死者の召喚
 %%%%
 [spell]Summon Vermin
 
 # monster only
-Summon Vermin
+害虫の召喚
 %%%%
 [spell]Summon Water Elementals
 
 # monster only
-Summon Water Elementals
+水の精霊の召喚
 %%%%
 [spell]Sure Blade
 
@@ -1211,17 +1212,17 @@ Summon Water Elementals
 [spell]Tentacle Throw
 
 # monster only
-Tentacle Throw
+触手による投擲
 %%%%
 [spell]Teleport Self
 
 # monster only
-Teleport Self
+自己テレポート
 %%%%
 [spell]Throw Barbs
 
 # monster only
-Throw Barbs
+逆棘の射出
 %%%%
 [spell]Throw Flame
 
@@ -1243,7 +1244,7 @@ Throw Barbs
 [spell]Tomb of Doroklohe
 
 # monster only
-Tomb of Doroklohe
+ドルオロクヒの玄室
 %%%%
 [spell]Tornado
 
@@ -1272,17 +1273,17 @@ Tomb of Doroklohe
 [spell]Virulence
 
 # monster only
-Virulence
+免疫の低下
 %%%%
 [spell]Volley of Thorns
 
 # monster only
-Volley of Thorns
+茨の斉射
 %%%%
 [spell]Wall of Brambles
 
 # monster only
-Wall of Brambles
+茨の壁
 %%%%
 [spell]Warp Weapon
 
@@ -1291,19 +1292,19 @@ Wall of Brambles
 [spell]Waterstrike
 
 # monster only
-Waterstrike
+水流の一撃
 %%%%
 [spell]Weave Shadows
 
-Weave Shadows
+影編み
 %%%%
 [spell]Wind Blast
 
 # monster only
-Wind Blast
+突風
 %%%%
 [spell]Word of Recall
 
 # monster only
-Word of Recall
+招集の宣言
 %%%%
