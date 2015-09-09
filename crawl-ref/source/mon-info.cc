@@ -1361,7 +1361,7 @@ void monster_info::to_string(int count, string& desc, int& desc_colour,
     ostringstream out;
     _monster_list_colour_type colour_type = _NUM_MLC;
 
-    string full = count == 1 ? full_name() : pluralised_name(fullname);
+    string full = jtrans(full_name());
 
     if (adj && starts_with(full, "the "))
         full.erase(0, 4);
@@ -1369,7 +1369,7 @@ void monster_info::to_string(int count, string& desc, int& desc_colour,
     // TODO: this should be done in a much cleaner way, with code to
     // merge multiple monster_infos into a single common structure
     if (count != 1)
-        out << count << " ";
+        out << count << "体の";
     if (adj)
         out << adj << " ";
     out << full;

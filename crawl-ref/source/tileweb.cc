@@ -1473,7 +1473,7 @@ void TilesFramework::_send_monster(const coord_def &gc, const monster_info* m,
         json_write_string("name", m->full_name());
 
     if (force_full || (last->pluralised_name() != m->pluralised_name()))
-        json_write_string("plural", m->pluralised_name());
+        json_write_string("plural", m->common_name());
 
     if (force_full || last->type != m->type)
     {
