@@ -1368,7 +1368,7 @@ ball python
 %%%%
 adder
 
-クサリヘビ
+マムシ
 %%%%
 water moccasin
 
@@ -1386,9 +1386,9 @@ anaconda
 
 アナコンダ
 %%%%
-guradian serpent
+guardian serpent
 
-大蛇の衛兵
+守護の大蛇
 %%%%
 shock serpent
 
@@ -1438,7 +1438,7 @@ vampire mage
 %%%%
 jiangshi
 
-キョンシー
+僵尸
 %%%%
 # 'W'
 ghost
@@ -1502,7 +1502,7 @@ thrashing horror
 
 のたうち回る恐怖
 %%%%
-tantacled monstrosity
+tentacled monstrosity
 
 触手の怪物
 %%%%
@@ -2329,7 +2329,7 @@ illusion
 %%%%
 -headed
 
-首の
+首
 %%%%
 something
 
