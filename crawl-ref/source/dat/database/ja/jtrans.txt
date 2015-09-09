@@ -1772,6 +1772,10 @@ ring of ice
 
 氷の指輪
 %%%%
+ring of teleport control
+
+テレポート制御の指輪
+%%%%
 amulet
 
 護符
