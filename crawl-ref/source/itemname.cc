@@ -586,7 +586,7 @@ const char* missile_brand_name(const item_def &item, mbn_type t)
     case SPMSL_CHAOS:
         return t == MBN_TERSE ? "混沌" : "混沌の";
     case SPMSL_PENETRATION:
-        return t == MBN_TERSE ? "貫通" : "貫通する";
+        return t == MBN_TERSE ? "貫通" : "貫通の";
     case SPMSL_DISPERSAL:
         return t == MBN_TERSE ? "離散" : "離散の";
 #if TAG_MAJOR_VERSION == 34
@@ -1690,7 +1690,7 @@ static string _ego_prefix(const item_def &weap, description_level_type desc,
     switch (brand)
     {
         case SPWPN_VAMPIRISM:
-            return jtrans("vampiric");
+            return "吸血の"; // 直接変更
 
         case SPWPN_ANTIMAGIC:
             return jtrans("antimagic");
