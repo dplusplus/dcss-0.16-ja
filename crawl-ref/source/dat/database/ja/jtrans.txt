@@ -1614,6 +1614,14 @@ book of Summonings
 
 召喚の魔法書
 %%%%
+book of Fire
+
+猛火の魔法書
+%%%%
+book of Ice
+
+氷結の魔法書
+%%%%
 book of Spatial Translocations
 
 空間転位の魔法書
@@ -1668,7 +1676,7 @@ book of Air
 %%%%
 book of the Sky
 
-蒼穹の魔法書
+天空の魔法書
 %%%%
 book of the Warp
 
@@ -1685,6 +1693,10 @@ book of Annihilations
 book of Unlife
 
 反生命の魔法書
+%%%%
+book of Control
+
+支配の魔法書
 %%%%
 book of Geomancy
 
