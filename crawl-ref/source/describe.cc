@@ -1728,33 +1728,19 @@ string get_item_description(const item_def &item, bool verbose,
         }
     }
 
-    bool need_extra_line = true;
-    string desc;
     switch (item.base_type)
     {
     // Weapons, armour, jewellery, books might be artefacts.
     case OBJ_WEAPONS:
-        desc = _describe_weapon(item, verbose);
-        if (desc.empty())
-            need_extra_line = false;
-        else
-            description << desc;
+        description << _describe_weapon(item, verbose);
         break;
 
     case OBJ_ARMOUR:
-        desc = _describe_armour(item, verbose);
-        if (desc.empty())
-            need_extra_line = false;
-        else
-            description << desc;
+        description << _describe_armour(item, verbose);
         break;
 
     case OBJ_JEWELLERY:
-        desc = _describe_jewellery(item, verbose);
-        if (desc.empty())
-            need_extra_line = false;
-        else
-            description << desc;
+        description << _describe_jewellery(item, verbose);
         break;
 
     case OBJ_BOOKS:
@@ -1770,11 +1756,7 @@ string get_item_description(const item_def &item, bool verbose,
         if (!verbose
             && (Options.dump_book_spells || is_random_artefact(item)))
         {
-            desc += describe_item_spells(item);
-            if (desc.empty())
-                need_extra_line = false;
-            else
-                description << desc;
+            description << describe_item_spells(item);
         }
         break;
 
@@ -1918,11 +1900,7 @@ string get_item_description(const item_def &item, bool verbose,
         }
         else if (Options.dump_book_spells)
         {
-            desc += describe_item_spells(item);
-            if (desc.empty())
-                need_extra_line = false;
-            else
-                description << desc;
+            description <<  describe_item_spells(item);
         }
 
         {
@@ -2004,8 +1982,6 @@ string get_item_description(const item_def &item, bool verbose,
     {
         if (verbose)
         {
-            if (need_extra_line)
-                description << "\n";
             if (item_known_cursed(item))
                 description << "\n" << jtrans("\nIt has a curse placed upon it.");
 
@@ -2046,7 +2022,7 @@ string get_item_description(const item_def &item, bool verbose,
     }
 
     if (verbose && origin_describable(item))
-        description << "\n" << origin_desc(item) << ".";
+        description << "\n\n" << origin_desc(item) << ".";
 
     // This information is obscure and differs per-item, so looking it up in
     // a docs file you don't know to exist is tedious.  On the other hand,
