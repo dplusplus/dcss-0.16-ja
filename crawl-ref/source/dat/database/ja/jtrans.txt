@@ -436,6 +436,111 @@ It cannot be enchanted further.
 
 この%sはこれ以上強化できない。
 %%%%
+threw or fired
+
+投擲/射撃された
+%%%%
+threw
+
+投擲された
+%%%%
+fired
+
+射撃された
+%%%%
+spmsl flame desc
+
+# It burns those it strikes, causing extra injury
+# to most foes and up to half again as much damage against
+# particularly susceptible opponents. Compared to normal
+# ammo, it is twice as likely to be destroyed on impact.
+
+この%sが敵に命中した場合、ほとんどの敵に追加ダメージを与える。火に弱い相手についてはさらに多くのダメージを与える。
+通常の%sと比べると、命中時に使いものにならなくなる割合はおよそ二倍となる。
+%%%%
+spmsl frost desc
+
+# It freezes those it strikes, causing extra injury
+# to most foes and up to half again as much damage against
+# particularly susceptible opponents. It can also slow down
+# cold-blooded creatures. Compared to normal ammo, it is
+# twice as likely to be destroyed on impact.
+
+この%sが敵に命中した場合、ほとんどの敵に追加ダメージを与える。冷気に弱い相手についてはさらに多くのダメージを与える。
+また、冷血動物に当たるとその動きを遅くすることがある。
+通常の%sと比べると、命中時に使いものにならなくなる割合はおよそ二倍となる。
+%%%%
+fired from an appropriate launcher,
+
+適切な武器から発射されたとき、
+%%%%
+it turns into a bolt of a random type.
+
+ランダムな属性を帯びた魔法の矢に変化する。
+%%%%
+It is coated with poison.
+
+この%sは毒に浸されている。
+%%%%
+It is tipped with asphyxiating poison. Compared to other needles, it is twice as likely to be destroyed on impact.
+
+この針には窒息性の毒が塗られている。
+他の針と比べると、命中時に使いものにならなくなる割合はおよそ二倍となる。
+%%%%
+It is tipped with a paralysing substance.
+
+この針には麻痺毒が塗られている。
+%%%%
+It is coated with a substance that causes slowness of the body.
+
+この針には身体の動きを遅くする物質が塗られている。
+%%%%
+It is coated with a fast-acting tranquilizer.
+
+この針には即効性の鎮静剤が塗られている。
+%%%%
+It is tipped with a substance that causes confusion.
+
+この針には混乱を引き起こす物質が塗られている。
+%%%%
+It is tipped with a substance that causes a mindless rage, making people attack friend and foe alike.
+
+この針には見境のない憤怒を引き起こす物質が塗られており、仲間を敵と同じように攻撃する。
+%%%%
+A skilled user can throw it in such a way that it will return to its owner.
+
+熟練した者はこの%sを所有者の元に戻ってくるようにを投げることができる。
+%%%%
+It will pass through any targets it hits, potentially hitting all targets in its path until it reaches maximum range.
+
+この%sは命中した標的を貫通し、限界射程距離内の弾道上にある全ての標的に当たる可能性がある。
+%%%%
+Any target it hits will blink, with a tendency towards blinking further away from the one who threw_or_fired it.
+
+この%sが命中した目標は使い手から遠ざけられるように瞬間移動する。
+%%%%
+It will explode into fragments upon hitting a target, hitting an obstruction, or reaching the end of its range.
+
+この%sは物体に命中したり、射程の隅まで到達すると爆発して粉々になる。
+%%%%
+Compared to normal ammo, it does 30% more damage.
+
+この%sは通常のものと比べると、ダメージが三割増しになる。
+%%%%
+spmsl silver desc
+
+# Silver sears all those touched by chaos.
+# Compared to normal ammo, it does 75% more damage to
+# chaotic and magically transformed beings. It also does
+# extra damage against mutated beings according to how
+# mutated they are. With due care, silver ammo can still
+# be handled by those it affects.
+
+銀は混沌に染まった全ての存在を焼き尽くす。
+この%sは通常のものと比べると、混沌の存在や魔力で変異した存在に対するダメージが75%増しになる。
+また、変異の度合いが高まるにつれてさらなるダメージを与える。
+銀に影響を受けるものであっても銀の%sを扱えることに注意すること。
+%%%%
 Base armour rating:
 
 アーマーレート:
@@ -455,6 +560,18 @@ Skill to remove penalty:
 Wearing mundane armour of this type will give the following: %d AC
 
 同種の一般的な防具を装備した場合のAC: %d
+%%%%
+Base damage: %d
+
+ベースダメージ: %d
+%%%%
+It will always be destroyed on impact.
+
+この%sは命中すると使いものにならなくなる。
+%%%%
+It may be destroyed on impact.
+
+この%sは命中すると使いものにならなくなることがある。
 %%%%
 It allows its wearer to slither at a great speed.
 

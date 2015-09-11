@@ -1128,55 +1128,55 @@ static string _describe_ammo(const item_def &item)
         if (can_launch)
             threw_or_fired += "fired";
 
+        string basename = ammo_name(static_cast<missile_type>(item.sub_type));
+
         switch (item.special)
         {
         case SPMSL_FLAME:
-            description += "It burns those it strikes, causing extra injury "
-                    "to most foes and up to half again as much damage against "
-                    "particularly susceptible opponents. Compared to normal "
-                    "ammo, it is twice as likely to be destroyed on impact.";
+            description += make_stringf(jtransc("spmsl flame desc"),
+                                        jtransc(basename), jtransc(basename));
             break;
         case SPMSL_FROST:
-            description += "It freezes those it strikes, causing extra injury "
-                    "to most foes and up to half again as much damage against "
-                    "particularly susceptible opponents. It can also slow down "
-                    "cold-blooded creatures. Compared to normal ammo, it is "
-                    "twice as likely to be destroyed on impact.";
+            description += make_stringf(jtransc("spmsl frost desc"),
+                                        jtransc(basename), jtransc(basename));
             break;
         case SPMSL_CHAOS:
-            description += "When ";
+            description += "この" + jtrans(basename) + "が";
 
             if (can_throw)
             {
-                description += "thrown, ";
+                description += "投擲された";
                 if (can_launch)
-                    description += "or ";
+                    description += "、または";
+                else
+                    description += "とき、";
             }
 
             if (can_launch)
-                description += "fired from an appropriate launcher, ";
+                description += jtrans("fired from an appropriate launcher, ");
 
-            description += "it turns into a bolt of a random type.";
+            description += jtrans("it turns into a bolt of a random type.");
             break;
         case SPMSL_POISONED:
-            description += "It is coated with poison.";
+            description += make_stringf(jtransc("It is coated with poison."),
+                                        jtransc(basename));
             break;
         case SPMSL_CURARE:
-            description += "It is tipped with asphyxiating poison. Compared "
-                           "to other needles, it is twice as likely to be "
-                           "destroyed on impact";
+            description += jtrans("It is tipped with asphyxiating poison. Compared "
+                                  "to other needles, it is twice as likely to be "
+                                  "destroyed on impact");
             break;
         case SPMSL_PARALYSIS:
-            description += "It is tipped with a paralysing substance.";
+            description += jtrans("It is tipped with a paralysing substance.");
             break;
         case SPMSL_SLOW:
-            description += "It is coated with a substance that causes slowness of the body.";
+            description += jtrans("It is coated with a substance that causes slowness of the body.");
             break;
         case SPMSL_SLEEP:
-            description += "It is coated with a fast-acting tranquilizer.";
+            description += jtrans("It is coated with a fast-acting tranquilizer.");
             break;
         case SPMSL_CONFUSION:
-            description += "It is tipped with a substance that causes confusion.";
+            description += jtrans("It is tipped with a substance that causes confusion.");
             break;
 #if TAG_MAJOR_VERSION == 34
         case SPMSL_SICKNESS:
@@ -1184,39 +1184,40 @@ static string _describe_ammo(const item_def &item)
             break;
 #endif
         case SPMSL_FRENZY:
-            description += "It is tipped with a substance that causes a mindless "
-                "rage, making people attack friend and foe alike.";
+            description += jtrans("It is tipped with a substance that causes a mindless "
+                                  "rage, making people attack friend and foe alike.");
             break;
        case SPMSL_RETURNING:
-            description += "A skilled user can throw it in such a way "
-                "that it will return to its owner.";
+            description += make_stringf(jtransc("A skilled user can throw it in such a way "
+                                                "that it will return to its owner."),
+                                        jtransc(basename));
             break;
         case SPMSL_PENETRATION:
-            description += "It will pass through any targets it hits, "
-                "potentially hitting all targets in its path until it "
-                "reaches maximum range.";
+            description += make_stringf(jtransc("It will pass through any targets it hits, "
+                                                "potentially hitting all targets in its path until it "
+                                                "reaches maximum range."),
+                                        jtransc(basename));
             break;
         case SPMSL_DISPERSAL:
-            description += "Any target it hits will blink, with a "
-                "tendency towards blinking further away from the one "
-                "who " + threw_or_fired + " it.";
+            description += make_stringf(jtransc("Any target it hits will blink, with a "
+                                                "tendency towards blinking further away from the one "
+                                                "who threw_or_fired it."),
+                                        jtransc(basename));
             break;
         case SPMSL_EXPLODING:
-            description += "It will explode into fragments upon "
-                "hitting a target, hitting an obstruction, or reaching "
-                "the end of its range.";
+            description += make_stringf(jtransc("It will explode into fragments upon "
+                                                "hitting a target, hitting an obstruction, or reaching "
+                                                "the end of its range."),
+                                        jtransc(basename));
             break;
         case SPMSL_STEEL:
-            description += "Compared to normal ammo, it does 30% more "
-                "damage.";
+            description += make_stringf(jtransc("Compared to normal ammo, it does 30% more "
+                                                "damage."),
+                                        jtransc(basename));
             break;
         case SPMSL_SILVER:
-            description += "Silver sears all those touched by chaos. "
-                "Compared to normal ammo, it does 75% more damage to "
-                "chaotic and magically transformed beings. It also does "
-                "extra damage against mutated beings according to how "
-                "mutated they are. With due care, silver ammo can still "
-                "be handled by those it affects.";
+            description += make_stringf(jtransc("spmsl silver desc"),
+                                        jtransc(basename), jtransc(basename));
             break;
         }
     }
@@ -1259,13 +1260,17 @@ void append_shield_stats(string &description, const item_def &item)
 void append_missile_info(string &description, const item_def &item)
 {
     const int dam = property(item, PWPN_DAMAGE);
+    const string basename = ammo_name(static_cast<missile_type>(item.sub_type));
+
     if (dam)
-        description += make_stringf("\nBase damage: %d\n", dam);
+        description += "\n" + make_stringf(jtranslnc("\nBase damage: %d\n"), dam);
 
     if (ammo_always_destroyed(item))
-        description += "\nIt will always be destroyed on impact.";
+        description += "\n" + make_stringf(jtransc("\nIt will always be destroyed on impact."),
+                                           jtransc(basename));
     else if (!ammo_never_destroyed(item))
-        description += "\nIt may be destroyed on impact.";
+        description += "\n" + make_stringf(jtransc("It may be destroyed on impact."),
+                                           jtransc(basename));
 }
 
 //---------------------------------------------------------------
