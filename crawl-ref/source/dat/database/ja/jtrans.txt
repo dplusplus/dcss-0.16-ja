@@ -355,6 +355,14 @@ The flames dance!
 
 炎が舞い踊った！
 %%%%
+card
+
+カード
+%%%%
+fan
+
+扇
+%%%%
 A mighty gale blasts forth from the %s!
 
 %sから強烈な突風が吹き出した！
