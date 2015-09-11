@@ -1441,40 +1441,40 @@ static string _describe_jewellery(const item_def &item, bool verbose)
             switch (item.sub_type)
             {
             case RING_PROTECTION:
-                description += "\nIt affects your AC (";
+                description += "\n" + jtrans("\nIt affects your AC (") + " ";
                 _append_value(description, item.plus, true);
-                description += ").";
+                description += ")";
                 break;
 
             case RING_EVASION:
-                description += "\nIt affects your evasion (";
+                description += "\n" + jtrans("\nIt affects your evasion (") + " ";
                 _append_value(description, item.plus, true);
-                description += ").";
+                description += ")";
                 break;
 
             case RING_STRENGTH:
-                description += "\nIt affects your strength (";
+                description += "\n" + jtrans("\nIt affects your strength (") + " ";
                 _append_value(description, item.plus, true);
-                description += ").";
+                description += ")";
                 break;
 
             case RING_INTELLIGENCE:
-                description += "\nIt affects your intelligence (";
+                description += "\n" + jtrans("\nIt affects your intelligence (") + " ";
                 _append_value(description, item.plus, true);
-                description += ").";
+                description += ")";
                 break;
 
             case RING_DEXTERITY:
-                description += "\nIt affects your dexterity (";
+                description += "\n" + jtrans("\nIt affects your dexterity (") + " ";
                 _append_value(description, item.plus, true);
-                description += ").";
+                description += ")";
                 break;
 
             case RING_SLAYING:
-                description += "\nIt affects your accuracy and damage "
-                               "with ranged weapons and melee attacks (";
+                description += "\n" + jtrans("\nIt affects your accuracy and damage "
+                               "with ranged weapons and melee attacks (") + " ";
                 _append_value(description, item.plus, true);
-                description += ").";
+                description += ")";
                 break;
 
             default:
@@ -1495,9 +1495,9 @@ static string _describe_jewellery(const item_def &item, bool verbose)
         if (!item_ident(item, ISFLAG_KNOW_PROPERTIES) ||
             !item_ident(item, ISFLAG_KNOW_TYPE))
         {
-            description += "\nThis ";
-            description += (jewellery_is_amulet(item) ? "amulet" : "ring");
-            description += " may have hidden properties.";
+            description += "\nこの";
+            description += jtrans(jewellery_is_amulet(item) ? "amulet" : "ring");
+            description += jtrans(" may have hidden properties.");
         }
     }
 

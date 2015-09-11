@@ -548,6 +548,34 @@ Enchanting it will turn it into a suit of magical armour.
 
 この皮を魔力で強化すると魔法の鎧になる。
 %%%%
+It affects your AC (
+
+この指輪はあなたのACに影響する。(AC
+%%%%
+It affects your evasion (
+
+この指輪はあなたの回避力に影響する。(回避
+%%%%
+It affects your strength (
+
+この指輪はあなたの腕力に影響する。(腕力
+%%%%
+It affects your intelligence (
+
+この指輪はあなたの知力に影響する。(知力
+%%%%
+It affects your dexterity (
+
+この指輪はあなたの器用さに影響する。(器用
+%%%%
+It affects your accuracy and damage with ranged weapons and melee attacks (
+
+この指輪はあなたの命中率およびダメージを与える能力に影響する。(命中・ダメージ
+%%%%
+may have hidden properties.
+
+にはいくつかの隠された特性があるかもしれない。
+%%%%
 It is an ancient artefact.
 
 これは太古のアーティファクトだ。
