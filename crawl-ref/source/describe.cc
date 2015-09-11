@@ -545,7 +545,7 @@ static string _randart_descrip(const item_def &item)
         snprintf(buf, sizeof buf, "\nIt makes you %s%s stealthy.",
                  (stval < -1 || stval > 1) ? "much " : "",
                  (stval < 0) ? "less" : "more");
-        description += buf;
+        description += "\n" + jtrans(buf);
     }
 
     return description;
@@ -1087,10 +1087,11 @@ static string _describe_weapon(const item_def &item, bool verbose)
     if (!is_artefact(item))
     {
         if (item_ident(item, ISFLAG_KNOW_PLUSES) && item.plus >= MAX_WPN_ENCHANT)
-            description += "\n" + jtrans("\nIt cannot be enchanted further.");
+            description += "\n" + make_stringf(jtransc("\nIt cannot be enchanted further."),
+                                               "武器");
         else
         {
-            description += "\n" + jtrans("\nIt can be maximally enchanted to +");
+            description += "\nこの武器は+";
             _append_value(description, MAX_WPN_ENCHANT, false);
             description += "まで強化できる。";
         }
@@ -1227,30 +1228,30 @@ static string _describe_ammo(const item_def &item)
 
 void append_armour_stats(string &description, const item_def &item)
 {
-    description += "\nBase armour rating: ";
+    description += "\n" + jtrans("\nBase armour rating: ") + " ";
     _append_value(description, property(item, PARM_AC), false);
     description += "       ";
 
     const int evp = property(item, PARM_EVASION);
-    description += "Encumbrance rating: ";
+    description += jtrans("Encumbrance rating: ") + " ";
     _append_value(description, -evp / 10, false);
 
     // only display player-relevant info if the player exists
     if (crawl_state.need_save && get_armour_slot(item) == EQ_BODY_ARMOUR)
     {
-        description += make_stringf("\nWearing mundane armour of this type "
-                                    "will give the following: %d AC",
-                                    you.base_ac_from(item));
+        description += "\n" + make_stringf(jtransc("\nWearing mundane armour of this type "
+                                                   "will give the following: %d AC"),
+                                           you.base_ac_from(item));
     }
 }
 
 void append_shield_stats(string &description, const item_def &item)
 {
-    description += "\nBase shield rating: ";
+    description += "\n" + jtrans("\nBase shield rating:") + " ";
     _append_value(description, property(item, PARM_AC), false);
     description += "       ";
 
-    description += "Skill to remove penalty: ";
+    description += "\n" + jtrans("\nSkill to remove penalty:") + " ";
     _append_value(description, you.get_shield_skill_to_offset_penalty(item),
             false);
 }
@@ -1301,66 +1302,66 @@ static string _describe_armour(const item_def &item, bool verbose)
         {
         case SPARM_RUNNING:
             if (item.sub_type == ARM_NAGA_BARDING)
-                description += "It allows its wearer to slither at a great speed.";
+                description += jtrans("It allows its wearer to slither at a great speed.");
             else
-                description += "It allows its wearer to run at a great speed.";
+                description += jtrans("It allows its wearer to run at a great speed.");
             break;
         case SPARM_FIRE_RESISTANCE:
-            description += "It protects its wearer from heat.";
+            description += jtrans("It protects its wearer from heat.");
             break;
         case SPARM_COLD_RESISTANCE:
-            description += "It protects its wearer from cold.";
+            description += jtrans("It protects its wearer from cold.");
             break;
         case SPARM_POISON_RESISTANCE:
-            description += "It protects its wearer from poison.";
+            description += jtrans("It protects its wearer from poison.");
             break;
         case SPARM_SEE_INVISIBLE:
-            description += "It allows its wearer to see invisible things.";
+            description += jtrans("It allows its wearer to see invisible things.");
             break;
         case SPARM_INVISIBILITY:
-            description += "When activated it hides its wearer from "
-                "the sight of others, but also increases "
-                "their metabolic rate by a large amount.";
+            description += jtrans("When activated it hides its wearer from "
+                                  "the sight of others, but also increases "
+                                  "their metabolic rate by a large amount.");
             break;
         case SPARM_STRENGTH:
-            description += "It increases the physical power of its wearer (+3 to strength).";
+            description += jtrans("It increases the physical power of its wearer (+3 to strength).");
             break;
         case SPARM_DEXTERITY:
-            description += "It increases the dexterity of its wearer (+3 to dexterity).";
+            description += jtrans("It increases the dexterity of its wearer (+3 to dexterity).");
             break;
         case SPARM_INTELLIGENCE:
-            description += "It makes you more clever (+3 to intelligence).";
+            description += jtrans("It makes you more clever (+3 to intelligence).");
             break;
         case SPARM_PONDEROUSNESS:
-            description += "It is very cumbersome, thus slowing your movement.";
+            description += jtrans("It is very cumbersome, thus slowing your movement.");
             break;
         case SPARM_FLYING:
-            description += "It can be activated to allow its wearer to "
-                "fly indefinitely.";
+            description += jtrans("It can be activated to allow its wearer to "
+                                  "fly indefinitely.");
             break;
         case SPARM_MAGIC_RESISTANCE:
-            description += "It increases its wearer's resistance "
-                "to enchantments.";
+            description += jtrans("It increases its wearer's resistance "
+                                  "to enchantments.");
             break;
         case SPARM_PROTECTION:
-            description += "It protects its wearer from harm (+3 to AC).";
+            description += jtrans("It protects its wearer from harm (+3 to AC).");
             break;
         case SPARM_STEALTH:
-            description += "It enhances the stealth of its wearer.";
+            description += jtrans("It enhances the stealth of its wearer.");
             break;
         case SPARM_RESISTANCE:
-            description += "It protects its wearer from the effects "
-                "of both cold and heat.";
+            description += jtrans("It protects its wearer from the effects "
+                                  "of both cold and heat.");
             break;
 
         // These two are only for robes.
         case SPARM_POSITIVE_ENERGY:
-            description += "It protects its wearer from "
-                "the effects of negative energy.";
+            description += jtrans("It protects its wearer from "
+                                  "the effects of negative energy.");
             break;
         case SPARM_ARCHMAGI:
-            description += "It increases the power of its wearer's "
-                "magical spells.";
+            description += jtrans("It increases the power of its wearer's "
+                                  "magical spells.");
             break;
 #if TAG_MAJOR_VERSION == 34
         case SPARM_PRESERVATION:
@@ -1368,18 +1369,18 @@ static string _describe_armour(const item_def &item, bool verbose)
             break;
 #endif
         case SPARM_REFLECTION:
-            description += "It reflects blocked things back in the "
-                "direction they came from.";
+            description += jtrans("It reflects blocked things back in the "
+                                  "direction they came from.");
             break;
 
         case SPARM_SPIRIT_SHIELD:
-            description += "It shields its wearer from harm at the cost "
-                "of magical power.";
+            description += jtrans("It shields its wearer from harm at the cost "
+                                  "of magical power.");
             break;
 
         // This is only for gloves.
         case SPARM_ARCHERY:
-            description += "It improves your effectiveness with ranged weaponry (Slay+4).";
+            description += jtrans("It improves your effectiveness with ranged weaponry (Slay+4).");
             break;
         }
     }
@@ -1395,7 +1396,7 @@ static string _describe_armour(const item_def &item, bool verbose)
 
         // Can't happen, right? (XXX)
         if (!item_ident(item, ISFLAG_KNOW_PROPERTIES) && item_type_known(item))
-            description += "\nThis armour may have some hidden properties.";
+            description += "\n" + jtrans("\nThis armour may have some hidden properties.");
     }
 
     if (!is_artefact(item))
@@ -1403,17 +1404,18 @@ static string _describe_armour(const item_def &item, bool verbose)
         const int max_ench = armour_max_enchant(item);
         if (armour_is_hide(item))
         {
-            description += "\nEnchanting it will turn it into a suit of "
-                           "magical armour.";
+            description += "\n" + jtrans("\nEnchanting it will turn it into a suit of "
+                                         "magical armour.");
         }
         else if (item.plus < max_ench || !item_ident(item, ISFLAG_KNOW_PLUSES))
         {
-            description += "\nIt can be maximally enchanted to +";
+            description += "\nこの防具は+";
             _append_value(description, max_ench, false);
-            description += ".";
+            description += "まで強化できる。";
         }
         else
-            description += "\nIt cannot be enchanted further.";
+            description += "\n" + make_stringf(jtransc("\nIt cannot be enchanted further."),
+                                               "防具");
     }
 
     return description;

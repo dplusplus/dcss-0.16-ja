@@ -91,27 +91,27 @@ There isn't anything else to %sbutcher here.
 %%%%
 It affects your AC (%d).
 
-これはあなたのACに影響する。(%d)
+これはあなたのACに影響する。(AC %d)
 %%%%
 It affects your evasion (%d).
 
-これはあなたの回避力に影響する。(%d)
+これはあなたの回避力に影響する。(回避 %d)
 %%%%
 It affects your strength (%d).
 
-これはあなたの腕力に影響する。(%d)
+これはあなたの腕力に影響する。(腕力 %d)
 %%%%
 It affects your intelligence (%d).
 
-これはあなたの知力に影響する。(%d)
+これはあなたの知力に影響する。(知力 %d)
 %%%%
 It affects your dexterity (%d).
 
-これはあなたの器用さに影響する。(%d)
+これはあなたの器用さに影響する。(器用 %d)
 %%%%
 It affects your accuracy and damage with ranged weapons and melee attacks (%d).
 
-これはあなたの命中率およびダメージを与える能力に影響する。(%d)
+これはあなたの命中率およびダメージを与える能力に影響する。(命中・ダメージ %d)
 %%%%
 It insulates you from electricity.
 
@@ -232,6 +232,22 @@ It greatly protects you from
 It renders you almost immune to
 
 これは%sの影響をほぼ無効化する
+%%%%
+It makes you much more stealthy.
+
+これはあなたの隠密性をさらに高める。
+%%%%
+It makes you more stealthy.
+
+これはあなたの隠密性を高める。
+%%%%
+It makes you less stealthy.
+
+これはあなたの隠密性を低くする。
+%%%%
+It makes you much less stealthy.
+
+これはあなたの隠密性をさらに低くする。
 %%%%
 Base accuracy:
 
@@ -418,11 +434,119 @@ It is too large for you to wield.
 %%%%
 It cannot be enchanted further.
 
-この武器はこれ以上強化できない。
+この%sはこれ以上強化できない。
 %%%%
-It can be maximally enchanted to +
+Base armour rating:
 
-この武器は+
+アーマーレート:
+%%%%
+Encumbrance rating:
+
+行動阻害レート:
+%%%%
+Base shield rating:
+
+盾の防御レート:
+%%%%
+Skill to remove penalty:
+
+盾装備時のペナルティ:
+%%%%
+Wearing mundane armour of this type will give the following: %d AC
+
+同種の一般的な防具を装備した場合のAC: %d
+%%%%
+It allows its wearer to slither at a great speed.
+
+この防具は着用者が高速に這いずることを可能にする。
+%%%%
+It allows its wearer to run at a great speed.
+
+この防具は着用者が高速に移動することを可能にする。
+%%%%
+It protects its wearer from heat.
+
+この防具は着用者を熱と火から保護する。
+%%%%
+It protects its wearer from cold.
+
+この防具は着用者を冷気から保護する。
+%%%%
+It protects its wearer from poison.
+
+この防具は着用者を毒から保護する。
+%%%%
+It allows its wearer to see invisible things.
+
+この防具は着用者が見えざる者を見ることを可能にする。
+%%%%
+When activated it hides its wearer from the sight of others, but also increases their metabolic rate by a large amount.
+
+この防具は発動することで着用者を一時的に透明にするが、透明化の最中には代謝エネルギーの消費が大幅に増加する。
+%%%%
+It increases the physical power of its wearer (+3 to strength).
+
+この防具は着用者の物理的な力を増大させる。(腕力 +3)
+%%%%
+It increases the dexterity of its wearer (+3 to dexterity).
+
+この防具は着用者の器用さを増大させる。(器用 +3)
+%%%%
+It makes you more clever (+3 to intelligence).
+
+この防具は着用者の知力を増大させる。(知力 +3)
+%%%%
+It is very cumbersome, thus slowing your movement.
+
+この防具はとても扱いづらいため、あなたの動きを鈍くする。
+%%%%
+It can be activated to allow its wearer to fly indefinitely.
+
+この防具は発動することで着用者が継続的に飛行できるようになる。
+%%%%
+It increases its wearer's resistance to enchantments.
+
+この防具は着用者の魔法への抵抗力を増大させる。
+%%%%
+It protects its wearer from harm (+3 to AC).
+
+この防具は着用者を負傷から保護する。(AC +3)
+%%%%
+It enhances the stealth of its wearer.
+
+この防具は着用者の隠密性を高める。
+%%%%
+It protects its wearer from the effects of both cold and heat.
+
+この防具は着用者を熱と冷気の両方の効果から保護する。
+%%%%
+It protects its wearer from the effects of negative energy.
+
+この防具は着用者を負のエネルギーの影響からある程度保護する。
+%%%%
+It increases the power of its wearer's magical spells.
+
+この防具は着用者が唱える呪文の力を増大させる。
+%%%%
+It reflects blocked things back in the direction they came from.
+
+この防具で防いだものをもと来た方向へ反射することができる。
+%%%%
+It shields its wearer from harm at the cost of magical power.
+
+この防具は魔力を消費して着用者を負傷から守る。
+%%%%
+It improves your effectiveness with ranged weaponry (Slay+4).
+
+この防具は遠隔射撃の効果を高める(命中・ダメージ +4)
+%%%%
+This armour may have some hidden properties.
+
+この防具にはいくつかの隠された特性があるかもしれない。
+%%%%
+Enchanting it will turn it into a suit of magical armour.
+
+この皮を魔力で強化すると魔法の鎧になる。
 %%%%
 It is an ancient artefact.
 
@@ -483,7 +607,7 @@ It has a curse placed upon it.
 %%%%
 This ancient artefact cannot be changed by magic or mundane means.
 
-この太古のアーティファクトは魔法やその他の尋常な手段によっては変化を受けない。
+この太古のアーティファクトは魔法やその他の尋常な手段によって変化を受けない。
 %%%%
 opposes the use of such an
 
