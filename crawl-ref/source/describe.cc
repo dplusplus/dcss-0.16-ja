@@ -454,11 +454,11 @@ static string _randart_descrip(const item_def &item)
         { ARTP_DEXTERITY, "It affects your dexterity (%d).", false},
         { ARTP_SLAYING, "It affects your accuracy and damage with ranged "
                         "weapons and melee attacks (%d).", false},
-        { ARTP_FIRE, "fire", true},
-        { ARTP_COLD, "cold", true},
+        { ARTP_FIRE, "火", true},
+        { ARTP_COLD, "冷気", true},
         { ARTP_ELECTRICITY, "It insulates you from electricity.", false},
-        { ARTP_POISON, "poison", true},
-        { ARTP_NEGATIVE_ENERGY, "negative energy", true},
+        { ARTP_POISON, "毒", true},
+        { ARTP_NEGATIVE_ENERGY, "負のエネルギー", true},
         { ARTP_SUSTAB, "It sustains your strength, intelligence and dexterity.", false},
         { ARTP_MAGIC, "It affects your resistance to hostile enchantments.", false},
         { ARTP_HP, "It affects your health (%d).", false},
@@ -494,7 +494,7 @@ static string _randart_descrip(const item_def &item)
         if (*type)
         {
             description += "\n";
-            description += type;
+            description += jtrans(type);
         }
     }
 
@@ -511,7 +511,7 @@ static string _randart_descrip(const item_def &item)
             // FIXME Not the nicest hack.
             char buf[80];
             snprintf(buf, sizeof buf, "%+d", proprt[desc.property]);
-            sdesc = replace_all(sdesc, "%d", buf);
+            sdesc = replace_all(jtrans(sdesc), "%d", buf);
 
             if (desc.is_graded_resist)
             {
@@ -529,10 +529,11 @@ static string _randart_descrip(const item_def &item)
                     "It greatly protects you from ",
                     "It renders you almost immune to "
                 };
-                sdesc = prefixes[idx] + sdesc + '.';
+                sdesc = make_stringf(jtransc(prefixes[idx]),
+                                     sdesc.c_str()) + "。";
             }
 
-            description += '\n';
+            description += "\n";
             description += sdesc;
         }
     }
@@ -788,7 +789,7 @@ static string _describe_demon(const string& name, flight_type fly)
 
 void append_weapon_stats(string &description, const item_def &item)
 {
-    description += "\nBase accuracy: ";
+    description += "\n" + jtrans("Base accuracy: ") + " ";
     _append_value(description, property(item, PWPN_HIT), true);
     description += "  ";
 
@@ -796,22 +797,22 @@ void append_weapon_stats(string &description, const item_def &item)
     const int ammo_type = fires_ammo_type(item);
     const int ammo_dam = ammo_type == MI_NONE ? 0 :
                                                 ammo_type_damage(ammo_type);
-    description += "Base damage: ";
+    description += jtrans("Base damage:") + " ";
     _append_value(description, base_dam + ammo_dam, false);
     description += "  ";
 
-    description += "Base attack delay: ";
+    description += jtrans("Base attack delay:") + " ";
     _append_value(description, property(item, PWPN_SPEED) / 10.0f, false);
     description += "  ";
 
-    description += "Minimum delay: ";
+    description += jtrans("Minimum delay:") + " ";
     _append_value(description, weapon_min_delay(item) / 10.0f, false);
 
     if (item_attack_skill(item) == SK_SLINGS)
     {
-        description += make_stringf("\nFiring bullets:    Base damage: %d",
-                                    base_dam +
-                                    ammo_type_damage(MI_SLING_BULLET));
+        description += "\n" + make_stringf(jtransc("\nFiring bullets:    Base damage: %d"),
+                                           base_dam +
+                                           ammo_type_damage(MI_SLING_BULLET));
     }
 }
 
@@ -863,18 +864,19 @@ static string _describe_weapon(const item_def &item, bool verbose)
         switch (item_attack_skill(item))
         {
         case SK_POLEARMS:
-            description += "\n\nIt can be evoked to extend its reach.";
+            description += "\n\n" + jtrans("It can be evoked to extend its reach.");
             break;
         case SK_AXES:
-            description += "\n\nIt can hit multiple enemies in an arc"
-                           " around the wielder.";
+            description += "\n\n" + jtrans("It can hit multiple enemies in an arc"
+                                           " around the wielder.");
             break;
         case SK_SHORT_BLADES:
             {
                 string adj = (item.sub_type == WPN_DAGGER) ? "extremely"
                                                            : "particularly";
-                description += "\n\nIt is " + adj + " good for stabbing"
-                               " unaware enemies.";
+                description += "\n\nこの武器は"
+                            + make_stringf(jtransc("%s good for stabbing unaware enemies."),
+                                           jtransc(adj));
             }
             break;
         default:
@@ -897,162 +899,150 @@ static string _describe_weapon(const item_def &item, bool verbose)
         case SPWPN_FLAMING:
             if (is_range_weapon(item))
             {
-                description += "It causes projectiles fired from it to burn "
-                    "those they strike,";
+                description += jtrans("It causes projectiles fired from it to burn "
+                    "those they strike,");
             }
             else
             {
-                description += "It has been specially enchanted to burn "
-                    "those struck by it,";
+                description += jtrans("It has been specially enchanted to burn "
+                    "those struck by it,");
             }
-            description += " causing extra injury to most foes and up to half "
-                           "again as much damage against particularly "
-                           "susceptible opponents.";
+            description += jtrans("causing extra injury flaming");
             if (!is_range_weapon(item) &&
                 (damtype == DVORP_SLICING || damtype == DVORP_CHOPPING))
             {
-                description += " Big, fiery blades are also staple "
-                    "armaments of hydra-hunters.";
+                description += "\n" + jtrans(" Big, fiery blades are also staple "
+                    "armaments of hydra-hunters.");
             }
             break;
         case SPWPN_FREEZING:
             if (is_range_weapon(item))
             {
-                description += "It causes projectiles fired from it to freeze "
-                    "those they strike,";
+                description += jtrans("It causes projectiles fired from it to freeze "
+                    "those they strike,");
             }
             else
             {
-                description += "It has been specially enchanted to freeze "
-                    "those struck by it,";
+                description += jtrans("It has been specially enchanted to freeze "
+                    "those struck by it,");
             }
-            description += " causing extra injury to most foes "
-                    "and up to half again as much damage against particularly "
-                    "susceptible opponents.";
-            if (is_range_weapon(item))
-                description += " They";
-            else
-                description += " It";
-            description += " can also slow down cold-blooded creatures.";
+            description += jtrans("causing extra injury freezing");
+
+            description += "\nその攻撃は" + jtrans(" can also slow down cold-blooded creatures.");
             break;
         case SPWPN_HOLY_WRATH:
-            description += "It has been blessed by the Shining One";
+            description += jtrans("It has been blessed by the Shining One");
             if (is_range_weapon(item))
             {
-                description += ", and any ";
-                description += ammo_name(item);
-                description += " fired from it will";
+                description += "放たれた" + jtrans(ammo_name(item)) + "は";
             }
-            else
-                description += " to";
-            description += " cause great damage to the undead and demons.";
+            description += jtrans(" cause great damage to the undead and demons.");
             break;
         case SPWPN_ELECTROCUTION:
             if (is_range_weapon(item))
             {
-                description += "It charges the ammunition it shoots with "
-                    "electricity; occasionally upon a hit, such missiles "
-                    "may discharge and cause terrible harm.";
+                description += jtrans("It charges the ammunition it shoots with "
+                                      "electricity; occasionally upon a hit, such missiles "
+                                      "may discharge and cause terrible harm.");
             }
             else
             {
-                description += "Occasionally, upon striking a foe, it will "
-                    "discharge some electrical energy and cause terrible "
-                    "harm.";
+                description += jtrans("Occasionally, upon striking a foe, it will "
+                                      "discharge some electrical energy and cause terrible "
+                                      "harm.");
             }
             break;
         case SPWPN_VENOM:
             if (is_range_weapon(item))
-                description += "It poisons the ammo it fires.";
+                description += jtrans("It poisons the ammo it fires.");
             else
-                description += "It poisons the flesh of those it strikes.";
+                description += jtrans("It poisons the flesh of those it strikes.");
             break;
         case SPWPN_PROTECTION:
-            description += "It protects the one who wields it against "
-                "injury (+5 to AC).";
+            description += jtrans("It protects the one who wields it against "
+                "injury (+5 to AC).");
             break;
         case SPWPN_EVASION:
-            description += "It affects your evasion (+5 to EV).";
+            description += jtrans("It affects your evasion (+5 to EV).");
             break;
         case SPWPN_DRAINING:
-            description += "A truly terrible weapon, it drains the "
-                "life of those it strikes.";
+            description += jtrans("A truly terrible weapon, it drains the "
+                "life of those it strikes.");
             break;
         case SPWPN_SPEED:
-            description += "Attacks with this weapon are significantly faster.";
+            description += jtrans("Attacks with this weapon are significantly faster.");
             break;
         case SPWPN_VORPAL:
             if (is_range_weapon(item))
             {
-                description += "Any ";
+                description += "この武器から放たれた";
                 description += ammo_name(item);
-                description += " fired from it inflicts extra damage.";
+                description += jtrans(" fired from it inflicts extra damage.");
             }
             else
             {
-                description += "It inflicts extra damage upon your "
-                    "enemies.";
+                description += jtrans("It inflicts extra damage upon your "
+                    "enemies.");
             }
             break;
         case SPWPN_CHAOS:
             if (is_range_weapon(item))
             {
-                description += "Each time it fires, it turns the "
+                description += jtrans("Each time it fires, it turns the "
                     "launched projectile into a different, random type "
-                    "of bolt.";
+                    "of bolt.");
             }
             else
             {
-                description += "Each time it hits an enemy it has a "
-                    "different, random effect.";
+                description += jtrans("Each time it hits an enemy it has a "
+                    "different, random effect.");
             }
             break;
         case SPWPN_VAMPIRISM:
-            description += "It inflicts no extra harm, but heals its "
-                "wielder somewhat when it strikes a living foe.";
+            description += jtrans("It inflicts no extra harm, but heals its "
+                "wielder somewhat when it strikes a living foe.");
             break;
         case SPWPN_PAIN:
-            description += "In the hands of one skilled in necromantic "
-                "magic, it inflicts extra damage on living creatures.";
+            description += jtrans("In the hands of one skilled in necromantic "
+                "magic, it inflicts extra damage on living creatures.");
             break;
         case SPWPN_DISTORTION:
-            description += "It warps and distorts space around it. "
-                "Unwielding it can cause banishment or high damage.";
+            description += jtrans("It warps and distorts space around it. "
+                "Unwielding it can cause banishment or high damage.");
             break;
         case SPWPN_PENETRATION:
-            description += "Ammo fired by it will pass through the "
+            description += jtrans("Ammo fired by it will pass through the "
                 "targets it hits, potentially hitting all targets in "
-                "its path until it reaches maximum range.";
+                "its path until it reaches maximum range.");
             break;
         case SPWPN_REAPING:
-            description += "If a monster killed with it leaves a "
+            description += jtrans("If a monster killed with it leaves a "
                 "corpse in good enough shape, the corpse will be "
-                "animated as a zombie friendly to the killer.";
+                "animated as a zombie friendly to the killer.");
             break;
         case SPWPN_ANTIMAGIC:
-            description += "It disrupts the flow of magical energy around "
+            description += jtrans("It disrupts the flow of magical energy around "
                     "spellcasters and certain magical creatures (including "
-                    "the wielder).";
+                    "the wielder).");
             break;
         case SPWPN_NORMAL:
             ASSERT(enchanted);
-            description += "It has no special brand (it is not flaming, "
+            description += jtrans("It has no special brand (it is not flaming, "
                     "freezing, etc), but is still enchanted in some way - "
-                    "positive or negative.";
+                    "positive or negative.");
             break;
         }
     }
 
     if (you.duration[DUR_WEAPON_BRAND] && &item == you.weapon())
     {
-        description += "\nIt is temporarily rebranded; it is actually a";
+        description += "\n" + jtrans("It is temporarily rebranded; it is actually a");
         if ((int) you.props[ORIGINAL_BRAND_KEY] == SPWPN_NORMAL)
-            description += "n unbranded weapon.";
+            description += jtrans("n unbranded weapon.");
         else
         {
-            description += " weapon of "
-                        + ego_type_string(item, false, you.props[ORIGINAL_BRAND_KEY])
-                        + ".";
+            description += jtrans("of " + ego_type_string(item, false, you.props[ORIGINAL_BRAND_KEY]))
+                        + "武器だ。";
         }
     }
 
@@ -1069,40 +1059,40 @@ static string _describe_weapon(const item_def &item, bool verbose)
         if (!item_ident(item, ISFLAG_KNOW_PROPERTIES)
             && item_type_known(item))
         {
-            description += "\nThis weapon may have some hidden properties.";
+            description += "\n" + jtrans("\nThis weapon may have some hidden properties.");
         }
     }
 
     if (verbose)
     {
-        description += "\n\nThis ";
+        description += "\n\nこの";
         if (is_unrandom_artefact(item))
-            description += get_artefact_base_name(item, true);
+            description += jtrans(get_artefact_base_name(item, true));
         else
-            description += "weapon";
-        description += " falls into the";
+            description += jtrans("weapon");
+        description += "は";
 
         const skill_type skill = item_attack_skill(item);
 
         description +=
-            make_stringf(" '%s' category. ",
-                         skill == SK_FIGHTING ? "buggy" : skill_name(skill));
+            make_stringf(jtransc(" '%s' category. "),
+                         skill == SK_FIGHTING ? "buggy" : jtransc(skill_name(skill)));
 
-        description += _handedness_string(item);
+        description += jtrans(_handedness_string(item));
 
         if (!you.could_wield(item, true))
-            description += "\nIt is too large for you to wield.";
+            description += "\n" + jtrans("\nIt is too large for you to wield.");
     }
 
     if (!is_artefact(item))
     {
         if (item_ident(item, ISFLAG_KNOW_PLUSES) && item.plus >= MAX_WPN_ENCHANT)
-            description += "\nIt cannot be enchanted further.";
+            description += "\n" + jtrans("\nIt cannot be enchanted further.");
         else
         {
-            description += "\nIt can be maximally enchanted to +";
+            description += "\n" + jtrans("\nIt can be maximally enchanted to +");
             _append_value(description, MAX_WPN_ENCHANT, false);
-            description += ".";
+            description += "まで強化できる。";
         }
     }
 
@@ -1644,7 +1634,7 @@ string get_item_description(const item_def &item, bool verbose,
         string name = item.name(DESC_INVENTORY_EQUIP);
         if (!in_inventory(item))
             name = uppercase_first(name);
-        description << name << ".";
+        description << name;
     }
 
 #ifdef DEBUG_DIAGNOSTICS
@@ -1702,7 +1692,7 @@ string get_item_description(const item_def &item, bool verbose,
         else if (is_artefact(item) && item_type_known(item)
                  && item.base_type == OBJ_JEWELLERY)
         {
-            description << "It is an ancient artefact.";
+            description << jtrans("It is an ancient artefact.");
             need_base_desc = false;
         }
 
@@ -1770,8 +1760,8 @@ string get_item_description(const item_def &item, bool verbose,
     case OBJ_BOOKS:
         if (!player_can_memorise_from_spellbook(item))
         {
-            description << "\nThis book is beyond your current level of "
-                           "understanding.";
+            description << "\n" << jtrans("\nThis book is beyond your current level of "
+                                          "understanding.");
 
             if (!item_type_known(item))
                 break;
@@ -1883,10 +1873,10 @@ string get_item_description(const item_def &item, bool verbose,
     case OBJ_RODS:
         if (verbose)
         {
-            description <<
-                "\nIt uses its own magic reservoir for casting spells, and "
-                "recharges automatically according to the recharging "
-                "rate.";
+            description << "\n\n" <<
+                jtrans("\nIt uses its own magic reservoir for casting spells, and "
+                       "recharges automatically according to the recharging "
+                       "rate.");
 
             const int max_charges = MAX_ROD_CHARGE;
             const int max_recharge_rate = MAX_WPN_ENCHANT;
@@ -1895,31 +1885,35 @@ string get_item_description(const item_def &item, bool verbose,
                 const int num_charges = item.charge_cap / ROD_CHARGE_MULT;
                 if (max_charges > num_charges)
                 {
-                    description << "\nIt can currently hold " << num_charges
-                                << " charges. It can be magically "
-                                << "recharged to contain up to "
-                                << max_charges << " charges.";
+                    description << "\n"
+                                << make_stringf(jtransc("It can currently hold %d"
+                                                       " charges. It can be magically "
+                                                       "recharged to contain up to %d"
+                                                       " charges."),
+                                                num_charges, max_charges);
                 }
                 else
-                    description << "\nIts capacity can be increased no further.";
+                    description << "\n" << jtrans("\nIts capacity can be increased no further.");
 
                 const int recharge_rate = item.special;
                 if (recharge_rate < max_recharge_rate)
                 {
-                    description << "\nIts current recharge rate is "
-                                << (recharge_rate >= 0 ? "+" : "")
-                                << recharge_rate << ". It can be magically "
-                                << "recharged up to +" << max_recharge_rate
-                                << ".";
+                    description << "\n"
+                                << make_stringf(jtransc("Its current recharge rate is %+d"
+                                                        ". It can be magically "
+                                                        "recharged up to +%d."),
+                                                recharge_rate, max_recharge_rate);
                 }
                 else
-                    description << "\nIts recharge rate is at maximum.";
+                    description << "\n" << jtrans("\nIts recharge rate is at maximum.");
             }
             else
             {
-                description << "\nIt can have at most " << max_charges
-                            << " charges and +" << max_recharge_rate
-                            << " recharge rate.";
+                description << "\n"
+                            << make_stringf(jtransc("\nIt can have at most %d"
+                                                    " charges and +%d"
+                                                    " recharge rate."),
+                                            max_charges, max_recharge_rate);
             }
         }
         else if (Options.dump_book_spells)
@@ -1936,7 +1930,7 @@ string get_item_description(const item_def &item, bool verbose,
             append_weapon_stats(stats, item);
             description << stats;
         }
-        description << "\n\nIt falls into the 'Maces & Flails' category.";
+        description << "\n\n" << jtrans("\n\nIt falls into the 'Maces & Flails' category.");
         break;
 
     case OBJ_STAVES:
@@ -1945,8 +1939,8 @@ string get_item_description(const item_def &item, bool verbose,
             append_weapon_stats(stats, item);
             description << stats;
         }
-        description << "\n\nIt falls into the 'Staves' category. ";
-        description << _handedness_string(item);
+        description << "\n\n" << jtrans("\n\nIt falls into the 'Staves' category. ");
+        description << jtrans(_handedness_string(item));
         break;
 
     case OBJ_MISCELLANY:
@@ -1954,19 +1948,19 @@ string get_item_description(const item_def &item, bool verbose,
             description << _describe_deck(item);
         if (is_xp_evoker(item))
         {
-            description << "\nOnce released, the spirits of this device will "
-                           "depart, leaving it ";
+            description << "\n" << jtrans("\nOnce released, the spirits of this device will "
+                                            "depart, leaving it ");
 
             if (!item_is_horn_of_geryon(item))
-                description << "and all other devices of its kind ";
+                description << jtrans("and all other devices of its kind ");
 
-            description << "inert. However, more spirits will be attracted as "
-                           "its bearer grows in power and wisdom.";
+            description << jtrans("inert. However, more spirits will be attracted as "
+                                  "its bearer grows in power and wisdom.");
 
             if (!evoker_is_charged(item))
             {
-                mpr("The device is presently inert. Gaining experience will "
-                    "recharge it.");
+                mpr(jtrans("The device is presently inert. Gaining experience will "
+                           "recharge it."));
             }
         }
         break;
@@ -2005,7 +1999,7 @@ string get_item_description(const item_def &item, bool verbose,
     }
 
     if (!verbose && item_known_cursed(item))
-        description << "\nIt has a curse placed upon it.";
+        description << "\n" << jtrans("\nIt has a curse placed upon it.");
     else
     {
         if (verbose)
@@ -2013,21 +2007,21 @@ string get_item_description(const item_def &item, bool verbose,
             if (need_extra_line)
                 description << "\n";
             if (item_known_cursed(item))
-                description << "\nIt has a curse placed upon it.";
+                description << "\n" << jtrans("\nIt has a curse placed upon it.");
 
             if (is_artefact(item))
             {
                 if (item.base_type == OBJ_ARMOUR
                     || item.base_type == OBJ_WEAPONS)
                 {
-                    description << "\nThis ancient artefact cannot be changed "
-                        "by magic or mundane means.";
+                    description << "\n" << jtrans("\nThis ancient artefact cannot be changed "
+                                                  "by magic or mundane means.");
                 }
                 // Randart jewellery has already displayed this line.
                 else if (item.base_type != OBJ_JEWELLERY
                          || (item_type_known(item) && is_unrandom_artefact(item)))
                 {
-                    description << "\nIt is an ancient artefact.";
+                    description << "\n" << jtrans("It is an ancient artefact.");
                 }
             }
         }
@@ -2035,20 +2029,20 @@ string get_item_description(const item_def &item, bool verbose,
 
     if (conduct_type ct = good_god_hates_item_handling(item))
     {
-        description << "\n\n" << uppercase_first(god_name(you.religion))
-                    << " opposes the use of such an ";
+        description << "\n\n" << jtrans(god_name(you.religion))
+                    << jtrans(" opposes the use of such an ");
 
         if (ct == DID_NECROMANCY)
-            description << "evil";
+            description << jtrans("evil");
         else
-            description << "unholy";
+            description << jtrans("unholy");
 
-        description << " item.";
+        description << "アイテムを使用することにいい顔をしない。";
     }
     else if (god_hates_item_handling(item))
     {
-        description << "\n\n" << uppercase_first(god_name(you.religion))
-                    << " disapproves of the use of such an item.";
+        description << "\n\n" << jtrans(god_name(you.religion))
+                    << jtrans(" disapproves of the use of such an item.");
     }
 
     if (verbose && origin_describable(item))
@@ -2074,7 +2068,7 @@ string get_item_description(const item_def &item, bool verbose,
         if (is_unrandom_artefact(item) && item_type_known(item))
             quote = getQuoteString(get_artefact_name(item));
         else
-            quote = getQuoteString(item.name(DESC_DBNAME, true, false, false));
+            quote = getQuoteString(item.name_en(DESC_DBNAME, true, false, false));
 
         if (count_desc_lines(description.str(), lineWidth)
             + count_desc_lines(quote, lineWidth) < height)

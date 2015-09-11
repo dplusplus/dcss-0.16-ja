@@ -55,6 +55,10 @@ Sword of Cerebov
 
 セレボブの剣
 %%%%
+flamberge
+
+フランベルジュ
+%%%%
 Staff of Dispater
 
 ディスペータの杖
@@ -147,6 +151,10 @@ heavy crossbow "Sniper"
 
 大型クロスボウ『狙撃手』
 %%%%
+heavy crossbow
+
+大型クロスボウ
+%%%%
 longbow "Piercer"
 
 ロングボウ『貫くもの』
@@ -159,9 +167,17 @@ lance "Wyrmbane"
 
 ランス『ドラゴン殺し』
 %%%%
+lance
+
+ランス
+%%%%
 Spriggan's Knife
 
 スプリガンのナイフ
+%%%%
+knife
+
+ナイフ
 %%%%
 plutonium sword
 
@@ -351,9 +367,17 @@ autumn katana
 
 秋日のカタナ
 %%%%
+katana
+
+カタナ
+%%%%
 shillelagh "Devastator"
 
 棍棒『デヴァステイター』
+%%%%
+shillelagh
+
+棍棒
 %%%%
 dragonskin cloak
 
@@ -382,6 +406,10 @@ boots of the spider
 dark maul
 
 ダークモール
+%%%%
+maul
+
+大金鎚
 %%%%
 hat of the High Council
 

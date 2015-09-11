@@ -89,6 +89,418 @@ There isn't anything else to %sbutcher here.
 %%%%
 ############################## describe.cc ##############################
 %%%%
+It affects your AC (%d).
+
+これはあなたのACに影響する。(%d)
+%%%%
+It affects your evasion (%d).
+
+これはあなたの回避力に影響する。(%d)
+%%%%
+It affects your strength (%d).
+
+これはあなたの腕力に影響する。(%d)
+%%%%
+It affects your intelligence (%d).
+
+これはあなたの知力に影響する。(%d)
+%%%%
+It affects your dexterity (%d).
+
+これはあなたの器用さに影響する。(%d)
+%%%%
+It affects your accuracy and damage with ranged weapons and melee attacks (%d).
+
+これはあなたの命中率およびダメージを与える能力に影響する。(%d)
+%%%%
+It insulates you from electricity.
+
+これはあなたを電気から絶縁する。
+%%%%
+It sustains your strength, intelligence and dexterity.
+
+これはあなたの腕力、知力、器用さを維持する。
+%%%%
+It affects your resistance to hostile enchantments.
+
+これはあなたの敵対的な魔法への耐性に影響する。
+%%%%
+It affects your health (%d).
+
+これはあなたの体力を増やす。(%d HP)
+%%%%
+It affects your magic capacity (%d).
+
+これはあなたの魔力の容量を増やす。(%d MP)
+%%%%
+It enhances your eyesight.
+
+これはあなたの視力を強化する。
+%%%%
+It lets you turn invisible.
+
+これはあなたに透明化の発動を可能とさせる。
+%%%%
+It lets you fly.
+
+これはあなたに飛行能力の発動を可能とさせる。
+%%%%
+It lets you blink.
+
+これはあなたに瞬間移動の発動を可能とさせる。
+%%%%
+It lets you go berserk.
+
+これはあなたにバーサークの発動を可能とさせる。
+%%%%
+It may make noises in combat.
+
+これは戦闘中に騒音を発する。
+%%%%
+It prevents spellcasting.
+
+これは魔法の詠唱を阻害する。
+%%%%
+It causes random teleportation.
+
+これはランダムなテレポートを引き起こす。
+%%%%
+It prevents most forms of teleportation.
+
+これはほとんどのタイプのテレポートを阻害する。
+%%%%
+It may make you go berserk in combat.
+
+これは戦闘中にあなたを狂戦士化させる。
+%%%%
+It may re-curse itself when equipped.
+
+これは装備した際に自動的に呪われる。
+%%%%
+It protects you against confusion.
+
+これはあなたを混乱から守る。
+%%%%
+It causes magical contamination when unequipped.
+
+これは装備を外した際にあなたを魔力で汚染する。
+%%%%
+It protects you from missiles.
+
+これはあなたを飛び道具から守る。
+%%%%
+It can be evoked to emit clouds of fog.
+
+これは発動して霧を発生させることができる。
+%%%%
+It increases your rate of regeneration.
+
+これはあなたの再生能力を高める。
+%%%%
+It protects you from acid and corrosion.
+
+これはあなたを酸や腐蝕から守る。
+%%%%
+It protects you from mutation.
+
+これはあなたを突然変異から守る。
+%%%%
+It can be evoked to create a twister.
+
+これは発動して竜巻を発生させることができる。
+%%%%
+It makes you extremely vulnerable to
+
+これはあなたを極度に%sから弱くする
+%%%%
+It makes you very vulnerable to
+
+これはあなたを非常に%sから弱くする
+%%%%
+It makes you vulnerable to
+
+これはあなたを%sから弱くする
+%%%%
+It protects you from
+
+これはあなたを%sから保護する
+%%%%
+It greatly protects you from
+
+これはあなたを%sから強力に保護する
+%%%%
+It renders you almost immune to
+
+これは%sの影響をほぼ無効化する
+%%%%
+Base accuracy:
+
+基本命中力:
+%%%%
+Base damage:
+
+基本ダメージ:
+%%%%
+Base attack delay:
+
+基本攻撃速度:
+%%%%
+Minimum Delay:
+
+最小攻撃速度:
+%%%%
+Firing bullets:    Base damage: %d
+
+スリング弾使用: 基本ダメージ: %d
+%%%%
+It is a weapon for one hand-pair.
+あなたはこの武器を一対の腕で操る。
+%%%%
+It is a one handed weapon.
+
+この武器は片手持ち用の武器だ。
+%%%%
+It is a two handed weapon.
+
+この武器は両手持ち用の武器だ。
+%%%%
+It can be evoked to extend its reach.
+
+この武器は少し離れたところまで届かせることができる。(e<w>V</w>oke または Tabコマンド)
+%%%%
+It can hit multiple enemies in an arc around the wielder.
+
+この武器はあなたの周辺にいる複数の敵を薙ぎ払うことができる。
+%%%%
+extremely
+
+非常に
+%%%%
+particularly
+
+特に
+%%%%
+%s good for stabbing unaware enemies.
+
+こちらに気付いていない敵の急所を突くのに%s役立つ。
+%%%%
+It causes projectiles fired from it to burn those they strike,
+
+この武器から放たれた射出物は当たった対象を燃やし、
+%%%%
+It has been specially enchanted to burn those struck by it,
+
+この魔力を帯びた武器は攻撃した対象を燃やし、
+%%%%
+causing extra injury flaming
+
+ほとんどの敵に追加ダメージを与える。火に弱い相手についてはさらに多くのダメージを与える。
+%%%%
+Big, fiery blades are also staple armaments of hydra-hunters.
+
+その燃えさかる大きな刃はヒドラを狩る者にとって格好の武器だ。
+%%%%
+It causes projectiles fired from it to freeze those they strike,
+
+この武器から放たれた射出物は当たった対象を凍らせ、
+%%%%
+It has been specially enchanted to freeze those struck by it,
+
+この魔力を帯びた武器は攻撃した対象を凍らせ、
+%%%%
+causing extra injury freezing
+
+ほとんどの敵に追加ダメージを与える。冷気に弱い相手についてはさらに多くのダメージを与える。
+%%%%
+can also slow down cold-blooded creatures.
+
+冷血動物の動きを遅くすることがある。
+%%%%
+It has been blessed by the Shining One
+
+この武器は輝けるものによって祝福されており、
+%%%%
+cause great damage to the undead and demons.
+
+不死の存在や悪魔に対して大きなダメージを与える。
+%%%%
+It charges the ammunition it shoots with electricity; occasionally upon a hit, such missiles may discharge and cause terrible harm.
+
+この武器は射出した物に電気を溜め込み、当たった際に電撃が解放されひどい傷を負わせる。
+%%%%
+Occasionally, upon striking a foe, it will discharge some electrical energy and cause terrible harm.
+
+この武器で敵に攻撃すると、当たった際に電撃が解放されひどい傷を負わせる。
+%%%%
+It poisons the ammo it fires.
+
+この武器は射出した物を毒に浸す。
+%%%%
+It poisons the flesh of those it strikes.
+
+この武器で攻撃すると傷口を毒に浸す。
+%%%%
+It protects the one who wields it against injury (+5 to AC).
+
+この武器は装備している者を攻撃から守る。(AC +5)
+%%%%
+A truly terrible weapon, it drains the life of those it strikes.
+
+この恐るべき武器は攻撃した相手の生命力を奪う。
+%%%%
+Attacks with this weapon are significantly faster.
+
+この武器を用いた攻撃は著しく加速される。
+%%%%
+fired from it inflicts extra damage.
+
+はさらなるダメージを負わせる。
+%%%%
+It inflicts extra damage upon your enemies.
+
+この武器は敵にさらなるダメージを負わせる。
+%%%%
+Each time it fires, it turns the launched projectile into a different, random type of bolt.
+
+この武器で射撃するたびに、射出物は異なったタイプの属性を帯びた魔法の矢に変化する。
+%%%%
+Each time it hits an enemy it has a different, random effect.
+
+この武器での攻撃が当たるたびに異なった効果が発揮される。
+%%%%
+It inflicts no extra harm, but heals its wielder somewhat when it strikes a living foe.
+
+この武器は追加のダメージこそ与えないが、生命あるものを攻撃した際に装備している者を癒す効果がある。
+%%%%
+In the hands of one skilled in necromantic magic, it inflicts extra damage on living creatures.
+
+この武器が死霊術の熟練者によって振るわれるとき、生命あるモンスターに追加のダメージを与える。
+%%%%
+It warps and distorts space around it. Unwielding it can cause banishment or high damage.
+
+この武器は周囲の空間を歪曲させる。あなたがこれを手放すとき、アビスに追放されるか多大なダメージを受ける。
+%%%%
+Ammo fired by it will pass through the targets it hits, potentially hitting all targets in its path until it reaches maximum range.
+
+この武器から放たれた射出物は標的を貫通し、限界射程距離内の弾道上にある全ての標的に当たる可能性がある。
+%%%%
+If a monster killed with it leaves a corpse in good enough shape, the corpse will be animated as a zombie friendly to the killer.
+
+この武器で殺害された死体が十分な形状を保っていた場合、死体が友好的なゾンビとして動き出す。
+%%%%
+It disrupts the flow of magical energy around spellcasters and certain magical creatures (including the wielder).
+
+この武器は魔術師や魔法生物、および装備者の周囲の魔力の流れを阻害する。
+%%%%
+It has no special brand (it is not flaming, freezing, etc), but is still enchanted in some way - positive or negative.
+
+この武器は特別な属性(火炎、冷気、その他)を帯びていないが、魔力によりその威力を強化または弱化されている。
+%%%%
+It is temporarily rebranded; it is actually a
+
+この武器は一時的な属性を付与されていて、実体は
+%%%%
+n unbranded weapon.
+
+属性を帯びていない武器だ。
+%%%%
+This weapon may have some hidden properties.
+
+この武器にはいくつかの隠された特性があるかもしれない。
+%%%%
+'%s' category.
+
+%sの種別に分類される。
+%%%%
+It is too large for you to wield.
+
+この武器は大型すぎてあなたには装備できない。
+%%%%
+It cannot be enchanted further.
+
+この武器はこれ以上強化できない。
+%%%%
+It can be maximally enchanted to +
+
+この武器は+
+%%%%
+It is an ancient artefact.
+
+これは太古のアーティファクトだ。
+%%%%
+It uses its own magic reservoir for casting spells, and recharges automatically according to the recharging rate.
+
+このロッドは呪文を唱えるための固有の魔力容量を持っており、充填速度に応じて魔力が自動で回復する。
+%%%%
+It can currently hold %d charges. It can be magically recharged to contain up to %d charges.
+
+このロッドの魔力容量は%dである。魔力を充填することによって%dまで拡張できる。
+%%%%
+Its capacity can be increased no further.
+
+このロッドの魔力容量はこれ以上拡張できない。
+%%%%
+Its current recharge rate is %+d. It can be magically recharged up to +%d.
+
+現在の充填速度は%+dである。魔力を充填することによって+%dまで増加できる。
+%%%%
+Its recharge rate is at maximum.
+
+このロッドの充填速度はこれ以上増加できない。
+%%%%
+It can have at most %d charges and +%d recharge rate.
+
+このロッドの最大容量は%dで、最大充填速度は+%dだ。
+%%%%
+It falls into the 'Maces & Flails' category.
+
+このロッドは鈍器の種別に分類される。
+%%%%
+It falls into the 'Staves' category.
+
+このアイテムは杖の種別に分類される。
+%%%%
+Once released, the spirits of this device will depart, leaving it
+
+一度発動した場合、中に封じ込められた精霊は解放され、このアイテム
+%%%%
+and all other devices of its kind
+
+および同種のアイテム
+%%%%
+inert. However, more spirits will be attracted as its bearer grows in power and wisdom.
+
+は使用不能になる。
+しかしながら、持ち主が経験を積むにしたがって精霊は再び戻ってくるだろう。
+%%%%
+The device is presently inert. Gaining experience will recharge it.
+
+このアイテムは今のところ使用不能だ。経験値の上昇につれて使用可能になる。
+%%%%
+It has a curse placed upon it.
+
+これは呪いがかかっている。
+%%%%
+This ancient artefact cannot be changed by magic or mundane means.
+
+この太古のアーティファクトは魔法やその他の尋常な手段によっては変化を受けない。
+%%%%
+opposes the use of such an
+
+はこのような
+%%%%
+evil
+
+邪悪な
+%%%%
+unholy
+
+不浄な
+%%%%
+disapproves of the use of such an item.
+
+はこのようなアイテムを使用することにいい顔をしない。
+%%%%
 Press '<w>!</w>' to toggle between the description and quote.
 
 解説と引用を切り替えるには '<w>!</w>' を押してください。
@@ -1184,7 +1596,15 @@ vampiric
 
 吸血の
 %%%%
+of vampirism
+
+吸血の
+%%%%
 antimagic
+
+反魔法の
+%%%%
+of antimagic
 
 反魔法の
 %%%%
