@@ -1828,7 +1828,7 @@ Your pliable body absorbs attacks (AC +1, EV +1).
 %%%%
 Your gelatinous body deflects attacks (AC +2, EV +2).
 
-あなたのゼラチン状の体は攻撃をはね返す。(AC +2, EV +2)
+あなたのゼラチン状の体は攻撃をはね返す。(AC +2, 回避 +2)
 %%%%
 Your body becomes stretchy.
 
@@ -2068,11 +2068,11 @@ You are partially covered in icy blue scales (AC +1).
 %%%%
 You are mostly covered in icy blue scales (AC +3, EV -1).
 
-あなたは氷のように青い鱗で大部分を覆われている。(AC +3, EV -1)
+あなたは氷のように青い鱗で大部分を覆われている。(AC +3, 回避 -1)
 %%%%
 You are completely covered in icy blue scales (AC +4, EV -1, rC+).
 
-あなたは氷のように青い鱗で完全に覆われている。(AC +4, EV -1, rC+)
+あなたは氷のように青い鱗で完全に覆われている。(AC +4, 回避 -1, rC+)
 %%%%
 Icy blue scales grow over part of your body.
 
@@ -2176,11 +2176,11 @@ You are partially covered in molten scales (AC +1).
 %%%%
 You are mostly covered in molten scales (AC +3, EV -1).
 
-あなたは溶岩状の鱗で大部分を覆われている。(AC +3, EV -1)
+あなたは溶岩状の鱗で大部分を覆われている。(AC +3, 回避 -1)
 %%%%
 You are completely covered in molten scales (AC +4, EV -1, rF+).
 
-あなたは溶岩状の鱗で完全に覆われている。(AC +4, EV -1, rF+)
+あなたは溶岩状の鱗で完全に覆われている。(AC +4, 回避 -1, rF+)
 %%%%
 Molten scales grow over part of your body.
 
