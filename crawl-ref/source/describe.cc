@@ -1735,6 +1735,7 @@ string get_item_description(const item_def &item, bool verbose,
         }
     }
 
+    string desc;
     switch (item.base_type)
     {
     // Weapons, armour, jewellery, books might be artefacts.
@@ -1777,9 +1778,9 @@ string get_item_description(const item_def &item, bool verbose,
 
         if (!item_ident(item, ISFLAG_KNOW_PLUSES) && !known_empty)
         {
-            description << "\nIf evoked without being fully identified,"
-                           " several charges will be wasted out of"
-                           " unfamiliarity with the device.";
+            desc += "\n" + jtrans("\nIf evoked without being fully identified,"
+                                  " several charges will be wasted out of"
+                                  " unfamiliarity with the device.");
         }
 
 
@@ -1789,15 +1790,18 @@ string get_item_description(const item_def &item, bool verbose,
             if (item.charges < max_charges
                 || !item_ident(item, ISFLAG_KNOW_PLUSES))
             {
-                description << "\nIt can have at most " << max_charges
-                            << " charges.";
+                desc += "\n" + make_stringf(jtransc("\nIt can have at most %d charges."),
+                                            max_charges);
             }
             else
-                description << "\nIt is fully charged.";
+                desc += "\n" + jtrans("\nIt is fully charged.");
         }
 
         if (known_empty)
-            description << "\nUnfortunately, it has no charges left.";
+            desc += "\n" + jtrans("\nUnfortunately, it has no charges left.");
+
+        if (!desc.empty())
+            description << "\n" << desc;
         break;
     }
 

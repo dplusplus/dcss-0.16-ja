@@ -697,6 +697,22 @@ It is an ancient artefact.
 
 これは太古のアーティファクトだ。
 %%%%
+If evoked without being fully identified, several charges will be wasted out of unfamiliarity with the device.
+
+このワンドが完全に識別されていない状態で振った場合、残り回数がいくらか余計に消耗されることになる。
+%%%%
+It can have at most %d charges.
+
+このワンドの最大容量は%dだ。
+%%%%
+It is fully charged.
+
+このワンドは完全に充填されている。
+%%%%
+Unfortunately, it has no charges left.
+
+残念ながら、このワンドは空っぽだ。
+%%%%
 It uses its own magic reservoir for casting spells, and recharges automatically according to the recharging rate.
 
 このロッドは呪文を唱えるための固有の魔力容量を持っており、充填速度に応じて魔力が自動で回復する。
