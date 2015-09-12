@@ -1052,10 +1052,10 @@ static string _origin_monster_name(const item_def &item)
 {
     const monster_type monnum = static_cast<monster_type>(item.orig_monnum);
     if (monnum == MONS_PLAYER_GHOST)
-        return "a player ghost";
+        return "player ghost";
     else if (monnum == MONS_PANDEMONIUM_LORD)
-        return "a pandemonium lord";
-    return mons_type_name(monnum, DESC_A);
+        return "pandemonium lord";
+    return mons_type_name(monnum, DESC_PLAIN);
 }
 
 static string _origin_place_desc(const item_def &item)
@@ -1126,13 +1126,95 @@ bool origin_is_acquirement(const item_def& item, item_source_type *type)
     return false;
 }
 
+static string _base_type_string(const item_def &item)
+{
+    switch (item.base_type)
+    {
+    case OBJ_WEAPONS: return "weapon";
+    case OBJ_MISSILES: return "missile";
+    case OBJ_ARMOUR:
+        switch (item.sub_type)
+        {
+        case ARM_ROBE:
+            return "robe";
+        case ARM_CLOAK:
+            return "cloak";
+        case ARM_LEATHER_ARMOUR:
+        case ARM_RING_MAIL:
+        case ARM_SCALE_MAIL:
+        case ARM_CHAIN_MAIL:
+        case ARM_PLATE_ARMOUR:
+        case ARM_TROLL_LEATHER_ARMOUR:
+        case ARM_FIRE_DRAGON_ARMOUR:
+        case ARM_ICE_DRAGON_ARMOUR:
+        case ARM_STEAM_DRAGON_ARMOUR:
+        case ARM_MOTTLED_DRAGON_ARMOUR:
+        case ARM_STORM_DRAGON_ARMOUR:
+        case ARM_GOLD_DRAGON_ARMOUR:
+        case ARM_SWAMP_DRAGON_ARMOUR:
+        case ARM_PEARL_DRAGON_ARMOUR:
+        case ARM_SHADOW_DRAGON_ARMOUR:
+        case ARM_QUICKSILVER_DRAGON_ARMOUR:
+            return "armour";
+        case ARM_CENTAUR_BARDING:
+            return "馬甲";
+        case ARM_NAGA_BARDING:
+            return "具装";
+        case ARM_HAT:
+            return "hat";
+        case ARM_HELMET:
+            return "helmet";
+        case ARM_GLOVES:
+            return "gloves";
+        case ARM_BOOTS:
+            return "boots";
+        case ARM_BUCKLER:
+        case ARM_SHIELD:
+        case ARM_LARGE_SHIELD:
+            return "shield";
+        case ARM_ANIMAL_SKIN:
+        case ARM_TROLL_HIDE:
+        case ARM_FIRE_DRAGON_HIDE:
+        case ARM_ICE_DRAGON_HIDE:
+        case ARM_STEAM_DRAGON_HIDE:
+        case ARM_MOTTLED_DRAGON_HIDE:
+        case ARM_STORM_DRAGON_HIDE:
+        case ARM_GOLD_DRAGON_HIDE:
+        case ARM_SWAMP_DRAGON_HIDE:
+        case ARM_PEARL_DRAGON_HIDE:
+        case ARM_SHADOW_DRAGON_HIDE:
+        case ARM_QUICKSILVER_DRAGON_HIDE:
+            return "hide";
+        default:
+            return "buggy armour";
+        }
+    case OBJ_WANDS: return "wand";
+    case OBJ_FOOD: return "food";
+    case OBJ_SCROLLS: return "scroll";
+    case OBJ_JEWELLERY:
+        if (jewellery_is_amulet(item))
+            return "amulet";
+        else
+            return "ring";
+    case OBJ_POTIONS: return "potion";
+    case OBJ_BOOKS: return "book";
+    case OBJ_STAVES: return "staff";
+    case OBJ_RODS: return "rod";
+    case OBJ_ORBS: return "orb";
+    case OBJ_MISCELLANY: return "miscellaneous";
+    case OBJ_CORPSES: return "corpse";
+    case OBJ_GOLD: return "gold";
+    default: return "";
+    }
+}
+
 string origin_desc(const item_def &item)
 {
     if (!origin_describable(item))
         return "";
 
     if (_origin_is_original_equip(item))
-        return "Original Equipment";
+        return jtrans("Original Equipment");
 
     string desc;
     if (item.orig_monnum)
@@ -1143,13 +1225,13 @@ string origin_desc(const item_def &item)
             switch (iorig)
             {
             case IT_SRC_SHOP:
-                desc += "You bought " + _article_it(item) + " in a shop ";
+                desc += jtrans("You bought " + _article_it(item) + " in a shop ");
                 break;
             case IT_SRC_START:
                 desc += "Buggy Original Equipment: ";
                 break;
             case AQ_SCROLL:
-                desc += "You acquired " + _article_it(item) + " ";
+                desc += jtrans("You acquired " + _article_it(item) + " ");
                 break;
 #if TAG_MAJOR_VERSION == 34
             case AQ_CARD_GENIE:
@@ -1162,8 +1244,8 @@ string origin_desc(const item_def &item)
             default:
                 if (iorig > GOD_NO_GOD && iorig < NUM_GODS)
                 {
-                    desc += god_name(static_cast<god_type>(iorig))
-                        + " gifted " + _article_it(item) + " to you ";
+                    desc += jtrans(god_name(static_cast<god_type>(iorig)))
+                        + jtrans(" gifted " + _article_it(item) + " to you ");
                 }
                 else
                 {
@@ -1174,18 +1256,18 @@ string origin_desc(const item_def &item)
             }
         }
         else if (item.orig_monnum == MONS_DANCING_WEAPON)
-            desc += "You subdued it ";
+            desc += jtrans("You subdued it ");
         else
         {
-            desc += "You took " + _article_it(item) + " off "
-                    + _origin_monster_name(item) + " ";
+            desc += make_stringf(jtransc("You took " + _article_it(item) + " off "),
+                                 jtransc(_origin_monster_name(item)));
         }
     }
     else
-        desc += "You found " + _article_it(item) + " ";
+        desc += jtrans("You found " + _article_it(item) + " ");
 
-    desc += _origin_place_desc(item);
-    return desc;
+    string basename = jtrans(_base_type_string(item));
+    return make_stringf(desc.c_str(), _origin_place_desc(item).c_str(), basename.c_str());
 }
 
 /**

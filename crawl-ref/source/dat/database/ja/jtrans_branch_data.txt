@@ -7,6 +7,10 @@ the Dungeon
 
 迷宮
 %%%%
+D
+
+迷宮
+%%%%
 Temple
 
 寺院

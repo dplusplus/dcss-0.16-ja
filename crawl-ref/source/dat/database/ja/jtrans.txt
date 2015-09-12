@@ -2634,6 +2634,10 @@ dark rune of Zot
 
 暗黒のルーン
 %%%%
+miscellaneous
+
+発動用のアイテム
+%%%%
 plain
 
 普通の
@@ -3071,6 +3075,34 @@ Pick up %s? ((y)es/(n)o/(a)ll/(m)enu/*?g,/q)
 You can't carry that many items.
 
 あなたはこれ以上多くのアイテムを持つことはできない。
+%%%%
+Original Equipment
+
+初期装備
+%%%%
+You bought it in a shop
+
+あなたは%sの店でこの%sを買った。
+%%%%
+You acquired it
+
+あなたは%sでこの%sを獲得した。
+%%%%
+gifted it to you
+
+は%sでこの%sをあなたに授けた。
+%%%%
+You subdued it
+
+あなたは%sでこの%sを倒した。
+%%%%
+You took it off
+
+あなたは%%sでこの%%sを%sから奪った。
+%%%%
+You found it
+
+あなたは%sでこの%sを見つけた。
 %%%%
 You can't pick that up.
 
@@ -4563,6 +4595,12 @@ Your body does not fit into most forms of armour.
 You are rather mundane.
 
 あなたはこれといった特徴がない。
+%%%%
+############################## place.cc ##############################
+%%%%
+Level %d of %s
+
+%sの%d階
 %%%%
 ############################## player.cc ##############################
 %%%%
