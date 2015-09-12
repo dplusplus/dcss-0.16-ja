@@ -86,8 +86,7 @@ Duvessa title
 Edmund title
 
 # Edmund the Younger
-『エドマンド』
-# youngerを訳しにくい……
+シグムンドの弟『エドマンド』
 %%%%
 Ereshkigal title
 
@@ -106,7 +105,7 @@ Erolcha title
 %%%%
 Eustachio title
 
-#　Eustachio the Magnificent
+# Eustachio the Magnificent
 偉大なる『エウスタキオ』
 %%%%
 Fannar title
@@ -277,7 +276,7 @@ Nikola title
 Norris title
 
 # Norris the Nihilist
-虚夢主義者『ノリス』
+虚無主義者『ノリス』
 %%%%
 Pikel title
 

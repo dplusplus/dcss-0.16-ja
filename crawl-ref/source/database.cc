@@ -207,6 +207,8 @@ static TextDB AllDBs[] =
 
            "jtrans_duration_data.txt",
            "jtrans_zap_data.txt",
+
+           "jtrans_montitle_en.txt",
            nullptr),
 };
 

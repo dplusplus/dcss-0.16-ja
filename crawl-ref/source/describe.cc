@@ -3755,6 +3755,11 @@ static string _serpent_of_hell_flavour(monster_type m)
     }
 }
 
+static string _get_unique_title(const string& key)
+{
+    return jtrans_has_key(key) ? jtrans(key) : "";
+}
+
 // Fetches the monster's database description and reads it into inf.
 void get_monster_db_desc(const monster_info& mi, describe_info &inf,
                          bool &has_stat_desc, bool force_seen)
@@ -3762,13 +3767,8 @@ void get_monster_db_desc(const monster_info& mi, describe_info &inf,
     string desc, desc_en;
     if (inf.title.empty())
     {
-        auto tmplang = Options.lang_name;
-
-        desc = getMiscString(mi.common_name(DESC_DBNAME) + " title");
-        Options.lang_name = "en";
-        desc_en = getMiscString(mi.common_name_en(DESC_DBNAME) + " title");
-
-        Options.lang_name = tmplang;
+        desc = getMiscString(mi.common_name_en(DESC_DBNAME) + " title");
+        desc_en = _get_unique_title(mi.common_name_en(DESC_DBNAME) + " title");
     }
     if (desc_en.empty())
     {
