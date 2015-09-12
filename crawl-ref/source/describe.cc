@@ -2040,11 +2040,11 @@ string get_item_description(const item_def &item, bool verbose,
     // it breaks the screen for people on very small terminals.
     if (verbose && get_number_of_lines() >= 28)
     {
-        description << "\n\n" << "Stash search prefixes: "
+        description << "\n\n" << jtrans("Stash search prefixes: ") + " "
                     << userdef_annotate_item(STASH_LUA_SEARCH_ANNOTATE, &item);
         string menu_prefix = item_prefix(item, false);
         if (!menu_prefix.empty())
-            description << "\nMenu/colouring prefixes: " << menu_prefix;
+            description << "\n" << jtrans("\nMenu/colouring prefixes: ") << " " << menu_prefix;
     }
 
     if (verbose && !noquote && (!item_type_known(item) || !is_random_artefact(item)))

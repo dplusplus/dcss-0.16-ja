@@ -819,6 +819,14 @@ disapproves of the use of such an item.
 
 はこのようなアイテムを使用することにいい顔をしない。
 %%%%
+Stash search prefixes:
+
+アイテム検索用のタグ:
+%%%%
+Menu/colouring prefixes:
+
+色設定用のタグ:
+%%%%
 Press '<w>!</w>' to toggle between the description and quote.
 
 解説と引用を切り替えるには '<w>!</w>' を押してください。
