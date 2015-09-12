@@ -1815,14 +1815,14 @@ string get_item_description(const item_def &item, bool verbose,
             description << "\n\n";
             if (item.props.exists(MANGLED_CORPSE_KEY))
             {
-                description << "This corpse is badly mangled; its hide is "
-                               "beyond any hope of recovery.";
+                description << jtrans("This corpse is badly mangled; its hide is "
+                                      "beyond any hope of recovery.");
             }
             else
             {
-                description << "Butchering may allow you to recover this "
-                               "creature's hide, which can be enchanted into "
-                               "armour.";
+                description << jtrans("Butchering may allow you to recover this "
+                                      "creature's hide, which can be enchanted into "
+                                      "armour.");
             }
         }
         // intentional fall-through
@@ -1835,28 +1835,28 @@ string get_item_description(const item_def &item, bool verbose,
             ASSERT(turns > 0);
             if (turns > 1)
             {
-                description << "It is large enough that eating it takes "
-                            << ((turns > 2) ? "several" : "a couple of")
-                            << " turns, during which time the eater is vulnerable"
-                               " to attack.";
+                description << jtrans(string("It is large enough that eating it takes ")
+                             + ((turns > 2) ? "several" : "a couple of")
+                             + " turns, during which time the eater is vulnerable"
+                             + " to attack.");
             }
             else
-                description << "It is small enough that eating it takes "
-                               "only one turn.";
+                description << jtrans("It is small enough that eating it takes "
+                                      "only one turn.");
         }
         if (item.base_type == OBJ_CORPSES || item.sub_type == FOOD_CHUNK)
         {
             switch (determine_chunk_effect(item, true))
             {
             case CE_POISONOUS:
-                description << "\n\nThis meat is poisonous.";
+                description << "\n\n" + jtrans("\n\nThis meat is poisonous.");
                 break;
             case CE_MUTAGEN:
-                description << "\n\nEating this meat will cause random "
-                               "mutations.";
+                description << "\n\n" + jtrans("\n\nEating this meat will cause random "
+                               "mutations.");
                 break;
             case CE_ROT:
-                description << "\n\nEating this meat will cause rotting.";
+                description << "\n\n" + jtrans("\n\nEating this meat will cause rotting.");
                 break;
             default:
                 break;

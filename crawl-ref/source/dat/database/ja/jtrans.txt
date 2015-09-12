@@ -713,6 +713,39 @@ Unfortunately, it has no charges left.
 
 残念ながら、このワンドは空っぽだ。
 %%%%
+This corpse is badly mangled; its hide is beyond any hope of recovery.
+
+この死体はめちゃくちゃに傷ついており、きれいな皮を剥ぐことはできそうもない。
+%%%%
+Butchering may allow you to recover this creature's hide, which can be enchanted into armour.
+
+このモンスターの死体を解体することで皮を剥ぐことができるかもしれない。
+この死体から得た皮を魔力で強化すると鎧を作ることができる。
+%%%%
+It is large enough that eating it takes several turns, during which time the eater is vulnerable to attack.
+
+この食物は食べるのにだいぶ時間がかかるため、食べている間無防備に攻撃を受けることになる。
+%%%%
+It is large enough that eating it takes a couple of turns, during which time the eater is vulnerable to attack.
+
+この食物は食べるのに少し時間がかかるため、食べている間無防備に攻撃を受けることになる。
+%%%%
+It is small enough that eating it takes only one turn.
+
+この食べ物は小さく、食べるのに1ターンしかかからない。
+%%%%
+This meat is poisonous.
+
+この肉は有毒だ。
+%%%%
+Eating this meat will cause random mutations.
+
+この肉を食べると予測できない突然変異を引き起こす。
+%%%%
+Eating this meat will cause rotting.
+
+この肉を食べると身体が腐敗していく。
+%%%%
 It uses its own magic reservoir for casting spells, and recharges automatically according to the recharging rate.
 
 このロッドは呪文を唱えるための固有の魔力容量を持っており、充填速度に応じて魔力が自動で回復する。
