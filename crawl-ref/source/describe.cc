@@ -1639,9 +1639,13 @@ string get_item_description(const item_def &item, bool verbose,
     if (!dump)
     {
         string name = item.name(DESC_INVENTORY_EQUIP);
+        string name_en = (item.base_type == OBJ_BOOKS &&
+                          item.sub_type != BOOK_MANUAL) ? item.name_en(DESC_PLAIN) : "";
         if (!in_inventory(item))
             name = uppercase_first(name);
-        description << name;
+        description << name << string(max(0, get_number_of_cols() - strwidth(name)
+                                                                  - strwidth(name_en)) - 1,
+                                      ' ') << name_en;
     }
 
 #ifdef DEBUG_DIAGNOSTICS
@@ -1754,7 +1758,7 @@ string get_item_description(const item_def &item, bool verbose,
     case OBJ_BOOKS:
         if (!player_can_memorise_from_spellbook(item))
         {
-            description << "\n" << jtrans("\nThis book is beyond your current level of "
+            desc += "\n" + jtrans("\nThis book is beyond your current level of "
                                           "understanding.");
 
             if (!item_type_known(item))
@@ -1764,7 +1768,7 @@ string get_item_description(const item_def &item, bool verbose,
         if (!verbose
             && (Options.dump_book_spells || is_random_artefact(item)))
         {
-            description << describe_item_spells(item);
+            desc += describe_item_spells(item);
         }
         break;
 
@@ -1799,9 +1803,6 @@ string get_item_description(const item_def &item, bool verbose,
 
         if (known_empty)
             desc += "\n" + jtrans("\nUnfortunately, it has no charges left.");
-
-        if (!desc.empty())
-            description << "\n" << desc;
         break;
     }
 
@@ -1986,6 +1987,8 @@ string get_item_description(const item_def &item, bool verbose,
     default:
         die("Bad item class");
     }
+    if (!desc.empty())
+        description << "\n" << desc;
 
     if (!verbose && item_known_cursed(item))
         description << "\n" << jtrans("\nIt has a curse placed upon it.");
