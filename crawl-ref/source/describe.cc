@@ -3315,7 +3315,12 @@ static string _monster_attacks_description(const monster_info& mi)
 
     if (!attack_descs.empty())
     {
-        result << "このモンスターは" << to_separated_line(attack_descs.begin(), attack_descs.end(), true, "および");
+        string pronoun = uppercase_first(mi.pronoun(PRONOUN_SUBJECTIVE));
+
+        if (pronoun == "It" || pronoun == "それ")
+            pronoun = "このモンスター";
+
+        result << pronoun << "は" << to_separated_line(attack_descs.begin(), attack_descs.end(), true, "および");
         result << "ことがある。\n";
     }
 
