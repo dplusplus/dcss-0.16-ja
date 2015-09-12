@@ -851,7 +851,6 @@ static string _describe_weapon(const item_def &item, bool verbose)
 
     if (verbose)
     {
-        description += "\n";
         append_weapon_stats(description, item);
     }
 
@@ -1051,7 +1050,8 @@ static string _describe_weapon(const item_def &item, bool verbose)
         string rand_desc = _randart_descrip(item);
         if (!rand_desc.empty())
         {
-            description += "\n";
+            if(!description.empty())
+                description += "\n";
             description += rand_desc;
         }
 
@@ -1116,7 +1116,7 @@ static string _describe_ammo(const item_def &item)
 
     if (item.special && item_type_known(item))
     {
-        description += "\n\n";
+        description += "\n";
 
         string threw_or_fired;
         if (can_throw)
@@ -1289,19 +1289,17 @@ static string _describe_armour(const item_def &item, bool verbose)
         && item.sub_type != ARM_BUCKLER
         && item.sub_type != ARM_LARGE_SHIELD)
     {
-        description += "\n";
         append_armour_stats(description, item);
     }
     else if (verbose)
     {
-        description += "\n";
         append_shield_stats(description, item);
     }
 
     const int ego = get_armour_ego_type(item);
     if (ego != SPARM_NORMAL && item_type_known(item) && verbose)
     {
-        description += "\n\n";
+        description += (description.empty() ? "\n" : "\n\n");
 
         switch (ego)
         {
@@ -1395,7 +1393,8 @@ static string _describe_armour(const item_def &item, bool verbose)
         string rand_desc = _randart_descrip(item);
         if (!rand_desc.empty())
         {
-            description += "\n";
+            if(!description.empty())
+                description += "\n";
             description += rand_desc;
         }
 
@@ -1494,7 +1493,8 @@ static string _describe_jewellery(const item_def &item, bool verbose)
         string rand_desc = _randart_descrip(item);
         if (!rand_desc.empty())
         {
-            description += "\n";
+            if(!description.empty())
+                description += "\n";
             description += rand_desc;
         }
         if (!item_ident(item, ISFLAG_KNOW_PROPERTIES) ||
@@ -1744,15 +1744,15 @@ string get_item_description(const item_def &item, bool verbose,
     {
     // Weapons, armour, jewellery, books might be artefacts.
     case OBJ_WEAPONS:
-        description << _describe_weapon(item, verbose);
+        desc += _describe_weapon(item, verbose);
         break;
 
     case OBJ_ARMOUR:
-        description << _describe_armour(item, verbose);
+        desc += _describe_armour(item, verbose);
         break;
 
     case OBJ_JEWELLERY:
-        description << _describe_jewellery(item, verbose);
+        desc += _describe_jewellery(item, verbose);
         break;
 
     case OBJ_BOOKS:
@@ -1773,7 +1773,7 @@ string get_item_description(const item_def &item, bool verbose,
         break;
 
     case OBJ_MISSILES:
-        description << _describe_ammo(item);
+        desc += _describe_ammo(item);
         break;
 
     case OBJ_WANDS:
@@ -1812,15 +1812,15 @@ string get_item_description(const item_def &item, bool verbose,
 
         if (mons_class_leaves_hide(item.mon_type))
         {
-            description << "\n\n";
+            desc += "\n";
             if (item.props.exists(MANGLED_CORPSE_KEY))
             {
-                description << jtrans("This corpse is badly mangled; its hide is "
-                                      "beyond any hope of recovery.");
+                desc += jtrans("This corpse is badly mangled; its hide is "
+                               "beyond any hope of recovery.");
             }
             else
             {
-                description << jtrans("Butchering may allow you to recover this "
+                desc += jtrans("Butchering may allow you to recover this "
                                       "creature's hide, which can be enchanted into "
                                       "armour.");
             }
@@ -1829,34 +1829,34 @@ string get_item_description(const item_def &item, bool verbose,
     case OBJ_FOOD:
         if (item.base_type == OBJ_FOOD)
         {
-            description << "\n\n";
+            desc += "\n";
 
             const int turns = food_turns(item);
             ASSERT(turns > 0);
             if (turns > 1)
             {
-                description << jtrans(string("It is large enough that eating it takes ")
-                             + ((turns > 2) ? "several" : "a couple of")
-                             + " turns, during which time the eater is vulnerable"
-                             + " to attack.");
+                desc += jtrans(string("It is large enough that eating it takes ")
+                      + ((turns > 2) ? "several" : "a couple of")
+                      + " turns, during which time the eater is vulnerable"
+                      + " to attack.");
             }
             else
-                description << jtrans("It is small enough that eating it takes "
-                                      "only one turn.");
+                desc += jtrans("It is small enough that eating it takes "
+                               "only one turn.");
         }
         if (item.base_type == OBJ_CORPSES || item.sub_type == FOOD_CHUNK)
         {
             switch (determine_chunk_effect(item, true))
             {
             case CE_POISONOUS:
-                description << "\n\n" + jtrans("\n\nThis meat is poisonous.");
+                desc += "\n\n" + jtrans("\n\nThis meat is poisonous.");
                 break;
             case CE_MUTAGEN:
-                description << "\n\n" + jtrans("\n\nEating this meat will cause random "
+                desc += "\n\n" + jtrans("\n\nEating this meat will cause random "
                                "mutations.");
                 break;
             case CE_ROT:
-                description << "\n\n" + jtrans("\n\nEating this meat will cause rotting.");
+                desc += "\n\n" + jtrans("\n\nEating this meat will cause rotting.");
                 break;
             default:
                 break;
@@ -1867,7 +1867,7 @@ string get_item_description(const item_def &item, bool verbose,
     case OBJ_RODS:
         if (verbose)
         {
-            description << "\n\n" <<
+            desc += "\n" +
                 jtrans("\nIt uses its own magic reservoir for casting spells, and "
                        "recharges automatically according to the recharging "
                        "rate.");
@@ -1879,32 +1879,29 @@ string get_item_description(const item_def &item, bool verbose,
                 const int num_charges = item.charge_cap / ROD_CHARGE_MULT;
                 if (max_charges > num_charges)
                 {
-                    description << "\n"
-                                << make_stringf(jtransc("It can currently hold %d"
-                                                       " charges. It can be magically "
-                                                       "recharged to contain up to %d"
-                                                       " charges."),
+                    desc += "\n" + make_stringf(jtransc("It can currently hold %d"
+                                                        " charges. It can be magically "
+                                                        "recharged to contain up to %d"
+                                                        " charges."),
                                                 num_charges, max_charges);
                 }
                 else
-                    description << "\n" << jtrans("\nIts capacity can be increased no further.");
+                    desc += "\n" + jtrans("\nIts capacity can be increased no further.");
 
                 const int recharge_rate = item.special;
                 if (recharge_rate < max_recharge_rate)
                 {
-                    description << "\n"
-                                << make_stringf(jtransc("Its current recharge rate is %+d"
+                    desc += "\n" + make_stringf(jtransc("Its current recharge rate is %+d"
                                                         ". It can be magically "
                                                         "recharged up to +%d."),
                                                 recharge_rate, max_recharge_rate);
                 }
                 else
-                    description << "\n" << jtrans("\nIts recharge rate is at maximum.");
+                    desc += "\n" + jtrans("\nIts recharge rate is at maximum.");
             }
             else
             {
-                description << "\n"
-                            << make_stringf(jtransc("\nIt can have at most %d"
+                desc += "\n" + make_stringf(jtransc("\nIt can have at most %d"
                                                     " charges and +%d"
                                                     " recharge rate."),
                                             max_charges, max_recharge_rate);
@@ -1912,39 +1909,39 @@ string get_item_description(const item_def &item, bool verbose,
         }
         else if (Options.dump_book_spells)
         {
-            description <<  describe_item_spells(item);
+            desc += describe_item_spells(item);
         }
 
         {
             string stats = "\n";
             append_weapon_stats(stats, item);
-            description << stats;
+            desc += stats;
         }
-        description << "\n\n" << jtrans("\n\nIt falls into the 'Maces & Flails' category.");
+        desc += "\n\n" + jtrans("\n\nIt falls into the 'Maces & Flails' category.");
         break;
 
     case OBJ_STAVES:
         {
             string stats = "\n";
             append_weapon_stats(stats, item);
-            description << stats;
+            desc += stats;
         }
-        description << "\n\n" << jtrans("\n\nIt falls into the 'Staves' category. ");
-        description << jtrans(_handedness_string(item));
+        desc += "\n\n" + jtrans("\n\nIt falls into the 'Staves' category. ");
+        desc += jtrans(_handedness_string(item));
         break;
 
     case OBJ_MISCELLANY:
         if (is_deck(item))
-            description << _describe_deck(item);
+            desc += _describe_deck(item);
         if (is_xp_evoker(item))
         {
-            description << "\n" << jtrans("\nOnce released, the spirits of this device will "
-                                            "depart, leaving it ");
+            desc += "\n" + jtrans("\nOnce released, the spirits of this device will "
+                                   "depart, leaving it ");
 
             if (!item_is_horn_of_geryon(item))
-                description << jtrans("and all other devices of its kind ");
+                desc += jtrans("and all other devices of its kind ");
 
-            description << jtrans("inert. However, more spirits will be attracted as "
+            desc += jtrans("inert. However, more spirits will be attracted as "
                                   "its bearer grows in power and wisdom.");
 
             if (!evoker_is_charged(item))
