@@ -90,7 +90,7 @@ static string _booktype_header(mon_spell_slot_flags type, size_t num_books,
 
     if (type == MON_SPELL_WIZARD)
     {
-        return "\n" + make_stringf(jtransc("\n%s has mastered %s:"), pronoun.c_str(),
+        return "\n" + make_stringf(jtranslnc("\n%s has mastered %s:"), pronoun.c_str(),
                                    num_books > 1 ? jtransc("one of the following spellbooks")
                                                  : jtransc("the following spells"));
     }
@@ -99,11 +99,11 @@ static string _booktype_header(mon_spell_slot_flags type, size_t num_books,
 
     if (num_books > 1)
     {
-        return "\n" + make_stringf(jtransc("\n%s possesses one of the following sets of %s abilities:"),
+        return "\n" + make_stringf(jtranslnc("\n%s possesses one of the following sets of %s abilities:"),
                                    pronoun.c_str(), descriptor.c_str());
     }
 
-    return "\n" + make_stringf(jtransc("\n%s possesses the following %s abilities:"),
+    return "\n" + make_stringf(jtranslnc("\n%s possesses the following %s abilities:"),
                                pronoun.c_str(), descriptor.c_str());
 }
 
@@ -356,7 +356,10 @@ static void _describe_book(const spellbook_contents &book,
 
     // only display header for book/rod spells
     if (source_item)
-        description.cprintf(("\n " + jtrans("Spells                             Type                      Level")).c_str());
+    {
+        description.cprintf("\n ");
+        description.cprintf(jtransc("Spells                             Type                      Level"));
+    }
     description.cprintf("\n");
 
     // list spells in two columns, instead of one? (monster books)
@@ -400,6 +403,9 @@ static void _describe_book(const spellbook_contents &book,
 
     // are we halfway through a column?
     if (doublecolumn && book.spells.size() % 2)
+        description.cprintf("\n");
+
+    if (source_item)
         description.cprintf("\n");
 }
 

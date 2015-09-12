@@ -3338,8 +3338,8 @@ static string _monster_spells_description(const monster_info& mi)
 
     formatted_string description;
     describe_spellset(monster_spellset(mi), nullptr, description);
-    description.cprintf(jtranslnc("Select a spell to read its description.\n"));
     description.cprintf("\n");
+    description.cprintf(jtranslnc("Select a spell to read its description.\n"));
     return description.tostring();
 }
 
@@ -3481,6 +3481,8 @@ static void _describe_monster_mr(const monster_info& mi, ostringstream &result)
 static string _monster_stat_description(const monster_info& mi)
 {
     ostringstream result;
+
+    result << "\n";
 
     _describe_monster_ac(mi, result);
     _describe_monster_ev(mi, result);
@@ -3925,7 +3927,7 @@ void get_monster_db_desc(const monster_info& mi, describe_info &inf,
     string result = _monster_stat_description(mi);
     if (!result.empty())
     {
-        inf.body << "\n" << result;
+        inf.body << result;
         has_stat_desc = true;
     }
 
@@ -3999,7 +4001,7 @@ void get_monster_db_desc(const monster_info& mi, describe_info &inf,
     }
     else if (mons_class_leaves_hide(mi.type))
     {
-        inf.body << jtransln("mons class leaves hide");
+        inf.body << "\n" << jtransln("mons class leaves hide");
         /*
         inf.body << "\nIf " << mi.pronoun(PRONOUN_SUBJECTIVE) << " is slain "
         "and butchered, it may be possible to recover "
@@ -4014,9 +4016,6 @@ void get_monster_db_desc(const monster_info& mi, describe_info &inf,
                                      "to sustain them all, and thus this one will "
                                      "shortly expire.\n");
     }
-
-    if (!inf.quote.empty())
-        inf.quote += "\n";
 
 #ifdef DEBUG_DIAGNOSTICS
     if (mi.pos.origin() || !monster_at(mi.pos))
