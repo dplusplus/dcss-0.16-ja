@@ -162,6 +162,9 @@ string item_def::name(description_level_type descrip, bool terse, bool ident,
     const string auxname = name_aux(descrip, terse, ident, with_inscription,
                                     ignore_flags);
 
+    if (descrip == DESC_BASENAME)
+        return auxname;
+
     if (descrip == DESC_INVENTORY_EQUIP || descrip == DESC_INVENTORY)
     {
         if (in_inventory(*this)) // actually in inventory
@@ -1792,6 +1795,9 @@ static string _name_weapon(const item_def &weap, description_level_type desc,
         = _curse_prefix(weap, desc, terse, ident, ignore_flags);
     const string plus_text = know_pluses ? _plus_suffix(weap) : "";
 
+    if (desc == DESC_BASENAME)
+        return jtrans(item_base_name(weap));
+
     if (is_artefact(weap) && !dbname)
     {
         const string long_name = curse_prefix + jtrans(get_artefact_name(weap, ident)) + plus_text;
@@ -1980,7 +1986,7 @@ string item_def::name_aux(description_level_type desc, bool terse, bool ident,
     {
         special_missile_type msl_brand = get_ammo_brand(*this);
 
-        if (!terse && !dbname)
+        if (!terse && !dbname && !basename)
         {
             if (props.exists(HELLFIRE_BOLT_KEY))
                 buff << "地獄の業火の";
@@ -2024,7 +2030,7 @@ string item_def::name_aux(description_level_type desc, bool terse, bool ident,
         if (item_typ == ARM_GLOVES || item_typ == ARM_BOOTS)
             buff << jtrans("pair of");
 
-        if (is_artefact(*this) && !dbname)
+        if (is_artefact(*this) && !dbname && !basename)
         {
             buff << jtrans(get_artefact_name(*this));
             break;
@@ -2303,11 +2309,11 @@ string item_def::name_aux(description_level_type desc, bool terse, bool ident,
         if ((item_typ == MISC_BOX_OF_BEASTS
                   || item_typ == MISC_SACK_OF_SPIDERS)
                     && used_count > 0
-                    && !dbname)
+                    && !dbname && !basename)
         {
             buff << " {" << used_count << "回使用}";
         }
-        else if (is_xp_evoker(*this) && !dbname && !evoker_is_charged(*this))
+        else if (is_xp_evoker(*this) && !dbname && !evoker_is_charged(*this) && !basename)
             buff << " (充填中)";
 
         break;
@@ -2373,7 +2379,7 @@ string item_def::name_aux(description_level_type desc, bool terse, bool ident,
                 buff << make_stringf(" (%+d)", special);
         }
 
-        if (know_curse && cursed() && terse)
+        if (know_curse && cursed() && terse && !basename)
             buff << " " << jtrans("(curse)");
         break;
 
