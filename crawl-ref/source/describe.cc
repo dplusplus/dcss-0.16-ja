@@ -1561,26 +1561,27 @@ static string _describe_deck(const item_def &item)
 
     description.reserve(100);
 
-    description += "\n";
-
     if (_check_buggy_deck(item, description))
         return "";
 
     if (item_type_known(item))
         description += deck_contents(item.sub_type) + "\n";
 
-    description += make_stringf("\nMost decks begin with %d to %d cards.",
-                                MIN_STARTING_CARDS,
-                                MAX_STARTING_CARDS);
+    description += "\n" + make_stringf(jtransc("\nMost decks begin with %d to %d cards."),
+                                       MIN_STARTING_CARDS,
+                                       MAX_STARTING_CARDS);
+
+    auto card_stringify = [](card_type card){ return tagged_jtrans("[card]", card_name(card)); };
 
     const vector<card_type> drawn_cards = get_drawn_cards(item);
     if (!drawn_cards.empty())
     {
         description += "\n";
-        description += "Drawn card(s): ";
+        description += jtrans("Drawn card(s): ") + " ";
         description += comma_separated_fn(drawn_cards.begin(),
                                           drawn_cards.end(),
-                                          card_name);
+                                          card_stringify,
+                                          "、", "、") + "のカード";
     }
 
     const int num_cards = cards_in_deck(item);
@@ -1609,10 +1610,11 @@ static string _describe_deck(const item_def &item)
     if (!seen_top_cards.empty())
     {
         description += "\n";
-        description += "Next card(s): ";
+        description += jtrans("Next card(s): ") + " ";
         description += comma_separated_fn(seen_top_cards.begin(),
                                           seen_top_cards.end(),
-                                          card_name);
+                                          card_stringify,
+                                          "、", "、") + "のカード";
     }
     if (!other_seen_cards.empty())
     {
@@ -1620,10 +1622,11 @@ static string _describe_deck(const item_def &item)
         sort(other_seen_cards.begin(), other_seen_cards.end(),
              _compare_card_names);
 
-        description += "Seen card(s): ";
+        description += jtrans("Seen card(s): ") + " ";
         description += comma_separated_fn(other_seen_cards.begin(),
                                           other_seen_cards.end(),
-                                          card_name);
+                                          card_stringify,
+                                          "、", "、") + "のカード";
     }
 
     return description;

@@ -422,7 +422,7 @@ static const vector<const deck_archetype *> _subdecks(uint8_t deck_type)
 
 const string deck_contents(uint8_t deck_type)
 {
-    string output = "\nIt may contain the following cards: ";
+    string output = "\n" + jtrans("\nIt may contain the following cards: ");
 
     // This way of doing things is intended to prevent a card
     // that appears in multiple subdecks from showing up twice in the
@@ -432,14 +432,16 @@ const string deck_contents(uint8_t deck_type)
         for (const card_with_weights& cww : *pdeck)
             cards.insert(cww.card);
 
-    output += comma_separated_fn(cards.begin(), cards.end(), card_name);
-    output += ".";
+    output += comma_separated_fn(cards.begin(), cards.end(),
+                                 [](card_type card){ return tagged_jtrans("[card]", card_name(card)); },
+                                 "、", "、");
+    output += "のカードが含まれている。";
 
     if (deck_type != MISC_DECK_OF_PUNISHMENT
         && deck_type != MISC_DECK_OF_ODDITIES)
     {
-        output += "\n(One in a hundred cards may be drawn from the deck of "
-                  "oddities, instead.)";
+        output += "\n" + jtrans("\n(One in a hundred cards may be drawn from the deck of "
+                                "oddities, instead.)");
     }
 
     return output;

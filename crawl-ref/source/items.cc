@@ -1201,7 +1201,11 @@ static string _base_type_string(const item_def &item)
     case OBJ_STAVES: return "staff";
     case OBJ_RODS: return "rod";
     case OBJ_ORBS: return "orb";
-    case OBJ_MISCELLANY: return "miscellaneous";
+    case OBJ_MISCELLANY:
+        if (is_deck(item))
+            return "デッキ";
+        else
+            return "miscellaneous";
     case OBJ_CORPSES: return "corpse";
     case OBJ_GOLD: return "gold";
     default: return "";

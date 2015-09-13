@@ -1606,6 +1606,60 @@ static void _name_deck(const item_def &deck, description_level_type desc,
     buff << "}";
 }
 
+static void _name_deck_en(const item_def &deck, description_level_type desc,
+                          bool ident, ostringstream &buff)
+{
+    const bool know_type = ident || item_type_known(deck);
+
+    const bool dbname   = desc == DESC_DBNAME;
+    const bool basename = _use_basename(deck, desc, ident);
+
+    if (basename)
+    {
+        buff << "deck of cards";
+        return;
+    }
+
+    if (bad_deck(deck))
+    {
+        buff << "BUGGY deck of cards";
+        return;
+    }
+
+    if (!dbname)
+        buff << deck_rarity_name(deck.deck_rarity) << ' ';
+
+    if (deck.sub_type == MISC_DECK_UNKNOWN)
+        buff << misc_type_name(MISC_DECK_OF_ESCAPE, false);
+    else
+        buff << misc_type_name(deck.sub_type, know_type);
+
+    // name overriden, not a stacked deck, not a deck that's been drawn from
+    if (dbname || !top_card_is_known(deck) && deck.used_count == 0)
+        return;
+
+    buff << " {";
+    // A marked deck!
+    if (top_card_is_known(deck))
+        buff << card_name(top_card(deck));
+
+    // How many cards have been drawn, or how many are left.
+    if (deck.used_count != 0)
+    {
+        if (top_card_is_known(deck))
+            buff << ", ";
+
+        if (deck.used_count > 0)
+            buff << "drawn: ";
+        else
+            buff << "left: ";
+
+        buff << abs(deck.used_count);
+    }
+
+    buff << "}";
+}
+
 /**
  * The curse-describing prefix to a weapon's name, including trailing space if
  * appropriate. (Empty if the weapon isn't cursed, or if the curse shouldn't be
@@ -2300,7 +2354,10 @@ string item_def::name_aux(description_level_type desc, bool terse, bool ident,
 
         if (is_deck(*this) || item_typ == MISC_DECK_UNKNOWN)
         {
-            _name_deck(*this, desc, ident, buff);
+            if (basename)
+                buff << "デッキ";
+            else
+                _name_deck(*this, desc, ident, buff);
             break;
         }
 
@@ -2840,7 +2897,7 @@ string item_def::name_aux_en(description_level_type desc, bool terse, bool ident
 
         if (is_deck(*this) || item_typ == MISC_DECK_UNKNOWN)
         {
-            _name_deck(*this, desc, ident, buff);
+            _name_deck_en(*this, desc, ident, buff);
             break;
         }
 
