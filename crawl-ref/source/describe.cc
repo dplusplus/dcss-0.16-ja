@@ -437,6 +437,15 @@ struct property_descriptor
     bool is_graded_resist;
 };
 
+static string _randart_base_type_string(const item_def &item)
+{
+    const string basename = base_type_string(item);
+    return basename == "armour" ? "防具" :
+           basename != "jewellery" ? basename :
+           jewellery_is_amulet(item) ? "amulet" :
+                                       "ring";
+}
+
 static string _randart_descrip(const item_def &item)
 {
     string description;
@@ -494,7 +503,8 @@ static string _randart_descrip(const item_def &item)
         if (*type)
         {
             description += "\n";
-            description += jtrans(type);
+            description += make_stringf(jtransc(type),
+                                        item.name(DESC_BASENAME).c_str());
         }
     }
 
@@ -510,6 +520,7 @@ static string _randart_descrip(const item_def &item)
 
             // FIXME Not the nicest hack.
             char buf[80];
+
             snprintf(buf, sizeof buf, "%+d", proprt[desc.property]);
             sdesc = replace_all(jtrans(sdesc), "%d", buf);
 
@@ -533,6 +544,9 @@ static string _randart_descrip(const item_def &item)
                                      sdesc.c_str()) + "。";
             }
 
+            sdesc = make_stringf(sdesc.c_str(),
+                                 jtransc(_randart_base_type_string(item)));
+
             description += "\n";
             description += sdesc;
         }
@@ -545,7 +559,8 @@ static string _randart_descrip(const item_def &item)
         snprintf(buf, sizeof buf, "\nIt makes you %s%s stealthy.",
                  (stval < -1 || stval > 1) ? "much " : "",
                  (stval < 0) ? "less" : "more");
-        description += "\n" + jtrans(buf);
+        description += "\n" + make_stringf(jtransc(buf),
+                                           jtransc(_randart_base_type_string(item)));
     }
 
     return description;

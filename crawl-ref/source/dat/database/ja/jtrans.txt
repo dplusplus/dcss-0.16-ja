@@ -89,121 +89,169 @@ There isn't anything else to %sbutcher here.
 %%%%
 ############################## describe.cc ##############################
 %%%%
-It affects your AC (%d).
-
-これはあなたのACに影響する。(AC %d)
-%%%%
-It affects your evasion (%d).
-
-これはあなたの回避力に影響する。(回避 %d)
-%%%%
-It affects your strength (%d).
-
-これはあなたの腕力に影響する。(腕力 %d)
-%%%%
-It affects your intelligence (%d).
-
-これはあなたの知力に影響する。(知力 %d)
-%%%%
-It affects your dexterity (%d).
-
-これはあなたの器用さに影響する。(器用 %d)
-%%%%
-It affects your accuracy and damage with ranged weapons and melee attacks (%d).
-
-これはあなたの命中率およびダメージを与える能力に影響する。(命中・ダメージ %d)
-%%%%
-It insulates you from electricity.
-
-これはあなたを電気から絶縁する。
-%%%%
 It sustains your strength, intelligence and dexterity.
 
-これはあなたの腕力、知力、器用さを維持する。
+この%sはあなたの腕力、知力、器用さを維持する。
 %%%%
-It affects your resistance to hostile enchantments.
+It improves your spell success rate.
 
-これはあなたの敵対的な魔法への耐性に影響する。
+この%sはあなたの呪文の成功率を高める。
 %%%%
-It affects your health (%d).
+It enhances your fire magic, and weakens your ice magic.
 
-これはあなたの体力を増やす。(%d HP)
+この%sはあなたの炎の魔術の力を強め、逆に冷気の魔術の力を弱める。
 %%%%
-It affects your magic capacity (%d).
+It enhances your ice magic, and weakens your fire magic.
 
-これはあなたの魔力の容量を増やす。(%d MP)
+この%sはあなたの冷気の魔術の力を強め、逆に炎の魔術の力を弱める。
 %%%%
-It enhances your eyesight.
+It causes random teleportation, and can be evoked to teleport at will.
 
-これはあなたの視力を強化する。
+この%sはランダムなテレポートを引き起こすと同時に、自らの意志でテレポートを発動させることもできる。
 %%%%
-It lets you turn invisible.
+It can be evoked for teleport control.
 
-これはあなたに透明化の発動を可能とさせる。
+この%sはテレポート制御の力を発動することができる。
 %%%%
-It lets you fly.
+It provides mental clarity.
 
-これはあなたに飛行能力の発動を可能とさせる。
+この%sはあなたの精神を明晰に保つ。
 %%%%
-It lets you blink.
+It may prevent the melee attacks of summoned creatures.
 
-これはあなたに瞬間移動の発動を可能とさせる。
-%%%%
-It lets you go berserk.
-
-これはあなたにバーサークの発動を可能とさせる。
-%%%%
-It may make noises in combat.
-
-これは戦闘中に騒音を発する。
-%%%%
-It prevents spellcasting.
-
-これは魔法の詠唱を阻害する。
-%%%%
-It causes random teleportation.
-
-これはランダムなテレポートを引き起こす。
-%%%%
-It prevents most forms of teleportation.
-
-これはほとんどのタイプのテレポートを阻害する。
-%%%%
-It may make you go berserk in combat.
-
-これは戦闘中にあなたを狂戦士化させる。
-%%%%
-It may re-curse itself when equipped.
-
-これは装備した際に自動的に呪われる。
-%%%%
-It protects you against confusion.
-
-これはあなたを混乱から守る。
-%%%%
-It causes magical contamination when unequipped.
-
-これは装備を外した際にあなたを魔力で汚染する。
-%%%%
-It protects you from missiles.
-
-これはあなたを飛び道具から守る。
-%%%%
-It can be evoked to emit clouds of fog.
-
-これは発動して霧を発生させることができる。
-%%%%
-It increases your rate of regeneration.
-
-これはあなたの再生能力を高める。
+この%sは召喚されたモンスターによる近接攻撃を防ぐ。
 %%%%
 It protects you from acid and corrosion.
 
-これはあなたを酸や腐蝕から守る。
+この%sはあなたを酸や腐蝕から守る。
+%%%%
+It allows you to eat raw meat even when not hungry.
+
+この%sを付けていると空腹でない時にも生肉を食べることができる。
 %%%%
 It protects you from mutation.
 
-これはあなたを突然変異から守る。
+この%sはあなたを突然変異から守る。
+%%%%
+It causes incoming damage to be split between your health and magic.
+
+この%sを付けていると受けたダメージを体力と魔力に分配する。
+%%%%
+It allows you to gain divine favour quickly.
+
+この%sを付けていると神の興味をより引きやすくなる。
+%%%%
+It prevents you from being teleported, slowed, hasted or paralysed.
+
+この%sはあなたがテレポート/減速/加速/麻痺するのを防ぐ。
+%%%%
+It reduces the accuracy of all your attacks.
+
+この%sはあなたの全ての攻撃手段の命中率を落とす。
+%%%%
+It affects your AC (%d).
+
+この%sはあなたのACに影響する。(AC %d)
+%%%%
+It affects your evasion (%d).
+
+この%sはあなたの回避力に影響する。(回避 %d)
+%%%%
+It affects your strength (%d).
+
+この%sはあなたの腕力に影響する。(腕力 %d)
+%%%%
+It affects your intelligence (%d).
+
+この%sはあなたの知力に影響する。(知力 %d)
+%%%%
+It affects your dexterity (%d).
+
+この%sはあなたの器用さに影響する。(器用 %d)
+%%%%
+It affects your accuracy and damage with ranged weapons and melee attacks (%d).
+
+この%sはあなたの命中率およびダメージを与える能力に影響する。(命中・ダメージ %d)
+%%%%
+It insulates you from electricity.
+
+この%sはあなたを電気から絶縁する。
+%%%%
+It affects your resistance to hostile enchantments.
+
+この%sはあなたの敵対的な魔法への耐性に影響する。
+%%%%
+It affects your health (%d).
+
+この%sはあなたの体力を増やす。(%d HP)
+%%%%
+It affects your magic capacity (%d).
+
+この%sはあなたの魔力の容量を増やす。(%d MP)
+%%%%
+It enhances your eyesight.
+
+この%sはあなたの視力を強化する。
+%%%%
+It lets you turn invisible.
+
+この%sはあなたに透明化の発動を可能とさせる。
+%%%%
+It lets you fly.
+
+この%sはあなたに飛行能力の発動を可能とさせる。
+%%%%
+It lets you blink.
+
+この%sあなたに瞬間移動の発動を可能とさせる。
+%%%%
+It lets you go berserk.
+
+この%sはあなたにバーサークの発動を可能とさせる。
+%%%%
+It may make noises in combat.
+
+この%sは戦闘中に騒音を発する。
+%%%%
+It prevents spellcasting.
+
+この%sは魔法の詠唱を阻害する。
+%%%%
+It causes random teleportation.
+
+この%sはランダムなテレポートを引き起こす。
+%%%%
+It prevents most forms of teleportation.
+
+この%sはほとんどのタイプのテレポートを阻害する。
+%%%%
+It may make you go berserk in combat.
+
+この%sは戦闘中にあなたを狂戦士化させる。
+%%%%
+It may re-curse itself when equipped.
+
+この%sは装備した際に自動的に呪われる。
+%%%%
+It protects you against confusion.
+
+この%sはあなたを混乱から守る。
+%%%%
+It causes magical contamination when unequipped.
+
+この%sは装備を外した際にあなたを魔力で汚染する。
+%%%%
+It protects you from missiles.
+
+この%sはあなたを飛び道具から守る。
+%%%%
+It can be evoked to emit clouds of fog.
+
+この%sは発動して霧を発生させることができる。
+%%%%
+It increases your rate of regeneration.
+
+この%sはあなたの再生能力を高める。
 %%%%
 It can be evoked to create a twister.
 
@@ -211,43 +259,43 @@ It can be evoked to create a twister.
 %%%%
 It makes you extremely vulnerable to
 
-これはあなたを極度に%sから弱くする
+この%%sはあなたを極度に%sから弱くする
 %%%%
 It makes you very vulnerable to
 
-これはあなたを非常に%sから弱くする
+この%%sはあなたを非常に%sから弱くする
 %%%%
 It makes you vulnerable to
 
-これはあなたを%sから弱くする
+この%%sはあなたを%sから弱くする
 %%%%
 It protects you from
 
-これはあなたを%sから保護する
+この%%sはあなたを%sから保護する
 %%%%
 It greatly protects you from
 
-これはあなたを%sから強力に保護する
+この%%sはあなたを%sから強力に保護する
 %%%%
 It renders you almost immune to
 
-これは%sの影響をほぼ無効化する
+この%%sは%sの影響をほぼ無効化する
 %%%%
 It makes you much more stealthy.
 
-これはあなたの隠密性をさらに高める。
+この%sはあなたの隠密性をさらに高める。
 %%%%
 It makes you more stealthy.
 
-これはあなたの隠密性を高める。
+この%sはあなたの隠密性を高める。
 %%%%
 It makes you less stealthy.
 
-これはあなたの隠密性を低くする。
+この%sはあなたの隠密性を低くする。
 %%%%
 It makes you much less stealthy.
 
-これはあなたの隠密性をさらに低くする。
+この%sはあなたの隠密性をさらに低くする。
 %%%%
 Base accuracy:
 
