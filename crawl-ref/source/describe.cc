@@ -1658,6 +1658,7 @@ string get_item_description(const item_def &item, bool verbose,
     {
         string name = item.name(DESC_INVENTORY_EQUIP);
         string name_en = (item.base_type == OBJ_BOOKS &&
+                          !is_artefact(item) &&
                           item.sub_type != BOOK_MANUAL) ? item.name_en(DESC_PLAIN) : "";
         if (!in_inventory(item))
             name = uppercase_first(name);
