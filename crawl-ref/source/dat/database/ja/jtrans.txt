@@ -1446,6 +1446,10 @@ It is an ancient artefact.
 
 これは太古のアーティファクトだ。
 %%%%
+This book is beyond your current level of understanding.
+
+この魔法書は今のあなたのレベルでは理解できない。
+%%%%
 If evoked without being fully identified, several charges will be wasted out of unfamiliarity with the device.
 
 このワンドが完全に識別されていない状態で振った場合、残り回数がいくらか余計に消耗されることになる。
@@ -7237,9 +7241,10 @@ kneel at
 %%%%
 ############################## spl-book.cc ##############################
 %%%%
-This book is beyond your current level of understanding.
+# refer to describe.cc part
+# This book is beyond your current level of understanding.
 
-この魔法書は今のあなたのレベルでは理解できない。
+# この魔法書は今のあなたのレベルでは理解できない。
 %%%%
 You must pick up those books before reading them.
 
