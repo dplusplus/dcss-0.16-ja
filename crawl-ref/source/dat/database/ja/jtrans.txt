@@ -8697,25 +8697,49 @@ Found %s %s.
 
 %dつの%sを見つけた。
 %%%%
+item
+
+アイテム
+%%%%
 items
 
 アイテム
+%%%%
+shop
+
+店
 %%%%
 shops
 
 店
 %%%%
+altar
+
+祭壇
+%%%%
 altars
 
 祭壇
+%%%%
+portal
+
+ポータル
 %%%%
 portals
 
 ポータル
 %%%%
+stair
+
+階段
+%%%%
 stairs
 
 階段
+%%%%
+runed door
+
+ルーンが刻まれたドア
 %%%%
 runed doors
 
