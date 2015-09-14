@@ -87,6 +87,140 @@ There isn't anything else to %sbutcher here.
 
 ここには他に%s解体するようなものはない。
 %%%%
+############################## cloud.cc ##############################
+%%%%
+flame
+
+炎
+%%%%
+roaring flames
+
+燃えさかる炎
+%%%%
+noxious fumes
+
+悪臭
+%%%%
+freezing vapour
+
+凍てつく大気
+%%%%
+freezing vapours
+
+凍てつく大気
+%%%%
+poison gas
+
+毒ガス
+%%%%
+black smoke
+
+黒い煙
+%%%%
+grey smoke
+
+灰色の煙
+%%%%
+blue smoke
+
+青い煙
+%%%%
+purple smoke
+
+紫の煙
+%%%%
+translocational energy
+
+転位のエネルギー
+%%%%
+spreading flames
+
+燃え広がる炎
+%%%%
+a forest fire
+
+森林火災
+%%%%
+steam
+
+蒸気
+%%%%
+a cloud of scalding steam
+
+高熱の蒸気
+%%%%
+ink
+
+墨
+%%%%
+calcifying dust
+
+石化する雲
+%%%%
+blessed fire
+
+聖なる炎
+%%%%
+foul pestilence
+
+疫病の瘴気
+%%%%
+dark miasma
+
+薄黒い疫病の瘴気
+%%%%
+thin mist
+
+薄霧
+%%%%
+seething chaos
+
+渦巻く混沌
+%%%%
+rain
+
+雨
+%%%%
+the rain
+
+雨
+%%%%
+mutagenic fog
+
+変異性の霧
+%%%%
+magical condensation
+
+凝縮された魔力
+%%%%
+raging winds
+
+荒れ狂う風
+%%%%
+sparse dust
+
+まばらな塵
+%%%%
+ghostly flame
+
+霊的な炎
+%%%%
+acidic fog
+
+酸性の霧
+%%%%
+thunder
+
+雷
+%%%%
+a thunderstorm
+
+雷
+%%%%
+negative energy
+
+負のエネルギー
+%%%%
 ############################## decks.cc ##############################
 %%%%
 [card]the Alchemist

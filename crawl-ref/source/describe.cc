@@ -2145,10 +2145,11 @@ void get_feature_desc(const coord_def &pos, describe_info &inf)
 
     if (const cloud_type cloud = env.map_knowledge(pos).cloud())
     {
-        const string cl_name = cloud_type_name(cloud);
-        const string cl_desc = getLongDescription(cl_name + " cloud");
-        inf.body << "\n\nA cloud of " << cl_name
-                 << (cl_desc.empty() ? "." : ".\n\n")
+        const string cl_name = cloud_type_name_j(cloud);
+        const string cl_name_en = cloud_type_name(cloud);
+        const string cl_desc = getLongDescription(cl_name_en + " cloud");
+        inf.body << "\n" << jtrans(cl_name) << "が漂っている。"
+                 << (cl_desc.empty() ? "" : "\n\n")
                  << cl_desc;
     }
 

@@ -14,6 +14,7 @@
 #include "areas.h"
 #include "colour.h"
 #include "coordit.h"
+#include "database.h"
 #include "dungeon.h"
 #include "godconduct.h"
 #include "los.h"
@@ -1608,6 +1609,72 @@ string cloud_type_name(cloud_type type, bool terse)
     if (terse || clouds[type].verbose_name == nullptr)
         return clouds[type].terse_name;
     return clouds[type].verbose_name;
+}
+
+string cloud_type_name_j(cloud_type type, bool terse)
+{
+    if (type <= CLOUD_NONE || type >= NUM_CLOUD_TYPES)
+        return "buggy goodness";
+
+    ASSERT(clouds[type].terse_name);
+    if (terse || clouds[type].verbose_name == nullptr)
+        switch(type)
+        {
+        case CLOUD_FIRE:
+        case CLOUD_POISON:
+        case CLOUD_STEAM:
+            return jtrans(clouds[type].terse_name) + "の雲";
+
+        case CLOUD_MEPHITIC:
+        case CLOUD_RAIN:
+        case CLOUD_STORM:
+            return jtrans(clouds[type].terse_name) + "雲";
+
+        case CLOUD_COLD:
+        case CLOUD_BLACK_SMOKE:
+        case CLOUD_GREY_SMOKE:
+        case CLOUD_BLUE_SMOKE:
+        case CLOUD_PURPLE_SMOKE:
+        case CLOUD_TLOC_ENERGY:
+        case CLOUD_FOREST_FIRE:
+        case CLOUD_INK:
+        case CLOUD_PETRIFY:
+        case CLOUD_HOLY_FLAMES:
+        case CLOUD_MIASMA:
+        case CLOUD_MIST:
+        case CLOUD_CHAOS:
+        case CLOUD_MUTAGENIC:
+        case CLOUD_MAGIC_TRAIL:
+        case CLOUD_TORNADO:
+        case CLOUD_DUST_TRAIL:
+        case CLOUD_GHOSTLY_FLAME:
+        case CLOUD_ACID:
+        case CLOUD_NEGATIVE_ENERGY:
+            return jtrans(clouds[type].terse_name);
+
+        default:
+            return "buggy cloud";
+        }
+    else
+        switch(type)
+        {
+        case CLOUD_FIRE:
+        case CLOUD_STEAM:
+            return jtrans(clouds[type].terse_name) + "の雲";
+
+        case CLOUD_RAIN:
+        case CLOUD_STORM:
+            return jtrans(clouds[type].terse_name) + "雲";
+
+        case CLOUD_COLD:
+        case CLOUD_TLOC_ENERGY:
+        case CLOUD_FOREST_FIRE:
+        case CLOUD_MIASMA:
+            return jtrans(clouds[type].terse_name);
+
+        default:
+            return "buggy verbose flame";
+        }
 }
 
 cloud_type cloud_name_to_type(const string &name)
