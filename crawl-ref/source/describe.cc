@@ -1142,16 +1142,6 @@ static string _describe_ammo(const item_def &item)
     {
         description += "\n";
 
-        string threw_or_fired;
-        if (can_throw)
-        {
-            threw_or_fired += "threw";
-            if (can_launch)
-                threw_or_fired += " or ";
-        }
-        if (can_launch)
-            threw_or_fired += "fired";
-
         string basename = ammo_name(static_cast<missile_type>(item.sub_type));
 
         switch (item.special)

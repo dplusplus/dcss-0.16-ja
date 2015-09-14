@@ -1181,18 +1181,6 @@ It cannot be enchanted further.
 
 この%sはこれ以上強化できない。
 %%%%
-threw or fired
-
-投擲/射撃された
-%%%%
-threw
-
-投擲された
-%%%%
-fired
-
-射撃された
-%%%%
 spmsl flame desc
 
 # It burns those it strikes, causing extra injury
