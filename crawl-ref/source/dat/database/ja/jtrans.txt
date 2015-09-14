@@ -1728,6 +1728,78 @@ Sif Muna frowns upon the destroying of books.
 
 (M)この呪文を記憶する。
 %%%%
+black
+
+黒い
+%%%%
+mottled
+
+まだら模様の
+%%%%
+yellow
+
+黄色い
+%%%%
+green
+
+緑色の
+%%%%
+purple
+
+紫色の
+%%%%
+red
+
+赤い
+%%%%
+white
+
+白い
+%%%%
+grey
+
+灰色の
+%%%%
+pale
+
+青白い
+%%%%
+Sparks flare out of its mouth and nostrils.
+
+このモンスターの口と鼻孔からは電気の火花が漏れ出ている。
+%%%%
+Liquid flames drip from its mouth.
+
+このモンスターの口からは燃えたぎる液体がこぼれている。
+%%%%
+Acidic fumes swirl around it.
+
+このモンスターの周囲には酸のような悪臭が漂っている。
+%%%%
+Venom drips from its jaws.
+
+このモンスターの顎からは毒液がしたたり落ちている。
+%%%%
+Its outline shimmers with magical energy.
+
+このモンスターの体の表面は魔力の光で覆われている。
+%%%%
+Smoke pours from its nostrils.
+
+このモンスターの鼻孔からは煙が吹き出している。
+%%%%
+Frost pours from its nostrils.
+
+このモンスターの鼻孔からは冷気が吹き出している。
+%%%%
+Its scales and tail are adapted to the water.
+
+このモンスターの鱗と尻尾は水中での行動に熟達している。
+%%%%
+It is cloaked in a pall of superheated steam.
+
+このモンスターは高熱の蒸気を身にまとっている。
+%%%%
 electricity
 
 電撃

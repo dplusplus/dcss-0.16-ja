@@ -3034,54 +3034,54 @@ static string _describe_draconian(const monster_info& mi)
 
     if (subsp != mi.type)
     {
-        description += "It has ";
+        description += "このモンスターは";
 
         switch (subsp)
         {
-        case MONS_BLACK_DRACONIAN:      description += "black ";   break;
-        case MONS_MOTTLED_DRACONIAN:    description += "mottled "; break;
-        case MONS_YELLOW_DRACONIAN:     description += "yellow ";  break;
-        case MONS_GREEN_DRACONIAN:      description += "green ";   break;
-        case MONS_PURPLE_DRACONIAN:     description += "purple ";  break;
-        case MONS_RED_DRACONIAN:        description += "red ";     break;
-        case MONS_WHITE_DRACONIAN:      description += "white ";   break;
-        case MONS_GREY_DRACONIAN:       description += "grey ";    break;
-        case MONS_PALE_DRACONIAN:       description += "pale ";    break;
+        case MONS_BLACK_DRACONIAN:      description += jtrans("black ");   break;
+        case MONS_MOTTLED_DRACONIAN:    description += jtrans("mottled "); break;
+        case MONS_YELLOW_DRACONIAN:     description += jtrans("yellow ");  break;
+        case MONS_GREEN_DRACONIAN:      description += jtrans("green ");   break;
+        case MONS_PURPLE_DRACONIAN:     description += jtrans("purple ");  break;
+        case MONS_RED_DRACONIAN:        description += jtrans("red ");     break;
+        case MONS_WHITE_DRACONIAN:      description += jtrans("white ");   break;
+        case MONS_GREY_DRACONIAN:       description += jtrans("grey ");    break;
+        case MONS_PALE_DRACONIAN:       description += jtrans("pale ");    break;
         default:
             break;
         }
 
-        description += "scales. ";
+        description += "鱗を持っている。\n";
     }
 
     switch (subsp)
     {
     case MONS_BLACK_DRACONIAN:
-        description += "Sparks flare out of its mouth and nostrils.";
+        description += jtrans("Sparks flare out of its mouth and nostrils.");
         break;
     case MONS_MOTTLED_DRACONIAN:
-        description += "Liquid flames drip from its mouth.";
+        description += jtrans("Liquid flames drip from its mouth.");
         break;
     case MONS_YELLOW_DRACONIAN:
-        description += "Acidic fumes swirl around it.";
+        description += jtrans("Acidic fumes swirl around it.");
         break;
     case MONS_GREEN_DRACONIAN:
-        description += "Venom drips from its jaws.";
+        description += jtrans("Venom drips from its jaws.");
         break;
     case MONS_PURPLE_DRACONIAN:
-        description += "Its outline shimmers with magical energy.";
+        description += jtrans("Its outline shimmers with magical energy.");
         break;
     case MONS_RED_DRACONIAN:
-        description += "Smoke pours from its nostrils.";
+        description += jtrans("Smoke pours from its nostrils.");
         break;
     case MONS_WHITE_DRACONIAN:
-        description += "Frost pours from its nostrils.";
+        description += jtrans("Frost pours from its nostrils.");
         break;
     case MONS_GREY_DRACONIAN:
-        description += "Its scales and tail are adapted to the water.";
+        description += jtrans("Its scales and tail are adapted to the water.");
         break;
     case MONS_PALE_DRACONIAN:
-        description += "It is cloaked in a pall of superheated steam.";
+        description += jtrans("It is cloaked in a pall of superheated steam.");
         break;
     default:
         break;
