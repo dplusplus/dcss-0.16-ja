@@ -1588,6 +1588,10 @@ Menu/colouring prefixes:
 
 色設定用のタグ:
 %%%%
+(Pray here to learn more.)
+
+(詳しい情報を見るには、ここに立って(P)rayコマンドを使用してください)
+%%%%
 Press '<w>!</w>' to toggle between the description and quote.
 
 解説と引用を切り替えるには '<w>!</w>' を押してください。
