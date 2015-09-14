@@ -495,6 +495,371 @@ It makes you much less stealthy.
 
 この%sはあなたの隠密性をさらに低くする。
 %%%%
+# body_descs
+armoured
+
+鎧をまとった
+%%%%
+vast, spindly
+
+ひょろ長い
+%%%%
+fat
+
+太った
+%%%%
+obese
+
+肥えた
+%%%%
+muscular
+
+筋肉質の
+%%%%
+spiked
+
+棘だらけの
+%%%%
+splotchy
+
+斑点のある
+%%%%
+slender
+
+ほっそりとした
+%%%%
+tentacled
+
+触手の
+%%%%
+emaciated
+
+痩せ衰えた
+%%%%
+bug-like
+
+蟲のような
+%%%%
+skeletal
+
+骸骨の
+%%%%
+mantis
+
+蟷螂のような
+%%%%
+# wing_names
+with small, bat-like wings
+
+蝙蝠のような小さい翼
+%%%%
+with bony wings
+
+骨張った翼
+%%%%
+with sharp, metallic wings
+
+鋭い金属質の翼
+%%%%
+with the wings of a moth
+
+蛾のような翼
+%%%%
+with thin, membranous wings
+
+薄い膜の張った翼
+%%%%
+with dragonfly wings
+
+蜻蛉のような羽根
+%%%%
+with large, powerful wings
+
+大きな力強い翼
+%%%%
+with fluttering wings
+
+はためく翼
+%%%%
+with great, sinister wings
+
+不吉な大きな翼
+%%%%
+with hideous, tattered wings
+
+忌まわしいぼろぼろの翼
+%%%%
+with sparrow-like wings
+
+ツバメのような翼
+%%%%
+with hooked wings
+
+鉤爪の生えた翼
+%%%%
+with strange knobs attached
+
+奇妙な瘤の付いた翼
+%%%%
+# lev_names
+which hovers in mid-air
+
+中空に浮かんでおり、
+%%%%
+with sacs of gas hanging from its back
+
+背中からガス袋が生えており、
+%%%%
+# head_names
+and a cubic structure in place of a head
+
+頭のあるべき位置に立方体の構造物
+%%%%
+and a brain for a head
+
+むき出しの脳味噌
+%%%%
+and a hideous tangle of tentacles for a mouth
+
+口から生えた忌まわしい触手
+%%%%
+and the head of an elephant
+
+象のような頭
+%%%%
+and an eyeball for a head
+
+単眼の頭
+%%%%
+and wears a helmet over its head
+
+頭に兜をかぶっている。
+%%%%
+and a horn in place of a head
+
+頭のあるべき位置に一本の角
+%%%%
+and a thick, horned head
+
+頭に太い角を生やしている。
+%%%%
+and the head of a horse
+
+馬のような頭
+%%%%
+and a vicious glare
+
+悪意に満ちた光を放っている。
+%%%%
+and snakes for hair
+
+蛇の毛髪
+%%%%
+and the face of a baboon
+
+狒狒のような顔をしている。
+%%%%
+and the head of a mouse
+
+鼠のような頭
+%%%%
+and a ram's head
+
+雄羊のような頭
+%%%%
+and the head of a rhino
+
+サイのような頭
+%%%%
+and eerily human features
+
+奇怪な福笑いのような顔
+%%%%
+and a gigantic mouth
+
+巨大な口を開けている。
+%%%%
+and a mass of tentacles growing from its neck
+
+首から生えた数多の触手
+%%%%
+and a thin, worm-like head
+
+芋虫のような細い頭
+%%%%
+and huge, compound eyes
+
+大きな複眼
+%%%%
+and the head of a frog
+
+蛙のような頭
+%%%%
+and an insectoid head
+
+昆虫のような頭
+%%%%
+and a great mass of hair
+
+膨大な量の毛髪が生えている。
+%%%%
+and a skull for a head
+
+骸骨の頭
+%%%%
+and a cow's skull for a head
+
+雌牛の骸骨の頭
+%%%%
+and the head of a bird
+
+鳥のような頭
+%%%%
+and a large fungus growing from its neck
+
+首から巨大な茸が生えている。
+%%%%
+# misc_names
+It seethes with hatred of the living.
+
+かの王は生者への憎悪に満ちている。
+%%%%
+Tiny orange flames dance around it.
+
+小さな橙色の炎がかの王の周囲で踊っている。
+%%%%
+Tiny purple flames dance around it.
+
+小さな紫の炎がかの王の周囲で踊っている。
+%%%%
+It is surrounded by a weird haze.
+
+かの王は気味の悪い靄に包まれている。
+%%%%
+It glows with a malevolent light.
+
+かの王は悪意を思わせるような光を放っている。
+%%%%
+It looks incredibly angry.
+
+かの王は激怒しているようだ。
+%%%%
+It oozes with slime.
+
+かの王の体はねばねばしたものがにじみ出している。
+%%%%
+It dribbles constantly.
+
+かの王はよだれを垂らし続けている。
+%%%%
+Mould grows all over it.
+
+かの王の全身はカビに覆われている。
+%%%%
+It looks diseased.
+
+かの王は疫病に冒されているように見える。
+%%%%
+It looks as frightened of you as you are of it.
+
+かの王はあなたがそうしているのと同様に怯えた顔をしている。
+%%%%
+It moves in a series of hideous convulsions.
+
+かの王は病的なひきつけを起こしている。
+%%%%
+It moves with an unearthly grace.
+
+かの王はこの世のものとは思えぬほどの立ち居振る舞いの優雅さを見せている。
+%%%%
+It hungers for your soul!
+
+かの王はあなたの魂を欲している！
+%%%%
+It leaves a glistening oily trail.
+
+かの王は油のような輝きを放つ足跡を残している。
+%%%%
+It shimmers before your eyes.
+
+かの王はあなたの眼前でかすかに光っている。
+%%%%
+It is surrounded by a brilliant glow.
+
+かの王は輝く光に包まれている。
+%%%%
+It radiates an aura of extreme power.
+
+かの王は強大な力のオーラを放射している。
+%%%%
+It seems utterly heartbroken.
+
+かの王は悲嘆に暮れているようだ。
+%%%%
+It seems filled with irrepressible glee.
+
+かの王は喜びを隠し切れていないようだ。
+%%%%
+It constantly shivers and twitches.
+
+かの王は常にひきつけを起こし震えている。
+%%%%
+Blue sparks crawl across its body.
+
+かの王の体を青白い電光が這い回っている。
+%%%%
+It seems uncertain.
+
+かの王は定まった形状をしていない。
+%%%%
+A cloud of flies swarms around it.
+
+雲と見まがうような蠅の群れがかの王の周囲を飛んでいる。
+%%%%
+The air ripples with heat as it passes.
+
+かの王が通った場所は熱気に揺らめいている。
+%%%%
+It appears supremely confident.
+
+かの王はこの上ない自信を見せている。
+%%%%
+Its skin is covered in a network of cracks.
+
+かの王の皮膚は網目のようなひび割れで覆われている。
+%%%%
+Its skin has a disgusting oily sheen.
+
+かの王の皮膚は油のような気味の悪い光沢を放っている。
+%%%%
+It seems completely insane!
+
+かの王は見るからに正気を失っている！
+%%%%
+One of the many lords of Pandemonium,
+
+パンデモニウムの数多の王の一柱である『
+%%%%
+It stinks of brimstone.
+
+このモンスターからは硫黄の臭いがする。
+%%%%
+It is surrounded by a sickening stench.
+
+このモンスターは胸が悪くなるような悪臭に包まれている。
+%%%%
+It smells delicious!
+
+このモンスターはうまそうな香りがする！
+%%%%
+It smells like rotting flesh.
+
+このモンスターからは腐肉の臭いがする。
+%%%%
+It smells like rotting flesh - yum!.
+
+このモンスターからは腐肉の臭いがする――うまそう！
+%%%%
 Base accuracy:
 
 基本命中力:

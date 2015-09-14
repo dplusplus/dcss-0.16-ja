@@ -746,58 +746,67 @@ static string _describe_demon(const string& name, flight_type fly)
     };
 
     ostringstream description;
-    description << "One of the many lords of Pandemonium, " << name << " has ";
+    description << jtrans("One of the many lords of Pandemonium, ") << name << "』は";
 
     const string a_body = HRANDOM_ELEMENT(body_descs, 2);
-    description << article_a(a_body) << "body";
+    description << jtrans(a_body) << "体";
 
     string head_desc = HRANDOM_ELEMENT(head_names, 1);
 
     switch (fly)
     {
     case FL_WINGED:
-        description << HRANDOM_ELEMENT(wing_names, 3);
-        if (head_desc.find(" with") == 0)
-            description << " and";
+        description << "と";
+        description << jtrans(HRANDOM_ELEMENT(wing_names, 3));
+
+        if (jtrans(head_desc).find("。") != string::npos)
+            description << "を持ち、";
+        else
+            description << "、そして";
+
         break;
 
     case FL_LEVITATE:
-        description << HRANDOM_ELEMENT(lev_names, 3);
-        if (head_desc.find(" with") == 0)
-            description << " and";
+        description << "で";
+        description << jtrans(HRANDOM_ELEMENT(lev_names, 3));
         break;
 
     default:
+        description << "で、";
         break;
     }
 
-    description << head_desc << ".";
+    description << jtrans(head_desc);
+    if (jtrans(head_desc).find("。") == string::npos)
+        description << "を持っている。";
 
     if (hash_rand(40, seed, 4) < 3)
     {
         if (you.can_smell())
         {
+            description << "\n";
+
             switch (hash_rand(4, seed, 5))
             {
             case 0:
-                description << " It stinks of brimstone.";
+                description << jtrans(" It stinks of brimstone.");
                 break;
             case 1:
-                description << " It is surrounded by a sickening stench.";
+                description << jtrans(" It is surrounded by a sickening stench.");
                 break;
             case 2:
-                description << " It smells delicious!";
+                description << jtrans(" It smells delicious!");
                 break;
             case 3:
-                description << " It smells like rotting flesh"
-                            << (you.species == SP_GHOUL ? " - yum!"
-                                                       : ".");
+                description << jtrans(" It smells like rotting flesh")
+                             + (you.species == SP_GHOUL ? " - yum!"
+                                                        : ".");
                 break;
             }
         }
     }
     else if (hash_rand(2, seed, 6))
-        description << HRANDOM_ELEMENT(misc_descs, 5);
+        description << "\n" << jtrans(HRANDOM_ELEMENT(misc_descs, 5));
 
     return description.str();
 }
