@@ -2736,16 +2736,19 @@ static string _player_spell_stats(const spell_type spell, bool rod)
 
 string get_skill_description(skill_type skill, bool need_title)
 {
-    string lookup = skill_name(skill);
+    string lookup_en = skill_name(skill);
+    string lookup = jtrans(lookup_en);
     string result = "";
 
     if (need_title)
     {
-        result = lookup;
+        result = lookup + string(max(0, get_number_of_cols() - strwidth(lookup)
+                                                             - strwidth(lookup_en) - 1),
+                                 ' ') + (lookup != lookup_en ? lookup_en : "");
         result += "\n\n";
     }
 
-    result += getLongDescription(lookup);
+    result += getLongDescription(lookup_en);
 
     switch (skill)
     {
@@ -2753,19 +2756,19 @@ string get_skill_description(skill_type skill, bool need_title)
             if (you.species == SP_DEMIGOD)
             {
                 result += "\n";
-                result += "How on earth did you manage to pick this up?";
+                result += jtrans("How on earth did you manage to pick this up?");
             }
             else if (you_worship(GOD_TROG))
             {
                 result += "\n";
-                result += "Note that Trog doesn't use Invocations, due to its "
-                          "close connection to magic.";
+                result += jtrans("Note that Trog doesn't use Invocations, due to its "
+                                 "close connection to magic.");
             }
             else if (you_worship(GOD_NEMELEX_XOBEH))
             {
                 result += "\n";
-                result += "Note that Nemelex uses Evocations rather than "
-                          "Invocations.";
+                result += jtrans("Note that Nemelex uses Evocations rather than "
+                                 "Invocations.");
             }
             break;
 
@@ -2773,8 +2776,8 @@ string get_skill_description(skill_type skill, bool need_title)
             if (you_worship(GOD_NEMELEX_XOBEH))
             {
                 result += "\n";
-                result += "This is the skill all of Nemelex's abilities rely "
-                          "on.";
+                result += jtrans("This is the skill all of Nemelex's abilities rely "
+                                 "on.");
             }
             break;
 
@@ -2782,8 +2785,8 @@ string get_skill_description(skill_type skill, bool need_title)
             if (you_worship(GOD_TROG))
             {
                 result += "\n";
-                result += "Keep in mind, though, that Trog will greatly "
-                          "disapprove of this.";
+                result += jtrans("Keep in mind, though, that Trog will greatly "
+                                 "disapprove of this.");
             }
             break;
         default:

@@ -1672,6 +1672,26 @@ Fail: %s
 
 失敗率: %s
 %%%%
+How on earth did you manage to pick this up?
+
+一体どうしてこのスキルを選択したのですか？
+%%%%
+Note that Trog doesn't use Invocations, due to its close connection to magic.
+
+魔術との関連性が深いため、トログは祈祷スキルを使わないことに注意すること。
+%%%%
+Note that Nemelex uses Evocations rather than Invocations.
+
+ネメレクスは祈祷スキルより発動スキルを使うことに注意すること。
+%%%%
+This is the skill all of Nemelex's abilities rely on.
+
+このスキルはネメレクスの全ての能力を用いる際に参照するスキルだ。
+%%%%
+Keep in mind, though, that Trog will greatly disapprove of this.
+
+トログはこのスキルの訓練を著しく嫌うことを留意しておくこと。
+%%%%
 You can sustain at most %d creature%s summoned by this spell.
 
 あなたはこの呪文によって召喚したモンスターを%d体まで維持できる。
