@@ -162,6 +162,9 @@ string item_def::name(description_level_type descrip, bool terse, bool ident,
     const string auxname = name_aux(descrip, terse, ident, with_inscription,
                                     ignore_flags);
 
+    if (descrip == DESC_BASENAME)
+        return auxname;
+
     if (descrip == DESC_INVENTORY_EQUIP || descrip == DESC_INVENTORY)
     {
         if (in_inventory(*this)) // actually in inventory
@@ -202,10 +205,13 @@ string item_def::name(description_level_type descrip, bool terse, bool ident,
         switch (descrip)
         {
         default:
-            if (is_unrandom_artefact(*this))
-                buff << "★";
-            else if (is_artefact(*this))
-                buff << "☆";
+            if (base_type != OBJ_BOOKS)
+            {
+                if (is_unrandom_artefact(*this))
+                    buff << "★";
+                else if (is_artefact(*this))
+                    buff << "☆";
+            }
         case DESC_PLAIN:
         case DESC_DBNAME:
         case DESC_BASENAME:
@@ -583,7 +589,7 @@ const char* missile_brand_name(const item_def &item, mbn_type t)
     case SPMSL_CHAOS:
         return t == MBN_TERSE ? "混沌" : "混沌の";
     case SPMSL_PENETRATION:
-        return t == MBN_TERSE ? "貫通" : "貫通する";
+        return t == MBN_TERSE ? "貫通" : "貫通の";
     case SPMSL_DISPERSAL:
         return t == MBN_TERSE ? "離散" : "離散の";
 #if TAG_MAJOR_VERSION == 34
@@ -1600,6 +1606,60 @@ static void _name_deck(const item_def &deck, description_level_type desc,
     buff << "}";
 }
 
+static void _name_deck_en(const item_def &deck, description_level_type desc,
+                          bool ident, ostringstream &buff)
+{
+    const bool know_type = ident || item_type_known(deck);
+
+    const bool dbname   = desc == DESC_DBNAME;
+    const bool basename = _use_basename(deck, desc, ident);
+
+    if (basename)
+    {
+        buff << "deck of cards";
+        return;
+    }
+
+    if (bad_deck(deck))
+    {
+        buff << "BUGGY deck of cards";
+        return;
+    }
+
+    if (!dbname)
+        buff << deck_rarity_name(deck.deck_rarity) << ' ';
+
+    if (deck.sub_type == MISC_DECK_UNKNOWN)
+        buff << misc_type_name(MISC_DECK_OF_ESCAPE, false);
+    else
+        buff << misc_type_name(deck.sub_type, know_type);
+
+    // name overriden, not a stacked deck, not a deck that's been drawn from
+    if (dbname || !top_card_is_known(deck) && deck.used_count == 0)
+        return;
+
+    buff << " {";
+    // A marked deck!
+    if (top_card_is_known(deck))
+        buff << card_name(top_card(deck));
+
+    // How many cards have been drawn, or how many are left.
+    if (deck.used_count != 0)
+    {
+        if (top_card_is_known(deck))
+            buff << ", ";
+
+        if (deck.used_count > 0)
+            buff << "drawn: ";
+        else
+            buff << "left: ";
+
+        buff << abs(deck.used_count);
+    }
+
+    buff << "}";
+}
+
 /**
  * The curse-describing prefix to a weapon's name, including trailing space if
  * appropriate. (Empty if the weapon isn't cursed, or if the curse shouldn't be
@@ -1687,7 +1747,7 @@ static string _ego_prefix(const item_def &weap, description_level_type desc,
     switch (brand)
     {
         case SPWPN_VAMPIRISM:
-            return jtrans("vampiric");
+            return "吸血の"; // 直接変更
 
         case SPWPN_ANTIMAGIC:
             return jtrans("antimagic");
@@ -1788,6 +1848,9 @@ static string _name_weapon(const item_def &weap, description_level_type desc,
     const string curse_prefix
         = _curse_prefix(weap, desc, terse, ident, ignore_flags);
     const string plus_text = know_pluses ? _plus_suffix(weap) : "";
+
+    if (desc == DESC_BASENAME)
+        return jtrans(item_base_name(weap));
 
     if (is_artefact(weap) && !dbname)
     {
@@ -1977,7 +2040,7 @@ string item_def::name_aux(description_level_type desc, bool terse, bool ident,
     {
         special_missile_type msl_brand = get_ammo_brand(*this);
 
-        if (!terse && !dbname)
+        if (!terse && !dbname && !basename)
         {
             if (props.exists(HELLFIRE_BOLT_KEY))
                 buff << "地獄の業火の";
@@ -2021,7 +2084,7 @@ string item_def::name_aux(description_level_type desc, bool terse, bool ident,
         if (item_typ == ARM_GLOVES || item_typ == ARM_BOOTS)
             buff << jtrans("pair of");
 
-        if (is_artefact(*this) && !dbname)
+        if (is_artefact(*this) && !dbname && !basename)
         {
             buff << jtrans(get_artefact_name(*this));
             break;
@@ -2291,7 +2354,10 @@ string item_def::name_aux(description_level_type desc, bool terse, bool ident,
 
         if (is_deck(*this) || item_typ == MISC_DECK_UNKNOWN)
         {
-            _name_deck(*this, desc, ident, buff);
+            if (basename)
+                buff << "デッキ";
+            else
+                _name_deck(*this, desc, ident, buff);
             break;
         }
 
@@ -2300,11 +2366,11 @@ string item_def::name_aux(description_level_type desc, bool terse, bool ident,
         if ((item_typ == MISC_BOX_OF_BEASTS
                   || item_typ == MISC_SACK_OF_SPIDERS)
                     && used_count > 0
-                    && !dbname)
+                    && !dbname && !basename)
         {
             buff << " {" << used_count << "回使用}";
         }
-        else if (is_xp_evoker(*this) && !dbname && !evoker_is_charged(*this))
+        else if (is_xp_evoker(*this) && !dbname && !evoker_is_charged(*this) && !basename)
             buff << " (充填中)";
 
         break;
@@ -2326,7 +2392,12 @@ string item_def::name_aux(description_level_type desc, bool terse, bool ident,
                  << (item_typ == BOOK_MANUAL ? jtrans("manual") : jtrans("book"));
         }
         else
-            buff << jtrans(sub_type_string(*this, !dbname));
+        {
+            if (item_typ == BOOK_MANUAL)
+                buff << jtrans(skill_name(static_cast<skill_type>(plus))) << jtrans("manual of");
+            else
+                buff << jtrans(sub_type_string(*this, !dbname));
+        }
         break;
 
     case OBJ_RODS:
@@ -2365,7 +2436,7 @@ string item_def::name_aux(description_level_type desc, bool terse, bool ident,
                 buff << make_stringf(" (%+d)", special);
         }
 
-        if (know_curse && cursed() && terse)
+        if (know_curse && cursed() && terse && !basename)
             buff << " " << jtrans("(curse)");
         break;
 
@@ -2826,7 +2897,7 @@ string item_def::name_aux_en(description_level_type desc, bool terse, bool ident
 
         if (is_deck(*this) || item_typ == MISC_DECK_UNKNOWN)
         {
-            _name_deck(*this, desc, ident, buff);
+            _name_deck_en(*this, desc, ident, buff);
             break;
         }
 

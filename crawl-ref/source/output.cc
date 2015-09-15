@@ -2599,10 +2599,10 @@ static string _status_mut_abilities(int sw)
     int move_cost = (player_speed() * player_movement_speed()) / 10;
     if (move_cost != 10)
     {
-        const char *help = (move_cost <   8) ? "very quick" :
-                           (move_cost <  10) ? "quick" :
-                           (move_cost <  13) ? "slow"
-                                             : "very slow";
+        const char *help = (move_cost <   8) ? "非常に俊敏" :
+                           (move_cost <  10) ? "俊敏" :
+                           (move_cost <  13) ? "鈍足"
+                                             : "非常に鈍足";
         status.emplace_back(jtrans(help));
     }
 

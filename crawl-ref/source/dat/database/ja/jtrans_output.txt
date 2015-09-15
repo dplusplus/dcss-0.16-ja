@@ -31,22 +31,6 @@ Nothing quivered
 
 <darkgrey>(%sは制限されている)</darkgrey>
 %%%%
-very quick
-
-非常に俊敏
-%%%%
-quick
-
-俊敏
-%%%%
-slow
-
-鈍足
-%%%%
-very slow
-
-非常に鈍足
-%%%%
 immune to hostile enchantments
 
 敵対的な魔法に対し無効化
