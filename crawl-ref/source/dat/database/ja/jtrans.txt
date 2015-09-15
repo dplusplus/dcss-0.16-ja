@@ -2192,6 +2192,14 @@ It has come for your soul!
 
 それはあなたの魂を欲している！
 %%%%
+The apparition of
+
+の幽霊だ。
+%%%%
+An illusion of
+
+の幻影だ。
+%%%%
 is incapable of using stairs.
 
 は階段を上り下りできない。
@@ -2241,6 +2249,38 @@ mons class leaves hide
 You have summoned too many monsters of this kind to sustain them all, and thus this one will shortly expire.
 
 あなたがこの種のモンスターを維持できないほど多く召喚するとき、このモンスターがたちまち送還される。
+%%%%
+#weakling
+
+#幽霊/幻影の強さランクが最低の場合表示しない
+%%%%
+average
+
+そこそこ強い
+%%%%
+experienced
+
+経験を積んだ
+%%%%
+powerful
+
+強い
+%%%%
+mighty
+
+力強い
+%%%%
+great
+
+卓越した
+%%%%
+awesomely powerful
+
+偉大な
+%%%%
+legendary
+
+伝説的な
 %%%%
 ############################## evoke.cc ##############################
 %%%%

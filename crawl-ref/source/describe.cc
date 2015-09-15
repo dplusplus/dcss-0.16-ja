@@ -3923,11 +3923,11 @@ void get_monster_db_desc(const monster_info& mi, describe_info &inf,
     }
 
     case MONS_PLAYER_GHOST:
-        inf.body << "The apparition of " << get_ghost_description(mi) << ".\n";
+        inf.body << get_ghost_description(mi) << jtransln("The apparition of ");
         break;
 
     case MONS_PLAYER_ILLUSION:
-        inf.body << "An illusion of " << get_ghost_description(mi) << ".\n";
+        inf.body << get_ghost_description(mi) << jtransln("An illusion of ");
         break;
 
     case MONS_PANDEMONIUM_LORD:
@@ -4218,7 +4218,7 @@ int describe_monsters(const monster_info &mi, bool force_seen,
 
 static const char* xl_rank_names[] =
 {
-    "weakling",
+    "",
     "average",
     "experienced",
     "powerful",
@@ -4232,7 +4232,7 @@ static string _xl_rank_name(const int xl_rank)
 {
     const string rank = xl_rank_names[xl_rank];
 
-    return article_a(rank);
+    return rank;
 }
 
 string short_ghost_description(const monster *mon, bool abbrev)
@@ -4302,12 +4302,12 @@ string get_ghost_description(const monster_info &mi, bool concise)
         break;
     }
 
-    gstr << mi.mname << " the "
-         << skill_title_by_rank(mi.u.ghost.best_skill,
-                        mi.u.ghost.best_skill_rank,
-                        gspecies,
-                        str, dex, mi.u.ghost.religion)
-         << ", " << _xl_rank_name(mi.u.ghost.xl_rank) << " ";
+    gstr << jtrans(skill_title_by_rank(mi.u.ghost.best_skill,
+                                       mi.u.ghost.best_skill_rank,
+                                       gspecies,
+                                       str, dex, mi.u.ghost.religion))
+         << "として名の知れた"
+         << jtrans(_xl_rank_name(mi.u.ghost.xl_rank));
 
     if (concise)
     {
@@ -4316,16 +4316,19 @@ string get_ghost_description(const monster_info &mi, bool concise)
     }
     else
     {
-        gstr << species_name(gspecies)
-             << " "
-             << get_job_name(mi.u.ghost.job);
+        gstr << jtrans(species_name(gspecies))
+             << "の"
+             << jtrans(get_job_name(mi.u.ghost.job));
     }
 
     if (mi.u.ghost.religion != GOD_NO_GOD)
     {
-        gstr << " of "
-             << god_name(mi.u.ghost.religion);
+        gstr << "にして"
+             << jtrans(god_name(mi.u.ghost.religion))
+             << "の信徒である";
     }
+
+    gstr << "『" << mi.mname << "』";
 
     return gstr.str();
 }
