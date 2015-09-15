@@ -3970,29 +3970,33 @@ void get_monster_db_desc(const monster_info& mi, describe_info &inf,
         has_stat_desc = true;
     }
 
+    string pronoun = uppercase_first(mi.pronoun(PRONOUN_SUBJECTIVE));
+    if (pronoun == "It" || pronoun == "それ")
+        pronoun = "このモンスター";
+
     bool stair_use = false;
     if (!mons_class_can_use_stairs(mi.type))
     {
-        inf.body << "\n" << uppercase_first(mi.pronoun(PRONOUN_SUBJECTIVE))
+        inf.body << "\n" << pronoun
                  << jtransln(" is incapable of using stairs.\n");
         stair_use = true;
     }
 
     if (mi.intel() <= I_PLANT)
     {
-        inf.body << uppercase_first(mi.pronoun(PRONOUN_SUBJECTIVE))
+        inf.body << pronoun
                  << jtransln(" is mindless.\n");
     }
     else if (mi.intel() <= I_INSECT && you_worship(GOD_ELYVILON))
     {
-        inf.body << uppercase_first(mi.pronoun(PRONOUN_SUBJECTIVE))
+        inf.body << pronoun
                  << jtransln(" is not intelligent enough to pacify.\n");
     }
 
 
     if (mi.is(MB_CHAOTIC))
     {
-        inf.body << uppercase_first(mi.pronoun(PRONOUN_SUBJECTIVE))
+        inf.body << pronoun
                  << jtransln(" is vulnerable to silver and hated by Zin.\n");
     }
 
@@ -4001,17 +4005,17 @@ void get_monster_db_desc(const monster_info& mi, describe_info &inf,
         const int check = mons_class_hit_dice(mi.type) - zin_recite_power();
         if (check >= 0)
         {
-            inf.body << uppercase_first(mi.pronoun(PRONOUN_SUBJECTIVE))
+            inf.body << pronoun
                      << jtrans(" is too strong to be recited to.");
         }
         else if (check >= -5)
         {
-            inf.body << uppercase_first(mi.pronoun(PRONOUN_SUBJECTIVE))
+            inf.body << pronoun
                      << jtrans(" may be too strong to be recited to.");
         }
         else
         {
-            inf.body << uppercase_first(mi.pronoun(PRONOUN_SUBJECTIVE))
+            inf.body << pronoun
                      << jtrans(" is weak enough to be recited to.");
         }
         if (you.wizard)
@@ -4033,14 +4037,14 @@ void get_monster_db_desc(const monster_info& mi, describe_info &inf,
     }
     else if (mi.is(MB_PERM_SUMMON))
     {
-        inf.body << "\n" << jtransln("This monster has been summoned in a durable "
+        inf.body << "\n" << pronoun << jtransln("This monster has been summoned in a durable "
                        "way, and only partially exists. Killing it yields no "
                        "experience, nutrition or items. You cannot easily "
                        "abjure it, though.\n");
     }
     else if (mons_class_leaves_hide(mi.type))
     {
-        inf.body << "\n" << jtransln("mons class leaves hide");
+        inf.body << "\n" << pronoun << jtransln("mons class leaves hide");
         /*
         inf.body << "\nIf " << mi.pronoun(PRONOUN_SUBJECTIVE) << " is slain "
         "and butchered, it may be possible to recover "

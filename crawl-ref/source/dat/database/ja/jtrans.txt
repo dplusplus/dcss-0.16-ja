@@ -2238,13 +2238,13 @@ This monster has been summoned, and is thus only temporary. Killing it yields no
 %%%%
 This monster has been summoned in a durable way, and only partially exists. Killing it yields no experience, nutrition or items. You cannot easily abjure it, though.
 
-このモンスターは永続的な手段で召喚されているが、完全な存在というわけではない。
+は永続的な手段で召喚されているが、完全な存在というわけではない。
 このモンスターを倒しても経験や栄養、アイテムは得られない。
 あなたは簡単にはこのモンスターを送還できない。
 %%%%
 mons class leaves hide
 
-このモンスターを殺して解体すると、魔力によって鎧に強化することのできる皮を得ることがある。
+を殺して解体すると、魔力によって鎧に強化することのできる皮を得ることがある。
 %%%%
 You have summoned too many monsters of this kind to sustain them all, and thus this one will shortly expire.
 
