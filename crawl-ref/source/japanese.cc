@@ -8,6 +8,7 @@
 
 #include "database.h"
 #include "japanese.h"
+#include "stringutil.h"
 
 const char * counter_suffix_weapon(const item_def& item)
 {
@@ -277,6 +278,26 @@ const char *decline_pronoun_j(gender_type gender, pronoun_type variant)
     ASSERT_RANGE(gender, 0, NUM_GENDERS);
     ASSERT_RANGE(variant, 0, NUM_PRONOUN_CASES);
     return _pronoun_declension_j[gender][variant];
+}
+
+/*
+ * english.cc/apply_description()の代替
+ */
+string apply_description_j(description_level_type desc, const string &name,
+                         int quantity, bool in_words)
+{
+    switch (desc)
+    {
+    case DESC_A:
+        return quantity > 1 ? make_stringf("%d %s", quantity, jtransc(name))
+                            : jtrans(name);
+    case DESC_YOUR:
+        return jtrans("your ") + jtrans(name);
+    case DESC_THE:
+    case DESC_PLAIN:
+    default:
+        return jtrans(name);
+    }
 }
 
 /*

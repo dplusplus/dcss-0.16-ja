@@ -34,6 +34,7 @@
 #include "godabil.h"
 #include "goditem.h"
 #include "hints.h"
+#include "japanese.h"
 #include "invent.h"
 #include "itemprop.h"
 #include "items.h"
@@ -3092,51 +3093,57 @@ static string _describe_draconian(const monster_info& mi)
 
 static string _describe_chimera(const monster_info& mi)
 {
-    string description = "It has the head of ";
+    string description = "このモンスターは";
 
-    description += apply_description(DESC_A, get_monster_data(mi.base_type)->name);
+    description += apply_description_j(DESC_A, get_monster_data(mi.base_type)->name);
 
     monster_type part2 = get_chimera_part(&mi,2);
-    description += ", the head of ";
+    description += "の頭と";
     if (part2 == mi.base_type)
     {
-        description += "another ";
-        description += apply_description(DESC_PLAIN,
-                                         get_monster_data(part2)->name);
+        description += "別の";
+        description += apply_description_j(DESC_PLAIN,
+                                           get_monster_data(part2)->name) + "の";
     }
     else
-        description += apply_description(DESC_A, get_monster_data(part2)->name);
+        description += apply_description_j(DESC_A, get_monster_data(part2)->name) + "の";
 
     monster_type part3 = get_chimera_part(&mi,3);
-    description += ", and the head of ";
+    description += "頭、そして";
     if (part3 == mi.base_type || part3 == part2)
     {
         if (part2 == mi.base_type)
-            description += "yet ";
-        description += "another ";
-        description += apply_description(DESC_PLAIN,
-                                         get_monster_data(part3)->name);
+            description += "さらに";
+        description += "別の";
+        description += apply_description_j(DESC_PLAIN,
+                                           get_monster_data(part3)->name) + "の";
     }
     else
-        description += apply_description(DESC_A, get_monster_data(part3)->name);
+        description += apply_description_j(DESC_A, get_monster_data(part3)->name) + "の";
 
-    description += ". It has the body of ";
-    description += apply_description(DESC_A,
-                                     get_monster_data(mi.base_type)->name);
+    description += "頭を持つ。\nこのモンスターは";
+    description += apply_description_j(DESC_A,
+                                       get_monster_data(mi.base_type)->name);
+    description += "の体をして";
 
     const bool has_wings = mi.props.exists("chimera_batty")
                            || mi.props.exists("chimera_wings");
+
+    if (mi.props.exists("chimera_legs") || has_wings)
+        description += "おり、";
+
     if (mi.props.exists("chimera_legs"))
     {
         const monster_type leggy_part =
             get_chimera_part(&mi, mi.props["chimera_legs"].get_int());
-        if (has_wings)
-            description += ", ";
-        else
-            description += ", and ";
-        description += "the legs of ";
         description += apply_description(DESC_A,
                                          get_monster_data(leggy_part)->name);
+
+        description += "の肢";
+        if (has_wings)
+            description += "と";
+        else
+            description += "を持って";
     }
 
     if (has_wings)
@@ -3145,22 +3152,22 @@ static string _describe_chimera(const monster_info& mi)
             get_chimera_part(&mi, mi.props["chimera_batty"].get_int())
             : get_chimera_part(&mi, mi.props["chimera_wings"].get_int());
 
+        description += apply_description_j(DESC_A,
+                                           get_monster_data(wing_part)->name);
         switch (mons_class_flies(wing_part))
         {
         case FL_WINGED:
-            description += " and the wings of ";
+            description += "の翼を持って";
             break;
         case FL_LEVITATE:
-            description += " and it hovers like ";
+            description += "のように浮かんで";
             break;
         case FL_NONE:
-            description += " and it moves like "; // Unseen horrors
+            description += "のような動きをして"; // Unseen horrors
             break;
         }
-        description += apply_description(DESC_A,
-                                         get_monster_data(wing_part)->name);
     }
-    description += ".";
+    description += "いる。";
     return description;
 }
 
@@ -3804,6 +3811,9 @@ void get_monster_db_desc(const monster_info& mi, describe_info &inf,
         desc = mi.full_name(DESC_A, true);
         desc_en = uppercase_first(mi.full_name_en(DESC_A, true));
     }
+
+    if (mi.type == MONS_CHIMERA)
+        desc_en = "A chimera";
 
     if (inf.title.empty())
         inf.title = desc + string(max(0, get_number_of_cols() - strwidth(desc)

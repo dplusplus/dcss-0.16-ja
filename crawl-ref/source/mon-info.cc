@@ -899,7 +899,7 @@ string monster_info::_core_name() const
         case MONS_DRACONIAN_KNIGHT:
         case MONS_DRACONIAN_SCORCHER:
             if (base_type != MONS_NO_MONSTER)
-                s = draconian_colour_name(base_type) + " " + s;
+                s = jtrans(draconian_colour_name(base_type) + " ") + s;
             break;
 
         case MONS_BLOOD_SAINT:
@@ -1239,7 +1239,7 @@ string monster_info::common_name_en(description_level_type desc) const
             && (me = get_monster_data(u.ghost.acting_part)))
         {
             // Specify an acting head
-            ss << "'s " << me->name << " head";
+            ss << "に生えた" << me->name << "の頭";
         }
         else
             // Suffix parts in brackets

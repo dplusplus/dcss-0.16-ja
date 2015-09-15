@@ -9,6 +9,7 @@
 
 #include <sstream>
 
+#include "database.h"
 #include "ghost.h"
 #include "mgen_data.h"
 #include "mon-info.h"
@@ -268,7 +269,7 @@ string monster_info::chimera_part_names() const
     ASSERT_RANGE(chimtype3, MONS_PROGRAM_BUG + 1, NUM_MONSTERS);
 
     ostringstream s;
-    s << ", " << get_monster_data(chimtype2)->name
-      << ", " << get_monster_data(chimtype3)->name;
+    s << ", " << jtrans(get_monster_data(chimtype2)->name)
+      << ", " << jtrans(get_monster_data(chimtype3)->name);
     return s.str();
 }
