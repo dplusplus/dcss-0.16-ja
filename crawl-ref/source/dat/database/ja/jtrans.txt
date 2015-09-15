@@ -1800,6 +1800,46 @@ It is cloaked in a pall of superheated steam.
 
 このモンスターは高熱の蒸気を身にまとっている。
 %%%%
+It weaves powerful and unpredictable spells of devastation.
+
+このモンスターは予想も付かない強力な破壊の呪文を唱える。
+%%%%
+It possesses chaotic, reality-warping powers.
+
+このモンスターは現実を歪曲させる混沌の力を備えている。
+%%%%
+It is devoted to combat, disrupting the magic of its foes as it battles endlessly.
+
+このモンスターは戦いに身を捧げており、敵に向かって絶え間なく破壊の魔術を唱える。
+%%%%
+It corrupts space around itself, and can twist even the very flesh of its opponents.
+
+このモンスターは自らの周囲の空間を崩壊させ、敵対する者のの肉体をもねじれさせることがある。
+%%%%
+It shines with an unholy radiance, and wields powers of darkness from its devotion to the deities of death.
+
+このモンスターは不浄な光を放っており、死を司る神性への献身によって得られた闇の力を振るう。
+%%%%
+It is more beast now than whatever species it is descended from.
+
+このモンスターはどの先祖よりもさらに獣らしい姿をしている。
+%%%%
+It is covered in icy armour.
+
+このモンスターは凍てついた鎧状のものをまとっている。
+%%%%
+It gives off an intense heat.
+
+このモンスターは強烈な熱気を放っている。
+%%%%
+It is surrounded by sickly fumes and gases.
+
+このモンスターは病的な悪臭とガスに包まれている。
+%%%%
+It menaces with bony spines.
+
+このモンスターは骨のような突起で相手を脅かす。
+%%%%
 electricity
 
 電撃
@@ -5127,6 +5167,27 @@ purple
 white
 
 白い
+%%%%
+# demonspawn base name
+monstrous
+
+怪物じみた
+%%%%
+gelid
+
+凍てつく
+%%%%
+infernal
+
+業火の
+%%%%
+putrid
+
+腐敗した
+%%%%
+torturous
+
+苦痛の
 %%%%
 ############################## mon-info.cc ##############################
 %%%%

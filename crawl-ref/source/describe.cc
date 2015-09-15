@@ -3176,18 +3176,18 @@ static string _describe_demonspawn_role(monster_type type)
     switch (type)
     {
     case MONS_BLOOD_SAINT:
-        return "It weaves powerful and unpredictable spells of devastation.";
+        return jtrans("It weaves powerful and unpredictable spells of devastation.");
     case MONS_CHAOS_CHAMPION:
-        return "It possesses chaotic, reality-warping powers.";
+        return jtrans("It possesses chaotic, reality-warping powers.");
     case MONS_WARMONGER:
-        return "It is devoted to combat, disrupting the magic of its foes as "
-               "it battles endlessly.";
+        return jtrans("It is devoted to combat, disrupting the magic of its foes as "
+                      "it battles endlessly.");
     case MONS_CORRUPTER:
-        return "It corrupts space around itself, and can twist even the very "
-               "flesh of its opponents.";
+        return jtrans("It corrupts space around itself, and can twist even the very "
+                      "flesh of its opponents.");
     case MONS_BLACK_SUN:
-        return "It shines with an unholy radiance, and wields powers of "
-               "darkness from its devotion to the deities of death.";
+        return jtrans("It shines with an unholy radiance, and wields powers of "
+                      "darkness from its devotion to the deities of death.");
     default:
         return "";
     }
@@ -3198,15 +3198,15 @@ static string _describe_demonspawn_base(int species)
     switch (species)
     {
     case MONS_MONSTROUS_DEMONSPAWN:
-        return "It is more beast now than whatever species it is descended from.";
+        return jtrans("It is more beast now than whatever species it is descended from.");
     case MONS_GELID_DEMONSPAWN:
-        return "It is covered in icy armour.";
+        return jtrans("It is covered in icy armour.");
     case MONS_INFERNAL_DEMONSPAWN:
-        return "It gives off an intense heat.";
+        return jtrans("It gives off an intense heat.");
     case MONS_PUTRID_DEMONSPAWN:
-        return "It is surrounded by sickly fumes and gases.";
+        return jtrans("It is surrounded by sickly fumes and gases.");
     case MONS_TORTUROUS_DEMONSPAWN:
-        return "It menaces with bony spines.";
+        return jtrans("It menaces with bony spines.");
     }
     return "";
 }
@@ -3222,7 +3222,7 @@ static string _describe_demonspawn(const monster_info& mi)
     {
         const string demonspawn_role = _describe_demonspawn_role(mi.type);
         if (!demonspawn_role.empty())
-            description += " " + demonspawn_role;
+            description += "\n" + demonspawn_role;
     }
 
     return description;
@@ -3349,7 +3349,9 @@ static string _monster_attacks_description(const monster_info& mi)
         if (pronoun == "It" || pronoun == "それ")
             pronoun = "このモンスター";
 
-        result << pronoun << "は" << to_separated_line(attack_descs.begin(), attack_descs.end(), true, "および");
+        result << pronoun << "は" << to_separated_line(attack_descs.begin(), attack_descs.end(), true,
+                                                       ("ことがある。\n" + pronoun + "は").c_str(),
+                                                       ("ことがある。\n" + pronoun + "は").c_str());
         result << "ことがある。\n";
     }
 

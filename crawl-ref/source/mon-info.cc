@@ -908,7 +908,7 @@ string monster_info::_core_name() const
         case MONS_CORRUPTER:
         case MONS_BLACK_SUN:
             if (base_type != MONS_NO_MONSTER)
-                s = demonspawn_base_name(base_type) + " " + s;
+                s = jtrans(demonspawn_base_name(base_type) + " ") + s;
             break;
 
         case MONS_DANCING_WEAPON:
