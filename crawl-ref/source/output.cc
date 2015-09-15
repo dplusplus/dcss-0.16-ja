@@ -1139,7 +1139,8 @@ static void _draw_wizmode_flag(const char *word)
 static void _redraw_title()
 {
     const unsigned int WIDTH = crawl_view.hudsz.x;
-    string title = you.your_name + " " + filtered_lang(player_title());
+    string title = jtrans(player_title(false)) + "『" + you.your_name + "』("
+                 + jtrans(species_name(you.species)) + ")";
     const bool small_layout =
 #ifdef USE_TILE_LOCAL
                               tiles.is_using_small_layout();
@@ -1185,13 +1186,14 @@ static void _redraw_title()
     // Minotaur [of God] [Piety]
     textcolour(YELLOW);
     CGOTOXY(1, 2, GOTO_STAT);
-    string species = species_name(you.species);
+    string species;
     NOWRAP_EOL_CPRINTF("%s", species.c_str());
     if (!you_worship(GOD_NO_GOD))
     {
-        string god = " of ";
-        god += you_worship(GOD_JIYVA) ? god_name_jiyva(true)
-                                      : god_name(you.religion);
+        string god;
+        god += jtrans(you_worship(GOD_JIYVA) ? god_name_jiyva(false)
+                                             : god_name(you.religion));
+        god += "の信徒";
         NOWRAP_EOL_CPRINTF("%s", god.c_str());
 
         string piety = _god_asterisks();
