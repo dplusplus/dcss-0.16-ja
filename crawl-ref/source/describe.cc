@@ -4246,18 +4246,9 @@ string short_ghost_description(const monster *mon, bool abbrev)
     const ghost_demon &ghost = *(mon->ghost);
     const char* rank = xl_rank_names[ghost_level_to_rank(ghost.xl)];
 
-    string desc = make_stringf("%s %s %s", rank,
-                               species_name(ghost.species).c_str(),
-                               get_job_name(ghost.job));
-
-    if (abbrev || strwidth(desc) > 40)
-    {
-        desc = make_stringf("%s %s%s",
-                            rank,
-                            get_species_abbrev(ghost.species),
-                            get_job_abbrev(ghost.job));
-    }
-
+    string desc = make_stringf("%s%sの%s", jtransc(rank),
+                               jtransc(species_name(ghost.species)),
+                               jtransc(get_job_name(ghost.job)));
     return desc;
 }
 

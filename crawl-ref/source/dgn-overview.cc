@@ -13,6 +13,7 @@
 #include <cstring>
 
 #include "branch.h"
+#include "database.h"
 #include "describe.h"
 #include "env.h"
 #include "feature.h"
@@ -784,7 +785,7 @@ static string unique_name(monster* mons)
 {
     string name = mons->name(DESC_PLAIN, true);
     if (mons->type == MONS_PLAYER_GHOST)
-        name += ", " + short_ghost_description(mons, true);
+        name += "(" + short_ghost_description(mons, true) + ")";
     else
     {
         if (strstr(name.c_str(), "royal jelly")
@@ -799,7 +800,7 @@ static string unique_name(monster* mons)
         if (strstr(name.c_str(), "Blork"))
             name = "Blork the orc";
     }
-    return name;
+    return jtrans(name);
 }
 
 void set_unique_annotation(monster* mons, const level_id level)
