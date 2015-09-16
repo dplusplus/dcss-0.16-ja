@@ -1257,7 +1257,7 @@ static string _replace_skill_keys(const string &text)
 
         ASSERT(!value.empty());
 
-        res << value;
+        res << jtrans(value);
 
         last = end + 1;
     }
@@ -1381,6 +1381,8 @@ string skill_title_by_rank(skill_type best_skill, uint8_t skill_rank,
     }
 
     {
+        result = jtrans(result);
+
         unwind_var<species_type> sp(Skill_Species, species);
         result = _replace_skill_keys(result);
     }
