@@ -12,7 +12,7 @@ static const ucs_t dchar_table[ NUM_CSET ][ NUM_DCHAR_TYPES ] =
     // It must be limited to stuff present both in CP437 and WGL4.
     {
     //       ▓
-        '#', 0x2593, '*', '.', ',', '\'', '+', '^', '>', '<',
+        '#', 0x2591, '*', '.', ',', '\'', '+', '^', '>', '<',
     //            ∩       ⌠       ≈
         '#', '_', 0x2229, 0x2320, 0x2248, '8', '{',
 #if defined(TARGET_OS_WINDOWS) && !defined(USE_TILE_LOCAL)
