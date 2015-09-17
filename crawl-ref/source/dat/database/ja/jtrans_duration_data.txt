@@ -4,11 +4,11 @@
 # name_text : wizmodeでの指定用(翻訳不要)
 # long_text : '@'コマンド用表示
 %%%%
-dur Agi
+[dur]Agi
 
 器用＋
 %%%%
-dur agile
+[dur]agile
 
 器用＋
 %%%%
@@ -16,11 +16,11 @@ You are agile.
 
 あなたは敏捷だ。
 %%%%
-dur -Mag
+[dur]-Mag
 
 反魔
 %%%%
-dur antimagic
+[dur]antimagic
 
 魔法阻害
 %%%%
@@ -28,11 +28,11 @@ You have trouble accessing your magic.
 
 あなたは魔力が使えなくなっている。
 %%%%
-dur Berserk
+[dur]Berserk
 
 狂戦士化
 %%%%
-dur berserking
+[dur]berserking
 
 狂戦士化中
 %%%%
@@ -40,11 +40,11 @@ You are possessed by a berserker rage.
 
 あなたは狂戦士の激怒に駆られている。
 %%%%
-dur Breath
+[dur]Breath
 
 呼吸阻害
 %%%%
-dur short of breath
+[dur]short of breath
 
 呼吸阻害
 %%%%
@@ -52,11 +52,11 @@ You are short of breath.
 
 あなたは息があがっている。
 %%%%
-dur Brill
+[dur]Brill
 
 知力＋
 %%%%
-dur brilliant
+[dur]brilliant
 
 知力＋
 %%%%
@@ -64,11 +64,11 @@ You are brilliant.
 
 あなたは知性の輝きを放っている。
 %%%%
-dur Conf
+[dur]Conf
 
 混乱
 %%%%
-dur confused
+[dur]confused
 
 混乱中
 %%%%
@@ -76,19 +76,19 @@ You are confused.
 
 あなたは混乱している。
 %%%%
-dur Touch
+[dur]Touch
 
 混乱の手
 %%%%
-dur confusing touch
+[dur]confusing touch
 
 混乱の手
 %%%%
-dur cTele
+[dur]cTele
 
 転位制御
 %%%%
-dur controlling teleports
+[dur]controlling teleports
 
 転位制御
 %%%%
@@ -96,15 +96,15 @@ You can control teleportations.
 
 あなたは瞬間移動先を制御できる。
 %%%%
-dur Corona
+[dur]Corona
 
 照明
 %%%%
-dur DChan
+[dur]DChan
 
 霊媒
 %%%%
-dur death channel
+[dur]death channel
 
 霊媒状態
 %%%%
@@ -112,11 +112,11 @@ You are channeling the dead.
 
 あなたは死と交信している。
 %%%%
-dur Vit
+[dur]Vit
 
 活性化
 %%%%
-dur vitalised
+[dur]vitalised
 
 生命の活性化
 %%%%
@@ -124,7 +124,7 @@ You are divinely vitalised.
 
 あなたは神の力によって活性化されている。
 %%%%
-dur divinely vigorous
+[dur]divinely vigorous
 
 神秘の活力
 %%%%
@@ -132,11 +132,11 @@ You are imbued with divine vigour.
 
 あなたは神秘の活力を吹き込まれている。
 %%%%
-dur Exh
+[dur]Exh
 
 疲労
 %%%%
-dur exhausted
+[dur]exhausted
 
 疲労状態
 %%%%
@@ -144,15 +144,15 @@ You are exhausted.
 
 あなたは疲労困憊している。
 %%%%
-dur RoF
+[dur]RoF
 
 炎環
 %%%%
-dur immune to fire clouds
+[dur]immune to fire clouds
 
 炎の雲を無効化
 %%%%
-dur icy armour
+[dur]icy armour
 
 氷の鎧
 %%%%
@@ -160,11 +160,11 @@ You are protected by a layer of icy armour.
 
 あなたは氷の鎧に守られている。
 %%%%
-dur Fire
+[dur]Fire
 
 焼夷
 %%%%
-dur liquid flames
+[dur]liquid flames
 
 焼夷の炎
 %%%%
@@ -172,23 +172,23 @@ You are covered in liquid flames.
 
 あなたは燃えたぎる液体を被っている。
 %%%%
-dur -MR
+[dur]-MR
 
 耐魔－
 %%%%
-dur vulnerable
+[dur]vulnerable
 
 魔力耐性低下
 %%%%
-dur shielded
+[dur]shielded
 
 魔法の盾
 %%%%
-dur Might
+[dur]Might
 
 腕力＋
 %%%%
-dur mighty
+[dur]mighty
 
 腕力＋
 %%%%
@@ -196,11 +196,11 @@ You are mighty.
 
 あなたは力強くなっている。
 %%%%
-dur Para
+[dur]Para
 
 麻痺
 %%%%
-dur palalysed
+[dur]palalysed
 
 麻痺中
 %%%%
@@ -208,11 +208,11 @@ You are paralysed.
 
 あなたは麻痺している。
 %%%%
-dur Stone
+[dur]Stone
 
 石像
 %%%%
-dur petrified
+[dur]petrified
 
 石像状態
 %%%%
@@ -220,11 +220,11 @@ You are petrified.
 
 あなたは石像と化している。
 %%%%
-dur Petr
+[dur]Petr
 
 石化
 %%%%
-dur petrifying
+[dur]petrifying
 
 石化中
 %%%%
@@ -232,11 +232,11 @@ You are turning to stone.
 
 あなたは石化しつつある。
 %%%%
-dur Resist
+[dur]Resist
 
 元素耐性
 %%%%
-dur resistant
+[dur]resistant
 
 元素耐性
 %%%%
@@ -244,15 +244,15 @@ You resist elements.
 
 あなたは元素に対する耐性を持つ。
 %%%%
-dur Slime
+[dur]Slime
 
 スライム
 %%%%
-dur slimy
+[dur]slimy
 
 スライム化の攻撃
 %%%%
-dur sleeping
+[dur]sleeping
 
 睡眠中
 %%%%
@@ -260,7 +260,7 @@ You are sleeping.
 
 あなたは眠っている。
 %%%%
-dur stone skin
+[dur]stone skin
 
 石の肌
 %%%%
@@ -268,7 +268,7 @@ Your skin is tough as stone.
 
 あなたの皮膚は石のようだ。
 %%%%
-dur Swift
+[dur]Swift
 
 俊足
 %%%%
@@ -276,19 +276,19 @@ You can move swiftly.
 
 あなたは軽快に動いている。
 %%%%
-dur Emp
+[dur]Emp
 
 テレパシー
 %%%%
-dur empathic
+[dur]empathic
 
 テレパシー
 %%%%
-dur Tele
+[dur]Tele
 
 転位準備
 %%%%
-dur about to teleport
+[dur]about to teleport
 
 転位準備
 %%%%
@@ -296,15 +296,15 @@ You are about to teleport.
 
 あなたはテレポートしようとしている。
 %%%%
-dur DDoor
+[dur]DDoor
 
 とば口
 %%%%
-dur death's door
+[dur]death's door
 
 死のとば口
 %%%%
-dur phasing
+[dur]phasing
 
 位相転位
 %%%%
@@ -312,19 +312,19 @@ You are out of phase with the material plane.
 
 あなたは物質界から位相がずれている。
 %%%%
-dur Quad
+[dur]Quad
 
 ダメージx4
 %%%%
-dur quad damage
+[dur]quad damage
 
 四倍ダメージ
 %%%%
-dur Sil
+[dur]Sil
 
 静寂
 %%%%
-dur silence
+[dur]silence
 
 静寂状態
 %%%%
@@ -332,19 +332,19 @@ You radiate silence.
 
 あなたは静寂を放っている。
 %%%%
-dur Stealth
+[dur]Stealth
 
 隠密
 %%%%
-dur especially stealthy
+[dur]especially stealthy
 
 隠密状態
 %%%%
-dur Fear
+[dur]Fear
 
 恐慌
 %%%%
-dur afraid
+[dur]afraid
 
 恐慌状態
 %%%%
@@ -352,11 +352,11 @@ You are terrified.
 
 あなたは怯えている。
 %%%%
-dur Mirror
+[dur]Mirror
 
 痛み分け
 %%%%
-dur injury mirror
+[dur]injury mirror
 
 痛み分け状態
 %%%%
@@ -364,11 +364,11 @@ You mirror injuries.
 
 あなたは負った傷をそのまま返す。
 %%%%
-dur Scry
+[dur]Scry
 
 幻視
 %%%%
-dur scrying
+[dur]scrying
 
 幻視状態
 %%%%
@@ -376,7 +376,7 @@ Your astral vision lets you see through walls.
 
 あなたの視界は壁を見透かす。
 %%%%
-dur Tornado
+[dur]Tornado
 
 竜巻
 %%%%
@@ -384,11 +384,11 @@ You are in the eye of a mighty hurricane.
 
 あなたは台風の目の中にいる。
 %%%%
-dur Liquid
+[dur]Liquid
 
 沼化
 %%%%
-dur liquefying
+[dur]liquefying
 
 沼化
 %%%%
@@ -396,11 +396,11 @@ The ground has become liquefied beneath your feet.
 
 あなたの足下の地面が液状化した。
 %%%%
-dur Hero
+[dur]Hero
 
 英雄
 %%%%
-dur heroism
+[dur]heroism
 
 英雄化
 %%%%
@@ -408,7 +408,7 @@ You possess the skills of a mighty hero.
 
 あなたは英雄のごとき技巧を得た。
 %%%%
-dur Finesse
+[dur]Finesse
 
 早業
 %%%%
@@ -416,11 +416,11 @@ Your blows are lightning fast.
 
 あなたは電光石火の攻撃を放てる。
 %%%%
-dur Prot
+[dur]Prot
 
 保護
 %%%%
-dur protection
+[dur]protection
 
 生命保護
 %%%%
@@ -428,11 +428,11 @@ You are calling for your life to be saved.
 
 あなたは生命の保護を請うている。
 %%%%
-dur Dark
+[dur]Dark
 
 暗闇
 %%%%
-dur darkness
+[dur]darkness
 
 暗闇状態
 %%%%
@@ -440,11 +440,11 @@ You emit darkness.
 
 あなたは暗闇を発した。
 %%%%
-dur Shroud
+[dur]Shroud
 
 帷子
 %%%%
-dur shrouded
+[dur]shrouded
 
 ゴルブリアの帷子
 %%%%
@@ -452,11 +452,11 @@ You are protected by a distorting shroud.
 
 あなたは歪曲する帷子に守られている。
 %%%%
-dur Disjoin
+[dur]Disjoin
 
 解散
 %%%%
-dur disjoining
+[dur]disjoining
 
 解散
 %%%%
@@ -464,11 +464,11 @@ You are disjoining your surroundings.
 
 あなたは辺りを散り散りばらばらにしている。
 %%%%
-dur Mark
+[dur]Mark
 
 標的
 %%%%
-dur marked
+[dur]marked
 
 標的状態
 %%%%
@@ -476,11 +476,11 @@ A sentinel's mark is revealing your location to enemies.
 
 番兵の印があなたの居場所を敵に知らせている。
 %%%%
-dur Infus
+[dur]Infus
 
 強化
 %%%%
-dur Infused
+[dur]Infused
 
 武器強化
 %%%%
@@ -488,11 +488,11 @@ Your attacks are magically infused.
 
 あなたの攻撃には魔力が込められている。
 %%%%
-dur Slay
+[dur]Slay
 
 戦歌
 %%%%
-dur singing
+[dur]singing
 
 戦歌
 %%%%
@@ -500,11 +500,11 @@ Your melee attacks are strengthened by your song.
 
 あなたの攻撃は歌によって強化されている。
 %%%%
-dur Flay
+[dur]Flay
 
 皮剥
 %%%%
-dur flayed
+[dur]flayed
 
 皮を剥がれている
 %%%%
@@ -512,11 +512,11 @@ You are covered in terrible wounds.
 
 あなたはひどい傷だらけだ。
 %%%%
-dur Weak
+[dur]Weak
 
 虚弱
 %%%%
-dur weakened
+[dur]weakened
 
 虚弱
 %%%%
@@ -524,11 +524,11 @@ Your attacks are enfeebled.
 
 あなたの攻撃は弱められている。
 %%%%
-dur -Tele
+[dur]-Tele
 
 転位阻害
 %%%%
-dur cannot translocate
+[dur]cannot translocate
 
 転位阻害状態
 %%%%
@@ -536,11 +536,11 @@ You are firmly anchored to this plane.
 
 あなたはこの次元にしっかりと繋ぎ止められている。
 %%%%
-dur Toxic
+[dur]Toxic
 
 毒光
 %%%%
-dur radiating poison
+[dur]radiating poison
 
 毒の放射
 %%%%
@@ -548,11 +548,11 @@ You are radiating toxic energy.
 
 あなたは毒の力を放射している。
 %%%%
-dur Recite
+[dur]Recite
 
 朗読
 %%%%
-dur reciting
+[dur]reciting
 
 朗読中
 %%%%
@@ -560,11 +560,11 @@ You are reciting Zin's Axioms of Law.
 
 あなたはジンの法理を説いている。
 %%%%
-dur Roots
+[dur]Roots
 
 根絡み
 %%%%
-dur grasped by roots
+[dur]grasped by roots
 
 木の根に絡まれている
 %%%%
@@ -572,11 +572,11 @@ Your movement is impeded by grasping roots.
 
 あなたの動きは絡まる木の根に邪魔されている。
 %%%%
-dur -rF
+[dur]-rF
 
 耐火－
 %%%%
-dur fire vulnerable
+[dur]fire vulnerable
 
 耐火－
 %%%%
@@ -584,11 +584,11 @@ You are more vulnerable to fire.
 
 あなたはさらに火に燃えやすくなった。
 %%%%
-dur Barbs
+[dur]Barbs
 
 逆棘
 %%%%
-dur manticore barbs
+[dur]manticore barbs
 
 マンティコアの逆棘
 %%%%
@@ -596,11 +596,11 @@ Manticore spikes are embedded in your body.
 
 マンティコアの逆棘が体に食い込んでいる。
 %%%%
-dur -rP
+[dur]-rP
 
 耐毒－
 %%%%
-dur poison vulnerable
+[dur]poison vulnerable
 
 耐毒－
 %%%%
@@ -608,7 +608,7 @@ You are more vulnerable to poison.
 
 あなたはさらに毒に弱くなったようだ。
 %%%%
-dur Frozen
+[dur]Frozen
 
 凍結
 %%%%
@@ -616,11 +616,11 @@ You are partly encased in ice.
 
 あなたの体の一部は凍結している。
 %%%%
-dur Sap
+[dur]Sap
 
 失率上昇
 %%%%
-dur sap magic
+[dur]sap magic
 
 失率上昇
 %%%%
@@ -628,11 +628,11 @@ Casting spells hinders your spell success.
 
 詠唱すればするほど成功しにくくなる。
 %%%%
-dur PProj
+[dur]PProj
 
 転送
 %%%%
-dur portal projectile
+[dur]portal projectile
 
 射出物の転送
 %%%%
@@ -640,15 +640,15 @@ You are teleporting projectiles to their destination.
 
 あなたは標的に対して飛び道具を直接送り込む。
 %%%%
-dur Forest
+[dur]Forest
 
 森林
 %%%%
-dur Dragoncall
+[dur]Dragoncall
 
 竜の召喚
 %%%%
-dur dragon's call
+[dur]dragon's call
 
 竜の召喚
 %%%%
@@ -656,11 +656,11 @@ You are beckoning forth a horde of dragons.
 
 あなたは竜の大群を呼び出している。
 %%%%
-dur Abj
+[dur]Abj
 
 送還
 %%%%
-dur aura of abjuration
+[dur]aura of abjuration
 
 送還のオーラ
 %%%%
@@ -668,11 +668,11 @@ You are abjuring all hostile summons around you.
 
 あなたは周辺の召喚されし存在を送還しようとしている。
 %%%%
-dur -Potion
+[dur]-Potion
 
 薬×
 %%%%
-dur no potions
+[dur]no potions
 
 薬×
 %%%%
@@ -680,11 +680,11 @@ You cannot drink potions.
 
 あなたは薬を飲めない。
 %%%%
-dur rF+
+[dur]rF+
 
 耐火＋
 %%%%
-dur protected from fire
+[dur]protected from fire
 
 耐火＋
 %%%%
@@ -692,11 +692,11 @@ Qazlal is protecting you from fire.
 
 クァズラルはあなたを火から守っている。
 %%%%
-dur rC+
+[dur]rC+
 
 耐冷＋
 %%%%
-dur protected from cold
+[dur]protected from cold
 
 耐冷＋
 %%%%
@@ -704,11 +704,11 @@ Qazlal is protecting you from cold.
 
 クァズラルはあなたを冷気から守っている。
 %%%%
-dur rElec+
+[dur]rElec+
 
 耐電＋
 %%%%
-dur protected from electricity
+[dur]protected from electricity
 
 耐電＋
 %%%%
@@ -724,11 +724,11 @@ Qazlal is protecting you from physical damage.
 
 クァズラルはあなたを物理ダメージから守ってくれる。
 %%%%
-dur Corr
+[dur]Corr
 
 腐蝕
 %%%%
-dur corroded equipment
+[dur]corroded equipment
 
 装備の腐蝕
 %%%%
@@ -736,11 +736,11 @@ Your equipment is corroded.
 
 あなたの装備が腐蝕している。
 %%%%
-dur Fort
+[dur]Fort
 
 不屈
 %%%%
-dur immense fortitude
+[dur]immense fortitude
 
 不屈
 %%%%
@@ -748,11 +748,11 @@ You have immense fortitude and shrug off injury.
 
 あなたは不屈の精神を持っており傷を無視する。
 %%%%
-dur Horr
+[dur]Horr
 
 恐怖
 %%%%
-dur horrified
+[dur]horrified
 
 恐怖に怯えている
 %%%%
@@ -760,11 +760,11 @@ You are horrified, weakening your attacks and spells.
 
 あなたは怯えており、攻撃や魔法が弱まっている。
 %%%%
-dur -Scroll
+[dur]-Scroll
 
 巻物×
 %%%%
-dur no scrolls
+[dur]no scrolls
 
 巻物×
 %%%%
@@ -772,7 +772,7 @@ You cannot read scrolls.
 
 あなたは巻物を読めない。
 %%%%
-dur icy shield
+[dur]icy shield
 
 氷の盾
 %%%%
@@ -780,7 +780,7 @@ You are shielded by a disc of ice.
 
 あなたは氷の円盤を盾にしている。
 %%%%
-dur divine shield
+[dur]divine shield
 
 神気の盾
 %%%%
@@ -788,11 +788,11 @@ You are shielded by the power of the Shining One.
 
 あなたは輝けるものの力による盾を構えている。
 %%%%
-dur Cleave
+[dur]Cleave
 
 薙払い
 %%%%
-dur cleaving
+[dur]cleaving
 
 薙払い
 %%%%
@@ -800,7 +800,7 @@ You are cleaving through your foes.
 
 あなたは敵の一群を薙ぎ払う。
 %%%%
-dur Ambros
+[dur]Ambros
 
 アンブロシア
 %%%%

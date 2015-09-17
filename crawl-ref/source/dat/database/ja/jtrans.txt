@@ -8081,11 +8081,11 @@ Corr (%d)
 
 腐蝕(%d)
 %%%%
-dur -Swift
+[dur]-Swift
 
 鈍足
 %%%%
-dur sluggish
+[dur]sluggish
 
 鈍足
 %%%%
@@ -8093,15 +8093,15 @@ You are moving sluggishly
 
 あなたは動きが緩慢だ。
 %%%%
-dur Mesm
+[dur]Mesm
 
 魅了
 %%%%
-dur mesmerised
+[dur]mesmerised
 
 魅了されている
 %%%%
-dur glowing
+[dur]glowing
 
 後光
 %%%%
@@ -8109,7 +8109,7 @@ You are glowing.
 
 あなたは輝いている。
 %%%%
-dur wreathed by umbra
+[dur]wreathed by umbra
 
 影の帳
 %%%%
@@ -8117,7 +8117,7 @@ You are wreathed by an umbra.
 
 あなたは影の帳に包まれている。
 %%%%
-dur Held
+[dur]Held
 
 拘束
 %%%%
@@ -8129,11 +8129,11 @@ You are caught in a web.
 
 あなたは蜘蛛の巣に巻き付かれている。
 %%%%
-dur SlowM
+[dur]SlowM
 
 ぬかるみ
 %%%%
-dur slowed movement
+[dur]slowed movement
 
 ぬかるみ
 %%%%
@@ -8141,7 +8141,7 @@ Your movement is slowed on this liquid ground.
 
 あなたの動きはぬかるみに邪魔されている。
 %%%%
-dur Aug
+[dur]Aug
 
 増強
 %%%%
@@ -8165,15 +8165,15 @@ You are immune to clouds of flame.
 
 あなたは火炎の雲に対して傷つかない。
 %%%%
-dur Regen+
+[dur]Regen+
 
 回復＋
 %%%%
-dur SBlade
+[dur]SBlade
 
 命中＋
 %%%%
-dur bonded with blade
+[dur]bonded with blade
 
 命中＋
 %%%%
@@ -8189,11 +8189,11 @@ You have a weak bond with your blade.
 
 あなたは刃と弱く結ばれている。
 %%%%
-dur Fball
+[dur]Fball
 
 遅火球
 %%%%
-dur delayed fireball
+[dur]delayed fireball
 
 遅延式ファイアボール
 %%%%
@@ -8201,7 +8201,7 @@ You have a stored fireball ready to release.
 
 あなたはファイアボールを解き放つ用意ができている。
 %%%%
-dur corpse armour
+[dur]corpse armour
 
 屍の鎧
 %%%%
@@ -8209,15 +8209,15 @@ You are enveloped in carrion and bones.
 
 あなたは屍肉と骨に覆われている。
 %%%%
-dur Constr
+[dur]Constr
 
 拘束
 %%%%
-dur constricted
+[dur]constricted
 
 拘束中
 %%%%
-dur silenced
+[dur]silenced
 
 静寂状態
 %%%%
@@ -8229,19 +8229,19 @@ Slay (%u)
 
 戦歌(+%u)
 %%%%
-dur -cTele
+[dur]-cTele
 
 制御転位阻害
 %%%%
-dur Beogh
+[dur]Beogh
 
 ベオに入信
 %%%%
-dur Recall
+[dur]Recall
 
 招来
 %%%%
-dur recalling
+[dur]recalling
 
 呼び出し中
 %%%%
@@ -8249,11 +8249,11 @@ You are recalling your allies.
 
 あなたは仲間を呼び出している。
 %%%%
-dur Engulf
+[dur]Engulf
 
 水没
 %%%%
-dur engulfed
+[dur]engulfed
 
 水没中
 %%%%
@@ -8261,7 +8261,7 @@ You are engulfed in water.
 
 あなたは水中に呑み込まれている。
 %%%%
-dur engulfed (cannot breathe)
+[dur]engulfed (cannot breathe)
 
 水没中(呼吸できない)
 %%%%
@@ -8269,11 +8269,11 @@ You are engulfed in water and unable to breathe.
 
 あなたは水中に呑み込まれており、呼吸ができない。
 %%%%
-dur Drain
+[dur]Drain
 
 衰弱
 %%%%
-dur very heavily drained
+[dur]very heavily drained
 
 ひどく衰弱中
 %%%%
@@ -8281,7 +8281,7 @@ Your life force is very heavily drained.
 
 あなたの生命力はひどく衰弱している。
 %%%%
-dur heavily drained
+[dur]heavily drained
 
 かなり衰弱中
 %%%%
@@ -8289,7 +8289,7 @@ Your life force is heavily drained.
 
 あなたの生命力はかなり衰弱している。
 %%%%
-dur drained
+[dur]drained
 
 衰弱中
 %%%%
@@ -8297,23 +8297,23 @@ Your life force is drained.
 
 あなたの生命力は衰弱している。
 %%%%
-dur Ray
+[dur]Ray
 
 光線
 %%%%
-dur Dig
+[dur]Dig
 
 掘削
 %%%%
-dur Elixir
+[dur]Elixir
 
 秘薬
 %%%%
-dur -Wiz
+[dur]-Wiz
 
 魔法－
 %%%%
-dur extremely magic sapped
+[dur]extremely magic sapped
 
 極めて魔法が弱まる
 %%%%
@@ -8321,7 +8321,7 @@ Your control over your magic has been greatly sapped.
 
 あなたの魔法の制御力は極めて弱まっている。
 %%%%
-dur very magic sapped
+[dur]very magic sapped
 
 かなり魔法が弱まる
 %%%%
@@ -8329,7 +8329,7 @@ Your control over your magic has been significantly sapped.
 
 あなたの魔法の制御力はかなり弱まっている。
 %%%%
-dur magic sapped
+[dur]magic sapped
 
 魔法が弱まる
 %%%%
@@ -8337,7 +8337,7 @@ Your control over your magic has been sapped.
 
 あなたの魔法の制御力は弱まっている。
 %%%%
-dur Bribe
+[dur]Bribe
 
 買収中
 %%%%
@@ -8345,7 +8345,7 @@ Horr(%d)
 
 恐怖(%d)
 %%%%
-dur overwhelmed with horror
+[dur]overwhelmed with horror
 
 恐怖に打ちのめされている
 %%%%
@@ -8353,7 +8353,7 @@ Horror overwhelms you!
 
 あなたは恐怖に打ちのめされている！
 %%%%
-dur extremely horrified
+[dur]extremely horrified
 
 極めて怯えている
 %%%%
@@ -8361,7 +8361,7 @@ You are extremely horrified!
 
 あなたは極めて怯えている！
 %%%%
-dur horrified
+[dur]horrified
 
 恐怖に怯えている
 %%%%
@@ -8369,11 +8369,11 @@ You are horrified!
 
 あなたは恐怖に怯えている！
 %%%%
-dur Cloud
+[dur]Cloud
 
 雲烟
 %%%%
-dur Contam
+[dur]Contam
 
 魔力汚染
 %%%%
@@ -8397,19 +8397,19 @@ very very heavily contaminated
 
 極めて魔力汚染されている
 %%%%
-dur Regen
+[dur]Regen
 
 再生
 %%%%
-dur Regen MR++
+[dur]Regen MR++
 
 再生 耐魔法＋＋
 %%%%
-dur non-regenerating
+[dur]non-regenerating
 
 再生無効
 %%%%
-dur recuperating
+[dur]recuperating
 
 快復中
 %%%%
@@ -8417,7 +8417,7 @@ You are recuperating from your illness.
 
 あなたは病気から快復している。
 %%%%
-dur regenerating
+[dur]regenerating
 
 再生中
 %%%%
@@ -8425,31 +8425,31 @@ You are regenerating.
 
 あなたは再生している。
 %%%%
-dur recuperating slowly
+[dur]recuperating slowly
 
 ゆっくり快復中
 %%%%
-dur recuperating quickly
+[dur]recuperating quickly
 
 急速に快復中
 %%%%
-dur recuperating very quickly
+[dur]recuperating very quickly
 
 極めて急速に快復中
 %%%%
-dur regenerating slowly
+[dur]regenerating slowly
 
 ゆっくり再生中
 %%%%
-dur regenerating slowly
+[dur]regenerating slowly
 
 急速に再生中
 %%%%
-dur regenerating slowly
+[dur]regenerating slowly
 
 極めて急速に再生中
 %%%%
-dur Pois
+[dur]Pois
 
 毒
 %%%%
@@ -8469,11 +8469,11 @@ mildly poisoned
 
 毒に冒されている
 %%%%
-dur Fast+Slow
+[dur]Fast+Slow
 
 加減速
 %%%%
-dur hasted and slowed
+[dur]hasted and slowed
 
 加減速中
 %%%%
@@ -8481,11 +8481,11 @@ You are under both slowing and hasting effects.
 
 あなたは減速と加速両方の効果を受けている。
 %%%%
-dur Slow
+[dur]Slow
 
 減速
 %%%%
-dur slowed
+[dur]slowed
 
 減速中
 %%%%
@@ -8493,11 +8493,11 @@ You are slowed.
 
 あなたは減速している。
 %%%%
-dur Fast
+[dur]Fast
 
 加速
 %%%%
-dur hasted
+[dur]hasted
 
 加速中
 %%%%
@@ -8505,15 +8505,15 @@ Your actions are hasted.
 
 あなたの行動は加速されている。
 %%%%
-dur Fly
+[dur]Fly
 
 飛行
 %%%%
-dur flying
+[dur]flying
 
 飛行中
 %%%%
-dur flying quickly and evasively
+[dur]flying quickly and evasively
 
 自由自在に飛行中
 %%%%
@@ -8525,11 +8525,11 @@ You are flying quickly and evasively.
 
 あなたは自由自在に飛んでいる。
 %%%%
-dur Rot
+[dur]Rot
 
 腐敗
 %%%%
-dur rotting
+[dur]rotting
 
 腐敗中
 %%%%
@@ -8557,43 +8557,43 @@ Your flesh is rotting at the usual pace.
 
 あなたの体はいつものように腐敗している。
 %%%%
-dur Sick
+[dur]Sick
 
 病気
 %%%%
-dur badly diseased
+[dur]badly diseased
 
 重い病気に冒されている
 %%%%
-dur diseased
+[dur]diseased
 
 病気に冒されている
 %%%%
-dur mildly diseased
+[dur]mildly diseased
 
 軽い病気に冒されている
 %%%%
-dur Collapse
+[dur]Collapse
 
 筋萎縮
 %%%%
-dur Brainless
+[dur]Brainless
 
 脳無し
 %%%%
-dur Clumsy
+[dur]Clumsy
 
 不器用
 %%%%
-dur lost strength
+[dur]lost strength
 
 腕力の喪失
 %%%%
-dur lost intelligence
+[dur]lost intelligence
 
 知性の喪失
 %%%%
-dur lost dexterity
+[dur]lost dexterity
 
 器用さの喪失
 %%%%
@@ -8621,19 +8621,19 @@ You have no dexterity!
 
 あなたは極めて不器用だ！
 %%%%
-dur Water
+[dur]Water
 
 水場
 %%%%
-dur Lava
+[dur]Lava
 
 溶岩
 %%%%
-dur DMsl
+DMsl
 
 偏向
 %%%%
-dur deflect missiles
+[dur]deflect missiles
 
 飛来物の阻止
 %%%%
@@ -8641,11 +8641,11 @@ You deflect missiles.
 
 あなたは飛来物を阻止している。
 %%%%
-dur RMsl
+[dur]RMsl
 
 飛防
 %%%%
-dur repel missiles
+[dur]repel missiles
 
 飛来物の防御
 %%%%
@@ -8653,15 +8653,15 @@ You repel missiles.
 
 あなたは飛来物を防御している。
 %%%%
-dur Invis
+[dur]Invis
 
 透明化
 %%%%
-dur invisible
+[dur]invisible
 
 透明化中
 %%%%
-dur invisible (but backlit and visible)
+[dur]invisible (but backlit and visible)
 
 透明化中(ただし光っている)
 %%%%
