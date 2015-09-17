@@ -344,11 +344,69 @@ static keyseq parse_keyseq(string s)
     return v;
 }
 
+static string _special_keys_to_string_for_macro_trigger(int key)
+{
+    const bool shift = (key >= CK_SHIFT_UP && key <= CK_SHIFT_PGDN);
+    const bool ctrl  = (key >= CK_CTRL_UP && key <= CK_CTRL_PGDN) ||
+                       (-21 <= key && key <= 4) ;
+
+    string cmd = "";
+
+    if (shift)
+    {
+        key -= (CK_SHIFT_UP - CK_UP);
+        cmd = "Shift-";
+    }
+    else if (ctrl)
+    {
+        if (key < -21 || 4 < key)
+            key -= (CK_CTRL_UP - CK_UP);
+        cmd = "Ctrl-";
+    }
+
+    int fnkey = CK_F1 - key + 1;
+
+    switch (key)
+    {
+    case CK_ENTER:  cmd += "Enter"; break;
+    case CK_BKSP:   cmd += "Backspace"; break;
+    CASE_ESCAPE     cmd += "Esc"; break;
+    case CK_DELETE: cmd += "Del"; break;
+    case CK_UP:     cmd += "Up"; break;
+    case CK_DOWN:   cmd += "Down"; break;
+    case CK_LEFT:   cmd += "Left"; break;
+    case CK_RIGHT:  cmd += "Right"; break;
+    case CK_INSERT: cmd += "Ins"; break;
+    case CK_HOME:   cmd += "Home"; break;
+    case CK_END:    cmd += "End"; break;
+    case CK_CLEAR:  cmd += "Clear"; break;
+    case CK_PGUP:   cmd += "PgUp"; break;
+    case CK_PGDN:   cmd += "PgDn"; break;
+
+    case CK_F1:  case CK_F2:  case CK_F3:  case CK_F4:
+    case CK_F5:  case CK_F6:  case CK_F7:  case CK_F8:
+    case CK_F9:  case CK_F10: case CK_F11: case CK_F12:
+        if (1 <= fnkey && fnkey <= 12)
+        {
+            cmd += make_stringf("[F%d]", fnkey);
+            break;
+        }
+       // fall through
+
+    default:
+        if (-21 <= key && key <= 4)
+            cmd += make_stringf("%c", static_cast<char>(key + 96));
+        else
+            cmd += make_stringf("%d", key);
+    }
+
+    return cmd;
+}
+
 /*
  * Serialises a key sequence into a string of the format described
  * above.
  */
-static string _special_keys_to_string(int key);
 static string vtostr(const keyseq &seq)
 {
     ostringstream s;
@@ -373,7 +431,7 @@ static string vtostr(const keyseq &seq)
                 s << "\\{!more}";
             else
             {
-                s << _special_keys_to_string(key);
+                s << _special_keys_to_string_for_macro_trigger(key);
             }
         }
         else if (key == '\\')
@@ -1325,8 +1383,7 @@ void bind_command_to_key(command_type cmd, int key)
 static string _special_keys_to_string(int key)
 {
     const bool shift = (key >= CK_SHIFT_UP && key <= CK_SHIFT_PGDN);
-    const bool ctrl  = (key >= CK_CTRL_UP && key <= CK_CTRL_PGDN) ||
-                       (-21 <= key && key <= 4) ;
+    const bool ctrl  = (key >= CK_CTRL_UP && key <= CK_CTRL_PGDN);
 
     string cmd = "";
 
@@ -1337,12 +1394,9 @@ static string _special_keys_to_string(int key)
     }
     else if (ctrl)
     {
-        if (key < -21 || 4 < key)
-            key -= (CK_CTRL_UP - CK_UP);
+        key -= (CK_CTRL_UP - CK_UP);
         cmd = "Ctrl-";
     }
-
-    int fnkey = CK_F1 - key + 1;
 
     switch (key)
     {
@@ -1360,22 +1414,6 @@ static string _special_keys_to_string(int key)
     case CK_CLEAR:  cmd += "Clear"; break;
     case CK_PGUP:   cmd += "PgUp"; break;
     case CK_PGDN:   cmd += "PgDn"; break;
-
-    case CK_F1:  case CK_F2:  case CK_F3:  case CK_F4:
-    case CK_F5:  case CK_F6:  case CK_F7:  case CK_F8:
-    case CK_F9:  case CK_F10: case CK_F11: case CK_F12:
-        if (1 <= fnkey && fnkey <= 12)
-        {
-            cmd += make_stringf("[F%d]", fnkey);
-            break;
-        }
-        // fall through
-
-    default:
-        if (-21 <= key && key <= 4)
-            cmd += make_stringf("%c", static_cast<char>(key + 96));
-        else
-            cmd += make_stringf("%d", key);
     }
 
     return cmd;
