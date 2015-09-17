@@ -1839,10 +1839,10 @@ static void _toggle_travel_speed()
 {
     you.travel_ally_pace = !you.travel_ally_pace;
     if (you.travel_ally_pace)
-        mpr("You pace your travel speed to your slowest ally.");
+        mpr(jtrans("You pace your travel speed to your slowest ally."));
     else
     {
-        mpr("You travel at normal speed.");
+        mpr(jtrans("You travel at normal speed."));
         you.running.travel_speed = 0;
     }
 }

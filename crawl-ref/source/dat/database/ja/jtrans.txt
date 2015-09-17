@@ -4291,6 +4291,14 @@ You can't wear or remove anything in your present form.
 
 現在の形態では脱ぐことはできない。
 %%%%
+You pace your travel speed to your slowest ally.
+
+あなたは自動移動の速度を仲間のうち最も遅いものに合わせた。
+%%%%
+You travel at normal speed.
+
+あなたは通常の速度で自動移動するようになった。
+%%%%
 Take off which item?
 
 どれを脱ぎますか？
