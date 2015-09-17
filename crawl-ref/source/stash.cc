@@ -17,6 +17,7 @@
 #include "cluautil.h"
 #include "command.h"
 #include "coordit.h"
+#include "database.h"
 #include "describe.h"
 #include "describe-spells.h"
 #include "directn.h"
@@ -460,22 +461,21 @@ formatted_string StashMenu::create_title_string(bool wrap) const
     fs.cprintf("%s", title->text.c_str());
     if (title->quantity)
     {
-        fs.cprintf(", %d item%s", title->quantity,
-                                  title->quantity == 1? "" : "s");
+        fs.cprintf(jtransc(", %d item%s"), title->quantity);
     }
     fs.cprintf(")");
 
     vector<string> extra_parts;
 
     string part = "[a-z: ";
-    part += string(menu_action == ACT_EXAMINE ? "examine" : "shopping");
+    part += string(menu_action == ACT_EXAMINE ? "解説を見る" : "購入リストに追加");
     part += "  ?/!: ";
-    part += string(menu_action == ACT_EXAMINE ? "shopping" : "examine");
+    part += string(menu_action == ACT_EXAMINE ? "購入リストに追加" : "解説を見る");
     part += "]";
     extra_parts.push_back(part);
 
     if (can_travel)
-        extra_parts.emplace_back("[ENTER: travel]");
+        extra_parts.emplace_back(jtrans("[ENTER: travel]"));
 
     int term_width = get_number_of_cols();
     int remaining = term_width - fs.width();
@@ -1608,18 +1608,18 @@ string StashTracker::stash_search_prompt()
     {
         const string disp = replace_all(lastsearch, "<", "<<");
         opts.push_back(
-            make_stringf("Enter for \"%s\"", disp.c_str()));
+            make_stringf(jtransc("Enter for \"%s\""), disp.c_str()));
     }
     if (lastsearch != ".")
-        opts.emplace_back("? for help");
+        opts.emplace_back(jtrans("? for help"));
 
     string prompt_qual =
-        comma_separated_line(opts.begin(), opts.end(), ", or ", ", or ");
+        comma_separated_line(opts.begin(), opts.end(), ", ", ", ");
 
     if (!prompt_qual.empty())
         prompt_qual = " [" + prompt_qual + "]";
 
-    return make_stringf("Search for what%s? ", prompt_qual.c_str());
+    return make_stringf(jtransc("Search for what%s? "), prompt_qual.c_str()) + " ";
 }
 
 void StashTracker::remove_shop(const level_pos &pos)
@@ -1770,7 +1770,7 @@ void StashTracker::search_stashes()
 
     if (!search->valid() && csearch != "*")
     {
-        mprf(MSGCH_PLAIN, "Your search expression is invalid.");
+        mpr_nojoin(MSGCH_PLAIN, jtrans("Your search expression is invalid."));
         lastsearch = help;
         return ;
     }
@@ -1779,13 +1779,13 @@ void StashTracker::search_stashes()
 
     if (results.empty())
     {
-        mprf(MSGCH_PLAIN, "Can't find anything matching that.");
+        mpr_nojoin(MSGCH_PLAIN, jtrans("Can't find anything matching that."));
         return;
     }
 
     if (results.size() > SEARCH_SPAM_THRESHOLD)
     {
-        mprf(MSGCH_PLAIN, "Too many matches; use a more specific search.");
+        mpr_nojoin(MSGCH_PLAIN, jtrans("Too many matches; use a more specific search."));
         return;
     }
 
@@ -1876,23 +1876,22 @@ void StashSearchMenu::draw_title()
     {
         cgotoxy(1, 1);
         formatted_string fs = formatted_string(title->colour);
-        fs.cprintf("%d %s%s",
-                   title->quantity, title->text.c_str(),
-                   title->quantity > 1 ? "es" : "");
+        fs.cprintf("%d件%s",
+                   title->quantity, title->text.c_str());
         fs.display();
 
 #ifdef USE_TILE_WEB
         webtiles_set_title(fs);
 #endif
 
-        draw_title_suffix(formatted_string::parse_string(make_stringf(
+        draw_title_suffix(formatted_string::parse_string(make_stringf(jtransc(
                  "<lightgrey>"
                  ": <w>%s</w> [toggle: <w>!</w>],"
                  " <w>%s</w> stacks [<w>-</w>],"
                  " by <w>%s</w> [<w>/</w>],"
                  " <w>%s</w> useless [<w>=</w>]"
-                 "</lightgrey>",
-                 menu_action == ACT_EXECUTE ? "travel" : "view  ",
+                 "</lightgrey>"),
+                 menu_action == ACT_EXECUTE ? "対象まで移動" : "解説文を見る",
                  stack_style, sort_style, filtered)), false);
     }
 }
@@ -2071,14 +2070,14 @@ bool StashTracker::display_search_results(
     else
         stable_sort(results->begin(), results->end(), _compare_by_name);
 
-    StashSearchMenu stashmenu(show_as_stacks ? "hide" : "show",
-                              sort_by_dist ? "dist" : "name",
-                              filter_useless ? "hide" : "show");
+    StashSearchMenu stashmenu(show_as_stacks ? "を隠す" : "も見る",
+                              sort_by_dist ? "距離" : "名前",
+                              filter_useless ? "を隠す" : "も見る");
     stashmenu.set_tag("stash");
     stashmenu.can_travel   = can_travel_interlevel();
     stashmenu.action_cycle = Menu::CYCLE_TOGGLE;
     stashmenu.menu_action  = default_execute ? Menu::ACT_EXECUTE : Menu::ACT_EXAMINE;
-    string title = "match";
+    string title = "一致";
 
     MenuEntry *mtitle = new MenuEntry(title, MEL_TITLE);
     // Abuse of the quantity field.
