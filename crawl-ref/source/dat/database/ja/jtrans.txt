@@ -8031,6 +8031,44 @@ You sense a powerful magical force warping space.
 
 あなたは強い魔力が空間を歪めているのを感じた。
 %%%%
+############################## stash.cc ##############################
+%%%%
+, %d item%s
+
+, %d個のアイテム
+%%%%
+[ENTER: travel]
+
+[ENTER: 移動]
+%%%%
+Enter for "%s"
+
+Enterで"%s"を検索
+%%%%
+? for help
+
+? キーでヘルプ
+%%%%
+Search for what%s?
+
+何を検索しますか？%s
+%%%%
+Your search expression is invalid.
+
+検索条件が無効です。
+%%%%
+Can't find anything matching that.
+
+一致するものを見つけられませんでした。
+%%%%
+Too many matches; use a more specific search.
+
+一致件数が多すぎます; もう少し条件を絞ってください。
+%%%%
+<lightgrey>: <w>%s</w> [toggle: <w>!</w>], <w>%s</w> stacks [<w>-</w>], by <w>%s</w> [<w>/</w>], <w>%s</w> useless [<w>=</w>]</lightgrey>
+
+<lightgrey>: <w>%s</w> [切替: <w>!</w>], スタック<w>%s</w> [<w>-</w>], <w>%s</w>順 [<w>/</w>], 無益な物<w>%s</w> [<w>=</w>]</lightgrey>
+%%%%
 ############################## state.cc ##############################
 %%%%
 %s comes into view.
