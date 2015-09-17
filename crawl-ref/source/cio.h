@@ -202,7 +202,20 @@ enum KEYS
     CK_MOUSE_CLICK,
     CK_TOUCH_DUMMY, // so a non-event can be passed from handle_mouse to the controlling code
     CK_REDRAW, // no-op to force redraws of things
-    CK_NO_KEY // so that the handle_mouse loop can be broken from early (for popups)
+    CK_NO_KEY, // so that the handle_mouse loop can be broken from early (for popups)
+
+    CK_F1 = -1011,
+    CK_F2 = -1012,
+    CK_F3 = -1013,
+    CK_F4 = -1014,
+    CK_F5 = -1015,
+    CK_F6 = -1016,
+    CK_F7 = -1017,
+    CK_F8 = -1018,
+    CK_F9 = -1019,
+    CK_F10 = -1020,
+    CK_F11 = -1021,
+    CK_F12 = -1022,
 };
 
 class cursor_control
