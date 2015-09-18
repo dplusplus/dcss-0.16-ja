@@ -127,7 +127,8 @@ static string coloured_branch(branch_type br)
     if (br < 0 || br >= NUM_BRANCHES)
         return "<lightred>Buggy buglands</lightred>";
 
-    return make_stringf("<yellow>%s</yellow>", branches[br].shortname);
+    return make_stringf("<yellow>%s</yellow>",
+                        tagged_jtransc("[branch]", branches[br].shortname));
 }
 
 static string shoptype_to_string(shop_type s)
@@ -194,7 +195,7 @@ static string _portals_description_string()
                 else
                 {
                     disp += ' ';
-                    disp += entry.first.id.describe(false, true);
+                    disp += entry.first.id.describe_j(false, true);
                 }
                 last_id = entry.first.id;
 
@@ -215,7 +216,8 @@ string overview_description_string(bool display)
 {
     string disp;
 
-    disp += "                    <white>Dungeon Overview and Level Annotations</white>\n" ;
+    disp += "                        ";
+    disp += jtransln("<white>Dungeon Overview and Level Annotations</white>\n");
     disp += _get_branches(display);
     disp += _get_altars(display);
     disp += _get_shops(display);
@@ -235,11 +237,11 @@ static string _get_seen_branches(bool display)
     char buffer[100];
     string disp;
 
-    disp += "\n<green>Branches:</green>";
+    disp += " \n" + jtrans("\n<green>Branches:</green>");
     if (display)
     {
-        disp += " (use <white>G</white> to reach them and "
-                "<white>?/B</white> for more information)";
+        disp += jtrans(" (use <white>G</white> to reach them and "
+                       "<white>?/B</white> for more information)");
     }
     disp += "\n";
 
@@ -258,7 +260,7 @@ static string _get_seen_branches(bool display)
 
             string entry_desc;
             for (auto lvl : stair_level[branch])
-                entry_desc += " " + lvl.describe(false, true);
+                entry_desc += " " + lvl.describe_j(false, true);
 
             // "D" is a little too short here.
             const char *brname = (branch == BRANCH_DUNGEON
@@ -268,7 +270,9 @@ static string _get_seen_branches(bool display)
             snprintf(buffer, sizeof buffer,
                 "<yellow>%*s</yellow> <darkgrey>(%d/%d)</darkgrey>%s",
                 branch == root_branch ? -7 : 7,
-                brname, lid.depth, brdepth[branch], entry_desc.c_str());
+                chop_string(tagged_jtrans("[branch]", brname), 10).c_str(), lid.depth, brdepth[branch],
+                branch != BRANCH_DUNGEON ? make_stringf("%-11s", chop_string(entry_desc, 11).c_str()).c_str()
+                                         : "         ");
 
             disp += buffer;
             num_printed_branches++;
@@ -325,8 +329,8 @@ static string _get_unseen_branches()
                 {
                     snprintf(buffer, sizeof buffer,
                         "<darkgrey>%6s: %s:%d-%d</darkgrey>",
-                            it->abbrevname,
-                            branches[parent].abbrevname,
+                            tagged_jtransc("[branch]", it->abbrevname),
+                            tagged_jtransc("[branch]", branches[parent].abbrevname),
                             it->mindepth,
                             it->maxdepth);
                 }
@@ -334,8 +338,8 @@ static string _get_unseen_branches()
                 {
                     snprintf(buffer, sizeof buffer,
                         "<darkgrey>%6s: %s:%d</darkgrey>",
-                            it->abbrevname,
-                            branches[parent].abbrevname,
+                            tagged_jtransc("[branch]", it->abbrevname),
+                            tagged_jtransc("[branch]", branches[parent].abbrevname),
                             it->mindepth);
                 }
 
@@ -344,8 +348,8 @@ static string _get_unseen_branches()
 
                 disp += (num_printed_branches % 4) == 0
                         ? "\n"
-                        // Each branch entry takes up 20 spaces
-                        : string(20 + 21 - strlen(buffer), ' ');
+                        // Each branch entry takes up 27 spaces
+                        : string(27 + 21 - strwidth(buffer), ' ');
             }
         }
     }
@@ -369,11 +373,11 @@ static string _get_altars(bool display)
 
     string disp;
 
-    disp += "\n<green>Altars:</green>";
+    disp += " \n" + jtrans("\n<green>Altars:</green>");
     if (display)
     {
-        disp += " (use <white>Ctrl-F \"altar\"</white> to reach them and "
-                "<white>?/G</white> for information about gods)";
+        disp += jtrans(" (use <white>Ctrl-F \"altar\"</white> to reach them and "
+                       "<white>?/G</white> for information about gods)");
     }
     disp += "\n";
     disp += _print_altars_for_gods(temple_god_list(), true, display);
@@ -409,7 +413,7 @@ static string _print_altars_for_gods(const vector<god_type>& gods,
         if (!display)
         {
             if (has_altar_been_seen)
-                disp += uppercase_first(god_name(god, false)) + "\n";
+                disp += jtrans(god_name(god, false)) + "\n";
             continue;
         }
 
@@ -438,7 +442,7 @@ static string _print_altars_for_gods(const vector<god_type>& gods,
         if (is_unavailable_god(god))
             colour = "darkgrey";
 
-        string disp_name = uppercase_first(god_name(god, false));
+        string disp_name = jtrans(god_name(god, false));
         if (god == GOD_GOZAG && !you_worship(GOD_GOZAG))
             disp_name += make_stringf(" ($%d)", gozag_service_fee());
 
@@ -475,9 +479,9 @@ static string _get_shops(bool display)
 
     if (!shops_present.empty())
     {
-        disp +="\n<green>Shops:</green>";
+        disp += " \n" + jtrans("\n<green>Shops:</green>");
         if (display)
-            disp += " (use <white>Ctrl-F \"shop\"</white> to reach them - yellow denotes antique shop)";
+            disp += jtrans(" (use <white>Ctrl-F \"shop\"</white> to reach them - yellow denotes antique shop)");
         disp += "\n";
     }
     last_id.depth = 10000;
@@ -507,7 +511,7 @@ static string _get_shops(bool display)
             }
             disp += existing ? "<lightgrey>" : "<darkgrey>";
 
-            const string loc = entry.first.id.describe(false, true);
+            const string loc = entry.first.id.describe_j(false, true);
             disp += loc;
             column_count += strwidth(loc);
 
@@ -533,7 +537,7 @@ static string _get_portals()
     string disp;
 
     if (!portals_present.empty())
-        disp += "\n<green>Portals:</green>\n";
+        disp += " \n" + jtransln("\n<green>Portals:</green>\n");
     disp += _portals_description_string();
 
     return disp;
@@ -554,7 +558,7 @@ static string _get_notes()
 
     if (disp.empty())
         return disp;
-    return "\n<green>Annotations:</green>\n" + disp;
+    return " \n" + jtransln("\n<green>Annotations:</green>\n") + disp;
 }
 
 template <typename Z, typename Key>
@@ -676,9 +680,9 @@ static void _update_runed_door_count(int old_num)
 {
     const level_id li = level_id::current();
     const int new_num = env.properties[SEEN_RUNED_DOOR_KEY];
-    const string new_string = make_stringf("%d runed door%s", new_num,
+    const string new_string = make_stringf(jtransc("%d runed door%s"), new_num,
                                            new_num == 1 ? "" : "s");
-    const string old_string = make_stringf("%d runed door%s", old_num,
+    const string old_string = make_stringf(jtransc("%d runed door%s"), old_num,
                                            old_num == 1 ? "" : "s");
 
     //TODO: regexes
@@ -890,7 +894,7 @@ string get_level_annotation(level_id li, bool skip_excl, bool skip_uniq,
 
 static const string _get_coloured_level_annotation(level_id li)
 {
-    string place = "<yellow>" + li.describe() + "</yellow>";
+    string place = "<yellow>" + li.describe_j() + "</yellow>";
     int col = level_annotation_has("!", li) ? LIGHTRED : WHITE;
     return place + " " + get_level_annotation(li, false, false, true, col);
 }

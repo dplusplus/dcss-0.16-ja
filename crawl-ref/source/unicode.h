@@ -10,6 +10,7 @@ int strwidth(const char *s);
 int strwidth(const string &s);
 string chop_string(const char *s, int width, bool spaces = true);
 string chop_string(const string &s, int width, bool spaces = true);
+string centre(const string &s, int width, char fillchar = ' ');
 
 int wctoutf8(char *d, ucs_t s);
 int utf8towc(ucs_t *d, const char *s);

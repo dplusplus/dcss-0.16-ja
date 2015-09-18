@@ -44,6 +44,8 @@
 #include "unicode.h"
 #include "viewmap.h"
 
+#define MAX_BRANCH_ABBREV_SIZE (strwidth("タルタロス:7"))
+
 // Global
 StashTracker StashTrack;
 
@@ -2097,8 +2099,10 @@ bool StashTracker::display_search_results(
         ostringstream matchtitle;
         if (const uint8_t waypoint = travel_cache.is_waypoint(res.pos))
             matchtitle << "(" << waypoint << ") ";
+        else
+            matchtitle << "    ";
 
-        matchtitle << "[" << res.pos.id.describe() << "] "
+        matchtitle << "[" << centre(res.pos.id.describe_j(), MAX_BRANCH_ABBREV_SIZE) << "] "
                    << res.match;
 
         if (res.matches > 1 && res.count > 1)

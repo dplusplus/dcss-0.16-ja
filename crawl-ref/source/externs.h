@@ -407,6 +407,7 @@ public:
 #endif
 
     string describe(bool long_name = false, bool with_number = true) const;
+    string describe_j(bool long_name = false, bool with_number = true) const;
 
     void clear()
     {

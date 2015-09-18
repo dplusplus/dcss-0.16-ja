@@ -1,241 +1,281 @@
 %%%%
-Dungeon
+[branch]Dungeon
 
 迷宮
 %%%%
-the Dungeon
+[branch]the Dungeon
 
 迷宮
 %%%%
-D
+[branch]D
 
 迷宮
 %%%%
-Temple
+[branch]Temple
 
 寺院
 %%%%
-the Ecumenical Temple
+[branch]the Ecumenical Temple
 
 諸宗派の寺院
 %%%%
-Orcish Mines
+[branch]Orcish Mines
 
 オークの坑道
 %%%%
-the Orcish Mines
+[branch]the Orcish Mines
 
 オークの坑道
 %%%%
-Elven Halls
+[branch]Orc
+
+オーク
+%%%%
+[branch]Elven Halls
 
 エルフの大広間
 %%%%
-the Elven Halls
+[branch]the Elven Halls
 
 エルフの大広間
 %%%%
-Lair
+[branch]Elf
+
+エルフ
+%%%%
+[branch]Lair
 
 獣の棲み処
 %%%%
-the Lair of Beasts
+[branch]the Lair of Beasts
 
 獣の棲み処
 %%%%
-Swamp
+[branch]Swamp
 
 沼
 %%%%
-the Swamp
+[branch]the Swamp
 
 沼
 %%%%
-Shoals
+[branch]Shoals
 
 浅瀬
 %%%%
-the Shoals
+[branch]the Shoals
 
 浅瀬
 %%%%
-Snake Pit
+[branch]Snake Pit
 
 蛇穴
 %%%%
-the Snake Pit
+[branch]the Snake Pit
 
 蛇穴
 %%%%
-Spider Nest
+[branch]Snake
+
+蛇
+%%%%
+[branch]Spider Nest
 
 蜘蛛の穴ぐら
 %%%%
-Slime Pits
+[branch]Spider
+
+蜘蛛
+%%%%
+[branch]Slime Pits
 
 スライムの穴ぐら
 %%%%
-the Pits of Slime
+[branch]the Pits of Slime
 
 スライムの穴ぐら
 %%%%
-Vaults
+[branch]Slime
+
+スライム
+%%%%
+[branch]Vaults
 
 宝物庫
 %%%%
-the Vaults
+[branch]the Vaults
 
 宝物庫
 %%%%
-Crypt
+[branch]Crypt
 
 地下墓地
 %%%%
-the Crypt
+[branch]the Crypt
 
 地下墓地
 %%%%
-Tomb
+[branch]Tomb
 
 霊廟
 %%%%
-the Tomb of the Ancients
+[branch]the Tomb of the Ancients
 
 太古の霊廟
 %%%%
-Hell
+[branch]Hell
 
 地獄
 %%%%
-the Vestibule of Hell
+[branch]the Vestibule of Hell
 
 地獄の玄関
 %%%%
-Dis
+[branch]Dis
 
 ディース
 %%%%
-the Iron City of Dis
+[branch]the Iron City of Dis
 
 鉄の都『ディース』
 %%%%
-Gehenna
+[branch]Gehenna
 
 ゲヘナ
 %%%%
-Cocytus
+[branch]Geh
+
+ゲヘナ
+%%%%
+[branch]Cocytus
 
 コキュトス
 %%%%
-Tartarus
+[branch]Coc
+
+コキュトス
+%%%%
+[branch]Tartarus
 
 タルタロス
 %%%%
-Zot
+[branch]Tar
+
+タルタロス
+%%%%
+[branch]Zot
 
 ゾットの領域
 %%%%
-the Realm of Zot
+[branch]the Realm of Zot
 
 ゾットの領域
 %%%%
-Abyss
+[branch]Abyss
 
 アビス
 %%%%
-the Abyss
+[branch]the Abyss
 
 アビス
 %%%%
-Pandemonium
+[branch]Pandemonium
 
 パンデモニウム
 %%%%
-Ziggurat
+[branch]Pan
+
+万魔殿
+%%%%
+[branch]Ziggurat
 
 ジグラット
 %%%%
-a ziggurat
+[branch]a ziggurat
 
 ジグラット
 %%%%
-Labyrinth
+[branch]Zig
+
+ジグラット
+%%%%
+[branch]Labyrinth
 
 ラビリンス
 %%%%
-a labyrinth
+[branch]a labyrinth
 
 ラビリンス
 %%%%
-Bazaar
+[branch]Bazaar
 
 バザール
 %%%%
-a bazaar
+[branch]a bazaar
 
 バザール
 %%%%
-Trove
+[branch]Trove
 
 埋蔵庫
 %%%%
-a treasure trove
+[branch]a treasure trove
 
 宝の埋蔵庫
 %%%%
-Sewer
+[branch]Sewer
 
 下水道
 %%%%
-a sewer
+[branch]a sewer
 
 下水道
 %%%%
-Ossuary
+[branch]Ossuary
 
 納骨堂
 %%%%
-an ossuary
+[branch]an ossuary
 
 納骨堂
 %%%%
-Bailey
+[branch]Bailey
 
 濠城
 %%%%
-a bailey
+[branch]a bailey
 
 濠城
 %%%%
-Ice Cave
+[branch]Ice Cave
 
 氷の洞穴
 %%%%
-an ice cave
+[branch]an ice cave
 
 氷の洞穴
 %%%%
-Volcano
+[branch]Volcano
 
 火山
 %%%%
-a volcano
+[branch]a volcano
 
 火山
 %%%%
-Wizlab
+[branch]Wizlab
 
 魔術の研究所
 %%%%
-a wizard's laboratory
+[branch]a wizard's laboratory
 
 魔術の研究所
 %%%%
-Depths
+[branch]Depths
 
 深層
 %%%%
-the Depths
+[branch]the Depths
 
 深層
 %%%%
