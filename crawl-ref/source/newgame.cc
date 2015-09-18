@@ -680,7 +680,7 @@ static void _construct_species_menu(const newgame_def* ng,
         }
         text = index_to_letter(pos);
         text += " - ";
-        text += species_name(species);
+        text += jtrans(species_name(species));
         tmp->set_text(text);
         ASSERT(pos < items_in_column * 3);
         min_coord.x = X_MARGIN + (pos / items_in_column) * COLUMN_WIDTH;
