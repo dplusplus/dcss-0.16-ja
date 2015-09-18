@@ -126,7 +126,7 @@ void WebTextArea::send(bool force)
 
             if (chr != ' ' || ((col >> 4) & 0xF) != 0)
             {
-                while (space_count)
+                while (space_count > 0)
                 {
                     html.push_back(' ');
                     space_count--;
@@ -167,6 +167,8 @@ void WebTextArea::send(bool force)
                     char buf[5];
                     buf[wctoutf8(buf, chr)] = 0;
                     html += buf;
+                    if (strwidth(buf) == 2)
+                        space_count--;
                     break;
                 }
             }
