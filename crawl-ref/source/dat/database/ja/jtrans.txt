@@ -11,22 +11,6 @@ its
 
 その
 %%%%
-Please select your species.
-
-あなたの種族を選んでください。
-%%%%
-Please select your background.
-
-あなたの職業を選んでください。
-%%%%
-You have a choice of weapons:
-
-武器を選んでください:
-%%%%
-Do you want to play this combination?
-
-この組み合わせで開始しますか？
-%%%%
 ############################## beam.cc ##############################
 %%%%
 The %s %s you!
@@ -5693,6 +5677,184 @@ Your body does not fit into most forms of armour.
 You are rather mundane.
 
 あなたはこれといった特徴がない。
+%%%%
+############################## newgame.cc ##############################
+%%%%
+Viable character
+
+適切な組み合わせ
+%%%%
+Random character
+
+ランダムな組み合わせ
+%%%%
++ - Viable species
+
++ - 適切な種族
+%%%%
+Picks a random viable species based on your current job choice.
+
+あなたの選んだ職業に合った種族のうちからランダムに選択します。
+%%%%
+Shuffles through random viable character combinations until you accept one.
+
+適切な種族と職業の組み合わせをランダムに生成し、あなたが選択するまで繰り返します。
+%%%%
+% - List aptitudes
+
+% - スキル補正一覧を見る
+%%%%
+Lists the numerical skill train aptitudes for all races.
+
+全種族のスキル補正値一覧表を閲覧します。
+%%%%
+? - help
+
+? - ヘルプ
+%%%%
+Opens the help screen.
+
+ヘルプ画面を開きます。
+%%%%
+* - Random species
+
+* - ランダムな種族
+%%%%
+Picks a random species.
+
+ランダムに種族を選択します。
+%%%%
+! - Random character
+
+! - ランダムな組み合わせ
+%%%%
+Shuffles through random character combinations until you accept one.
+
+ランダムな種族と職業の組み合わせを生成し、あなたが選択するまで繰り返します。
+%%%%
+Space - Change background
+
+Space - 職業を変更する
+%%%%
+Lets you change your background choice.
+
+選択済みの職業を決めなおします。
+%%%%
+Space - Pick background first
+
+Space - 職業から選択する
+%%%%
+Lets you pick your background first.
+
+最初に職業の方から選択します。
+%%%%
+Play a new game with your previous choice.
+
+前回選択した組み合わせで開始します。
+%%%%
+Please select your species.
+
+あなたの種族を選んでください。
+%%%%
++ - Viable background
+
++ - 適切な職業
+%%%%
+Picks a random viable background based on your current species choice.
+
+あなたの選んだ種族に合った職業のうちからランダムに選択します。
+%%%%
+* - Random background
+
+* - ランダムな職業
+%%%%
+Picks a random background.
+
+ランダムに職業を選択します。
+%%%%
+Space - Change species
+
+Space - 種族を変更する
+%%%%
+Lets you change your species choice.
+
+選択済みの種族を決めなおします。
+%%%%
+Space - Pick species first
+
+Space - 種族から選択する
+%%%%
+Lets you pick your species first.
+
+最初に種族の方から選択します。
+%%%%
+Please select your background.
+
+あなたの職業を選んでください。
+%%%%
++ - Viable random choice
+
++ - 適した武器をランダムに選ぶ
+%%%%
+Picks a random viable weapon
+
+キャラクターに適した武器をランダムに選びます。
+%%%%
+* - Random weapon
+
+* - ランダム選択
+%%%%
+Picks a random weapon
+
+武器をランダムに選びます。
+%%%%
+#Bksp - Return to character menu
+
+Bksp - キャラクター選択画面に戻る
+%%%%
+#Lets you return back to Character choice menu
+
+キャラクター選択画面に戻ります。
+%%%%
+Viable
+
+適切
+%%%%
+Select your old weapon
+
+前回選択した武器を選びます。
+%%%%
+You have a choice of weapons:
+
+武器を選んでください:
+%%%%
+Do you want to play this combination?
+
+この組み合わせで開始しますか？
+%%%%
+* - Random map
+
+* - ランダム選択
+%%%%
+Picks a random sprint map.
+
+ランダムなステージを選択します。
+%%%%
+Select your previous sprint map and character
+
+前回選択したステージ、種族、職業の組み合わせで開始します。
+%%%%
+You have a choice of %s:
+
+%sを選んでください:
+%%%%
+lessons
+
+チュートリアル
+%%%%
+maps
+
+ステージ
 %%%%
 ############################## place.cc ##############################
 %%%%
