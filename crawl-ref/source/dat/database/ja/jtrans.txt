@@ -2282,6 +2282,50 @@ legendary
 
 伝説的な
 %%%%
+############################## dgn-overview.cc ##############################
+%%%%
+<white>Dungeon Overview and Level Annotations</white>
+
+ダンジョンの外観と階層の特記事項
+%%%%
+<green>Branches:</green>
+
+<green>分岐: </green>
+%%%%
+(use <white>G</white> to reach them and <white>?/B</white> for more information)
+
+(移動するには <white>G</white> コマンドを使用してください)
+# <white>?/B</white> で詳しい情報を閲覧できます)
+%%%%
+<green>Altars:</green>
+
+<green>祭壇: </green>
+%%%%
+(use <white>Ctrl-F "altar"</white> to reach them and <white>?/G</white> for information about gods)
+
+(移動するには <white>Ctrl-F</white> コマンドで<white>"祭壇"</white>を検索してください)
+# <white>?/B</white> で詳しい情報を閲覧できます)
+%%%%
+<green>Shops:</green>
+
+<green>商店: </green>
+%%%%
+(use <white>Ctrl-F "shop"</white> to reach them - yellow denotes antique shop)
+
+(移動するには<white>Ctrl-F</white> コマンドで<white>"shop"</white>を検索してください。<yellow>黄色</yellow>は中古品店)
+%%%%
+<green>Portals:</green>
+
+<green>ポータル: </green>
+%%%%
+<green>Annotations:</green>
+
+<green>特記事項:</green>
+%%%%
+%d runed door%s
+
+%sつのルーンで封印された扉
+%%%%
 ############################## end.cc ##############################
 %%%%
 Save macros?
