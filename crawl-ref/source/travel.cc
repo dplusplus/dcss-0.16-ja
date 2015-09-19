@@ -1993,12 +1993,38 @@ static string _get_trans_travel_dest(const level_pos &target,
     ostringstream dest;
 
     if (!skip_branch)
-        dest << jtrans(branch);
+        dest << branch;
     if (brdepth[branch_id] != 1)
     {
         if (!skip_branch)
             dest << ":";
         dest << target.id.depth;
+    }
+    if (target.pos.x != -1 && !skip_coord)
+        dest << " @ (x,y)";
+
+    return dest.str();
+}
+
+static string _get_trans_travel_dest_j(const level_pos &target,
+                                       bool skip_branch = false,
+                                       bool skip_coord = false)
+{
+    const int branch_id = target.id.branch;
+    const char *branch = branches[branch_id].abbrevname;
+
+    if (!branch)
+        return "";
+
+    ostringstream dest;
+
+    if (!skip_branch)
+        dest << tagged_jtrans("[branch]", branch);
+    if (brdepth[branch_id] != 1)
+    {
+        if (!skip_branch)
+            dest << "の";
+        dest << target.id.depth << "階";
     }
     if (target.pos.x != -1 && !skip_coord)
         dest << " @ (x,y)";
@@ -3786,9 +3812,9 @@ void TravelCache::delete_waypoint()
     while (get_waypoint_count())
     {
         clear_messages();
-        mpr("Existing waypoints:");
+        mpr(jtrans("Existing waypoints:"));
         list_waypoints();
-        mprf(MSGCH_PROMPT, "Delete which waypoint? (* - delete all, Esc - exit) ");
+        mpr_nojoin(MSGCH_PROMPT, jtrans("Delete which waypoint? (* - delete all, Esc - exit) "));
 
         int key = getchm();
         if (key >= '0' && key <= '9')
@@ -3815,14 +3841,14 @@ void TravelCache::delete_waypoint()
     }
 
     clear_messages();
-    mpr("All waypoints deleted. Have a nice day!");
+    mpr(jtrans("All waypoints deleted. Have a nice day!"));
 }
 
 void TravelCache::add_waypoint(int x, int y)
 {
     if (!can_travel_interlevel())
     {
-        mpr("Sorry, you can't set a waypoint here.");
+        mpr(jtrans("Sorry, you can't set a waypoint here."));
         return;
     }
 
@@ -3831,12 +3857,12 @@ void TravelCache::add_waypoint(int x, int y)
     const bool waypoints_exist = get_waypoint_count();
     if (waypoints_exist)
     {
-        mpr("Existing waypoints:");
+        mpr(jtrans("Existing waypoints:"));
         list_waypoints();
     }
 
-    mprf(MSGCH_PROMPT, "Assign waypoint to what number? (0-9%s) ",
-         waypoints_exist? ", D - delete waypoint" : "");
+    mprf(MSGCH_PROMPT, jtransc("Assign waypoint to what number? (0-9%s) "),
+         jtransc(waypoints_exist? ", D - delete waypoint" : ""));
 
     int keyin = toalower(get_ch());
 
@@ -3863,26 +3889,26 @@ void TravelCache::add_waypoint(int x, int y)
     const bool overwrite = waypoints[waynum].is_valid();
 
     string old_dest =
-        overwrite ? _get_trans_travel_dest(waypoints[waynum], false, true) : "";
+        overwrite ? _get_trans_travel_dest_j(waypoints[waynum], false, true) : "";
     level_id old_lid = (overwrite ? waypoints[waynum].id : lid);
 
     waypoints[waynum].id  = lid;
     waypoints[waynum].pos = pos;
 
-    string new_dest = _get_trans_travel_dest(waypoints[waynum], false, true);
+    string new_dest = _get_trans_travel_dest_j(waypoints[waynum], false, true);
     clear_messages();
     if (overwrite)
     {
         if (lid == old_lid) // same level
-            mprf("Waypoint %d re-assigned to your current position.", waynum);
+            mprf(jtransc("Waypoint %d re-assigned to your current position."), waynum);
         else
         {
-            mprf("Waypoint %d re-assigned from %s to %s.",
+            mprf(jtransc("Waypoint %d re-assigned from %s to %s."),
                  waynum, old_dest.c_str(), new_dest.c_str());
         }
     }
     else
-        mprf("Waypoint %d assigned to %s.", waynum, new_dest.c_str());
+        mprf(jtransc("Waypoint %d assigned to %s."), tagged_jtransc("[branch]", new_dest), waynum);
 
     update_waypoints();
 }
