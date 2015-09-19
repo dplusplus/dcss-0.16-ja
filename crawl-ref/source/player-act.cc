@@ -546,7 +546,7 @@ static string _hand_name_singular()
         return "paw";
 
     if (you.has_usable_claws())
-        return "claw";
+        return "爪";
 
     if (you.has_usable_tentacles())
         return "tentacle";

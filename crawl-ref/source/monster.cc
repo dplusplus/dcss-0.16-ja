@@ -2503,7 +2503,7 @@ string monster::hand_name(bool plural, bool *can_plural) const
     case MON_SHAPE_HUMANOID_TAILED:
     case MON_SHAPE_HUMANOID_WINGED_TAILED:
         if (ch == 'T' || ch == 'd' || ch == 'n' || mons_is_demon(type))
-            str = "claw";
+            str = "爪";
         break;
 
     case MON_SHAPE_QUADRUPED:
@@ -2660,7 +2660,7 @@ string monster::foot_name(bool plural, bool *can_plural) const
         break;
 
     case MON_SHAPE_BAT:
-        str = "claw";
+        str = "爪";
         break;
 
     case MON_SHAPE_SNAKE:
