@@ -597,23 +597,23 @@ void full_describe_view()
 
     string title = "";
     if (!list_mons.empty())
-        title  = "Monsters";
+        title = jtrans("Monsters");
     if (!list_items.empty())
     {
         if (!title.empty())
             title += "/";
-        title += "Items";
+        title += jtrans("Items");
     }
     if (!list_features.empty())
     {
         if (!title.empty())
             title += "/";
-        title += "Features";
+        title += jtrans("Features");
     }
 
-    title = "Visible " + title;
-    string title1 = title + " (select to target/travel, '!' to examine):";
-    title += " (select to examine, '!' to target/travel):";
+    title = "視界内の" + title;
+    string title1 = title + "\n" + jtrans(" (select to target/travel, '!' to examine):");
+    title += "\n" + jtrans(" (select to examine, '!' to target/travel):");
 
     desc_menu.set_title(new MenuEntry(title, MEL_TITLE), false);
     desc_menu.set_title(new MenuEntry(title1, MEL_TITLE));
@@ -635,7 +635,7 @@ void full_describe_view()
     // Build menu entries for monsters.
     if (!list_mons.empty())
     {
-        desc_menu.add_entry(new MenuEntry("Monsters", MEL_SUBTITLE));
+        desc_menu.add_entry(new MenuEntry(jtrans("Monsters"), MEL_SUBTITLE));
         for (const monster_info &mi : list_mons)
         {
             // List monsters in the form
@@ -694,7 +694,7 @@ void full_describe_view()
         const menu_sort_condition *cond = desc_menu.find_menu_sort_condition();
         desc_menu.sort_menu(all_items, cond);
 
-        desc_menu.add_entry(new MenuEntry("Items", MEL_SUBTITLE));
+        desc_menu.add_entry(new MenuEntry(jtrans("Items"), MEL_SUBTITLE));
         for (InvEntry *me : all_items)
         {
 #ifndef USE_TILE_LOCAL
@@ -712,7 +712,7 @@ void full_describe_view()
 
     if (!list_features.empty())
     {
-        desc_menu.add_entry(new MenuEntry("Features", MEL_SUBTITLE));
+        desc_menu.add_entry(new MenuEntry(jtrans("Features"), MEL_SUBTITLE));
         for (const coord_def c : list_features)
         {
             string desc = "";

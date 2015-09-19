@@ -25,6 +25,22 @@ Press: ? - help
 
 , 方向 - カーソル移動
 %%%%
+Monsters
+
+モンスター
+%%%%
+Features
+
+地形
+%%%%
+(select to target/travel, '!' to examine):
+
+(各キーで対象に照準を合わせる、もしくは移動します。'!'で解説モードに切り替え)
+%%%%
+(select to examine, '!' to target/travel):
+
+(各キーで対象の解説文を表示します。'!'で照準/移動モードに切り替え)
+%%%%
 There's something in the way.
 
 その方向には何かがある。
