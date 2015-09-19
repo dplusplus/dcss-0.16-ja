@@ -921,7 +921,7 @@ void annotate_level()
 
     if (li2 != level_id::current())
     {
-        if (yesno("Annotate level on other end of current stairs?", true, 'n'))
+        if (yesno(jtransc("Annotate level on other end of current stairs?"), true, 'n'))
             li = li2;
     }
 
@@ -933,12 +933,12 @@ void do_annotate(level_id& li)
     string old = get_level_annotation(li, true, true);
     if (!old.empty())
     {
-        mprf(MSGCH_PROMPT, "Current level annotation: <lightgrey>%s</lightgrey>",
+        mprf(MSGCH_PROMPT, jtransc("Current level annotation: <lightgrey>%s</lightgrey>"),
              old.c_str());
     }
 
-    const string prompt = "New annotation for " + li.describe()
-                          + " (include '!' for warning): ";
+    const string prompt = make_stringf(jtransc("New annotation for %s (include '!' for warning): "),
+                                       li.describe_j(true).c_str()) + " ";
 
     char buf[77];
     if (msgwin_get_line_autohist(prompt, buf, sizeof(buf), old))
@@ -949,7 +949,7 @@ void do_annotate(level_id& li)
         level_annotations[li] = buf;
     else
     {
-        mpr("Cleared annotation.");
+        mpr(jtrans("Cleared annotation."));
         level_annotations.erase(li);
     }
 }

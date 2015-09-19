@@ -2310,6 +2310,22 @@ legendary
 
 %sつのルーンで封印された扉
 %%%%
+Annotate level on other end of current stairs?
+
+この階段の向こうの階層に注釈を付けますか？ [y/(n)]
+%%%%
+Current level annotation: <lightgrey>%s</lightgrey>
+
+現在のこの階層の注釈: <lightgrey>%s</lightgrey>
+%%%%
+New annotation for %s (include '!' for warning):
+
+%sに注釈を付ける('!'を含めることで警告メッセージ):
+%%%%
+Cleared annotation.
+
+注釈を削除しました。
+%%%%
 ############################## end.cc ##############################
 %%%%
 Save macros?
