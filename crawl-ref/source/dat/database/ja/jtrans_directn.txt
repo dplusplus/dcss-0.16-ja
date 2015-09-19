@@ -77,6 +77,22 @@ There is something else lying underneath.
 
 さらにその下に何かがある。
 %%%%
+You cannot set exclusions on this level.
+
+この階では立入禁止区域を設定できません。
+%%%%
+Placed new exclusion.
+
+新たな立入禁止区域を設定した。
+%%%%
+Removed exclusion.
+
+立入禁止区域を解除した。
+%%%%
+Reduced exclusion size to a single square.
+
+立入禁止区域をこのマスに限定した。
+%%%%
 [unseen terrain]
 
 [視界外の地形]
