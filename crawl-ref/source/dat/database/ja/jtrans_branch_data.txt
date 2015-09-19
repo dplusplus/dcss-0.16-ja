@@ -265,11 +265,11 @@
 %%%%
 [branch]Wizlab
 
-魔術の研究所
+魔術研究所
 %%%%
 [branch]a wizard's laboratory
 
-魔術の研究所
+魔術研究所
 %%%%
 [branch]Depths
 

@@ -2163,7 +2163,7 @@ static int _prompt_travel_branch(int prompt_flags)
                 }
                 line += make_stringf("(%c) %-16s ",
                                      branches[br[i]].travel_shortcut,
-                                     chop_string(jtransc(branches[br[i]].shortname),
+                                     chop_string(tagged_jtransc("[branch]", branches[br[i]].shortname),
                                                  16).c_str());
             }
             if (!line.empty())
@@ -2463,7 +2463,7 @@ static level_pos _prompt_travel_depth(const level_id &id)
         clear_messages();
         mprf(MSGCH_PROMPT, jtransc("What level of %s? "
                                    "(default %s, ? - help) "),
-             jtransc(branches[target.id.branch].longname),
+             tagged_jtransc("[branch]", branches[target.id.branch].longname),
              _get_trans_travel_dest(target, true).c_str());
 
         char buf[100];
@@ -3765,10 +3765,10 @@ void TravelCache::list_waypoints() const
         if (waypoints[i].id.depth == -1)
             continue;
 
-        dest = _get_trans_travel_dest(waypoints[i], false, true);
+        dest = _get_trans_travel_dest_j(waypoints[i], false, true);
 
-        snprintf(choice, sizeof choice, "(%d) %-17s", i,
-                 chop_string(dest, 17).c_str());
+        snprintf(choice, sizeof choice, "(%d) %-16s", i,
+                 chop_string(dest, 16).c_str());
         line += choice;
         if (!(++count % 5))
         {
