@@ -248,9 +248,9 @@ void list_jewellery()
         const int jewellery_id = you.equip[i];
         int       colour       = MSGCOL_BLACK;
 
-        const char *slot =
-                 (i == EQ_LEFT_RING)   ? "Left ring" :
-                 (i == EQ_RIGHT_RING)  ? "Right ring" :
+        const string slot =
+                 (i == EQ_LEFT_RING)   ? "左" + you.hand_name(false) + "の指輪" :
+                 (i == EQ_RIGHT_RING)  ? "右" + you.hand_name(false) + "の指輪" :
                  (i == EQ_AMULET)      ? "Amulet" :
                  (i == EQ_RING_ONE)    ? "1st ring" :
                  (i == EQ_RING_TWO)    ? "2nd ring" :
@@ -267,7 +267,7 @@ void list_jewellery()
         if (jewellery_id != -1 && !you_tran_can_wear(you.inv[jewellery_id])
             || !you_tran_can_wear(i))
         {
-            item = "    (currently unavailable)";
+            item = "    " + jtrans("(currently unavailable)");
         }
         else if (jewellery_id != -1)
         {
@@ -276,14 +276,13 @@ void list_jewellery()
             colour = menu_colour(item, prefix, "equip");
         }
         else
-            item = "    none";
+            item = "    " + jtrans("none");
 
         if (colour == MSGCOL_BLACK)
             colour = menu_colour(item, "", "equip");
 
-        item = chop_string(make_stringf("%-*s: %s",
-                                        split ? cols > 96 ? 9 : 8 : 11,
-                                        slot, item.c_str()),
+        item = chop_string(make_stringf("%-13s: %s",
+                                        chop_string(jtransc(slot), 13).c_str(), item.c_str()),
                            split && i > EQ_AMULET ? (cols - 1) / 2 : cols);
         item = colour_string(item, colour);
 
