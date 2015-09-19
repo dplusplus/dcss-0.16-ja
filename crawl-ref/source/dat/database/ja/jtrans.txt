@@ -9314,6 +9314,42 @@ No exploration algorithm can help you here.
 
 ラビリンスでは自動探索は助けにならない。
 %%%%
+Existing waypoints:
+
+現在設定済みの中継地点:
+%%%%
+Delete which waypoint? (* - delete all, Esc - exit)
+
+どの中継地点を削除しますか？ (* - 全部削除, Esc - キャンセル)
+%%%%
+All waypoints deleted. Have a nice day!
+
+すべての中継地点を削除しました。
+%%%%
+Sorry, you can't set a waypoint here.
+
+残念ながら、この地点を中継地点に登録できません。
+%%%%
+Assign waypoint to what number? (0-9%s)
+
+この地点を何番に登録しますか？ (0-9%s)
+%%%%
+, D - delete waypoint
+
+, D - 中継地点を削除
+%%%%
+Waypoint %d re-assigned to your current position.
+
+%d番の中継地点をこの地点に上書きしました。
+%%%%
+Waypoint %d re-assigned from %s to %s.
+
+%d番の中継地点を%sから%sへ上書きしました。
+%%%%
+Waypoint %d assigned to %s.
+
+%sを%d番の中継地点に登録しました。
+%%%%
 Found
 
 を見つけた。
