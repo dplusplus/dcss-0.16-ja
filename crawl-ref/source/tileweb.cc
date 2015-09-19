@@ -769,19 +769,7 @@ void TilesFramework::_send_player(bool force_full)
     const PlaceInfo& place = you.get_place_info();
     string abbrev_name = branches[place.branch].abbrevname;
 
-    if (brdepth[place.branch] == 1)
-    {
-        // Definite articles
-        if (place.branch == BRANCH_ABYSS)
-            abbrev_name.insert(0, "The ");
-        // Indefinite articles
-        else if (place.branch != BRANCH_PANDEMONIUM &&
-                 !is_connected_branch(place.branch))
-        {
-            abbrev_name = article_a(abbrev_name);
-        }
-    }
-    _update_string(force_full, c.place, jtrans(abbrev_name), "place");
+    _update_string(force_full, c.place, tagged_jtrans("[branch]", abbrev_name), "place");
     _update_int(force_full, c.depth, brdepth[place.branch] > 1 ? you.depth : 0, "depth");
 
     if (m_origin.equals(-1, -1))

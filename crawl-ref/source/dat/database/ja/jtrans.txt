@@ -8966,6 +8966,26 @@ Manual usage is in <green>green</green>.
 
 手引書を持っているスキルは<green>緑色</green>で表示されます。
 %%%%
+Transfer Knowledge: select the %s skill
+
+知識の移行: スキルの%sを選んでください。
+%%%%
+You have %s. Select the skills to train.
+
+あなたは%s。訓練するスキルを選んでください。
+%%%%
+You are more experienced. Select the skills to train.
+
+あなたはさらに経験を積んだ。訓練するスキルを選んでください。
+%%%%
+drawn an Experience card
+
+経験のカードを引いた
+%%%%
+quaffed a potion of experience
+
+経験の薬を飲んだ
+%%%%
 You feel omnipotent.
 
 あなたは全能になったように思えた。
