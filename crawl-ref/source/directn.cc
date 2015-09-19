@@ -1955,7 +1955,7 @@ bool direction_chooser::do_main_loop()
             break;
 
         if (!is_map_persistent())
-            mpr("You cannot set exclusions on this level.");
+            mpr(jtrans("You cannot set exclusions on this level."));
         else
         {
             const bool was_excluded = is_exclude_root(target());
@@ -1964,11 +1964,11 @@ bool direction_chooser::do_main_loop()
             need_beam_redraw   = true;
             const bool is_excluded = is_exclude_root(target());
             if (!was_excluded && is_excluded)
-                mpr("Placed new exclusion.");
+                mpr(jtrans("Placed new exclusion."));
             else if (was_excluded && !is_excluded)
-                mpr("Removed exclusion.");
+                mpr(jtrans("Removed exclusion."));
             else
-                mpr("Reduced exclusion size to a single square.");
+                mpr(jtrans("Reduced exclusion size to a single square."));
         }
 
         need_cursor_redraw = true;
