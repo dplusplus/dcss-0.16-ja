@@ -6943,7 +6943,7 @@ Ashenzari reveals the unseen and keeps your mind clear.
 %%%%
 scry through walls
 
-壁を透視する
+壁を透視すること
 %%%%
 Ashenzari helps you to reconsider your skills.
 
