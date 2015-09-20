@@ -5314,6 +5314,81 @@ You see a ghostly outline there, and the spell fizzles.
 あなたはぼんやりとした輪郭を目にし、呪文は失敗した。
 %%%%
 ############################## monster.cc ##############################
+It bursts into flame!
+
+それは吹きあがる炎に包まれた。
+%%%%
+It is covered in frost.
+
+それは霜に覆われた。
+%%%%
+It glows with a cold blue light!
+
+それは冷たい蒼に輝いた。
+%%%%
+It softly glows with a divine radiance!
+
+それは神聖な光に柔らかく輝いた。
+%%%%
+You hear the crackle of electricity.
+
+あなたは電光の爆ぜる音を耳にした。
+%%%%
+It begins to drip with poison!
+
+それは毒を滴らせはじめた！
+%%%%
+You sense an unholy aura.
+
+あなたは邪悪な霊気を感じ取った。
+%%%%
+Its appearance distorts for a moment.
+
+その武器の形状が一瞬歪んだように見えた。
+%%%%
+It is briefly surrounded by a scintillating aura of random colours.
+
+それはしばらくの間様々な色が煌くオーラに包まれた。
+%%%%
+%s %s briefly %s through it before you manage to get a firm grip on it.
+
+%sはそれをしっかり掴もうとする前にしばらくの間%sでしごいた。
+%%%%
+It is briefly surrounded by shifting shadows.
+
+それはしばらくの間ちらつく影に覆われた。
+%%%%
+It stops flaming.
+
+その武器から火が消えた。
+%%%%
+It stops glowing.
+
+その武器から輝きが消えた。
+%%%%
+It stops crackling.
+
+その武器は爆ぜるのをやめた。
+%%%%
+It stops dripping with poison.
+
+その武器は毒を滴らせるのをやめた。
+%%%%
+%s picks up %s.
+
+%sは%sを拾い上げた。
+%%%%
+some gold
+
+金貨
+%%%%
+%s %s as %s drops %s!
+
+%sは%sが%sを手放すやいなや%s！
+%%%%
+%s drops %s.
+
+%sは%sを足下に落とした。
 %%%%
 pincer
 
@@ -6276,33 +6351,9 @@ You feel your magic capacity is already quite full.
 
 あなたの魔力は既に限界のようだ。
 %%%%
-It bursts into flame!
-
-それは吹きあがる炎に包まれた。
-%%%%
-It is covered in frost.
-
-それは霜に覆われた。
-%%%%
-It glows with a cold blue light!
-
-それは冷たい蒼に輝いた。
-%%%%
-It softly glows with a divine radiance!
-
-それは神聖な光に柔らかく輝いた。
-%%%%
-You hear the crackle of electricity.
-
-あなたは電光の爆ぜる音を耳にした。
-%%%%
 You see sparks fly.
 
 あなたは火花が飛ぶのを目にした。
-%%%%
-It begins to drip with poison!
-
-それは毒を滴らせはじめた！
 %%%%
 You feel protected!
 
@@ -6311,10 +6362,6 @@ You feel protected!
 You feel nimbler!
 
 あなたは俊敏になったようだ！
-%%%%
-You sense an unholy aura.
-
-あなたは邪悪な霊気を感じ取った。
 %%%%
 hands tingle
 
@@ -6344,17 +6391,9 @@ A searing pain shoots up your %s!
 
 焼けつく痛みがあなたの%sを駆け上った！
 %%%%
-It is briefly surrounded by a scintillating aura of random colours.
-
-それはしばらくの間様々な色が煌くオーラに包まれた。
-%%%%
 Your %s briefly %s through it before you manage to get a firm grip on it.
 
 それをしっかり掴もうとする前にしばらくの間%sでしごいた。
-%%%%
-It is briefly surrounded by shifting shadows.
-
-それはしばらくの間ちらつく影に覆われた。
 %%%%
 You feel magic leave you.
 
@@ -6366,19 +6405,19 @@ Space warps around you for a moment!
 %%%%
 %s stops flaming.
 
-%sは燃えるのを止めた。
+%sは燃えるのをやめた。
 %%%%
 %s stops glowing.
 
-%sは輝きを止めた。
+%sは輝きをやめた。
 %%%%
 %s stops crackling.
 
-%sは爆ぜるのを止めた。
+%sは爆ぜるのをやめた。
 %%%%
 %s stops dripping with poison.
 
-%sは毒を滲ませるのを止めた。
+%sは毒を滲ませるのをやめた。
 %%%%
 You feel less protected.
 

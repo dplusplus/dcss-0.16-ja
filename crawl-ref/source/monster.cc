@@ -848,9 +848,9 @@ void monster::equip_weapon(item_def &item, int near, bool msg)
 
     if (msg)
     {
-        const string str = " wields " +
+        const string str = "は" +
                            item.name(DESC_A, false, false, true, false,
-                                     ISFLAG_CURSED) + ".";
+                                     ISFLAG_CURSED) + "を手に持った。";
         msg = simple_monster_message(this, str.c_str());
     }
 
@@ -861,38 +861,38 @@ void monster::equip_weapon(item_def &item, int near, bool msg)
         switch (brand)
         {
         case SPWPN_FLAMING:
-            mpr("It bursts into flame!");
+            mpr(jtrans("It bursts into flame!"));
             break;
         case SPWPN_FREEZING:
-            mpr(is_range_weapon(item) ? "It is covered in frost."
-                                      : "It glows with a cold blue light!");
+            mpr(jtrans(is_range_weapon(item) ? "It is covered in frost."
+                                             : "It glows with a cold blue light!"));
             break;
         case SPWPN_HOLY_WRATH:
-            mpr("It softly glows with a divine radiance!");
+            mpr(jtrans("It softly glows with a divine radiance!"));
             break;
         case SPWPN_ELECTROCUTION:
-            mprf(MSGCH_SOUND, "You hear the crackle of electricity.");
+            mpr_nojoin(MSGCH_SOUND, jtrans("You hear the crackle of electricity."));
             break;
         case SPWPN_VENOM:
-            mpr("It begins to drip with poison!");
+            mpr(jtrans("It begins to drip with poison!"));
             break;
         case SPWPN_DRAINING:
-            mpr("You sense an unholy aura.");
+            mpr(jtrans("You sense an unholy aura."));
             break;
         case SPWPN_DISTORTION:
-            mpr("Its appearance distorts for a moment.");
+            mpr(jtrans("Its appearance distorts for a moment."));
             break;
         case SPWPN_CHAOS:
-            mpr("It is briefly surrounded by a scintillating aura of "
-                "random colours.");
+            mpr(jtrans("It is briefly surrounded by a scintillating aura of "
+                       "random colours."));
             break;
         case SPWPN_PENETRATION:
         {
             bool plural = true;
             string hand = hand_name(true, &plural);
-            mprf("%s %s briefly %s through it before %s manages to get a "
-                 "firm grip on it.",
-                 pronoun(PRONOUN_POSSESSIVE).c_str(),
+            mprf(jtransc("%s %s briefly %s through it before %s manages to get a "
+                         "firm grip on it."),
+                 pronoun(PRONOUN_SUBJECTIVE).c_str(),
                  hand.c_str(),
                  // Not conj_verb: the monster isn't the subject.
                  conjugate_verb("pass", plural).c_str(),
@@ -900,7 +900,7 @@ void monster::equip_weapon(item_def &item, int near, bool msg)
         }
             break;
         case SPWPN_REAPING:
-            mpr("It is briefly surrounded by shifting shadows.");
+            mpr(jtrans("It is briefly surrounded by shifting shadows."));
             break;
 
         default:
@@ -946,8 +946,8 @@ void monster::equip_armour(item_def &item, int slot, int near)
 {
     if (need_message(near))
     {
-        const string str = " wears " +
-                           item.name(DESC_A) + ".";
+        const string str = "は" +
+                           item.name(DESC_A) + "を装備した。";
         simple_monster_message(this, str.c_str());
     }
 
@@ -961,8 +961,8 @@ void monster::equip_jewellery(item_def &item, int near)
 
     if (need_message(near))
     {
-        const string str = " puts on " +
-                           item.name(DESC_A) + ".";
+        const string str = "は" +
+                           item.name(DESC_A) + "を身につけた。";
         simple_monster_message(this, str.c_str());
     }
 
@@ -1021,9 +1021,9 @@ void monster::unequip_weapon(item_def &item, int near, bool msg)
 
     if (msg)
     {
-        const string str = " unwields " +
+        const string str = "は"+
                            item.name(DESC_A, false, false, true, false,
-                                     ISFLAG_CURSED) + ".";
+                                     ISFLAG_CURSED) + "を手放した。";
         msg = simple_monster_message(this, str.c_str());
     }
 
@@ -1034,23 +1034,23 @@ void monster::unequip_weapon(item_def &item, int near, bool msg)
         switch (brand)
         {
         case SPWPN_FLAMING:
-            mpr("It stops flaming.");
+            mpr(jtrans("It stops flaming."));
             break;
 
         case SPWPN_HOLY_WRATH:
-            mpr("It stops glowing.");
+            mpr(jtrans("It stops glowing."));
             break;
 
         case SPWPN_ELECTROCUTION:
-            mpr("It stops crackling.");
+            mpr(jtrans("It stops crackling."));
             break;
 
         case SPWPN_VENOM:
-            mpr("It stops dripping with poison.");
+            mpr(jtrans("It stops dripping with poison."));
             break;
 
         case SPWPN_DISTORTION:
-            mpr("Its appearance distorts for a moment.");
+            mpr(jtrans("Its appearance distorts for a moment."));
             break;
 
         default:
@@ -1074,8 +1074,8 @@ void monster::unequip_armour(item_def &item, int near)
 {
     if (need_message(near))
     {
-        const string str = " takes off " +
-                           item.name(DESC_A) + ".";
+        const string str = "は" +
+                           item.name(DESC_A) + "を外した。";
         simple_monster_message(this, str.c_str());
     }
 }
@@ -1086,8 +1086,8 @@ void monster::unequip_jewellery(item_def &item, int near)
 
     if (need_message(near))
     {
-        const string str = " takes off " +
-                           item.name(DESC_A) + ".";
+        const string str = "は" +
+                           item.name(DESC_A) + "を外した。";
         simple_monster_message(this, str.c_str());
     }
 }
@@ -1144,9 +1144,9 @@ void monster::pickup_message(const item_def &item, int near)
             flags |= MF_SEEN_RANGED;
         }
 
-        mprf("%s picks up %s.",
+        mprf(jtransc("%s picks up %s."),
              name(DESC_THE).c_str(),
-             item.base_type == OBJ_GOLD ? "some gold"
+             item.base_type == OBJ_GOLD ? jtransc("some gold")
                                         : item.name(DESC_A).c_str());
     }
 }
@@ -1287,11 +1287,11 @@ bool monster::drop_item(int eslot, int near)
     {
         if (need_message(near))
         {
-            mprf("%s %s as %s drops %s!",
+            mprf(jtransc("%s %s as %s drops %s!"),
                  pitem->name(DESC_THE).c_str(),
-                 summoned_poof_msg(this, *pitem).c_str(),
                  name(DESC_THE).c_str(),
-                 pitem->quantity > 1 ? "them" : "it");
+                 pitem->quantity > 1 ? "それら" : "それ",
+                 summoned_poof_msg(this, *pitem).c_str());
         }
 
         item_was_destroyed(*pitem);
@@ -1301,7 +1301,7 @@ bool monster::drop_item(int eslot, int near)
     {
         if (need_message(near))
         {
-            mprf("%s drops %s.", name(DESC_THE).c_str(),
+            mprf(jtransc("%s drops %s."), name(DESC_THE).c_str(),
                  pitem->name(DESC_A).c_str());
         }
 
