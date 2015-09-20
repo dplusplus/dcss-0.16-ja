@@ -14,8 +14,8 @@
 
 static string _level_id_describe(const level_id &id, bool long_name, bool with_number)
 {
-    string result = jtrans(long_name ? branches[id.branch].longname
-                                     : branches[id.branch].abbrevname);
+    string result = tagged_jtrans("[branch]", long_name ? branches[id.branch].longname
+                                                        : branches[id.branch].abbrevname);
 
     if (with_number && brdepth[id.branch] != 1)
     {
