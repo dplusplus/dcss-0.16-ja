@@ -15,6 +15,7 @@
 #include <cstring>
 
 #include "art-enum.h"
+#include "database.h"
 #include "delay.h"
 #include "english.h"
 #include "env.h"
@@ -1566,11 +1567,10 @@ bool attack::attack_shield_blocked(bool verbose)
 
         if (needs_message && verbose)
         {
-            mprf("%s %s %s attack.",
-                 defender_name(false).c_str(),
-                 defender->conj_verb("block").c_str(),
-                 attacker == defender ? "its own"
-                                      : atk_name(DESC_ITS).c_str());
+            mprf(jtransc("%s %s %s attack."),
+                 jtransc(defender_name(false)),
+                 jtransc(attacker == defender ? "its own"
+                                              : atk_name(DESC_PLAIN).c_str()));
         }
 
         defender->shield_block_succeeded(attacker);
