@@ -6505,6 +6505,98 @@ you unwield
 
 あなたが武器を外す
 %%%%
+You feel your power drawn to a protective spirit.
+
+あなたの魔力が守護霊に吸われたような気がした。
+%%%%
+Now linked to your health, your magic stops regenerating.
+
+体力と結びついたため、あなたの魔力は再生しなくなった。
+%%%%
+You feel the presence of a powerless spirit.
+
+あなたは無力な精霊の存在を感じた。
+%%%%
+You feel spirits watching over you.
+
+守護霊があなたを見守っているような気がした。
+%%%%
+You feel resistant to fire.
+
+あなたは火への耐性を帯びた。
+%%%%
+You feel resistant to cold.
+
+あなたは冷気への耐性を帯びた。
+%%%%
+You feel resistant to poison.
+
+あなたは毒に強くなったようだ。
+%%%%
+You feel perceptive.
+
+あなたは鋭敏になったようだ。
+%%%%
+You become transparent for a moment.
+
+あなたは一瞬透明になった。
+%%%%
+You feel rather ponderous.
+
+あなたは鈍重になったようだ。
+%%%%
+You feel rather light.
+
+あなたは体が軽くなったようだ。
+%%%%
+(use the <w>%s</w>bility menu to %s flying)
+
+(飛行を%sには <w>%s</w>bility メニュー画面に移動してください)
+%%%%
+stop or start
+
+やめる、または開始する
+%%%%
+start or stop
+
+開始する、またはやめる
+%%%%
+You feel resistant to hostile enchantments.
+
+あなたは敵対的な魔法への耐性が強まった気がした。
+%%%%
+You feel protected.
+
+あなたは護りの力を感じた
+%%%%
+You feel stealthy.
+
+あなたは動きが静かになったようだ。
+%%%%
+You feel resistant to extremes of temperature.
+
+あなたは極端な温度への耐性を帯びた。
+%%%%
+You feel more protected from negative energy.
+
+あなたは負のエネルギーへの耐性が強まった気がした。
+%%%%
+You feel strangely lacking in power.
+
+あなたは奇妙な力の不足を感じた。
+%%%%
+You feel powerful.
+
+あなたは強大な力を感じた。
+%%%%
+You feel that your aim is more steady.
+
+あなたは狙いがより確かになった気がした。
+%%%%
+Oops, that feels deathly cold.
+
+うわ！ 凄まじく冷たい！
+%%%%
 seems less interested in you.
 
 はあなたへの興味が薄れたようだ。

@@ -802,14 +802,14 @@ static void _spirit_shield_message(bool unmeld)
     if (!unmeld && you.spirit_shield() < 2)
     {
         dec_mp(you.magic_points);
-        mpr("You feel your power drawn to a protective spirit.");
+        mpr(jtrans("You feel your power drawn to a protective spirit."));
         if (you.species == SP_DEEP_DWARF)
-            mpr("Now linked to your health, your magic stops regenerating.");
+            mpr(jtrans("Now linked to your health, your magic stops regenerating."));
     }
     else if (!unmeld && player_mutation_level(MUT_MANA_SHIELD))
-        mpr("You feel the presence of a powerless spirit.");
+        mpr(jtrans("You feel the presence of a powerless spirit."));
     else // unmeld or already spirit-shielded
-        mpr("You feel spirits watching over you.");
+        mpr(jtrans("You feel spirits watching over you."));
 }
 
 static void _equip_armour_effect(item_def& arm, bool unmeld,
@@ -823,29 +823,34 @@ static void _equip_armour_effect(item_def& arm, bool unmeld,
         {
         case SPARM_RUNNING:
             if (!you.fishtail)
-                mpr("You feel quick.");
+            {
+                if (you.species == SP_NAGA || you.species == SP_CENTAUR)
+                    mpr("あなたは脚が速くなったようだ。");
+                else
+                    mpr("あなたは足が速くなったようだ。");
+            }
             break;
 
         case SPARM_FIRE_RESISTANCE:
-            mpr("You feel resistant to fire.");
+            mpr(jtrans("You feel resistant to fire."));
             break;
 
         case SPARM_COLD_RESISTANCE:
-            mpr("You feel resistant to cold.");
+            mpr(jtrans("You feel resistant to cold."));
             break;
 
         case SPARM_POISON_RESISTANCE:
-            mpr("You feel resistant to poison.");
+            mpr(jtrans("You feel resistant to poison."));
             break;
 
         case SPARM_SEE_INVISIBLE:
-            mpr("You feel perceptive.");
+            mpr(jtrans("You feel perceptive."));
             autotoggle_autopickup(false);
             break;
 
         case SPARM_INVISIBILITY:
             if (!you.duration[DUR_INVIS])
-                mpr("You become transparent for a moment.");
+                mpr(jtrans("You become transparent for a moment."));
             break;
 
         case SPARM_STRENGTH:
@@ -861,7 +866,7 @@ static void _equip_armour_effect(item_def& arm, bool unmeld,
             break;
 
         case SPARM_PONDEROUSNESS:
-            mpr("You feel rather ponderous.");
+            mpr(jtrans("You feel rather ponderous."));
             break;
 
         case SPARM_FLYING:
@@ -871,7 +876,7 @@ static void _equip_armour_effect(item_def& arm, bool unmeld,
                 if (you.airborne())
                 {
                     you.attribute[ATTR_PERM_FLIGHT] = 1;
-                    mpr("You feel rather light.");
+                    mpr(jtrans("You feel rather light."));
                 }
                 else
                 {
@@ -881,40 +886,40 @@ static void _equip_armour_effect(item_def& arm, bool unmeld,
             }
             if (!unmeld)
             {
-                mprf("(use the <w>%s</w>bility menu to %s flying)",
-                     command_to_string(CMD_USE_ABILITY).c_str(),
-                     you.attribute[ATTR_LAST_FLIGHT_STATUS]
-                         ? "stop or start" : "start or stop");
+                mprf(jtransc("(use the <w>%s</w>bility menu to %s flying)"),
+                     jtransc(you.attribute[ATTR_LAST_FLIGHT_STATUS]
+                             ? "stop or start" : "start or stop"),
+                     command_to_string(CMD_USE_ABILITY).c_str());
             }
 
             break;
 
         case SPARM_MAGIC_RESISTANCE:
-            mpr("You feel resistant to hostile enchantments.");
+            mpr(jtrans("You feel resistant to hostile enchantments."));
             break;
 
         case SPARM_PROTECTION:
-            mpr("You feel protected.");
+            mpr(jtrans("You feel protected."));
             break;
 
         case SPARM_STEALTH:
             if (!player_mutation_level(MUT_NO_STEALTH))
-                mpr("You feel stealthy.");
+                mpr(jtrans("You feel stealthy."));
             break;
 
         case SPARM_RESISTANCE:
-            mpr("You feel resistant to extremes of temperature.");
+            mpr(jtrans("You feel resistant to extremes of temperature."));
             break;
 
         case SPARM_POSITIVE_ENERGY:
-            mpr("You feel more protected from negative energy.");
+            mpr(jtrans("You feel more protected from negative energy."));
             break;
 
         case SPARM_ARCHMAGI:
             if (!you.skill(SK_SPELLCASTING))
-                mpr("You feel strangely lacking in power.");
+                mpr(jtrans("You feel strangely lacking in power."));
             else
-                mpr("You feel powerful.");
+                mpr(jtrans("You feel powerful."));
             break;
 
         case SPARM_SPIRIT_SHIELD:
@@ -922,7 +927,7 @@ static void _equip_armour_effect(item_def& arm, bool unmeld,
             break;
 
         case SPARM_ARCHERY:
-            mpr("You feel that your aim is more steady.");
+            mpr(jtrans("You feel that your aim is more steady."));
             break;
         }
     }
@@ -935,7 +940,7 @@ static void _equip_armour_effect(item_def& arm, bool unmeld,
 
     if (arm.cursed() && !unmeld)
     {
-        mpr("Oops, that feels deathly cold.");
+        mpr(jtrans("Oops, that feels deathly cold."));
         learned_something_new(HINT_YOU_CURSED);
 
         if (!known_cursed)
