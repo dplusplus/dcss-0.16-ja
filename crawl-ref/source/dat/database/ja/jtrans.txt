@@ -2611,7 +2611,7 @@ You can't see any susceptible monsters within range! (Use <w>V</w> to cast anywa
 %%%%
 You cannot evoke items in this form.
 
-現在の形態ではアイテムを発動できない。
+現在の姿ではアイテムを発動できない。
 %%%%
 Evoke which item? (* to show all)
 
@@ -2705,7 +2705,7 @@ You can't wear anything.
 %%%%
 You can't wear anything in your present form.
 
-あなたは現在の形態では何も装備することができない。
+あなたは現在の姿では何も装備することができない。
 %%%%
 Wear which item?
 
@@ -2813,7 +2813,7 @@ You can't wear that with your reptilian head.
 %%%%
 You can't wear that in your present form.
 
-現在の形態ではそれを装備できない。
+現在の姿ではそれを装備できない。
 %%%%
 You don't have any such object.
 
@@ -2869,7 +2869,7 @@ Losing flight right now would be fatal!
 %%%%
 You can't wear that in your present form.
 
-現在の形態ではそれを身につけることができない。
+現在の姿ではそれを身につけることができない。
 %%%%
 You're already wearing %s cursed ring%s!%s
 
@@ -4515,7 +4515,7 @@ You can't remove your fur, sorry.
 %%%%
 You can't wear or remove anything in your present form.
 
-現在の形態では脱ぐことはできない。
+現在の姿では脱ぐことはできない。
 %%%%
 You pace your travel speed to your slowest ally.
 
@@ -4563,7 +4563,7 @@ Unknown command.
 %%%%
 You can't open doors in your present form.
 
-現在の形態ではドアを開けることができない。
+現在の姿ではドアを開けることができない。
 %%%%
 There's nothing to open nearby.
 
@@ -4591,7 +4591,7 @@ Which direction?
 %%%%
 You can't close doors in your present form.
 
-現在の形態ではドアを閉めることができない。
+現在の姿ではドアを閉めることができない。
 %%%%
 You can't close doors while %s.
 
@@ -5203,7 +5203,7 @@ You're too confused!
 %%%%
 You can't do that in your present form.
 
-あなたは現在の形態ではそれはできない。
+あなたは現在の姿ではそれはできない。
 %%%%
 You aren't carrying anything.
 
@@ -5609,7 +5609,7 @@ plain brown
 %%%%
 You revert to your normal form in water.
 
-あなたは水中では本来の形態に戻る。
+あなたは水中では本来の姿に戻る。
 %%%%
 You are very nimble and swift while swimming.
 
