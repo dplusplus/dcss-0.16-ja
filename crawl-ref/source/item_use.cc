@@ -424,13 +424,13 @@ void wear_armour(int slot) // slot is for tiles
 {
     if (you.species == SP_FELID)
     {
-        mpr("You can't wear anything.");
+        mpr(jtrans("You can't wear anything."));
         return;
     }
 
     if (!form_can_wear())
     {
-        mpr("You can't wear anything in your present form.");
+        mpr(jtrans("You can't wear anything in your present form."));
         return;
     }
 
@@ -438,7 +438,7 @@ void wear_armour(int slot) // slot is for tiles
 
     if (slot != -1)
         armour_wear_2 = slot;
-    else if (!armour_prompt("Wear which item?", &armour_wear_2, OPER_WEAR))
+    else if (!armour_prompt(jtrans("Wear which item?"), &armour_wear_2, OPER_WEAR))
         return;
 
     do_wear_armour(armour_wear_2, false);
@@ -461,7 +461,7 @@ bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
     if (base_type != OBJ_ARMOUR || you.species == SP_FELID)
     {
         if (verbose)
-            mpr("You can't wear that.");
+            mpr(jtrans("You can't wear that."));
 
         return false;
     }
@@ -472,7 +472,7 @@ bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
     if (you.species == SP_OCTOPODE && slot != EQ_HELMET && slot != EQ_SHIELD)
     {
         if (verbose)
-            mpr("You can't wear that!");
+            mpr(jtrans("You can't wear that!"));
         return false;
     }
 
@@ -480,8 +480,8 @@ bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
     {
         if (verbose)
         {
-            mprf("Your wings%s won't fit in that.", you.mutation[MUT_BIG_WINGS]
-                 ? "" : ", even vestigial as they are,");
+            mprf(jtransc("Your wings%s won't fit in that."), jtransc(you.mutation[MUT_BIG_WINGS]
+                 ? "" : ", even vestigial as they are,"));
         }
         return false;
     }
@@ -494,17 +494,17 @@ bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
             if (ignore_temporary || !player_is_shapechanged())
                 return true;
             else if (verbose)
-                mpr("You can wear that only in your normal form.");
+                mpr(jtrans("You can wear that only in your normal form."));
         }
         else if (verbose)
-            mpr("You can't wear that!");
+            mpr(jtrans("You can't wear that!"));
         return false;
     }
 
     if (player_mutation_level(MUT_MISSING_HAND) && slot == EQ_SHIELD)
     {
         if (verbose)
-            mpr("You don't have enough limbs.");
+            mpr(jtrans("You don't have enough limbs."));
         return false;
     }
 
@@ -514,7 +514,7 @@ bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
         if (!player_has_feet(!ignore_temporary))
         {
             if (verbose)
-                mpr("You have no feet.");
+                mpr(jtrans("You have no feet."));
             return false;
         }
 
@@ -527,7 +527,7 @@ bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
             {
                 if (verbose)
                 {
-                    mprf("The hauberk won't fit your %s.",
+                    mprf(jtransc("The hauberk won't fit your %s."),
                          you.hand_name(true).c_str());
                 }
                 return false;
@@ -537,7 +537,7 @@ bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
                 || player_mutation_level(MUT_ANTENNAE, false) >= 3)
             {
                 if (verbose)
-                    mpr("The hauberk won't fit your head.");
+                    mpr(jtrans("The hauberk won't fit your head."));
                 return false;
             }
         }
@@ -555,8 +555,8 @@ bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
                 {
                     if (verbose)
                     {
-                        mprf("You'd need your %s free.",
-                             parts[s - EQ_HELMET].c_str());
+                        mprf(jtransc("You'd need your %s free."),
+                             jtransc(parts[s - EQ_HELMET]));
                     }
                     return false;
                 }
@@ -565,10 +565,10 @@ bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
                 {
                     if (verbose)
                     {
-                        mprf(you_tran_can_wear(s)
-                                ? "The hauberk won't fit your %s."
-                                : "You have no %s!",
-                             parts[s - EQ_HELMET].c_str());
+                        mprf(jtransc(you_tran_can_wear(s)
+                                     ? "The hauberk won't fit your %s."
+                                     : "You have no %s!"),
+                             jtransc(parts[s - EQ_HELMET]));
                     }
                     return false;
                 }
@@ -582,7 +582,7 @@ bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
         // The explanation is iffy for loose headgear, especially crowns:
         // kings loved hooded hauberks, according to portraits.
         if (verbose)
-            mpr("You can't wear this over your hauberk.");
+            mpr(jtrans("You can't wear this over your hauberk."));
         return false;
     }
 
@@ -593,8 +593,8 @@ bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
     {
         if (verbose)
         {
-            mprf("This armour is too %s for you!",
-                 (bad_size > 0) ? "big" : "small");
+            mpr(jtrans(make_stringf("This armour is too %s for you!",
+                                    (bad_size > 0) ? "big" : "small")));
         }
 
         return false;
@@ -616,7 +616,7 @@ bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
         {
             if (verbose)
             {
-                mprf("You can't wear a glove with your huge claw%s!",
+                mprf(jtransc("You can't wear a glove with your huge claw%s!"),
                      player_mutation_level(MUT_MISSING_HAND) ? "" : "s");
             }
             return false;
@@ -628,14 +628,14 @@ bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
         if (player_mutation_level(MUT_HOOVES, false) == 3)
         {
             if (verbose)
-                mpr("You can't wear boots with hooves!");
+                mpr(jtrans("You can't wear boots with hooves!"));
             return false;
         }
 
         if (you.has_talons(false) == 3)
         {
             if (verbose)
-                mpr("Boots don't fit your talons!");
+                mpr(jtrans("Boots don't fit your talons!"));
             return false;
         }
 
@@ -646,14 +646,14 @@ bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
            )
         {
             if (verbose)
-                mpr("You have no legs!");
+                mpr(jtrans("You have no legs!"));
             return false;
         }
 
         if (!ignore_temporary && you.fishtail)
         {
             if (verbose)
-                mpr("You don't currently have feet!");
+                mpr(jtrans("You don't currently have feet!"));
             return false;
         }
     }
@@ -664,14 +664,14 @@ bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
         if (player_mutation_level(MUT_HORNS, false) == 3)
         {
             if (verbose)
-                mpr("You can't wear any headgear with your large horns!");
+                mpr(jtrans("You can't wear any headgear with your large horns!"));
             return false;
         }
 
         if (player_mutation_level(MUT_ANTENNAE, false) == 3)
         {
             if (verbose)
-                mpr("You can't wear any headgear with your large antennae!");
+                mpr(jtrans("You can't wear any headgear with your large antennae!"));
             return false;
         }
 
@@ -681,35 +681,35 @@ bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
             if (player_mutation_level(MUT_HORNS, false))
             {
                 if (verbose)
-                    mpr("You can't wear that with your horns!");
+                    mpr(jtrans("You can't wear that with your horns!"));
                 return false;
             }
 
             if (player_mutation_level(MUT_BEAK, false))
             {
                 if (verbose)
-                    mpr("You can't wear that with your beak!");
+                    mpr(jtrans("You can't wear that with your beak!"));
                 return false;
             }
 
             if (player_mutation_level(MUT_ANTENNAE, false))
             {
                 if (verbose)
-                    mpr("You can't wear that with your antennae!");
+                    mpr(jtrans("You can't wear that with your antennae!"));
                 return false;
             }
 
             if (player_genus(GENPC_DRACONIAN))
             {
                 if (verbose)
-                    mpr("You can't wear that with your reptilian head.");
+                    mpr(jtrans("You can't wear that with your reptilian head."));
                 return false;
             }
 
             if (you.species == SP_OCTOPODE)
             {
                 if (verbose)
-                    mpr("You can't wear that!");
+                    mpr(jtrans("You can't wear that!"));
                 return false;
             }
         }
@@ -718,7 +718,7 @@ bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
     if (!ignore_temporary && !form_can_wear_item(item, you.form))
     {
         if (verbose)
-            mpr("You can't wear that in your present form.");
+            mpr(jtrans("You can't wear that in your present form."));
         return false;
     }
 
@@ -731,7 +731,7 @@ bool do_wear_armour(int item, bool quiet)
     if (!invitem.defined())
     {
         if (!quiet)
-            mpr("You don't have any such object.");
+            mpr(jtrans("You don't have any such object."));
         return false;
     }
 
@@ -743,7 +743,7 @@ bool do_wear_armour(int item, bool quiet)
     if (item == you.equip[EQ_WEAPON])
     {
         if (!quiet)
-            mpr("You are wielding that object!");
+            mpr(jtrans("You are wielding that object!"));
         return false;
     }
 
@@ -753,7 +753,7 @@ bool do_wear_armour(int item, bool quiet)
             return !takeoff_armour(item);
         else
         {
-            mpr("You're already wearing that object!");
+            mpr(jtrans("You're already wearing that object!"));
             return false;
         }
     }
@@ -763,9 +763,9 @@ bool do_wear_armour(int item, bool quiet)
         if (!quiet)
         {
             if (you.species == SP_OCTOPODE)
-                mpr("You need the rest of your tentacles for walking.");
+                mpr(jtrans("You need the rest of your tentacles for walking."));
             else
-                mprf("You'd need another %s to do that!", you.hand_name(false).c_str());
+                mprf(jtransc("You'd need another %s to do that!"), you.hand_name(false).c_str());
         }
         return false;
     }
@@ -779,11 +779,11 @@ bool do_wear_armour(int item, bool quiet)
         if (!quiet)
         {
             if (you.species == SP_OCTOPODE)
-                mpr("You need the rest of your tentacles for walking.");
+                mpr(jtrans("You need the rest of your tentacles for walking."));
             else
             {
                 // Singular hand should have already been handled above.
-                mprf("You'd need three %s to do that!",
+                mprf(jtransc("You'd need three %s to do that!"),
                      you.hand_name(true).c_str());
             }
         }

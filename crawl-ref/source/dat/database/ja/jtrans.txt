@@ -2699,6 +2699,146 @@ This could place you under penance!
 
 神に懺悔をする羽目になりますよ！
 %%%%
+You can't wear anything.
+
+あなたは何も装備することができない。
+%%%%
+You can't wear anything in your present form.
+
+あなたは現在の形態では何も装備することができない。
+%%%%
+Wear which item?
+
+どのアイテムを装備しますか？
+%%%%
+You can't wear that.
+
+それを装備することはできない。
+%%%%
+You can't wear that!
+
+それを装備することはできない！
+%%%%
+Your wings%s won't fit in that.
+
+あなたの翼は%sそれに合わない。
+%%%%
+, even vestigial as they are,
+
+退化していたとしても
+%%%%
+You can wear that only in your normal form.
+
+あなたは通常の状態でのみそれを装備することができる。
+%%%%
+You don't have enough limbs.
+
+あなたは腕が足りない。
+%%%%
+You have no feet.
+
+あなたには足がない。
+%%%%
+The hauberk won't fit your %s.
+
+この鎖かたびらはあなたの%sに合わない。
+%%%%
+The hauberk won't fit your head.
+
+この鎖かたびらはあなたの頭に合わない。
+%%%%
+head
+
+頭
+%%%%
+You'd need your %s free.
+
+あなたは%sを自由にする必要がある。
+%%%%
+You have no %s!
+
+あなたには%sがない！
+%%%%
+You can't wear this over your hauberk.
+
+あなたは鎖かたびらの上からそれを装備するができない。
+%%%%
+This armour is too big for you!
+
+この鎧はあなたには大きすぎる！
+%%%%
+This armour is too small for you!
+
+この鎧はあなたには小さすぎる！
+%%%%
+You can't wear a glove with your huge claw%s!
+
+あなたは爪が大きすぎてそれを装備することができない！
+%%%%
+You can't wear boots with hooves!
+
+あなたは蹄が邪魔してそれを装備できない。
+%%%%
+Boots don't fit your talons!
+
+それはあなたの爪に合わない！
+%%%%
+You have no legs!
+
+あなたには脚がない！
+%%%%
+You don't currently have feet!
+
+現在のところあなたには脚がない！
+%%%%
+You can't wear any headgear with your large horns!
+
+あなたのその巨大な角ではいかなる兜も装備できない！
+%%%%
+You can't wear any headgear with your large antennae!
+
+あなたのその巨大な触角ではいかなる兜も装備できない！
+%%%%
+You can't wear that with your beak!
+
+あなたのその嘴ではそれを装備できない！
+%%%%
+You can't wear that with your antennae!
+
+あなたのその触角ではそれを装備できない！
+%%%%
+You can't wear that with your reptilian head.
+
+あなたの爬虫類のような頭ではそれを装備できない。
+%%%%
+You can't wear that in your present form.
+
+現在の形態ではそれを装備できない。
+%%%%
+You don't have any such object.
+
+あなたはそのようなものを持っていない。
+%%%%
+You are wielding that object!
+
+あなたはそれを武器として装備している！
+%%%%
+You're already wearing that object!
+
+あなたは既にそれを装備している！
+%%%%
+You need the rest of your tentacles for walking.
+
+あなたの残りの触手は歩くのに必要だ。
+%%%%
+You'd need another %s to do that!
+
+それを装備するにはもう一本腕が必要だ！
+%%%%
+You'd need three %s to do that!
+
+それを装備するには3本目の腕が必要だ！
+%%%%
 You aren't wearing that!
 
 あなたはそれを身につけていない！
