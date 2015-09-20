@@ -378,7 +378,7 @@ static void _wield_cursed(item_def& item, bool known_cursed, bool unmeld)
 {
     if (!item.cursed() || unmeld)
         return;
-    mprf("It sticks to your %s!", you.hand_name(false).c_str());
+    mprf(jtransc("It sticks to your %s!"), you.hand_name(false).c_str());
     int amusement = 16;
     if (!known_cursed)
     {
