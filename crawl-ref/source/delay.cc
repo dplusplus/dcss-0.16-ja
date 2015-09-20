@@ -544,11 +544,11 @@ void handle_delay()
         switch (delay.type)
         {
         case DELAY_ARMOUR_ON:
-            mprf(MSGCH_MULTITURN_ACTION, "You start putting on your armour.");
+            mpr_nojoin(MSGCH_MULTITURN_ACTION, jtrans("You start putting on your armour."));
             break;
 
         case DELAY_ARMOUR_OFF:
-            mprf(MSGCH_MULTITURN_ACTION, "You start removing your armour.");
+            mpr_nojoin(MSGCH_MULTITURN_ACTION, jtrans("You start removing your armour."));
             break;
 
         case DELAY_MEMORISE:
@@ -700,13 +700,13 @@ void handle_delay()
         switch (delay.type)
         {
         case DELAY_ARMOUR_ON:
-            mprf(MSGCH_MULTITURN_ACTION, "You continue putting on %s.",
-                 you.inv[delay.parm1].name(DESC_YOUR).c_str());
+            mprf(MSGCH_MULTITURN_ACTION, jtransc("You continue putting on %s."),
+                 you.inv[delay.parm1].name(DESC_A).c_str());
             break;
 
         case DELAY_ARMOUR_OFF:
-            mprf(MSGCH_MULTITURN_ACTION, "You continue taking off %s.",
-                 you.inv[delay.parm1].name(DESC_YOUR).c_str());
+            mprf(MSGCH_MULTITURN_ACTION, jtransc("You continue taking off %s."),
+                 you.inv[delay.parm1].name(DESC_A).c_str());
             break;
 
         case DELAY_JEWELLERY_ON:
@@ -810,8 +810,8 @@ static void _finish_delay(const delay_queue_item &delay)
         const equipment_type slot = get_armour_slot(you.inv[delay.parm1]);
         ASSERT(you.equip[slot] == delay.parm1);
 
-        mprf("You finish taking off %s.",
-             you.inv[delay.parm1].name(DESC_YOUR).c_str());
+        mprf(jtransc("You finish taking off %s."),
+             you.inv[delay.parm1].name(DESC_A).c_str());
         unequip_item(slot);
 
         break;
@@ -1015,7 +1015,7 @@ static void _armour_wear_effects(const int item_slot)
 
     const equipment_type eq_slot = get_armour_slot(arm);
 
-    mprf("You finish putting on %s.", arm.name(DESC_YOUR).c_str());
+    mprf(jtransc("You finish putting on %s."), arm.name(DESC_A).c_str());
 
     if (eq_slot == EQ_BODY_ARMOUR)
     {

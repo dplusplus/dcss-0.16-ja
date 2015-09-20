@@ -1,4 +1,20 @@
 %%%%
+You start putting on your armour.
+
+あなたは防具を装備しはじめた。
+%%%%
+You start removing your armour.
+
+あなたは防具を外しはじめた。
+%%%%
+You continue putting on %s.
+
+あなたは%sを装備しようとしている。
+%%%%
+You continue taking off %s.
+
+あなたは%sを外そうとしている。
+%%%%
 You continue eating.
 
 あなたは食事を続けている。
@@ -6,6 +22,14 @@ You continue eating.
 You continue drinking.
 
 あなたは吸血を続けている。
+%%%%
+You finish taking off %s.
+
+あなたは%sを外した。
+%%%%
+You finish putting on %s.
+
+あなたは%sを装備した。
 %%%%
 %s is too close now for your liking.
 
