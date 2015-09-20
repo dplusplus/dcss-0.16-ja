@@ -367,7 +367,7 @@ string artefact_inscription(const item_def& item)
     const vector<string> propnames = _randart_propnames(item);
 
     string insc = comma_separated_line(propnames.begin(), propnames.end(),
-                                       " ", " ");
+                                       " ", " ");
     if (!insc.empty() && insc[insc.length() - 1] == ',')
         insc.erase(insc.length() - 1);
     return insc;
@@ -814,23 +814,23 @@ static string _describe_demon(const string& name, flight_type fly)
 
 void append_weapon_stats(string &description, const item_def &item)
 {
-    description += "\n" + jtrans("Base accuracy: ") + " ";
+    description += "\n" + jtrans("Base accuracy: ") + " ";
     _append_value(description, property(item, PWPN_HIT), true);
-    description += "  ";
+    description += "　";
 
     const int base_dam = property(item, PWPN_DAMAGE);
     const int ammo_type = fires_ammo_type(item);
     const int ammo_dam = ammo_type == MI_NONE ? 0 :
                                                 ammo_type_damage(ammo_type);
-    description += jtrans("Base damage:") + " ";
+    description += jtrans("Base damage:") + " ";
     _append_value(description, base_dam + ammo_dam, false);
-    description += "  ";
+    description += "　";
 
-    description += jtrans("Base attack delay:") + " ";
+    description += jtrans("Base attack delay:") + " ";
     _append_value(description, property(item, PWPN_SPEED) / 10.0f, false);
-    description += "  ";
+    description += "　";
 
-    description += jtrans("Minimum delay:") + " ";
+    description += jtrans("Minimum delay:") + " ";
     _append_value(description, weapon_min_delay(item) / 10.0f, false);
 
     if (item_attack_skill(item) == SK_SLINGS)
@@ -1244,12 +1244,12 @@ static string _describe_ammo(const item_def &item)
 
 void append_armour_stats(string &description, const item_def &item)
 {
-    description += "\n" + jtrans("\nBase armour rating: ") + " ";
+    description += "\n" + jtrans("\nBase armour rating: ") + " ";
     _append_value(description, property(item, PARM_AC), false);
-    description += "       ";
+    description += "       ";
 
     const int evp = property(item, PARM_EVASION);
-    description += jtrans("Encumbrance rating: ") + " ";
+    description += jtrans("Encumbrance rating: ") + " ";
     _append_value(description, -evp / 10, false);
 
     // only display player-relevant info if the player exists
@@ -1263,11 +1263,11 @@ void append_armour_stats(string &description, const item_def &item)
 
 void append_shield_stats(string &description, const item_def &item)
 {
-    description += "\n" + jtrans("\nBase shield rating:") + " ";
+    description += "\n" + jtrans("\nBase shield rating:") + " ";
     _append_value(description, property(item, PARM_AC), false);
-    description += "       ";
+    description += "       ";
 
-    description += "\n" + jtrans("\nSkill to remove penalty:") + " ";
+    description += "\n" + jtrans("\nSkill to remove penalty:") + " ";
     _append_value(description, you.get_shield_skill_to_offset_penalty(item),
             false);
 }

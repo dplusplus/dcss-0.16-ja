@@ -138,10 +138,10 @@ static string _item_inscription(const item_def &item, bool ident, bool equipped)
     if (insparts.empty())
         return "";
 
-    return make_stringf(" {%s}",
+    return make_stringf(" {%s}",
                         comma_separated_line(begin(insparts),
                                              end(insparts),
-                                             ", ").c_str());
+                                             ", ").c_str());
 }
 
 string item_def::name(description_level_type descrip, bool terse, bool ident,

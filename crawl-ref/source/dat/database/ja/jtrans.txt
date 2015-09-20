@@ -509,27 +509,27 @@ It reduces the accuracy of all your attacks.
 %%%%
 It affects your AC (%d).
 
-この%sはあなたのACに影響する。(AC %d)
+この%sはあなたのACに影響する。(AC %d)
 %%%%
 It affects your evasion (%d).
 
-この%sはあなたの回避力に影響する。(回避 %d)
+この%sはあなたの回避力に影響する。(回避 %d)
 %%%%
 It affects your strength (%d).
 
-この%sはあなたの腕力に影響する。(腕力 %d)
+この%sはあなたの腕力に影響する。(腕力 %d)
 %%%%
 It affects your intelligence (%d).
 
-この%sはあなたの知力に影響する。(知力 %d)
+この%sはあなたの知力に影響する。(知力 %d)
 %%%%
 It affects your dexterity (%d).
 
-この%sはあなたの器用さに影響する。(器用 %d)
+この%sはあなたの器用さに影響する。(器用 %d)
 %%%%
 It affects your accuracy and damage with ranged weapons and melee attacks (%d).
 
-この%sはあなたの命中率およびダメージを与える能力に影響する。(命中・ダメージ %d)
+この%sはあなたの命中率およびダメージを与える能力に影響する。(命中・ダメージ %d)
 %%%%
 It insulates you from electricity.
 
@@ -541,11 +541,11 @@ It affects your resistance to hostile enchantments.
 %%%%
 It affects your health (%d).
 
-この%sはあなたの体力を増やす。(%d HP)
+この%sはあなたの体力を増やす。(%d HP)
 %%%%
 It affects your magic capacity (%d).
 
-この%sはあなたの魔力の容量を増やす。(%d MP)
+この%sはあなたの魔力の容量を増やす。(%d MP)
 %%%%
 It enhances your eyesight.
 
@@ -1318,7 +1318,7 @@ Skill to remove penalty:
 %%%%
 Wearing mundane armour of this type will give the following: %d AC
 
-同種の一般的な防具を装備した場合のAC: %d
+同種の一般的な防具を装備した場合のAC: %d
 %%%%
 Base damage: %d
 
