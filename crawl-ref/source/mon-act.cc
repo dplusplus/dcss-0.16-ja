@@ -1182,10 +1182,10 @@ static bool _setup_wand_beam(bolt& beem, monster* mons)
 static void _mons_fire_wand(monster* mons, item_def &wand, bolt &beem,
                             bool was_visible, bool niceWand)
 {
-    if (!simple_monster_message(mons, " zaps a wand."))
+    if (!simple_monster_message(mons, jtransc(" zaps a wand.")))
     {
         if (!silenced(you.pos()))
-            mprf(MSGCH_SOUND, "You hear a zap.");
+            mpr_nojoin(MSGCH_SOUND, jtrans("You hear a zap."));
     }
 
     // charge expenditure {dlb}
@@ -1200,7 +1200,7 @@ static void _mons_fire_wand(monster* mons, item_def &wand, bolt &beem,
         set_ident_type(OBJ_WANDS, wand_type, ID_KNOWN_TYPE);
         if (!mons->props["wand_known"].get_bool())
         {
-            mprf("It is %s.", wand.name(DESC_A).c_str());
+            mprf(jtransc("It is %s."), wand.name(DESC_A).c_str());
             mons->props["wand_known"] = true;
         }
 
@@ -1218,10 +1218,10 @@ static void _rod_fired_pre(monster* mons)
 {
     make_mons_stop_fleeing(mons);
 
-    if (!simple_monster_message(mons, " zaps a rod.")
+    if (!simple_monster_message(mons, jtransc(" zaps a rod."))
         && !silenced(you.pos()))
     {
-        mprf(MSGCH_SOUND, "You hear a zap.");
+        mpr_nojoin(MSGCH_SOUND, jtrans("You hear a zap."));
     }
 }
 
