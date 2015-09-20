@@ -11,6 +11,7 @@
 #include "cloud.h"
 #include "coord.h"
 #include "coordit.h"
+#include "database.h"
 #include "delay.h"
 #include "env.h"
 #include "fprop.h"
@@ -68,7 +69,7 @@ bool monster::blink_to(const coord_def& dest, bool quiet, bool jump)
         return false;
 
     bool was_constricted = false;
-    const string verb = (jump ? "leap" : "blink");
+    const string verb = jtrans(jump ? "leap" : "瞬間移動");
 
     if (is_constricted())
     {
@@ -78,8 +79,8 @@ bool monster::blink_to(const coord_def& dest, bool quiet, bool jump)
         {
             if (!quiet)
             {
-                string message = " struggles to " + verb
-                                 + " free from constriction.";
+                string message = jtrans(" struggles to ") + verb
+                                 + jtrans(" free from constriction.");
                 simple_monster_message(this, message.c_str());
             }
             return false;
@@ -88,8 +89,8 @@ bool monster::blink_to(const coord_def& dest, bool quiet, bool jump)
 
     if (!quiet)
     {
-        string message = " " + conj_verb(verb)
-                         + (was_constricted ? " free!" : "!");
+        string message = "は" + verb
+                         + (was_constricted ? "して自由になった！" : "した！");
         simple_monster_message(this, message.c_str());
     }
 
