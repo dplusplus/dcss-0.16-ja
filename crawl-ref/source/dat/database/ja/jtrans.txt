@@ -2671,6 +2671,26 @@ Inventory:
 
 %s (<w>Esc</w> でキャンセル)
 %%%%
+Really
+
+本当に
+%%%%
+while about to teleport
+
+テレポート直前に
+%%%%
+while slowed
+
+減速中に
+%%%%
+while hasted
+
+加速中に
+%%%%
+This could place you under penance!
+
+神に懺悔をする羽目になりますよ！
+%%%%
 is melded into your body.
 
 はあなたの体と融合している。
@@ -2704,10 +2724,6 @@ The bond with your blade fades away.
 Really unwield %s?
 
 本当に%sを手放しますか？
-%%%%
-This could place you under penance!
-
-神に懺悔をする羽目になりますよ！
 %%%%
 You can't wear anything.
 

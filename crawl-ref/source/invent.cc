@@ -1593,26 +1593,26 @@ static string _operation_verb(operation_types oper)
 {
     switch (oper)
     {
-    case OPER_WIELD:          return "wield";
-    case OPER_QUAFF:          return "quaff";
-    case OPER_DROP:           return "drop";
+    case OPER_WIELD:          return "手に持ち";
+    case OPER_QUAFF:          return "飲み";
+    case OPER_DROP:           return "置き";
     case OPER_EAT:            return you.species == SP_VAMPIRE ?
-                                      "drain" : "eat";
-    case OPER_TAKEOFF:        return "take off";
-    case OPER_WEAR:           return "wear";
-    case OPER_PUTON:          return "put on";
-    case OPER_REMOVE:         return "remove";
-    case OPER_READ:           return "read";
-    case OPER_MEMORISE:       return "memorise from";
-    case OPER_ZAP:            return "zap";
-    case OPER_FIRE:           return "fire";
-    case OPER_PRAY:           return "sacrifice";
-    case OPER_EVOKE:          return "evoke";
-    case OPER_DESTROY:        return "destroy";
-    case OPER_QUIVER:         return "quiver";
+                                      "血を飲み" : "食べ";
+    case OPER_TAKEOFF:        return "装備を外し";
+    case OPER_WEAR:           return "装備し";
+    case OPER_PUTON:          return "身につけ";
+    case OPER_REMOVE:         return "外し";
+    case OPER_READ:           return "読み";
+    case OPER_MEMORISE:       return "呪文を記憶し";
+    case OPER_ZAP:            return "振り";
+    case OPER_FIRE:           return "射撃し";
+    case OPER_PRAY:           return "捧げ";
+    case OPER_EVOKE:          return "発動し";
+    case OPER_DESTROY:        return "破壊し";
+    case OPER_QUIVER:         return "射撃準備し";
     case OPER_ANY:
     default:
-        return "choose";
+        return "選択し";
     }
 }
 
@@ -1801,19 +1801,25 @@ bool check_warning_inscriptions(const item_def& item,
         }
 
         // XXX: duplicates a check in delay.cc:_finish_delay()
-        string prompt = "Really " + _operation_verb(oper) + " ";
-        prompt += (in_inventory(item) ? item.name(DESC_INVENTORY)
-                                      : item.name(DESC_A));
+        string prompt = jtrans("Really ");
+
         if (nasty_stasis(item, oper)
             && item_ident(item, ISFLAG_KNOW_TYPE))
         {
-            prompt += string(" while ")
+            prompt += jtrans(string(" while ")
                       + (you.duration[DUR_TELEPORT] ? "about to teleport" :
-                         you.duration[DUR_SLOW] ? "slowed" : "hasted");
+                         you.duration[DUR_SLOW] ? "slowed" : "hasted"));
         }
-        prompt += "?";
+
+        prompt += (in_inventory(item) ? " " + item.name(DESC_INVENTORY)
+                                      : item.name(DESC_A)) + "を"
+                + _operation_verb(oper);
+
+        prompt += "ますか？";
         if (penance)
-            prompt += " This could place you under penance!";
+            prompt += " " + jtrans(" This could place you under penance!");
+
+        prompt += " [Y/N]";
         return yesno(prompt.c_str(), false, 'n')
                && check_old_item_warning(item, oper);
     }
