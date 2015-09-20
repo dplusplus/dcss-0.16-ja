@@ -1369,7 +1369,7 @@ static inline bool _monster_warning(activity_interrupt_type ai,
 {
     if (ai == AI_SENSE_MONSTER)
     {
-        mprf(MSGCH_WARN, "You sense a monster nearby.");
+        mpr_nojoin(MSGCH_WARN, jtrans("You sense a monster nearby."));
         return true;
     }
     if (ai != AI_SEE_MONSTER)

@@ -31,6 +31,10 @@ You finish putting on %s.
 
 あなたは%sを装備した。
 %%%%
+You sense a monster nearby.
+
+あなたは近くにモンスターがいるのを感知した。
+%%%%
 %s is too close now for your liking.
 
 %sに近づきすぎている！
