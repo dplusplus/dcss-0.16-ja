@@ -5630,6 +5630,52 @@ regenerates before your eyes!
 
 の形状は捻れ、後には
 %%%%
+############################## mon-info.cc ##############################
+%%%%
+very slow
+
+かなり遅い
+%%%%
+slow
+
+遅い
+%%%%
+extremely fast
+
+極めて素早い
+%%%%
+very fast
+
+かなり素早い
+%%%%
+fast
+
+素早い
+%%%%
+[adj]very slow
+
+かなり遅く
+%%%%
+[adj]slow
+
+遅く
+%%%%
+[adj]extremely fast
+
+極めて素早く
+%%%%
+[adj]very fast
+
+かなり素早く
+%%%%
+[adj]fast
+
+素早く
+%%%%
+normal
+
+普通だ
+%%%%
 ############################## mon-util.cc ##############################
 %%%%
 # ugly_colour_names
@@ -5677,52 +5723,6 @@ putrid
 torturous
 
 苦痛の
-%%%%
-############################## mon-info.cc ##############################
-%%%%
-very slow
-
-かなり遅い
-%%%%
-slow
-
-遅い
-%%%%
-extremely fast
-
-極めて素早い
-%%%%
-very fast
-
-かなり素早い
-%%%%
-fast
-
-素早い
-%%%%
-[adj]very slow
-
-かなり遅く
-%%%%
-[adj]slow
-
-遅く
-%%%%
-[adj]extremely fast
-
-極めて素早く
-%%%%
-[adj]very fast
-
-かなり素早く
-%%%%
-[adj]fast
-
-素早く
-%%%%
-normal
-
-普通だ
 %%%%
 ############################## mutation.cc ##############################
 %%%%
