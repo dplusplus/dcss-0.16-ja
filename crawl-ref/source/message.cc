@@ -158,7 +158,6 @@ struct message_item
                 int seplen = 1;
                 if (!_ends_in_punctuation(pure_text()))
                 {
-                    sep += ";";
                     seplen++;
                 }
                 sep += " </lightgrey>";
