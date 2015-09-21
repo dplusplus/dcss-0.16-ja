@@ -9861,6 +9861,114 @@ No target in view!
 
 視界内に敵はいない！
 %%%%
+############################## dat/des/sprint/arena_sprint.des ##############################
+%%%%
+A rune of Zot has appeared.
+
+ゾットのルーンが出現した。
+%%%%
+The exit has re-opened... for now.
+
+出口が再び開いた……たった今。
+%%%%
+The exit has re-opened.
+
+出口が再び開いた。
+%%%%
+The Orb of Zot has appeared in the centre of the arena!
+
+ゾットのオーブが闘技場の中央に出現した！
+%%%%
+<yellow>You have won a prize for killing the boss!</yellow>"
+
+<yellow>あなたはボスを倒して賞品を手にした！</yellow>
+%%%%
+<yellow>Victory!</yellow>
+
+<yellow>勝利！</yellow>
+%%%%
+Score multiplier reset to 27x
+
+スコア倍率が27倍に戻った。
+%%%%
+You lost your score multiplier.
+
+スコア倍率がなくなった。
+%%%%
+You now have 1 arena point.
+
+あなたはアリーナポイントを1ポイント得た。
+%%%%
+<white>The arena falls silent. Everyone but you is dead.</white>
+
+<white>闘技場が静まりかえった。あなたを除いて全員命を落とした。</white>
+%%%%
+<white>There is nothing to do now but take the Orb and leave.</white>
+
+<white></white>
+%%%%
+<white>Congratulations, champion.</white>
+
+<white>おめでとう、あなたがチャンピオンだ。</white>
+%%%%
+Time's up!
+
+時間切れだ！
+%%%%
+The arena falls silent.
+
+闘技場が静まりかえった。
+%%%%
+<yellow>Get ready!</yellow>
+
+<yellow>ゲットレディ！</yellow>
+%%%%
+FINAL BOSS!
+
+最終ボスだ！
+%%%%
+BOSS ROUND!
+
+ボスラウンド開始！
+%%%%
+ZOT ROUND!
+
+ゾットラウンド開始！
+%%%%
+FIGHT!
+
+始め！
+%%%%
+LIGHTNING ROUND!
+
+ライトニングラウンド開始！
+%%%%
+The exit has been sealed! It will re-open when you get the next rune.
+
+出口が閉鎖された！ 次のルーンを手にすれば再び解放される。
+%%%%
+############################## dat/des/sprint/menkaure.des ##############################
+%%%%
+Murray drops in to check on your progress.
+
+『マーリー』があなたの進捗を確認しに立ち寄った。
+%%%%
+############################## dat/des/sprint/sprint_mu.des ##############################
+%%%%
+You hear a whooshing noise from somewhere close by.
+
+あなたはどこか近くでシューッと言う音を聞いた。
+%%%%
+############################## dat/des/sprint/zigsprint.des ##############################
+%%%%
+Your surroundings seem different!
+
+周囲の風景が一変した！
+%%%%
+<magenta>An exit appears before you!</magenta>
+
+<magenta>あなたの目の前に出口が現れた！</magenta>
+%%%%
 ############################## dat/dlua/lm_tmsg.lua ##############################
 %%%%
 The walls and floor vibrate strangely for a moment.

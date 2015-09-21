@@ -131,7 +131,7 @@ function arena_sprint_end_round(data)
         else
             crawl.mpr("<yellow>Victory!</yellow>", "warning")
         end
-        crawl.mpr("Score multiplier: " .. data.style_mult .. "x", "intrinsic_gain")
+        crawl.mpr("スコア倍率: " .. data.style_mult .. "倍", "intrinsic_gain")
         -- Gold multiplier is capped at 5x
         gold_gain = gold_gain * math.min(data.style_mult, 5)
     else
@@ -148,8 +148,8 @@ function arena_sprint_end_round(data)
     local style_points = dgn.persist.arena_style_points + style_gain
     dgn.persist.arena_style_points = style_points
     if style_points > 1 then
-        crawl.mpr("You now have " .. style_points .. " arena points " ..
-                  "(gained " .. style_gain .. ").", "intrinsic_gain")
+        crawl.mpr("あなたは現在" .. style_points .. "ポイントを持っている。" ..
+                  "(" .. style_gain .. "ポイント獲得)", "intrinsic_gain")
     else
         crawl.mpr("You now have 1 arena point.", "intrinsic_gain")
     end
@@ -192,7 +192,7 @@ function arena_sprint_ominous_countdown(time_left, waiting)
                 or time_left == 100
                 or (time_left <= 50 and time_left % 10 == 0))
         then
-            crawl.mpr(time_left / 10 .. "...", "duration")
+            crawl.mpr(time_left / 10 .. "……", "duration")
         elseif time_left <= 0 then
             crawl.mpr("Time's up!", "duration")
             --crawl.more()
@@ -823,7 +823,7 @@ function thing_do_arena(data, triggerable, triggerer, marker, ev)
 
             if data.time_left <= 0 then
                 crawl.take_note("Round " .. data.round_id .. ".")
-                crawl.mpr("ROUND " .. data.round_id .. "!", "warning")
+                crawl.mpr("ラウンド" .. data.round_id .. "！", "warning")
                 if data.round_id == 42 then
                     crawl.mpr("FINAL BOSS!", "warning")
                 elseif arena_sprint_is_boss_round(data.round_id) then
@@ -874,9 +874,9 @@ function thing_do_arena(data, triggerable, triggerer, marker, ev)
                 -- 50% chance of picking a specific direction to spawn from, else
                 -- spawn from all four directions.
                 if crawl.coinflip() then
-                    local directions = {"north", "east", "south", "west"}
+                    local directions = {"北", "東", "南", "西"}
                     data.spawn_dir = directions[crawl.random2(#directions) + 1]
-                    crawl.mpr("You sense a tension in the " .. data.spawn_dir .. ".")
+                    crawl.mpr("あなたは" .. data.spawn_dir .. "の方向に気配を感じた。")
                 else
                     data.spawn_dir = "spawn_point"
                 end
@@ -984,10 +984,10 @@ LROCKTILE:  wall_hall
 
     set_feature_name("dry_fountain", "spawn point")
 
-    crawl.mpr("<cyan>You have entered the arena!\n" ..
-              "You will win if you kill everything that spawns (including allies).\n" ..
-              "If it is a boss round, you only need to kill the boss in order to win.\n" ..
-              "If it is a lightning round, you only need to survive!</cyan>")
+    crawl.mpr("<cyan>あなたは闘技場に入った！\n" ..
+              "出現した敵をすべて倒せば勝利となる。(仲間も含む)\n" ..
+              "ボスラウンドでは、勝利のためにはボスを倒すことのみが要求される。\n" ..
+              "ライトニングラウンドでは、ただひたすら生き残ることが要求される！</cyan>")
 }}
 # No exploration gods or beogh, although both gods are still allowed (just
 # harder to get). Both would be rather useless if you picked them, though.
