@@ -173,32 +173,34 @@ bool ranged_attack::handle_phase_attempted()
 bool ranged_attack::handle_phase_blocked()
 {
     ASSERT(!attack_ignores_shield(false));
-    string punctuation = ".";
-    string verb = "block";
+    string punctuation = "。";
+    string verb = "防いだ";
+    string by_shield;
     if (defender_shield && is_shield(*defender_shield)
         && shield_reflects(*defender_shield))
     {
         reflected = true;
-        verb = "reflect";
+        verb = "反射した";
         if (defender->observable())
         {
-            punctuation = " off " + defender->pronoun(PRONOUN_POSSESSIVE)
-                          + " " + defender_shield->name(DESC_PLAIN).c_str()
-                          + "!";
+            by_shield = defender_shield->name(DESC_PLAIN) + "で";
+            punctuation = "！";
+
             ident_reflector(defender_shield);
         }
         else
-            punctuation = "!";
+            punctuation = "！";
     }
     else
         range_used = BEAM_STOP;
 
     if (needs_message)
     {
-        mprf("%s %s %s%s",
+        mprf("%sは%s%sを%s%s",
              defender_name(false).c_str(),
-             defender->conj_verb(verb).c_str(),
+             by_shield.c_str(),
              projectile->name(DESC_THE).c_str(),
+             jtransc(verb),
              punctuation.c_str());
     }
 

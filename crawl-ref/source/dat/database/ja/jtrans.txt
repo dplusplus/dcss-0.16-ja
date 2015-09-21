@@ -7044,6 +7044,10 @@ You can't quiver worn items.
 %%%%
 ############################## ranged_attack.cc ##############################
 %%%%
+%s %s %s%s
+
+%sは%s%sを%s%s
+%%%%
 %s %s %s but does no damage.
 
 %sは%sに%sが、傷つかなかった。
