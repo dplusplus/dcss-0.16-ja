@@ -1,4 +1,6 @@
 %%%%
+############################## art-data.h ##############################
+%%%%
 Sulking Sword
 
 憂う剣
@@ -454,4 +456,322 @@ Maxwell's etheric cage
 crown of Eternal Torment
 
 永劫なる苦痛の王冠
+%%%%
+############################## art-func.h ##############################
+%%%%
+The Sceptre summons one of its servants.
+
+王笏はしもべのひとつを召喚した。
+%%%%
+You don't feel so good about this...
+
+この存在にはあまり好感が持てない……
+%%%%
+The air shimmers briefly.
+
+一瞬大気が振動した。
+%%%%
+The Sword of Cerebov burns away your fire resistance.
+
+セレボブの剣はあなたの火への耐性を焼き払った。
+%%%%
+The Sword of Cerebov burns away %s fire resistance.
+
+セレボブの剣は%s火への耐性を焼き払った。
+%%%%
+A shiver runs down your spine.
+
+戦慄が脊髄まで走った。
+%%%%
+You're too close to death to use this item.
+
+あなたは死にかけているためこのアイテムを使用できない。
+%%%%
+You feel the staff feeding on your energy!
+
+杖があなたのエネルギーを消費した！
+%%%%
+You smell chlorine.
+
+あなたは塩素の臭いを嗅いだ。
+%%%%
+The staff glows a sickly green.
+
+杖は毒々しい緑色に輝いた。
+%%%%
+The smell of chlorine vanishes.
+
+塩素の臭いが消えた。
+%%%%
+The staff's sickly green glow vanishes.
+
+杖は毒々しい緑色に輝くのをやめた。
+%%%%
+You sense an aura of extreme power.
+
+あなたは強大な力のオーラを感じた。
+%%%%
+The sword says, "Hi! I'm the Singing Sword!"
+
+その剣は『やあ！ わたしは謳う剣だよ！』と喋った。
+%%%%
+The Singing Sword hums in delight!
+
+『謳う剣』は歓喜の唸りを上げた！
+%%%%
+The Singing Sword sighs.
+
+『謳う剣』は溜息を漏らした。
+%%%%
+You feel pruney.
+
+あなたはプルーンの気分になった。
+%%%%
+A terribly searing pain shoots up your arm!
+
+恐ろしい灼けるような痛みがあなたの腕を駆けのぼった！
+%%%%
+You feel bloodthirsty!
+
+あなたは残忍な衝動を覚えた！
+%%%%
+You feel less violent.
+
+あなたの凶暴さは幾分収まった。
+%%%%
+Your reserves of magic are full.
+
+あなたの魔力はいっぱいだ。
+%%%%
+Magical energy flows into your mind!
+
+魔法のエネルギーがあなたの精神を駆け巡った！
+%%%%
+You feel a strange hunger, and smell blood in the air...
+
+あなたは奇妙な飢えに苛まれ、空気から血の臭いを嗅ぎだした。
+%%%%
+You feel strangely empty.
+
+あなたは奇妙な空腹感を感じた。
+%%%%
+You sense an extremely unholy aura.
+
+あなたは非常に邪悪な霊気を感じた。
+%%%%
+You hear a strange loud sound.
+
+あなたは奇妙な轟音を聞いた。
+%%%%
+A thin mist springs up around you!
+
+薄い霧があなたの周りに湧きだした！
+%%%%
+Visions of slaying %s flood into your mind.
+
+%sを抹殺する光景があなたの脳裏に浮かんだ。
+%%%%
+Your confusion fades away as the thirst for blood takes over your mind.
+
+血に飢えた感情があなたの精神を支配すると共に混乱が薄れていった。
+%%%%
+Your thirst for blood fades away.
+
+あなたの血に飢えた感情が薄れていった。
+%%%%
+You feel an overwhelming desire to commit suicide.
+
+あなたは突然自殺願望にとらわれた。
+%%%%
+You feel an overwhelming desire to slay dragons!
+
+あなたは突然ドラゴンを殺したい欲望にとらわれた。
+%%%%
+<grey>%s %s!</grey>
+
+<grey>%sは身もだえした！</grey>
+%%%%
+<green>The lance glows as it skewers %s.</green>
+
+<green>ランスは%sを串刺しにして輝いた。</green>
+%%%%
+%s %s blasted by disruptive energy!
+
+%sは破壊の力をその身に浴びた！
+%%%%
+Time to lay down the shillelagh law.
+
+戦いのルールを定めるときが来た。
+%%%%
+You feel oddly protected from the elements.
+
+あなたは奇妙に元素の力から守られたような気がした。
+%%%%
+You no longer feel protected from the elements.
+
+あなたはもう元素の力から守られてはいない。
+%%%%
+The light fades from your surroundings.
+
+あなたの周囲から明かりが去っていった。
+%%%%
+The light returns to your surroundings.
+
+あなたの周囲の明かりが戻ってきた。
+%%%%
+Mutagenic energy flows through the plutonium sword!
+
+プルトニウムの剣を通じて変異性のエネルギーが流れ込んできた！
+%%%%
+cleave
+
+切り裂いた
+%%%%
+in twain
+
+真っ二つに
+%%%%
+pulverise
+
+粉々にした
+%%%%
+into a thin bloody mist
+
+血の霧に変えて
+%%%%
+hew
+
+叩き切った
+%%%%
+savagely
+
+荒っぽく
+%%%%
+fatally mangle
+
+徹底的に切り刻んだ
+%%%%
+dissect
+
+切り裂いた
+%%%%
+like a pig carcass
+
+豚のように
+%%%%
+chop
+
+刻んだ
+%%%%
+into pieces
+
+粉々に
+%%%%
+butcher
+
+解体した
+%%%%
+messily
+
+乱暴に
+%%%%
+slaughter
+
+虐殺した
+%%%%
+joyfully
+
+歓喜しながら
+%%%%
+%s %s %s%s.
+
+%sは%sを%s%s。
+%%%%
+burn
+
+燃やした
+%%%%
+freeze
+
+凍りつかせた
+%%%%
+electrocute
+
+感電させた
+%%%%
+%s %s %s.
+
+%sは%sを%s。
+%%%%
+The arc blade crackles to life.
+
+電弧の刃は放電を始めた。
+%%%%
+The arc blade stops crackling.
+
+電弧の刃は放電をやめた。
+%%%%
+The arc blade crackles.
+
+電弧の刃は放電している。
+%%%%
+You hear the crackle of electricity.
+
+あなたは放電する音を聞いた。
+%%%%
+You are filled with an inner flame.
+
+あなたは内なる炎に満たされた。
+%%%%
+Your inner flame fades away.
+
+あなたの内なる炎は消え去った。
+%%%%
+%s is filled with an inner flame.
+
+%sは内なる炎に満たされた。
+%%%%
+The dagger glows with an icy blue light!
+
+ダガーは氷を思わせる蒼い光に輝いた！
+%%%%
+The dagger stops glowing.
+
+ダガーは輝きを止めた。
+%%%%
+%s is flash-frozen.
+
+%sは一瞬のうちに凍結された。
+%%%%
+You are encased in ice.
+
+あなたは凍結している。
+%%%%
+The scimitar bursts into red hot flame!
+
+シミターは赤熱の炎を吹き上げた！
+%%%%
+The scimitar stops flaming.
+
+シミターは燃えさかるのを止めた。
+%%%%
+You feel a darkness envelop your magic.
+
+あなたは闇の力が魔力を覆い隠すのを感じた。
+%%%%
+The darkness slowly releases its grasp on your magic.
+
+闇の力が支配していたあなたの魔力がゆっくりと解放された。
+%%%%
+You feel like a king!
+
+あなたは王様になった気分だ！
+%%%%
+You feel regal.
+
+あなたは王様にふさわしくなったような気がした。
+%%%%
+You knock %s %s to the ground with your cutlass!
+
+あなたは%sの%sをカトラスで地面に叩き落とした！
 %%%%

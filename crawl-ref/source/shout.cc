@@ -354,10 +354,22 @@ void item_noise(const item_def &item, string msg, int loudness)
 {
     if (is_unrandom_artefact(item))
     {
-        // "Your Singing Sword" sounds disrespectful
-        // (as if there could be more than one!)
-        msg = replace_all(msg, "@Your_weapon@", "@The_weapon@");
-        msg = replace_all(msg, "@your_weapon@", "@the_weapon@");
+        if (is_unrandom_artefact(item, UNRAND_SINGING_SWORD))
+        {
+            string name = jtrans(get_artefact_name(item, true));
+
+            msg = replace_all(msg, "@Your_weapon@", name);
+            msg = replace_all(msg, "@your_weapon@", name);
+            msg = replace_all(msg, "@The_weapon@", name);
+            msg = replace_all(msg, "@the_weapon@", name);
+        }
+        else
+        {
+            // "Your Singing Sword" sounds disrespectful
+            // (as if there could be more than one!)
+            msg = replace_all(msg, "@Your_weapon@", "@The_weapon@");
+            msg = replace_all(msg, "@your_weapon@", "@the_weapon@");
+        }
     }
 
     // Set appropriate channel (will usually be TALK).

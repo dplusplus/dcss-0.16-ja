@@ -10,6 +10,7 @@
 #include "areas.h"
 #include "art-enum.h"
 #include "coord.h"
+#include "database.h"
 #include "env.h"
 #include "fprop.h"
 #include "state.h"
@@ -244,9 +245,9 @@ void player::_removed_beholder(bool quiet)
         you.duration[DUR_MESMERISE_IMMUNE] = random_range(21, 40);
         if (!quiet)
         {
-            mprf(MSGCH_DURATION,
-                 coinflip() ? "You break out of your daze!"
-                            : "You are no longer entranced.");
+            mpr_nojoin(MSGCH_DURATION,
+                       jtrans(coinflip() ? "You break out of your daze!"
+                                         : "You are no longer entranced."));
         }
     }
 }

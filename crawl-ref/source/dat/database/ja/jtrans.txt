@@ -31,6 +31,16 @@ The %s %s %s.
 
 %sは%s%s。
 %%%%
+############################## behold.cc ##############################
+%%%%
+You break out of your daze!
+
+あなたは眩暈を振り払った！
+%%%%
+You are no longer entranced.
+
+あなたはもう魅了されてはいない。
+%%%%
 ############################## butcher.cc ##############################
 %%%%
 Desecrating this corpse would be a sin. Continue anyway?
