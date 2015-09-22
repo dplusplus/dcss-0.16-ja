@@ -758,10 +758,9 @@ static void _sdump_skills(dump_params &par)
 {
     string &text(par.text);
 
-    text += "   Skills:\n";
+    text += jtransln("Skills:\n");
 
     dump_skills(text);
-    text += "\n";
     text += "\n";
 }
 
