@@ -1,0 +1,258 @@
+%%%%
+You can't produce a sound!
+
+あなたは音を立てることができない！
+%%%%
+You produce a hideous howling noise!
+
+あなたは忌まわしくも凄まじい騒音を吹き鳴らした！
+%%%%
+%s is enraged by your holy aura!
+
+%sはあなたの神聖なるオーラに激怒した！
+%%%%
+Nothing answers your call.
+
+あなたの呼びかけに応える者はいなかった。
+%%%%
+You lack the intelligence to focus on the shapes in the ball.
+
+あなたは水晶玉に向かって集中するには知性に欠けている。
+%%%%
+You are unable to concentrate on the shapes in the ball.
+
+あなたは水晶玉に向かって集中することができない。
+%%%%
+With no energy to recover, the crystal ball of energy is presently useless to you.
+
+既に魔力がいっぱいなので、魔力の水晶球を使っても今のところ無意味だ。
+%%%%
+You lack the skill to use this item.
+
+あなたはそのアイテムを使うにはスキルが足らない。
+%%%%
+The disc glows for a moment, then fades.
+
+円盤は一瞬だけ輝いたが、すぐに光は消えた。
+%%%%
+Little bolts of electricity crackle over the disc.
+
+小さな電光が円盤の周りでバチバチと爆ぜた。
+%%%%
+The disc erupts in an explosion of electricity!
+
+円盤は電気の爆発を放射した！
+%%%%
+You have no means to grasp a wand firmly enough.
+
+あなたにはしっかりとワンドを握る手段がない。
+%%%%
+You cannot evoke magical items.
+
+あなたは魔法のアイテムを発動できない。
+%%%%
+Zap which item?
+
+どのアイテムを振りますか？
+%%%%
+You can't zap that!
+
+あなたはそれを振れない！
+%%%%
+This wand has no charges.
+
+このワンドには魔力が残っていない。
+%%%%
+Zapping:
+
+発動:
+%%%%
+<lightred>(will waste charges)</lightred>
+
+<lightred>(余分に残り回数を消耗します)</lightred>
+%%%%
+%s prevents hasting.
+
+%sは加速するのを妨げた。
+%%%%
+You cannot haste.
+
+あなたは加速できない。
+%%%%
+Evoking this partially-identified wand wasted a few charges.
+
+完全に鑑定されていないワンドを振ったため、余分に魔力を消耗した。
+%%%%
+Your skill with magical items lets you calculate the power of this device...
+
+魔法のアイテムに関する技能から、この道具の残り使用回数が判明した。
+%%%%
+This wand has %d charge%s left.
+
+このワンドの使用回数は残り%d回だ。
+%%%%
+You open the lid...
+
+あなたは蓋を開いた……
+%%%%
+...but the box appears empty, and falls apart.
+
+……しかし中は空っぽだったので、匣を捨てた。
+%%%%
+...but nothing happens.
+
+……しかし何事も起こらなかった！
+%%%%
+...and something leaps out!
+
+……すると何かが飛び出してきた！
+%%%%
+You reach into the bag...
+
+あなたは袋の中を探った……
+%%%%
+...but the bag is empty, and unravels at your touch.
+
+……しかし中は空っぽだったので、袋を捨てた。
+%%%%
+...and things crawl out!
+
+……すると何かが這い出てきた！
+%%%%
+You gaze into the crystal ball.
+
+あなたは水晶球にじっと見入った。
+%%%%
+using a ball of energy
+
+魔力の水晶球を使って
+%%%%
+You feel your power drain away!
+
+あなたは魔力が吸い取られていくのを感じた！
+%%%%
+You are suffused with power!
+
+あなたは魔力に満たされた！
+%%%%
+Aim the lamp in which direction?
+
+ランプをどの方向に向けますか？
+%%%%
+The flames dance!
+
+炎が舞い踊った！
+%%%%
+card
+
+カード
+%%%%
+fan
+
+扇
+%%%%
+A mighty gale blasts forth from the %s!
+
+%sから強烈な突風が吹き出した！
+%%%%
+A fierce wind blows from the %s.
+
+%sから激しい風が吹き出した。
+%%%%
+You are blown backwards!
+
+あなたは後方に吹き飛ばされた！
+%%%%
+%s %s blown away by the wind.
+
+%sは風によって吹き飛ばされた。
+%%%%
+The monsters around you are blown away!
+
+あなたの周囲にいるモンスターは吹き飛ばされた！
+%%%%
+The winds coalesce and take form.
+
+風が集まって具現化した。
+%%%%
+The dungeon trembles and rubble falls from the walls!
+
+迷宮が揺れ、壁が崩れ落ちた。
+%%%%
+The door collapses!
+
+扉が崩れた！
+%%%%
+The rubble rises up and takes form.
+
+瓦礫が集まって生命が吹き込まれた。
+%%%%
+Aim the phial where?
+
+小瓶をどちらに向けますか？
+%%%%
+The water rises up and takes form.
+
+水が持ち上がって動き出した。
+%%%%
+Aiming: <white>Phantom Mirror</white>
+
+発動: <white>幻影の鏡</white>
+%%%%
+You can't use the mirror on yourself.
+
+自分自身に鏡を使うことはできない。
+%%%%
+You can't see anything there to clone.
+
+鏡に映す対象が見当たらない。
+%%%%
+The mirror can't reflect that.
+
+鏡はそれを映すことができない。
+%%%%
+The reflection would only feel hate for you!
+
+鏡に映しても反感を買うだけだ！
+%%%%
+forbids your reflecting this monster.
+
+はモンスターを鏡に映すのを禁じた。
+%%%%
+You reflect %s with the mirror, and the mirror shatters!
+
+あなたが%sの姿を映すと、鏡は粉々に砕けた！
+%%%%
+The rod doesn't have enough magic points.
+
+ロッドには十分な魔力が込められていない。
+%%%%
+You can't see any susceptible monsters within range! (Use <w>V</w> to cast anyway.)
+
+射程距離内にはモンスターが見当たらない！
+(構わずに使いたい場合、<w>V</w> コマンドを使ってください)
+%%%%
+You cannot evoke items in this form.
+
+現在の姿ではアイテムを発動できない。
+%%%%
+Evoke which item? (* to show all)
+
+どのアイテムを発動させますか？ (* で全アイテムから選択)
+%%%%
+Your reserves of magic are already full.
+
+あなたの魔力は既にいっぱいだ。
+%%%%
+You channel some magical energy.
+
+あなたはいくらか魔力を補充した。
+%%%%
+That is presently inert.
+
+それは今のところ使用不能だ。
+%%%%
+QUAD DAMAGE!
+
+ダメージが4倍になった！
+%%%%
