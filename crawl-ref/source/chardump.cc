@@ -776,7 +776,7 @@ static string spell_type_shortname(spschool_flag_type spell_class, bool slash)
     if (slash)
         ret = "/";
 
-    ret += spelltype_short_name(spell_class);
+    ret += jtrans(spelltype_short_name(spell_class));
 
     return ret;
 }
@@ -788,44 +788,30 @@ static string spell_type_shortname(spschool_flag_type spell_class, bool slash)
 //---------------------------------------------------------------
 static void _sdump_spells(dump_params &par)
 {
-    string &text(par.text);
+    string text;
 
     int spell_levels = player_spell_levels();
 
-    string verb = par.se? "had" : "have";
-
-    if (spell_levels == 1)
-        text += "You " + verb + " one spell level left.";
-    else if (spell_levels == 0)
+    if (spell_levels == 0)
     {
-        verb = par.se? "couldn't" : "cannot";
-
-        text += "You " + verb + " memorise any spells.";
+        text += "あなたはこれ以上呪文を覚えられない。";
     }
     else
     {
-        if (par.se)
-            text += "You had ";
-        else
-            text += "You have ";
-        text += make_stringf("%d spell levels left.", spell_levels);
+        text += make_stringf("あなたの残りの記憶力は%dだ。", spell_levels);
     }
 
     text += "\n";
 
     if (!you.spell_no)
     {
-        verb = par.se? "didn't" : "don't";
-
-        text += "You " + verb + " know any spells.\n\n";
+        text += "あなたは呪文を何一つ覚えていない。\n\n";
     }
     else
     {
-        verb = par.se? "knew" : "know";
+        text += "あなたは以下の呪文を覚えている:\n\n";
 
-        text += "You " + verb + " the following spells:\n\n";
-
-        text += " Your Spells              Type           Power        Failure   Level  Hunger" "\n";
+        text += "    " + jtransln(" Your Spells              Type           Power        Failure   Level  Hunger" "\n");
 
         for (int j = 0; j < 52; j++)
         {
@@ -838,10 +824,10 @@ static void _sdump_spells(dump_params &par)
 
                 spell_line += letter;
                 spell_line += " - ";
-                spell_line += spell_title(spell);
+                spell_line += tagged_jtrans("[spell]", spell_title(spell));
 
-                spell_line = chop_string(spell_line, 24);
-                spell_line += "  ";
+                spell_line = chop_string(spell_line, 29);
+                spell_line += " ";
 
                 bool already = false;
 
@@ -859,22 +845,32 @@ static void _sdump_spells(dump_params &par)
 
                 spell_line += spell_power_string(spell);
 
-                spell_line = chop_string(spell_line, 54);
+                spell_line = chop_string(spell_line, 53);
 
                 spell_line += failure_rate_to_string(raw_spell_fail(spell));
 
-                spell_line = chop_string(spell_line, 66);
+                spell_line = chop_string(spell_line, 61);
 
-                spell_line += make_stringf("%-5d", spell_difficulty(spell));
+                spell_line += make_stringf("%d       ", spell_difficulty(spell));
 
-                spell_line += spell_hunger_string(spell);
+                spell_line += make_stringf("%3s", spell_hunger_string(spell).c_str());
                 spell_line += "\n";
 
                 text += spell_line;
             }
         }
-        text += "\n\n";
+        text += "\n";
     }
+
+    if (par.se)
+    {
+        text = replace_all(text, "い。", "かった。");
+        text = replace_all(text, "だ。", "だった。");
+        text = replace_all(text, "いる。", "いた。");
+        text = replace_all(text, "いる:", "いた:");
+    }
+
+    par.text += text;
 }
 
 static void _sdump_kills(dump_params &par)

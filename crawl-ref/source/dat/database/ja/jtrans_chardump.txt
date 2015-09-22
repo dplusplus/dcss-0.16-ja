@@ -87,3 +87,7 @@ Skills:
 
 スキル一覧:
 %%%%
+Your Spells              Type           Power        Failure   Level  Hunger
+
+呪文名                    種類         威力    失敗率 レベル 満腹度消費
+%%%%
