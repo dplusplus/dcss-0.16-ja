@@ -683,12 +683,11 @@ static void _sdump_inventory(dump_params &par)
 
     if (!inv_count)
     {
-        text += "You aren't carrying anything.";
-        text += "\n";
+        text += jtransln("You aren't carrying anything.");
     }
     else
     {
-        text += "Inventory:\n\n";
+        text += jtrans("Inventory:\n\n");
 
         for (int obj = 0; obj < NUM_OBJECT_CLASSES; obj++)
         {
@@ -699,20 +698,20 @@ static void _sdump_inventory(dump_params &par)
 
             switch (i)
             {
-            case OBJ_WEAPONS:    text += "Hand weapons";    break;
-            case OBJ_MISSILES:   text += "Missiles";        break;
-            case OBJ_ARMOUR:     text += "Armour";          break;
-            case OBJ_WANDS:      text += "Magical devices"; break;
-            case OBJ_FOOD:       text += "Comestibles";     break;
-            case OBJ_SCROLLS:    text += "Scrolls";         break;
-            case OBJ_JEWELLERY:  text += "Jewellery";       break;
-            case OBJ_POTIONS:    text += "Potions";         break;
-            case OBJ_BOOKS:      text += "Books";           break;
-            case OBJ_STAVES:     text += "Magical staves";  break;
-            case OBJ_RODS:       text += "Rods";            break;
-            case OBJ_ORBS:       text += "Orbs of Power";   break;
-            case OBJ_MISCELLANY: text += "Miscellaneous";   break;
-            case OBJ_CORPSES:    text += "Carrion";         break;
+            case OBJ_WEAPONS:    text += "\n手持ち武器";       break;
+            case OBJ_MISSILES:   text += "\n矢弾・石弾その他"; break;
+            case OBJ_ARMOUR:     text += "\n防具";             break;
+            case OBJ_WANDS:      text += "\nワンド";           break;
+            case OBJ_FOOD:       text += "\n食べ物";           break;
+            case OBJ_SCROLLS:    text += "\n巻物";             break;
+            case OBJ_JEWELLERY:  text += "\n装飾品";           break;
+            case OBJ_POTIONS:    text += "\n水薬";             break;
+            case OBJ_BOOKS:      text += "\n魔法書";           break;
+            case OBJ_STAVES:     text += "\n魔法の杖";         break;
+            case OBJ_RODS:       text += "\nロッド";           break;
+            case OBJ_ORBS:       text += "\nゾットのオーブ";   break;
+            case OBJ_MISCELLANY: text += "\n発動用のアイテム"; break;
+            case OBJ_CORPSES:    text += "\n死体";             break;
 
             default:
                 die("Bad item class");
@@ -730,21 +729,24 @@ static void _sdump_inventory(dump_params &par)
                 inv_count--;
 
                 if (origin_describable(you.inv[j]) && _dump_item_origin(you.inv[j]))
-                    text += "\n" "   (" + origin_desc(you.inv[j]) + ")";
+                {
+                    text2 = "\n" "   (" + origin_desc(you.inv[j]) + ")";
+                    text += replace_all(text2, "。", "");
+                }
 
                 if (is_dumpable_artefact(you.inv[j])
                     || Options.dump_book_spells
                        && you.inv[j].base_type == OBJ_BOOKS)
                 {
                     text2 = get_item_description(you.inv[j], false, true);
-                    text += munge_description(text2);
+                    text += munge_description(replace_all(text2, "\n\n\n", "\n\n"));
                 }
                 else
                     text += "\n";
             }
         }
     }
-    text += "\n\n";
+    text += "\n";
 }
 
 //---------------------------------------------------------------

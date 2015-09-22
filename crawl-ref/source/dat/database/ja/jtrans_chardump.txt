@@ -75,3 +75,11 @@ You %sused %d gold pieces for miscellaneous purposes.
 
 あなたは%d枚の金貨をその他の用途に使っている。
 %%%%
+You aren't carrying anything.
+
+あなたは何も所持していない。
+%%%%
+Inventory:
+
+所持品一覧:
+%%%%
