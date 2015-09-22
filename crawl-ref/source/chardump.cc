@@ -21,6 +21,7 @@
 #include "artefact.h"
 #include "art-enum.h"
 #include "branch.h"
+#include "database.h"
 #include "describe.h"
 #include "dgn-overview.h"
 #include "dungeon.h"
@@ -32,6 +33,7 @@
 #include "invent.h"
 #include "itemprop.h"
 #include "items.h"
+#include "japanese.h"
 #include "kills.h"
 #include "libutil.h"
 #include "message.h"
@@ -203,18 +205,21 @@ static void _sdump_header(dump_params &par)
 static void _sdump_stats(dump_params &par)
 {
     par.text += dump_overview_screen(par.full_id);
-    par.text += "\n\n";
+    par.text += "\n";
 }
 
 static void _sdump_hunger(dump_params &par)
 {
-    if (par.se)
-        par.text += "You were ";
-    else
-        par.text += "You are ";
+    string text = "あなたは" + string(hunger_level()) + "。\n\n";
 
-    par.text += hunger_level();
-    par.text += ".\n\n";
+    if (par.se)
+    {
+        text = replace_all(text, "だ。", "だった。");
+        text = replace_all(text, "い。", "かった。");
+        text = replace_all(text, "いる。", "いた。");
+    }
+
+    par.text += text;
 }
 
 static void _sdump_transform(dump_params &par)
@@ -237,82 +242,67 @@ static branch_type single_portals[] =
 
 static void _sdump_visits(dump_params &par)
 {
-    string &text(par.text);
-
-    string have = "have ";
-    string seen = "seen";
-    if (par.se) // you died -> past tense
-    {
-        have = "";
-        seen = "saw";
-    }
-
+    string text;
     vector<PlaceInfo> branches_visited = you.get_all_place_info(true, true);
 
     PlaceInfo branches_total;
     for (const PlaceInfo &branch : branches_visited)
         branches_total += branch;
 
-    text += make_stringf("You %svisited %d branch",
-                         have.c_str(), (int)branches_visited.size());
-    if (branches_visited.size() != 1)
-        text += "es";
+    text += make_stringf(jtransc("You %svisited %d branch"),
+                         (int)branches_visited.size());
+    text += general_counter_suffix((int)branches_visited.size());
     if (brdepth[root_branch] > 1 || branches_visited.size() != 1)
     {
-        text += make_stringf(" of the dungeon, and %s %d of its levels.\n",
-                             seen.c_str(), branches_total.levels_seen);
+        text += make_stringf(jtranslnc(" of the dungeon, and %s %d of its levels.\n"),
+                             branches_total.levels_seen);
     }
+    else
+        text += "を訪れている。\n";
 
     PlaceInfo place_info = you.get_place_info(BRANCH_PANDEMONIUM);
     if (place_info.num_visits > 0)
     {
-        text += make_stringf("You %svisited Pandemonium %d time",
-                             have.c_str(), place_info.num_visits);
-        if (place_info.num_visits > 1)
-            text += "s";
-        text += make_stringf(", and %s %d of its levels.\n",
-                             seen.c_str(), place_info.levels_seen);
+        text += make_stringf(jtransc("You %svisited Pandemonium %d time"),
+                             place_info.num_visits);
+        text += make_stringf(jtranslnc(", and %s %d of its levels.\n"),
+                             place_info.levels_seen);
     }
 
     place_info = you.get_place_info(BRANCH_ABYSS);
     if (place_info.num_visits > 0)
     {
-        text += make_stringf("You %svisited the Abyss %d time",
-                             have.c_str(), place_info.num_visits);
-        if (place_info.num_visits > 1)
-            text += "s";
-        text += ".\n";
+        text += make_stringf(jtransc("You %svisited the Abyss %d time"),
+                             place_info.num_visits);
+        text += "。\n";
     }
 
     place_info = you.get_place_info(BRANCH_BAZAAR);
     if (place_info.num_visits > 0)
     {
-        text += make_stringf("You %svisited %d bazaar",
-                             have.c_str(), place_info.num_visits);
-        if (place_info.num_visits > 1)
-            text += "s";
-        text += ".\n";
+        text += make_stringf(jtransc("You %svisited %d bazaar"),
+                             place_info.num_visits);
+        text += "。\n";
     }
 
     place_info = you.get_place_info(BRANCH_ZIGGURAT);
     if (place_info.num_visits > 0)
     {
         int num_zigs = place_info.num_visits;
-        text += make_stringf("You %s%s %d ziggurat",
-                             have.c_str(),
-                             (num_zigs == you.zigs_completed) ? "completed"
-                                                              : "visited",
-                             num_zigs);
-        if (num_zigs > 1)
-            text += "s";
+        text += make_stringf(jtransc("You %s%s %d ziggurat"),
+                             num_zigs,
+                             (num_zigs == you.zigs_completed) ? "踏破し、"
+                                                              : "に行き、");
+
         if (num_zigs != you.zigs_completed && you.zigs_completed)
             text += make_stringf(" (completing %d)", you.zigs_completed);
-        text += make_stringf(", and %s %d of %s levels",
-                             seen.c_str(), place_info.levels_seen,
-                             num_zigs > 1 ? "their" : "its");
+
+        text += make_stringf(jtransc(", and %s %d of %s levels"),
+                             place_info.levels_seen);
+
         if (num_zigs != 1 && !you.zigs_completed)
-            text += make_stringf(" (deepest: %d)", you.zig_max);
-        text += ".\n";
+            text += make_stringf(jtransc(" (deepest: %d)"), you.zig_max);
+        text += "\n";
     }
 
     vector<string> misc_portals;
@@ -323,68 +313,73 @@ static void _sdump_visits(dump_params &par)
             continue;
         string name = branches[br].shortname;
         if (place_info.num_visits > 1)
-            name += make_stringf(" (%d times)", place_info.num_visits);
+            name += make_stringf(jtransc(" (%d times)"), place_info.num_visits);
         misc_portals.push_back(name);
     }
+
     if (!misc_portals.empty())
     {
-        text += "You " + have + "also visited: "
-                + comma_separated_line(misc_portals.begin(),
-                                       misc_portals.end())
-                + ".\n";
+        text += "あなたは"
+                + to_separated_fn(misc_portals.begin(),
+                                  misc_portals.end(),
+                                  [](const string &s){
+                                      return tagged_jtrans("[branch]", s);
+                                  })
+                + "を訪れている。\n";
     }
 
-    text += "\n";
+    if (par.se)
+    {
+        text = replace_all(text, "ている。", "た。");
+    }
+
+    par.text += text;
 }
 
 static void _sdump_gold(dump_params &par)
 {
-    string &text(par.text);
-
+    string text;
     int lines = 0;
-
-    const char* have = "have ";
-    if (par.se) // you died -> past tense
-        have = "";
 
     if (you.attribute[ATTR_GOLD_FOUND] > 0)
     {
         lines++;
-        text += make_stringf("You %scollected %d gold pieces.\n", have,
+        text += make_stringf(jtranslnc("You %scollected %d gold pieces.\n"),
                              you.attribute[ATTR_GOLD_FOUND]);
     }
 
     if (you.attribute[ATTR_PURCHASES] > 0)
     {
         lines++;
-        text += make_stringf("You %sspent %d gold pieces at shops.\n", have,
+        text += make_stringf(jtranslnc("You %sspent %d gold pieces at shops.\n"),
                              you.attribute[ATTR_PURCHASES]);
     }
 
     if (you.attribute[ATTR_DONATIONS] > 0)
     {
         lines++;
-        text += make_stringf("You %sdonated %d gold pieces to Zin.\n", have,
+        text += make_stringf(jtranslnc("You %sdonated %d gold pieces to Zin.\n"),
                              you.attribute[ATTR_DONATIONS]);
     }
 
     if (you.attribute[ATTR_GOZAG_GOLD_USED] > 0)
     {
         lines++;
-        text += make_stringf("You %spaid %d gold pieces to Gozag.\n", have,
+        text += make_stringf(jtranslnc("You %spaid %d gold pieces to Gozag.\n"),
                              you.attribute[ATTR_GOZAG_GOLD_USED]);
     }
 
     if (you.attribute[ATTR_MISC_SPENDING] > 0)
     {
         lines++;
-        text += make_stringf("You %sused %d gold pieces for miscellaneous "
-                             "purposes.\n", have,
+        text += make_stringf(jtranslnc("You %sused %d gold pieces for miscellaneous "
+                                      "purposes.\n"),
                              you.attribute[ATTR_MISC_SPENDING]);
     }
 
     if (lines > 0)
-        text += "\n";
+        par.text += "\n";
+    par.text += text;
 }
 
 static void _sdump_misc(dump_params &par)
@@ -395,6 +390,8 @@ static void _sdump_misc(dump_params &par)
     _sdump_transform(par);
     _sdump_visits(par);
     _sdump_gold(par);
+
+    par.text += "\n";
 }
 
 #define TO_PERCENT(x, y) (100.0f * (static_cast<float>(x)) / (static_cast<float>(y)))
@@ -562,14 +559,13 @@ static void _sdump_notes(dump_params &par)
 static void _sdump_location(dump_params &par)
 {
     if (you.depth == 0 && player_in_branch(BRANCH_DUNGEON))
-        par.text += "You escaped";
+        par.text += jtrans("You escaped");
     else if (par.se)
-        par.text += "You were " + prep_branch_level_name();
+        par.text += "あなたは" + prep_branch_level_name() + "にいた";
     else
-        par.text += "You are " + prep_branch_level_name();
+        par.text += "あなたは" + prep_branch_level_name() + "にいる";
 
-    par.text += ".";
-    par.text += "\n";
+    par.text += "。\n";
 }
 
 static void _sdump_religion(dump_params &par)
@@ -577,12 +573,12 @@ static void _sdump_religion(dump_params &par)
     string &text(par.text);
     if (!you_worship(GOD_NO_GOD))
     {
+        text += "あなたは" + jtrans(god_name(you.religion)) + "を";
         if (par.se)
-            text += "You worshipped ";
+            text += "信仰していた";
         else
-            text += "You worship ";
-        text += god_name(you.religion);
-        text += ".\n";
+            text += "信仰している";
+        text += "。\n";
 
         if (!you_worship(GOD_XOM))
         {
@@ -593,19 +589,18 @@ static void _sdump_religion(dump_params &par)
             }
             else
             {
-                string verb = par.se ? "was" : "is";
-
-                text += uppercase_first(god_name(you.religion));
-                text += " " + verb + " demanding penance.\n";
+                text += jtrans(god_name(you.religion));
+                text += "は" + jtransln(" demanding penance.\n");
             }
         }
         else
         {
+            text += "あなたは" + jtrans(describe_xom_favour());
+
             if (par.se)
-                text += "You were ";
+                text += "だった。";
             else
-                text += "You are ";
-            text += describe_xom_favour();
+                text += "だ。";
             text += "\n";
         }
     }
@@ -1226,26 +1221,26 @@ static void _sdump_mutations(dump_params &par)
 
 static const char* hunger_names[] =
 {
-    "starving",
-    "near starving",
-    "very hungry",
-    "hungry",
-    "not hungry",
-    "full",
-    "very full",
-    "completely stuffed",
+    "餓死しかけている",     // "starving",
+    "餓死が近い",           // "near starving",
+    "とても腹が減っている", // "very hungry",
+    "腹が減っている",       // "hungry",
+    "特に腹が減っていない", // "not hungry",
+    "満腹だ",               // "full",
+    "とても満腹だ",         // "very full",
+    "腹一杯だ",             // "completely stuffed",
 };
 
 static const char* thirst_names[] =
 {
-    "bloodless",
-    "near bloodless",
-    "very thirsty",
-    "thirsty",
-    "not thirsty",
-    "full",
-    "very full",
-    "almost alive",
+    "血の気がない",         // "bloodless",
+    "ほとんど血の気がない", // "near bloodless",
+    "とても渇いている",     // "very thirsty",
+    "渇いている",           // "thirsty",
+    "あまり渇いていない",   // "not thirsty",
+    "満腹だ",               // "full",
+    "とても満腹だ",         // "very full",
+    "ほとんど生者のようだ", // "almost alive",
 };
 
 const char *hunger_level()
@@ -1408,12 +1403,14 @@ static bool _write_dump(const string &fname, dump_params &par, bool quiet)
 
     if (handle != nullptr)
     {
-        fputs(OUTS(par.text), handle);
+        string dump = replace_all(par.text, " ", " "); // replace no-break space to space
+
+        fputs(OUTS(dump), handle);
         fclose(handle);
         succeeded = true;
         if (!quiet)
 #ifdef DGAMELAUNCH
-            mpr("Char dumped successfully.");
+            mpr(jtrans("Char dumped successfully."));
 #else
             mprf("Char dumped to '%s'.", file_name.c_str());
 #endif

@@ -1,0 +1,77 @@
+%%%%
+You escaped
+
+あなたは迷宮を脱出した
+%%%%
+demanding penance.
+
+罪の償いを求めている。
+%%%%
+Char dumped successfully.
+
+キャラクターダンプに成功しました。
+%%%%
+You %svisited %d branch
+
+あなたは迷宮の分岐のうち%d
+%%%%
+of the dungeon, and %s %d of its levels.
+
+に行き、合計で%d階層を訪れている。
+%%%%
+You %svisited Pandemonium %d time
+
+あなたは%d回パンデモニウムに行き、
+%%%%
+, and %s %d of its levels.
+
+合計で%d階層を訪れている。
+%%%%
+You %svisited the Abyss %d time
+
+あなたは%d回アビスを訪れている
+%%%%
+You %svisited %d bazaar
+
+あなたは%d回バザールを訪れている
+%%%%
+You %s%s %d ziggurat
+
+あなたは%d回
+%%%%
+(completing %d)
+
+(うち%d回踏破)
+%%%%
+, and %s %d of %s levels
+
+、合計で%d階層を訪れている。
+%%%%
+(deepest: %d)
+
+(最高到達階数: %d)
+%%%%
+(%d times)
+
+(%d回)
+%%%%
+You %scollected %d gold pieces.
+
+あなたは%d枚の金貨をこれまでに集めている。
+%%%%
+You %sspent %d gold pieces at shops.
+
+あなたは%d枚の金貨を店で使っている。
+%%%%
+You %sdonated %d gold pieces to Zin.
+
+あなたはジンに%d枚の金貨を寄付している。
+%%%%
+You %spaid %d gold pieces to Gozag.
+
+あなたはゴザーグに%d枚の金貨を支払っている。
+%%%%
+You %sused %d gold pieces for miscellaneous purposes.
+
+あなたは%d枚の金貨をその他の用途に使っている。
+%%%%
