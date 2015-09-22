@@ -1542,14 +1542,6 @@ static string _get_monster_name(const monster_info& mi, int count, bool fullname
     int col;
     mi.to_string(count, monpane_desc, col, fullname, adj);
 
-    if (count == 1)
-    {
-        if (!mi.is(MB_NAME_THE))
-            desc = (is_vowel(monpane_desc[0]) ? "an " : "a ") + desc;
-        else if (adj || !mi.is(MB_NAME_UNQUALIFIED))
-            desc = "the " + desc;
-    }
-
     desc += monpane_desc;
     return desc;
 }
@@ -1565,9 +1557,11 @@ string mpr_monster_list(bool past)
     string msg = "";
     if (mons.empty())
     {
-        msg  = "There ";
-        msg += (past ? "were" : "are");
-        msg += " no monsters in sight!";
+        msg = "見える場所にはモンスターがいな";
+        if (past)
+            msg += "かった！";
+        else
+            msg += "い！";
 
         return msg;
     }
@@ -1587,15 +1581,18 @@ string mpr_monster_list(bool past)
 
     describe.push_back(_get_monster_name(mons[mons.size()-1], count, true).c_str());
 
-    msg = "You ";
-    msg += (past ? "could" : "can");
-    msg += " see ";
+    msg += "あなたは";
 
     if (describe.size() == 1)
         msg += describe[0];
     else
-        msg += comma_separated_line(describe.begin(), describe.end());
-    msg += ".";
+        msg += to_separated_line(describe.begin(), describe.end(), true, "、");
+    msg += "を目にし";
+
+    if (past)
+        msg += "ていた。";
+    else
+        msg += "ている。";
 
     return msg;
 }

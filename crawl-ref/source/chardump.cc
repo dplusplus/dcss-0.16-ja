@@ -524,7 +524,7 @@ static void _sdump_messages(dump_params &par)
     // A little message history:
     if (Options.dump_message_count > 0)
     {
-        par.text += "Message History\n\n";
+        par.text += jtransln("Message History\n\n");
         par.text += get_last_messages(Options.dump_message_count);
     }
 }
@@ -532,7 +532,7 @@ static void _sdump_messages(dump_params &par)
 static void _sdump_screenshot(dump_params &par)
 {
     par.text += screenshot();
-    par.text += "\n\n";
+    par.text += "\n";
 }
 
 static void _sdump_notes(dump_params &par)
@@ -1206,9 +1206,8 @@ static void _sdump_mutations(dump_params &par)
 
     if (how_mutated(true, false))
     {
-        text += "\n";
         text += (formatted_string::parse_string(describe_mutations(false)));
-        text += "\n\n";
+        text += "\n";
     }
 }
 

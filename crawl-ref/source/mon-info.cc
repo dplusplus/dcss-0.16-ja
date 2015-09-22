@@ -1624,7 +1624,7 @@ void monster_info::to_string(int count, string& desc, int& desc_colour,
     if (count != 1)
         out << count << "体の";
     if (adj)
-        out << adj << " ";
+        out << jtrans(adj);
     out << full;
 
 #ifdef DEBUG_DIAGNOSTICS

@@ -7,6 +7,14 @@ Nothing quivered
 
 (射撃準備していない)
 %%%%
+friendly
+
+友好的な
+%%%%
+neutral
+
+中立的な
+%%%%
 %s  - Unarmed
 
 %s  - 素手
