@@ -1020,25 +1020,25 @@ static string _describe_action(caction_type type)
     switch (type)
     {
     case CACT_MELEE:
-        return "Melee";
+        return "近接攻撃";
     case CACT_FIRE:
-        return " Fire";
+        return "    射撃";
     case CACT_THROW:
-        return "Throw";
+        return "    投擲";
     case CACT_CAST:
-        return " Cast";
+        return "    呪文";
     case CACT_INVOKE:
-        return "Invok";
+        return "    祈祷";
     case CACT_ABIL:
-        return " Abil";
+        return "    能力";
     case CACT_EVOKE:
-        return "Evoke";
+        return "    発動";
     case CACT_USE:
-        return "  Use";
+        return "    使用";
     case CACT_STAB:
-        return " Stab";
+        return "急所攻撃";
     case CACT_EAT:
-        return "  Eat";
+        return "    食事";
     default:
         return "Error";
     }
@@ -1046,17 +1046,17 @@ static string _describe_action(caction_type type)
 
 static const char* _stab_names[] =
 {
-    "Normal",
-    "Distracted",
-    "Confused",
-    "Fleeing",
-    "Invisible",
-    "Held in net/web",
-    "Petrifying", // could be nice to combine the two
-    "Petrified",
-    "Paralysed",
-    "Sleeping",
-    "Betrayed ally",
+    "通常時",   // "Normal",
+    "よそ見中", // "Distracted",
+    "混乱中",   // "Confused",
+    "逃亡中",   // "Fleeing",
+    "透明化中", // "Invisible",
+    "拘束中",   // "Held in net/web",
+    "石化中",   // "Petrifying", // could be nice to combine the two
+    "石像化",   // "Petrified",
+    "麻痺中",   // "Paralysed",
+    "睡眠中",   // "Sleeping",
+    "仲間から", // "Betrayed ally",
 };
 
 static string _describe_action_subtype(caction_type type, int subtype)
@@ -1069,11 +1069,11 @@ static string _describe_action_subtype(caction_type type, int subtype)
         subtype = (short)(subtype & 0xFFFF);
 
         if (basetype == OBJ_MISSILES)
-            return uppercase_first(item_base_name(OBJ_MISSILES, subtype));
+            return jtrans(item_base_name(OBJ_MISSILES, subtype));
         else if (basetype == OBJ_WEAPONS)
             ; // fallthrough
         else
-            return "other";
+            return "その他";
     }
     case CACT_MELEE:
     case CACT_FIRE:
@@ -1082,16 +1082,16 @@ static string _describe_action_subtype(caction_type type, int subtype)
             // Paranoia: an artefact may lose its specialness.
             const char *tn = get_unrand_entry(subtype)->type_name;
             if (tn)
-                return uppercase_first(tn);
+                return jtrans(tn);
             subtype = get_unrand_entry(subtype)->sub_type;
         }
-        return (subtype == -1) ? "Unarmed"
-               : uppercase_first(item_base_name(OBJ_WEAPONS, subtype));
+        return jtrans((subtype == -1) ? "Unarmed"
+               : uppercase_first(item_base_name(OBJ_WEAPONS, subtype)));
     case CACT_CAST:
-        return spell_title((spell_type)subtype);
+        return tagged_jtrans("[spell]", spell_title((spell_type)subtype));
     case CACT_INVOKE:
     case CACT_ABIL:
-        return ability_name((ability_type)subtype);
+        return jtrans(ability_name((ability_type)subtype));
     case CACT_EVOKE:
         if (subtype >= UNRAND_START && subtype <= UNRAND_LAST)
             return uppercase_first(get_unrand_entry(subtype)->name);
@@ -1108,11 +1108,11 @@ static string _describe_action_subtype(caction_type type, int subtype)
         switch ((evoc_type)subtype)
         {
         case EVOC_WAND:
-            return "Wand";
+            return jtrans("Wand");
         case EVOC_ROD:
-            return "Rod";
+            return jtrans("Rod");
         case EVOC_DECK:
-            return "Deck";
+            return jtrans("Deck");
 #if TAG_MAJOR_VERSION == 34
         case EVOC_MISC:
             return "Miscellaneous";
@@ -1123,14 +1123,14 @@ static string _describe_action_subtype(caction_type type, int subtype)
             return "Error";
         }
     case CACT_USE:
-        return uppercase_first(base_type_string((object_class_type)subtype));
+        return jtrans(base_type_string((object_class_type)subtype));
     case CACT_STAB:
         COMPILE_CHECK(ARRAYSZ(_stab_names) == NUM_STAB);
         ASSERT_RANGE(subtype, 1, NUM_STAB);
         return _stab_names[subtype];
     case CACT_EAT:
-        return subtype >= 0 ? uppercase_first(food_type_name(subtype))
-                            : "Corpse";
+        return jtrans(subtype >= 0 ? uppercase_first(food_type_name(subtype))
+                                   : "Corpse");
     default:
         return "Error";
     }
@@ -1146,11 +1146,11 @@ static void _sdump_action_counts(dump_params &par)
     if (max_lt)
         max_lt++;
 
-    par.text += make_stringf("\n%-24s", "Action");
+    par.text += make_stringf("\n%-29s", chop_string("行動", 29).c_str());
     for (int lt = 0; lt < max_lt; lt++)
         par.text += make_stringf(" | %2d-%2d", lt * 3 + 1, lt * 3 + 3);
-    par.text += make_stringf(" || %5s", "total");
-    par.text += "\n-------------------------";
+    par.text += " ||  総計";
+    par.text += "\n------------------------------";
     for (int lt = 0; lt < max_lt; lt++)
         par.text += "+-------";
     par.text += "++-------\n";
@@ -1181,8 +1181,8 @@ static void _sdump_action_counts(dump_params &par)
                 par.text += ": ";
             }
             else
-                par.text += "       ";
-            par.text += chop_string(_describe_action_subtype(caction_type(cact), ac->first), 17);
+                par.text += "          ";
+            par.text += chop_string(_describe_action_subtype(caction_type(cact), ac->first), 19);
             for (int lt = 0; lt < max_lt; lt++)
             {
                 int ltotal = 0;

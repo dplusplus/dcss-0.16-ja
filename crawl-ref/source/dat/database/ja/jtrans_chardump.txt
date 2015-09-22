@@ -11,6 +11,10 @@ demanding penance.
 
 罪の償いを求めている。
 %%%%
+Deck
+
+デッキ
+%%%%
 Char dumped successfully.
 
 キャラクターダンプに成功しました。
