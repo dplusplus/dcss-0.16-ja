@@ -60,19 +60,19 @@ end
 
 function holiness_list(a)
     local holies = {
-        strange = "Strange Monsters",
-        unique  = "Uniques",
-        holy    = "Holy Monsters",
-        natural = "Natural Monsters",
-        undead  = "Undead Monsters",
-        demonic = "Demonic Monsters",
-        nonliving = "Non-Living Monsters",
-        plant   = "Plants",
+        strange = "奇妙なモンスター",
+        unique  = "ユニークモンスター",
+        holy    = "聖なるモンスター",
+        natural = "自然界のモンスター",
+        undead  = "不死のモンスター",
+        demonic = "悪魔系のモンスター",
+        nonliving = "生命を持たないモンスター",
+        plant   = "植物",
     }
     local holysort = { "strange", "unique",
                        "natural", "nonliving",
                        "undead", "demonic", "plant" }
-    kills.rawwrite("  Monster Nature")
+    kills.rawwrite("  種類別リスト")
     group_kills(a, holies, holysort,
         function (key, kill)
             return (kills.holiness(kill) == key and not kills.isunique(kill))
@@ -84,7 +84,7 @@ function holiness_list(a)
 end
 
 function count_list(a, ascending)
-    kills.rawwrite("  Ascending Order")
+    kills.rawwrite("  昇順リスト")
     show_sorted_list(a,
         "  ",
         function (x, y)
@@ -113,7 +113,7 @@ function symbol_list(a)
     for sym, dud in pairs(allsyms) do table.insert(sortedsyms, sym) end
     table.sort(sortedsyms)
 
-    kills.rawwrite("  Monster Symbol")
+    kills.rawwrite("  シンボル別リスト")
     for i, sym in ipairs(sortedsyms) do
         if i > 1 then
             kills.rawwrite("")
@@ -124,7 +124,7 @@ function symbol_list(a)
                     return kills.symbol(k) == sym
                 end
         )
-        kills.rawwrite("    All '" .. sym .. "'")
+        kills.rawwrite("    すべての'" .. sym .. "'シンボル")
         show_sorted_list(symlist)
     end
 
@@ -192,10 +192,11 @@ function c_kill_list(a, who, needsep)
         separator()
     end
 
-    local title = "Vanquished Creatures"
+    local title = "倒したモンスター"
     if who then
         title = title .. " (" .. who .. ")"
     end
+    title = title .. ":"
 
     kills.rawwrite(title)
 
@@ -225,8 +226,10 @@ function c_kill_list(a, who, needsep)
         "  Kills minus zombies and skeletons",
         kill_filter(a,
             function (k)
-                return kills.modifier(k) ~= "zombie" and
-                       kills.modifier(k) ~= "skeleton"
+                return (kills.modifier(k) ~= "zombie" and
+                        kills.modifier(k) ~= "skeleton") or
+                        (kills.modifier(k) ~= "のゾンビ" and
+                        kills.modifier(k) ~= "の骸骨")
             end
         ))
 
@@ -235,7 +238,7 @@ function c_kill_list(a, who, needsep)
 
     -- Show only monsters with 3 digit kill count
     classic_list(
-        "  The 3-digit Club",
+        "  100体以上倒したモンスター種:",
         kill_filter(a,
             function (k)
                 return kills.nkills(k) > 99

@@ -875,7 +875,7 @@ static void _sdump_spells(dump_params &par)
 
 static void _sdump_kills(dump_params &par)
 {
-    par.text += you.kills->kill_info();
+    par.text += replace_all(you.kills->kill_info(), "\n\n\n", "\n\n");
 }
 
 static string _sdump_kills_place_info(PlaceInfo place_info, string name = "")

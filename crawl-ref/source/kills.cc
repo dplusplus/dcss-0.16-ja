@@ -10,6 +10,7 @@
 #include <algorithm>
 
 #include "clua.h"
+#include "database.h"
 #include "describe.h"
 #include "english.h"
 #include "files.h"
@@ -39,9 +40,9 @@ static void kill_lua_filltable(vector<kill_exp> &v);
 
 static const char *kill_category_names[] =
 {
-    "you",
-    "collateral kills",
-    "others",
+    "直接の殺害",
+    "間接的な殺害",
+    "その他",
 };
 
 KillMaster::KillMaster()
@@ -166,7 +167,7 @@ string KillMaster::kill_info() const
     {
         char buf[200];
         snprintf(buf, sizeof buf,
-                "Grand Total: %d creatures vanquished",
+                jtransc("Grand Total: %d creatures vanquished"),
                 grandtotal);
         grandt = buf;
     }
@@ -228,7 +229,7 @@ void KillMaster::add_kill_info(string &killtext,
         if (separator)
             killtext += "\n";
 
-        killtext += "Vanquished Creatures";
+        killtext += jtrans("Vanquished Creatures");
         if (category)
             killtext += string(" (") + category + ")";
 
@@ -242,7 +243,7 @@ void KillMaster::add_kill_info(string &killtext,
         {
             char numbuf[100];
             snprintf(numbuf, sizeof numbuf,
-                    "%d creature%s vanquished." "\n", count,
+                    jtranslnc("%d creature%s vanquished." "\n"), count,
                     count > 1? "s" : "");
             killtext += numbuf;
         }
@@ -422,20 +423,6 @@ kill_def::kill_def(const monster* mon) : kills(0), exp(0)
     add_kill(mon, level_id::current());
 }
 
-// For monster names ending with these suffixes, we pluralise directly without
-// attempting to use the "of" rule. For instance:
-//
-//      moth of wrath           => moths of wrath but
-//      moth of wrath zombie    => moth of wrath zombies.
-//
-// This is not necessary right now, since there are currently no monsters that
-// require this special treatment (no monster with 'of' in its name is eligible
-// for zombies or skeletons).
-static const char *modifier_suffixes[] =
-{
-    "zombie", "skeleton", "simulacrum", nullptr,
-};
-
 // For a non-unique monster, prefixes a suitable article if we have only one
 // kill, else prefixes a kill count and pluralises the monster name.
 static string n_names(const string &name, int n)
@@ -443,12 +430,11 @@ static string n_names(const string &name, int n)
     if (n > 1)
     {
         char buf[20];
-        snprintf(buf, sizeof buf, "%d ", n);
-        return buf + pluralise(name, standard_plural_qualifiers,
-                               modifier_suffixes);
+        snprintf(buf, sizeof buf, "%d体の", n);
+        return buf + jtrans(name);
     }
     else
-        return article_a(name, false);
+        return jtrans(name);
 }
 
 // Returns a string describing the number of times a unique has been killed.
@@ -460,16 +446,16 @@ static string kill_times(int kills)
     switch (kills)
     {
     case 1:
-        strcpy(buf, " (once)");
+        strcpy(buf, jtransc(" (once)"));
         break;
     case 2:
-        strcpy(buf, " (twice)");
+        strcpy(buf, jtransc(" (twice)"));
         break;
     case 3:
-        strcpy(buf, " (thrice)");
+        strcpy(buf, jtransc(" (thrice)"));
         break;
     default:
-        snprintf(buf, sizeof buf, " (%d times)", kills);
+        snprintf(buf, sizeof buf, jtransc(" (%d times)"), kills);
         break;
     }
     return string(buf);
@@ -507,23 +493,23 @@ string kill_def::base_name(const kill_monster_desc &md) const
 {
     string name;
     if (md.monnum == MONS_PANDEMONIUM_LORD)
-        name = "pandemonium lord";
+        name = jtrans("pandemonium lord");
     else
-        name = mons_type_name(md.monnum, DESC_PLAIN);
+        name = jtrans(mons_type_name(md.monnum, DESC_PLAIN));
 
     switch (md.modifier)
     {
     case kill_monster_desc::M_ZOMBIE:
-        name += " zombie";
+        name += "の" + jtrans(" zombie");
         break;
     case kill_monster_desc::M_SKELETON:
-        name += " skeleton";
+        name += "の" + jtrans(" skeleton");
         break;
     case kill_monster_desc::M_SIMULACRUM:
-        name += " simulacrum";
+        name += "の" + jtrans(" simulacrum");
         break;
     case kill_monster_desc::M_SPECTRE:
-        name = "spectral " + name;
+        name = jtrans("spectral ") + name;
         break;
     default:
         // Silence compiler warning about not handling M_NORMAL and
@@ -536,7 +522,7 @@ string kill_def::base_name(const kill_monster_desc &md) const
 
 string kill_def::info(const kill_monster_desc &md) const
 {
-    string name = base_name(md);
+    string name = jtrans(base_name(md));
 
     if (!mons_is_unique(md.monnum))
     {
@@ -550,7 +536,7 @@ string kill_def::info(const kill_monster_desc &md) const
             && md.monnum != MONS_SHAPESHIFTER
             && md.monnum != MONS_GLOWING_SHAPESHIFTER)
         {
-            name += " (shapeshifter)";
+            name += jtrans(" (shapeshifter)");
         }
     }
     else if (kills > 1)
@@ -573,12 +559,12 @@ string kill_def::append_places(const kill_monster_desc &md,
             || Options.dump_kill_places == KDO_ALL_PLACES)
     {
         string augmented = name;
-        augmented += " (";
+        augmented += "(";
         for (auto iter = places.begin(); iter != places.end(); ++iter)
         {
             if (iter != places.begin())
                 augmented += " ";
-            augmented += iter->describe();
+            augmented += iter->describe_j();
         }
         augmented += ")";
         return augmented;
@@ -634,7 +620,7 @@ kill_ghost::kill_ghost(const monster* mon)
     if (mon->type == MONS_PLAYER_GHOST && !mon->is_summoned())
     {
         monster_info mi(mon);
-        ghost_name = "The ghost of " + get_ghost_description(mi, true);
+        ghost_name = get_ghost_description(mi, true) + "の幽霊";
     }
 }
 
@@ -642,7 +628,7 @@ string kill_ghost::info() const
 {
     return ghost_name
            + (Options.dump_kill_places != KDO_NO_PLACES ?
-                " (" + place.describe() + ")" :
+                "(" + place.describe_j() + ")" :
                 string(""));
 }
 
@@ -991,7 +977,7 @@ static int kill_lualc_summary(lua_State *ls)
     *buf = 0;
     if (count)
     {
-        snprintf(buf, sizeof buf, "%u creature%s vanquished.",
+        snprintf(buf, sizeof buf, jtransc("%u creature%s vanquished."),
                 count, count > 1? "s" : "");
     }
     lua_pushstring(ls, buf);
