@@ -1,0 +1,9 @@
+%%%%
+You break out of your daze!
+
+あなたは眩暈を振り払った！
+%%%%
+You are no longer entranced.
+
+あなたはもう魅了されていない。
+%%%%
