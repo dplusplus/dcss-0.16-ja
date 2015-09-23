@@ -8275,6 +8275,10 @@ Escaped into the Abyss
 
 [ENTER: 移動]
 %%%%
+%s%s (%u gold)
+
+%s%s (%uゴールド)
+%%%%
 Enter for "%s"
 
 Enterで"%s"を検索
