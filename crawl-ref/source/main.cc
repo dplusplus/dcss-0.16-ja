@@ -1914,7 +1914,7 @@ static void _do_cycle_quiver(int dir)
 {
     if (you.species == SP_FELID)
     {
-        mpr("You can't grasp things well enough to throw them.");
+        mpr(jtrans("You can't grasp things well enough to throw them."));
         return;
     }
 
@@ -1930,10 +1930,10 @@ static void _do_cycle_quiver(int dir)
         you.m_quiver->on_item_fired(you.inv[next], true);
 
         if (next == cur)
-            mpr("No other missiles available. Use F to throw any item.");
+            mpr(jtrans("No other missiles available. Use F to throw any item."));
     }
     else if (cur == -1)
-        mpr("No missiles available. Use F to throw any item.");
+        mpr(jtrans("No missiles available. Use F to throw any item."));
 }
 
 static void _do_list_gold()
