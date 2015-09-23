@@ -4114,6 +4114,14 @@ Clearing level map.
 
 階層のマップを消去した。
 %%%%
+No other missiles available. Use F to throw any item.
+
+他のアイテムを選択できません。任意のアイテムを選択するには(F)ireコマンドを使用してください。
+%%%%
+No missiles available. Use F to throw any item.
+
+適したアイテムを持っていません。任意のアイテムを選択するには(F)ireコマンドを使用してください。
+%%%%
 Autopickup is now %s.
 
 アイテム自動拾いを%sしました。
@@ -9084,10 +9092,6 @@ That weapon is stuck to your %s!
 You are wearing that object!
 
 あなたは今そのアイテムを装備している！
-%%%%
-You can't grasp things well enough to throw them.
-
-あなたはそのアイテムを投擲するのに十分なほどしっかり握ることができない。
 %%%%
 You cannot throw anything while held in a net.
 
