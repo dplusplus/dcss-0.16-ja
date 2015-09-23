@@ -593,7 +593,7 @@ static int _xom_makes_you_cast_random_spell(int sever, int tension,
          spell, spellenum);
 #endif
 
-    const string note = make_stringf("cast spell '%s'", spell_title(spell));
+    const string note = make_stringf(jtransc("cast spell '%s'"), jtransc(spell_title(spell)));
     take_note(Note(NOTE_XOM_EFFECT, you.piety, tension, note), true);
 
     your_spells(spell, sever, false);
@@ -613,7 +613,7 @@ static int _xom_magic_mapping(int sever, int tension, bool debug = false)
     god_speaks(GOD_XOM, _get_xom_speech("divination").c_str());
 
     take_note(Note(NOTE_XOM_EFFECT, you.piety, tension,
-              "divination: magic mapping"), true);
+              jtrans("divination: magic mapping")), true);
 
     const int power = stepdown_value(sever, 10, 10, 40, 45);
     magic_mapping(5 + power, 50 + random2avg(power * 2, 2), false);
@@ -634,7 +634,7 @@ static int _xom_detect_items(int sever, int tension, bool debug = false)
     god_speaks(GOD_XOM, _get_xom_speech("divination").c_str());
 
     take_note(Note(NOTE_XOM_EFFECT, you.piety, tension,
-              "divination: detect items"), true);
+              jtrans("divination: detect items")), true);
 
     if (detect_items(sever) == 0)
         canned_msg(MSG_DETECT_NOTHING);
@@ -652,7 +652,7 @@ static int _xom_detect_creatures(int sever, int tension, bool debug = false)
     god_speaks(GOD_XOM, _get_xom_speech("divination").c_str());
 
     take_note(Note(NOTE_XOM_EFFECT, you.piety, tension,
-              "divination: detect creatures"), true);
+              jtrans("divination: detect creatures")), true);
 
     const int prev_detected = count_detected_mons();
     const int num_creatures = detect_creatures(sever);
@@ -756,7 +756,7 @@ static void _xom_make_item(object_class_type base, int subtype, int power)
     _try_brand_switch(thing_created);
 
     static char gift_buf[100];
-    snprintf(gift_buf, sizeof(gift_buf), "god gift: %s",
+    snprintf(gift_buf, sizeof(gift_buf), jtransc("god gift: %s"),
              mitm[thing_created].name(DESC_PLAIN).c_str());
     take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, gift_buf), true);
 
@@ -782,7 +782,7 @@ static void _xom_acquirement(object_class_type force_class)
     _try_brand_switch(item_index);
 
     static char gift_buf[100];
-    snprintf(gift_buf, sizeof(gift_buf), "god gift: %s",
+    snprintf(gift_buf, sizeof(gift_buf), jtransc("god gift: %s"),
              mitm[item_index].name(DESC_PLAIN).c_str());
     take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, gift_buf), true);
 
@@ -1063,7 +1063,7 @@ static void _note_potion_effect(potion_type pot)
 {
     string potion_name = potion_type_name(static_cast<int>(pot));
 
-    string potion_msg = "potion effect ";
+    string potion_msg = jtransc("potion effect ");
 
     potion_msg += ("(" + potion_name + ")");
 
@@ -1140,7 +1140,7 @@ static int _xom_confuse_monsters(int sever, bool debug = false)
 
     if (rc)
     {
-        take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, "confuse monster(s)"),
+        take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, jtrans("confuse monster(s)")),
                   true);
         return XOM_GOOD_CONFUSION;
     }
@@ -1187,7 +1187,7 @@ static int _xom_send_allies(int sever, bool debug = false)
 
         // Take a note.
         static char summ_buf[80];
-        snprintf(summ_buf, sizeof(summ_buf), "summons %d friendly demon%s",
+        snprintf(summ_buf, sizeof(summ_buf), jtransc("summons %d friendly demon%s"),
                  num_actually_summoned,
                  num_actually_summoned > 1 ? "s" : "");
 
@@ -1217,7 +1217,7 @@ static int _xom_send_one_ally(int sever, bool debug = false)
 
         // Take a note.
         static char summ_buf[80];
-        snprintf(summ_buf, sizeof(summ_buf), "summons friendly %s",
+        snprintf(summ_buf, sizeof(summ_buf), jtransc("summons friendly %s"),
                  summons->name(DESC_PLAIN).c_str());
         take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, summ_buf), true);
 
@@ -1271,7 +1271,7 @@ static int _xom_polymorph_nearby_monster(bool helpful, bool debug = false)
 
                 // Take a note.
                 static char poly_buf[120];
-                snprintf(poly_buf, sizeof(poly_buf), "polymorph %s -> %s",
+                snprintf(poly_buf, sizeof(poly_buf), jtransc("polymorph %s -> %s"),
                          old_name.c_str(), new_name.c_str());
 
                 string poly = poly_buf;
@@ -1476,7 +1476,7 @@ static int _xom_swap_weapons(bool debug = false)
     mprf("You wield %s %s!",
          mon->name(DESC_ITS).c_str(),
          you.inv[freeslot].name(DESC_PLAIN).c_str());
-    take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, "swap weapons"), true);
+    take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, jtrans("swap weapons")), true);
 
     equip_item(EQ_WEAPON, freeslot);
 
@@ -1546,7 +1546,7 @@ static int _xom_rearrange_pieces(int sever, bool debug = false)
             }
         }
     }
-    take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, "swap monsters"), true);
+    take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, jtrans("swap monsters")), true);
 
     return XOM_GOOD_SWAP_MONSTERS;
 }
@@ -1600,7 +1600,7 @@ static int _xom_snakes_to_sticks(int sever, bool debug = false)
                     return XOM_GOOD_SNAKES;
 
                 take_note(Note(NOTE_XOM_EFFECT, you.piety, -1,
-                               "snakes to sticks"), true);
+                               jtrans("snakes to sticks")), true);
                 god_speaks(GOD_XOM, _get_xom_speech("snakes to sticks").c_str());
                 action = true;
             }
@@ -1730,7 +1730,7 @@ static int _xom_give_mutations(bool good, bool debug = false)
         const int num_tries = random2(4) + 1;
 
         static char mut_buf[80];
-        snprintf(mut_buf, sizeof(mut_buf), "give %smutation%s",
+        snprintf(mut_buf, sizeof(mut_buf), jtransc("give %smutation%s"),
 #ifdef NOTE_DEBUG_XOM
                  good ? "good " : "random ",
 #else
@@ -1842,7 +1842,7 @@ static int _xom_throw_divine_lightning(bool debug = false)
     // Take a note.
     static char lightning_buf[80];
     snprintf(lightning_buf, sizeof(lightning_buf),
-             "divine lightning%s", protection ? " (protected)" : "");
+             jtransc("divine lightning%s"), protection ? jtransc(" (protected)") : "");
     take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, lightning_buf), true);
 
     return XOM_GOOD_LIGHTNING;
@@ -1939,7 +1939,7 @@ static int _xom_change_scenery(bool debug = false)
         if (success)
         {
             take_note(Note(NOTE_XOM_EFFECT, you.piety, -1,
-                           "scenery: create altars"), true);
+                           jtrans("scenery: create altars")), true);
             god_speaks(GOD_XOM, speech.c_str());
             return XOM_GOOD_SCENERY;
         }
@@ -2000,7 +2000,7 @@ static int _xom_change_scenery(bool debug = false)
         if (effects.empty())
             fountains = uppercase_first(fountains);
         effects.push_back(fountains);
-        terse.push_back(make_stringf("%d fountains blood", fountains_blood));
+        terse.push_back(make_stringf(jtransc("%d fountains blood"), fountains_blood));
     }
     if (!effects.empty())
     {
@@ -2018,7 +2018,7 @@ static int _xom_change_scenery(bool debug = false)
                                                        : "Several",
                                        doors_open == 1 ? ""  : "s",
                                        doors_open == 1 ? "s" : ""));
-        terse.push_back(make_stringf("%d doors open", doors_open));
+        terse.push_back(make_stringf(jtransc("%d doors open"), doors_open));
     }
     if (doors_close > 0)
     {
@@ -2033,11 +2033,11 @@ static int _xom_change_scenery(bool debug = false)
         if (effects.empty())
             closed = uppercase_first(closed);
         effects.push_back(closed);
-        terse.push_back(make_stringf("%d doors close", doors_close));
+        terse.push_back(make_stringf(jtransc("%d doors close"), doors_close));
     }
     if (!effects.empty())
     {
-        take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, ("scenery: "
+        take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, (jtrans("scenery: ") + " "
             + comma_separated_line(terse.begin(), terse.end(), ", ", ", ")).c_str()),
             true);
         mprf("%s!",
@@ -2111,7 +2111,7 @@ static int _xom_destruction(int sever, bool debug = false)
     if (rc)
     {
         take_note(Note(NOTE_XOM_EFFECT, you.piety, -1,
-                       fake_destruction ? "fake destruction" : "destruction"),
+                       jtrans(fake_destruction ? "fake destruction" : "destruction")),
                   true);
         return XOM_GOOD_DESTRUCTION;
     }
@@ -2163,7 +2163,7 @@ static int _xom_enchant_monster(bool helpful, bool debug = false)
     static char ench_buf[80];
     snprintf(ench_buf, sizeof(ench_buf), "enchant monster %s",
              helpful ? "(good)" : "(bad)");
-    take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, ench_buf),
+    take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, jtrans(ench_buf)),
               true);
 
     return helpful ? XOM_GOOD_ENCHANT_MONSTER : XOM_BAD_ENCHANT_MONSTER;
@@ -2263,7 +2263,7 @@ static int _xom_is_good(int sever, int tension, bool debug = false)
         if (debug)
             return XOM_GOOD_FOG;
         big_cloud(CLOUD_RANDOM_SMOKE, &you, you.pos(), 50, 8 + random2(8));
-        take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, "fog"), true);
+        take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, jtrans("fog")), true);
         god_speaks(GOD_XOM, _get_xom_speech("cloud").c_str());
         done = XOM_GOOD_FOG;
     }
@@ -2305,7 +2305,7 @@ static int _xom_is_good(int sever, int tension, bool debug = false)
         // Take a note.
         static char tele_buf[80];
         snprintf(tele_buf, sizeof(tele_buf),
-                 "%d-stop teleportation journey%s", count,
+                 jtransc("%d-stop teleportation journey%s"), count,
 #ifdef NOTE_DEBUG_XOM
                  player_in_a_dangerous_place() ? " (dangerous)" : // see below
 #endif
@@ -2323,7 +2323,7 @@ static int _xom_is_good(int sever, int tension, bool debug = false)
         {
             god_speaks(GOD_XOM, _get_xom_speech("vitrification").c_str());
             take_note(Note(NOTE_XOM_EFFECT, you.piety, tension,
-                           "vitrification"), true);
+                           jtrans("vitrification")), true);
             done = XOM_GOOD_VITRIFY;
         }
     }
@@ -2755,16 +2755,16 @@ static int _xom_miscast(const int max_level, const bool nasty,
 
     if (level == 0 && one_chance_in(3))
     {
-        take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, "silly message"), true);
+        take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, jtrans("silly message")), true);
         god_speaks(GOD_XOM, _get_xom_speech(speech_str).c_str());
         _xom_zero_miscast();
         return XOM_BAD_MISCAST_PSEUDO;
     }
 
     // Take a note.
-    const char* levels[4] = { "harmless", "mild", "medium", "severe" };
+    const char* levels[4] = { "無害な", "ちょっとした", "", "激しい" };
     const auto school = spschools_type::exponent(random2(SPTYP_LAST_EXPONENT + 1));
-    string desc = make_stringf("%s %s miscast", levels[level],
+    string desc = make_stringf(jtransc("%s %s miscast"), levels[level],
                                spelltype_short_name(school));
 #ifdef NOTE_DEBUG_XOM
     if (nasty)
@@ -2822,7 +2822,7 @@ static int _xom_chaos_upgrade_nearby_monster(bool debug = false)
 
     if (rc)
     {
-        take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, "chaos upgrade"), true);
+        take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, jtrans("chaos upgrade")), true);
         return XOM_BAD_CHAOS_UPGRADE;
     }
 
@@ -2881,7 +2881,7 @@ static int _xom_player_confusion_effect(int sever, bool debug = false)
         string conf_msg = "confusion";
         if (mons_too)
             conf_msg += " (+ monsters)";
-        take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, conf_msg.c_str()), true);
+        take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, jtrans(conf_msg)), true);
     }
 
     return rc ? XOM_BAD_CONFUSION : XOM_DID_NOTHING;
@@ -3129,7 +3129,7 @@ static int _xom_repel_stairs(bool debug = false)
             canned_msg(MSG_NOTHING_HAPPENS);
     }
     else
-        take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, "repel stairs"), true);
+        take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, jtrans("repel stairs")), true);
 
     return XOM_BAD_STAIRS;
 }
@@ -3144,7 +3144,7 @@ static int _xom_colour_smoke_trail(bool debug = false)
 
     you.duration[DUR_COLOUR_SMOKE_TRAIL] = random_range(60, 120);
 
-    take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, "colour smoke trail"), true);
+    take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, jtrans("colour smoke trail")), true);
 
     const string speech = _get_xom_speech("colour smoke trail");
     god_speaks(GOD_XOM, speech.c_str());
@@ -3178,10 +3178,10 @@ static int _xom_draining_torment_effect(int sever, bool debug = false)
         lose_stat(stat, loss, false, aux.c_str());
 
         // Take a note.
-        const char* sstr[3] = { "Str", "Int", "Dex" };
+        const char* sstr[3] = { "腕力", "知力", "器用" };
         static char stat_buf[80];
-        snprintf(stat_buf, sizeof(stat_buf), "stat loss: -%d %s (%d/%d)",
-                 loss, sstr[stat], you.stat(stat), you.max_stat(stat));
+        snprintf(stat_buf, sizeof(stat_buf), jtransc("stat loss: -%d %s (%d/%d)"),
+                 sstr[stat], loss, you.stat(stat), you.max_stat(stat));
 
         take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, stat_buf), true);
 
@@ -3198,7 +3198,7 @@ static int _xom_draining_torment_effect(int sever, bool debug = false)
 
             drain_player(100, true);
 
-            take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, "draining"), true);
+            take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, jtrans("draining")), true);
             return XOM_BAD_DRAINING;
         }
     }
@@ -3216,7 +3216,7 @@ static int _xom_draining_torment_effect(int sever, bool debug = false)
             // Take a note.
             static char torment_buf[80];
             snprintf(torment_buf, sizeof(torment_buf),
-                     "torment (%d/%d hp)", you.hp, you.hp_max);
+                     jtransc("torment (%d/%d hp)"), you.hp, you.hp_max);
             take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, torment_buf), true);
 
             return XOM_BAD_TORMENT;
@@ -3288,8 +3288,8 @@ static int _xom_summon_hostiles(int sever, bool debug = false)
     {
         static char summ_buf[80];
         snprintf(summ_buf, sizeof(summ_buf),
-                 "summons %d hostile %s%s",
-                 num_summoned, shadow_creatures ? "shadow creature" : "demon",
+                 jtransc("summons %d hostile %s%s"),
+                 num_summoned, jtransc(shadow_creatures ? "shadow creature" : "demon"),
                  num_summoned > 1 ? "s" : "");
         take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, summ_buf), true);
 
@@ -3359,7 +3359,7 @@ int xom_maybe_reverts_banishment(bool xom_banished, bool debug)
                 : _get_xom_speech("revert other banishment").c_str());
             down_stairs(DNGN_EXIT_ABYSS);
             take_note(Note(NOTE_XOM_EFFECT, you.piety, -1,
-                           "revert banishment"), true);
+                           jtrans("revert banishment")), true);
         }
         return XOM_BAD_PSEUDO_BANISHMENT;
     }
@@ -3395,7 +3395,7 @@ static int _xom_noise(bool debug = false)
     // Xom isn't subject to silence.
     fake_noisy(noisiness, you.pos());
 
-    take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, "noise"), true);
+    take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, jtrans("noise")), true);
     return XOM_BAD_NOISE;
 }
 
@@ -3435,7 +3435,7 @@ static int _xom_blink_monsters(bool debug = false)
 
     if (blinks)
     {
-        take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, "blink monster(s)"), true);
+        take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, jtrans("blink monster(s)")), true);
         return XOM_BAD_BLINK_MONSTERS;
     }
     return XOM_DID_NOTHING;
@@ -3495,7 +3495,7 @@ static int _xom_is_bad(int sever, int tension, bool debug = false)
             // Place a one-tile cloud with minor spreading.
             check_place_cloud(CLOUD_CHAOS, you.pos(), 3 + random2(12)*3,
                               nullptr, random_range(5,15));
-            take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, "chaos cloud"),
+            take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, jtrans("chaos cloud")),
                       true);
             god_speaks(GOD_XOM, _get_xom_speech("cloud").c_str());
             done = XOM_BAD_CHAOS_CLOUD;
@@ -3549,7 +3549,7 @@ static int _xom_is_bad(int sever, int tension, bool debug = false)
             // Take a note.
             static char tele_buf[80];
             snprintf(tele_buf, sizeof(tele_buf),
-                     "%d-stop teleportation journey%s", count,
+                     jtransc("%d-stop teleportation journey%s"), count,
 #ifdef NOTE_DEBUG_XOM
                      badness == 3 ? " (dangerous)" : "");
 #else
@@ -4066,7 +4066,7 @@ void xom_new_level_noise_or_stealth()
                                           : "You feel stealthy.");
             you.increase_duration(DUR_STEALTH, 10 + random2(80));
             take_note(Note(NOTE_XOM_EFFECT, you.piety, -1,
-                           "stealth player"), true);
+                           jtrans("stealth player")), true);
         }
         else
             _xom_noise();

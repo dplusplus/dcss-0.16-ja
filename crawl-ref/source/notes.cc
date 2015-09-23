@@ -368,7 +368,7 @@ string Note::describe(bool when, bool where, bool what) const
             result << name << "はミミックだった";
             break;
         case NOTE_XOM_EFFECT:
-            result << "ゾム: " << name;
+            result << "[ゾム] " << name;
 #if defined(DEBUG_XOM) || defined(NOTE_DEBUG_XOM)
             // If debugging, also take note of piety and tension.
             result << " (piety: " << first;

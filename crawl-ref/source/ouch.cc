@@ -25,6 +25,7 @@
 #include "beam.h"
 #include "chardump.h"
 #include "colour.h"
+#include "database.h"
 #include "delay.h"
 #include "describe.h"
 #include "dgnevent.h"
@@ -635,7 +636,7 @@ static void _maybe_spawn_monsters(int dam, const char* aux,
             if (mon == MONS_BUTTERFLY)
             {
                 mprf(MSGCH_GOD, "A shower of butterflies erupts from you!");
-                take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, "butterfly on damage"), true);
+                take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, jtrans("butterfly on damage")), true);
             }
             else
             {
@@ -705,7 +706,7 @@ static void _maybe_fog(int dam)
         mprf(MSGCH_GOD, "You emit a cloud of colourful smoke!");
         big_cloud(CLOUD_MAGIC_TRAIL, &you, you.pos(), 50, 4 + random2(5),
                   -1, ETC_RANDOM);
-        take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, "smoke on damage"), true);
+        take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, jtrans("smoke on damage")), true);
     }
 }
 

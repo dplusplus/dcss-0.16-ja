@@ -5747,6 +5747,16 @@ Xom revived you
 
 ゾムがあなたを蘇らせた
 %%%%
+############################## ouch.cc ##############################
+%%%%
+butterfly on damage
+
+損傷時の蝶
+%%%%
+smoke on damage
+
+損傷時の煙
+%%%%
 ############################## place.cc ##############################
 %%%%
 Level %d of %s
@@ -9432,6 +9442,190 @@ run
 %sに遭遇した。
 %%%%
 ############################## xom.cc ##############################
+%%%%
+cast spell '%s'
+
+%sを唱えた
+%%%%
+divination: magic mapping
+
+予見術: 魔法の地図
+%%%%
+divination: detect items
+
+予見術: アイテムの探知
+%%%%
+divination: detect creatures
+
+予見術: モンスターの感知
+%%%%
+god gift: %s
+
+神の下賜: %s
+%%%%
+potion effect
+
+薬の投与
+%%%%
+confuse monster(s)
+
+モンスターの混乱
+%%%%
+summons %d friendly demon%s
+
+%d体の友好的な悪魔を召喚
+%%%%
+summons friendly %s
+
+友好的な%sを召喚
+%%%%
+polymorph %s -> %s
+
+%sから%sに変化
+%%%%
+swap weapons
+
+武器の交換
+%%%%
+swap monsters
+
+モンスターの交換
+%%%%
+snakes to sticks
+
+蛇の棒切れ
+%%%%
+give %smutation%s
+
+突然変異の付与
+%%%%
+divine lightning%s
+
+神の雷%s
+%%%%
+(protected)
+
+(保護状態)
+%%%%
+scenery: create altars
+
+地形: 祭壇の造成
+%%%%
+%d fountains blood
+
+%dつの血の泉
+%%%%
+%d doors open
+
+%dつの扉が開いた
+%%%%
+%d doors close
+
+%dつの扉が閉じた
+%%%%
+scenery:
+
+地形:
+%%%%
+fake destruction
+
+偽りの破壊
+%%%%
+destruction
+
+破壊
+%%%%
+enchant monster (good)
+
+モンスターへの魔法(有利)
+%%%%
+enchant monster (bad)
+
+モンスターへの魔法(不利)
+%%%%
+fog
+
+霧
+%%%%
+%d-stop teleportation journey%s
+
+%d連続のテレポート
+%%%%
+vitrification
+
+ガラス化
+%%%%
+silly message
+
+お馬鹿なメッセージ
+%%%%
+%s %s miscast
+
+%s%sの失敗効果
+%%%%
+chaos upgrade
+
+混沌の力の付与
+%%%%
+confusion
+
+混乱
+%%%%
+confusion (+ monsters)
+
+混乱(モンスター含む)
+%%%%
+repel stairs
+
+逃げる階段
+%%%%
+colour smoke trail
+
+色つきの煙
+%%%%
+stat loss: -%d %s (%d/%d)
+
+能力低下: %s -%d (%d/%d)
+%%%%
+draining
+
+衰弱
+%%%%
+torment (%d/%d hp)
+
+苦痛 (%d/%d HP)
+%%%%
+summons %d hostile %s%s
+
+%d体の敵対的な%sを召喚
+%%%%
+shadow creature
+
+影の怪物
+%%%%
+demon
+
+悪魔
+%%%%
+revert banishment
+
+現世への追放
+%%%%
+noise
+
+騒音
+%%%%
+blink monster(s)
+
+モンスターの瞬間移動
+%%%%
+chaos cloud
+
+混沌の雲
+%%%%
+stealth player
+
+プレイヤーの隠匿
 %%%%
 a very special plaything of Xom.
 
