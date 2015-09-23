@@ -10,19 +10,18 @@ function callback.grunt_ashenzari_visionary_reveal(data,triggerable,triggerer,ma
     end
     local msg = ""
     if #data.branches > 0 then
-      msg = " of"
       for i, name in ipairs(data.branches) do
         if i == 1 then
         elseif i == #data.branches then
-          msg = msg .. " and"
+          msg = msg .. "および"
         else
-          msg = msg .. ","
+          msg = msg .. "、"
         end
-        msg = msg .. " the " .. name
+        msg = msg .. name
       end
-      crawl.take_note("Saw a vision" .. msg .. ".")
+      crawl.take_note(msg .. "の映像を見た")
     end
-    crawl.god_speaks("Ashenzari", "You have a sudden vision" .. msg .. "!")
+    crawl.god_speaks("Ashenzari", "あなたは" .. msg .. "の映像を目にした！")
 end
 }}
 

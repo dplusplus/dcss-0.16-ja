@@ -415,7 +415,7 @@ NORETURN static void _launch_game()
 
     if (!game_start && you.prev_save_version != Version::Long)
     {
-        const string note = make_stringf("Upgraded the game from %s to %s",
+        const string note = make_stringf(jtransc("Upgraded the game from %s to %s"),
                                          you.prev_save_version.c_str(),
                                          Version::Long);
         take_note(Note(NOTE_MESSAGE, 0, 0, note));
@@ -585,7 +585,7 @@ static void _wanderer_note_items()
 {
     ostringstream equip_str;
     equip_str << you.your_name
-            << " set off with: ";
+            << jtrans(" set off with: ");
     bool first_item = true;
 
     for (int i = 0; i < ENDOFPACK; ++i)
@@ -652,10 +652,10 @@ static void _god_greeting_message(bool game_start)
 static void _take_starting_note()
 {
     ostringstream notestr;
-    notestr << you.your_name << ", the "
-            << species_name(you.species) << " "
-            << you.class_name
-            << ", began the quest for the Orb.";
+    notestr << jtrans(species_name(you.species)) << "の"
+            << jtrans(you.class_name)
+            << "『" << you.your_name << "』"
+            << "がオーブを探す冒険を始めた";
     take_note(Note(NOTE_MESSAGE, 0, 0, notestr.str().c_str()));
     mark_milestone("begin", "began the quest for the Orb.");
 
@@ -665,7 +665,7 @@ static void _take_starting_note()
 #ifdef WIZARD
     if (you.wizard)
     {
-        notestr << "You started the game in wizard mode.";
+        notestr << jtrans("You started the game in wizard mode.");
         take_note(Note(NOTE_MESSAGE, 0, 0, notestr.str().c_str()));
 
         notestr.str("");
@@ -979,7 +979,7 @@ static void _handle_wizard_command()
             return;
         }
 
-        take_note(Note(NOTE_MESSAGE, 0, 0, "Entered wizard mode."));
+        take_note(Note(NOTE_MESSAGE, 0, 0, jtrans("Entered wizard mode.")));
 
 #ifndef SCORE_WIZARD_CHARACTERS
         if (!you.explore)
@@ -1064,7 +1064,7 @@ static void _enter_explore_mode()
             return;
         }
 
-        take_note(Note(NOTE_MESSAGE, 0, 0, "Entered explore mode."));
+        take_note(Note(NOTE_MESSAGE, 0, 0, jtrans("Entered explore mode.")));
 
 #ifndef SCORE_WIZARD_CHARACTERS
         _log_wizmode_entrance();

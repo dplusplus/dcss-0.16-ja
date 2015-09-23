@@ -1031,6 +1031,15 @@ static int crawl_version(lua_State *ls)
     return 1;
 }
 
+static int crawl_jtrans(lua_State *ls)
+{
+    const char *s = luaL_checkstring(ls, 1);
+
+    lua_pushstring(ls, jtrans(s).c_str());
+
+    return 1;
+}
+
 static const struct luaL_reg crawl_clib[] =
 {
     { "mpr",                crawl_mpr },
@@ -1099,6 +1108,7 @@ static const struct luaL_reg crawl_clib[] =
     { "call_dlua",          crawl_call_dlua },
 #endif
     { "version",            crawl_version },
+    { "jtrans",             crawl_jtrans },
     { nullptr, nullptr },
 };
 

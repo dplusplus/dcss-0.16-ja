@@ -30,7 +30,7 @@ function pan_lord_epilogue(name)
 
     crawl.mpr(msgs[name], "warning")
     crawl.mpr("The mighty Pandemonium lord " .. name .. " resides here.", "warning")
-    crawl.take_note('Entered the realm of ' .. name .. '.')
+    crawl.take_note(name .. crawl.jtrans('Entered the realm of '))
     crawl.mark_milestone('br.enter', 'entered the realm of ' .. name .. '.', "")
 end
 

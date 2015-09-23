@@ -153,7 +153,7 @@ function arena_sprint_end_round(data)
     else
         crawl.mpr("You now have 1 arena point.", "intrinsic_gain")
     end
-    crawl.take_note("Arena points: " .. style_points ..
+    crawl.take_note("アリーナポイント: " .. style_points ..
                     " (+" .. style_gain .. ") [x" .. data.style_mult .. "]",
                     "intrinsic_gain")
 
@@ -822,7 +822,7 @@ function thing_do_arena(data, triggerable, triggerer, marker, ev)
             arena_sprint_ominous_countdown(data.time_left, data.between_rounds)
 
             if data.time_left <= 0 then
-                crawl.take_note("Round " .. data.round_id .. ".")
+                crawl.take_note("ラウンド" .. data.round_id .. "開始")
                 crawl.mpr("ラウンド" .. data.round_id .. "！", "warning")
                 if data.round_id == 42 then
                     crawl.mpr("FINAL BOSS!", "warning")

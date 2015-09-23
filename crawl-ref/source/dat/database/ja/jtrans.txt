@@ -11,6 +11,16 @@ its
 
 その
 %%%%
+############################## abyss.cc ##############################
+%%%%
+Cast into the Abyss
+
+アビスに追放された
+%%%%
+Corrupted %s
+
+%sを崩壊させた
+%%%%
 ############################## attack.cc ##############################
 %%%%
 %s %s %s attack.
@@ -3992,6 +4002,10 @@ Created %s '%s' => '%s'.
 %%%%
 ############################## main.cc ##############################
 %%%%
+Upgraded the game from %s to %s
+
+ゲームバージョンを%sから%sに更新した
+%%%%
 Welcome
 
 ようこそ
@@ -4003,6 +4017,22 @@ Welcome back
 Press <w>?</w> for a list of commands and other information.
 
 コマンド一覧やその他の情報を見るには <w>?</w>キー を押してください。
+%%%%
+set off with:
+
+は以下の装備を持って出発した
+%%%%
+You started the game in wizard mode.
+
+あなたはウィザードモードでゲームを開始した。
+%%%%
+Entered wizard mode.
+
+ウィザードモードを有効にした
+%%%%
+Entered explore mode.
+
+探索モードを有効にした
 %%%%
 There is nothing on the other side of the stone arch.
 
@@ -5691,6 +5721,32 @@ maps
 
 ステージ
 %%%%
+############################## notes.cc ##############################
+%%%%
+first
+
+1番目
+%%%%
+second
+
+2番目
+%%%%
+third
+
+3番目
+%%%%
+fourth
+
+4番目
+%%%%
+fifth
+
+5番目
+%%%%
+Xom revived you
+
+ゾムがあなたを蘇らせた
+%%%%
 ############################## place.cc ##############################
 %%%%
 Level %d of %s
@@ -6263,6 +6319,10 @@ You feel clumsy.
 You feel agile.
 
 あなたは機敏になった。
+%%%%
+Lost %s.
+
+%sを失った
 %%%%
 ############################## potion.cc ##############################
 %%%%
@@ -8141,6 +8201,26 @@ You sense a powerful magical force warping space.
 
 あなたは強い魔力が空間を歪めているのを感じた。
 %%%%
+Voluntarily entered the Abyss.
+
+自らの意志でアビスに突入した
+%%%%
+Took an exit into the Abyss.
+
+パンデモニウムを出てアビスに突入した
+%%%%
+Escaped the Abyss
+
+アビスを脱出した
+%%%%
+Escaped Pandemonium
+
+パンデモニウムを脱出した
+%%%%
+Escaped into the Abyss
+
+アビスに脱出した
+%%%%
 ############################## stash.cc ##############################
 %%%%
 , %d item%s
@@ -9385,11 +9465,57 @@ a BORING thing.
 
 あなたはゾムに飽きられてしまった。
 %%%%
+XOM is BORED!
+
+ゾムは退屈している！
+%%%%
 ############################## dat/clua/autofight.lua ##############################
 %%%%
 No target in view!
 
 視界内に敵はいない！
+%%%%
+############################## dat/des/branches/pan.des ##############################
+%%%%
+Entered the realm of
+
+の守る階層に到達した
+%%%%
+############################## dat/des/portals/trove.des ##############################
+%%%%
+to enter a treasure trove
+
+秘密の埋蔵庫に入る
+%%%%
+############################## dat/des/portals/wizlab.des ##############################
+%%%%
+Tukima's Studio
+
+ツキマーの工房
+%%%%
+Eringya's Formal Garden
+
+エリンギャの庭園
+%%%%
+Cigotuvi's Fleshworks
+
+シゴツヴィの解体場
+%%%%
+Iskenderun's Mystic Tower
+
+イスケンデルンの魔導の塔
+%%%%
+Zonguldrok's Shrine
+
+ゾングルドルックの神殿
+%%%%
+Wucad Mu's Monastery
+
+ウカド・ムーの修道院
+%%%%
+The Roulette of Golubria
+
+ゴルブリアのルーレット
 %%%%
 ############################## dat/des/sprint/arena_sprint.des ##############################
 %%%%

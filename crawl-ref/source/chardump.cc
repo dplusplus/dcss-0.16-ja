@@ -543,7 +543,7 @@ static void _sdump_notes(dump_params &par)
     if (note_list.empty())
         return;
 
-    text += "\nNotes\nTurn   | Place    | Note\n";
+    text += jtransln("notes header");
     text += "--------------------------------------------------------------\n";
     for (const Note &note : note_list)
     {

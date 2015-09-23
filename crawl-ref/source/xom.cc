@@ -3811,7 +3811,7 @@ int xom_acts(bool niceness, int sever, int tension, bool debug)
     else
     {
         if (!debug && was_bored && Options.note_xom_effects)
-            take_note(Note(NOTE_MESSAGE, 0, 0, "XOM is BORED!"), true);
+            take_note(Note(NOTE_MESSAGE, 0, 0, jtrans("XOM is BORED!")), true);
 #ifdef NOTE_DEBUG_XOM
         else if (niceness)
         {

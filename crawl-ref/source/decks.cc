@@ -2610,7 +2610,7 @@ bool recruit_mercenary(int mid)
     const string prompt = make_stringf("Pay %s fee of %d gold?",
                                        mon->name(DESC_ITS).c_str(), fee);
     bool paid = yesno(prompt.c_str(), false, 0);
-    const string message = make_stringf("Hired %s for %d gold.",
+    const string message = make_stringf(jtransc("Hired %s for %d gold."),
                                         mon->full_name(DESC_A).c_str(), fee);
     if (crawl_state.seen_hups)
         return false;

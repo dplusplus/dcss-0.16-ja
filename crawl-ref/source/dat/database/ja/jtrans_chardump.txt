@@ -3,6 +3,11 @@ Message History
 
 メッセージ履歴:
 %%%%
+notes header
+
+行動履歴:
+ターン | 場所          | 行動
+%%%%
 You escaped
 
 あなたは迷宮を脱出した
