@@ -655,15 +655,15 @@ function TroveMarker:note_payed(toll_item, item_taken, rune_name)
 
   local prefix
   if item_taken then
-    prefix = "You paid a toll of "
+    prefix = "あなたは" .. crawl.jtrans(toll_desc) .. "通行料として"
   else
-    prefix = "You showed "
+    prefix = "あなたは" .. crawl.jtrans(toll_desc) .. "ために"
   end
 
   -- Ugly special case. At this point in the code there is no rune item, so we
   -- can not rely on any of the normal item naming code.
   if toll_item == "rune" then
-    crawl.take_note(prefix .. "the " .. rune_name .. " " .. toll_desc)
+    crawl.take_note(prefix .. "the " .. rune_name .. "を見せた")
     return
   end
 
@@ -677,7 +677,11 @@ function TroveMarker:note_payed(toll_item, item_taken, rune_name)
   local real_plus1 = toll_item.pluses()
   requested_item.plus1 = real_plus1
 
-  crawl.take_note(prefix .. self:item_name() .. " " .. toll_desc)
+  if item_taken then
+    crawl.take_note(prefix .. self:item_name() .. "を支払った")
+  else
+    crawl.take_note(prefix .. self:item_name() .. "を見せた")
+  end
 
   requested_item.plus1 = target_plus1
 end

@@ -1,0 +1,166 @@
+%%%%
+Message History
+
+メッセージ履歴:
+%%%%
+notes header
+
+行動履歴:
+ターン | 場所          | 行動
+%%%%
+You escaped
+
+あなたは迷宮を脱出した
+%%%%
+demanding penance.
+
+罪の償いを求めている。
+%%%%
+Deck
+
+デッキ
+%%%%
+Action
+
+行動
+%%%%
+total
+
+全体
+%%%%
+Char dumped successfully.
+
+キャラクターダンプに成功しました。
+%%%%
+You %svisited %d branch
+
+あなたは迷宮の分岐のうち%d
+%%%%
+of the dungeon, and %s %d of its levels.
+
+に行き、合計で%d階層を訪れている。
+%%%%
+You %svisited Pandemonium %d time
+
+あなたは%d回パンデモニウムに行き、
+%%%%
+, and %s %d of its levels.
+
+合計で%d階層を訪れている。
+%%%%
+You %svisited the Abyss %d time
+
+あなたは%d回アビスを訪れている
+%%%%
+You %svisited %d bazaar
+
+あなたは%d回バザールを訪れている
+%%%%
+You %s%s %d ziggurat
+
+あなたは%d回
+%%%%
+(completing %d)
+
+(うち%d回踏破)
+%%%%
+, and %s %d of %s levels
+
+、合計で%d階層を訪れている。
+%%%%
+(deepest: %d)
+
+(最高到達階数: %d)
+%%%%
+(%d times)
+
+(%d回)
+%%%%
+You %scollected %d gold pieces.
+
+あなたは%d枚の金貨をこれまでに集めている。
+%%%%
+You %sspent %d gold pieces at shops.
+
+あなたは%d枚の金貨を店で使っている。
+%%%%
+You %sdonated %d gold pieces to Zin.
+
+あなたはジンに%d枚の金貨を寄付している。
+%%%%
+You %spaid %d gold pieces to Gozag.
+
+あなたはゴザーグに%d枚の金貨を支払っている。
+%%%%
+You %sused %d gold pieces for miscellaneous purposes.
+
+あなたは%d枚の金貨をその他の用途に使っている。
+%%%%
+table legend turns by place
+
+# "Table legend:\n"
+# " A = Turns spent in this place as a percentage of turns spent in the\n"
+# "     entire game.\n"
+# " B = Non-inter-level travel turns spent in this place as a percentage of\n"
+# "     non-inter-level travel turns spent in the entire game.\n"
+# " C = Inter-level travel turns spent in this place as a percentage of\n"
+# "     turns spent in this place.\n"
+# " D = Turns resting spent in this place as a percentage of non-inter-level\n"
+# "     travel turns spent in this place.\n"
+# " E = Turns spent auto-exploring this place as a percentage of\n"
+# "     non-inter-level travel turns spent in this place.\n"
+# " F = Non-inter-level travel turns spent in this place divided by the\n"
+# "     number of levels of this place that you've seen.\n\n";
+
+場所別ターン消費統計:
+ A = ゲーム全体においてこの場所で費やしたターンのパーセンテージ
+ B = ゲーム全体においてこの場所で階層間でない自動移動を行って費やしたターンの
+     パーセンテージ
+ C = この場所で消費したターンに対する階層間自動移動を行って費やしたターンの
+     パーセンテージ
+ D = 休息に費やしたターンを階層間でない自動移動に費やしたターンで割った
+     パーセンテージ
+ E = 自動探索に費やしたターンを階層間でない自動移動に費やしたターンで割った
+     パーセンテージ
+ F = この場所で階層間でない自動移動を行って費やしたターンをあなたが訪れた
+     階層の数で割ったもの
+%%%%
+You aren't carrying anything.
+
+あなたは何も所持していない。
+%%%%
+Inventory:
+
+所持品一覧:
+%%%%
+Skills:
+
+スキル一覧:
+%%%%
+Your Spells              Type           Power        Failure   Level  Hunger
+
+呪文名                    種類         威力    失敗率 レベル 満腹度消費
+%%%%
+table legend kills by place
+
+# "Table legend:\n"
+# " A = Kills in this place as a percentage of kills in entire the game.\n"
+# " B = Kills by you in this place as a percentage of kills by you in\n"
+# "     the entire game.\n"
+# " C = Kills by friends in this place as a percentage of kills by\n"
+# "     friends in the entire game.\n"
+# " D = Other kills in this place as a percentage of other kills in the\n"
+# "     entire game.\n"
+# " E = Experience gained in this place as a percentage of experience\n"
+# "     gained in the entire game.\n"
+# " F = Experience gained in this place divided by the number of levels of\n"
+# "     this place that you have seen.\n\n";
+
+場所別殺害統計:
+ A = ゲーム全体においてこの場所で殺した数のパーセンテージ
+ B = ゲーム全体においてこの場所でプレイヤー自身が殺した数のパーセンテージ
+ C = ゲーム全体においてこの場所で仲間が殺した数のパーセンテージ
+ D = ゲーム全体においてこの場所でその他のモンスターが殺した数のパーセンテージ
+ E = ゲーム全体においてこの場所で得た経験値のパーセンテージ
+ F = この場所で得た経験値をあなたが訪れた階層の数で割ったもの
+%%%%

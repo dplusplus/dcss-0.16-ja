@@ -195,3 +195,7 @@ It may contain the following cards:
 
 100枚に1枚の割合で「奇妙なデッキ」のカードが混じることがある。
 %%%%
+Hired %s for %d gold.
+
+%sを金貨%d枚で雇った
+%%%%

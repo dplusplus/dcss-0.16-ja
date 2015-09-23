@@ -12,6 +12,7 @@
 #include <vector>
 
 #include "branch.h"
+#include "database.h"
 #include "english.h"
 #include "hiscores.h"
 #include "message.h"
@@ -224,7 +225,7 @@ string Note::describe(bool when, bool where, bool what) const
     if (where)
     {
         result << "| "
-               << chop_string(place.describe(), MAX_NOTE_PLACE_LEN)
+               << chop_string(place.describe_j(), MAX_NOTE_PLACE_LEN)
                << " | ";
     }
 
@@ -239,115 +240,113 @@ string Note::describe(bool when, bool where, bool what) const
                    << " [" << name << "]";
             break;
         case NOTE_XOM_REVIVAL:
-            result << "Xom revived you";
+            result << jtrans("Xom revived you");
             break;
         case NOTE_MP_CHANGE:
-            result << "Magic: " << first << "/" << second;
+            result << "MP: " << first << "/" << second;
             break;
         case NOTE_MAXHP_CHANGE:
-            result << "Reached " << first << " max health";
+            result << "最大HPが" << first << "になった";
             break;
         case NOTE_MAXMP_CHANGE:
-            result << "Reached " << first << " max magic points";
+            result << "最大MPが" << first << "になった";
             break;
         case NOTE_XP_LEVEL_CHANGE:
-            result << "Reached XP level " << first << ". " << name;
+            result << "レベル" << first << "に到達した (" << name << ")";
             break;
         case NOTE_DUNGEON_LEVEL_CHANGE:
             if (!desc.empty())
                 result << desc;
             else
-                result << "Entered "
-                       << place.describe(true, true);
+                result << place.describe_j(true, true) << "に進んだ";
             break;
         case NOTE_LEARN_SPELL:
-            result << "Learned a level "
+            result << "レベル"
                    << spell_difficulty(static_cast<spell_type>(first))
-                   << " spell: "
-                   << spell_title(static_cast<spell_type>(first));
+                   << "の呪文「"
+                   << tagged_jtrans("[spell]", spell_title(static_cast<spell_type>(first)))
+                   << "」を覚えた";
             break;
         case NOTE_GET_GOD:
-            result << "Became a worshipper of "
-                   << god_name(static_cast<god_type>(first), true);
+            result << jtrans(god_name(static_cast<god_type>(first)))
+                   << "の信徒になった";
             break;
         case NOTE_LOSE_GOD:
-            result << "Fell from the grace of "
-                   << god_name(static_cast<god_type>(first));
+            result << jtrans(god_name(static_cast<god_type>(first))) << "への信仰を失った";
             break;
         case NOTE_PENANCE:
-            result << "Was placed under penance by "
-                   << god_name(static_cast<god_type>(first));
+            result << jtrans(god_name(static_cast<god_type>(first))) << "への償いをしなければならなくなった";
             break;
         case NOTE_MOLLIFY_GOD:
-            result << "Was forgiven by "
-                   << god_name(static_cast<god_type>(first));
+            result << jtrans(god_name(static_cast<god_type>(first))) << "の赦しを得た";
             break;
         case NOTE_GOD_GIFT:
-            result << "Received a gift from "
-                   << god_name(static_cast<god_type>(first));
+            result << jtrans(god_name(static_cast<god_type>(first)))
+                   << "からの授かり物を得た";
             if (!name.empty())
                 result << " (" << name << ")";
             break;
         case NOTE_ID_ITEM:
-            result << "Identified " << name;
+            result << name << "を識別した";
             if (!desc.empty())
-                result << " (" << desc << ")";
+                result << "\n" + string(25, ' ') + "(" << desc << ")";
             break;
         case NOTE_GET_ITEM:
-            result << "Got " << name;
+            result << name << "を手にした";
             break;
         case NOTE_BUY_ITEM:
-            result << "Bought " << name << " for " << first << " gold piece"
-                   << (first == 1 ? "" : "s");
+            result << name << "を金貨" << first << "枚で購入した";
             break;
         case NOTE_DONATE_MONEY:
-            result << "Donated " << first << " gold piece"
-                   << (first == 1 ? "" : "s") << " to Zin";
+            result << "ジンに金貨" << first << "枚を寄付した";
             break;
         case NOTE_GAIN_SKILL:
-            result << "Reached skill level " << second
-                   << " in " << skill_name(static_cast<skill_type>(first));
+            result << jtransc(skill_name(static_cast<skill_type>(first))) << "スキルが"
+                      "レベル" << second << "に到達した";
             break;
         case NOTE_LOSE_SKILL:
-            result << "Reduced skill "
-                   << skill_name(static_cast<skill_type>(first))
-                   << " to level " << second;
+            result << jtransc(skill_name(static_cast<skill_type>(first))) << "スキルが"
+                      "レベル" << second << "に減少した";
             break;
         case NOTE_SEEN_MONSTER:
-            result << "Noticed " << name;
+            if (what && first == MONS_PANDEMONIUM_LORD)
+                result << jtrans(" the pandemonium lord") << "『" << name << "』に遭遇した";
+            else
+                result << name << "に遭遇した";
             break;
         case NOTE_DEFEAT_MONSTER:
             if (second)
-                result << name << " (ally) was " << desc;
+                result << name << "(仲間)" << desc;
+            else if (what && first == MONS_PANDEMONIUM_LORD)
+                result << jtrans(" the pandemonium lord") << "『" << name << "』" << desc;
             else
-                result << uppercase_first(desc) << " " << name;
+                result << name << desc;
             break;
         case NOTE_POLY_MONSTER:
-            result << name << " changed into " << desc;
+            result << name << "が" << desc << "に変化した";
             break;
         case NOTE_GOD_POWER:
-            result << "Acquired "
-                   << apostrophise(god_name(static_cast<god_type>(first)))
-                   << " "
-                   << _number_to_ordinal(_real_god_power(first, second)+1)
-                   << " power";
+            result << jtrans(god_name(static_cast<god_type>(first)))
+                   << "の"
+                   << jtrans(_number_to_ordinal(_real_god_power(first, second)+1))
+                   << "の能力を得た";
             break;
         case NOTE_GET_MUTATION:
-            result << "Gained mutation: "
+            result << "突然変異が発現した: "
                    << mutation_desc(static_cast<mutation_type>(first),
                                     second == 0 ? 1 : second);
             if (!name.empty())
                 result << " [" << name << "]";
             break;
         case NOTE_LOSE_MUTATION:
-            result << "Lost mutation: "
+            result << "突然変異を失った: "
                    << mutation_desc(static_cast<mutation_type>(first),
                                     second == 3 ? 3 : second+1);
             if (!name.empty())
                 result << " [" << name << "]";
             break;
         case NOTE_PERM_MUTATION:
-            result << "Mutation became permanent: "
+            result << "突然変異が定着した: "
                    << mutation_desc(static_cast<mutation_type>(first),
                                     second == 0 ? 1 : second);
             if (!name.empty())
@@ -363,13 +362,13 @@ string Note::describe(bool when, bool where, bool what) const
             result << name;
             break;
         case NOTE_SEEN_FEAT:
-            result << "Found " << name;
+            result << name << "を見つけた";
             break;
         case NOTE_FEAT_MIMIC:
-            result << name <<" was a mimic.";
+            result << name << "はミミックだった";
             break;
         case NOTE_XOM_EFFECT:
-            result << "XOM: " << name;
+            result << "[ゾム] " << name;
 #if defined(DEBUG_XOM) || defined(NOTE_DEBUG_XOM)
             // If debugging, also take note of piety and tension.
             result << " (piety: " << first;
@@ -379,22 +378,22 @@ string Note::describe(bool when, bool where, bool what) const
 #endif
             break;
         case NOTE_PARALYSIS:
-            result << "Paralysed by " << name << " for " << first << " turns";
+            result << name << "に" << first << "ターン麻痺させられた";
             break;
         case NOTE_NAMED_ALLY:
-            result << "Gained " << name << " as an ally";
+            result << name << "が仲間になった";
             break;
         case NOTE_ALLY_DEATH:
-            result << "Your ally " << name << " died";
+            result << "仲間の" << name << "が死んだ";
             break;
         case NOTE_OFFERED_SPELL:
-            result << "Offered knowledge of "
-                   << spell_title(static_cast<spell_type>(first))
-                   << " by Vehumet.";
+            result << "ヴェフメットが"
+                   << tagged_jtrans("[spell]", spell_title(static_cast<spell_type>(first)))
+                   << "の呪文の知識を授ける提案をした";
             break;
         case NOTE_FOCUS_CARD:
-            result << "Drew Focus: " << name << " increased to " << first << ", "
-                   << desc << " decreased to " << second;
+            result << "特化のカードを引いた: " << name << "スキルがレベル" << first << "に増加し、"
+                   << desc << "スキルがレベル" << second << "に減少した";
             break;
         default:
             result << "Buggy note description: unknown note type";

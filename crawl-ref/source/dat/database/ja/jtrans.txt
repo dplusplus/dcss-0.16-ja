@@ -11,6 +11,16 @@ its
 
 その
 %%%%
+############################## abyss.cc ##############################
+%%%%
+Cast into the Abyss
+
+アビスに追放された
+%%%%
+Corrupted %s
+
+%sを崩壊させた
+%%%%
 ############################## attack.cc ##############################
 %%%%
 %s %s %s attack.
@@ -2218,7 +2228,7 @@ You can't wear anything in your present form.
 %%%%
 Wear which item?
 
-どのアイテムを装備しますか？
+のアイテムを装備しますか？
 %%%%
 You can't wear that.
 
@@ -3884,6 +3894,44 @@ Your pack is full.
 
 あなたの荷袋は満杯だ。
 %%%%
+############################## kills.cc ##############################
+%%%%
+Grand Total: %d creatures vanquished
+
+総計: %d体のモンスターを倒した。
+%%%%
+Vanquished Creatures
+
+倒したモンスター:
+%%%%
+%d creature%s vanquished.
+
+%d体のモンスターを倒した。
+%%%%
+(once)
+
+(1回)
+%%%%
+(twice)
+
+(2回)
+%%%%
+(thrice)
+
+(3回)
+%%%%
+(%d times)
+
+(%d回)
+%%%%
+(shapeshifter)
+
+(変身能力者)
+%%%%
+%u creature%s vanquished.
+
+%u体のモンスターを倒した。
+%%%%
 ############################## macro.cc ##############################
 %%%%
 Input %s action:
@@ -3954,6 +4002,10 @@ Created %s '%s' => '%s'.
 %%%%
 ############################## main.cc ##############################
 %%%%
+Upgraded the game from %s to %s
+
+ゲームバージョンを%sから%sに更新した
+%%%%
 Welcome
 
 ようこそ
@@ -3965,6 +4017,22 @@ Welcome back
 Press <w>?</w> for a list of commands and other information.
 
 コマンド一覧やその他の情報を見るには <w>?</w>キー を押してください。
+%%%%
+set off with:
+
+は以下の装備を持って出発した
+%%%%
+You started the game in wizard mode.
+
+あなたはウィザードモードでゲームを開始した。
+%%%%
+Entered wizard mode.
+
+ウィザードモードを有効にした
+%%%%
+Entered explore mode.
+
+探索モードを有効にした
 %%%%
 There is nothing on the other side of the stone arch.
 
@@ -5653,6 +5721,42 @@ maps
 
 ステージ
 %%%%
+############################## notes.cc ##############################
+%%%%
+first
+
+1番目
+%%%%
+second
+
+2番目
+%%%%
+third
+
+3番目
+%%%%
+fourth
+
+4番目
+%%%%
+fifth
+
+5番目
+%%%%
+Xom revived you
+
+ゾムがあなたを蘇らせた
+%%%%
+############################## ouch.cc ##############################
+%%%%
+butterfly on damage
+
+損傷時の蝶
+%%%%
+smoke on damage
+
+損傷時の煙
+%%%%
 ############################## place.cc ##############################
 %%%%
 Level %d of %s
@@ -6225,6 +6329,10 @@ You feel clumsy.
 You feel agile.
 
 あなたは機敏になった。
+%%%%
+Lost %s.
+
+%sを失った
 %%%%
 ############################## potion.cc ##############################
 %%%%
@@ -7557,6 +7665,11 @@ lost
 
 失って
 %%%%
+%c Level %.*f%s %s
+
+
+%c %-14s %s%sレベル
+%%%%
 ############################## species.cc ##############################
 %%%%
 coil in front of
@@ -8097,6 +8210,26 @@ Welcome back to %s!
 You sense a powerful magical force warping space.
 
 あなたは強い魔力が空間を歪めているのを感じた。
+%%%%
+Voluntarily entered the Abyss.
+
+自らの意志でアビスに突入した
+%%%%
+Took an exit into the Abyss.
+
+パンデモニウムを出てアビスに突入した
+%%%%
+Escaped the Abyss
+
+アビスを脱出した
+%%%%
+Escaped Pandemonium
+
+パンデモニウムを脱出した
+%%%%
+Escaped into the Abyss
+
+アビスに脱出した
 %%%%
 ############################## stash.cc ##############################
 %%%%
@@ -9310,6 +9443,190 @@ run
 %%%%
 ############################## xom.cc ##############################
 %%%%
+cast spell '%s'
+
+%sを唱えた
+%%%%
+divination: magic mapping
+
+予見術: 魔法の地図
+%%%%
+divination: detect items
+
+予見術: アイテムの探知
+%%%%
+divination: detect creatures
+
+予見術: モンスターの感知
+%%%%
+god gift: %s
+
+神の下賜: %s
+%%%%
+potion effect
+
+薬の投与
+%%%%
+confuse monster(s)
+
+モンスターの混乱
+%%%%
+summons %d friendly demon%s
+
+%d体の友好的な悪魔を召喚
+%%%%
+summons friendly %s
+
+友好的な%sを召喚
+%%%%
+polymorph %s -> %s
+
+%sから%sに変化
+%%%%
+swap weapons
+
+武器の交換
+%%%%
+swap monsters
+
+モンスターの交換
+%%%%
+snakes to sticks
+
+蛇の棒切れ
+%%%%
+give %smutation%s
+
+突然変異の付与
+%%%%
+divine lightning%s
+
+神の雷%s
+%%%%
+(protected)
+
+(保護状態)
+%%%%
+scenery: create altars
+
+地形: 祭壇の造成
+%%%%
+%d fountains blood
+
+%dつの血の泉
+%%%%
+%d doors open
+
+%dつの扉が開いた
+%%%%
+%d doors close
+
+%dつの扉が閉じた
+%%%%
+scenery:
+
+地形:
+%%%%
+fake destruction
+
+偽りの破壊
+%%%%
+destruction
+
+破壊
+%%%%
+enchant monster (good)
+
+モンスターへの魔法(有利)
+%%%%
+enchant monster (bad)
+
+モンスターへの魔法(不利)
+%%%%
+fog
+
+霧
+%%%%
+%d-stop teleportation journey%s
+
+%d連続のテレポート
+%%%%
+vitrification
+
+ガラス化
+%%%%
+silly message
+
+お馬鹿なメッセージ
+%%%%
+%s %s miscast
+
+%s%sの失敗効果
+%%%%
+chaos upgrade
+
+混沌の力の付与
+%%%%
+confusion
+
+混乱
+%%%%
+confusion (+ monsters)
+
+混乱(モンスター含む)
+%%%%
+repel stairs
+
+逃げる階段
+%%%%
+colour smoke trail
+
+色つきの煙
+%%%%
+stat loss: -%d %s (%d/%d)
+
+能力低下: %s -%d (%d/%d)
+%%%%
+draining
+
+衰弱
+%%%%
+torment (%d/%d hp)
+
+苦痛 (%d/%d HP)
+%%%%
+summons %d hostile %s%s
+
+%d体の敵対的な%sを召喚
+%%%%
+shadow creature
+
+影の怪物
+%%%%
+demon
+
+悪魔
+%%%%
+revert banishment
+
+現世への追放
+%%%%
+noise
+
+騒音
+%%%%
+blink monster(s)
+
+モンスターの瞬間移動
+%%%%
+chaos cloud
+
+混沌の雲
+%%%%
+stealth player
+
+プレイヤーの隠匿
+%%%%
 a very special plaything of Xom.
 
 あなたはゾムの慰みものだ。
@@ -9342,11 +9659,57 @@ a BORING thing.
 
 あなたはゾムに飽きられてしまった。
 %%%%
+XOM is BORED!
+
+ゾムは退屈している！
+%%%%
 ############################## dat/clua/autofight.lua ##############################
 %%%%
 No target in view!
 
 視界内に敵はいない！
+%%%%
+############################## dat/des/branches/pan.des ##############################
+%%%%
+Entered the realm of
+
+の守る階層に到達した
+%%%%
+############################## dat/des/portals/trove.des ##############################
+%%%%
+to enter a treasure trove
+
+秘密の埋蔵庫に入る
+%%%%
+############################## dat/des/portals/wizlab.des ##############################
+%%%%
+Tukima's Studio
+
+ツキマーの工房
+%%%%
+Eringya's Formal Garden
+
+エリンギャの庭園
+%%%%
+Cigotuvi's Fleshworks
+
+シゴツヴィの解体場
+%%%%
+Iskenderun's Mystic Tower
+
+イスケンデルンの魔導の塔
+%%%%
+Zonguldrok's Shrine
+
+ゾングルドルックの神殿
+%%%%
+Wucad Mu's Monastery
+
+ウカド・ムーの修道院
+%%%%
+The Roulette of Golubria
+
+ゴルブリアのルーレット
 %%%%
 ############################## dat/des/sprint/arena_sprint.des ##############################
 %%%%

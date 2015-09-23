@@ -2079,9 +2079,6 @@ string shop_name(const coord_def& where, bool add_stop)
             sh_name += " " + sh_suffix;
     }
 
-    if (add_stop)
-        sh_name += "だ。";
-
     return sh_name;
 }
 

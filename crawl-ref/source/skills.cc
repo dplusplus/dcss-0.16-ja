@@ -34,6 +34,7 @@
 #include "sprint.h"
 #include "state.h"
 #include "stringutil.h"
+#include "unicode.h"
 #include "unwind.h"
 
 typedef function<string ()> string_fn;
@@ -1673,22 +1674,25 @@ void dump_skills(string &text)
     {
         int real = you.skill((skill_type)i, 10, true);
         int cur  = you.skill((skill_type)i, 10);
+        string lvl = real == 270 ? "  27" :
+                     real >= 100 ? make_stringf("%.1f", real * 0.1)
+                                 : make_stringf(" %.1f", real * 0.1);
+
         if (real > 0 || (!you.auto_training && you.train[i] > 0))
         {
-            text += make_stringf(" %c Level %.*f%s %s\n",
+            text += make_stringf((" " + jtransln(" %c Level %.*f%s %s\n")).c_str(),
                                  real == 270       ? 'O' :
                                  !you.can_train[i] ? ' ' :
                                  you.train[i] == 2 ? '*' :
                                  you.train[i]      ? '+' :
                                                      '-',
-                                 real == 270 ? 0 : 1,
-                                 real * 0.1,
+                                 chop_string(jtrans(skill_name(static_cast<skill_type>(i))) + "スキル", 14).c_str(),
+                                 lvl.c_str(),
                                  real != cur
                                      ? make_stringf("(%.*f)",
                                            cur == 270 ? 0 : 1,
                                            cur * 0.1).c_str()
-                                     : "",
-                                 skill_name(static_cast<skill_type>(i)));
+                                     : "");
         }
     }
 }

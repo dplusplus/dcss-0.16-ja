@@ -19,6 +19,7 @@
 #include "cloud.h"
 #include "colour.h"
 #include "coordit.h"
+#include "database.h"
 #include "dbg-scan.h"
 #include "delay.h"
 #include "dgn-overview.h"
@@ -407,7 +408,10 @@ void banished(const string &who)
         return;
     }
 
-    const string what = "Cast into the Abyss" + _who_banished(who);
+    string what = jtrans("Cast into the Abyss");
+    if (!who.empty())
+        what = jtrans(who) + "によって" + what;
+
     take_note(Note(NOTE_MESSAGE, 0, 0, what.c_str()), true);
 
     stop_delay(true);
@@ -1987,8 +1991,8 @@ bool lugonu_corrupt_level(int power)
         return false;
 
     simple_god_message("'s Hand of Corruption reaches out!");
-    take_note(Note(NOTE_MESSAGE, 0, 0, make_stringf("Corrupted %s",
-              level_id::current().describe().c_str()).c_str()));
+    take_note(Note(NOTE_MESSAGE, 0, 0, make_stringf(jtransc("Corrupted %s"),
+              level_id::current().describe_j().c_str())));
     mark_corrupted_level(level_id::current());
 
     flash_view(UA_PLAYER, MAGENTA);

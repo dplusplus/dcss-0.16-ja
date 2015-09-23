@@ -648,8 +648,8 @@ static void _handle_stat_change(stat_type stat, bool see_source)
         // Turns required for recovery once the stat is restored, randomised slightly.
         you.stat_zero[stat] = 10 + random2(10);
         mprf(MSGCH_WARN, "You have lost your %s.", stat_desc(stat, SD_NAME));
-        take_note(Note(NOTE_MESSAGE, 0, 0, make_stringf("Lost %s.",
-            stat_desc(stat, SD_NAME)).c_str()), true);
+        take_note(Note(NOTE_MESSAGE, 0, 0, make_stringf(jtransc("Lost %s."),
+            jtransc(stat_desc(stat, SD_NAME)))), true);
         // 2 to 5 turns of paralysis (XXX: decremented right away?)
         you.increase_duration(DUR_PARALYSIS, 2 + random2(3));
     }

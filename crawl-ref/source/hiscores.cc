@@ -56,6 +56,7 @@
 #include "version.h"
 
 #define SCORE_VERSION "0.1"
+#define HISCORE_INDENT 25
 
 // enough memory allocated to snarf in the scorefile entries
 static unique_ptr<scorefile_entry> hs_list[SCORE_FILE_ENTRIES];
@@ -537,7 +538,7 @@ static string _hiscore_date_string(time_t time)
 
 static string _hiscore_newline_string()
 {
-    return "\n             ";
+    return "\n" + string(HISCORE_INDENT, ' ');
 }
 
 string hiscores_format_single_long(const scorefile_entry &se, bool verbose)
@@ -1991,6 +1992,7 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
     const bool oneline = (verbosity == DDV_ONELINE);
 
     string desc;
+    string indent = string(HISCORE_INDENT, ' ');
 
     if (oneline)
         desc = " ";
@@ -2347,7 +2349,7 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
             if (!death_source_name.empty() && !oneline && !semiverbose)
             {
                 desc += "\n";
-                desc += "             ";
+                desc += indent;
                 desc += "... reflected by ";
                 desc += death_source_name;
                 needs_damage = false;
@@ -2541,7 +2543,7 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
         else
         {
             desc += "\n";
-            desc += "             ";
+            desc += indent;
             desc += "... caused by ";
             desc += auxkilldata;
         }

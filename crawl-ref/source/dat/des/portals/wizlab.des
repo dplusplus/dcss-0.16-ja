@@ -111,7 +111,7 @@ end
 
 function wizlab_milestone (e, wizlab_desc)
     crawl.mark_milestone("br.enter", "entered " .. wizlab_desc .. ".", "parent")
-    crawl.take_note("Entered " .. wizlab_desc)
+    crawl.take_note(crawl.jtrans(wizlab_desc) .. "に突入した")
 end
 
 function tukima_machine (data, triggerable, triggerer, marker, ev)
@@ -1802,7 +1802,7 @@ COLOUR:     wWv#4 = silver
 :           set_feature_name("green_crystal_wall", "wall of white crystal")
 
 epilogue{{
-            wizlab_milestone(_G, "The Chambers of " .. wizname .. " the Cloud Mage")
+            wizlab_milestone(_G, "雲の魔術師『" .. wizname .. "』の実験室")
 }}
 #           Map is ugly because border_fill_type doesn't allow for (yet)
 #           recolouring.
@@ -1951,7 +1951,7 @@ SUBST:      7 = 4, 8 = 5, df = 6, eg = 3
 :           set_feature_name("stone_wall", "black wall")
 :           set_feature_name("rock_wall", "carved rock wall")
 epilogue{{
-            wizlab_milestone(_G, "The Hall of " .. wizname .. " the Hellbinder")
+            wizlab_milestone(_G, "地獄に縛られしもの『" .. wizname .. "』の大広間")
 }}
 MAP
 cccccccccccccccccccccccccccccccccccccccccccccc

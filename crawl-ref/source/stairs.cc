@@ -813,12 +813,12 @@ void down_stairs(dungeon_feature_type force_stair, bool force_known_shaft,
     if (!force_stair && old_feat == DNGN_ENTER_ABYSS)
     {
         mark_milestone("abyss.enter", "entered the Abyss!");
-        take_note(Note(NOTE_MESSAGE, 0, 0, "Voluntarily entered the Abyss."), true);
+        take_note(Note(NOTE_MESSAGE, 0, 0, jtrans("Voluntarily entered the Abyss.")), true);
     }
     else if (old_feat == DNGN_EXIT_THROUGH_ABYSS)
     {
         mark_milestone("abyss.enter", "escaped (hah) into the Abyss!");
-        take_note(Note(NOTE_MESSAGE, 0, 0, "Took an exit into the Abyss."), true);
+        take_note(Note(NOTE_MESSAGE, 0, 0, jtrans("Took an exit into the Abyss.")), true);
     }
     else if (stair_find == DNGN_EXIT_ABYSS
              && you.char_direction != GDT_GAME_START)
@@ -859,11 +859,11 @@ void down_stairs(dungeon_feature_type force_stair, bool force_known_shaft,
         || stair_find == DNGN_EXIT_THROUGH_ABYSS)
     {
         mpr("You pass through the gate.");
-        take_note(Note(NOTE_MESSAGE, 0, 0,
+        take_note(Note(NOTE_MESSAGE, 0, 0, jtrans(
             stair_find == DNGN_EXIT_ABYSS ? "Escaped the Abyss" :
             stair_find == DNGN_EXIT_PANDEMONIUM ? "Escaped Pandemonium" :
             stair_find == DNGN_EXIT_THROUGH_ABYSS ? "Escaped into the Abyss" :
-            "Buggered into bugdom"), true);
+            "Buggered into bugdom")), true);
 
         if (!you.wizard || !crawl_state.is_replaying_keys())
             more();

@@ -573,3 +573,11 @@ string centre(const string &s, int width, char fillchar)
 
     return result;
 }
+
+string right(const string &s, int width, char fillchar)
+{
+    if (strwidth(s) >= width)
+        return s;
+
+    return string(width - strwidth(s), fillchar) + s;
+}

@@ -554,6 +554,14 @@ static string _milestone_kill_verb(killer_type killer)
            killer == KILL_SLIMIFIED ? "slimified" : "killed";
 }
 
+static string _takenote_kill_verb(killer_type killer)
+{
+    return killer == KILL_BANISHED ? "を追放した" :
+           killer == KILL_PACIFIED ? "を中立化した" :
+           killer == KILL_ENSLAVED ? "を隷属させた" :
+           killer == KILL_SLIMIFIED ? "をスライムに変えた" : "を殺した";
+}
+
 void record_monster_defeat(monster* mons, killer_type killer)
 {
     if (crawl_state.game_is_arena())
@@ -566,7 +574,7 @@ void record_monster_defeat(monster* mons, killer_type killer)
     {
         take_note(Note(NOTE_DEFEAT_MONSTER, mons->type, mons->friendly(),
                        mons->full_name(DESC_A).c_str(),
-                       _milestone_kill_verb(killer).c_str()));
+                       _takenote_kill_verb(killer)));
     }
     if (mons->type == MONS_PLAYER_GHOST)
     {
