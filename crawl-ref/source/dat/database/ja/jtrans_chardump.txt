@@ -15,6 +15,14 @@ Deck
 
 デッキ
 %%%%
+Action
+
+行動
+%%%%
+total
+
+全体
+%%%%
 Char dumped successfully.
 
 キャラクターダンプに成功しました。
@@ -83,6 +91,35 @@ You %sused %d gold pieces for miscellaneous purposes.
 
 あなたは%d枚の金貨をその他の用途に使っている。
 %%%%
+table legend turns by place
+
+# "Table legend:\n"
+# " A = Turns spent in this place as a percentage of turns spent in the\n"
+# "     entire game.\n"
+# " B = Non-inter-level travel turns spent in this place as a percentage of\n"
+# "     non-inter-level travel turns spent in the entire game.\n"
+# " C = Inter-level travel turns spent in this place as a percentage of\n"
+# "     turns spent in this place.\n"
+# " D = Turns resting spent in this place as a percentage of non-inter-level\n"
+# "     travel turns spent in this place.\n"
+# " E = Turns spent auto-exploring this place as a percentage of\n"
+# "     non-inter-level travel turns spent in this place.\n"
+# " F = Non-inter-level travel turns spent in this place divided by the\n"
+# "     number of levels of this place that you've seen.\n\n";
+
+場所別ターン消費統計:
+ A = ゲーム全体においてこの場所で費やしたターンのパーセンテージ
+ B = ゲーム全体においてこの場所で階層間でない自動移動を行って費やしたターンの
+     パーセンテージ
+ C = この場所で消費したターンに対する階層間自動移動を行って費やしたターンの
+     パーセンテージ
+ D = 休息に費やしたターンを階層間でない自動移動に費やしたターンで割った
+     パーセンテージ
+ E = 自動探索に費やしたターンを階層間でない自動移動に費やしたターンで割った
+     パーセンテージ
+ F = この場所で階層間でない自動移動を行って費やしたターンをあなたが訪れた
+     階層の数で割ったもの
+%%%%
 You aren't carrying anything.
 
 あなたは何も所持していない。
@@ -98,4 +135,27 @@ Skills:
 Your Spells              Type           Power        Failure   Level  Hunger
 
 呪文名                    種類         威力    失敗率 レベル 満腹度消費
+%%%%
+table legend kills by place
+
+# "Table legend:\n"
+# " A = Kills in this place as a percentage of kills in entire the game.\n"
+# " B = Kills by you in this place as a percentage of kills by you in\n"
+# "     the entire game.\n"
+# " C = Kills by friends in this place as a percentage of kills by\n"
+# "     friends in the entire game.\n"
+# " D = Other kills in this place as a percentage of other kills in the\n"
+# "     entire game.\n"
+# " E = Experience gained in this place as a percentage of experience\n"
+# "     gained in the entire game.\n"
+# " F = Experience gained in this place divided by the number of levels of\n"
+# "     this place that you have seen.\n\n";
+
+場所別殺害統計:
+ A = ゲーム全体においてこの場所で殺した数のパーセンテージ
+ B = ゲーム全体においてこの場所でプレイヤー自身が殺した数のパーセンテージ
+ C = ゲーム全体においてこの場所で仲間が殺した数のパーセンテージ
+ D = ゲーム全体においてこの場所でその他のモンスターが殺した数のパーセンテージ
+ E = ゲーム全体においてこの場所で得た経験値のパーセンテージ
+ F = この場所で得た経験値をあなたが訪れた階層の数で割ったもの
 %%%%

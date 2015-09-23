@@ -420,7 +420,7 @@ static string _sdump_turns_place_info(PlaceInfo place_info, string name = "")
 
     out =
         make_stringf("%14s | %5.1f | %5.1f | %5.1f | %5.1f | %5.1f | %13.1f\n",
-                     name.c_str(), a, b, c , d, e, f);
+                     right(tagged_jtrans("[branch]", name), 14).c_str(), a, b, c , d, e, f);
 
     out = replace_all(out, " nan ", " N/A ");
 
@@ -433,7 +433,8 @@ static void _sdump_turns_by_place(dump_params &par)
 
     vector<PlaceInfo> all_visited = you.get_all_place_info(true);
 
-    text +=
+    text += jtransln("table legend turns by place") + "\n";
+/*
 "Table legend:\n"
 " A = Turns spent in this place as a percentage of turns spent in the\n"
 "     entire game.\n"
@@ -447,13 +448,14 @@ static void _sdump_turns_by_place(dump_params &par)
 "     non-inter-level travel turns spent in this place.\n"
 " F = Non-inter-level travel turns spent in this place divided by the\n"
 "     number of levels of this place that you've seen.\n\n";
+*/
 
     text += "               ";
     text += "    A       B       C       D       E               F\n";
     text += "               ";
     text += "+-------+-------+-------+-------+-------+----------------------\n";
 
-    text += _sdump_turns_place_info(you.global_info, "Total");
+    text += _sdump_turns_place_info(you.global_info, jtrans("Total"));
 
     for (const PlaceInfo &pi : all_visited)
         text += _sdump_turns_place_info(pi);
@@ -914,7 +916,7 @@ static string _sdump_kills_place_info(PlaceInfo place_info, string name = "")
     out =
         make_stringf("%14s | %5.1f | %5.1f | %5.1f | %5.1f | %5.1f |"
                      " %13.1f\n",
-                     name.c_str(), a, b, c , d, e, f);
+                     right(tagged_jtransc("[branch]", name), 14).c_str(), a, b, c , d, e, f);
 
     out = replace_all(out, " nan ", " N/A ");
 
@@ -929,7 +931,8 @@ static void _sdump_kills_by_place(dump_params &par)
 
     string result = "";
 
-    string header =
+    string header = jtransln("table legend kills by place") + "\n";
+/*
     "Table legend:\n"
     " A = Kills in this place as a percentage of kills in entire the game.\n"
     " B = Kills by you in this place as a percentage of kills by you in\n"
@@ -942,6 +945,7 @@ static void _sdump_kills_by_place(dump_params &par)
     "     gained in the entire game.\n"
     " F = Experience gained in this place divided by the number of levels of\n"
     "     this place that you have seen.\n\n";
+*/
 
     header += "               ";
     header += "    A       B       C       D       E               F\n";
@@ -951,7 +955,7 @@ static void _sdump_kills_by_place(dump_params &par)
     string footer = "               ";
     footer += "+-------+-------+-------+-------+-------+----------------------\n";
 
-    result += _sdump_kills_place_info(you.global_info, "Total");
+    result += _sdump_kills_place_info(you.global_info, jtrans("Total"));
 
     for (const PlaceInfo &pi : all_visited)
         result += _sdump_kills_place_info(pi);
@@ -1146,10 +1150,10 @@ static void _sdump_action_counts(dump_params &par)
     if (max_lt)
         max_lt++;
 
-    par.text += make_stringf("\n%-29s", chop_string("行動", 29).c_str());
+    par.text += make_stringf("\n%-29s", chop_stringc(jtrans("Action"), 29));
     for (int lt = 0; lt < max_lt; lt++)
         par.text += make_stringf(" | %2d-%2d", lt * 3 + 1, lt * 3 + 3);
-    par.text += " ||  総計";
+    par.text += " ||  " + jtrans("total");
     par.text += "\n------------------------------";
     for (int lt = 0; lt < max_lt; lt++)
         par.text += "+-------";
