@@ -420,7 +420,7 @@ static string _sdump_turns_place_info(PlaceInfo place_info, string name = "")
 
     out =
         make_stringf("%14s | %5.1f | %5.1f | %5.1f | %5.1f | %5.1f | %13.1f\n",
-                     right(tagged_jtrans("[branch]", name), 14).c_str(), a, b, c , d, e, f);
+                     align_rightc(tagged_jtrans("[branch]", name), 14), a, b, c , d, e, f);
 
     out = replace_all(out, " nan ", " N/A ");
 
@@ -916,7 +916,7 @@ static string _sdump_kills_place_info(PlaceInfo place_info, string name = "")
     out =
         make_stringf("%14s | %5.1f | %5.1f | %5.1f | %5.1f | %5.1f |"
                      " %13.1f\n",
-                     right(tagged_jtransc("[branch]", name), 14).c_str(), a, b, c , d, e, f);
+                     align_rightc(tagged_jtransc("[branch]", name), 14), a, b, c , d, e, f);
 
     out = replace_all(out, " nan ", " N/A ");
 

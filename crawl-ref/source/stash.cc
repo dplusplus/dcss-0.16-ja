@@ -2102,7 +2102,7 @@ bool StashTracker::display_search_results(
         else
             matchtitle << "    ";
 
-        matchtitle << "[" << centre(res.pos.id.describe_j(), MAX_BRANCH_ABBREV_SIZE) << "] "
+        matchtitle << "[" << align_centre(res.pos.id.describe_j(), MAX_BRANCH_ABBREV_SIZE) << "] "
                    << res.match;
 
         if (res.matches > 1 && res.count > 1)
