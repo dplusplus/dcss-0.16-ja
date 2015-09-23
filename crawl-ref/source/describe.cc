@@ -2099,6 +2099,14 @@ void get_feature_desc(const coord_def &pos, describe_info &inf)
     inf.title = desc + string(max(0, get_number_of_cols() - strwidth(desc) - strwidth(desc_en) - 1),
                               ' ') + (desc != desc_en ? desc_en : "");
 
+    inf.title = replace_all(inf.title, " ", " "); // replace spaces to no-break spaces
+
+    if (strwidth(desc) + strwidth(desc_en) + 5 > get_number_of_cols())
+    {
+        // e.g. "a wall of the weird stuff which makes up Pandemonium"
+        inf.title = desc;
+    }
+
     // If we couldn't find a description in the database then see if
     // the feature's base name is different.
     if (long_desc.empty())
