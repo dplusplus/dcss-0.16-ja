@@ -15,6 +15,7 @@
 #include "branch.h"
 #include "butcher.h"
 #include "cio.h"
+#include "database.h"
 #include "decks.h"
 #include "describe.h"
 #include "dgn-overview.h"
@@ -2584,13 +2585,16 @@ void ShoppingListMenu::draw_title()
     if (title)
     {
         const int total_cost = you.props[SHOPPING_LIST_COST_KEY];
+        string header_left;
 
         cgotoxy(1, 1);
         formatted_string fs = formatted_string(title->colour);
-        fs.cprintf("%d %s%s, total %d gold",
-                   title->quantity, title->text.c_str(),
-                   title->quantity > 1? "s" : "",
-                   total_cost);
+
+        header_left = make_stringf(jtransc("%d %s%s, total %d gold"),
+                                   title->quantity, title->text.c_str(),
+                                   total_cost);
+
+        fs.cprintf(header_left.c_str());
         fs.display();
 
 #ifdef USE_TILE_WEB
@@ -2601,17 +2605,18 @@ void ShoppingListMenu::draw_title()
         switch (menu_action)
         {
         case ACT_EXECUTE:
-            s += "<w>travel</w>|examine|delete";
+            s += jtrans("<w>travel</w>|examine|delete");
             break;
         case ACT_EXAMINE:
-            s += "travel|<w>examine</w>|delete";
+            s += jtrans("travel|<w>examine</w>|delete");
             break;
         default:
-            s += "travel|examine|<w>delete</w>";
+            s += jtrans("travel|examine|<w>delete</w>");
             break;
         }
 
-        s += "  [<w>?</w>/<w>!</w>] change action</lightgrey>";
+        s += "  " + jtrans("[<w>?</w>/<w>!</w>] change action</lightgrey>");
+        s = string(get_number_of_cols() - strwidth(header_left) - 41, ' ') + s;
 
         draw_title_suffix(formatted_string::parse_string(s), false);
     }
@@ -2625,7 +2630,7 @@ void ShoppingListMenu::draw_title()
  */
 string ShoppingList::describe_thing_pos(const CrawlHashTable &thing)
 {
-    return make_stringf("[%s]", thing_pos(thing).id.describe().c_str());
+    return make_stringf("[%12s]", align_centrec(thing_pos(thing).id.describe_j(), 12));
 }
 
 void ShoppingList::fill_out_menu(Menu& shopmenu)
@@ -2644,12 +2649,12 @@ void ShoppingList::fill_out_menu(Menu& shopmenu)
 
         const string etitle =
             make_stringf(
-                "%*s%5d gold  %s%s",
+                jtransc("%*s%5d gold  %s%s"),
                 longest,
                 describe_thing_pos(thing).c_str(),
                 cost,
                 name_thing(thing, DESC_A).c_str(),
-                unknown ? " (unknown)" : "");
+                unknown ? (" " + jtrans(" (unknown)")).c_str() : "");
 
         MenuEntry *me = new MenuEntry(etitle, MEL_ITEM, 1, hotkey);
         me->data = &thing;
@@ -2683,7 +2688,7 @@ void ShoppingList::display()
     shopmenu.set_tag("shop");
     shopmenu.menu_action  = Menu::ACT_EXECUTE;
     shopmenu.action_cycle = Menu::CYCLE_CYCLE;
-    string title          = "thing";
+    string title          = "品目";
 
     MenuEntry *mtitle = new MenuEntry(title, MEL_TITLE);
     shopmenu.set_title(mtitle);
@@ -2695,7 +2700,7 @@ void ShoppingList::display()
         shopmenu.set_maxpagesize(52);
     }
 
-    string more_str = make_stringf("<yellow>You have %d gp</yellow>", you.gold);
+    string more_str = "\n" + make_stringf(jtransc("<yellow>You have %d gp</yellow>"), you.gold);
     shopmenu.set_more(formatted_string::parse_string(more_str));
 
     shopmenu.set_flags(MF_SINGLESELECT | MF_ALWAYS_SHOW_MORE

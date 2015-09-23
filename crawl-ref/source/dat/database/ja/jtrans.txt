@@ -7545,6 +7545,40 @@ The service fee for joining is currently %d gold; you have %d.
 
 %dつの%sが腐ってしまった。
 %%%%
+############################## shopping.cc ##############################
+%%%%
+%d %s%s, total %d gold
+
+%d%s, 合計%dゴールド
+%%%%
+<w>travel</w>|examine|delete
+
+<w>移動</w>|解説|削除
+%%%%
+travel|<w>examine</w>|delete
+
+移動|<w>解説</w>|削除
+%%%%
+travel|examine|<w>delete</w>
+
+移動|解説|<w>削除</w>
+%%%%
+[<w>?</w>/<w>!</w>] change action</lightgrey>
+
+モード切替 [<w>?</w>/<w>!</w>]</lightgrey>
+%%%%
+%*s%5d gold  %s%s
+
+%*s%5dゴールド  %s%s
+%%%%
+(unknown)
+
+(未鑑定)
+%%%%
+<yellow>You have %d gp</yellow>
+
+<yellow>あなたは%d枚の金貨を持っている。</yellow>
+%%%%
 ############################## shout.cc ##############################
 %%%%
 You feel a strong urge to %s, but you are unable to make a sound!
