@@ -1486,11 +1486,11 @@ void toggle_show_terrain()
     _show_terrain = !_show_terrain;
     if (_show_terrain)
     {
-        mprf("Showing terrain only. Press <w>%s</w> to return to normal view.",
+        mprf(jtransc("Showing terrain only. Press <w>%s</w> to return to normal view."),
              command_to_string(CMD_SHOW_TERRAIN).c_str());
     }
     else
-        mpr("Returning to normal view.");
+        mpr(jtrans("Returning to normal view."));
 }
 
 void reset_show_terrain()

@@ -9525,6 +9525,14 @@ run
 
 %sに遭遇した。
 %%%%
+Showing terrain only. Press <w>%s</w> to return to normal view.
+
+地形のみを表示しています。通常表示に戻るには<w>%s</w>を押してください。
+%%%%
+Returning to normal view.
+
+通常表示に戻りました。
+%%%%
 ############################## xom.cc ##############################
 %%%%
 cast spell '%s'
