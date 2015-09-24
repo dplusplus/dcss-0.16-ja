@@ -3376,14 +3376,12 @@ public:
         else if (item->base_type == OBJ_RODS || item->base_type == OBJ_GOLD)
         {
             name = lowercase_string(item_class_name(item->base_type));
-            name = pluralise(name);
         }
         else if (item->sub_type == get_max_subtype(item->base_type))
-            name = "unknown " + lowercase_string(item_class_name(item->base_type));
+            name = jtrans("unknown ") + lowercase_string(item_class_name(item->base_type));
         else
         {
             name = item->name(DESC_PLAIN,false,true,false,false,flags);
-            name = pluralise(name);
         }
 
         char symbol;
@@ -3396,7 +3394,7 @@ public:
 
         return make_stringf(" %c%c%c%c%s", hotkeys[0], need_cursor ? '[' : ' ',
                                            symbol, need_cursor ? ']' : ' ',
-                                           name.c_str());
+                                           jtransc(name));
     }
 
     virtual int highlight_colour() const
@@ -3663,13 +3661,13 @@ void check_item_knowledge(bool unknown_items)
     string stitle;
 
     if (unknown_items)
-        stitle = "Items not yet recognised: (toggle with -)";
+        stitle = jtrans("Items not yet recognised: (toggle with -)");
     else if (!all_items_known)
-        stitle = "Recognised items. (- for unrecognised, select to toggle autopickup)";
+        stitle = jtrans("Recognised items. (- for unrecognised, select to toggle autopickup)");
     else
-        stitle = "You recognise all items. (Select to toggle autopickup)";
+        stitle = jtrans("You recognise all items. (Select to toggle autopickup)");
 
-    string prompt = "(_ for help)";
+    string prompt = jtrans("(_ for help)");
     //TODO: when the menu is opened, the text is not justified properly.
     stitle = stitle + string(max(0, get_number_of_cols() - strwidth(stitle)
                                                          - strwidth(prompt)),
@@ -3685,7 +3683,7 @@ void check_item_knowledge(bool unknown_items)
                                               : known_item_mangle, 'a', false);
 
     ml = menu.load_items(items_missile, known_item_mangle, ml, false);
-    menu.add_entry(new MenuEntry("Other Items", MEL_SUBTITLE));
+    menu.add_entry(new MenuEntry(jtrans("Other Items"), MEL_SUBTITLE));
     menu.load_items_seq(items_other, known_item_mangle, ml);
 
     menu.set_title(stitle);

@@ -2202,6 +2202,10 @@ Inventory:
 
 </w> キーで一括選択/解除<blue>)
 %%%%
+Select to reset item to default:
+
+自動拾いをデフォルト設定に戻すアイテムを選んでください:
+%%%%
 %s (<w>?</w> for menu, <w>Esc</w> to quit)
 
 %s (<w>Esc</w> でキャンセル)
@@ -3310,6 +3314,10 @@ amulet of regeneration
 
 再生の護符
 %%%%
+runes
+
+ルーン
+%%%%
 rune of Zot
 
 ゾットのルーン
@@ -3487,6 +3495,10 @@ phantom mirror
 幻影の鏡
 %%%%
 manual
+
+手引書
+%%%%
+manuals
 
 手引書
 %%%%
@@ -3777,6 +3789,26 @@ corpse
 skeleton
 
 骸骨
+%%%%
+unknown
+
+未鑑定の
+%%%%
+Items not yet recognised: (toggle with -)
+
+未鑑定のアイテム一覧 (- で切り替え)
+%%%%
+Recognised items. (- for unrecognised, select to toggle autopickup)
+
+認識しているアイテム一覧 (- で切り替え、選択して自動拾い切り替え)
+%%%%
+You recognise all items. (Select to toggle autopickup)
+
+あなたはすべてのアイテムを認識している。 (選択して自動拾い切り替え)
+%%%%
+Other Items
+
+その他のアイテム
 %%%%
 ############################## items.cc ##############################
 %%%%
@@ -4793,6 +4825,10 @@ from afar
 -more-
 
 -続く-
+%%%%
+Select what? (regex)
+
+何を選択しますか？ (正規表現可)
 %%%%
 ############################## message.cc ##############################
 %%%%
