@@ -473,14 +473,9 @@ void cprintf(const char *format, ...)
 
     va_list argp;
 
-    if (strchr(format, '%'))
-    {
-        va_start(argp, format);
-        vsnprintf(buffer, sizeof(buffer), format, argp);
-        va_end(argp);
-    }
-    else
-        strncpy(buffer, format, sizeof(buffer));
+    va_start(argp, format);
+    vsnprintf(buffer, sizeof(buffer), format, argp);
+    va_end(argp);
 
     ucs_t c;
     char *bp = buffer;

@@ -30,16 +30,10 @@ bool yes_or_no(const char* fmt, ...)
 {
     char buf[200];
     va_list args;
-
-    if (strchr(fmt, '%'))
-    {
-        va_start(args, fmt);
-        vsnprintf(buf, sizeof buf, fmt, args);
-        va_end(args);
-        buf[sizeof(buf)-1] = 0;
-    }
-    else
-        strncpy(buf, fmt, sizeof(buf));
+    va_start(args, fmt);
+    vsnprintf(buf, sizeof buf, fmt, args);
+    va_end(args);
+    buf[sizeof(buf)-1] = 0;
 
     mprf(MSGCH_PROMPT, (jtrans("%s (Confirm with \"yes\".) ") + " ").c_str(), buf);
 

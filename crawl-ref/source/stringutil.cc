@@ -224,37 +224,17 @@ string strip_filename_unsafe_chars(const string &s)
 string vmake_stringf(const char* s, va_list args)
 {
     char buf1[8000];
-    size_t len;
     va_list orig_args;
-
-    if (strchr(s, '%'))
-    {
-        va_copy(orig_args, args);
-        len = vsnprintf(buf1, sizeof buf1, s, orig_args);
-        va_end(orig_args);
-    }
-    else
-    {
-	strncpy(buf1, s, sizeof buf1);
-        len = strlen(buf1);
-    }
-
+    va_copy(orig_args, args);
+    size_t len = vsnprintf(buf1, sizeof buf1, s, orig_args);
+    va_end(orig_args);
     if (len < sizeof buf1)
         return buf1;
 
     char *buf2 = (char*)malloc(len + 1);
-    if (strchr(s, '%'))
-    {
-        va_copy(orig_args, args);
-        vsnprintf(buf2, len + 1, s, orig_args);
-        va_end(orig_args);
-    }
-    else
-    {
-        strncpy(buf2, s, len + 1);
-        len = strlen(buf2);
-    }
-
+    va_copy(orig_args, args);
+    vsnprintf(buf2, len + 1, s, orig_args);
+    va_end(orig_args);
     string ret(buf2);
     free(buf2);
 

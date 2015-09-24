@@ -980,15 +980,7 @@ static void do_message_print(msg_channel_type channel, int param, bool cap,
     va_list ap;
     va_copy(ap, argp);
     char buff[200];
-    size_t len = 0;
-    if (strchr(format, '%'))
-        len = vsnprintf(buff, sizeof(buff), format, argp);
-    else
-    {
-        strncpy(buff, format, sizeof(buff));
-        len = strlen(buff);
-    }
-
+    size_t len = vsnprintf(buff, sizeof(buff), format, argp);
     if (len < sizeof(buff))
         _mpr(buff, channel, param, nojoin, cap);
     else
