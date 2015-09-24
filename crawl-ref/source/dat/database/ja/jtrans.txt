@@ -21,6 +21,48 @@ Corrupted %s
 
 %sを崩壊させた
 %%%%
+############################## adjust.cc ##############################
+%%%%
+Adjust (i)tems, (s)pells, or (a)bilities?
+
+(i)アイテム (s)呪文 (a)能力 のどれをキー割り当て変更しますか？
+%%%%
+Adjust which item?
+
+どのアイテムをキー割り当て変更しますか？
+%%%%
+Adjust to which letter?
+
+どのキーに割り当てなおしますか？
+%%%%
+Adjust which spell?
+
+どの呪文をキー割り当て変更しますか？
+%%%%
+You don't know that spell.
+
+そのキーには呪文が割り当てされていません。
+%%%%
+You don't currently have any abilities.
+
+あなたは今のところ能力を持っていない。
+%%%%
+Adjust which ability?
+
+どの能力をキー割り当て変更しますか？
+%%%%
+No such ability.
+
+そのキーには能力が割り当てされていません。
+%%%%
+Swapping with: %c - %s
+
+%c - %s とキー割り当てを交換しました。
+%%%%
+Moving to: %c - %s
+
+%c - %s にキー割り当てを変更しました。
+%%%%
 ############################## attack.cc ##############################
 %%%%
 %s %s %s attack.
