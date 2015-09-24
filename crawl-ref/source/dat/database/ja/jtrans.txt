@@ -2274,7 +2274,7 @@ You can't wear anything in your present form.
 %%%%
 Wear which item?
 
-のアイテムを装備しますか？
+どのアイテムを装備しますか？
 %%%%
 You can't wear that.
 
@@ -7585,7 +7585,7 @@ All of your followers decide to abandon you.
 
 従者たちはあなたを見捨てることを決意した。
 %%%%
-Your devine halo fades away.
+Your divine halo fades away.
 
 あなたの光輪は薄れていった。
 %%%%
@@ -8915,13 +8915,13 @@ You are regenerating.
 %%%%
 [dur]regenerating slowly
 
-ゆっくり再生中
+緩やかに再生中
 %%%%
-[dur]regenerating slowly
+[dur]regenerating quickly
 
 急速に再生中
 %%%%
-[dur]regenerating slowly
+[dur]regenerating very quickly
 
 極めて急速に再生中
 %%%%
