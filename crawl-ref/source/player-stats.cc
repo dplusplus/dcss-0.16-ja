@@ -120,7 +120,7 @@ bool attribute_increase()
         || innate_stat(STAT_INT) != you.intel()
         || innate_stat(STAT_DEX) != you.dex())
     {
-        mprf(MSGCH_PROMPT, jtransc("Your base attributes are Str %d, Int %d, Dex %d."),
+        mprf(MSGCH_PROMPT, jtransc("あなたの基礎能力値は 腕力: %d 知力: %d 器用: %dです。"),
              innate_stat(STAT_STR),
              innate_stat(STAT_INT),
              innate_stat(STAT_DEX));

@@ -2538,7 +2538,7 @@ static const char* stealth_words[11] =
 
 string stealth_desc(int stealth)
 {
-    return jtrans(make_stringf("%sstealthy", stealth_words[_stealth_breakpoint(stealth)]));
+    return make_stringf("%sstealthy", stealth_words[_stealth_breakpoint(stealth)]);
 }
 
 string magic_res_adjective(int mr)
@@ -2603,7 +2603,7 @@ static string _status_mut_abilities(int sw)
                             + " to hostile enchantments"));
 
     // character evaluates their ability to sneak around:
-    status.push_back(stealth_desc(check_stealth()));
+    status.push_back(jtransc(stealth_desc(check_stealth())));
 
     text += comma_separated_line(status.begin(), status.end(), ", ", ", ");
     text += "\n";

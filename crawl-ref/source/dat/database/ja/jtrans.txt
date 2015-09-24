@@ -5907,6 +5907,158 @@ You can now fly continuously.
 
 あなたは継続的に飛ぶことができるようになった。
 %%%%
+%s (%d).
+
+%s (%d)。
+%%%%
+%s.
+
+%s。
+%%%%
+At your current hunger state you
+
+あなたは現在の腹具合においては
+%%%%
+are immune to poison
+
+毒に対する免疫を持ち
+%%%%
+significantly resist cold
+
+冷気への耐性が著しく強く
+%%%%
+strongly resist negative energy
+
+負のエネルギーに対する耐性がきわめて強く
+%%%%
+resist torment
+
+邪悪なる苦痛への耐性を持ち
+%%%%
+do not heal.
+
+回復しない。
+%%%%
+resist poison
+
+毒への耐性を持ち
+%%%%
+have an extremely slow metabolism
+
+きわめて新陳代謝が遅く
+%%%%
+resist cold
+
+冷気への耐性を持ち
+%%%%
+significantly resist negative energy
+
+負のエネルギーに対する耐性が著しく強く
+%%%%
+have a slow metabolism
+
+新陳代謝が遅く
+%%%%
+have a very slow metabolism
+
+とても新陳代謝が遅く
+%%%%
+heal slowly.
+
+回復が遅い。
+%%%%
+resist negative energy.
+
+負のエネルギーに対する耐性を持つ。
+%%%%
+have a fast metabolism
+
+新陳代謝が速く
+%%%%
+heal quickly.
+
+急速に回復する。
+%%%%
+have a very fast metabolism
+
+とても新陳代謝が速く
+%%%%
+heal quickly.
+
+急速に回復する。
+%%%%
+have an extremely fast metabolism
+
+きわめて新陳代謝が速く
+%%%%
+heal extremely quickly.
+
+きわめて急速に回復する。
+%%%%
+Your %s speed is %s%s%s
+
+あなたの%sは%s%s%s
+%%%%
+swimming
+
+泳ぎ
+%%%%
+wading
+
+水場を歩く速さ
+%%%%
+flying
+
+飛ぶ速さ
+%%%%
+movement
+
+動き
+%%%%
+Your attack speed is %s%s
+
+あなたの攻撃速度は%s%s
+%%%%
+(and cannot be increased with skill)
+
+(そしてスキルによって向上しない)
+%%%%
+You feel almost alive.
+
+あなたはほとんど生者のようだ。
+%%%%
+You are undead.
+
+あなたは不死の存在だ。
+%%%%
+You are standing in death's doorway.
+
+あなたは死のとば口に立っている。
+%%%%
+You are alive.
+
+あなたはまだ生きている。
+%%%%
+You are illuminated by a large divine halo.
+
+あなたは神聖な光輪に広く包まれている。
+%%%%
+You are illuminated by a divine halo.
+
+あなたは神聖な光輪に包まれている。
+%%%%
+You are illuminated by a small divine halo.
+
+あなたは神聖な光輪にかすかに包まれている。
+%%%%
+An external divine halo illuminates you.
+
+あなたは神聖な光輪に照らされている。
+%%%%
+Your base attributes are Str %d, Int %d, Dex %d.
+
+あなたの本来の能力値は 腕力: %d 知力: %d 器用: %d だ。
+%%%%
 You float gracefully downwards.
 
 あなたは優雅に下へと舞い降りていった。
@@ -6379,10 +6531,6 @@ Your magic begins regenerating once more.
 Your experience leads to an increase in your attributes!
 
 経験によってあなたの能力は増加した！
-%%%%
-Your base attributes are Str %d, Int %d, Dex %d.
-
-あなたの基本能力値は腕力: %d、知力: %d, 器用 %dです。
 %%%%
 Increase (S)trength, (I)ntelligence, or (D)exterity?
 
