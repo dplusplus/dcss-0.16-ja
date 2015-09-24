@@ -822,14 +822,19 @@ menu_letter InvMenu::load_items(const vector<const item_def*> &mitems,
                     const string str = "Magical Staves ";
                     subtitle += string(strwidth(str) - strwidth(subtitle),
                                        ' ');
-                    subtitle += jtrans("(select all with <w>");
+
+                    string right_text = "(<w>";
                     for (char gly : glyphs)
-                         subtitle += gly;
-                    subtitle += jtrans("</w><blue>)");
+                         right_text += gly;
+                    right_text += jtrans("</w><blue>)");
+                    subtitle += string(get_number_of_cols() - strwidth(right_text)
+                                                            - strwidth(subtitle) + 14,
+                                       ' ')
+                              + right_text;
                 }
             }
 
-            add_entry(new MenuEntry(subtitle, MEL_SUBTITLE));
+            add_entry(new MenuEntry(sp2nbsp(subtitle), MEL_SUBTITLE));
         }
         items_in_class.clear();
 
