@@ -963,7 +963,7 @@ bool InvMenu::process_key(int key)
             {
                 lastch = CONTROL('D');
                 temp_title = title->text;
-                set_title("Select to reset item to default: ");
+                set_title(jtrans("Select to reset item to default: ") + " ");
                 update_title();
             }
 

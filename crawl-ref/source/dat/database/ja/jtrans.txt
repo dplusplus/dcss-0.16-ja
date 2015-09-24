@@ -2202,6 +2202,10 @@ Inventory:
 
 </w> キーで一括選択/解除<blue>)
 %%%%
+Select to reset item to default:
+
+自動拾いをデフォルト設定に戻すアイテムを選んでください:
+%%%%
 %s (<w>?</w> for menu, <w>Esc</w> to quit)
 
 %s (<w>Esc</w> でキャンセル)
