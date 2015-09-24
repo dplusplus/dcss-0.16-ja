@@ -63,7 +63,7 @@ static bool _print_final_god_abil_desc(int god, const string &final_msg,
         buf += cost;
     }
 
-    cprintf("%s\n", buf.c_str());
+    cprintf("%s\n", sp2nbspc(buf));
 
     return true;
 }
@@ -828,9 +828,12 @@ static void _describe_god_powers(god_type which_god, int numcols)
     textcolour(LIGHTGREY);
     const char *header = "Granted powers:";
     const char *cost   = "(Cost)";
-    cprintf("\n\n%s%*s%s\n", jtransc(header),
-            min(80, get_number_of_cols()) - 1 - strwidth(jtrans(header)) - strwidth(jtrans(cost)),
-            "", jtransc(cost));
+    string align = string(min(80, get_number_of_cols()) - 1
+                          - strwidth(jtrans(header))
+                          - strwidth(jtrans(cost)), ' ');
+    cprintf("\n\n%s%s%s\n", jtransc(header),
+            sp2nbspc(align),
+            jtransc(cost));
     textcolour(god_colour(which_god));
 
     // mv: Some gods can protect you from harm.
@@ -1041,7 +1044,8 @@ static void _god_overview_description(god_type which_god, bool give_title)
         textcolour(LIGHTGREY);
     }
     // Center top line even if it already contains "Religion" (len = 8)
-    _print_top_line(which_god, numcols - (give_title ? 2*8 : 0));
+    //                                In Japanese, "信仰" (width = 4)
+    _print_top_line(which_god, numcols - (give_title ? 4 : 0));
 
     // Print god's description.
     string god_desc = getLongDescription(god_name(which_god));
@@ -1051,7 +1055,7 @@ static void _god_overview_description(god_type which_god, bool give_title)
     if (you_worship(which_god))
     {
         // Print title based on piety.
-        cprintf(("\n" + jtrans("Title  -") + " ").c_str());
+        cprintf(sp2nbspc("\n" + jtrans("Title  -") + " "));
         textcolour(god_colour(which_god));
 
         string title = jtrans(god_title(which_god, you.species, you.piety));
@@ -1063,7 +1067,7 @@ static void _god_overview_description(god_type which_god, bool give_title)
     // something better, do it.
 
     textcolour(LIGHTGREY);
-    cprintf(("\n" + jtrans("Favour -") + " ").c_str());
+    cprintf(sp2nbspc("\n" + jtrans("Favour -") + " "));
     textcolour(god_colour(which_god));
 
     //mv: Player is praying at altar without appropriate religion.
