@@ -199,7 +199,15 @@ meat ration
 
 肉の保存食
 %%%%
+meat rations
+
+肉の保存食
+%%%%
 chunk
+
+肉
+%%%%
+chunks
 
 肉
 %%%%
@@ -211,11 +219,19 @@ bread ration
 
 パンの保存食
 %%%%
+bread rations
+
+パンの保存食
+%%%%
 fruit
 
 果物
 %%%%
 royal jelly
+
+ロイヤルゼリー
+%%%%
+royal jellies
 
 ロイヤルゼリー
 %%%%
