@@ -3866,16 +3866,16 @@ static void _display_char_status(int value, const char *fmt, ...)
     string msg = vmake_stringf(fmt, argp);
 
     if (you.wizard)
-        mprf("%s (%d).", msg.c_str(), value);
+        mprf(jtransc("%s (%d)."), msg.c_str(), value);
     else
-        mprf("%s.", msg.c_str());
+        mprf(jtransc("%s."), msg.c_str());
 
     va_end(argp);
 }
 
 static void _display_vampire_status()
 {
-    string msg = "At your current hunger state you ";
+    string msg = jtrans("At your current hunger state you ");
     vector<const char *> attrib;
 
     switch (you.hunger_state)
@@ -3924,7 +3924,8 @@ static void _display_vampire_status()
 
     if (!attrib.empty())
     {
-        msg += comma_separated_line(attrib.begin(), attrib.end());
+        msg += to_separated_line(attrib.begin(), attrib.end(), true,
+            "、", "、", "、");
         mpr(msg);
     }
 }
@@ -3942,28 +3943,29 @@ static void _display_movement_speed()
     const bool antiswift = (you.duration[DUR_SWIFTNESS] > 0
                             && you.attribute[ATTR_SWIFTNESS] < 0);
 
-    _display_char_status(move_cost, "Your %s speed is %s%s%s",
+    _display_char_status(move_cost, jtransc("Your %s speed is %s%s%s"),
           // order is important for these:
+          jtransc(
           (swim)    ? "swimming" :
           (water)   ? "wading" :
           (fly)     ? "flying"
-                    : "movement",
+                    : "movement"),
 
-          (water && !swim)  ? "uncertain and " :
-          (!water && swift) ? "aided by the wind" :
-          (!water && antiswift) ? "hindered by the wind" : "",
+          (water && !swim)  ? "不確かながら" :
+          (!water && swift) ? "風の助けを受けて" :
+          (!water && antiswift) ? "風に邪魔されて" : "",
 
-          (!water && swift) ? ((move_cost >= 10) ? ", but still "
-                                                 : " and ") :
-          (!water && antiswift) ? ((move_cost <= 10) ? ", but still "
-                                                     : " and ")
+          (!water && swift) ? ((move_cost >= 10) ? "いるが"
+                                                 : "おり") :
+          (!water && antiswift) ? ((move_cost <= 10) ? "いるが"
+                                                     : "おり")
                             : "",
 
-          (move_cost <   8) ? "very quick" :
-          (move_cost <  10) ? "quick" :
-          (move_cost == 10) ? "average" :
-          (move_cost <  13) ? "slow"
-                            : "very slow");
+          (move_cost <   8) ? "とても速い" :
+          (move_cost <  10) ? "速い" :
+          (move_cost == 10) ? "平均的だ" :
+          (move_cost <  13) ? "遅い"
+                            : "とても遅い");
 }
 
 static void _display_tohit()
@@ -3979,16 +3981,16 @@ static void _display_tohit()
 
 static const char* _attack_delay_desc(int attack_delay)
 {
-    return (attack_delay >= 200) ? "extremely slow" :
-           (attack_delay >= 155) ? "very slow" :
-           (attack_delay >= 125) ? "quite slow" :
-           (attack_delay >= 105) ? "below average" :
-           (attack_delay >=  95) ? "average" :
-           (attack_delay >=  75) ? "above average" :
-           (attack_delay >=  55) ? "quite fast" :
-           (attack_delay >=  45) ? "very fast" :
-           (attack_delay >=  35) ? "extremely fast" :
-                                   "blindingly fast";
+    return (attack_delay >= 200) ? "きわめて遅い" :
+           (attack_delay >= 155) ? "とても遅い" :
+           (attack_delay >= 125) ? "かなり遅い" :
+           (attack_delay >= 105) ? "平均よりちょっと遅い" :
+           (attack_delay >=  95) ? "平均的だ" :
+           (attack_delay >=  75) ? "平均よりちょっと速い" :
+           (attack_delay >=  55) ? "かなり速い" :
+           (attack_delay >=  45) ? "とても速い" :
+           (attack_delay >=  35) ? "きわめて速い" :
+                                   "目にも止まらぬほど速い";
 }
 
 /**
@@ -4022,10 +4024,10 @@ static void _display_attack_delay()
     if (you.duration[DUR_FINESSE])
         avg = max(20, avg / 2);
 
-    _display_char_status(avg, "Your attack speed is %s%s",
+    _display_char_status(avg, jtransc("Your attack speed is %s%s"),
                          _attack_delay_desc(avg),
-                         at_min_delay ?
-                            " (and cannot be increased with skill)" : "");
+                         jtransc(at_min_delay ?
+                                 " (and cannot be increased with skill)" : ""));
 }
 
 // forward declaration
@@ -4036,30 +4038,30 @@ void display_char_status()
     if (you.undead_state() == US_SEMI_UNDEAD
         && you.hunger_state == HS_ENGORGED)
     {
-        mpr("You feel almost alive.");
+        mpr(jtrans("You feel almost alive."));
     }
     else if (you.undead_state())
-        mpr("You are undead.");
+        mpr(jtrans("You are undead."));
     else if (you.duration[DUR_DEATHS_DOOR])
     {
         _output_expiring_message(DUR_DEATHS_DOOR,
-                                 "You are standing in death's doorway.");
+                                 jtransc("You are standing in death's doorway."));
     }
     else
-        mpr("You are alive.");
+        mpr(jtrans("You are alive."));
 
     const int halo_size = you.halo_radius2();
     if (halo_size >= 0)
     {
         if (halo_size > 37)
-            mpr("You are illuminated by a large divine halo.");
+            mpr(jtrans("You are illuminated by a large divine halo."));
         else if (halo_size > 10)
-            mpr("You are illuminated by a divine halo.");
+            mpr(jtrans("You are illuminated by a divine halo."));
         else
-            mpr("You are illuminated by a small divine halo.");
+            mpr(jtrans("You are illuminated by a small divine halo."));
     }
     else if (you.haloed())
-        mpr("An external divine halo illuminates you.");
+        mpr(jtrans("An external divine halo illuminates you."));
 
     if (you.species == SP_VAMPIRE)
         _display_vampire_status();
@@ -4070,7 +4072,7 @@ void display_char_status()
     for (unsigned i = 0; i <= STATUS_LAST_STATUS; ++i)
     {
         if (fill_status_info(i, &inf) && !inf.long_text.empty())
-            mpr(inf.long_text);
+            mpr(jtrans(inf.long_text));
     }
     string cinfo = _constriction_description();
     if (!cinfo.empty())
@@ -4085,7 +4087,7 @@ void display_char_status()
         || innate_stat(STAT_INT) != you.intel()
         || innate_stat(STAT_DEX) != you.dex())
     {
-        mprf("Your base attributes are Str %d, Int %d, Dex %d.",
+        mprf(jtransc("Your base attributes are Str %d, Int %d, Dex %d."),
              innate_stat(STAT_STR),
              innate_stat(STAT_INT),
              innate_stat(STAT_DEX));
@@ -4093,13 +4095,14 @@ void display_char_status()
 
     // magic resistance
     _display_char_status(you.res_magic(),
-                         "You are %s to hostile enchantments",
-                         magic_res_adjective(player_res_magic(false)).c_str());
+                         "あなたは%s",
+                         jtransc(magic_res_adjective(player_res_magic(false))
+                                 + " to hostile enchantments"));
 
     // character evaluates their ability to sneak around:
     _display_char_status(check_stealth(),
-                         "You feel %s",
-                         stealth_desc(check_stealth()).c_str());
+                         "あなたの動きは%s",
+                         jtransc(stealth_desc(check_stealth())));
 }
 
 bool player::clarity(bool calc_unid, bool items) const
