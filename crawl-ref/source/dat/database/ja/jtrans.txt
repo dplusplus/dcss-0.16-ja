@@ -3022,6 +3022,10 @@ potion of degeneration
 
 能力低下の薬
 %%%%
+potion of decay
+
+腐敗の薬
+%%%%
 potion of experience
 
 経験の薬
