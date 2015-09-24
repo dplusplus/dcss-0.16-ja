@@ -335,7 +335,7 @@ string describe_mutations(bool center_title)
 
     result += "<white>";
     result += mut_title;
-    result += "</white>\n\n";
+    result += "</white>\n　\n";
 
     // Innate abilities which don't fit as mutations.
     // TODO: clean these up with respect to transformations.  Currently
@@ -645,7 +645,7 @@ string describe_mutations(bool center_title)
 
         const string msg = jtrans("Your ") + jtrans(scale_type) + jtrans(" scales are ")
               + jtrans(you.species == SP_GREY_DRACONIAN ? "very " : "") + jtrans("hard")
-              + jtrans(" (AC +") + num.str() + jtrans(").");
+              + "。(AC +" + num.str() + ")";
 
         result += _annotate_form_based(msg,
                       player_is_shapechanged() && you.form != TRAN_DRAGON);
@@ -721,7 +721,7 @@ static const string _vampire_Ascreen_footer = (
 #else
     "<w>Right-click</w>"
 #endif
-    " to toggle between mutations and properties depending on your\n"
+    " to toggle between mutations and properties depending on your "
     "hunger status.\n");
 
 #if TAG_MAJOR_VERSION == 34
@@ -811,8 +811,8 @@ static void _display_vampire_attributes()
         result += "\n";
     }
 
-    result += "\n";
-    result += _vampire_Ascreen_footer;
+    result += "\n　\n";
+    result += jtrans(_vampire_Ascreen_footer);
 
     formatted_scroller attrib_menu;
     attrib_menu.add_text(result);
@@ -878,7 +878,7 @@ static void _display_temperature()
         ostr << '<' << colourname << '>' << text
              << "</" << colourname << '>';
 
-       column[t] = ostr.str();
+        column[t] = ostr.str();
     }
 
     for (int y = TEMP_MAX; y >= TEMP_MIN; y--)  // lines
@@ -913,17 +913,18 @@ void display_mutations()
 
     string extra = "";
     if (_num_part_suppressed)
-        extra += "<brown>()</brown>  : Partially suppressed.\n";
+        extra += jtransln("<brown>()</brown>  : Partially suppressed.\n");
     if (_num_full_suppressed)
-        extra += "<darkgrey>(())</darkgrey>: Completely suppressed.\n";
+        extra += jtransln("<darkgrey>(())</darkgrey>: Completely suppressed.\n");
     if (_num_transient)
-        extra += "<magenta>[]</magenta>   : Transient mutations.";
+        extra += jtrans("<magenta>[]</magenta>   : Transient mutations.");
     if (you.species == SP_VAMPIRE)
     {
         if (!extra.empty())
             extra += "\n";
 
-        extra += _vampire_Ascreen_footer;
+        extra += "　\n";
+        extra += jtrans(_vampire_Ascreen_footer);
     }
 
 #if TAG_MAJOR_VERSION == 34
@@ -938,7 +939,6 @@ void display_mutations()
 
     if (!extra.empty())
     {
-        mutation_s += "\n\n\n\n";
         mutation_s += extra;
     }
 
@@ -2058,7 +2058,7 @@ string mutation_desc(mutation_type mut, int level, bool colour,
         result = ostr.str();
     }
     else if (mut == MUT_DEFORMED && is_useless_skill(SK_ARMOUR))
-        result = "Your body is misshapen.";
+        result = jtrans("Your body is misshapen.");
     else if (result.empty() && level > 0)
         result = mdef.have[level - 1];
 
@@ -2066,19 +2066,19 @@ string mutation_desc(mutation_type mut, int level, bool colour,
     {
         if (fully_inactive)
         {
-            result = "((" + result + "))";
+            result = "((" + jtrans(result) + "))";
             ++_num_full_suppressed;
         }
         else if (partially_active)
         {
-            result = "(" + result + ")";
+            result = "(" + jtrans(result) + ")";
             ++_num_part_suppressed;
         }
     }
 
     if (temporary)
     {
-        result = "[" + result + "]";
+        result = "[" + jtrans(result) + "]";
         ++_num_transient;
     }
 

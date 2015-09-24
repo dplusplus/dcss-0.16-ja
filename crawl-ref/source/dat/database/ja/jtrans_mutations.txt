@@ -575,7 +575,7 @@ deformed body
 %%%%
 Armour fits poorly on your strangely shaped body.
 
-あなたの奇形の体には、鎧がうまく合わない。
+あなたの奇形の体には鎧がうまく合わない。
 %%%%
 Your body twists and deforms.
 
@@ -739,15 +739,15 @@ screaming
 %%%%
 You occasionally shout uncontrollably at your foes.
 
-あなたはたまに、敵に対し大声を抑えることができなくなる。
+あなたはたまに敵に対し大声を抑えることができなくなる。
 %%%%
 You sometimes yell uncontrollably at your foes.
 
-あなたは時々、敵に対し大声を抑えることができなくなる。
+あなたは時々敵に対し大声を抑えることができなくなる。
 %%%%
 You frequently scream uncontrollably at your foes.
 
-あなたは頻繁に、敵に対し大声を抑えることができなくなる。
+あなたは頻繁に敵に対し大声を抑えることができなくなる。
 %%%%
 You feel the urge to shout.
 
@@ -919,11 +919,11 @@ evolution
 %%%%
 You evolve.
 
-あなたは進化している。
+あなたは進化しつつある。
 %%%%
 You rapidly evolve.
 
-あなたは急速に進化している。
+あなたは急速に進化しつつある。
 %%%%
 You feel nature experimenting on you. Don't worry, failures die fast.
 

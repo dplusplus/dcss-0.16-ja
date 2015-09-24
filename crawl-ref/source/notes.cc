@@ -333,22 +333,22 @@ string Note::describe(bool when, bool where, bool what) const
             break;
         case NOTE_GET_MUTATION:
             result << "突然変異が発現した: "
-                   << mutation_desc(static_cast<mutation_type>(first),
-                                    second == 0 ? 1 : second);
+                   << jtrans(mutation_desc(static_cast<mutation_type>(first),
+                                           second == 0 ? 1 : second));
             if (!name.empty())
                 result << " [" << name << "]";
             break;
         case NOTE_LOSE_MUTATION:
             result << "突然変異を失った: "
-                   << mutation_desc(static_cast<mutation_type>(first),
-                                    second == 3 ? 3 : second+1);
+                   << jtrans(mutation_desc(static_cast<mutation_type>(first),
+                                           second == 3 ? 3 : second+1));
             if (!name.empty())
                 result << " [" << name << "]";
             break;
         case NOTE_PERM_MUTATION:
             result << "突然変異が定着した: "
-                   << mutation_desc(static_cast<mutation_type>(first),
-                                    second == 0 ? 1 : second);
+                   << jtrans(mutation_desc(static_cast<mutation_type>(first),
+                                           second == 0 ? 1 : second));
             if (!name.empty())
                 result << " [" << name << "]";
             break;

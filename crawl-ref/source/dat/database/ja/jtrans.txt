@@ -5605,7 +5605,7 @@ You are too large for most types of armour.
 
 あなたの体は大きすぎてほとんどの防具を着ることができない。
 %%%%
-scale are
+scales are
 
 鱗は
 %%%%
@@ -5632,6 +5632,26 @@ Your body does not fit into most forms of armour.
 You are rather mundane.
 
 あなたはこれといった特徴がない。
+%%%%
+Press '<w>!</w>' to toggle between mutations and properties depending on your hunger status.
+
+変異一覧と腹具合によって変化する耐性一覧を切り替えるには '<w>!</w>' を押してください。
+%%%%
+<brown>()</brown>  : Partially suppressed.
+
+<brown>()</brown> : 一部抑制されている
+%%%%
+<darkgrey>(())</darkgrey>: Completely suppressed.
+
+<darkgrey>(())</darkgrey>: 完全に抑制されている
+%%%%
+<magenta>[]</magenta>   : Transient mutations.
+
+<magenta>[]</magenta> : 一時的変異
+%%%%
+Your body is misshapen.
+
+あなたの体は奇形的になった。
 %%%%
 ############################## newgame.cc ##############################
 %%%%
