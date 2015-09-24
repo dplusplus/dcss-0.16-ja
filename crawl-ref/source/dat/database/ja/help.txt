@@ -3,7 +3,7 @@ pick-up
 
                    <h>アイテムの収得と放棄</h>
 <h>アイテムの文字</h>
-アイテムの文字を押すことでアイテムを選択できる。
+アイテムに割り当てられた文字のキーを押すことで対応するアイテムを選択できる。
 数字をアイテムの文字を入力する前に入力することで量を指定できる。
 
 <h>正規表現</h>
@@ -14,7 +14,8 @@ pick-up
 連続で入力することで素早く複数のアイテムを選択するショートカットがある。
 <w>.</w>   アイテムを選択し、カーソルを下に移動する。
 <w>'</w>   選択を変更せず、カーソルを下に移動する。
-このカーソルは普段表示されない。<w>.</w> か <w>'</w>で表示される。(Webtileでは現在表示されない)
+このカーソルは普段表示されない。<w>.</w> か <w>'</w>を押すことで表示される。
+(Webtileでは現在表示されない)
 
 <h>アイテム種別ごとの選択</h>
 以下の文字を入力することで特定の種別をまとめて選択できる。
@@ -28,42 +29,45 @@ pick-up
 %%%%
 known-menu
 
-                   <h>Known items menu</h>
-<h>Item letters</h>
-Pressing an item type's letter key selects that item.
+                               <h>既知のアイテム一覧</h>
+<h>アイテムの文字</h>
+アイテム、もしくはアイテム種別に割り当てられた文字のキーを押すことで対応する
+アイテムを選択できる。
 
-<h>Selecting item types</h>
-Items types displayed in grey use the default autopickup options set in your
-configuration file. Selecting a type of item overrides those options
-(indicated by <w>white</w> text), and toggles the item between the states:
- <w>+</w>  Items of this type will be picked up automatically.
- <w>-</w>  Items of this type will will not be picked up automatically.
-Autopickup can also be toggled for all unknown items of a given category.
+<h>アイテムの選択</h>
+薄い灰色の文字で表示されているアイテムはあなたの自動拾い設定ファイルに記載された
+初期設定が使われている。
+アイテムを選択するとその設定が上書きされ、(<w>白の文字</w>で表示される)
+アイテムの自動拾いの設定が切り替わる:
+ <w>+</w>  この種別のアイテムは自動的に拾われる
+ <w>-</w>  この種別のアイテムは自動的に拾われることはない
+自動拾い設定は未鑑定のアイテムについても拾う/拾わないを設定できる。
 
-<h>Category shortcuts</h>
-You can quickly select all item types in a given category by pressing:
-<w>!</w>   potions      <w>?</w>   scrolls      <w>(</w>   ammunition        <w>"</w>   amulets
-<w>=</w>   rings        <w>/</w>   wands        <w>|</w>   magical staves
-Global selects:  <w>*</w>   invert all   <w>^</w>   reset all to default
+<h>アイテム種別ごとの選択</h>
+以下の文字を入力することで特定の種別をまとめて選択できる。
+<w>!</w>   薬           <w>?</w>   巻物         <w>(</w>   矢弾・石弾等      <w>"</w>   護符
+<w>=</w>   指輪         <w>/</w>   ワンド       <w>|</w>   魔法の杖
+全体指定:  <w>*</w>   全部の選択を反転させる   <w>^</w>   全部を初期設定に戻す
 
-<h>Viewing unknown and known items</h>
-<w>\</w> and <w>-</w> toggle between the known and unknown items menus. Note
-that none of the above features are available from the unknown items menu.
+<h>鑑定済み/未鑑定のアイテム一覧画面</h>
+<w>\</w> または <w>-</w> を押すことで認識しているアイテム一覧と未鑑定のアイテム一覧を切り替え
+できる。
+未鑑定のアイテム一覧画面においては上記の操作は無効であることに注意すること。
 
-<h>Restoring autopickup defaults</h>
-Pressing <w>Ctrl-D</w> followed by an item letter or a category shortcut
-cancels the override and restores the selected item or items to their default
-settings.
+<h>デフォルトの自動拾い設定の復元</h>
+<w>Ctrl-D</w> に続いてアイテムもしくはアイテム種別に割り当てられたキーを押すことで、
+上書きされた自動拾い設定を取り消して初期の設定を復元することができる。
 
-<h>Regular expressions</h>
-You can press <w>Ctrl-F</w> to enter a word (or a regular expression).
-All matching items will be selected.
+<h>正規表現</h>
+<w>Ctrl-F</w> を押して単語(もしくは正規表現のパターン)を入力することで、一致する全ての
+アイテムを一度に選択切り替えできる。
 
-<h>Cursor</h>
-There are shortcuts to quickly select several items in succession:
-<w>.</w>   selects the next item and moves the cursor down
-<w>'</w>   moves the cursor down without changing selection
-The cursor is usually hidden; pressing <w>.</w> or <w>'</w> makes it appear.
+<h>カーソル</h>
+連続で入力することで素早く複数のアイテムを選択するショートカットがある。
+<w>.</w>   アイテムを選択し、カーソルを下に移動する。
+<w>'</w>   選択を変更せず、カーソルを下に移動する。
+このカーソルは普段表示されない。<w>.</w> か <w>'</w>を押すことで表示される。
+(Webtileでは現在表示されない)
 
 %%%%
 stash-search.prompt
