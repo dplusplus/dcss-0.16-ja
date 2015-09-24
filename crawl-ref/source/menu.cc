@@ -513,7 +513,7 @@ bool Menu::process_key(int keyin)
         cgotoxy(1,1);
         clear_to_end_of_line();
         textcolour(WHITE);
-        cprintf("Select what? (regex) ");
+        cprintf((jtrans("Select what? (regex) ") + " ").c_str());
         textcolour(LIGHTGREY);
         bool validline = !cancellable_get_line(linebuf, sizeof linebuf);
         if (validline && linebuf[0])

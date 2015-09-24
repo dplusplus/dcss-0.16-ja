@@ -426,7 +426,7 @@ function ($, comm, client, enums, dungeon_renderer, cr, util, options) {
     function pattern_select()
     {
         var title = $("#menu_title");
-        title.html("Select what? (regex) ");
+        title.html("何を選択しますか？ (正規表現可) ");
         var input = $("<input class='text pattern_select' type='text'>");
         title.append(input);
 
