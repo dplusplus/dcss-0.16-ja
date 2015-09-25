@@ -4213,6 +4213,18 @@ Take off which item?
 
 どれを脱ぎますか？
 %%%%
+You're too hungry to rest.
+
+あなたは腹が空きすぎており休息できない。
+%%%%
+You start waiting.
+
+あなたは待機を始めた。
+%%%%
+You start resting.
+
+あなたは休憩を始めた。
+%%%%
 Clearing travel trail.
 
 自動探索の足跡を消去した。
