@@ -269,6 +269,18 @@ negative energy
 %%%%
 ############################## command.cc ##############################
 %%%%
+(unavailable)
+
+(装備できない)
+%%%%
+(currently unavailable)
+
+(現在装備できない)
+%%%%
+(restricted)
+
+(制限されている)
+%%%%
 1st ring
 
 1つめの指輪

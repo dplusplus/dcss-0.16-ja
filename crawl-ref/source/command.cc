@@ -196,25 +196,25 @@ void list_armour()
 
         estr.str("");
         estr.clear();
+        string text = ((i == EQ_CLOAK)       ? "外套" :
+                       (i == EQ_HELMET)      ? "兜/帽子" :
+                       (i == EQ_GLOVES)      ? "手袋/籠手" :
+                       (i == EQ_SHIELD)      ? "盾" :
+                       (i == EQ_BODY_ARMOUR) ? "鎧/服" :
+                       (i == EQ_BOOTS ?
+                       (you.species == SP_CENTAUR ? "馬甲" :
+                           you.species == SP_NAGA ? "具装"
+                                                  : "靴")
+                                             : "unknown"));
 
-        estr << ((i == EQ_CLOAK)       ? "Cloak  " :
-                 (i == EQ_HELMET)      ? "Helmet " :
-                 (i == EQ_GLOVES)      ? "Gloves " :
-                 (i == EQ_SHIELD)      ? "Shield " :
-                 (i == EQ_BODY_ARMOUR) ? "Armour " :
-                 (i == EQ_BOOTS) ?
-                 ((you.species == SP_CENTAUR
-                   || you.species == SP_NAGA) ? "Barding"
-                                              : "Boots  ")
-                                 : "unknown")
-             << " : ";
+        estr << chop_string(text, strwidth("手袋/籠手")) << ": ";
 
         if (!you_can_wear(i, true))
-            estr << "    (unavailable)";
+            estr << "    " << jtrans("(unavailable)");
         else if (armour_id != -1 && !you_tran_can_wear(you.inv[armour_id])
                  || !you_tran_can_wear(i))
         {
-            estr << "    (currently unavailable)";
+            estr << "    " << jtrans("(currently unavailable)");
         }
         else if (armour_id != -1)
         {
@@ -223,9 +223,9 @@ void list_armour()
                                  "equip");
         }
         else if (!you_can_wear(i))
-            estr << "    (restricted)";
+            estr << "    " << jtrans("(restricted)");
         else
-            estr << "    none";
+            estr << "    " << jtrans("none");
 
         if (colour == MSGCOL_BLACK)
             colour = menu_colour(estr.str(), "", "equip");
