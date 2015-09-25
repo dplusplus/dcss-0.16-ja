@@ -13,9 +13,33 @@ its
 %%%%
 ############################## abyss.cc ##############################
 %%%%
+You are banished to a different region of the Abyss.
+
+あなたはアビスの別の領域へと追放された。
+%%%%
 Cast into the Abyss
 
 アビスに追放された
+%%%%
+Xom snickers loudly.
+
+ゾムは大声で笑った。
+%%%%
+is pulled into the Abyss.
+
+はアビスに引き込まれた。
+%%%%
+You are suddenly pulled into a different region of the Abyss!
+
+突然あなたはアビスの別の領域へと引き込まれた！
+%%%%
+This place is already infused with evil and corruption.
+
+この場所はすでに邪悪な崩壊の力を帯びている。
+%%%%
+'s Hand of Corruption reaches out!
+
+の崩壊の手が差し伸べられた！
 %%%%
 Corrupted %s
 
