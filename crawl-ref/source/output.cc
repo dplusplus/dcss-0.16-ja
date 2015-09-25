@@ -2849,11 +2849,17 @@ static string _status_mut_abilities(int sw)
     //--------------
     vector<string> runes;
     for (int i = 0; i < NUM_RUNE_TYPES; i++)
+    {
         if (you.runes[i])
-            runes.emplace_back(rune_type_name(i));
+        {
+            string rune = jtrans(string(rune_type_name(i)) + " rune of Zot");
+            runes.emplace_back(replace_all(rune, "のルーン", ""));
+        }
+    }
     if (!runes.empty())
     {
-        text += make_stringf(("\n" + jtrans("<w>%s:</w> %d/%d rune: %s")).c_str(),
+        text += "\n"
+              + make_stringf(jtransc("<w>%s:</w> %d/%d rune: %s"),
                     stringize_glyph(get_item_symbol(SHOW_ITEM_MISCELLANY)).c_str(),
                     (int)runes.size(), you.obtainable_runes,
                     comma_separated_line(runes.begin(), runes.end(),
