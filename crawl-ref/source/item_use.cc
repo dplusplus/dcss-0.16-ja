@@ -1636,11 +1636,11 @@ void prompt_inscribe_item()
 {
     if (inv_count() < 1)
     {
-        mpr("You don't have anything to inscribe.");
+        mpr(jtrans("You don't have anything to inscribe."));
         return;
     }
 
-    int item_slot = prompt_invent_item("Inscribe which item?",
+    int item_slot = prompt_invent_item(jtransc("Inscribe which item?"),
                                        MT_INVLIST, OSEL_ANY);
 
     if (prompt_failed(item_slot))
