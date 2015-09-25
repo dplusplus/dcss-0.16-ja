@@ -31,6 +31,10 @@ You finish putting on %s.
 
 あなたは%sを装備した。
 %%%%
+Done waiting.
+
+待機終了。
+%%%%
 You sense a monster nearby.
 
 あなたは近くにモンスターがいるのを感知した。
@@ -118,4 +122,12 @@ Deactivating autopickup; reactivate with <w>%s</w>.
 Reactivating autopickup.
 
 アイテム自動拾いを再開しました。
+%%%%
+HP restored.
+
+体力が全快した。
+%%%%
+Magic restored.
+
+魔力がいっぱいになった。
 %%%%

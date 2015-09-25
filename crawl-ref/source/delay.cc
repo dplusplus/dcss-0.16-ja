@@ -1057,7 +1057,7 @@ static command_type _get_running_command()
         if (!is_resting() && you.running.hp == you.hp
             && you.running.mp == you.magic_points)
         {
-            mpr("Done waiting.");
+            mpr(jtrans("Done waiting."));
         }
 
         if (Options.rest_delay > 0)
@@ -1616,9 +1616,9 @@ bool interrupt_activity(activity_interrupt_type ai,
     const delay_queue_item &item = you.delay_queue.front();
 
     if (ai == AI_FULL_HP)
-        mpr("HP restored.");
+        mpr(jtrans("HP restored."));
     else if (ai == AI_FULL_MP)
-        mpr("Magic restored.");
+        mpr(jtrans("Magic restored."));
 
     if (_should_stop_activity(item, ai, at))
     {

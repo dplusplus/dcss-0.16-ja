@@ -1851,7 +1851,7 @@ static void _do_rest()
 {
     if (you.hunger_state == HS_STARVING && !you_min_hunger())
     {
-        mpr("You're too hungry to rest.");
+        mpr(jtrans("You're too hungry to rest."));
         return;
     }
 
@@ -1863,10 +1863,10 @@ static void _do_rest()
                     && you.hunger_state == HS_STARVING))
             && you.magic_points == you.max_magic_points)
         {
-            mpr("You start waiting.");
+            mpr(jtrans("You start waiting."));
         }
         else
-            mpr("You start resting.");
+            mpr(jtrans("You start resting."));
     }
 
     _start_running(RDIR_REST, RMODE_REST_DURATION);
