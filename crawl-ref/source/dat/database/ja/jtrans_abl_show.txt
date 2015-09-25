@@ -1038,3 +1038,7 @@ Press '<w>!</w>' or '<w>?</w>' to toggle between ability selection and descripti
 
 能力の選択画面と説明画面を切り替えるには'<w>!</w>' か '<w>?</w>' を押してください。
 %%%%
+Invocations -
+
+祈祷関連能力 -
+%%%%

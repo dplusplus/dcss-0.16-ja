@@ -802,8 +802,7 @@ const string make_cost_description(ability_type ability)
     if (abil.flags & ABFLAG_SACRIFICE)
     {
         ret += ", ";
-        const string prefix = "Sacrifice ";
-        ret += string(ability_name(ability)).substr(prefix.size());
+        ret += replace_all(jtrans(ability_name(ability)), "の犠牲", "");
         ret += ru_sac_text(ability);
     }
 
@@ -817,10 +816,10 @@ const string make_cost_description(ability_type ability)
 
 static string _get_piety_amount_str(int value)
 {
-    return value > 15 ? "extremely large" :
-           value > 10 ? "large" :
-           value > 5  ? "moderate" :
-                        "small";
+    return value > 15 ? "特大" :
+           value > 10 ? "大" :
+           value > 5  ? "中" :
+                        "小";
 }
 
 static const string _detailed_cost_description(ability_type ability)
@@ -3357,7 +3356,7 @@ int choose_ability_menu(const vector<talent>& talents)
     }
     else
     {
-        abil_menu.set_more(formatted_string::parse_string(jtrans(
+        abil_menu.set_more(formatted_string::parse_string("\n" + jtrans(
                            "Press '<w>!</w>' or '<w>?</w>' to toggle "
                            "between ability selection and description.")));
     }
@@ -3428,14 +3427,14 @@ int choose_ability_menu(const vector<talent>& talents)
     {
 #ifdef USE_TILE_LOCAL
         ToggleableMenuEntry* subtitle =
-            new ToggleableMenuEntry("    Invocations - ",
-                                    "    Invocations - ", MEL_ITEM);
+            new ToggleableMenuEntry("\n    " + jtrans("Invocations - "),
+                                    "\n    " + jtrans("Invocations - "), MEL_ITEM);
         subtitle->colour = BLUE;
         abil_menu.add_entry(subtitle);
 #else
         abil_menu.add_entry(
-            new ToggleableMenuEntry("    Invocations - ",
-                                    "    Invocations - ", MEL_SUBTITLE));
+            new ToggleableMenuEntry("\n    " + jtrans("Invocations - "),
+                                    "\n    " + jtrans("Invocations - "), MEL_SUBTITLE));
 #endif
         for (unsigned int i = 0; i < talents.size(); ++i)
         {
@@ -3482,8 +3481,8 @@ string describe_talent(const talent& tal)
 
     ostringstream desc;
     desc << left
-         << chop_string(ability_name(tal.which), 32)
-         << chop_string(make_cost_description(tal.which), 30)
+         << chop_string(jtrans(ability_name(tal.which)), 32)
+         << chop_string(jtrans(make_cost_description(tal.which)), 30)
          << chop_string(failure, 7);
     return desc.str();
 }
