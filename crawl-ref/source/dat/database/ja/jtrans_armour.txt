@@ -137,7 +137,7 @@ hat
 %%%%
 boots
 
-靴
+ブーツ
 %%%%
 centaur barding
 
