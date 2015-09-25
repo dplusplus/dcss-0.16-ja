@@ -8484,7 +8484,7 @@ You have no blood to sublime.
 %%%%
 Your magic capacity is already full.
 
-あなたの魔力は既に一杯だ。
+あなたの魔力は既にいっぱいだ。
 %%%%
 You cannot make allies.
 

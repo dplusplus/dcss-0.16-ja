@@ -747,7 +747,7 @@ No corpses are in range.
 %%%%
 It's too cloudy to do that here.
 
-ここは既に煙幕で一杯だ。
+ここは既に煙幕で満たされている。
 %%%%
 You don't have enough experience to sacrifice.
 
