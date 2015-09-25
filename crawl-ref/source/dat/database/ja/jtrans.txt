@@ -1553,7 +1553,7 @@ Replace inscription with what?
 %%%%
 Inscribe with what?
 
-銘を付けますか？
+どういう銘を付けますか？
 %%%%
 Level: %d
 
@@ -2540,6 +2540,14 @@ It's stuck to you!
 You remove %s.
 
 あなたは%sを外した。
+%%%%
+You don't have anything to inscribe.
+
+銘を付けるようなアイテムを持っていない。
+%%%%
+Inscribe which item?
+
+どのアイテムに銘を付けますか？
 %%%%
 Use <w>e</w> to drain blood from corpses.
 
@@ -6866,7 +6874,7 @@ Nothing suitable (fire_items_start = '%c').
 %%%%
 Nothing suitable (ignored '=f'-inscribed item on '%c').
 
-適した持ち物がない。('%c'に割り当てられている'=f'と銘を刻まれたアイテムを無視)
+適した持ち物がない。('%c'に割り当てられている'=f'と銘を付けられたアイテムを無視)
 %%%%
 Quivering %s for %s.
 
