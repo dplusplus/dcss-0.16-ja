@@ -3831,6 +3831,14 @@ Other Items
 
 その他のアイテム
 %%%%
+You haven't found any runes yet.
+
+あなたはまだ一個もルーンを手にしていない。
+%%%%
+Runes of Zot: %d/%d
+
+ルーン: %d個中%d個
+%%%%
 ############################## items.cc ##############################
 %%%%
 Items here:

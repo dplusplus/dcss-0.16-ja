@@ -3736,16 +3736,16 @@ void display_runes()
 
     if (items.empty())
     {
-        mpr("You haven't found any runes yet.");
+        mpr(jtrans("You haven't found any runes yet."));
         return;
     }
 
     InvMenu menu;
 
-    menu.set_title(make_stringf("Runes of Zot: %d/%d",
+    menu.set_title(make_stringf(jtransc("Runes of Zot: %d/%d"),
+                                you.obtainable_runes,
                                 has_orb ? (int)items.size() - 1
-                                        : (int)items.size(),
-                                you.obtainable_runes));
+                                        : (int)items.size()));
     menu.set_flags(MF_NOSELECT);
     menu.set_type(MT_RUNES);
     menu.load_items(items, unknown_item_mangle, 'a', false);
