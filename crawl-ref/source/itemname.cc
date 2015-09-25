@@ -204,6 +204,7 @@ string item_def::name(description_level_type descrip, bool terse, bool ident,
         // Artefacts always get "the" unless we just want the plain name.
         switch (descrip)
         {
+        case DESC_PLAIN:
         default:
             if (base_type != OBJ_BOOKS)
             {
@@ -212,7 +213,6 @@ string item_def::name(description_level_type descrip, bool terse, bool ident,
                 else if (is_artefact(*this))
                     buff << "☆";
             }
-        case DESC_PLAIN:
         case DESC_DBNAME:
         case DESC_BASENAME:
         case DESC_QUALNAME:
