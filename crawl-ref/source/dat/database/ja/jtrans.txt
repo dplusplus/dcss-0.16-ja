@@ -3613,7 +3613,7 @@ book of Air
 %%%%
 book of the Sky
 
-天空の魔法書
+蒼穹の魔法書
 %%%%
 book of the Warp
 
