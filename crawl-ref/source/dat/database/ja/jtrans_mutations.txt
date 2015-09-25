@@ -2617,7 +2617,7 @@ An ominous black mark forms on your body.
 
 不吉な黒の紋様があなたの体に刻まれた。
 %%%%
-cold-blood
+cold-blooded
 
 冷血
 %%%%
