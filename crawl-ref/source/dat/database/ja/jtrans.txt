@@ -917,7 +917,8 @@ It is a two handed weapon.
 %%%%
 It can be evoked to extend its reach.
 
-この武器は少し離れたところまで届かせることができる。(e<w>V</w>oke または Tabコマンド)
+この武器は少し離れたところまで届かせることができる。
+(e(V)oke または Tabコマンド)
 %%%%
 It can hit multiple enemies in an arc around the wielder.
 
