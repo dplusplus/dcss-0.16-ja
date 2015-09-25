@@ -479,120 +479,149 @@ Stop Recall
 招集の停止
 #{ ABIL_STOP_RECALL, "Stop Recall", 0, 0, 0, 0, 0, ABFLAG_NONE},
 %%%%
-#Shadow Step
+Shadow Step
 
+影移動
 #{ ABIL_DITHMENOS_SHADOW_STEP, "Shadow Step",
 %%%%
-#Shadow Form
+Shadow Form
 
+影の躯
 #{ ABIL_DITHMENOS_SHADOW_FORM, "Shadow Form",
 %%%%
-#Draw Out Power
+Draw Out Power
 
+力の解放
 #{ ABIL_RU_DRAW_OUT_POWER, "Draw Out Power",
 %%%%
-#Power Leap
+Power Leap
 
+力強き跳躍
 #{ ABIL_RU_POWER_LEAP, "Power Leap",
 %%%%
-#Apocalypse
+Apocalypse
 
+黙示録
 #{ ABIL_RU_APOCALYPSE, "Apocalypse",
 %%%%
-#Sacrifice Purity
+Sacrifice Purity
 
+清浄の犠牲
 #{ ABIL_RU_SACRIFICE_PURITY, "Sacrifice Purity",
 %%%%
-#Sacrifice Words
+Sacrifice Words
 
+言語の犠牲
 #{ ABIL_RU_SACRIFICE_WORDS, "Sacrifice Words",
 %%%%
-#Sacrifice Drink
+Sacrifice Drink
 
+飲用の犠牲
 #{ ABIL_RU_SACRIFICE_DRINK, "Sacrifice Drink",
 %%%%
-#Sacrifice Essence
+Sacrifice Essence
 
+魔力の犠牲
 #{ ABIL_RU_SACRIFICE_ESSENCE, "Sacrifice Essence",
 %%%%
-#Sacrifice Health
+Sacrifice Health
 
+健常の犠牲
 #{ ABIL_RU_SACRIFICE_HEALTH, "Sacrifice Health",
 %%%%
-#Sacrifice Stealth
+Sacrifice Stealth
 
+隠密の犠牲
 #{ ABIL_RU_SACRIFICE_STEALTH, "Sacrifice Stealth",
 %%%%
-#Sacrifice Artifice
+Sacrifice Artifice
 
+発動の犠牲
 #{ ABIL_RU_SACRIFICE_ARTIFICE, "Sacrifice Artifice",
 %%%%
-#Sacrifice Love
+Sacrifice Love
 
+親愛の犠牲
 #{ ABIL_RU_SACRIFICE_LOVE, "Sacrifice Love",
 %%%%
-#Sacrifice Courage
+Sacrifice Courage
 
+勇気の犠牲
 #{ ABIL_RU_SACRIFICE_COURAGE, "Sacrifice Courage",
 %%%%
-#Sacrifice Arcana
+Sacrifice Arcana
 
+秘術の犠牲
 #{ ABIL_RU_SACRIFICE_ARCANA, "Sacrifice Arcana",
 %%%%
-#Sacrifice Nimbleness
+Sacrifice Nimbleness
 
+敏捷の犠牲
 #{ ABIL_RU_SACRIFICE_NIMBLENESS, "Sacrifice Nimbleness",
 %%%%
-#Sacrifice Durability
+Sacrifice Durability
 
+頑強の犠牲
 #{ ABIL_RU_SACRIFICE_DURABILITY, "Sacrifice Durability",
 %%%%
-#Sacrifice a Hand
+Sacrifice a Hand
 
+片腕の犠牲
 #{ ABIL_RU_SACRIFICE_HAND, "Sacrifice a Hand",
 %%%%
-#Sacrifice Experience
+Sacrifice Experience
 
+経験の犠牲
 #{ ABIL_RU_SACRIFICE_EXPERIENCE, "Sacrifice Experience",
 %%%%
-#Sacrifice Skill
+Sacrifice Skill
 
+鍛錬の犠牲
 #{ ABIL_RU_SACRIFICE_SKILL, "Sacrifice Skill",
 %%%%
-#Sacrifice an Eye
+Sacrifice an Eye
 
+片眼の犠牲
 #{ ABIL_RU_SACRIFICE_EYE, "Sacrifice an Eye",
 %%%%
-#Sacrifice Resistance
+Sacrifice Resistance
 
+耐性の犠牲
 #{ ABIL_RU_SACRIFICE_RESISTANCE, "Sacrifice Resistance",
 %%%%
-#Reject Sacrifices
+Reject Sacrifices
 
+犠牲の拒否
 #{ ABIL_RU_REJECT_SACRIFICES, "Reject Sacrifices",
 %%%%
-#Potion Petition
+Potion Petition
 
+水薬の陳情
 #{ ABIL_GOZAG_POTION_PETITION, "Potion Petition",
 %%%%
-#Call Merchant
+Call Merchant
 
+商人の誘致
 #{ ABIL_GOZAG_CALL_MERCHANT, "Call Merchant",
 %%%%
-#Bribe Branch
+Bribe Branch
 
+分岐の買収
 #{ ABIL_GOZAG_BRIBE_BRANCH, "Bribe Branch",
 %%%%
-#Upheaval
+Upheaval
 
+自然の怒り
 #{ ABIL_QAZLAL_UPHEAVAL, "Upheaval", 4, 0, 0, 3, ABFLAG_NONE },
 %%%%
-#Elemental Force
+Elemental Force
 
+精霊召喚
 #{ ABIL_QAZLAL_ELEMENTAL_FORCE, "Elemental Force",
 %%%%
-#Disaster Area
+Disaster Area
 
+天よりの災禍
 #{ ABIL_QAZLAL_DISASTER_AREA, "Disaster Area", 7, 0, 0,
 %%%%
 Renounce Religion
