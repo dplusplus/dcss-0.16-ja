@@ -50,6 +50,7 @@
 #include "unwind.h"
 
 #define SHOPPING_LIST_COST_KEY "shopping_list_cost_key"
+#define SHOPPING_COLUMN_WIDTH 23
 
 ShoppingList shopping_list;
 
@@ -76,7 +77,7 @@ static ordering_mode shopping_order = ORDER_MODE_DEFAULT;
 
 static const char * const shopping_order_names[NUM_ORDER_MODES] =
 {
-    "default", "price", "name", "type"
+    "通常", "価格順", "名前順", "種類別"
 };
 
 static bool _purchase(shop_struct& shop, int item_got, int cost, bool id);
@@ -84,14 +85,14 @@ static bool _purchase(shop_struct& shop, int item_got, int cost, bool id);
 static void _shop_print(const char *shoppy, int line)
 {
     cgotoxy(1, line + 19, GOTO_CRT);
-    cprintf("%s", shoppy);
+    cprintf("%s", sp2nbspc(jtrans(shoppy)));
     clear_to_end_of_line();
 }
 
 static void _shop_more()
 {
     cgotoxy(65, 20, GOTO_CRT);
-    cprintf("-more-");
+    cprintf(jtransc("-more-"));
     get_ch();
 }
 
@@ -192,10 +193,11 @@ static void _list_shop_keys(bool viewing, int total_stock
 
     fs = formatted_string::parse_string(
 #if defined(USE_TILE) && !defined(TOUCH_UI)
-            "[<w>Esc</w>/<w>R-Click</w>] exit"
+             chop_string(jtrans("[<w>Esc</w>/<w>R-Click</w>] exit"),
+                         SHOPPING_COLUMN_WIDTH + 7) // 7 for tag
 #else
             //               "/R-Click"
-            "[<w>Esc</w>] exit        "
+            jtrans("[<w>Esc</w>] exit        ")
 #endif
             );
 
@@ -205,24 +207,25 @@ static void _list_shop_keys(bool viewing, int total_stock
     // ///////// BUY/EXAMINE TOGGLE //////////
     // strlen("[Esc/R-Click] exit") = 18
     // set cursor [18 chars of text + 2 spaces + start at 1]
-    cgotoxy(21, numlines - 1, GOTO_CRT);
+    cgotoxy(22, numlines - 1, GOTO_CRT);
 
-    fs = formatted_string::parse_string(make_stringf(
-            "[<w>!</w>] %s items",
-            (viewing ? "<w>examine</w>|buy" : "examine|<w>buy</w>") ));
+    fs = formatted_string::parse_string(chop_string(make_stringf(
+            jtransc("[<w>!</w>] %s items"),
+            jtransc((viewing ? "<w>examine</w>|buy" : "examine|<w>buy</w>"))),
+                                                    SHOPPING_COLUMN_WIDTH + 8 * 2));
 
     _draw_shop_fs('!', fs, freeform);
 
     // ///////// SELECT ITEM TO BUY/EXAMINE //////////
     // strlen("[!] examine|buy items") = 21
     // set cursor [21 from above, + 21 chars + 5 whitespace]
-    cgotoxy(47, numlines - 1, GOTO_CRT);
+    cgotoxy(2 * SHOPPING_COLUMN_WIDTH + 6, numlines - 1, GOTO_CRT);
 
     // calculate and draw formatted text
     string keys = _hyphenated_letters(total_stock, 'a');
 
-    keys = "[" + keys + "] select item "
-            + (viewing ? "to examine" : "for purchase");
+    keys = "[" + keys + jtrans(string("] select item ")
+            + (viewing ? "to examine" : "for purchase"));
 
     fs = formatted_string::parse_string(keys.c_str());
     fs.display();
@@ -231,26 +234,25 @@ static void _list_shop_keys(bool viewing, int total_stock
     // strlen("[/] sort (default)") = 18
     cgotoxy(1, numlines, GOTO_CRT);
     ASSERT_RANGE(shopping_order, ORDER_MODE_DEFAULT, NUM_ORDER_MODES);
-    string sortmode = make_stringf("[<w>/</w>] sort (%s)",
+    string sortmode = make_stringf(jtransc("[<w>/</w>] sort (%s)"),
                                    shopping_order_names[shopping_order]);
     fs = formatted_string::parse_string(sortmode.c_str());
     _draw_shop_fs('/', fs, freeform);
 
     // ///////// MAKE PURCHASE //////////
     // set cursor [last line], align with 21 from line above
-    cgotoxy(21, numlines, GOTO_CRT);
-    fs = formatted_string::parse_string(
-            "[<w>Enter</w>"
-            "] make purchase");
+    cgotoxy(22, numlines, GOTO_CRT);
+    fs = formatted_string::parse_string(jtrans(
+            "[<w>Enter</w>] make purchase"));
 
     _draw_shop_fs(' ', fs, freeform);
 
     // ///////// PUT ITEM ON SHOPPING LIST //////////
     // cursor at 47 to align with line above
-    cgotoxy(47, numlines, GOTO_CRT);
+    cgotoxy(2 * SHOPPING_COLUMN_WIDTH + 6, numlines, GOTO_CRT);
 
     keys = _hyphenated_letters(total_stock, 'A');
-    keys = "[" + keys + "] put item on shopping list";
+    keys = "[" + keys + jtrans("] put item on shopping list");
 
     fs = formatted_string::parse_string(keys.c_str());
     fs.display();
@@ -377,9 +379,9 @@ static void _shop_print_stock(const vector<bool>& selected,
 
         string item_name = item.name(DESC_A, false, id);
         if (shop_item_unknown(item))
-            item_name += " (unknown)";
+            item_name += " " + jtrans(" (unknown)");
 
-        cprintf("%4d gold   %s", gp_value, item_name.c_str());
+        cprintf(sp2nbspc(make_stringf(jtransc("%4d gold   %s"), gp_value, item_name.c_str())));
 
         si.add_item(item, gp_value);
 
@@ -435,7 +437,7 @@ static bool _in_a_shop(int shopidx, int &num_in_list)
 
     clrscr();
 
-    const string hello = "Welcome to " + shop_name(shop.pos) + "!";
+    const string hello = shop_name(shop.pos) + "にようこそ！";
     bool first = true;
     int total_cost = 0;
 
@@ -505,7 +507,7 @@ static bool _in_a_shop(int shopidx, int &num_in_list)
         clrscr();
         if (shop.stock.empty())
         {
-            _shop_print("I'm sorry, my shop is empty now.", 1);
+            _shop_print(jtransc("I'm sorry, my shop is empty now."), 1);
             _shop_more();
             return bought_something;
         }
@@ -555,16 +557,20 @@ static bool _in_a_shop(int shopidx, int &num_in_list)
         string info;
         if (!total_cost)
         {
-            info = make_stringf("You have %d gold piece%s.", you.gold,
-                                you.gold != 1 ? "s" : "");
+            info = you.gold > 0 ?
+                make_stringf(jtransc("You have %d gold piece%s."), you.gold,
+                             you.gold != 1 ? "s" : "") :
+                "あなたは一枚も金貨を持っていない。";
             textcolour(YELLOW);
         }
         else if (total_cost > you.gold)
         {
-            info = make_stringf("You have %d gold piece%s. "
-                           "You are short %d gold piece%s for the purchase.",
-                           you.gold,
-                           you.gold != 1 ? "s" : "",
+            info = you.gold > 0 ?
+                make_stringf(jtransc("You have %d gold piece%s. "), you.gold):
+                "あなたは一枚も金貨を持っていない。";
+
+            info += make_stringf(
+                           jtransc("You are short %d gold piece%s for the purchase."),
                            total_cost - you.gold,
                            (total_cost - you.gold != 1) ? "s" : "");
 
@@ -572,12 +578,10 @@ static bool _in_a_shop(int shopidx, int &num_in_list)
         }
         else
         {
-            info = make_stringf("You have %d gold piece%s. "
-                     "After the purchase, you will have %d gold piece%s.",
+            info = make_stringf(jtransc("You have %d gold piece%s. "
+                     "After the purchase, you will have %d gold piece%s."),
                      you.gold,
-                     you.gold != 1 ? "s" : "",
-                     you.gold - total_cost,
-                     (you.gold - total_cost != 1) ? "s" : "");
+                     you.gold - total_cost);
 
             textcolour(YELLOW);
         }
@@ -590,7 +594,7 @@ static bool _in_a_shop(int shopidx, int &num_in_list)
             first = false;
             info = hello + " ";
         }
-        info += "What would you like to do? ";
+        info += jtrans("What would you like to do? ");
 
         textcolour(CYAN);
         _shop_print(info.c_str(), 1);
@@ -630,7 +634,7 @@ static bool _in_a_shop(int shopidx, int &num_in_list)
 
             if (num_selected == 0 && num_in_list > 0)
             {
-                if (_shop_yesno("Buy items on shopping list? (Y/n)", 'y'))
+                if (_shop_yesno(jtransc("Buy items on shopping list? (Y/n)"), 'y'))
                 {
                     to_buy = in_list;
 
@@ -656,7 +660,7 @@ static bool _in_a_shop(int shopidx, int &num_in_list)
             // Do purchase.
             if (total_purchase > you.gold)
             {
-                _shop_print("I'm sorry, you don't seem to have enough money.",
+                _shop_print(jtransc("I'm sorry, you don't seem to have enough money."),
                             1);
                 _shop_more();
             }
@@ -665,7 +669,7 @@ static bool _in_a_shop(int shopidx, int &num_in_list)
             else
             {
                 const string prompt = make_stringf(
-                                          "Purchase for %d gold? (y/n)",
+                                          jtransc("Purchase for %d gold? (y/n)"),
                                           total_purchase);
 
                 if (_shop_yesno(prompt.c_str(), 'n'))
@@ -719,10 +723,7 @@ static bool _in_a_shop(int shopidx, int &num_in_list)
 
                     if (outside_items)
                     {
-                        mprf("I'll put %s outside for you.",
-                              num_items == 1             ? "it" :
-                              num_items == outside_items ? "them"
-                                                         : "some of them");
+                        mpr("店主『持ちきれない分は外に置いておきますね。』");
                     }
                     bought_something = true;
                 }
@@ -1932,7 +1933,7 @@ void shop()
 
     if (i == MAX_SHOPS)
     {
-        mprf(MSGCH_ERROR, "Help! Non-existent shop.");
+        mpr_nojoin(MSGCH_ERROR, jtrans("Help! Non-existent shop."));
         return;
     }
 
@@ -1942,7 +1943,7 @@ void shop()
     // Quick out, if no inventory
     if (shop.stock.empty())
     {
-        mprf("%s appears to be closed.", shopname.c_str());
+        mprf(jtransc("%s appears to be closed."), shopname.c_str());
         _delete_shop(i);
         return;
     }
@@ -1957,10 +1958,10 @@ void shop()
     redraw_screen();
 
     if (bought_something)
-        mprf("Thank you for shopping at %s!", shopname.c_str());
+        mprf(jtransc("Thank you for shopping at %s!"), shopname.c_str());
 
     if (num_in_list > 0)
-        mpr("You can access your shopping list by pressing '$'.");
+        mpr(jtrans("You can access your shopping list by pressing '$'."));
 }
 
 void destroy_shop_at(coord_def p)
@@ -2047,7 +2048,7 @@ string shop_name(const coord_def& where, bool add_stop)
 
     if (!cshop)
     {
-        mpr("Help! Non-existent shop.");
+        mpr(jtrans("Help! Non-existent shop."));
         return "Buggy Shop";
     }
 
@@ -2138,7 +2139,7 @@ bool ShoppingList::add_thing(const item_def &item, int cost,
 
     if (find_thing(item, pos) != -1)
     {
-        mprf(MSGCH_ERROR, "%s is already on the shopping list.",
+        mprf(MSGCH_ERROR, jtransc("%s is already on the shopping list."),
              item.name(DESC_THE).c_str());
         return false;
     }
@@ -2162,7 +2163,7 @@ bool ShoppingList::add_thing(string desc, string buy_verb, int cost,
 
     if (find_thing(desc, pos) != -1)
     {
-        mprf(MSGCH_ERROR, "%s is already on the shopping list.",
+        mprf(MSGCH_ERROR, jtransc("%s is already on the shopping list."),
              desc.c_str());
         return false;
     }
@@ -2220,7 +2221,7 @@ bool ShoppingList::del_thing(const item_def &item,
 
     if (idx == -1)
     {
-        mprf(MSGCH_ERROR, "%s isn't on shopping list, can't delete it.",
+        mprf(MSGCH_ERROR, jtransc("%s isn't on shopping list, can't delete it."),
              item.name(DESC_THE).c_str());
         return false;
     }
@@ -2237,7 +2238,7 @@ bool ShoppingList::del_thing(string desc, const level_pos* _pos)
 
     if (idx == -1)
     {
-        mprf(MSGCH_ERROR, "%s isn't on shopping list, can't delete it.",
+        mprf(MSGCH_ERROR, jtransc("%s isn't on shopping list, can't delete it."),
              desc.c_str());
         return false;
     }
@@ -2377,8 +2378,8 @@ unsigned int ShoppingList::cull_identical_items(const item_def& item,
             thing[REPLACE_PROMPTED_KEY] = (bool) true;
 
             string prompt =
-                make_stringf("Shopping-list: replace %dgp %s with cheaper "
-                             "one? (Y/n)", list_cost,
+                make_stringf(jtransc("Shopping-list: replace %dgp %s with cheaper "
+                                     "one? (Y/n)"), list_cost,
                              describe_thing(thing).c_str());
 
             if (_shop_yesno(prompt.c_str(), 'y'))
@@ -2397,7 +2398,7 @@ unsigned int ShoppingList::cull_identical_items(const item_def& item,
                 continue;
             thing[REMOVE_PROMPTED_KEY] = (bool) true;
 
-            string prompt = make_stringf("Shopping-list: remove %s? (Y/n)",
+            string prompt = make_stringf(jtransc("Shopping-list: remove %s? (Y/n)"),
                                          describe_thing(thing, DESC_A).c_str());
 
             if (_shop_yesno(prompt.c_str(), 'y'))
@@ -2405,7 +2406,7 @@ unsigned int ShoppingList::cull_identical_items(const item_def& item,
                 to_del.push_back(listed);
                 if (!_in_shop_now)
                 {
-                    mprf("Shopping-list: removing %s",
+                    mprf(jtransc("Shopping-list: removing %s"),
                          describe_thing(thing, DESC_A).c_str());
                 }
             }
@@ -2414,7 +2415,7 @@ unsigned int ShoppingList::cull_identical_items(const item_def& item,
         }
         else
         {
-            string str = make_stringf("Shopping-list: removing %s",
+            string str = make_stringf(jtransc("Shopping-list: removing %s"),
                                       describe_thing(thing, DESC_A).c_str());
 
             _shop_mpr(str.c_str());
@@ -2542,7 +2543,7 @@ void ShoppingList::gold_changed(int old_amount, int new_amount)
             if (thing.exists(SHOPPING_THING_VERB_KEY))
                 desc += thing[SHOPPING_THING_VERB_KEY].get_string();
             else
-                desc = "buy";
+                desc = "";
             desc += " ";
 
             desc += describe_thing(thing, DESC_A);
@@ -2551,9 +2552,10 @@ void ShoppingList::gold_changed(int old_amount, int new_amount)
         }
         ASSERT(!descs.empty());
 
-        mpr_comma_separated_list("You now have enough gold to ", descs,
-                                 ", or ");
-        mpr("You can access your shopping list by pressing '$'.");
+        mpr_comma_separated_list("あなたは", descs,
+                                 "、", "、", MSGCH_PLAIN, 0,
+                                 "のどれかを購入するのに足る金貨を手にした。");
+        mpr(jtrans("You can access your shopping list by pressing '$'."));
 
         // Our gold has changed, maybe we can buy different things now.
         refresh();
@@ -2732,8 +2734,8 @@ void ShoppingList::display()
             if (cost > you.gold)
             {
                 string prompt =
-                   make_stringf("You cannot afford %s; travel there "
-                                "anyway? (y/N)",
+                   make_stringf(jtransc("You cannot afford %s; travel there "
+                                        "anyway? (y/N)"),
                                 describe_thing(*thing, DESC_A).c_str());
                 clrscr();
                 if (!yesno(prompt.c_str(), true, 'n'))
@@ -2777,7 +2779,7 @@ void ShoppingList::display()
             del_thing_at_index(index);
             if (list->empty())
             {
-                mpr("Your shopping list is now empty.");
+                mpr(jtrans("Your shopping list is now empty."));
                 break;
             }
 
@@ -2939,12 +2941,14 @@ string ShoppingList::describe_thing(const CrawlHashTable& thing,
 {
     const level_pos pos = thing_pos(thing);
 
-    string desc = name_thing(thing, descrip) + " on ";
+    string desc;
 
     if (pos.id == level_id::current())
-        desc += "this level";
+        desc += jtrans("this level");
     else
-        desc += pos.id.describe();
+        desc += pos.id.describe_j();
+
+    desc += "に売っている" + name_thing(thing, descrip);
 
     return desc;
 }
@@ -2996,7 +3000,8 @@ const char *shoptype_to_str(shop_type type)
 
 void list_shop_types()
 {
-    mpr_nojoin(MSGCH_PLAIN, "Available shop types: ");
+    mpr_nojoin(MSGCH_PLAIN, jtrans("Available shop types: ") + " ");
+
     for (const char *type : shop_types)
-        mprf_nocap("%s", type);
+        mprf_nocap("\"%s\"", type);
 }

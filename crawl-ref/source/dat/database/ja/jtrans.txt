@@ -7870,6 +7870,118 @@ The service fee for joining is currently %d gold; you have %d.
 %%%%
 ############################## shopping.cc ##############################
 %%%%
+[<w>Esc</w>/<w>R-Click</w>] exit
+
+[<w>Esc</w>] 店を出る
+%%%%
+[<w>!</w>] %s items
+
+[<w>!</w>] %s
+%%%%
+<w>examine</w>|buy
+
+<w>解説モード</w>|購入モード
+%%%%
+examine|<w>buy</w>
+
+解説モード|<w>購入モード</w>
+%%%%
+] select item to examine
+
+] キー選択で解説文表示
+%%%%
+] select item for purchase
+
+] キー選択で品物を選択
+%%%%
+[<w>/</w>] sort (%s)
+
+[<w>/</w>] 並び換え (%s)
+%%%%
+[<w>Enter</w>] make purchase
+
+[<w>Enter</w>] 購入
+%%%%
+] put item on shopping list
+
+] 購入リストに入れる
+%%%%
+%4d gold   %s
+
+%4dゴールド  %s
+%%%%
+I'm sorry, my shop is empty now.
+
+申し訳ありませんが、もう売る物がありません。
+%%%%
+You have %d gold piece%s.
+
+あなたは金貨を%d枚持っている。
+%%%%
+You are short %d gold piece%s for the purchase.
+
+それを買うにはあと%d枚必要だ。
+%%%%
+You have %d gold piece%s. After the purchase, you will have %d gold piece%s.
+
+あなたは金貨を%d枚持っている。それを購入したら残りは%d枚だ。
+%%%%
+What would you like to do?
+
+何をお探しですか？
+%%%%
+Buy items on shopping list? (Y/n)
+
+購入リストにあるアイテムを購入しますか？ (Y/n)
+%%%%
+I'm sorry, you don't seem to have enough money.
+
+残念ながら、十分な金貨をお持ちでないようだ。
+%%%%
+Purchase for %d gold? (y/n)
+
+金貨%d枚で購入しますか？ (y/n)
+%%%%
+No such item.
+
+そのようなアイテムはありません。
+%%%%
+Help! Non-existent shop.
+
+おかしい！ 存在しない店だ。
+%%%%
+%s appears to be closed.
+
+%sは閉店しているようだ。
+%%%%
+Thank you for shopping at %s!
+
+店主『%sにまたお越しを！』
+%%%%
+You can access your shopping list by pressing '$'.
+
+'$' コマンドで購入リストを管理できます。
+%%%%
+%s is already on the shopping list.
+
+%sは既に購入リストに載っているようだ。
+%%%%
+%s isn't on shopping list, can't delete it.
+
+%sは購入リストに載っておらず、削除できない。
+%%%%
+Shopping-list: replace %dgp %s with cheaper one? (Y/n)
+
+購入リスト管理: %dゴールドで売られている%sを別の安く売られている物と交換しますか？ (Y/n)
+%%%%
+Shopping-list: remove %s? (Y/n)
+
+購入リスト管理: %sを削除しますか？ (Y/n)
+%%%%
+Shopping-list: removing %s
+
+購入リスト管理: %sを削除しました。
+%%%%
 %d %s%s, total %d gold
 
 %d%s, 合計%dゴールド
@@ -7901,6 +8013,22 @@ travel|examine|<w>delete</w>
 <yellow>You have %d gp</yellow>
 
 <yellow>あなたは%d枚の金貨を持っている。</yellow>
+%%%%
+You cannot afford %s; travel there anyway? (y/N)
+
+現在%sを手に入れることができませんが、移動しますか？ (y/N)
+%%%%
+Your shopping list is now empty.
+
+購入リストにはもう何も載っていない。
+%%%%
+this level
+
+この階
+%%%%
+Available shop types:
+
+指定可能な店の種別:
 %%%%
 ############################## shout.cc ##############################
 %%%%
