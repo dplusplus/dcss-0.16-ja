@@ -1,0 +1,37 @@
+%%%%
+revokes the gift of sanctuary.
+
+は聖域の効果を解除した。
+%%%%
+The sanctuary starts shrinking.
+
+聖域は縮小しはじめた。
+%%%%
+The sanctuary disappears.
+
+聖域は消滅した。
+%%%%
+By Zin's power, hidden traps are revealed to you.
+
+隠されていた罠がジンの力によって明らかになった。
+%%%%
+By Zin's power, the foul cloud within the sanctuary is swept away.
+
+ジンの力によって聖域の中の有害な雲は一掃された。
+%%%%
+By Zin's power, all foul fumes within the sanctuary are swept away.
+
+ジンの力によって聖域の中の有害な瘴気は一掃された。
+%%%%
+By Zin's power, all blood is cleared from the sanctuary.
+
+ジンの力によって聖域の中の全ての流血は浄化された。
+%%%%
+turns to flee the light!
+
+は光に怯えて逃げ出した！
+%%%%
+The monsters scatter in all directions!
+
+モンスターは散り散りばらばらに逃げ出した！
+%%%%
