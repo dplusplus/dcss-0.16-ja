@@ -2713,8 +2713,7 @@ int monster_die(monster* mons, killer_type killer,
             if (!(mons->flags & MF_KNOWN_SHIFTER))
             {
                 const string message = jtrans("'s shape twists and changes as ")
-                                     + jtrans(mons->pronoun(PRONOUN_SUBJECTIVE))
-                                     + "の死体が残った。";
+                                     + "変身能力者の死体が残った。";
                 simple_monster_message(mons, message.c_str());
             }
         }

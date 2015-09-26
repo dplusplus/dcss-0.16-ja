@@ -5330,9 +5330,9 @@ regenerates before your eyes!
 
 あなたの眼前で再生した！
 %%%%
-'s shape twists and change as
+'s shape twists and changes as
 
-の形状は捻れ、後には
+のように見えていたものの形状は捻れ、後には
 %%%%
 ############################## mon-info.cc ##############################
 %%%%
