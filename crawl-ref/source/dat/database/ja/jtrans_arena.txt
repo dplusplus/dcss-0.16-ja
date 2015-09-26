@@ -1,0 +1,5 @@
+%%%%
+Last arena monster was dismissed.
+
+闘技場の最後のモンスターを倒した。
+%%%%
