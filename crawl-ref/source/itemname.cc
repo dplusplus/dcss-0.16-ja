@@ -1935,8 +1935,8 @@ static string _name_weapon_en(const item_def &weap, description_level_type desc,
 
     if (is_artefact(weap) && !dbname)
     {
-        const string long_name = curse_prefix
-            + jtrans(get_artefact_name(weap, ident)) + plus_text;
+        const string long_name = curse_prefix + plus_text
+                                 + get_artefact_name(weap, ident);
 
         // crop long artefact names when not controlled by webtiles -
         // webtiles displays weapon names across multiple lines
@@ -1978,7 +1978,7 @@ static string _name_weapon_en(const item_def &weap, description_level_type desc,
         }
 
         const string short_name
-            = curse_prefix + jtrans(get_artefact_base_name(weap, true)) + plus_text;
+            = curse_prefix + plus_text + get_artefact_base_name(weap, true);
         dprf("short: %s", short_name.c_str());
         return short_name;
     }
@@ -1991,7 +1991,7 @@ static string _name_weapon_en(const item_def &weap, description_level_type desc,
     const string cosmetic_text
         = show_cosmetic ? _cosmetic_text(weap, ignore_flags) : "";
     const string ego_prefix
-        = _ego_prefix_en(weap, desc, terse, ident, ignore_flags);
+        = _ego_prefix(weap, desc, terse, ident, ignore_flags);
     const string ego_suffix = know_ego ? _ego_suffix(weap, terse) : "";
     const string curse_suffix
         = know_curse && weap.cursed() && terse ? " (curse)" :  "";
@@ -2643,7 +2643,7 @@ string item_def::name_aux_en(description_level_type desc, bool terse, bool ident
 
         if (is_artefact(*this) && !dbname)
         {
-            buff << jtrans(get_artefact_name(*this));
+            buff << get_artefact_name(*this);
             break;
         }
 
