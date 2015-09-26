@@ -197,7 +197,7 @@ bool ranged_attack::handle_phase_blocked()
     if (needs_message)
     {
         mprf("%sは%s%sを%s%s",
-             defender_name(false).c_str(),
+             jtransc(defender_name(false)),
              by_shield.c_str(),
              projectile->name(DESC_THE).c_str(),
              jtransc(verb),
