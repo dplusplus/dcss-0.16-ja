@@ -254,8 +254,8 @@ function mag_attack(allow_movement)
     if AUTOMAGIC_FIGHT then
       attack(allow_movement)
     else
-      crawl.mpr("You don't have enough magic to cast " ..
-          you.spell_table()[AUTOMAGIC_SPELL_SLOT] .. "!")
+      crawl.mpr("あなたには" ..
+          you.spell_table()[AUTOMAGIC_SPELL_SLOT] .. "の呪文を唱える魔力がない！")
     end
   elseif mp_is_low() then
     if AUTOMAGIC_FIGHT then
@@ -297,12 +297,14 @@ function am_set_spell()
     -- had been disabled, enable it now.
     if AUTOMAGIC_ACTIVE == false then
       crawl.setopt("automagic_enable = true")
-      message = " enabled,"
+      message = "をオンにし、"
+    else
+      message = "で"
     end
     AUTOMAGIC_SPELL_SLOT = slot
     spell_name = you.spell_table()[AUTOMAGIC_SPELL_SLOT] or "no spell currently"
-    crawl.mpr("Automagic" .. message .. " will cast spell in slot " .. slot .. " (" ..
-        spell_name .. ")" .. ".")
+    crawl.mpr("自動詠唱" .. message .. "スロット" .. slot .. "の呪文(" ..
+        spell_name .. ")" .. "を設定しました。")
     return false
 
   end

@@ -4931,7 +4931,7 @@ You are too berserk!
 %%%%
 You're too confused!
 
-あなたは混乱しすぎている！
+あなたは混乱している！
 %%%%
 You can't do that in your present form.
 
@@ -8822,9 +8822,17 @@ You are held in a net.
 
 あなたは網で拘束されている。
 %%%%
+You are held in a net!
+
+あなたは網で拘束されている！
+%%%%
 You are caught in a web.
 
 あなたは蜘蛛の巣に巻き付かれている。
+%%%%
+You are caught in a web!
+
+あなたは蜘蛛の巣に巻き付かれている！
 %%%%
 [dur]SlowM
 
@@ -10163,12 +10171,6 @@ a BORING thing.
 XOM is BORED!
 
 ゾムは退屈している！
-%%%%
-############################## dat/clua/autofight.lua ##############################
-%%%%
-No target in view!
-
-視界内に敵はいない！
 %%%%
 ############################## dat/des/branches/pan.des ##############################
 %%%%
