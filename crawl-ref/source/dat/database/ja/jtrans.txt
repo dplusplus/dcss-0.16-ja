@@ -8250,7 +8250,7 @@ Spells (Description)          Type                          Failure  Level
 %%%%
 , <lightred>%u%s%s unmemorisable</lightred>
 
-, <lightred>%u%s%s unmemorisable</lightred>
+, <lightred>%uつの習得不能な呪文</lightred>
 %%%%
 Toggle display with '<w>!</w>'
 

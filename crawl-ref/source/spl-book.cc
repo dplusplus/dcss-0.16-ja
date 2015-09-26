@@ -761,7 +761,8 @@ static spell_type _choose_mem_spell(spell_list &spells,
     spell_menu.menu_action  = Menu::ACT_EXECUTE;
 
     const bool shortmsg = num_unreadable > 0 && num_race > 0;
-    string more_str = make_stringf(jtransc("<lightgreen>%d %slevel%s left"
+    string more_str = "\n"
+                    + make_stringf(jtransc("<lightgreen>%d %slevel%s left"
                                            "</lightgreen>"),
                                    player_spell_levels(),
                                    shortmsg ? "" : "spell ",
@@ -777,8 +778,8 @@ static spell_type _choose_mem_spell(spell_list &spells,
 
     if (num_race > 0)
     {
-        more_str += make_stringf(", <lightred>%u%s%s unmemorisable"
-                                 "</lightred>",
+        more_str += make_stringf(jtransc(", <lightred>%u%s%s unmemorisable"
+                                         "</lightred>"),
                                  num_race,
                                  shortmsg ? "" : " spell",
                                  // shorter message if we have both annotations

@@ -2730,7 +2730,8 @@ static string _player_spell_stats(const spell_type spell, bool rod)
     description += "\n騒音発生  : ";
     description += spell_noise_string(spell);
     description += "\n";
-    return description;
+
+    return sp2nbsp(description);
 }
 
 string get_skill_description(skill_type skill, bool need_title)
@@ -2908,6 +2909,7 @@ static int _get_spell_description(const spell_type spell,
                                            - strwidth(description)
                                            - strwidth(spell_title(spell)) - 1),
                                        ' ') + spell_title(spell);
+    description = sp2nbsp(description);
     description += "\n\n";
     const string long_descrip = getLongDescription(string(spell_title(spell))
                                                    + " spell");
@@ -2988,8 +2990,9 @@ static int _get_spell_description(const spell_type spell,
 void get_spell_desc(const spell_type spell, describe_info &inf)
 {
     string desc;
+
     _get_spell_description(spell, nullptr, desc);
-    inf.body << desc;
+    inf.body << sp2nbsp(desc);
 }
 
 
