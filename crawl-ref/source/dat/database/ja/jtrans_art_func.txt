@@ -157,6 +157,10 @@ heavy crossbow
 
 大型クロスボウ
 %%%%
+triple xbow
+
+トリプルクロスボウ
+%%%%
 longbow "Piercer"
 
 ロングボウ『貫くもの』
@@ -393,6 +397,10 @@ Axe of Woe
 
 悲痛の斧
 %%%%
+exec axe
+
+処刑人の斧
+%%%%
 moon troll leather armour
 
 月世界のトロルの革鎧
@@ -456,6 +464,10 @@ Maxwell's etheric cage
 crown of Eternal Torment
 
 永劫なる苦痛の王冠
+%%%%
+g.spiked club
+
+釘つき巨大棍棒
 %%%%
 ############################## art-func.h ##############################
 %%%%
