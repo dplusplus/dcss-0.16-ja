@@ -1658,13 +1658,18 @@ string get_item_description(const item_def &item, bool verbose,
     {
         string name = item.name(DESC_INVENTORY_EQUIP);
         string name_en = (item.base_type == OBJ_BOOKS &&
-                          !is_artefact(item) &&
-                          item.sub_type != BOOK_MANUAL) ? item.name_en(DESC_PLAIN) : "";
-        if (!in_inventory(item))
-            name = uppercase_first(name);
-        description << name << string(max(0, get_number_of_cols() - strwidth(name)
-                                                                  - strwidth(name_en)) - 1,
-                                      ' ') << name_en;
+                          is_artefact(item)) ? "" :
+                          is_artefact(item) ? uppercase_first(item.name_en(DESC_THE))
+                                            : uppercase_first(item.name_en(DESC_A));
+
+        if (strwidth(name) + strwidth(name_en) + 5 > get_number_of_cols())
+            name_en = "";
+
+        string title = name + string(max(0, get_number_of_cols() - strwidth(name)
+                                                                 - strwidth(name_en)) - 1,
+                                     ' ') + name_en;
+
+        description << sp2nbsp(title);
     }
 
 #ifdef DEBUG_DIAGNOSTICS
@@ -2332,9 +2337,16 @@ static bool _actions_prompt(item_def &item, bool allow_inscribe, bool do_prompt)
     highlighter->init(coord_def(0, 0), coord_def(0, 0), "highlighter");
     menu.attach_object(highlighter);
 #endif
-    string prompt = "この" + item.name(DESC_BASENAME) + "に対し";
+    string prompt_pre;
+    string prompt;
     int keyin;
     vector<command_type> actions;
+
+    if (is_artefact(item))
+        prompt_pre = "この" + jtrans(get_artefact_base_name(item)) + "に対し、";
+    else
+        prompt_pre = "この" + item.name(DESC_BASENAME) + "に対し、";
+
     actions.push_back(CMD_ADJUST_INVENTORY);
     if (item_equip_slot(item) == EQ_WEAPON)
         actions.push_back(CMD_UNWIELD_WEAPON);
@@ -2440,9 +2452,15 @@ static bool _actions_prompt(item_def &item, bool allow_inscribe, bool do_prompt)
     }
     prompt += "ことができる。";
 
-    prompt = "<cyan>" + prompt + "</cyan>";
+    prompt_pre = "<cyan>" + prompt_pre;
+    prompt += "</cyan>";
     if (do_prompt)
-        formatted_string::parse_string(prompt).display();
+    {
+        if(strwidth(prompt_pre) + strwidth(prompt) - 13 > get_number_of_cols()) // 13 for tags
+            prompt_pre += "\n";
+
+        formatted_string::parse_string(prompt_pre + prompt).display();
+    }
 
 #ifdef TOUCH_UI
 
