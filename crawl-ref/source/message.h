@@ -44,7 +44,8 @@ void mpr_comma_separated_list(const string &prefix,
                               const string &andc = ", and ",
                               const string &comma = ", ",
                               const msg_channel_type channel = MSGCH_PLAIN,
-                              const int param = 0);
+                              const int param = 0,
+                              const string& outs = "。");
 
 #include "cio.h"
 

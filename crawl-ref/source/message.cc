@@ -1342,7 +1342,8 @@ void mpr_comma_separated_list(const string &prefix,
                               const string &andc,
                               const string &comma,
                               const msg_channel_type channel,
-                              const int param)
+                              const int param,
+                              const string &outs)
 {
     string out = prefix;
 
@@ -1355,7 +1356,7 @@ void mpr_comma_separated_list(const string &prefix,
         else if (i == (size - 2))
             out += andc;
         else if (i == (size - 1))
-            out += ".";
+            out += outs;
     }
     _mpr(out, channel, param);
 }
