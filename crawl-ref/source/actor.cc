@@ -8,6 +8,7 @@
 #include "areas.h"
 #include "art-enum.h"
 #include "attack.h"
+#include "database.h"
 #include "directn.h"
 #include "env.h"
 #include "fprop.h"
@@ -463,9 +464,8 @@ bool actor::check_clinging(bool stepped, bool door)
     {
         if (you.can_see(this))
         {
-            mprf("%s %s off the %s.", name(DESC_THE).c_str(),
-                 conj_verb("fall").c_str(),
-                 door ? "door" : "wall");
+            mprf(jtransc("%s %s off the %s."), name(DESC_THE).c_str(),
+                 jtransc(door ? "door" : "wall"));
         }
         apply_location_effects(pos());
     }
@@ -499,11 +499,19 @@ void actor::end_constriction(mid_t whom, bool intentional, bool quiet)
     if (!quiet && alive() && constrictee->alive()
         && (you.see_cell(pos()) || you.see_cell(constrictee->pos())))
     {
-        mprf("%s %s %s grip on %s.",
-                name(DESC_THE).c_str(),
-                conj_verb(intentional ? "release" : "lose").c_str(),
-                pronoun(PRONOUN_POSSESSIVE).c_str(),
-                constrictee->name(DESC_THE).c_str());
+        if (intentional)
+        {
+            mprf(jtransc("%s %s %s grip on %s."),
+                 name(DESC_THE).c_str(),
+                 jtransc(constrictee->name(DESC_THE)),
+                 jtransc("release"));
+        }
+        else
+        {
+            mprf(jtransc("%sは%sの締めつけから逃れた。"),
+                 jtransc(constrictee->name(DESC_THE)),
+                 name(DESC_THE).c_str());
+        }
     }
 }
 
@@ -674,12 +682,12 @@ void actor::handle_constriction()
         if (damage <= 0 && is_player()
             && you.can_see(defender))
         {
-            exclamations = ", but do no damage.";
+            exclamations = jtrans(", but do no damage.");
         }
         else if (damage < HIT_WEAK)
-            exclamations = ".";
+            exclamations = "。";
         else if (damage < HIT_MED)
-            exclamations = "!";
+            exclamations = "！";
         else if (damage < HIT_STRONG)
             exclamations = "!!";
         else
@@ -695,13 +703,12 @@ void actor::handle_constriction()
 
         if (is_player() || you.can_see(this))
         {
-            mprf("%s %s %s%s%s",
-                 (is_player() ? "You"
-                              : name(DESC_THE).c_str()),
-                 conj_verb("constrict").c_str(),
-                 defender->name(DESC_THE).c_str(),
+            mprf(jtransc("%s %s %s%s%s"),
+                 jtransc(is_player() ? "You"
+                                     : name(DESC_THE).c_str()),
+                 jtransc(defender->name(DESC_THE)),
 #ifdef DEBUG_DIAGNOSTICS
-                 make_stringf(" for %d", damage).c_str(),
+                 make_stringf("(%d dmg)", damage).c_str(),
 #else
                  "",
 #endif
@@ -709,11 +716,10 @@ void actor::handle_constriction()
         }
         else if (you.can_see(defender) || defender->is_player())
         {
-            mprf("%s %s constricted%s%s",
-                 defender->name(DESC_THE).c_str(),
-                 defender->conj_verb("are").c_str(),
+            mprf(jtransc("%s %s constricted%s%s"),
+                 jtransc(defender->name(DESC_THE)),
 #ifdef DEBUG_DIAGNOSTICS
-                 make_stringf(" for %d", damage).c_str(),
+                 make_stringf("(%d dmg)", damage).c_str(),
 #else
                  "",
 #endif
@@ -863,10 +869,10 @@ void actor::collide(coord_def newpos, const actor *agent, int pow)
             behaviour_event(other->as_monster(), ME_WHACK, agent);
         if (you.can_see(this) || you.can_see(other))
         {
-            mprf("%s %s with %s!",
-                 name(DESC_THE).c_str(),
-                 conj_verb("collide").c_str(),
-                 other->name(DESC_THE).c_str());
+            mprf(jtransc("%s %s with %s!"),
+                 jtransc(name(DESC_THE)),
+                 jtransc(other->name(DESC_THE)),
+                 "衝突した");
         }
         const string thisname = name(DESC_A, true);
         const string othername = other->name(DESC_A, true);
@@ -886,16 +892,16 @@ void actor::collide(coord_def newpos, const actor *agent, int pow)
         if (!can_pass_through_feat(grd(newpos)))
         {
             mprf("%s %s into %s!",
-                 name(DESC_THE).c_str(), conj_verb("slam").c_str(),
-                 env.map_knowledge(newpos).known()
+                 jtransc(name(DESC_THE)), "ぶつかった",
+                 jtransc(env.map_knowledge(newpos).known()
                  ? feature_description_at(newpos, false, DESC_THE, false)
                        .c_str()
-                 : "something");
+                 : "something"));
         }
         else
         {
-            mprf("%s violently %s moving!",
-                 name(DESC_THE).c_str(), conj_verb("stop").c_str());
+            mprf(jtransc("%s violently %s moving!"),
+                 jtransc(name(DESC_THE)), "停止した");
         }
     }
     hurt(agent, apply_ac(damage.roll()), BEAM_MISSILE,

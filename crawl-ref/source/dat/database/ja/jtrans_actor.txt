@@ -1,0 +1,65 @@
+%%%%
+%s %s off the %s.
+
+%sは%sから落下した。
+%%%%
+wall
+
+壁
+%%%%
+%s %s %s grip on %s.
+
+%sは%sを締め付けから%s。
+%%%%
+release
+
+解放した
+%%%%
+, but do no damage.
+
+が、ダメージを与えられなかった。
+%%%%
+%s %s %s%s%s
+
+%sは%sを締めつけた%s%s
+%%%%
+%s %s constricted%s%s
+
+%sは締めつけられている%s%s
+%%%%
+barely %s.
+
+それをかろうじて耐えた。
+%%%%
+%s to resist.
+
+それをやっとのことで耐えた。
+%%%%
+%s with significant effort.
+
+それをなんとか耐えた。
+%%%%
+%s with some effort.
+
+それを耐えた。
+%%%%
+easily %s.
+
+それを楽々とやり過ごした。
+%%%%
+%s with almost no effort.
+
+はそれを気にも留めなかった。
+%%%%
+%s %s with %s!
+
+%sは%sに%s！
+%%%%
+%s %s into %s!
+
+%sは%sに%s！
+%%%%
+%s violently %s moving!
+
+%sは荒っぽく%s！
+%%%%
