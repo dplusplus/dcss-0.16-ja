@@ -3133,8 +3133,8 @@ static bool _monster_eat_item(monster* mons, bool nearby)
 
         if (eaten && !shown_msg && player_can_hear(mons->pos()))
         {
-            mprf(MSGCH_SOUND, "You hear a%s slurping noise.",
-                 nearby ? "" : " distant");
+            mprf(MSGCH_SOUND, jtransc("You hear a%s slurping noise."),
+                 nearby ? "" : "遠くで");
             shown_msg = true;
         }
 
@@ -3142,7 +3142,7 @@ static bool _monster_eat_item(monster* mons, bool nearby)
         {
             gain = sacrifice_item_stack(*si, &js, quant);
             if (gain > PIETY_NONE)
-                simple_god_message(" appreciates your sacrifice.");
+                simple_god_message(jtransc(" appreciates your sacrifice."));
 
             jiyva_slurp_message(js);
         }
@@ -3817,8 +3817,8 @@ static void _jelly_grows(monster* mons)
 {
     if (player_can_hear(mons->pos()))
     {
-        mprf(MSGCH_SOUND, "You hear a%s slurping noise.",
-             mons_near(mons) ? "" : " distant");
+        mprf(MSGCH_SOUND, jtransc("You hear a%s slurping noise."),
+             mons_near(mons) ? "" : "遠くで");
     }
 
     const int avg_hp = mons_avg_hp(mons->type);

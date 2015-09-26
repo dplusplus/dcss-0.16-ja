@@ -1,4 +1,8 @@
 %%%%
+You hear a distant slurping noise.
+
+あなたは遠くで物を食べる音を耳にした。
+%%%%
 Your %s %s is bound but not your %s %s.
 
 あなたの%sは呪縛されているが、%sは呪縛されていない。

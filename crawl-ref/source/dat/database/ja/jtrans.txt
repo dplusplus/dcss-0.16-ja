@@ -5200,6 +5200,14 @@ zaps a rod.
 
 はロッドを振った。
 %%%%
+You hear a%s slurping noise.
+
+あなたは%s物を食べる音を耳にした。
+%%%%
+appreciates your sacrifice.
+
+はあなたの捧げ物に喜んでいる。
+%%%%
 moves out of view.
 
 は視界外に移動した。

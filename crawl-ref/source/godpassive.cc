@@ -95,7 +95,7 @@ void jiyva_eat_offlevel_items()
 
                 // Needs a message now to explain possible hp or mp
                 // gain from jiyva_slurp_bonus()
-                mpr("You hear a distant slurping noise.");
+                mpr(jtrans("You hear a distant slurping noise."));
                 sacrifice_item_stack(*si, &js);
                 item_was_destroyed(*si);
                 destroy_item(si.index());
