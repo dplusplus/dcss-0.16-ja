@@ -11,6 +11,20 @@ its
 
 その
 %%%%
+############################## acquire.cc ##############################
+%%%%
+The demon of the infinite void smiles upon you.
+
+無限の虚空に棲まう悪魔があなたに微笑みかけた。
+%%%%
+snickers.
+
+はくすくす笑った。
+%%%%
+What kind of item would you like to acquire? (\ to view known items)
+
+どの種類のアイテムを獲得しますか？ ('\' コマンドで既知のアイテム一覧表示)
+%%%%
 ############################## adjust.cc ##############################
 %%%%
 Adjust (i)tems, (s)pells, or (a)bilities?
