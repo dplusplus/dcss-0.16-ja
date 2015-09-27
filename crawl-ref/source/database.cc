@@ -147,8 +147,8 @@ static TextDB AllDBs[] =
            "jtrans_areas.txt",
            "jtrans_arena.txt",
            "jtrans_art_func.txt",
-           /*
            "jtrans_attack.txt",
+           /*
            "jtrans_attitude_change.txt",
            "jtrans_beam.txt",
            */
