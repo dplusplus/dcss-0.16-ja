@@ -929,7 +929,7 @@ static void _spellcasting_side_effects(spell_type spell, god_type god,
     {
         if (you.duration[DUR_SAP_MAGIC] && real_spell)
         {
-            mprf(MSGCH_WARN, "Your control over your magic is sapped.");
+            mpr_nojoin(MSGCH_WARN, jtrans("Your control over your magic is sapped."));
             you.increase_duration(DUR_MAGIC_SAPPED,
                                   spell_difficulty(spell),
                                   100);
@@ -964,20 +964,20 @@ static void _try_monster_cast(spell_type spell, int powc,
 {
     if (monster_at(you.pos()))
     {
-        mpr("Couldn't try casting monster spell because you're "
-            "on top of a monster.");
+        mpr(jtrans("Couldn't try casting monster spell because you're "
+                   "on top of a monster."));
         return;
     }
 
     monster* mon = get_free_monster();
     if (!mon)
     {
-        mpr("Couldn't try casting monster spell because there is "
-            "no empty monster slot.");
+        mpr(jtrans("Couldn't try casting monster spell because there is "
+                   "no empty monster slot."));
         return;
     }
 
-    mpr("Invalid player spell, attempting to cast it as monster spell.");
+    mpr(jtrans("Invalid player spell, attempting to cast it as monster spell."));
 
     mon->mname      = "Dummy Monster";
     mon->type       = MONS_HUMAN;
@@ -1015,8 +1015,9 @@ static void _maybe_cancel_repeat(spell_type spell)
 {
     switch (spell)
     {
-    case SPELL_DELAYED_FIREBALL:        crawl_state.cant_cmd_repeat(make_stringf("You can't repeat %s.",
-                                                 spell_title(spell)));
+    case SPELL_DELAYED_FIREBALL:
+        crawl_state.cant_cmd_repeat(make_stringf(jtransc("You can't repeat %s."),
+                                                 tagged_jtransc("[spell]", spell_title(spell))));
         break;
 
     default:

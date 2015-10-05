@@ -67,21 +67,11 @@ Moving to: %c - %s
 
 %c - %s にキー割り当てを変更しました。
 %%%%
-############################## beam.cc ##############################
-%%%%
-The %s %s you!
-
-%sはあなた%s！
-%%%%
-The %s %s %s.
-
-%sは%s%s。
-%%%%
 ############################## butcher.cc ##############################
 %%%%
 Desecrating this corpse would be a sin. Continue anyway?
 
-この死体を捌くことに罪を感じる。続けますか？
+この死体を捌くことに罪を感じる。それでも続けますか？
 %%%%
 You bottle the corpse's blood.
 
@@ -243,7 +233,7 @@ sparse dust
 %%%%
 ghostly flame
 
-霊的な炎
+鬼火
 %%%%
 acidic fog
 
@@ -5152,6 +5142,12 @@ underside
 
 下側
 %%%%
+############################## mon-abil.cc ##############################
+%%%%
+flickers out of sight
+
+点滅して見えなくなった
+%%%%
 ############################## mon-act.cc ##############################
 %%%%
 zaps a wand.
@@ -5303,6 +5299,38 @@ regenerates before your eyes!
 's shape twists and changes as
 
 のように見えていたものの形状は捻れ、後には
+%%%%
+disappear%s in a puff of smoke
+
+は煙とともに消え去った
+%%%%
+dissolve%s into shadows
+
+は影の中に溶けこんでいった
+%%%%
+degenerate%s into a cloud of primal chaos
+
+は原初の混沌の渦に溶け込んでいった
+%%%%
+fade%s away
+
+は薄れて消えていった
+%%%%
+dissolve%s into sparkling lights
+
+閃光とともに消え去った
+%%%%
+dissolve%s into a puddle of slime
+
+溶解してねばねばした水たまりになった
+%%%%
+return%s to the deep
+
+深淵へと還った
+%%%%
+shimmer%s and vanish
+
+揺らめいて消え去った
 %%%%
 ############################## mon-info.cc ##############################
 %%%%
@@ -7994,7 +8022,7 @@ travel|examine|<w>delete</w>
 %%%%
 You cannot afford %s; travel there anyway? (y/N)
 
-現在%sを手に入れることができませんが、移動しますか？ (y/N)
+現在%sを手に入れることができませんが、それでも移動しますか？ (y/N)
 %%%%
 Your shopping list is now empty.
 
@@ -8295,7 +8323,7 @@ Casting this spell will put you into penance. Really cast?
 %%%%
 The spell is %s to cast%s Continue anyway?
 
-この呪文を唱えるのは%sです%s続けますか？
+この呪文を唱えるのは%sです%sそれでも続けますか？
 %%%%
 safe
 

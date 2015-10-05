@@ -845,8 +845,7 @@ string actor::resist_margin_phrase(int margin) const
     const int index = max(0, min((int)ARRAYSZ(resist_messages) - 1,
                                  ((margin + 45) / 15)));
 
-    return make_stringf(resist_messages[index][0].c_str(),
-                        conj_verb(resist_messages[index][1]).c_str());
+    return jtrans(resist_messages[index][0]);
 }
 
 void actor::collide(coord_def newpos, const actor *agent, int pow)

@@ -1,0 +1,601 @@
+%%%%
+You hear a mighty clap of thunder!
+
+あなたは激しい雷鳴を聞いた！
+%%%%
+%s appears from out of thin air!
+
+%sがどこからともなく現れた！
+%%%%
+burns
+
+燃やした
+%%%%
+freezes
+
+凍りつかせた
+%%%%
+You hear a grinding noise.
+
+あなたは岩を削る騒音を耳にした。
+%%%%
+The damaged grate falls apart.
+
+ぼろぼろになった鉄格子が崩れ落ちた。
+%%%%
+%s %s shatters into small pieces.
+
+壁が粉々になった。
+%%%%
+The tree smolders and burns.
+
+木がくすぶって燃えだした。
+%%%%
+The tree burns like a torch!
+
+木が松明のように燃え上がった！
+%%%%
+You smell burning wood.
+
+あなたは木の燃える臭いを嗅いだ。
+%%%%
+explodes into countless fragments.
+
+は木っ端微塵に爆発した。
+%%%%
+The grate screeches as it bends and collapses.
+
+鉄格子が曲がって甲高い音を立て、壊れた。
+%%%%
+You hear the screech of bent metal.
+
+あなたは金属が曲げられる甲高い音を聞いた。
+%%%%
+The grate bends and collapses.
+
+鉄格子が曲がって壊れた。
+%%%%
+The idol screams as its substance crumbles away!
+
+像は金切り声をあげながら崩壊した！
+%%%%
+You hear a hideous screaming!
+
+あなたは耳障りな金切り声を耳にした！
+%%%%
+The idol twists and shakes as its substance crumbles away!
+
+像は捻れ、振動し、そして崩壊した！
+%%%%
+The tree breaks and falls down!
+
+木が破壊され、地面に倒れた！
+%%%%
+You hear timber falling.
+
+あなたは木が倒れる音を聞いた。
+%%%%
+%s appears from out of your range of vision.
+
+%sがあなたの視界の外から飛んできた！
+%%%%
+completely resists.
+
+は完全に抵抗した。
+%%%%
+appears unharmed.
+
+には効いていないようだ。
+%%%%
+resists.
+
+は抵抗した。
+%%%%
+melts!
+
+は溶けだした！
+%%%%
+is on fire!
+
+は燃えている！
+%%%%
+is burned terribly!
+
+は激しく燃えあがった！
+%%%%
+is scalded terribly!
+
+はひどく火傷をしている！
+%%%%
+shrugs off the wave.
+
+は波に肩をすくめた。
+%%%%
+is doused terribly!
+
+は凄まじい波に打たれている！
+%%%%
+is frozen!
+
+は凍りついた！
+%%%%
+is electrocuted!
+
+は感電した！
+%%%%
+partially resists.
+
+はいくらか抵抗した。
+%%%%
+is drained terribly!
+
+はひどく衰弱した！
+%%%%
+writhes in agony!
+
+は苦痛に身もだえした！
+%%%%
+is harmlessly tossed around.
+
+は風に翻弄されたが傷ついていない。
+%%%%
+gets badly buffeted.
+
+は暴風に打ちのめされた。
+%%%%
+is unaffected.
+
+は影響を受けていない。
+%%%%
+looks frightened!
+
+は震え上がったようだ！
+%%%%
+looks rather confused.
+
+は混乱したようだ。
+%%%%
+submits to your will.
+
+はあなたの意思に従っている。
+%%%%
+suddenly stops moving!
+
+は突然動きを止めた！
+%%%%
+is moving more slowly.
+
+はさらに動きが鈍くなった。
+%%%%
+convulses.
+
+は苦痛を感じた。
+%%%%
+seems to be slow for longer.
+
+は動きの鈍さがひどくなったようだ。
+%%%%
+seems to slow down.
+
+は動きが遅くなったようだ。
+%%%%
+looks even sicker.
+
+はさらに気分が悪くなったようだ。
+%%%%
+is poisoned.
+
+は毒に冒された。
+%%%%
+is covered in liquid flames!
+
+は燃えたぎる液体をかぶっている！
+%%%%
+You have difficulty breathing.
+
+あなたは呼吸困難に陥っている。
+%%%%
+The orb of energy explodes!
+
+エネルギーの球体が爆発した！
+%%%%
+%s life force is offered up.
+
+%sの生命力が抜き取られた。
+%%%%
+%s %s healed.
+
+%sは回復した。
+%%%%
+The wave splashes down.
+
+波がぶつかってきた。
+%%%%
+You hear a splash.
+
+あなたは波の音を聞いた。
+%%%%
+%s %s!
+
+%sは%s！
+%%%%
+A fungus suddenly grows.
+
+突然キノコが生長した。
+%%%%
+You hear a sizzling sound!
+
+あなたはジュージューという音を耳にした。
+%%%%
+That %s is likely to hit you. Continue anyway?
+
+この%sはあなたに命中しそうだ。それでも続けますか？
+%%%%
+The %s %s you!
+
+%sはあなた%s！
+%%%%
+Your %s reflects the %s!
+
+あなたの持つ%sは%sをはね返した！
+%%%%
+The %s pierces through your %s!
+
+%sはあなたの%sをすり抜けた！
+%%%%
+shielding
+
+防御
+%%%%
+You block the %s.
+
+あなたは%sを防いだ。
+%%%%
+The %s misses you.
+
+%sはあなたから外れた。
+%%%%
+The %s is repelled.
+
+%sは弾かれた。
+%%%%
+You deflect the %s!
+
+あなたは%sを逸らした！
+%%%%
+You momentarily phase out as the %s passes through you.
+
+あなたは一瞬位相をずらして%sをすり抜けた。
+%%%%
+Helpless, you fail to dodge the %s.
+
+あなたは%sを避けられなかった。
+%%%%
+Something tries to affect you, but you are unaffected.
+
+何かがあなたに魔法をかけようとしたが、何も影響はなかった。
+%%%%
+Something tries to affect you, but you resist.
+
+何かがあなたに魔法をかけようとしたが、あなたは抵抗した。
+%%%%
+You%s
+
+あなたは%s
+%%%%
+Strange energies course through your body.
+
+奇妙なエネルギーがあなたの体内を激しく流れた。
+%%%%
+Your will is overpowered!
+
+あなたの意思が打ち勝った！
+%%%%
+This spell isn't strong enough to banish yourself.
+
+この呪文はあなたを追放するほど強力ではない。
+%%%%
+Your body is wracked with pain!
+
+あなたの肉体は苦痛を受けている！
+%%%%
+Pain shoots through your body!
+
+あなたの体を苦痛が走った！
+%%%%
+You convulse!
+
+あなたは身もだえした！
+%%%%
+You are blasted!
+
+あなたは分解されている！
+%%%%
+You feel a momentary urge to oink.
+
+あなたは豚になったような気がした。
+%%%%
+You feel firmly anchored in space.
+
+あなたは空間にしっかりと根付いているような気がした。
+%%%%
+You feel more firmly anchored in space.
+
+あなたは空間にさらにしっかりと根付いているような気がした。
+%%%%
+Your teleport is interrupted.
+
+あなたの行うテレポートは阻害されている。
+%%%%
+Your magical defenses are stripped away!
+
+あなたの魔法防御がはぎ取られている！
+%%%%
+You feel yourself grow more vulnerable to poison.
+
+あなたは毒に対する耐性が弱まったような気がした。
+%%%%
+Your magic feels tainted.
+
+あなたの魔法は弱まったような気がした。
+%%%%
+Your magic feels more tainted.
+
+あなたの魔法はさらに弱まったような気がした。
+%%%%
+A corruption grows within you!
+
+あなたの体の崩壊が進んだ！
+%%%%
+You feel corrupt for a moment.
+
+あなたは一瞬体が崩れたような気がした。
+%%%%
+You feel your power leaking away.
+
+あなたは魔力が吸い取られていくような気がした。
+%%%%
+The poison in your body grows stronger.
+
+あなたの体内の毒が強まった。
+%%%%
+Your attached jelly eats %s!
+
+あなたにひっついているジェリーが%sを捕食した！
+%%%%
+The barbed spikes become lodged in your body.
+
+マンティコアの逆棘があなたの体に食い込んだ。
+%%%%
+is dazzled.
+
+は幻惑された。
+%%%%
+is frozen into a solid block of ice!
+
+は氷塊に閉じ込められ凍りついた！
+%%%%
+The sticky flame splashes onto %s!
+
+焼夷の炎が%sに浴びせられた！
+%%%%
+is bolstered by the flame.
+
+は霊的な炎を浴びて元気になった。
+%%%%
+%s %s blown backwards by the freezing wind.
+
+%sは凍える吹雪に押されて吹き飛ばされた。
+%%%%
+%s %s knocked back by the %s.
+
+%sは%sで吹き飛ばされた。
+%%%%
+The heat melts %s icy shield.
+
+熱気が%sの氷の盾を溶かしている。
+%%%%
+%s reflects the %s off %s %s!
+
+%sは%sを%sで反射した！
+%%%%
+The %s bounces off of thin air!
+
+%sがはね返された！
+%%%%
+The %s pierces through %s %s!
+
+%sは%sの%sをすり抜けた！
+%%%%
+%s block the %s.
+
+%sは%sを防いだ。
+%%%%
+protects your plant from harm.
+
+は友好的な植物を危害から守った。
+%%%%
+protects a plant from harm.
+
+は植物を危害から守った。
+%%%%
+The %s passes through %s.
+
+%sは%sを通り抜けた。
+%%%%
+The %s %s %s.
+
+%sは%s%s。
+%%%%
+The %s is repelled.
+
+%sは弾かれた。
+%%%%
+You deflect the %s!
+
+あなたは%sを逸らした！
+%%%%
+The %s hits something.
+
+%sは何かに命中した。
+%%%%
+wobbles for a moment.
+
+は一瞬よろめいた。
+%%%%
+'s soul is now ripe for the taking.
+
+の魂を刈り取る準備が完了した。
+%%%%
+convulses in agony!
+
+は苦痛にのたうち回った！
+%%%%
+is blasted.
+
+は分解されている。
+%%%%
+looks drowsy...
+
+はまどろんでいる……
+%%%%
+seems to speed up.
+
+は動きが速くなったようだ。
+%%%%
+seems to grow stronger.
+
+は力強くなったようだ。
+%%%%
+'s wounds heal themselves!
+
+の傷が全快した！
+%%%%
+is healed somewhat.
+
+は癒された。
+%%%%
+appears confused.
+
+は混乱したようだ。
+%%%%
+falls asleep!
+
+は眠りに落ちた！
+%%%%
+flickers and vanishes
+
+点滅したかと思うと消え去った
+%%%%
+is enslaved!
+
+は隷属した！
+%%%%
+is repulsed!
+
+は拒絶した！
+%%%%
+is charmed.
+
+は魅了された。
+%%%%
+is filled with an intense inner flame!
+
+は強烈な内なる炎に満たされている！
+%%%%
+is filled with an inner flame.
+
+は内なる炎に満たされている。
+%%%%
+is firmly anchored in space.
+
+は空間にしっかりと根付いているような気がした。
+%%%%
+%s magical defenses are stripped away.
+
+%sの魔法防御ははぎ取られた。
+%%%%
+The poison in %s body grows stronger.
+
+%sの体内の毒が強まった。
+%%%%
+grows more vulnerable to poison.
+
+%sの毒に対する耐性が弱まった。
+%%%%
+suddenly seems more agile.
+
+は突然俊敏になったようだ。
+%%%%
+seems less certain of their magic.
+
+は魔法の扱いが不確かになったようだ。
+%%%%
+%s magic leaks into the air.
+
+%sの魔力が吸い取られている。
+%%%%
+suddenly seems more resistant.
+
+は突然耐性を強めたように見える。
+%%%%
+explodes!
+
+は爆発した！
+%%%%
+You hear an explosion!
+
+あなたは爆発音を耳にした。
+%%%%
+The hellfire explodes!
+
+地獄の業火が爆発した！
+%%%%
+You hear a strangely unpleasant explosion!
+
+あなたは不快な爆発音を耳にした！
+%%%%
+The fireball explodes!
+
+ファイアボールが爆発した！
+%%%%
+The orb of electricity explodes!
+
+電撃の球体が爆発した！
+%%%%
+You hear a clap of thunder!
+
+あなたは雷の弾ける音を耳にした！
+%%%%
+A raging storm of fire appears!
+
+荒れ狂う炎の嵐が出現した！
+%%%%
+You hear a raging storm!
+
+あなたは荒れ狂う嵐の音を耳にした！
+%%%%
+The ball explodes into a vile cloud!
+
+球体が炸裂して不快な雲になった！
+%%%%
+You hear a loud 'bang'!
+
+あなたは「バン！」という大きな音を聞いた！
+%%%%
+The ghostly flame explodes!
+
+鬼火の火球が爆発した！
+%%%%
+You hear the shriek of haunting fire!
+
+あなたは鬼火の発する悲鳴を聞いた！
+%%%%
+The explosive bolt releases an explosion!
+
+爆裂の矢がその威力を解き放った！
+%%%%
+By Zin's power, the %s is contained.
+
+ジンの御業により、%sの威力が抑えられた。
+%%%%

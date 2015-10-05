@@ -170,7 +170,7 @@ You are protected by a layer of icy armour.
 %%%%
 You are covered in liquid flames.
 
-あなたは燃えたぎる液体を被っている。
+あなたは燃えたぎる液体をかぶっている。
 %%%%
 [dur]-MR
 

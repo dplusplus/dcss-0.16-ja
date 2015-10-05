@@ -207,7 +207,7 @@ function wizlab_doroklohe_convert_boxes(data, triggerable, triggerer,
     if you.silenced() then
       crawl.mpr("地面が揺れた。", "warning")
     else
-      crawl.mpr("ギーギー言う大きな音がした。", "warning")
+      crawl.mpr("何かが崩れるような大きな音がした。", "warning")
     end
     return
   elseif data.phase == 3 then

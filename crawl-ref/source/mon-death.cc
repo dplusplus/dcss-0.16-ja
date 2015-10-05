@@ -3084,13 +3084,10 @@ string summoned_poof_msg(const monster* mons, bool plural)
             msg = "return%s to the deep";
 
         if (mons->has_ench(ENCH_PHANTOM_MIRROR))
-            msg = "shimmer%s and vanish" + string(plural ? "" : "es"); // Ugh
+            msg = "shimmer%s and vanish";
     }
 
-    // Conjugate.
-    msg = make_stringf(msg.c_str(), plural ? "" : "s");
-
-    return msg;
+    return jtrans(msg);
 }
 
 string summoned_poof_msg(const monster* mons, const item_def &item)

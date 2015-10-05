@@ -505,12 +505,12 @@ Frenzy
 [spell]Ghostly Fireball
 
 # monster only
-神霊の火球
+鬼火の火球
 %%%%
 [spell]Ghostly Flames
 
 # monster only
-神霊の猛火
+鬼火
 %%%%
 [spell]Goblin Toss
 
@@ -759,7 +759,7 @@ Frenzy
 %%%%
 [spell]Orb of Electricity
 
-Orb of Electricity
+電撃の爆裂球
 %%%%
 [spell]Ozocubu's Armour
 
