@@ -7295,8 +7295,8 @@ void player::corrode_equipment(const char* corrosion_source)
     }
     // always increase duration, but...
     increase_duration(DUR_CORROSION, 10 + roll_dice(2, 4), 50,
-                      make_stringf("%s corrodes your equipment!",
-                                   corrosion_source).c_str());
+                      make_stringf(jtransc("%s corrodes your equipment!"),
+                                   jtransc(corrosion_source)).c_str());
 
     // the more corrosion you already have, the lower the odds of more
     const int prev_corr = props["corrosion_amount"].get_int();
@@ -7363,7 +7363,7 @@ void player::splash_with_acid(const actor* evildoer, int acid_strength,
 
     if (post_res_dam > 0)
     {
-        mpr(hurt_msg ? hurt_msg : "The acid burns!");
+        mpr(jtrans(hurt_msg ? hurt_msg : "The acid burns!"));
 
         if (post_res_dam < dam)
             canned_msg(MSG_YOU_RESIST);

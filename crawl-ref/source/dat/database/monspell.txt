@@ -104,7 +104,8 @@ Living lightning bursts into view!
 %%%%
 branch summon cast prefix
 
-@The_monster@ calls forth creatures from
+# @The_monster@ calls forth creatures from
+@The_monster@はモンスターを@branch@から呼び出した
 %%%%
 %%%%
 Mara Summon cast

@@ -5178,6 +5178,472 @@ moves out of view.
 
 は視界外に移動した。
 %%%%
+############################## mon-cast.cc ##############################
+%%%%
+%s goes into a battle-frenzy!
+
+%sは戦いに熱狂した！
+%%%%
+%s %s go into a battle-frenzy!
+
+%s%sは戦いに熱狂した！
+%%%%
+goblins
+
+ゴブリンたち
+%%%%
+orcs
+
+オークたち
+%%%%
+%s is roused by the hymn!
+
+%sは賛美歌により奮起した！
+%%%%
+%s %s are roused to righteous anger!
+
+%s%sは義憤に駆られ奮起した！
+%%%%
+holy creatures
+
+神聖なる生物
+%%%%
+%s is stirred to greatness!
+
+%sは偉大な主導者に煽動された！
+%%%%
+%s %s are stirred to greatness!
+
+%sは偉大な主導者に煽動された！
+%%%%
+satyr's allies
+
+サテュロスの仲間たち
+%%%%
+%s activates a sealing rune.
+
+%sは封印のルーンを発動させた。
+%%%%
+The doors slam shut!
+
+扉がピシャッと閉まった！
+%%%%
+A door slams shut!
+
+扉がピシャッと閉まった！
+%%%%
+You are pushed out of the doorway!
+
+あなたは戸口から閉め出された！
+%%%%
+%s calls on %s to defend %s!
+
+%sは%sを守るように%sに命令した！
+%%%%
+%s goads %s on!
+
+%sは%sを煽動した！
+%%%%
+is recalled.
+
+が呼び出された。
+%%%%
+Vines fly forth from the trees!
+
+蔦が急に木から伸びてきた！
+%%%%
+called by
+
+に呼び出されている
+%%%%
+Thorny briars emerge from the ground!
+
+茨の茂みが地面に発生した！
+%%%%
+begins absorbing vital energies!
+
+は生命力を吸収しはじめた！
+%%%%
+begins to cast a spell, but is stunned by your will!
+
+は呪文を唱えはじめたが、あなたの意志に従い中断した！
+%%%%
+begins to pray, but is stunned by your will!
+
+は祈祷しはじめたが、あなたの意志に従い中断した！
+%%%%
+begins to attack, but is stunned by your will!
+
+は攻撃しようとしたが、あなたの意志に従い中断した！
+%%%%
+You redirect %s's attack!
+
+あなたは%sの攻撃を逸らした！
+%%%%
+falters for a moment.
+
+は一瞬よろめいた。
+%%%%
+protects your fellow warrior from evil magic!
+
+はあなたの下僕を邪悪な魔術から守った！
+%%%%
+shields your ally from puny magic!
+
+はあなたの仲間をつまらぬ魔術から守った！
+%%%%
+Zin's power protects your fellow warrior from evil magic!
+
+ジンの御業があなたの下僕を邪悪な魔術から守った！
+%%%%
+shudders.
+
+は身震いした。
+%%%%
+Send 'em back where they came from!
+
+相手をもと来た所に押し返した！
+%%%%
+is infused with unholy energy, but nothing happens.
+
+は不浄な力を吹き込まれたが、何も起きなかった。
+%%%%
+is infused with unholy energy.
+
+は不浄な力を吹き込まれた。
+%%%%
+Unholy energy fills the air.
+
+邪悪な力が大気に満ちた。
+%%%%
+draws life force from you and is healed!
+
+はあなたから生命力を抜き出し、回復した！
+%%%%
+draws life force from %s and is healed!
+
+は%sから生命力を抜き出し、回復した！
+%%%%
+%s %s frozen.
+
+%sは凍結した。
+%%%%
+attempts to bespell you!
+
+はあなたに魔法をかけようとした。
+%%%%
+%s draws you further into %s thrall.
+
+%sはあなたをますます魅了した。
+%%%%
+looks frightened!
+
+は怯えている！
+%%%%
+radiates an aura of fear!
+
+は恐怖のオーラを放射した！
+%%%%
+An aura of fear fills the air!
+
+恐怖のオーラがあたりを満たした！
+%%%%
+%s submits to %s will!
+
+%sは%sの意志に従った！
+%%%%
+blinks into view!
+
+が突然視界に現れた！
+%%%%
+Terrible wounds spread across more of %s body!
+
+傷口がさらに%sの体に開いた！
+%%%%
+Terrible wounds open up all over %s body!
+
+ひどい傷が%sの全身に刻まれた！
+%%%%
+The water rises up and strikes %s!
+
+水流が駆け上って%sを打ちすえた！
+%%%%
+The water swirls and strikes %s!
+
+水流が渦巻き%sを打ちすえた！
+%%%%
+The air twists around and violently strikes you in flight!
+
+周囲の大気が渦を巻き、飛んでいるあなたを打ちすえた！
+%%%%
+The air twists around and strikes you!
+
+周囲の大気が渦を巻き、あなたを打ちすえた！
+%%%%
+is struck by the twisting air!
+
+は渦巻く烈風に打ちすえられた！
+%%%%
+Something smites you!
+
+何かがあなたに打擲の一撃を浴びせた！
+%%%%
+is smitten.
+
+は打擲の一撃を浴びせられた。
+%%%%
+Something feeds on your intellect!
+
+何かがあなたの知性を吸い取っている！
+%%%%
+Something tries to feed on your intellect!
+
+何かがあなたの知性を吸い取ろうとしている！
+%%%%
+Orcish apparitions take form around you.
+
+幽体のオークの群れがあなたの周囲で姿を現した。
+%%%%
+is surrounded by Orcish apparitions.
+
+は幽体のオークの群れに囲まれている。
+%%%%
+You feel haunted.
+
+あなたは幽霊が出現したのを感じた。
+%%%%
+You sense an evil presence.
+
+あなたは邪悪なるものの存在を感じた。
+%%%%
+is healed.
+
+は回復した。
+%%%%
+offers %s to %s, and fills with unholy energy.
+
+は%sに請願し、不浄な力に満たされた。
+%%%%
+invokes %s protection!
+
+は%sを守護した！
+%%%%
+puts on a burst of speed!
+
+は動きが素早くなった！
+%%%%
+seems to move somewhat quicker.
+
+は素早くなったようだ。
+%%%%
+%s skin hardens.
+
+%sの皮膚は硬くなった。
+%%%%
+'s surroundings become eerily quiet.
+
+の周囲は奇妙に静かになった。
+%%%%
+sings a water chant to call the tide!
+
+は潮の流れを呼ぶべく水の聖歌を歌った！
+%%%%
+squirts a massive cloud of ink into the water!
+
+は大量の墨を水中に噴き出した！
+%%%%
+%s shimmers and seems to become %s!
+
+%sの姿は揺らめいて%sに分裂した！
+%%%%
+The bodies of the dead form a shell around %s.
+
+%sの周囲の死体が寄り集まって鎧となった。
+%%%%
+%s liquefies the ground around %s!
+
+%sは%sの周囲の地面を液状化させた！
+%%%%
+A great vortex of raging winds appears %s%s%s!
+
+荒れ狂う暴風の渦が%s%s
+%%%%
+A great vortex of raging winds appears out of thin air!
+
+荒れ狂う暴風の渦が出現した！
+%%%%
+glows brightly for a moment.
+
+は一瞬だけ明るく輝いた。
+%%%%
+looks braver.
+
+は強そうに見える。
+%%%%
+becomes somewhat translucent.
+
+は少しだけ半透明になった。
+%%%%
+'s eyes start to glow.
+
+の眼が爛々と輝きだした。
+%%%%
+You feel troubled.
+
+あなたは不安になった。
+%%%%
+You feel a wave of unholy energy pass over you.
+
+あなたは邪悪なエネルギーの波動があなたのそばを通り抜けるのを感じた。
+%%%%
+shimmers for a moment.
+
+の姿は一瞬揺らめいた。
+%%%%
+Walls emerge from the floor!
+
+石の壁が床からせり出した！
+%%%%
+The forest starts to sway and rumble!
+
+樹木がざわめきだした！
+%%%%
+stands defiantly in death's doorway!
+
+は死のとば口に踏ん張っている！
+%%%%
+'s wounds begin to heal before your eyes!
+
+の傷口はみるみるうちに回復した！
+%%%%
+A film of ice covers %s body!
+
+%sの体に氷の鎧がはりついた！
+%%%%
+begins to accept %s allies' injuries.
+
+は仲間の負う傷を引き受けた。
+%%%%
+radiates an aura of cold.
+
+は冷気のオーラを放射している。
+%%%%
+A wave of cold passes over you.
+
+冷気の波動があなたのそばを通り抜けた。
+%%%%
+The winds start to flow at %s will.
+
+風が%sの意志に従って吹きだした。
+%%%%
+seems to speed up.
+
+は動きが速くなったようだ。
+%%%%
+summons a great blast of wind!
+
+は激しい暴風を生み出した！
+%%%%
+You hear crackling.
+
+あなたは電気のパチパチ言う音を聞いた。
+%%%%
+The air around %s crackles with electrical energy.
+
+%sの周りの空気が電気でパチパチ音を立てている。
+%%%%
+%s blue arc%s ground%s harmlessly %s %s.
+
+青白い電弧が%sの%sで大地に接している。
+%%%%
+calls forth a grand avatar!
+
+は大いなる化身を生み出した！
+%%%%
+Some monsters swap places.
+
+モンスターがお互いの位置を入れ替えた。
+%%%%
+Space distorts along a thin shroud covering %s body.
+
+%sの体を覆う帷子状の力場の上で空間が歪曲した。
+%%%%
+shimmers and seems to become two!
+
+の姿は揺らめいて二体に分裂した！
+%%%%
+begins repelling missiles!
+
+は飛来物を弾く呪文を唱えた！
+%%%%
+begins deflecting missiles!
+
+は飛来物を逸らす呪文を唱えた！
+%%%%
+A crackling disc of dense vapour forms near %s!
+
+%sの近くで濃い蒸気の円盤がピキピキと音を立てて形をなした！
+%%%%
+channels a blast of cleansing flame!
+
+は浄化の炎を炸裂させた！
+%%%%
+at %s
+
+%sに向かって
+%%%%
+out of sight
+
+視界の外へと
+%%%%
+%s throws %s %s!
+
+%sは%s%sを投げた！
+%%%%
+Hit by %s thrown by %s
+
+%sに投げられた%sに命中した
+%%%%
+%s throws you!
+
+%sはあなたを投げ飛ばした！
+%%%%
+%s throws %s%s!
+
+%sは%sを%s投げ飛ばした！
+%%%%
+out of view
+
+見えない角度から
+%%%%
+chants %s song.
+
+は%s歌を歌った。
+%%%%
+its luring
+
+魅惑的な
+%%%%
+a haunting
+
+意識に残る
+%%%%
+You hear %s.
+
+あなたは%sを聞いた。
+%%%%
+a luring song
+
+魅惑的な歌声
+%%%%
+a haunting song
+
+意識に残る歌声
+%%%%
+an eerie melody
+
+奇妙なメロディ
+%%%%
 ############################## mon-death.cc ##############################
 %%%%
 You feel the power of Trog in you as your rage grows.
@@ -6154,6 +6620,14 @@ You float gracefully downwards.
 
 あなたは優雅に下へと舞い降りていった。
 %%%%
+%s corrodes your equipment!
+
+%sであなたの装備が腐蝕した！
+%%%%
+The acid burns!
+
+酸が炸裂した！
+%%%%
 # player::shout_verb()より
 # ここでは叫び変異の強度によりshout < yell < screamとなるので
 # 他の文と語の対応が一貫しないが妥協
@@ -6248,6 +6722,12 @@ You reach down and close the %s%s.
 You close the %s%s.
 
 あなたは%s%sを閉じた。
+%%%%
+############################## player.h ##############################
+%%%%
+The acid
+
+酸
 %%%%
 ############################## player-act.cc ##############################
 %%%%

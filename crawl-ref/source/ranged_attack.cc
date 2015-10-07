@@ -851,7 +851,8 @@ void ranged_attack::announce_hit()
         return;
 
     mprf("%sは%s%sに%s%s%s",
-         projectile->name(DESC_THE).c_str(),
+         tagged_jtrans_has_key("[zap]", projectile->name(DESC_THE)) ? tagged_jtransc("[zap]", projectile->name(DESC_THE))
+                                                                    : jtransc(projectile->name(DESC_THE)),
          jtransc(defender_name(false)),
          damage_done > 0 && stab_attempt && stab_bonus > 0
              ? jtransc("in a vulnerable spot")

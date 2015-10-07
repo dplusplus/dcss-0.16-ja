@@ -1043,3 +1043,10 @@ string tagged_jtrans(const string &tag, const string& key, bool linefeed)
     else
         return key;
 }
+
+bool tagged_jtrans_has_key(const string& tag, const string& key)
+{
+    if (key == "") return false;
+
+    return !(tagged_jtrans(tag, key) == key);
+}

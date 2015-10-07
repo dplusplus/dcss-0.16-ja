@@ -1,4 +1,158 @@
 %%%%
+############################## mon-cast.cc ##############################
+%%%%
+[zap]freezing blast
+
+凍結の雲
+# from SPELL_FREEZING_CLOUD
+%%%%
+[zap]living lightning
+
+生ける稲妻
+# from SPELL_BLINKBOLT(RAIJU)
+%%%%
+[zap]burst of hellfire
+
+地獄の業火の炸裂
+# from SPELL_HELLFIRE_BURST
+%%%%
+[zap]noxious blast
+
+悪臭雲
+# from SPELL_NOXIOUS_CLOUD
+%%%%
+[zap]blast of poison
+
+猛毒の雲
+# from SPELL_POISONOUS_CLOUD
+%%%%
+[zap]bolt of energy
+
+エネルギーの矢
+# from SPELL_ENERGY_BOLT
+%%%%
+[zap]splash of acid
+
+酸のしぶき
+# from SPELL_SPIT_ACID
+%%%%
+[zap]foul vapour
+
+腐敗した靄
+# from SPELL_MEPHITIC_CLOUD
+%%%%
+[zap]bolt of dispelling energy
+
+魔法解除の矢
+# from SPELL_QUICKSILVER_BOLT
+%%%%
+[zap]blast of hellfire
+
+地獄の業火の炸裂
+# from SPELL_HELLFIRE
+%%%%
+[zap]spray of metal splinters
+
+飛散する金属片
+# from SPELL_METAL_SPLINTERS
+%%%%
+[zap]blast of flame
+
+猛火の息
+# from SPELL_FIRE_BREATH
+%%%%
+[zap]searing blast
+
+灼熱の息
+# from SPELL_SEARING_BREATH
+%%%%
+[zap]blast of cold
+
+冷気の息
+# from COLD_BREATH
+%%%%
+[zap]blast of chilling breath
+
+極寒の息
+# from SPELL_CHILLING_BREATH
+%%%%
+[zap]blast of cleansing flame
+
+浄化の炎の息
+# from SPELL_HOLY_BREATH
+%%%%
+[zap]blast of calcifying dust
+
+石化の雲
+# from SPELL_PETRIFYING_CLOUD
+%%%%
+[zap]stream of webbing
+
+吐き出された蜘蛛の糸
+# from SPELL_ENSNARE
+%%%%
+[zap]ghostly flame
+
+鬼火
+# from SPELL_GHOSTLY_FLAMES
+%%%%
+[zap]ghostly fireball
+
+鬼火の火球
+# from SPELL_GHOSTLY_FIREBALL
+%%%%
+[zap]volley of thorns
+
+茨の斉射
+# from SPELL_THORN_VOLLEY
+%%%%
+[zap]flash freeze
+
+瞬間凍結
+# from SPELL_FLASH_FREEZE
+%%%%
+[zap]shadow bolt
+
+# obsolete?
+%%%%
+[zap]shadow shard
+
+# obsolete?
+%%%%
+[zap]glob of lava
+
+溶岩の塊
+# from SPELL_SPIT_LAVA
+%%%%
+[zap]bolt of electricity
+
+電光の矢
+# from SPELL_ELECTRICAL_BOLT
+%%%%
+[zap]volley of spikes
+
+射出された逆棘
+# from SPELL_THROW_BARBS
+%%%%
+[zap]vile air
+
+不快な空気
+# from SPELL_DEATH_RATTLE
+%%%%
+[zap]reflection of chaos
+
+混沌による反射
+# from SPELL_CHAOTIC_MIRROR
+%%%%
+############################## spl-summoning.cc ##############################
+%%%%
+[zap]barrage of energy
+
+エネルギーの集中砲火
+# from SPELL_BATTLESPHERE
+%%%%
+############################## zap-data.h ##############################
+%%%%
 [zap]acid
 
 強酸
@@ -184,10 +338,4 @@ debugging ray
 [zap]zap
 
 稲妻の光線
-%%%%
-############################## spl-summoning.cc ##############################
-%%%%
-[zap]barrage of energy
-
-エネルギーの集中砲火
 %%%%
