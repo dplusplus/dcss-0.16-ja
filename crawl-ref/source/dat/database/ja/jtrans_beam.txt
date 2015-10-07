@@ -157,7 +157,7 @@ looks rather confused.
 %%%%
 submits to your will.
 
-はあなたの意思に従っている。
+はあなたの意志に従っている。
 %%%%
 suddenly stops moving!
 
@@ -289,7 +289,7 @@ Strange energies course through your body.
 %%%%
 Your will is overpowered!
 
-あなたの意思が打ち勝った！
+あなたの意志が打ち勝った！
 %%%%
 This spell isn't strong enough to banish yourself.
 
