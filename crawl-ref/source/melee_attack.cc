@@ -2655,12 +2655,12 @@ void melee_attack::mons_do_napalm()
 void melee_attack::splash_defender_with_acid(int strength)
 {
     if (defender->is_player())
-        mpr("You are splashed with acid!");
+        mpr(jtrans("You are splashed with acid!"));
     else
     {
         special_damage += roll_dice(2, 4);
         if (defender_visible)
-            mprf("%s is splashed with acid.", defender->name(DESC_THE).c_str());
+            mprf(jtransc("%s is splashed with acid."), jtransc(defender->name(DESC_THE)));
     }
     defender->splash_with_acid(attacker, strength);
 }

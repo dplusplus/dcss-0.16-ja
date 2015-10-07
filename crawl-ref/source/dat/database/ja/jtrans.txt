@@ -4411,6 +4411,10 @@ You %s %s%s%s
 
 あなたは%sに%s%s%s
 %%%%
+You are splashed with acid.
+
+あなたは酸のしぶきを浴びた。
+%%%%
 %s furiously retaliates!
 
 %sは怒って反撃した！
