@@ -5650,6 +5650,134 @@ an eerie melody
 %%%%
 ############################## mon-death.cc ##############################
 %%%%
+You feel a bit more experienced.
+
+あなたは少し経験を積んだ気がした。
+%%%%
+turns back into a corpse!
+
+は死体に戻った！
+%%%%
+%s appears out of nowhere!
+
+%sがどこからともなく現れた！
+%%%%
+%s heals %s%s
+
+%sは%sを癒した%s
+%%%%
+With an infernal shudder, the power ruling this place vanishes!
+
+恐ろしい振動とともに、この場を支配する力が消滅した！
+%%%%
+With infernal noise, the power ruling this place vanishes!
+
+恐ろしい轟音とともに、この場を支配する力が消滅した！
+%%%%
+averts the curse.
+
+は呪いを防いだ。
+%%%%
+You feel nervous for a moment...
+
+あなたは一瞬神経質になった……
+%%%%
+You feel extremely nervous for a moment...
+
+あなたは一瞬きわめて神経質になった……
+%%%%
+A malignant aura surrounds %s.
+
+悪意のオーラが%sを包んだ。
+%%%%
+%s death curse
+
+%sの末期の呪い
+%%%%
+Your fungal colony was destroyed.
+
+あなたの胞子は破壊された。
+%%%%
+The fungal colony is destroyed.
+
+胞子は破壊された。
+%%%%
+You hear an explosion!
+
+あなたは爆発音を耳にした！
+%%%%
+You hear a clap of thunder!
+
+あなたは雷鳴を耳にした！
+%%%%
+You hear an otherworldly crackling!
+
+あなたは鬼火のパチパチと爆ぜる音を聞いた！
+%%%%
+By Zin's power, the giant spore's explosion is contained.
+
+ジンの御業により、巨大胞子の爆発の威力は抑えられた。
+%%%%
+By Zin's power, the ball lightning's explosion is contained.
+
+ジンの御業により、球雷の爆発の威力は抑えられた。
+%%%%
+The lurking horror fades away harmlessly.
+
+潜伏する恐怖は消え去っていった。
+%%%%
+By Zin's power, the prism's explosion is contained.
+
+ジンの御業により、晶柱の爆発の威力は抑えられた。
+%%%%
+By Zin's power, the bennu's fires are quelled.
+
+ジンの御業により、ベンヌの炎の威力は抑えられた。
+%%%%
+By Zin's power, the fiery explosion is contained.
+
+ジンの御業により、燃えさかる爆発の威力は抑えられた。
+%%%%
+%s blazes out!
+
+%sは燃え上がった！
+%%%%
+%s explodes!
+
+%sは爆発した！
+%%%%
+'s corpse
+
+の死体
+%%%%
+A glowing mist gathers momentarily, then fades.
+
+輝く霧が一瞬集まったが、すぐ消え去った。
+%%%%
+A glowing mist starts to gather...
+
+輝く霧が寄り集まった……
+%%%%
+With its final breath, %s offers up its power to the beasts of the wild!
+
+息を引き取る寸前、%sは野生の獣たちに力を与えた！
+%%%%
+%s %s healed.
+
+%sは回復した。
+%%%%
+seems to grow more fierce.
+
+はさらに荒れ狂った。
+%%%%
+%s turns into a zombie!
+
+%sはゾンビへと姿を変えた！
+%%%%
+%s appears out of thin air!
+
+%sがいきなり現れた！
+%%%%
 You feel the power of Trog in you as your rage grows.
 
 あなたは怒りの増大とともに、内なるトログの力を意識した。
@@ -5746,6 +5874,10 @@ dies!
 
 は死んだ！
 %%%%
+looks invigorated.
+
+は元気づけられたようだ。
+%%%%
 withers and dies!
 
 は枯れ果てて死んだ！
@@ -5769,6 +5901,14 @@ regenerates before your eyes!
 's shape twists and changes as
 
 のように見えていたものの形状は捻れ、後には
+%%%%
+The vine%s fall%s limply to the ground.
+
+蔦はだらりと地面に垂れ下がった。
+%%%%
+The terrible wounds on %s body vanish.
+
+%sの体の裂傷は消え去った。
 %%%%
 disappear%s in a puff of smoke
 

@@ -144,6 +144,28 @@
 混沌による反射
 # from SPELL_CHAOTIC_MIRROR
 %%%%
+############################## mon-death.cc ##############################
+%%%%
+[zap]explosion of spores
+
+胞子の爆発
+%%%%
+[zap]blast of lightning
+
+炸裂する稲妻
+%%%%
+[zap]blast of energy
+
+炸裂するエネルギー
+%%%%
+[zap]pyre of ghostly fire
+
+鬼火
+%%%%
+[zap]fiery explosion
+
+燃えさかる爆発
+%%%%
 ############################## spl-summoning.cc ##############################
 %%%%
 [zap]barrage of energy

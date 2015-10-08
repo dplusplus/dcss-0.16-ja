@@ -597,5 +597,5 @@ The explosive bolt releases an explosion!
 %%%%
 By Zin's power, the %s is contained.
 
-ジンの御業により、%sの威力が抑えられた。
+ジンの御業により、%sの威力は抑えられた。
 %%%%
