@@ -97,10 +97,6 @@ Reduced exclusion size to a single square.
 
 [視界外の地形]
 %%%%
-You can't see that place.
-
-あなたからはその場所は見えない。
-%%%%
 There is
 
 ここには
@@ -189,7 +185,7 @@ wall of the weird stuff which makes up Pandemonium
 %%%%
 slime covered rock wall
 
-粘着物に覆われた岩の壁
+スライムに覆われた岩の壁
 %%%%
 stone wall
 

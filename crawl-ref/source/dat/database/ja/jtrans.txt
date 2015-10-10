@@ -4065,7 +4065,7 @@ Saving macros.
 %%%%
 Aborting.
 
-中止しました。
+中断しました。
 %%%%
 Input %s trigger key:
 
@@ -4109,6 +4109,10 @@ Press <w>?</w> for a list of commands and other information.
 
 コマンド一覧やその他の情報を見るには <w>?</w>キー を押してください。
 %%%%
+You wake up in a daze, and can't recall much.
+
+あなたは茫然と覚醒したばかりで、まだ十分な力を取り戻していない。
+%%%%
 set off with:
 
 は以下の装備を持って出発した
@@ -4117,13 +4121,153 @@ You started the game in wizard mode.
 
 あなたはウィザードモードでゲームを開始した。
 %%%%
+Press any key to start the hints mode intro, or Escape to skip it.
+
+任意のキーを押すことでヒントモードを開始できます(Escキーで飛ばせます)。
+%%%%
+You can only abyss_teleport() inside the Abyss.
+
+このコマンドはアビス内部でしか使えません。
+%%%%
+This only makes sense in a labyrinth!
+
+このコマンドはラビリンス内部でしか使えません。
+%%%%
+But you're not in Zot Defence!
+
+このコマンドはゾットディフェンスモード中でしか使えません。
+%%%%
+Cost level: %d  Total experience: %d  Next cost level: %d Skill cost: %d
+
+コストレベル: %d 累計経験値: %d 次のコストレベルまで: %d スキルコスト: %d
+%%%%
+Failure to give mutation.
+
+突然変異の付与に失敗しました。
+%%%%
+Not a <magenta>Wizard</magenta> Command.
+
+<magenta>ウィザードモード</magenta>用のコマンドではありません。
+%%%%
+WARNING: ABOUT TO ENTER WIZARD MODE!
+
+警告: ウィザードモードに入ろうとしています！
+%%%%
+If you continue, your game will not be scored!
+
+続行した場合、スコア一覧には載りません！
+%%%%
+Do you really want to enter wizard mode?
+
+本当にウィザードモードに移行しますか？
+%%%%
 Entered wizard mode.
 
-ウィザードモードを有効にした
+ウィザードモードに移行した
+%%%%
+Can't repeat entering wizard mode.
+
+ウィザードモード移行コマンドを繰り返すことはできません。
+%%%%
+Enter Wizard Command (? - help):
+
+ウィザードコマンドを入力してください (? - ヘルプ):
+%%%%
+You cannot repeat that wizard command.
+
+そのウィザードコマンドを繰り返すことはできません。
+%%%%
+WARNING: ABOUT TO ENTER EXPLORE MODE!
+
+警告: 探索モードに入ろうとしています！
+%%%%
+Do you really want to enter explore mode?
+
+本当に探索モードに移行しますか？
 %%%%
 Entered explore mode.
 
-探索モードを有効にした
+探索モードに移行した
+%%%%
+Can't repeat entering explore mode
+
+探索モード移行コマンドを繰り返すことはできません。
+%%%%
+You're standing next to a slime covered wall!
+
+あなたはスライムに覆われた岩の壁のそばに立っている！
+%%%%
+You're about to run into the slime covered wall!
+
+あなたはスライムに覆われた岩の壁にぶつかりそうだ！
+%%%%
+You can't repeat informational commands.
+
+情報閲覧コマンドを繰り返すことはできません。
+%%%%
+You can't repeat multi-turn commands.
+
+ターンをまたぐコマンドを繰り返すことはできません。
+%%%%
+You can't repeat that command.
+
+そのコマンドを繰り返すことはできません。
+%%%%
+You can't repeat map commands.
+
+マップコマンドを繰り返すことはできません。
+%%%%
+You can't repeat mouse clicks or movements.
+
+マウスクリックやマウス移動を繰り返すことはできません。
+%%%%
+You can't repeat the repeat command!
+
+反復コマンドを繰り返すことはできません！
+%%%%
+Why would you want to repeat a run command?
+
+走るコマンドを繰り返すことはできません。
+%%%%
+No previous command to repeat.
+
+繰り返すコマンドがありません。
+%%%%
+Really repeat movement command while monsters are nearby?
+
+モンスターが近くにいますが、本当に動作を繰り返しますか？
+%%%%
+Unknown command, not repeating.
+
+不明なコマンドだったので繰り返しませんでした。
+%%%%
+Game saved, see you later!
+
+ゲームを保存しました。
+%%%%
+Key pressed, interrupting command repetition.
+
+キーが押されたため、コマンドを繰り返すのを中止しました。
+%%%%
+Cannot move, cancelling command repetition.
+
+これ以上動けないため、コマンドを繰り返すのを中止しました。
+%%%%
+Infinite lua loop detected, aborting.
+
+luaスクリプトの無限ループを検知したため、中断しました。
+%%%%
+You cannot move away from %s!
+
+あなたは%sから遠ざかることができない！
+%%%%
+You can't do that while held in a net.
+
+あなたは網で拘束されている間は階段を上り下りできない。
+%%%%
+You can't do that while caught in a web
+
+あなたは蜘蛛の巣に巻き付かれている間は階段を上り下りできない。
 %%%%
 There is nothing on the other side of the stone arch.
 
@@ -4144,6 +4288,34 @@ You can't go down here!
 You can't go up here!
 
 ここでは上れない！
+%%%%
+If you enter this portal you will not be able to return immediately. Continue?
+
+一旦このポータルに突入するとすぐには出られません。それでも入りますか？
+%%%%
+Are you sure you wish to approach this portal? There's no telling what its forces would wreak upon your fragile self.
+
+本当にこのポータルに近づきますか？ その発する力があなた自身にどう影響を及ぼすか全くわかりません。
+%%%%
+An item of great power still resides in this realm, and once you leave you can never return. Are you sure you want to leave?
+
+強大な力を持ったルーンが未だこのフロアに残されており、一度ここを離れると決して戻ることはできません。本当に立ち去りますか？
+%%%%
+Are you sure you want to leave this ziggurat?
+
+本当にジグラットを立ち去りますか？
+%%%%
+Are you sure you want to leave %s?%s
+
+本当に%sを立ち去りますか？
+%%%%
+This will make you lose the game!
+
+目的を達成しないままゲームを終わることになります！
+%%%%
+Alright, then stay!
+
+了解しました。
 %%%%
 You are a level %d %s %s.
 
@@ -4217,6 +4389,14 @@ Clearing level map.
 
 階層のマップを消去した。
 %%%%
+Move the cursor to view the level map, or type <w>?</w> for a list of commands.
+
+# USE_TILE_LOCAL
+%%%%
+Returning to the game...
+
+# USE_TILE_LOCAL
+%%%%
 No other missiles available. Use F to throw any item.
 
 他のアイテムを選択できません。任意のアイテムを選択するには(F)ireコマンドを使用してください。
@@ -4225,9 +4405,25 @@ No missiles available. Use F to throw any item.
 
 適したアイテムを持っていません。任意のアイテムを選択するには(F)ireコマンドを使用してください。
 %%%%
+You have %d gold piece%s.
+
+あなたは今%d枚の金貨を持っている。
+%%%%
 Autopickup is now %s.
 
 アイテム自動拾いを%sしました。
+%%%%
+You carefully extract the manticore spikes from your body.
+
+あなたは食い込んだ逆棘を注意深く抜き取った。
+%%%%
+Char dump unsuccessful! Sorry about that.
+
+残念ながらキャラクターのダンプは失敗しました。
+%%%%
+You can't see that place.
+
+その場所は見えない。
 %%%%
 Save game and return to main manu?
 
@@ -4245,9 +4441,53 @@ Are you sure you want to abandon this character and quit the game?
 
 本当にこのキャラクターを放棄してゲームを終了しますか？
 %%%%
+Unknown command. (For a list of commands type <w>?\?</w>.)
+
+そのコマンドは存在しません。(<w>?</w> コマンドで一覧を表示)
+%%%%
 Unknown command.
 
 そのコマンドは存在しません。
+%%%%
+You have a vision of a gate.
+
+あなたは門の幻影を目にした。
+%%%%
+You have a vision of multiple gates.
+
+あなたはいくつかの門の幻影を目にした。
+%%%%
+You are cast into the Abyss!
+
+あなたはアビスに追放された！
+%%%%
+You are cast deeper into the Abyss!
+
+あなたはアビスのさらなる奥に追放された！
+%%%%
+The Abyss bends around you!
+
+あなたの周囲の空間が歪曲した。
+%%%%
+Your passage of Golubria closes with a snap!
+
+ゴルブリアの通り道が音を立てて閉じた！
+%%%%
+You hear a snapping sound.
+
+あなたは何かが閉じる音を聞いた。
+%%%%
+Outside, the world ends.
+
+この世の終わりだ。
+%%%%
+Sorry, but your quest for the Orb is now rather pointless. You quit...
+
+あなたの冒険は今や目的を見失っている……ゲームを終了しました。
+%%%%
+You swing at nothing.
+
+あなたは空振りした。
 %%%%
 You can't open doors in your present form.
 
@@ -4256,6 +4496,10 @@ You can't open doors in your present form.
 There's nothing to open nearby.
 
 開けるものが周囲にはない。
+%%%%
+Which direction?
+
+どの方向ですか？
 %%%%
 The door is shut tight!
 
@@ -4272,10 +4516,6 @@ That door is sealed shut!
 There isn't anything that you can open there!
 
 ここにはあなたが開けられるものはない！
-%%%%
-Which direction?
-
-どの方向ですか？
 %%%%
 You can't close doors in your present form.
 
@@ -4312,6 +4552,138 @@ You feel your anger subside.
 Your blood rage is quickly leaving you.
 
 あなたの血に飢えた激情は速やかに消え去った。
+%%%%
+Something prevents you from swapping places.
+
+何かが位置交換をするのを妨げた。
+%%%%
+You swap places.
+
+あなたはお互いの場所を交換した。
+%%%%
+deep water
+
+深い水脈
+%%%%
+(Use ctrl+direction to attack without moving)
+
+(Ctrl+方向キーでその場を動かずに攻撃できます)
+%%%%
+You cannot move. (Use ctrl+direction to attack without moving)
+
+あなたはその場を動けない。(Ctrl+方向キーでその場を動かずに攻撃できます)
+%%%%
+You're too confused to move!
+
+あなたは混乱しすぎていて動けない！
+%%%%
+Your mandibles retract as you bump into %s
+
+%sの方向へ突き飛ばされたため、あなたの大顎が引っ込んだ。
+%%%%
+You bump into %s
+
+あなたは%sの方向へ突き飛ばされた。
+%%%%
+This wall is too hard to dig through.
+
+この壁は固すぎて掘り抜くことができない。
+%%%%
+You %s carefully through the %s.
+
+あなたは慎重に%sを通り抜けた。
+%%%%
+You can't dig through that.
+
+あなたはその場所を掘り抜けない。
+%%%%
+You retract your mandibles.
+
+あなたは大顎をひっこめた。
+%%%%
+You're too terrified to move while being watched!
+
+あなたは怯えすぎており、見つめられている間動くことができない！
+%%%%
+Are you sure you want to leave the Orb unguarded?
+
+# for zotdef
+%%%%
+The barbs in your skin will harm you if you move. Continue?
+
+あなたの体に食い込んだ逆棘は動くたびに傷を広げる。それでも移動しますか？
+%%%%
+You deftly slip free of the water engulfing you.
+
+あなたは巧みにあなたを包む水の塊から抜け出した。
+%%%%
+With effort, you pull free of the water engulfing you.
+
+あなたはどうにかあなたを包む水の塊から抜け出した。
+%%%%
+You dig through %s.
+
+あなたは%sを掘り抜けた。
+%%%%
+The barbed spikes dig painfully into your body as you move.
+
+あなたが動いたせいで逆棘はさらに食い込んだ。
+%%%
+The manticore spikes snap loose.
+
+マンティコアの逆棘は緩んで抜け落ちた。
+%%%%
+The ferocious winds and tides of the open sea thwart your progress.
+
+荒れ狂う潮風と高波があなたの行く手を妨げている。
+%%%%
+The endless sea of lava is not a nice place.
+
+溶岩の海はあなたにとってよい場所ではない。
+%%%%
+You cannot walk through the dense trees.
+
+あなたは密集した森林を通り抜けることができない。
+%%%%
+You cannot move closer to %s!
+
+あなたは%sに近づくことができない！
+%%%%
+Can't repeat a command which takes no turns (unless it's a wizard command), cancelling
+
+ターンを消費しないコマンド(ウィザードコマンドを除く)は繰り返すことができないため、繰り返しをキャンセルしました。
+%%%%
+Can't repeat a command which takes no turns, cancelling repetitions.
+
+ターンを消費しないコマンドは繰り返すことができないため、繰り返しをキャンセルしました。
+%%%%
+(Key replay stole keys)
+
+(キーリプレイは中断しました)
+%%%%
+Number of times to repeat, then command key:
+
+繰り返す回数を入力してからコマンドを入力してください:
+%%%%
+You must enter the number of times for the command to repeat.
+
+コマンドを繰り返す回数を入力しないといけません。
+%%%%
+Enter command to be repeated:
+
+繰り返すコマンドを入力してください:
+%%%%
+Can't re-do previous command from within a macro.
+
+マクロ内で一つ前のコマンドを再度行うことはできません。
+%%%%
+No previous command to re-do.
+
+再度行うコマンドがありません。
+%%%%
+Trying to re-do re-do command, aborting.
+
+リドゥコマンドを再度行うことはできません。中断しました。
 %%%%
 ############################## melee_attack.cc ##############################
 %%%%
