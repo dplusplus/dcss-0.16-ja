@@ -6928,6 +6928,166 @@ Level %d of %s
 %%%%
 ############################## player.cc ##############################
 %%%%
+%s slides away as you move %s it!
+
+あなたが%sの所まで進むと%sが移動した。
+%%%%
+Really %s into that cloud of %s?
+
+本当に%sの中に踏み込みますか？
+%%%%
+Do you really want to %s into the Zot trap?
+
+本当にゾットの罠を踏みますか？
+%%%%
+Really %s %s that %s?
+
+本当に%sを踏みますか？
+%%%%
+You cannot enter water in your current form.
+
+現在の姿では水の中に立ち入ることはできない。
+%%%%
+You cannot enter lava in your current form.
+
+現在の姿では溶岩の中には入れない。
+%%%%
+Are you sure you want to
+
+本当に
+%%%%
+while you are losing your buoyancy?
+
+飛行能力が失われようとしていますが、
+%%%%
+while your transformation is expiring?
+
+変身が解けようとしていますが、
+%%%%
+Really %s into a travel-excluded area?
+
+本当に自動移動禁止エリアに踏み込みますか？
+%%%%
+It's unwise to walk into this.
+
+そこに踏み入るのは得策ではない。
+%%%%
+is %s!
+
+は%s！
+%%%%
+is being constricted!
+
+は拘束されている！
+%%%%
+Do you really want to swap %s into the Zot trap?
+
+本当に位置を交換してゾットの罠を踏みますか？
+%%%%
+Floosh!
+
+ポチャン！
+%%%%
+Splash!
+
+ザッパーン！
+%%%%
+Gloop!
+
+バシャン！
+%%%%
+You %s lava.
+
+あなたは溶岩%s。
+%%%%
+slowly immerse yourself in the
+
+の中にゆっくりと沈んでいった
+%%%%
+fall into the
+
+の中に転がり落ちた
+%%%%
+You slowly pull yourself out of the lava.
+
+あなたはゆっくりと溶岩から抜け出した。
+%%%%
+You %s the %s water.
+
+あなたは%s水脈に%s。
+%%%%
+You sink to the bottom.
+
+あなたは水底に沈んだ。
+%%%%
+Moving in this stuff is going to be slow.
+
+水場では足を取られて歩みが遅くなる。
+%%%%
+...and don't expect to remain undetected.
+
+……そして、気付かれないままでいることは期待できない。
+%%%%
+Do you really want to go berserk while wielding
+
+を装備したまま狂戦士化しますか？
+%%%%
+You feel the corruption within you wane completely.
+
+あなたは体の崩壊が完全に収まったような気がした。
+%%%%
+You feel the corruption within you wane somewhat.
+
+あなたは体の崩壊がいくぶん収まったような気がした。
+%%%%
+%s has recharged.
+
+%sは再び使えるようになった。
+%%%%
+Your life force feels restored.
+
+あなたの生命力は回復したようだ。
+%%%%
+Your scales start taking on a fiery red colour.
+
+あなたの鱗は成熟して燃えさかるように赤い色になった。
+%%%%
+Your scales start taking on an icy white colour.
+
+あなたの鱗は成熟して氷のように白い色になった。
+%%%%
+Your scales start taking on a lurid green colour.
+
+あなたの鱗は成熟して毒々しい緑色になった。
+%%%%
+Your scales start taking on a golden yellow colour.
+
+あなたの鱗は成熟して黄金色になった。
+%%%%
+Your scales start taking on a dull iron-grey colour.
+
+あなたの鱗は成熟して鈍い鉄色になった。
+%%%%
+Your scales start taking on a glossy black colour.
+
+あなたの鱗は成熟して光沢のある黒い色になった。
+%%%%
+Your scales start taking on a rich purple colour.
+
+あなたの鱗は成熟して紫紺の色になった。
+%%%%
+Your scales start taking on a weird mottled pattern.
+
+あなたの鱗は成熟して奇妙なまだら模様になった。
+%%%%
+Your scales start fading to a pale cyan-grey colour.
+
+あなたの鱗は成熟して青緑がかった灰色になった。
+%%%%
+Extra life!
+
+新たな命が備わった！
+%%%%
 Welcome back to level %d!
 
 再びレベル%dになった！
@@ -7132,6 +7292,10 @@ Your base attributes are Str %d, Int %d, Dex %d.
 
 あなたの本来の能力値は 腕力: %d 知力: %d 器用: %d だ。
 %%%%
+You are %sconfused.
+
+あなたは%s混乱した。
+%%%%
 You float gracefully downwards.
 
 あなたは優雅に下へと舞い降りていった。
@@ -7238,6 +7402,14 @@ You reach down and close the %s%s.
 You close the %s%s.
 
 あなたは%s%sを閉じた。
+%%%%
+A chunk of your corpse armour falls away.
+
+あなたの身につけている屍体の鎧がいくらか剥がれ落ちた。
+%%%%
+The last of your corpse armour falls away.
+
+あなたの身につけていた屍体の鎧は剥がれ落ちた。
 %%%%
 ############################## player.h ##############################
 %%%%

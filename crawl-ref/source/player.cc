@@ -115,8 +115,9 @@ static void _moveto_maybe_repel_stairs()
 
         if (slide_feature_over(you.pos()))
         {
-            mprf("%s slides away as you move %s it!", stair_str.c_str(),
-                 prep.c_str());
+            mprf(jtransc("%s slides away as you move %s it!"),
+                 jtransc(prep),
+                 jtransc(stair_str));
 
             if (player_in_a_dangerous_place() && one_chance_in(5))
                 xom_is_stimulated(25);
@@ -149,9 +150,8 @@ bool check_moveto_cloud(const coord_def& p, const string &move_verb,
 
         if (prompted)
             *prompted = true;
-        string prompt = make_stringf("Really %s into that cloud of %s?",
-                                     move_verb.c_str(),
-                                     cloud_type_name(ctype).c_str());
+        string prompt = make_stringf(jtransc("Really %s into that cloud of %s?"),
+                                     jtransc(cloud_type_name(ctype)));
         learned_something_new(HINT_CLOUD_WARNING);
 
         if (!yesno(prompt.c_str(), false, 'n'))
@@ -174,7 +174,7 @@ bool check_moveto_trap(const coord_def& p, const string &move_verb,
     if (trap->type == TRAP_ZOT && !trap->is_safe() && !crawl_state.disables[DIS_CONFIRMATIONS])
     {
         string msg = "Do you really want to %s into the Zot trap?";
-        string prompt = make_stringf(msg.c_str(), move_verb.c_str());
+        string prompt = make_stringf(jtransc(msg), jtransc(move_verb));
 
         if (prompted)
             *prompted = true;
@@ -190,10 +190,7 @@ bool check_moveto_trap(const coord_def& p, const string &move_verb,
 
         if (prompted)
             *prompted = true;
-        prompt = make_stringf("Really %s %s that %s?", move_verb.c_str(),
-                              (trap->type == TRAP_ALARM
-                               || trap->type == TRAP_PLATE) ? "onto"
-                              : "into",
+        prompt = make_stringf(jtransc("Really %s %s that %s?"),
                               feature_description_at(p, false, DESC_BASENAME,
                                                      false).c_str());
         if (!yesno(prompt.c_str(), true, 'n'))
@@ -216,9 +213,9 @@ static bool _check_moveto_dangerous(const coord_def& p, const string& msg)
     if (msg != "")
         mpr(msg);
     else if (species_likes_water(you.species) && feat_is_water(env.grid(p)))
-        mpr("You cannot enter water in your current form.");
+        mpr(jtrans("You cannot enter water in your current form."));
     else if (species_likes_lava(you.species) && feat_is_lava(env.grid(p)))
-        mpr("You cannot enter lava in your current form.");
+        mpr(jtrans("You cannot enter lava in your current form."));
     else
         canned_msg(MSG_UNTHINKING_ACT);
     return false;
@@ -238,21 +235,17 @@ bool check_moveto_terrain(const coord_def& p, const string &move_verb,
         if (prompted)
             *prompted = true;
 
-        if (msg != "")
-            prompt = msg + " ";
-
-        prompt += "Are you sure you want to " + move_verb;
-
-        if (you.ground_level())
-            prompt += " into ";
-        else
-            prompt += " over ";
-
-        prompt += env.grid(p) == DNGN_DEEP_WATER ? "deep water" : "lava";
-
-        prompt += need_expiration_warning(DUR_FLIGHT, p)
+        prompt += jtrans(need_expiration_warning(DUR_FLIGHT, p)
             ? " while you are losing your buoyancy?"
-            : " while your transformation is expiring?";
+            : " while your transformation is expiring?");
+
+        prompt += jtrans("Are you sure you want to ");
+        prompt += jtrans(env.grid(p) == DNGN_DEEP_WATER ? "deep water" : "lava");
+        prompt += "の";
+        if (you.ground_level())
+            prompt += "中に踏み込みますか？";
+        else
+            prompt += "上に立ち入りますか？";
 
         if (!yesno(prompt.c_str(), false, 'n'))
         {
@@ -275,8 +268,8 @@ bool check_moveto_exclusion(const coord_def& p, const string &move_verb,
     {
         if (prompted)
             *prompted = true;
-        prompt = make_stringf("Really %s into a travel-excluded area?",
-                              move_verb.c_str());
+        prompt = make_stringf(jtransc("Really %s into a travel-excluded area?"),
+                              jtransc(move_verb));
 
         if (!yesno(prompt.c_str(), false, 'n'))
         {
@@ -314,7 +307,7 @@ bool swap_check(monster* mons, coord_def &loc, bool quiet)
     if (mons->is_projectile())
     {
         if (!quiet)
-            mpr("It's unwise to walk into this.");
+            mpr(jtrans("It's unwise to walk into this."));
         return false;
     }
 
@@ -323,7 +316,8 @@ bool swap_check(monster* mons, coord_def &loc, bool quiet)
         if (!quiet)
         {
             simple_monster_message(mons,
-                make_stringf(" is %s!", held_status(mons)).c_str());
+                make_stringf(jtransc(" is %s!"),
+                             jtransc(held_status(mons))).c_str());
         }
         return false;
     }
@@ -331,7 +325,7 @@ bool swap_check(monster* mons, coord_def &loc, bool quiet)
     if (mons->is_constricted())
     {
         if (!quiet)
-            simple_monster_message(mons, " is being constricted!");
+            simple_monster_message(mons, jtransc(" is being constricted!"));
         return false;
     }
 
@@ -385,9 +379,9 @@ bool swap_check(monster* mons, coord_def &loc, bool quiet)
 static void _splash()
 {
     if (you.can_swim())
-        noisy(4, you.pos(), "Floosh!");
+        noisy(4, you.pos(), jtransc("Floosh!"));
     else if (!beogh_water_walk())
-        noisy(8, you.pos(), "Splash!");
+        noisy(8, you.pos(), jtransc("Splash!"));
 }
 
 void moveto_location_effects(dungeon_feature_type old_feat,
@@ -406,10 +400,10 @@ void moveto_location_effects(dungeon_feature_type old_feat,
             if (feat_is_lava(new_grid) && !feat_is_lava(old_feat))
             {
                 if (!stepped)
-                    noisy(4, you.pos(), "Gloop!");
+                    noisy(4, you.pos(), jtransc("Gloop!"));
 
-                mprf("You %s lava.",
-                     (stepped) ? "slowly immerse yourself in the" : "fall into the");
+                mprf(jtransc("You %s lava."),
+                     jtransc((stepped) ? "slowly immerse yourself in the" : "fall into the"));
 
                 // Extra time if you stepped in.
                 if (stepped)
@@ -425,7 +419,7 @@ void moveto_location_effects(dungeon_feature_type old_feat,
 
             else if (!feat_is_lava(new_grid) && feat_is_lava(old_feat))
             {
-                mpr("You slowly pull yourself out of the lava.");
+                mpr(jtrans("You slowly pull yourself out of the lava."));
                 you.time_taken *= 2;
             }
         }
@@ -457,19 +451,19 @@ void moveto_location_effects(dungeon_feature_type old_feat,
 
             if (!feat_is_water(old_feat))
             {
-                mprf("You %s the %s water.",
-                     stepped ? "enter" : "fall into",
-                     new_grid == DNGN_SHALLOW_WATER ? "shallow" : "deep");
+                mprf(jtransc("You %s the %s water."),
+                     new_grid == DNGN_SHALLOW_WATER ? "浅い" : "深い",
+                     stepped ? "足を踏み入れた" : "転がり落ちた");
             }
 
             if (new_grid == DNGN_DEEP_WATER && old_feat != DNGN_DEEP_WATER)
-                mpr("You sink to the bottom.");
+                mpr(jtrans("You sink to the bottom."));
 
             if (!feat_is_water(old_feat))
             {
-                mpr("Moving in this stuff is going to be slow.");
+                mpr(jtrans("Moving in this stuff is going to be slow."));
                 if (you.invisible())
-                    mpr("...and don't expect to remain undetected.");
+                    mpr(jtrans("...and don't expect to remain undetected."));
             }
         }
     }
@@ -964,10 +958,10 @@ bool berserk_check_wielded_weapon()
                                                            OPER_ATTACK,
                                                            penance)))
     {
-        string prompt = "Do you really want to go berserk while wielding "
-                        + wpn->name(DESC_YOUR) + "?";
+        string prompt = "本当に" + wpn->name(DESC_PLAIN)
+                        + jtrans("Do you really want to go berserk while wielding ");
         if (penance)
-            prompt += " This could place you under penance!";
+            prompt += " " + jtrans(" This could place you under penance!");
 
         if (!yesno(prompt.c_str(), true, 'n'))
         {
@@ -2692,9 +2686,9 @@ static void _remove_temp_mutation()
         1 + random2(3)));
 
     if (num_remove >= you.attribute[ATTR_TEMP_MUTATIONS])
-        mprf(MSGCH_DURATION, "You feel the corruption within you wane completely.");
+        mpr_nojoin(MSGCH_DURATION, jtrans("You feel the corruption within you wane completely."));
     else
-        mprf(MSGCH_DURATION, "You feel the corruption within you wane somewhat.");
+        mpr_nojoin(MSGCH_DURATION, jtrans("You feel the corruption within you wane somewhat."));
 
     for (int i = 0; i < num_remove; ++i)
         delete_temp_mutation();
@@ -2737,7 +2731,7 @@ static void _recharge_xp_evokers(int exp)
 
         debt = max(0, debt - div_rand_round(exp, xp_factor));
         if (debt == 0)
-            mprf("%s has recharged.", evoker->name(DESC_YOUR).c_str());
+            mprf(jtransc("%s has recharged."), evoker->name(DESC_YOUR).c_str());
     }
 }
 
@@ -2860,7 +2854,7 @@ void gain_exp(unsigned int exp_gained, unsigned int* actual_gain)
         if (you.attribute[ATTR_XP_DRAIN] <= 0)
         {
             you.attribute[ATTR_XP_DRAIN] = 0;
-            mprf(MSGCH_RECOVERY, "Your life force feels restored.");
+            mpr_nojoin(MSGCH_RECOVERY, jtrans("Your life force feels restored."));
         }
     }
 }
@@ -2870,44 +2864,44 @@ static void _draconian_scale_colour_message()
     switch (you.species)
     {
     case SP_RED_DRACONIAN:
-        mprf(MSGCH_INTRINSIC_GAIN, "Your scales start taking on a fiery red colour.");
+        mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("Your scales start taking on a fiery red colour."));
         perma_mutate(MUT_HEAT_RESISTANCE, 1, "draconian maturity");
         break;
 
     case SP_WHITE_DRACONIAN:
-        mprf(MSGCH_INTRINSIC_GAIN, "Your scales start taking on an icy white colour.");
+        mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("Your scales start taking on an icy white colour."));
         perma_mutate(MUT_COLD_RESISTANCE, 1, "draconian maturity");
         break;
 
     case SP_GREEN_DRACONIAN:
-        mprf(MSGCH_INTRINSIC_GAIN, "Your scales start taking on a lurid green colour.");
+        mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("Your scales start taking on a lurid green colour."));
         perma_mutate(MUT_POISON_RESISTANCE, 1, "draconian maturity");
         break;
 
     case SP_YELLOW_DRACONIAN:
-        mprf(MSGCH_INTRINSIC_GAIN, "Your scales start taking on a golden yellow colour.");
+        mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("Your scales start taking on a golden yellow colour."));
         break;
 
     case SP_GREY_DRACONIAN:
-        mprf(MSGCH_INTRINSIC_GAIN, "Your scales start taking on a dull iron-grey colour.");
+        mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("Your scales start taking on a dull iron-grey colour."));
         perma_mutate(MUT_UNBREATHING, 1, "draconian maturity");
         break;
 
     case SP_BLACK_DRACONIAN:
-        mprf(MSGCH_INTRINSIC_GAIN, "Your scales start taking on a glossy black colour.");
+        mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("Your scales start taking on a glossy black colour."));
         perma_mutate(MUT_SHOCK_RESISTANCE, 1, "draconian maturity");
         break;
 
     case SP_PURPLE_DRACONIAN:
-        mprf(MSGCH_INTRINSIC_GAIN, "Your scales start taking on a rich purple colour.");
+        mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("Your scales start taking on a rich purple colour."));
         break;
 
     case SP_MOTTLED_DRACONIAN:
-        mprf(MSGCH_INTRINSIC_GAIN, "Your scales start taking on a weird mottled pattern.");
+        mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("Your scales start taking on a weird mottled pattern."));
         break;
 
     case SP_PALE_DRACONIAN:
-        mprf(MSGCH_INTRINSIC_GAIN, "Your scales start fading to a pale cyan-grey colour.");
+        mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("Your scales start fading to a pale cyan-grey colour."));
         break;
 
     case SP_BASE_DRACONIAN:
@@ -2933,7 +2927,7 @@ static void _felid_extra_life()
         && you.lives < 2)
     {
         you.lives++;
-        mprf(MSGCH_INTRINSIC_GAIN, "Extra life!");
+        mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("Extra life!"));
         you.attribute[ATTR_LIFE_GAINED] = you.max_level;
         // Should play the 1UP sound from SMB...
     }
@@ -4829,8 +4823,8 @@ bool confuse_player(int amount, bool quiet)
 
         if (!quiet)
         {
-            mprf(MSGCH_WARN, "You are %sconfused.",
-                 old_value > 0 ? "more " : "");
+            mprf(MSGCH_WARN, jtransc("You are %sconfused."),
+                 old_value > 0 ? "さらに" : "");
         }
 
         learned_something_new(HINT_YOU_ENCHANTED);
@@ -9083,9 +9077,9 @@ void player::maybe_degrade_bone_armour(int mult)
         = max(0, you.attribute[ATTR_BONE_ARMOUR] - 1);
 
     if (you.attribute[ATTR_BONE_ARMOUR])
-        mpr("A chunk of your corpse armour falls away.");
+        mpr(jtrans("A chunk of your corpse armour falls away."));
     else
-        mpr("The last of your corpse armour falls away.");
+        mpr(jtrans("The last of your corpse armour falls away."));
 
     redraw_armour_class = true;
 }
