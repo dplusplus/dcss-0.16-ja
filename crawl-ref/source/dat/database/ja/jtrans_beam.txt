@@ -281,7 +281,7 @@ Something tries to affect you, but you resist.
 %%%%
 You%s
 
-あなたは%s
+あなた%s
 %%%%
 Strange energies course through your body.
 

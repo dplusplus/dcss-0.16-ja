@@ -5297,7 +5297,7 @@ void mons_cast(monster* mons, bolt pbolt, spell_type spell_cast,
         {
             if (you.can_see(foe))
             {
-                mprf("%sは%s",
+                mprf("%s%s",
                      jtransc(foe->name(DESC_THE)),
                      jtransc(foe->resist_margin_phrase(res_margin)));
             }

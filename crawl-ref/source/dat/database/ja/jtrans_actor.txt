@@ -29,19 +29,19 @@ release
 %%%%
 barely %s.
 
-それをかろうじて耐えた。
+はそれをかろうじて耐えた。
 %%%%
 %s to resist.
 
-それをやっとのことで耐えた。
+はそれをやっとのことで耐えた。
 %%%%
 %s with significant effort.
 
-それをなんとか耐えた。
+はそれをなんとか耐えた。
 %%%%
 %s with some effort.
 
-それを耐えた。
+はそれを耐えた。
 %%%%
 easily %s.
 
