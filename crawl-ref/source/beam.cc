@@ -3276,7 +3276,11 @@ bool bolt::misses_player()
         if (hit_verb.empty())
             hit_verb = engulfs ? "をとりまいた" : "に命中した";
         if (flavour != BEAM_VISUAL)
-            mprf(jtransc("The %s %s you!"), tagged_jtransc("[zap]", name), hit_verb.c_str());
+            mprf(jtransc("The %s %s you!"),
+                 tagged_jtrans_has_key("[zap]", name) ?
+                 tagged_jtransc("[zap]", name) :
+                 jtransc(name),
+                 hit_verb.c_str());
         return false;
     }
 
@@ -3333,7 +3337,10 @@ bool bolt::misses_player()
             }
             else
             {
-                mprf(jtransc("You block the %s."), jtransc(name));
+                mprf(jtransc("You block the %s."),
+                     tagged_jtrans_has_key("[zap]", name) ?
+                     tagged_jtransc("[zap]", name) :
+                     jtransc(name));
                 finish_beam();
             }
             you.shield_block_succeeded(agent());
@@ -3355,7 +3362,10 @@ bool bolt::misses_player()
     int defl = you.missile_deflection();
 
     if (!_test_beam_hit(real_tohit, dodge_less, pierce, 0, r))
-        mprf(jtransc("The %s misses you."), jtransc(name));
+        mprf(jtransc("The %s misses you."),
+             tagged_jtrans_has_key("[zap]", name) ?
+             tagged_jtransc("[zap]", name) :
+             jtransc(name));
     else if (defl && !_test_beam_hit(real_tohit, dodge_less, pierce, defl, r))
     {
         // active voice to imply stronger effect
@@ -4809,8 +4819,10 @@ void bolt::affect_monster(monster* mon)
                 hit_verb = engulfs ? "をとりまいた" : "に命中した";
             if (mons_near(mon))
             {
-                mprf(jtransc("The %s %s %s."), tagged_jtransc("[zap]", name),
-                     mon->name(DESC_THE).c_str(), hit_verb.c_str());
+                mprf(jtransc("The %s %s %s."),
+                     tagged_jtrans_has_key("[zap]", name) ?
+                     tagged_jtransc("[zap]", name) : jtransc(name),
+                     jtransc(mon->name(DESC_THE)), hit_verb.c_str());
             }
             else if (heard && !noise_msg.empty())
                 mprf(MSGCH_SOUND, "%s", jtransc(noise_msg));
@@ -4903,23 +4915,26 @@ void bolt::affect_monster(monster* mon)
         // If the PLAYER cannot see the monster, don't tell them anything!
         if (mon->observable() && name != "burst of metal fragments")
         {
+            string bolt_name = tagged_jtrans_has_key("[zap]", name) ?
+                tagged_jtrans("[zap]", name) : jtrans(name);
+
             // if it would have hit otherwise...
             if (_test_beam_hit(beam_hit, rand_ev, pierce, 0, r))
             {
                 string deflects = (defl == 2) ? "を逸らした" : "を弾いた";
                 msg::stream << jtrans(mon->name(DESC_THE)) << "は"
-                            << jtrans(name) << deflects << "！" << endl;
+                            << bolt_name << deflects << "！" << endl;
             }
             else if (mons_class_flag(mon->type, M_PHASE_SHIFT)
                      && _test_beam_hit(beam_hit, rand_ev - random2(8),
                                        pierce, 0, r))
             {
                 msg::stream << jtrans(mon->name(DESC_THE)) << "は一瞬位相をずらして"
-                            << jtrans(name) << "をすり抜けた。" << endl;
+                            << bolt_name << "をすり抜けた。" << endl;
             }
             else
             {
-                msg::stream << jtrans(name) << "は"
+                msg::stream << bolt_name << "は"
                             << jtrans(mon->name(DESC_THE)) << "から外れた。" << endl;
             }
         }
