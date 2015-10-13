@@ -1,4 +1,52 @@
 %%%%
+############################## beam.cc ##############################
+%%%%
+[zap]mystic blast
+
+爆破の秘術
+%%%%
+[zap]sticky fire
+
+焼夷の炎
+%%%%
+[zap]lightning
+
+稲妻
+%%%%
+############################## evoke.cc ##############################
+%%%%
+[zap]trail of fire
+
+尾を引く炎
+%%%%
+[zap]flood of elemental water
+
+水の精霊の巻き起こした洪水
+%%%%
+############################## godabil.cc ##############################
+%%%%
+[zap]blast of magma
+
+溶岩の奔流
+%%%%
+[zap]blast of ice
+
+猛吹雪
+%%%%
+[zap]cutting wind
+
+カマイタチ
+%%%%
+[zap]blast of rubble
+
+石つぶて
+%%%%
+############################## mon-act.cc ##############################
+%%%%
+[zap]barrage of energy
+
+エネルギーの集中砲火
+%%%%
 ############################## mon-cast.cc ##############################
 %%%%
 [zap]freezing blast
@@ -144,6 +192,78 @@
 混沌による反射
 # from SPELL_CHAOTIC_MIRROR
 %%%%
+############################## spl-clouds.cc ##############################
+%%%%
+[zap]freezing blast
+
+凍気の雲
+%%%%
+############################## spl-damage.cc ##############################
+%%%%
+[zap]great blast of fire
+
+燃えさかる爆炎
+%%%%
+[zap]lightning arc
+
+連鎖する稲妻
+%%%%
+[zap]arc of chaos
+
+# obsolete?
+%%%%
+[zap]shillelagh
+
+棍棒
+%%%%
+[zap]irradiate
+
+放射の光
+%%%%
+[zap]blast of rock fragments
+
+岩石の破片
+%%%%
+[zap]blast of petrified fragments
+
+石化した破片
+%%%%
+[zap]icy blast
+
+氷の破片
+%%%%
+[zap]blast of toenail fragments
+
+足爪の破片
+%%%%
+[zap]blast of metal fragments
+
+金属の破片
+%%%%
+[zap]blast of obsidian shards
+
+黒曜石の破片
+%%%%
+[zap]blast of orange crystal shards
+
+橙水晶の破片
+%%%%
+[zap]blast of crystal shards
+
+水晶の破片
+%%%%
+[zap]blast of sapphire shards
+
+サファイアの破片
+%%%%
+[zap]blast of bone shards
+
+骨片
+%%%%
+[zap]great icy blast
+
+雹の嵐
+%%%%
 ############################## mon-death.cc ##############################
 %%%%
 [zap]explosion of spores
@@ -166,12 +286,46 @@
 
 燃えさかる爆発
 %%%%
+############################## mon-project.cc ##############################
+%%%%
+[zap]orb of destruction
+
+破壊の爆裂球
+%%%%
+############################## spl-goditem.cc ##############################
+%%%%
+[zap]golden flame
+
+黄金の炎
+%%%%
+############################## spl-miscast.cc ##############################
+%%%%
+[zap]explosion
+
+爆発
+%%%%
+[zap]acid blast
+
+酸の爆発
+%%%%
 ############################## spl-summoning.cc ##############################
 %%%%
-[zap]barrage of energy
+# [zap]barrage of energy
 
-エネルギーの集中砲火
+# mon-act.ccと重複
 # from SPELL_BATTLESPHERE
+%%%%
+############################## timed_effects.cc ##############################
+%%%%
+[zap]magical storm
+
+魔力の嵐
+%%%%
+############################## xom.cc ##############################
+%%%%
+[zap]STAIR BEAM
+
+階段ビーム
 %%%%
 ############################## zap-data.h ##############################
 %%%%
