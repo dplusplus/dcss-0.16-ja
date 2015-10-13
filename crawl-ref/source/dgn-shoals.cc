@@ -9,6 +9,7 @@
 #include "act-iter.h"
 #include "colour.h"
 #include "coordit.h"
+#include "database.h"
 #include "dgn-height.h"
 #include "dungeon.h"
 #include "english.h"
@@ -1076,8 +1077,8 @@ void shoals_release_tide(monster* mons)
     {
         if (player_can_hear(mons->pos()))
         {
-            mprf(MSGCH_SOUND, "The tide is released from %s call.",
-                 apostrophise(mons->name(DESC_YOUR, true)).c_str());
+            mprf(MSGCH_SOUND, jtransc("The tide is released from %s call."),
+                 jtransc(mons->name(DESC_PLAIN, true)));
             if (you.see_cell(mons->pos()))
                 flash_view_delay(UA_MONSTER, ETC_WATER, 150);
         }
@@ -1112,7 +1113,7 @@ void wizard_mod_tide()
 {
     if (!player_in_branch(BRANCH_SHOALS) || !env.heightmap.get())
     {
-        mprf(MSGCH_WARN, "Not in Shoals or no heightmap; tide not available.");
+        mpr_nojoin(MSGCH_WARN, jtrans("Not in Shoals or no heightmap; tide not available."));
         return;
     }
 

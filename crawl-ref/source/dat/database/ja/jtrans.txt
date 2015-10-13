@@ -2169,6 +2169,16 @@ legendary
 
 伝説的な
 %%%%
+############################## dgn-shoals.cc ##############################
+%%%%
+The tide is released from %s call.
+
+%sの呼びかけに従って潮が解放された。
+%%%%
+Not in Shoals or no heightmap; tide not available.
+
+浅瀬にいないか陸地にいるため、潮の操作はできない。
+%%%%
 ############################## end.cc ##############################
 %%%%
 Save macros?

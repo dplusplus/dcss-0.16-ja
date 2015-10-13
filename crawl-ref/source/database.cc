@@ -164,9 +164,6 @@ static TextDB AllDBs[] =
            "jtrans_delay.txt",
            "jtrans_describe.txt",
            "jtrans_dgn_overview.txt",
-           /*
-           "jtrans_dgn_shoals.txt",
-           */
            "jtrans_directn.txt",
            /*
            "jtrans_effects.txt",
