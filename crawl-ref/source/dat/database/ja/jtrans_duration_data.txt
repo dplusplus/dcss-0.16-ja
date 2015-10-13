@@ -746,7 +746,7 @@ Your equipment is corroded.
 %%%%
 You have immense fortitude and shrug off injury.
 
-あなたは不屈の精神を持っており傷を無視する。
+あなたは不屈の精神を持っており、外傷を無視する。
 %%%%
 [dur]Horr
 

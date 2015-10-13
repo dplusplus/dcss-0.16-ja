@@ -7785,6 +7785,437 @@ Your magic begins regenerating once more.
 
 あなたの魔力は再び回復しはじめた。
 %%%%
+############################## player-reacts.cc ##############################
+%%%%
+Careful! %s
+
+[注意！] %s
+%%%%
+You turn to %s and can move again.
+
+あなたは%sに戻って動けるようになった。
+%%%%
+Your limbs are stiffening.
+
+あなたの四肢が固くなりつつある。
+%%%%
+You can move again.
+
+あなたは再び動けるようになった。
+%%%%
+The heat melts your icy %s.
+
+熱気が氷の%sを溶かした。
+%%%%
+Monsters! Monsters everywhere! You have to get out of here!
+
+モンスターがそこらじゅうにいる！ 早くここから離れないと！
+%%%%
+You reel with horror at the sight of these foes!
+
+あなたは敵を目の当たりにして恐怖に怯えた！
+%%%%
+You feel a twist of horror at the sight of this foe.
+
+あなたは敵を目の当たりにして怖気を感じた。
+%%%%
+You finish reciting %s
+
+あなたは%sの朗読を終えた。
+%%%%
+You feel short of breath.
+
+あなたは少し息切れした。
+%%%%
+Your icy envelope is restored.
+
+あなたを覆う氷の鎧は修復された。
+%%%%
+Your icy armour evaporates.
+
+あなたの氷の鎧は蒸発した。
+%%%%
+Your icy armour starts to melt.
+
+あなたの氷の鎧は溶け始めている。
+%%%%
+Your hearing returns.
+
+あなたの周囲に音が戻った。
+%%%%
+You feel the effects of Trog's Hand fading.
+
+あなたはトログの御手による守護が薄れていくのを感じた。
+%%%%
+Your skin stops crawling.
+
+皮膚のむずむずは完全に消えた。
+%%%%
+Your skin is crawling a little less now.
+
+皮膚があまりむずむずしなくなってきた。
+%%%%
+Your divine shield starts to fade.
+
+神気の盾が薄れていった。
+%%%%
+Your divine shield fades away.
+
+神気の盾は薄れて消え去った。
+%%%%
+Your transformation is almost over.
+
+あなたの変身はもうすぐ時間切れだ。
+%%%%
+You have got your breath back.
+
+あなたは自由に息ができるようになったようだ。
+# ブレスの他にも朗読の発動に使われるので文面変更
+%%%%
+You feel sluggish.
+
+あなたの俊足さは失われた。
+%%%%
+You start to feel a little slower.
+
+あなたの速度は少しずつ低下し始めた。
+%%%%
+You no longer feel sluggish.
+
+あなたはもう動きが緩慢ではない。
+%%%%
+You start to feel a little faster.
+
+あなたの動きが素早さを取り戻しつつある。
+%%%%
+Your resistance to elements expires.
+
+あなたの元素に対する耐性の効果が切れた。
+%%%%
+You start to feel less resistant.
+
+あなたの元素に対する耐性が弱まりつつある。
+%%%%
+You are firmly grounded in the material plane once more.
+
+あなたは再び物質界に戻ってきた。
+%%%%
+You feel closer to the material plane.
+
+あなたは物質界に近くなったような気がした。
+%%%%
+You feel less regenerative.
+
+あなたの再生速度が遅くなった。
+%%%%
+You feel less empathic.
+
+あなたは他者の思考を読み取りづらくなった。
+%%%%
+Your icy shield evaporates.
+
+あなたの氷の盾は蒸発した。
+%%%%
+Your icy shield starts to melt.
+
+あなたの氷の盾は溶け始めている。
+%%%%
+Your magical shield disappears.
+
+あなたの魔法の盾は消え去った。
+%%%%
+Your skin feels tender.
+
+あなたの皮膚は柔らかくなった。
+%%%%
+You feel uncertain.
+
+あなたは不確定になった。
+%%%%
+You start to feel a little uncertain.
+
+あなたは少し不確定になってきたようだ。
+%%%%
+Your unholy channel expires.
+
+あなたの邪悪な霊力は尽きてしまった。
+%%%%
+Your unholy channel is weakening.
+
+あなたの邪悪な霊力が弱まっていく。
+%%%%
+You feel less stealthy.
+
+あなたの隠密性は低下したようだ。
+%%%%
+You flicker for a moment.
+
+あなたの姿が一瞬だけ明滅した。
+%%%%
+You feel more conspicuous.
+
+あなたはうっすらと目に見えるようになりつつある。
+%%%%
+You flicker back into view.
+
+あなたは再び姿を現した。
+%%%%
+You feel less confused.
+
+あなたの混乱は軽くなった。
+%%%%
+You feel less vulnerable to hostile enchantments.
+
+あなたは敵対的な魔法に対し弱くなったような気がした。
+%%%%
+You feel less slimy.
+
+あなたのどろどろ感が薄れたような気がした。
+%%%%
+Your slime is starting to congeal.
+
+あなたに付着したスライムは凝固し始めている。
+%%%%
+Quad Damage is wearing off.
+
+四倍ダメージの効果は終了した。
+%%%%
+Your dark mirror aura disappears.
+
+痛み分けのオーラが消え去った。
+%%%%
+You feel like a meek peon again.
+
+あなたは再び常人のようになった。
+%%%%
+The bond with your blade fades away.
+
+あなたの刃との絆が消え去った。
+%%%%
+Space becomes stable.
+
+周囲に静けさが戻った。
+%%%%
+You break out of your daze.
+
+あなたは誘惑を振り払った。
+%%%%
+Your fear fades away.
+
+あなたは恐怖心を振り払った。
+%%%%
+The ice encasing you melts away.
+
+あなたを閉じ込めている氷が溶けた。
+%%%%
+You can drink potions again.
+
+あなたは再び薬を飲むことができるようになった。
+%%%%
+You can read scrolls again.
+
+あなたは再び巻物を読めるようになった。
+%%%%
+The ground is no longer liquid beneath you.
+
+あなたの足下の地面はもう液状化していない。
+%%%%
+Your fortitude fades away.
+
+あなたは不屈の精神を失った。
+%%%%
+You feel a little less mighty now.
+
+あなたの腕力が元に戻ったようだ。
+%%%%
+You feel a little less agile now.
+
+あなたの器用さが元に戻ったようだ。
+%%%%
+You feel a little less clever now.
+
+あなたの知力が元に戻ったようだ。
+%%%%
+You are no longer berserk.
+
+あなたのバーサークが解けた。
+%%%%
+Trog's vigour flows through your veins.
+
+トログの御業により、あなたの体に活力が吹き込まれた。
+%%%%
+You pass out from exhaustion.
+
+あなたは疲労から回復した。
+%%%%
+You are no longer glowing.
+
+あなたはもう照らされていない。
+%%%%
+The translocation energy dissipates.
+
+転位術のエネルギーは消え去った。
+%%%%
+The winds around you calm down.
+
+あなたの周囲の風は止んだ。
+%%%%
+The winds around you start to calm down.
+
+あなたの周囲の風はおさまりつつある。
+%%%%
+You are starting to lose your buoyancy.
+
+あなたは飛行能力を失いつつある。
+%%%%
+You feel your flesh rotting away.
+
+あなたは体が腐敗していくのを感じた。
+%%%%
+Your life is in your own hands again!
+
+あなたの生命は再びあなたの元に戻った。
+%%%%
+Your time is quickly running out!
+
+残り時間が急速に失われている！
+%%%%
+Your astral sight fades away.
+
+あなたの霊的な視力は消え去った。
+%%%%
+Your divine protection fades away.
+
+聖なる守護の力は消え去った。
+%%%%
+The ambient light returns to normal.
+
+周囲の明るさが元に戻った。
+%%%%
+The divine light dispels your darkness!
+
+聖なる光があなたの放つ闇を振り払った！
+%%%%
+Your shroud unravels.
+
+ゴルブリアの帷子は消え去った。
+%%%%
+Your shroud begins to fray at the edges.
+
+ゴルブリアの帷子は端からぼろぼろになっていった。
+%%%%
+You are no longer magically infusing your attacks.
+
+あなたの攻撃はもう魔力で強化されていない。
+%%%%
+Your magical infusion is running out.
+
+魔力の強化が時間切れになりつつある。
+%%%%
+Your song has ended.
+
+あなたは歌い終えた。
+%%%%
+Your song is almost over.
+
+あなたの歌は終わりにさしかかりつつある。
+%%%%
+The sentinel's mark upon you fades away.
+
+あなたに押された見張りの印が消え去った。
+%%%%
+Your attacks no longer feel as feeble.
+
+あなたの攻撃はもう弱められていない。
+%%%%
+You are no longer firmly anchored in space.
+
+あなたはもう空間に繋ぎ止められていない。
+%%%%
+Your magic seems less tainted.
+
+あなたの魔術の制御力は元に戻った。
+%%%%
+Your cleaving frenzy subsides.
+
+あなたは薙ぎ払う元気がなくなった。
+%%%%
+You repair your equipment.
+
+あなたは腐蝕した装備を修復した。
+%%%%
+You feel more in control of your magic.
+
+あなたは魔術をより制御できるようになった。
+%%%%
+You regain control over your magic.
+
+あなたは魔術の制御能力を取り戻した。
+%%%%
+Your toxic aura wanes.
+
+あなたの放つ毒のオーラは弱まった。
+%%%%
+You feel less vulnerable to fire.
+
+あなたは火に弱くなくなったようだ。
+%%%%
+You feel less vulnerable to poison.
+
+あなたは毒に弱くなくなったようだ。
+%%%%
+You are no longer teleporting projectiles to their destination.
+
+あなたはもう目標へ向かって投射物を送り込むことはできない。
+%%%%
+You can once more reach out to the dragon horde.
+
+あなたは再びドラゴンの巣に手が届くようになった。
+%%%%
+The roar of the dragon horde subsides.
+
+ドラゴンの巣の咆哮は遠ざかっていった。
+%%%%
+Your aura of abjuration expires.
+
+解放のオーラの効果は消えた。
+%%%%
+You feel less protected from fire.
+
+あなたの火への耐性が弱まった。
+%%%%
+Your protection from fire is fading.
+
+あなたの火への耐性が弱まりつつある。
+%%%%
+You feel less protected from cold.
+
+あなたの冷気への耐性が弱まった。
+%%%%
+Your protection from cold is fading.
+
+あなたの冷気への耐性が弱まりつつある。
+%%%%
+You feel less protected from electricity.
+
+あなたの電撃への耐性が弱まった。
+%%%%
+Your protection from electricity is fading.
+
+あなたの電撃への耐性が弱まりつつある。
+%%%%
+You feel less protected from physical attacks.
+
+あなたの物理ダメージへの耐性が弱まった。
+%%%%
+Your protection from physical attacks is fading.
+
+あなたの物理ダメージへの耐性が弱まりつつある。
+%%%%
+The silence causes your song to end.
+
+静寂があなたの歌をかき消した。
+%%%%
 ############################## player-stat.cc ##############################
 %%%%
 Your experience leads to an increase in your attributes!
@@ -7995,7 +8426,7 @@ Your magic is already full.
 %%%%
 You have got your breath back.
 
-あなたはブレスが吐けるようになったようだ。
+あなたは自由に息ができるようになったようだ。
 %%%%
 You feel refreshed.
 

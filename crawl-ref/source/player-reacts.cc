@@ -183,9 +183,9 @@ static bool _decrement_a_duration(duration_type dur, int delay,
             if (you.duration[dur] <= 0)
                 you.duration[dur] = 1;
             if (need_expiration_warning(dur))
-                mprf(MSGCH_DANGER, "Careful! %s", midmsg);
+                mprf(MSGCH_DANGER, jtransc("Careful! %s"), jtransc(midmsg));
             else
-                mprf(chan, "%s", midmsg);
+                mprf(chan, "%s", jtransc(midmsg));
         }
     }
 
@@ -193,7 +193,7 @@ static bool _decrement_a_duration(duration_type dur, int delay,
     {
         you.duration[dur] = 0;
         if (endmsg)
-            mprf(chan, "%s", endmsg);
+            mprf(chan, "%s", jtransc(endmsg));
         return true;
     }
 
@@ -209,11 +209,11 @@ static void _decrement_petrification(int delay)
         // implicit assumption: all races that can be petrified are made of
         // flesh when not petrified
         const string flesh_equiv = get_form()->flesh_equivalent.empty() ?
-                                            "flesh" :
+                                            "元の姿" :
                                             get_form()->flesh_equivalent;
 
-        mprf(MSGCH_DURATION, "You turn to %s and can move again.",
-             flesh_equiv.c_str());
+        mprf(MSGCH_DURATION, jtransc("You turn to %s and can move again."),
+             jtransc(flesh_equiv));
     }
 
     if (you.duration[DUR_PETRIFYING])
@@ -231,7 +231,7 @@ static void _decrement_petrification(int delay)
             you.fully_petrify(nullptr);
         }
         else if (dur < 15 && old_dur >= 15)
-            mpr("Your limbs are stiffening.");
+            mpr(jtrans("Your limbs are stiffening."));
     }
 }
 
@@ -245,7 +245,7 @@ static void _decrement_paralysis(int delay)
 
         if (!you.duration[DUR_PARALYSIS] && !you.petrified())
         {
-            mprf(MSGCH_DURATION, "You can move again.");
+            mpr_nojoin(MSGCH_DURATION, jtrans("You can move again."));
             you.redraw_evasion = true;
             you.duration[DUR_PARALYSIS_IMMUNITY] = roll_dice(1, 3)
             * BASELINE_DELAY;
@@ -267,20 +267,20 @@ static void _maybe_melt_armour()
     string what;
     if (you.props.exists(MELT_ARMOUR_KEY))
     {
-        what = "armour";
+        what = "鎧";
         you.props.erase(MELT_ARMOUR_KEY);
     }
 
     if (you.props.exists(MELT_SHIELD_KEY))
     {
         if (what != "")
-            what += " and ";
-        what += "shield";
+            what += "と";
+        what += "盾";
         you.props.erase(MELT_SHIELD_KEY);
     }
 
     if (what != "")
-        mprf(MSGCH_DURATION, "The heat melts your icy %s.", what.c_str());
+        mprf(MSGCH_DURATION, jtransc("The heat melts your icy %s."), what.c_str());
 }
 
 /**
@@ -382,11 +382,11 @@ static void _update_cowardice()
         return;
 
     if (horror_level >= HORROR_LVL_OVERWHELMING)
-        mpr("Monsters! Monsters everywhere! You have to get out of here!");
+        mpr(jtrans("Monsters! Monsters everywhere! You have to get out of here!"));
     else if (horror_level >= HORROR_LVL_EXTREME)
-        mpr("You reel with horror at the sight of these foes!");
+        mpr(jtrans("You reel with horror at the sight of these foes!"));
     else
-        mpr("You feel a twist of horror at the sight of this foe.");
+        mpr(jtrans("You feel a twist of horror at the sight of this foe."));
 }
 
 /**
@@ -468,18 +468,17 @@ static void _handle_recitation(int step)
     {
         string speech = zin_recite_text(you.attribute[ATTR_RECITE_SEED],
                                         you.attribute[ATTR_RECITE_TYPE], -1);
-        speech += ".";
+        string closure;
         if (one_chance_in(9))
         {
-            const string closure = getSpeakString("recite_closure");
+            closure = getSpeakString("recite_closure");
             if (!closure.empty() && one_chance_in(3))
             {
-                speech += " ";
                 speech += closure;
             }
         }
-        mprf(MSGCH_DURATION, "You finish reciting %s", speech.c_str());
-        mpr("You feel short of breath.");
+        mprf(MSGCH_DURATION, jtransc("You finish reciting %s"), speech.c_str());
+        mpr(jtrans("You feel short of breath."));
         you.increase_duration(DUR_BREATH_WEAPON, random2(10) + random2(30));
     }
 }
@@ -515,7 +514,7 @@ static void _decrement_durations()
             you.duration[DUR_ICEMAIL_DEPLETED] -= delay;
 
         if (!you.duration[DUR_ICEMAIL_DEPLETED])
-            mprf(MSGCH_DURATION, "Your icy envelope is restored.");
+            mpr_nojoin(MSGCH_DURATION, jtrans("Your icy envelope is restored."));
 
         you.redraw_armour_class = true;
     }
@@ -740,11 +739,12 @@ static void _decrement_durations()
         you.redraw_armour_class = true;
     }
 
+    bool plural;
     _decrement_a_duration(DUR_FINESSE, delay,
-                          you.hands_act("slow", "down.").c_str());
+                          ("あなたの" + you.hand_name(true, &plural) + "は素早さを失った。").c_str());
 
     _decrement_a_duration(DUR_CONFUSING_TOUCH, delay,
-                          you.hands_act("stop", "glowing.").c_str());
+                          you.hands_act("止めた", "輝くのを").c_str());
 
     _decrement_a_duration(DUR_SURE_BLADE, delay,
                           "The bond with your blade fades away.");
@@ -1327,7 +1327,7 @@ void player_reacts()
     {
         if (you.duration[DUR_SONG_OF_SLAYING])
         {
-            mpr("The silence causes your song to end.");
+            mpr(jtrans("The silence causes your song to end."));
             _decrement_a_duration(DUR_SONG_OF_SLAYING, you.duration[DUR_SONG_OF_SLAYING]);
         }
     }
