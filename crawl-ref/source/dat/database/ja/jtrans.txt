@@ -11113,13 +11113,49 @@ free from constriction.
 %%%%
 ############################## terrain.cc ##############################
 %%%%
-door
+The walls burn you!
 
-扉
+壁があなたの体を焼いた！
 %%%%
-gate
+The wall burns you!
 
-門
+壁があなたの体を焼いた！
+%%%%
+The walls burn %s!
+
+壁が%sの体を焼いた！
+%%%%
+The wall burns %s!
+
+壁が%sの体を焼いた！
+%%%%
+You hear a sizzling splash.
+
+あなたはジューッという音を聞いた！
+%%%%
+You fall into the %s!
+
+あなたは%sの中に転がり落ちた！
+%%%%
+You burn to ash...
+
+あなたは燃え尽きて灰になった……
+%%%%
+The lava burns you to a cinder!
+
+あなたは溶岩に焼かれて消し炭になった！
+%%%%
+You sink like a stone!
+
+あなたは石のように沈んだ！
+%%%%
+You fall apart...
+
+あなたはバラバラになった……
+%%%%
+You drown...
+
+あなたは溺れた……
 %%%%
 ############################## throw.cc ##############################
 %%%%

@@ -15,6 +15,7 @@
 #include "cloud.h"
 #include "coord.h"
 #include "coordit.h"
+#include "database.h"
 #include "dgnevent.h"
 #include "dgn-overview.h"
 #include "directn.h"
@@ -773,8 +774,8 @@ void slime_wall_damage(actor* act, int delay)
         if (!you_worship(GOD_JIYVA) || you.penance[GOD_JIYVA])
         {
             you.splash_with_acid(nullptr, strength, false,
-                                (walls > 1) ? "The walls burn you!"
-                                            : "The wall burns you!");
+                                 jtransc((walls > 1) ? "The walls burn you!"
+                                                     : "The wall burns you!"));
         }
     }
     else
@@ -789,8 +790,8 @@ void slime_wall_damage(actor* act, int delay)
                                              roll_dice(2, strength));
         if (dam > 0 && you.can_see(mon))
         {
-            mprf((walls > 1) ? "The walls burn %s!" : "The wall burns %s!",
-                  mon->name(DESC_THE).c_str());
+            mprf(jtransc((walls > 1) ? "The walls burn %s!" : "The wall burns %s!"),
+                 jtransc(mon->name(DESC_THE)));
         }
         mon->hurt(nullptr, dam, BEAM_ACID);
     }
@@ -804,12 +805,13 @@ bool feat_destroys_item(dungeon_feature_type feat, const item_def &item,
     case DNGN_SHALLOW_WATER:
     case DNGN_DEEP_WATER:
         if (noisy)
-            mprf(MSGCH_SOUND, "You hear a splash.");
+            mprf(MSGCH_SOUND, "あなたはパシャンという音を耳にした。");
+        // Primal waveのメッセージと同文だがニュアンスが異なるため直接編集
         return false;
 
     case DNGN_LAVA:
         if (noisy)
-            mprf(MSGCH_SOUND, "You hear a sizzling splash.");
+            mpr_nojoin(MSGCH_SOUND, jtrans("You hear a sizzling splash."));
         return true;
 
     default:
@@ -1194,28 +1196,33 @@ static void _announce_swap_real(coord_def orig_pos, coord_def dest_pos)
     }
 
     ostringstream str;
-    str << orig_name << " ";
+    str << orig_name << "は";
     if (you.see_cell(orig_pos) && !you.see_cell(dest_pos))
     {
-        str << "suddenly disappears";
+        str << "突然";
         if (!orig_actor.empty())
-            str << " from " << prep << " " << orig_actor;
+            str << jtrans(orig_actor) << "の" << prep << "から";
+
+        str << "消え去った";
     }
     else if (!you.see_cell(orig_pos) && you.see_cell(dest_pos))
     {
-        str << "suddenly appears";
+        str << "突然";
         if (!dest_actor.empty())
-            str << " " << prep << " " << dest_actor;
+            str << jtrans(dest_actor) << "の" << prep << "に";
+
+        str << "現れた";
     }
     else
     {
-        str << "moves";
         if (!orig_actor.empty())
-            str << " from " << prep << " " << orig_actor;
+            str << jtrans(orig_actor) << "の" << prep << "から";
         if (!dest_actor.empty())
-            str << " to " << prep << " " << dest_actor;
+            str << jtrans(dest_actor) << "の" << prep << "に";
+
+        str << "動いた";
     }
-    str << "!";
+    str << "！";
     mpr(str.str());
 }
 
@@ -1501,9 +1508,9 @@ void fall_into_a_pool(dungeon_feature_type terrain)
         }
     }
 
-    mprf("You fall into the %s!",
-         (terrain == DNGN_LAVA)       ? "lava" :
-         (terrain == DNGN_DEEP_WATER) ? "water"
+    mprf(jtransc("You fall into the %s!"),
+         (terrain == DNGN_LAVA)       ? "溶岩" :
+         (terrain == DNGN_DEEP_WATER) ? "水たまり"
                                       : "programming rift");
 
     more();
@@ -1511,19 +1518,19 @@ void fall_into_a_pool(dungeon_feature_type terrain)
     if (terrain == DNGN_LAVA)
     {
         if (you.species == SP_MUMMY)
-            mpr("You burn to ash...");
+            mpr(jtrans("You burn to ash..."));
         else
-            mpr("The lava burns you to a cinder!");
+            mpr(jtrans("The lava burns you to a cinder!"));
         ouch(INSTANT_DEATH, KILLED_BY_LAVA);
     }
     else if (terrain == DNGN_DEEP_WATER)
     {
-        mpr("You sink like a stone!");
+        mpr(jtrans("You sink like a stone!"));
 
         if (you.is_artificial() || you.undead_state())
-            mpr("You fall apart...");
+            mpr(jtrans("You fall apart..."));
         else
-            mpr("You drown...");
+            mpr(jtrans("You drown..."));
 
         ouch(INSTANT_DEATH, KILLED_BY_WATER);
     }
@@ -1567,29 +1574,29 @@ string feat_preposition(dungeon_feature_type feat, bool active, const actor* who
     if (dir == CMD_NO_CMD)
     {
         if (feat == DNGN_STONE_ARCH)
-            return "beside";
+            return "そば";
         else if (feat_is_solid(feat)) // Passwall?
         {
             if (active)
-                return "inside";
+                return "中";
             else
-                return "around";
+                return "周囲";
         }
         else if (!airborne)
         {
             if (feat == DNGN_LAVA || feat_is_water(feat))
             {
                 if (active)
-                    return "into";
+                    return "中";
                 else
-                    return "around";
+                    return "周囲";
             }
             else
             {
                 if (active)
-                    return "onto";
+                    return "上";
                 else
-                    return "under";
+                    return "下";
             }
         }
     }
@@ -1597,29 +1604,29 @@ string feat_preposition(dungeon_feature_type feat, bool active, const actor* who
     if (dir == CMD_GO_UPSTAIRS && feat_is_escape_hatch(feat))
     {
         if (active)
-            return "under";
+            return "下";
         else
-            return "above";
+            return "上";
     }
 
     if (airborne)
     {
         if (active)
-            return "over";
+            return "上";
         else
-            return "beneath";
+            return "下";
     }
 
     if (dir == CMD_GO_DOWNSTAIRS
         && (feat_is_staircase(feat) || feat_is_escape_hatch(feat)))
     {
         if (active)
-            return "onto";
+            return "上";
         else
-            return "beneath";
+            return "下";
     }
     else
-        return "beside";
+        return "そば";
 }
 
 string stair_climb_verb(dungeon_feature_type feat)
@@ -1627,11 +1634,11 @@ string stair_climb_verb(dungeon_feature_type feat)
     ASSERT(feat_stair_direction(feat) != CMD_NO_CMD);
 
     if (feat_is_staircase(feat))
-        return "climb";
+        return "上った";
     else if (feat_is_escape_hatch(feat))
-        return "use";
+        return "使った";
     else
-        return "pass through";
+        return "通り抜けた";
 }
 
 /** Find the feature with this name.
@@ -1791,36 +1798,36 @@ bool cell_can_cling_to(const coord_def& from, const coord_def to)
 const char* feat_type_name(dungeon_feature_type feat)
 {
     if (feat_is_door(feat))
-        return "door";
+        return "扉";
     if (feat_is_wall(feat))
-        return "wall";
+        return "壁";
     if (feat == DNGN_GRATE)
-        return "grate";
+        return "鉄格子";
     if (feat_is_tree(feat))
-        return "tree";
+        return "木";
     if (feat_is_statuelike(feat))
-        return "statue";
+        return "石像";
     if (feat_is_water(feat))
-        return "water";
+        return "たまり";
     if (feat_is_lava(feat))
-        return "lava";
+        return "溶岩";
     if (feat_is_altar(feat))
-        return "altar";
+        return "祭壇";
     if (feat_is_trap(feat))
-        return "trap";
+        return "罠";
     if (feat_is_escape_hatch(feat))
-        return "escape hatch";
+        return "脱出ハッチ";
     if (feat_is_portal(feat) || feat_is_gate(feat))
-        return "portal";
+        return "ポータル";
     if (feat_is_travelable_stair(feat))
-        return "staircase";
+        return "階段";
     if (feat == DNGN_ENTER_SHOP || feat == DNGN_ABANDONED_SHOP)
-        return "shop";
+        return "店";
     if (feat_is_fountain(feat))
-        return "fountain";
+        return "泉";
     if (feat == DNGN_UNSEEN)
         return "unknown terrain";
-    return "floor";
+    return "床";
 }
 
 void set_terrain_changed(const coord_def p)
