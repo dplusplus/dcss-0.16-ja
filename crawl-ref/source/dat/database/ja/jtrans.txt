@@ -10120,6 +10120,84 @@ Your Spells
 
 習得済みの呪文
 %%%%
+############################## spl-clouds.cc ##############################
+%%%%
+That's too far away.
+
+そこは遠すぎる。
+%%%%
+You can't place the cloud on %s.
+
+あなたは%sの上に雲を配置できない。
+%%%%
+There's already a cloud there!
+
+そこには既に雲が漂っている。
+%%%%
+You can't place the cloud on a creature.
+
+あなたはモンスターの上に雲を配置することはできない。
+%%%%
+The fire roars with new energy!
+
+炎は新たに燃え上がった！
+%%%%
+The fire roars!
+
+炎は燃え上がった！
+%%%%
+A cloud of flames roars to life!
+
+炎の雲が燃え上がった！
+%%%%
+That is beyond the maximum range.
+
+それは最大射程を超えている。
+%%%%
+You can't place clouds on %s.
+
+あなたは%sの上に雲を配置できない。
+%%%%
+That kind of cloud doesn't exist!
+
+その種の雲は存在しない！
+%%%%
+The air around you leaps into flame!
+
+あなたの周りの大気が炎へと変わった！
+%%%%
+Your ring of flames gutters out.
+
+炎の輪は弱まって消えた。
+%%%%
+Your ring of flames is guttering out.
+
+炎の輪が弱まりつつある。
+%%%%
+Really cast Corpse Rot while standing on
+
+本当に%sの上に立って死体の腐蝕の呪文を唱えますか？
+%%%%
+You smell decay.
+
+あなたは腐敗臭を嗅いだ。
+%%%%
+You sence decay.
+
+あなたは死体が腐敗していくのを感じた。
+%%%%
+Blessed fire suddenly surrounds you!
+
+突然聖なる炎があなたを包んだ！
+%%%%
+is surrounded by blessed fire!
+
+は聖なる炎に包まれた！
+%%%%
+%s %s a blast of %s!
+
+%sは%sを放った！
+%%%%
 ############################## spl-summoning.cc ##############################
 %%%%
 You recall your battlesphere and imbue it with additional charge.
