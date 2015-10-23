@@ -542,7 +542,7 @@ static bool _get_mem_list(spell_list &mem_spells,
     else if (book_hash.empty())
     {
         if (!just_check)
-            mpr_nojoin(MSGCH_PROMPT, ("None of the spellbooks you are carrying contain any spells."));
+            mpr_nojoin(MSGCH_PROMPT, jtrans("None of the spellbooks you are carrying contain any spells."));
         return false;
     }
 
@@ -993,18 +993,18 @@ bool learn_spell(spell_type specspell)
     int severity = fail_severity(specspell);
 
     if (raw_spell_fail(specspell) >= 100 && !vehumet_is_offering(specspell))
-        mprf(MSGCH_WARN, "This spell is impossible to cast!");
+        mpr_nojoin(MSGCH_WARN, jtrans("This spell is impossible to cast!"));
     else if (severity > 0)
     {
-        mprf(MSGCH_WARN, "This spell is %s to cast%s",
-                         fail_severity_adjs[severity],
-                         severity > 1 ? "!" : ".");
+        mprf(MSGCH_WARN, jtransc("This spell is %s to cast%s"),
+             jtransc(fail_severity_adjs[severity]),
+             severity > 1 ? "！" : "。");
     }
 
     const string prompt = make_stringf(
-             "Memorise %s, consuming %d spell level%s and leaving %d?",
-             spell_title(specspell), spell_levels_required(specspell),
-             spell_levels_required(specspell) != 1 ? "s" : "",
+             jtransc("Memorise %s, consuming %d spell level%s and leaving %d?"),
+             spell_levels_required(specspell),
+             tagged_jtransc("[spell]", spell_title(specspell)),
              player_spell_levels() - spell_levels_required(specspell));
 
     // Deactivate choice from tile inventory.
@@ -1027,12 +1027,12 @@ bool forget_spell_from_book(spell_type spell, const item_def* book)
 {
     string prompt;
 
-    prompt += make_stringf("Forgetting %s from %s will destroy the book%s! "
-                           "Are you sure?",
-                           spell_title(spell),
+    prompt += make_stringf(jtransc("Forgetting %s from %s will destroy the book%s! "
+                                   "Are you sure?"),
+                           tagged_jtransc("[spell]", spell_title(spell)),
                            book->name(DESC_THE).c_str(),
-                           you_worship(GOD_SIF_MUNA)
-                               ? " and put you under penance" : "");
+                           jtransc(you_worship(GOD_SIF_MUNA)
+                                   ? " and put you under penance" : ""));
 
     // Deactivate choice from tile inventory.
     mouse_control mc(MOUSE_MODE_MORE);
@@ -1041,8 +1041,8 @@ bool forget_spell_from_book(spell_type spell, const item_def* book)
         canned_msg(MSG_OK);
         return false;
     }
-    mprf("As you tear out the page describing %s, the book crumbles to dust.",
-        spell_title(spell));
+    mprf(jtransc("As you tear out the page describing %s, the book crumbles to dust."),
+         tagged_jtransc("[spell]", spell_title(spell)));
 
     if (del_spell_from_memory(spell))
     {

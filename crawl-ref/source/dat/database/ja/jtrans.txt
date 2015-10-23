@@ -9825,7 +9825,7 @@ You already know all available spells.
 %%%%
 You cannot currently memorise any of the available spells because you cannot use those schools of magic.
 
-
+あなたはその種別の魔法を使えないため現状これらの呪文を記憶することができない。
 %%%%
 You cannot currently memorise any of the available spells because you are in %s form.
 
@@ -9878,6 +9878,30 @@ You're too inexperienced to learn that spell!
 You can't memorise that many levels of magic yet!
 
 あなたはこのレベルの魔法はまだ覚えられない！
+%%%%
+This spell is impossible to cast!
+
+この呪文を唱えることはできない！
+%%%%
+This spell is %s to cast%s
+
+この呪文を唱えるのは%sだ%s
+%%%%
+Memorise %s, consuming %d spell level%s and leaving %d?
+
+記憶力を%d消費して%sの呪文を記憶しますか？ (残り記憶力: %d)
+%%%%
+Forgetting %s from %s will destroy the book%s! Are you sure?
+
+%sに記載された%sの呪文を忘れるには魔法書を破り捨て%sる必要があります！ 続行しますか？
+%%%%
+and put you under penance
+
+て神に懺悔す
+%%%%
+As you tear out the page describing %s, the book crumbles to dust.
+
+あなたが%sの呪文の記されたページを破り捨てると、魔法書は塵と化した。
 %%%%
 ############################## spl-cast.cc ##############################
 %%%%
