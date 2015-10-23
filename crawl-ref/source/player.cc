@@ -8189,7 +8189,7 @@ void player::increase_duration(duration_type dur, int turns, int cap,
                                const char* msg)
 {
     if (msg)
-        mpr(msg);
+        mpr(jtrans(msg));
     cap *= BASELINE_DELAY;
 
     duration[dur] += turns * BASELINE_DELAY;

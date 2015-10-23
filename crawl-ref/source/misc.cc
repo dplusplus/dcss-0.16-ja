@@ -907,12 +907,12 @@ string counted_monster_list::describe(description_level_type desc,
         if (i != list.begin())
         {
             ++i;
-            out += (i == list.end() ? " and " : ", ");
+            out += (i == list.end() ? "そして" : "、");
         }
         else
             ++i;
 
-        out += cm.second > 1 ? pluralise(cm.first->name(desc, false, true))
+        out += cm.second > 1 ? cm.first->name(desc) + "達"
                              : cm.first->name(desc);
     }
     return out;

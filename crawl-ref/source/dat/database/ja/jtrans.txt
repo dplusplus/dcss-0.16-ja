@@ -10198,6 +10198,404 @@ is surrounded by blessed fire!
 
 %sは%sを放った！
 %%%%
+############################## spl-damage.cc ##############################
+%%%%
+You are already charged.
+
+あなたは既に遅延式ファイアボールを準備している。
+%%%%
+You feel magically charged.
+
+あなたは遅延式ファイアボールを準備した。
+%%%%
+You can't place the storm on %s.
+
+あなたは%sの上に炎の嵐を放つことはできない。
+%%%%
+You call forth a pillar of hellfire!
+
+あなたは地獄の業火の火柱を呼び起こした！
+%%%%
+The %s grounds out.
+
+%sが大地を這った。
+%%%%
+You hear a mighty clap of thunder!
+
+あなたは強烈な雷鳴を聞いた！
+%%%%
+A swirling arc of seething chaos appears!
+
+煮え立ち渦巻く混沌が顕現した！
+%%%%
+The %s arcs out of your line of sight!
+
+%sが視界の外から飛んできた！
+%%%%
+The %s suddenly appears!
+
+突然%sが現れた！
+%%%%
+%s %s frozen.
+
+%sは凍結した。
+%%%%
+The monsters around %s are frozen!
+
+%sの周囲のモンスターは凍結した！
+%%%%
+You feel very cold.
+
+あなたは非常に冷たく感じた。
+%%%%
+by Ozocubu's Refrigeration
+
+オゾクブの瞬間凍結によって
+%%%%
+by drain life
+
+生命の簒奪によって
+%%%%
+You draw life from %s.
+
+あなたは%sから生命力を吸い取った。
+%%%%
+You feel life flooding into your body.
+
+あなたは自分の体に生命力が流れ込んでくるのを感じた。
+%%%%
+The heat is drained from your surroundings.
+
+あなたの周囲から熱が吸い取られた。
+%%%%
+Something drains the heat from around you.
+
+何かがあなたの周囲から熱を吸い取った。
+%%%%
+drains the heat from the surrounding environment!
+
+は周囲から熱を吸い取った！
+%%%%
+The ambient heat is drained!
+
+周囲の熱が吸い取られた！
+%%%%
+You draw life from your surroundings.
+
+あなたは周囲から生命力を吸い取った。
+%%%%
+Something draws the life force from your surroundings.
+
+何かがあなたの周囲から生命力を吸い取った。
+%%%%
+draws from the surrounding life force!
+
+は周囲から生命力を吸い取った！
+%%%%
+The surrounding life force dissipates!
+
+周囲の生命力が吸い取られた！
+%%%%
+%s %s hurt by the noise.
+
+%sは騒音によって傷ついた。
+%%%%
+The monsters around you reel from the noise!
+
+あなたの周りのモンスターは騒音に怯えた！
+%%%%
+Draining that being is not a good idea.
+
+そのモンスターに対して生命力を吸い取ろうとするのはよい考えではない。
+%%%%
+Aaaarggghhhhh!
+
+「ギャアアァァァァ！」
+%%%%
+You feel life coursing into your body.
+
+あなたは自分の体に生命力が流れ込んでくるのを感じた。
+%%%%
+You freeze %s.
+
+あなたは%sを凍りつかせた。
+%%%%
+But air would do no harm to %s!
+
+しかし%sは風で傷つくことはない！
+%%%%
+The air twists arounds and harmlessly tosses %s around.
+
+周辺の空気が渦巻き、%sは傷つくことなく投げ出された。
+%%%%
+The air twists around and %sstrikes %s!
+
+周辺の空気が渦巻き、%sを%s打ち付けた！
+%%%%
+violently
+
+激しく
+%%%%
+A door shatters!
+
+扉が粉砕された！
+%%%%
+An iron grate is ripped into pieces!
+
+鉄格子が粉々に砕けた！
+%%%%
+The dungeon shakes!
+
+迷宮が揺れ動いた！
+%%%%
+The dungeon rumbles!
+
+迷宮が鳴動した！
+%%%%
+Ka-crash!
+
+ドッカーン！
+%%%%
+You shudder from the earth-shattering force.
+
+あなたは大地を揺るがす力に身震いをした。
+%%%%
+You shudder.
+
+あなたは身震いした。
+%%%%
+by Shatter
+
+粉砕の呪文によって
+%%%%
+The dungeon shakes around %s!
+
+迷宮内の%sの周囲が揺れ動いた！
+%%%%
+The dungeon rumbles around %s!
+
+迷宮内の%sの周囲が鳴動した！
+%%%%
+%s shudder%s.
+
+%sは激しく身震いした。
+%%%%
+There is a shattering impact!
+
+粉砕の衝撃が走った！
+%%%%
+%s is blasted with magical radiation!
+
+%sは強力な魔力の放射にさらされた！
+%%%%
+You erupt in a fountain of uncontrolled magic!
+
+あなたは暴走した魔力を放射した！
+%%%%
+erupts in a fountain of uncontrolled magic!
+
+は暴走した魔力を放射した！
+%%%%
+seems to burn from within!
+
+は体の内部から焼かれているようだ！
+%%%%
+You feel like your blood is boiling!
+
+あなたの血液が煮えたぎっているようだ！
+%%%%
+The poison in your system burns terribly!
+
+あなたの体内の毒が激しく燃えさかった！
+%%%%
+The poison in your system burns!
+
+あなたの体内の毒に火が付いた！
+%%%%
+by burning poison
+
+燃えさかる毒素によって
+%%%%
+You are no longer poisoned.
+
+あなたはもう毒に冒されていない。
+%%%%
+%s %s the poison in %s surroundings!
+
+%sは周囲の毒素を燃焼させた！
+%%%%
+You are struck by lightning.
+
+あなたは稲妻に打たれた。
+%%%%
+by static electricity
+
+空電放射によって
+%%%%
+%s is struck by lightning.
+
+%sは稲妻に打たれた。
+%%%%
+The lightning arcs!
+
+稲妻が弧を描いた！
+%%%%
+The lightning grounds out.
+
+稲妻が地を這った。
+%%%%
+The air around you crackles with electrical energy.
+
+あなたの周囲の帯電した空気がバチバチと音を立てている。
+%%%%
+%s blue arc%s ground%s harmlessly %s you.
+
+青白い電弧があなたの%sで大地に接している。
+%%%%
+by Lee's Rapid Deconstruction
+
+リーの瞬間解体術によって
+%%%%
+%s seems to be unnaturally hard.
+
+%sは異常に固いようだ。
+%%%%
+stone idol
+
+石像
+%%%%
+crystal wall
+
+水晶の壁
+%%%%
+stone arch
+
+石のアーチ
+%%%%
+You can't deconstruct that!
+
+あなたはそれを粉砕できない！
+%%%%
+Really insult Beogh by defacing this idol?
+
+本当にこの像を壊してベオを侮辱しますか？
+%%%%
+The %s shatters!
+
+%sは粉砕された！
+%%%%
+You shatter!
+
+あなたは粉砕された！
+%%%%
+The trees move their gnarly branches around.
+
+樹木がその節くれ立った枝をあたりに這わせた。
+%%%%
+You feel roots moving beneath the ground.
+
+あなたは地中で木の根がうごめくのを感じた。
+%%%%
+Branches wave dangerously above you.
+
+あなたの頭上で枝が危なく揺れている。
+%%%%
+Trunks creak and shift.
+
+木の幹がきしむ音を立てながら動いた。
+%%%%
+Tree limbs sway around you.
+
+木の枝があなたの周囲で揺らめいている。
+%%%%
+@foe@ @is@ waved at by a branch.
+
+@foe@は枝に振り回された。
+%%%%
+A tree reaches out but misses @foe@.
+
+樹木が@foe@に枝を伸ばしたが、躱された。
+%%%%
+A root lunges up near @foe@.
+
+木の根が近くの@foe@を突いた。
+%%%%
+A branch passes through @foe@!
+
+木の枝が@foe@を刺し貫いた！
+%%%%
+A tree reaches out and and passes through @foe@!
+
+樹木が@foe@に枝を伸ばし、刺し貫いた！
+%%%%
+A root lunges and passes through @foe@ from below.
+
+木の根が@foe@を足下から刺し貫いた。
+%%%%
+@foe@ @is@ scraped by a branch!
+
+@foe@は木の枝に引っかかれた！
+%%%%
+A tree reaches out and scrapes @foe@!
+
+樹木が@foe@に枝を伸ばし、引っかいた！
+%%%%
+A root barely touches @foe@ from below.
+
+すんでのところで木の根が@foe@を足下から触れるところだった。
+%%%%
+@foe@ @is@ hit by a branch!
+
+@foe@は木の枝に打ちすえられた！
+%%%%
+A tree reaches out and hits @foe@!
+
+樹木が@foe@に枝を伸ばし、打ちすえた！
+%%%%
+A root smacks @foe@ from below.
+
+木の根が@foe@を足下から打ちすえた。
+%%%%
+by angry trees
+
+怒れる樹木によって
+%%%%
+You can't see any targets in that direction!
+
+その方向には標的が見当たらない！
+%%%%
+You begin to radiate toxic energy.
+
+あなたは毒気を放射しはじめた。
+%%%%
+Your toxic radiance grows in intensity.
+
+あなたの放つ毒気が強さを増した。
+%%%%
+begins to radiate toxic energy.
+
+は毒気を放射しはじめた。
+%%%%
+by Olgreb's Toxic Radiance
+
+オルグレブの毒気の光輪によって
+%%%%
+toxic radiance
+
+
+%%%%
+Without enough magic to sustain it, your searing ray dissipates.
+
+維持に要する魔力が切れたため、焼灼の光線は消え去った。
+%%%%
+You stop channeling your searing ray.
+
+あなたは焼灼の光線を止めた。
+%%%%
+%s %s a mighty blast of ice!
+
+%sは猛烈な氷の嵐を解き放った！
+%%%%
 ############################## spl-summoning.cc ##############################
 %%%%
 You recall your battlesphere and imbue it with additional charge.
