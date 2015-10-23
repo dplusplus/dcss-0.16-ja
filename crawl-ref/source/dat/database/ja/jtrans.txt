@@ -8703,7 +8703,7 @@ freely open your mind to new spells
 %%%%
 Sif Muna is protecting you from the effects of miscast magic.
 
-シフ・ムーナはあなたを魔法が失敗した際の効果から守る。
+シフ・ムーナはあなたを魔法の失敗効果から守る。
 %%%%
 go berserk at will
 
@@ -9905,6 +9905,18 @@ As you tear out the page describing %s, the book crumbles to dust.
 %%%%
 ############################## spl-cast.cc ##############################
 %%%%
+You feel %s %s
+
+あなたは%s%s
+%%%%
+numb sensation.
+
+無力感を感じた。
+%%%%
+surge of power!
+
+魔力の増幅を感じた！
+%%%%
 Type                          Failure   Level
 
 種類                        失敗率     レベル
@@ -9920,6 +9932,26 @@ Press '<w>!</w>' to toggle spell view.
 Press '<w>!</w>' or '<w>I</w>' to toggle spell view.
 
 呪文一覧の表示を切り替えるには '<w>!</w>' または '<w>I</w>' を押してください。
+%%%%
+You cannot cast spells while unable to breathe!
+
+あなたは呼吸ができないため、呪文を唱えることができない！
+%%%%
+You lack the mental capacity to cast spells.
+
+あなたには呪文を唱える精神的余裕がない。
+%%%%
+Something interferes with your magic!
+
+何かがあなたの魔術を阻害している！
+%%%%
+You're too confused to cast spells.
+
+あなたは混乱しすぎており呪文を唱えられない。
+%%%%
+You cannot cast spells when silenced!
+
+あなたは静寂に包まれている間は呪文を唱えられない。
 %%%%
 Cast which spell? (? or * to list)
 
@@ -9957,6 +9989,78 @@ Casting this spell will put you into penance. Really cast?
 The spell is %s to cast%s Continue anyway?
 
 この呪文を唱えるのは%sです%sそれでも続けますか？
+%%%%
+Your control over your magic is sapped.
+
+あなたの魔法の制御力が弱められた。
+%%%%
+Couldn't try casting monster spell because you're on top of a monster.
+
+# ifdef WIZARD
+%%%%
+Couldn't try casting monster spell because there is no empty monster slot.
+
+# ifdef WIZARD
+%%%%
+Invalid player spell, attempting to cast it as monster spell.
+
+# ifdef WIZARD
+%%%%
+You can't repeat %s.
+
+あなたは%sの呪文を繰り返すことができません。
+%%%%
+Sorry, this spell works on others only.
+
+残念ながら、その呪文は他者にしか効果を及ぼしません。
+%%%%
+%s prevents hasting.
+
+%sが加速を阻害した。
+%%%%
+You cannot haste.
+
+あなたは加速できない。
+%%%%
+You fail to access your magic.
+
+あなたは魔力を扱うのに失敗した。
+%%%%
+You feel a surge of divine spite.
+
+あなたは神の悪意が押し寄せるのを感じた。
+%%%%
+does not allow the disloyal to dabble in death!
+
+は不誠実な者が死に関わるのを許さない！
+%%%%
+the malice of Kikubaaqudgha
+
+キクバークッグァの悪意
+%%%%
+does not allow the disloyal to dabble in destruction!
+
+は不誠実なものが破壊に関わるのを許さない！
+%%%%
+the malice of Vehumet
+
+ヴェフメットの悪意
+%%%%
+You miscast %s.
+
+あなたは%sの呪文を唱えるのに失敗した。
+%%%%
+protects you from the effects of your miscast!
+
+は呪文の失敗効果からあなたを守った！
+%%%%
+Spell '%s' is not a player castable spell.
+
+'%s'はプレイヤーが唱えられない呪文です。
+%%%%
+Invalid spell!
+
+無効な呪文です！
 %%%%
 safe
 

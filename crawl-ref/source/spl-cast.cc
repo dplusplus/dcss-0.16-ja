@@ -84,16 +84,15 @@ static void _surge_power(spell_type spell)
 
     if (enhanced)               // one way or the other {dlb}
     {
-        const string modifier = (enhanced  < -2) ? "extraordinarily" :
-                                (enhanced == -2) ? "extremely" :
-                                (enhanced ==  2) ? "strong" :
-                                (enhanced  >  2) ? "huge"
+        const string modifier = (enhanced  < -2) ? "並外れた" :
+                                (enhanced == -2) ? "きわめて強力な" :
+                                (enhanced ==  2) ? "強力な" :
+                                (enhanced  >  2) ? "大きな"
                                                  : "";
-        mprf("You feel %s %s",
-             !modifier.length() ? "a"
-                                : article_a(modifier).c_str(),
-             (enhanced < 0) ? "numb sensation."
-                            : "surge of power!");
+        mprf(jtransc("You feel %s %s"),
+             modifier.c_str(),
+             jtransc((enhanced < 0) ? "numb sensation."
+                                    : "surge of power!"));
     }
 }
 
@@ -569,20 +568,20 @@ static bool _can_cast()
 
     if (you.duration[DUR_WATER_HOLD] && !you.res_water_drowning())
     {
-        mpr("You cannot cast spells while unable to breathe!");
+        mpr(jtrans("You cannot cast spells while unable to breathe!"));
         return false;
     }
 
     if (you.stat_zero[STAT_INT])
     {
-        mpr("You lack the mental capacity to cast spells.");
+        mpr(jtrans("You lack the mental capacity to cast spells."));
         return false;
     }
 
     // Randart weapons.
     if (you.no_cast())
     {
-        mpr("Something interferes with your magic!");
+        mpr(jtrans("Something interferes with your magic!"));
         return false;
     }
 
@@ -600,13 +599,13 @@ static bool _can_cast()
 
     if (you.confused())
     {
-        mpr("You're too confused to cast spells.");
+        mpr(jtrans("You're too confused to cast spells."));
         return false;
     }
 
     if (silenced(you.pos()))
     {
-        mpr("You cannot cast spells when silenced!");
+        mpr(jtrans("You cannot cast spells when silenced!"));
         more();
         return false;
     }
@@ -1278,7 +1277,7 @@ spret_type your_spells(spell_type spell, int powc,
 
         const char *prompt = get_spell_target_prompt(spell);
         if (dir == DIR_DIR)
-            mprf(MSGCH_PROMPT, "%s", prompt ? prompt : "Which direction?");
+            mprf(MSGCH_PROMPT, "%s", jtransc(prompt ? prompt : "Which direction?"));
 
         const bool needs_path = (!testbits(flags, SPFLAG_GRID)
                                  && !testbits(flags, SPFLAG_TARGET));
@@ -1327,7 +1326,7 @@ spret_type your_spells(spell_type spell, int powc,
         if (testbits(flags, SPFLAG_NOT_SELF) && spd.isMe())
         {
             if (spell == SPELL_TELEPORT_OTHER)
-                mpr("Sorry, this spell works on others only.");
+                mpr(jtrans("Sorry, this spell works on others only."));
             else
                 canned_msg(MSG_UNTHINKING_ACT);
 
@@ -1357,7 +1356,7 @@ spret_type your_spells(spell_type spell, int powc,
     if (allow_fail && you.duration[DUR_ANTIMAGIC]
         && x_chance_in_y(you.duration[DUR_ANTIMAGIC] / 3, you.hp_max))
     {
-        mpr("You fail to access your magic.");
+        mpr(jtrans("You fail to access your magic."));
         fail = antimagic = true;
     }
     else if (allow_fail)
@@ -1367,7 +1366,7 @@ spret_type your_spells(spell_type spell, int powc,
         if (!you_worship(GOD_SIF_MUNA)
             && you.penance[GOD_SIF_MUNA] && one_chance_in(20))
         {
-            god_speaks(GOD_SIF_MUNA, "You feel a surge of divine spite.");
+            god_speaks(GOD_SIF_MUNA, jtransc("You feel a surge of divine spite."));
 
             // This will cause failure and increase the miscast effect.
             spfl = -you.penance[GOD_SIF_MUNA];
@@ -1378,8 +1377,8 @@ spret_type your_spells(spell_type spell, int powc,
                  && one_chance_in(20))
         {
             // And you thought you'd Necromutate your way out of penance...
-            simple_god_message(" does not allow the disloyal to dabble in "
-                               "death!", GOD_KIKUBAAQUDGHA);
+            simple_god_message(jtransc(" does not allow the disloyal to dabble in "
+                                       "death!"), GOD_KIKUBAAQUDGHA);
 
             // The spell still goes through, but you get a miscast anyway.
             MiscastEffect(&you, nullptr, GOD_MISCAST + GOD_KIKUBAAQUDGHA,
@@ -1393,8 +1392,8 @@ spret_type your_spells(spell_type spell, int powc,
                  && one_chance_in(20))
         {
             // And you thought you'd Fire Storm your way out of penance...
-            simple_god_message(" does not allow the disloyal to dabble in "
-                               "destruction!", GOD_VEHUMET);
+            simple_god_message(jtransc(" does not allow the disloyal to dabble in "
+                                       "destruction!"), GOD_VEHUMET);
 
             // The spell still goes through, but you get a miscast anyway.
             MiscastEffect(&you, nullptr, GOD_MISCAST + GOD_VEHUMET,
@@ -1452,13 +1451,13 @@ spret_type your_spells(spell_type spell, int powc,
         if (antimagic)
             return SPRET_FAIL;
 
-        mprf("You miscast %s.", spell_title(spell));
+        mprf(jtransc("You miscast %s."), tagged_jtransc("[spell]", spell_title(spell)));
         flush_input_buffer(FLUSH_ON_FAILURE);
         learned_something_new(HINT_SPELL_MISCAST);
 
         if (decimal_chance(_chance_miscast_prot()))
         {
-            simple_god_message(" protects you from the effects of your miscast!");
+            simple_god_message(jtransc(" protects you from the effects of your miscast!"));
             return SPRET_FAIL;
         }
 
@@ -1495,11 +1494,11 @@ spret_type your_spells(spell_type spell, int powc,
 
         if (is_valid_spell(spell))
         {
-            mprf(MSGCH_ERROR, "Spell '%s' is not a player castable spell.",
-                 spell_title(spell));
+            mprf(MSGCH_ERROR, jtransc("Spell '%s' is not a player castable spell."),
+                 tagged_jtransc("[spell]", spell_title(spell)));
         }
         else
-            mprf(MSGCH_ERROR, "Invalid spell!");
+            mpr_nojoin(MSGCH_ERROR, jtrans("Invalid spell!"));
 
         return SPRET_ABORT;
     }
