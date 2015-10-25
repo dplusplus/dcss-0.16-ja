@@ -10596,6 +10596,196 @@ You stop channeling your searing ray.
 
 %sは猛烈な氷の嵐を解き放った！
 %%%%
+############################## spl-goditem.cc ##############################
+%%%%
+You can only heal others!
+
+あなたが癒やせるのは他者だけだ！
+%%%%
+You are healed.
+
+あなたは回復した。
+%%%%
+The light of Elyvilon fails to reach %s.
+
+エリヴィロンの光は%sに届かなかった。
+%%%%
+The light of Elyvilon almost touches upon %s.
+
+エリヴィロンの光はもう少しで%sに届くところだった。
+%%%%
+%s is completely unfazed by your meager offer of peace.
+
+%sはあなたの和平の申し出に全く動じなかった。
+%%%%
+You cannot pacify this monster while %s is sleeping!
+
+あなたはこのモンスターが眠っている間は中立化できない！
+%%%%
+You cannot pacify this monster!
+
+あなたはこのモンスターを中立化できない！
+%%%%
+turns neutral.
+
+は中立化した。
+%%%%
+You heal %s.
+
+あなたは%sを癒した。
+%%%%
+is completely healed.
+
+は完全に回復した。
+%%%%
+Your charged fireball dissipates.
+
+あなたが準備していた遅延式ファイアボールは消滅した。
+%%%%
+You feel strangely stable.
+
+あなたは奇妙な安定感を覚えた。
+%%%%
+You feel limber!
+
+あなたは体が柔らかくなった！
+%%%%
+%sYour magical effects are unravelling.
+
+%s あなたにかかっている魔法の効果が解除された。
+%%%%
+Careful!
+
+[注意！]
+%%%%
+'s magical effects unravel!
+
+にかかっている魔法の効果は解除された！
+%%%%
+You have uncursed all your worn items.
+
+あなたは装備しているアイテムを全て解呪した。
+%%%%
+Uncurse which item?
+
+どのアイテムを解呪しますか？
+%%%%
+Choose a cursed equipped item, or Esc to abort.
+
+装備中の呪われているアイテムを選択してください。(ESCキーでキャンセル)
+%%%%
+You feel as if something is helping you.
+
+あなたは何か偉大な存在から助けを受けたような気がした。
+%%%%
+None of your equipped items are cursed.
+
+あなたの装備しているアイテムは何も呪われていない。
+%%%%
+You feel blessed for a moment.
+
+あなたは一瞬祝福されたような気がした。
+%%%%
+Choose an uncursed equipped piece of %s, or Esc to abort.
+
+呪われていない%sを選択してください。(ESCキーでキャンセル)
+%%%%
+You aren't wearing any piece of uncursed %s.
+
+あなたは呪われていない%sを装備していない。
+%%%%
+You briefly glimpse something next to %s.
+
+あなたは%sの隣に何かを垣間見た。
+%%%%
+You need more space to imprison %s.
+
+%sを収監するにはもっと場所が必要だ。
+%%%%
+Zin imprisons %s with walls of pure silver!
+
+ジンは%sを純銀の壁で閉じ込めた！
+%%%%
+Walls emerge from the floor!
+
+壁が床からせり出した！
+%%%%
+The dungeon rumbles ominously, and rocks fall from the ceiling!
+
+迷宮は不気味に鳴動し、岩が天井から落ちてきた！
+%%%%
+You smite %s!
+
+あなたは%sに一撃を食らわせた！
+%%%%
+You are blasted by holy energy!
+
+あなたは聖なるエネルギーを浴びせられた！
+%%%%
+Zin's holy word
+
+ジンの聖なる御言葉
+%%%%
+the Shining One's holy word
+
+輝けるものの聖なる御言葉
+%%%%
+is blasted by Zin's holy word!
+
+はジンの聖なる御言葉の威光をその身に受けた！
+%%%%
+convulses!
+
+は苦痛を感じた！
+%%%%
+%s %s a Word of immense power!
+
+%sは計り知れぬ威力を持つ言葉を放った！
+%%%%
+shields you from torment!
+
+はあなたを邪悪な苦痛から守った！
+%%%%
+partially shields you from torment!
+
+はあなたを邪悪な苦痛からある程度守った！
+%%%%
+You feel a surge of unholy energy.
+
+あなたは不浄なエネルギーの奔流を感じた。
+%%%%
+# Your body is wracked with pain!
+
+# あなたの肉体は苦痛を受けている！
+%%%%
+Symbol of Torment
+
+苦痛の紋章
+%%%%
+Sceptre of Torment
+
+苦悩の王笏
+%%%%
+a scroll of torment
+
+拷問の巻物
+%%%%
+Xom's torment
+
+ゾムよりの苦痛
+%%%%
+Kikubaaqudgha's torment
+
+キクバークッグァよりの苦痛
+%%%%
+an exploding lurking horror
+
+潜伏する恐怖の爆発
+%%%%
+by torment
+
+苦痛によって
+%%%%
 ############################## spl-summoning.cc ##############################
 %%%%
 You recall your battlesphere and imbue it with additional charge.
