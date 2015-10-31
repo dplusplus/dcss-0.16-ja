@@ -7415,11 +7415,11 @@ You close the %s%s.
 %%%%
 A chunk of your corpse armour falls away.
 
-あなたの身につけている屍体の鎧がいくらか剥がれ落ちた。
+あなたを覆う屍肉の鎧がいくらか剥がれ落ちた。
 %%%%
 The last of your corpse armour falls away.
 
-あなたの身につけていた屍体の鎧は剥がれ落ちた。
+あなたを覆う屍肉の鎧が全て剥がれ落ちた。
 %%%%
 ############################## player.h ##############################
 %%%%
@@ -12208,6 +12208,148 @@ glows brighter.
 seems to slow down.
 
 は動きが遅くなったようだ。
+%%%%
+############################## spl-other.cc ##############################
+%%%%
+The poison in your system diminishes.
+
+あなたの体内の毒は弱まった。
+%%%%
+You can't draw power from your own body while in Death's door.
+
+あなたは死のとば口に立っている間は自身の力を引き出すことができない。
+%%%%
+You don't have enough blood to draw power from your own body.
+
+あなたは自身の力を引き出すには血の気が足りない。
+%%%%
+Your body is bloodless.
+
+あなたの体には血が通っていない。
+%%%%
+Your attempt to draw power from your own body fails.
+
+あなたは自身の力を引き出そうとしたが失敗した。
+%%%%
+You draw magical energy from your own body!
+
+あなたは魔力を自らの体から引き出した！
+%%%%
+Malign forces permeate your being, awaiting release.
+
+邪悪な力があなたの体に満ち、解き放たれるのを待っている。
+%%%%
+You begin recalling your allies.
+
+あなたは仲間を呼び戻しはじめた。
+%%%%
+Nothing appears to have answered your call.
+
+あなたの呼びかけに応えるものはいなかった。
+%%%%
+You finish recalling your allies.
+
+あなたは仲間の招集を終えた。
+%%%%
+You are anchored firmly to the material plane!
+
+あなたは物質界にしっかりと繋ぎ止められている。
+%%%%
+You feel the strange sensation of being on two planes at once.
+
+あなたは同時に二つの次元に存在するという奇妙な感覚を覚えた。
+%%%%
+You feel the material plane grow further away.
+
+あなたは物質界がさらに遠くなったと感じた。
+%%%%
+That's not a passable wall.
+
+この壁は通り抜けられない。
+%%%%
+You sense an overwhelming volume of rock.
+
+あなたは岩の量に圧倒された。
+%%%%
+Something is blocking your path through the rock.
+
+何かが岩を通り抜けるのを邪魔している。
+%%%%
+This rock feels extremely deep.
+
+この岩は非常に厚く感じられる。
+%%%%
+You fail to penetrate the rock.
+
+あなたは岩を通り抜けるのに失敗した。
+%%%%
+You sense a large body of water on the other side of the rock.
+
+あなたは壁の向こう側に大きな水たまりがあるのを感じた。
+%%%%
+You sense an intense heat on the other side of the rock.
+
+あなたは壁の向こう側にある高熱の物体を感じ取った。
+%%%%
+You radiate an intoxicating aura.
+
+あなたは酩酊のオーラを放った。
+%%%%
+Your head spins!
+
+あなたの頭の中がぐるぐるした！
+%%%%
+You can't cast this spell while wearing a shield.
+
+あなたは本物の盾を装備している間はこの呪文を唱えることができない。
+%%%%
+Your ring of flames would instantly melt the ice.
+
+炎の円環を唱えた状態ではすぐさま氷が溶けてしまう。
+%%%%
+The disc of vapour around you crackles some more.
+
+あなたの周囲にある円盤状の気体がさらにピキピキと音を立てた。
+%%%%
+A crackling disc of dense vapour forms in the air!
+
+ピキピキと音を立てる凝集した円盤状の気体が空中に形成された！
+%%%%
+This spell does not affect your current form.
+
+この呪文は現在の姿では意味がない。
+%%%%
+Turning your skin into stone would shatter your icy armour.
+
+皮膚を石へと変えると氷の鎧が砕けてしまう。
+%%%%
+Your skin feels harder.
+
+あなたの皮膚はさらに硬くなった。
+%%%%
+Your stone body feels more resilient.
+
+あなたの石像の躯はより強固になった。
+%%%%
+Your skin hardens.
+
+あなたの皮膚は石のように硬くなった。
+%%%%
+Your corpse armour falls away.
+
+あなたを覆う屍肉の鎧が剥がれ落ちた。
+%%%%
+It would have no effect in that bright light!
+
+このまぶしい光の中では効果がない！
+%%%%
+It gets a bit darker.
+
+あたりがさらに暗くなった。
+%%%%
+It gets dark.
+
+あたりが暗くなった。
 %%%%
 ############################## spl-summoning.cc ##############################
 %%%%
