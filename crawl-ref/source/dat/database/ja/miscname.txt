@@ -47,16 +47,16 @@ _colour_name_
 空色
 #%azure
 
-ベージュ
+ベージュ色
 #%beige
 
-黒
+黒色
 #%black
 
-青
+青色
 #%blue
 
-ブロンズ
+青銅色
 #%bronze
 
 茶色
@@ -83,13 +83,13 @@ _colour_name_
 金色
 #%gold
 
-緑
+緑色
 #%green
 
 灰色
 #%grey
 
-灰青紫
+灰青紫色
 #%gridelin
 
 藍色
@@ -101,13 +101,13 @@ _colour_name_
 黄緑
 #%leaf green
 
-ライム
+ライム色
 #%lime green
 
 深紅
 #%magenta
 
-マリーゴールド
+マリーゴールド色
 #%marigold
 
 藤色
@@ -116,16 +116,16 @@ _colour_name_
 黄土色
 #%ochre
 
-オレンジ
+オレンジ色
 #%orange
 
 ピンク
 #%pink
 
-紫
+紫色
 #%purple
 
-赤
+赤色
 #%red
 
 朱色
@@ -143,7 +143,7 @@ _colour_name_
 青緑色
 #%viridian
 
-白
+白色
 #%white
 
 黄色

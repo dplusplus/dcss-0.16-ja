@@ -10446,7 +10446,7 @@ The lightning grounds out.
 %%%%
 The air around you crackles with electrical energy.
 
-あなたの周囲の帯電した空気がバチバチと音を立てている。
+あなたの周りの帯電した空気がバチバチと爆ぜている。
 %%%%
 %s blue arc%s ground%s harmlessly %s you.
 
@@ -10785,6 +10785,1407 @@ an exploding lurking horror
 by torment
 
 苦痛によって
+%%%%
+############################## spl-miscast.cc ##############################
+%%%%
+The dungeon shakes, a horrible noise fills the air, and a portal to some otherworldly place is opened!
+
+迷宮は揺れ、恐るべき轟音が大気を満たし、そして異世界への門が開かれた！
+%%%%
+watches you with interest.
+
+はあなたを興味深く眺めた。
+%%%%
+bandages
+
+包帯
+%%%%
+hair
+
+髪
+%%%%
+Your body is distorted in a weirdly horrible way!
+
+あなたの肉体は奇怪でおぞましい形に歪められた！
+%%%%
+Sparks fly from your @hands@!
+
+あなたの@hands@から火花が散った！
+%%%%
+Sparks fly from @the_monster@'s @hands@!
+
+@the_monster@の@hands@から火花が散った！
+%%%%
+The air around you crackles with energy!
+
+あなたの周りの大気がエネルギーを帯びてバチバチと爆ぜた！
+%%%%
+The air around @the_monster@ crackles with energy!
+
+@the_monster@の周りの大気がエネルギーを帯びてバチバチと爆ぜた！
+%%%%
+Wisps of smoke drift from your @hands@.
+
+あなたの@hands@から一筋の煙が流れた。
+%%%%
+Wisps of smoke drift from @the_monster@'s @hands@.
+
+@the_monster@の@hands@から一筋の煙が流れた。
+%%%%
+You feel a strange surge of energy!
+
+あなたは奇妙なエネルギーの高まりを感じた！
+%%%%
+You are momentarily dazzled by a flash of light!
+
+あなたは一瞬眩しい光に眩惑された！
+%%%%
+@The_monster@ emits a flash of light!
+
+@The_monster@は眩しい光を放った！
+%%%%
+Strange energies run through your body.
+
+奇妙なエネルギーがあなたの体を通り抜けた。
+%%%%
+@The_monster@ glows %s for a moment.
+
+@The_monster@は一瞬%sに輝いた。
+%%%%
+Your skin tingles.
+
+あなたの皮膚がむずむずした。
+%%%%
+@The_monster@ twitches.
+
+@The_monster@は身をよじった。
+%%%%
+Your skin glows momentarily.
+
+あなたの皮膚は一瞬輝いた。
+%%%%
+@The_monster@ glows momentarily.
+
+@The_monster@は一瞬輝いた。
+%%%%
+You smell something strange.
+
+何か奇妙な臭いがした。
+%%%%
+Your bandages flutter.
+あなたの包帯がひらひらとはためいた。
+%%%%
+Your %s stand%s on end.
+
+あなたの%sが逆立った。
+%%%%
+Smoke pours from your @hands@!
+
+あなたの@hands@から煙が湧きだした！
+%%%%
+Smoke pours from @the_monster@'s @hands@!
+
+@the_monster@の@hands@から煙が湧きだした！
+%%%%
+Smoke appears from out of nowhere!
+
+煙がどこからか湧きだした！
+%%%%
+A wave of violent energy washes through your body!
+
+暴力的なエネルギーの波があなたの体を通り抜けた！
+%%%%
+@The_monster@ lurches violently!
+
+@The_monster@は激しくよろめいた！
+%%%%
+Energy rips through your body!
+
+エネルギーがあなたの体を切り裂いた！
+%%%%
+@The_monster@ jerks violently!
+
+@The_monster@は体を激しく痙攣させた！
+%%%%
+You are caught in a violent explosion!
+
+あなたは猛烈な爆発に巻き込まれた！
+%%%%
+@The_monster@ is caught in a violent explosion!
+
+@The_monster@は猛烈な爆発に巻き込まれた！
+%%%%
+A violent explosion happens from out of thin air!
+
+猛烈な爆発が空中で起きた！
+%%%%
+You are blasted with magical energy!
+
+あなたは魔法のエネルギーの放射を受けた！
+%%%%
+@The_monster@ is blasted with magical energy!
+
+@The_monster@は魔法のエネルギーの放射を受けた！
+%%%%
+There is a sudden explosion of magical energy!
+
+突然魔法のエネルギーの爆発が起きた！
+%%%%
+Your @hands@ glow momentarily.
+
+あなたの@hands@は一瞬輝いた。
+%%%%
+@The_monster@'s @hands@ glow momentarily.
+
+@The_monster@の@hands@は一瞬輝いた。
+%%%%
+You feel off-balance for a moment.
+
+あなたは一瞬バランスを崩した。
+%%%%
+@The_monster@ looks off-balance for a moment.
+
+@The_monster@は一瞬バランスを崩したようだ。
+%%%%
+Multicoloured lights dance before your eyes!
+
+色とりどりの光があなたの目の前で踊った！
+%%%%
+Multicoloured lights dance around @the_monster@!
+
+色とりどりの光が@the_monster@の周りで踊った！
+%%%%
+Multicoloured lights dance in the air!
+
+色とりどりの光が空中で踊った！
+%%%%
+You feel a bit tired.
+
+あなたは少し疲れたような気がした。
+%%%%
+@The_monster@ looks sleepy for a second.
+
+@The_monster@は一瞬眠そうな素振りをした。
+%%%%
+The light around you dims momentarily.
+
+あなたの周囲の明かりが一瞬薄暗くなった。
+%%%%
+The light around @the_monster@ dims momentarily.
+
+@the_monster@の周囲の明かりが一瞬薄暗くなった。
+%%%%
+A patch of light dims momentarily.
+
+迷宮の一区画の明かりが一瞬薄暗くなった。
+%%%%
+@The_monster@'s body glows momentarily.
+
+@The_monster@の体が一瞬輝いた。
+%%%%
+You hear an indistinct dissonance whispering inside your mind.
+
+あなたはぼんやりとした不協和音の幻聴を聞いた。
+%%%%
+You sense a malignant aura.
+
+あなたは悪意のオーラを感じた。
+%%%%
+An unnatural silence engulfs you.
+
+不自然なまでの静寂があなたを包んだ。
+%%%%
+An unnatural silence engulfs @The_monster@.
+
+不自然なまでの静寂が@The_monster@を包んだ。
+%%%%
+You feel susceptible to magic.
+
+あなたは魔法に弱くなったようだ。
+%%%%
+@The_monster@ looks more susceptible to magic.
+
+@The_monster@は魔法に弱くなったようだ。
+%%%%
+The air around @the_monster@ crackles with energy!
+
+@the_monster@の周りの大気がエネルギーを帯びてバチバチと爆ぜた！
+%%%%
+Waves of light ripple over your body.
+
+光の波があなたの体の上を流れた。
+%%%%
+Waves of light ripple over @the_monster@'s body.
+
+光の波が@the_monster@の体の上を流れた。
+%%%%
+Waves of light ripple over @the_monster@.
+
+光の波が@the_monster@の上を流れた。
+%%%%
+You hear something strange.
+
+何か奇妙な物音が聞こえた。
+%%%%
+Your beak vibrates slightly.
+
+あなたのクチバシがわずかに振動した。
+%%%%
+Your skull vibrates slightly.
+
+あなたの頭蓋骨がわずかに振動した。
+%%%%
+Magic surges out from your body!
+
+魔力があなたの体から抜けていった！
+%%%%
+Magic surges out from @the_monster@!
+
+魔力が@the_monster@の体から抜けていった！
+%%%%
+Magic surges out from thin air!
+
+魔力が空中から湧きだしたように見えた！
+%%%%
+You catch a glimpse of the back of your own head.
+
+あなたは背後からの視線を感じた。
+%%%%
+The air around something crackles with energy!
+
+何かの周りの帯電した空気がバチバチと爆ぜている！
+%%%%
+You feel a wrenching sensation.
+
+あなたは体がねじられたような感触がした。
+%%%%
+@The_monster@ jerks violently for a moment.
+
+@The_monster@はしばしの間体を激しく痙攣させた！
+%%%%
+The floor and the ceiling briefly switch places.
+
+床と天井が一瞬にして入れ替わった。
+%%%%
+You spin around.
+
+あなたはその場でクルクルと回転した。
+%%%%
+@The_monster@ spins around.
+
+@The_monster@はその場でクルクルと回転した。
+%%%%
+Strange energies run through your body.
+
+奇妙なエネルギーがあなたの体を通り抜けた。
+%%%%
+The world appears momentarily distorted!
+
+世界が一瞬歪んで見えた！
+%%%%
+@The_monster@ appears momentarily distorted!
+
+@The_monster@の姿は一瞬歪んだ！
+%%%%
+You feel uncomfortable.
+
+あなたは居心地の悪さを感じた。
+%%%%
+@The_monster@ scowls.
+
+@The_monster@は顔をしかめた。
+%%%%
+You are caught in a localised field of spatial distortion.
+
+あなたは局所的な空間歪曲にとらわれた。
+%%%%
+@The_monster@ is caught in a localised field of spatial distortion.
+
+@The_monster@は局所的な空間歪曲にとらわれた。
+%%%%
+A piece of empty space twists and distorts.
+
+局所的な空間歪曲が起こった。
+%%%%
+Space bends around you!
+
+あなたの周囲の空間が歪んだ！
+%%%%
+Space bends around @the_monster@!
+
+@the_monster@の周囲の空間が歪んだ！
+%%%%
+Space twists in upon itself!
+
+空間が渦を巻いて歪んだ！
+%%%%
+You are caught in a strong localised spatial distortion.
+
+あなたは局所的な激しい空間歪曲にとらわれた。
+%%%%
+@The_monster@ is caught in a strong localised spatial distortion.
+
+@The_monster@は局所的な激しい空間歪曲にとらわれた。
+%%%%
+A piece of empty space twists and writhes.
+
+局所的な空間歪曲が起こった。
+%%%%
+You are crushed and pinned by an extremely strong localised spatial distortion!
+
+あなたは強烈な局所的空間歪曲に固定され、くしゃくしゃにされた！
+%%%%
+@The_monster@ is crushed and pinned by an extremely strong localised spatial distortion!
+
+@The_monster@は強烈な局所的空間歪曲に固定され、くしゃくしゃにされた！
+%%%%
+A rift temporarily opens in the fabric of space!
+
+空間の裂け目が一瞬口を開けた！
+%%%%
+Space warps crazily around you!
+
+あなたの周りの空間がめちゃくちゃに歪んだ！
+%%%%
+Space warps crazily around @the_monster@!
+
+@the_monster@の周りの空間がめちゃくちゃに歪んだ！
+%%%%
+Shadowy shapes form in the air around you, then vanish.
+
+影のように平べったい物体があなたの近くに現れ、すぐに消え去った。
+%%%%
+Shadowy shapes form in the air around @the_monster@, then vanish.
+
+影のように平べったい物体が@the_monster@の近くに現れ、すぐに消え去った。
+%%%%
+You hear strange voices.
+
+あなたは奇妙な声を耳にした。
+%%%%
+You feel momentarily dizzy.
+
+あなたは一瞬眩暈がした。
+%%%%
+Your head hurts.
+
+あなたは頭痛がした。
+%%%%
+Your brain hurts!
+
+あなたは頭痛がした！
+%%%%
+The world appears momentarily distorted.
+
+世界が一瞬歪んで見えた。
+%%%%
+@The_monster@ appears momentarily distorted.
+
+@The_monster@の姿は一瞬歪んだ。
+%%%%
+A fistful of eyes flickers past your view.
+
+たくさんの眼があなたの目の前でまたたいた。
+%%%%
+Distant voices call out to you!
+
+遠くであなたを呼ぶ声がした。
+%%%%
+Distant voices call out to @the_monster@!
+
+遠くで@the_monster@を呼ぶ声がした。
+%%%%
+You feel watched.
+
+あなたは誰かに見られているような気がした。
+%%%%
+You are caught in a localised spatial distortion.
+
+あなたは局所的な空間歪曲にとらわれた。
+%%%%
+@The_monster@ is caught in a localised spatial distortion.
+
+@The_monster@は局所的な空間歪曲にとらわれた。
+%%%%
+An empty piece of space distorts and twists.
+
+局所的な空間歪曲が起こった。
+%%%%
+Something appears in a flash of light!
+
+何かが眩しい光と共に現れた！
+%%%%
+Something forms from out of thin air!
+
+何かが空中から現れた！
+%%%%
+A chorus of moans calls out to you!
+
+複数のうめき声があなたを呼んでいる！
+%%%%
+A chorus of moans calls out!
+
+複数のうめき声が聞こえる！
+%%%%
+Desperate hands claw out from thin air!
+
+虚空をかきむしる腕が空中から現れた！
+%%%%
+You sense a hostile presence.
+
+あなたは敵意を振りまく存在に気付いた。
+%%%%
+Something turns its malign attention towards you...
+
+何かがあなたに悪意を向けている……
+%%%%
+You sense a malign presence.
+
+あなたは悪意を振りまく存在に気付いた。
+%%%%
+Weird images run through your mind.
+
+奇妙なイメージがあなたの脳裏に浮かんだ。
+%%%%
+Your nose twitches.
+
+あなたは鼻がかゆくなった。
+%%%%
+Everything looks hazy for a moment.
+
+一瞬何もかもがぼやけて見えた。
+%%%%
+You seem to have forgotten something, but you can't remember what it was!
+
+あなたは何かを忘れたような気がしたが、何だったか思い出せない！
+%%%%
+You feel a little dazed.
+
+あなたは少し眩暈がした。
+%%%%
+You suddenly recall your previous life!
+
+あなたは突然生前のことを思い出した。
+%%%%
+You have damaged your brain!
+
+あなたは脳にダメージを食らった！
+%%%%
+You have a terrible headache.
+
+あなたはひどい頭痛がした。
+%%%%
+You lose your focus.
+
+あなたは集中力を失った。
+%%%%
+You suddenly feel drained of magical energy!
+
+あなたは突然魔力を吸われたような気がした！
+%%%%
+You lose concentration completely!
+
+あなたはまったく集中できない！
+%%%%
+@The_monster@ looks momentarily confused.
+
+@The_monster@は一瞬混乱したようだ。
+%%%%
+@The_monster@ looks slightly disoriented.
+
+@The_monster@は軽い見当識喪失にかかったようだ。
+%%%%
+@The_monster@ looks disoriented.
+
+@The_monster@は見当識喪失にかかったようだ。
+%%%%
+@The_monster@ shudders.
+
+@The_monster@は身震いした。
+%%%%
+@The_monster@ reels.
+
+@The_monster@はよろめいた。
+%%%%
+protects you from your miscast necromantic spell!
+
+はあなたを死霊術の失敗効果から守った！
+%%%%
+averts the curse.
+
+は呪いを防いだ。
+%%%
+partially averts the curse.
+
+は呪いをいくらか防いだ。
+%%%%
+You hear strange and distant voices.
+
+あなたは遠くからの奇妙な声を耳にした。
+%%%%
+You feel homesick.
+
+あなたは故郷が恋しくなった。
+%%%%
+Pain shoots through your body.
+
+苦痛があなたの体を貫いた。
+%%%%
+@The_monster@ twitches violently.
+
+@The_monster@は激しく痙攣した。
+%%%%
+You feel numb.
+
+あなたは無感覚になった。
+%%%%
+Your bones ache.
+
+あなたの骨が痛んだ。
+%%%%
+@The_monster@ pauses, visibly distraught.
+
+@The_monster@は立ち止まり、目に見えて取り乱した。
+%%%%
+The world around you seems to dim momentarily.
+
+あなたの周囲の明かりが一瞬薄暗くなったようだ。
+%%%%
+@The_monster@ seems to dim momentarily.
+
+@The_monster@は一瞬あたりがよく見えなくなったようだ。
+%%%%
+You shiver with cold.
+
+あなたは寒さに震えた。
+%%%%
+@The_monster@ shivers with cold.
+
+@The_monster@は寒さに震えた。
+%%%%
+@The_monster@ is briefly tinged with black.
+
+@The_mosnter@は一瞬黒く染まった。
+%%%%
+The air has a black tinge for a moment.
+
+大気が一瞬薄黒く染まった。
+%%%%
+You feel very uncomfortable.
+
+あなたは非常に居心地が悪くなった。
+%%%%
+@The_monster@ scowls horribly.
+
+@The_monster@は恐怖で顔をしかめた。
+%%%%
+You feel weird for a moment.
+
+あなたは一瞬奇妙な気分になった。
+%%%%
+@The_monster@ has a weird expression for a moment.
+
+@The_monster@は一瞬奇妙な表情をした。
+%%%%
+Pain shoots through your body!
+
+苦痛があなたの体を貫いた！
+%%%%
+@The_monster@ convulses with pain!
+
+@The_monster@は苦痛に身もだえした！
+%%%%
+You feel horribly lethargic.
+
+あなたは恐怖で無気力感を覚えた。
+%%%%
+@The_monster@ looks incredibly listless.
+
+@The_monster@は非常に無気力になっているように見える。
+%%%%
+You begin to rot!
+
+あなたの体は腐り始めた！
+%%%%
+Flickering shadows surround you.
+
+ゆらめく影があなたを取り囲んだ。
+%%%%
+Flickering shadows surround @the_monster@.
+
+ゆらめく影が@the_monster@を取り囲んだ。
+%%%%
+Shadows flicker in the thin air.
+
+影が空中で揺らめいている。
+%%%%
+You are engulfed in negative energy!
+
+あなたは負のエネルギーに包まれた！
+%%%%
+@The_monster@ is engulfed in negative energy!
+
+@The_monster@は負のエネルギーに包まれた！
+%%%%
+You convulse helplessly as pain tears through your body!
+
+全身を苦痛に引き裂かれ、あなたは力なく痙攣した！
+%%%%
+@The_monster@ convulses helplessly with pain!
+
+@The_monster@は力なく痙攣した！
+%%%%
+Something just walked over your grave. No, really!
+
+何かが今、あなたの墓の上を歩いて行った。本当だって！
+%%%%
+@The_monster@ seems frightened for a moment.
+
+@The_monster@は一瞬怯えたようだ。
+%%%%
+Something reaches out for you...
+
+何かがあなたに向かって這い出した……
+%%%%
+Something reaches out for @the_monster@...
+
+何かが@the_monster@に向かって這い出した……
+%%%%
+Something reaches out from thin air...
+
+何かが宙に向かって這い出した……
+%%%%
+Death has come for you...
+
+死神があなたを迎えにきた……
+%%%%
+Death has come for @the_monster@...
+
+死神が@the_monster@を迎えにきた……
+%%%%
+Death appears from thin air...
+
+死神が宙から現れた……
+%%%%
+The thin air crackles with energy!
+
+空中でエネルギーが爆ぜた！
+%%%%
+There is a strange surge of energy around @the_monster@.
+
+奇妙なエネルギーの高まりが@the_monsterの周囲に発生した。
+%%%%
+Waves of light ripple in the air.
+
+光の波が空中を流れた。
+%%%%
+Your %s momentarily turn%s into snakes!
+
+あなたの%sは一瞬蛇へと変化した！
+%%%%
+Your body is twisted painfully.
+
+あなたの体は痛々しく捻られた。
+%%%%
+@The_monster@'s body twists unnaturally.
+
+@The_monster@の体は不自然なほどに捻れた。
+%%%%
+Shape-changing energy floods out from your body and enlargens the floor mites!
+
+変異術の魔力があなたの体から漏れ出し、床にいたダニを巨大化させた！
+%%%%
+Shape-changing energy floods out from @the_monster@ and enlargens the floor mites!
+
+変異術の魔力が@the_monster@の体から漏れ出し、床にいたダニを巨大化させた！
+%%%%
+Shape-changing energy pours out from thin air and enlargens the floor mites!
+
+変異術の魔力が空中から漏れ出し、床にいたダニを巨大化させた！
+%%%%
+Your body is twisted very painfully!
+
+あなたの体は非常に痛々しく捻られた。
+%%%%
+@The_monster@'s body twists and writhes.
+
+@The_monster@の体は捻れ、悶え苦しんだ。
+%%%%
+Your limbs ache and wobble like jelly!
+
+あなたの四肢は痛み、ジェリーのようにぐらついた！
+%%%%
+@The_monster@ looks weaker.
+
+@The_monster@は弱くなったようだ。
+%%%%
+Your body is flooded with distortional energies!
+
+あなたの体は歪曲のエネルギーで満ち溢れた！
+%%%%
+@The_monster@'s body is flooded with distortional energies!
+
+@The_monster@の体は歪曲のエネルギーで満ち溢れた！
+%%%%
+You feel very strange.
+
+あなたは非常に奇妙な気分がした。
+%%%%
+The air around you burns with energy!
+
+あなたの周りの大気がエネルギーで燃えあがった！
+%%%%
+The air around @the_monster@ burns with energy!
+
+@the_monster@の周りの大気がエネルギーで燃えあがった！
+%%%%
+You have a brief vision of globes of primordial fire.
+
+あなたは一瞬原初の火球の幻影を目にした。
+%%%%
+You smell smoke.
+
+あなたは煙の臭いを嗅いだ。
+%%%%
+Heat runs through your body.
+
+あなたの体を熱気が駆け抜けた。
+%%%%
+You feel uncomfortably hot.
+
+あなたは不快なまでの熱気を感じた。
+%%%%
+Lukewarm flames ripple over your body.
+
+生ぬるい炎があなたの体の上を流れた。
+%%%%
+Dim flames ripple over @the_monster@'s body.
+
+ほのかな炎が@the_monster@の体の上を流れた。
+%%%%
+You hear a sizzling sound.
+
+あなたはジュージューという音を耳にした。
+%%%%
+You feel like you have heartburn.
+
+あなたは胸焼けを覚えた。
+%%%%
+Fire whirls out from your @hands@!
+
+渦巻く炎があなたの@hands@から巻き起こった！
+%%%%
+Fire whirls out @the_monster@'s @hands@!
+
+渦巻く炎が@the_monster@の@hands@から巻き起こった！
+%%%%
+Fire whirls out of nowhere!
+
+渦巻く炎がどこからともなく巻き起こった！
+%%%%
+Flames sear your flesh.
+
+炎があなたの肉を焦がした。
+%%%%
+Flames sear @the_monster@.
+
+炎が@the_monster@の肉を焦がした。
+%%%%
+You are blasted with fire.
+
+あなたは炎を浴びた。
+%%%%
+@The_monster@ is blasted with fire.
+
+@The_monster@は炎を浴びた。
+%%%%
+A flame briefly burns in thin air.
+
+何もないところで一瞬炎が燃え上がった。
+%%%%
+You are caught in a fiery explosion!
+
+あなたは炎の爆発に巻き込まれた！
+%%%%
+@The_monster@ is caught in a fiery explosion!
+
+@The_monster@は炎の爆発に巻き込まれた！
+%%%%
+Fire explodes from out of thin air!
+
+何もないところで爆炎が巻き起こった！
+%%%%
+You are blasted with searing flames! The searing flames burn away your fire resistance!
+
+あなたは灼けつく炎を浴びた！ あなたが持つ火炎への耐性が弱まった！
+%%%%
+@The_monster@ is blasted with searing flames! The searing flames burn away @possessive@ fire resistance!
+
+@The_monster@は灼けつく炎を浴び、火炎への耐性が弱まった！
+%%%%
+A large flame burns hotly for a moment in the thin air.
+
+巨大な火炎が何もないところで一瞬燃えさかった。
+%%%%
+There is a sudden and violent explosion of flames!
+
+突然猛烈な爆発が起こった！
+%%%%
+You are covered in liquid flames!
+
+あなたは燃えたぎる液体をかぶっている！
+%%%%
+@The_monster@ is covered in liquid flames!
+
+@The_monster@は燃えたぎる液体をかぶっている！
+%%%%
+A chill runs through your body.
+
+冷気があなたの体を走り抜けた。
+%%%%
+Wisps of condensation drift from your @hands@.
+
+あなたの@hands@から一筋の湯気が流れた。
+%%%%
+Wisps of condensation drift from @the_monster@'s @hands@.
+
+@the_monster@の@hands@から一筋の湯気が流れた。
+%%%%
+Wisps of condensation drift in the air.
+
+何もないところから湯気が漂った。
+%%%%
+Your @hands@ feel@hand_conj@ numb with cold.
+
+あなたの@hands@の感覚がなくなった。
+%%%%
+You feel uncomfortably cold.
+
+あなたは不快なまでの冷気を感じた。
+%%%%
+Frost covers your body.
+
+霜があなたの体を覆った。
+%%%%
+Frost covers @the_monster@'s body.
+
+霜が@the_monster@の体を覆った。
+%%%%
+You hear a crackling sound.
+
+あなたはピキピキ言う音を耳にした。
+%%%%
+A snowflake lands on your nose.
+
+雪の結晶があなたの鼻にくっついた。
+%%%%
+A thin layer of ice forms on %s
+
+薄い氷の層が%sの上に張った。
+%%%%
+Frost spreads across %s
+
+%sの上に霜が降りた。
+%%%%
+You feel extremely cold.
+
+あなたは凍てつく冷気を感じた。
+%%%%
+You are covered in a thin layer of ice.
+
+あなたは氷の薄い層で覆われてしまった。
+%%%%
+@The_monster@ is covered in a thin layer of ice.
+
+@The_monster@は氷の薄い層で覆われた。
+%%%%
+Heat is drained from your body, and your mouth freezes shut!
+
+あなたの体から熱が奪われ、口が凍って閉ざされた！
+%%%%
+Heat is drained from @the_monster@.
+
+@the_monster@は熱を奪われた。
+%%%%
+You are caught in an explosion of ice and frost!
+
+あなたは氷と霜の爆発に巻き込まれた！
+%%%%
+@The_monster@ is caught in an explosion of ice and frost!
+
+@The_monster@は氷と霜の爆発に巻き込まれた！
+%%%%
+Ice and frost explode from out of thin air!
+
+何もないところで氷と霜の爆発が起こった！
+%%%%
+You are encased in ice!
+
+あなたは凍結している！
+%%%%
+@The_monster@ is encased in ice!
+
+@The_monster@は凍結している！
+%%%%
+An unseen figure is encased in ice!
+
+目に見えぬ物体が氷の中にいる！
+%%%%
+Freezing gasses pour from your @hands@!
+
+凍結のガスがあなたの@hands@から湧きだした！
+%%%%
+Freezing gasses pour from @the_monster@'s @hands@!
+
+凍結のガスが@the_monster@の@hands@から湧きだした！
+%%%%
+You feel earthy.
+
+あなたは大地の息吹を感じた。
+%%%%
+You are showered with tiny particles of grit.
+
+あなたは砂の微粒子を浴びた。
+%%%%
+@The_monster@ is showered with tiny particles of grit.
+
+@The_monster@は砂の微粒子を浴びた。
+%%%%
+Tiny particles of grit hang in the air for a moment.
+
+砂の微粒子が一瞬空中にとどまった。
+%%%%
+Sand pours from your @hands@.
+
+砂があなたの@hands@から湧きだした。
+%%%%
+Sand pours from @the_monster@'s @hands@.
+
+砂が@the_monster@の@hands@から湧きだした。
+%%%%
+Sand pours from out of thin air.
+
+砂が何もないところから湧きだした。
+%%%%
+You feel a surge of energy from the ground.
+
+あなたは大地のエネルギーの高まりを感じた。
+%%%%
+You hear a distant rumble.
+
+あなたは遠くでの大地の轟きを耳にした。
+%%%%
+You sympathise with the stones.
+
+あなたは石くれへと共感した。
+%%%%
+You feel gritty.
+
+あなたは砂の気配を感じた。
+%%%%
+You feel momentarily lethargic.
+
+あなたは一瞬気怠さを覚えた。
+%%%%
+@The_monster@ looks momentarily listless.
+
+@The_monster@は一瞬無気力になっているように見えた。
+%%%%
+Motes of dust swirl before your eyes.
+
+砂の微粉があなたの目の前でクルクル舞った。
+%%%%
+Motes of dust swirl around @the_monster@.
+
+砂の微粉が@the_monster@の周囲でクルクル舞った。
+%%%%
+Motes of dust swirl around in the air.
+
+砂の微粉が何もないところでクルクル舞った。
+%%%%
+You briefly vibrate.
+
+あなたはしばらく振動した。
+%%%%
+@The_monster@ briefly vibrates.
+
+@The_monster@はしばらく振動した。
+%%%%
+You momentarily stiffen.
+
+あなたの体は一瞬こわばった。
+%%%%
+@The_monster@ momentarily stiffens.
+
+@The_monster@の体は一瞬こわばった。
+%%%%
+The floor vibrates.
+
+床は振動した。
+%%%%
+The floor shifts beneath you alarmingly!
+
+驚くほど床が振動した！
+%%%%
+You are hit by flying rocks!
+
+あなたは飛んできた岩に当たった！
+%%%%
+@The_monster@ is hit by flying rocks!
+
+@The_monster@は飛んできた岩に当たった！
+%%%%
+Flying rocks appear out of thin air!
+
+どこからか岩が飛んできた！
+%%%%
+You are blasted with sand!
+
+あなたは砂に打たれた！
+%%%%
+@The_monster@ is blasted with sand!
+
+@The_monster@は砂に打たれた！
+%%%%
+A miniature sandstorm briefly appears!
+
+一瞬小規模な砂嵐が巻き起こった！
+%%%%
+Rocks fall onto you out of nowhere!
+
+どこからかあなたの上に岩が降りかかった！
+%%%%
+Rocks fall onto @the_monster@ out of nowhere!
+
+どこからか@the_monster@の上に岩が降りかかった！
+%%%%
+Rocks fall out of nowhere!
+
+どこからか岩が降ってきた！
+%%%%
+You are caught in an explosion of flying shrapnel!
+
+あなたは飛び交う破片の爆発に巻き込まれた！
+%%%%
+@The_monster@ is caught in an explosion of flying shrapnel!
+
+@The_monster@は飛び交う破片の爆発に巻き込まれた！
+%%%%
+Flying shrapnel explodes from thin air!
+
+何もないところで破片の爆発が巻き起こった！
+%%%%
+You feel momentarily weightless.
+
+一瞬体重がなくなったような感じがした。
+%%%%
+@The_monster@ bobs in the air for a moment.
+
+@The_monster@は一瞬空中に浮かび上がった。
+%%%%
+Wisps of vapour drift from your @hands@.
+
+蒸気があなたの@hands@から湧きだした。
+%%%%
+Wisps of vapour drift from @the_monster@'s @hands@.
+
+蒸気が@the_monster@の@hands@から湧きだした。
+%%%%
+Sparks of electricity dance between your @hands@.
+
+あなたの@hands@の間で電気の火花が踊った。
+%%%%
+Sparks of electricity dance between @the_monster@'s @hands@.
+
+@the_monster@の@hands@の間で電気の火花が踊った。
+%%%%
+Sparks of electricity dance over your @hand@.
+
+あなたの@hand@の上で電気の火花が踊った。
+%%%%
+Sparks of electricity dance over @the_monster@'s @hand@.
+
+@the_monster@の@hand@の上で電気の火花が踊った。
+%%%%
+You are blasted with air!
+
+あなたは突風に吹かれた！
+%%%%
+@The_monster@ is blasted with air!
+
+@The_monster@は突風に吹かれた！
+%%%%
+You hear a whooshing sound.
+
+あなたはヒュウヒュウいう音を耳にした。
+%%%%
+You smell ozone.
+
+あなたはオゾン臭を嗅いだ。
+%%%%
+You smell something musty.
+
+何やらかび臭くなった。
+%%%%
+There is a short, sharp shower of sparks.
+
+一瞬急激な火花のシャワーが降った。
+%%%%
+@The_monster@ is briefly showered in sparks.
+
+@The_monster@は一瞬火花のシャワーを浴びた。
+%%%%
+The wind whips around you!
+
+あなたの周りで風がはためいた！
+%%%%
+The wind whips around @the_monster@!
+
+@the_monster@の周りで風がはためいた！
+%%%%
+The wind whips!
+
+風がはためいた！
+%%%%
+The wind howls around you!
+
+あなたの周りで風がうなった！
+%%%%
+The wind howls around @the_monster@!
+
+@the_monster@の周りで風がうなった！
+%%%%
+The wind howls!
+
+風がうなった！
+%%%%
+Ouch! You gave yourself an electric shock.
+
+痛い！ あなたは電気ショックを食らった。
+%%%%
+You feel electric!
+
+あなたは感電した！
+%%%%
+Electricity courses through your body.
+
+電気があなたの体を流れた。
+%%%%
+@The_monster@ is jolted!
+
+@The_monster@はビリビリした。
+%%%%
+Something invisible sparkles with electricity.
+
+何か目に見えないものが電気の火花を散らしている。
+%%%%
+Noxious gasses pour from your @hands@!
+
+有毒ガスがあなたの@hands@から湧きだした！
+%%%%
+Noxious gasses pour from @the_monster@'s @hands@!
+
+有毒ガスが@the_monster@の@hands@から湧きだした！
+%%%%
+Noxious gasses appear from out of thin air!
+
+何もないところから有毒ガスが湧き出した！
+%%%%
+You are under the weather.
+
+あなたは降雨にさらされている。
+%%%%
+@The_monster@ looks under the weather.
+
+@The_monster@は降雨にさらされている。
+%%%%
+Inclement weather forms around a spot in thin air.
+
+何もないところに降る雨が強さを増している。
+%%%%
+You are caught in an explosion of electrical discharges!
+
+あなたは放電の爆発に巻き込まれた！
+%%%%
+@The_monster@ is caught in an explosion of electrical discharges!
+
+@The_monster@は放電の爆発に巻き込まれた！
+%%%%
+Electrical discharges explode from out of thin air!
+
+何もないところで放電の爆発が巻き起こった！
+%%%%
+Venomous gasses pour from your @hands@!
+
+猛毒の気体があなたの@hands@から湧きだした！
+%%%%
+Venomous gasses pour from @the_monster@'s @hands@!
+
+猛毒の気体が@the_monster@の@hands@から湧きだした！
+%%%%
+Venomous gasses pour forth from the thin air!
+
+猛毒の気体が何もないところから湧きだした！
+%%%%
+A ball of electricity appears!
+
+球雷が現れた！
+%%%%
+@The_monster@ is struck by twisting air!
+
+@The_mosnter@は渦巻く烈風に打ちすえられた！
+%%%%
+The air madly twists around a spot.
+
+大気が一点を中心に猛烈に渦巻いている。
+%%%%
+A huge vortex of air appears!
+
+竜巻が発生した！
+%%%%
+You feel mildly nauseous.
+
+あなたは吐き気を催した。
+%%%%
+@The_monster@ briefly looks nauseous.
+
+@The_monster@は吐き気をこらえているようだ。
+%%%%
+You feel slightly ill.
+
+あなたは気分が悪くなった。
+%%%%
+@The_monster@ briefly looks sick.
+
+@The_monster@は少し気分が悪そうだ。
+%%%%
+Wisps of poison gas drift from your @hands@.
+
+毒の気体があなたの@hands@から湧きだした。
+%%%%
+Wisps of poison gas drift from @the_monster@'s @hands@.
+
+毒の気体が@the_monster@の@hands@から湧きだした。
+%%%%
+You feel faint for a moment.
+
+あなたは一瞬ふらふらした。
+%%%%
+@The_monster@ looks faint for a moment.
+
+@The_monster@は一瞬ふらふらした。
+%%%%
+You feel sick.
+
+あなたは気分が悪い。
+%%%%
+@The_monster@ looks sick.
+
+@The_monster@は気分が悪そうだ。
+%%%%
+You feel odd.
+
+あなたは奇妙な気分になった。
+%%%%
+@The_monster@ has an odd expression for a moment.
+
+@The_monster@は一瞬奇妙な表情を浮かべた。
+%%%%
+You feel weak for a moment.
+
+あなたは一瞬衰弱したような気がした。
+%%%%
+@The_monster@ looks weak for a moment.
+
+@The_monster@は一瞬衰弱したように見える。
+%%%%
+Your vision is briefly tinged with green.
+
+あなたの視野は一瞬緑色に染まった。
+%%%%
+@The_monster@ is briefly tinged with green.
+
+@The_monster@は一瞬緑色に染まった。
+%%%%
+The air has a green tinge for a moment.
+
+一瞬大気が緑色に染まった。
+%%%%
+Noxious gasses pour forth from the thin air!
+
+何もないところから有毒ガスが湧き出した！
+%%%%
+You feel very sick.
+
+あなたはとても気分が悪い。
+%%%%
+@The_monster@ looks very sick.
+
+@The_monster@はとても気分が悪そうだ。
+%%%%
+You feel rather nauseous for a moment.
+
+あなたは一瞬吐き気を催した。
+%%%%
+@The_monster@ looks rather nauseous for a moment.
+
+@The_monster@は一瞬吐き気を催したようだ。
+%%%%
+You feel more vulnerable to poison.
+
+あなたはさらに毒に弱くなったようだ。
+%%%%
+@The_monster@ grows more vulnerable to poison.
+
+@The_monster@はさらに毒に弱くなった。
+%%%%
+You feel incredibly sick.
+
+あなたは非常に気分が悪い。
+%%%%
+@The_monster@ looks incredibly sick.
+
+@The_monster@は非常に気分が悪そうだ。
+%%%%
+residual poison
+
+残留した毒
+%%%%
+There is a sudden explosion of flames!
+
+突然炎の爆発が起こった！
+%%%%
+There is a sudden explosion of frost!
+
+突然冷気の爆発が起こった！
+%%%%
+There is a sudden blast of acid!
+
+突然酸性の液体が炸裂した！
+%%%%
+Wisps of shadow whirl around...
+
+影の群れが周囲を取り巻いた……
+%%%%
+You feel very strange.
+
+あなたはとても奇妙な気分になった。
+%%%%
+Space warps around you!
+
+あなたの周りの空間が歪んだ！
+%%%%
+Space warps around @the_monster@!
+
+@the_monster@の周りの空間が歪んだ！
+%%%%
+A piece of empty space twists and writhes.
+
+局所的な空間歪曲が起こった。
+%%%%
+Magical energy is drained from your %s
+
+あなたの%sから魔力が吸い取られた。
 %%%%
 ############################## spl-summoning.cc ##############################
 %%%%

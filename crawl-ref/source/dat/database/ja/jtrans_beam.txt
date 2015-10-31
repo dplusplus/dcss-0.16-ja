@@ -225,7 +225,7 @@ A fungus suddenly grows.
 %%%%
 You hear a sizzling sound!
 
-あなたはジュージューという音を耳にした。
+あなたはジュージューという音を耳にした！
 %%%%
 That %s is likely to hit you. Continue anyway?
 
