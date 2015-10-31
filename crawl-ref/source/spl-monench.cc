@@ -8,6 +8,7 @@
 
 #include "spl-monench.h"
 
+#include "database.h"
 #include "env.h"
 #include "message.h"
 #include "spl-util.h"
@@ -28,7 +29,7 @@ int englaciate(coord_def where, int pow, int, actor *agent)
         if (!mons)
             canned_msg(MSG_YOU_UNAFFECTED);
         else if (mons && !mons_is_firewood(mons))
-            simple_monster_message(mons, " is unaffected.");
+            simple_monster_message(mons, jtransc(" is unaffected."));
         return 0;
     }
 
@@ -41,7 +42,7 @@ int englaciate(coord_def where, int pow, int, actor *agent)
         if (!mons)
             canned_msg(MSG_YOU_RESIST);
         else
-            simple_monster_message(mons, " resists.");
+            simple_monster_message(mons, jtransc(" resists."));
         return 0;
     }
 
@@ -60,7 +61,7 @@ int englaciate(coord_def where, int pow, int, actor *agent)
 spret_type cast_englaciation(int pow, bool fail)
 {
     fail_check();
-    mpr("You radiate an aura of cold.");
+    mpr(jtrans("You radiate an aura of cold."));
     apply_area_visible(englaciate, pow, &you);
     return SPRET_SUCCESS;
 }
@@ -83,11 +84,11 @@ bool backlight_monster(monster* mons)
     mons->add_ench(mon_enchant(ENCH_CORONA, 1));
 
     if (lvl == 0)
-        simple_monster_message(mons, " is outlined in light.");
+        simple_monster_message(mons, jtransc(" is outlined in light."));
     else if (lvl == 4)
-        simple_monster_message(mons, " glows brighter for a moment.");
+        simple_monster_message(mons, jtransc(" glows brighter for a moment."));
     else
-        simple_monster_message(mons, " glows brighter.");
+        simple_monster_message(mons, jtransc(" glows brighter."));
 
     return true;
 }
@@ -101,7 +102,7 @@ bool do_slow_monster(monster* mon, const actor* agent, int dur)
         && mon->add_ench(mon_enchant(ENCH_SLOW, 0, agent, dur)))
     {
         if (!mon->paralysed() && !mon->petrified()
-            && simple_monster_message(mon, " seems to slow down."))
+            && simple_monster_message(mon, jtransc(" seems to slow down.")))
         {
             return true;
         }

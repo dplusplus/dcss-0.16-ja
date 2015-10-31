@@ -12187,6 +12187,28 @@ Magical energy is drained from your %s
 
 あなたの%sから魔力が吸い取られた。
 %%%%
+############################## spl-monench.cc ##############################
+%%%%
+You radiate an aura of cold.
+
+あなたは冷気のオーラを放った。
+%%%%
+is outlined in light.
+
+の体表は光を放っている。
+%%%%
+glows brighter for a moment.
+
+は一瞬さらに輝いた。
+%%%%
+glows brighter.
+
+はさらに輝いた。
+%%%%
+seems to slow down.
+
+は動きが遅くなったようだ。
+%%%%
 ############################## spl-summoning.cc ##############################
 %%%%
 You recall your battlesphere and imbue it with additional charge.
