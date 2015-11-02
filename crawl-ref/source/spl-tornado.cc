@@ -9,6 +9,7 @@
 #include "cloud.h"
 #include "coord.h"
 #include "coordit.h"
+#include "database.h"
 #include "env.h"
 #include "fineff.h"
 #include "fprop.h"
@@ -129,7 +130,7 @@ spret_type cast_tornado(int powc, bool fail)
     }
 
     if (friendlies
-        && !yesno("There are friendlies around, are you sure you want to hurt them?",
+        && !yesno(jtransc("There are friendlies around, are you sure you want to hurt them?"),
                   true, 'n'))
     {
         canned_msg(MSG_OK);
@@ -138,9 +139,9 @@ spret_type cast_tornado(int powc, bool fail)
 
     fail_check();
 
-    mprf("A great vortex of raging winds %s.",
-         (you.airborne() || get_form()->forbids_flight()) ?
-         "appears around you" : "appears and lifts you up");
+    mprf(jtransc("A great vortex of raging winds %s."),
+         jtransc((you.airborne() || get_form()->forbids_flight()) ?
+         "appears around you" : "appears and lifts you up"));
 
     if (you.fishtail)
         merfolk_stop_swimming();
@@ -293,7 +294,7 @@ void tornado_damage(actor *caster, int dur)
                 grd(*dam_i) = DNGN_FLOOR;
                 set_terrain_changed(*dam_i);
                 if (you.see_cell(*dam_i))
-                    mpr("A tree falls to the hurricane!");
+                    mpr(jtrans("A tree falls to the hurricane!"));
                 if (caster->is_player())
                     did_god_conduct(DID_KILL_PLANT, 1);
             }
@@ -342,7 +343,7 @@ void tornado_damage(actor *caster, int dur)
                     {
                         bool standing = !you.airborne();
                         if (standing)
-                            mpr("The vortex of raging winds lifts you up.");
+                            mpr(jtrans("The vortex of raging winds lifts you up."));
                         you.attribute[ATTR_FLIGHT_UNCANCELLABLE] = 1;
                         you.duration[DUR_FLIGHT]
                             = max(you.duration[DUR_FLIGHT], 20);

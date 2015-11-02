@@ -12571,6 +12571,32 @@ fires!
 
 は発射した！
 %%%%
+############################## spl-tornado.cc ##############################
+%%%%
+There are friendlies around, are you sure you want to hurt them?
+
+友好的なモンスターが周囲にいますが、本当に呪文に巻き込みますか？
+%%%%
+A great vortex of raging winds %s.
+
+荒れ狂う大竜巻が%s。
+%%%%
+appears around you
+
+あなたの周囲に現れた。
+%%%%
+appears and lifts you up
+
+現れ、あなたを吹き上げた
+%%%%
+A tree falls to the hurricane!
+
+木が大竜巻になぎ倒された！
+%%%%
+The vortex of raging winds lifts you up.
+
+荒れ狂う竜巻があなたを吹き上げた。
+%%%%
 ############################## spl-util.cc ##############################
 %%%%
 Conj
