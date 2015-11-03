@@ -183,16 +183,6 @@ void stop_delay(bool stop_stair_travel, bool force_unsafe)
 
     delay_queue_item delay = you.delay_queue.front();
 
-    const bool multiple_corpses =
-        (delay.type == DELAY_BUTCHER || delay.type == DELAY_BOTTLE_BLOOD)
-        // + 1 because this delay is still in the queue.
-        && any_of(you.delay_queue.begin() + 1, you.delay_queue.end(),
-                  [] (const delay_queue_item &dqi)
-                  {
-                      return dqi.type == DELAY_BUTCHER
-                          || dqi.type == DELAY_BOTTLE_BLOOD;
-                  });
-
     // At the very least we can remove any queued delays, right
     // now there is no problem with doing this... note that
     // any queuing here can only happen from a single command,
@@ -206,9 +196,8 @@ void stop_delay(bool stop_stair_travel, bool force_unsafe)
     case DELAY_BUTCHER:
     case DELAY_BOTTLE_BLOOD:
     {
-        mprf("You stop %s the corpse%s.",
-             delay.type == DELAY_BUTCHER ? "butchering" : "bottling blood from",
-             multiple_corpses ? "s" : "");
+        mprf(jtransc("You stop %s the corpse%s."),
+             jtransc(delay.type == DELAY_BUTCHER ? "butchering" : "bottling blood from"));
 
         _pop_delay();
         break;
@@ -216,14 +205,14 @@ void stop_delay(bool stop_stair_travel, bool force_unsafe)
     case DELAY_MEMORISE:
         // Losing work here is okay... having to start from
         // scratch is a reasonable behaviour. -- bwr
-        mpr("Your memorisation is interrupted.");
+        mpr(jtrans("Your memorisation is interrupted."));
         _pop_delay();
         break;
 
     case DELAY_MULTIDROP:
         // No work lost
         if (!items_for_multidrop.empty())
-            mpr("You stop dropping stuff.");
+            mpr(jtrans("You stop dropping stuff."));
         _pop_delay();
         break;
 
@@ -260,7 +249,7 @@ void stop_delay(bool stop_stair_travel, bool force_unsafe)
 
     case DELAY_FEED_VAMPIRE:
     {
-        mpr("You stop draining the corpse.");
+        mpr(jtrans("You stop draining the corpse."));
 
         did_god_conduct(DID_DRINK_BLOOD, 8);
 
@@ -276,7 +265,7 @@ void stop_delay(bool stop_stair_travel, bool force_unsafe)
         if (item.defined() && item.is_type(OBJ_CORPSES, CORPSE_BODY)
             && item.pos == you.pos())
         {
-            mpr("All blood oozes out of the corpse!");
+            mpr(jtrans("All blood oozes out of the corpse!"));
 
             bleed_onto_floor(you.pos(), item.mon_type, delay.duration, false);
 
@@ -309,13 +298,13 @@ void stop_delay(bool stop_stair_travel, bool force_unsafe)
     case DELAY_ARMOUR_OFF:
         if (delay.duration > 1 && !delay.parm3)
         {
-            if (!yesno(delay.type == DELAY_ARMOUR_ON ?
+            if (!yesno(jtransc(delay.type == DELAY_ARMOUR_ON ?
                        "Keep equipping yourself?" :
-                       "Keep disrobing?", false, 0, false))
+                       "Keep disrobing?"), false, 0, false))
             {
-                mprf("You stop %s your armour.",
-                     delay.type == DELAY_ARMOUR_ON ? "putting on"
-                                                   : "removing");
+                mprf(jtransc("You stop %s your armour."),
+                     jtransc(delay.type == DELAY_ARMOUR_ON ? "putting on"
+                                                           : "removing"));
                 _pop_delay();
             }
             else
@@ -327,9 +316,9 @@ void stop_delay(bool stop_stair_travel, bool force_unsafe)
         if (delay.duration <= 1 || delay.parm3)
             break;
 
-        if (!yesno("Keep reading the scroll?", false, 0, false))
+        if (!yesno(jtransc("Keep reading the scroll?"), false, 0, false))
         {
-            mpr("You stop reading the scroll.");
+            mpr(jtrans("You stop reading the scroll."));
             _pop_delay();
         }
         else
@@ -341,9 +330,9 @@ void stop_delay(bool stop_stair_travel, bool force_unsafe)
     case DELAY_DESCENDING_STAIRS: // short... and probably what people want
         if (stop_stair_travel)
         {
-            mprf("You stop %s the stairs.",
-                 delay.type == DELAY_ASCENDING_STAIRS ? "ascending"
-                                                      : "descending");
+            mprf(jtransc("You stop %s the stairs."),
+                 jtransc(delay.type == DELAY_ASCENDING_STAIRS ? "ascending"
+                                                              : "descending"));
             _pop_delay();
         }
         break;
@@ -351,7 +340,7 @@ void stop_delay(bool stop_stair_travel, bool force_unsafe)
     case DELAY_PASSWALL:
         if (stop_stair_travel)
         {
-            mpr("Your meditation is interrupted.");
+            mpr(jtrans("Your meditation is interrupted."));
             _pop_delay();
         }
         break;
@@ -359,7 +348,7 @@ void stop_delay(bool stop_stair_travel, bool force_unsafe)
     case DELAY_SHAFT_SELF:
         if (stop_stair_travel)
         {
-            mpr("You stop digging.");
+            mpr(jtrans("You stop digging."));
             _pop_delay();
         }
         break;
@@ -556,24 +545,24 @@ void handle_delay()
             spell_type spell = static_cast<spell_type>(delay.parm1);
             if (vehumet_is_offering(spell))
             {
-                string message = make_stringf(" grants you knowledge of %s.",
-                    spell_title(spell));
+                string message = make_stringf(jtransc(" grants you knowledge of %s."),
+                    tagged_jtransc("[spell]", spell_title(spell)));
                 simple_god_message(message.c_str());
             }
-            mprf(MSGCH_MULTITURN_ACTION, "You start memorising the spell.");
+            mpr_nojoin(MSGCH_MULTITURN_ACTION, jtrans("You start memorising the spell."));
             break;
         }
 
         case DELAY_PASSWALL:
-            mprf(MSGCH_MULTITURN_ACTION, "You begin to meditate on the wall.");
+            mpr_nojoin(MSGCH_MULTITURN_ACTION, jtrans("You begin to meditate on the wall."));
             break;
 
         case DELAY_SHAFT_SELF:
-            mprf(MSGCH_MULTITURN_ACTION, "You begin to dig a shaft.");
+            mpr_nojoin(MSGCH_MULTITURN_ACTION, jtrans("You begin to dig a shaft."));
             break;
 
         case DELAY_BLURRY_SCROLL:
-            mprf(MSGCH_MULTITURN_ACTION, "You begin reading the scroll.");
+            mpr_nojoin(MSGCH_MULTITURN_ACTION, jtrans("You begin reading the scroll."));
             break;
 
         default:
@@ -621,8 +610,8 @@ void handle_delay()
         }
         else if (corpse.is_type(OBJ_CORPSES, CORPSE_SKELETON))
         {
-            mprf("The corpse has rotted away into a skeleton before"
-                 "you could finish drinking it!");
+            mpr(jtrans("The corpse has rotted away into a skeleton before"
+                       "you could finish drinking it!"));
             _xom_check_corpse_waste();
             stop_delay();
             return;
@@ -647,10 +636,10 @@ void handle_delay()
         }
         else if (item.is_type(OBJ_CORPSES, CORPSE_SKELETON))
         {
-            mprf("The corpse has rotted away into a skeleton before"
-                 "you could %s!",
-                 (delay.type == DELAY_BOTTLE_BLOOD ? "bottle its blood"
-                                                   : "butcher it"));
+            mprf(jtransc("The corpse has rotted away into a skeleton before"
+                         "you could %s!"),
+                 jtransc((delay.type == DELAY_BOTTLE_BLOOD ? "bottle its blood"
+                                                           : "butcher it")));
             _xom_check_corpse_waste();
             _pop_delay();
             return;
@@ -717,19 +706,19 @@ void handle_delay()
             break;
 
         case DELAY_MEMORISE:
-            mprf(MSGCH_MULTITURN_ACTION, "You continue memorising.");
+            mpr_nojoin(MSGCH_MULTITURN_ACTION, jtrans("You continue memorising."));
             break;
 
         case DELAY_PASSWALL:
-            mprf(MSGCH_MULTITURN_ACTION, "You continue meditating on the rock.");
+            mpr_nojoin(MSGCH_MULTITURN_ACTION, jtrans("You continue meditating on the rock."));
             break;
 
         case DELAY_SHAFT_SELF:
-            mprf(MSGCH_MULTITURN_ACTION, "You continue digging a shaft.");
+            mpr_nojoin(MSGCH_MULTITURN_ACTION, jtrans("You continue digging a shaft."));
             break;
 
         case DELAY_BLURRY_SCROLL:
-            mprf(MSGCH_MULTITURN_ACTION, "You continue reading the scroll.");
+            mpr_nojoin(MSGCH_MULTITURN_ACTION, jtrans("You continue reading the scroll."));
             break;
 
         case DELAY_MULTIDROP:
@@ -787,12 +776,11 @@ static void _finish_delay(const delay_queue_item &delay)
         if (nasty_stasis(item, OPER_PUTON)
             && item_ident(item, ISFLAG_KNOW_TYPE))
         {
-            string prompt = "Really put on ";
+            string prompt = (you.duration[DUR_TELEPORT] ? "テレポート発動前" :
+                             you.duration[DUR_SLOW] ? "減速中" : "加速中");
+            prompt += "ですが、本当に";
             prompt += item.name(DESC_INVENTORY);
-            prompt += string(" while ")
-                      + (you.duration[DUR_TELEPORT] ? "about to teleport" :
-                         you.duration[DUR_SLOW] ? "slowed" : "hasted");
-            prompt += "?";
+            prompt += "を身に付けますか？";
             if (!yesno(prompt.c_str(), false, 'n'))
                 break;
         }
@@ -819,7 +807,7 @@ static void _finish_delay(const delay_queue_item &delay)
 
     case DELAY_EAT:
         if (delay.parm3 > 0) // If duration was just one turn, don't print.
-            mpr("You finish eating.");
+            mpr(jtrans("You finish eating."));
         // For chunks, warn the player if they're not getting much
         // nutrition. Also, print the other eating messages only now.
         if (delay.parm1)
@@ -830,7 +818,7 @@ static void _finish_delay(const delay_queue_item &delay)
 
     case DELAY_FEED_VAMPIRE:
     {
-        mpr("You finish drinking.");
+        mpr(jtrans("You finish drinking."));
 
         did_god_conduct(DID_DRINK_BLOOD, 8);
 
@@ -874,7 +862,7 @@ static void _finish_delay(const delay_queue_item &delay)
     case DELAY_MEMORISE:
     {
         spell_type spell = static_cast<spell_type>(delay.parm1);
-        mpr("You finish memorising.");
+        mpr(jtrans("You finish memorising."));
         add_spell_to_memory(spell);
         vehumet_accept_gift(spell);
         break;
@@ -882,7 +870,7 @@ static void _finish_delay(const delay_queue_item &delay)
 
     case DELAY_PASSWALL:
     {
-        mpr("You finish merging with the rock.");
+        mpr(jtrans("You finish merging with the rock."));
         more();  // or the above message won't be seen
 
         const coord_def pass(delay.parm1, delay.parm2);
@@ -894,8 +882,8 @@ static void _finish_delay(const delay_queue_item &delay)
             default:
                 if (!you.is_habitable(pass))
                 {
-                    mpr("...yet there is something new on the other side. "
-                        "You quickly turn back.");
+                    mpr(jtrans("...yet there is something new on the other side. "
+                               "You quickly turn back."));
                     goto passwall_aborted;
                 }
                 break;
@@ -917,7 +905,7 @@ static void _finish_delay(const delay_queue_item &delay)
                 // Might still fail.
                 if (monster_at(pass))
                 {
-                    mpr("...and sense your way blocked. You quickly turn back.");
+                    mpr(jtrans("...and sense your way blocked. You quickly turn back."));
                     goto passwall_aborted;
                 }
 
@@ -990,7 +978,7 @@ static void _finish_delay(const delay_queue_item &delay)
         break;
 
     default:
-        mpr("You finish doing something.");
+        mpr(jtrans("You finish doing something."));
         break;
     }
 
@@ -1341,7 +1329,7 @@ static string _abyss_monster_creation_message(const monster* mon)
     }
 
     return make_stringf(
-        random_choose_weighted(
+        jtransc(random_choose_weighted(
             17, " appears in a shower of translocational energy.",
             34, " appears in a shower of sparks.",
             45, " materialises.",
@@ -1357,9 +1345,8 @@ static string _abyss_monster_creation_message(const monster* mon)
              2, " punctures the fabric of time!",
              7, " punctures the fabric of the universe.",
              3, " manifests%2$s!%1$.0s",
-             0),
-        mon->pronoun(PRONOUN_REFLEXIVE).c_str(),
-        silenced(you.pos()) ? "" : " with a bang");
+             0)),
+        jtransc(silenced(you.pos()) ? "" : " with a bang"));
 }
 
 static inline bool _monster_warning(activity_interrupt_type ai,
@@ -1444,13 +1431,14 @@ static inline bool _monster_warning(activity_interrupt_type ai,
         else if (at.context == SC_FISH_SURFACES_SHOUT
               || at.context == SC_FISH_SURFACES)
         {
-            text += jtrans(" bursts forth from the");
             if (mons_primary_habitat(mon) == HT_LAVA)
                 text += jtrans("lava");
             else if (mons_primary_habitat(mon) == HT_WATER)
                 text += jtrans("water");
             else
-                text += jtrans("realm of bugdom");
+                text += "realm of bugdom";
+
+            text += jtrans(" bursts forth from the");
             text += "。";
         }
         else if (at.context == SC_NONSWIMMER_SURFACES_FROM_DEEP)
@@ -1480,12 +1468,12 @@ static inline bool _monster_warning(activity_interrupt_type ai,
             zin_id = true;
             mon->props["zin_id"] = true;
             discover_shifter(mon);
-            god_warning = "Zin warns you: "
-                          + uppercase_first(mon->pronoun(PRONOUN_SUBJECTIVE))
-                          + " is a foul ";
+            god_warning = jtrans("Zin warns you: ") + " "
+                          + jtrans(mon->pronoun(PRONOUN_SUBJECTIVE))
+                          + jtrans(" is a foul ");
             if (mon->has_ench(ENCH_GLOWING_SHAPESHIFTER))
-                god_warning += "glowing ";
-            god_warning += "shapeshifter.";
+                god_warning += "暴走した";
+            god_warning += "変身能力者だ。";
         }
 
         monster_info mi(mon);
@@ -1498,11 +1486,10 @@ static inline bool _monster_warning(activity_interrupt_type ai,
         if (!mweap.empty())
         {
             if (ash_id)
-                god_warning = "Ashenzari warns you:";
+                god_warning = jtrans("Ashenzari warns you:") + " ";
 
             (ash_id ? god_warning : text) +=
                 jtrans(mon->pronoun(PRONOUN_SUBJECTIVE)) + "は"
-                + (ash_id ? " " : "")
                 + mweap + "。";
         }
 
@@ -1527,8 +1514,8 @@ static inline bool _monster_warning(activity_interrupt_type ai,
                     && mon->get_experience_level() >=
                        random2(you.experience_level))
                 {
-                    mprf(MSGCH_GOD, GOD_GOZAG, "Gozag incites %s against you.",
-                         mon->name(DESC_THE).c_str());
+                    mprf(MSGCH_GOD, GOD_GOZAG, jtransc("Gozag incites %s against you."),
+                         jtransc(mon->name(DESC_THE)));
                     gozag_incite(mon);
                 }
             }
