@@ -7940,7 +7940,7 @@ Your skin feels tender.
 %%%%
 You feel uncertain.
 
-あなたは不確定になった。
+あなたの存在は不確定になった。
 %%%%
 You start to feel a little uncertain.
 
@@ -12596,6 +12596,264 @@ A tree falls to the hurricane!
 The vortex of raging winds lifts you up.
 
 荒れ狂う竜巻があなたを吹き上げた。
+%%%%
+############################## spl-transloc.cc ##############################
+%%%%
+You feel jittery for a moment.
+
+あなたはちょっと落ち着かない気分になった。
+%%%%
+Which direction? [ESC to cancel]
+
+どの方向に瞬間移動しますか？ (ESCでキャンセル)
+%%%%
+Cancelling blink due to HUP.
+
+HUPシグナルにより瞬間移動はキャンセルされた。
+%%%%
+Are you sure you want to cancel this blink?
+
+本当に瞬間移動をキャンセルしますか？
+%%%%
+Blink to where?
+
+どの方向に瞬間移動しますか？
+%%%%
+Are you sure you want to cancel this blink?
+
+本当に瞬間移動をキャンセルしますか？
+%%%%
+You cannot blink away from %s!
+
+あなたは瞬間移動して%sから遠ざかることができない！
+%%%%
+You cannot blink closer to %s!
+
+あなたは瞬間移動して%sに近づくことができない！
+%%%%
+You can't blink into that!
+
+あなたはその位置に瞬間移動できない！
+%%%%
+There's something in the way!
+
+なにかが道の途中にいる！
+%%%%
+You can only blink to visible locations.
+
+あなたは見えている場所にしか瞬間移動できない。
+%%%%
+Please don't blink into the map border.
+
+マップの端に瞬間移動しないでください。
+%%%%
+Please don't try to blink into monsters.
+
+モンスターと重なるように瞬間移動しないでください。
+%%%%
+Oops! There was something there already!
+
+おっと！ そこにはもう先客がいる！
+%%%%
+You're too confused to control your translocation!
+
+あなたは混乱しすぎており、瞬間移動先を制御できない！
+%%%%
+You can't repeat controlled blinks.
+
+あなたは精密瞬間移動を繰り返すことができない。
+%%%%
+The orb prevents control of your teleportation!
+
+ゾットのオーブが瞬間移動制御を邪魔している！
+%%%%
+A powerful magic prevents control of your teleportation.
+
+強大な魔力が瞬間移動制御を邪魔している！
+%%%%
+It is impossible to concentrate on your destination while mesmerised.
+
+あなたは魅了されている間は移動先に集中することができない。
+%%%%
+You feel strangely stable.
+
+あなたは奇妙な安定感を覚えた。
+%%%%
+You feel strangely unstable.
+
+あなたは奇妙な落ち着かない感じがした。
+%%%%
+You feel the power of the Abyss delaying your translocation.
+
+アビスの力によりテレポートの発動が遅延されたようだ。
+%%%%
+You feel the orb delaying this translocation!
+
+あなたはゾットのオーブがテレポートの発動を遅延していると感じ取った。
+%%%%
+You may choose your destination (press '.' or delete to select).
+
+目標とする場所を指定できます。([.]もしくは[DEL]で決定)
+%%%%
+Expect minor deviation.
+
+ただし幾らかのずれが生じます。
+%%%%
+Controlled teleport interrupted by HUP signal, cancelling teleport.
+
+精密テレポートがHUPシグナルにより中止されました。
+%%%%
+Are you sure you want to cancel this teleport?
+
+本当にテレポートを中止しますか？
+%%%%
+You cannot teleport away from %s!
+
+あなたはテレポートして%sから遠ざかることができない！
+%%%%
+Choose another destination (press '.' or delete to select).
+
+目標とする場所を再指定してください。([.]もしくは[DEL]で決定)
+%%%%
+You cannot teleport closer to %s!
+
+あなたは瞬間移動して%sに近づくことができない！
+%%%%
+Nearby solid objects disrupt your rematerialisation!
+
+付近の固形物があなたの再物質化を阻害した！
+%%%%
+Even you can't go there right now. Sorry!
+
+残念ながらそこに行くことはできない！
+%%%%
+A strong magical force throws you back!
+
+強大な魔力があなたを引き戻した！
+%%%%
+Your surroundings flicker for a moment.
+
+周囲の風景が一瞬ちらついた。
+%%%%
+Your surroundings seem slightly different.
+
+周囲の風景がわずかに異なって見えた。
+%%%%
+Your surroundings suddenly seem different.
+
+突然周囲の風景が一変した！
+%%%%
+You begin teleporting projectiles to their destination.
+
+あなたは投射物を目標にテレポートさせるのを開始した。
+%%%%
+You renew your portal.
+
+あなたは転送ポータルの持続時間を上乗せした。
+%%%%
+The density of the terrain blocks your spell.
+
+この地形ではその呪文は使えない。
+%%%%
+There are no items there.
+
+ここには特にアイテムはない。
+%%%%
+You cannot apport that!
+
+そのアイテムは引き寄せられない！
+%%%%
+You cannot apport the Orb!
+
+スプリント中はゾットのオーブを引き寄せられない！
+%%%%
+The orb shrieks and becomes a dead weight against your magic!
+
+ゾットのオーブは轟音を放ち、あなたの魔法に対して抵抗した！
+%%%%
+The orb lets out a furious burst of light and becomes a dead weight against your magic!
+
+ゾットのオーブはまばゆい光を放ち、あなたの魔法に対して抵抗した！
+%%%%
+The orb shrieks as your magic touches it!
+
+ゾットのオーブはあなたの魔法を拒絶し、轟音を放った！
+%%%%
+The orb lets out a furious burst of light as your magic touches it!
+
+ゾットのオーブはあなたの魔法を拒絶し、まばゆい光を放った！
+%%%%
+Not with that terrain in the way!
+
+地形ではなく他の物を選んでください！
+%%%%
+Yoink! You pull the item%s towards yourself.
+
+あなたはアイテムを自分の手元に引き寄せた。
+%%%%
+You cannot create a passage on the other side of the transparent wall.
+
+あなたは透明な壁の向こう側には出口を作れない。
+%%%%
+Creating passages of Golubria requires sufficient empty space.
+
+ゴルブリアの通り道の出口を作るにはある程度開けた空間が必要だ。
+%%%%
+A powerful magic interferes with the creation of the passage.
+
+強大な魔力がゴルブリアの通り道の呪文を邪魔している！
+%%%%
+The air shimmers briefly around you.
+
+あなたの周りの大気が一瞬揺らめいた。
+%%%%
+You can't place that within a solid object!
+
+あなたは固形物の所には特異点を置くことができない！
+%%%%
+You can't place the singularity on a creature.
+
+あなたはモンスターの直上に特異点を置くことができない。
+%%%%
+%s %s for a moment.
+
+%sの姿は一瞬歪んだ。
+%%%%
+Space collapses on itself with a %s crunch%s
+
+%s音を立てて空間が崩壊した！
+%%%%
+satisfying
+
+歓喜するような
+%%%%
+horrifying
+
+恐ろしい
+%%%%
+by gravitational forces
+
+重力によって
+%%%%
+%s violently %s moving!
+
+%sはいきなり動きを止めた！
+%%%%
+%s pulls at %s.
+
+%sは%sを引き寄せた。
+%%%%
+%s crushes %s!
+
+%sは%sを破砕した！
+%%%%
+%s violently warps %s!
+
+%sは激しく%sの体を歪ませた！
+%%%%
+%s twists %s apart!
+
+%sは%sの体をねじ切った！
 %%%%
 ############################## spl-util.cc ##############################
 %%%%

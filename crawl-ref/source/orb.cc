@@ -8,6 +8,7 @@
 #include "orb.h"
 
 #include "areas.h"
+#include "database.h"
 #include "shout.h"
 #include "view.h"
 
@@ -57,14 +58,14 @@ void orb_pickup_noise(const coord_def& where, int loudness, const char* msg, con
     if (_orb_noise(where, loudness))
     {
         if (msg)
-            mprf(MSGCH_ORB, "%s", msg);
+            mprf(MSGCH_ORB, "%s", jtransc(msg));
         else
             mprf(MSGCH_ORB, "The orb lets out a hideous shriek!");
     }
     else
     {
         if (msg2)
-            mprf(MSGCH_ORB, "%s", msg2);
+            mprf(MSGCH_ORB, "%s", jtransc(msg2));
         else
             mprf(MSGCH_ORB, "The orb lets out a furious burst of light!");
     }

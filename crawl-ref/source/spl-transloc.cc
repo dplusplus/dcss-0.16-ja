@@ -16,6 +16,7 @@
 #include "areas.h"
 #include "cloud.h"
 #include "coordit.h"
+#include "database.h"
 #include "delay.h"
 #include "directn.h"
 #include "dungeon.h"
@@ -128,7 +129,7 @@ void uncontrolled_blink(bool override_stasis)
     if (!random_near_space(&you, you.pos(), target)
              && !random_near_space(&you, you.pos(), target, true))
     {
-        mpr("You feel jittery for a moment.");
+        mpr(jtrans("You feel jittery for a moment."));
         return;
     }
 
@@ -167,12 +168,12 @@ spret_type semicontrolled_blink(int pow, bool fail, bool safe_cancel,
 
     while (true)
     {
-        mprf(MSGCH_PROMPT, "Which direction? [ESC to cancel]");
+        mpr_nojoin(MSGCH_PROMPT, jtrans("Which direction? [ESC to cancel]"));
         direction(bmove, args);
 
         if (crawl_state.seen_hups)
         {
-            mpr("Cancelling blink due to HUP.");
+            mpr(jtrans("Cancelling blink due to HUP."));
             return SPRET_ABORT;
         }
 
@@ -180,7 +181,7 @@ spret_type semicontrolled_blink(int pow, bool fail, bool safe_cancel,
             break;
 
         if (safe_cancel
-            || yesno("Are you sure you want to cancel this blink?", false ,'n'))
+            || yesno(jtransc("Are you sure you want to cancel this blink?"), false ,'n'))
         {
             canned_msg(MSG_OK);
             return SPRET_ABORT;
@@ -204,7 +205,7 @@ spret_type semicontrolled_blink(int pow, bool fail, bool safe_cancel,
     // End teleport control if this was a random blink upgraded by cTele.
     if (end_ctele && you.duration[DUR_CONTROL_TELEPORT])
     {
-        mprf(MSGCH_DURATION, "You feel uncertain.");
+        mpr_nojoin(MSGCH_DURATION, jtrans("You feel uncertain."));
         you.duration[DUR_CONTROL_TELEPORT] = 0;
     }
     return SPRET_SUCCESS;
@@ -227,20 +228,20 @@ static bool _find_cblink_target(coord_def &target, bool safe_cancel)
     args.restricts = DIR_TARGET;
     args.needs_path = false;
     args.may_target_monster = false;
-    args.top_prompt = "Blink to where?";
+    args.top_prompt = jtrans("Blink to where?");
     dist beam;
     direction(beam, args);
 
     if (crawl_state.seen_hups)
     {
-        mpr("Cancelling blink due to HUP.");
+        mpr(jtrans("Cancelling blink due to HUP."));
         return false;
     }
 
     if (!beam.isValid || beam.target == you.pos())
     {
         if (!safe_cancel
-            && !yesno("Are you sure you want to cancel this blink?",
+            && !yesno(jtransc("Are you sure you want to cancel this blink?"),
                       false, 'n'))
         {
             clear_messages();
@@ -254,23 +255,23 @@ static bool _find_cblink_target(coord_def &target, bool safe_cancel)
     const monster* beholder = you.get_beholder(beam.target);
     if (beholder)
     {
-        mprf("You cannot blink away from %s!",
-             beholder->name(DESC_THE, true).c_str());
+        mprf(jtransc("You cannot blink away from %s!"),
+             jtransc(beholder->name(DESC_THE, true)));
         return _find_cblink_target(target, safe_cancel);
     }
 
     const monster* fearmonger = you.get_fearmonger(beam.target);
     if (fearmonger)
     {
-        mprf("You cannot blink closer to %s!",
-             fearmonger->name(DESC_THE, true).c_str());
+        mprf(jtransc("You cannot blink closer to %s!"),
+             jtransc(fearmonger->name(DESC_THE, true)));
         return _find_cblink_target(target, safe_cancel);
     }
 
     if (cell_is_solid(beam.target))
     {
         clear_messages();
-        mpr("You can't blink into that!");
+        mpr(jtrans("You can't blink into that!"));
         return _find_cblink_target(target, safe_cancel);
     }
 
@@ -288,9 +289,9 @@ static bool _find_cblink_target(coord_def &target, bool safe_cancel)
 
     clear_messages();
     if (you.trans_wall_blocking(beam.target))
-        mpr("There's something in the way!");
+        mpr(jtrans("There's something in the way!"));
     else
-        mpr("You can only blink to visible locations.");
+        mpr(jtrans("You can only blink to visible locations."));
     return _find_cblink_target(target, safe_cancel);
 }
 
@@ -301,7 +302,7 @@ void wizard_blink()
     args.restricts = DIR_TARGET;
     args.needs_path = false;
     args.may_target_monster = false;
-    args.top_prompt = "Blink to where?";
+    args.top_prompt = jtrans("Blink to where?");
     dist beam;
     direction(beam, args);
 
@@ -314,14 +315,14 @@ void wizard_blink()
     if (!in_bounds(beam.target))
     {
         clear_messages();
-        mpr("Please don't blink into the map border.");
+        mpr(jtrans("Please don't blink into the map border."));
         return wizard_blink();
     }
 
     if (monster_at(beam.target))
     {
         clear_messages();
-        mpr("Please don't try to blink into monsters.");
+        mpr(jtrans("Please don't try to blink into monsters."));
         return wizard_blink();
     }
 
@@ -368,7 +369,7 @@ spret_type controlled_blink(bool fail, bool safe_cancel)
 
     if (cell_is_solid(target) || monster_at(target))
     {
-        mpr("Oops! There was something there already!");
+        mpr(jtrans("Oops! There was something there already!"));
         uncontrolled_blink();
         return SPRET_SUCCESS; // of a sort
     }
@@ -408,7 +409,7 @@ spret_type cast_blink(bool allow_control, bool fail)
         // can't put this in allow_control_teleport(), since that's called for
         // status lights, etc (and we don't want those to flip on and off
         // whenever you're confused... probably?)
-        mpr("You're too confused to control your translocation!");
+        mpr(jtrans("You're too confused to control your translocation!"));
         // anyway, fallthrough to random blink
     }
 
@@ -438,7 +439,7 @@ spret_type cast_controlled_blink(int pow, bool fail, bool safe)
 
     if (crawl_state.is_repeating_cmd())
     {
-        crawl_state.cant_cmd_repeat("You can't repeat controlled blinks.");
+        crawl_state.cant_cmd_repeat(jtrans("You can't repeat controlled blinks."));
         crawl_state.cancel_cmd_again();
         crawl_state.cancel_cmd_repeat();
         return SPRET_ABORT;
@@ -466,14 +467,14 @@ bool allow_control_teleport(bool quiet)
     if (orb_haloed(you.pos()))
     {
         if (!quiet)
-            mprf(MSGCH_ORB, "The orb prevents control of your teleportation!");
+            mpr_nojoin(MSGCH_ORB, jtrans("The orb prevents control of your teleportation!"));
         return false;
     }
 
     if (testbits(env.level_flags, LFLAG_NO_TELE_CONTROL))
     {
         if (!quiet)
-            mpr("A powerful magic prevents control of your teleportation.");
+            mpr(jtrans("A powerful magic prevents control of your teleportation."));
         return false;
     }
 
@@ -481,8 +482,8 @@ bool allow_control_teleport(bool quiet)
     {
         if (!quiet)
         {
-            mpr("It is impossible to concentrate on your destination while "
-                "mesmerised.");
+            mpr(jtrans("It is impossible to concentrate on your destination while "
+                       "mesmerised."));
         }
         return false;
     }
@@ -505,29 +506,29 @@ void you_teleport()
         canned_msg(MSG_STRANGE_STASIS);
     else if (you.duration[DUR_TELEPORT])
     {
-        mpr("You feel strangely stable.");
+        mpr(jtrans("You feel strangely stable."));
         you.duration[DUR_TELEPORT] = 0;
     }
     else
     {
-        mpr("You feel strangely unstable.");
+        mpr(jtrans("You feel strangely unstable."));
 
         int teleport_delay = 3 + random2(3);
 
         // Doesn't care whether the cTele will actually work or not.
         if (player_control_teleport())
         {
-            mpr("You feel your translocation being delayed.");
+            mpr(jtrans("You feel your translocation being delayed."));
             teleport_delay += 1 + random2(3);
         }
         if (player_in_branch(BRANCH_ABYSS) && !one_chance_in(5))
         {
-            mpr("You feel the power of the Abyss delaying your translocation.");
+            mpr(jtrans("You feel the power of the Abyss delaying your translocation."));
             teleport_delay += 5 + random2(10);
         }
         else if (orb_haloed(you.pos()))
         {
-            mprf(MSGCH_ORB, "You feel the orb delaying this translocation!");
+            mpr_nojoin(MSGCH_ORB, jtrans("You feel the orb delaying this translocation!"));
             teleport_delay += 5 + random2(5);
         }
 
@@ -634,8 +635,8 @@ static bool _teleport_player(bool allow_control, bool wizard_tele,
         // Only have the messages and the more prompt for non-wizard.
         if (!wizard_tele)
         {
-            mpr("You may choose your destination (press '.' or delete to select).");
-            mpr("Expect minor deviation.");
+            mpr(jtrans("You may choose your destination (press '.' or delete to select)."));
+            mpr(jtrans("Expect minor deviation."));
             more();
         }
 
@@ -650,8 +651,8 @@ static bool _teleport_player(bool allow_control, bool wizard_tele,
             // location, so cancel the teleport.
             if (crawl_state.seen_hups)
             {
-                mprf(MSGCH_ERROR, "Controlled teleport interrupted by HUP signal, "
-                                  "cancelling teleport.");
+                mpr_nojoin(MSGCH_ERROR, jtrans("Controlled teleport interrupted by HUP signal, "
+                                               "cancelling teleport."));
                 if (!wizard_tele)
                     contaminate_player(1000, true);
                 return false;
@@ -663,7 +664,7 @@ static bool _teleport_player(bool allow_control, bool wizard_tele,
             {
                 if (!wizard_tele)
                 {
-                    if (!yesno("Are you sure you want to cancel this teleport?",
+                    if (!yesno(jtransc("Are you sure you want to cancel this teleport?"),
                                true, 'n'))
                     {
                         continue;
@@ -677,9 +678,9 @@ static bool _teleport_player(bool allow_control, bool wizard_tele,
             monster* beholder = you.get_beholder(pos);
             if (beholder && !wizard_tele)
             {
-                mprf("You cannot teleport away from %s!",
-                     beholder->name(DESC_THE, true).c_str());
-                mpr("Choose another destination (press '.' or delete to select).");
+                mprf(jtransc("You cannot teleport away from %s!"),
+                     jtransc(beholder->name(DESC_THE, true)));
+                mpr(jtrans("Choose another destination (press '.' or delete to select)."));
                 more();
                 continue;
             }
@@ -687,9 +688,9 @@ static bool _teleport_player(bool allow_control, bool wizard_tele,
             monster* fearmonger = you.get_fearmonger(pos);
             if (fearmonger && !wizard_tele)
             {
-                mprf("You cannot teleport closer to %s!",
-                     fearmonger->name(DESC_THE, true).c_str());
-                mpr("Choose another destination (press '.' or delete to select).");
+                mprf(jtransc("You cannot teleport closer to %s!"),
+                     jtransc(fearmonger->name(DESC_THE, true)));
+                mpr(jtrans("Choose another destination (press '.' or delete to select)."));
                 more();
                 continue;
             }
@@ -712,7 +713,7 @@ static bool _teleport_player(bool allow_control, bool wizard_tele,
 
         if (!in_bounds(pos))
         {
-            mpr("Nearby solid objects disrupt your rematerialisation!");
+            mpr(jtrans("Nearby solid objects disrupt your rematerialisation!"));
             is_controlled = false;
         }
 
@@ -726,7 +727,7 @@ static bool _teleport_player(bool allow_control, bool wizard_tele,
             {
                 if (wizard_tele)
                 {
-                    mprf(MSGCH_WARN, "Even you can't go there right now. Sorry!");
+                    mpr_nojoin(MSGCH_WARN, jtrans("Even you can't go there right now. Sorry!"));
                     return false;
                 }
 
@@ -738,7 +739,7 @@ static bool _teleport_player(bool allow_control, bool wizard_tele,
             {
                 is_controlled = false;
                 large_change = false;
-                mprf(MSGCH_WARN, "A strong magical force throws you back!");
+                mpr_nojoin(MSGCH_WARN, jtrans("A strong magical force throws you back!"));
             }
             else
             {
@@ -755,7 +756,7 @@ static bool _teleport_player(bool allow_control, bool wizard_tele,
             // End teleport control.
             if (you.duration[DUR_CONTROL_TELEPORT])
             {
-                mprf(MSGCH_DURATION, "You feel uncertain.");
+                mpr_nojoin(MSGCH_DURATION, jtrans("You feel uncertain."));
                 you.duration[DUR_CONTROL_TELEPORT] = 0;
             }
         }
@@ -810,12 +811,12 @@ static bool _teleport_player(bool allow_control, bool wizard_tele,
         if (tries == 0)
             return false;
         else if (newpos == old_pos)
-            mpr("Your surroundings flicker for a moment.");
+            mpr(jtrans("Your surroundings flicker for a moment."));
         else if (you.see_cell(newpos))
-            mpr("Your surroundings seem slightly different.");
+            mpr(jtrans("Your surroundings seem slightly different."));
         else
         {
-            mpr("Your surroundings suddenly seem different.");
+            mpr(jtrans("Your surroundings suddenly seem different."));
             large_change = true;
         }
 
@@ -919,9 +920,9 @@ spret_type cast_portal_projectile(int pow, bool fail)
 {
     fail_check();
     if (!you.duration[DUR_PORTAL_PROJECTILE])
-        mpr("You begin teleporting projectiles to their destination.");
+        mpr(jtrans("You begin teleporting projectiles to their destination."));
     else
-        mpr("You renew your portal.");
+        mpr(jtrans("You renew your portal."));
     // Calculate the accuracy bonus based on current spellpower.
     you.attribute[ATTR_PORTAL_PROJECTILE] = pow;
     you.increase_duration(DUR_PORTAL_PROJECTILE, 3 + random2(pow / 2) + random2(pow / 5), 50);
@@ -934,7 +935,7 @@ spret_type cast_apportation(int pow, bolt& beam, bool fail)
 
     if (!cell_see_cell(you.pos(), where, LOS_SOLID))
     {
-        mpr("There's something in the way!");
+        mpr(jtrans("There's something in the way!"));
         return SPRET_ABORT;
     }
 
@@ -943,7 +944,7 @@ spret_type cast_apportation(int pow, bolt& beam, bool fail)
     // weaken this for high power.
     if (grd(where) == DNGN_DEEP_WATER || grd(where) == DNGN_LAVA)
     {
-        mpr("The density of the terrain blocks your spell.");
+        mpr(jtrans("The density of the terrain blocks your spell."));
         return SPRET_ABORT;
     }
 
@@ -952,7 +953,7 @@ spret_type cast_apportation(int pow, bolt& beam, bool fail)
     const int item_idx = igrd(where);
     if (item_idx == NON_ITEM || !in_bounds(where))
     {
-        mpr("There are no items there.");
+        mpr(jtrans("There are no items there."));
         return SPRET_ABORT;
     }
 
@@ -961,7 +962,7 @@ spret_type cast_apportation(int pow, bolt& beam, bool fail)
     // Nets can be apported when they have a victim trapped.
     if (item_is_stationary(item) && !item_is_stationary_net(item))
     {
-        mpr("You cannot apport that!");
+        mpr(jtrans("You cannot apport that!"));
         return SPRET_ABORT;
     }
 
@@ -970,7 +971,7 @@ spret_type cast_apportation(int pow, bolt& beam, bool fail)
         && (crawl_state.game_is_zotdef()
             || crawl_state.game_is_sprint()))
     {
-        mpr("You cannot apport the Orb!");
+        mpr(jtrans("You cannot apport the Orb!"));
         return SPRET_ABORT;
     }
 
@@ -1047,13 +1048,13 @@ spret_type cast_apportation(int pow, bolt& beam, bool fail)
     }
     if (location_on_path == dist)
     {
-        mpr("Not with that terrain in the way!");
+        mpr(jtrans("Not with that terrain in the way!"));
         return SPRET_SUCCESS;
     }
     dprf("Apport: new spot is %d/%d", new_spot.x, new_spot.y);
 
     // Actually move the item.
-    mprf("Yoink! You pull the item%s towards yourself.",
+    mprf(jtransc("Yoink! You pull the item%s towards yourself."),
          (item.quantity > 1) ? "s" : "");
 
     move_top_item(where, new_spot);
@@ -1156,10 +1157,10 @@ spret_type cast_golubrias_passage(const coord_def& where, bool fail)
     if (tries >= 100 || tries2 >= 100)
     {
         if (you.trans_wall_blocking(randomized_where))
-            mpr("You cannot create a passage on the other side of the transparent wall.");
+            mpr(jtrans("You cannot create a passage on the other side of the transparent wall."));
         else
             // XXX: bleh, dumb message
-            mpr("Creating passages of Golubria requires sufficient empty space.");
+            mpr(jtrans("Creating passages of Golubria requires sufficient empty space."));
         return SPRET_ABORT;
     }
 
@@ -1167,7 +1168,7 @@ spret_type cast_golubrias_passage(const coord_def& where, bool fail)
         testbits(env.pgrid(randomized_where), FPROP_NO_CTELE_INTO) ||
         testbits(env.pgrid(randomized_here), FPROP_NO_CTELE_INTO))
     {
-        mpr("A powerful magic interferes with the creation of the passage.");
+        mpr(jtrans("A powerful magic interferes with the creation of the passage."));
         return SPRET_ABORT;
     }
 
@@ -1216,7 +1217,7 @@ spret_type cast_dispersal(int pow, bool fail)
     if (!apply_monsters_around_square(_disperse_monster, you.pos(), pow,
                                       radius))
     {
-        mpr("The air shimmers briefly around you.");
+        mpr(jtrans("The air shimmers briefly around you."));
     }
     return SPRET_SUCCESS;
 }
@@ -1237,7 +1238,7 @@ spret_type cast_singularity(actor* agent, int pow, const coord_def& where,
     if (cell_is_solid(where))
     {
         if (agent->is_player())
-            mpr("You can't place that within a solid object!");
+            mpr(jtrans("You can't place that within a solid object!"));
         return SPRET_ABORT;
     }
 
@@ -1247,7 +1248,7 @@ spret_type cast_singularity(actor* agent, int pow, const coord_def& where,
         if (you.can_see(victim))
         {
             if (agent->is_player())
-                mpr("You can't place the singularity on a creature.");
+                mpr(jtrans("You can't place the singularity on a creature."));
             return SPRET_ABORT;
         }
 
@@ -1257,9 +1258,8 @@ spret_type cast_singularity(actor* agent, int pow, const coord_def& where,
             canned_msg(MSG_GHOSTLY_OUTLINE);
         else if (you.can_see(victim))
         {
-            mprf("%s %s for a moment.",
-                 victim->name(DESC_THE).c_str(),
-                 victim->conj_verb("distort").c_str());
+            mprf(jtransc("%s %s for a moment."),
+                 jtransc(victim->name(DESC_THE)));
         }
         return SPRET_SUCCESS;
     }
@@ -1269,7 +1269,7 @@ spret_type cast_singularity(actor* agent, int pow, const coord_def& where,
     for (monster_iterator mi; mi; ++mi)
         if (mi->type == MONS_SINGULARITY && mi->summoner == agent->mid)
         {
-            simple_monster_message(*mi, " implodes!");
+            simple_monster_message(*mi, jtransc(" implodes!"));
             monster_die(*mi, KILL_RESET, NON_MONSTER);
         }
 
@@ -1294,9 +1294,9 @@ spret_type cast_singularity(actor* agent, int pow, const coord_def& where,
         if (you.can_see(singularity))
         {
             const bool friendly = singularity->wont_attack();
-            mprf("Space collapses on itself with a %s crunch%s",
-                 friendly ? "satisfying" : "horrifying",
-                 friendly ? "." : "!");
+            mprf(jtransc("Space collapses on itself with a %s crunch%s"),
+                 jtransc(friendly ? "satisfying" : "horrifying"),
+                 friendly ? "。" : "！");
         }
         invalidate_agrid(true);
     }
@@ -1317,9 +1317,8 @@ void attract_actor(const actor* agent, actor* victim, const coord_def pos,
         // This probably shouldn't ever happen, but just in case:
         if (you.can_see(victim))
         {
-            mprf("%s violently %s moving!",
-                 victim->name(DESC_THE).c_str(),
-                 victim->conj_verb("stop").c_str());
+            mprf(jtransc("%s violently %s moving!"),
+                 jtransc(victim->name(DESC_THE)));
         }
         victim->hurt(agent, roll_dice(strength / 2, pow / 20),
                      BEAM_MMISSILE, KILLED_BY_BEAM, "", GRAVITY);
@@ -1385,9 +1384,9 @@ void singularity_pull(const monster *singularity)
             // you can see its impact on the monster; "Something
             // violently warps Sigmund!" is perfectly acceptable,
             // after all.
-            mprf(messages[strength - 1],
-                 singularity->name(DESC_THE).c_str(),
-                 ai->name(DESC_THE).c_str());
+            mprf(jtransc(messages[strength - 1]),
+                 jtransc(singularity->name(DESC_THE)),
+                 jtransc(ai->name(DESC_THE)));
         }
         ai->hurt(singularity, roll_dice(strength, 12), BEAM_MMISSILE,
                  KILLED_BY_BEAM, "", GRAVITY);
