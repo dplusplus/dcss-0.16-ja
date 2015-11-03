@@ -75,11 +75,7 @@ Desecrating this corpse would be a sin. Continue anyway?
 %%%%
 You bottle the corpse's blood.
 
-あなたは死体の血液を採血した。
-%%%%
-There isn't anything here!
-
-ここには何もない！
+あなたは死体から血液を採血した。
 %%%%
 You butcher %s.
 
@@ -88,6 +84,10 @@ You butcher %s.
 You enjoyed that.
 
 あなたはそれを楽しんだ。
+%%%%
+There isn't anything here!
+
+ここには何もない！
 %%%%
 There isn't anything to %sbutcher here.
 
