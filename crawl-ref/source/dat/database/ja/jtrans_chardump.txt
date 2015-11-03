@@ -1,37 +1,4 @@
 %%%%
-Message History
-
-メッセージ履歴:
-%%%%
-notes header
-
-行動履歴:
-ターン | 場所          | 行動
-%%%%
-You escaped
-
-あなたは迷宮を脱出した
-%%%%
-demanding penance.
-
-罪の償いを求めている。
-%%%%
-Deck
-
-デッキ
-%%%%
-Action
-
-行動
-%%%%
-total
-
-全体
-%%%%
-Char dumped successfully.
-
-キャラクターダンプに成功しました。
-%%%%
 You %svisited %d branch
 
 あなたは迷宮の分岐のうち%d
@@ -125,6 +92,23 @@ table legend turns by place
  F = この場所で階層間でない自動移動を行って費やしたターンをあなたが訪れた
      階層の数で割ったもの
 %%%%
+Message History
+
+メッセージ履歴:
+%%%%
+notes header
+
+行動履歴:
+ターン | 場所          | 行動
+%%%%
+You escaped
+
+あなたは迷宮を脱出した
+%%%%
+demanding penance.
+
+罪の償いを求めている。
+%%%%
 You aren't carrying anything.
 
 あなたは何も所持していない。
@@ -163,4 +147,20 @@ table legend kills by place
  D = ゲーム全体においてこの場所でその他のモンスターが殺した数のパーセンテージ
  E = ゲーム全体においてこの場所で得た経験値のパーセンテージ
  F = この場所で得た経験値をあなたが訪れた階層の数で割ったもの
+%%%%
+Deck
+
+デッキ
+%%%%
+Action
+
+行動
+%%%%
+total
+
+全体
+%%%%
+Char dumped successfully.
+
+キャラクターダンプに成功しました。
 %%%%
