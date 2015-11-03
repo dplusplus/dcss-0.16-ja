@@ -274,7 +274,7 @@ bool add_spell_to_memory(spell_type spell)
         }
 
     if (you.num_turns)
-        mprf("Spell assigned to '%c'.", index_to_letter(j));
+        mprf(jtransc("Spell assigned to '%c'."), index_to_letter(j));
 
     you.spell_letter_table[j] = i;
 
@@ -302,7 +302,7 @@ bool del_spell_from_memory_by_slot(int slot)
 
     spell_skills(you.spells[slot], you.stop_train);
 
-    mprf("Your memory of %s unravels.", spell_title(you.spells[slot]));
+    mprf(jtransc("Your memory of %s unravels."), tagged_jtransc("[spell]", spell_title(you.spells[slot])));
     you.spells[ slot ] = SPELL_NO_SPELL;
 
     for (j = 0; j < 52; j++)

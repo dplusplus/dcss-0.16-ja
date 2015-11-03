@@ -12857,6 +12857,14 @@ by gravitational forces
 %%%%
 ############################## spl-util.cc ##############################
 %%%%
+Spell assigned to '%c'.
+
+この呪文を'%c'キーに割り当てた。
+%%%%
+Your memory of %s unravels.
+
+あなたは%sの呪文を忘却した。
+%%%%
 Conj
 
 妖術
