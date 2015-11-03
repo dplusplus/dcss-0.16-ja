@@ -13098,6 +13098,148 @@ You can only summon one forest at a time!
 
 一度に一体のドライアドしか召喚できない。
 %%%%
+############################## spl-wpnench.cc ##############################
+%%%%
+bursts into flame!
+
+から炎が迸った！
+%%%%
+frosts over!
+
+は霜に覆われた。
+%%%%
+glows blue.
+
+は冷たい蒼に輝いた。
+%%%%
+starts dripping with poison.
+
+は毒を滴らせはじめた。
+%%%%
+crackles with unholy energy.
+
+は邪悪なエネルギーに満ちた。
+%%%%
+glows silver and looks extremely dangerous.
+
+は銀色に輝いて、非常に危険になったようだ。
+%%%%
+writhes in agony.
+
+は苦痛に身もだえした。
+%%%%
+shrieks in agony.
+
+は苦痛の悲鳴を上げた。
+%%%%
+shines with holy light.
+
+は聖なる光に輝いた。
+%%%%
+starts to spark.
+
+は火花を散らしはじめた。
+%%%%
+depletes magic around it.
+
+は周囲の魔力を枯渇させている。
+%%%%
+glistens with random hues.
+
+は様々な色にきらめいている。
+%%%%
+seems blunter.
+
+は切れ味が普通に戻った。
+%%%%
+feels lighter.
+
+は重量が元に戻った。
+%%%%
+stops repelling magic.
+
+は魔力の阻害を止めた。
+%%%%
+goes out.
+
+は炎が消えた。
+%%%%
+stops glowing.
+
+は輝きが消えた。
+%%%%
+stops dripping with poison.
+
+は毒の滴りが止まった。
+%%%%
+stops crackling.
+
+の爆ぜる音が止まった。
+%%%%
+seems straighter.
+
+はまっすぐに戻った。
+%%%%
+seems less pained.
+
+は苦痛が収まったように見える。
+%%%%
+seems more stable.
+
+は安定したように見える。
+%%%%
+stops emitting sparks.
+
+は火花を散らすのを止めた。
+%%%%
+'s light goes out.
+
+の輝きは消えた。
+%%%%
+seems inexplicably less special.
+
+は不可解なことに特に変わったところはない。
+%%%%
+You aren't wielding a weapon.
+
+あなたは武器を手にしていない。
+%%%%
+This isn't a weapon.
+
+これは武器ではない。
+%%%%
+You cannot enchant this weapon.
+
+これを魔力の武器にすることはできない。
+%%%%
+This weapon is already enchanted with that brand.
+
+この武器は既に同じような魔力をかけられている。
+%%%%
+You cannot enchant this weapon with this spell.
+
+あなたはこの武器を魔力の武器にすることができない。
+%%%%
+%s flashes.
+
+%sはまぶしく光った。
+%%%%
+You aren't wielding a weapon!
+
+あなたは武器を手にしていない！
+%%%%
+You cannot bond with this weapon.
+
+あなたはこの武器と絆を結ぶことはできない。
+%%%%
+You become one with your weapon.
+
+あなたは武器との絆を結んだ。
+%%%%
+Your bond becomes stronger.
+
+あなたの武器との絆は強まった。
+%%%%
 ############################## stairs.cc ##############################
 %%%%
 The hatch slams shut behind you.
