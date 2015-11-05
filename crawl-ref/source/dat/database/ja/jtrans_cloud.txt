@@ -1,0 +1,181 @@
+%%%%
+flame
+
+炎
+%%%%
+roaring flames
+
+燃えさかる炎
+%%%%
+noxious fumes
+
+悪臭
+%%%%
+freezing vapour
+
+凍てつく大気
+%%%%
+freezing vapours
+
+凍てつく大気
+%%%%
+poison gas
+
+毒ガス
+%%%%
+black smoke
+
+黒い煙
+%%%%
+grey smoke
+
+灰色の煙
+%%%%
+blue smoke
+
+青い煙
+%%%%
+purple smoke
+
+紫の煙
+%%%%
+translocational energy
+
+転位のエネルギー
+%%%%
+spreading flames
+
+燃え広がる炎
+%%%%
+a forest fire
+
+森林火災
+%%%%
+steam
+
+蒸気
+%%%%
+a cloud of scalding steam
+
+高熱の蒸気
+%%%%
+ink
+
+墨
+%%%%
+calcifying dust
+
+石化する雲
+%%%%
+blessed fire
+
+聖なる炎
+%%%%
+foul pestilence
+
+疫病の瘴気
+%%%%
+dark miasma
+
+薄黒い疫病の瘴気
+%%%%
+thin mist
+
+薄霧
+%%%%
+seething chaos
+
+渦巻く混沌
+%%%%
+rain
+
+雨
+%%%%
+the rain
+
+雨
+%%%%
+mutagenic fog
+
+変異性の霧
+%%%%
+magical condensation
+
+凝縮された魔力
+%%%%
+raging winds
+
+荒れ狂う風
+%%%%
+sparse dust
+
+まばらな塵
+%%%%
+ghostly flame
+
+鬼火
+%%%%
+acidic fog
+
+酸性の霧
+%%%%
+thunder
+
+雷
+%%%%
+a thunderstorm
+
+雷
+%%%%
+negative energy
+
+負のエネルギー
+%%%%
+The forest fire spreads!
+
+森林火災が燃え広がった！
+%%%%
+Lightning arcs down from a storm cloud!
+
+雷雲から稲妻が落ちた！
+%%%%
+The rain has left you waist-deep in water!
+
+雨によってできた水たまりはあなたの腰の深さまで残っている！
+%%%%
+%s %s in the rain.
+
+%sは雨の中で%s。
+%%%%
+You choke on the stench!
+
+あなたは悪臭で窒息しそうだ!
+%%%%
+The mutagenic energy flows into you.
+
+変異性のエネルギーがあなたに流れ込んだ。
+%%%%
+You are struck by lightning!
+
+あなたは雷に打たれた！
+%%%%
+is struck by lightning.
+
+は雷に打たれた。
+%%%%
+Lightning from the thunderstorm strikes something you cannot see.
+
+雷雲から降った稲妻が何かに直撃したが、よく見えなかった。
+%%%%
+You hear a clap of thunder!
+
+あなたは雷鳴を耳にした！
+%%%%
+%s %s in %s.
+
+%sは%sの中に%s。
+%%%%
+%s %s standing in %s.
+
+%sは%sの中に立っている。
+%%%%
