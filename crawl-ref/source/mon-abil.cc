@@ -22,6 +22,7 @@
 #include "cloud.h"
 #include "colour.h"
 #include "coordit.h"
+#include "database.h"
 #include "delay.h"
 #include "dgn-overview.h"
 #include "directn.h"
@@ -186,10 +187,10 @@ bool ugly_thing_mutate(monster* ugly, bool proximity)
                 proximity_type = 2;
             }
 
-            src  = " from ";
-            src += proximity_type == 0 ? "you" :
-                   proximity_type == 1 ? "its kin"
-                                       : "its neighbour";
+            src += jtrans(proximity_type == 0 ? "you" :
+                          proximity_type == 1 ? "its kin"
+                                              : "its neighbour");
+            src += "から";
 
             success = true;
         }
@@ -198,7 +199,7 @@ bool ugly_thing_mutate(monster* ugly, bool proximity)
     if (success)
     {
         simple_monster_message(ugly,
-            make_stringf(" basks in the mutagenic energy%s and changes!",
+            make_stringf(jtransc(" basks in the mutagenic energy%s and changes!"),
                          src.c_str()).c_str());
 
         ugly->uglything_mutate(mon_colour);
@@ -297,7 +298,7 @@ static monster* _do_split(monster* thing, const coord_def & target)
         return 0;
 
     if (you.can_see(thing))
-        mprf("%s splits.", thing->name(DESC_A).c_str());
+        mprf(jtransc("%s splits."), jtransc(thing->name(DESC_A).c_str()));
 
     // Inflict the new slime with any enchantments on the parent.
     _split_ench_durations(thing, new_slime);
@@ -458,31 +459,33 @@ static bool _do_merge_crawlies(monster* crawlie, monster* merge_to)
         {
             if (crawlie->type == old_type)
             {
-                mprf("Two %s merge%s%s.",
-                     pluralise(crawlie->name(DESC_PLAIN)).c_str(),
-                     changed ? " to form " : "",
-                     changed ? merge_to->name(DESC_A).c_str() : "");
+                mprf(jtransc("Two %s merge%s%s."),
+                     jtransc(crawlie->name(DESC_PLAIN)),
+                     changed ? "て" : "",
+                     changed ? jtransc(merge_to->name(DESC_A)) : "",
+                     changed ? "になっ" : "");
             }
             else
             {
-                mprf("%s merges with %s%s%s.",
-                     crawlie->name(DESC_A).c_str(),
-                     old_name.c_str(),
-                     changed ? " to form " : "",
-                     changed ? merge_to->name(DESC_A).c_str() : "");
+                mprf(jtransc("%s merges with %s%s%s."),
+                     jtransc(crawlie->name(DESC_A)),
+                     jtransc(old_name),
+                     changed ? "て" : "",
+                     changed ? jtransc(merge_to->name(DESC_A)) : "",
+                     changed ? "になっ": "");
             }
         }
         else if (changed)
         {
-            mprf("%s suddenly becomes %s.",
-                 uppercase_first(old_name).c_str(),
-                 merge_to->name(DESC_A).c_str());
+            mprf(jtransc("%s suddenly becomes %s."),
+                 jtransc(old_name),
+                 jtransc(merge_to->name(DESC_A)));
         }
         else
-            mprf("%s twists grotesquely.", merge_to->name(DESC_A).c_str());
+            mprf(jtransc("%s twists grotesquely."), jtransc(merge_to->name(DESC_A)));
     }
     else if (you.can_see(crawlie))
-        mprf("%s suddenly disappears!", crawlie->name(DESC_A).c_str());
+        mprf(jtransc("%s suddenly disappears!"), jtransc(crawlie->name(DESC_A)));
 
     // Now kill the other monster.
     monster_die(crawlie, KILL_DISMISSED, NON_MONSTER, true);
@@ -526,19 +529,19 @@ static void _do_merge_slimes(monster* initial_slime, monster* merge_to)
     {
         if (you.can_see(initial_slime))
         {
-            mprf("Two slime creatures merge to form %s.",
-                 merge_to->name(DESC_A).c_str());
+            mprf(jtransc("Two slime creatures merge to form %s."),
+                 jtransc(merge_to->name(DESC_A)));
         }
         else
         {
-            mprf("A slime creature suddenly becomes %s.",
-                 merge_to->name(DESC_A).c_str());
+            mprf(jtransc("A slime creature suddenly becomes %s."),
+                 jtransc(merge_to->name(DESC_A)));
         }
 
         flash_view_delay(UA_MONSTER, LIGHTGREEN, 150);
     }
     else if (you.can_see(initial_slime))
-        mpr("A slime creature suddenly disappears!");
+        mpr(jtrans("A slime creature suddenly disappears!"));
 
     // Have to 'kill' the slime doing the merging.
     monster_die(initial_slime, KILL_DISMISSED, NON_MONSTER, true);
@@ -830,13 +833,13 @@ static void _starcursed_scream(monster* mon, actor* target)
         {
             mprf(target->as_monster()->friendly() ? MSGCH_FRIEND_SPELL
                                                   : MSGCH_MONSTER_SPELL,
-                 "%s writhes in pain as voices assail %s mind.",
-                 target->name(DESC_THE).c_str(),
-                 target->pronoun(PRONOUN_POSSESSIVE).c_str());
+                 jtransc("%s writhes in pain as voices assail %s mind."),
+                 jtransc(target->name(DESC_THE)),
+                 jtransc(target->pronoun(PRONOUN_POSSESSIVE)));
         }
     }
     else
-        mprf(MSGCH_MONSTER_SPELL, "%s", message);
+        mprf(MSGCH_MONSTER_SPELL, "%s", jtransc(message));
     target->hurt(mon, dam, BEAM_MISSILE, KILLED_BY_BEAM, "",
                  "accursed screaming");
 
@@ -935,8 +938,8 @@ static bool _lost_soul_teleport(monster* mons)
             mons->props["band_leader"].get_int() = candidate.first->mid;
             if (seen)
             {
-                mprf("%s flickers out of the living world.",
-                        mons->name(DESC_THE, true).c_str());
+                mprf(jtransc("%s flickers out of the living world."),
+                     jtransc(mons->name(DESC_THE, true)));
             }
             return true;
         }
@@ -948,8 +951,8 @@ static bool _lost_soul_teleport(monster* mons)
     {
         if (seen)
         {
-            mprf("%s flickers out of the living world.",
-                        mons->name(DESC_THE, true).c_str());
+            mprf(jtransc("%s flickers out of the living world."),
+                 jtransc(mons->name(DESC_THE, true)));
         }
         monster_die(mons, KILL_MISC, -1, true);
         return true;
@@ -1038,17 +1041,17 @@ bool lost_soul_revive(monster* mons, killer_type killer)
         {
             if (!was_alive)
             {
-                mprf("%s sacrifices itself to reknit %s!",
-                     mi->name(DESC_THE).c_str(),
-                     revivee_name.c_str());
+                mprf(jtransc("%s sacrifices itself to reknit %s!"),
+                     jtransc(mi->name(DESC_THE)),
+                     jtransc(revivee_name));
             }
             else
             {
-                mprf("%s assumes the form of %s%s!",
-                     mi->name(DESC_THE).c_str(),
-                     revivee_name.c_str(),
-                     (mi->is_summoned() ? " and becomes anchored to this"
-                      " world" : ""));
+                mprf(jtransc("%s assumes the form of %s%s!"),
+                     jtransc(mi->name(DESC_THE)),
+                     jtransc(revivee_name),
+                     jtransc((mi->is_summoned() ? " and becomes anchored to this"
+                              " world" : "")));
             }
         }
 
@@ -1100,13 +1103,13 @@ void treant_release_fauna(monster* mons)
     {
         if (base_t == MONS_WASP)
         {
-                mprf("Angry insects surge out from beneath %s foliage!",
-                        mons->name(DESC_ITS).c_str());
+            mprf(jtransc("Angry insects surge out from beneath %s foliage!"),
+                 jtransc(mons->name(DESC_ITS)));
         }
         else if (base_t == MONS_RAVEN)
         {
-                mprf("Agitated ravens fly out from beneath %s foliage!",
-                        mons->name(DESC_ITS).c_str());
+            mprf(jtransc("Agitated ravens fly out from beneath %s foliage!"),
+                 jtransc(mons->name(DESC_ITS)));
         }
     }
 }
@@ -1128,7 +1131,7 @@ void check_grasping_roots(actor* act, bool quiet)
         if (act->is_player())
         {
             if (!quiet)
-                mpr("You escape the reach of the grasping roots.");
+                mpr(jtrans("You escape the reach of the grasping roots."));
             you.duration[DUR_GRASPING_ROOTS] = 0;
             you.redraw_evasion = true;
         }
@@ -1245,7 +1248,7 @@ bool mon_special_ability(monster* mons, bolt & beem)
             if (mons_is_retreating(mons))
                 behaviour_event(mons, ME_CORNERED);
 
-            simple_monster_message(mons, " withdraws into its shell!");
+            simple_monster_message(mons, jtransc(" withdraws into its shell!"));
         }
         break;
 
@@ -1262,7 +1265,7 @@ bool mon_special_ability(monster* mons, bolt & beem)
                 if (coinflip())
                 {
                 //  behaviour_event(mons, ME_CORNERED);
-                    simple_monster_message(mons, " curls into a ball and rolls away!");
+                    simple_monster_message(mons, jtransc(" curls into a ball and rolls away!"));
                     boulder_start(mons, &beem);
                     used = true;
                 }
@@ -1271,7 +1274,7 @@ bool mon_special_ability(monster* mons, bolt & beem)
             else if (one_chance_in(3)
                      && !adjacent(mons->pos(), beem.target))
             {
-                simple_monster_message(mons, " curls into a ball and starts rolling!");
+                simple_monster_message(mons, jtransc(" curls into a ball and starts rolling!"));
                 boulder_start(mons, &beem);
                 used = true;
             }
@@ -1382,7 +1385,7 @@ bool mon_special_ability(monster* mons, bolt & beem)
                 {
                     if (mons->move_to_pos(spot))
                     {
-                        simple_monster_message(mons, " flows with the water.");
+                        simple_monster_message(mons, jtransc(" flows with the water."));
                         used = true;
                     }
                 }
@@ -1408,13 +1411,13 @@ bool mon_special_ability(monster* mons, bolt & beem)
                                        random_range(3, 7) * BASELINE_DELAY));
             if (you.can_see(mons))
             {
-                mprf(MSGCH_MONSTER_SPELL, "%s reaches out with a gnarled limb.",
-                     mons->name(DESC_THE).c_str());
-                mprf("Grasping roots rise from the ground around %s!",
-                     mons->name(DESC_THE).c_str());
+                mprf(MSGCH_MONSTER_SPELL, jtransc("%s reaches out with a gnarled limb."),
+                     jtransc(mons->name(DESC_THE)));
+                mprf(jtransc("Grasping roots rise from the ground around %s!"),
+                     jtransc(mons->name(DESC_THE)));
             }
             else if (you.see_cell(mons->pos()))
-                mpr("Grasping roots begin to rise from the ground!");
+                mpr(jtrans("Grasping roots begin to rise from the ground!"));
 
             used = true;
         }
@@ -1425,7 +1428,7 @@ bool mon_special_ability(monster* mons, bolt & beem)
         if (mons->hit_points * 2 < mons->max_hit_points && one_chance_in(4)
              && !mons->has_ench(ENCH_INNER_FLAME))
         {
-            simple_monster_message(mons, " overheats!");
+            simple_monster_message(mons, jtransc(" overheats!"));
             mons->add_ench(mon_enchant(ENCH_INNER_FLAME, 0, 0,
                                        INFINITE_DURATION));
         }

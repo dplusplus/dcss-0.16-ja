@@ -5396,9 +5396,141 @@ underside
 %%%%
 ############################## mon-abil.cc ##############################
 %%%%
+its kin
+
+同族
+%%%%
+its neighbour
+
+仲間
+%%%%
+basks in the mutagenic energy%s and changes!
+
+は%s放たれる変異性のエネルギーを浴び、姿を変えた！
+%%%%
+%s splits.
+
+%sは分裂した。
+%%%%
+Two %s merge%s%s.
+
+2体の%sは合体し%s%s%sた。
+%%%%
+%s merges with %s%s%s.
+
+%sは%sと合体し%s%s%sた。
+%%%%
+%s suddenly becomes %s.
+
+%sは突然%sへと姿を変えた。
+%%%%
+%s twists grotesquely.
+
+%sはグロテスクに変貌した。
+%%%%
+%s suddenly disappears!
+
+%sは突然姿を消した！
+%%%%
+Two slime creatures merge to form %s.
+
+2体のスライムは合体して%sになった。
+%%%%
+A slime creature suddenly becomes %s.
+
+スライムは突然%sになった。
+%%%%
+A slime creature suddenly disappears!
+
+スライムは突然消え去った！
+%%%%
+A cacophony of accursed wailing tears at your sanity!
+
+忌まわしくも悲しげな不協和音によってあなたは正気を失った！
+%%%%
+A deafening chorus of shrieks assaults your mind!
+
+耳をつんざく悲鳴の合唱があなたの精神を刺激した！
+%%%%
+A chorus of shrieks assaults your mind.
+
+悲鳴の合唱があなたの精神を刺激した。
+%%%%
+The starcursed mass shrieks in your mind.
+
+呪われし群れはあなたの精神にまで届く悲鳴を上げた。
+%%%%
+%s writhes in pain as voices assail %s mind.
+
+その声に精神を苛まれ、%sは苦痛に身もだえした。
+%%%%
+accursed screaming
+
+忌まわしき悲鳴
+%%%%
+%s flickers out of the living world.
+
+%sは点滅してこの世から消え去った。
+%%%%
+%s sacrifices itself to reknit %s!
+
+%sは自らを生贄に捧げ、%sを復活させた！
+%%%%
+%s assumes the form of %s%s!
+
+%sは%sの姿を取っ%sた！
+%%%%
+and becomes anchored to this world
+
+てこの世に定着し
+%%%%
+Angry insects surge out from beneath %s foliage!
+
+怒り狂った昆虫が%sの巣から飛び出した！
+%%%%
+Agitated ravens fly out from beneath %s foliage!
+
+カラスが%sの巣から飛び出した！
+%%%%
+You escape the reach of the grasping roots.
+
+あなたは木の根の届く範囲から逃れた。
+%%%%
 flickers out of sight
 
 点滅して見えなくなった
+%%%%
+withdraws into its shell!
+
+は甲羅の中に引っ込んだ！
+%%%%
+curls into a ball and rolls away!
+
+は丸まって遠くに転がっていった！
+%%%%
+curls into a ball and starts rolling!
+
+は丸まって転がりだした！
+%%%%
+flows with the water.
+
+は流れる水とともに動き出した。
+%%%%
+%s reaches out with a gnarled limb.
+
+%sは節くれだった枝を伸ばした。
+%%%%
+Grasping roots rise from the ground around %s!
+
+あなたを掴もうとする木の根が%sの周囲の地面から生えてきた！
+%%%%
+Grasping roots begin to rise from the ground!
+
+あなたを掴もうとする木の根が地面から生えてきた！
+%%%%
+overheats!
+
+はオーバーヒートした！
 %%%%
 ############################## mon-act.cc ##############################
 %%%%
