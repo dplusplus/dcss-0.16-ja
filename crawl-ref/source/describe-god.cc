@@ -492,12 +492,12 @@ static string _describe_branch_bribability()
 
     size_t width = 0;
     for (branch_type br : targets)
-        width = max(width, (unsigned int)strwidth(jtrans(branches[br].shortname)));
+        width = max(width, (size_t)strwidth(tagged_jtrans("[branch]", branches[br].shortname)));
 
     for (branch_type br : targets)
     {
         string line = " ";
-        line += jtrans(branches[br].shortname);
+        line += tagged_jtrans("[branch]", branches[br].shortname);
         line += string(width + 2 - strwidth(line), ' ');
         // XXX: move this elsewhere?
         switch (br)
