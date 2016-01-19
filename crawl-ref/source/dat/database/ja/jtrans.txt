@@ -5534,6 +5534,26 @@ overheats!
 %%%%
 ############################## mon-act.cc ##############################
 %%%%
+pulls free of the water.
+
+は水の呪縛から逃れた。
+%%%%
+%s and %s swap places.
+
+%sは%sと位置を入れ替えた。
+%%%%
+%s swoops through the air toward %s!
+
+%sは舞い降りて%sに飛びかかった！
+%%%%
+reads a scroll.
+
+は巻物を読んだ。
+%%%%
+Wisps of shadow swirl around %s.
+
+%sの周りを影が取り巻いた。
+%%%%
 zaps a wand.
 
 はワンドを振った。
@@ -5550,6 +5570,82 @@ zaps a rod.
 
 はロッドを振った。
 %%%%
+is stunned by your will and fails to attack.
+
+はあなたの意志に従って目を回し、攻撃に失敗した。
+%%%%
+You redirect %s's attack!
+
+あなたは%sの攻撃を逸らした！
+%%%%
+stays still, afraid of the %s.
+
+は%sに気を取られて立ちすくんだ。
+%%%%
+falls limply to the ground.
+
+はだらりと地面に垂れ下がった。
+%%%%
+crackles loudly.
+
+はバチバチと大きな音を立てている。
+%%%%
+You hear a loud crackle.
+
+あなたは何かが爆ぜる大きな音を耳にした。
+%%%%
+is lost in a daze.
+
+はふらふらしている。
+%%%%
+is distracted by the nearby gold.
+
+は近くの金貨に目を奪われている。
+%%%%
+Something you can't see is thrashing in a web.
+
+何か目に見えないものが蜘蛛の巣の中でのたうっている。
+%%%%
+struggles to get unstuck from the web.
+
+は蜘蛛の巣から抜けだそうともがいている。
+%%%%
+Something wriggles in the net.
+
+何かが網の中でうごめいている。
+%%%%
+struggles to escape the net.
+
+は網から逃れようともがいている。
+%%%%
+struggles against the net.
+
+は網と格闘している。
+%%%%
+The net rips apart, and %s comes free!
+
+網がびりびりに破け、%sは自由を取り戻した！
+%%%%
+All of a sudden the net rips apart!
+
+突然網がびりびりに破けた！
+%%%%
+You feel yourself growing ill in the presence of %s.
+
+あなたは%sの存在により体の調子がますます悪くなるのを感じた。
+%%%%
+Being near %s leaves you feeling lethargic.
+
+あなたは%sの近くにいるため無気力感が湧いてきた。
+%%%%
+splits in two!
+
+は二つに分裂した！
+%%%%
+You hear a squelching noise.
+
+あなたはガボガボという音を耳にした。
+%%%%
 You hear a%s slurping noise.
 
 あなたは%s物を食べる音を耳にした。
@@ -5558,9 +5654,77 @@ appreciates your sacrifice.
 
 はあなたの捧げ物に喜んでいる。
 %%%%
+twists violently!
+
+は体を急激にくねらせた！
+%%%%
+devours the net!
+
+は網をむさぼり食った！
+%%%%
+%s eats %s.
+
+%sは%sを食らった。
+%%%%
+%s grows in the wake of %s.
+
+%sは%sの活動と共に育ちはじめた。
+%%%%
+escapes!
+
+は自由になった！
+%%%%
+struggles to escape constriction.
+
+は拘束から逃れようともがいている。
+%%%%
+The door bursts into shrapnel!
+
+扉は木っ端微塵に四散した！
+%%%%
+bursts through the door, destroying it!
+
+は扉を木っ端微塵に壊しつつ通り抜けた！
+%%%%
+The door mysteriously vanishes.
+
+扉は不思議なことに消滅した。
+%%%%
+eats the door!
+
+は扉を食らった！
+%%%%
 moves out of view.
 
 は視界外に移動した。
+%%%%
+%s rages.
+
+%sは怒り狂った。
+%%%%
+flops around on dry land!"
+
+は乾いた地面をじたばたとはね回った！
+%%%%
+falters for a moment.
+
+はしばらくの間ひるんだ。
+%%%%
+%s knocks down a tree!
+
+%sが木をなぎ倒している！
+%%%%
+You hear a crashing sound.
+
+あなたは何かが壊れる音を耳にした。
+%%%%
+You hear a sizzling sound.
+
+あなたはジュージューという音を耳にした。
+%%%%
+You hear a grinding noise.
+
+あなたは軋むような音を耳にした。
 %%%%
 ############################## mon-cast.cc ##############################
 %%%%
@@ -11561,10 +11725,6 @@ Dim flames ripple over @the_monster@'s body.
 
 ほのかな炎が@the_monster@の体の上を流れた。
 %%%%
-You hear a sizzling sound.
-
-あなたはジュージューという音を耳にした。
-%%%%
 You feel like you have heartburn.
 
 あなたは胸焼けを覚えた。
@@ -14256,7 +14416,7 @@ throws
 %%%%
 You hear an odd grinding sound!
 
-あなたは奇妙な軋る音を聞いた！
+あなたは奇妙な軋む音を聞いた！
 %%%%
 You hear the creaking of ancient gears!
 
