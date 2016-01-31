@@ -5726,6 +5726,32 @@ You hear a grinding noise.
 
 あなたは軋むような音を耳にした。
 %%%%
+############################## mon-behv.cc ##############################
+%%%%
+%s attack snaps %s out of %s fear.
+
+%s攻撃によって%sから恐怖が振り払われた。
+%%%%
+PLAIN:@The_monster@ returns to your side!
+
+PLAIN:@The_monster@はあなたの味方に戻った！
+%%%%
+PLAIN:Cornered, @The_monster@ turns to fight!
+
+PLAIN:追い詰められた@The_monster@は戦いを始めた！
+%%%%
+(press <w>%c</w> on the <w>%s</w>bility menu to convert to Beogh)
+
+(ベオに改宗するには<w>%s</w>bilityメニューで <w>%c</w> を押してください)
+%%%%
+passes through the gate.
+
+は門をくぐり抜けた。
+%%%%
+%s the shaft.
+
+は縦穴%s。
+%%%%
 ############################## mon-cast.cc ##############################
 %%%%
 %s goes into a battle-frenzy!
