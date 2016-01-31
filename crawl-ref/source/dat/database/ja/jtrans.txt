@@ -6242,6 +6242,32 @@ an eerie melody
 
 奇妙なメロディ
 %%%%
+############################## mon-clone.cc ##############################
+%%%%
+%s seems to step out of %s!
+
+%sは%sから抜け出したようだ！
+%%%%
+%s seems to draw %s out of %s!
+
+%sは%sからその姿を抜き出した！
+%%%%
+Suddenly you stand beside yourself.
+
+突然あなたの隣にもう一人のあなたが現れた。
+%%%%
+There is a horrible, sudden wrenching feeling in your soul!
+
+あなたの魂が張り裂けそうな痛みを感じた！
+%%%%
+You see a puff of smoke.
+
+あなたの目の前でぼわんと煙が上がった。
+%%%%
+is duplicated!
+
+は分裂した！
+%%%%
 ############################## mon-death.cc ##############################
 %%%%
 You feel a bit more experienced.

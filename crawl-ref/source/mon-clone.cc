@@ -11,6 +11,7 @@
 #include "arena.h"
 #include "artefact.h"
 #include "coordit.h"
+#include "database.h"
 #include "directn.h"
 #include "env.h"
 #include "items.h"
@@ -126,15 +127,15 @@ static void _mons_summon_monster_illusion(monster* caster,
         {
             if (!you.can_see(caster))
             {
-                mprf("%s seems to step out of %s!",
-                     foe->name(DESC_THE).c_str(),
-                     foe->pronoun(PRONOUN_REFLEXIVE).c_str());
+                mprf(jtransc("%s seems to step out of %s!"),
+                     jtransc(foe->name(DESC_THE)),
+                     jtransc(foe->pronoun(PRONOUN_REFLEXIVE)));
             }
             else
-                mprf("%s seems to draw %s out of %s!",
-                     caster->name(DESC_THE).c_str(),
-                     foe->name(DESC_THE).c_str(),
-                     foe->pronoun(PRONOUN_REFLEXIVE).c_str());
+                mprf(jtransc("%s seems to draw %s out of %s!"),
+                     jtransc(caster->name(DESC_THE)),
+                     jtransc(foe->name(DESC_THE)),
+                     jtransc(foe->pronoun(PRONOUN_REFLEXIVE)));
         }
     }
 }
@@ -208,16 +209,16 @@ void mons_summon_illusion_from(monster* mons, actor *foe,
                           abj, spell_cast, mons->pos(), mons->foe, 0)))
         {
             if (card_power >= 0)
-                mpr("Suddenly you stand beside yourself.");
+                mpr(jtrans("Suddenly you stand beside yourself."));
             else
-                mprf(MSGCH_WARN, "There is a horrible, sudden wrenching feeling in your soul!");
+                mpr_nojoin(MSGCH_WARN, jtrans("There is a horrible, sudden wrenching feeling in your soul!"));
 
             _init_player_illusion_properties(
                 get_monster_data(MONS_PLAYER_ILLUSION));
             _mons_load_player_enchantments(mons, clone);
         }
         else if (card_power >= 0)
-            mpr("You see a puff of smoke.");
+            mpr(jtrans("You see a puff of smoke."));
     }
     else
     {
@@ -340,7 +341,7 @@ monster* clone_mons(const monster* orig, bool quiet, bool* obvious,
     if (you.can_see(orig) && you.can_see(mons))
     {
         if (!quiet)
-            simple_monster_message(orig, " is duplicated!");
+            simple_monster_message(orig, jtransc(" is duplicated!"));
         *obvious = true;
     }
 
