@@ -2837,7 +2837,7 @@ void monster_cleanup(monster* mons)
 
     if (mons->has_ench(ENCH_AWAKEN_FOREST))
     {
-        forest_message(mons->pos(), "The forest abruptly stops moving.");
+        forest_message(mons->pos(), jtrans("The forest abruptly stops moving."));
         env.forest_awoken_until = 0;
     }
 
@@ -2928,25 +2928,25 @@ void mons_check_pool(monster* mons, const coord_def &oldpos,
     // something has fallen into the lava.
     if (mons_near(mons) && (oldpos == mons->pos() || grd(oldpos) != grid))
     {
-         mprf("%s falls into the %s!",
-             mons->name(DESC_THE).c_str(),
-             grid == DNGN_LAVA ? "lava" : "water");
+        mprf(jtransc("%s falls into the %s!"),
+             jtransc(mons->name(DESC_THE)),
+             grid == DNGN_LAVA ? "溶岩" : "水");
     }
 
     // Even fire resistant monsters perish in lava.
     if (grid == DNGN_LAVA && mons->res_fire() < 2)
     {
-        simple_monster_message(mons, " is incinerated.",
+        simple_monster_message(mons, jtransc(" is incinerated."),
                                MSGCH_MONSTER_DAMAGE, MDAM_DEAD);
     }
     else if (mons->can_drown())
     {
-        simple_monster_message(mons, " drowns.",
+        simple_monster_message(mons, jtransc(" drowns."),
                                MSGCH_MONSTER_DAMAGE, MDAM_DEAD);
     }
     else
     {
-        simple_monster_message(mons, " falls apart.",
+        simple_monster_message(mons, jtransc(" falls apart."),
                                MSGCH_MONSTER_DAMAGE, MDAM_DEAD);
     }
 
@@ -3140,7 +3140,7 @@ void pikel_band_neutralise()
     else if (visible_slaves > 1)
         final_msg = "With Pikel's spell broken, the former slaves thank you for their freedom.";
 
-    delayed_action_fineff::schedule(DACT_PIKEL_SLAVES, final_msg);
+    delayed_action_fineff::schedule(DACT_PIKEL_SLAVES, jtransc(final_msg));
 }
 
 /**
@@ -3202,7 +3202,7 @@ void hogs_to_humans()
                         "original forms!";
     }
 
-    kirke_death_fineff::schedule(final_msg);
+    kirke_death_fineff::schedule(jtransc(final_msg));
 }
 
 /**
@@ -3347,7 +3347,7 @@ void elven_twin_energize(monster* mons)
     {
         ASSERT(mons_is_mons_class(mons, MONS_DOWAN));
         if (mons->observable())
-            simple_monster_message(mons, " seems to find hidden reserves of power!");
+            simple_monster_message(mons, jtransc(" seems to find hidden reserves of power!"));
 
         mons->add_ench(ENCH_HASTE);
     }
@@ -3377,7 +3377,7 @@ void elven_twins_pacify(monster* twin)
         gain_piety(random2(mons->max_hit_points / (2 + you.piety / 20)), 2);
 
     if (mons_near(mons))
-        simple_monster_message(mons, " likewise turns neutral.");
+        simple_monster_message(mons, jtransc(" likewise turns neutral."));
 
     record_monster_defeat(mons, KILL_PACIFIED);
     mons_pacify(mons, ATT_NEUTRAL);

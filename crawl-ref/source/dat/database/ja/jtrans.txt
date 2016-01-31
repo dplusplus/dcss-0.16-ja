@@ -6530,6 +6530,26 @@ The terrible wounds on %s body vanish.
 
 %sの体の裂傷は消え去った。
 %%%%
+The forest abruptly stops moving.
+
+不意に森のざわめきが止んだ。
+%%%%
+%s falls into the %s!
+
+%sは%sの中に転げ落ちた！
+%%%%
+is incinerated.
+
+は燃え尽きた。
+%%%%
+drowns.
+
+は溺れた。
+%%%%
+falls apart.
+
+はバラバラになった。
+%%%%
 disappear%s in a puff of smoke
 
 は煙とともに消え去った
@@ -6561,6 +6581,38 @@ return%s to the deep
 shimmer%s and vanish
 
 揺らめいて消え去った
+%%%%
+With Pikel's spell broken, the former slave thanks you for freedom.
+
+『ピケル』の呪縛が破れ、元奴隷は自由を与えてくれたあなたに感謝した。
+%%%%
+With Pikel's spell broken, the former slaves thank you for their freedom.
+
+『ピケル』の呪縛が破れ、元奴隷たちは自由を与えてくれたあなたに感謝した。
+%%%%
+No longer under Kirke's spell, the hog turns into a human!
+
+『キルケー』の魔法が解け、豚は人間の姿に戻った！
+%%%%
+No longer under Kirke's spell, the hog returns to its original form!
+
+『キルケー』の魔法が解け、豚は元の姿に戻った！
+%%%%
+No longer under Kirke's spell, the hogs revert to their human forms!
+
+『キルケー』の魔法が解け、豚の群れは人間の姿に戻った！
+%%%%
+No longer under Kirke's spell, the hogs revert to their original forms!
+
+『キルケー』の魔法が解け、豚の群れは元の姿に戻った！
+%%%%
+seems to find hidden reserves of power!
+
+の秘められた力が覚醒したようだ！
+%%%%
+likewise turns neutral.
+
+もまた中立化した。
 %%%%
 ############################## mon-info.cc ##############################
 %%%%
