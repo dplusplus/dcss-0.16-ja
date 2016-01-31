@@ -5810,6 +5810,10 @@ You are pushed out of the doorway!
 
 あなたは戸口から閉め出された！
 %%%%
+angered by no foe
+
+
+%%%%
 %s calls on %s to defend %s!
 
 %sは%sを守るように%sに命令した！
@@ -5890,6 +5894,10 @@ Unholy energy fills the air.
 
 邪悪な力が大気に満ちた。
 %%%%
+by vampiric draining
+
+ヴァンパイアの吸血により
+%%%%
 draws life force from you and is healed!
 
 はあなたから生命力を抜き出し、回復した！
@@ -5902,6 +5910,10 @@ draws life force from %s and is healed!
 
 %sは凍結した。
 %%%%
+by Freeze
+
+凍結により
+%%%%
 attempts to bespell you!
 
 はあなたに魔法をかけようとした。
@@ -5910,10 +5922,6 @@ attempts to bespell you!
 
 %sはあなたをますます魅了した。
 %%%%
-looks frightened!
-
-は怯えている！
-%%%%
 radiates an aura of fear!
 
 は恐怖のオーラを放射した！
@@ -5921,6 +5929,10 @@ radiates an aura of fear!
 An aura of fear fills the air!
 
 恐怖のオーラがあたりを満たした！
+%%%%
+looks frightened!
+
+は怯えている！
 %%%%
 %s submits to %s will!
 
@@ -5946,6 +5958,10 @@ The water swirls and strikes %s!
 
 水流が渦巻き%sを打ちすえた！
 %%%%
+by the raging water
+
+荒れ狂う水流により
+%%%%
 The air twists around and violently strikes you in flight!
 
 周囲の大気が渦を巻き、飛んでいるあなたを打ちすえた！
@@ -5958,6 +5974,10 @@ is struck by the twisting air!
 
 は渦巻く烈風に打ちすえられた！
 %%%%
+by the air
+
+烈風により
+%%%%
 Something smites you!
 
 何かがあなたに打擲の一撃を浴びせた！
@@ -5965,6 +5985,10 @@ Something smites you!
 is smitten.
 
 は打擲の一撃を浴びせられた。
+%%%%
+by divine providence
+
+神意により
 %%%%
 Something feeds on your intellect!
 
