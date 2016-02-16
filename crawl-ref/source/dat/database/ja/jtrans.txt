@@ -6614,6 +6614,416 @@ likewise turns neutral.
 
 もまた中立化した。
 %%%%
+############################## mon-ench.cc ##############################
+%%%%
+%s merges itself into the air.
+
+%sは大気へと溶け込んだ。
+%%%%
+%s hides itself under the floor.
+
+%sは床の下に身を隠した。
+%%%%
+%s submerges.
+
+%sは水中に入った。
+%%%%
+You detect the %s %s.
+
+あなたは%s%sの姿を探知した。
+%%%%
+You can no longer detect the %s %s.
+
+あなたは%s%sの姿を探知できない。
+%%%%
+seems to gain new vigour!
+
+は元気を取り戻したようだ！
+%%%%
+is no longer moving quickly.
+
+はもう加速していない。
+%%%%
+slows down.
+
+は動きが遅くなった。
+%%%%
+is no longer moving somewhat quickly.
+
+の動きはもう速くない。
+%%%%
+becomes audible again.
+
+は再び音が聞こえるようになった。
+%%%%
+As %s dies, the sound returns.
+
+%sが倒れると、再び音が戻ってきた。
+%%%%
+no longer looks unusually strong.
+
+はもう力が強化されていない。
+%%%%
+is no longer moving slowly.
+
+はもう動きが遅くなくなった。
+%%%%
+%s skin looks tender.
+
+%sの皮膚は柔らかくなったようだ。
+%%%%
+%s icy armour evaporates.
+
+%sの氷の鎧は蒸発した。
+%%%%
+is no longer paralysed.
+
+はもう麻痺していない。
+%%%%
+is no longer petrified.
+
+はもう石化していない。
+%%%%
+stops retreating.
+
+は逃げるのを止めた。
+%%%%
+seems less confused.
+
+は混乱が収まったようだ。
+%%%%
+%s appears from thin air!
+
+%sはどこからともなく現れた！
+%%%%
+%s breaks free of your control!
+
+%sはあなたの束縛から逃れた！
+%%%%
+%s is no longer %s.
+
+%sはもう%sいない。
+%%%%
+You can once again detect the %s.
+
+あなたは再び%sの姿を探知した。
+%%%%
+You can no longer detect the %s.
+
+あなたは%sの姿を探知できない。
+%%%%
+is no longer charmed.
+
+はもう魅了されていない。
+%%%%
+is no longer hexed.
+
+はもう呪われていない。
+%%%%
+is no longer bribed.
+
+はもう買収されていない。
+%%%%
+stops burning.
+
+を燃やしていた炎が消えた。
+%%%%
+looks more healthy.
+
+は体調が持ち直したようだ。
+%%%%
+is no longer rotting.
+
+の腐敗は止まった。
+%%%%
+breaks free.
+
+は自由を取り戻した。
+%%%%
+is no longer berserk.
+
+はもうバーサークしていない。
+%%%%
+%s is on the same square as you!
+
+%sはあなたと同じ場所にいる！
+%%%%
+%s forms itself from the air!
+
+%sが虚空から現れた！
+%%%%
+%s leaps out from its hiding place under the floor!
+
+%sが床下の隠れ処から飛び出てきた！
+%%%%
+%s flickers into view.
+
+%sが突然視界に現れた。
+%%%%
+%s surfaces.
+
+%sが入場してきた。
+%%%%
+Something invisible bursts forth from the water.
+
+何か目に見えないものが水の中から飛び出てきた。
+%%%%
+'s soul is no longer ripe for the taking.
+
+の魂はもはや囚われていない。
+%%%%
+The forest calms down.
+
+森は静けさを取り戻した。
+%%%%
+is no longer bleeding.
+
+はもう血を流していない。
+%%%%
+emerges from its shell.
+
+は甲羅の中から出てきた。
+%%%%
+is no longer liquefying the ground.
+
+はもう地面を液状化していない。
+%%%%
+is no longer dazed.
+
+の眩暈が収まった。
+%%%%
+'s inner flame fades away.
+
+の内の炎は消え去った。
+%%%%
+stops rolling.
+
+は回転するのを止めた。
+%%%%
+is no longer mute.
+
+はもう音を消されていない。
+%%%%
+is no longer blind.
+
+は盲目ではなくなった。
+%%%%
+is no longer stupefied.
+
+はもうぼうっとしていない。
+%%%%
+is no longer mad.
+
+はもう狂乱していない。
+%%%%
+is no longer invulnerable.
+
+は無敵ではなくなった。
+%%%%
+is no longer regenerating.
+
+はもう再生しなくなった。
+%%%%
+is no longer weakened.
+
+はもう弱体化していない。
+%%%%
+The winds cease moving at %s will.
+
+%sが念じると共に風が止んだ。
+%%%%
+%s toxic aura wanes.
+
+%s放つ毒のオーラは弱まった。
+%%%%
+The grasping roots settle back into the ground.
+
+動いていた木の根は地面へとしなだれ落ちた。
+%%%%
+is no longer more vulnerable to fire.
+
+はもう火に弱くなくなった。
+%%%%
+is no longer more vulnerable to poison.
+
+はもう毒に弱くなくなった。
+%%%%%
+%s icy envelope dissipates!
+
+%sの氷の鎧は消滅した！
+%%%%
+is no longer unusually agile.
+
+はもう動きが素早くなくなった。
+%%%%
+is no longer encased in ice.
+
+はもう凍結していない。
+%%%%
+looks less vigorous.
+
+は活力が失せたようだ。
+%%%%
+is no longer absorbing vital energies.
+
+は生命力の吸収を停止した。
+%%%%
+is no longer being sapped.
+
+はもう魔法の制御力が弱体化されていない。
+%%%%
+is no longer covered in acid.
+
+はもう酸に覆われていない。
+%%%%
+is no longer distracted by gold.
+
+はもう金貨に目を奪われていない。
+%%%%
+seems less drained.
+
+は衰弱から回復したようだ。
+%%%%
+is no longer repelling missiles.
+
+はもう飛来物を弾く能力がなくなった。
+%%%%
+is no longer deflecting missiles.
+
+はもう飛来物を逸らす能力がなくなった。
+%%%%
+%s icy shield evaporates.
+
+%sの氷の盾は蒸発した。
+%%%%
+is no longer unusually resistant.
+
+の耐性は強くなくなった。
+%%%%
+Tangled roots snake along the ground.
+
+木の根が蛇のように大地を這い回った。
+%%%%
+The ground creaks as gnarled roots bulge its surface.
+
+木の根が膨らむと共に大地が軋み声を上げた。
+%%%%
+A root reaches out and grasps at passing movement.
+
+逃げる動きに木の根が追いつき、その体を掴んだ。
+%%%%
+Roots rise up to grasp you, but you nimbly evade.
+
+木の根があなたを掴もうと持ち上がったが、身軽にかわした。
+%%%%
+Roots rise up from beneath %s and drag %s %sto the ground.
+
+木の根が%sの足下から持ち上がり、地面に引きずり倒した。
+%%%%
+Roots grasp at your %s, making movement difficult.
+
+木の根があなたの%sを掴んだため、動きが取りづらくなった。
+%%%%
+The pull of its song draws you forwards.
+
+歌声の魔力があなたを前に引き寄せた。
+%%%%
+Something prevents you from swapping places with %s.
+
+何かの力が%sと場所交換するのを邪魔している。
+%%%%
+You swap places with %s.
+
+あなたは%sと場所を交換した。
+%%%%
+The shadowy forms in the deep grow still as others approach.
+
+深淵の霊魂は呼びかけに応え勢いを増した。
+%%%%
+Shadowy forms rise from the deep at %s song!
+
+%sの歌に呼ばれ、霊魂が深淵より蘇った！
+%%%%
+is no longer in an insane frenzy.
+
+はもう狂乱していない。
+%%%%
+looks more energetic.
+
+は元気になったように見える。
+%%%%
+'s dark mirror aura disappears.
+
+の暗黒の鏡のオーラは消滅した。
+%%%%
+The flames covering %s go out.
+
+%sにまとわりついていた炎は消えた。
+%%%%
+%s dips into the water, and the flames go out.
+
+%sは水中に飛び込み、その身の炎を消し去った。
+%%%%
+burns!
+
+の体は燃えた！
+%%%%
+%s catches fire!
+
+%sに火がついた！
+%%%%
+%s crumbles away.
+
+%sは崩れ落ちた。
+%%%%
+%s melts away.
+
+%sは溶け去った。
+%%%%
+A nearby %s withers and dies.
+
+%sは枯れ果てて死んだ。
+%%%%
+A ballistomycete spawns a giant spore.
+
+放出菌糸は巨大胞子を放出した。
+%%%%
+The portal closes; %s is severed.
+
+ポータルが閉じたため、%sは切断された。
+%%%%
+suddenly becomes enraged!
+
+は突如激怒した！
+%%%%
+You hear a distant and violent thrashing sound.
+
+あなたは暴力的な切り裂く音を遠くに聞いた。
+%%%%
+writhes!
+
+は身もだえした！
+%%%%
+The winds around %s start to calm down.
+
+%sの周囲の風は勢いを弱めている。
+%%%%
+is seared!
+
+は灼かれた！
+%%%%
+%s word of recall is interrupted.
+
+%sによる招集の宣言は中断された。
+%%%%
+The winds around %s calm down.
+
+%sの周囲の風はおさまった。
+%%%%
+%s song is interrupted.
+
+%sの歌は中断された。
+%%%%
 ############################## mon-info.cc ##############################
 %%%%
 very slow
