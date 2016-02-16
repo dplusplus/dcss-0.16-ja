@@ -7,6 +7,7 @@
 
 #include "mon-grow.h"
 
+#include "database.h"
 #include "message.h"
 #include "mon-place.h"
 #include "monster.h"
@@ -241,9 +242,9 @@ bool monster::gain_exp(int exp, int max_levels_to_gain)
     if (levels_gained)
     {
         if (mons_intel(this) >= I_NORMAL)
-            simple_monster_message(&mcopy, " looks more experienced.");
+            simple_monster_message(&mcopy, jtransc(" looks more experienced."));
         else
-            simple_monster_message(&mcopy, " looks stronger.");
+            simple_monster_message(&mcopy, jtransc(" looks stronger."));
     }
 
     if (get_experience_level() < MAX_MONS_HD
