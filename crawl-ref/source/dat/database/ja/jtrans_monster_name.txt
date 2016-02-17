@@ -2333,19 +2333,19 @@ illusion
 %%%%
 helpless
 
-# helpless
+哀れな
 %%%%
 submerged
 
-# submerged
+水中の
 %%%%
 ghostly
 
-# ghostly
+霊体の
 %%%%
 sensed
 
-# sensed
+感知済みの
 %%%%
 active
 

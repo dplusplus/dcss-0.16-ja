@@ -779,23 +779,23 @@ monster_info::monster_info(const monster* m, int milev)
         actor * const constrictor = actor_by_mid(m->constricted_by);
         if (constrictor)
         {
-            constrictor_name = (m->held == HELD_MONSTER ? "held by "
-                                                        : "constricted by ")
-                               + constrictor->name(DESC_A, true);
+            constrictor_name = jtrans(constrictor->name(DESC_PLAIN, true))
+                + jtrans((m->held == HELD_MONSTER ? "held by "
+                                                  : "constricted by "));
         }
     }
 
     // names of what this monster is constricting, if any
     if (m->constricting)
     {
-        const char *gerund = m->constriction_damage() ? "constricting "
-                                                      : "holding ";
+        const string gerund = jtrans(m->constriction_damage() ? "を拘束している"
+                                                              : "を押さえつけている");
         for (const auto &entry : *m->constricting)
         {
             if (const actor* const constrictee = actor_by_mid(entry.first))
             {
-                constricting_name.push_back(gerund
-                                            + constrictee->name(DESC_A, true));
+                constricting_name.push_back(jtrans(constrictee->name(DESC_PLAIN, true))
+                                            + gerund);
             }
         }
     }
@@ -1121,7 +1121,7 @@ string monster_info::common_name(description_level_type desc) const
             && (me = get_monster_data(u.ghost.acting_part)))
         {
             // Specify an acting head
-            ss << "'s " << me->name << " head";
+            ss << "の持つ" << me->name << "の頭";
         }
         else
             // Suffix parts in brackets
@@ -1485,58 +1485,58 @@ bool monster_info::less_than(const monster_info& m1, const monster_info& m2,
 static string _verbose_info0(const monster_info& mi)
 {
     if (mi.is(MB_BERSERK))
-        return "berserk";
+        return "バーサーク";
     if (mi.is(MB_INSANE))
-        return "insane";
+        return "狂気";
     if (mi.is(MB_FRENZIED))
-        return "frenzied";
+        return "狂乱化";
     if (mi.is(MB_ROUSED))
-        return "roused";
+        return "興奮";
     if (mi.is(MB_INNER_FLAME))
-        return "inner flame";
+        return "内炎";
     if (mi.is(MB_DUMB))
-        return "dumb";
+        return "沈黙";
     if (mi.is(MB_PARALYSED))
-        return "paralysed";
+        return "麻痺";
     if (mi.is(MB_CAUGHT))
-        return "caught";
+        return "捕縛";
     if (mi.is(MB_WEBBED))
-        return "webbed";
+        return "蜘蛛の巣";
     if (mi.is(MB_PETRIFIED))
-        return "petrified";
+        return "石化";
     if (mi.is(MB_PETRIFYING))
-        return "petrifying";
+        return "石化中";
     if (mi.is(MB_MAD))
-        return "mad";
+        return "憤怒";
     if (mi.is(MB_CONFUSED))
-        return "confused";
+        return "混乱";
     if (mi.is(MB_FLEEING))
-        return "fleeing";
+        return "逃走中";
     if (mi.is(MB_DORMANT))
-        return "dormant";
+        return "休息中";
     if (mi.is(MB_SLEEPING))
-        return "sleeping";
+        return "睡眠中";
     if (mi.is(MB_UNAWARE))
-        return "unaware";
+        return "未発見";
     if (mi.is(MB_WITHDRAWN))
-        return "withdrawn";
+        return "待避中";
     if (mi.is(MB_DAZED))
-        return "dazed";
+        return "眩暈";
     if (mi.is(MB_MUTE))
-        return "mute";
+        return "静寂";
     if (mi.is(MB_BLIND))
-        return "blind";
+        return "盲目";
     // avoid jelly (wandering) (fellow slime)
     if (mi.is(MB_WANDERING) && mi.attitude != ATT_STRICT_NEUTRAL)
-        return "wandering";
+        return "放浪";
     if (mi.is(MB_BURNING))
-        return "burning";
+        return "炎上";
     if (mi.is(MB_ROTTING))
-        return "rotting";
+        return "腐敗";
     if (mi.is(MB_BLEEDING))
-        return "bleeding";
+        return "出血";
     if (mi.is(MB_INVISIBLE))
-        return "invisible";
+        return "透明";
 
     return "";
 }
