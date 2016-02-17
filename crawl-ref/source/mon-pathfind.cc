@@ -2,6 +2,7 @@
 
 #include "mon-pathfind.h"
 
+#include "database.h"
 #include "directn.h"
 #include "env.h"
 #include "los.h"
@@ -116,7 +117,7 @@ bool monster_pathfind::init_pathfind(const monster* mon, coord_def dest,
     if (start == target)
     {
         if (msg)
-            mpr("The monster is already there!");
+            mpr(jtrans("The monster is already there!"));
 
         return true;
     }
@@ -171,7 +172,7 @@ bool monster_pathfind::start_pathfind(bool msg)
         {
             if (msg)
             {
-                mprf("Couldn't find a path from (%d,%d) to (%d,%d).",
+                mprf(jtransc("Couldn't find a path from (%d,%d) to (%d,%d)."),
                      target.x, target.y, start.x, start.y);
             }
             return false;
