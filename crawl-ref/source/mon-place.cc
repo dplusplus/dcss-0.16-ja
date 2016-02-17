@@ -18,6 +18,7 @@
 #include "cloud.h"
 #include "colour.h"
 #include "coordit.h"
+#include "database.h"
 #include "directn.h"
 #include "dungeon.h"
 #include "env.h"
@@ -3991,26 +3992,26 @@ bool player_angers_monster(monster* mon)
             {
             case DID_UNHOLY:
             case DID_NECROMANCY:
-                mprf("%s is enraged by your holy aura!", mname.c_str());
+                mprf(jtransc("%s is enraged by your holy aura!"), jtransc(mname));
                 break;
             case DID_CORPSE_VIOLATION:
-                mprf("%s is revulsed by your support of nature!", mname.c_str());
+                mprf(jtransc("%s is revulsed by your support of nature!"), jtransc(mname));
                 break;
             case DID_HOLY:
-                mprf("%s is enraged by your evilness!", mname.c_str());
+                mprf(jtransc("%s is enraged by your evilness!"), jtransc(mname));
                 break;
             case DID_UNCLEAN:
             case DID_CHAOS:
-                mprf("%s is enraged by your lawfulness!", mname.c_str());
+                mprf(jtransc("%s is enraged by your lawfulness!"), jtransc(mname));
                 break;
             case DID_SPELL_CASTING:
-                mprf("%s is enraged by your magic-hating god!", mname.c_str());
+                mprf(jtransc("%s is enraged by your magic-hating god!"), jtransc(mname));
                 break;
             case DID_FIRE:
-                mprf("%s is enraged by your darkness!", mname.c_str());
+                mprf(jtransc("%s is enraged by your darkness!"), jtransc(mname));
                 break;
             case DID_SACRIFICE_LOVE:
-                mprf("%s can only feel hate for you!", mname.c_str());
+                mprf(jtransc("%s can only feel hate for you!"), jtransc(mname));
                 break;
             default:
                 mprf("%s is enraged by a buggy thing about you!", mname.c_str());
@@ -4071,7 +4072,7 @@ monster* create_monster(mgen_data mg, bool fail_msg)
             fail_msg = false;
 
         if (!summd && fail_msg && you.see_cell(mg.pos))
-            mpr("You see a puff of smoke.");
+            mpr(jtrans("You see a puff of smoke."));
     }
 
     return summd;

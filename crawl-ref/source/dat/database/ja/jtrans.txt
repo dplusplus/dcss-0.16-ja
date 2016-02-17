@@ -7098,6 +7098,36 @@ Couldn't find a path from (%d,%d) to (%d,%d).
 
 座標(%d, %d)から(%d, %d)への経路を探索できません。
 %%%%
+############################## mon-place.cc ##############################
+%%%%
+%s is enraged by your holy aura!
+
+%sはあなたの放つ聖なるオーラで激怒した！
+%%%%
+%s is revulsed by your support of nature!
+
+%sは自然の助けに嫌悪感を抱いた！
+%%%%
+%s is enraged by your evilness!
+
+%sはあなたの邪悪ぶりに激怒した！
+%%%%
+%s is enraged by your lawfulness!
+
+%sはあなたの秩序性に激怒した！
+%%%%
+%s is enraged by your magic-hating god!
+
+%sはあなたの信仰する魔術を嫌う神により激怒した！
+%%%%
+%s is enraged by your darkness!
+
+%sはあなたの放つ暗闇に激怒した！
+%%%%
+%s can only feel hate for you!
+
+%sはあなたを憎悪することしかできない！
+%%%%
 ############################## mon-util.cc ##############################
 %%%%
 # ugly_colour_names
