@@ -7128,6 +7128,48 @@ Couldn't find a path from (%d,%d) to (%d,%d).
 
 %sはあなたを憎悪することしかできない！
 %%%%
+############################## mon-poly.cc ##############################
+%%%%
+'s form twists and warps, and jellies spill out!
+
+%sは身をよじり、ジェリーの群れを産み出した！
+%%%%
+'s appearance momentarily alters.
+
+%sの姿は一瞬変化した。
+%%%%
+shudders.
+
+は身震いした。
+%%%%
+looks momentarily different.
+
+は一瞬違って見えた。
+%%%%
+something you cannot see
+
+何か目に見えないもの
+%%%%
+grows a second head
+
+二つ目の頭を生やした
+%%%%
+changes into
+
+に変化した
+%%%%
+%s %s%s!
+
+%sは%s%s！
+%%%%
+something unseen
+
+何か目に見えないもの
+%%%%
+quivers momentarily.
+
+は一瞬震えた。
+%%%%
 ############################## mon-util.cc ##############################
 %%%%
 # ugly_colour_names
