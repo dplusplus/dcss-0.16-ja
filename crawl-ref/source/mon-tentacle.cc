@@ -9,6 +9,7 @@
 
 #include "act-iter.h"
 #include "coordit.h"
+#include "database.h"
 #include "delay.h"
 #include "env.h"
 #include "fprop.h"
@@ -906,8 +907,8 @@ void move_solo_tentacle(monster* tentacle)
     {
         if (you.can_see(tentacle))
         {
-            mprf("The vine drags %s backwards!",
-                    constrictee->name(DESC_THE).c_str());
+            mprf(jtransc("The vine drags %s backwards!"),
+                 jtransc(constrictee->name(DESC_PLAIN)));
         }
 
         if (constrictee->as_player())
@@ -1095,8 +1096,8 @@ void move_child_tentacles(monster* mons)
         {
             if (you.can_see(tentacle))
             {
-                mprf("The tentacle pulls %s backwards!",
-                     constrictee->name(DESC_THE).c_str());
+                mprf(jtransc("The tentacle pulls %s backwards!"),
+                     jtransc(constrictee->name(DESC_PLAIN)));
             }
 
             if (constrictee->as_player())
@@ -1274,16 +1275,16 @@ void mons_create_tentacles(monster* head)
     if (mons_base_type(head) == MONS_KRAKEN)
     {
         if (visible_count == 1)
-            mpr("A tentacle rises from the water!");
+            mpr(jtrans("A tentacle rises from the water!"));
         else if (visible_count > 1)
-            mpr("Tentacles burst out of the water!");
+            mpr(jtrans("Tentacles burst out of the water!"));
     }
     else if (head->type == MONS_TENTACLED_STARSPAWN)
     {
         if (visible_count == 1)
-            mpr("A tentacle flies out from the starspawn's body!");
+            mpr(jtrans("A tentacle flies out from the starspawn's body!"));
         else if (visible_count > 1)
-            mpr("Tentacles burst from the starspawn's body!");
+            mpr(jtrans("Tentacles burst from the starspawn's body!"));
     }
     return;
 }

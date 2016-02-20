@@ -7224,6 +7224,32 @@ Your %s reflects %s!
 
 %sはキキーっと音を立てて止まった。
 %%%%
+############################## mon-tentacle.cc ##############################
+%%%%
+The vine drags %s backwards!
+
+蔓は%sを奥の方へと引きずった！
+%%%%
+The tentacle pulls %s backwards!
+
+触手は%sを奥の方へと引っ張った！
+%%%%
+A tentacle rises from the water!
+
+触手が水面から伸びてきた！
+%%%%
+Tentacles burst out of the water!
+
+何本もの触手が水面から伸びてきた！
+%%%%
+A tentacle flies out from the starspawn's body!
+
+落とし子がその体から触手を伸ばした！
+%%%%
+Tentacles burst from the starspawn's body!
+
+落とし子がその体から何本もの触手を伸ばした！
+%%%%
 ############################## mon-util.cc ##############################
 %%%%
 # ugly_colour_names
