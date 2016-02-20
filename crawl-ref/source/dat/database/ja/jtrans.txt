@@ -7170,6 +7170,60 @@ quivers momentarily.
 
 は一瞬震えた。
 %%%%
+############################## mon-project.cc ##############################
+%%%%
+Failed to spawn projectile.
+
+射出物の生成に失敗しました。
+%%%%
+%s hits %s
+
+%sは%sにぶつかった。
+%%%%
+You hear a crash.
+
+あなたは何かの衝突音を耳にした。
+%%%%
+The orb fizzles.
+
+球体はシューッという音を立てた。
+%%%%
+The orbs collide in a blinding explosion!
+
+球体は眩い爆発を放ちながら衝突した！
+%%%%
+You hear a loud magical explosion!
+
+あなたは魔法の爆発する轟音を耳にした！
+%%%%
+The boulders collide with a stupendous crash!
+
+岩石は途方もない轟音を立てて衝突した！
+%%%%
+You hear a loud crashing sound!
+
+あなたは何かが衝突する轟音を耳にした！
+%%%%
+You block %s.
+
+あなたは%sを防いだ。
+%%%%
+Your %s reflects %s!
+
+あなたの持つ%sは%sをはね返した！
+%%%%
+%s reflects %s with %s %s!
+
+%sは手にした%sで%sをはね返した！
+%%%%
+%s bounces off thin air!
+
+%sは何もない空中ではね返った！
+%%%%
+%s screeches to a halt.
+
+%sはキキーっと音を立てて止まった。
+%%%%
 ############################## mon-util.cc ##############################
 %%%%
 # ugly_colour_names
