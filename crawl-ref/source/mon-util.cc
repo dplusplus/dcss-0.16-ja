@@ -941,15 +941,10 @@ static void _mimic_vanish(const coord_def& pos, const string& name)
     if (!you.see_cell(pos))
         return;
 
-    const char* const smoke_str = can_place_smoke ? " in a puff of smoke" : "";
+    const string smoke_str = jtrans(can_place_smoke ? " in a puff of smoke" : "");
 
-    const bool can_cackle = !silenced(pos) && !silenced(you.pos());
-    const string db_cackle = getSpeakString("_laughs_");
-    const string cackle = db_cackle != "" ? db_cackle : "cackles";
-    const string cackle_str = can_cackle ? cackle + " and " : "";
-
-    mprf("The %s mimic %svanishes%s!",
-         name.c_str(), cackle_str.c_str(), smoke_str);
+    mprf(jtransc("The %s mimic %svanishes%s!"),
+         jtransc(name), smoke_str.c_str());
     interrupt_activity(AI_MIMIC);
 }
 
@@ -1001,7 +996,7 @@ void discover_mimic(const coord_def& pos)
 #endif
 
     if (you.see_cell(pos))
-        mprf(MSGCH_WARN, "The %s is a mimic!", name.c_str());
+        mprf(MSGCH_WARN, jtransc("The %s is a mimic!"), jtransc(name));
     if (item)
         destroy_item(item->index(), true);
     else
@@ -3138,7 +3133,7 @@ void mons_pacify(monster* mon, mon_attitude_type att, bool no_xp)
     if (mon->type == MONS_GERYON)
     {
         simple_monster_message(mon,
-            make_stringf(" discards %s horn.",
+            make_stringf(jtransc(" discards %s horn."),
                          mon->pronoun(PRONOUN_POSSESSIVE).c_str()).c_str());
         monster_drop_things(mon, false, item_is_horn_of_geryon);
     }

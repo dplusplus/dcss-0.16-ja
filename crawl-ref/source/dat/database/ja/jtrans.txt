@@ -7252,6 +7252,22 @@ Tentacles burst from the starspawn's body!
 %%%%
 ############################## mon-util.cc ##############################
 %%%%
+in a puff of smoke
+
+煙とともに
+%%%%
+The %s mimic %svanishes%s!
+
+%sのミミックは甲高く笑いながら%s消え去った！
+%%%%
+pile of gold coins
+
+金貨の山
+%%%%
+The %s is a mimic!
+
+%sはミミックだった！
+%%%%
 # ugly_colour_names
 red
 
@@ -7297,6 +7313,10 @@ putrid
 torturous
 
 苦痛の
+%%%%
+discards %s horn.
+
+は角笛を取り落とした。
 %%%%
 ############################## mutation.cc ##############################
 %%%%
