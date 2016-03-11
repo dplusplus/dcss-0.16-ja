@@ -5258,6 +5258,7 @@ You see a ghostly outline there, and the spell fizzles.
 あなたはぼんやりとした輪郭を目にし、呪文は失敗した。
 %%%%
 ############################## monster.cc ##############################
+%%%%
 It bursts into flame!
 
 それは吹きあがる炎に包まれた。
@@ -5326,6 +5327,22 @@ some gold
 
 金貨
 %%%%
+Monster %s already holding item %s.
+
+%sはすでに%sを手にしている。
+%%%%
+Item %s thinks it's already held by monster %s.
+
+%sはすでに%sの手の中にあるようだ。
+%%%%
+Item %s, held by dead monster, being picked up by monster %s.
+
+死んだモンスターが手にしていた%sは%sに拾われた。
+%%%%
+Item %s, held by monster %s, being picked up by monster %s.
+
+%sが手にしていた%sは%sに拾われた。
+%%%%
 %s %s as %s drops %s!
 
 %sは%sが%sを手放すやいなや%s！
@@ -5333,6 +5350,10 @@ some gold
 %s drops %s.
 
 %sは%sを足下に落とした。
+%%%%
+something's
+
+何かの
 %%%%
 pincer
 
@@ -5342,6 +5363,10 @@ wing
 
 翼
 %%%%
+antenna
+
+触角
+%%%%
 eye-stalk
 
 目玉
@@ -5350,6 +5375,10 @@ leaf
 
 葉
 %%%%
+body
+
+体
+%%%%
 rhizome
 
 地下茎
@@ -5357,10 +5386,6 @@ rhizome
 pupil
 
 瞳孔
-%%%%
-body
-
-体
 %%%%
 leg
 
@@ -5378,6 +5403,10 @@ talon
 
 足爪
 %%%%
+trotter
+
+豚足
+%%%%
 root
 
 根
@@ -5393,6 +5422,198 @@ pseudopod
 underside
 
 下側
+%%%%
+scaled
+
+鱗の生えた
+%%%%
+feathered
+
+羽の生えた
+%%%%
+bandage-wrapped
+
+包帯を巻かれた
+%%%%
+bony
+
+骨ばった
+%%%%
+%s %s
+
+%s%s
+%%%%
+becomes momentarily stuck in the liquid earth.
+
+は液状化した地面に一瞬足をとられた。
+%%%%
+splashes around in the water.
+
+は水をはねかけた。
+%%%%
+You hear a splashing noise.
+
+あなたは水のはねる音を耳にした。
+%%%%
+shakes off %s lethargy.
+
+は無気力感を振りはらった。
+%%%%
+flies into a frenzy!
+
+は狂乱化した！
+%%%%
+goes berserk!
+
+はバーサークした！
+%%%%
+The heat melts %s icy armour.
+
+熱で%sの氷の鎧が溶けた。
+%%%%
+is devoured by a tear in reality.
+
+は次元の裂け目に飲み込まれた。
+%%%%
+'s corpse armour sloughs away.
+
+の屍肉の鎧は剥げ落ちた。
+%%%%
+looks less resilient
+
+は元気を失ったようだ
+%%%%
+%s corrodes %s!
+
+%sは%sを腐蝕させた！
+%%%%
+%s corrodes %s equipment!
+
+%sは%sの装備を腐蝕させた！
+%%%%
+%s writhes in agony as %s flesh is eaten away!
+
+%sは自らの肉体が腐蝕したことに怒りで身を震わせた！
+%%%%
+turns to stone!
+
+は石化した！
+%%%%
+stops moving altogether!
+
+は一斉に動きを止めた！
+%%%%
+%s looks sick.
+
+%sは具合が悪そうだ。
+%%%%
+%s begins to bleed from %s wounds!
+
+%sは傷口から出血しはじめた！
+%%%%
+twists and deforms.
+
+の体は捩くれて奇形になった。
+%%%%
+flops around on dry land!
+
+は乾いた地面でびちびちと跳ねた！
+%%%%
+%s dives back into the %s!
+
+%sは飛び跳ねて%sに戻った！
+%%%%
+The bloodstain on %s disappears!
+
+%sの血痕は消え去った！
+%%%%
+%s a shaft!
+
+は縦穴に%s！
+%%%%
+is sucked into
+
+吸い込まれた
+%%%%
+falls through
+
+転がり落ちた
+%%%%
+looks weaker.
+
+は弱くなったようだ。
+%%%%
+drinks a potion.
+
+は薬を飲んだ。
+%%%%
+%s evokes %s %s.
+
+%sは%sの力を発動させた。
+%%%%
+explodes in a shower of sparks!
+
+は爆発し火花のシャワーを飛ばした！
+%%%%
+seems to be charged up!
+
+はエネルギーを充填したようだ！
+%%%%
+Your spectral weapon shares its damage with you!
+
+あなたは幽体の武器とダメージを共有した！
+%%%%
+As %s mount dies, %s plunges down into %s!
+
+乗騎が死んでしまい、%sは%s！
+%%%%
+lava and is incinerated
+
+溶岩に落ちて燃え尽きた
+%%%%
+deep water and drowns
+
+深い水たまりに落ちて溺れた
+%%%%
+%s jumps down from %s now dead mount.
+
+%sは死んだ乗騎から飛び降りた。
+%%%%
+focuses on the pain.
+
+は痛みに集中した．
+%%%%
+looks invigorated.
+
+は活力が湧いたようだ。
+%%%%
+seems to grow stronger.
+
+は強くなったようだ。
+%%%%
+suddenly seems more agile.
+
+は突然動きが素早くなったようだ。
+%%%%
+%s steals %s your gold!
+
+%sはあなたの金貨を%s盗み取った！
+%%%%
+%s steals %s!
+
+%sは%sを盗み取った！
+%%%%
+is pushed out of the %s.
+
+は%sの所に押しやられた。
+%%%%
+seems unimpeded by the mental distress.
+
+は精神的苦悩から解放されているようだ。
+%%%%
+looks uneasy for a moment.
+
+は一瞬気がかりなそぶりを見せた。
 %%%%
 ############################## mon-abil.cc ##############################
 %%%%
