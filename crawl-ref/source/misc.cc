@@ -275,7 +275,7 @@ bool i_feel_safe(bool announce, bool want_move, bool just_monsters,
             {
                 if (announce)
                 {
-                    mprf(MSGCH_WARN, "You're standing in a cloud of %s!",
+                    mprf(MSGCH_WARN, jtransc("You're standing in a cloud of %s!"),
                          cloud_type_name(type).c_str());
                 }
                 return false;
@@ -290,7 +290,7 @@ bool i_feel_safe(bool announce, bool want_move, bool just_monsters,
         if (poison_is_lethal())
         {
             if (announce)
-                mprf(MSGCH_WARN, "There is a lethal amount of poison in your body!");
+                mpr_nojoin(MSGCH_WARN, jtrans("There is a lethal amount of poison in your body!"));
 
             return false;
         }
@@ -306,7 +306,7 @@ bool i_feel_safe(bool announce, bool want_move, bool just_monsters,
     if (visible.size() == 1)
     {
         const monster& m = *visible[0];
-        msg = make_stringf("%s is nearby!", m.name(DESC_A).c_str());
+        msg = make_stringf(jtransc("%s is nearby!"), m.name(DESC_A).c_str());
     }
     else if (visible.size() > 1)
         msg = "There are monsters nearby!";
@@ -317,7 +317,7 @@ bool i_feel_safe(bool announce, bool want_move, bool just_monsters,
 
     if (announce)
     {
-        mprf(MSGCH_WARN, "%s", msg.c_str());
+        mprf(MSGCH_WARN, "%s", jtransc(msg));
 
         if (Options.use_animations & UA_MONSTER_IN_SIGHT)
         {
@@ -504,12 +504,12 @@ void revive()
     if (you.hp_max <= 0)
     {
         you.lives = 0;
-        mpr("You are too frail to live.");
+        mpr(jtrans("You are too frail to live."));
         // possible only with an extreme abuse of Borgnjor's
         ouch(INSTANT_DEATH, KILLED_BY_DRAINING);
     }
 
-    mpr("You rejoin the land of the living...");
+    mpr(jtrans("You rejoin the land of the living..."));
     more();
 }
 
@@ -647,9 +647,9 @@ bool stop_attack_prompt(const monster* mon, bool beam_attack,
     else
         verb = "attack ";
 
-    const string prompt = make_stringf("Really %s%s%s?%s",
+    const string prompt = make_stringf(jtransc("Really %s%s%s?%s"),
              verb.c_str(), mon_name.c_str(), suffix.c_str(),
-             penance ? " This attack would place you under penance!" : "");
+             jtransc(penance ? " This attack would place you under penance!" : ""));
 
     if (prompted)
         *prompted = true;
@@ -710,9 +710,9 @@ bool stop_attack_prompt(targetter &hitfunc, const char* verb,
         adj = "the " + adj;
     mon_name = adj + mon_name;
 
-    const string prompt = make_stringf("Really %s %s%s?%s",
+    const string prompt = make_stringf(jtransc("Really %s %s%s?%s"),
              verb, mon_name.c_str(), suffix.c_str(),
-             penance ? " This attack would place you under penance!" : "");
+             jtransc(penance ? " This attack would place you under penance!" : ""));
 
     if (prompted)
         *prompted = true;
@@ -742,7 +742,7 @@ void swap_with_monster(monster* mon_to_swap)
     // Be nice: no swapping into uninhabitable environments.
     if (!you.is_habitable(newpos) || !mon.is_habitable(you.pos()))
     {
-        mpr("You spin around.");
+        mpr(jtrans("You spin around."));
         return;
     }
 
@@ -752,7 +752,7 @@ void swap_with_monster(monster* mon_to_swap)
     // If it was submerged, it surfaces first.
     mon.del_ench(ENCH_SUBMERGED);
 
-    mprf("You swap places with %s.", mon.name(DESC_THE).c_str());
+    mprf(jtransc("You swap places with %s."), jtransc(mon.name(DESC_PLAIN)));
 
     mon.move_to_pos(you.pos(), true, true);
 
@@ -777,7 +777,7 @@ void swap_with_monster(monster* mon_to_swap)
             int net = get_trapping_net(you.pos());
             if (net != NON_ITEM)
                 destroy_item(net);
-            mprf("The %s rips apart!", (net == NON_ITEM) ? "web" : "net");
+            mprf(jtransc("The %s rips apart!"), (net == NON_ITEM) ? "蜘蛛の巣" : "網");
             you.attribute[ATTR_HELD] = 0;
             you.redraw_quiver = true;
             you.redraw_evasion = true;
@@ -786,9 +786,9 @@ void swap_with_monster(monster* mon_to_swap)
         {
             you.attribute[ATTR_HELD] = 10;
             if (get_trapping_net(you.pos()) != NON_ITEM)
-                mpr("You become entangled in the net!");
+                mpr(jtrans("You become entangled in the net!"));
             else
-                mpr("You get stuck in the web!");
+                mpr(jtrans("You get stuck in the web!"));
             you.redraw_quiver = true; // Account for being in a net.
             // Xom thinks this is hilarious if you trap yourself this way.
             if (you_caught)
@@ -838,8 +838,8 @@ void entered_malign_portal(actor* act)
 {
     if (you.can_see(act))
     {
-        mprf("%s %s twisted violently and ejected from the portal!",
-             act->name(DESC_THE).c_str(), act->conj_verb("be").c_str());
+        mprf(jtransc("%s %s twisted violently and ejected from the portal!"),
+             jtransc(act->name(DESC_PLAIN)), act->conj_verb("be").c_str());
     }
 
     act->blink(false);

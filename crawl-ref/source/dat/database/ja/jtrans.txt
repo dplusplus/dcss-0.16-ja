@@ -5257,6 +5257,84 @@ You see a ghostly outline there, and the spell fizzles.
 
 あなたはぼんやりとした輪郭を目にし、呪文は失敗した。
 %%%%
+############################## misc.cc ##############################
+%%%%
+You're standing in a cloud of %s!
+
+あなたは%sの雲に包まれている！
+%%%%
+There is a lethal amount of poison in your body!
+
+あなたの体に致死量の毒が回った！
+%%%%
+%s is nearby!
+
+%sが近くにいる！
+%%%%
+There are monsters nearby!
+
+モンスターの群れが近くにいる！
+%%%%
+There is a strange disturbance nearby!
+
+近くで奇妙な渦が巻き起こっている！
+%%%%
+You are too frail to live.
+
+あなたはこれ以上生きるには虚弱すぎる。
+%%%%
+You rejoin the land of the living...
+
+あなたは現世にとどまった……
+%%%%
+Really %s%s%s?%s
+
+本当に%s%s%s？ %s
+%%%%
+This attack would place you under penance!
+
+神に懺悔をする羽目になりますよ！
+%%%%
+Really %s %s%s?%s
+
+本当に%s%s%s？ %s
+%%%%
+%s emits a piercing whistle.
+
+%sは耳をつんざくほどに笛を吹いた。
+%%%%
+%s makes your neck tingle.
+
+%sはあなたの首筋をむずむずさせた。
+%%%%
+You spin around.
+
+あなたはその場でクルクルと回転した。
+%%%%
+You swap places with %s.
+
+あなたは%sと場所を交代した。
+%%%%
+The %s rips apart!
+
+%sが破けた！
+%%%%
+You become entangled in the net!
+
+あなたは網に絡めとられた！
+%%%%
+You get stuck in the web!
+
+あなたは蜘蛛の巣に絡めとられた！
+%%%%
+%s %s twisted violently and ejected from the portal!
+
+%sの体は乱暴にねじられ、ポータルから排出された！
+%%%%
+entering a malign gateway
+
+邪悪なる通り道に足を踏み入れて
+%%%%
 ############################## monster.cc ##############################
 %%%%
 It bursts into flame!
