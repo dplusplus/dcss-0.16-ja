@@ -674,7 +674,7 @@ Frenzy
 %%%%
 [spell]Malign Gateway
 
-邪悪の通り道
+邪悪なる通り道
 %%%%
 [spell]Malign Offering
 
