@@ -135,7 +135,7 @@ bool melee_attack::handle_phase_attempted()
         else if (!cleave_targets.empty())
         {
             targetter_cleave hitfunc(attacker, defender->pos());
-            if (stop_attack_prompt(hitfunc, "attack"))
+            if (stop_attack_prompt(hitfunc, "攻撃し"))
             {
                 cancel_attack = true;
                 return false;

@@ -656,7 +656,7 @@ spret_type cast_los_attack_spell(spell_type spell, int pow, actor* agent,
         ASSERT(actual);
         targetter_los hitfunc(&you, LOS_NO_TRANS);
         {
-            if (allow_cancel && stop_attack_prompt(hitfunc, "harm", vul_hitfunc))
+            if (allow_cancel && stop_attack_prompt(hitfunc, "傷つけ", vul_hitfunc))
                 return SPRET_ABORT;
         }
         fail_check();
@@ -1260,7 +1260,7 @@ spret_type cast_shatter(int pow, bool fail)
 {
     {
         targetter_los hitfunc(&you, LOS_ARENA);
-        if (stop_attack_prompt(hitfunc, "harm", _shatterable))
+        if (stop_attack_prompt(hitfunc, "傷つけ", _shatterable))
             return SPRET_ABORT;
     }
 
@@ -2501,7 +2501,7 @@ spret_type cast_thunderbolt(actor *caster, int pow, coord_def aim, bool fail)
 
     if (caster->is_player())
     {
-        if (stop_attack_prompt(hitfunc, "zap", _elec_not_immune))
+        if (stop_attack_prompt(hitfunc, "撃ち", _elec_not_immune))
             return SPRET_ABORT;
     }
 
@@ -2790,7 +2790,7 @@ spret_type cast_dazzling_spray(int pow, coord_def aim, bool fail)
 
     targetter_spray hitfunc(&you, range, ZAP_DAZZLING_SPRAY);
     hitfunc.set_aim(aim);
-    if (stop_attack_prompt(hitfunc, "fire towards", _dazzle_can_hit))
+    if (stop_attack_prompt(hitfunc, "撃ち", _dazzle_can_hit))
         return SPRET_ABORT;
 
     fail_check();
@@ -2825,7 +2825,7 @@ spret_type cast_toxic_radiance(actor *agent, int pow, bool fail, bool mon_tracer
     {
         targetter_los hitfunc(&you, LOS_NO_TRANS);
         {
-            if (stop_attack_prompt(hitfunc, "poison", _toxic_can_affect))
+            if (stop_attack_prompt(hitfunc, "毒に冒し", _toxic_can_affect))
                 return SPRET_ABORT;
         }
         fail_check();
@@ -3039,7 +3039,7 @@ spret_type cast_glaciate(actor *caster, int pow, coord_def aim, bool fail)
     hitfunc.set_aim(aim);
 
     if (caster->is_player()
-        && stop_attack_prompt(hitfunc, "glaciate", _player_glaciate_affects))
+        && stop_attack_prompt(hitfunc, "凍てつかせ", _player_glaciate_affects))
     {
         return SPRET_ABORT;
     }
@@ -3159,7 +3159,7 @@ spret_type cast_scattershot(const actor *caster, int pow, const coord_def &pos,
 
     if (caster->is_player())
     {
-        if (stop_attack_prompt(hitfunc, "scattershot"))
+        if (stop_attack_prompt(hitfunc, "射撃し"))
             return SPRET_ABORT;
     }
 

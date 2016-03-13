@@ -501,7 +501,7 @@ spret_type cast_cloud_cone(const actor *caster, int pow, const coord_def &pos,
 
     if (caster->is_player())
     {
-        if (stop_attack_prompt(hitfunc, "cloud"))
+        if (stop_attack_prompt(hitfunc, "雲に包み"))
             return SPRET_ABORT;
     }
 

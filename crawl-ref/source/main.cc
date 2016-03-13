@@ -2722,7 +2722,7 @@ static void _swing_at_target(coord_def move)
         if (!cleave_targets.empty())
         {
             targetter_cleave hitfunc(&you, target);
-            if (stop_attack_prompt(hitfunc, "attack"))
+            if (stop_attack_prompt(hitfunc, "攻撃し"))
                 return;
 
             if (!you.fumbles_attack())

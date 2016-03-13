@@ -554,22 +554,20 @@ bool bad_attack(const monster *mon, string& adj, string& suffix,
     {
         if (god_hates_attacking_friend(you.religion, mon))
         {
-            adj = "your ally ";
+            adj = "あなたの従者";
 
             monster_info mi(mon, MILEV_NAME);
-            if (!mi.is(MB_NAME_UNQUALIFIED))
-                adj += "the ";
 
             would_cause_penance = true;
 
         }
         else
         {
-            adj = "your ";
+            adj = "あなたの";
 
             monster_info mi(mon, MILEV_NAME);
             if (mi.is(MB_NAME_UNQUALIFIED))
-                adj += "ally ";
+                adj += "従者";
         }
 
         return true;
@@ -579,19 +577,19 @@ bool bad_attack(const monster *mon, string& adj, string& suffix,
         && you_worship(GOD_SHINING_ONE)
         && !tso_unchivalric_attack_safe_monster(mon))
     {
-        adj += "helpless ";
+        adj += "哀れな";
         would_cause_penance = true;
     }
 
     if (mon->neutral() && is_good_god(you.religion))
     {
-        adj += "neutral ";
+        adj += "中立な";
         if (you_worship(GOD_SHINING_ONE) || you_worship(GOD_ELYVILON))
             would_cause_penance = true;
     }
     else if (mon->wont_attack())
     {
-        adj += "non-hostile ";
+        adj += "敵対的でない";
         if (you_worship(GOD_SHINING_ONE) || you_worship(GOD_ELYVILON))
             would_cause_penance = true;
     }
@@ -629,26 +627,29 @@ bool stop_attack_prompt(const monster* mon, bool beam_attack,
     string verb;
     if (beam_attack)
     {
-        verb = "fire ";
+        verb = "撃ち";
         if (beam_target == mon->pos())
-            verb += "at ";
+        {
+            mon_name += "を";
+        }
         else if (you.pos() < beam_target && beam_target < mon->pos()
                  || you.pos() > beam_target && beam_target > mon->pos())
         {
             if (autohit_first)
                 return false;
 
-            verb += "in " + apostrophise(mon_name) + " direction";
-            mon_name = "";
+            verb = "の方向に" + verb;
         }
         else
-            verb += "through ";
+        {
+            verb = "を通すように" + verb;
+        }
     }
     else
-        verb = "attack ";
+        verb = "を攻撃し";
 
     const string prompt = make_stringf(jtransc("Really %s%s%s?%s"),
-             verb.c_str(), mon_name.c_str(), suffix.c_str(),
+             jtransc(suffix), jtransc(mon_name), verb.c_str(),
              jtransc(penance ? " This attack would place you under penance!" : ""));
 
     if (prompted)
@@ -708,10 +709,10 @@ bool stop_attack_prompt(targetter &hitfunc, const char* verb,
         mon_name.erase(0, 4);
     if (adj.find("your"))
         adj = "the " + adj;
-    mon_name = adj + mon_name;
+    mon_name = adj + mon_name + "を";
 
     const string prompt = make_stringf(jtransc("Really %s %s%s?%s"),
-             verb, mon_name.c_str(), suffix.c_str(),
+             suffix.c_str(), jtransc(mon_name), verb,
              jtransc(penance ? " This attack would place you under penance!" : ""));
 
     if (prompted)

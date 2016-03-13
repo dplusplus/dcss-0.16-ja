@@ -5287,9 +5287,18 @@ You rejoin the land of the living...
 
 あなたは現世にとどまった……
 %%%%
+, despite your sanctuary
+
+聖域内で
+%%%%
+, when you might land in your sanctuary
+
+# 多分使われてない
+聖域内に着地する可能性がある
+%%%%
 Really %s%s%s?%s
 
-本当に%s%s%s？ %s
+本当に%s%s%sますか？ %s
 %%%%
 This attack would place you under penance!
 
@@ -5297,7 +5306,7 @@ This attack would place you under penance!
 %%%%
 Really %s %s%s?%s
 
-本当に%s%s%s？ %s
+本当に%s%s%sますか？ %s
 %%%%
 %s emits a piercing whistle.
 
