@@ -3967,6 +3967,22 @@ Created %s '%s' => '%s'.
 
 %sでの'%s'キーから'%s'への対応を作成しました。
 %%%%
+key_to_command(): command '%s' (%d:%d) wrong for desired context
+
+key_to_command(): '%s'コマンド(%d:%d)は要求された文脈では正しくありません。
+%%%%
+Cannot bind command #%d to a key.
+
+コマンド#%dをこのキーに関連づけられません。
+%%%%
+Cannot bind command '%s' to a key.
+
+コマンド'%s'をこのキーに関連づけられません。
+%%%%
+Cannot bind user function keys to a command.
+
+ユーザーファンクションキーをコマンドに関連づけられません。
+%%%%
 ############################## main.cc ##############################
 %%%%
 Upgraded the game from %s to %s

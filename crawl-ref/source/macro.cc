@@ -1284,8 +1284,8 @@ command_type key_to_command(int key, KeymapContext context)
         if (cmd_context != context)
         {
             mprf(MSGCH_ERROR,
-                 "key_to_command(): command '%s' (%d:%d) wrong for desired "
-                 "context",
+                 jtransc("key_to_command(): command '%s' (%d:%d) wrong for desired "
+                         "context"),
                  command_to_name(cmd).c_str(), -key - CMD_NO_CMD,
                  CMD_MAX_CMD + key);
             if (is_processing_macro())
@@ -1350,25 +1350,25 @@ void bind_command_to_key(command_type cmd, int key)
     {
         if (command_name == "CMD_NO_CMD")
         {
-            mprf(MSGCH_ERROR, "Cannot bind command #%d to a key.",
+            mprf(MSGCH_ERROR, jtransc("Cannot bind command #%d to a key."),
                  (int) cmd);
             return;
         }
 
-        mprf(MSGCH_ERROR, "Cannot bind command '%s' to a key.",
+        mprf(MSGCH_ERROR, jtransc("Cannot bind command '%s' to a key."),
              command_name.c_str());
         return;
     }
 
     if (is_userfunction(key))
     {
-        mprf(MSGCH_ERROR, "Cannot bind user function keys to a command.");
+        mpr_nojoin(MSGCH_ERROR, jtrans("Cannot bind user function keys to a command."));
         return;
     }
 
     if (is_synthetic_key(key))
     {
-        mprf(MSGCH_ERROR, "Cannot bind synthetic keys to a command.");
+        mpr_nojoin(MSGCH_ERROR, jtrans("Cannot bind synthetic keys to a command."));
         return;
     }
 
