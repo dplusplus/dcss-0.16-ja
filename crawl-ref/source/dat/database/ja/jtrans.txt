@@ -4001,13 +4001,19 @@ Press <w>?</w> for a list of commands and other information.
 
 コマンド一覧やその他の情報を見るには <w>?</w>キー を押してください。
 %%%%
+Command line options:
+
+コマンドラインオプション:
+%%%%
+
+%%%%
 You wake up in a daze, and can't recall much.
 
 あなたは茫然と覚醒したばかりで、まだ十分な力を取り戻していない。
 %%%%
 set off with:
 
-は以下の装備を持って出発した
+は以下の装備を持って出発した:
 %%%%
 You started the game in wizard mode.
 
@@ -4079,7 +4085,7 @@ Do you really want to enter explore mode?
 %%%%
 Entered explore mode.
 
-探索モードに移行した
+探索モードに移行した。
 %%%%
 Can't repeat entering explore mode
 
@@ -4157,7 +4163,7 @@ You can't do that while held in a net.
 
 あなたは網で拘束されている間は階段を上り下りできない。
 %%%%
-You can't do that while caught in a web
+You can't do that while caught in a web.
 
 あなたは蜘蛛の巣に巻き付かれている間は階段を上り下りできない。
 %%%%
@@ -4203,7 +4209,7 @@ Are you sure you want to leave %s?%s
 %%%%
 This will make you lose the game!
 
-目的を達成しないままゲームを終わることになります！
+目的を達成しないままゲームを終わることになりますよ！
 %%%%
 Alright, then stay!
 
@@ -4249,6 +4255,10 @@ You can't wear or remove anything in your present form.
 
 現在の姿では脱ぐことはできない。
 %%%%
+Take off which item?
+
+どれを脱ぎますか？
+%%%%
 You pace your travel speed to your slowest ally.
 
 あなたは自動移動の速度を仲間のうち最も遅いものに合わせた。
@@ -4256,10 +4266,6 @@ You pace your travel speed to your slowest ally.
 You travel at normal speed.
 
 あなたは通常の速度で自動移動するようになった。
-%%%%
-Take off which item?
-
-どれを脱ぎますか？
 %%%%
 You're too hungry to rest.
 
@@ -4284,10 +4290,12 @@ Clearing level map.
 Move the cursor to view the level map, or type <w>?</w> for a list of commands.
 
 # USE_TILE_LOCAL
+階層マップを見るにはカーソルを動かすか、<w>?</w>キーを押してコマンド一覧を見てください。
 %%%%
 Returning to the game...
 
 # USE_TILE_LOCAL
+ゲームへ復帰中……
 %%%%
 No other missiles available. Use F to throw any item.
 
@@ -4507,11 +4515,11 @@ The barbs in your skin will harm you if you move. Continue?
 %%%%
 You deftly slip free of the water engulfing you.
 
-あなたは巧みにあなたを包む水の塊から抜け出した。
+あなたは体を包む水の塊から巧みに抜け出した。
 %%%%
 With effort, you pull free of the water engulfing you.
 
-あなたはどうにかあなたを包む水の塊から抜け出した。
+あなたは体を包む水の塊からどうにか抜け出した。
 %%%%
 You dig through %s.
 

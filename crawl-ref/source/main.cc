@@ -1058,7 +1058,7 @@ static void _enter_explore_mode()
         mprf(MSGCH_WARN, "If you continue, your game will not be scored!");
 #endif
 
-        if (!yes_or_no("Do you really want to enter explore mode?"))
+        if (!yes_or_no(jtransc("Do you really want to enter explore mode?")))
         {
             canned_msg(MSG_OK);
             return;
