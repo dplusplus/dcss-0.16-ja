@@ -453,6 +453,14 @@ quick blades "Gyre" and "Gimble"
 
 一対のクイックブレード『ジャイル』と『ギンブル』
 %%%%
+quick blade "Gyre"
+
+クイックブレード『ジャイル』
+%%%%
+quick blade "Gimble"
+
+クイックブレード『ギンブル』
+%%%%
 quick blades
 
 一対のクイックブレード

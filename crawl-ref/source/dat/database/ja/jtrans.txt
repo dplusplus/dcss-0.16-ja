@@ -4587,6 +4587,42 @@ Trying to re-do re-do command, aborting.
 %%%%
 ############################## melee_attack.cc ##############################
 %%%%
+You attempt to attack %s, but flinch away in fear!
+
+あなたは%sを攻撃しようとしたが尻込みした！
+%%%%
+%s strikes at %s from the darkness!
+
+%sは%sを闇討ちした！
+%%%%
+%s momentarily %s out as %s attack passes through %s%s
+
+%sは一瞬存在を薄めて%sの攻撃をすり抜けた。
+%%%%
+%s shroud bends %s attack away%s
+
+%sの帷子は%sの攻撃を逸らした%s
+%%%%
+%s shroud falls apart!
+
+%sの帷子は霧消した！
+%%%%
+You %sdevour %s!
+
+あなたは%sを%sむさぼり食らった！
+%%%%
+You spit out %s as %s twists & changes in your mouth!
+
+あなたは口の中で捻れて変化した%sを吐きだした！
+%%%%
+Your tendrils lash around %s %s and pull it to the ground!
+
+あなたの蔦が%sの%sを地面にはたき落とした！
+%%%%
+blocks your attack.
+
+はあなたの攻撃を防いだ。
+%%%%
 auxname constrict
 
 拘束
@@ -4645,7 +4681,7 @@ blocks your attack.
 %%%%
 Your %s passes through %s as %s momentarily phases out.
 
-あなたの%sは一瞬にして%sに躱された。
+あなたの%sは一瞬存在の薄まった%sをすり抜けた。
 %%%%
 Your %s misses %s.
 
@@ -4686,6 +4722,10 @@ You %s %s%s%s
 You are splashed with acid.
 
 あなたは酸のしぶきを浴びた。
+%%%%
+%s %s %s.
+
+%sは%sを%s。
 %%%%
 %s furiously retaliates!
 
@@ -4734,7 +4774,7 @@ attack
 %%%%
 's weak point
 
-の弱点
+の急所
 %%%%
 like a pig
 
@@ -4976,6 +5016,62 @@ into a bloody pulp
 
 血の塊になるまで
 %%%%
+You feel your flesh %s away!
+
+あなたの肉が%s！
+%%%%
+The flame cauterises the wound!
+
+炎が傷口を焼いた！
+%%%%
+grows two more!
+
+の首がさらに2本増えた！
+%%%%
+You grow two more!
+
+あなたの首がさらに2本増えた！
+%%%%
+%s %s %s last head off!
+
+%sは%sの最後の首を%s！
+%%%%
+%s %s one of %s heads off!
+
+%sは%sの首を一本%s！
+%%%%
+is burned by acid!
+
+酸で焼かれた！
+%%%%
+%s %s electrocuted!
+
+%sは電撃を受けた！
+%%%%
+%s freeze%s %s!
+
+%sは%sを凍りつかせた！
+%%%%
+%s crush%s %s!
+
+%sは%sの体を粉砕した！
+%%%%
+%s burn%s %s!
+
+%sは%sを燃やした！
+%%%%
+%s convulse%s in agony!
+
+%sは苦痛に身もだえした！
+%%%%
+%s tries to attack %s, but flinches away.
+
+%sは%sを攻撃しようとしたが尻込みしている。
+%%%%
+%s blade passes through %s shield.
+
+%sの刃は%sの盾を突き抜けた。
+%%%%
 # klown_attack
 poke
 
@@ -5120,6 +5216,34 @@ pounce on
 from afar
 
 遠くから
+%%%%
+%s poisons %s!
+
+%sは%sを毒に冒した！
+%%%%
+%s partially resist%s.
+
+%sはいくらか耐性を示した。
+%%%%
+%s %s covered in liquid flames%s
+
+%sは燃えたぎる液体に包まれた%s
+%%%%
+%s %s engulfed in flames%s
+
+%sは炎に包まれた%s
+%%%%
+%s %s strength from %s injuries!
+
+%sは%sの傷口から力を吸い取った！
+%%%%
+%s %s engulfed in a cloud of spores!
+
+%sは胞子の雲の中に包まれた！
+%%%%
+Your divine stamina protects you from poison!
+
+あなたの神秘の活力により毒をはねのけた！
 %%%%
 ############################## menu.cc ##############################
 %%%%
