@@ -475,8 +475,6 @@ You feel stable.
 
 あなたは安定したような気分になった。
 %%%%
-
-%%%%
 magic resistance
 
 魔法防御

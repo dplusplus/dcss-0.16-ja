@@ -744,34 +744,34 @@ static void _display_vampire_attributes()
     const int lines = 12;
     string column[lines][7] =
     {
-        {"                     ", "<lightgreen>Alive</lightgreen>      ", "<green>Full</green>    ",
-         "Satiated  ", "<yellow>Thirsty</yellow>  ", "<yellow>Near...</yellow>  ",
-         "<lightred>Bloodless</lightred>"},
-                                 //Alive          Full       Satiated      Thirsty   Near...      Bloodless
-        {"Metabolism           ", "very fast  ", "fast    ", "fast      ", "normal   ", "slow     ", "none  "},
+        {"                 ", "<lightgreen>生者</lightgreen>       ", "<green>とても満腹</green> ",
+         "満腹   ", "<yellow>乾き</yellow>   ", "<yellow>ほとんど…</yellow> ",
+         "<lightred>血液がない</lightred>"},
+                              //Alive        Full           Satiated      Thirsty   Near...      Bloodless
+        {"腹減り           ", "極めて速い ", "速い       ", "速い   ", "普通   ", "遅い       ", "なし  "},
 
-        {"Regeneration         ", "very fast  ", "fast    ", "normal    ", "slow     ", "slow     ", "none  "},
+        {"回復速度         ", "極めて速い ", "速い       ", "普通   ", "遅い   ", "遅い       ", "なし  "},
 
-        {"Stealth boost        ", "none       ", "none    ", "none      ", "minor    ", "major    ", "large "},
+        {"隠密補正         ", "なし       ", "なし       ", "なし   ", "小     ", "中         ", "大    "},
 
-        {"Spell hunger         ", "full       ", "full    ", "full      ", "halved   ", "none     ", "none  "},
+        {"魔法による腹減り ", "普通       ", "普通       ", "普通   ", "半分   ", "なし       ", "なし  "},
 
-        {"\n<w>Resistances</w>\n"
-         "Poison resistance    ", "           ", "        ", "          ", " +       ", " +       ", "immune"},
+        {"\n<w>耐性</w>\n"
+         "毒への耐性       ", "           ", "           ", "       ", " +     ", " +         ", "無効"},
 
-        {"Cold resistance      ", "           ", "        ", "          ", " +       ", " ++      ", " ++   "},
+        {"冷気への耐性     ", "           ", "           ", "       ", " +     ", " ++        ", " ++   "},
 
-        {"Negative resistance  ", "           ", "        ", " +        ", " ++      ", " +++     ", " +++  "},
+        {"衰弱への耐性     ", "           ", "           ", " +     ", " ++    ", " +++       ", " +++  "},
 
-        {"Rotting resistance   ", "           ", "        ", "          ", " +       ", " +       ", " +    "},
+        {"腐敗への耐性     ", "           ", "           ", "       ", " +     ", " +         ", " +    "},
 
-        {"Torment resistance   ", "           ", "        ", "          ", "         ", "         ", " +    "},
+        {"苦痛への耐性     ", "           ", "           ", "       ", "       ", "           ", " +    "},
 
-        {"\n<w>Transformations</w>\n"
-         "Bat form             ", "no         ", "no      ", "yes       ", "yes      ", "yes      ", "yes   "},
+        {"\n<w>変異能力</w>\n"
+         "蝙蝠の躯         ", "×          ", "×          ", "○      ", "○      ", "○          ", "その他"},
 
-        {"Other forms and \n"
-         "berserk              ", "yes        ", "yes     ", "no        ", "no       ", "no       ", "no    "}
+        {"他の変異能力・\n"
+         "バーサーク       ", "○          ", "○          ", "×      ", "×      ", "×          ", "×    "}
     };
 
     int current = 0;
@@ -1471,7 +1471,7 @@ bool mutate(mutation_type which_mutation, const string &reason, bool failMsg,
         if (!god_gift && _resist_mutation(mutclass, beneficial))
         {
             if (failMsg)
-                mprf(MSGCH_MUTATION, "You feel odd for a moment.");
+                mpr_nojoin(MSGCH_MUTATION, jtransc("You feel odd for a moment."));
             return false;
         }
 
@@ -1494,7 +1494,7 @@ bool mutate(mutation_type which_mutation, const string &reason, bool failMsg,
             lose_stat(STAT_RANDOM, 1, false, reason);
             return true;
         case MUTCLASS_NORMAL:
-            mprf(MSGCH_MUTATION, "Your body decomposes!");
+            mpr_nojoin(MSGCH_MUTATION, jtrans("Your body decomposes!"));
 
             if (coinflip())
                 lose_stat(STAT_RANDOM, 1, false, reason);
@@ -1612,7 +1612,7 @@ bool mutate(mutation_type which_mutation, const string &reason, bool failMsg,
         {
         case MUT_STRONG: case MUT_AGILE:  case MUT_CLEVER:
         case MUT_WEAK:   case MUT_CLUMSY: case MUT_DOPEY:
-            mprf(MSGCH_MUTATION, "You feel %s.", _stat_mut_desc(mutat, true));
+            mpr_nojoin(MSGCH_MUTATION, jtrans(make_stringf("You feel %s.", _stat_mut_desc(mutat, true))));
             gain_msg = false;
             break;
 
@@ -1620,13 +1620,13 @@ bool mutate(mutation_type which_mutation, const string &reason, bool failMsg,
             {
                 const char *arms;
                 if (you.species == SP_FELID)
-                    arms = "legs";
+                    arms = "脚";
                 else if (you.species == SP_OCTOPODE)
-                    arms = "tentacles";
+                    arms = "触腕";
                 else
                     break;
                 mprf(MSGCH_MUTATION, "%s",
-                     replace_all(mdef.gain[you.mutation[mutat]-1], "arms",
+                     replace_all(mdef.gain[you.mutation[mutat]-1], "腕",
                                  arms).c_str());
                 gain_msg = false;
             }
@@ -1636,13 +1636,13 @@ bool mutate(mutation_type which_mutation, const string &reason, bool failMsg,
             {
                 const char *hands;
                 if (you.species == SP_FELID)
-                    hands = "front paws";
+                    hands = "片方の前脚";
                 else if (you.species == SP_OCTOPODE)
-                    hands = "tentacles";
+                    hands = "触腕の一つ";
                 else
                     break;
                 mprf(MSGCH_MUTATION, "%s",
-                     replace_all(mdef.gain[you.mutation[mutat]-1], "hands",
+                     replace_all(mdef.gain[you.mutation[mutat]-1], "片腕",
                                  hands).c_str());
                 gain_msg = false;
             }
@@ -1751,8 +1751,8 @@ bool mutate(mutation_type which_mutation, const string &reason, bool failMsg,
         if (you.hp <= 0)
         {
             ouch(0, KILLED_BY_FRAILTY, MID_NOBODY,
-                 make_stringf("gaining the %s mutation",
-                              mutation_name(mutat)).c_str());
+                 make_stringf(jtransc("gaining the %s mutation"),
+                              jtransc(mutation_name(mutat))).c_str());
         }
     }
 
@@ -1794,7 +1794,7 @@ static bool _delete_single_mutation_level(mutation_type mutat,
     {
     case MUT_STRONG: case MUT_AGILE:  case MUT_CLEVER:
     case MUT_WEAK:   case MUT_CLUMSY: case MUT_DOPEY:
-        mprf(MSGCH_MUTATION, "You feel %s.", _stat_mut_desc(mutat, false));
+        mpr_nojoin(MSGCH_MUTATION, jtrans(make_stringf("You feel %s.", _stat_mut_desc(mutat, false))));
         lose_msg = false;
         break;
 
@@ -1845,7 +1845,7 @@ static bool _delete_single_mutation_level(mutation_type mutat,
     if (you.hp <= 0)
     {
         ouch(0, KILLED_BY_FRAILTY, MID_NOBODY,
-             make_stringf("losing the %s mutation", mutation_name(mutat)).c_str());
+             make_stringf(jtransc("losing the %s mutation"), jtransc(mutation_name(mutat))).c_str());
     }
 
     return true;
@@ -1869,7 +1869,7 @@ bool delete_mutation(mutation_type which_mutation, const string &reason,
                     || coinflip()))
             {
                 if (failMsg)
-                    mprf(MSGCH_MUTATION, "You feel rather odd for a moment.");
+                    mpr_nojoin(MSGCH_MUTATION, jtrans("You feel rather odd for a moment."));
                 return false;
             }
         }
@@ -2430,7 +2430,7 @@ bool perma_mutate(mutation_type which_mut, int how_much, const string &reason)
             // at the cap for this facet, we are permafying a temporary
             // mutation. This would otherwise fail to produce any output in
             // some situations.
-            mprf(MSGCH_MUTATION, "Your mutations feel more permanent.");
+            mpr_nojoin(MSGCH_MUTATION, jtrans("Your mutations feel more permanent."));
             take_note(Note(NOTE_PERM_MUTATION, which_mut,
                            you.mutation[which_mut], reason.c_str()));
         }
@@ -2520,8 +2520,8 @@ static bool _balance_demonic_guardian()
             && !one_chance_in(3)
             && !mons->has_ench(ENCH_LIFE_TIMER))
         {
-            mprf("%s %s!", mons->name(DESC_THE).c_str(),
-                           summoned_poof_msg(*mons).c_str());
+            mprf(jtransc("%s %s!"), jtransc(mons->name(DESC_PLAIN)),
+                 summoned_poof_msg(*mons).c_str());
             monster_die(*mons, KILL_NONE, NON_MONSTER);
         }
         else

@@ -8066,7 +8066,7 @@ Your body does not fit into most forms of armour.
 %%%%
 You are rather mundane.
 
-あなたはこれといった特徴がない。
+あなたにはこれといった特徴がない。
 %%%%
 Press '<w>!</w>' to toggle between mutations and properties depending on your hunger status.
 
@@ -8084,9 +8084,65 @@ Press '<w>!</w>' to toggle between mutations and properties depending on your hu
 
 <magenta>[]</magenta> : 一時的変異
 %%%%
+You feel odd for a moment.
+
+あなたは一瞬だけ奇妙な感覚になった。
+%%%%
+protects your body from mutation!
+
+はあなたの体が変異するのを防いだ！
+%%%%
+Your body decomposes!
+
+あなたの肉体は腐敗した！
+%%%%
+You feel weaker.
+
+あなたは力が弱くなったようだ。
+%%%%
+You feel stronger.
+
+あなたは力強くなった。
+%%%%
+You feel stupid.
+
+あなたは愚かになった。
+%%%%
+You feel clever.
+
+あなたは賢くなった。
+%%%%
+You feel clumsy.
+
+あなたは不器用になったようだ。
+%%%%
+You feel agile.
+
+あなたは機敏になった。
+%%%%
+gaining the %s mutation
+
+%sの変異を得て
+%%%%
+losing the %s mutation
+
+%sの変異を失って
+%%%%
+You feel rather odd for a moment.
+
+あなたは一瞬、どうにも奇妙な感覚を覚えた。
+%%%%
 Your body is misshapen.
 
 あなたの体は奇形的になった。
+%%%%
+Your mutations feel more permanent.
+
+あなたの体の変異は永続的なものとなったようだ。
+%%%%
+%s %s!
+
+%sは%s！
 %%%%
 ############################## newgame.cc ##############################
 %%%%
