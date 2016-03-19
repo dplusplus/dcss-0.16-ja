@@ -594,15 +594,15 @@ public:
             textcolour(channel_to_colour(MSGCH_PROMPT));
             if (crawl_state.game_is_hints())
             {
-                string more_str = "--more-- Press Space ";
-                if (is_tiles())
-                    more_str += "or click ";
-                more_str += "to continue. You can later reread messages with "
-                            "Ctrl-P.";
+                string more_str;
+                more_str = make_stringf("--続く-- 続けるには%sしてください。 "
+                                        "後でCtrl-Pを押すことで再度読むこともできます。",
+                                        is_tiles() ? "Spaceを押すか画面をクリック" : "Spaceを押");
+
                 cprintf(more_str.c_str());
             }
             else
-                cprintf("--more--");
+                cprintf(jtransc("--more--"));
 
             readkey_more(user);
         }
