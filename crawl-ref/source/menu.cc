@@ -267,9 +267,10 @@ void Menu::set_more()
         "   <w>-</w> or <w><<</w>: Page up."
         "   <w>Esc</w> or <w>R-click</w> exits.]"
 #else
+        jtrans(
         "<cyan>[ <w>+</w>, <w>></w> or <w>Space</w>: Page down."
         "   <w>-</w> or <w><<</w>: Page up."
-        "                       <w>Esc</w> exits.]"
+        "                       <w>Esc</w> exits.]")
 #endif
     ));
 }
@@ -768,8 +769,9 @@ string Menu::get_select_count_string(int count) const
         char buf[100] = "";
         if (count)
         {
-            snprintf(buf, sizeof buf, "  (%d item%s)  ", count,
-                    (count > 1 ? "s" : ""));
+            snprintf(buf, sizeof buf,
+                     (" " + jtrans("  (%d item%s)  ") + " ").c_str(), count,
+                     (count > 1 ? "s" : ""));
         }
         return string(buf);
     }
@@ -1333,7 +1335,7 @@ void Menu::write_title()
         int curpage = first_entry / pagesize + 1;
         if (in_page(items.size() - 1))
             curpage = numpages;
-        fs.cprintf(" (page %d of %d)", curpage, numpages);
+        fs.cprintf(("  " + jtrans(" (page %d of %d)")).c_str(), curpage, numpages);
     }
     fs.display();
 

@@ -5249,11 +5249,23 @@ Your divine stamina protects you from poison!
 %%%%
 -more-
 
--続く-
+--続く--
+%%%%
+<cyan>[ <w>+</w>, <w>></w> or <w>Space</w>: Page down.   <w>-</w> or <w><<</w>: Page up.                       <w>Esc</w> exits.]
+
+<cyan>[ <w>+</w>, <w>></w>または<w>Space</w>: 一画面上へ <w>-</w>または<w><<</w>: 一画面下へ                     <w>Esc</w> 戻る]
 %%%%
 Select what? (regex)
 
 何を選択しますか？ (正規表現可)
+%%%%
+(%d item%s)
+
+(%d個のアイテム)
+%%%%
+(page %d of %d)
+
+(%d/%d ページ)
 %%%%
 ############################## message.cc ##############################
 %%%%
