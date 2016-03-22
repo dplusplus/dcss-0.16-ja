@@ -13883,7 +13883,7 @@ The %s foams!
 %%%%
 You feel more buoyant.
 
-飛行能力の持続時間が増した。
+あなたは更に体が軽くなった。
 %%%%
 You feel in control.
 
