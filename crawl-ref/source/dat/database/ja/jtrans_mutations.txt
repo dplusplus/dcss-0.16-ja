@@ -2146,15 +2146,15 @@ You are completely covered in large bone plates (AC +4, SH +4).
 %%%%
 Large bone plates grow over parts of your arms.
 
-大きな骨甲があなたの体の一部に生えてきた。
+大きな骨甲があなたの腕の一部に生えてきた。
 %%%%
 Large bone plates spread over more of your arms.
 
-大きな骨甲があなたの体をさらに覆った。
+大きな骨甲があなたの腕をさらに覆った。
 %%%%
 Large bone plates cover your arms completely.
 
-大きな骨甲があなたの体を完全に覆った。
+大きな骨甲があなたの腕を完全に覆った。
 %%%%
 Your large bone plates disappear.
 

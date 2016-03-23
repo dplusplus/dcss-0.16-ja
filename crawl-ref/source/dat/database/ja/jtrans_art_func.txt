@@ -505,7 +505,7 @@ A shiver runs down your spine.
 %%%%
 You're too close to death to use this item.
 
-あなたは死にかけているためこのアイテムを使用できない。
+あなたは死に近づいているためこのアイテムを使用できない。
 %%%%
 You feel the staff feeding on your energy!
 

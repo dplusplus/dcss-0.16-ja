@@ -736,7 +736,7 @@ You cannot call out to %s while silenced.
 %%%%
 You don't have enough innate magic capacity to sacrifice.
 
-あなたは犠牲にできる持ち前の魔力容量が十分にない。
+あなたは犠牲にできる持ち前の魔力の容量が十分にない。
 %%%%
 There's no appreciative audience!
 

@@ -8422,6 +8422,10 @@ Do you really want to swap %s into the Zot trap?
 
 本当に位置を交換してゾットの罠を踏みますか？
 %%%%
+cannot make way for you.
+
+はあなたの行く手を遮っている。
+%%%%
 Floosh!
 
 ポチャン！
@@ -8464,11 +8468,11 @@ Moving in this stuff is going to be slow.
 %%%%
 ...and don't expect to remain undetected.
 
-……そして、気付かれないままでいることは期待できない。
+……そして、敵に気付かれないままでいることは期待できない。
 %%%%
 Do you really want to go berserk while wielding
 
-を装備したまま狂戦士化しますか？
+を装備したままバーサークしますか？
 %%%%
 You feel the corruption within you wane completely.
 
@@ -8542,6 +8546,14 @@ You have reached level %d!
 
 あなたはレベル%dになった！
 %%%%
+You feel more in touch with the powers of death.
+
+あなたは死の力との接触が強まったような気がした。
+%%%%
+You can now infuse your body with magic to restore decomposition.
+
+あなたは魔力を注ぎ込むことにより体を修復することができるようになった。
+%%%%
 If you weren't so full, you could now transform into a vampire bat.
 
 あなたは満腹でなければ吸血コウモリに変身できるようになった。
@@ -8562,6 +8574,10 @@ Your scales feel tougher.
 
 あなたの鱗は丈夫になった。
 %%%%
+You can now fly continuously.
+
+あなたは継続的に飛ぶことができるようになった。
+%%%%
 You feel monstrous as your demonic heritage exerts itself.
 
 受け継がれし悪魔の力があなた自身に働き、強大になったと感じた。
@@ -8573,10 +8589,6 @@ Your demonic ancestry asserts itself...
 You have gained the ability to fly.
 
 あなたは空を飛ぶ能力を得た。
-%%%%
-You can now fly continuously.
-
-あなたは継続的に飛ぶことができるようになった。
 %%%%
 %s (%d).
 
@@ -8730,21 +8742,177 @@ Your base attributes are Str %d, Int %d, Dex %d.
 
 あなたの本来の能力値は 腕力: %d 知力: %d 器用: %d だ。
 %%%%
+* * * LOW MAGIC WARNING * * *
+
+* * * MP低下警告 * * *
+%%%%
+You cannot pay life while functionally dead.
+
+あなたは死のとば口に踏ん張っている間、命を手放すことができない。
+%%%%
+You don't have enough health at the moment.
+
+あなたには現在十分な体力が残っていない。
+%%%%
+You don't have enough magic capacity.
+
+あなたには十分な魔力の容量がない。
+%%%%
+You don't have enough magic at the moment.
+
+あなたには現在十分な魔力が残っていない。
+%%%%
+You don't have enough Zot Points.
+
+# for Zot Defence
+%%%%
+You are very lightly contaminated with residual magic.
+
+あなたは残留した魔力できわめて軽度汚染されている。
+%%%%
+You are contaminated with residual magic.
+
+あなたは残留した魔力で汚染されている。
+%%%%
+You are heavily infused with residual magic.
+
+あなたは残留した魔力で満たされている。
+%%%%
+You are practically glowing with residual magic!
+
+あなたは残留した魔力で光を放つほどだ！
+%%%%
+Your entire body has taken on an eerie glow!
+
+あなたは全身に不気味な光を受けた！
+%%%%
+You are engulfed in a nimbus of crackling magics!
+
+あなたはバチバチ爆ぜる魔力の雲に飲み込まれた！
+%%%%
+You feel %s contaminated with magical energies.
+
+あなたは魔法のエネルギーによる汚染が%sのを感じた。
+%%%%
+You fade completely from view now that you are no longer glowing from magical contamination.
+
+あなたはもう魔力汚染による光を放っていないため、再びあたりの風景に溶け込んだ。
+%%%%
+You feel momentarily confused.
+
+あなたは一瞬だけ混乱を覚えた。
+%%%%
+Your divine stamina protects you from confusion!
+
+あなたの神秘の活力により混乱をはねのけた！
+%%%%
 You are %sconfused.
 
 あなたは%s混乱した。
+%%%%
+You are %spoisoned.
+
+あなたは%s毒に冒された。
+%%%%
+You feel %ssick.
+
+あなたは%s気分が悪い。
+%%%%
+Your divine stamina protects you from the miasma!
+
+あなたの神秘の活力により瘴気をはねのけた！
+%%%%
+The flames go out!
+
+炎は消え去った！
+%%%%
+You dip into the water, and the flames go out!
+
+あなたは水に浸かり、炎を消し去った！
+%%%%
+%s rumbles.
+
+%sは轟音を立てた。
+%%%%
+You already are as slow as you could be.
+
+あなたはすでに限界まで遅くなっている。
+%%%%
+You feel yourself slow down.
+
+あなたは動きが遅くなった。
+%%%%
+You feel as though you will be slow longer.
+
+あなたはより長い時間を遅いままでいることになった。
+%%%%
+You feel less exhausted.
+
+あなたは疲労から回復した。
+%%%%
+You already have as much speed as you can handle.
+
+あなたはすでに限界まで速くなっている。
+%%%%
+You feel as though your hastened speed will last longer.
+
+あなたはより長い時間を加速されたままでいることになった。
+%%%%
+Your extra speed is starting to run out.
+
+あなたの加速はなくなりつつある。
+%%%%
+You feel your health improve.
+
+あなたの健康状態は回復してきた。
+%%%%
+You feel less invigorated.
+
+あなたは活力がなくなったようだ。
+%%%%
+Your roots keep you in place.
+
+あなたの根っこは大地にしっかりと埋まっている。
+%%%%
+You can't fly in this form.
+
+あなたはこの姿では空を飛べない。
+%%%%
+You can't fly while stuck in liquid ground.
+
+あなたは沼にはまっているため空を飛べない。
+%%%%
+The grasping roots prevent you from becoming airborne.
+
+あなたは木の根に絡めとられていて地面を離れることができない。
+%%%%
+Your tail turns into legs as you fly out of the water.
+
+あなたが水から飛び上がると尾ひれは足に変化した。
+%%%%
+You swoop lightly up into the air.
+
+あなたは空から軽やかに襲いかかった。
+%%%%
+You fly up into the air.
+
+あなたは空中へと飛びあがった。
 %%%%
 You float gracefully downwards.
 
 あなたは優雅に下へと舞い降りていった。
 %%%%
-%s corrodes your equipment!
+The water engulfing you falls away.
 
-%sであなたの装備が腐蝕した！
+あなたを包んでいた水が解除された。
 %%%%
-The acid burns!
+You gasp with relief as air once again reaches your lungs.
 
-酸が炸裂した！
+あなたは肺に再び空気が流れ込んできたことに安堵した。
+%%%%
+Your lungs strain for air!
+
+あなたの肺は空気を求めている！
 %%%%
 # player::shout_verb()より
 # ここでは叫び変異の強度によりshout < yell < screamとなるので
@@ -8776,6 +8944,202 @@ caterwaul
 hiss
 
 フーッと鳴いた
+%%%%
+You resist the pull of the Abyss.
+
+あなたはアビスへの追放に抵抗した。
+%%%%
+You feel less protected from missiles.
+
+飛来物からの保護が弱まった。
+%%%%
+You feel your spell is no longer protecting you from missiles.
+
+飛来物からの保護が消え去った。
+%%%%
+Long-range teleportation is disallowed in Dungeon Sprint.
+
+ダンジョンスプリント中は長距離テレポートはできません。
+%%%%
+cannot teleport.
+
+はテレポートできない。
+%%%%
+locked down by Dimension Anchor
+
+次元の碇による束縛
+%%%%
+held in place by your roots
+
+自らの木の根による地面への固定
+%%%%
+in the halo of the Orb
+
+ゾットのオーブの波動
+%%%%
+wielding %s
+
+%sの装備
+%%%%
+wearing %s %s preventing teleportation
+
+%d%s個のテレポートを防ぐ%sの装備
+%%%%
+artefacts
+
+アーティファクト
+%%%%
+You cannot teleport because you are %s.
+
+あなたは%sのためテレポートできない。
+%%%%
+You feel terrible.
+
+あなたは恐怖を感じた。
+%%%%
+Your divine stamina protects you from decay!
+
+あなたの神秘の活力により腐敗をはねのけた！
+%%%%
+%s corrodes your equipment!
+
+%sであなたの装備が腐蝕した！
+%%%%
+The acid burns!
+
+酸が炸裂した！
+%%%%
+%s gives you a mild electric shock.
+
+%sはあなたに軽い電気ショックを与えた。
+%%%%
+You shrug off the repeated paralysis!
+
+あなたは麻痺状態を振り払った！
+%%%%
+You still don't have the ability to move!
+
+あなたは依然として動くことができない！
+%%%%
+You suddenly lose the ability to move!
+
+あなたは突然動くことができなくなった！
+%%%%
+Your divine stamina protects you from petrification!
+
+あなたの神秘の活力により石化をはねのけた！
+%%%%
+Your limbs have turned to stone.
+
+あなたの体は石へと変わった。
+%%%%
+You are slowing down.
+
+あなたの動きは鈍くなっている。
+%%%%
+You have turned to stone.
+
+あなたは石化してしまった。
+%%%%
+Your divine stamina protects you from disease!
+
+あなたの神秘の活力により病魔をはねのけた！
+%%%%
+You feel ill.
+
+あなたは病気に冒されている。
+%%%%
+You glow brighter.
+
+あなたはより明るく輝いた。
+%%%%
+You are outlined in light.
+
+あなたは光で照らし出された。
+%%%%
+You feel strangely conspicuous.
+
+あなたは妙に目立っているような気がした。
+%%%%
+You can't fall asleep again this soon!
+
+あなたは二度寝できない！
+%%%%
+You fall asleep.
+
+あなたは眠りに落ちた。
+%%%%
+You wake up.
+
+あなたは目を覚ました。
+%%%%
+You can't shaft yourself while held in a net.
+
+あなたは網で拘束されている間、縦穴を掘ることができない。
+%%%%
+You can't shaft yourself while caught in a web.
+
+あなたは蜘蛛の巣に巻き付かれている間、縦穴を掘ることができない。
+%%%%
+You can't shaft yourself on this level.
+
+この階では縦穴を掘ることができない。
+%%%%
+You can't shaft yourself on this terrain.
+
+この地形では縦穴を掘ることができない。
+%%%%
+A shaft appears beneath you!
+
+縦穴があなたの足下に空いた！
+%%%%%
+You now have enough gold to %s.
+
+あなたは%sのに十分な額の所持金がある。
+%%%%
+You no longer have enough gold to %s.
+
+あなたは%sのに必要な金貨を持っていない。
+%%%%
+You escape %s's grasp.
+
+あなたは%sの束縛から逃れた。
+%%%%
+Your attempt to break free from %s fails, but you feel that another attempt might succeed.
+
+%sから逃れようとするあなたの試みは失敗したが、もう一回やれば成功するような気分がした。
+%%%%
+The mark upon you grows brighter.
+
+あなたに付けられた印が明るく輝いた。
+%%%%
+A sentinel's mark forms upon you.
+
+あなたは番兵の標的に指定された。
+%%%%
+You feel your attacks grow feeble.
+
+あなたは自分の攻撃が弱くなったように感じた。
+%%%%
+You feel as though you will be weak longer.
+
+あなたはより長い時間を弱体化されたままでいることになった。
+%%%%
+You have %d tentacle%s available for constriction.
+
+あなたは敵を拘束できる%d本の触手を持っている。
+%%%%
+You are being %s by %s.
+
+あなたは%sに拘束されている。
+%%%%
+Put travel exclusion on door? (Y/n)
+
+扉を禁止エリアに指定しますか？ (Y/n)
+%%%%
+This %s%s is marked as excluded! Open it anyway?
+
+この%s%sは禁止エリアに指定されています！ それでも開けますか？
 %%%%
 The %s%s flies open!
 

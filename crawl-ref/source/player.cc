@@ -45,6 +45,7 @@
 #include "invent.h"
 #include "itemprop.h"
 #include "item_use.h"
+#include "japanese.h"
 #include "kills.h"
 #include "libutil.h"
 #include "macro.h"
@@ -368,7 +369,7 @@ bool swap_check(monster* mons, coord_def &loc, bool quiet)
     {
         // Might not be ideal, but it's better than insta-killing
         // the monster... maybe try for a short blink instead? - bwr
-        simple_monster_message(mons, " cannot make way for you.");
+        simple_monster_message(mons, jtransc(" cannot make way for you."));
         // FIXME: AI_HIT_MONSTER isn't ideal.
         interrupt_activity(AI_HIT_MONSTER, mons);
     }
@@ -4319,7 +4320,7 @@ void flush_mp()
         && you.magic_points < you.max_magic_points
                               * Options.magic_point_warning / 100)
     {
-        mprf(MSGCH_DANGER, "* * * LOW MAGIC WARNING * * *");
+        mpr_nojoin(MSGCH_DANGER, jtrans("* * * LOW MAGIC WARNING * * *"));
     }
 
     take_note(Note(NOTE_MP_CHANGE, you.magic_points, you.max_magic_points));
@@ -4369,7 +4370,7 @@ bool enough_hp(int minimum, bool suppress_msg, bool abort_macros)
     if (you.duration[DUR_DEATHS_DOOR])
     {
         if (!suppress_msg)
-            mpr("You cannot pay life while functionally dead.");
+            mpr(jtrans("You cannot pay life while functionally dead."));
 
         if (abort_macros)
         {
@@ -4383,7 +4384,7 @@ bool enough_hp(int minimum, bool suppress_msg, bool abort_macros)
     if (you.hp < minimum + 1)
     {
         if (!suppress_msg)
-            mpr("You don't have enough health at the moment.");
+            mpr(jtrans("You don't have enough health at the moment."));
 
         if (abort_macros)
         {
@@ -4410,9 +4411,9 @@ bool enough_mp(int minimum, bool suppress_msg, bool abort_macros)
         if (!suppress_msg)
         {
             if (get_real_mp(true) < minimum)
-                mpr("You don't have enough magic capacity.");
+                mpr(jtrans("You don't have enough magic capacity."));
             else
-                mpr("You don't have enough magic at the moment.");
+                mpr(jtrans("You don't have enough magic at the moment."));
         }
         if (abort_macros)
         {
@@ -4432,7 +4433,7 @@ bool enough_zp(int minimum, bool suppress_msg)
     if (you.zot_points < minimum)
     {
         if (!suppress_msg)
-            mpr("You don't have enough Zot Points.");
+            mpr(jtrans("You don't have enough Zot Points."));
 
         crawl_state.cancel_cmd_again();
         crawl_state.cancel_cmd_repeat();
@@ -4732,8 +4733,8 @@ string describe_contamination(int cont)
     };
 
     ASSERT(cont >= 0);
-    return contam_descriptions[min((size_t) cont,
-                                   ARRAYSZ(contam_descriptions) - 1)];
+    return jtrans(contam_descriptions[min((size_t) cont,
+                                          ARRAYSZ(contam_descriptions) - 1)]);
 }
 
 // controlled is true if the player actively did something to cause
@@ -4759,12 +4760,12 @@ void contaminate_player(int change, bool controlled, bool msg)
     else if (msg && new_level != old_level)
     {
         if (old_level == 1 && new_level == 0)
-            mpr("Your magical contamination has completely faded away.");
+            mpr(jtrans("Your magical contamination has completely faded away."));
         else
         {
-            mprf((change > 0) ? MSGCH_WARN : MSGCH_RECOVERY,
-                 "You feel %s contaminated with magical energies.",
-                 (change > 0) ? "more" : "less");
+            mpr_nojoin((change > 0) ? MSGCH_WARN : MSGCH_RECOVERY,
+                       make_stringf(jtransc("You feel %s contaminated with magical energies."),
+                                    (change > 0) ? "重くなったった" : "軽くなった"));
         }
 
         if (change > 0)
@@ -4772,8 +4773,8 @@ void contaminate_player(int change, bool controlled, bool msg)
 
         if (old_level > 1 && new_level <= 1 && you.invisible())
         {
-            mpr("You fade completely from view now that you are no longer "
-                "glowing from magical contamination.");
+            mpr(jtrans("You fade completely from view now that you are no longer "
+                       "glowing from magical contamination."));
         }
     }
 
@@ -4803,14 +4804,14 @@ bool confuse_player(int amount, bool quiet)
     if (you.clarity())
     {
         if (!quiet)
-            mpr("You feel momentarily confused.");
+            mpr(jtrans("You feel momentarily confused."));
         return false;
     }
 
     if (you.duration[DUR_DIVINE_STAMINA] > 0)
     {
         if (!quiet)
-            mpr("Your divine stamina protects you from confusion!");
+            mpr(jtrans("Your divine stamina protects you from confusion!"));
         return false;
     }
 
@@ -4850,7 +4851,7 @@ bool poison_player(int amount, string source, string source_aux, bool force)
 
     if (you.duration[DUR_DIVINE_STAMINA] > 0)
     {
-        mpr("Your divine stamina protects you from poison!");
+        mpr(jtrans("Your divine stamina protects you from poison!"));
         return false;
     }
 
@@ -4873,11 +4874,11 @@ bool poison_player(int amount, string source, string source_aux, bool force)
     if (you.duration[DUR_POISONING] > old_value)
     {
         if (poison_is_lethal() && !was_fatal)
-            mprf(MSGCH_DANGER, "You are lethally poisoned!");
+            mpr_nojoin(MSGCH_DANGER, jtransc("You are lethally poisoned!"));
         else
         {
-            mprf(MSGCH_WARN, "You are %spoisoned.",
-                old_value > 0 ? "more " : "");
+            mprf(MSGCH_WARN, jtransc("You are %spoisoned."),
+                 old_value > 0 ? "さらに" : "");
         }
 
         learned_something_new(HINT_YOU_POISON);
@@ -4987,12 +4988,12 @@ void handle_player_poison(int delay)
     if (dmg > 6)
     {
         channel = MSGCH_DANGER;
-        adj = "extremely ";
+        adj = "きわめて";
     }
     else if (dmg > 2)
     {
         channel = MSGCH_WARN;
-        adj = "very ";
+        adj = "非常に";
     }
 
     if (do_dmg && dmg > 0)
@@ -5000,7 +5001,7 @@ void handle_player_poison(int delay)
         int oldhp = you.hp;
         ouch(dmg, KILLED_BY_POISON);
         if (you.hp < oldhp)
-            mprf(channel, "You feel %ssick.", adj);
+            mprf(channel, jtransc("You feel %ssick."), adj);
     }
 
     // Now decrease the poison in our system
@@ -5023,7 +5024,7 @@ void reduce_player_poison(int amount)
         you.duration[DUR_POISONING] = 0;
         you.props.erase("poisoner");
         you.props.erase("poison_aux");
-        mprf(MSGCH_RECOVERY, "You are no longer poisoned.");
+        mpr_nojoin(MSGCH_RECOVERY, jtransc("You are no longer poisoned."));
     }
 
     you.redraw_hit_points = true;
@@ -5113,7 +5114,7 @@ bool miasma_player(actor *who, string source_aux)
 
     if (you.duration[DUR_DIVINE_STAMINA] > 0)
     {
-        mpr("Your divine stamina protects you from the miasma!");
+        mpr(jtrans("Your divine stamina protects you from the miasma!"));
         return false;
     }
 
@@ -5147,7 +5148,7 @@ bool napalm_player(int amount, string source, string source_aux)
     you.increase_duration(DUR_LIQUID_FLAMES, amount, 100);
 
     if (you.duration[DUR_LIQUID_FLAMES] > old_value)
-        mprf(MSGCH_WARN, "You are covered in liquid flames!");
+        mpr_nojoin(MSGCH_WARN, jtrans("You are covered in liquid flames!"));
 
     you.props["sticky_flame_source"] = source;
     you.props["sticky_flame_aux"] = source_aux;
@@ -5162,16 +5163,16 @@ void dec_napalm_player(int delay)
     if (feat_is_watery(grd(you.pos())))
     {
         if (you.ground_level())
-            mprf(MSGCH_WARN, "The flames go out!");
+            mpr_nojoin(MSGCH_WARN, jtrans("The flames go out!"));
         else
-            mprf(MSGCH_WARN, "You dip into the water, and the flames go out!");
+            mpr_nojoin(MSGCH_WARN, jtrans("You dip into the water, and the flames go out!"));
         you.duration[DUR_LIQUID_FLAMES] = 0;
         you.props.erase("sticky_flame_source");
         you.props.erase("sticky_flame_aux");
         return;
     }
 
-    mprf(MSGCH_WARN, "You are covered in liquid flames!");
+    mpr_nojoin(MSGCH_WARN, jtrans("You are covered in liquid flames!"));
 
     expose_player_to_element(BEAM_STICKY_FLAME,
                              div_rand_round(delay * 4, BASELINE_DELAY));
@@ -5205,13 +5206,18 @@ bool slow_player(int turns)
     int threshold = haste_mul(100);
 
     if (you.duration[DUR_SLOW] >= threshold * BASELINE_DELAY)
-        mpr("You already are as slow as you could be.");
+        mpr(jtrans("You already are as slow as you could be."));
     else
     {
         if (you.duration[DUR_SLOW] == 0)
-            mpr("You feel yourself slow down.");
+        {
+            // 原文は"You feel yourself speed down."だが
+            // 加速終了時と同一なためベタ書き
+            // (無印DC準拠)
+            mpr("あなたは動きが遅くなった。");
+        }
         else
-            mpr("You feel as though you will be slow longer.");
+            mpr(jtrans("You feel as though you will be slow longer."));
 
         you.increase_duration(DUR_SLOW, turns, threshold);
         learned_something_new(HINT_YOU_ENCHANTED);
@@ -5242,7 +5248,10 @@ void dec_slow_player(int delay)
 
     if (you.duration[DUR_SLOW] <= BASELINE_DELAY)
     {
-        mprf(MSGCH_DURATION, "You feel yourself speed up.");
+        // 原文は"You feel yourself speed up."だが
+        // 加速時と同一なためベタ書き
+        // (無印DC準拠)
+        mpr_nojoin(MSGCH_DURATION, "あなたは動きの速さが戻った。");
         you.duration[DUR_SLOW] = 0;
     }
 }
@@ -5260,7 +5269,7 @@ void dec_exhaust_player(int delay)
     }
     if (you.duration[DUR_EXHAUSTED] <= BASELINE_DELAY)
     {
-        mprf(MSGCH_DURATION, "You feel less exhausted.");
+        mpr_nojoin(MSGCH_DURATION, jtrans("You feel less exhausted."));
         you.duration[DUR_EXHAUSTED] = 0;
     }
 }
@@ -5284,12 +5293,17 @@ bool haste_player(int turns, bool rageext)
     const int threshold = 40;
 
     if (!you.duration[DUR_HASTE])
-        mpr("You feel yourself speed up.");
+    {
+        // 原文は"You feel yourself speed up."だが
+        // 減速からの回復時と同一なためベタ書き
+        // (無印DC準拠)
+        mpr("あなたは動きが速くなった。");
+    }
     else if (you.duration[DUR_HASTE] > threshold * BASELINE_DELAY)
-        mpr("You already have as much speed as you can handle.");
+        mpr(jtrans("You already have as much speed as you can handle."));
     else if (!rageext)
     {
-        mpr("You feel as though your hastened speed will last longer.");
+        mpr(jtrans("You feel as though your hastened speed will last longer."));
         contaminate_player(1000, true); // always deliberate
     }
 
@@ -5313,7 +5327,7 @@ void dec_haste_player(int delay)
         // message if we cross the threshold
         if (old_dur > threshold && you.duration[DUR_HASTE] <= threshold)
         {
-            mprf(MSGCH_DURATION, "Your extra speed is starting to run out.");
+            mpr_nojoin(MSGCH_DURATION, jtrans("Your extra speed is starting to run out."));
             if (coinflip())
                 you.duration[DUR_HASTE] -= BASELINE_DELAY;
         }
@@ -5321,7 +5335,12 @@ void dec_haste_player(int delay)
     else if (you.duration[DUR_HASTE] <= BASELINE_DELAY)
     {
         if (!you.duration[DUR_BERSERK])
-            mprf(MSGCH_DURATION, "You feel yourself slow down.");
+        {
+        // 原文は"You feel yourself speed down."だが
+        // 減速時と同一なためベタ書き
+        // (無印DC準拠)
+            mpr_nojoin(MSGCH_DURATION, "あなたの加速はなくなった。");
+        }
         you.duration[DUR_HASTE] = 0;
     }
 }
@@ -5351,7 +5370,7 @@ void dec_disease_player(int delay)
             you.disease = 0;
 
         if (you.disease == 0)
-            mprf(MSGCH_RECOVERY, "You feel your health improve.");
+            mpr_nojoin(MSGCH_RECOVERY, jtrans("You feel your health improve."));
     }
 }
 
@@ -5408,7 +5427,7 @@ void dec_ambrosia_player(int delay)
     inc_mp(mp_restoration);
 
     if (!you.duration[DUR_AMBROSIA])
-        mpr("You feel less invigorated.");
+        mpr(jtrans("You feel less invigorated."));
 }
 
 bool flight_allowed(bool quiet)
@@ -5417,8 +5436,8 @@ bool flight_allowed(bool quiet)
     {
         if (!quiet)
         {
-            mpr(you.form == TRAN_TREE ? "Your roots keep you in place."
-                                      : "You can't fly in this form.");
+            mpr(jtrans(you.form == TRAN_TREE ? "Your roots keep you in place."
+                                             : "You can't fly in this form."));
         }
         return false;
     }
@@ -5426,14 +5445,14 @@ bool flight_allowed(bool quiet)
     if (you.liquefied_ground())
     {
         if (!quiet)
-            mpr("You can't fly while stuck in liquid ground.");
+            mpr(jtrans("You can't fly while stuck in liquid ground."));
         return false;
     }
 
     if (you.duration[DUR_GRASPING_ROOTS])
     {
         if (!quiet)
-            mpr("The grasping roots prevent you from becoming airborne.");
+            mpr(jtrans("The grasping roots prevent you from becoming airborne."));
         return false;
     }
 
@@ -5444,13 +5463,13 @@ void float_player()
 {
     if (you.fishtail)
     {
-        mpr("Your tail turns into legs as you fly out of the water.");
+        mpr(jtrans("Your tail turns into legs as you fly out of the water."));
         merfolk_stop_swimming();
     }
     else if (you.tengu_flight())
-        mpr("You swoop lightly up into the air.");
+        mpr(jtrans("You swoop lightly up into the air."));
     else
-        mpr("You fly up into the air.");
+        mpr(jtrans("You fly up into the air."));
 
     if (you.species == SP_TENGU)
         you.redraw_evasion = true;
@@ -5463,7 +5482,8 @@ void fly_player(int pow, bool already_flying)
 
     bool standing = !you.airborne() && !already_flying;
     if (!already_flying)
-        mprf(MSGCH_DURATION, "You feel %s buoyant.", standing ? "very" : "more");
+        mprf(MSGCH_DURATION,
+             standing ? "あなたはとても体が軽くなった。" : "あなたは更に体が軽くなった。");
 
     you.increase_duration(DUR_FLIGHT, 25 + random2(pow), 100);
 
@@ -5503,9 +5523,9 @@ bool player::clear_far_engulf()
     if (!mons || !adjacent(mons->pos(), you.pos()))
     {
         if (you.res_water_drowning())
-            mpr("The water engulfing you falls away.");
+            mpr(jtrans("The water engulfing you falls away."));
         else
-            mpr("You gasp with relief as air once again reaches your lungs.");
+            mpr(jtrans("You gasp with relief as air once again reaches your lungs."));
 
         _end_water_hold();
         return true;
@@ -5518,7 +5538,7 @@ void handle_player_drowning(int delay)
     if (you.duration[DUR_WATER_HOLD] == 1)
     {
         if (!you.res_water_drowning())
-            mpr("You gasp with relief as air once again reaches your lungs.");
+            mpr(jtrans("You gasp with relief as air once again reaches your lungs."));
         _end_water_hold();
     }
     else
@@ -5527,9 +5547,9 @@ void handle_player_drowning(int delay)
         if (!mons || mons && !adjacent(mons->pos(), you.pos()))
         {
             if (you.res_water_drowning())
-                mpr("The water engulfing you falls away.");
+                mpr(jtrans("The water engulfing you falls away."));
             else
-                mpr("You gasp with relief as air once again reaches your lungs.");
+                mpr(jtrans("You gasp with relief as air once again reaches your lungs."));
 
             _end_water_hold();
 
@@ -5549,7 +5569,7 @@ void handle_player_drowning(int delay)
                                 * delay,
                                 BASELINE_DELAY * 10);
             ouch(dam, KILLED_BY_WATER, mons->mid);
-            mprf(MSGCH_WARN, "Your lungs strain for air!");
+            mpr_nojoin(MSGCH_WARN, jtrans("Your lungs strain for air!"));
         }
     }
 }
@@ -6084,7 +6104,7 @@ void player::banish(actor* /*agent*/, const string &who)
 
     if (elapsed_time <= attribute[ATTR_BANISHMENT_IMMUNITY])
     {
-        mpr("You resist the pull of the Abyss.");
+        mpr(jtrans("You resist the pull of the Abyss."));
         return;
     }
 
@@ -6228,10 +6248,11 @@ void player::ablate_deflection()
     if (did_something)
     {
         // We might also have the effect from a non-expiring source.
-        mprf(MSGCH_DURATION, "You feel %s from missiles.",
-                             missile_deflection() < orig_defl
-                                 ? "less protected"
-                                 : "your spell is no longer protecting you");
+        mpr_nojoin(MSGCH_DURATION,
+                   jtrans(make_stringf("You feel %s from missiles.",
+                                       missile_deflection() < orig_defl
+                                       ? "less protected"
+                                       : "your spell is no longer protecting you")));
     }
 }
 
@@ -6957,7 +6978,7 @@ string player::no_tele_reason(bool calc_unid, bool blinking) const
         return "Long-range teleportation is disallowed in Dungeon Sprint.";
 
     if (species == SP_FORMICID)
-        return pluralise(::species_name(species)) + " cannot teleport.";
+        return jtrans(::species_name(species)) + jtrans(" cannot teleport.");
 
     vector<string> problems;
 
@@ -6983,8 +7004,8 @@ string player::no_tele_reason(bool calc_unid, bool blinking) const
         {
             if (item.base_type == OBJ_WEAPONS)
             {
-                problems.push_back(make_stringf("wielding %s",
-                                                item.name(DESC_A).c_str()));
+                problems.push_back(make_stringf(jtransc("wielding %s"),
+                                                jtransc(item.name(DESC_A))));
             }
             else
                 worn_notele.push_back(item.name(DESC_A));
@@ -7010,16 +7031,17 @@ string player::no_tele_reason(bool calc_unid, bool blinking) const
         if (worn_notele.size() > (problems.empty() ? 3 : 1))
         {
             problems.push_back(
-                make_stringf("wearing %s %s preventing teleportation",
-                             number_in_words(worn_notele.size()).c_str(),
-                             found_nonartefact ? "items": "artefacts"));
+                make_stringf(jtransc("wearing %s %s preventing teleportation"),
+                             worn_notele.size(),
+                             general_counter_suffix(worn_notele.size()),
+                             jtransc(found_nonartefact ? "items": "artefacts")));
         }
         else if (!worn_notele.empty())
         {
             problems.push_back(
-                make_stringf("wearing %s",
-                             comma_separated_line(worn_notele.begin(),
-                                                  worn_notele.end()).c_str()));
+                make_stringf(jtransc("wearing %s"),
+                             to_separated_line(worn_notele.begin(),
+                                               worn_notele.end(), true, "、", "、", "、および").c_str()));
         }
 
         if (stasis_block && !found_stasis)
@@ -7033,7 +7055,7 @@ string player::no_tele_reason(bool calc_unid, bool blinking) const
     if (problems.empty())
         return ""; // no problem
 
-    return make_stringf("You cannot teleport because you are %s.",
+    return make_stringf(jtransc("You cannot teleport because you are %s."),
                         comma_separated_line(problems.begin(),
                                              problems.end()).c_str());
 }
@@ -7248,13 +7270,13 @@ bool player::rot(actor *who, int amount, int immediate, bool quiet)
 
     if (res_rotting() || duration[DUR_DEATHS_DOOR])
     {
-        mpr("You feel terrible.");
+        mpr(jtrans("You feel terrible."));
         return false;
     }
 
     if (duration[DUR_DIVINE_STAMINA] > 0)
     {
-        mpr("Your divine stamina protects you from decay!");
+        mpr(jtrans("Your divine stamina protects you from decay!"));
         return false;
     }
 
@@ -7265,8 +7287,8 @@ bool player::rot(actor *who, int amount, int immediate, bool quiet)
     // be changed so that they're easier to tell apart. -- bwr
     if (!quiet)
     {
-        mprf(MSGCH_WARN, "You feel your flesh %s away!",
-             (rotting > 0 || immediate) ? "rotting" : "start to rot");
+        mprf(MSGCH_WARN, jtransc("You feel your flesh %s away!"),
+             (rotting > 0 || immediate) ? "腐っていく" : "腐りはじめた");
     }
 
     rotting += amount;
@@ -7398,7 +7420,7 @@ void player::paralyse(actor *who, int str, string source)
     // Death's Door + Borg's paralysis unblockable.
     if (who && (duration[DUR_PARALYSIS] || duration[DUR_PARALYSIS_IMMUNITY]))
     {
-        mpr("You shrug off the repeated paralysis!");
+        mpr(jtrans("You shrug off the repeated paralysis!"));
         return;
     }
 
@@ -7413,8 +7435,8 @@ void player::paralyse(actor *who, int str, string source)
         props["paralysed_by"] = source;
     }
 
-    mprf("You %s the ability to move!",
-         paralysis ? "still don't have" : "suddenly lose");
+    mpr(jtrans(make_stringf("You %s the ability to move!",
+                            paralysis ? "still don't have" : "suddenly lose")));
 
     str *= BASELINE_DELAY;
     if (str > paralysis && (paralysis < 3 || one_chance_in(paralysis)))
@@ -7439,13 +7461,13 @@ void player::petrify(actor *who, bool force)
 
     if (duration[DUR_DIVINE_STAMINA] > 0)
     {
-        mpr("Your divine stamina protects you from petrification!");
+        mpr(jtrans("Your divine stamina protects you from petrification!"));
         return;
     }
 
     if (petrifying())
     {
-        mpr("Your limbs have turned to stone.");
+        mpr(jtrans("Your limbs have turned to stone."));
         duration[DUR_PETRIFYING] = 1;
         return;
     }
@@ -7456,7 +7478,7 @@ void player::petrify(actor *who, bool force)
     duration[DUR_PETRIFYING] = 3 * BASELINE_DELAY;
 
     redraw_evasion = true;
-    mprf(MSGCH_WARN, "You are slowing down.");
+    mpr_nojoin(MSGCH_WARN, jtrans("You are slowing down."));
 }
 
 bool player::fully_petrify(actor *foe, bool quiet)
@@ -7464,7 +7486,7 @@ bool player::fully_petrify(actor *foe, bool quiet)
     duration[DUR_PETRIFIED] = 6 * BASELINE_DELAY
                         + random2(4 * BASELINE_DELAY);
     redraw_evasion = true;
-    mpr("You have turned to stone.");
+    mpr(jtrans("You have turned to stone."));
 
     end_searing_ray();
 
@@ -7670,11 +7692,11 @@ bool player::sicken(int amount)
 
     if (duration[DUR_DIVINE_STAMINA] > 0)
     {
-        mpr("Your divine stamina protects you from disease!");
+        mpr(jtrans("Your divine stamina protects you from disease!"));
         return false;
     }
 
-    mpr("You feel ill.");
+    mpr(jtrans("You feel ill."));
 
     disease += amount * BASELINE_DELAY;
     if (disease > 210 * BASELINE_DELAY)
@@ -7773,15 +7795,15 @@ void player::backlight()
     if (!duration[DUR_INVIS] && form != TRAN_SHADOW)
     {
         if (duration[DUR_CORONA] || glows_naturally())
-            mpr("You glow brighter.");
+            mpr(jtrans("You glow brighter."));
         else
-            mpr("You are outlined in light.");
+            mpr(jtrans("You are outlined in light."));
 
         increase_duration(DUR_CORONA, random_range(15, 35), 250);
     }
     else
     {
-        mpr("You feel strangely conspicuous.");
+        mpr(jtrans("You feel strangely conspicuous."));
 
         increase_duration(DUR_CORONA, random_range(3, 5), 250);
     }
@@ -7978,11 +8000,11 @@ void player::put_to_sleep(actor*, int power, bool hibernate)
 
     if (duration[DUR_SLEEP_IMMUNITY])
     {
-        mpr("You can't fall asleep again this soon!");
+        mpr(jtrans("You can't fall asleep again this soon!"));
         return;
     }
 
-    mpr("You fall asleep.");
+    mpr(jtrans("You fall asleep."));
 
     stop_constricting_all();
     end_searing_ray();
@@ -8001,7 +8023,7 @@ void player::awake()
 
     duration[DUR_SLEEP] = 0;
     duration[DUR_SLEEP_IMMUNITY] = 1;
-    mpr("You wake up.");
+    mpr(jtrans("You wake up."));
     flash_view(UA_MONSTER, BLACK);
 }
 
@@ -8089,7 +8111,7 @@ bool player::can_do_shaft_ability(bool quiet) const
     if (attribute[ATTR_HELD])
     {
         if (!quiet)
-            mprf("You can't shaft yourself while %s.", held_status());
+            mpr(jtransc(make_stringf("You can't shaft yourself while %s.", held_status())));
         return false;
     }
 
@@ -8100,14 +8122,14 @@ bool player::can_do_shaft_ability(bool quiet) const
         if (!is_valid_shaft_level())
         {
             if (!quiet)
-                mpr("You can't shaft yourself on this level.");
+                mpr(jtrans("You can't shaft yourself on this level."));
             return false;
         }
         break;
 
     default:
         if (!quiet)
-            mpr("You can't shaft yourself on this terrain.");
+            mpr(jtrans("You can't shaft yourself on this terrain."));
         return false;
     }
 
@@ -8120,7 +8142,7 @@ bool player::do_shaft_ability()
 {
     if (can_do_shaft_ability(true))
     {
-        mpr("A shaft appears beneath you!");
+        mpr(jtrans("A shaft appears beneath you!"));
         down_stairs(DNGN_TRAP_SHAFT, true);
         return true;
     }
@@ -8172,12 +8194,12 @@ void player::set_gold(int amount)
                 const int cost = get_gold_cost(abilities[i]);
                 if (gold >= cost && old_gold < cost)
                 {
-                    mprf(MSGCH_GOD, "You now have enough gold to %s.",
+                    mprf(MSGCH_GOD, jtransc("You now have enough gold to %s."),
                          god_gain_power_messages[you.religion][i]);
                 }
                 else if (old_gold >= cost && gold < cost)
                 {
-                    mprf(MSGCH_GOD, "You no longer have enough gold to %s.",
+                    mprf(MSGCH_GOD, jtransc("You no longer have enough gold to %s."),
                          god_gain_power_messages[you.religion][i]);
                 }
             }
@@ -8226,7 +8248,7 @@ bool player::attempt_escape(int attempts)
     if (roll_dice(4 + escape_attempts, 8 + div_rand_round(strength(), 4))
         >= roll_dice(5, 8 + div_rand_round(themonst->get_hit_dice(), 4)))
     {
-        mprf("You escape %s's grasp.", themonst->name(DESC_THE, true).c_str());
+        mprf(jtransc("You escape %s's grasp."), jtransc(themonst->name(DESC_PLAIN, true)));
 
         // Stun the monster to prevent it from constricting again right away.
         themonst->speed_increment -= 5;
@@ -8237,9 +8259,9 @@ bool player::attempt_escape(int attempts)
     }
     else
     {
-        mprf("Your attempt to break free from %s fails, but you feel that "
-             "another attempt might succeed.",
-             themonst->name(DESC_THE, true).c_str());
+        mprf(jtransc("Your attempt to break free from %s fails, but you feel that "
+                     "another attempt might succeed."),
+             jtransc(themonst->name(DESC_THE, true)));
         turn_is_over = true;
         return false;
     }
@@ -8249,12 +8271,12 @@ void player::sentinel_mark(bool trap)
 {
     if (duration[DUR_SENTINEL_MARK])
     {
-        mpr("The mark upon you grows brighter.");
+        mpr(jtrans("The mark upon you grows brighter."));
         increase_duration(DUR_SENTINEL_MARK, random_range(20, 40), 180);
     }
     else
     {
-        mprf(MSGCH_WARN, "A sentinel's mark forms upon you.");
+        mpr_nojoin(MSGCH_WARN, jtrans("A sentinel's mark forms upon you."));
         increase_duration(DUR_SENTINEL_MARK, trap ? random_range(25, 40)
                                                   : random_range(35, 60),
                           250);
@@ -8287,9 +8309,9 @@ bool player::made_nervous_by(const coord_def &p)
 void player::weaken(actor *attacker, int pow)
 {
     if (!duration[DUR_WEAK])
-        mprf(MSGCH_WARN, "You feel your attacks grow feeble.");
+        mpr_nojoin(MSGCH_WARN, jtrans("You feel your attacks grow feeble."));
     else
-        mprf(MSGCH_WARN, "You feel as though you will be weak longer.");
+        mpr_nojoin(MSGCH_WARN, jtrans("You feel as though you will be weak longer."));
 
     increase_duration(DUR_WEAK, pow + random2(pow + 3), 50);
 }
@@ -8345,7 +8367,7 @@ static string _constriction_description()
     const int num_free_tentacles = you.usable_tentacles();
     if (num_free_tentacles)
     {
-        cinfo += make_stringf("You have %d tentacle%s available for constriction.",
+        cinfo += make_stringf(jtransc("You have %d tentacle%s available for constriction."),
                               num_free_tentacles,
                               num_free_tentacles > 1 ? "s" : "");
     }
@@ -8355,9 +8377,8 @@ static string _constriction_description()
         if (!cinfo.empty())
             cinfo += "\n";
 
-        cinfo += make_stringf("You are being %s by %s.",
-                      you.held == HELD_MONSTER ? "held" : "constricted",
-                      monster_by_mid(you.constricted_by)->name(DESC_A).c_str());
+        cinfo += make_stringf(jtransc("You are being %s by %s."),
+                      jtransc(monster_by_mid(you.constricted_by)->name(DESC_PLAIN)));
     }
 
     if (you.constricting && !you.constricting->empty())
@@ -8372,9 +8393,9 @@ static string _constriction_description()
         if (!cinfo.empty())
             cinfo += "\n";
 
-        cinfo += "You are constricting ";
-        cinfo += comma_separated_line(c_name.begin(), c_name.end());
-        cinfo += ".";
+        cinfo += "あなたは";
+        cinfo += to_separated_line(c_name.begin(), c_name.end());
+        cinfo += "を拘束している。";
     }
 
     return cinfo;
