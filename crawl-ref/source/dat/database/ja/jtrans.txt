@@ -9375,7 +9375,47 @@ You feel a build-up of mutagenic energy.
 
 あなたは身体を強化する変異性のエネルギーを感じた。
 %%%%
-It sticks to your %s!
+Mutagenic energies flood into your body!
+
+変異性のエネルギーがあなたに浴びせられた！
+%%%%
+You really shouldn't be using a holy item like this.
+
+あなたはこのような聖なるアイテムを用いるべきではない。
+%%%%
+You really shouldn't be using an unholy item like this.
+
+あなたはこのような忌まわしいアイテムを用いるべきではない。
+%%%%
+You really shouldn't be using a corpse-violating item like this.
+
+あなたはこのような死体を損壊するアイテムを用いるべきではない。
+%%%%
+You really shouldn't be using an evil item like this.
+
+あなたはこのような邪悪なアイテムを用いるべきではない。
+%%%%
+You really shouldn't be using an unclean item like this.
+
+あなたはこのような不浄なアイテムを用いるべきではない。
+%%%%
+You really shouldn't be using a chaotic item like this.
+
+あなたはこのような混沌なるアイテムを用いるべきではない。
+%%%%
+You really shouldn't be using a hasty item like this.
+
+あなたはこのような素早いアイテムを用いるべきではない。
+%%%%
+You really shouldn't be using a poisoned item like this.
+
+あなたはこのような毒にまみれたアイテムを用いるべきではない。
+%%%%
+You really shouldn't be using a fiery item like this.
+
+あなたはこのような光を放つアイテムを用いるべきではない。
+%%%%
+ It sticks to your %s!
 
 それはあなたの%sから離れない！
 %%%%
@@ -9587,6 +9627,62 @@ Oops, that feels deathly cold.
 
 うわ！ 凄まじく冷たい！
 %%%%
+You feel rather sluggish.
+
+あなたの走りはもう速くない。
+%%%%
+You feel less resistant to fire.
+
+あなたの火への耐性が薄れたようだ。
+%%%%
+You feel less resistant to cold.
+
+あなたの冷気への耐性が薄れたようだ。
+%%%%
+You no longer feel resistant to poison.
+
+あなたの毒への耐性が薄れたようだ。
+%%%%
+You feel less perceptive.
+
+あなたは霊視能力を失った。
+%%%%
+That put a bit of spring back into your step.
+
+あなたの足取りが軽やかになった。
+%%%%
+You feel less resistant to hostile enchantments.
+
+あなたの敵対的な魔法への耐性が薄れたようだ。
+%%%%
+You feel less stealthy.
+
+あなたの隠密性は低下したようだ。
+%%%%
+You feel hot and cold all over.
+
+あなたの極端な温度への耐性が薄れたようだ。
+%%%%
+You feel less protected from negative energy.
+
+あなたの負のエネルギーへの耐性が薄れたようだ。
+%%%%
+You feel strangely numb.
+
+あなたは奇妙な喪失感を覚えた。
+%%%%
+You feel strangely alone.
+
+あなたは奇妙な孤独感を覚えた。
+%%%%
+Your magic begins regenerating once more.
+
+あなたの魔力は再び回復するようになった。
+%%%%
+Your aim is not that steady anymore.
+
+あなたの狙いは先程より不確かになったようだ。
+%%%%
 seems less interested in you.
 
 はあなたへの興味が薄れたようだ。
@@ -9637,7 +9733,7 @@ discounts your offered prices.
 %%%%
 You feel a craving for the dungeon's cuisine.
 
-あなたは食欲が亢進した。
+あなたはダンジョンの珍味に対する食欲が亢進した。
 %%%%
 The amulet engulfs you in a massive magical discharge!
 
@@ -9845,10 +9941,6 @@ Your unholy channel expires.
 Your unholy channel is weakening.
 
 あなたの邪悪な霊力が弱まっていく。
-%%%%
-You feel less stealthy.
-
-あなたの隠密性は低下したようだ。
 %%%%
 You flicker for a moment.
 

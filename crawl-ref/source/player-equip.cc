@@ -333,7 +333,7 @@ static void _unequip_artefact_effect(item_def &item,
 
     if (proprt[ARTP_MUTAGENIC] && !meld)
     {
-        mpr("Mutagenic energies flood into your body!");
+        mpr(jtrans("Mutagenic energies flood into your body!"));
         contaminate_player(7000, true);
     }
 
@@ -355,23 +355,23 @@ static void _unequip_artefact_effect(item_def &item,
 static void _equip_use_warning(const item_def& item)
 {
     if (is_holy_item(item) && you_worship(GOD_YREDELEMNUL))
-        mpr("You really shouldn't be using a holy item like this.");
+        mpr(jtrans("You really shouldn't be using a holy item like this."));
     else if (is_unholy_item(item) && is_good_god(you.religion))
-        mpr("You really shouldn't be using an unholy item like this.");
+        mpr(jtrans("You really shouldn't be using an unholy item like this."));
     else if (is_corpse_violating_item(item) && you_worship(GOD_FEDHAS))
-        mpr("You really shouldn't be using a corpse-violating item like this.");
+        mpr(jtrans("You really shouldn't be using a corpse-violating item like this."));
     else if (is_evil_item(item) && is_good_god(you.religion))
-        mpr("You really shouldn't be using an evil item like this.");
+        mpr(jtrans("You really shouldn't be using an evil item like this."));
     else if (is_unclean_item(item) && you_worship(GOD_ZIN))
-        mpr("You really shouldn't be using an unclean item like this.");
+        mpr(jtrans("You really shouldn't be using an unclean item like this."));
     else if (is_chaotic_item(item) && you_worship(GOD_ZIN))
-        mpr("You really shouldn't be using a chaotic item like this.");
+        mpr(jtrans("You really shouldn't be using a chaotic item like this."));
     else if (is_hasty_item(item) && you_worship(GOD_CHEIBRIADOS))
-        mpr("You really shouldn't be using a hasty item like this.");
+        mpr(jtrans("You really shouldn't be using a hasty item like this."));
     else if (is_poisoned_item(item) && you_worship(GOD_SHINING_ONE))
-        mpr("You really shouldn't be using a poisoned item like this.");
+        mpr(jtrans("You really shouldn't be using a poisoned item like this."));
     else if (is_fiery_item(item) && you_worship(GOD_DITHMENOS))
-        mpr("You really shouldn't be using a fiery item like this.");
+        mpr(jtrans("You really shouldn't be using a fiery item like this."));
 }
 
 static void _wield_cursed(item_def& item, bool known_cursed, bool unmeld)
@@ -995,26 +995,26 @@ static void _unequip_armour_effect(item_def& item, bool meld,
     {
     case SPARM_RUNNING:
         if (!you.fishtail)
-            mpr("You feel rather sluggish.");
+            mpr(jtrans("You feel rather sluggish."));
         break;
 
     case SPARM_FIRE_RESISTANCE:
-        mpr("You feel less resistant to fire.");
+        mpr(jtrans("You feel less resistant to fire."));
         break;
 
     case SPARM_COLD_RESISTANCE:
-        mpr("You feel less resistant to cold.");
+        mpr(jtrans("You feel less resistant to cold."));
         break;
 
     case SPARM_POISON_RESISTANCE:
         if (player_res_poison() <= 0)
-            mpr("You no longer feel resistant to poison.");
+            mpr(jtrans("You no longer feel resistant to poison."));
         break;
 
     case SPARM_SEE_INVISIBLE:
         if (!you.can_see_invisible())
         {
-            mpr("You feel less perceptive.");
+            mpr(jtrans("You feel less perceptive."));
             _mark_unseen_monsters();
         }
         break;
@@ -1041,7 +1041,7 @@ static void _unequip_armour_effect(item_def& item, bool meld,
         break;
 
     case SPARM_PONDEROUSNESS:
-        mpr("That put a bit of spring back into your step.");
+        mpr(jtrans("That put a bit of spring back into your step."));
         break;
 
     case SPARM_FLYING:
@@ -1053,41 +1053,41 @@ static void _unequip_armour_effect(item_def& item, bool meld,
         break;
 
     case SPARM_MAGIC_RESISTANCE:
-        mpr("You feel less resistant to hostile enchantments.");
+        mpr(jtrans("You feel less resistant to hostile enchantments."));
         break;
 
     case SPARM_PROTECTION:
-        mpr("You feel less protected.");
+        mpr(jtrans("You feel less protected."));
         break;
 
     case SPARM_STEALTH:
         if (!player_mutation_level(MUT_NO_STEALTH))
-            mpr("You feel less stealthy.");
+            mpr(jtrans("You feel less stealthy."));
         break;
 
     case SPARM_RESISTANCE:
-        mpr("You feel hot and cold all over.");
+        mpr(jtrans("You feel hot and cold all over."));
         break;
 
     case SPARM_POSITIVE_ENERGY:
-        mpr("You feel less protected from negative energy.");
+        mpr(jtrans("You feel less protected from negative energy."));
         break;
 
     case SPARM_ARCHMAGI:
-        mpr("You feel strangely numb.");
+        mpr(jtrans("You feel strangely numb."));
         break;
 
     case SPARM_SPIRIT_SHIELD:
         if (!you.spirit_shield())
         {
-            mpr("You feel strangely alone.");
+            mpr(jtrans("You feel strangely alone."));
             if (you.species == SP_DEEP_DWARF)
-                mpr("Your magic begins regenerating once more.");
+                mpr(jtrans("Your magic begins regenerating once more."));
         }
         break;
 
     case SPARM_ARCHERY:
-        mpr("Your aim is not that steady anymore.");
+        mpr(jtrans("Your aim is not that steady anymore."));
         break;
 
     default:
