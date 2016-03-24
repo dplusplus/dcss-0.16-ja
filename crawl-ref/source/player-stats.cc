@@ -355,9 +355,9 @@ void notify_stat_change(stat_type which_stat, int amount, bool suppress_msg,
 
     if (!suppress_msg)
     {
-        mprf((amount > 0) ? MSGCH_INTRINSIC_GAIN : MSGCH_WARN,
-             "You feel %s.",
-             stat_desc(which_stat, (amount > 0) ? SD_INCREASE : SD_DECREASE));
+        mpr_nojoin((amount > 0) ? MSGCH_INTRINSIC_GAIN : MSGCH_WARN,
+                   jtrans(make_stringf("You feel %s.",
+                                       stat_desc(which_stat, (amount > 0) ? SD_INCREASE : SD_DECREASE))));
     }
 
     _handle_stat_change(which_stat, see_source);
@@ -525,8 +525,8 @@ bool lose_stat(stat_type which_stat, int stat_loss, bool force,
     {
         if (you.duration[DUR_DIVINE_STAMINA] > 0)
         {
-            mprf("Your divine stamina protects you from %s loss.",
-                 _stat_name(which_stat).c_str());
+            mprf(jtransc("Your divine stamina protects you from %s loss."),
+                 jtransc(_stat_name(which_stat)));
             return false;
         }
 
@@ -535,10 +535,10 @@ bool lose_stat(stat_type which_stat, int stat_loss, bool force,
     }
 
     mprf(stat_loss > 0 ? MSGCH_WARN : MSGCH_PLAIN,
-         "You feel %s%s%s.",
-         stat_loss > 0 && player_sust_abil(false) ? "somewhat " : "",
-         stat_desc(which_stat, SD_LOSS),
-         stat_loss > 0 ? "" : " for a moment");
+         jtransc(make_stringf("You feel %%ss%%ss%s.",
+                              stat_desc(which_stat, SD_LOSS))),
+         jtransc(stat_loss > 0 ? "" : " for a moment"),
+         jtransc(stat_loss > 0 && player_sust_abil(false) ? "somewhat " : ""));
 
     if (stat_loss > 0)
     {
@@ -546,7 +546,7 @@ bool lose_stat(stat_type which_stat, int stat_loss, bool force,
                                         you.stat_loss[which_stat] + stat_loss);
         if (you.stat_zero[which_stat])
         {
-            mprf(MSGCH_DANGER, "You convulse from lack of %s!", stat_desc(which_stat, SD_NAME));
+            mprf(MSGCH_DANGER, jtransc("You convulse from lack of %s!"), jtransc(stat_desc(which_stat, SD_NAME)));
             ouch(5 + random2(you.hp_max / 10), _statloss_killtype(which_stat), MID_NOBODY, cause);
         }
         _handle_stat_change(which_stat, see_source);
@@ -571,9 +571,9 @@ bool lose_stat(stat_type which_stat, int stat_loss,
     string name = cause->name(DESC_A, true);
 
     if (cause->has_ench(ENCH_SHAPESHIFTER))
-        name += " (shapeshifter)";
+        name += " (変身能力者)";
     else if (cause->has_ench(ENCH_GLOWING_SHAPESHIFTER))
-        name += " (glowing shapeshifter)";
+        name += " (暴走した変身能力者)";
 
     return lose_stat(which_stat, stat_loss, force, name, vis);
 }
@@ -620,8 +620,8 @@ bool restore_stat(stat_type which_stat, int stat_gain,
     if (!suppress_msg)
     {
         mprf(recovery ? MSGCH_RECOVERY : MSGCH_PLAIN,
-             "You feel your %s returning.",
-             _stat_name(which_stat).c_str());
+             jtransc("You feel your %s returning."),
+             jtransc(_stat_name(which_stat)));
     }
 
     if (stat_gain == 0 || stat_gain > you.stat_loss[which_stat])
@@ -647,7 +647,7 @@ static void _handle_stat_change(stat_type stat, bool see_source)
     {
         // Turns required for recovery once the stat is restored, randomised slightly.
         you.stat_zero[stat] = 10 + random2(10);
-        mprf(MSGCH_WARN, "You have lost your %s.", stat_desc(stat, SD_NAME));
+        mprf(MSGCH_WARN, jtransc("You have lost your %s."), jtransc(stat_desc(stat, SD_NAME)));
         take_note(Note(NOTE_MESSAGE, 0, 0, make_stringf(jtransc("Lost %s."),
             jtransc(stat_desc(stat, SD_NAME)))), true);
         // 2 to 5 turns of paralysis (XXX: decremented right away?)
@@ -699,7 +699,7 @@ void update_stat_zero()
             you.stat_zero[s]--;
             if (you.stat_zero[s] == 0)
             {
-                mprf("Your %s has recovered.", stat_desc(s, SD_NAME));
+                mprf(jtransc("Your %s has recovered."), jtransc(stat_desc(s, SD_NAME)));
                 you.redraw_stats[s] = true;
             }
         }

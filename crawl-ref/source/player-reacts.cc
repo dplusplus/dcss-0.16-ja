@@ -573,7 +573,7 @@ static void _decrement_durations()
             if (you.duration[DUR_DIVINE_SHIELD] <= 1)
             {
                 you.duration[DUR_DIVINE_SHIELD] = 1;
-                mprf(MSGCH_DURATION, "Your divine shield starts to fade.");
+                mpr_nojoin(MSGCH_DURATION, jtrans("Your divine shield starts to fade."));
             }
         }
 
@@ -583,7 +583,7 @@ static void _decrement_durations()
             if (--you.attribute[ATTR_DIVINE_SHIELD] == 0)
             {
                 you.duration[DUR_DIVINE_SHIELD] = 0;
-                mprf(MSGCH_DURATION, "Your divine shield fades away.");
+                mpr_nojoin(MSGCH_DURATION, jtrans("Your divine shield fades away."));
             }
         }
     }
@@ -823,7 +823,7 @@ static void _decrement_durations()
         && (_decrement_a_duration(DUR_BERSERK, delay)
             || you.hunger + 100 <= HUNGER_STARVING + BERSERK_NUTRITION))
     {
-        mpr("You are no longer berserk.");
+        mpr(jtrans("You are no longer berserk."));
         you.duration[DUR_BERSERK] = 0;
 
         // Sometimes berserk leaves us physically drained.
@@ -841,18 +841,18 @@ static void _decrement_durations()
             if (in_good_standing(GOD_TROG)
                 && x_chance_in_y(you.piety, piety_breakpoint(5)))
             {
-                mpr("Trog's vigour flows through your veins.");
+                mpr(jtrans("Trog's vigour flows through your veins."));
             }
             else
             {
-                mprf(MSGCH_WARN, "You pass out from exhaustion.");
+                mpr_nojoin(MSGCH_WARN, jtrans("You pass out from exhaustion."));
                 you.increase_duration(DUR_PARALYSIS, roll_dice(1,4));
                 you.stop_constricting_all();
             }
         }
 
         if (!you.duration[DUR_PARALYSIS] && !you.petrified())
-            mprf(MSGCH_WARN, "You are exhausted.");
+            mpr_nojoin(MSGCH_WARN, jtrans("You are exhausted."));
 
 #if TAG_MAJOR_VERSION == 34
         if (you.species == SP_LAVA_ORC)
@@ -888,7 +888,7 @@ static void _decrement_durations()
     }
 
     if (_decrement_a_duration(DUR_CORONA, delay) && !you.backlit())
-        mprf(MSGCH_DURATION, "You are no longer glowing.");
+        mpr_nojoin(MSGCH_DURATION, jtrans("You are no longer glowing."));
 
     // Leak piety from the piety pool into actual piety.
     // Note that changes of religious status without corresponding actions
@@ -962,7 +962,7 @@ static void _decrement_durations()
         else if (x_chance_in_y(you.rotting, 20)
                  && !you.duration[DUR_DEATHS_DOOR])
         {
-            mprf(MSGCH_WARN, "You feel your flesh rotting away.");
+            mpr_nojoin(MSGCH_WARN, jtransc("You feel your flesh rotting away."));
             rot_hp(1);
             you.rotting--;
         }
@@ -987,7 +987,7 @@ static void _decrement_durations()
         if (one_chance_in(resilience))
         {
             dprf("rot rate: 1/%d", resilience);
-            mprf(MSGCH_WARN, "You feel your flesh rotting away.");
+            mpr_nojoin(MSGCH_WARN, jtrans("You feel your flesh rotting away."));
             rot_hp(1);
             if (you.rotting > 0)
                 you.rotting--;
@@ -1038,7 +1038,7 @@ static void _decrement_durations()
         if (you.duration[DUR_DARKNESS])
         {
             you.duration[DUR_DARKNESS] = 0;
-            mpr("The divine light dispels your darkness!");
+            mpr(jtrans("The divine light dispels your darkness!"));
         }
         update_vision_range();
     }

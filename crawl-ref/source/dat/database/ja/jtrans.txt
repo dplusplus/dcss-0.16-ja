@@ -9872,7 +9872,7 @@ You have got your breath back.
 %%%%
 You feel sluggish.
 
-あなたの俊足さは失われた。
+あなたの走りはもう速くない。
 %%%%
 You start to feel a little slower.
 
@@ -10041,6 +10041,10 @@ Trog's vigour flows through your veins.
 You pass out from exhaustion.
 
 あなたは疲労から回復した。
+%%%%
+You are exhausted.
+
+あなたは疲労困憊している。
 %%%%
 You are no longer glowing.
 
@@ -10252,9 +10256,61 @@ You feel agile.
 
 あなたは機敏になった。
 %%%%
+strength
+
+腕力
+%%%%
+intelligence
+
+知力
+%%%%
+dexterity
+
+器用さ
+%%%%
+Your divine stamina protects you from %s loss.
+
+あなたの神秘の活力により%sの喪失をはねのけた！
+%%%%
+You feel %s%s weakened.
+
+あなたは%s%s弱くなった。
+%%%%
+You feel %s%s dopey.
+
+あなたは%s%s愚かになった。
+%%%%
+You feel %s%s clumsy.
+
+あなたは%s%s不器用になった。
+%%%%
+for a moment
+
+一瞬
+%%%%
+somewhat
+
+いくらか
+%%%%
+You convulse from lack of %s!
+
+あなたは%sを失い身もだえした！
+%%%%
+You feel your %s returning.
+
+あなたは%sが戻ってきたような気がした。
+%%%%
+You have lost your %s.
+
+あなたは%sを失った。
+%%%%
 Lost %s.
 
 %sを失った
+%%%%
+Your %s has recovered.
+
+あなたの%sは回復した。
 %%%%
 ############################## potion.cc ##############################
 %%%%
