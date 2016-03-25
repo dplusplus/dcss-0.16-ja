@@ -81,8 +81,8 @@ InvEntry::InvEntry(const item_def &i, bool show_bg)
 
     if (item_is_stationary_net(i))
     {
-        text += make_stringf(" (holding %s)",
-                             net_holdee(i)->name(DESC_A).c_str());
+        text += make_stringf((" " + jtrans(" (holding %s)")).c_str(),
+                             jtransc(net_holdee(i)->name(DESC_PLAIN)));
     }
 
     if (i.base_type != OBJ_GOLD && in_inventory(i))
@@ -502,7 +502,7 @@ void InvMenu::load_inv_items(int item_selector, int excluded_slot,
     load_items(tobeshown, procfn);
 
     if (!item_count())
-        set_title(no_selectables_message(item_selector));
+        set_title(jtrans(no_selectables_message(item_selector)));
     else
         set_title("");
 }
@@ -1450,7 +1450,7 @@ vector<SelItem> prompt_invent_items(
             ret = letter_to_index(keyin);
 
             if (!you.inv[ret].defined())
-                mpr("You don't have any such object.");
+                mpr(jtrans("You don't have any such object."));
             else
                 break;
         }
@@ -1544,7 +1544,7 @@ bool check_old_item_warning(const item_def& item,
         if (!needs_handle_warning(old_item, OPER_WIELD, penance))
             return true;
 
-        prompt += "Really unwield ";
+        prompt += jtrans("Really unwield ");
     }
     else if (oper == OPER_WEAR) // can we safely take off old item?
     {
@@ -1561,7 +1561,7 @@ bool check_old_item_warning(const item_def& item,
         if (!needs_handle_warning(old_item, OPER_TAKEOFF, penance))
             return true;
 
-        prompt += "Really take off ";
+        prompt += jtrans("Really take off ");
     }
     else if (oper == OPER_PUTON) // can we safely remove old item?
     {
@@ -1578,7 +1578,7 @@ bool check_old_item_warning(const item_def& item,
             if (!needs_handle_warning(old_item, OPER_TAKEOFF, penance))
                 return true;
 
-            prompt += "Really remove ";
+            prompt += jtrans("Really remove ");
         }
         else // rings handled in prompt_ring_to_remove
             return true;
@@ -1588,9 +1588,17 @@ bool check_old_item_warning(const item_def& item,
 
     // now ask
     prompt += old_item.name(DESC_INVENTORY);
-    prompt += "?";
+
+    switch (oper)
+    {
+    case OPER_WIELD: prompt += "を手放しますか？";
+    case OPER_WEAR:  prompt += "を脱ぎますか？";
+    case OPER_PUTON: prompt += "を外しますか？";
+    default: return true;
+    }
+
     if (penance)
-        prompt += " This could place you under penance!";
+        prompt += (" " + jtrans("This could place you under penance!"));
     return yesno(prompt.c_str(), false, 'n');
 }
 
@@ -1891,7 +1899,7 @@ int prompt_invent_item(const char *prompt,
         && type_expect != OSEL_WIELD)
     {
         mprf(MSGCH_PROMPT, "%s",
-             no_selectables_message(type_expect).c_str());
+             jtransc(no_selectables_message(type_expect)));
         return PROMPT_NOTHING;
     }
 
@@ -2021,7 +2029,7 @@ int prompt_invent_item(const char *prompt,
             ret = letter_to_index(keyin);
 
             if (must_exist && !you.inv[ret].defined())
-                mpr("You don't have any such object.");
+                mpr(jtrans("You don't have any such object."));
             else if (!do_warning || check_warning_inscriptions(you.inv[ret], oper))
                 break;
         }

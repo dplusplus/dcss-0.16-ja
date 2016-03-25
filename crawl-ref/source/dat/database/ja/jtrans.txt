@@ -2059,6 +2059,10 @@ Level annotation: %s
 %%%%
 ############################## invent.cc ##############################
 %%%%
+(holding %s)
+
+(%sを持っている)
+%%%%
 %d/%d slots
 
 所持枠: %d/%d
@@ -2066,6 +2070,106 @@ Level annotation: %s
 Inventory:
 
 所持品一覧:
+%%%%
+You aren't carrying anything.
+
+あなたは何も持っていない。
+%%%%
+You aren't carrying any weapons.
+
+あなたは武器を持っていない。
+%%%%
+Your armour is currently melded into you.
+
+鎧はあなたの体と融合している。
+%%%%
+You aren't carrying any armour you can wear in your current form.
+
+あなたは現在の姿で装備できる防具を持っていない。
+%%%%
+You aren't carrying any armour.
+
+あなたは防具を持っていない。
+%%%%
+You don't have any unidentified items.
+
+あなたは未鑑定のアイテムを持っていない。
+%%%%
+You aren't carrying any rechargeable items.
+
+あなたは再充填可能なアイテムを持っていない。
+%%%%
+You aren't carrying any armour which can be enchanted further.
+
+あなたはこれ以上強化可能な防具を持っていない。
+%%%%
+You don't have any corpses.
+
+あなたは死体を持ち運んでいない。
+%%%%
+You aren't carrying any decks from which to draw.
+
+あなたはカードを引くデッキを持っていない。
+%%%%
+You aren't carrying any food.
+
+あなたは食べるものを持っていない。
+%%%%
+You aren't carrying any potions.
+
+あなたは薬を持っていない。
+%%%%
+You aren't carrying any spellbooks or scrolls.
+
+あなたは巻物や魔法書を持っていない。
+%%%%
+You aren't carrying any wands.
+
+あなたはワンドを持っていない。
+%%%%
+You aren't carrying any pieces of jewellery.
+
+あなたは装飾品を持っていない。
+%%%%
+You aren't carrying any items that might be thrown or fired.
+
+あなたは投擲したり射撃するためのものを持っていない。
+%%%%
+You aren't carrying any items that can be evoked without being wielded.
+
+あなたは手に装備することなく発動できるアイテムを持っていない。
+%%%%
+You aren't carrying any items that can be evoked.
+
+あなたは発動できるアイテムを持っていない。
+%%%%
+You aren't carrying any fruit.
+
+あなたは果物を持っていない。
+%%%%
+None of your equipped items are cursed.
+
+あなたの装備しているアイテムは呪われていない。
+%%%%
+You aren't wearing any piece of uncursed armour.
+
+あなたの装備している防具は呪われていない。
+%%%%
+You aren't wearing any piece of uncursed jewellery.
+
+あなたの装備している装飾品は呪われていない。
+%%%%
+You aren't carrying any weapons that can be branded.
+
+あなたは魔力を込められる武器を持っていない。
+%%%%
+You aren't carrying any weapons that can be enchanted.
+
+あなたは強化可能な武器を持っていない。
+%%%%
+You aren't carrying any such object.
+
+あなたはそのようなアイテムを持っていない。
 %%%%
 (select all with <w>
 
@@ -2083,6 +2187,26 @@ Select to reset item to default:
 
 %s (<w>Esc</w> でキャンセル)
 %%%%
+You don't have any such object.
+
+あなたはそのようなアイテムを持っていない。
+%%%%
+Really unwield
+
+本当に
+%%%%
+Really take off
+
+本当に
+%%%%
+Really remove
+
+本当に
+%%%%
+This could place you under penance!
+
+神に懺悔をする羽目になりますよ！
+%%%%
 Really
 
 本当に
@@ -2098,10 +2222,6 @@ while slowed
 while hasted
 
 加速中に
-%%%%
-This could place you under penance!
-
-神に懺悔をする羽目になりますよ！
 %%%%
 is melded into your body.
 

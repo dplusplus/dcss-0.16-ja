@@ -2464,7 +2464,7 @@ bool player_can_read()
 static string _no_items_reason(object_selector type)
 {
     if (!any_items_of_type(type))
-        return no_selectables_message(type);
+        return jtrans(no_selectables_message(type));
     return "";
 }
 
