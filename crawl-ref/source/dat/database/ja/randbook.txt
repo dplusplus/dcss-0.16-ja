@@ -1,0 +1,984 @@
+######################################################
+# Randart Names
+# -------------
+# randbook.txt: keywords for randart BOOKS
+#
+# This file contains the lists of keywords (and their
+# weights) for most of the keywords used for randart
+# books.
+# There are two types of randart books:
+#  - fixed theme, varying level (Conjurations, Summoning/Earth, ...)
+#  - fixed level, varying theme (level 2 spells etc.)
+#
+# The books are filled with spells matching their type in spl-book.cc,
+# either make_book_theme_randart() or make_book_level_randart().
+# The name should likewise take into account the book's type.
+#
+# Themed books use one of the following two naming schemes:
+#   a) @book_name@ @<secondary school> adj@ @<primary school>@
+#   b) @book_name@ @<primary school>@ and @<secondary school>@
+#
+# or, if there is no (obvious) secondary school, simply:
+#
+#   @book_name@ @<primary school>@
+#
+# Fixed level books are categorized into "starting" (level 1),
+# "easy" (level 2-4), "moderate" (level 4-6) and "difficult" (level 7-9),
+# a keyword that is used as a prefix for "level book".
+# @level@ is parsed to the word describing the spell level.
+#
+# Books also may get previous "owners" (or authors) that may be the gifting
+# god (if gifted), a name depending on school(s) as defined in this file,
+# a random name, or an appropriate god (if not a god gift).
+# The school dependent names consist of uniques or spell names that have a
+# strong connection to one or more schools. Pandemonium or hell lords' names
+# may only get used if a book is "highlevel", i.e. contains at least one
+# spell of level 6 or higher.
+# If the first and second school are different the two names are tested in
+# combination, in alphabetical order. If this is not the case or nothing is
+# found (or "__NONE" == the empty string was returned) and all spells match
+# the primary school try again with only that one.
+#
+# See the explanation in the main file, randname.txt, for more general
+# information on randart naming.
+######################################################
+# Book name should be set in make_book_level_randart() or
+# make_book_theme_randart(), so if this gets picked there's a bug.
+book
+
+Book of Bugginess
+%%%%
+book appearance
+
+@_book_adjective_@
+%%%%
+book_noun
+
+Tome
+
+Grimoire
+
+Almanac
+
+Volume
+
+Compendium
+
+Handbook
+
+Incunabulum
+
+Papyrus
+
+Catalogue
+%%%%
+_book_noun_on_
+
+Guide
+
+Collected Works
+
+Disquisition
+
+Reference Book
+%%%%
+# C++: discipline books, including Kiku's gifts
+book_name
+
+w:9
+@book_noun@ of
+
+w:4
+@_book_noun_on_@ on
+%%%%
+# @book_noun@ of ...
+# C++: "totally random" books
+random_book_title
+
+w:15
+the @_book_plant_animal_@
+
+w:20
+@_number_or_qualifier_@ @_thing_names_@
+
+w:4
+the @_profession_name_@
+
+w:13
+@_philosophy_or_science_@
+
+w:8
+@_wacky_armour_name_@
+
+w:2
+@_destiny_name_@
+
+w:6
+@_place_name_@
+
+w:1
+@_magic_name_@
+
+w:4
+@_substance_name_@
+
+w:2
+@_power_name_@
+
+w:2
+@_mental_illness_weapon_@
+%%%%
+_book_plant_animal_
+
+w:1
+@_jewellery_animal_@
+
+w:1
+@_critter_name_@
+
+w:1
+@_plant_name_@
+
+w:6
+@_weapon_animal_@
+
+@_armour_animal_@
+%%%%
+# C++: Xom (duh!)
+Xom_book_title
+
+w:30
+@random_book_title@
+
+# increased chances (obviously!)
+@_chaos_name_@
+
+w:1
+@_game_name_@
+
+w:2
+@player_death@
+
+w:8
+@_wacky_armour_name_@
+
+w:1
+@_politics_name_armour_@
+
+w:5
+@_power_name_@
+
+w:3
+@_discomfort_and_inaction_@
+
+w:3
+@_discomfort_weapon_@
+
+w:3
+@_mental_illness_weapon_@
+%%%%
+_book_adjective_
+
+glistering
+
+sparkling
+
+levitating
+
+droning
+
+conspicuous
+
+inconspicuous
+
+colourful
+
+graven
+
+engraved
+
+antique
+
+yellowed
+
+rare
+
+black
+
+blackened
+
+torn
+%%%%
+_the_book_magic_
+
+w:9
+# capitalise later as needed
+the Arcane Arts
+
+w:1
+the Hermit's Heritage
+
+w:90
+@_book_magic_@
+%%%%
+_book_magic_
+
+Magic
+
+Theurgy
+
+Thaumaturgy
+
+w:5
+Casting
+
+w:5
+Spellcasting
+
+Wizardry
+
+Sorcery
+
+Witchcraft
+
+Witchery
+
+Spellcraft
+
+Spellweaving
+
+w:5
+Secret Knowledge
+
+w:5
+Rites and Rhymes
+
+w:5
+Hermeneutics
+%%%%
+_beginners_
+
+Beginners
+
+w:5
+Neophytes
+
+w:5
+Novices
+
+w:3
+Rookies
+
+w:2
+Absolute Beginners
+
+w:1
+Dummies
+%%%%
+# level 1
+starting level book
+
+@_the_book_magic_@ for @_beginners_@
+
+w:2
+@_the_book_magic_@ 101
+
+A Beginning Course on @_the_book_magic_@
+
+@_the_book_magic_@, Part One
+
+An Introduction to @_the_book_magic_@
+
+w:2
+An Initiation to @_the_book_magic_@
+
+First Steps in @_the_book_magic_@
+%%%%
+# level 2-4
+easy level book
+
+A Primer on @_the_book_magic_@
+
+@_the_book_magic_@ in Simple Steps
+
+An Early Guide to @_the_book_magic_@
+
+The Foundations of @_book_magic_@
+
+Easy @_book_magic_@
+
+@_the_book_magic_@, Part @level@
+
+@_the_book_magic_@ Continued
+
+w:1
+@_book_magic_@, and How To Use It
+%%%%
+# level 4-6
+moderate level book
+
+Advanced Steps in @_the_book_magic_@
+
+The Advanced Guide to @_the_book_magic_@
+
+Further Steps in @_the_book_magic_@
+
+@_the_book_magic_@, Part @level@
+
+Advanced @_book_magic_@
+
+Sophisticated @_book_magic_@
+
+Further Progress in @_book_magic_@
+
+The Second Course in @_book_magic_@
+
+w:1
+Improving Your @_book_magic_@
+
+%%%%
+# powerful casters, used for high level books
+_powerful_caster_
+
+Archmage
+
+w:3
+Deep Elf Lorekeeper
+
+w:3
+Blind Seer
+
+w:3
+Prophet
+
+w:1
+Greatest Mummy
+%%%%
+_the_powerful_caster_
+
+the @_powerful_caster_@
+
+w:3
+Boris
+
+w:1
+Sif Muna
+%%%%
+_last_or_lost_
+
+Last
+
+Lost
+%%%%
+# level 7-9, books in the form of "XYZ's <bookname>"
+# Prefixed articles will be filtered out.
+_difficult level book owner_
+
+A Thorough Guide to @_the_book_magic_@
+
+The @_last_or_lost_@ Secrets of @_the_book_magic_@
+
+The Arcane Secrets of @_book_magic_@
+
+The Intricacies of @_the_book_magic_@
+
+The @book_noun@ of Greatest Risks and Utility
+
+w:1
+Mastering @_book_magic_@
+%%%%
+# level 7-9, books without being named after their owner/author
+difficult level book
+
+w:50
+@_difficult level book owner_@
+
+The @_last_or_lost_@ @book_noun@ of @_the_powerful_caster_@
+
+w:1
+The Testament of @_the_powerful_caster_@
+%%%%
+# synonyms for predominant spell schools
+# variants starting with the definite article will get "the" prepended
+# to the adjective version
+Conjuration
+
+Conjuration
+
+Confrontation
+
+Attacks
+
+w:5
+Battle Magic
+
+w:5
+Combat Magic
+
+w:5
+Arcane Weapons
+
+w:1
+Blows and Bruises
+
+w:1
+Damage Dealing
+%%%%
+Charms
+
+Enhancements
+
+Talismans
+
+Good Luck
+
+Protection
+
+w:3
+Self-Knowledge
+
+w:3
+Self-Improvement
+
+Aid
+
+Augmentations
+
+w:1
+Benedictions
+
+Boosts
+%%%%
+Fire
+
+Fire
+
+Flames
+
+Heat
+
+the Volcanoes
+
+the Blaze
+
+Ignition
+
+the Arsonist
+%%%%
+Hexes
+
+Hexes
+
+Curses
+
+Malediction
+
+the Oath
+
+Execration
+
+Enchantment
+
+Bewitchment
+
+w:1
+Glamour
+
+w:1
+Fascination
+
+Beguiling
+%%%%
+Ice
+
+Ice
+
+Snow
+
+Cold
+
+the Snowflakes
+
+the Glacier
+
+the Frostbite
+%%%%
+Transmutation
+
+Transmigration
+
+Transmutation
+
+Transformation
+
+Shape Shifting
+
+Changing
+
+Moulding
+%%%%
+# for necromantic books
+_Evil_adjective_
+
+Evil
+
+Dark
+
+Black
+
+Sinister
+
+Unholy
+%%%%
+# also for necromantic books
+_Evil_noun_
+
+Rites
+
+Arts
+
+Secrets
+
+Rituals
+
+Magic
+%%%%
+Necromancy
+
+Necromancy
+
+Evil
+
+Darkness
+
+Stolen Souls
+
+w:60
+@_Evil_adjective_@ @_Evil_noun_@
+%%%%
+Summoning
+
+Summoning
+
+Calling
+
+Creation
+
+the Entourage
+
+Companions
+
+the Escort
+
+w:1
+Illusion
+
+w:2
+Slavery
+%%%%
+Translocation
+
+Translocation
+
+Displacement
+
+Dislocation
+
+Orientation
+
+the Traveller
+
+the Compass
+
+the Voyage
+%%%%
+Poison
+
+Poison
+
+Venom
+
+Toxins
+
+Poisoning
+
+Intoxication
+
+Envenoming
+
+Contamination
+%%%%
+Earth
+
+Earth
+
+Stones
+
+Clay
+
+the Mountains
+
+the Rocks
+%%%%
+Air
+
+Air
+
+Lightness
+
+Weightlessness
+
+Flight
+
+the Birds
+
+Feathers
+%%%%
+# adjectives for secondary spell school
+Conjuration adj
+
+Destructive
+
+Harmful
+
+Damaging
+
+Hurtful
+
+Excruciating
+
+w:5
+Lethal
+%%%%
+Charms adj
+
+Helpful
+
+Lucky
+
+Assistive
+
+Boosting
+%%%%
+Hexes adj
+
+Enchanting
+
+Bewitching
+
+Captivating
+
+Fetching
+
+Enthralling
+
+Ensnaring
+
+Entrancing
+%%%%
+Fire adj
+
+Fiery
+
+Scorching
+
+Burning
+
+Blistering
+
+Igneous
+
+Flamy
+
+Torrid
+%%%%
+Ice adj
+
+Glacial
+
+Freezing
+
+Icy
+
+Congealing
+
+Frigorific
+%%%%
+Transmutation adj
+
+Shifting
+
+Mutagenic
+
+w:5
+Unstable
+%%%%
+Necromancy adj
+
+Dark
+
+Evil
+
+w:5
+Lethal
+
+Doomed
+
+Sinister
+
+Unholy
+
+Ghastly
+
+w:5
+Twisted
+%%%%
+Summoning adj
+
+Creative
+
+Supportive
+%%%%
+Translocation adj
+
+Spatial
+
+Displaced
+
+Dislocated
+
+Warped
+
+w:5
+Unstable
+
+w:5
+Twisted
+
+Quantum
+%%%%
+Poison adj
+
+Poisonous
+
+Venomous
+
+Toxic
+
+Cankerous
+
+Nocuous
+
+Noxious
+
+Virous
+
+Vitriolic
+
+w:1
+Viperous
+%%%%
+Earth adj
+
+Earthen
+
+Ashen
+
+Dusty
+%%%%
+Air adj
+
+Aerial
+
+Flying
+
+Floating
+
+Feathery
+
+Cloudy
+
+Gliding
+%%%%
+# potential previous owners of books
+# __NONE is parsed to the empty string
+# First, combinations.
+highlevel Conjuration Earth owner
+
+Dispater
+
+@Conjuration Earth owner@
+%%%%
+Conjuration Earth owner
+
+Lee
+
+Lehudib
+%%%%
+highlevel Conjuration Fire owner
+
+Asmodeus
+
+Cerebov
+
+w:5
+__NONE
+%%%%
+highlevel Conjuration Necromancy owner
+
+Ereshkigal
+
+__NONE
+%%%%
+highlevel Conjuration Summoning owner
+
+Asmodeus
+
+Dispater
+
+w:5
+__NONE
+%%%%
+Earth Transmutation owner
+
+Roxanne
+
+__NONE
+%%%%
+highlevel Earth Summoning owner
+
+Dispater
+
+__NONE
+%%%%
+highlevel Fire Summoning owner
+
+Asmodeus
+
+__NONE
+%%%%
+highlevel Necromancy Poison owner
+
+Gloorx Vloq
+
+__NONE
+%%%%
+Necromancy Transmutation owner
+
+Cigotuvi
+
+__NONE
+%%%%
+# Single spell schools.
+highlevel Conjuration owner
+
+Asmodeus
+
+Ereshkigal
+
+Dispater
+
+Cerebov
+
+Lom Lobon
+
+Lehudib
+
+w:30
+@Conjuration owner@
+%%%%
+Conjuration owner
+
+w:2
+Lee
+
+Lehudib
+
+Iskenderun
+%%%%
+highlevel Earth owner
+
+Dispater
+
+w:30
+@Earth owner@
+%%%%
+Earth owner
+
+Lehudib
+
+Lee
+
+Roxanne
+
+__NONE
+%%%%
+highlevel Fire owner
+
+Asmodeus
+
+Cerebov
+
+__NONE
+%%%%
+Ice owner
+
+Ozocubu
+
+__NONE
+%%%%
+highlevel Necromancy owner
+
+Ereshkigal
+
+Gloorx Vloq
+
+w:40
+@Necromancy owner@
+%%%%
+Necromancy owner
+
+Borgnjor
+
+Cigotuvi
+
+Khufu
+%%%%
+highlevel Poison owner
+
+Gloorx Vloq
+
+@Poison owner@
+%%%%
+Poison owner
+
+Olgreb
+
+Alistair
+
+__NONE
+%%%%
+highlevel Summoning owner
+
+Asmodeus
+
+Dispater
+
+Mnoleg
+
+__NONE
+%%%%
+highlevel Translocation owner
+
+Lom Lobon
+
+__NONE
+%%%%
+Transmutation owner
+
+Cigotuvi
+
+Roxanne
+
+__NONE
+%%%%

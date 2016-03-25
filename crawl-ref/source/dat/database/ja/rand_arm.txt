@@ -1,0 +1,868 @@
+######################################################
+# Randart Names
+# -------------
+# rand_arm.txt: keywords for randart ARMOUR
+#
+# This file contains the lists of keywords (and their
+# weights) for most of the keywords used for randart
+# armour. You will find others in rand_wpn.txt and
+# rand_all.txt, respectively.
+#
+# See the explanation in the main file, randname.txt,
+# for more details.
+######################################################
+%%%%
+_armour_animal_
+
+# microorganisms
+Amoeba
+
+# insects
+Butterfly
+
+Cicada
+
+Cricket
+
+Ladybird
+
+Ant
+
+Cockroach
+
+Locust
+
+Louse
+
+Mantidfly
+
+Tick
+
+# invertebrates
+Slug
+
+Snail
+
+Gastropod
+
+Trilobite
+
+Centipede
+
+Cuttlefish
+
+Worm
+
+# arachnids and clams
+Tarantula
+
+Clam
+
+Barnacle
+
+Lobster
+
+Quahog
+
+# amphibians and reptiles
+Tortoise
+
+Turtle
+
+Frog
+
+Komodo Dragon
+
+Lizard
+
+Salamander
+
+Serpent
+
+# fish
+Barracuda
+
+Catfish
+
+Mackerel
+
+Marlin
+
+Salmon
+
+Sturgeon
+
+Sunfish
+
+Trout
+
+Tuna
+
+# birds
+Albatross
+
+Turtledove
+
+Nightingale
+
+Meadowlark
+
+Eagle
+
+Falcon
+
+Heron
+
+Raven
+
+Sparrow
+
+Swan
+
+# mammals
+Hare
+
+Kangaroo
+
+Elephant
+
+Zebra
+
+Hippo
+
+Monkey
+
+Bull
+
+Camelopard
+
+Catamount
+
+Dolphin
+
+Echidna
+
+Hart
+
+Lion
+
+Stallion
+
+Stag
+
+Okapi
+
+# not strictly an animal... :)
+Monkey's Uncle
+
+#classical mythical animals
+Cockatrice
+
+Dragon
+
+Griffon
+
+Kraken
+
+# modern mythical animals
+Dropbear
+
+Jackalope
+
+Wild Haggis
+
+Chupacabra
+
+Yeti
+
+%%%%
+_flower_name_
+
+Lilacs
+
+Daffodils
+
+the Rose
+
+the Garden
+
+Daisies
+
+the Thistle
+
+Tulips
+
+the Lily
+
+the Lotus Blossom
+%%%%
+# non-Crawl critters
+_critter_name_
+
+Slorg
+
+Alphagorgon
+
+# from the crawl.akrasiac.org patch.
+Hot Ocelot
+
+Eight Boll Weevils
+
+Grue
+
+Jabberwock
+
+w:1
+Were-rabbit
+
+Wumpus
+%%%%
+_discomfort_and_inaction_
+
+# discomfort
+Minor Irritation
+
+Bitterness
+
+Negation
+
+Failure
+
+Servitude
+
+Submission
+
+Insecurity
+
+Vexation
+
+# inaction
+Lifelessness
+
+Boredom
+
+Ennui
+
+Restlessness
+
+Omission
+
+Negligence
+
+Inaction
+
+Oblivion
+
+the Doldrums
+
+Listlessness
+%%%%
+_mental_illness_armour_
+
+Paranoia
+
+Claustrophobia
+
+Agoraphobia
+
+Dyspraxia
+
+Mental Paralysis
+
+Catatonia
+
+Depression
+
+Hysteria
+
+Kleptomania
+
+Melancholy
+
+Masochism
+
+Narcissism
+%%%%
+_good_or_divine_
+
+# good things
+the Good
+
+the Leaf
+
+Leaves
+
+Music
+
+Birdsong
+
+Brilliance
+
+Satisfaction
+
+Fun
+
+Joy
+
+Happiness
+
+Wonder
+
+Surprise
+
+Curiosity
+
+Creativity
+
+Beauty
+
+Life
+
+Liberty
+
+Freedom
+
+Amelioration
+
+Awe
+
+Contentment
+
+Mirth
+
+# divine events
+Divine Compulsion
+
+the Invisible Hand
+
+Divine Intervention
+
+Intercession
+
+Miracles
+
+Salvation
+
+the Will of the Gods
+%%%%
+# in contrast to "_wacky_armour_name_" these do have some
+# connection to armour and protection
+_armour_name_shielding_
+
+Shielding
+
+Impermeability
+
+Defence
+
+Death's Door
+
+the Gate
+
+the Saviour
+
+the Untouchables
+
+the Armoured One
+
+Exclusion
+
+Repulsion
+
+Inviolability
+
+Refuge
+
+the Bulwark
+
+the Ward
+
+Fortification
+
+Complete Protection
+%%%%
+# other armour properties (beside protection)
+_armour_property_name_
+
+Supple Strength
+
+Death Resistance
+
+Grace
+
+Weightlessness
+
+Shadows and Fog
+
+Disguise
+
+Least Resistance
+
+Protective Custody
+
+Resilience
+
+Fashionability
+
+Impressiveness
+%%%%
+_wacky_armour_name_
+
+the Onion
+
+Vlad
+
+the Eternal Fruit
+
+Plasticity
+
+Baldness
+
+Terror
+
+Good Intentions
+
+Absence
+
+the Arcane
+
+Anaesthesia
+
+the Armadillo
+
+Weirdness
+
+Pathos
+
+Loss
+
+Hedging
+
+Indemnity
+
+Untold Secrets
+
+the Earth
+
+Limited Liability
+
+Incorporation
+
+Mezcal
+
+Hadjma
+
+Hairiness
+
+Space
+
+the Vacuum
+
+Compression
+
+Decompression
+
+the Loofah
+
+Love and Death
+
+Indecent Exposure
+
+the Road Less Travelled
+
+the Blind Marksman
+
+Too Many Cooks
+
+Thrice Damned Blessings
+
+Duck's Teeth
+
+Forking Paths
+
+the Pink Corner
+
+Philately
+%%%%
+# Lemuel's suggestions
+_celestial_bodies_
+
+Sun
+
+Moon
+
+Stars
+
+Planets
+
+Pleiades
+
+Morning Star
+
+Evening Star
+
+Comet
+
+w:5
+Midnight Sun
+
+w:5
+Blue Moon
+
+w:5
+Harvest Moon
+
+# astrological
+Black Moon
+%%%%
+_instrument_name_
+
+Trumpets
+
+the Kettle-Drum
+
+the Accordion
+
+the Bagpipe
+
+the Lute
+
+the Bells
+
+Chimes
+
+the Flute
+
+the Harp
+
+the Gusle
+%%%%
+_evil_being_
+
+the Devil
+
+Demons
+
+Lesser Demons
+
+Greater Demons
+
+the Iron Devil
+
+the Devil's Advocate
+
+the Demon Prince
+
+the Evil One
+
+the Furies
+
+the Prince of Darkness
+
+the Fiend
+
+w:5
+the Archfiend
+
+the Little Devil
+
+the Imp
+
+the Villain
+%%%%
+_weather_name_
+
+the First Snow
+
+Boiling Hail
+
+Perpetual Drought
+
+the Thunderstorm
+
+the Hurricane
+
+Blue Skies
+
+Pleasant Breezes
+
+the Blizzard
+
+Chill Winds
+%%%%
+_profession_name_
+
+Guilds
+
+Guild-Master
+
+Apprentice
+
+Blacksmith
+
+Carpenter
+
+Wheelwright
+
+Cooper
+
+Fisher
+
+Hunter
+
+Ditch-Digger
+
+Guardian
+
+Beekeeper
+
+Gardener
+
+Soldier
+
+Farrier
+
+Engineer
+
+Barber Surgeon
+
+Journeyman
+
+Scribe
+
+Bard
+
+Undertaker
+
+Beggar
+
+Merchant
+
+Sailor
+
+Gravedigger
+
+Pirate
+
+Buccaneer
+%%%%
+# something for Xom
+_game_name_
+
+# general games
+Fun and Games
+
+the Great Game
+
+the Game Afoot
+
+Parlour Games
+
+the Game of Kings
+
+# children's games
+Peek-a-Boo
+
+Hide-and-Seek
+
+Leapfrog
+
+Hopscotch
+
+Follow the Leader
+
+the King of the Hill
+
+Mumblety Peg
+
+# board games etc.
+the Game of Life
+
+Card Tricks
+
+Hangman
+
+the Dice
+
+Jigsaw
+
+Whack-A-Mole
+
+Ladders and Snakes
+
+Marbles
+
+Noughts and Crosses
+%%%%
+_politics_name_armour_
+
+the King
+
+the Queen
+
+Royalty
+
+Nobility
+
+the Republic
+
+the Empire
+
+Coronation
+
+the Commoners
+
+the Peasants
+
+the Townfolk
+
+the City
+
+the Country
+
+the Suburbs
+
+the Mutiny
+
+the Crown
+
+the Duke
+
+the Duchess
+
+the Doge
+
+the Ban
+
+the Castellan
+
+the Komtur
+
+the Voivode
+
+the Rabble
+
+the Prince
+
+the Princeling
+
+the Princess
+
+the Oligarchy
+
+the Cast Vote
+
+the Burgomaster
+
+the Failed Coup
+%%%%
+_other_armour_name_
+
+#unpleasantness
+w:5
+Grot
+
+w:5
+Grottiness
+
+Filth
+
+Slovenliness
+
+# magic
+Magic
+
+Sorcery
+
+Broken Taboos
+
+Bedevilment
+
+# other
+Crawling
+
+the Orb
+
+the Orb Guardian
+
+the Storm King
+
+the @_card_@ of @_suit_@
+
+the Hanged Man
+
+Hedge Wizardry
+
+Feasting
+
+Insatiable Hunger
+
+Imperfection
+
+Trial and Error
+
+Disaster
+
+Wrong Decisions
+
+Unambiguity
+
+the Lost Path
+
+Misanthropy
+
+Wasted Space
+
+the Other World
+
+Inevitability
+%%%%
+_card_
+
+Two
+
+Three
+
+Four
+
+Five
+
+Six
+
+Seven
+
+Eight
+
+Nine
+
+Ten
+
+Page
+
+Knight
+
+Queen
+
+King
+
+Ace
+%%%%
+_suit_
+
+Cups
+
+Pentacles
+
+Wands
+
+Swords
+%%%%
+# "something" rather than of Something
+_plain_armour_name_
+
+Forget-Me-Not
+
+Hero's Friend
+
+Trusted Companion
+%%%%

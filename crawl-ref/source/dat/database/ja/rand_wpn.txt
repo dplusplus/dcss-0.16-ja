@@ -1,0 +1,1568 @@
+######################################################
+# Randart Names
+# -------------
+# rand_wpn.txt: keywords for randart WEAPONS
+#
+# This file contains the lists of keywords (and their
+# weights) for most of the keywords used for randart
+# weapons. You will find other ones in rand_all.txt.
+# See the explanation in the main file, randname.txt,
+# for more details.
+######################################################
+%%%%
+_power_or_anger_
+
+@_power_name_@
+
+w:7
+@_conflict_name_@
+
+w:7
+@_anger_name_@
+%%%%
+_power_name_
+
+Power
+
+Might
+
+Wondrous Power
+
+Invincibility
+
+Glory
+
+Success
+
+Triumph
+
+Domination
+
+Dominance
+
+Victory
+
+Intimidation
+
+Grandeur
+
+Mastery
+
+Superiority
+
+Magnificence
+%%%%
+_conflict_name_
+
+Conflict
+
+Tension
+
+Dischord
+
+Division
+
+Doubt
+
+Internal Strife
+
+Contention
+
+Dissent
+
+Quarrel
+%%%%
+_anger_name_
+
+Anger
+
+Fury
+
+Righteous Anger
+
+Righteous Fury
+
+Wrath
+
+Brutal Revenge
+
+Vengeance
+
+Hatred
+
+Indignation
+
+Outrage
+
+Scorn
+%%%%
+_battle_or_war_
+
+Battle
+
+Crusades
+
+War
+
+Eternal War
+
+the Eternal Warrior
+
+the Onslaught
+
+Skirmishing
+
+the Endless March
+
+Plunder
+
+Ravage
+
+# Lemuel's Suggestions
+the Warrior
+
+the Doomed Warrior
+
+# akrasiac patch
+the Pyrrhic Victory
+
+#killing
+Blood-Lust
+
+Joyful Slaughter
+
+Wounding
+
+Blood
+
+Fear
+
+Massacring
+
+# was Pain, clashing with the brand
+Insufficient Pleasure
+
+Agony
+
+Trauma
+
+# Lemuel's suggestion
+Hacking and Slashing
+
+# related to cutting
+Truncation
+
+Severance
+
+Dullness
+
+Precise Incision
+
+Laceration
+
+#collateral effects
+Mourning
+
+Death's Door
+
+the Grave
+%%%%
+# used from C++'s side
+death_or_doom
+
+# death
+Death
+
+Bloody Death
+
+Painful Death
+
+Quick Death
+
+Instant Death
+
+Imminent Death
+
+Sudden Death
+
+Slow Death
+
+Certain Death
+
+Uncertain Death
+
+Exquisite Death
+
+Pain and Death
+
+Untimely Demise
+
+# doom
+Doom
+
+Premature Burial
+
+Peril
+
+Execution
+
+Destruction
+
+Disembowelment
+
+Evisceration
+
+Extermination
+
+Extinguishment
+
+# pain and misery
+Infinite Pain
+
+Eternal Torment
+
+Dismemberment
+
+Terror
+
+Misery
+
+Woe
+
+Excruciating Pain
+
+Exquisite Torment
+
+Anguish
+%%%%
+_strategy_or_justice_
+
+w:2
+@_strategy_name_@
+
+w:4
+@_valour_name_@
+
+w:3
+@_justice_name_@
+%%%%
+_strategy_name_
+
+#strategy
+Defence
+
+Defence by Offence
+
+Offence
+
+Reinforcement
+
+Expedience
+
+Optimality
+
+Overwhelming Force
+
+Subterfuge
+
+Strategic Superiority
+
+Guile
+%%%%
+_valour_name_
+
+Honour
+
+Integrity
+
+Responsibility
+
+Watchfulness
+
+Duty
+
+Prudence
+
+Valour
+
+Resourcefulness
+
+Action
+
+Purpose
+
+Fortitude
+
+Defiance
+
+Valiance
+
+Courage
+
+Eternal Vigilance
+
+Gallantry
+
+Tenacity
+
+True Grit
+
+Indomitability
+
+Conscience
+%%%%
+_justice_name_
+
+Tender Mercy
+
+Cruel Justice
+
+Punishment
+
+Innocence
+
+Guilt
+
+Tortfeasance
+
+Extenuating Circumstances
+
+Absolution
+
+Exoneration
+
+False Accusations
+
+Wrongful Imprisonment
+
+Corporal Punishment
+
+Capital Punishment
+
+Forgiveness
+
+Trial by Ordeal
+
+Blind Justice
+%%%%
+_diviner_name_
+
+Augurer
+
+Water Diviner
+
+Soothsayer
+
+Seeker
+
+Visionary
+
+Oracle
+
+Fortune-Teller
+
+Sybil
+
+Seer
+%%%%
+_people_name_
+
+King
+
+Queen
+
+Jester
+
+Fool
+
+Ancients
+
+Saviour
+
+Messenger
+
+Genius
+
+Coward
+
+Philosopher
+
+Hero
+
+Traitor
+
+Enemy
+
+Priest
+
+Madman
+
+Scavenger
+
+w:15
+@_diviner_name_@
+%%%%
+_weapon_animal_
+
+# insects
+Pill Bug
+
+Butterfly
+
+Wasp
+
+Moth
+
+Mosquito
+
+Gnat
+
+Blowfly
+
+Dragonfly
+
+Firefly
+
+# arachnids
+Spider
+
+Scorpion
+
+# amphibians and reptiles
+Rattle-Snake
+
+Viper
+
+Asp
+
+# fish
+Shark
+
+Lamprey
+
+Eel
+
+Salmon
+
+# birds
+Penguin
+
+Puffin
+
+Fulmar
+
+Dove
+
+Hawk
+
+Hummingbird
+
+Owl
+
+Stork
+
+Vulture
+
+# mammals
+w:5
+Weasel
+
+Goat
+
+Whale
+
+Ass
+
+Badger
+
+Bear
+
+Boar
+
+Fox
+
+Rat
+
+w:5
+Stoat
+
+Tiger
+
+Wolf
+%%%%
+# plants and fungi
+_plant_name_
+
+#plants
+Eggplant
+
+Turnip
+
+Chickpea
+
+Lettuce
+
+Radish
+
+Sugar Beet
+
+Shallot
+
+Tomato
+
+# er...aren't whelks gastropods?
+Whelk
+
+#fungus and similar
+Mushroom
+
+Toadstool
+
+Puffball
+
+Slime-mold
+%%%%
+# undead and evil beings
+_evil_stuff_
+
+Curses
+
+Hell's Wrath
+
+the Undead
+
+Ancient Evil
+
+Evil
+
+the Beast
+
+Shrieking Terror
+
+the Lurker
+
+the Crawling Thing
+
+the Thing
+
+Abomination
+
+Mutilation
+
+Deformation
+
+Infection
+
+Corruption
+
+Demonkind
+
+Abuse
+
+the Dead
+
+Defilement
+
+the Evil Eye
+
+the Ghost
+
+the Living Dead
+
+Nightmares
+
+Perversion
+
+Putrescence
+
+the Reaper
+
+the Spectre
+
+the Unliving
+
+the Unspeakable One
+
+the Wraith
+%%%%
+# catastrophes etc.
+_catastrophe_name_
+
+the Inferno
+
+Earthquakes
+
+Cataclysm
+
+Drought
+
+Floods
+
+Ruination
+
+# the Apocalypse
+the Apocalypse
+
+Armageddon
+
+World's End
+
+Ragnarok
+
+Fimbulwinter
+
+Annihilation
+
+the End of Times
+
+World Downfall
+
+# the Apocalyptic Riders (except Death)
+Pestilence
+
+Plague
+
+Famine
+
+War
+%%%%
+_chaos_name_
+
+Chaos
+
+Chance
+
+Mayhem
+
+Havoc
+
+Turmoil
+
+Calamity
+
+Arbitration
+
+the Extremes
+
+Disorder
+
+Disaster
+
+Imbalance
+
+Disharmony
+
+Ambiguity
+
+Change
+
+Extremism
+
+Impermanence
+
+Constant Reorganisation
+
+Contradiction
+
+Disarray
+
+Disintegration
+
+Dissolution
+
+Distraction
+
+Forced Transition
+
+the Fray
+
+Revolt
+
+Tumult
+
+Upheaval
+%%%%
+_balance_or_order_
+
+the Middle
+
+the Median
+
+Departure
+
+Arrival
+
+Ascent
+
+Descent
+
+Symmetry
+
+Bodily Harmony
+
+Moderation
+
+Eternal Harmony
+
+Peace
+
+Equivalence
+
+Balance
+
+Harmony
+
+Fragile Peace
+
+Circularity
+
+Linearity
+
+Law
+
+Order
+
+Accord
+
+Conformity
+
+Due Proportion
+
+Equilibrium
+
+the Establishment
+
+the Final Decision
+
+Propriety
+%%%%
+_economics_or_politics_
+
+# economics
+Inflation
+
+Deflation
+
+Supply
+
+Demand
+
+Amortisation
+
+Animal Spirits
+
+Bankruptcy
+
+Collusion
+
+Compound Interest
+
+Currency
+
+Debt
+
+Dividends
+
+Exchange
+
+Growth
+
+Income
+
+Luxury
+
+Profit
+
+Risk Management
+
+Taxation
+
+Valuable Assets
+
+Welfare
+
+# politics
+the Imperium
+
+Greatest Utility
+
+the Revolution
+
+Defenestration
+
+the People
+
+the Little People
+
+Wealth
+
+Poverty
+
+Reapportionment
+
+Checks and Balances
+
+the Common Good
+
+Conservatism
+
+the Dark Horse
+
+the Demagogue
+
+Governance
+
+the Lame Duck
+
+the Lesser Evil
+
+Popular Demand
+
+Radicalism
+
+Royalism
+
+the Silent Majority
+
+# akrasiac patch
+Impeachment
+
+# umm, quoi?
+Freehold
+
+Attainder
+
+Fee Simple
+
+Mandamus
+
+Breach
+
+Fundamental Breach
+
+Termination
+
+Sequestration
+%%%%
+_place_name_
+
+the World
+
+the Sea
+
+the Forest
+
+the Trees
+
+the Volcano
+
+the Equator
+
+the Poles
+
+the Old World
+
+the New World
+
+Distant Worlds
+
+the Unseen Realm
+
+the Spheres
+
+Proximity
+
+the Wilderness
+
+the Maze
+
+the Pit
+
+the Eternal Void
+
+Beyond
+
+the Blessed Realm
+
+the Desert
+
+Distant Shores
+
+the Hidden Vale
+
+the Hills
+
+the Known World
+
+the Land of Plenty
+
+the Other Side
+
+Parts Unknown
+
+Somewhere Else
+
+the Shore
+
+the Tundras
+
+the Valley
+
+the Valley of Death
+
+the Wasteland
+%%%%
+_discomfort_weapon_
+
+Unpleasantness
+
+Discomfort
+
+Disgust
+
+Frustration
+
+Chagrin
+
+Dismay
+
+Desperation
+
+Shame
+
+Embarrassment
+
+Annoyance
+
+Anxiety
+
+Urgency
+
+Awkwardness
+
+Dissatisfaction
+
+Foul Odors
+
+Flawed Execution
+
+Gloom
+
+Inconvenience
+
+Irritation
+
+Malaise
+
+Stickiness
+
+Uncomfortable Rashes
+%%%%
+_mental_illness_weapon_
+
+Psychosis
+
+Neurosis
+
+Fixation
+
+Megalomania
+
+Egomania
+
+Obsession
+
+Compulsion
+
+Fatigue
+
+Exhibitionism
+
+Insomnia
+
+Oenomania
+
+Perfectionism
+
+Pyromania
+
+Satyriasis
+
+Suicidal Tendencies
+%%%%
+_philosophy_or_science_
+
+@_philosophy_name_@
+
+@_science_name_@
+%%%%
+_philosophy_name_
+
+Monotheism
+
+Henotheism
+
+Polytheism
+
+Atheism
+
+Autotheism
+
+Pantheism
+
+Panentheism
+
+Agnosticism
+
+Existentialism
+
+Relativism
+
+Absolutism
+
+Abstinence
+
+Hedonism
+
+Orthodoxy
+
+Heresy
+
+Free Expression
+
+the Ego
+
+Optimism
+
+Pessimism
+
+Serendipity
+
+Limitation
+
+Levity
+
+Nihilism
+
+Pragmatism
+
+Idealism
+
+Activism
+
+Altruism
+
+Anarchy
+
+Dogma
+
+Egalitarianism
+
+Elitism
+
+Ethics
+
+Fallacy
+
+Fanaticism
+
+Free Will
+
+Liberalism
+
+Morality
+
+Mysticism
+
+Rationality
+%%%%
+_science_name_
+
+Reason
+
+Unreason
+
+Calculation
+
+Instinct
+
+Intuition
+
+Circular Logic
+
+Context
+
+Articulation
+
+the Mind
+
+the Nexus
+
+the Beginning
+
+the End
+
+Analysis
+
+Infinity
+
+Quantum Leap
+
+Gravity
+
+Rotation
+
+the Big Bang
+
+the Boiling Point
+
+Classification
+
+Evolution
+
+Experimentation
+
+Focus
+
+Inference
+
+Inquiry
+
+Objectivity
+
+Subjectivity
+
+Patterns
+
+Theory
+%%%%
+_item_name_
+
+# items
+Orb
+
+Egg
+
+Globe
+
+Candle
+
+Candelabrum
+
+Key
+
+Ring
+
+Chain
+
+Coin
+
+Cup
+
+Feather
+
+Girdle
+
+Horn
+
+Pillar
+
+Purse
+
+Scroll
+
+Ship
+
+Tent
+
+Vase
+
+Vine
+
+Walnut
+
+Wheel
+
+Yoke
+
+# body parts
+Heart
+
+Brain
+
+Tooth
+
+Foot
+
+Hand
+
+Head
+
+Mouth
+
+Throat
+
+Kidney
+%%%%
+_magic_name_
+
+the Magi
+
+the Warrior-Mage
+
+the Hierophant
+
+the Sage
+%%%%
+# substances
+_substance_name_
+
+Bread
+
+Sulphur
+
+Crystal
+
+Bloodstone
+
+Oozing Pus
+
+Ash
+
+Slime
+
+Bile
+
+Bodily Humours
+
+Cobwebs
+
+Cheese
+
+Dried Tears
+
+Dung
+
+Ointment
+
+Paper
+
+Rubbish
+
+Salt
+
+Saltpetre
+
+Sharkskin
+
+Terra Cotta
+
+# these don't really fit
+Mana
+
+Yeast
+
+Spores
+
+Dust
+%%%%
+# non-groupables
+other_weapon_name
+
+the Omega Point
+
+Crawling
+
+Conversion
+
+Prescription
+
+the Open Hand
+
+Spontaneous Combustion
+
+Res Nullius
+
+Terra Nullius
+
+Desertification
+
+the Spinneret
+
+Grontol
+
+the Two Names
+
+No Interval
+
+Interdependent Arising
+
+the Blind Eye
+
+the Briny Deep
+
+Broken Luck
+
+Entrepreneurial Spirit
+
+the Vendetta
+
+the Empty Page
+
+the Final Chapter
+
+Hard Scrabble
+
+Red Wine
+
+Undoing
+
+the Unkillable
+
+# akrasiac patch
+Irrepressible Laughter
+%%%%
+# single word monster names, to allow for combinations like <Monster>slayer
+short_monster_name_
+
+Dragon
+
+Hydra
+
+Ogre
+
+Spider
+
+Newt
+
+Giant
+
+Beetle
+
+Jelly
+
+w:1
+Testudine
+
+w:1
+Lacertilian
+
+w:1
+Acarine
+
+Beast
+
+Demon
+
+Goblin
+
+Imp
+%%%%
+_monster_name_
+
+@short_monster_name_@
+
+@player_species@
+
+Killer Bee
+
+Killer Klown
+
+Orb Guardian
+%%%%
+_short_killer_name_
+
+bane
+
+slayer
+%%%%
+# used from the C++ side
+killer_name
+
+'s Bane
+
+'s Death
+
+'s Doom
+
+'s Foe
+
+'s Regret
+
+'s Curse
+
+'s Peril
+%%%%
+_long_killer_name_
+
+'s Death Toll
+
+'s Funeral
+
+'s Nightmare
+
+'s Undoing
+
+'s Demise
+
+w:1
+'s Looming Annihilation
+%%%%
+_real_weapon_name_
+
+Grim Tooth
+
+w:5
+Widowmaker
+
+w:5
+Widowermaker
+
+Lifebane
+
+Conservator
+
+Banisher
+
+Tormentor
+
+Pendulum
+
+Murmur
+
+Sarcophage
+
+Concordance
+
+Dragon's Tongue
+
+Arbiter
+
+Death Rattle
+
+Arcanum
+
+Transmigrator
+
+Ultimatum
+
+Earthworm
+
+Worm
+
+Worm's Wrath
+
+Leviticus
+
+Grim
+
+# Lemuel's suggestions
+Eviscerator
+
+Undertaker
+
+Embalmer
+
+Trog's @_anger_name_@
+
+Hellblazer
+
+Hell-Harrower
+
+# Sigmund's sword
+Gram
+%%%%
+_joke_weapon_name_
+
+Secret Weapon
+
+With Two Names
+
+Thing
+
+Mud Pie of Death
+
+Xom's @_xom_esteem_@
+
+String
+
+Stringbean
+
+Blob
+
+Globulus
+
+Hulk
+
+Raisin
+
+Starlight
+
+Giant's Toothpick
+
+Backscratcher
+
+Brush
+
+Grom
+
+Grum
+
+Rummage
+
+Omelette
+
+Egg
+
+Aubergine
+
+Z
+
+X
+
+Q
+
+Ox
+
+Tattletale
+
+Fish
+
+Bung
+
+Bingo
+
+# from the crawl.akrasiac.org patch
+Cookie Cutter
+
+ETAOIN SHRDLU
+
+Lorem Ipsum
+
+# These three are from old Crawl code.
+Plojy
+
+Glorpo
+
+Loopy
+%%%%
+_plain_weapon_name_
+
+w:15
+@short_monster_name_@@_short_killer_name_@
+
+w:8
+@_monster_name_@@killer_name@
+
+w:2
+@short_monster_name_@@_long_killer_name_@
+
+w:1
+@player_death@
+
+w:15
+@_real_weapon_name_@
+
+w:5
+@_joke_weapon_name_@
+%%%%
