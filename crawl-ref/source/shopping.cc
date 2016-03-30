@@ -2057,7 +2057,7 @@ string shop_name(const coord_def& where, bool add_stop)
     string sh_name = "";
 
     if (!cshop->shop_name.empty())
-        sh_name += cshop->shop_name + "の";
+        sh_name += jtrans(cshop->shop_name) + "の";
     else
     {
         uint32_t seed = static_cast<uint32_t>(cshop->keeper_name[0])
@@ -2067,21 +2067,23 @@ string shop_name(const coord_def& where, bool add_stop)
         sh_name += make_name(seed, false) + "の";
     }
 
+    string sh_name2;
+
     if (!cshop->shop_type_name.empty())
-        sh_name += cshop->shop_type_name;
+        sh_name2 += cshop->shop_type_name;
     else
-        sh_name += shop_type_name(type);
+        sh_name2 += shop_type_name(type);
 
     if (!cshop->shop_suffix_name.empty())
-        sh_name += " " + cshop->shop_suffix_name;
+        sh_name2 += " " + cshop->shop_suffix_name;
     else
     {
         string sh_suffix = _shop_type_suffix(type, where);
         if (!sh_suffix.empty())
-            sh_name += " " + sh_suffix;
+            sh_name2 += " " + sh_suffix;
     }
 
-    return sh_name;
+    return sh_name + jtrans(sh_name2);
 }
 
 bool is_shop_item(const item_def &item)

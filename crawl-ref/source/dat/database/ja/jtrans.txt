@@ -16942,6 +16942,16 @@ XOM is BORED!
 
 ゾムは退屈している！
 %%%%
+############################## dat/des/altar/overflow.des ##############################
+%%%%
+Platinum Reserve
+
+プラチナ取引所
+%%%%
+Purification Station
+
+浄化局
+%%%%
 ############################## dat/des/branches/pan.des ##############################
 %%%%
 Entered the realm of
