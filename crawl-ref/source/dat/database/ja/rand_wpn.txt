@@ -22,218 +22,305 @@ w:7
 %%%%
 _power_name_
 
-Power
+# Power
+力
 
-Might
+# Might
+剛力
 
-Wondrous Power
+# Wondrous Power
+怪力
 
-Invincibility
+# Invincibility
+無敵
 
-Glory
+# Glory
+栄光
 
-Success
+# Success
+成功
 
-Triumph
+# Triumph
+征服
 
-Domination
+# Domination
+制覇
 
-Dominance
+# Dominance
+優越
 
-Victory
+# Victory
+勝利
 
-Intimidation
+# Intimidation
+威嚇
 
-Grandeur
+# Grandeur
+威厳
 
-Mastery
+# Mastery
+熟達
 
-Superiority
+# Superiority
+卓越
 
-Magnificence
+# Magnificence
+壮大
 %%%%
 _conflict_name_
 
-Conflict
+# Conflict
+闘争
 
-Tension
+# Tension
+緊張
 
-Dischord
+# Dischord
+不和
 
-Division
+# Division
+分裂
 
-Doubt
+# Doubt
+猜疑
 
-Internal Strife
+# Internal Strife
+内紛
 
-Contention
+# Contention
+論争
 
-Dissent
+# Dissent
+異議
 
-Quarrel
+# Quarrel
+口論
 %%%%
 _anger_name_
 
-Anger
+# Anger
+怒り
 
-Fury
+# Fury
+激怒
 
-Righteous Anger
+# Righteous Anger
+義憤
 
-Righteous Fury
+# Righteous Fury
 
-Wrath
+# Wrath
+憤怒
 
-Brutal Revenge
+# Brutal Revenge
+復讐
 
-Vengeance
+# Vengeance
+報復
 
-Hatred
+# Hatred
+嫌悪
 
-Indignation
+# Indignation
+憤慨
 
-Outrage
+# Outrage
+憤り
 
-Scorn
+# Scorn
+軽蔑
 %%%%
 _battle_or_war_
 
-Battle
+# Battle
+戦い
 
-Crusades
+# Crusades
+聖戦
 
-War
+# War
+戦争
 
-Eternal War
+# Eternal War
+永遠の戦争
 
-the Eternal Warrior
+# the Eternal Warrior
+永遠の戦士
 
-the Onslaught
+# the Onslaught
+猛攻
 
-Skirmishing
+# Skirmishing
+小競り合い
 
-the Endless March
+# the Endless March
+終わりなき進軍
 
-Plunder
+# Plunder
+掠奪
 
-Ravage
+# Ravage
+荒廃
 
 # Lemuel's Suggestions
-the Warrior
+# the Warrior
+戦士
 
-the Doomed Warrior
+# the Doomed Warrior
+運命の戦士
 
 # akrasiac patch
-the Pyrrhic Victory
+# the Pyrrhic Victory
+割に合わぬ勝利
 
 #killing
-Blood-Lust
+# Blood-Lust
+血に飢えた
 
-Joyful Slaughter
+# Joyful Slaughter
+快楽殺人者
 
-Wounding
+# Wounding
+負傷
 
-Blood
+# Blood
+流血
 
-Fear
+# Fear
+不安
 
-Massacring
+# Massacring
+皆殺し
 
 # was Pain, clashing with the brand
-Insufficient Pleasure
+# Insufficient Pleasure
+欲求不満
 
-Agony
+# Agony
+苦悶
 
-Trauma
+# Trauma
+トラウマ
 
 # Lemuel's suggestion
-Hacking and Slashing
+# Hacking and Slashing
+めった切り
 
 # related to cutting
-Truncation
+# Truncation
+切断
 
-Severance
+# Severance
+断絶
 
-Dullness
+# Dullness
+単調
 
-Precise Incision
+# Precise Incision
+精密切開
 
-Laceration
+# Laceration
+裂傷
 
 #collateral effects
-Mourning
+# Mourning
+悲嘆
 
-Death's Door
+# Death's Door
+死のとば口
 
-the Grave
+# the Grave
+墓石
 %%%%
 # used from C++'s side
 death_or_doom
 
 # death
-Death
+# Death
+死
 
-Bloody Death
+# Bloody Death
 
-Painful Death
+# Painful Death
 
-Quick Death
+# Quick Death
 
-Instant Death
+# Instant Death
+即死
 
-Imminent Death
+# Imminent Death
 
-Sudden Death
+# Sudden Death
+突然死
 
-Slow Death
+# Slow Death
 
-Certain Death
+# Certain Death
+確実なる死
 
-Uncertain Death
+# Uncertain Death
 
-Exquisite Death
+# Exquisite Death
 
-Pain and Death
+# Pain and Death
+苦痛と死
 
-Untimely Demise
+# Untimely Demise
 
 # doom
-Doom
+# Doom
+破滅
 
-Premature Burial
+# Premature Burial
+早すぎた埋葬
 
-Peril
+# Peril
+危機
 
-Execution
+# Execution
+処刑
 
-Destruction
+# Destruction
+破壊
 
-Disembowelment
+# Disembowelment
+八つ裂き
 
-Evisceration
+# Evisceration
+内臓摘出
 
-Extermination
+# Extermination
+絶滅
 
-Extinguishment
+# Extinguishment
+消滅
 
 # pain and misery
-Infinite Pain
+# Infinite Pain
+無限の苦痛
 
-Eternal Torment
+# Eternal Torment
+無間地獄
 
-Dismemberment
+# Dismemberment
+切断
 
-Terror
+# Terror
+恐怖
 
-Misery
+# Misery
+悲惨
 
-Woe
+# Woe
+悲痛
 
-Excruciating Pain
+# Excruciating Pain
+耐えがたき苦痛
 
-Exquisite Torment
+# Exquisite Torment
 
-Anguish
+# Anguish
+苦悩
 %%%%
 _strategy_or_justice_
 
@@ -249,155 +336,224 @@ w:3
 _strategy_name_
 
 #strategy
-Defence
+# Defence
+防御
 
-Defence by Offence
+# Defence by Offence
+攻防一体
 
-Offence
+# Offence
+攻撃
 
-Reinforcement
+# Reinforcement
+増援
 
-Expedience
+# Expedience
+好都合
 
-Optimality
+# Optimality
+最適
 
-Overwhelming Force
+# Overwhelming Force
+猛威
 
-Subterfuge
+# Subterfuge
+逃げ口上
 
-Strategic Superiority
+# Strategic Superiority
+戦略的優越
 
-Guile
+# Guile
+悪知恵
 %%%%
 _valour_name_
 
-Honour
+# Honour
+名誉
 
-Integrity
+# Integrity
+高潔
 
-Responsibility
+# Responsibility
+責任
 
-Watchfulness
+# Watchfulness
+気配り
 
-Duty
+# Duty
+義務
 
-Prudence
+# Prudence
+慎重
 
-Valour
+# Valour
+武勇
 
-Resourcefulness
+# Resourcefulness
+知略
 
-Action
+# Action
+行動
 
-Purpose
+# Purpose
+決意
 
-Fortitude
+# Fortitude
+不屈
 
-Defiance
+# Defiance
+反抗
 
-Valiance
+# Valiance
+剛勇
 
-Courage
+# Courage
+勇気
 
-Eternal Vigilance
+# Eternal Vigilance
+絶えざる警戒
 
-Gallantry
+# Gallantry
+勇猛
 
-Tenacity
+# Tenacity
+頑強
 
-True Grit
+# True Grit
+真なる闘志
 
-Indomitability
+# Indomitability
+不撓不屈
 
-Conscience
+# Conscience
+良心
 %%%%
 _justice_name_
 
-Tender Mercy
+# Tender Mercy
+かよわき慈悲
 
-Cruel Justice
+# Cruel Justice
+無慈悲なる正義
 
-Punishment
+# Punishment
+打擲
 
-Innocence
+# Innocence
+無垢
 
-Guilt
+# Guilt
+罪悪
 
-Tortfeasance
+# Tortfeasance
+不法作為
 
-Extenuating Circumstances
+# Extenuating Circumstances
+情状酌量
 
-Absolution
+# Absolution
+赦罪
 
-Exoneration
+# Exoneration
+赦免
 
-False Accusations
+# False Accusations
+虚偽告訴
 
-Wrongful Imprisonment
+# Wrongful Imprisonment
 
-Corporal Punishment
+# Corporal Punishment
+体刑
 
-Capital Punishment
+# Capital Punishment
+極刑
 
-Forgiveness
+# Forgiveness
+容赦
 
-Trial by Ordeal
+# Trial by Ordeal
+神明裁判
 
-Blind Justice
+# Blind Justice
+盲目的正義
 %%%%
 _diviner_name_
 
-Augurer
+# Augurer
+占い師
 
-Water Diviner
+# Water Diviner
+風水師
 
-Soothsayer
+# Soothsayer
+預言者
 
-Seeker
+# Seeker
+探求者
 
-Visionary
+# Visionary
+空想家
 
-Oracle
+# Oracle
+神託所
 
-Fortune-Teller
+# Fortune-Teller
+予見師
 
-Sybil
+# Sybil
 
-Seer
+# Seer
+先見者
 %%%%
 _people_name_
 
-King
+# King
+王
 
-Queen
+# Queen
+女王
 
-Jester
+# Jester
+道化師
 
-Fool
+# Fool
+愚者
 
-Ancients
+# Ancients
+古代
 
-Saviour
+# Saviour
+救世主
 
-Messenger
+# Messenger
+伝令
 
-Genius
+# Genius
+天賦
 
-Coward
+# Coward
+臆病者
 
-Philosopher
+# Philosopher
+哲学者
 
-Hero
+# Hero
+英雄
 
-Traitor
+# Traitor
+反逆者
 
-Enemy
+# Enemy
+怨敵
 
-Priest
+# Priest
+僧侶
 
-Madman
+# Madman
+狂人
 
-Scavenger
+# Scavenger
+屑拾い
 
 w:15
 @_diviner_name_@
@@ -405,590 +561,757 @@ w:15
 _weapon_animal_
 
 # insects
-Pill Bug
+# Pill Bug
+ダンゴムシ
 
-Butterfly
+# Butterfly
+胡蝶
 
-Wasp
+# Wasp
+雀蜂
 
-Moth
+# Moth
+蛾
 
-Mosquito
+# Mosquito
+蚊
 
-Gnat
+# Gnat
+ブヨ
 
-Blowfly
+# Blowfly
+黒蠅
 
-Dragonfly
+# Dragonfly
+蜻蛉
 
-Firefly
+# Firefly
+蛍
 
 # arachnids
-Spider
+# Spider
+蜘蛛
 
-Scorpion
+# Scorpion
+蠍
 
 # amphibians and reptiles
-Rattle-Snake
+# Rattle-Snake
+ガラガラヘビ
 
-Viper
+# Viper
+クサリヘビ
 
-Asp
+# Asp
+コブラ
 
 # fish
-Shark
+# Shark
+サメ
 
-Lamprey
+# Lamprey
+ヤツメウナギ
 
-Eel
+# Eel
+ウナギ
 
-Salmon
+# Salmon
+鮭
 
 # birds
-Penguin
+# Penguin
+ペンギン
 
-Puffin
+# Puffin
+角目鳥
 
-Fulmar
+# Fulmar
+カモメ
 
-Dove
+# Dove
+鳩
 
-Hawk
+# Hawk
+鷹
 
-Hummingbird
+# Hummingbird
+ハチドリ
 
-Owl
+# Owl
+フクロウ
 
-Stork
+# Stork
+コウノトリ
 
-Vulture
+# Vulture
+ハゲワシ
 
 # mammals
+# w:5
+# Weasel
 w:5
-Weasel
+イタチ
 
-Goat
+# Goat
+山羊
 
-Whale
+# Whale
+鯨
 
-Ass
+# Ass
+ロバ
 
-Badger
+# Badger
+アマグマ
 
-Bear
+# Bear
+熊
 
-Boar
+# Boar
+イノシシ
 
-Fox
+# Fox
+狐
 
-Rat
+# Rat
+ネズミ
 
+# w:5
+# Stoat
 w:5
-Stoat
+オコジョ
 
-Tiger
+# Tiger
+虎
 
-Wolf
+# Wolf
+狼
 %%%%
 # plants and fungi
 _plant_name_
 
 #plants
-Eggplant
+# Eggplant
+ナス
 
-Turnip
+# Turnip
+蕪
 
-Chickpea
+# Chickpea
+ひよこまめ
 
-Lettuce
+# Lettuce
+レタス
 
-Radish
+# Radish
+大根
 
-Sugar Beet
+# Sugar Beet
+砂糖大根
 
-Shallot
+# Shallot
+エシャロット
 
-Tomato
+# Tomato
+トマト
 
 # er...aren't whelks gastropods?
-Whelk
+# Whelk
 
 #fungus and similar
-Mushroom
+# Mushroom
+マッシュルーム
 
-Toadstool
+# Toadstool
+からかさキノコ
 
-Puffball
+# Puffball
+ホコリタケ
 
-Slime-mold
+# Slime-mold
+ねばねばカビ
 %%%%
 # undead and evil beings
 _evil_stuff_
 
-Curses
+# Curses
+呪い
 
-Hell's Wrath
+# Hell's Wrath
+地獄の怒り
 
-the Undead
+# the Undead
+不死者
 
-Ancient Evil
+# Ancient Evil
+古代の悪魔
 
-Evil
+# Evil
+邪悪
 
-the Beast
+# the Beast
+獣
 
-Shrieking Terror
+# Shrieking Terror
+叫喚地獄の
 
-the Lurker
+# the Lurker
+蠢くもの
 
-the Crawling Thing
+# the Crawling Thing
+這いよるもの
 
-the Thing
+# the Thing
+物体X
 
-Abomination
+# Abomination
+おぞましきもの
 
-Mutilation
+# Mutilation
+切除
 
-Deformation
+# Deformation
+奇形
 
-Infection
+# Infection
+感染
 
-Corruption
+# Corruption
+崩壊
 
-Demonkind
+# Demonkind
+魔族
 
-Abuse
+# Abuse
+濫用
 
-the Dead
+# the Dead
+死者
 
-Defilement
+# Defilement
+汚染
 
-the Evil Eye
+# the Evil Eye
+邪眼
 
-the Ghost
+# the Ghost
+亡霊
 
-the Living Dead
+# the Living Dead
+生ける死者
 
-Nightmares
+# Nightmares
+悪夢
 
-Perversion
+# Perversion
+曲解
 
-Putrescence
+# Putrescence
+腐敗
 
-the Reaper
+# the Reaper
+死神
 
-the Spectre
+# the Spectre
+幽体
 
-the Unliving
+# the Unliving
+命なきもの
 
-the Unspeakable One
+# the Unspeakable One
+名状しがたきもの
 
-the Wraith
+# the Wraith
+霊魂
 %%%%
 # catastrophes etc.
 _catastrophe_name_
 
-the Inferno
+# the Inferno
+地獄
 
-Earthquakes
+# Earthquakes
+地震
 
-Cataclysm
+# Cataclysm
+大変動
 
-Drought
+# Drought
+干魃
 
-Floods
+# Floods
+洪水
 
-Ruination
+# Ruination
+零落
 
 # the Apocalypse
-the Apocalypse
+# the Apocalypse
+黙示録
 
-Armageddon
+# Armageddon
+ハルマゲドン
 
-World's End
+# World's End
+世界の終末
 
-Ragnarok
+# Ragnarok
+神々の黄昏
 
-Fimbulwinter
+# Fimbulwinter
+フィンブルの冬
 
-Annihilation
+# Annihilation
+殺戮
 
-the End of Times
+# the End of Times
+末世
 
-World Downfall
+# World Downfall
+世界滅亡
 
 # the Apocalyptic Riders (except Death)
-Pestilence
+# Pestilence
+疫病
 
-Plague
+# Plague
 
-Famine
+# Famine
+飢餓
 
-War
+# War
+戦争
 %%%%
 _chaos_name_
 
-Chaos
+# Chaos
+混沌
 
-Chance
+# Chance
+好機
 
-Mayhem
+# Mayhem
+大騒ぎ
 
-Havoc
+# Havoc
+大混乱
 
-Turmoil
+# Turmoil
+騒動
 
-Calamity
+# Calamity
+惨事
 
-Arbitration
+# Arbitration
+仲裁
 
-the Extremes
+# the Extremes
+緊急状態
 
-Disorder
+# Disorder
+障害
 
-Disaster
+# Disaster
+災害
 
-Imbalance
+# Imbalance
 
-Disharmony
+# Disharmony
 
-Ambiguity
+# Ambiguity
 
-Change
+# Change
 
-Extremism
+# Extremism
 
-Impermanence
+# Impermanence
 
-Constant Reorganisation
+# Constant Reorganisation
 
-Contradiction
+# Contradiction
 
-Disarray
+# Disarray
 
-Disintegration
+# Disintegration
+分解
 
-Dissolution
+# Dissolution
+溶解
 
-Distraction
+# Distraction
 
-Forced Transition
+# Forced Transition
 
-the Fray
+# the Fray
 
-Revolt
+# Revolt
 
-Tumult
+# Tumult
 
-Upheaval
+# Upheaval
 %%%%
 _balance_or_order_
 
-the Middle
+# the Middle
+中庸
 
-the Median
+# the Median
 
-Departure
+# Departure
+出発
 
-Arrival
+# Arrival
+到達
 
-Ascent
+# Ascent
+上昇
 
-Descent
+# Descent
+下降
 
-Symmetry
+# Symmetry
+均整
 
-Bodily Harmony
+# Bodily Harmony
 
-Moderation
+# Moderation
 
-Eternal Harmony
+# Eternal Harmony
 
-Peace
+# Peace
+平和
 
-Equivalence
+# Equivalence
 
-Balance
+# Balance
 
-Harmony
+# Harmony
+調和
 
-Fragile Peace
+# Fragile Peace
+はかなき平和
 
-Circularity
+# Circularity
 
-Linearity
+# Linearity
 
-Law
+# Law
+秩序
 
-Order
+# Order
 
-Accord
+# Accord
 
-Conformity
+# Conformity
 
-Due Proportion
+# Due Proportion
 
-Equilibrium
+# Equilibrium
 
-the Establishment
+# the Establishment
 
-the Final Decision
+# the Final Decision
+最終決定
 
-Propriety
+# Propriety
 %%%%
 _economics_or_politics_
 
 # economics
-Inflation
+# Inflation
+インフレ
 
-Deflation
+# Deflation
+デフレ
 
-Supply
+# Supply
+供給
 
-Demand
+# Demand
+需要
 
-Amortisation
+# Amortisation
 
-Animal Spirits
+# Animal Spirits
 
-Bankruptcy
+# Bankruptcy
 
-Collusion
+# Collusion
 
-Compound Interest
+# Compound Interest
 
-Currency
+# Currency
+通貨
 
-Debt
+# Debt
+借金
 
-Dividends
+# Dividends
 
-Exchange
+# Exchange
+両替
 
-Growth
+# Growth
 
-Income
+# Income
 
-Luxury
+# Luxury
 
-Profit
+# Profit
 
-Risk Management
+# Risk Management
+危機管理
 
-Taxation
+# Taxation
 
-Valuable Assets
+# Valuable Assets
 
-Welfare
+
+# Welfare
 
 # politics
-the Imperium
+# the Imperium
 
-Greatest Utility
+# Greatest Utility
 
-the Revolution
+# the Revolution
+革命
 
-Defenestration
+# Defenestration
+窓外投擲
 
-the People
+# the People
 
-the Little People
+# the Little People
 
-Wealth
+# Wealth
 
-Poverty
+# Poverty
 
-Reapportionment
+# Reapportionment
 
-Checks and Balances
+# Checks and Balances
 
-the Common Good
+# the Common Good
 
-Conservatism
+# Conservatism
 
-the Dark Horse
+# the Dark Horse
 
-the Demagogue
+# the Demagogue
+デマゴーグ
 
-Governance
+# Governance
 
-the Lame Duck
+# the Lame Duck
+レームダック
 
-the Lesser Evil
+# the Lesser Evil
 
-Popular Demand
+# Popular Demand
 
-Radicalism
+# Radicalism
+過激派
 
-Royalism
+# Royalism
 
-the Silent Majority
+# the Silent Majority
 
 # akrasiac patch
-Impeachment
+# Impeachment
 
 # umm, quoi?
-Freehold
+# Freehold
 
-Attainder
+# Attainder
 
-Fee Simple
+# Fee Simple
 
-Mandamus
+# Mandamus
 
-Breach
+# Breach
 
-Fundamental Breach
+# Fundamental Breach
 
-Termination
+# Termination
 
-Sequestration
+# Sequestration
 %%%%
 _place_name_
 
-the World
+# the World
+世界
 
-the Sea
+# the Sea
+海洋
 
-the Forest
+# the Forest
+森林
 
-the Trees
+# the Trees
+樹木
 
-the Volcano
+# the Volcano
+火山
 
-the Equator
+# the Equator
+赤道
 
-the Poles
+# the Poles
+極圏
 
-the Old World
+# the Old World
+旧世界
 
-the New World
+# the New World
+新世界
 
-Distant Worlds
+# Distant Worlds
 
-the Unseen Realm
+# the Unseen Realm
+知られざる領域
 
-the Spheres
+# the Spheres
 
-Proximity
+# Proximity
 
-the Wilderness
+# the Wilderness
+荒れ地
 
-the Maze
+# the Maze
+迷路
 
-the Pit
+# the Pit
 
-the Eternal Void
+# the Eternal Void
+永劫の虚無
 
-Beyond
+# Beyond
 
-the Blessed Realm
+# the Blessed Realm
 
-the Desert
+# the Desert
+砂漠
 
-Distant Shores
+# Distant Shores
 
-the Hidden Vale
+# the Hidden Vale
 
-the Hills
+# the Hills
+丘
 
-the Known World
+# the Known World
+既知世界
 
-the Land of Plenty
+# the Land of Plenty
+豊穣なる大地
 
-the Other Side
+# the Other Side
 
-Parts Unknown
+# Parts Unknown
 
-Somewhere Else
+# Somewhere Else
+ここではないどこか
 
-the Shore
+# the Shore
+海岸
 
-the Tundras
+# the Tundras
+ツンドラ
 
-the Valley
+# the Valley
+谷
 
-the Valley of Death
+# the Valley of Death
+死の谷
 
-the Wasteland
+# the Wasteland
+荒野
 %%%%
 _discomfort_weapon_
 
-Unpleasantness
+# Unpleasantness
+不快
 
-Discomfort
+# Discomfort
 
-Disgust
+# Disgust
 
-Frustration
+# Frustration
+欲求不満
 
-Chagrin
+# Chagrin
 
-Dismay
+# Dismay
 
-Desperation
+# Desperation
 
-Shame
+# Shame
+恥
 
-Embarrassment
+# Embarrassment
 
-Annoyance
+# Annoyance
+いらだち
 
-Anxiety
+# Anxiety
 
-Urgency
+# Urgency
 
-Awkwardness
+# Awkwardness
 
-Dissatisfaction
+# Dissatisfaction
 
-Foul Odors
+# Foul Odors
 
-Flawed Execution
+# Flawed Execution
 
-Gloom
+# Gloom
 
-Inconvenience
+# Inconvenience
 
-Irritation
+# Irritation
 
-Malaise
+# Malaise
 
-Stickiness
+# Stickiness
 
-Uncomfortable Rashes
+# Uncomfortable Rashes
 %%%%
 _mental_illness_weapon_
 
-Psychosis
+# Psychosis
+精神異常
 
-Neurosis
+# Neurosis
+ノイローゼ
 
-Fixation
+# Fixation
 
-Megalomania
+# Megalomania
+誇大妄想
 
-Egomania
+# Egomania
 
-Obsession
+# Obsession
 
-Compulsion
+# Compulsion
 
-Fatigue
+# Fatigue
 
-Exhibitionism
+# Exhibitionism
 
-Insomnia
+# Insomnia
 
-Oenomania
+# Oenomania
 
-Perfectionism
+# Perfectionism
 
-Pyromania
+# Pyromania
 
-Satyriasis
+# Satyriasis
 
-Suicidal Tendencies
+# Suicidal Tendencies
 %%%%
 _philosophy_or_science_
 
@@ -998,365 +1321,459 @@ _philosophy_or_science_
 %%%%
 _philosophy_name_
 
-Monotheism
+# Monotheism
+一神教
 
-Henotheism
+# Henotheism
 
-Polytheism
+# Polytheism
+多神教
 
-Atheism
+# Atheism
+無神論
 
-Autotheism
+# Autotheism
 
-Pantheism
+# Pantheism
 
-Panentheism
+# Panentheism
 
-Agnosticism
+# Agnosticism
 
-Existentialism
+# Existentialism
 
-Relativism
+# Relativism
 
-Absolutism
+# Absolutism
 
-Abstinence
+# Abstinence
 
-Hedonism
+# Hedonism
 
-Orthodoxy
+# Orthodoxy
 
-Heresy
+# Heresy
 
-Free Expression
+# Free Expression
 
-the Ego
+# the Ego
 
-Optimism
+# Optimism
+楽観主義
 
-Pessimism
+# Pessimism
+厭世主義
 
-Serendipity
+# Serendipity
 
-Limitation
+# Limitation
 
-Levity
+# Levity
 
-Nihilism
+# Nihilism
+虚無主義
 
-Pragmatism
+# Pragmatism
 
-Idealism
+# Idealism
 
-Activism
+# Activism
 
-Altruism
+# Altruism
 
-Anarchy
+# Anarchy
+無秩序
 
-Dogma
+# Dogma
 
-Egalitarianism
+# Egalitarianism
 
-Elitism
+# Elitism
 
-Ethics
+# Ethics
 
-Fallacy
+# Fallacy
 
-Fanaticism
+# Fanaticism
 
-Free Will
+# Free Will
+自由意志
 
-Liberalism
+# Liberalism
+リベラリズム
 
-Morality
+# Morality
 
-Mysticism
+# Mysticism
 
-Rationality
+# Rationality
 %%%%
 _science_name_
 
-Reason
+# Reason
+理由
 
-Unreason
+# Unreason
 
-Calculation
+# Calculation
+計算
 
-Instinct
+# Instinct
 
-Intuition
+# Intuition
 
-Circular Logic
+# Circular Logic
+回路論理
 
-Context
+# Context
+文脈
 
-Articulation
+# Articulation
 
-the Mind
+# the Mind
 
-the Nexus
+# the Nexus
 
-the Beginning
+# the Beginning
+始まり
 
-the End
+# the End
+終わり
 
-Analysis
+# Analysis
+分析
 
-Infinity
+# Infinity
+無限
 
-Quantum Leap
+# Quantum Leap
+量子跳躍
 
-Gravity
+# Gravity
+重力
 
-Rotation
+# Rotation
+回転
 
-the Big Bang
+# the Big Bang
+ビッグバン
 
-the Boiling Point
+# the Boiling Point
 
-Classification
+# Classification
 
-Evolution
+# Evolution
+進化
 
-Experimentation
+# Experimentation
 
-Focus
+# Focus
 
-Inference
+# Inference
 
-Inquiry
+# Inquiry
 
-Objectivity
+# Objectivity
 
-Subjectivity
+# Subjectivity
 
-Patterns
+# Patterns
 
-Theory
+# Theory
+理論
 %%%%
 _item_name_
 
 # items
-Orb
+# Orb
+オーブ
 
-Egg
+# Egg
+卵
 
-Globe
+# Globe
+天体
 
-Candle
+# Candle
+蝋燭
 
-Candelabrum
+# Candelabrum
+燭台
 
-Key
+# Key
+鍵
 
-Ring
+# Ring
+輪
 
-Chain
+# Chain
+鎖
 
-Coin
+# Coin
+コイン
 
-Cup
+# Cup
+杯
 
-Feather
+# Feather
+羽根
 
-Girdle
+# Girdle
 
-Horn
+# Horn
+角
 
-Pillar
+# Pillar
+柱
 
-Purse
+# Purse
+財布
 
-Scroll
+# Scroll
+巻物
 
-Ship
+# Ship
+船
 
-Tent
+# Tent
+テント
 
-Vase
+# Vase
 
-Vine
+# Vine
+蔓
 
-Walnut
+# Walnut
+胡桃
 
-Wheel
+# Wheel
+車輪
 
-Yoke
+# Yoke
 
 # body parts
-Heart
+# Heart
+心臓
 
-Brain
+# Brain
+脳髄
 
-Tooth
+# Tooth
+歯
 
-Foot
+# Foot
+脚
 
-Hand
+# Hand
+手
 
-Head
+# Head
+頭
 
-Mouth
+# Mouth
+口
 
-Throat
+# Throat
+喉
 
-Kidney
+# Kidney
+腎臓
 %%%%
 _magic_name_
 
-the Magi
+# the Magi
+魔法使い
 
-the Warrior-Mage
+# the Warrior-Mage
+魔法戦士
 
-the Hierophant
+# the Hierophant
+教皇
 
-the Sage
+# the Sage
+賢人
 %%%%
 # substances
 _substance_name_
 
-Bread
+# Bread
+パン
 
-Sulphur
+# Sulphur
+硫黄
 
-Crystal
+# Crystal
+水晶
 
-Bloodstone
+# Bloodstone
+血玉髄
 
-Oozing Pus
+# Oozing Pus
 
-Ash
+# Ash
+灰
 
-Slime
+# Slime
+スライム
 
-Bile
+# Bile
 
-Bodily Humours
+# Bodily Humours
 
-Cobwebs
+# Cobwebs
 
-Cheese
+# Cheese
+チーズ
 
-Dried Tears
+# Dried Tears
+乾いた涙
 
-Dung
+# Dung
 
-Ointment
+# Ointment
 
-Paper
+# Paper
+紙
 
-Rubbish
+# Rubbish
 
-Salt
+# Salt
+塩
 
-Saltpetre
+# Saltpetre
 
-Sharkskin
+# Sharkskin
+鮫皮
 
-Terra Cotta
+# Terra Cotta
 
 # these don't really fit
-Mana
+# Mana
+マナ
 
-Yeast
+# Yeast
 
-Spores
+# Spores
+胞子
 
-Dust
+# Dust
+塵
 %%%%
 # non-groupables
 other_weapon_name
 
-the Omega Point
+# the Omega Point
 
-Crawling
+# Crawling
 
-Conversion
+# Conversion
 
-Prescription
+# Prescription
 
-the Open Hand
+# the Open Hand
+空手
 
-Spontaneous Combustion
+# Spontaneous Combustion
 
-Res Nullius
+# Res Nullius
 
-Terra Nullius
+# Terra Nullius
 
-Desertification
+# Desertification
 
-the Spinneret
+# the Spinneret
 
-Grontol
+# Grontol
 
-the Two Names
+# the Two Names
 
-No Interval
+# No Interval
 
-Interdependent Arising
+# Interdependent Arising
 
-the Blind Eye
+# the Blind Eye
+盲目
 
-the Briny Deep
+# the Briny Deep
 
-Broken Luck
+# Broken Luck
 
-Entrepreneurial Spirit
+# Entrepreneurial Spirit
 
-the Vendetta
+# the Vendetta
+復讐
 
-the Empty Page
+# the Empty Page
+白紙
 
-the Final Chapter
+# the Final Chapter
+最終局面
 
-Hard Scrabble
+# Hard Scrabble
 
-Red Wine
+# Red Wine
+赤ワイン
 
-Undoing
+# Undoing
 
-the Unkillable
+# the Unkillable
 
 # akrasiac patch
-Irrepressible Laughter
+# Irrepressible Laughter
 %%%%
 # single word monster names, to allow for combinations like <Monster>slayer
 short_monster_name_
 
-Dragon
+# Dragon
+ドラゴン
 
-Hydra
+# Hydra
+ヒドラ
 
-Ogre
+# Ogre
+オーガ
 
-Spider
+# Spider
+蜘蛛
 
-Newt
+# Newt
+イモリ
 
-Giant
+# Giant
+巨人
 
-Beetle
+# Beetle
+昆虫
 
-Jelly
+# Jelly
+ジェリー
 
+# w:1
+# Testudine
 w:1
-Testudine
+亀
 
+# w:1
+# Lacertilian
 w:1
-Lacertilian
+トカゲ
 
+# w:1
+# Acarine
 w:1
-Acarine
+ダニ
 
-Beast
+# Beast
+獣
 
-Demon
+# Demon
+悪魔
 
-Goblin
+# Goblin
+ゴブリン
 
-Imp
+# Imp
+インプ
 %%%%
 _monster_name_
 
@@ -1364,157 +1781,208 @@ _monster_name_
 
 @player_species@
 
-Killer Bee
+# Killer Bee
+殺人蜂
 
-Killer Klown
+# Killer Klown
+殺人ピエロ
 
-Orb Guardian
+# Orb Guardian
+オーブの守護者
 %%%%
 _short_killer_name_
 
-bane
+# bane
+狩り
 
-slayer
+# slayer
+殺し
 %%%%
 # used from the C++ side
 killer_name
 
-'s Bane
+# 's Bane
+の天敵
 
-'s Death
+# 's Death
 
-'s Doom
+# 's Doom
 
-'s Foe
+# 's Foe
 
-'s Regret
+# 's Regret
 
-'s Curse
+# 's Curse
 
-'s Peril
+# 's Peril
 %%%%
 _long_killer_name_
 
-'s Death Toll
+# 's Death Toll
 
-'s Funeral
+# 's Funeral
 
-'s Nightmare
+# 's Nightmare
+にとっての悪夢
 
-'s Undoing
+# 's Undoing
 
-'s Demise
+# 's Demise
 
-w:1
-'s Looming Annihilation
+# w:1
+# 's Looming Annihilation
 %%%%
 _real_weapon_name_
 
-Grim Tooth
+# Grim Tooth
+グリムトゥース
 
+# w:5
+# Widowmaker
 w:5
-Widowmaker
+ウィドウメイカー
 
-w:5
-Widowermaker
+# w:5
+# Widowermaker
+ウィドワメイカー
 
-Lifebane
+# Lifebane
+命の破滅
 
-Conservator
+# Conservator
+介添人
 
-Banisher
+# Banisher
+追放者
 
-Tormentor
+# Tormentor
+拷問吏
 
-Pendulum
+# Pendulum
+優柔不断
 
-Murmur
+# Murmur
+不平不満
 
-Sarcophage
+# Sarcophage
+石棺
 
-Concordance
+# Concordance
+調和
 
-Dragon's Tongue
+# Dragon's Tongue
+龍の舌
 
-Arbiter
+# Arbiter
+調停者
 
-Death Rattle
+# Death Rattle
+臨終喘鳴
 
-Arcanum
+# Arcanum
+アルカナ
 
-Transmigrator
+# Transmigrator
+魂の輪廻
 
-Ultimatum
+# Ultimatum
+最後通牒
 
-Earthworm
+# Earthworm
+蚯蚓
 
-Worm
+# Worm
+虫けら
 
-Worm's Wrath
+# Worm's Wrath
+虫けらの逆襲
 
-Leviticus
+# Leviticus
+レビ記
 
-Grim
+# Grim
+グリム
 
 # Lemuel's suggestions
-Eviscerator
+# Eviscerator
 
-Undertaker
+# Undertaker
+葬儀屋
 
-Embalmer
+# Embalmer
 
-Trog's @_anger_name_@
+トログの@_anger_name_@
 
-Hellblazer
+# Hellblazer
 
-Hell-Harrower
+# Hell-Harrower
 
 # Sigmund's sword
-Gram
+# Gram
+グラム
 %%%%
 _joke_weapon_name_
 
-Secret Weapon
+# Secret Weapon
+秘密兵器
 
-With Two Names
+# With Two Names
 
-Thing
+# Thing
+物体X
 
-Mud Pie of Death
+# Mud Pie of Death
+死の泥饅頭
 
-Xom's @_xom_esteem_@
+ゾムの@_xom_esteem_@
 
-String
+# String
+絞首刑
 
-Stringbean
+# Stringbean
+八頭体
 
-Blob
+# Blob
+ブロブ
 
-Globulus
+# Globulus
+グロブルス
 
-Hulk
+# Hulk
+ハルク
 
-Raisin
+# Raisin
+皺くちゃ婆ア
 
-Starlight
+# Starlight
+星月夜
 
-Giant's Toothpick
+# Giant's Toothpick
+巨人の爪楊枝
 
-Backscratcher
+# Backscratcher
+おべっか使い
 
-Brush
+# Brush
+鎧袖一触
 
-Grom
+# Grom
+グロム
 
-Grum
+# Grum
+グルム
 
-Rummage
+# Rummage
+虱潰し
 
-Omelette
+# Omelette
+オムレット
 
-Egg
+# Egg
+未熟者
 
-Aubergine
+# Aubergine
+なすび
 
 Z
 
@@ -1524,27 +1992,32 @@ Q
 
 Ox
 
-Tattletale
+# Tattletale
+告げ口屋
 
-Fish
+# Fish
+淫売野郎
 
-Bung
+# Bung
+袖の下
 
-Bingo
+# Bingo
+大正解
 
 # from the crawl.akrasiac.org patch
-Cookie Cutter
+# Cookie Cutter
 
-ETAOIN SHRDLU
+# ETAOIN SHRDLU
 
-Lorem Ipsum
+# Lorem Ipsum
+*ここに本文を入れてください*
 
 # These three are from old Crawl code.
-Plojy
+# Plojy
 
-Glorpo
+# Glorpo
 
-Loopy
+# Loopy
 %%%%
 _plain_weapon_name_
 
