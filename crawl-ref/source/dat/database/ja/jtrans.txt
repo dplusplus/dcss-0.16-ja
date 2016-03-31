@@ -4125,8 +4125,6 @@ Command line options:
 
 コマンドラインオプション:
 %%%%
-
-%%%%
 You wake up in a daze, and can't recall much.
 
 あなたは茫然と覚醒したばかりで、まだ十分な力を取り戻していない。
@@ -15526,6 +15524,22 @@ Your bond becomes stronger.
 %%%%
 ############################## stairs.cc ##############################
 %%%%
+Within the labyrinth you'll only be able to teleport away from the exit!
+
+ラビリンスの内部ではテレポートしても出口から遠ざかることしかできない！
+%%%%
+Warning, next level annotated: <yellow>%s</yellow>
+
+[警告] 次の階の注意文: <yellow>%s</yellow>
+%%%%
+This staircase is marked as excluded!
+
+この階段は禁止エリアに指定されています！
+%%%%
+Enter next level anyway?
+
+それでも次の階に進みますか？
+%%%%
 The hatch slams shut behind you.
 
 脱出ハッチがあなたの背後でピシャッと閉まった。
@@ -15538,7 +15552,7 @@ A mysterious force pulls you upwards.
 
 不思議な力があなたを上に引き寄せた。
 %%%%
-You  downwards.
+You %s downwards.
 
 あなたは下へと%s。
 %%%%
@@ -15549,6 +15563,18 @@ You %s %s through the gate.
 You %s %swards.
 
 あなたは%sへと%s。
+%%%%
+In your confused state, you trip and fall back down the stairs.
+
+あなたは混乱しつつ、階段を転がり落ちた。
+%%%%
+In your confused state, you trip and fall back through the gate.
+
+あなたは混乱しつつ、門をくぐって向こう側に転がり込んだ。
+%%%%
+You have escaped!
+
+あなたは迷宮から脱出した！
 %%%%
 Thank you for visiting Hell. Please come again soon.
 
@@ -15565,6 +15591,58 @@ Welcome back to %s!
 You sense a powerful magical force warping space.
 
 あなたは強い魔力が空間を歪めているのを感じた。
+%%%%
+The shaft disappears in a puff of logic!
+
+縦穴はぽんっと煙を立てて消え去った！
+%%%%
+Strange, the shaft seems to lead back to this level.
+
+奇妙なことに、この縦穴はこの階に繋がっている。
+%%%%
+The strain on the space-time continuum destroys the shaft!
+
+時空連続体の緊張状態に耐えきれず、縦穴は崩壊した！
+%%%%
+for %d floors
+
+て%dフロア下に落ちた
+%%%%
+You %s a shaft%s!
+
+あなたは%s縦穴に%s%s！
+%%%%
+The shaft crumbles and collapses.
+
+縦穴は崩れて埋まった。
+%%%%
+You need a rune to enter this place.
+
+この場所に入るにはルーンが必要だ。
+%%%%
+You insert the %s rune into the lock.
+
+あなたは%sを錠前に埋め込んだ。
+%%%%
+The gate opens wide!
+
+門が大きく開いた！
+%%%%
+With a loud hiss the gate opens wide!
+
+轟音と共に門が大きく開いた！
+%%%%
+You need at least %d runes to enter this place.
+
+この場所に入るには最低%d個のルーンが必要だ。
+%%%%
+The lock glows eerily!
+
+錠前が奇妙に輝いた！
+%%%%
+Heavy smoke blows from the lock!
+
+もうもうたる煙が錠前から上がった！
 %%%%
 Voluntarily entered the Abyss.
 
@@ -15585,6 +15663,30 @@ Escaped Pandemonium
 Escaped into the Abyss
 
 アビスに脱出した
+%%%%
+You plunge deeper into the Abyss.
+
+あなたはアビスの更なる深みに沈んでいった。
+%%%%
+You enter the Abyss!
+
+あなたはアビスへと突入した！
+%%%%
+To return, you must find a gate leading back.
+
+現世へと戻るには、そのための門を探さなければならない。
+%%%%
+You feel Cheibriados slowing down the madness of this place.
+
+あなたはケイブリアドスがこの空間の狂気を遅くしているような気がした。
+%%%%
+You pass into a different region of Pandemonium.
+
+あなたはパンデモニウムの別の領域へと進んでいった。
+%%%%
+Welcome to %s!
+
+%sへようこそ！
 %%%%
 ############################## stash.cc ##############################
 %%%%
