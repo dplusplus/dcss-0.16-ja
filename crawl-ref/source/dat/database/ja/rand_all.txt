@@ -18,62 +18,89 @@
 ######################################################
 _jewellery_animal_
 
-Firefly
+# Firefly
+蛍
 
-Scarab
+# Scarab
+スカラベ
 
+# w:5
+# Magpie
 w:5
-Magpie
+カササギ
 
+# w:5
+# Raven
 w:5
-Raven
+鴉
 %%%%
 _jewellery_special_name_
 
-Disaster
+# Disaster
+災い
 
-Ephemeral Luck
+# Ephemeral Luck
+薄幸
 
-Wishful Thinking
+# Wishful Thinking
+希望的観測
 
-Moodiness
+# Moodiness
+不機嫌
 
-Reimbursement
+# Reimbursement
+償還
 
-the Tempest
+# the Tempest
+暴風
 
-Finality
+# Finality
+最終決定
 
-Attitude
+# Attitude
+心構え
 
-Lady Luck
+# Lady Luck
+幸運の女神
 
-Temptation
+# Temptation
+誘惑
 
-False Pretenses
+# False Pretenses
+詐欺
 
 # FIXME: should appear on amulets only
-Yendor
+# Yendor
+イェンダー
 %%%%
 _suspicion_name_
 
-Secrets
+# Secrets
+秘密
 
-Suspicion
+# Suspicion
+疑惑
 
-Mistrust
+# Mistrust
+不信
 
-Jealousy
+# Jealousy
+羨望
 
-Incredulity
+# Incredulity
+懐疑
 
-Doubts
+# Doubts
+疑惑
 
-Suspected Treachery
+# Suspected Treachery
+邪推
 
-Scepticism
+# Scepticism
+猜疑
 
-Trepidation
+# Trepidation
+狼狽
 
 w:20
 @_conflict_name_@
@@ -85,38 +112,54 @@ w:20
 divine_esteem
 
 # good
-Esteem
+# Esteem
+好意
 
-Favour
+# Favour
+寵愛
 
-Hope
+# Hope
+希望
 
-Regard
+# Regard
+敬意
 
-Approval
+# Approval
+お墨付き
 
-Delight
+# Delight
+歓喜
 
-Pride
+# Pride
+誇り
 
-Generosity
+# Generosity
+寛容
 
-Supremacy
+# Supremacy
+覇権
 
-Benevolence
+# Benevolence
+慈悲
 
-Whim
+# Whim
+気紛れ
 
 # bad
-Displeasure
+# Displeasure
+不興
 
-Envy
+# Envy
+嫉妬
 
-Castigation
+# Castigation
+折檻
 
-Condemnation
+# Condemnation
+審判
 
-Reproof
+# Reproof
+叱責
 
 w:70
 @_anger_name_@
@@ -127,125 +170,181 @@ _xom_esteem_
 w:40
 @divine_esteem@
 
-Entertainment
+# Entertainment
+娯楽
 
-Best Wishes
+# Best Wishes
+敬具
 
-Amusement
+# Amusement
+慰みもの
 
-Ringing Laughter
+# Ringing Laughter
+爆笑
 
-Bemusement
+# Bemusement
+困惑
 
-Passing Interest
+# Passing Interest
+無関心
 
-Full Attention
+# Full Attention
+傾注
 
-Whimsicality
+# Whimsicality
+奇行
 
-Capriciousness
+# Capriciousness
+酔狂
 
-Sleight of Hands
+# Sleight of Hands
+手妻
 
-Flight of Fancy
+# Flight of Fancy
+空想
 
-Absentmindedness
+# Absentmindedness
+放心
 
-Malicious Joy
+# Malicious Joy
+愉悦
 
-Fair Game
+# Fair Game
+フェアプレー
 
-Wantonness
+# Wantonness
+浮気
 
-Recklessness
+# Recklessness
+蛮勇
 %%%%
 _time_name_
 
-Day
+# Day
+昼
 
-Midnight
+# Midnight
+真夜中
 
-Twilight
+# Twilight
+黄昏
 
-Dawn
+# Dawn
+暁
 
+# w:5
+# Spring
+春
+
+# w:5
+# Springtime
+
+# w:5
+# Summer
 w:5
-Spring
+夏
 
-w:5
-Springtime
+# w:5
+# Summertime
 
-w:5
-Summer
+# Autumn
+秋
 
-w:5
-Summertime
+# Winter
+冬
 
-Autumn
+# Midsummer
+真夏
 
-Winter
+# Midwinter
+真冬
 
-Midsummer
+# the Solstice
+夏至
 
-Midwinter
+冬至
 
-the Solstice
+# the Harvest
+収穫
 
-the Harvest
+# Eternal Night
+永遠の夜
 
-Eternal Night
+# Eternity
+永劫の
 
-Eternity
+# Noon
+正午
 
-Noon
+# the Present
+現在
 
-the Present
+# the Morning
+朝
 
-the Morning
-
-the Evening
+# the Evening
+夕暮れ
 %%%%
 _sky_colour_name_
 
-Black
+# Black
+黒
 
-Blue
+# Blue
+青
 
-Grey
+# Grey
+灰
 
-Orange
+# Orange
+橙
 
-Purple
+# Purple
+紫
 
-Red
+# Red
+赤
 %%%%
 _sky_or_light_
 
-the Sun
+# the Sun
+太陽
 
-the Moon
+# the Moon
+月
 
-Light
+# Light
+光明
 
-Darkness
+# Darkness
+暗黒
 
-Dim Light
+# Dim Light
+薄明かり
 
-the Shining Light
+# the Shining Light
+烈光
 
-Sunlight
+# Sunlight
+陽光
 
-Starshine
+# Starshine
+星明かり
 
-the Sky
+# the Sky
+蒼穹
 
-the Gloaming
+# the Gloaming
+薄暮
 
-the Heavens
+# the Heavens
+天国
 
-the Skies Above
+# the Skies Above
+空
 
-the @_sky_colour_name_@ Skies
+# the @_sky_colour_name_@ Skies
+@_sky_colour_name_@色の空
 %%%%
 _virtue_or_vice_
 
@@ -258,226 +357,332 @@ w:5
 %%%%
 _virtue_name_
 
-Virtue
+# Virtue
+美徳
 
-Truth
+# Truth
+真実
 
-Honesty
+# Honesty
+誠実
 
-Benevolence
+# Benevolence
+慈悲
 
-Devotion
+# Devotion
+献身
 
-Generosity
+# Generosity
+寛容
 
-Grace
+# Grace
+気品
 
-Temperance
+# Temperance
+節制
 
-Hospitality
+# Hospitality
+歓待
 
-Charity
+# Charity
+慈善
 
-Patience
+# Patience
+忍耐
 
-Modesty
+# Modesty
+謙遜
 %%%%
 _vice_name_
 
 # some of the deadly sins
-Sloth
+# Sloth
+怠惰
 
-Vanity
+# Vanity
+虚栄
 
-Gluttony
+# Gluttony
+貪食
 
-Pride
+# Pride
+傲慢
 
-Greed
+# Greed
+強欲
 
 # general immorality
-Sin
+# Sin
+罪業
 
-the Original Sin
+# the Original Sin
+原罪
 
-Lies
+# Lies
+虚言
 
-Dishonesty
+# Dishonesty
+不実
 
-Cowardice
+# Cowardice
+臆病
 
-Dishonour
+# Dishonour
+不名誉
 
-Impatience
+# Impatience
+短気
 
-Immorality
+# Immorality
+背徳
 
-Amorality
+# Amorality
+非道
 
-Untruth
+# Untruth
+虚偽
 
-Spite
+# Spite
+悪意
 %%%%
 _destiny_name_
 
-Causality
+# Causality
+因果
 
-Destiny
+# Destiny
+宿命
 
-Fate
+# Fate
+運命
 
-Karma
+# Karma
+因業
 
-Kismet
+# Kismet
+天運
 
-Wyrd
+# Wyrd
+命運
 
-Doom
+# Doom
+破滅
 %%%%
 _number_or_qualifier_
 
 # exact numbers
-the Three
+# the Three
+三つの
 
-the Four
+# the Four
+四つの
 
-the Five
+# the Five
+五つの
 
-the Six
+# the Six
+六つの
 
-the Seven
+# the Seven
+七つの
 
-the Eight
+# the Eight
+八つの
 
-the Nine
+# the Nine
+九つの
 
-the Ten
+# the Ten
+十の
 
-the Eleven
+# the Eleven
+十一の
 
+# w:5
+# the Twelve
 w:5
-the Twelve
+十二の
 
+# w:5
+# the Dozen
 w:5
-the Dozen
+一ダースの
 
-the Thirteen
+# the Thirteen
+十三の
 
-the Fifty
+# the Fifty
+五十の
 
+# w:5
+# a Hundred
 w:5
-a Hundred
+百の
 
+# w:5
+# the Hundredfold
 w:5
-the Hundredfold
+百倍の
 
-a Thousand
+# a Thousand
+千の
 
 # vague numbers
-the
+# the 
 
-the Many
+# the Many
+数多の
 
-the Countless
+# the Countless
+無数の
 
-the Assorted
+# the Assorted
+詰め合わせの
 
-the Manifold
+# the Manifold
+多数の
 
 # other qualifiers
-the Lost
+# the Lost
+失われし
 
-the Forgotten
+# the Forgotten
+忘れられし
 
-the Forsaken
+# the Forsaken
+見捨てられた
 
-the Hidden
+# the Hidden
+隠された
 
-the Last
+# the Last
+最後の
 
-the Lonely
+# the Lonely
+孤独な
 
-the Jolly
+# the Jolly
+陽気な
 
-the Ancient
+# the Ancient
+古代の
 
-the Exiled
+# the Exiled
+追放された
 
-the Illusory
+# the Illusory
+架空の
 
-the Pure
+# the Pure
+純粋な
 
-the Peculiar
+# the Peculiar
+奇妙な
 
-the Special
+# the Special
+特別な
 
-the First
+# the First
+始原の
 %%%%
 _thing_names_
 
-Suns
+# Suns
+太陽
 
-Moons
+# Moons
+月
 
-Stars
+# Stars
+星
 
-Planets
+# Planets
+惑星
 
-Hells
+# Hells
+地獄
 
-Lives
+# Lives
+生命
 
-Deaths
+# Deaths
+死
 
-Curses
+# Curses
+呪い
 
-Blessings
+# Blessings
+祝福
 
-Gods
+# Gods
+神
 
-Spirits
+# Spirits
+精霊
 
-Ghosts
+# Ghosts
+幽霊
 
-Demons
+# Demons
+悪魔
 
-Wars
+# Wars
+争い
 
-Mice
+# Mice
+鼠
 
-Eyes
+# Eyes
+目
 
-Nights
+# Nights
+夜
 
-Orbs
+# Orbs
+オーブ
 
-Runes
+# Runes
+ルーン
 
-Seas
+# Seas
+海
 
-Places
+# Places
+場所
 
-Realms
+# Realms
+領域
 
-Wishes
+# Wishes
+願い
 
-Wonders
+# Wonders
+不思議
 
-Beds
+# Beds
+ベッド
 
-Beggars
+# Beggars
+乞食
 
-Cities
+# Cities
+都市
 
-Dances
+# Dances
+踊り
 
-Lies
+# Lies
+嘘
 
-Ships
+# Ships
+船
 
-Songs
+# Songs
+歌
 
-Souls
+# Souls
+魂
 
-Tales
+# Tales
+物語
 %%%%
