@@ -1,4 +1,4 @@
-######################################################
+#####################################################
 # Randart Names
 # -------------
 # randbook.txt: keywords for randart BOOKS
@@ -54,55 +54,67 @@ book appearance
 %%%%
 book_noun
 
-Tome
+# Tome
+書
 
-Grimoire
+# Grimoire
+魔導書
 
-Almanac
+# Almanac
+年鑑
 
-Volume
+# Volume
+全集
 
-Compendium
+# Compendium
+概論
 
-Handbook
+# Handbook
+手引書
 
-Incunabulum
+# Incunabulum
 
-Papyrus
+# Papyrus
+古文書
 
-Catalogue
+# Catalogue
+カタログ
 %%%%
 _book_noun_on_
 
-Guide
+# Guide
+ガイド
 
-Collected Works
+# Collected Works
+論文集
 
-Disquisition
+# Disquisition
+論文
 
-Reference Book
+# Reference Book
+参考書
 %%%%
 # C++: discipline books, including Kiku's gifts
 book_name
 
 w:9
-@book_noun@ of
+の@book_noun@
 
 w:4
-@_book_noun_on_@ on
+の@_book_noun_on_@
 %%%%
 # @book_noun@ of ...
 # C++: "totally random" books
 random_book_title
 
 w:15
-the @_book_plant_animal_@
+@_book_plant_animal_@
 
 w:20
-@_number_or_qualifier_@ @_thing_names_@
+@_number_or_qualifier_@@_thing_names_@
 
 w:4
-the @_profession_name_@
+@_profession_name_@
 
 w:13
 @_philosophy_or_science_@
@@ -211,66 +223,85 @@ torn
 %%%%
 _the_book_magic_
 
-w:9
+# w:9
 # capitalise later as needed
-the Arcane Arts
+# the Arcane Arts
+w:9
+秘技
 
+# w:1
+# the Hermit's Heritage
 w:1
-the Hermit's Heritage
+隠遁者の遺産
 
 w:90
 @_book_magic_@
 %%%%
 _book_magic_
 
-Magic
+# Magic
+魔術
 
-Theurgy
+# Theurgy
+儀式魔術
 
-Thaumaturgy
+# Thaumaturgy
+奇蹟
 
+# w:5
+# Casting
 w:5
-Casting
+詠唱
 
+# w:5
+# Spellcasting
 w:5
-Spellcasting
+呪文詠唱
 
-Wizardry
+# Wizardry
+魔導
 
-Sorcery
+# Sorcery
+魔法
 
-Witchcraft
+# Witchcraft
 
-Witchery
+# Witchery
 
-Spellcraft
+# Spellcraft
 
-Spellweaving
+# Spellweaving
 
+# w:5
+# Secret Knowledge
 w:5
-Secret Knowledge
+秘められし知識
 
-w:5
-Rites and Rhymes
+# w:5
+# Rites and Rhymes
 
+# w:5
+# Hermeneutics
 w:5
-Hermeneutics
+解釈学
 %%%%
 _beginners_
 
-Beginners
+# Beginners
+初心者
 
-w:5
-Neophytes
+# w:5
+# Neophytes
 
-w:5
-Novices
+# w:5
+# Novices
 
-w:3
-Rookies
+# w:3
+# Rookies
 
-w:2
-Absolute Beginners
+# w:2
+# Absolute Beginners
+超初心者
 
 w:1
 Dummies
@@ -278,114 +309,147 @@ Dummies
 # level 1
 starting level book
 
-@_the_book_magic_@ for @_beginners_@
+@_beginners_@にもわかる@_the_book_magic_@
 
-w:2
-@_the_book_magic_@ 101
+猫でもわかる@_the_book_magic_@
 
-A Beginning Course on @_the_book_magic_@
+# w:2
+# @_the_book_magic_@ 101
+@_the_book_magic_@について 入門編
 
-@_the_book_magic_@, Part One
+# A Beginning Course on @_the_book_magic_@
+@_the_book_magic_@の初心者コース
 
-An Introduction to @_the_book_magic_@
+# @_the_book_magic_@, Part One
+@_the_book_magic_@ 第1巻
 
-w:2
-An Initiation to @_the_book_magic_@
+# An Introduction to @_the_book_magic_@
+@_the_book_magic_@解説書
 
-First Steps in @_the_book_magic_@
+# w:2
+# An Initiation to @_the_book_magic_@
+
+# First Steps in @_the_book_magic_@
+@_the_book_magic_@はじめの一歩
 %%%%
 # level 2-4
 easy level book
 
-A Primer on @_the_book_magic_@
+# A Primer on @_the_book_magic_@
+@_the_book_magic_@読本
 
-@_the_book_magic_@ in Simple Steps
+# @_the_book_magic_@ in Simple Steps
+@_the_book_magic_@簡単ガイド
 
-An Early Guide to @_the_book_magic_@
+# An Early Guide to @_the_book_magic_@
 
-The Foundations of @_book_magic_@
+# The Foundations of @_book_magic_@
+@_the_book_magic_@の基礎
 
-Easy @_book_magic_@
+# Easy @_book_magic_@
+かんたん@_the_book_magic_@
 
-@_the_book_magic_@, Part @level@
+# @_the_book_magic_@, Part @level@
+@_the_book_magic_@について 第@level@巻
 
-@_the_book_magic_@ Continued
+# @_the_book_magic_@ Continued
+続・@_the_book_magic_@
 
+# w:1
+# @_book_magic_@, and How To Use It
 w:1
-@_book_magic_@, and How To Use It
+@_the_book_magic_@とその使い方
 %%%%
 # level 4-6
 moderate level book
 
-Advanced Steps in @_the_book_magic_@
+# Advanced Steps in @_the_book_magic_@
+@_the_book_magic_@応用編
 
-The Advanced Guide to @_the_book_magic_@
+# The Advanced Guide to @_the_book_magic_@
+@_the_book_magic_@上級ガイド
 
-Further Steps in @_the_book_magic_@
+# Further Steps in @_the_book_magic_@
 
-@_the_book_magic_@, Part @level@
+# @_the_book_magic_@, Part @level@
+@_the_book_magic_@について 第@level巻
 
-Advanced @_book_magic_@
+# Advanced @_book_magic_@
+上級@_the_book_magic_@
 
-Sophisticated @_book_magic_@
+# Sophisticated @_book_magic_@
 
-Further Progress in @_book_magic_@
+# Further Progress in @_book_magic_@
 
-The Second Course in @_book_magic_@
+# The Second Course in @_book_magic_@
 
-w:1
-Improving Your @_book_magic_@
+# w:1
+# Improving Your @_book_magic_@
 
 %%%%
 # powerful casters, used for high level books
 _powerful_caster_
 
-Archmage
+# Archmage
+大魔道士
 
+# w:3
+# Deep Elf Lorekeeper
+
+# w:3
+# Blind Seer
 w:3
-Deep Elf Lorekeeper
+盲目の先見者
 
-w:3
-Blind Seer
+# w:3
+# Prophet
+予言者
 
-w:3
-Prophet
-
+# w:1
+# Greatest Mummy
 w:1
-Greatest Mummy
+偉大なるミイラ
 %%%%
 _the_powerful_caster_
 
-the @_powerful_caster_@
+# the @_powerful_caster_@
+@_powerful_caster_@
 
+# w:3
+# Boris
 w:3
-Boris
+ボリス
 
-w:1
-Sif Muna
+# w:1
+# Sif Muna
+シフ・ムーナ
 %%%%
 _last_or_lost_
 
-Last
+# Last
+最後の
 
-Lost
+# Lost
+失われし
 %%%%
 # level 7-9, books in the form of "XYZ's <bookname>"
 # Prefixed articles will be filtered out.
 _difficult level book owner_
 
-A Thorough Guide to @_the_book_magic_@
+# A Thorough Guide to @_the_book_magic_@
+@_the_book_magic_@総覧
 
-The @_last_or_lost_@ Secrets of @_the_book_magic_@
+# The @_last_or_lost_@ Secrets of @_the_book_magic_@
+@_the_book_magic_@の@_last_or_lost_@秘密
 
-The Arcane Secrets of @_book_magic_@
+# The Arcane Secrets of @_book_magic_@
 
-The Intricacies of @_the_book_magic_@
+# The Intricacies of @_the_book_magic_@
 
-The @book_noun@ of Greatest Risks and Utility
+# The @book_noun@ of Greatest Risks and Utility
 
-w:1
-Mastering @_book_magic_@
+# w:1
+# Mastering @_book_magic_@
 %%%%
 # level 7-9, books without being named after their owner/author
 difficult level book
@@ -393,592 +457,723 @@ difficult level book
 w:50
 @_difficult level book owner_@
 
-The @_last_or_lost_@ @book_noun@ of @_the_powerful_caster_@
+# The @_last_or_lost_@ @book_noun@ of @_the_powerful_caster_@
+@_the_powerful_caster_@の@_last_or_lost_@@book_noun@
 
-w:1
-The Testament of @_the_powerful_caster_@
+# w:1
+# The Testament of @_the_powerful_caster_@
 %%%%
 # synonyms for predominant spell schools
 # variants starting with the definite article will get "the" prepended
 # to the adjective version
 Conjuration
 
-Conjuration
+# Conjuration
+妖術
 
-Confrontation
+# Confrontation
 
-Attacks
+# Attacks
 
+# w:5
+# Battle Magic
 w:5
-Battle Magic
+戦闘魔術
 
-w:5
-Combat Magic
+# w:5
+# Combat Magic
 
-w:5
-Arcane Weapons
+# w:5
+# Arcane Weapons
 
-w:1
-Blows and Bruises
+# w:1
+# Blows and Bruises
 
-w:1
-Damage Dealing
+# w:1
+# Damage Dealing
 %%%%
 Charms
 
-Enhancements
+# Enhancements
 
-Talismans
+# Talismans
+呪符
 
-Good Luck
+# Good Luck
 
-Protection
+# Protection
+守護
 
+# w:3
+# Self-Knowledge
 w:3
-Self-Knowledge
+自己分析
 
+# w:3
+# Self-Improvement
 w:3
-Self-Improvement
+自己成長
 
-Aid
+# Aid
 
-Augmentations
+# Augmentations
+増強
 
-w:1
-Benedictions
+# w:1
+# Benedictions
 
-Boosts
+# Boosts
+増幅
 %%%%
 Fire
 
-Fire
+# Fire
+火炎
 
-Flames
+# Flames
+猛火
 
-Heat
+# Heat
+熱
 
-the Volcanoes
+# the Volcanoes
+火山
 
-the Blaze
+# the Blaze
+火災
 
-Ignition
+# Ignition
+点火
 
-the Arsonist
+# the Arsonist
+放火
 %%%%
 Hexes
 
-Hexes
+# Hexes
+呪術
 
-Curses
+# Curses
+呪い
 
-Malediction
+# Malediction
 
-the Oath
+# the Oath
 
-Execration
+# Execration
 
-Enchantment
+# Enchantment
 
-Bewitchment
+# Bewitchment
 
-w:1
-Glamour
+# w:1
+# Glamour
 
-w:1
-Fascination
+# w:1
+# Fascination
 
-Beguiling
+# Beguiling
 %%%%
 Ice
 
-Ice
+# Ice
+氷結
 
-Snow
+# Snow
+氷雪
 
-Cold
+# Cold
+冷気
 
-the Snowflakes
+# the Snowflakes
+雪片
 
-the Glacier
+# the Glacier
 
-the Frostbite
+# the Frostbite
 %%%%
 Transmutation
 
-Transmigration
+# Transmigration
 
-Transmutation
+# Transmutation
+変異
 
-Transformation
+# Transformation
+変身
 
-Shape Shifting
+# Shape Shifting
 
-Changing
+# Changing
+変容
 
-Moulding
+# Moulding
 %%%%
 # for necromantic books
 _Evil_adjective_
 
-Evil
+# Evil
+邪悪なる
 
-Dark
+# Dark
+暗黒の
 
-Black
+# Black
 
-Sinister
+# Sinister
 
-Unholy
+# Unholy
+忌まわしき
 %%%%
 # also for necromantic books
 _Evil_noun_
 
-Rites
+# Rites
+儀式
 
-Arts
+# Arts
+技法
 
-Secrets
+# Secrets
+秘密
 
-Rituals
+# Rituals
+礼拝
 
-Magic
+# Magic
+魔術
 %%%%
 Necromancy
 
-Necromancy
+# Necromancy
+死霊術
 
-Evil
+# Evil
+邪悪
 
-Darkness
+# Darkness
+暗黒
 
-Stolen Souls
+# Stolen Souls
 
 w:60
-@_Evil_adjective_@ @_Evil_noun_@
+@_Evil_adjective_@@_Evil_noun_@
 %%%%
 Summoning
 
-Summoning
+# Summoning
+召喚
 
-Calling
+# Calling
 
-Creation
+# Creation
+創造
 
-the Entourage
+# the Entourage
 
-Companions
+# Companions
 
-the Escort
+# the Escort
+護衛
 
+# w:1
+# Illusion
 w:1
-Illusion
+幻影
 
+# w:2
+# Slavery
 w:2
-Slavery
+奴隷
 %%%%
 Translocation
 
-Translocation
+# Translocation
+転位術
 
-Displacement
+# Displacement
 
-Dislocation
+# Dislocation
 
-Orientation
+# Orientation
 
-the Traveller
+# the Traveller
+旅行者
 
-the Compass
+# the Compass
 
-the Voyage
+# the Voyage
+航行
 %%%%
 Poison
 
-Poison
+# Poison
+毒
 
-Venom
+# Venom
+猛毒
 
-Toxins
+# Toxins
 
-Poisoning
+# Poisoning
+服毒
 
-Intoxication
+# Intoxication
 
-Envenoming
+# Envenoming
 
-Contamination
+# Contamination
+汚染
 %%%%
 Earth
 
-Earth
+# Earth
+大地
 
-Stones
+# Stones
+岩石
 
-Clay
+# Clay
+粘土
 
-the Mountains
+# the Mountains
+山脈
 
-the Rocks
+# the Rocks
 %%%%
 Air
 
-Air
+# Air
+大気
 
-Lightness
+# Lightness
 
-Weightlessness
+# Weightlessness
 
-Flight
+# Flight
+飛行
 
-the Birds
+# the Birds
+鳥類
 
-Feathers
+# Feathers
+羽根
 %%%%
 # adjectives for secondary spell school
 Conjuration adj
 
-Destructive
+# Destructive
+破壊的
 
-Harmful
+# Harmful
 
-Damaging
+# Damaging
 
-Hurtful
+# Hurtful
 
-Excruciating
+# Excruciating
 
+# w:5
+# Lethal
 w:5
-Lethal
+致命的
 %%%%
 Charms adj
 
-Helpful
+# Helpful
+役立つ
 
-Lucky
+# Lucky
 
-Assistive
+# Assistive
 
-Boosting
+# Boosting
 %%%%
 Hexes adj
 
-Enchanting
+# Enchanting
 
-Bewitching
+# Bewitching
+魅惑の
 
-Captivating
+# Captivating
 
-Fetching
+# Fetching
 
-Enthralling
+# Enthralling
 
-Ensnaring
+# Ensnaring
 
-Entrancing
+# Entrancing
 %%%%
 Fire adj
 
-Fiery
+# Fiery
+燃えさかる
 
-Scorching
+# Scorching
 
-Burning
+# Burning
 
-Blistering
+# Blistering
 
-Igneous
+# Igneous
 
-Flamy
+# Flamy
 
-Torrid
+# Torrid
 %%%%
 Ice adj
 
-Glacial
+# Glacial
 
-Freezing
+# Freezing
+凍てつく
 
-Icy
+# Icy
 
-Congealing
+# Congealing
 
-Frigorific
+# Frigorific
 %%%%
 Transmutation adj
 
-Shifting
+# Shifting
 
-Mutagenic
+# Mutagenic
+変異性の
 
+# w:5
+# Unstable
 w:5
-Unstable
+不定形な
 %%%%
 Necromancy adj
 
-Dark
+# Dark
+暗黒の
 
-Evil
+# Evil
+邪悪な
 
+# w:5
+# Lethal
 w:5
-Lethal
+致命的
 
-Doomed
+# Doomed
+破滅的
 
-Sinister
+# Sinister
 
-Unholy
+# Unholy
+忌まわしき
 
-Ghastly
+# Ghastly
 
-w:5
-Twisted
+# w:5
+# Twisted
+ねじくれた
 %%%%
 Summoning adj
 
-Creative
+# Creative
+創造的
 
-Supportive
+# Supportive
 %%%%
 Translocation adj
 
-Spatial
+# Spatial
 
-Displaced
+# Displaced
 
-Dislocated
+# Dislocated
 
-Warped
+# Warped
+歪曲
 
+# w:5
+# Unstable
 w:5
-Unstable
+不安定な
 
-w:5
-Twisted
+# w:5
+# Twisted
 
-Quantum
+# Quantum
+量子
 %%%%
 Poison adj
 
-Poisonous
+# Poisonous
+毒性の
 
-Venomous
+# Venomous
+猛毒性の
 
-Toxic
+# Toxic
 
-Cankerous
+# Cankerous
 
-Nocuous
+# Nocuous
 
-Noxious
+# Noxious
 
-Virous
+# Virous
 
-Vitriolic
+# Vitriolic
 
-w:1
-Viperous
+# w:1
+# Viperous
 %%%%
 Earth adj
 
-Earthen
+# Earthen
+大地の
 
-Ashen
+# Ashen
 
-Dusty
+# Dusty
 %%%%
 Air adj
 
-Aerial
+# Aerial
 
-Flying
+# Flying
+空飛ぶ
 
-Floating
+# Floating
+漂う
 
-Feathery
+# Feathery
 
-Cloudy
+# Cloudy
 
-Gliding
+# Gliding
 %%%%
 # potential previous owners of books
 # __NONE is parsed to the empty string
 # First, combinations.
 highlevel Conjuration Earth owner
 
-Dispater
+# Dispater
+ディスペータ
 
 @Conjuration Earth owner@
 %%%%
 Conjuration Earth owner
 
-Lee
+# Lee
+リー
 
-Lehudib
+# Lehudib
+レフディブ
 %%%%
 highlevel Conjuration Fire owner
 
-Asmodeus
+# Asmodeus
+アスモデウス
 
-Cerebov
+# Cerebov
+セレボブ
 
 w:5
 __NONE
 %%%%
 highlevel Conjuration Necromancy owner
 
-Ereshkigal
+# Ereshkigal
+エレシュキガル
 
 __NONE
 %%%%
 highlevel Conjuration Summoning owner
 
-Asmodeus
-
-Dispater
+# Asmodeus
+アスモデウス
+# Dispater
+ディスペータ
 
 w:5
 __NONE
 %%%%
 Earth Transmutation owner
 
-Roxanne
+# Roxanne
+ロクサーヌ
 
 __NONE
 %%%%
 highlevel Earth Summoning owner
 
-Dispater
+# Dispater
+ディスペータ
 
 __NONE
 %%%%
 highlevel Fire Summoning owner
 
-Asmodeus
+# Asmodeus
+アスモデウス
 
 __NONE
 %%%%
 highlevel Necromancy Poison owner
 
-Gloorx Vloq
+# Gloorx Vloq
+グルオルクス・ヴロック
 
 __NONE
 %%%%
 Necromancy Transmutation owner
 
-Cigotuvi
+# Cigotuvi
+シゴツヴィ
 
 __NONE
 %%%%
 # Single spell schools.
 highlevel Conjuration owner
 
-Asmodeus
+# Asmodeus
+アスモデウス
 
-Ereshkigal
+# Ereshkigal
+エレシュキガル
 
-Dispater
+# Dispater
+ディスペータ
 
-Cerebov
+# Cerebov
+セレボブ
 
-Lom Lobon
+# Lom Lobon
+ロム・ロボン
 
-Lehudib
+# Lehudib
+レフディブ
 
 w:30
 @Conjuration owner@
 %%%%
 Conjuration owner
 
+# w:2
+# Lee
 w:2
-Lee
+リー
 
-Lehudib
+# Lehudib
+レフディブ
 
-Iskenderun
+# Iskenderun
+イスケンデルン
 %%%%
 highlevel Earth owner
 
-Dispater
+# Dispater
+ディスペータ
 
 w:30
 @Earth owner@
 %%%%
 Earth owner
 
-Lehudib
+# Lehudib
+レフディブ
 
-Lee
+# Lee
+リー
 
-Roxanne
+# Roxanne
+ロクサーヌ
 
 __NONE
 %%%%
 highlevel Fire owner
 
-Asmodeus
+# Asmodeus
+アスモデウス
 
-Cerebov
+# Cerebov
+セレボブ
 
 __NONE
 %%%%
 Ice owner
 
-Ozocubu
+# Ozocubu
+オゾクブ
 
 __NONE
 %%%%
 highlevel Necromancy owner
 
-Ereshkigal
+# Ereshkigal
+エレシュキガル
 
-Gloorx Vloq
+# Gloorx Vloq
+グルオルクス・ヴロック
 
 w:40
 @Necromancy owner@
 %%%%
 Necromancy owner
 
-Borgnjor
+# Borgnjor
+ボーグンジョル
 
-Cigotuvi
+# Cigotuvi
+シゴツヴィ
 
-Khufu
+# Khufu
+クフ王
 %%%%
 highlevel Poison owner
 
-Gloorx Vloq
+# Gloorx Vloq
+グルオルクス・ヴロック
 
 @Poison owner@
 %%%%
 Poison owner
 
-Olgreb
+# Olgreb
+オルグレブ
 
-Alistair
+# Alistair
+アリステイア
 
 __NONE
 %%%%
 highlevel Summoning owner
 
-Asmodeus
+# Asmodeus
+アスモデウス
 
-Dispater
+# Dispater
+ディスペータ
 
-Mnoleg
+# Mnoleg
+ムノレグ
 
 __NONE
 %%%%
 highlevel Translocation owner
 
-Lom Lobon
+# Lom Lobon
+ロム・ロボン
 
 __NONE
 %%%%
 Transmutation owner
 
-Cigotuvi
+# Cigotuvi
+シゴツヴィ
 
-Roxanne
+# Roxanne
+ロクサーヌ
 
 __NONE
 %%%%
