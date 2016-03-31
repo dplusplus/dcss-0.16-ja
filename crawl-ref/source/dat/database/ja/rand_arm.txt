@@ -15,854 +15,1230 @@
 _armour_animal_
 
 # microorganisms
-Amoeba
+# Amoeba
+アメーバ
 
 # insects
-Butterfly
+# Butterfly
+胡蝶
 
-Cicada
+# Cicada
+蝉
 
-Cricket
+# Cricket
+蟋蟀
 
-Ladybird
+# Ladybird
+天道虫
 
-Ant
+# Ant
+蟻
 
-Cockroach
+# Cockroach
+ゴキブリ
 
-Locust
+# Locust
+蝗
 
-Louse
+# Louse
+シラミ
 
-Mantidfly
+# Mantidfly
+蟷螂
+# 正確にはカマキリモドキだがなぜこのようなマイナー昆虫を……
 
-Tick
+# Tick
+ダニ
 
 # invertebrates
-Slug
+# Slug
+蛞蝓
 
-Snail
+# Snail
+蝸牛
 
-Gastropod
+# Gastropod
 
-Trilobite
+# Trilobite
+三葉虫
 
-Centipede
+# Centipede
+百足
 
-Cuttlefish
+# Cuttlefish
+烏賊
 
-Worm
+# Worm
+芋虫
 
 # arachnids and clams
-Tarantula
+# Tarantula
+タランチュラ
 
-Clam
+# Clam
+アサリ
 
-Barnacle
+# Barnacle
+フジツボ
 
-Lobster
+# Lobster
+海老
 
-Quahog
+# Quahog
+ハマグリ
 
 # amphibians and reptiles
-Tortoise
+# Tortoise
+陸亀
 
-Turtle
+# Turtle
+海亀
 
-Frog
+# Frog
+蛙
 
-Komodo Dragon
+# Komodo Dragon
+コモドドラゴン
 
-Lizard
+# Lizard
+トカゲ
 
-Salamander
+# Salamander
+山椒魚
 
-Serpent
+# Serpent
+大蛇
 
 # fish
-Barracuda
+# Barracuda
+バラクーダ
 
-Catfish
+# Catfish
+ナマズ
 
-Mackerel
+# Mackerel
+鯖
 
-Marlin
+# Marlin
+マカジキ
 
-Salmon
+# Salmon
+鮭
 
-Sturgeon
+# Sturgeon
+チョウザメ
 
-Sunfish
+# Sunfish
+マンボウ
 
-Trout
+# Trout
+鱒
 
-Tuna
+# Tuna
+マグロ
 
 # birds
-Albatross
+# Albatross
+アホウドリ
 
-Turtledove
+# Turtledove
+キジバト
 
-Nightingale
+# Nightingale
+ナイチンゲール
 
-Meadowlark
+# Meadowlark
+マキバドリ
 
-Eagle
+# Eagle
+鷲
 
-Falcon
+# Falcon
+ハヤブサ
 
-Heron
+# Heron
+サギ
 
-Raven
+# Raven
+鴉
 
-Sparrow
+# Sparrow
+雀
 
-Swan
+# Swan
+白鳥
 
 # mammals
-Hare
+# Hare
+兎
 
-Kangaroo
+# Kangaroo
+カンガルー
 
-Elephant
+# Elephant
+象
 
-Zebra
+# Zebra
+シマウマ
 
-Hippo
+# Hippo
+カバ
 
-Monkey
+# Monkey
+猿
 
-Bull
+# Bull
+雄牛
 
-Camelopard
+# Camelopard
+麒麟
 
-Catamount
+# Catamount
+山猫
 
-Dolphin
+# Dolphin
+イルカ
 
-Echidna
+# Echidna
+ハリモグラ
 
-Hart
+# Hart
+雄鹿
 
-Lion
+# Lion
+獅子
 
-Stallion
+# Stallion
+種馬
 
-Stag
+# Stag
+雄鹿
 
-Okapi
+# Okapi
+オカピ
 
 # not strictly an animal... :)
-Monkey's Uncle
+# Monkey's Uncle
+驚き桃の木
 
 #classical mythical animals
-Cockatrice
+# Cockatrice
+コカトリス
 
-Dragon
+# Dragon
+ドラゴン
 
-Griffon
+# Griffon
+グリフォン
 
-Kraken
+# Kraken
+クラーケン
 
 # modern mythical animals
-Dropbear
+# Dropbear
+殺人コアラ
 
-Jackalope
+# Jackalope
+鹿角兎
 
-Wild Haggis
+# Wild Haggis
+野生のハギス
 
-Chupacabra
+# Chupacabra
+チュパカブラ
 
-Yeti
+# Yeti
+雪男
 
 %%%%
 _flower_name_
 
-Lilacs
+# Lilacs
+ライラック
 
-Daffodils
+# Daffodils
+喇叭水仙
 
-the Rose
+# the Rose
+薔薇
 
-the Garden
+# the Garden
+庭草
 
-Daisies
+# Daisies
+デイジー
 
-the Thistle
+# the Thistle
+アザミ
 
-Tulips
+# Tulips
+チューリップ
 
-the Lily
+# the Lily
+百合
 
-the Lotus Blossom
+# the Lotus Blossom
+睡蓮
 %%%%
 # non-Crawl critters
 _critter_name_
 
-Slorg
+# Slorg
+マダラナメクジ
 
-Alphagorgon
+# Alphagorgon
+アルファ・ゴーゴン
 
 # from the crawl.akrasiac.org patch.
-Hot Ocelot
+# Hot Ocelot
 
-Eight Boll Weevils
+# Eight Boll Weevils
 
-Grue
+# Grue
+グルー
 
-Jabberwock
+# Jabberwock
+ジャバウォック
 
+# w:1
+# Were-rabbit
 w:1
-Were-rabbit
+兎人間
 
-Wumpus
+# Wumpus
+ワンパス
 %%%%
 _discomfort_and_inaction_
 
 # discomfort
-Minor Irritation
+# Minor Irritation
+いらつき
 
-Bitterness
+# Bitterness
+苦み
 
-Negation
+# Negation
+否定
 
-Failure
+# Failure
+失敗
 
-Servitude
+# Servitude
+隷属
 
-Submission
+# Submission
+服従
 
-Insecurity
+# Insecurity
+不安
 
-Vexation
+# Vexation
+心痛
 
 # inaction
-Lifelessness
+# Lifelessness
+無生命
 
-Boredom
+# Boredom
+退屈
 
-Ennui
+# Ennui
+憂鬱
 
-Restlessness
+# Restlessness
+焦燥
 
-Omission
+# Omission
+怠慢
 
-Negligence
+# Negligence
+過失
 
-Inaction
+# Inaction
+不活
 
-Oblivion
+# Oblivion
+忘却
 
-the Doldrums
+# the Doldrums
+抑鬱
 
-Listlessness
+# Listlessness
+気力低下
 %%%%
 _mental_illness_armour_
 
-Paranoia
+# Paranoia
+妄想狂
 
-Claustrophobia
+# Claustrophobia
+閉所恐怖症
 
-Agoraphobia
+# Agoraphobia
+広場恐怖症
 
-Dyspraxia
+# Dyspraxia
+脳障害
 
-Mental Paralysis
+# Mental Paralysis
+心神喪失
 
-Catatonia
+# Catatonia
+緊張病
 
-Depression
+# Depression
+意気消沈
 
-Hysteria
+# Hysteria
+ヒステリー
 
-Kleptomania
+# Kleptomania
+盗癖
 
-Melancholy
+# Melancholy
+陰気
 
-Masochism
+# Masochism
+被虐性向
 
-Narcissism
+# Narcissism
+自己愛
 %%%%
 _good_or_divine_
 
 # good things
-the Good
+# the Good
+優良
 
-the Leaf
+# the Leaf
 
-Leaves
+# Leaves
+葉
 
-Music
+# Music
+音楽
 
-Birdsong
+# Birdsong
+囀り
 
-Brilliance
+# Brilliance
+輝き
 
-Satisfaction
+# Satisfaction
+満足
 
-Fun
+# Fun
+楽しみ
 
-Joy
+# Joy
+喜び
 
-Happiness
+# Happiness
+幸福
 
-Wonder
+# Wonder
+不思議
 
-Surprise
+# Surprise
+驚き
 
-Curiosity
+# Curiosity
+好奇心
 
-Creativity
+# Creativity
+独創性
 
-Beauty
+# Beauty
+美
 
-Life
+# Life
+生命
 
-Liberty
+# Liberty
+解放
 
-Freedom
+# Freedom
+自由
 
-Amelioration
+# Amelioration
+改善
 
-Awe
+# Awe
+畏怖
 
-Contentment
+# Contentment
+満足
 
-Mirth
+# Mirth
+歓喜
 
 # divine events
-Divine Compulsion
+# Divine Compulsion
+聖なる衝動
 
-the Invisible Hand
+# the Invisible Hand
+見えざる手
 
-Divine Intervention
+# Divine Intervention
+神の介在
 
-Intercession
+# Intercession
+調停
 
-Miracles
+# Miracles
+奇跡
 
-Salvation
+# Salvation
+救済
 
-the Will of the Gods
+# the Will of the Gods
+神の意志
 %%%%
 # in contrast to "_wacky_armour_name_" these do have some
 # connection to armour and protection
 _armour_name_shielding_
 
-Shielding
+# Shielding
+盾
 
-Impermeability
+# Impermeability
+不透過
 
-Defence
+# Defence
+防御
 
-Death's Door
+# Death's Door
+死のとば口
 
-the Gate
+# the Gate
+門扉
 
-the Saviour
+# the Saviour
+救世主
 
-the Untouchables
+# the Untouchables
+禁断
 
-the Armoured One
+# the Armoured One
+鎧いしもの
 
-Exclusion
+# Exclusion
+排除
 
-Repulsion
+# Repulsion
+斥力
 
-Inviolability
+# Inviolability
+不可侵
 
-Refuge
+# Refuge
+拒絶
 
-the Bulwark
+# the Bulwark
+砦
 
-the Ward
+# the Ward
+監房
 
-Fortification
+# Fortification
+要塞
 
-Complete Protection
+# Complete Protection
+完全防御
 %%%%
 # other armour properties (beside protection)
 _armour_property_name_
 
-Supple Strength
+# Supple Strength
+柔軟
 
-Death Resistance
+# Death Resistance
+死なず
 
-Grace
+# Grace
+優美
 
-Weightlessness
+# Weightlessness
+軽業
 
-Shadows and Fog
+# Shadows and Fog
+煙霧
 
-Disguise
+# Disguise
+霧隠れ
 
-Least Resistance
+# Least Resistance
+最小作用
 
-Protective Custody
+# Protective Custody
+保護拘置
 
-Resilience
+# Resilience
+弾力
 
-Fashionability
+# Fashionability
+# ファッション性
 
-Impressiveness
+# Impressiveness
+# 印象深さ
+
 %%%%
 _wacky_armour_name_
 
-the Onion
+# the Onion
+タマネギ
 
-Vlad
+# Vlad
+ヴラド候
 
-the Eternal Fruit
+# the Eternal Fruit
+永遠の果実
 
-Plasticity
+# Plasticity
+可塑性
 
-Baldness
+# Baldness
+禿頭
 
-Terror
+# Terror
+恐怖
 
-Good Intentions
+# Good Intentions
+善意
 
-Absence
+# Absence
+不在
 
-the Arcane
+# the Arcane
+秘蹟
 
-Anaesthesia
+# Anaesthesia
+麻酔
 
-the Armadillo
+# the Armadillo
+アルマジロ
 
-Weirdness
+# Weirdness
+不気味
 
-Pathos
+# Pathos
+哀愁
 
-Loss
+# Loss
+喪失
 
-Hedging
+# Hedging
+回避
 
-Indemnity
+# Indemnity
+賠償
 
-Untold Secrets
+# Untold Secrets
+語られざりし秘密
 
-the Earth
+# the Earth
+地球
 
-Limited Liability
+# Limited Liability
+有限責任
 
-Incorporation
+# Incorporation
+結社
 
-Mezcal
+# Mezcal
+覇王樹
 
-Hadjma
+# Hadjma
 
-Hairiness
+# Hairiness
+多毛
 
-Space
+# Space
+空間
 
-the Vacuum
+# the Vacuum
+真空
 
-Compression
+# Compression
+圧縮
 
-Decompression
+# Decompression
+減圧
 
-the Loofah
+# the Loofah
+ヘチマ
 
-Love and Death
+# Love and Death
+愛と死
 
-Indecent Exposure
+# Indecent Exposure
+公然猥褻
 
-the Road Less Travelled
+# the Road Less Travelled
 
-the Blind Marksman
+# the Blind Marksman
+盲目の射手
 
-Too Many Cooks
+# Too Many Cooks
 
-Thrice Damned Blessings
+# Thrice Damned Blessings
 
-Duck's Teeth
+# Duck's Teeth
 
-Forking Paths
+# Forking Paths
 
-the Pink Corner
+# the Pink Corner
 
-Philately
+# Philately
+切手収集
 %%%%
 # Lemuel's suggestions
 _celestial_bodies_
 
-Sun
+# Sun
+太陽
 
-Moon
+# Moon
+月
 
-Stars
+# Stars
+星
 
-Planets
+# Planets
+惑星
 
-Pleiades
+# Pleiades
+昴星
 
-Morning Star
+# Morning Star
+明けの明星
 
-Evening Star
+# Evening Star
+宵の明星
 
-Comet
+# Comet
+彗星
 
+# w:5
+# Midnight Sun
 w:5
-Midnight Sun
+真夜中の太陽
 
+# w:5
+# Blue Moon
 w:5
-Blue Moon
+青冷めた月
 
+# w:5
+# Harvest Moon
 w:5
-Harvest Moon
+中秋の満月
 
 # astrological
-Black Moon
+# Black Moon
+黒き月
 %%%%
 _instrument_name_
 
-Trumpets
+# Trumpets
+トランペット
 
-the Kettle-Drum
+# the Kettle-Drum
+ドラム
 
-the Accordion
+# the Accordion
+アコーディオン
 
-the Bagpipe
+# the Bagpipe
+バグパイプ
 
-the Lute
+# the Lute
+リュート
 
-the Bells
+# the Bells
+ベル
 
-Chimes
+# Chimes
+チャイム
 
-the Flute
+# the Flute
+フルート
 
-the Harp
+# the Harp
+ハープ
 
-the Gusle
+# the Gusle
 %%%%
 _evil_being_
 
-the Devil
+# the Devil
+悪魔
 
-Demons
+# Demons
 
-Lesser Demons
+# Lesser Demons
+下位の悪魔
 
-Greater Demons
+# Greater Demons
+上位の悪魔
 
-the Iron Devil
+# the Iron Devil
+鉄の悪魔
 
-the Devil's Advocate
+# the Devil's Advocate
+悪魔の代弁者
 
-the Demon Prince
+# the Demon Prince
+悪魔の貴公子
 
-the Evil One
+# the Evil One
+邪悪なるもの
 
-the Furies
+# the Furies
+フューリー
 
-the Prince of Darkness
+# the Prince of Darkness
+暗黒の貴公子
 
-the Fiend
+# the Fiend
+魔神
 
-w:5
-the Archfiend
+# w:5
+# the Archfiend
+大魔神
 
-the Little Devil
+# the Little Devil
+小悪魔
 
-the Imp
+# the Imp
+インプ
 
-the Villain
+# the Villain
+悪党
 %%%%
 _weather_name_
 
-the First Snow
+# the First Snow
+初雪
 
-Boiling Hail
+# Boiling Hail
+煮えたぎる雹
 
-Perpetual Drought
+# Perpetual Drought
+永遠の日照り
 
-the Thunderstorm
+# the Thunderstorm
+雷雲
 
-the Hurricane
+# the Hurricane
+ハリケーン
 
-Blue Skies
+# Blue Skies
+青空
 
-Pleasant Breezes
+# Pleasant Breezes
+そよ風
 
-the Blizzard
+# the Blizzard
+猛吹雪
 
-Chill Winds
+# Chill Winds
+木枯らし
 %%%%
 _profession_name_
 
-Guilds
+# Guilds
+ガイド
 
-Guild-Master
+# Guild-Master
+ギルドマスター
 
-Apprentice
+# Apprentice
+見習い
 
-Blacksmith
+# Blacksmith
+鍛冶屋
 
-Carpenter
+# Carpenter
+大工
 
-Wheelwright
+# Wheelwright
+車大工
 
-Cooper
+# Cooper
+桶屋
 
-Fisher
+# Fisher
+漁師
 
-Hunter
+# Hunter
+狩人
 
-Ditch-Digger
+# Ditch-Digger
+ドブさらい
 
-Guardian
+# Guardian
+番人
 
-Beekeeper
+# Beekeeper
+養蜂家
 
-Gardener
+# Gardener
+庭師
 
-Soldier
+# Soldier
+軍人
 
-Farrier
+# Farrier
+蹄鉄工
 
-Engineer
+# Engineer
+技師
 
-Barber Surgeon
+# Barber Surgeon
+理容師
 
-Journeyman
+# Journeyman
+職人
 
-Scribe
+# Scribe
+筆写者
 
-Bard
+# Bard
+吟遊詩人
 
-Undertaker
+# Undertaker
+葬儀屋
 
-Beggar
+# Beggar
+乞食
 
-Merchant
+# Merchant
+商人
 
-Sailor
+# Sailor
+水夫
 
-Gravedigger
+# Gravedigger
+墓掘り人
 
-Pirate
+# Pirate
+海賊
 
-Buccaneer
+# Buccaneer
 %%%%
 # something for Xom
 _game_name_
 
 # general games
-Fun and Games
+# Fun and Games
+楽しいゲーム
 
-the Great Game
+# the Great Game
+グレート・ゲーム
 
-the Game Afoot
+# the Game Afoot
 
-Parlour Games
+# Parlour Games
+室内ゲーム
 
-the Game of Kings
+# the Game of Kings
+王様ゲーム
 
 # children's games
-Peek-a-Boo
+# Peek-a-Boo
+いないいないばあ
 
-Hide-and-Seek
+# Hide-and-Seek
+かくれんぼ
 
-Leapfrog
+# Leapfrog
+馬跳び
 
-Hopscotch
+# Hopscotch
+石蹴り遊び
 
-Follow the Leader
+# Follow the Leader
 
-the King of the Hill
+# the King of the Hill
 
-Mumblety Peg
+# Mumblety Peg
+
+はないちもんめ
+
+けいどろ
+
+ポコペン
 
 # board games etc.
-the Game of Life
+# the Game of Life
+人生ゲーム
 
-Card Tricks
+# Card Tricks
+トランプ手品
 
-Hangman
+# Hangman
+ハングマン
 
-the Dice
+# the Dice
+サイコロ遊び
 
-Jigsaw
+# Jigsaw
+ジグソーパズル
 
-Whack-A-Mole
+# Whack-A-Mole
+モグラ叩き
 
-Ladders and Snakes
+# Ladders and Snakes
 
-Marbles
+# Marbles
 
-Noughts and Crosses
+# Noughts and Crosses
+三目並べ
 %%%%
 _politics_name_armour_
 
-the King
+# the King
+王
 
-the Queen
+# the Queen
+女王
 
-Royalty
+# Royalty
+王権
 
-Nobility
+# Nobility
+貴族
 
-the Republic
+# the Republic
+共和国
 
-the Empire
+# the Empire
+帝国
 
-Coronation
+# Coronation
+戴冠
 
-the Commoners
+# the Commoners
+平民
 
-the Peasants
+# the Peasants
+小作人
 
-the Townfolk
+# the Townfolk
+町の住民
 
-the City
+# the City
+都市
 
-the Country
+# the Country
+国
 
-the Suburbs
+# the Suburbs
+郊外
 
-the Mutiny
+# the Mutiny
+暴動
 
-the Crown
+# the Crown
+王冠
 
-the Duke
+# the Duke
+公爵
 
-the Duchess
+# the Duchess
+公爵夫人
 
-the Doge
+# the Doge
+総督
 
-the Ban
+# the Ban
+破門
 
-the Castellan
+# the Castellan
+城主
 
-the Komtur
+# the Komtur
+騎士
 
-the Voivode
+# the Voivode
 
-the Rabble
+# the Rabble
+庶民
 
-the Prince
+# the Prince
+貴公子
 
-the Princeling
+# the Princeling
+小公子
 
-the Princess
+# the Princess
+姫
 
-the Oligarchy
+# the Oligarchy
+寡頭政治
 
-the Cast Vote
+# the Cast Vote
+投票
 
-the Burgomaster
+# the Burgomaster
+市長
 
-the Failed Coup
+# the Failed Coup
+政変
 %%%%
 _other_armour_name_
 
 #unpleasantness
+# w:5
+# Grot
 w:5
-Grot
+がらくた
 
+# w:5
+# Grottiness
 w:5
-Grottiness
+ゴミクズ
 
-Filth
+# Filth
+汚物
 
-Slovenliness
+# Slovenliness
+不潔
 
 # magic
-Magic
+# Magic
+魔術
 
-Sorcery
+# Sorcery
+魔法
 
-Broken Taboos
+# Broken Taboos
+掟破り
 
-Bedevilment
+# Bedevilment
 
 # other
-Crawling
+# Crawling
 
-the Orb
+# the Orb
+ゾットのオーブ
 
-the Orb Guardian
+# the Orb Guardian
+オーブの守護者
 
-the Storm King
+# the Storm King
+雷の王
 
-the @_card_@ of @_suit_@
+# the @_card_@ of @_suit_@
+@_suit_@の@_card_@
 
-the Hanged Man
+# the Hanged Man
+吊られた男
 
-Hedge Wizardry
+# Hedge Wizardry
 
-Feasting
+# Feasting
+饗宴
 
-Insatiable Hunger
+# Insatiable Hunger
+飽くなき飢え
 
-Imperfection
+# Imperfection
+欠点
 
-Trial and Error
+# Trial and Error
+試行錯誤
 
-Disaster
+# Disaster
+災害
 
-Wrong Decisions
+# Wrong Decisions
+誤判断
 
-Unambiguity
+# Unambiguity
+一意性
 
-the Lost Path
+# the Lost Path
 
-Misanthropy
+# Misanthropy
+厭世
 
-Wasted Space
+# Wasted Space
+空き地
 
-the Other World
+# the Other World
+異世界
 
-Inevitability
+# Inevitability
+不可避
 %%%%
 _card_
 
-Two
+# Two
+2
 
-Three
+# Three
+3
 
-Four
+# Four
+4
 
-Five
+# Five
+5
 
-Six
+# Six
+6
 
-Seven
+# Seven
+7
 
-Eight
+# Eight
+8
 
-Nine
+# Nine
+9
 
-Ten
+# Ten
+10
 
-Page
+# Page
+ジャック
 
-Knight
+# Knight
 
-Queen
+# Queen
+クイーン
 
-King
+# King
+キング
 
-Ace
+# Ace
+エース
 %%%%
 _suit_
 
-Cups
+# Cups
+ハート
 
-Pentacles
+# Pentacles
+ダイヤ
 
-Wands
+# Wands
+クラブ
 
-Swords
+# Swords
+スペード
 %%%%
 # "something" rather than of Something
 _plain_armour_name_
 
-Forget-Me-Not
+# Forget-Me-Not
+私を忘れないで
 
-Hero's Friend
+# Hero's Friend
+英雄の盟友
 
-Trusted Companion
+# Trusted Companion
+刎頸之交
 %%%%
