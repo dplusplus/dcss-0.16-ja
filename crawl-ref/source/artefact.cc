@@ -261,26 +261,26 @@ string replace_name_parts(const string &name_in, const item_def& item)
         else
         {
             // Simply overwrite the name with one of type "God's Favour".
-            name = "of ";
-            name += god_name(god_gift, false);
-            name += "'s ";
+            name += jtrans(god_name(god_gift, false));
+            name += "の";
             name += getRandNameString("divine_esteem");
+            name += "の";
         }
     }
     name = replace_all(name, "@player_name@", you.your_name);
 
     name = replace_all(name, "@player_species@",
-                 species_name(static_cast<species_type>(you.species), true));
+                       jtrans(species_name(static_cast<species_type>(you.species), true)));
 
     if (name.find("@branch_name@", 0) != string::npos)
     {
-        string place = branches[random2(NUM_BRANCHES)].longname;
+        string place = tagged_jtrans("[branch]", branches[random2(NUM_BRANCHES)].longname);
         if (!place.empty())
             name = replace_all(name, "@branch_name@", place);
     }
 
     // Occasionally use long name for Xom (see religion.cc).
-    name = replace_all(name, "@xom_name@", god_name(GOD_XOM, coinflip()));
+    name = replace_all(name, "@xom_name@", jtrans(god_name(GOD_XOM, coinflip())));
 
     if (name.find("@god_name@", 0) != string::npos)
     {
@@ -298,7 +298,7 @@ string replace_name_parts(const string &name_in, const item_def& item)
             while (!_god_fits_artefact(which_god, item, true));
         }
 
-        name = replace_all(name, "@god_name@", god_name(which_god, false));
+        name = replace_all(name, "@god_name@", jtrans(god_name(which_god, false)));
     }
 
     // copied from apostrophise() (libutil.cc):
@@ -1183,6 +1183,8 @@ static string _get_artefact_type(const item_def &item, bool appear = false)
 
 static bool _pick_db_name(const item_def &item)
 {
+    return true; // 意味のないアルファベット名は一旦オフ
+
     switch (item.base_type)
     {
     case OBJ_WEAPONS:
@@ -1228,6 +1230,7 @@ string make_artefact_name(const item_def &item, bool appearance)
 
     string lookup;
     string result;
+    string basename = jtrans(item_base_name(item));
 
     // Use prefix of gifting god, if applicable.
     bool god_gift = false;
@@ -1263,15 +1266,12 @@ string make_artefact_name(const item_def &item, bool appearance)
         }
 
         result += appear;
-        result += " ";
-        result += item_base_name(item);
+        result += basename;
         return result;
     }
 
     if (_pick_db_name(item))
     {
-        result += item_base_name(item) + " ";
-
         int tries = 100;
         string name;
         do
@@ -1287,31 +1287,30 @@ string make_artefact_name(const item_def &item, bool appearance)
 
              // If still nothing found, try base type alone.
              || _artefact_name_lookup(name, item, _get_artefact_type(item)));
+
+            if (name == "イェンダーの" && !jewellery_is_amulet(item))
+                continue;
         }
         while (--tries > 0 && strwidth(name) > 25);
 
         if (name.empty()) // still nothing found?
             result += "of Bugginess";
         else
-            result += name;
+        {
+            if (ends_with(name, "の"))
+                result += (name + basename);
+            else
+                result += (basename + name);
+        }
     }
     else
     {
         // construct a unique name
         const string st_p = make_name(random_int(), false);
-        result += item_base_name(item);
-
-        if (one_chance_in(3))
-        {
-            result += " of ";
-            result += st_p;
-        }
-        else
-        {
-            result += " \"";
-            result += st_p;
-            result += "\"";
-        }
+        result += basename;
+        result += "『";
+        result += st_p;
+        result += "』";
     }
 
     return result;
