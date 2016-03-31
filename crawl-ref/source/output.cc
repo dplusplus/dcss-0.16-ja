@@ -789,7 +789,7 @@ static void _print_stat(stat_type stat, int x, int y)
     CGOTOXY(x+5, y, GOTO_STAT);
 
     textcolour(_get_stat_colour(stat));
-    CPRINTF("%2d", you.stat(stat, false));
+    CPRINTF("  %2d", you.stat(stat, false));
 
     if (you.stat_loss[stat] > 0)
         CPRINTF(" (%d)  ", you.max_stat(stat));
