@@ -1372,13 +1372,13 @@ bool make_book_level_randart(item_def &book, int level, string owner)
         name = god_name(god, false);
     else if (one_chance_in(30))
         name = god_name(GOD_SIF_MUNA, false);
-    else if (one_chance_in(3))
+    else if (false && one_chance_in(3)) // ランダム名はとりあえずオフ
         name = make_name(random_int(), false);
     else
         has_owner = false;
 
     if (has_owner)
-        name = apostrophise(name) + " ";
+        name = jtrans(name) + "の";
 
     // None of these books need a definite article prepended.
     book.props["is_named"].get_bool() = true;
@@ -1386,8 +1386,9 @@ bool make_book_level_randart(item_def &book, int level, string owner)
     string bookname;
     if (god == GOD_XOM && coinflip())
     {
-        bookname = getRandNameString("book_noun") + " of "
-                   + getRandNameString("Xom_book_title");
+        bookname = getRandNameString("Xom_book_title")
+                 + "の"
+                 + getRandNameString("book_noun");
         bookname = replace_name_parts(bookname, book);
     }
     else
@@ -1935,7 +1936,7 @@ bool make_book_theme_randart(item_def &book,
 
         if (owner.empty())
         {
-            if (god_gift || one_chance_in(5)) // Use a random name.
+            if (false && (god_gift || one_chance_in(5))) // Don't Use a random name.
                 owner = make_name(random_int(), false);
             else if (!god_gift && one_chance_in(9))
             {
@@ -1962,7 +1963,7 @@ bool make_book_theme_randart(item_def &book,
 
     if (!owner.empty())
     {
-        name = apostrophise(owner) + " ";
+        name = jtrans(owner) + "の";
         book.props["is_named"].get_bool() = true;
     }
     else
@@ -1982,12 +1983,11 @@ bool make_book_theme_randart(item_def &book,
     }
 
     if (!bookname.empty())
-        name += getRandNameString("book_noun") + " of " + bookname;
+        name += bookname + "の" + getRandNameString("book_noun");
     else
     {
         // Give a name that reflects the primary and secondary
         // spell disciplines of the spells contained in the book.
-        name += getRandNameString("book_name") + " ";
 
         // For the actual name there's a 66% chance of getting something like
         //  <book> of the Fiery Traveller (Translocation/Fire), else
@@ -2010,7 +2010,7 @@ bool make_book_theme_randart(item_def &book,
 
             if (disc1 != disc2)
             {
-                name += " and ";
+                name += "と";
                 type_name = getRandNameString(spelltype_long_name(disc2));
 
                 if (type_name.empty())
@@ -2021,7 +2021,7 @@ bool make_book_theme_randart(item_def &book,
         }
         else
         {
-            bookname = type_name + " ";
+            bookname = type_name;
 
             // Add the noun for the first discipline.
             type_name = getRandNameString(spelltype_long_name(disc1));
@@ -2038,6 +2038,8 @@ bool make_book_theme_randart(item_def &book,
             }
             name += bookname;
         }
+
+        name += getRandNameString("book_name");
     }
 
     set_artefact_name(book, name);
@@ -2127,7 +2129,7 @@ void make_book_Kiku_gift(item_def &book, bool first)
     for (int i = 0; i < RANDBOOK_SIZE; i++)
         spell_vec[i].get_int() = chosen_spells[i];
 
-    string name = "Kikubaaqudgha's ";
+    string name = jtrans("Kikubaaqudgha's ");
     book.props["is_named"].get_bool() = true;
     name += getRandNameString("book_name") + " ";
     string type_name = getRandNameString("Necromancy");

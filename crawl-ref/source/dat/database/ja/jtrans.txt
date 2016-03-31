@@ -12063,6 +12063,10 @@ As you tear out the page describing %s, the book crumbles to dust.
 
 あなたが%sの呪文の記されたページを破り捨てると、魔法書は塵と化した。
 %%%%
+Kikubaaqudgha's
+
+キクバークッグァの
+%%%%
 ############################## spl-cast.cc ##############################
 %%%%
 You feel %s %s
