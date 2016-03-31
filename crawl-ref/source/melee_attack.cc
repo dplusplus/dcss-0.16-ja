@@ -1468,8 +1468,8 @@ void melee_attack::player_announce_aux_hit()
     mprf(jtransc("You %s %s%s%s"),
          jtransc(defender->name(DESC_THE)),
          jtransc(aux_verb),
-         debug_damage_number().c_str(),
-         attack_strength_punctuation(damage_done).c_str());
+         attack_strength_punctuation(damage_done).c_str(),
+         debug_damage_number().c_str());
 }
 
 string melee_attack::player_why_missed()

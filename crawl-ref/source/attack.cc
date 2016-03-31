@@ -1110,7 +1110,7 @@ int attack::inflict_damage(int dam, beam_type flavour, bool clean)
 string attack::debug_damage_number()
 {
 #ifdef DEBUG_DIAGNOSTICS
-    return make_stringf(" for %d", damage_done);
+    return make_stringf(" [%d dmg]", damage_done);
 #else
     return "";
 #endif
