@@ -557,3 +557,35 @@ string chop_string(const string &s, int width, bool spaces)
 {
     return chop_string(s.c_str(), width, spaces);
 }
+
+string align_centre(const string &s, int width, char fillchar)
+{
+    int lspace = 0, rspace = 0;
+    string result;
+
+    if (strwidth(s) >= width)
+        return s;
+
+    lspace = (width - strwidth(s)) / 2;
+    rspace = width - strwidth(s) - lspace;
+
+    result = string(lspace, fillchar) + s + string(rspace, fillchar);
+
+    return result;
+}
+
+string align_right(const string &s, int width, char fillchar)
+{
+    if (strwidth(s) >= width)
+        return s;
+
+    return string(width - strwidth(s), fillchar) + s;
+}
+
+string align_left(const string &s, int width, char fillchar)
+{
+    if (strwidth(s) >= width)
+        return s;
+
+    return s + string(width - strwidth(s), fillchar);
+}

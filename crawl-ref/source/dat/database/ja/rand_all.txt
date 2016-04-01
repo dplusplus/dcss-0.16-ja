@@ -1,0 +1,688 @@
+######################################################
+# Randart Names
+# -------------
+# rand_all.txt: keywords for randart JEWELLERY and
+#               those used for ALL randart types
+#
+# This file contains the lists of keywords (and their
+# weights) for keywords specific to randart jewellery
+# as well as those used for all three types of
+# randarts (weapons, armour, jewellery). You will find
+# other ones in rand_wpn.txt and rand_arm.txt.
+# See the explanation in the main file, randname.txt,
+# for more details.
+######################################################
+%%%%
+######################################################
+# Library of keywords used (mostly) for randart jewellery.
+######################################################
+_jewellery_animal_
+
+# Firefly
+蛍
+
+# Scarab
+スカラベ
+
+# w:5
+# Magpie
+w:5
+カササギ
+
+# w:5
+# Raven
+w:5
+鴉
+%%%%
+_jewellery_special_name_
+
+# Disaster
+災い
+
+# Ephemeral Luck
+薄幸
+
+# Wishful Thinking
+希望的観測
+
+# Moodiness
+不機嫌
+
+# Reimbursement
+償還
+
+# the Tempest
+暴風
+
+# Finality
+最終決定
+
+# Attitude
+心構え
+
+# Lady Luck
+幸運の女神
+
+# Temptation
+誘惑
+
+# False Pretenses
+詐欺
+
+# FIXME: should appear on amulets only
+# Yendor
+イェンダー
+%%%%
+_suspicion_name_
+
+# Secrets
+秘密
+
+# Suspicion
+疑惑
+
+# Mistrust
+不信
+
+# Jealousy
+羨望
+
+# Incredulity
+懐疑
+
+# Doubts
+疑惑
+
+# Suspected Treachery
+邪推
+
+# Scepticism
+猜疑
+
+# Trepidation
+狼狽
+
+w:20
+@_conflict_name_@
+%%%%
+######################################################
+# Library of keywords used for all randart types.
+######################################################
+# Used for god gifts from C++ side, as "of $GOD's @divine_esteem@".
+divine_esteem
+
+# good
+# Esteem
+好意
+
+# Favour
+寵愛
+
+# Hope
+希望
+
+# Regard
+敬意
+
+# Approval
+お墨付き
+
+# Delight
+歓喜
+
+# Pride
+誇り
+
+# Generosity
+寛容
+
+# Supremacy
+覇権
+
+# Benevolence
+慈悲
+
+# Whim
+気紛れ
+
+# bad
+# Displeasure
+不興
+
+# Envy
+嫉妬
+
+# Castigation
+折檻
+
+# Condemnation
+審判
+
+# Reproof
+叱責
+
+w:70
+@_anger_name_@
+%%%%
+_xom_esteem_
+
+# chosen 20% of the time
+w:40
+@divine_esteem@
+
+# Entertainment
+娯楽
+
+# Best Wishes
+敬具
+
+# Amusement
+慰みもの
+
+# Ringing Laughter
+爆笑
+
+# Bemusement
+困惑
+
+# Passing Interest
+無関心
+
+# Full Attention
+傾注
+
+# Whimsicality
+奇行
+
+# Capriciousness
+酔狂
+
+# Sleight of Hands
+手妻
+
+# Flight of Fancy
+空想
+
+# Absentmindedness
+放心
+
+# Malicious Joy
+愉悦
+
+# Fair Game
+フェアプレー
+
+# Wantonness
+浮気
+
+# Recklessness
+蛮勇
+%%%%
+_time_name_
+
+# Day
+昼
+
+# Midnight
+真夜中
+
+# Twilight
+黄昏
+
+# Dawn
+暁
+
+# w:5
+# Spring
+春
+
+# w:5
+# Springtime
+
+# w:5
+# Summer
+w:5
+夏
+
+# w:5
+# Summertime
+
+# Autumn
+秋
+
+# Winter
+冬
+
+# Midsummer
+真夏
+
+# Midwinter
+真冬
+
+# the Solstice
+夏至
+
+冬至
+
+# the Harvest
+収穫
+
+# Eternal Night
+永遠の夜
+
+# Eternity
+永劫の
+
+# Noon
+正午
+
+# the Present
+現在
+
+# the Morning
+朝
+
+# the Evening
+夕暮れ
+%%%%
+_sky_colour_name_
+
+# Black
+黒
+
+# Blue
+青
+
+# Grey
+灰
+
+# Orange
+橙
+
+# Purple
+紫
+
+# Red
+赤
+%%%%
+_sky_or_light_
+
+# the Sun
+太陽
+
+# the Moon
+月
+
+# Light
+光明
+
+# Darkness
+暗黒
+
+# Dim Light
+薄明かり
+
+# the Shining Light
+烈光
+
+# Sunlight
+陽光
+
+# Starshine
+星明かり
+
+# the Sky
+蒼穹
+
+# the Gloaming
+薄暮
+
+# the Heavens
+天国
+
+# the Skies Above
+空
+
+# the @_sky_colour_name_@ Skies
+@_sky_colour_name_@色の空
+%%%%
+_virtue_or_vice_
+
+w:5
+@_virtue_name_@
+
+@_valour_name_@
+
+@_vice_name_@
+%%%%
+_virtue_name_
+
+# Virtue
+美徳
+
+# Truth
+真実
+
+# Honesty
+誠実
+
+# Benevolence
+慈悲
+
+# Devotion
+献身
+
+# Generosity
+寛容
+
+# Grace
+気品
+
+# Temperance
+節制
+
+# Hospitality
+歓待
+
+# Charity
+慈善
+
+# Patience
+忍耐
+
+# Modesty
+謙遜
+%%%%
+_vice_name_
+
+# some of the deadly sins
+# Sloth
+怠惰
+
+# Vanity
+虚栄
+
+# Gluttony
+貪食
+
+# Pride
+傲慢
+
+# Greed
+強欲
+
+# general immorality
+# Sin
+罪業
+
+# the Original Sin
+原罪
+
+# Lies
+虚言
+
+# Dishonesty
+不実
+
+# Cowardice
+臆病
+
+# Dishonour
+不名誉
+
+# Impatience
+短気
+
+# Immorality
+背徳
+
+# Amorality
+非道
+
+# Untruth
+虚偽
+
+# Spite
+悪意
+%%%%
+_destiny_name_
+
+# Causality
+因果
+
+# Destiny
+宿命
+
+# Fate
+運命
+
+# Karma
+因業
+
+# Kismet
+天運
+
+# Wyrd
+命運
+
+# Doom
+破滅
+%%%%
+_number_or_qualifier_
+
+# exact numbers
+# the Three
+三つの
+
+# the Four
+四つの
+
+# the Five
+五つの
+
+# the Six
+六つの
+
+# the Seven
+七つの
+
+# the Eight
+八つの
+
+# the Nine
+九つの
+
+# the Ten
+十の
+
+# the Eleven
+十一の
+
+# w:5
+# the Twelve
+w:5
+十二の
+
+# w:5
+# the Dozen
+w:5
+一ダースの
+
+# the Thirteen
+十三の
+
+# the Fifty
+五十の
+
+# w:5
+# a Hundred
+w:5
+百の
+
+# w:5
+# the Hundredfold
+w:5
+百倍の
+
+# a Thousand
+千の
+
+# vague numbers
+# the 
+
+# the Many
+数多の
+
+# the Countless
+無数の
+
+# the Assorted
+詰め合わせの
+
+# the Manifold
+多数の
+
+# other qualifiers
+# the Lost
+失われし
+
+# the Forgotten
+忘れられし
+
+# the Forsaken
+見捨てられた
+
+# the Hidden
+隠された
+
+# the Last
+最後の
+
+# the Lonely
+孤独な
+
+# the Jolly
+陽気な
+
+# the Ancient
+古代の
+
+# the Exiled
+追放された
+
+# the Illusory
+架空の
+
+# the Pure
+純粋な
+
+# the Peculiar
+奇妙な
+
+# the Special
+特別な
+
+# the First
+始原の
+%%%%
+_thing_names_
+
+# Suns
+太陽
+
+# Moons
+月
+
+# Stars
+星
+
+# Planets
+惑星
+
+# Hells
+地獄
+
+# Lives
+生命
+
+# Deaths
+死
+
+# Curses
+呪い
+
+# Blessings
+祝福
+
+# Gods
+神
+
+# Spirits
+精霊
+
+# Ghosts
+幽霊
+
+# Demons
+悪魔
+
+# Wars
+争い
+
+# Mice
+鼠
+
+# Eyes
+目
+
+# Nights
+夜
+
+# Orbs
+オーブ
+
+# Runes
+ルーン
+
+# Seas
+海
+
+# Places
+場所
+
+# Realms
+領域
+
+# Wishes
+願い
+
+# Wonders
+不思議
+
+# Beds
+ベッド
+
+# Beggars
+乞食
+
+# Cities
+都市
+
+# Dances
+踊り
+
+# Lies
+嘘
+
+# Ships
+船
+
+# Songs
+歌
+
+# Souls
+魂
+
+# Tales
+物語
+%%%%

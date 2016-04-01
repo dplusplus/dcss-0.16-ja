@@ -14,6 +14,7 @@
 #include "colour.h"
 #include "command.h"
 #include "coord.h"
+#include "database.h"
 #include "env.h"
 #include "hints.h"
 #include "invent.h"
@@ -165,7 +166,7 @@ Menu::Menu(int _flags, const string& tagname, bool text_only)
   : f_selitem(nullptr), f_drawitem(nullptr), f_keyfilter(nullptr),
     action_cycle(CYCLE_NONE), menu_action(ACT_EXAMINE), title(nullptr),
     title2(nullptr), flags(_flags), tag(tagname), first_entry(0), y_offset(0),
-    pagesize(0), max_pagesize(0), more("-more-", true), items(), sel(),
+    pagesize(0), max_pagesize(0), more(jtrans("-more-"), true), items(), sel(),
     select_filter(), highlighter(new MenuHighlighter), num(-1), lastch(0),
     alive(false), last_selected(-1)
 {
@@ -266,9 +267,10 @@ void Menu::set_more()
         "   <w>-</w> or <w><<</w>: Page up."
         "   <w>Esc</w> or <w>R-click</w> exits.]"
 #else
+        jtrans(
         "<cyan>[ <w>+</w>, <w>></w> or <w>Space</w>: Page down."
         "   <w>-</w> or <w><<</w>: Page up."
-        "                       <w>Esc</w> exits.]"
+        "                       <w>Esc</w> exits.]")
 #endif
     ));
 }
@@ -512,7 +514,7 @@ bool Menu::process_key(int keyin)
         cgotoxy(1,1);
         clear_to_end_of_line();
         textcolour(WHITE);
-        cprintf("Select what? (regex) ");
+        cprintf((jtrans("Select what? (regex) ") + " ").c_str());
         textcolour(LIGHTGREY);
         bool validline = !cancellable_get_line(linebuf, sizeof linebuf);
         if (validline && linebuf[0])
@@ -767,8 +769,9 @@ string Menu::get_select_count_string(int count) const
         char buf[100] = "";
         if (count)
         {
-            snprintf(buf, sizeof buf, "  (%d item%s)  ", count,
-                    (count > 1 ? "s" : ""));
+            snprintf(buf, sizeof buf,
+                     (" " + jtrans("  (%d item%s)  ") + " ").c_str(), count,
+                     (count > 1 ? "s" : ""));
         }
         return string(buf);
     }
@@ -1332,7 +1335,7 @@ void Menu::write_title()
         int curpage = first_entry / pagesize + 1;
         if (in_page(items.size() - 1))
             curpage = numpages;
-        fs.cprintf(" (page %d of %d)", curpage, numpages);
+        fs.cprintf(("  " + jtrans(" (page %d of %d)")).c_str(), curpage, numpages);
     }
     fs.display();
 

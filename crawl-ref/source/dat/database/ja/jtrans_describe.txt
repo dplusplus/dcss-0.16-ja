@@ -1,0 +1,395 @@
+%%%%
+############################## describe-god.cc ##############################
+%%%%
+Various
+
+いろいろ
+%%%%
+Godly wrath is upon you!
+
+神はあなたに激怒している！
+%%%%
+You've transgressed heavily! Be penitent!
+
+あなたは著しく道を踏み外している！ 懺悔せよ！
+%%%%
+You are under penance.
+
+あなたは懺悔の途上にある。
+%%%%
+You should show more discipline.
+
+あなたは更なる自制を示すべきだ。
+%%%%
+A prized avatar of
+
+あなたは%sの第一の化身だ。
+%%%%
+A favoured servant of
+
+あなたは%sの寵臣だ。
+%%%%
+A glorious shadow in the eyes of
+
+あなたは%sに期待されている。
+%%%%
+A shining star in the eyes of
+
+あなたは%sの期待の星だ。
+%%%%
+A rising shadow in the eyes of
+
+あなたは%sのお気に入りだ。
+%%%%
+A rising star in the eyes of
+
+あなたは%sのお気に入りだ。
+%%%%
+is most pleased with you.
+
+はあなたにとても喜んでいる。
+%%%%
+is pleased with you.
+
+はあなたに喜んでいる。
+%%%%
+is noncommittal.
+
+はあなたに何も明言しない。
+%%%%
+You can have all your mutations cured.
+
+あなたは全ての突然変異を取り除くことができる。
+%%%%
+You can pray at an altar to donate money.
+
+あなたは祭壇で祈りを捧げることにより寄付することができる。
+%%%%
+You radiate a large righteous aura, and all beings within it are easier to hit.
+
+あなたは強烈に光り輝く霊気を発しており、その内部にいる全ての者に攻撃が当たりやすくなる。
+%%%%
+You radiate a righteous aura, and all beings within it are easier to hit.
+
+あなたは光り輝く霊気を発しており、その内部にいる全ての者に攻撃が当たりやすくなる。
+%%%%
+You radiate a small righteous aura, and all beings within it are easier to hit.
+
+あなたはほのかに光り輝く霊気を発しており、その内部にいる全ての者に攻撃が当たりやすくなる。
+%%%%
+You can pray at an altar to have your weapon blessed, especially a demon weapon.
+
+あなたは祭壇であなたの持つ武器(特に悪魔の手による武器)への祝福を請うことができる。
+%%%%
+You can pray at an altar to have your weapon corrupted.
+
+あなたは祭壇であなたの持つ武器に歪曲の力を請うことができる。
+%%%%
+You can pray at an altar to have your necromancy enhanced.
+
+あなたは祭壇で死霊術を強化する授かり物を請うことができる。
+%%%%
+You can pray to sacrifice all orcish remains on your square.
+
+あなたは足下にある全てのオーク族の遺骸を祈って捧げることができる。
+%%%%
+Evolving plants requires fruit, and evolving fungi requires piety.
+
+果物を消費して植物を、また信仰値を消費して菌類を進化することができる。
+%%%%
+You can pray to sacrifice all fresh corpses on your square.
+
+あなたは足下にある全ての新鮮な死体を祈って捧げることができる。
+%%%%
+You can bribe the following branches of the dungeon:
+
+あなたは下に記された迷宮の分岐を買収できる:
+%%%%
+Susceptibility:
+
+買収のしやすさ:
+%%%%
+not bribed
+
+未買収
+%%%%
+<w>Overview</w>|Powers|Wrath
+
+<w>概要</w>|能力|神の怒り
+%%%%
+Overview|<w>Powers</w>|Wrath
+
+概要|<w>能力</w>|神の怒り
+%%%%
+Overview|Powers|<w>Wrath</w>
+
+概要|能力|<w>神の怒り</w>
+%%%%
+TSO and Ely wrath cause
+
+# uppercase_first(god_name(which_god)) +
+# " forgives followers who leave " + god_name(which_god)+"'s"
+# " service; however, those who take up the worship of evil"
+# " gods will be punished. (" +
+# _comma_separate_gods(evil_gods) + " are evil gods.)";
+
+%sは自らの元から去る者を赦してくれる。ただし、邪悪な神々へと改宗しようとする者には懲罰が加えられる。
+(%sは邪悪な神々である)
+%%%%
+Zin wrath cause
+
+# uppercase_first(god_name(which_god)) +
+# " does not punish followers who leave "+god_name(which_god)+
+# "'s service; however, those who take up the worship of evil"
+# " or chaotic gods will be scourged. (" +
+# _comma_separate_gods(evil_gods) + " are evil, and " +
+# _comma_separate_gods(chaotic_gods) + " are chaotic.)"
+
+%sは自らの元から去る者を罰しない。ただし、邪悪な、もしくは混沌なる神々へと改宗しようとする者には懲罰が加えられる。
+(%sは邪悪な神々、%sは混沌なる神々である)
+%%%%
+Ru wrath cause
+
+# uppercase_first(god_name(which_god)) +
+# " does not punish followers who leave "+god_name(which_god)+
+# "'s service; however, their piety will be lost even upon"
+# " rejoining, and their sacrifices remain forever.";
+
+%sは自らの元を去る者を罰しない。ただし、再入信したとしても信仰値は失われ、神に捧げた代償は永久にそのままである。
+%%%%
+Xom wrath cause
+
+# "Unfaithful ex-followers will find themselves "
+# "suffering through "+god_name(which_god)+"'s bad moods for "+
+# "so long as "+god_name(which_god)+" can be bothered to " +
+# "remember about them. Still, "+god_name(which_god)+
+# "'s caprice remains; the unfaithful are rewarded just as "+
+# "the faithful are punished."
+
+不誠実な元信徒は%sが覚えている間%sの不機嫌に苦しめられる。
+とはいえ、%sの気まぐれは健在である： 不誠実なものほど報われ、忠義者は懲罰される。
+%%%%
+default wrath cause
+
+# uppercase_first(god_name(which_god)) +
+# " does not appreciate abandonment, and will call down"
+# " fearful punishments on disloyal followers!";
+
+%sは棄教することを喜ばず、不忠義な信徒に恐るべき懲罰をもたらす！
+%%%%
+does not demand training of the Invocations skill. All abilities are purely based on piety.
+
+祈祷スキルの訓練を要求しない。全ての能力は純粋に信仰値に依存すること
+%%%%
+The power of Kikubaaqudgha's abilities is governed by Necromancy skill instead of Invocations.
+
+キクバークッグァの与える能力は祈祷スキルではなく死霊術スキルに左右される。
+%%%%
+elyvilon misc info
+
+# Healing hostile monsters may pacify them, turning them
+# neutral. Pacification works best on natural beasts,
+# worse on monsters of your species, worse on other
+# species, worst of all on demons and undead, and not at
+# all on sleeping or mindless monsters. If it succeeds,
+# you gain half of the monster's experience value. Pacified
+# monsters try to leave the level.
+
+敵対的なモンスターを癒すことで彼らをなだめ、友好化することができる。友好化は自然の獣に対して最も効果的に働き、次いで自分と同じ種族、他の種族となり、悪魔や不死者には最も効きづらく、眠っていたり精神構造を持たないモンスターには全く効かない。
+成功した場合、あなたはモンスターを倒した場合の経験値の半分を得る。
+中立化したモンスターはこの階層から移動しようとする。
+%%%%
+The power of Nemelex Xobeh's abilities and of the cards' effects is governed by Evocations skill instead of Invocations.
+
+ネメレクス・ソベーの与える能力とカードの効果は祈祷スキルではなく発動スキルに左右される。
+%%%%
+Note that
+
+に注意。
+%%%%
+%s doesn't play fair with you.
+
+%sはあなたと正々堂々勝負したりはしない。
+%%%%
+%s's wrath is upon you!
+
+%sはあなたに激怒している！
+%%%%
+%s is annoyed with you.
+
+%sはあなたに苛立っている。
+%%%%
+%s well remembers your sins.
+
+%sはあなたの罪をはっきりと覚えている。
+%%%%
+%s is ready to forgive your sins.
+
+%sはあなたの罪を赦そうとしている。
+%%%%
+%s is ambivalent towards you.
+
+%sはあなたに曖昧な感情を抱いている。
+%%%%
+%s is neutral towards you.
+
+%sはあなたに対して中立である。
+%%%%
+Granted powers:
+
+与えられた能力:
+%%%%
+(Cost)
+
+(コスト)
+%%%%
+, especially when called upon
+
+(あなたから呼びかけられた時は特に)
+%%%%
+, and always does so when called upon
+
+(あなたから呼びかけられた時はいつでも)
+%%%%
+carefully
+
+注意深く
+%%%%
+often
+
+しばしば
+%%%%
+sometimes
+
+時々
+%%%%
+occasionally
+
+たまに
+%%%%
+watches over you
+
+あなたを見守る。
+%%%%
+%s %s shields you from chaos.
+
+%sは混沌からあなたを%s見守る。
+%%%%
+completely
+
+完全に
+%%%%
+mostly
+
+ほとんど
+%%%%
+%s %s shields you from negative energy.
+
+%sは負のエネルギーからあなたを%s守る。
+%%%%
+You can call upon %s to burn spellbooks in your surroundings.
+
+あなたは%sの力を借りて周囲の魔法書を燃やすことができる。
+%%%%
+%s shields you from corrosive effects.
+
+%sはあなたを腐蝕効果から守る。
+%%%%
+when your fellow slimes consume items.
+
+仲間のスライムがアイテムを消化する際に
+%%%%
+You can pray to speed up decomposition.
+
+あなたは祈って死体の腐敗を早めることができる。
+%%%%
+You can walk through plants and fire through allied plants.
+
+あなたは植物の間を通り、仲間の植物に発射物が当たらなくなる。
+%%%%
+You are provided with a bounty of information.
+
+あなたは装備の情報を得ることができる。
+%%%%
+You can pray to corrupt scrolls of remove curse on your square.
+
+あなたは祈って解呪の巻物を呪縛の巻物に変化させることができる。
+%%%%
+%s supports your attributes (+%d).
+
+%sはあなたの能力値を強化(+%d)する。
+%%%%
+You can bend time to slow others.
+
+あなたは時間をねじ曲げ他者を遅くすることができる。
+%%%%
+some of Vehumet's most lethal spells
+
+ヴェフメットの最も危険な呪文のいくつか
+%%%%
+You passively detect gold.
+
+あなたは金貨のありかを感知することができる。
+%%%%
+turns your defeated foes' bodies to gold.
+
+は倒した敵の体を金貨に変える。
+%%%%
+Your enemies may become distracted by glittering piles of gold.
+
+あなたの敵は輝く金貨の山に惑わされる。
+%%%%
+You are immune to your own clouds.
+
+あなたは自らの出した雲で傷つかない。
+%%%%
+None.
+
+(なし)
+%%%%
+Religion
+
+信仰
+%%%%
+Title  -
+
+称号 -
+%%%%
+Favour -
+
+好意 -
+%%%%
+############################## describe-spells.cc ##############################
+%%%%
+%s has mastered %s:
+
+%sは%sを習得している:
+%%%%
+one of the following spellbooks
+
+は下記の魔法書のうち1つ
+%%%%
+the following spells
+
+下記の呪文
+%%%%
+%s possesses one of the following sets of %s abilities:
+
+%sは下記の能力群のうち1つを持っている:
+%%%%
+%s possesses the following %s abilities:
+
+%sは下記の能力を持っている:
+%%%%
+Spells                             Type                      Level
+
+呪文名                           種類                       レベル
+%%%%
+Select a spell to read its description
+
+解説文を読むにはそれぞれの呪文を選択してください。
+%%%%
+, to memorize it or to forget it
+
+呪文を記憶/忘却したり、
+%%%%

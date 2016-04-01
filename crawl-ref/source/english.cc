@@ -369,6 +369,8 @@ string apply_description(description_level_type desc, const string &name,
 string thing_do_grammar(description_level_type dtype, bool add_stop,
                         bool force_article, string desc)
 {
+    add_stop = false; // ignore add_stop
+
     if (add_stop && !ends_with(desc, ".") && !ends_with(desc, "!")
         && !ends_with(desc, "?"))
     {

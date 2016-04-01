@@ -118,6 +118,7 @@ static TextDB AllDBs[] =
     TextDB("misc", "database/",
             "miscname.txt", // names for miscellaneous things
             "godname.txt",  // god-related names (mostly His Xomminess)
+            "ja/jtrans_godname.txt",
             "montitle.txt", // titles for monsters (i.e. uniques)
             nullptr),
 
@@ -137,6 +138,67 @@ static TextDB AllDBs[] =
             "hints.txt",    // hints mode
             "tutorial.txt", // tutorial mode
             nullptr),
+
+    TextDB("jtrans", "database/ja/",
+           "jtrans.txt",
+           "jtrans_abl_show.txt",
+           "jtrans_abyss.txt",
+           "jtrans_actor.txt",
+           "jtrans_areas.txt",
+           "jtrans_arena.txt",
+           "jtrans_art_func.txt",
+           "jtrans_attack.txt",
+           "jtrans_attitude_change.txt",
+           "jtrans_beam.txt",
+           "jtrans_behold.txt",
+           "jtrans_branch_data.txt",
+           "jtrans_chardump.txt",
+           "jtrans_character.txt",
+           "jtrans_cloud.txt",
+           /*
+           "jtrans_command.txt",
+           "jtrans_dactions.txt",
+           */
+           "jtrans_decks.txt",
+           "jtrans_delay.txt",
+           "jtrans_describe.txt",
+           "jtrans_dgn_overview.txt",
+           "jtrans_directn.txt",
+           /*
+           "jtrans_effects.txt",
+           */
+           "jtrans_evoke.txt",
+           /*
+           "jtrans_exclude.txt",
+           "jtrans_fearmonger.txt",
+           "jtrans_fight.txt",
+           "jtrans_file.txt",
+           "jtrans_fineff.txt",
+           "jtrans_food.txt",
+           "jtrans_godabil.txt",
+           "jtrans_godcompanions.txt",
+           */
+           "jtrans_godconduct.txt",
+           "jtrans_godname.txt",
+           "jtrans_godpassive.txt",
+           "jtrans_godprayer.txt",
+           "jtrans_autofight_lua.txt",
+           "jtrans_magicspell.txt",
+           "jtrans_monster_name.txt",
+           "jtrans_mutations.txt",
+           "jtrans_output.txt",
+           "jtrans_skill_title.txt",
+
+           "jtrans_weapon.txt",
+           "jtrans_armour.txt",
+           "jtrans_missile.txt",
+           "jtrans_food.txt",
+
+           "jtrans_duration_data.txt",
+           "jtrans_zap_data.txt",
+
+           "jtrans_montitle_en.txt",
+           nullptr),
 };
 
 static TextDB& DescriptionDB = AllDBs[0];
@@ -149,6 +211,7 @@ static TextDB& QuotesDB      = AllDBs[6];
 static TextDB& HelpDB        = AllDBs[7];
 static TextDB& FAQDB         = AllDBs[8];
 static TextDB& HintsDB       = AllDBs[9];
+static TextDB& JtransDB      = AllDBs[10];
 
 static string _db_cache_path(string db, const char *lang)
 {
@@ -917,4 +980,69 @@ string getMiscString(const string &misc, const string &suffix)
 string getHintString(const string &key)
 {
     return unwrap_desc(_query_database(HintsDB, key, true, true));
+}
+
+/////////////////////////////////////////////////////////////////////////////
+// JtransDB specific functions.
+string jtrans(const char* key, const bool linefeed)
+{
+    // for string(nullptr) error
+    string str = (key == nullptr ? string() : string(key));
+
+    return jtrans(str, linefeed);
+}
+
+string jtrans(const string &key, const bool linefeed)
+{
+    if (key == "") return "";
+
+    string tmp_key(key);
+    string text = _query_database(JtransDB, trim_string(tmp_key), true, true);
+
+    if (text == "") return key;
+
+    if (!linefeed)
+    {
+        string chomped_text(text.begin(), text.end()-1);
+        return chomped_text;
+    }
+
+    return text;
+}
+
+string jtrans_make_stringf(const string &msg, const string &subject, const string &verb, const string &object)
+{
+    return make_stringf(msg.c_str(), subject.c_str(), object.c_str(), verb.c_str());
+}
+
+string jtrans_make_stringf(const string &msg, const string &verb, const string &object)
+{
+    return make_stringf(msg.c_str(), object.c_str(), verb.c_str());
+}
+
+string rune_of_zot_name(const string &name)
+{
+    return jtrans(name + " rune of Zot");
+}
+
+bool jtrans_has_key(const string &key)
+{
+    if (key == "") return false;
+
+    return !(jtrans(key) == key);
+}
+
+string tagged_jtrans(const string &tag, const string& key, bool linefeed)
+{
+    if (jtrans_has_key(tag + key))
+        return jtrans(tag + key, linefeed);
+    else
+        return key;
+}
+
+bool tagged_jtrans_has_key(const string& tag, const string& key)
+{
+    if (key == "") return false;
+
+    return !(tagged_jtrans(tag, key) == key);
 }

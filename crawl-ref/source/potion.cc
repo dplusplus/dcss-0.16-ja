@@ -10,6 +10,7 @@
 #include <cstdio>
 #include <cstring>
 
+#include "database.h"
 #include "food.h"
 #include "godconduct.h"
 #include "hints.h"
@@ -92,7 +93,7 @@ public:
                 * (3 - you.mutation[MUT_NO_DEVICE_HEAL])  / 3);
         }
 
-        mprf("You feel %s.", ddoor ? "queasy" : "better");
+        mpr(jtrans(make_stringf("You feel %s.", ddoor ? "queasy" : "better")));
 
         // Only fix rot when healed to full.
         if (you.hp == you.hp_max)
@@ -117,10 +118,10 @@ public:
     {
         if (was_known && !can_quaff())
         {
-            mprf("You have no ailments to cure%s.",
-                    you.duration[DUR_DEATHS_DOOR] && you.can_device_heal()
-                        ? ", and can't heal while in Death's door"
-                        : "");
+            mpr(jtrans(make_stringf("You have no ailments to cure%s.",
+                                    you.duration[DUR_DEATHS_DOOR] && you.can_device_heal()
+                                    ? ", and can't heal while in Death's door"
+                                    : "")));
             return false;
         }
 
@@ -157,19 +158,19 @@ public:
     {
         if (you.duration[DUR_DEATHS_DOOR])
         {
-            mpr("You feel queasy.");
+            mpr(jtrans("You feel queasy."));
             return false;
         }
 
         if (!you.can_device_heal())
         {
-            mpr("That seemed strangely inert.");
+            mpr(jtrans("That seemed strangely inert."));
             return false;
         }
 
         inc_hp((10 + random2avg(28, 3))
             * (3 - you.mutation[MUT_NO_DEVICE_HEAL] ) / 3);
-        mpr("You feel much better.");
+        mpr(jtrans("You feel much better."));
 
         // only fix rot when healed to full
         if (you.hp == you.hp_max)
@@ -186,13 +187,13 @@ public:
         {
             if (you.duration[DUR_DEATHS_DOOR])
             {
-                mpr("You cannot heal while in Death's door!");
+                mpr(jtrans("You cannot heal while in Death's door!"));
                 return false;
             }
 
             if (!you.can_device_heal())
             {
-                mpr("That would not heal you.");
+                mpr(jtrans("That would not heal you."));
                 return false;
             }
         }
@@ -208,8 +209,8 @@ public:
 static string _blood_flavour_message()
 {
     if (player_mutation_level(MUT_HERBIVOROUS) < 3 && player_likes_chunks())
-        return "This tastes like blood.";
-    return "Yuck - this tastes like blood.";
+        return jtrans("This tastes like blood.");
+    return jtrans("Yuck - this tastes like blood.");
 }
 
 class PotionBlood : public PotionEffect
@@ -227,7 +228,7 @@ public:
     {
         if (you.species == SP_VAMPIRE)
         {
-            mpr("Yummy - fresh blood!");
+            mpr(jtrans("Yummy - fresh blood!"));
             lessen_hunger(pow, true);
         }
         else
@@ -270,7 +271,7 @@ public:
     {
         if (was_known && !can_quaff())
         {
-            mpr("This potion cannot work under stasis.");
+            mpr(jtrans("This potion cannot work under stasis."));
             return false;
         }
 
@@ -295,8 +296,9 @@ public:
     {
         const bool were_mighty = you.duration[DUR_MIGHT] > 0;
 
-        mprf(MSGCH_DURATION, "You feel %s all of a sudden.",
-             were_mighty ? "mightier" : "very mighty");
+        mpr_nojoin(MSGCH_DURATION,
+                   jtrans(make_stringf("You feel %s all of a sudden.",
+                                       were_mighty ? "mightier" : "very mighty")));
 
         you.increase_duration(DUR_MIGHT, 35 + random2(pow), 80);
 
@@ -321,8 +323,9 @@ public:
     {
         const bool were_brilliant = you.duration[DUR_BRILLIANCE] > 0;
 
-        mprf(MSGCH_DURATION, "You feel %s all of a sudden.",
-             were_brilliant ? "more clever" : "clever");
+        mpr_nojoin(MSGCH_DURATION,
+                   jtransc(make_stringf("You feel %s all of a sudden.",
+                                        were_brilliant ? "more clever" : "clever")));
 
         you.increase_duration(DUR_BRILLIANCE, 35 + random2(pow), 80);
 
@@ -348,8 +351,9 @@ public:
     {
         const bool were_agile = you.duration[DUR_AGILITY] > 0;
 
-        mprf(MSGCH_DURATION, "You feel %s all of a sudden.",
-             were_agile ? "more agile" : "agile");
+        mpr_nojoin(MSGCH_DURATION,
+                   jtransc(make_stringf("You feel %s all of a sudden.",
+                                        were_agile ? "more agile" : "agile")));
 
         you.increase_duration(DUR_AGILITY, 35 + random2(pow), 80);
 
@@ -387,7 +391,7 @@ public:
     {
         if (was_known && !can_quaff())
         {
-            mpr("You cannot fly right now.");
+            mpr(jtrans("You cannot fly right now."));
             return false;
         }
 
@@ -409,14 +413,14 @@ public:
 
     bool effect(bool=true, int=40) const
     {
-        mprf(MSGCH_WARN, "That liquid tasted very nasty...");
+        mpr_nojoin(MSGCH_WARN, jtrans("That liquid tasted very nasty..."));
         return poison_player(10 + random2avg(15, 2), "", "a potion of poison");
     }
 
     bool quaff(bool was_known) const
     {
         if (player_res_poison() >= 1)
-            mpr("You feel slightly nauseous.");
+            mpr(jtrans("You feel slightly nauseous."));
         else if (effect(was_known))
             xom_is_stimulated(100 / _xom_factor(was_known));
         return true;
@@ -437,7 +441,7 @@ public:
     bool effect(bool=true, int=40) const
     {
         debuff_player();
-        mpr("You feel magically purged.");
+        mpr(jtrans("You feel magically purged."));
         return true;
     }
 };
@@ -463,13 +467,13 @@ public:
         const int ambrosia_turns = 3 + random2(8);
         if (confuse_player(ambrosia_turns))
         {
-            mprf("You feel%s invigorated.",
-                 you.duration[DUR_AMBROSIA] ? " more" : "");
+            mpr(jtrans(make_stringf("You feel%s invigorated.",
+                                    you.duration[DUR_AMBROSIA] ? " more" : "")));
             you.increase_duration(DUR_AMBROSIA, ambrosia_turns);
             return true;
         }
 
-        mpr("You feel briefly invigorated.");
+        mpr(jtrans("You feel briefly invigorated."));
         return false;
     }
 
@@ -477,7 +481,7 @@ public:
     {
         if (was_known && !can_quaff())
         {
-            mpr("The ambrosia would have no effect on you.");
+            mpr(jtrans("The ambrosia would have no effect on you."));
             return false;
         }
 
@@ -514,18 +518,17 @@ public:
                 afflictions.push_back("!!!QUAD DAMAGE!!!");
 
             mprf(MSGCH_DURATION,
-                 "You become %stransparent, but the glow from %s "
-                 "%s prevents you from becoming "
-                 "completely invisible.",
-                 you.duration[DUR_INVIS] ? "more " : "",
-                 you.haloed() && you.halo_radius2() == -1 ? "the" : "your",
+                 jtransc("You become %stransparent, but the glow from %s "
+                         "%s prevents you from becoming "
+                         "completely invisible."),
+                 you.duration[DUR_INVIS] ? jtransc("more") : "",
                  comma_separated_line(afflictions.begin(), afflictions.end()).c_str());
         }
         else
         {
-            mprf(MSGCH_DURATION, !you.duration[DUR_INVIS]
-                 ? "You fade into invisibility!"
-                 : "You fade further into invisibility.");
+            mpr_nojoin(MSGCH_DURATION, jtrans(!you.duration[DUR_INVIS]
+                                              ? "You fade into invisibility!"
+                                              : "You fade further into invisibility."));
         }
 
         // Now multiple invisiblity casts aren't as good. -- bwr
@@ -546,7 +549,7 @@ public:
     {
         if (was_known && !can_quaff())
         {
-            mpr("You cannot turn invisible while glowing.");
+            mpr(jtrans("You cannot turn invisible while glowing."));
             return false;
         }
 
@@ -571,7 +574,7 @@ public:
     {
         if (you.experience_level < you.get_max_xl())
         {
-            mpr("You feel more experienced!");
+            mpr(jtrans("You feel more experienced!"));
             adjust_level(1, true);
 
             // Deferred calling level_change() into item_use.cc:3919, after
@@ -579,7 +582,7 @@ public:
             // potions of experience. Reference Mantis #3245. [due]
         }
         else
-            mpr("A flood of memories washes over you.");
+            mpr(jtrans("A flood of memories washes over you."));
         more();
         skill_menu(SKMF_EXPERIENCE_POTION, 750 * you.experience_level);
         return true;
@@ -618,7 +621,7 @@ public:
 #endif
 
         inc_mp(10 + random2avg(28, 3));
-        mpr("Magic courses through your body.");
+        mpr(jtrans("Magic courses through your body."));
         return true;
     }
 
@@ -626,7 +629,7 @@ public:
     {
         if (was_known && !can_quaff())
         {
-            mpr("Your magic is already full.");
+            mpr(jtrans("Your magic is already full."));
             return false;
         }
 
@@ -651,14 +654,14 @@ public:
         bool nothing_happens = true;
         if (you.duration[DUR_BREATH_WEAPON])
         {
-            mprf(MSGCH_RECOVERY, "You have got your breath back.");
+            mpr_nojoin(MSGCH_RECOVERY, jtrans("You have got your breath back."));
             you.duration[DUR_BREATH_WEAPON] = 0;
             nothing_happens = false;
         }
 
         // Give a message if no message otherwise.
         if (!restore_stat(STAT_ALL, 0, false) && nothing_happens)
-            mpr("You feel refreshed.");
+            mpr(jtrans("You feel refreshed."));
         return nothing_happens;
     }
 };
@@ -683,7 +686,7 @@ public:
     {
         if (you.species == SP_VAMPIRE && you.hunger_state <= HS_SATIATED)
         {
-            mpr("You feel slightly irritated.");
+            mpr(jtrans("You feel slightly irritated."));
             make_hungry(100, false);
             return false;
         }
@@ -696,7 +699,7 @@ public:
     {
         if (was_known && !can_quaff())
         {
-            mpr("You cannot go berserk now.");
+            mpr(jtrans("You cannot go berserk now."));
             return false;
         }
 
@@ -719,8 +722,8 @@ static bool _disallow_mut()
         return false;
 
     const bool normally_alive = !you.undead_state(false);
-    mprf("You cannot mutate%s.",
-         normally_alive ? " at present" : "");
+    mprf(jtransc("You cannot mutate%s."),
+         jtransc(normally_alive ? " at present" : ""));
     return true;
 }
 
@@ -742,7 +745,7 @@ public:
 
     bool effect(bool=true, int=40) const
     {
-        mpr("It has a very clean taste.");
+        mpr(jtrans("It has a very clean taste."));
         bool mutated = false;
         for (int i = 0; i < 7; i++)
         {
@@ -783,7 +786,7 @@ public:
 
     bool effect(bool=true, int=40) const
     {
-        mpr("You feel extremely strange.");
+        mpr(jtrans("You feel extremely strange."));
         bool mutated = false;
         for (int i = 0; i < 3; i++)
             mutated |= mutate(RANDOM_MUTATION, "potion of mutation", false);
@@ -827,14 +830,14 @@ public:
                                     "potion of beneficial mutation",
                                     true, false, false, true);
         if (undead_mutation_rot()) {
-            mpr("You feel dead inside.");
+            mpr(jtrans("You feel dead inside."));
             return mutated;
         }
 
         if (mutated)
-            mpr("You feel fantastic!");
+            mpr(jtrans("You feel fantastic!"));
         else
-            mpr("You feel fantastic for a moment.");
+            mpr(jtrans("You feel fantastic for a moment."));
         learned_something_new(HINT_YOU_MUTATED);
         return mutated;
     }
@@ -864,7 +867,7 @@ public:
 
     bool effect(bool=true, int pow = 40) const
     {
-        mprf(MSGCH_DURATION, "You feel protected.");
+        mpr_nojoin(MSGCH_DURATION, jtrans("You feel protected."));
         you.increase_duration(DUR_RESISTANCE, random2(pow) + 35);
         return true;
     }
@@ -889,7 +892,7 @@ public:
 
     bool quaff(bool was_known) const
     {
-        mpr("There was something very wrong with that liquid.");
+        mpr(jtrans("There was something very wrong with that liquid."));
         if (effect(was_known))
             xom_is_stimulated( 50 / _xom_factor(was_known));
         return true;
@@ -954,7 +957,7 @@ public:
             did_god_conduct(DID_CHAOS, 10, was_known);
         }
         else
-            mpr("You feel woody for a moment.");
+            mpr(jtrans("You feel woody for a moment."));
         return true;
     }
 };
@@ -1221,7 +1224,7 @@ bool quaff_potion(item_def &potion)
     {
         set_ident_flags(potion, ISFLAG_IDENT_MASK);
         set_ident_type(potion, ID_KNOWN_TYPE);
-        mprf("It was a %s.", potion.name(DESC_QUALNAME).c_str());
+        mprf(jtransc("It was a %s."), potion.name(DESC_QUALNAME).c_str());
         identify_healing_pots();
     }
 

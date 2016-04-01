@@ -2658,11 +2658,11 @@ spret_type cast_battlesphere(actor* agent, int pow, god_type god, bool fail)
 
         if (recalled)
         {
-            mpr("You recall your battlesphere and imbue it with additional"
-                " charge.");
+            mpr(jtrans("You recall your battlesphere and imbue it with additional"
+                       " charge."));
         }
         else
-            mpr("You imbue your battlesphere with additional charge.");
+            mpr(jtrans("You imbue your battlesphere with additional charge."));
 
         battlesphere->battlecharge = min(20, (int) battlesphere->battlecharge
                                               + 4 + random2(pow + 10) / 10);
@@ -2696,16 +2696,16 @@ spret_type cast_battlesphere(actor* agent, int pow, god_type god, bool fail)
             agent->props["battlesphere"].get_int() = battlesphere->mid;
 
             if (agent->is_player())
-                mpr("You conjure a globe of magical energy.");
+                mpr(jtrans("You conjure a globe of magical energy."));
             else
             {
                 if (you.can_see(agent) && you.can_see(battlesphere))
                 {
                     simple_monster_message(agent->as_monster(),
-                                           " conjures a globe of magical energy!");
+                                           jtransc(" conjures a globe of magical energy!"));
                 }
                 else if (you.can_see(battlesphere))
-                    simple_monster_message(battlesphere, " appears!");
+                    simple_monster_message(battlesphere, jtransc(" appears!"));
                 battlesphere->props["band_leader"].get_int() = agent->mid;
             }
             battlesphere->battlecharge = 4 + random2(pow + 10) / 10;
@@ -2737,17 +2737,17 @@ void end_battlesphere(monster* mons, bool killed)
             {
                 if (mons->battlecharge == 0)
                 {
-                    mpr("Your battlesphere expends the last of its energy"
-                        " and dissipates.");
+                    mpr(jtrans("Your battlesphere expends the last of its energy"
+                               " and dissipates."));
                 }
                 else
-                    mpr("Your battlesphere wavers and loses cohesion.");
+                    mpr(jtrans("Your battlesphere wavers and loses cohesion."));
             }
             else
-                mpr("You feel your bond with your battlesphere wane.");
+                mpr(jtrans("You feel your bond with your battlesphere wane."));
         }
         else if (you.can_see(mons))
-            simple_monster_message(mons, " dissipates.");
+            simple_monster_message(mons, jtransc(" dissipates."));
 
         if (!cell_is_solid(mons->pos()))
             place_cloud(CLOUD_MAGIC_TRAIL, mons->pos(), 3 + random2(3), mons);
@@ -3005,7 +3005,7 @@ bool fire_battlesphere(monster* mons)
                     != beam.path_taken.end()))
         {
             beam.thrower = (agent->is_player()) ? KILL_YOU : KILL_MON;
-            simple_monster_message(mons, " fires!");
+            simple_monster_message(mons, jtransc(" fires!"));
             beam.fire();
 
             used = true;

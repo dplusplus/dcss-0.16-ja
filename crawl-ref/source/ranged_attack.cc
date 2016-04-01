@@ -9,6 +9,7 @@
 
 #include "areas.h"
 #include "coord.h"
+#include "database.h"
 #include "english.h"
 #include "env.h"
 #include "fprop.h"
@@ -172,32 +173,36 @@ bool ranged_attack::handle_phase_attempted()
 bool ranged_attack::handle_phase_blocked()
 {
     ASSERT(!attack_ignores_shield(false));
-    string punctuation = ".";
-    string verb = "block";
+    string punctuation = "。";
+    string verb = "防いだ";
+    string by_shield;
     if (defender_shield && is_shield(*defender_shield)
         && shield_reflects(*defender_shield))
     {
         reflected = true;
-        verb = "reflect";
+        verb = "反射した";
         if (defender->observable())
         {
-            punctuation = " off " + defender->pronoun(PRONOUN_POSSESSIVE)
-                          + " " + defender_shield->name(DESC_PLAIN).c_str()
-                          + "!";
+            by_shield = defender_shield->name(DESC_PLAIN) + "で";
+            punctuation = "！";
+
             ident_reflector(defender_shield);
         }
         else
-            punctuation = "!";
+            punctuation = "！";
     }
     else
         range_used = BEAM_STOP;
 
     if (needs_message)
     {
-        mprf("%s %s %s%s",
-             defender_name(false).c_str(),
-             defender->conj_verb(verb).c_str(),
-             projectile->name(DESC_THE).c_str(),
+        mprf("%sは%s%sを%s%s",
+             jtransc(defender_name(false)),
+             by_shield.c_str(),
+             tagged_jtrans_has_key("[zap]", projectile->name(DESC_THE)) ?
+             tagged_jtransc("[zap]", projectile->name(DESC_THE)) :
+             jtransc(projectile->name(DESC_THE)),
+             jtransc(verb),
              punctuation.c_str());
     }
 
@@ -253,10 +258,10 @@ bool ranged_attack::handle_phase_dodged()
 
     if (needs_message)
     {
-        mprf("%s%s misses %s%s",
-             projectile->name(DESC_THE).c_str(),
+        mprf("%sは%sから%s外れた%s",
+             jtransc(projectile->name(DESC_THE)),
+             jtransc(defender_name(false)),
              evasion_margin_adverb().c_str(),
-             defender_name(false).c_str(),
              attack_strength_punctuation(damage_done).c_str());
     }
 
@@ -296,10 +301,10 @@ bool ranged_attack::handle_phase_hit()
         }
         else if (needs_message)
         {
-            mprf("%s %s %s but does no damage.",
+            mprf(jtransc("%s %s %s but does no damage."),
                  projectile->name(DESC_THE).c_str(),
-                 attack_verb.c_str(),
-                 defender->name(DESC_THE).c_str());
+                 jtransc(defender->name(DESC_THE)),
+                 attack_verb.c_str());
         }
     }
 
@@ -839,7 +844,7 @@ bool ranged_attack::player_good_stab()
 
 void ranged_attack::set_attack_verb(int/* damage*/)
 {
-    attack_verb = attack_ignores_shield(false) ? "pierces through" : "hits";
+    attack_verb = jtrans(attack_ignores_shield(false) ? "pierces through" : "hits");
 }
 
 void ranged_attack::announce_hit()
@@ -847,13 +852,14 @@ void ranged_attack::announce_hit()
     if (!needs_message)
         return;
 
-    mprf("%s %s %s%s%s%s",
-         projectile->name(DESC_THE).c_str(),
-         attack_verb.c_str(),
-         defender_name(false).c_str(),
+    mprf("%sは%s%sに%s%s%s",
+         tagged_jtrans_has_key("[zap]", projectile->name(DESC_THE)) ? tagged_jtransc("[zap]", projectile->name(DESC_THE))
+                                                                    : jtransc(projectile->name(DESC_THE)),
+         jtransc(defender_name(false)),
          damage_done > 0 && stab_attempt && stab_bonus > 0
-             ? " in a vulnerable spot"
+             ? jtransc("in a vulnerable spot")
              : "",
+         attack_verb.c_str(),
          debug_damage_number().c_str(),
          attack_strength_punctuation(damage_done).c_str());
 }

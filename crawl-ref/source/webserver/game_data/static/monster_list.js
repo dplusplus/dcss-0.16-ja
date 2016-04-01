@@ -177,7 +177,7 @@ function ($, map_knowledge, cr, dungeon_renderer, options, util) {
             if (monsters.length == 1)
                 group.name_span.text(monsters[0].mon.name);
             else
-                group.name_span.text(monsters.length + " " + monsters[0].mon.plural);
+                group.name_span.text(monsters.length + "体の" + monsters[0].mon.plural);
 
             $.each(attitude_classes, function (i, cls) {
                 group.name_span.removeClass(cls);

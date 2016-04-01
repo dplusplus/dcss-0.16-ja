@@ -1,0 +1,161 @@
+%%%%
+animal skin
+
+獣の皮
+%%%%
+robe
+
+ローブ
+%%%%
+leather armour
+
+レザーアーマー
+%%%%
+ring mail
+
+リングメイル
+%%%%
+scale mail
+
+スケイルメイル
+%%%%
+chain mail
+
+鎖かたびら
+%%%%
+plate armour
+
+プレートアーマー
+%%%%
+crystal plate armour
+
+水晶の鎧
+%%%%
+troll leather armour
+
+トロル革の鎧
+%%%%
+troll hide
+
+トロルの皮
+%%%%
+steam dragon armour
+
+スチームドラゴンの鎧
+%%%%
+steam dragon hide
+
+スチームドラゴンの皮
+%%%%
+mottled dragon armour
+
+斑紋ドラゴンの鎧
+%%%%
+mottled dragon hide
+
+斑紋ドラゴンの皮
+%%%%
+quicksilver dragon armour
+
+水銀ドラゴンの鎧
+%%%%
+quicksilver dragon hide
+
+水銀ドラゴンの皮
+%%%%
+swamp dragon armour
+
+沼ドラゴンの鎧
+%%%%
+swamp dragon hide
+
+沼ドラゴンの皮
+%%%%
+fire dragon armour
+
+ファイアドラゴンの鎧
+%%%%
+fire dragon hide
+
+ファイアドラゴンの皮
+%%%%
+ice dragon armour
+
+アイスドラゴンの鎧
+%%%%
+ice dragon hide
+
+アイスドラゴンの皮
+%%%%
+pearl dragon armour
+
+パールドラゴンの鎧
+%%%%
+pearl dragon hide
+
+パールドラゴンの皮
+%%%%
+storm dragon armour
+
+ストームドラゴンの鎧
+%%%%
+storm dragon hide
+
+ストームドラゴンの皮
+%%%%
+shadow dragon armour
+
+シャドウドラゴンの鎧
+%%%%
+shadow dragon hide
+
+シャドウドラゴンの皮
+%%%%
+gold dragon armour
+
+ゴールドドラゴンの鎧
+%%%%
+gold dragon hide
+
+ゴールドドラゴンの皮
+%%%%
+cloak
+
+クローク
+%%%%
+gloves
+
+手袋
+%%%%
+helmet
+
+兜
+%%%%
+hat
+
+帽子
+%%%%
+boots
+
+ブーツ
+%%%%
+centaur barding
+
+セントールの馬甲
+%%%%
+naga barding
+
+ナーガの具装
+%%%%
+buckler
+
+バックラー
+%%%%
+shield
+
+盾
+%%%%
+large shield
+
+大盾
+%%%%

@@ -1,0 +1,261 @@
+%%%%
+############################## food.cc ##############################
+%%%%
+Eat which item?
+
+どれを食べる？
+%%%%
+You can't eat that!
+
+それは食べられない！
+%%%%
+You can't eat.
+
+あなたは食事ができない。
+%%%%
+You're too full to %s anything.
+
+満腹すぎてこれ以上%sができない。
+%%%%
+There's nothing here to drain!
+
+吸血できるものがない！
+%%%%
+Your blood-deprived body can't sustain your rage any longer.
+
+あなたの血を失った肉体ではもはや狂戦士でいられない。
+%%%%
+Your blood-deprived body can't sustain your transformation much longer.
+
+あなたの血を失った肉体ではもはや変化し続けられない。
+%%%%
+Your blood-filled body can't sustain your transformation much longer.
+
+あなたの血に満ちた肉体はもはや変化し続けられない。
+%%%%
+You can't stomach any more blood right now.
+
+あなたはこれ以上血を蓄えることはできない。
+%%%%
+You feel devoid of blood!
+
+あなたは血が足りない！
+%%%%
+You are starving!
+
+あなたは餓死しかけている！
+%%%%
+You feel almost devoid of blood!
+
+あなたはちょっと血が足りない！
+%%%%
+You are near starving!
+
+あなたは餓死しそうだ！
+%%%%
+%s %s%s? (ye/n/q/i?)
+
+%s%s%sますか？ (ye/n/q/i?)
+%%%%
+%s %s%s? (ye/n/q)
+
+%s%sを食べますか？ (ye/n/q)
+%%%%
+You refuse to eat these food items.
+
+あなたはこの食品を食べることを拒否する
+%%%%
+tastes terrible.
+
+はひどい味だ。
+%%%%
+tastes great!
+
+は素晴らしく美味い！
+%%%%
+tastes great.
+
+は素晴らしく美味い。
+%%%%
+tastes like chicken!
+
+は鶏肉のような味だ！
+%%%%
+tastes very good.
+
+はとてもおいしい。
+%%%%
+tastes good.
+
+はおいしい。
+%%%%
+is not very appetising.
+
+はあまり食欲をそそらない。
+%%%%
+That was extremely unsatisfying.
+
+それは非常に不満足な食事だった。
+%%%%
+That was not very filling.
+
+それは食べごたえがなかった。
+%%%%
+This meat tastes really weird.
+
+この肉はとても奇妙な味がする。
+%%%%
+This raw flesh %s
+
+この生肉%s
+%%%%
+Blech - you need greens!
+
+オエ……。あなたには野菜が必要だ！
+%%%%
+That meat ration really hit the spot!
+
+肉の保存食は実に満足の行く食事だ！
+%%%%
+That beef jerky was %s!
+
+このビーフジャーキーは%s！
+%%%%
+jerk-a-riffic
+
+噛みごたえがある
+%%%%
+delicious
+
+うまい
+%%%%
+Blech - you need meat!
+
+オエ……。あなたには肉が必要だ！
+%%%%
+That bread ration really hit the spot!
+
+パンの保存食は実に満足の行く食事だ！
+%%%%
+That royal jelly was delicious!
+
+このロイヤルゼリーはうまい！
+%%%%
+Mmm... %s.
+
+むむむ…… %sだ。
+%%%%
+This %sblood tastes delicious!
+
+この%s血は美味だ！
+%%%%
+This blood tastes really weird!
+
+この血は奇妙な味がした！
+%%%%
+It contains deadly poison!
+
+これは致命的な毒を含んでいる！
+%%%%
+It is caustic! Not only inedible but also greatly harmful!
+
+それは腐食性だ！ 食べられないだけでなく非常に有害だ！
+%%%%
+Blech - you need blood!
+
+オエ……。あなたには血液が必要だ！
+%%%%
+Sorry, you're a carnivore.
+
+残念ながら、あなたは肉食性だ。
+%%%%
+Sorry, you're a herbivore.
+
+残念ながら、あなたは草食性だ。
+%%%%
+You aren't quite hungry enough to eat that!
+
+あなたはそれを食べられるほど腹が空いていない！
+%%%%
+There is no blood in this body!
+
+この死体は血が流れていない！
+%%%%
+You feel more resilient.
+
+あなたは元気になったように感じた。
+%%%%
+You lose consciousness!
+
+あなたは意識を失った！
+%%%%
+You have starved to death.
+
+あなたは飢え死にした。
+%%%%
+############################## itemprop.cc ##############################
+%%%%
+meat ration
+
+肉の保存食
+%%%%
+meat rations
+
+肉の保存食
+%%%%
+chunk
+
+肉
+%%%%
+chunks
+
+肉
+%%%%
+beef jerky
+
+ビーフジャーキー
+%%%%
+bread ration
+
+パンの保存食
+%%%%
+bread rations
+
+パンの保存食
+%%%%
+fruit
+
+果物
+%%%%
+royal jelly
+
+ロイヤルゼリー
+%%%%
+royal jellies
+
+ロイヤルゼリー
+%%%%
+pizza
+
+ピザ
+%%%%
+slice of pizza
+
+一切れのピザ
+%%%%
+poisonous
+
+有毒な
+%%%%
+mutagenic
+
+変異性の
+%%%%
+putrefying
+
+腐った
+%%%%
+chunk of flesh
+
+肉の塊
+%%%%

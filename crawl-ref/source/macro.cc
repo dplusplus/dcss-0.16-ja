@@ -32,6 +32,7 @@
 #include <vector>
 
 #include "cio.h"
+#include "database.h"
 #include "files.h"
 #include "initfile.h"
 #include "libutil.h"
@@ -343,6 +344,65 @@ static keyseq parse_keyseq(string s)
     return v;
 }
 
+static string _special_keys_to_string_for_macro_trigger(int key)
+{
+    const bool shift = (key >= CK_SHIFT_UP && key <= CK_SHIFT_PGDN);
+    const bool ctrl  = (key >= CK_CTRL_UP && key <= CK_CTRL_PGDN) ||
+                       (-21 <= key && key <= 4) ;
+
+    string cmd = "";
+
+    if (shift)
+    {
+        key -= (CK_SHIFT_UP - CK_UP);
+        cmd = "Shift-";
+    }
+    else if (ctrl)
+    {
+        if (key < -21 || 4 < key)
+            key -= (CK_CTRL_UP - CK_UP);
+        cmd = "Ctrl-";
+    }
+
+    int fnkey = CK_F1 - key + 1;
+
+    switch (key)
+    {
+    case CK_ENTER:  cmd += "Enter"; break;
+    case CK_BKSP:   cmd += "Backspace"; break;
+    CASE_ESCAPE     cmd += "Esc"; break;
+    case CK_DELETE: cmd += "Del"; break;
+    case CK_UP:     cmd += "Up"; break;
+    case CK_DOWN:   cmd += "Down"; break;
+    case CK_LEFT:   cmd += "Left"; break;
+    case CK_RIGHT:  cmd += "Right"; break;
+    case CK_INSERT: cmd += "Ins"; break;
+    case CK_HOME:   cmd += "Home"; break;
+    case CK_END:    cmd += "End"; break;
+    case CK_CLEAR:  cmd += "Clear"; break;
+    case CK_PGUP:   cmd += "PgUp"; break;
+    case CK_PGDN:   cmd += "PgDn"; break;
+
+    case CK_F1:  case CK_F2:  case CK_F3:  case CK_F4:
+    case CK_F5:  case CK_F6:  case CK_F7:  case CK_F8:
+    case CK_F9:  case CK_F10: case CK_F11: case CK_F12:
+        if (1 <= fnkey && fnkey <= 12)
+        {
+            cmd += make_stringf("[F%d]", fnkey);
+            break;
+        }
+       // fall through
+
+    default:
+        if (-21 <= key && key <= 4)
+            cmd += make_stringf("%c", static_cast<char>(key + 96));
+        else
+            cmd += make_stringf("%d", key);
+    }
+
+    return cmd;
+}
+
 /*
  * Serialises a key sequence into a string of the format described
  * above.
@@ -371,9 +431,7 @@ static string vtostr(const keyseq &seq)
                 s << "\\{!more}";
             else
             {
-                char buff[20];
-                snprintf(buff, sizeof(buff), "\\{%d}", key);
-                s << buff;
+                s << _special_keys_to_string_for_macro_trigger(key);
             }
         }
         else if (key == '\\')
@@ -827,7 +885,7 @@ void flush_input_buffer(int reason)
 
 static string _macro_prompt_string(const string &macro_type)
 {
-    return make_stringf("Input %s action: ", macro_type.c_str());
+    return make_stringf(jtransc("Input %s action: "), macro_type.c_str()) + " ";
 }
 
 static void _macro_prompt(const string &macro_type)
@@ -880,14 +938,17 @@ static void _input_action_text(const string &macro_type, keyseq* action)
 
 static string _macro_type_name(bool keymap, KeymapContext keymc)
 {
-    return make_stringf("%s%s",
-                        keymap ? (keymc == KMC_DEFAULT    ? "default " :
-                                  keymc == KMC_LEVELMAP   ? "level-map " :
-                                  keymc == KMC_TARGETING  ? "targeting " :
-                                  keymc == KMC_CONFIRM    ? "confirm " :
-                                  keymc == KMC_MENU       ? "menu "
-                                  : "buggy") : "",
-                        (keymap ? "keymap" : "macro"));
+    string keymc_str = keymap ? (keymc == KMC_DEFAULT    ? "通常画面" : // 直接変更
+                                 keymc == KMC_LEVELMAP   ? "level-map " :
+                                 keymc == KMC_TARGETING  ? "targeting " :
+                                 keymc == KMC_CONFIRM    ? "confirm " :
+                                 keymc == KMC_MENU       ? "menu "
+                                 : "buggy") : "";
+    if (!keymc_str.empty())
+        keymc_str = jtrans(keymc_str) + "の";
+
+    return make_stringf("%s%s", keymc_str.c_str(),
+                        jtransc(keymap ? "keymap" : "macro"));
 }
 
 void macro_add_query()
@@ -898,9 +959,9 @@ void macro_add_query()
     KeymapContext keymc = KMC_DEFAULT;
 
     clear_messages();
-    mprf(MSGCH_PROMPT, "(m)acro, (M)acro raw, keymap "
-                       "[(k) default, (x) level-map, (t)argeting, "
-                       "(c)onfirm, m(e)nu], (s)ave? ");
+    mpr_nojoin(MSGCH_PROMPT, jtrans("(m)acro, (M)acro raw, keymap "
+                                    "[(k) default, (x) level-map, (t)argeting, "
+                                    "(c)onfirm, m(e)nu], (s)ave? "));
     input = m_getch();
     int low = toalower(input);
 
@@ -936,21 +997,21 @@ void macro_add_query()
     }
     else if (input == 's')
     {
-        mpr("Saving macros.");
+        mpr(jtrans("Saving macros."));
         macro_save();
         return;
     }
     else
     {
-        mpr("Aborting.");
+        mpr(jtrans("Aborting."));
         return;
     }
 
     // reference to the appropriate mapping
     macromap &mapref = (keymap ? Keymaps[keymc] : Macros);
     const string macro_type = _macro_type_name(keymap, keymc);
-    const string trigger_prompt = make_stringf("Input %s trigger key: ",
-                                               macro_type.c_str());
+    const string trigger_prompt = make_stringf(jtransc("Input %s trigger key: "),
+                                               jtransc(macro_type)) + " ";
     msgwin_prompt(trigger_prompt);
 
     keyseq key;
@@ -963,8 +1024,8 @@ void macro_add_query()
     {
         string action = vtostr(mapref[key]);
         action = replace_all(action, "<", "<<");
-        mprf(MSGCH_WARN, "Current Action: %s", action.c_str());
-        mprf(MSGCH_PROMPT, "Do you wish to (r)edefine, (c)lear, or (a)bort? ");
+        mprf(MSGCH_WARN, jtransc("Current Action: %s"), action.c_str());
+        mpr_nojoin(MSGCH_PROMPT, jtrans("Do you wish to (r)edefine, (c)lear, or (a)bort? "));
 
         input = m_getch();
 
@@ -976,8 +1037,8 @@ void macro_add_query()
         }
         else if (input == 'c')
         {
-            mprf("Cleared %s '%s' => '%s'.",
-                 macro_type.c_str(),
+            mprf(jtransc("Cleared %s '%s' => '%s'."),
+                 jtransc(macro_type),
                  vtostr(key).c_str(),
                  vtostr(mapref[key]).c_str());
             macro_del(mapref, key);
@@ -997,8 +1058,8 @@ void macro_add_query()
         const bool deleted_macro = macro_del(mapref, key);
         if (deleted_macro)
         {
-            mprf("Deleted %s for '%s'.",
-                 macro_type.c_str(),
+            mprf(jtransc("Deleted %s for '%s'."),
+                 jtransc(macro_type),
                  vtostr(key).c_str());
         }
         else
@@ -1007,8 +1068,8 @@ void macro_add_query()
     else
     {
         macro_add(mapref, key, action);
-        mprf("Created %s '%s' => '%s'.",
-             macro_type.c_str(),
+        mprf(jtransc("Created %s '%s' => '%s'."),
+             jtransc(macro_type),
              vtostr(key).c_str(), vtostr(action).c_str());
     }
 
@@ -1223,8 +1284,8 @@ command_type key_to_command(int key, KeymapContext context)
         if (cmd_context != context)
         {
             mprf(MSGCH_ERROR,
-                 "key_to_command(): command '%s' (%d:%d) wrong for desired "
-                 "context",
+                 jtransc("key_to_command(): command '%s' (%d:%d) wrong for desired "
+                         "context"),
                  command_to_name(cmd).c_str(), -key - CMD_NO_CMD,
                  CMD_MAX_CMD + key);
             if (is_processing_macro())
@@ -1289,25 +1350,25 @@ void bind_command_to_key(command_type cmd, int key)
     {
         if (command_name == "CMD_NO_CMD")
         {
-            mprf(MSGCH_ERROR, "Cannot bind command #%d to a key.",
+            mprf(MSGCH_ERROR, jtransc("Cannot bind command #%d to a key."),
                  (int) cmd);
             return;
         }
 
-        mprf(MSGCH_ERROR, "Cannot bind command '%s' to a key.",
+        mprf(MSGCH_ERROR, jtransc("Cannot bind command '%s' to a key."),
              command_name.c_str());
         return;
     }
 
     if (is_userfunction(key))
     {
-        mprf(MSGCH_ERROR, "Cannot bind user function keys to a command.");
+        mpr_nojoin(MSGCH_ERROR, jtrans("Cannot bind user function keys to a command."));
         return;
     }
 
     if (is_synthetic_key(key))
     {
-        mprf(MSGCH_ERROR, "Cannot bind synthetic keys to a command.");
+        mpr_nojoin(MSGCH_ERROR, jtrans("Cannot bind synthetic keys to a command."));
         return;
     }
 

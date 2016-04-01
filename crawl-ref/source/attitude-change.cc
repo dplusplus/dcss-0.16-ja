@@ -141,7 +141,7 @@ bool make_god_gifts_disappear()
             && mi->has_ench(ENCH_ABJ)
             && mons_is_god_gift(*mi, god))
         {
-            if (simple_monster_message(*mi, " abandons you!"))
+            if (simple_monster_message(*mi, jtransc(" abandons you!")))
                 count++;
 
             // The monster disappears.
@@ -190,11 +190,11 @@ bool yred_slaves_abandon_you()
     if (num_reclaim > 0)
     {
         if (num_reclaim == 1 && num_slaves > 1)
-            simple_god_message(" reclaims one of your granted undead slaves!");
+            simple_god_message(jtransc(" reclaims one of your granted undead slaves!"));
         else if (num_reclaim == num_slaves)
-            simple_god_message(" reclaims your granted undead slaves!");
+            simple_god_message(jtransc(" reclaims your granted undead slaves!"));
         else
-            simple_god_message(" reclaims some of your granted undead slaves!");
+            simple_god_message(jtransc(" reclaims some of your granted undead slaves!"));
         return true;
     }
 
@@ -251,19 +251,19 @@ bool beogh_followers_abandon_you()
 
     if (reconvert) // Maybe all of them are invisible.
     {
-        simple_god_message("'s voice booms out, \"Who do you think you "
-                           "are?\"", GOD_BEOGH);
+        simple_god_message(jtransc("'s voice booms out, \"Who do you think you "
+                           "are?\""), GOD_BEOGH);
 
         ostream& chan = msg::streams(MSGCH_MONSTER_ENCHANT);
 
         if (num_reconvert > 0)
         {
             if (num_reconvert == 1 && num_followers > 1)
-                chan << "One of your followers decides to abandon you.";
+                chan << jtrans("One of your followers decides to abandon you.");
             else if (num_reconvert == num_followers)
-                chan << "Your followers decide to abandon you.";
+                chan << jtrans("Your followers decide to abandon you.");
             else
-                chan << "Some of your followers decide to abandon you.";
+                chan << jtrans("Some of your followers decide to abandon you.");
         }
 
         chan << endl;
@@ -373,14 +373,13 @@ static void _jiyva_convert_slime(monster* slime)
     {
         if (mons_genus(slime->type) == MONS_GIANT_EYEBALL)
         {
-            mprf(MSGCH_GOD, "%s stares at you suspiciously for a moment, "
-                            "then relaxes.",
-
-            slime->name(DESC_THE).c_str());
+            mprf(MSGCH_GOD, jtransc("%s stares at you suspiciously for a moment, "
+                                         "then relaxes."),
+                 slime->name(DESC_THE).c_str());
         }
         else
         {
-            mprf(MSGCH_GOD, "%s trembles before you.",
+            mprf(MSGCH_GOD, jtransc("%s trembles before you."),
                  slime->name(DESC_THE).c_str());
         }
     }
@@ -392,7 +391,7 @@ static void _jiyva_convert_slime(monster* slime)
     {
         slime->add_ench(ENCH_EAT_ITEMS);
 
-        mprf(MSGCH_MONSTER_ENCHANT, "%s looks hungrier.",
+        mprf(MSGCH_MONSTER_ENCHANT, jtransc("%s looks hungrier."),
              slime->name(DESC_THE).c_str());
     }
 

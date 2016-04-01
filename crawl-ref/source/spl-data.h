@@ -73,7 +73,8 @@ static const struct spell_desc spelldata[] =
      1000,
      LOS_RADIUS, LOS_RADIUS,
      1, 0,
-     "Apport",
+     // "Apport",
+     "収拾対象",
 },
 
 {
@@ -376,7 +377,8 @@ static const struct spell_desc spelldata[] =
      200,
      LOS_RADIUS, LOS_RADIUS,
      6, 0,
-     "Smite",
+     // "Smite",
+     "対象",
 },
 
 {
@@ -1525,7 +1527,8 @@ static const struct spell_desc spelldata[] =
      200,
      LOS_RADIUS, LOS_RADIUS,
      4, 0,
-     "Fragment what (e.g. wall or brittle monster)?",
+     // "Fragment what (e.g. wall or brittle monster)?",
+     "破砕対象(壁もしくは脆い体のモンスター等)",
 },
 
 {

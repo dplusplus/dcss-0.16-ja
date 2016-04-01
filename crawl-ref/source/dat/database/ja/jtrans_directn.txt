@@ -1,0 +1,635 @@
+%%%%
+############################## directn.cc ##############################
+%%%%
+Press: ? - help
+
+入力: ? - ヘルプ
+%%%%
+, v - describe
+
+, v - 解説表示
+%%%%
+, . - travel
+
+, . - 自動移動
+%%%%
+, g - get item
+
+, g - アイテムを拾う
+%%%%
+, Shift-Dir - straight line
+
+, Shift+方向 - 方向のみ指定
+%%%%
+, Dir - move target cursor
+
+, 方向 - カーソル移動
+%%%%
+Monsters
+
+モンスター
+%%%%
+Features
+
+地形
+%%%%
+(select to target/travel, '!' to examine):
+
+(各キーで対象に照準を合わせる、もしくは移動します。'!'で解説モードに切り替え)
+%%%%
+(select to examine, '!' to target/travel):
+
+(各キーで対象の解説文を表示します。'!'で照準/移動モードに切り替え)
+%%%%
+There's something in the way.
+
+その方向には何かがある。
+%%%%
+That would be overly suicidal.
+
+それは自殺的だ。
+%%%%
+Really target yourself?
+
+本当に自分自身を狙いますか？
+%%%%
+Sorry, you can't target yourself.
+
+残念ながら、自分自身を標的にできない。
+%%%%
+Are you sure you want to fizzle?
+
+本当に取りやめますか？
+%%%%
+Sorry, you can't target what you can't see.
+
+残念ながら、見えないところを標的にはできない。
+%%%%
+Disturbance
+
+障害物
+%%%%
+Aim
+
+照準
+%%%%
+There is something else lying underneath.
+
+さらにその下に何かがある。
+%%%%
+You cannot set exclusions on this level.
+
+この階では立入禁止区域を設定できません。
+%%%%
+Placed new exclusion.
+
+新たな立入禁止区域を設定した。
+%%%%
+Removed exclusion.
+
+立入禁止区域を解除した。
+%%%%
+Reduced exclusion size to a single square.
+
+立入禁止区域をこのマスに限定した。
+%%%%
+[unseen terrain]
+
+[視界外の地形]
+%%%%
+There is
+
+ここには
+%%%%
+here.
+
+がある。
+%%%%
+There is an entrance to
+
+ここには
+%%%%
+, spattered with blood
+
+血の飛び散った
+%%%%
+, covered with glowing mold
+
+輝く苔に覆われた
+%%%%
+, covered with mold
+
+苔に覆われた
+%%%%
+dooradj open
+
+開かれた
+%%%%
+dooradj runed
+
+ルーンで封印された
+%%%%
+dooradj sealed
+
+封印の印が刻まれた
+%%%%
+dooradj closed
+
+閉じられた
+%%%%
+an abandoned shop
+
+打ち捨てられた店
+%%%%
+a wand
+
+ワンド
+%%%%
+############################## feature-data.h ##############################
+%%%%
+explore horizon
+
+# explore horizon
+%%%%
+closed door
+
+閉じられた扉
+%%%%
+runed door
+
+ルーンで封印された扉
+%%%%
+sealed door
+
+封印の印が刻まれた扉
+%%%%
+tree
+
+木
+%%%%
+metal wall
+
+金属の壁
+%%%%
+wall of green crystal
+
+緑色の水晶の壁
+%%%%
+rock wall
+
+岩の壁
+%%%%
+wall of the weird stuff which makes up Pandemonium
+
+パンデモニウムを構成する不気味な素材の壁
+%%%%
+slime covered rock wall
+
+スライムに覆われた岩の壁
+%%%%
+stone wall
+
+石の壁
+%%%%
+unnaturally hard rock wall
+
+異常に硬い岩の壁
+%%%%
+translucent rock wall
+
+半透明の岩の壁
+%%%%
+translucent stone wall
+
+半透明の石の壁
+%%%%
+translucent unnaturally hard rock wall
+
+異常に硬い半透明の岩の壁
+%%%%
+iron grate
+
+鉄格子
+%%%%
+the open sea
+
+広大な海
+%%%%
+the endless lava
+
+終わりなき溶岩沼
+%%%%
+orcish idol
+
+オークの像
+%%%%
+idol of Beogh
+
+ベオの偶像
+%%%%
+granite statue
+
+花崗岩の像
+%%%%
+portal to somewhere
+
+どこかに続くポータル
+%%%%
+some lava
+
+溶岩
+%%%%
+some deep water
+
+深い水脈
+%%%%
+some shallow water
+
+浅い水脈
+%%%%
+floor
+
+地面
+%%%%
+collapsed entrance
+
+崩壊した入口
+%%%%
+open door
+
+開いた扉
+%%%%
+mechanical trap
+
+機械仕掛けの罠
+%%%%
+teleport trap
+
+テレポートの罠
+%%%%
+shadow trap
+
+影の怪物の罠
+%%%%
+dormant shadow trap
+
+影の怪物の罠(停止中)
+%%%%
+alarm trap
+
+警報の罠
+%%%%
+Zot trap
+
+ゾットの罠
+%%%%
+passage of Golubria
+
+ゴルブリアの通り道
+%%%%
+shaft
+
+縦穴
+%%%%
+web
+
+蜘蛛の巣
+%%%%
+shop
+
+店
+%%%%
+abandoned shop
+
+放棄された店
+%%%%
+empty arch of ancient stone
+
+古代の石で造られたアーチ
+%%%%
+detected shop or portal
+
+感知済みの店またはポータル
+%%%%
+stone staircase leading down
+
+石の下り階段
+%%%%
+stone staircase leading up
+
+石の上り階段
+%%%%
+escape hatch in the floor
+
+床の脱出ハッチ
+%%%%
+escape hatch in the ceiling
+
+天井の脱出ハッチ
+%%%%
+labyrinth entrance
+
+ラビリンスへの入口
+%%%%
+gateway to the Iron City of Dis
+
+鉄の都ディースへの門
+%%%%
+gateway to the ashen valley of Gehenna
+
+灰の谷ゲヘナへの門
+%%%%
+gateway to the freezing wastes of Cocytus
+
+コキュートスの凍れる荒野への門
+%%%%
+gateway to the decaying netherworld of Tartarus
+
+タルタロスの腐朽地獄への門
+%%%%
+gateway to Hell
+
+地獄への門
+%%%%
+gateway back into the Dungeon
+
+ダンジョンへ戻る門
+%%%%
+one-way gate to the infinite horrors of the Abyss
+
+アビスの無限地獄への門
+%%%%
+exit through the horrors of the Abyss
+
+アビスを通じた脱出の門
+%%%%
+gateway leading out of the Abyss
+
+アビスからの出口の門
+%%%%
+one-way gate leading to the halls of Pandemonium
+
+パンデモニウムの大広間へと続く門
+%%%%
+gate leading to another region of Pandemonium
+
+パンデモニウムの別領域への門
+%%%%
+gate leading out of Pandemonium
+
+パンデモニウムからの出口の門
+%%%%
+gate to the Vaults
+
+宝物庫への門
+%%%%
+gate leading back out of this place
+
+ここから脱出する門
+%%%%
+gate to the Realm of Zot
+
+ゾットの領域への門
+%%%%
+gateway to a ziggurat
+
+ジグラットへの門
+%%%%
+flickering gateway to a bazaar
+
+バザールへ続く今にも消えそうな門
+%%%%
+gateway to a bazaar
+
+バザールへの門
+%%%%
+portal to a secret trove of treasure
+
+秘密の埋蔵庫へのポータル
+%%%%
+glowing drain
+
+輝く排水口
+%%%%
+sand-covered staircase
+
+砂に覆われた階段
+%%%%
+flagged portal
+
+旗の立てられたポータル
+%%%%
+frozen archway
+
+凍てついたアーチ
+%%%%
+dark tunnel
+
+薄暗い隧道
+%%%%
+magical portal
+
+魔法のポータル
+%%%%
+staircase leading out of the dungeon
+
+ダンジョンの出口の階段
+%%%%
+staircase to the Slime Pits
+
+スライムの穴ぐらへの階段
+%%%%
+staircase back to the Lair
+
+獣の棲み処へ戻る階段
+%%%%
+staircase to the Orcish Mines
+
+オークの坑道への階段
+%%%%
+staircase back to the Dungeon
+
+ダンジョンへ戻る出口の階段
+%%%%
+staircase to the Lair
+
+獣の棲み処への階段
+%%%%
+staircase to the Crypt
+
+地下墓地への階段
+%%%%
+staircase back to the Vaults
+
+宝物庫へ戻る出口の階段
+%%%%
+staircase to the Ecumenical Temple
+
+諸宗派の寺院への階段
+%%%%
+staircase to the Snake Pit
+
+蛇穴への階段
+%%%%
+staircase to the Elven Halls
+
+エルフの大広間への階段
+%%%%
+staircase back to the Mines
+
+オークの坑道へ戻る出口の階段
+%%%%
+staircase to the Tomb
+
+霊廟への階段
+%%%%
+staircase back to the Crypt
+
+地下墓地へ戻る出口の階段
+%%%%
+staircase to the Swamp
+
+沼への階段
+%%%%
+staircase to the Shoals
+
+浅瀬への階段
+%%%%
+hole to the Spider Nest
+
+蜘蛛の穴ぐらの入口
+%%%%
+staircase to the Depths
+
+深層への階段
+%%%%
+detected altar
+
+
+%%%%
+glowing silver altar of Zin
+
+『ジン』の輝く銀の祭壇
+%%%%
+glowing golden altar of the Shining One
+
+『輝けるもの』の輝く黄金の祭壇
+%%%%
+ancient bone altar of Kikubaaqudgha
+
+『キクバークッグァ』の古代の骨で造られた祭壇
+%%%%
+basalt altar of Yredelemnul
+
+『イレデレンヌル』の玄武岩で造られた祭壇
+%%%%
+shimmering altar of Xom
+
+『ゾム』の微光が揺らめく祭壇
+%%%%
+radiant altar of Vehumet
+
+『ヴェフメット』の輝きを放つ祭壇
+%%%%
+iron altar of Okawaru
+
+『オカワル』の鉄の祭壇
+%%%%
+burning altar of Makhleb
+
+『マクレブ』の炎を上げる祭壇
+%%%%
+deep blue altar of Sif Muna
+
+『シフ・ムーナ』の紺碧の祭壇
+%%%%
+bloodstained altar of Trog
+
+『トログ』の血に染まった祭壇
+%%%%
+sparkling altar of Nemelex Xobeh
+
+『ネメレクス・ソベー』の煌く祭壇
+%%%%
+white marble altar of Elyvilon
+
+『エリヴィロン』の白い大理石の祭壇
+%%%%
+corrupted altar of Lugonu
+
+『ルゴヌ』の崩壊した祭壇
+%%%%
+roughly hewn altar of Beogh
+
+『ベオ』の乱暴に刻み造られた祭壇
+%%%%
+viscous altar of Jiyva
+
+『ジーヴァ』の粘着性の祭壇
+%%%%
+blossoming altar of Fedhas
+
+『フェダス』の芽吹きに覆われた祭壇
+%%%%
+snail-covered altar of Cheibriados
+
+『ケイブリアドス』の蝸牛にまみれた祭壇
+%%%%
+shattered altar of Ashenzari
+
+『アシェンザリ』の砕け落ちた祭壇
+%%%%
+shadowy altar of Dithmenos
+
+『ディスメノス』の影のように黒い祭壇
+%%%%
+opulent altar of Gozag
+
+『ゴザーグ』の絢爛たる祭壇
+%%%%
+stormy altar of Qazlal
+
+『クァズラル』の嵐を巻き起こす祭壇
+%%%%
+sacrificial altar of Ru
+
+『ルー』の生贄の祭壇
+%%%%
+fountain of clear blue water
+
+澄んだ青い水の泉
+%%%%
+fountain of sparkling water
+
+煌く水の泉
+%%%%
+fountain of blood
+
+血の泉
+%%%%
+dry fountain
+
+枯れた泉
+%%%%
+short-range portal
+
+短距離のポータル
+%%%%
+sealed passage leading up
+
+封印された上り経路
+%%%%
+sealed passage leading down
+
+封印された下り経路
+%%%%
+gateway leading deeper into the Abyss
+
+アビスの深層への門
+%%%%
+############################## dat/des/* ##############################
+%%%%
+wall of white crystal
+
+白水晶の壁
+%%%%

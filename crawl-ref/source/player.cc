@@ -26,6 +26,7 @@
 #endif
 #include "cloud.h"
 #include "coordit.h"
+#include "database.h"
 #include "delay.h"
 #include "dgn-overview.h"
 #include "dgnevent.h"
@@ -44,6 +45,7 @@
 #include "invent.h"
 #include "itemprop.h"
 #include "item_use.h"
+#include "japanese.h"
 #include "kills.h"
 #include "libutil.h"
 #include "macro.h"
@@ -114,8 +116,9 @@ static void _moveto_maybe_repel_stairs()
 
         if (slide_feature_over(you.pos()))
         {
-            mprf("%s slides away as you move %s it!", stair_str.c_str(),
-                 prep.c_str());
+            mprf(jtransc("%s slides away as you move %s it!"),
+                 jtransc(prep),
+                 jtransc(stair_str));
 
             if (player_in_a_dangerous_place() && one_chance_in(5))
                 xom_is_stimulated(25);
@@ -148,9 +151,8 @@ bool check_moveto_cloud(const coord_def& p, const string &move_verb,
 
         if (prompted)
             *prompted = true;
-        string prompt = make_stringf("Really %s into that cloud of %s?",
-                                     move_verb.c_str(),
-                                     cloud_type_name(ctype).c_str());
+        string prompt = make_stringf(jtransc("Really %s into that cloud of %s?"),
+                                     jtransc(cloud_type_name(ctype)));
         learned_something_new(HINT_CLOUD_WARNING);
 
         if (!yesno(prompt.c_str(), false, 'n'))
@@ -173,7 +175,7 @@ bool check_moveto_trap(const coord_def& p, const string &move_verb,
     if (trap->type == TRAP_ZOT && !trap->is_safe() && !crawl_state.disables[DIS_CONFIRMATIONS])
     {
         string msg = "Do you really want to %s into the Zot trap?";
-        string prompt = make_stringf(msg.c_str(), move_verb.c_str());
+        string prompt = make_stringf(jtransc(msg), jtransc(move_verb));
 
         if (prompted)
             *prompted = true;
@@ -189,10 +191,7 @@ bool check_moveto_trap(const coord_def& p, const string &move_verb,
 
         if (prompted)
             *prompted = true;
-        prompt = make_stringf("Really %s %s that %s?", move_verb.c_str(),
-                              (trap->type == TRAP_ALARM
-                               || trap->type == TRAP_PLATE) ? "onto"
-                              : "into",
+        prompt = make_stringf(jtransc("Really %s %s that %s?"),
                               feature_description_at(p, false, DESC_BASENAME,
                                                      false).c_str());
         if (!yesno(prompt.c_str(), true, 'n'))
@@ -215,9 +214,9 @@ static bool _check_moveto_dangerous(const coord_def& p, const string& msg)
     if (msg != "")
         mpr(msg);
     else if (species_likes_water(you.species) && feat_is_water(env.grid(p)))
-        mpr("You cannot enter water in your current form.");
+        mpr(jtrans("You cannot enter water in your current form."));
     else if (species_likes_lava(you.species) && feat_is_lava(env.grid(p)))
-        mpr("You cannot enter lava in your current form.");
+        mpr(jtrans("You cannot enter lava in your current form."));
     else
         canned_msg(MSG_UNTHINKING_ACT);
     return false;
@@ -237,21 +236,17 @@ bool check_moveto_terrain(const coord_def& p, const string &move_verb,
         if (prompted)
             *prompted = true;
 
-        if (msg != "")
-            prompt = msg + " ";
-
-        prompt += "Are you sure you want to " + move_verb;
-
-        if (you.ground_level())
-            prompt += " into ";
-        else
-            prompt += " over ";
-
-        prompt += env.grid(p) == DNGN_DEEP_WATER ? "deep water" : "lava";
-
-        prompt += need_expiration_warning(DUR_FLIGHT, p)
+        prompt += jtrans(need_expiration_warning(DUR_FLIGHT, p)
             ? " while you are losing your buoyancy?"
-            : " while your transformation is expiring?";
+            : " while your transformation is expiring?");
+
+        prompt += jtrans("Are you sure you want to ");
+        prompt += jtrans(env.grid(p) == DNGN_DEEP_WATER ? "deep water" : "lava");
+        prompt += "の";
+        if (you.ground_level())
+            prompt += "中に踏み込みますか？";
+        else
+            prompt += "上に立ち入りますか？";
 
         if (!yesno(prompt.c_str(), false, 'n'))
         {
@@ -274,8 +269,8 @@ bool check_moveto_exclusion(const coord_def& p, const string &move_verb,
     {
         if (prompted)
             *prompted = true;
-        prompt = make_stringf("Really %s into a travel-excluded area?",
-                              move_verb.c_str());
+        prompt = make_stringf(jtransc("Really %s into a travel-excluded area?"),
+                              jtransc(move_verb));
 
         if (!yesno(prompt.c_str(), false, 'n'))
         {
@@ -313,7 +308,7 @@ bool swap_check(monster* mons, coord_def &loc, bool quiet)
     if (mons->is_projectile())
     {
         if (!quiet)
-            mpr("It's unwise to walk into this.");
+            mpr(jtrans("It's unwise to walk into this."));
         return false;
     }
 
@@ -322,7 +317,8 @@ bool swap_check(monster* mons, coord_def &loc, bool quiet)
         if (!quiet)
         {
             simple_monster_message(mons,
-                make_stringf(" is %s!", held_status(mons)).c_str());
+                make_stringf(jtransc(" is %s!"),
+                             jtransc(held_status(mons))).c_str());
         }
         return false;
     }
@@ -330,7 +326,7 @@ bool swap_check(monster* mons, coord_def &loc, bool quiet)
     if (mons->is_constricted())
     {
         if (!quiet)
-            simple_monster_message(mons, " is being constricted!");
+            simple_monster_message(mons, jtransc(" is being constricted!"));
         return false;
     }
 
@@ -373,7 +369,7 @@ bool swap_check(monster* mons, coord_def &loc, bool quiet)
     {
         // Might not be ideal, but it's better than insta-killing
         // the monster... maybe try for a short blink instead? - bwr
-        simple_monster_message(mons, " cannot make way for you.");
+        simple_monster_message(mons, jtransc(" cannot make way for you."));
         // FIXME: AI_HIT_MONSTER isn't ideal.
         interrupt_activity(AI_HIT_MONSTER, mons);
     }
@@ -384,9 +380,9 @@ bool swap_check(monster* mons, coord_def &loc, bool quiet)
 static void _splash()
 {
     if (you.can_swim())
-        noisy(4, you.pos(), "Floosh!");
+        noisy(4, you.pos(), jtransc("Floosh!"));
     else if (!beogh_water_walk())
-        noisy(8, you.pos(), "Splash!");
+        noisy(8, you.pos(), jtransc("Splash!"));
 }
 
 void moveto_location_effects(dungeon_feature_type old_feat,
@@ -405,10 +401,10 @@ void moveto_location_effects(dungeon_feature_type old_feat,
             if (feat_is_lava(new_grid) && !feat_is_lava(old_feat))
             {
                 if (!stepped)
-                    noisy(4, you.pos(), "Gloop!");
+                    noisy(4, you.pos(), jtransc("Gloop!"));
 
-                mprf("You %s lava.",
-                     (stepped) ? "slowly immerse yourself in the" : "fall into the");
+                mprf(jtransc("You %s lava."),
+                     jtransc((stepped) ? "slowly immerse yourself in the" : "fall into the"));
 
                 // Extra time if you stepped in.
                 if (stepped)
@@ -424,7 +420,7 @@ void moveto_location_effects(dungeon_feature_type old_feat,
 
             else if (!feat_is_lava(new_grid) && feat_is_lava(old_feat))
             {
-                mpr("You slowly pull yourself out of the lava.");
+                mpr(jtrans("You slowly pull yourself out of the lava."));
                 you.time_taken *= 2;
             }
         }
@@ -456,19 +452,19 @@ void moveto_location_effects(dungeon_feature_type old_feat,
 
             if (!feat_is_water(old_feat))
             {
-                mprf("You %s the %s water.",
-                     stepped ? "enter" : "fall into",
-                     new_grid == DNGN_SHALLOW_WATER ? "shallow" : "deep");
+                mprf(jtransc("You %s the %s water."),
+                     new_grid == DNGN_SHALLOW_WATER ? "浅い" : "深い",
+                     stepped ? "足を踏み入れた" : "転がり落ちた");
             }
 
             if (new_grid == DNGN_DEEP_WATER && old_feat != DNGN_DEEP_WATER)
-                mpr("You sink to the bottom.");
+                mpr(jtrans("You sink to the bottom."));
 
             if (!feat_is_water(old_feat))
             {
-                mpr("Moving in this stuff is going to be slow.");
+                mpr(jtrans("Moving in this stuff is going to be slow."));
                 if (you.invisible())
-                    mpr("...and don't expect to remain undetected.");
+                    mpr(jtrans("...and don't expect to remain undetected."));
             }
         }
     }
@@ -963,10 +959,10 @@ bool berserk_check_wielded_weapon()
                                                            OPER_ATTACK,
                                                            penance)))
     {
-        string prompt = "Do you really want to go berserk while wielding "
-                        + wpn->name(DESC_YOUR) + "?";
+        string prompt = "本当に" + wpn->name(DESC_PLAIN)
+                        + jtrans("Do you really want to go berserk while wielding ");
         if (penance)
-            prompt += " This could place you under penance!";
+            prompt += " " + jtrans(" This could place you under penance!");
 
         if (!yesno(prompt.c_str(), true, 'n'))
         {
@@ -2691,9 +2687,9 @@ static void _remove_temp_mutation()
         1 + random2(3)));
 
     if (num_remove >= you.attribute[ATTR_TEMP_MUTATIONS])
-        mprf(MSGCH_DURATION, "You feel the corruption within you wane completely.");
+        mpr_nojoin(MSGCH_DURATION, jtrans("You feel the corruption within you wane completely."));
     else
-        mprf(MSGCH_DURATION, "You feel the corruption within you wane somewhat.");
+        mpr_nojoin(MSGCH_DURATION, jtrans("You feel the corruption within you wane somewhat."));
 
     for (int i = 0; i < num_remove; ++i)
         delete_temp_mutation();
@@ -2736,7 +2732,7 @@ static void _recharge_xp_evokers(int exp)
 
         debt = max(0, debt - div_rand_round(exp, xp_factor));
         if (debt == 0)
-            mprf("%s has recharged.", evoker->name(DESC_YOUR).c_str());
+            mprf(jtransc("%s has recharged."), evoker->name(DESC_YOUR).c_str());
     }
 }
 
@@ -2859,7 +2855,7 @@ void gain_exp(unsigned int exp_gained, unsigned int* actual_gain)
         if (you.attribute[ATTR_XP_DRAIN] <= 0)
         {
             you.attribute[ATTR_XP_DRAIN] = 0;
-            mprf(MSGCH_RECOVERY, "Your life force feels restored.");
+            mpr_nojoin(MSGCH_RECOVERY, jtrans("Your life force feels restored."));
         }
     }
 }
@@ -2869,44 +2865,44 @@ static void _draconian_scale_colour_message()
     switch (you.species)
     {
     case SP_RED_DRACONIAN:
-        mprf(MSGCH_INTRINSIC_GAIN, "Your scales start taking on a fiery red colour.");
+        mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("Your scales start taking on a fiery red colour."));
         perma_mutate(MUT_HEAT_RESISTANCE, 1, "draconian maturity");
         break;
 
     case SP_WHITE_DRACONIAN:
-        mprf(MSGCH_INTRINSIC_GAIN, "Your scales start taking on an icy white colour.");
+        mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("Your scales start taking on an icy white colour."));
         perma_mutate(MUT_COLD_RESISTANCE, 1, "draconian maturity");
         break;
 
     case SP_GREEN_DRACONIAN:
-        mprf(MSGCH_INTRINSIC_GAIN, "Your scales start taking on a lurid green colour.");
+        mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("Your scales start taking on a lurid green colour."));
         perma_mutate(MUT_POISON_RESISTANCE, 1, "draconian maturity");
         break;
 
     case SP_YELLOW_DRACONIAN:
-        mprf(MSGCH_INTRINSIC_GAIN, "Your scales start taking on a golden yellow colour.");
+        mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("Your scales start taking on a golden yellow colour."));
         break;
 
     case SP_GREY_DRACONIAN:
-        mprf(MSGCH_INTRINSIC_GAIN, "Your scales start taking on a dull iron-grey colour.");
+        mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("Your scales start taking on a dull iron-grey colour."));
         perma_mutate(MUT_UNBREATHING, 1, "draconian maturity");
         break;
 
     case SP_BLACK_DRACONIAN:
-        mprf(MSGCH_INTRINSIC_GAIN, "Your scales start taking on a glossy black colour.");
+        mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("Your scales start taking on a glossy black colour."));
         perma_mutate(MUT_SHOCK_RESISTANCE, 1, "draconian maturity");
         break;
 
     case SP_PURPLE_DRACONIAN:
-        mprf(MSGCH_INTRINSIC_GAIN, "Your scales start taking on a rich purple colour.");
+        mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("Your scales start taking on a rich purple colour."));
         break;
 
     case SP_MOTTLED_DRACONIAN:
-        mprf(MSGCH_INTRINSIC_GAIN, "Your scales start taking on a weird mottled pattern.");
+        mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("Your scales start taking on a weird mottled pattern."));
         break;
 
     case SP_PALE_DRACONIAN:
-        mprf(MSGCH_INTRINSIC_GAIN, "Your scales start fading to a pale cyan-grey colour.");
+        mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("Your scales start fading to a pale cyan-grey colour."));
         break;
 
     case SP_BASE_DRACONIAN:
@@ -2932,7 +2928,7 @@ static void _felid_extra_life()
         && you.lives < 2)
     {
         you.lives++;
-        mprf(MSGCH_INTRINSIC_GAIN, "Extra life!");
+        mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("Extra life!"));
         you.attribute[ATTR_LIFE_GAINED] = you.max_level;
         // Should play the 1UP sound from SMB...
     }
@@ -2978,7 +2974,7 @@ void level_change(bool skip_attribute_increase)
         if (new_exp <= you.max_level)
         {
             mprf(MSGCH_INTRINSIC_GAIN,
-                 "Welcome back to level %d!", new_exp);
+                 jtransc("Welcome back to level %d!"), new_exp);
 
             // No more prompts for this XL past this point.
 
@@ -2992,13 +2988,13 @@ void level_change(bool skip_attribute_increase)
             you.redraw_experience = true;
 
             if (new_exp == 27)
-                mprf(MSGCH_INTRINSIC_GAIN, "You have reached level 27, the final one!");
+                mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("You have reached level 27, the final one!"));
             else if (new_exp == you.get_max_xl())
-                mprf(MSGCH_INTRINSIC_GAIN, "You have reached level %d, the highest you will ever reach!",
+                mprf(MSGCH_INTRINSIC_GAIN, jtransc("You have reached level %d, the highest you will ever reach!"),
                         you.get_max_xl());
             else
             {
-                mprf(MSGCH_INTRINSIC_GAIN, "You have reached level %d!",
+                mprf(MSGCH_INTRINSIC_GAIN, jtransc("You have reached level %d!"),
                      new_exp);
             }
 
@@ -3092,12 +3088,12 @@ void level_change(bool skip_attribute_increase)
 
             case SP_MUMMY:
                 if (you.experience_level == 13 || you.experience_level == 26)
-                    mprf(MSGCH_INTRINSIC_GAIN, "You feel more in touch with the powers of death.");
+                    mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("You feel more in touch with the powers of death."));
 
                 if (you.experience_level == 13)  // level 13 for now -- bwr
                 {
-                    mprf(MSGCH_INTRINSIC_GAIN, "You can now infuse your body with "
-                                               "magic to restore decomposition.");
+                    mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("You can now infuse your body with "
+                                                            "magic to restore decomposition."));
                 }
                 break;
 
@@ -3106,13 +3102,13 @@ void level_change(bool skip_attribute_increase)
                 {
                     if (you.hunger_state > HS_SATIATED)
                     {
-                        mprf(MSGCH_INTRINSIC_GAIN, "If you weren't so full, "
-                             "you could now transform into a vampire bat.");
+                        mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("If you weren't so full, "
+                                                                "you could now transform into a vampire bat."));
                     }
                     else
                     {
-                        mprf(MSGCH_INTRINSIC_GAIN,
-                             "You can now transform into a vampire bat.");
+                        mpr_nojoin(MSGCH_INTRINSIC_GAIN,
+                                   jtrans("You can now transform into a vampire bat."));
                     }
                 }
                 break;
@@ -3123,15 +3119,15 @@ void level_change(bool skip_attribute_increase)
 
                 if (!(you.experience_level % 3))
                 {
-                    mprf(MSGCH_INTRINSIC_GAIN, "Your skin feels tougher.");
+                    mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("Your skin feels tougher."));
                     you.redraw_armour_class = true;
                 }
 
                 if (you.experience_level == 13)
                 {
-                    mprf(MSGCH_INTRINSIC_GAIN,
-                         "Your tail grows strong enough to constrict your "
-                         "enemies.");
+                    mpr_nojoin(MSGCH_INTRINSIC_GAIN,
+                               jtrans("Your tail grows strong enough to constrict your "
+                                      "enemies."));
                 }
                 break;
 
@@ -3196,7 +3192,7 @@ void level_change(bool skip_attribute_increase)
             case SP_PALE_DRACONIAN:
                 if (!(you.experience_level % 3))
                 {
-                    mprf(MSGCH_INTRINSIC_GAIN, "Your scales feel tougher.");
+                    mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("Your scales feel tougher."));
                     you.redraw_armour_class = true;
                 }
 
@@ -3215,7 +3211,7 @@ void level_change(bool skip_attribute_increase)
                         break;
                     case SP_BLACK_DRACONIAN:
                         perma_mutate(MUT_BIG_WINGS, 1, "draconian growth");
-                        mprf(MSGCH_INTRINSIC_GAIN, "You can now fly continuously.");
+                        mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("You can now fly continuously."));
                         break;
                     default:
                         break;
@@ -3268,8 +3264,8 @@ void level_change(bool skip_attribute_increase)
                         {
                             if (you.experience_level == level)
                             {
-                                mprf(MSGCH_MUTATION, "You feel monstrous as "
-                                     "your demonic heritage exerts itself.");
+                                mpr_nojoin(MSGCH_MUTATION, jtrans("You feel monstrous as "
+                                                                  "your demonic heritage exerts itself."));
                                 mark_milestone("monstrous", "discovered their "
                                                "monstrous ancestry!");
                             }
@@ -3290,8 +3286,8 @@ void level_change(bool skip_attribute_increase)
                     {
                         if (!gave_message)
                         {
-                            mprf(MSGCH_INTRINSIC_GAIN,
-                                 "Your demonic ancestry asserts itself...");
+                            mpr_nojoin(MSGCH_INTRINSIC_GAIN,
+                                       jtrans("Your demonic ancestry asserts itself..."));
 
                             gave_message = true;
                         }
@@ -3314,9 +3310,9 @@ void level_change(bool skip_attribute_increase)
                     modify_stat(STAT_RANDOM, 1, false, "level gain");
 
                 if (you.experience_level == 5)
-                    mprf(MSGCH_INTRINSIC_GAIN, "You have gained the ability to fly.");
+                    mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("You have gained the ability to fly."));
                 else if (you.experience_level == 14)
-                    mprf(MSGCH_INTRINSIC_GAIN, "You can now fly continuously.");
+                    mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("You can now fly continuously."));
                 break;
 
             case SP_MERFOLK:
@@ -3370,7 +3366,7 @@ void level_change(bool skip_attribute_increase)
                 if (you.experience_level == 14)
                 {
                     perma_mutate(MUT_BIG_WINGS, 1, "gargoyle growth");
-                    mprf(MSGCH_INTRINSIC_GAIN, "You can now fly continuously.");
+                    mpr_nojoin(MSGCH_INTRINSIC_GAIN, jtrans("You can now fly continuously."));
                 }
                 break;
 
@@ -3865,16 +3861,16 @@ static void _display_char_status(int value, const char *fmt, ...)
     string msg = vmake_stringf(fmt, argp);
 
     if (you.wizard)
-        mprf("%s (%d).", msg.c_str(), value);
+        mprf(jtransc("%s (%d)."), msg.c_str(), value);
     else
-        mprf("%s.", msg.c_str());
+        mprf(jtransc("%s."), msg.c_str());
 
     va_end(argp);
 }
 
 static void _display_vampire_status()
 {
-    string msg = "At your current hunger state you ";
+    string msg = jtrans("At your current hunger state you ");
     vector<const char *> attrib;
 
     switch (you.hunger_state)
@@ -3923,7 +3919,8 @@ static void _display_vampire_status()
 
     if (!attrib.empty())
     {
-        msg += comma_separated_line(attrib.begin(), attrib.end());
+        msg += to_separated_line(attrib.begin(), attrib.end(), true,
+            "、", "、", "、");
         mpr(msg);
     }
 }
@@ -3941,28 +3938,29 @@ static void _display_movement_speed()
     const bool antiswift = (you.duration[DUR_SWIFTNESS] > 0
                             && you.attribute[ATTR_SWIFTNESS] < 0);
 
-    _display_char_status(move_cost, "Your %s speed is %s%s%s",
+    _display_char_status(move_cost, jtransc("Your %s speed is %s%s%s"),
           // order is important for these:
+          jtransc(
           (swim)    ? "swimming" :
           (water)   ? "wading" :
           (fly)     ? "flying"
-                    : "movement",
+                    : "movement"),
 
-          (water && !swim)  ? "uncertain and " :
-          (!water && swift) ? "aided by the wind" :
-          (!water && antiswift) ? "hindered by the wind" : "",
+          (water && !swim)  ? "不確かながら" :
+          (!water && swift) ? "風の助けを受けて" :
+          (!water && antiswift) ? "風に邪魔されて" : "",
 
-          (!water && swift) ? ((move_cost >= 10) ? ", but still "
-                                                 : " and ") :
-          (!water && antiswift) ? ((move_cost <= 10) ? ", but still "
-                                                     : " and ")
+          (!water && swift) ? ((move_cost >= 10) ? "いるが"
+                                                 : "おり") :
+          (!water && antiswift) ? ((move_cost <= 10) ? "いるが"
+                                                     : "おり")
                             : "",
 
-          (move_cost <   8) ? "very quick" :
-          (move_cost <  10) ? "quick" :
-          (move_cost == 10) ? "average" :
-          (move_cost <  13) ? "slow"
-                            : "very slow");
+          (move_cost <   8) ? "とても速い" :
+          (move_cost <  10) ? "速い" :
+          (move_cost == 10) ? "平均的だ" :
+          (move_cost <  13) ? "遅い"
+                            : "とても遅い");
 }
 
 static void _display_tohit()
@@ -3978,16 +3976,16 @@ static void _display_tohit()
 
 static const char* _attack_delay_desc(int attack_delay)
 {
-    return (attack_delay >= 200) ? "extremely slow" :
-           (attack_delay >= 155) ? "very slow" :
-           (attack_delay >= 125) ? "quite slow" :
-           (attack_delay >= 105) ? "below average" :
-           (attack_delay >=  95) ? "average" :
-           (attack_delay >=  75) ? "above average" :
-           (attack_delay >=  55) ? "quite fast" :
-           (attack_delay >=  45) ? "very fast" :
-           (attack_delay >=  35) ? "extremely fast" :
-                                   "blindingly fast";
+    return (attack_delay >= 200) ? "きわめて遅い" :
+           (attack_delay >= 155) ? "とても遅い" :
+           (attack_delay >= 125) ? "かなり遅い" :
+           (attack_delay >= 105) ? "平均よりちょっと遅い" :
+           (attack_delay >=  95) ? "平均的だ" :
+           (attack_delay >=  75) ? "平均よりちょっと速い" :
+           (attack_delay >=  55) ? "かなり速い" :
+           (attack_delay >=  45) ? "とても速い" :
+           (attack_delay >=  35) ? "きわめて速い" :
+                                   "目にも止まらぬほど速い";
 }
 
 /**
@@ -4021,10 +4019,10 @@ static void _display_attack_delay()
     if (you.duration[DUR_FINESSE])
         avg = max(20, avg / 2);
 
-    _display_char_status(avg, "Your attack speed is %s%s",
+    _display_char_status(avg, jtransc("Your attack speed is %s%s"),
                          _attack_delay_desc(avg),
-                         at_min_delay ?
-                            " (and cannot be increased with skill)" : "");
+                         jtransc(at_min_delay ?
+                                 " (and cannot be increased with skill)" : ""));
 }
 
 // forward declaration
@@ -4035,30 +4033,30 @@ void display_char_status()
     if (you.undead_state() == US_SEMI_UNDEAD
         && you.hunger_state == HS_ENGORGED)
     {
-        mpr("You feel almost alive.");
+        mpr(jtrans("You feel almost alive."));
     }
     else if (you.undead_state())
-        mpr("You are undead.");
+        mpr(jtrans("You are undead."));
     else if (you.duration[DUR_DEATHS_DOOR])
     {
         _output_expiring_message(DUR_DEATHS_DOOR,
-                                 "You are standing in death's doorway.");
+                                 jtransc("You are standing in death's doorway."));
     }
     else
-        mpr("You are alive.");
+        mpr(jtrans("You are alive."));
 
     const int halo_size = you.halo_radius2();
     if (halo_size >= 0)
     {
         if (halo_size > 37)
-            mpr("You are illuminated by a large divine halo.");
+            mpr(jtrans("You are illuminated by a large divine halo."));
         else if (halo_size > 10)
-            mpr("You are illuminated by a divine halo.");
+            mpr(jtrans("You are illuminated by a divine halo."));
         else
-            mpr("You are illuminated by a small divine halo.");
+            mpr(jtrans("You are illuminated by a small divine halo."));
     }
     else if (you.haloed())
-        mpr("An external divine halo illuminates you.");
+        mpr(jtrans("An external divine halo illuminates you."));
 
     if (you.species == SP_VAMPIRE)
         _display_vampire_status();
@@ -4069,7 +4067,7 @@ void display_char_status()
     for (unsigned i = 0; i <= STATUS_LAST_STATUS; ++i)
     {
         if (fill_status_info(i, &inf) && !inf.long_text.empty())
-            mpr(inf.long_text);
+            mpr(jtrans(inf.long_text));
     }
     string cinfo = _constriction_description();
     if (!cinfo.empty())
@@ -4079,15 +4077,27 @@ void display_char_status()
     _display_tohit();
     _display_attack_delay();
 
+    // Display base attributes, if necessary.
+    if (innate_stat(STAT_STR) != you.strength()
+        || innate_stat(STAT_INT) != you.intel()
+        || innate_stat(STAT_DEX) != you.dex())
+    {
+        mprf(jtransc("Your base attributes are Str %d, Int %d, Dex %d."),
+             innate_stat(STAT_STR),
+             innate_stat(STAT_INT),
+             innate_stat(STAT_DEX));
+    }
+
     // magic resistance
     _display_char_status(you.res_magic(),
-                         "You are %s to hostile enchantments",
-                         magic_res_adjective(player_res_magic(false)).c_str());
+                         "あなたは%s",
+                         jtransc(magic_res_adjective(player_res_magic(false))
+                                 + " to hostile enchantments"));
 
     // character evaluates their ability to sneak around:
     _display_char_status(check_stealth(),
-                         "You feel %s",
-                         stealth_desc(check_stealth()).c_str());
+                         "あなたの動きは%s",
+                         jtransc(stealth_desc(check_stealth())));
 }
 
 bool player::clarity(bool calc_unid, bool items) const
@@ -4310,7 +4320,7 @@ void flush_mp()
         && you.magic_points < you.max_magic_points
                               * Options.magic_point_warning / 100)
     {
-        mprf(MSGCH_DANGER, "* * * LOW MAGIC WARNING * * *");
+        mpr_nojoin(MSGCH_DANGER, jtrans("* * * LOW MAGIC WARNING * * *"));
     }
 
     take_note(Note(NOTE_MP_CHANGE, you.magic_points, you.max_magic_points));
@@ -4360,7 +4370,7 @@ bool enough_hp(int minimum, bool suppress_msg, bool abort_macros)
     if (you.duration[DUR_DEATHS_DOOR])
     {
         if (!suppress_msg)
-            mpr("You cannot pay life while functionally dead.");
+            mpr(jtrans("You cannot pay life while functionally dead."));
 
         if (abort_macros)
         {
@@ -4374,7 +4384,7 @@ bool enough_hp(int minimum, bool suppress_msg, bool abort_macros)
     if (you.hp < minimum + 1)
     {
         if (!suppress_msg)
-            mpr("You don't have enough health at the moment.");
+            mpr(jtrans("You don't have enough health at the moment."));
 
         if (abort_macros)
         {
@@ -4401,9 +4411,9 @@ bool enough_mp(int minimum, bool suppress_msg, bool abort_macros)
         if (!suppress_msg)
         {
             if (get_real_mp(true) < minimum)
-                mpr("You don't have enough magic capacity.");
+                mpr(jtrans("You don't have enough magic capacity."));
             else
-                mpr("You don't have enough magic at the moment.");
+                mpr(jtrans("You don't have enough magic at the moment."));
         }
         if (abort_macros)
         {
@@ -4423,7 +4433,7 @@ bool enough_zp(int minimum, bool suppress_msg)
     if (you.zot_points < minimum)
     {
         if (!suppress_msg)
-            mpr("You don't have enough Zot Points.");
+            mpr(jtrans("You don't have enough Zot Points."));
 
         crawl_state.cancel_cmd_again();
         crawl_state.cancel_cmd_repeat();
@@ -4723,8 +4733,8 @@ string describe_contamination(int cont)
     };
 
     ASSERT(cont >= 0);
-    return contam_descriptions[min((size_t) cont,
-                                   ARRAYSZ(contam_descriptions) - 1)];
+    return jtrans(contam_descriptions[min((size_t) cont,
+                                          ARRAYSZ(contam_descriptions) - 1)]);
 }
 
 // controlled is true if the player actively did something to cause
@@ -4750,12 +4760,12 @@ void contaminate_player(int change, bool controlled, bool msg)
     else if (msg && new_level != old_level)
     {
         if (old_level == 1 && new_level == 0)
-            mpr("Your magical contamination has completely faded away.");
+            mpr(jtrans("Your magical contamination has completely faded away."));
         else
         {
-            mprf((change > 0) ? MSGCH_WARN : MSGCH_RECOVERY,
-                 "You feel %s contaminated with magical energies.",
-                 (change > 0) ? "more" : "less");
+            mpr_nojoin((change > 0) ? MSGCH_WARN : MSGCH_RECOVERY,
+                       make_stringf(jtransc("You feel %s contaminated with magical energies."),
+                                    (change > 0) ? "重くなったった" : "軽くなった"));
         }
 
         if (change > 0)
@@ -4763,8 +4773,8 @@ void contaminate_player(int change, bool controlled, bool msg)
 
         if (old_level > 1 && new_level <= 1 && you.invisible())
         {
-            mpr("You fade completely from view now that you are no longer "
-                "glowing from magical contamination.");
+            mpr(jtrans("You fade completely from view now that you are no longer "
+                       "glowing from magical contamination."));
         }
     }
 
@@ -4794,14 +4804,14 @@ bool confuse_player(int amount, bool quiet)
     if (you.clarity())
     {
         if (!quiet)
-            mpr("You feel momentarily confused.");
+            mpr(jtrans("You feel momentarily confused."));
         return false;
     }
 
     if (you.duration[DUR_DIVINE_STAMINA] > 0)
     {
         if (!quiet)
-            mpr("Your divine stamina protects you from confusion!");
+            mpr(jtrans("Your divine stamina protects you from confusion!"));
         return false;
     }
 
@@ -4814,8 +4824,8 @@ bool confuse_player(int amount, bool quiet)
 
         if (!quiet)
         {
-            mprf(MSGCH_WARN, "You are %sconfused.",
-                 old_value > 0 ? "more " : "");
+            mprf(MSGCH_WARN, jtransc("You are %sconfused."),
+                 old_value > 0 ? "さらに" : "");
         }
 
         learned_something_new(HINT_YOU_ENCHANTED);
@@ -4841,7 +4851,7 @@ bool poison_player(int amount, string source, string source_aux, bool force)
 
     if (you.duration[DUR_DIVINE_STAMINA] > 0)
     {
-        mpr("Your divine stamina protects you from poison!");
+        mpr(jtrans("Your divine stamina protects you from poison!"));
         return false;
     }
 
@@ -4864,11 +4874,11 @@ bool poison_player(int amount, string source, string source_aux, bool force)
     if (you.duration[DUR_POISONING] > old_value)
     {
         if (poison_is_lethal() && !was_fatal)
-            mprf(MSGCH_DANGER, "You are lethally poisoned!");
+            mpr_nojoin(MSGCH_DANGER, jtransc("You are lethally poisoned!"));
         else
         {
-            mprf(MSGCH_WARN, "You are %spoisoned.",
-                old_value > 0 ? "more " : "");
+            mprf(MSGCH_WARN, jtransc("You are %spoisoned."),
+                 old_value > 0 ? "さらに" : "");
         }
 
         learned_something_new(HINT_YOU_POISON);
@@ -4978,12 +4988,12 @@ void handle_player_poison(int delay)
     if (dmg > 6)
     {
         channel = MSGCH_DANGER;
-        adj = "extremely ";
+        adj = "きわめて";
     }
     else if (dmg > 2)
     {
         channel = MSGCH_WARN;
-        adj = "very ";
+        adj = "非常に";
     }
 
     if (do_dmg && dmg > 0)
@@ -4991,7 +5001,7 @@ void handle_player_poison(int delay)
         int oldhp = you.hp;
         ouch(dmg, KILLED_BY_POISON);
         if (you.hp < oldhp)
-            mprf(channel, "You feel %ssick.", adj);
+            mprf(channel, jtransc("You feel %ssick."), adj);
     }
 
     // Now decrease the poison in our system
@@ -5014,7 +5024,7 @@ void reduce_player_poison(int amount)
         you.duration[DUR_POISONING] = 0;
         you.props.erase("poisoner");
         you.props.erase("poison_aux");
-        mprf(MSGCH_RECOVERY, "You are no longer poisoned.");
+        mpr_nojoin(MSGCH_RECOVERY, jtransc("You are no longer poisoned."));
     }
 
     you.redraw_hit_points = true;
@@ -5104,7 +5114,7 @@ bool miasma_player(actor *who, string source_aux)
 
     if (you.duration[DUR_DIVINE_STAMINA] > 0)
     {
-        mpr("Your divine stamina protects you from the miasma!");
+        mpr(jtrans("Your divine stamina protects you from the miasma!"));
         return false;
     }
 
@@ -5138,7 +5148,7 @@ bool napalm_player(int amount, string source, string source_aux)
     you.increase_duration(DUR_LIQUID_FLAMES, amount, 100);
 
     if (you.duration[DUR_LIQUID_FLAMES] > old_value)
-        mprf(MSGCH_WARN, "You are covered in liquid flames!");
+        mpr_nojoin(MSGCH_WARN, jtrans("You are covered in liquid flames!"));
 
     you.props["sticky_flame_source"] = source;
     you.props["sticky_flame_aux"] = source_aux;
@@ -5153,16 +5163,16 @@ void dec_napalm_player(int delay)
     if (feat_is_watery(grd(you.pos())))
     {
         if (you.ground_level())
-            mprf(MSGCH_WARN, "The flames go out!");
+            mpr_nojoin(MSGCH_WARN, jtrans("The flames go out!"));
         else
-            mprf(MSGCH_WARN, "You dip into the water, and the flames go out!");
+            mpr_nojoin(MSGCH_WARN, jtrans("You dip into the water, and the flames go out!"));
         you.duration[DUR_LIQUID_FLAMES] = 0;
         you.props.erase("sticky_flame_source");
         you.props.erase("sticky_flame_aux");
         return;
     }
 
-    mprf(MSGCH_WARN, "You are covered in liquid flames!");
+    mpr_nojoin(MSGCH_WARN, jtrans("You are covered in liquid flames!"));
 
     expose_player_to_element(BEAM_STICKY_FLAME,
                              div_rand_round(delay * 4, BASELINE_DELAY));
@@ -5196,13 +5206,18 @@ bool slow_player(int turns)
     int threshold = haste_mul(100);
 
     if (you.duration[DUR_SLOW] >= threshold * BASELINE_DELAY)
-        mpr("You already are as slow as you could be.");
+        mpr(jtrans("You already are as slow as you could be."));
     else
     {
         if (you.duration[DUR_SLOW] == 0)
-            mpr("You feel yourself slow down.");
+        {
+            // 原文は"You feel yourself speed down."だが
+            // 加速終了時と同一なためベタ書き
+            // (無印DC準拠)
+            mpr("あなたは動きが遅くなった。");
+        }
         else
-            mpr("You feel as though you will be slow longer.");
+            mpr(jtrans("You feel as though you will be slow longer."));
 
         you.increase_duration(DUR_SLOW, turns, threshold);
         learned_something_new(HINT_YOU_ENCHANTED);
@@ -5233,7 +5248,10 @@ void dec_slow_player(int delay)
 
     if (you.duration[DUR_SLOW] <= BASELINE_DELAY)
     {
-        mprf(MSGCH_DURATION, "You feel yourself speed up.");
+        // 原文は"You feel yourself speed up."だが
+        // 加速時と同一なためベタ書き
+        // (無印DC準拠)
+        mpr_nojoin(MSGCH_DURATION, "あなたは動きの速さが戻った。");
         you.duration[DUR_SLOW] = 0;
     }
 }
@@ -5251,7 +5269,7 @@ void dec_exhaust_player(int delay)
     }
     if (you.duration[DUR_EXHAUSTED] <= BASELINE_DELAY)
     {
-        mprf(MSGCH_DURATION, "You feel less exhausted.");
+        mpr_nojoin(MSGCH_DURATION, jtrans("You feel less exhausted."));
         you.duration[DUR_EXHAUSTED] = 0;
     }
 }
@@ -5275,12 +5293,17 @@ bool haste_player(int turns, bool rageext)
     const int threshold = 40;
 
     if (!you.duration[DUR_HASTE])
-        mpr("You feel yourself speed up.");
+    {
+        // 原文は"You feel yourself speed up."だが
+        // 減速からの回復時と同一なためベタ書き
+        // (無印DC準拠)
+        mpr("あなたは動きが速くなった。");
+    }
     else if (you.duration[DUR_HASTE] > threshold * BASELINE_DELAY)
-        mpr("You already have as much speed as you can handle.");
+        mpr(jtrans("You already have as much speed as you can handle."));
     else if (!rageext)
     {
-        mpr("You feel as though your hastened speed will last longer.");
+        mpr(jtrans("You feel as though your hastened speed will last longer."));
         contaminate_player(1000, true); // always deliberate
     }
 
@@ -5304,7 +5327,7 @@ void dec_haste_player(int delay)
         // message if we cross the threshold
         if (old_dur > threshold && you.duration[DUR_HASTE] <= threshold)
         {
-            mprf(MSGCH_DURATION, "Your extra speed is starting to run out.");
+            mpr_nojoin(MSGCH_DURATION, jtrans("Your extra speed is starting to run out."));
             if (coinflip())
                 you.duration[DUR_HASTE] -= BASELINE_DELAY;
         }
@@ -5312,7 +5335,12 @@ void dec_haste_player(int delay)
     else if (you.duration[DUR_HASTE] <= BASELINE_DELAY)
     {
         if (!you.duration[DUR_BERSERK])
-            mprf(MSGCH_DURATION, "You feel yourself slow down.");
+        {
+        // 原文は"You feel yourself speed down."だが
+        // 減速時と同一なためベタ書き
+        // (無印DC準拠)
+            mpr_nojoin(MSGCH_DURATION, "あなたの加速はなくなった。");
+        }
         you.duration[DUR_HASTE] = 0;
     }
 }
@@ -5342,7 +5370,7 @@ void dec_disease_player(int delay)
             you.disease = 0;
 
         if (you.disease == 0)
-            mprf(MSGCH_RECOVERY, "You feel your health improve.");
+            mpr_nojoin(MSGCH_RECOVERY, jtrans("You feel your health improve."));
     }
 }
 
@@ -5399,7 +5427,7 @@ void dec_ambrosia_player(int delay)
     inc_mp(mp_restoration);
 
     if (!you.duration[DUR_AMBROSIA])
-        mpr("You feel less invigorated.");
+        mpr(jtrans("You feel less invigorated."));
 }
 
 bool flight_allowed(bool quiet)
@@ -5408,8 +5436,8 @@ bool flight_allowed(bool quiet)
     {
         if (!quiet)
         {
-            mpr(you.form == TRAN_TREE ? "Your roots keep you in place."
-                                      : "You can't fly in this form.");
+            mpr(jtrans(you.form == TRAN_TREE ? "Your roots keep you in place."
+                                             : "You can't fly in this form."));
         }
         return false;
     }
@@ -5417,14 +5445,14 @@ bool flight_allowed(bool quiet)
     if (you.liquefied_ground())
     {
         if (!quiet)
-            mpr("You can't fly while stuck in liquid ground.");
+            mpr(jtrans("You can't fly while stuck in liquid ground."));
         return false;
     }
 
     if (you.duration[DUR_GRASPING_ROOTS])
     {
         if (!quiet)
-            mpr("The grasping roots prevent you from becoming airborne.");
+            mpr(jtrans("The grasping roots prevent you from becoming airborne."));
         return false;
     }
 
@@ -5435,13 +5463,13 @@ void float_player()
 {
     if (you.fishtail)
     {
-        mpr("Your tail turns into legs as you fly out of the water.");
+        mpr(jtrans("Your tail turns into legs as you fly out of the water."));
         merfolk_stop_swimming();
     }
     else if (you.tengu_flight())
-        mpr("You swoop lightly up into the air.");
+        mpr(jtrans("You swoop lightly up into the air."));
     else
-        mpr("You fly up into the air.");
+        mpr(jtrans("You fly up into the air."));
 
     if (you.species == SP_TENGU)
         you.redraw_evasion = true;
@@ -5454,7 +5482,8 @@ void fly_player(int pow, bool already_flying)
 
     bool standing = !you.airborne() && !already_flying;
     if (!already_flying)
-        mprf(MSGCH_DURATION, "You feel %s buoyant.", standing ? "very" : "more");
+        mprf(MSGCH_DURATION,
+             standing ? "あなたはとても体が軽くなった。" : "あなたは更に体が軽くなった。");
 
     you.increase_duration(DUR_FLIGHT, 25 + random2(pow), 100);
 
@@ -5469,7 +5498,7 @@ bool land_player(bool quiet)
         return false;
 
     if (!quiet)
-        mpr("You float gracefully downwards.");
+        mpr(jtrans("You float gracefully downwards."));
     if (you.species == SP_TENGU)
         you.redraw_evasion = true;
     you.attribute[ATTR_FLIGHT_UNCANCELLABLE] = 0;
@@ -5494,9 +5523,9 @@ bool player::clear_far_engulf()
     if (!mons || !adjacent(mons->pos(), you.pos()))
     {
         if (you.res_water_drowning())
-            mpr("The water engulfing you falls away.");
+            mpr(jtrans("The water engulfing you falls away."));
         else
-            mpr("You gasp with relief as air once again reaches your lungs.");
+            mpr(jtrans("You gasp with relief as air once again reaches your lungs."));
 
         _end_water_hold();
         return true;
@@ -5509,7 +5538,7 @@ void handle_player_drowning(int delay)
     if (you.duration[DUR_WATER_HOLD] == 1)
     {
         if (!you.res_water_drowning())
-            mpr("You gasp with relief as air once again reaches your lungs.");
+            mpr(jtrans("You gasp with relief as air once again reaches your lungs."));
         _end_water_hold();
     }
     else
@@ -5518,9 +5547,9 @@ void handle_player_drowning(int delay)
         if (!mons || mons && !adjacent(mons->pos(), you.pos()))
         {
             if (you.res_water_drowning())
-                mpr("The water engulfing you falls away.");
+                mpr(jtrans("The water engulfing you falls away."));
             else
-                mpr("You gasp with relief as air once again reaches your lungs.");
+                mpr(jtrans("You gasp with relief as air once again reaches your lungs."));
 
             _end_water_hold();
 
@@ -5540,7 +5569,7 @@ void handle_player_drowning(int delay)
                                 * delay,
                                 BASELINE_DELAY * 10);
             ouch(dam, KILLED_BY_WATER, mons->mid);
-            mprf(MSGCH_WARN, "Your lungs strain for air!");
+            mpr_nojoin(MSGCH_WARN, jtrans("Your lungs strain for air!"));
         }
     }
 }
@@ -6075,7 +6104,7 @@ void player::banish(actor* /*agent*/, const string &who)
 
     if (elapsed_time <= attribute[ATTR_BANISHMENT_IMMUNITY])
     {
-        mpr("You resist the pull of the Abyss.");
+        mpr(jtrans("You resist the pull of the Abyss."));
         return;
     }
 
@@ -6219,10 +6248,11 @@ void player::ablate_deflection()
     if (did_something)
     {
         // We might also have the effect from a non-expiring source.
-        mprf(MSGCH_DURATION, "You feel %s from missiles.",
-                             missile_deflection() < orig_defl
-                                 ? "less protected"
-                                 : "your spell is no longer protecting you");
+        mpr_nojoin(MSGCH_DURATION,
+                   jtrans(make_stringf("You feel %s from missiles.",
+                                       missile_deflection() < orig_defl
+                                       ? "less protected"
+                                       : "your spell is no longer protecting you")));
     }
 }
 
@@ -6948,7 +6978,7 @@ string player::no_tele_reason(bool calc_unid, bool blinking) const
         return "Long-range teleportation is disallowed in Dungeon Sprint.";
 
     if (species == SP_FORMICID)
-        return pluralise(::species_name(species)) + " cannot teleport.";
+        return jtrans(::species_name(species)) + jtrans(" cannot teleport.");
 
     vector<string> problems;
 
@@ -6974,8 +7004,8 @@ string player::no_tele_reason(bool calc_unid, bool blinking) const
         {
             if (item.base_type == OBJ_WEAPONS)
             {
-                problems.push_back(make_stringf("wielding %s",
-                                                item.name(DESC_A).c_str()));
+                problems.push_back(make_stringf(jtransc("wielding %s"),
+                                                jtransc(item.name(DESC_A))));
             }
             else
                 worn_notele.push_back(item.name(DESC_A));
@@ -7001,16 +7031,17 @@ string player::no_tele_reason(bool calc_unid, bool blinking) const
         if (worn_notele.size() > (problems.empty() ? 3 : 1))
         {
             problems.push_back(
-                make_stringf("wearing %s %s preventing teleportation",
-                             number_in_words(worn_notele.size()).c_str(),
-                             found_nonartefact ? "items": "artefacts"));
+                make_stringf(jtransc("wearing %s %s preventing teleportation"),
+                             worn_notele.size(),
+                             general_counter_suffix(worn_notele.size()),
+                             jtransc(found_nonartefact ? "items": "artefacts")));
         }
         else if (!worn_notele.empty())
         {
             problems.push_back(
-                make_stringf("wearing %s",
-                             comma_separated_line(worn_notele.begin(),
-                                                  worn_notele.end()).c_str()));
+                make_stringf(jtransc("wearing %s"),
+                             to_separated_line(worn_notele.begin(),
+                                               worn_notele.end(), true, "、", "、", "、および").c_str()));
         }
 
         if (stasis_block && !found_stasis)
@@ -7024,7 +7055,7 @@ string player::no_tele_reason(bool calc_unid, bool blinking) const
     if (problems.empty())
         return ""; // no problem
 
-    return make_stringf("You cannot teleport because you are %s.",
+    return make_stringf(jtransc("You cannot teleport because you are %s."),
                         comma_separated_line(problems.begin(),
                                              problems.end()).c_str());
 }
@@ -7239,13 +7270,13 @@ bool player::rot(actor *who, int amount, int immediate, bool quiet)
 
     if (res_rotting() || duration[DUR_DEATHS_DOOR])
     {
-        mpr("You feel terrible.");
+        mpr(jtrans("You feel terrible."));
         return false;
     }
 
     if (duration[DUR_DIVINE_STAMINA] > 0)
     {
-        mpr("Your divine stamina protects you from decay!");
+        mpr(jtrans("Your divine stamina protects you from decay!"));
         return false;
     }
 
@@ -7256,8 +7287,8 @@ bool player::rot(actor *who, int amount, int immediate, bool quiet)
     // be changed so that they're easier to tell apart. -- bwr
     if (!quiet)
     {
-        mprf(MSGCH_WARN, "You feel your flesh %s away!",
-             (rotting > 0 || immediate) ? "rotting" : "start to rot");
+        mprf(MSGCH_WARN, jtransc("You feel your flesh %s away!"),
+             (rotting > 0 || immediate) ? "腐っていく" : "腐りはじめた");
     }
 
     rotting += amount;
@@ -7280,8 +7311,8 @@ void player::corrode_equipment(const char* corrosion_source)
     }
     // always increase duration, but...
     increase_duration(DUR_CORROSION, 10 + roll_dice(2, 4), 50,
-                      make_stringf("%s corrodes your equipment!",
-                                   corrosion_source).c_str());
+                      make_stringf(jtransc("%s corrodes your equipment!"),
+                                   jtransc(corrosion_source)).c_str());
 
     // the more corrosion you already have, the lower the odds of more
     const int prev_corr = props["corrosion_amount"].get_int();
@@ -7348,7 +7379,7 @@ void player::splash_with_acid(const actor* evildoer, int acid_strength,
 
     if (post_res_dam > 0)
     {
-        mpr(hurt_msg ? hurt_msg : "The acid burns!");
+        mpr(jtrans(hurt_msg ? hurt_msg : "The acid burns!"));
 
         if (post_res_dam < dam)
             canned_msg(MSG_YOU_RESIST);
@@ -7389,7 +7420,7 @@ void player::paralyse(actor *who, int str, string source)
     // Death's Door + Borg's paralysis unblockable.
     if (who && (duration[DUR_PARALYSIS] || duration[DUR_PARALYSIS_IMMUNITY]))
     {
-        mpr("You shrug off the repeated paralysis!");
+        mpr(jtrans("You shrug off the repeated paralysis!"));
         return;
     }
 
@@ -7404,8 +7435,8 @@ void player::paralyse(actor *who, int str, string source)
         props["paralysed_by"] = source;
     }
 
-    mprf("You %s the ability to move!",
-         paralysis ? "still don't have" : "suddenly lose");
+    mpr(jtrans(make_stringf("You %s the ability to move!",
+                            paralysis ? "still don't have" : "suddenly lose")));
 
     str *= BASELINE_DELAY;
     if (str > paralysis && (paralysis < 3 || one_chance_in(paralysis)))
@@ -7430,13 +7461,13 @@ void player::petrify(actor *who, bool force)
 
     if (duration[DUR_DIVINE_STAMINA] > 0)
     {
-        mpr("Your divine stamina protects you from petrification!");
+        mpr(jtrans("Your divine stamina protects you from petrification!"));
         return;
     }
 
     if (petrifying())
     {
-        mpr("Your limbs have turned to stone.");
+        mpr(jtrans("Your limbs have turned to stone."));
         duration[DUR_PETRIFYING] = 1;
         return;
     }
@@ -7447,7 +7478,7 @@ void player::petrify(actor *who, bool force)
     duration[DUR_PETRIFYING] = 3 * BASELINE_DELAY;
 
     redraw_evasion = true;
-    mprf(MSGCH_WARN, "You are slowing down.");
+    mpr_nojoin(MSGCH_WARN, jtrans("You are slowing down."));
 }
 
 bool player::fully_petrify(actor *foe, bool quiet)
@@ -7455,7 +7486,7 @@ bool player::fully_petrify(actor *foe, bool quiet)
     duration[DUR_PETRIFIED] = 6 * BASELINE_DELAY
                         + random2(4 * BASELINE_DELAY);
     redraw_evasion = true;
-    mpr("You have turned to stone.");
+    mpr(jtrans("You have turned to stone."));
 
     end_searing_ray();
 
@@ -7661,11 +7692,11 @@ bool player::sicken(int amount)
 
     if (duration[DUR_DIVINE_STAMINA] > 0)
     {
-        mpr("Your divine stamina protects you from disease!");
+        mpr(jtrans("Your divine stamina protects you from disease!"));
         return false;
     }
 
-    mpr("You feel ill.");
+    mpr(jtrans("You feel ill."));
 
     disease += amount * BASELINE_DELAY;
     if (disease > 210 * BASELINE_DELAY)
@@ -7764,15 +7795,15 @@ void player::backlight()
     if (!duration[DUR_INVIS] && form != TRAN_SHADOW)
     {
         if (duration[DUR_CORONA] || glows_naturally())
-            mpr("You glow brighter.");
+            mpr(jtrans("You glow brighter."));
         else
-            mpr("You are outlined in light.");
+            mpr(jtrans("You are outlined in light."));
 
         increase_duration(DUR_CORONA, random_range(15, 35), 250);
     }
     else
     {
-        mpr("You feel strangely conspicuous.");
+        mpr(jtrans("You feel strangely conspicuous."));
 
         increase_duration(DUR_CORONA, random_range(3, 5), 250);
     }
@@ -7969,11 +8000,11 @@ void player::put_to_sleep(actor*, int power, bool hibernate)
 
     if (duration[DUR_SLEEP_IMMUNITY])
     {
-        mpr("You can't fall asleep again this soon!");
+        mpr(jtrans("You can't fall asleep again this soon!"));
         return;
     }
 
-    mpr("You fall asleep.");
+    mpr(jtrans("You fall asleep."));
 
     stop_constricting_all();
     end_searing_ray();
@@ -7992,7 +8023,7 @@ void player::awake()
 
     duration[DUR_SLEEP] = 0;
     duration[DUR_SLEEP_IMMUNITY] = 1;
-    mpr("You wake up.");
+    mpr(jtrans("You wake up."));
     flash_view(UA_MONSTER, BLACK);
 }
 
@@ -8080,7 +8111,7 @@ bool player::can_do_shaft_ability(bool quiet) const
     if (attribute[ATTR_HELD])
     {
         if (!quiet)
-            mprf("You can't shaft yourself while %s.", held_status());
+            mpr(jtransc(make_stringf("You can't shaft yourself while %s.", held_status())));
         return false;
     }
 
@@ -8091,14 +8122,14 @@ bool player::can_do_shaft_ability(bool quiet) const
         if (!is_valid_shaft_level())
         {
             if (!quiet)
-                mpr("You can't shaft yourself on this level.");
+                mpr(jtrans("You can't shaft yourself on this level."));
             return false;
         }
         break;
 
     default:
         if (!quiet)
-            mpr("You can't shaft yourself on this terrain.");
+            mpr(jtrans("You can't shaft yourself on this terrain."));
         return false;
     }
 
@@ -8111,7 +8142,7 @@ bool player::do_shaft_ability()
 {
     if (can_do_shaft_ability(true))
     {
-        mpr("A shaft appears beneath you!");
+        mpr(jtrans("A shaft appears beneath you!"));
         down_stairs(DNGN_TRAP_SHAFT, true);
         return true;
     }
@@ -8163,12 +8194,12 @@ void player::set_gold(int amount)
                 const int cost = get_gold_cost(abilities[i]);
                 if (gold >= cost && old_gold < cost)
                 {
-                    mprf(MSGCH_GOD, "You now have enough gold to %s.",
+                    mprf(MSGCH_GOD, jtransc("You now have enough gold to %s."),
                          god_gain_power_messages[you.religion][i]);
                 }
                 else if (old_gold >= cost && gold < cost)
                 {
-                    mprf(MSGCH_GOD, "You no longer have enough gold to %s.",
+                    mprf(MSGCH_GOD, jtransc("You no longer have enough gold to %s."),
                          god_gain_power_messages[you.religion][i]);
                 }
             }
@@ -8180,7 +8211,7 @@ void player::increase_duration(duration_type dur, int turns, int cap,
                                const char* msg)
 {
     if (msg)
-        mpr(msg);
+        mpr(jtrans(msg));
     cap *= BASELINE_DELAY;
 
     duration[dur] += turns * BASELINE_DELAY;
@@ -8217,7 +8248,7 @@ bool player::attempt_escape(int attempts)
     if (roll_dice(4 + escape_attempts, 8 + div_rand_round(strength(), 4))
         >= roll_dice(5, 8 + div_rand_round(themonst->get_hit_dice(), 4)))
     {
-        mprf("You escape %s's grasp.", themonst->name(DESC_THE, true).c_str());
+        mprf(jtransc("You escape %s's grasp."), jtransc(themonst->name(DESC_PLAIN, true)));
 
         // Stun the monster to prevent it from constricting again right away.
         themonst->speed_increment -= 5;
@@ -8228,9 +8259,9 @@ bool player::attempt_escape(int attempts)
     }
     else
     {
-        mprf("Your attempt to break free from %s fails, but you feel that "
-             "another attempt might succeed.",
-             themonst->name(DESC_THE, true).c_str());
+        mprf(jtransc("Your attempt to break free from %s fails, but you feel that "
+                     "another attempt might succeed."),
+             jtransc(themonst->name(DESC_THE, true)));
         turn_is_over = true;
         return false;
     }
@@ -8240,12 +8271,12 @@ void player::sentinel_mark(bool trap)
 {
     if (duration[DUR_SENTINEL_MARK])
     {
-        mpr("The mark upon you grows brighter.");
+        mpr(jtrans("The mark upon you grows brighter."));
         increase_duration(DUR_SENTINEL_MARK, random_range(20, 40), 180);
     }
     else
     {
-        mprf(MSGCH_WARN, "A sentinel's mark forms upon you.");
+        mpr_nojoin(MSGCH_WARN, jtrans("A sentinel's mark forms upon you."));
         increase_duration(DUR_SENTINEL_MARK, trap ? random_range(25, 40)
                                                   : random_range(35, 60),
                           250);
@@ -8278,9 +8309,9 @@ bool player::made_nervous_by(const coord_def &p)
 void player::weaken(actor *attacker, int pow)
 {
     if (!duration[DUR_WEAK])
-        mprf(MSGCH_WARN, "You feel your attacks grow feeble.");
+        mpr_nojoin(MSGCH_WARN, jtrans("You feel your attacks grow feeble."));
     else
-        mprf(MSGCH_WARN, "You feel as though you will be weak longer.");
+        mpr_nojoin(MSGCH_WARN, jtrans("You feel as though you will be weak longer."));
 
     increase_duration(DUR_WEAK, pow + random2(pow + 3), 50);
 }
@@ -8336,7 +8367,7 @@ static string _constriction_description()
     const int num_free_tentacles = you.usable_tentacles();
     if (num_free_tentacles)
     {
-        cinfo += make_stringf("You have %d tentacle%s available for constriction.",
+        cinfo += make_stringf(jtransc("You have %d tentacle%s available for constriction."),
                               num_free_tentacles,
                               num_free_tentacles > 1 ? "s" : "");
     }
@@ -8346,9 +8377,8 @@ static string _constriction_description()
         if (!cinfo.empty())
             cinfo += "\n";
 
-        cinfo += make_stringf("You are being %s by %s.",
-                      you.held == HELD_MONSTER ? "held" : "constricted",
-                      monster_by_mid(you.constricted_by)->name(DESC_A).c_str());
+        cinfo += make_stringf(jtransc("You are being %s by %s."),
+                      jtransc(monster_by_mid(you.constricted_by)->name(DESC_PLAIN)));
     }
 
     if (you.constricting && !you.constricting->empty())
@@ -8363,9 +8393,9 @@ static string _constriction_description()
         if (!cinfo.empty())
             cinfo += "\n";
 
-        cinfo += "You are constricting ";
-        cinfo += comma_separated_line(c_name.begin(), c_name.end());
-        cinfo += ".";
+        cinfo += "あなたは";
+        cinfo += to_separated_line(c_name.begin(), c_name.end());
+        cinfo += "を拘束している。";
     }
 
     return cinfo;
@@ -8755,7 +8785,7 @@ void player_open_door(coord_def doorpos)
                 mprf(berserk_open.c_str(), adj, noun);
             }
             else
-                mprf("The %s%s flies open!", adj, noun);
+                mprf(jtransc("The %s%s flies open!"), adj, noun);
         }
         else
         {
@@ -8768,7 +8798,7 @@ void player_open_door(coord_def doorpos)
                 mprf(MSGCH_SOUND, berserk_open.c_str(), adj, noun);
             }
             else
-                mprf(MSGCH_SOUND, "The %s%s flies open with a bang!", adj, noun);
+                mprf(MSGCH_SOUND, jtransc("The %s%s flies open with a bang!"), adj, noun);
             noisy(15, you.pos());
         }
     }
@@ -8778,7 +8808,7 @@ void player_open_door(coord_def doorpos)
             mprf(MSGCH_SOUND, door_open_creak.c_str(), adj, noun);
         else
         {
-            mprf(MSGCH_SOUND, "As you open the %s%s, it creaks loudly!",
+            mprf(MSGCH_SOUND, jtransc("As you open the %s%s, it creaks loudly!"),
                  adj, noun);
         }
         noisy(10, you.pos());
@@ -8791,14 +8821,14 @@ void player_open_door(coord_def doorpos)
             if (!door_airborne.empty())
                 verb = door_airborne.c_str();
             else
-                verb = "You reach down and open the %s%s.";
+                verb = jtransc("You reach down and open the %s%s.");
         }
         else
         {
             if (!door_open_verb.empty())
-               verb = door_open_verb.c_str();
+                verb = door_open_verb.c_str();
             else
-               verb = "You open the %s%s.";
+                verb = jtransc("You open the %s%s.");
         }
 
         mprf(verb, adj, noun);
@@ -8852,7 +8882,15 @@ void player_close_door(coord_def doorpos)
     find_connected_identical(doorpos, all_door);
     const char *adj, *noun;
     get_door_description(all_door.size(), &adj, &noun);
-    const string waynoun_str = make_stringf("%sway", noun);
+    string waynoun_str;
+
+    if (jtrans("door") == noun)
+        waynoun_str += jtrans("doorway");
+    else if (jtrans("gate") == noun)
+        waynoun_str += jtrans("gateway");
+    else
+        waynoun_str += "buggy doorway";
+
     const char *waynoun = waynoun_str.c_str();
 
     if (!door_desc_adj.empty())
@@ -8870,25 +8908,25 @@ void player_close_door(coord_def doorpos)
             const bool mons_unseen = !you.can_see(mon);
             if (mons_unseen || mons_is_object(mon->type))
             {
-                mprf("Something is blocking the %s!", waynoun);
+                mprf(jtransc("Something is blocking the %s!"), waynoun);
                 // No free detection!
                 if (mons_unseen)
                     you.turn_is_over = true;
             }
             else
-                mprf("There's a creature in the %s!", waynoun);
+                mprf(jtransc("There's a creature in the %s!"), waynoun);
             return;
         }
 
         if (igrd(dc) != NON_ITEM)
         {
-            mprf("There's something blocking the %s.", waynoun);
+            mprf(jtransc("There's something blocking the %s."), waynoun);
             return;
         }
 
         if (you.pos() == dc)
         {
-            mprf("There's a thick-headed creature in the %s!", waynoun);
+            mprf(jtransc("There's a thick-headed creature in the %s!"), waynoun);
             return;
         }
     }
@@ -8905,7 +8943,7 @@ void player_close_door(coord_def doorpos)
                 mprf(berserk_close.c_str(), adj, noun);
             }
             else
-                mprf("You slam the %s%s shut!", adj, noun);
+                mprf(jtransc("You slam the %s%s shut!"), adj, noun);
         }
         else
         {
@@ -8919,7 +8957,7 @@ void player_close_door(coord_def doorpos)
             }
             else
             {
-                mprf(MSGCH_SOUND, "You slam the %s%s shut with a bang!",
+                mprf(MSGCH_SOUND, jtransc("you slam the %s%s shut with a bang!"),
                                   adj, noun);
             }
 
@@ -8932,7 +8970,7 @@ void player_close_door(coord_def doorpos)
             mprf(MSGCH_SOUND, door_close_creak.c_str(), adj, noun);
         else
         {
-            mprf(MSGCH_SOUND, "As you close the %s%s, it creaks loudly!",
+            mprf(MSGCH_SOUND, jtransc("As you close the %s%s, it creaks loudly!"),
                               adj, noun);
         }
 
@@ -8946,14 +8984,14 @@ void player_close_door(coord_def doorpos)
             if (!door_airborne.empty())
                 verb = door_airborne.c_str();
             else
-                verb = "You reach down and close the %s%s.";
+                verb = jtransc("You reach down and close the %s%s.");
         }
         else
         {
             if (!door_close_verb.empty())
                 verb = door_close_verb.c_str();
             else
-                verb = "You close the %s%s.";
+                verb = jtransc("You close the %s%s.");
         }
 
         mprf(verb, adj, noun);
@@ -8999,19 +9037,6 @@ string player::hands_verb(const string &plural_verb) const
     return hand + " " + conjugate_verb(plural_verb, plural);
 }
 
-// Is this a character that would not normally have a preceding space when
-// it follows a word?
-static bool _is_end_punct(char c)
-{
-    switch (c)
-    {
-    case ' ': case '.': case '!': case '?':
-    case ',': case ':': case ';': case ')':
-        return true;
-    }
-    return false;
-}
-
 /**
  * Return a string describing the player's hand(s) (or equivalent) taking the
  * given action (verb).
@@ -9027,8 +9052,11 @@ static bool _is_end_punct(char c)
 string player::hands_act(const string &plural_verb,
                          const string &object) const
 {
-    const bool space = !object.empty() && !_is_end_punct(object[0]);
-    return "Your " + hands_verb(plural_verb) + (space ? " " : "") + object;
+    bool plural;
+    const string hand = hand_name(true, &plural);
+    return jtrans("Your") + hand + "は"
+                          + object + "を"
+                          + plural_verb + "。";
 }
 
 /**
@@ -9070,9 +9098,9 @@ void player::maybe_degrade_bone_armour(int mult)
         = max(0, you.attribute[ATTR_BONE_ARMOUR] - 1);
 
     if (you.attribute[ATTR_BONE_ARMOUR])
-        mpr("A chunk of your corpse armour falls away.");
+        mpr(jtrans("A chunk of your corpse armour falls away."));
     else
-        mpr("The last of your corpse armour falls away.");
+        mpr(jtrans("The last of your corpse armour falls away."));
 
     redraw_armour_class = true;
 }

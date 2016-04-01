@@ -26,6 +26,7 @@
 #include "coord.h"
 #include "coordit.h"
 #include "dactions.h"
+#include "database.h"
 #include "dbg-util.h"
 #include "decks.h"
 #include "defines.h"
@@ -46,6 +47,7 @@
 #include "itemname.h"
 #include "itemprop.h"
 #include "item_use.h"
+#include "japanese.h"
 #include "libutil.h"
 #include "macro.h"
 #include "makeitem.h"
@@ -771,7 +773,7 @@ void item_check()
     {
         item_def it(*items[0]);
         string name = get_menu_colour_prefix_tags(it, DESC_A);
-        strm << "You see here " << name << '.' << endl;
+        strm << "ここには" << name << "がある。" << endl;
         _maybe_give_corpse_hint(it);
         return;
     }
@@ -789,7 +791,7 @@ void item_check()
         }
         sort(item_chars.begin(), item_chars.end());
 
-        string out_string = "Items here: ";
+        string out_string = jtrans("Items here: ") + " ";
         int cur_state = -1;
         string colour = "";
         for (unsigned int i = 0; i < item_chars.size(); ++i)
@@ -826,7 +828,7 @@ void item_check()
     if (items.size() <= msgwin_lines() - 1)
     {
         if (!done_init_line)
-            mpr_nojoin(MSGCH_FLOOR_ITEMS, "Things that are here:");
+            mpr_nojoin(MSGCH_FLOOR_ITEMS, jtrans("Things that are here:"));
         for (const item_def *it : items)
         {
             mprf_nocap("%s", get_menu_colour_prefix_tags(*it, DESC_A).c_str());
@@ -834,7 +836,7 @@ void item_check()
         }
     }
     else if (!done_init_line)
-        strm << "There are many items here." << endl;
+        strm << jtrans("There are many items here.") << endl;
 
     if (items.size() > 2 && crawl_state.game_is_hints_tutorial())
     {
@@ -864,16 +866,16 @@ void pickup_menu(int item_link)
     item_list_on_square(items, item_link);
     ASSERT(items.size());
 
-    string prompt = "Pick up what? " + slot_description()
+    string prompt = jtrans("Pick up what?") + " " + slot_description()
 #ifdef TOUCH_UI
                   + " (<Enter> or tap header to pick up)"
 #else
-                  + " (_ for help)"
+                  + " " +jtrans("(_ for help)")
 #endif
                   ;
 
     if (items.size() == 1 && items[0]->quantity > 1)
-        prompt = "Select pick up quantity by entering a number, then select the item";
+        prompt = jtrans("Select pick up quantity by entering a number, then select the item");
     vector<SelItem> selected = select_items(items, prompt.c_str(), false,
                                             MT_PICKUP);
     if (selected.empty())
@@ -905,7 +907,7 @@ void pickup_menu(int item_link)
                 if (!move_item_to_inv(j, num_to_take))
                 {
                     n_tried_pickup++;
-                    pickup_warning = "You can't carry that many items.";
+                    pickup_warning = jtrans("You can't carry that many items.");
                     if (mitm[j].defined())
                         mitm[j].flags = oldflags;
                 }
@@ -1050,10 +1052,10 @@ static string _origin_monster_name(const item_def &item)
 {
     const monster_type monnum = static_cast<monster_type>(item.orig_monnum);
     if (monnum == MONS_PLAYER_GHOST)
-        return "a player ghost";
+        return "player ghost";
     else if (monnum == MONS_PANDEMONIUM_LORD)
-        return "a pandemonium lord";
-    return mons_type_name(monnum, DESC_A);
+        return "pandemonium lord";
+    return mons_type_name(monnum, DESC_PLAIN);
 }
 
 static string _origin_place_desc(const item_def &item)
@@ -1124,13 +1126,99 @@ bool origin_is_acquirement(const item_def& item, item_source_type *type)
     return false;
 }
 
+static string _base_type_string(const item_def &item)
+{
+    switch (item.base_type)
+    {
+    case OBJ_WEAPONS: return "weapon";
+    case OBJ_MISSILES: return "missile";
+    case OBJ_ARMOUR:
+        switch (item.sub_type)
+        {
+        case ARM_ROBE:
+            return "robe";
+        case ARM_CLOAK:
+            return "cloak";
+        case ARM_LEATHER_ARMOUR:
+        case ARM_RING_MAIL:
+        case ARM_SCALE_MAIL:
+        case ARM_CHAIN_MAIL:
+        case ARM_PLATE_ARMOUR:
+        case ARM_TROLL_LEATHER_ARMOUR:
+        case ARM_FIRE_DRAGON_ARMOUR:
+        case ARM_ICE_DRAGON_ARMOUR:
+        case ARM_STEAM_DRAGON_ARMOUR:
+        case ARM_MOTTLED_DRAGON_ARMOUR:
+        case ARM_STORM_DRAGON_ARMOUR:
+        case ARM_GOLD_DRAGON_ARMOUR:
+        case ARM_SWAMP_DRAGON_ARMOUR:
+        case ARM_PEARL_DRAGON_ARMOUR:
+        case ARM_SHADOW_DRAGON_ARMOUR:
+        case ARM_QUICKSILVER_DRAGON_ARMOUR:
+            return "armour";
+        case ARM_CENTAUR_BARDING:
+            return "馬甲";
+        case ARM_NAGA_BARDING:
+            return "具装";
+        case ARM_HAT:
+            return "hat";
+        case ARM_HELMET:
+            return "helmet";
+        case ARM_GLOVES:
+            return "gloves";
+        case ARM_BOOTS:
+            return "boots";
+        case ARM_BUCKLER:
+        case ARM_SHIELD:
+        case ARM_LARGE_SHIELD:
+            return "shield";
+        case ARM_ANIMAL_SKIN:
+        case ARM_TROLL_HIDE:
+        case ARM_FIRE_DRAGON_HIDE:
+        case ARM_ICE_DRAGON_HIDE:
+        case ARM_STEAM_DRAGON_HIDE:
+        case ARM_MOTTLED_DRAGON_HIDE:
+        case ARM_STORM_DRAGON_HIDE:
+        case ARM_GOLD_DRAGON_HIDE:
+        case ARM_SWAMP_DRAGON_HIDE:
+        case ARM_PEARL_DRAGON_HIDE:
+        case ARM_SHADOW_DRAGON_HIDE:
+        case ARM_QUICKSILVER_DRAGON_HIDE:
+            return "hide";
+        default:
+            return "buggy armour";
+        }
+    case OBJ_WANDS: return "wand";
+    case OBJ_FOOD: return "food";
+    case OBJ_SCROLLS: return "scroll";
+    case OBJ_JEWELLERY:
+        if (jewellery_is_amulet(item))
+            return "amulet";
+        else
+            return "ring";
+    case OBJ_POTIONS: return "potion";
+    case OBJ_BOOKS: return "book";
+    case OBJ_STAVES: return "staff";
+    case OBJ_RODS: return "rod";
+    case OBJ_ORBS: return "orb";
+    case OBJ_MISCELLANY:
+        if (is_deck(item))
+            return "デッキ";
+        else
+            return "miscellaneous";
+    case OBJ_CORPSES: return "corpse";
+    case OBJ_GOLD: return "gold";
+    default: return "";
+    }
+}
+
 string origin_desc(const item_def &item)
 {
     if (!origin_describable(item))
         return "";
 
     if (_origin_is_original_equip(item))
-        return "Original Equipment";
+        return jtrans("Original Equipment");
 
     string desc;
     if (item.orig_monnum)
@@ -1141,13 +1229,13 @@ string origin_desc(const item_def &item)
             switch (iorig)
             {
             case IT_SRC_SHOP:
-                desc += "You bought " + _article_it(item) + " in a shop ";
+                desc += jtrans("You bought " + _article_it(item) + " in a shop ");
                 break;
             case IT_SRC_START:
                 desc += "Buggy Original Equipment: ";
                 break;
             case AQ_SCROLL:
-                desc += "You acquired " + _article_it(item) + " ";
+                desc += jtrans("You acquired " + _article_it(item) + " ");
                 break;
 #if TAG_MAJOR_VERSION == 34
             case AQ_CARD_GENIE:
@@ -1160,8 +1248,8 @@ string origin_desc(const item_def &item)
             default:
                 if (iorig > GOD_NO_GOD && iorig < NUM_GODS)
                 {
-                    desc += god_name(static_cast<god_type>(iorig))
-                        + " gifted " + _article_it(item) + " to you ";
+                    desc += jtrans(god_name(static_cast<god_type>(iorig)))
+                        + jtrans(" gifted " + _article_it(item) + " to you ");
                 }
                 else
                 {
@@ -1172,18 +1260,18 @@ string origin_desc(const item_def &item)
             }
         }
         else if (item.orig_monnum == MONS_DANCING_WEAPON)
-            desc += "You subdued it ";
+            desc += jtrans("You subdued it ");
         else
         {
-            desc += "You took " + _article_it(item) + " off "
-                    + _origin_monster_name(item) + " ";
+            desc += make_stringf(jtransc("You took " + _article_it(item) + " off "),
+                                 jtransc(_origin_monster_name(item)));
         }
     }
     else
-        desc += "You found " + _article_it(item) + " ";
+        desc += jtrans("You found " + _article_it(item) + " ");
 
-    desc += _origin_place_desc(item);
-    return desc;
+    string basename = jtrans(_base_type_string(item));
+    return make_stringf(desc.c_str(), _origin_place_desc(item).c_str(), basename.c_str());
 }
 
 /**
@@ -1201,11 +1289,11 @@ bool pickup_single_item(int link, int qty)
     item_def* item = &mitm[link];
     if (item_is_stationary(mitm[link]))
     {
-        mpr("You can't pick that up.");
+        mpr(jtrans("You can't pick that up."));
         return false;
     }
     if (item->base_type == OBJ_GOLD && !qty && !i_feel_safe()
-        && !yesno("Are you sure you want to pick up this pile of gold now?",
+        && !yesno(jtransc("Are you sure you want to pick up this pile of gold now?"),
                   true, 'n'))
     {
         canned_msg(MSG_OK);
@@ -1214,7 +1302,7 @@ bool pickup_single_item(int link, int qty)
     if (qty == 0 && item->quantity > 1 && item->base_type != OBJ_GOLD)
     {
         const string prompt
-                = make_stringf("Pick up how many of %s (; or enter for all)? ",
+            = make_stringf((jtrans("Pick up how many of %s (; or enter for all)?") + " ").c_str(),
                                item->name(DESC_THE, false,
                                           false, false).c_str());
 
@@ -1245,7 +1333,7 @@ bool pickup_single_item(int link, int qty)
 
     if (!pickup_succ)
     {
-        mpr("You can't carry that many items.");
+        mpr(jtrans("You can't carry that many items."));
         learned_something_new(HINT_FULL_INVENTORY);
         return false;
     }
@@ -1280,9 +1368,9 @@ void pickup(bool partial_quantity)
     you.last_pickup.clear();
 
     if (o == NON_ITEM)
-        mpr("There are no items here.");
+        mpr(jtrans("There are no items here."));
     else if (you.form == TRAN_ICE_BEAST && grd(you.pos()) == DNGN_DEEP_WATER)
-        mpr("You can't reach the bottom while floating on water.");
+        mpr(jtrans("You can't reach the bottom while floating on water."));
     // just one movable item?
     else if (num_items == 1)
     {
@@ -1302,9 +1390,9 @@ void pickup(bool partial_quantity)
     {
         int next;
         if (num_items == 0)
-            mpr("There are no objects that can be picked up here.");
+            mpr(jtrans("There are no objects that can be picked up here."));
         else
-            mpr("There are several objects here.");
+            mpr(jtrans("There are several objects here."));
         string pickup_warning;
         bool any_selectable = false;
         while (o != NON_ITEM)
@@ -1321,7 +1409,7 @@ void pickup(bool partial_quantity)
 
             if (keyin != 'a')
             {
-                string prompt = "Pick up %s? ((y)es/(n)o/(a)ll/(m)enu/*?g,/q)";
+                string prompt = jtrans("Pick up %s? ((y)es/(n)o/(a)ll/(m)enu/*?g,/q)");
 
                 mprf(MSGCH_PROMPT, prompt.c_str(),
                      get_menu_colour_prefix_tags(mitm[o],
@@ -1353,7 +1441,7 @@ void pickup(bool partial_quantity)
                 // attempt to actually pick up the object.
                 if (!move_item_to_inv(o, num_to_take))
                 {
-                    pickup_warning = "You can't carry that many items.";
+                    pickup_warning = jtrans("You can't carry that many items.");
                     mitm[o].flags = old_flags;
                 }
             }
@@ -1598,11 +1686,11 @@ void get_gold(const item_def& item, int quant, bool quiet)
     if (!quiet)
     {
         const string gain = quant != you.gold
-                            ? make_stringf(" (gained %d)", quant)
+                            ? make_stringf(" (新たに%d枚入手)", quant)
                             : "";
 
-        mprf("You now have %d gold piece%s%s.",
-             you.gold, you.gold != 1 ? "s" : "", gain.c_str());
+        mprf(jtransc("You now have %d gold piece%s."),
+             you.gold, gain.c_str());
         learned_something_new(HINT_SEEN_GOLD);
     }
 }
@@ -1620,7 +1708,7 @@ static bool _put_item_in_inv(item_def& it, int quant_got, bool quiet, bool& put_
     if (item_is_stationary(it))
     {
         if (!quiet)
-            mpr("You can't pick that up.");
+            mpr(jtrans("You can't pick that up."));
         // Fake a successful pickup (return 1), so we can continue to
         // pick up anything else that might be on this square.
         return true;
@@ -1724,26 +1812,26 @@ static void _get_rune(const item_def& it, bool quiet)
     if (!quiet)
     {
         flash_view_delay(UA_PICKUP, rune_colour(it.plus), 300);
-        mprf("You pick up the %s rune and feel its power.",
-             rune_type_name(it.plus));
+        mprf(jtransc("You pick up the %s rune and feel its power."),
+             rune_of_zot_name(rune_type_name(it.plus)).c_str());
         int nrunes = runes_in_pack();
         if (nrunes >= you.obtainable_runes)
-            mpr("You have collected all the runes! Now go and win!");
+            mpr(jtrans("You have collected all the runes! Now go and win!"));
         else if (nrunes == NUMBER_OF_RUNES_NEEDED
                  && !crawl_state.game_is_zotdef())
         {
             // might be inappropriate in new Sprints, please change it then
-            mprf("%d runes! That's enough to enter the realm of Zot.",
+            mprf(jtransc("%d runes! That's enough to enter the realm of Zot."),
                  nrunes);
         }
         else if (nrunes > 1)
-            mprf("You now have %d runes.", nrunes);
+            mprf(jtransc("You now have %d runes."), nrunes);
 
-        mpr("Press } to see all the runes you have collected.");
+        mpr(jtrans("Press } to see all the runes you have collected."));
     }
 
     if (it.plus == RUNE_ABYSSAL)
-        mpr("You feel the abyssal rune guiding you out of this place.");
+        mpr(jtrans("You feel the abyssal rune guiding you out of this place."));
 
     if (it.plus == RUNE_TOMB)
         add_daction(DACT_TOMB_CTELE);
@@ -1762,18 +1850,18 @@ static void _get_orb(const item_def &it, bool quiet)
 {
     run_animation(ANIMATION_ORB, UA_PICKUP);
 
-    mprf(MSGCH_ORB, "You pick up the Orb of Zot!");
+    mpr_nojoin(MSGCH_ORB, jtrans("You pick up the Orb of Zot!"));
     you.char_direction = GDT_ASCENDING;
 
     env.orb_pos = you.pos(); // can be wrong in wizmode
     orb_pickup_noise(you.pos(), 30);
 
-    mprf(MSGCH_WARN, "The lords of Pandemonium are not amused. Beware!");
+    mpr_nojoin(MSGCH_WARN, jtrans("The lords of Pandemonium are not amused. Beware!"));
 
     if (you_worship(GOD_CHEIBRIADOS))
-        simple_god_message(" tells them not to hurry.");
+        simple_god_message(jtrans(" tells them not to hurry.").c_str());
 
-    mprf(MSGCH_ORB, "Now all you have to do is get back out of the dungeon!");
+    mpr_nojoin(MSGCH_ORB, jtrans("Now all you have to do is get back out of the dungeon!"));
 
     xom_is_stimulated(200, XM_INTRIGUED);
     invalidate_agrid(true);
@@ -1812,10 +1900,12 @@ static bool _merge_stackable_item_into_inv(const item_def &it, int quant_got,
 
         if (!quiet)
         {
-            mprf_nocap("%s (gained %d)",
+            mprf_nocap(jtransc("%s (gained %d)"),
                         get_menu_colour_prefix_tags(you.inv[inv_slot],
                                                     DESC_INVENTORY).c_str(),
-                        quant_got);
+                        quant_got,
+                        counter_suffix(it)
+                       );
         }
 
         return true;
@@ -2374,11 +2464,11 @@ bool drop_item(int item_dropped, int quant_drop)
     if (!copy_item_to_grid(you.inv[item_dropped],
                             you.pos(), quant_drop, true, true))
     {
-        mpr("Too many items on this level, not dropping the item.");
+        mpr(jtrans("Too many items on this level, not dropping the item."));
         return false;
     }
 
-    mprf("You drop %s.",
+    mprf(jtransc("You drop %s."),
          quant_name(you.inv[item_dropped], quant_drop, DESC_A).c_str());
 
     bool quiet = silenced(you.pos());
@@ -2422,7 +2512,7 @@ void drop_last()
     }
 
     if (items_to_drop.empty())
-        mpr("No item to drop.");
+        mpr(jtrans("No item to drop."));
     else
     {
         you.last_pickup.clear();
@@ -2483,10 +2573,9 @@ static string _drop_selitem_text(const vector<MenuEntry*> *s)
         }
     }
 
-    return make_stringf(" (%u%s turn%s)",
+    return make_stringf((" " + jtrans("(%u%s turn%s)")).c_str(),
                (unsigned int)s->size(),
-               extraturns? "+" : "",
-               s->size() > 1? "s" : "");
+               extraturns? "以上" : "");
 }
 
 vector<SelItem> items_for_multidrop;
@@ -2528,11 +2617,11 @@ void drop()
     }
 
     vector<SelItem> tmp_items;
-    string prompt = "Drop what? " + slot_description()
+    string prompt = jtrans("Drop what?") + " " + slot_description()
 #ifdef TOUCH_UI
                   + " (<Enter> or tap header to drop)"
 #else
-                  + " (_ for help)"
+                  + " " + jtrans("(_ for help)")
 #endif
                   ;
 
@@ -3036,7 +3125,7 @@ static void _do_autopickup()
             else
             {
                 n_tried_pickup++;
-                pickup_warning = "Your pack is full.";
+                pickup_warning = jtrans("Your pack is full.");
                 mitm[o].flags = iflags;
             }
         }

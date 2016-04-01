@@ -13,6 +13,7 @@
 #include "branch.h"
 #include "cloud.h"
 #include "colour.h"
+#include "database.h"
 #include "directn.h"
 #include "english.h"
 #include "env.h"
@@ -212,7 +213,7 @@ string MiscastEffect::get_default_cause(bool attribute_to_user) const
     ASSERT(school == SPTYP_NONE);
     ASSERT(target->is_player());
 
-    return string("miscasting ") + spell_title(spell);
+    return tagged_jtrans("[spell]", spell_title(spell)) + "の呪文の失敗効果";
 }
 
 bool MiscastEffect::neither_end_silenced()
@@ -409,7 +410,7 @@ void MiscastEffect::do_msg(bool suppress_nothing_happens)
         plural = can_plural_hand;
         msg = replace_all(msg, "@hand@",  hand_str);
         if (can_plural_hand)
-            msg = replace_all(msg, "@hands@", pluralise(hand_str));
+            msg = replace_all(msg, "@hands@", "両" + hand_str);
         else
             msg = replace_all(msg, "@hands@", hand_str);
     }
@@ -426,7 +427,7 @@ void MiscastEffect::do_msg(bool suppress_nothing_happens)
             msg = replace_all(msg, "'s body", "");
     }
 
-    mprf(msg_ch, "%s", msg.c_str());
+    mprf(msg_ch, "%s", jtransc(msg));
 
     if (msg_ch == MSGCH_SOUND)
     {
@@ -606,7 +607,7 @@ bool MiscastEffect::avoid_lethal(int dam)
     {
         // Any possible miscast would kill you, now that's interesting.
         if (you_worship(GOD_XOM))
-            simple_god_message(" watches you with interest.");
+            simple_god_message(jtransc(" watches you with interest."));
         return true;
     }
 
@@ -711,12 +712,12 @@ static string _hair_str(actor* target, bool &plural)
     if (you.species == SP_MUMMY)
     {
         plural = true;
-        return "bandages";
+        return jtrans("bandages");
     }
     else
     {
         plural = false;
-        return "hair";
+        return jtrans("hair");
     }
 }
 
@@ -768,8 +769,8 @@ void MiscastEffect::_conjuration(int severity)
             break;
         case 5:
             you_msg      = "Strange energies run through your body.";
-            mon_msg_seen = "@The_monster@ glows " + weird_glowing_colour() +
-                           " for a moment.";
+            mon_msg_seen = make_stringf(jtransc("@The_monster@ glows %s for a moment."),
+                                        weird_glowing_colour().c_str());
             break;
         case 6:
             you_msg      = "Your skin tingles.";
@@ -795,7 +796,7 @@ void MiscastEffect::_conjuration(int severity)
             // Player only (for now).
             bool plural;
             string hair = _hair_str(target, plural);
-            you_msg = make_stringf("Your %s stand%s on end.", hair.c_str(),
+            you_msg = make_stringf(jtransc("Your %s stand%s on end."), hair.c_str(),
                                    plural ? "" : "s");
         }
         }
@@ -921,8 +922,8 @@ void MiscastEffect::_hexes(int severity)
             break;
         case 5:
             you_msg      = "Strange energies run through your body.";
-            mon_msg_seen = "@The_monster@ glows " + weird_glowing_colour() +
-                           " for a moment.";
+            mon_msg_seen = make_stringf(jtransc("@The_monster@ glows %s for a moment."),
+                                        weird_glowing_colour().c_str());
             break;
         case 6:
             you_msg      = "Your skin tingles.";
@@ -968,7 +969,7 @@ void MiscastEffect::_hexes(int severity)
         case 2:
             if (target->is_player())
             {
-                mpr("You sense a malignant aura.");
+                mpr(jtrans("You sense a malignant aura."));
                 curse_an_item();
                 break;
             }
@@ -1065,8 +1066,8 @@ void MiscastEffect::_charms(int severity)
             break;
         case 5:
             you_msg      = "Strange energies run through your body.";
-            mon_msg_seen = "@The_monster@ glows " + weird_glowing_colour() +
-                           " for a moment.";
+            mon_msg_seen = make_stringf(jtransc("@The_monster@ glows %s for a moment."),
+                                        weird_glowing_colour().c_str());
             break;
         case 6:
             you_msg      = "Your skin tingles.";
@@ -1124,7 +1125,7 @@ void MiscastEffect::_charms(int severity)
         case 2:
             if (target->is_player())
             {
-                mpr("You sense a malignant aura.");
+                mpr(jtrans("You sense a malignant aura."));
                 curse_an_item();
                 break;
             }
@@ -1221,10 +1222,10 @@ void MiscastEffect::_translocation(int severity)
             break;
         case 5:
             you_msg      = "Strange energies run through your body.";
-            mon_msg_seen = "@The_monster@ glows " + weird_glowing_colour() +
-                           " for a moment.";
-            mon_msg_unseen = "A spot of thin air glows "
-                             + weird_glowing_colour() + " for a moment.";
+            mon_msg_seen = make_stringf(jtransc("@The_monster@ glows %s for a moment."),
+                                        weird_glowing_colour().c_str());
+            mon_msg_unseen = make_stringf(jtransc("A spot of thin air glows %s for a moment."),
+                                          weird_glowing_colour().c_str());
             break;
         case 6:
             you_msg      = "Your skin tingles.";
@@ -1411,8 +1412,8 @@ void MiscastEffect::_summoning(int severity)
             break;
         case 5:
             you_msg      = "Strange energies run through your body.";
-            mon_msg_seen = "@The_monster@ glows " + weird_glowing_colour() +
-                           " for a moment.";
+            mon_msg_seen = make_stringf(jtransc("@The_monster@ glows %s for a moment."),
+                                        weird_glowing_colour().c_str());
             break;
         case 6:
             you_msg      = "The world appears momentarily distorted.";
@@ -1575,40 +1576,40 @@ void MiscastEffect::_divination_you(int severity)
         switch (random2(10))
         {
         case 0:
-            mpr("Weird images run through your mind.");
+            mpr(jtransc("Weird images run through your mind."));
             break;
         case 1:
             if (!silenced(you.pos()))
             {
-                mprf(MSGCH_SOUND, "You hear strange voices.");
+                mpr_nojoin(MSGCH_SOUND, jtransc("You hear strange voices."));
                 noisy(2, you.pos());
             }
             else
-                mpr("Your nose twitches.");
+                mpr(jtrans("Your nose twitches."));
             break;
         case 2:
-            mpr("Your head hurts.");
+            mpr(jtrans("Your head hurts."));
             break;
         case 3:
-            mpr("You feel a strange surge of energy!");
+            mpr(jtrans("You feel a strange surge of energy!"));
             break;
         case 4:
-            mpr("Your brain hurts!");
+            mpr(jtrans("Your brain hurts!"));
             break;
         case 5:
-            mpr("Strange energies run through your body.");
+            mpr(jtrans("Strange energies run through your body."));
             break;
         case 6:
-            mpr("Everything looks hazy for a moment.");
+            mpr(jtrans("Everything looks hazy for a moment."));
             break;
         case 7:
-            mpr("You seem to have forgotten something, but you can't remember what it was!");
+            mpr(jtrans("You seem to have forgotten something, but you can't remember what it was!"));
             break;
         case 8:
             canned_msg(MSG_NOTHING_HAPPENS);
             break;
         case 9:
-            mpr("You feel uncomfortable.");
+            mpr(jtrans("You feel uncomfortable."));
             break;
         }
         break;
@@ -1617,7 +1618,7 @@ void MiscastEffect::_divination_you(int severity)
         switch (random2(2))
         {
         case 0:
-            mpr("You feel a little dazed.");
+            mpr(jtrans("You feel a little dazed."));
             break;
         case 1:
             target->confuse(act_source, 5 + random2(3));
@@ -1632,15 +1633,15 @@ void MiscastEffect::_divination_you(int severity)
             if (_lose_stat(STAT_INT, 1 + random2(3)))
             {
                 if (you.undead_state())
-                    mpr("You suddenly recall your previous life!");
+                    mpr(jtrans("You suddenly recall your previous life!"));
                 else
-                    mpr("You have damaged your brain!");
+                    mpr(jtrans("You have damaged your brain!"));
             }
             else if (!did_msg)
-                mpr("You have a terrible headache.");
+                mpr(jtrans("You have a terrible headache."));
             break;
         case 1:
-            mpr("You lose your focus.");
+            mpr(jtrans("You lose your focus."));
             if (you.magic_points > 0
 #if TAG_MAJOR_VERSION == 34
                     || you.species == SP_DJINNI
@@ -1648,7 +1649,7 @@ void MiscastEffect::_divination_you(int severity)
                     )
             {
                 drain_mp(3 + random2(10));
-                mprf(MSGCH_WARN, "You suddenly feel drained of magical energy!");
+                mpr_nojoin(MSGCH_WARN, jtrans("You suddenly feel drained of magical energy!"));
             }
             break;
         }
@@ -1660,7 +1661,7 @@ void MiscastEffect::_divination_you(int severity)
         switch (random2(2))
         {
         case 0:
-            mpr("You lose concentration completely!");
+            mpr(jtrans("You lose concentration completely!"));
             if (you.magic_points > 0
 #if TAG_MAJOR_VERSION == 34
                 || you.species == SP_DJINNI
@@ -1668,19 +1669,19 @@ void MiscastEffect::_divination_you(int severity)
                     )
             {
                 drain_mp(5 + random2(20));
-                mprf(MSGCH_WARN, "You suddenly feel drained of magical energy!");
+                mpr_nojoin(MSGCH_WARN, jtrans("You suddenly feel drained of magical energy!"));
             }
             break;
         case 1:
             if (_lose_stat(STAT_INT, 3 + random2(3)))
             {
                 if (you.undead_state())
-                    mpr("You suddenly recall your previous life!");
+                    mpr(jtrans("You suddenly recall your previous life!"));
                 else
-                    mpr("You have damaged your brain!");
+                    mpr(jtrans("You have damaged your brain!"));
             }
             else if (!did_msg)
-                mpr("You have a terrible headache.");
+                mpr(jtrans("You have a terrible headache."));
             break;
         }
 
@@ -1745,8 +1746,8 @@ void MiscastEffect::_necromancy(int severity)
             // An actual necromancy miscast.
             if (x_chance_in_y(you.piety, piety_breakpoint(5)))
             {
-                simple_god_message(" protects you from your miscast "
-                                   "necromantic spell!");
+                simple_god_message(jtransc(" protects you from your miscast "
+                                           "necromantic spell!"));
                 return;
             }
         }
@@ -1754,12 +1755,12 @@ void MiscastEffect::_necromancy(int severity)
         {
             if (coinflip())
             {
-                simple_god_message(" averts the curse.");
+                simple_god_message(jtransc(" averts the curse."));
                 return;
             }
             else
             {
-                simple_god_message(" partially averts the curse.");
+                simple_god_message(jtransc(" partially averts the curse."));
                 severity = max(severity - 1, 0);
             }
         }
@@ -1803,8 +1804,8 @@ void MiscastEffect::_necromancy(int severity)
             break;
         case 5:
             you_msg      = "Strange energies run through your body.";
-            mon_msg_seen = "@The_monster@ glows " + weird_glowing_colour() +
-                           " for a moment.";
+            mon_msg_seen = make_stringf(jtransc("@The_monster@ glows %s for a moment."),
+                                        weird_glowing_colour().c_str());
             break;
         case 6:
             you_msg      = "You shiver with cold.";
@@ -2016,8 +2017,8 @@ void MiscastEffect::_transmutation(int severity)
             break;
         case 5:
             you_msg      = "Strange energies run through your body.";
-            mon_msg_seen = "@The_monster@ glows " + weird_glowing_colour() +
-                           " for a moment.";
+            mon_msg_seen = make_stringf(jtransc("@The_monster@ glows %s for a moment."),
+                                        weird_glowing_colour().c_str());
             break;
         case 6:
             you_msg      = "Your skin tingles.";
@@ -2374,8 +2375,7 @@ void MiscastEffect::_ice(int severity)
         (feat == DNGN_FLOOR || feat_altar_god(feat) != GOD_NO_GOD
          || feat_is_staircase(feat) || feat_is_water(feat));
 
-    const string feat_name = (feat == DNGN_FLOOR ? "the " : "") +
-        feature_description_at(target->pos(), false, DESC_THE);
+    const string feat_name = feature_description_at(target->pos(), false, DESC_THE);
 
     int num;
     switch (severity)
@@ -2434,9 +2434,11 @@ void MiscastEffect::_ice(int severity)
             break;
         case 10:
             if (feat_is_water(feat))
-                all_msg  = "A thin layer of ice forms on " + feat_name;
+                all_msg  = make_stringf(jtransc("A thin layer of ice forms on %s"),
+                                        feat_name.c_str());
             else
-                all_msg  = "Frost spreads across " + feat_name;
+                all_msg  = make_stringf(jtransc("Frost spreads across %s"),
+                                        feat_name.c_str());
             break;
         }
         do_msg();
@@ -2446,7 +2448,7 @@ void MiscastEffect::_ice(int severity)
         switch (random2(2))
         {
         case 0:
-            mpr("You feel extremely cold.");
+            mpr(jtrans("You feel extremely cold."));
             // Monster messages needed.
             break;
         case 1:
@@ -2598,8 +2600,7 @@ void MiscastEffect::_earth(int severity)
             string        feet       = you.foot_name(true, &pluralised);
             ostringstream str;
 
-            str << "Your " << feet << (pluralised ? " feel" : " feels")
-                << " warm.";
+            str << "あなたの" << feet << "は暖かくなった。";
 
             you_msg = str.str();
             // Monster messages needed.
@@ -2800,8 +2801,7 @@ void MiscastEffect::_air(int severity)
             // Player only (for now).
             bool plural;
             string hair = _hair_str(target, plural);
-            you_msg = make_stringf("Your %s stand%s on end.", hair.c_str(),
-                                   plural ? "" : "s");
+            you_msg = make_stringf(jtransc("Your %s stand%s on end."), hair.c_str());
             break;
         }
         }
@@ -3248,7 +3248,7 @@ void MiscastEffect::_zot()
             if (you.magic_points > 0)
             {
                 dec_mp(10 + random2(21));
-                mprf(MSGCH_WARN, "You suddenly feel drained of magical energy!");
+                mpr_nojoin(MSGCH_WARN, jtrans("You suddenly feel drained of magical energy!"));
             }
             break;
         case 10:
@@ -3271,7 +3271,8 @@ void MiscastEffect::_zot()
                 }
             }
             if (!wands.empty())
-                mpr_comma_separated_list("Magical energy is drained from your ", wands);
+                mprf(jtransc("Magical energy is drained from your %s"),
+                     to_separated_line(wands.begin(), wands.end()).c_str());
             else
                 do_msg(); // For canned_msg(MSG_NOTHING_HAPPENS)
             break;
@@ -3280,7 +3281,7 @@ void MiscastEffect::_zot()
             _lose_stat(STAT_RANDOM, 1 + random2avg((coinflip() ? 7 : 4), 2));
             break;
         case 12:
-            mpr("An unnatural silence engulfs you.");
+            mpr(jtrans("An unnatural silence engulfs you."));
             you.increase_duration(DUR_SILENCE, 10 + random2(21), 30);
             invalidate_agrid(true);
             break;

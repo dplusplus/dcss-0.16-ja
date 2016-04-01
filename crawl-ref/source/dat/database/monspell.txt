@@ -106,7 +106,6 @@ branch summon cast prefix
 
 @The_monster@ calls forth creatures from
 %%%%
-%%%%
 Mara Summon cast
 
 @The_monster@ weaves an illusion.

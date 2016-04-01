@@ -10,6 +10,7 @@
 #include "cio.h"
 #include "clua.h"
 #include "command.h"
+#include "database.h"
 #include "describe.h"
 #include "evoke.h"
 #include "hints.h"
@@ -46,9 +47,9 @@ bool SkillTextTileItem::handle_mouse(const MouseEvent& me)
 }
 #endif
 
-#define NAME_SIZE 20
-#define LEVEL_SIZE 5
-#define PROGRESS_SIZE 6
+#define NAME_SIZE 16
+#define LEVEL_SIZE 6
+#define PROGRESS_SIZE 9
 #define APTITUDE_SIZE 5
 SkillMenuEntry::SkillMenuEntry(coord_def coord)
 {
@@ -222,8 +223,8 @@ void SkillMenuEntry::set_name(bool keep_hotkey)
         m_name->allow_highlight(false);
     }
 
-    m_name->set_text(make_stringf("%s %-15s", get_prefix().c_str(),
-                                skill_name(m_sk)));
+    m_name->set_text(make_stringf("%s %-10s", get_prefix().c_str(),
+                                  jtransc(skill_name(m_sk))));
     m_name->set_fg_colour(get_colour());
 #ifdef USE_TILE_LOCAL
     if (is_set(SKMF_SKILL_ICONS))
@@ -332,9 +333,9 @@ void SkillMenuEntry::set_aptitude()
     int manual_bonus = manual ? 4 : 0;
 
     if (apt != 0)
-        text += make_stringf("%+d", apt);
+        text += make_stringf(" %+d", apt);
     else
-        text += make_stringf(" %d", apt);
+        text += make_stringf("  %d", apt);
 
     text += "</white> ";
 
@@ -366,9 +367,9 @@ void SkillMenuEntry::set_level()
         level = you.skill(m_sk, 10, real);
 
     if (mastered() && !you.attribute[ATTR_XP_DRAIN])
-        m_level->set_text(to_string(level / 10));
+        m_level->set_text("   " + to_string(level / 10));
     else
-        m_level->set_text(make_stringf("%4.1f", level / 10.0));
+        m_level->set_text(make_stringf(" %4.1f", level / 10.0));
     m_level->set_fg_colour(get_colour());
 }
 
@@ -378,7 +379,7 @@ void SkillMenuEntry::set_new_level()
     if (is_set(SKMF_EXPERIENCE) && is_selectable())
     {
         m_progress->set_fg_colour(CYAN);
-        m_progress->set_text(make_stringf("->%4.1f",
+        m_progress->set_text(make_stringf("->   %4.1f",
                                           you.skill(m_sk, 10, real) / 10.0));
         return;
     }
@@ -401,14 +402,17 @@ void SkillMenuEntry::set_new_level()
     }
 
     if (is_selectable() || m_sk == you.transfer_from_skill)
-        m_progress->set_text(make_stringf("->%4.1f", new_level / 10.0));
+        m_progress->set_text(make_stringf("->  %4.1f", new_level / 10.0));
     else
         m_progress->set_text("");
 }
 
 void SkillMenuEntry::set_points()
 {
-    m_progress->set_text(make_stringf("%5d", you.skill_points[m_sk]));
+    if (is_set(SKMF_RESKILLING))
+        m_progress->set_text(make_stringf("   %5d", you.skill_points[m_sk]));
+    else
+        m_progress->set_text(make_stringf("  %5d", you.skill_points[m_sk]));
     m_progress->set_fg_colour(LIGHTGREY);
 }
 
@@ -416,9 +420,12 @@ void SkillMenuEntry::set_progress()
 {
     if (mastered())
         m_progress->set_text("");
+    else if (is_set(SKMF_RESKILLING))
+        m_progress->set_text(make_stringf("     %2d%%",
+                                          get_skill_percentage(m_sk)));
     else
     {
-        m_progress->set_text(make_stringf(" %2d%%",
+        m_progress->set_text(make_stringf("   %2d%%",
                                           get_skill_percentage(m_sk)));
     }
     m_progress->set_fg_colour(CYAN);
@@ -446,29 +453,29 @@ void SkillMenuEntry::set_reskill_progress()
 void SkillMenuEntry::set_title()
 {
     m_name->allow_highlight(false);
-    m_name->set_text("    Skill");
-    m_level->set_text("Level");
+    m_name->set_text("    スキル");
+    m_level->set_text("レベル");
 
     m_name->set_fg_colour(BLUE);
     m_level->set_fg_colour(BLUE);
     m_progress->set_fg_colour(BLUE);
 
     if (is_set(SKMF_APTITUDE))
-        m_aptitude->set_text("<blue>Apt </blue>");
+        m_aptitude->set_text(jtrans("<blue>Apt </blue>"));
 
     if (is_set(SKMF_RESKILLING))
     {
-        m_progress->set_text("-> Lvl");
+        m_progress->set_text("-> 移行後");
         return;
     }
 
     switch (skm.get_state(SKM_VIEW))
     {
-    case SKM_VIEW_TRAINING:  m_progress->set_text("Train"); break;
-    case SKM_VIEW_PROGRESS:  m_progress->set_text("Progr"); break;
-    case SKM_VIEW_TRANSFER:  m_progress->set_text("Trnsf"); break;
-    case SKM_VIEW_POINTS:    m_progress->set_text("Pnts");  break;
-    case SKM_VIEW_NEW_LEVEL: m_progress->set_text("New");   break;
+    case SKM_VIEW_TRAINING:  m_progress->set_text("  経験"); break;
+    case SKM_VIEW_PROGRESS:  m_progress->set_text("  達成"); break;
+    case SKM_VIEW_TRANSFER:  m_progress->set_text("  移行"); break;
+    case SKM_VIEW_POINTS:    m_progress->set_text("  得点"); break;
+    case SKM_VIEW_NEW_LEVEL: m_progress->set_text("   訓練後"); break;
     default: die("Invalid view state.");
     }
 }
@@ -477,8 +484,10 @@ void SkillMenuEntry::set_training()
 {
     if (!you.training[m_sk])
         m_progress->set_text("");
+    else if (is_set(SKMF_RESKILLING))
+        m_progress->set_text(make_stringf("    %2d%%", you.training[m_sk]));
     else
-        m_progress->set_text(make_stringf(" %2d%%", you.training[m_sk]));
+        m_progress->set_text(make_stringf("  %2d%%", you.training[m_sk]));
     m_progress->set_fg_colour(BROWN);
 }
 
@@ -504,26 +513,23 @@ string SkillMenuSwitch::get_help()
     switch (m_state)
     {
     case SKM_MODE_AUTO:
-        return "In automatic mode, skills are trained as you use them. ";
+        return jtrans("In automatic mode, skills are trained as you use them.") + " ";
     case SKM_MODE_MANUAL:
-        return "In manual mode, experience is spread evenly across all "
-                "activated skills. ";
+        return jtrans("In manual mode, experience is spread evenly across all "
+                      "activated skills.") + " ";
     case SKM_DO_PRACTISE:
         if (skm.is_set(SKMF_SIMPLE))
             return hints_skills_info();
         else
         {
-            return "Press the letter of a skill to choose whether you want to "
-                   "practise it. Skills marked with '-' will not be trained. ";
+            return jtrans("Press the letter of a skill to choose whether you want to "
+                          "practise it. Skills marked with '-' will not be trained. ") + " ";
         }
     case SKM_DO_FOCUS:
-        return "Press the letter of a skill to cycle between "
-               "<darkgrey>disabled</darkgrey> (-), enabled (+) and "
-               "<white>focused</white> (*). Focused skills train twice as "
-               "fast as others. ";
+        return jtrans("skill_do_focus") + " ";
     case SKM_LEVEL_ENHANCED:
         if (skm.is_set(SKMF_ENHANCED))
-            return make_stringf("Enhanced skills are in <blue>blue</blue>. ");
+            return jtrans("Enhanced skills are in <blue>blue</blue>.") + " ";
         else
         {
             vector<const char *> causes;
@@ -531,25 +537,24 @@ string SkillMenuSwitch::get_help()
                 causes.push_back("draining");
             if (player_under_penance(GOD_ASHENZARI))
                 causes.push_back("the power of Ashenzari");
-            return "Skills reduced by "
-                   + comma_separated_line(causes.begin(), causes.end())
-                   + " are in <magenta>magenta</magenta>. ";
+            return to_separated_line(causes.begin(), causes.end())
+                   + "により減少しているスキルは<magenta>マゼンタ</magenta>で表示されます。 ";
         }
     case SKM_VIEW_TRAINING:
         if (skm.is_set(SKMF_SIMPLE))
             return hints_skill_training_info();
         else
         {
-            return "The percentage of the experience used to train each skill "
-                   "is in <brown>brown</brown>.\n";
+            return jtrans("The percentage of the experience used to train each skill "
+                          "is in <brown>brown</brown>.") + "\n";
         }
     case SKM_VIEW_PROGRESS:
-        return "The percentage of the progress done before reaching next "
-               "level is in <cyan>cyan</cyan>.\n";
+        return jtrans("The percentage of the progress done before reaching next "
+                      "level is in <cyan>cyan</cyan>.") + "\n";
     case SKM_VIEW_TRANSFER:
-        return "The progress of the knowledge transfer is displayed in "
-               "<cyan>cyan</cyan> in front of the skill receiving the "
-               "knowledge. The donating skill is marked with '*'. ";
+        return jtrans("The progress of the knowledge transfer is displayed in "
+                      "<cyan>cyan</cyan> in front of the skill receiving the "
+                      "knowledge. The donating skill is marked with '*'.") + " ";
     default: return "";
     }
 }
@@ -558,24 +563,24 @@ string SkillMenuSwitch::get_name(skill_menu_state state)
 {
     switch (state)
     {
-    case SKM_MODE_AUTO:      return "auto";
-    case SKM_MODE_MANUAL:    return "manual";
+    case SKM_MODE_AUTO:      return "自動";
+    case SKM_MODE_MANUAL:    return "手動";
     case SKM_DO_PRACTISE:    return "practise";
     case SKM_DO_FOCUS:       return "focus";
     case SKM_SHOW_KNOWN:     return "known";
-    case SKM_SHOW_DEFAULT:   return "default";
-    case SKM_SHOW_ALL:       return "all";
+    case SKM_SHOW_DEFAULT:   return "選択可能のみ";
+    case SKM_SHOW_ALL:       return "全て";
     case SKM_LEVEL_ENHANCED:
         return (skm.is_set(SKMF_ENHANCED)
                 && skm.is_set(SKMF_REDUCED)) ? "changed" :
-                   skm.is_set(SKMF_ENHANCED) ? "enhanced"
+                   skm.is_set(SKMF_ENHANCED) ? "補正あり"
                                              : "reduced";
-    case SKM_LEVEL_NORMAL:   return "normal";
-    case SKM_VIEW_TRAINING:  return "training";
-    case SKM_VIEW_PROGRESS:  return "progress";
+    case SKM_LEVEL_NORMAL:   return "なし";
+    case SKM_VIEW_TRAINING:  return "割り振り表示";
+    case SKM_VIEW_PROGRESS:  return "進行度表示";
     case SKM_VIEW_TRANSFER:  return "transfer";
-    case SKM_VIEW_POINTS:    return "points";
-    case SKM_VIEW_NEW_LEVEL: return "new level";
+    case SKM_VIEW_POINTS:    return "ポイント表示";
+    case SKM_VIEW_NEW_LEVEL: return "スキル移行";
     default: die ("Invalid switch state.");
     }
 }
@@ -886,9 +891,9 @@ void SkillMenu::help()
         if (is_set(SKMF_SIMPLE))
             text = hints_skills_description_info();
         else
-            text = "Press the letter of a skill to read its description. "
-                   "Press ? for an explanation of how skills work and the "
-                   "various modes.";
+            text = jtrans("Press the letter of a skill to read its description. "
+                          "Press ? for an explanation of how skills work and the "
+                          "various modes.");
         set_help(text);
     }
     else
@@ -1033,7 +1038,7 @@ void SkillMenu::init_help()
 void SkillMenu::init_switches()
 {
     SkillMenuSwitch* sw;
-    sw = new SkillMenuSwitch("Mode", '/');
+    sw = new SkillMenuSwitch(jtrans("Mode"), '/');
     m_switches[SKM_MODE] = sw;
     sw->add(SKM_MODE_AUTO);
     if (!is_set(SKMF_SPECIAL) && !is_set(SKMF_SIMPLE))
@@ -1062,7 +1067,7 @@ void SkillMenu::init_switches()
     sw->set_id(SKM_DO);
     add_item(sw, sw->size(), m_pos);
 
-    sw = new SkillMenuSwitch("Show", '*');
+    sw = new SkillMenuSwitch(jtrans("Show"), '*');
     m_switches[SKM_SHOW] = sw;
     //sw->add(SKM_SHOW_KNOWN);
     sw->add(SKM_SHOW_DEFAULT);
@@ -1074,7 +1079,7 @@ void SkillMenu::init_switches()
 
     if (is_set(SKMF_CHANGED))
     {
-        sw = new SkillMenuSwitch("Level", '_');
+        sw = new SkillMenuSwitch("レベル", '_');
         m_switches[SKM_LEVEL] = sw;
         sw->add(SKM_LEVEL_ENHANCED);
         sw->add(SKM_LEVEL_NORMAL);
@@ -1083,7 +1088,7 @@ void SkillMenu::init_switches()
         add_item(sw, sw->size(), m_pos);
     }
 
-    sw = new SkillMenuSwitch("View", '!');
+    sw = new SkillMenuSwitch("表示", '!');
     m_switches[SKM_VIEW] = sw;
     const bool transferring = !is_invalid_skill(you.transfer_to_skill);
     if (!is_set(SKMF_SPECIAL) || you.wizard)
@@ -1117,11 +1122,11 @@ void SkillMenu::init_switches()
     if (!is_set(SKMF_SPECIAL))
     {
         m_help_button = new FormattedTextItem();
-        m_help_button->set_text("[Help(<yellow>?</yellow>)]");
+        m_help_button->set_text(jtrans("[Help(<yellow>?</yellow>)]"));
         m_help_button->set_id(SKM_HELP);
         m_help_button->add_hotkey('?');
         m_help_button->set_highlight_colour(YELLOW);
-        add_item(m_help_button, 9, m_pos);
+        add_item(m_help_button, 11, m_pos);
     }
 }
 
@@ -1166,21 +1171,21 @@ void SkillMenu::set_default_help()
     string text;
     if (is_set(SKMF_RESKILL_FROM))
     {
-        text = "Select a skill as the source of the knowledge transfer. The "
-               "chosen skill will be reduced to the level shown in "
-               "<brown>brown</brown>.";
+        text = jtrans("Select a skill as the source of the knowledge transfer. The "
+                      "chosen skill will be reduced to the level shown in "
+                      "<brown>brown</brown>.");
     }
     else if (is_set(SKMF_RESKILL_TO))
     {
-        text = "Select a skill as the destination of the knowledge transfer. "
-               "The chosen skill will be raised to the level shown in "
-               "<cyan>cyan</cyan>.";
+        text = jtrans("Select a skill as the destination of the knowledge transfer. "
+                      "The chosen skill will be raised to the level shown in "
+                      "<cyan>cyan</cyan>.");
     }
     else if (is_set(SKMF_EXPERIENCE))
     {
-        text = "Select the skills you want to be trained. "
-               "The chosen skills will be raised to the level shown in "
-               "<cyan>cyan</cyan>.";
+        text = jtrans("Select the skills you want to be trained. "
+                      "The chosen skills will be raised to the level shown in "
+                      "<cyan>cyan</cyan>.");
     }
     else if (is_set(SKMF_SIMPLE))
         text = hints_skills_info();
@@ -1192,12 +1197,12 @@ void SkillMenu::set_default_help()
         if (get_state(SKM_LEVEL) == SKM_LEVEL_ENHANCED)
             text += m_switches[SKM_LEVEL]->get_help();
         else
-            text += "The species aptitude is in <white>white</white>. ";
+            text += jtrans("The species aptitude is in <white>white</white>.") + " ";
 
         if (is_set(SKMF_MANUAL))
 
         {
-            text += "Manual usage is in <green>green</green>. ";
+            text += jtrans("Manual usage is in <green>green</green>.") + " ";
         }
     }
 
@@ -1303,15 +1308,15 @@ void SkillMenu::set_title()
                                 : "You have %s. Select the skills to train.";
     string t;
     if (is_set(SKMF_RESKILL_FROM))
-        t = make_stringf(format, "source");
+        t = make_stringf(jtransc(format), "移行元");
     else if (is_set(SKMF_RESKILL_TO))
-        t = make_stringf(format, "destination");
+        t = make_stringf(jtransc(format), "移行先");
     else if (is_set(SKMF_EXPERIENCE_CARD) && is_set(SKMF_EXPERIENCE_POTION))
-        t = "You are more experienced. Select the skills to train.";
+        t = jtrans("You are more experienced. Select the skills to train.");
     else if (is_set(SKMF_EXPERIENCE_CARD))
-        t = make_stringf(format, "drawn an Experience card");
+        t = make_stringf(jtransc(format), jtransc("drawn an Experience card"));
     else if (is_set(SKMF_EXPERIENCE_POTION))
-        t = make_stringf(format, "quaffed a potion of experience");
+        t = make_stringf(jtransc(format), jtransc("quaffed a potion of experience"));
 
     m_title->set_text(t);
 }
@@ -1401,7 +1406,7 @@ void skill_menu(int flag, int exp)
     // experience potion; you may elect to sin against Trog
     if (flag & SKMF_EXPERIENCE && all_skills_maxed(true))
     {
-        mpr("You feel omnipotent.");
+        mpr(jtrans("You feel omnipotent."));
         return;
     }
 

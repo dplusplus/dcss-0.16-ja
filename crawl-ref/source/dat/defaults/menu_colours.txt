@@ -18,6 +18,7 @@ menu += $forbidden:.*forbidden.*
 # Handle cursed and equipped items early to override other colour settings.
 menu += lightred:.*equipped.* cursed
 menu += red: (a|the) cursed
+menu += red:呪われた
 menu += inventory:lightgreen:.*equipped.*
 
 # Important game items
@@ -35,14 +36,20 @@ menu += white:.*artefact.*
 # Ego items
 #
 menu += lightblue:(^identified armour.* pair of .* of )
+menu += lightblue:(^identified armour.* 一対の.*の)
 menu += lightgrey:(^identified armour.* pair of )
+menu += lightgrey:(^identified armour.* 一対の)
 menu += lightblue:(^identified (weapon|armour).* of )
 menu += lightblue:(^identified weapon.* vampiric .*)
+menu += lightblue:(^identified weapon.*吸血の.*)
 menu += lightblue:(^identified weapon.* antimagic .*)
+menu += lightblue:(^identified weapon.*反魔法の.*)
 
 # Possible egos
 menu += lightblue:^unidentified .*weapon.*(runed|glowing)
+menu += lightblue:^unidentified .*weapon.*(ルーンが刻まれた|輝く)
 menu += lightblue:^unidentified .*armour.*(runed|glowing|embroidered|shiny|dyed)
+menu += lightblue:^unidentified .*armour.*(ルーンが刻まれた|輝く|刺繍された|光る|色で染められた)
 
 # Emergency items
 menu += yellow:.*emergency_item.*

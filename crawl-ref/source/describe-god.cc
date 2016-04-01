@@ -51,11 +51,11 @@ static bool _print_final_god_abil_desc(int god, const string &final_msg,
     // "Various" instead of the cost of the first ability.
     const string cost =
     "(" +
-    (abil == ABIL_YRED_RECALL_UNDEAD_SLAVES ? "Various"
+    (abil == ABIL_YRED_RECALL_UNDEAD_SLAVES ? jtrans("Various")
                                             : make_cost_description(abil))
     + ")";
 
-    if (cost != "(None)")
+    if (cost != ("(" + jtrans("None") + ")"))
     {
         // XXX: Handle the display better when the description and cost
         // are too long for the screen.
@@ -63,7 +63,7 @@ static bool _print_final_god_abil_desc(int god, const string &final_msg,
         buf += cost;
     }
 
-    cprintf("%s\n", buf.c_str());
+    cprintf("%s\n", sp2nbspc(buf));
 
     return true;
 }
@@ -77,12 +77,17 @@ static bool _print_god_abil_desc(int god, int numpower)
         return false;
 
     // Don't display ability upgrades here.
-    string buf = adjust_abil_message(pmsg, false);
+    string buf = jtrans(adjust_abil_message(pmsg, false));
     if (buf.empty())
         return false;
 
     if (!isupper(pmsg[0])) // Complete sentence given?
-        buf = "You can " + buf + ".";
+    {
+        // ゴザーグの能力表示はget_gold内でも呼ばれるのでこちらで文を合わせる
+        if (god == GOD_GOZAG) buf += "こと";
+
+        buf = "あなたは" + buf + "ができる。";
+    }
 
     // This might be ABIL_NON_ABILITY for passive abilities.
     const ability_type abil = god_abilities[god][numpower];
@@ -119,40 +124,40 @@ static string _describe_favour(god_type which_god)
     if (player_under_penance())
     {
         const int penance = you.penance[which_god];
-        return (penance >= 50) ? "Godly wrath is upon you!" :
-               (penance >= 20) ? "You've transgressed heavily! Be penitent!" :
-               (penance >=  5) ? "You are under penance."
-                               : "You should show more discipline.";
+        return jtrans((penance >= 50) ? "Godly wrath is upon you!" :
+                      (penance >= 20) ? "You've transgressed heavily! Be penitent!" :
+                      (penance >=  5) ? "You are under penance."
+                                      : "You should show more discipline.");
     }
 
     if (which_god == GOD_XOM)
-        return uppercase_first(describe_xom_favour());
+        return jtrans(describe_xom_favour());
 
     const int rank = which_god == GOD_GOZAG ? _gold_level()
     : _piety_level(you.piety);
 
-    const string godname = god_name(which_god);
+    const string godname = jtrans(god_name(which_god));
     switch (rank)
     {
-        case 7:  return "A prized avatar of " + godname;
-        case 6:  return "A favoured servant of " + godname + ".";
+        case 7:  return make_stringf(jtransc("A prized avatar of"), godname.c_str());
+        case 6:  return make_stringf(jtransc("A favoured servant of"), godname.c_str());
         case 5:
 
             if (you_worship(GOD_DITHMENOS))
-                return "A glorious shadow in the eyes of " + godname + ".";
+                return make_stringf(jtransc("A glorious shadow in the eyes of"), godname.c_str());
             else
-                return "A shining star in the eyes of " + godname + ".";
+                return make_stringf(jtransc("A shining star in the eyes of"), godname.c_str());
 
         case 4:
 
             if (you_worship(GOD_DITHMENOS))
-                return "A rising shadow in the eyes of " + godname + ".";
+                return make_stringf(jtransc("A rising shadow in the eyes of"), godname.c_str());
             else
-                return "A rising star in the eyes of " + godname + ".";
+                return make_stringf(jtransc("A rising star in the eyes of"), godname.c_str());
 
-        case 3:  return uppercase_first(godname) + " is most pleased with you.";
-        case 2:  return uppercase_first(godname) + " is pleased with you.";
-        default: return uppercase_first(godname) + " is noncommittal.";
+        case 3:  return godname + jtrans(" is most pleased with you.");
+        case 2:  return godname + jtrans(" is pleased with you.");
+        default: return godname + jtrans(" is noncommittal.");
     }
 }
 
@@ -164,8 +169,8 @@ static string _religion_help(god_type god)
     {
         case GOD_ZIN:
             if (can_do_capstone_ability(god))
-                result += "You can have all your mutations cured.\n";
-            result += "You can pray at an altar to donate money.";
+                result += jtransln("You can have all your mutations cured.\n");
+            result += jtrans("You can pray at an altar to donate money.");
             break;
 
         case GOD_SHINING_ONE:
@@ -176,25 +181,28 @@ static string _religion_help(god_type god)
                 if (!result.empty())
                     result += " ";
 
-                result += "You radiate a ";
+                string msg;
+                msg += "You radiate a ";
 
                 if (halo_size > 37)
-                    result += "large ";
+                    msg += "large ";
                 else if (halo_size > 10)
-                    result += "";
+                    msg += "";
                 else
-                    result += "small ";
+                    msg += "small ";
 
-                result += "righteous aura, and all beings within it are "
-                          "easier to hit.";
+                msg += "righteous aura, and all beings within it are "
+                    "easier to hit.";
+
+                result += jtrans(msg);
             }
             if (can_do_capstone_ability(god))
             {
                 if (!result.empty())
                     result += " ";
 
-                result += "You can pray at an altar to have your weapon "
-                          "blessed, especially a demon weapon.";
+                result += jtrans("You can pray at an altar to have your weapon "
+                                 "blessed, especially a demon weapon.");
             }
             break;
         }
@@ -202,29 +210,29 @@ static string _religion_help(god_type god)
         case GOD_LUGONU:
             if (can_do_capstone_ability(god))
             {
-                result += "You can pray at an altar to have your weapon "
-                          "corrupted.";
+                result += jtrans("You can pray at an altar to have your weapon "
+                                 "corrupted.");
             }
             break;
 
         case GOD_KIKUBAAQUDGHA:
             if (can_do_capstone_ability(god))
             {
-                result += "You can pray at an altar to have your necromancy "
-                          "enhanced.";
+                result += jtrans("You can pray at an altar to have your necromancy "
+                                 "enhanced.");
             }
             break;
 
         case GOD_BEOGH:
-            result += "You can pray to sacrifice all orcish remains on your "
-                      "square.";
+            result += jtrans("You can pray to sacrifice all orcish remains on your "
+                             "square.");
             break;
 
         case GOD_FEDHAS:
             if (you.piety >= piety_breakpoint(0))
             {
-                result += "Evolving plants requires fruit, and evolving "
-                          "fungi requires piety.";
+                result += jtrans("Evolving plants requires fruit, and evolving "
+                                 "fungi requires piety.");
             }
             break;
 
@@ -237,8 +245,8 @@ static string _religion_help(god_type god)
         if (!result.empty())
             result += " ";
 
-        result += "You can pray to sacrifice all fresh corpses on your "
-                  "square.";
+        result += jtrans("You can pray to sacrifice all fresh corpses on your "
+                         "square.");
     }
 
     return result;
@@ -254,92 +262,92 @@ static const char *divine_title[NUM_GODS][8] =
         "Bugbear",            "Bugged One",            "Giant Bug",                "Lord of the Bugs"},
 
     // Zin.
-    {"Blasphemer",         "Anchorite",             "Apologist",                "Pious",
-        "Devout",             "Orthodox",              "Immaculate",               "Bringer of Law"},
+    {"冒涜者",             "隠遁者"   ,             "弁証者",                   "敬虔者",
+        "導士",               "正しき者",              "無垢清浄の者",             "秩序の代行者"},
 
     // The Shining One.
-    {"Honourless",         "Acolyte",               "Righteous",                "Unflinching",
-        "Holy Warrior",       "Exorcist",              "Demon Slayer",             "Bringer of Light"},
+    {"不名誉な存在"        "侍祭",                  "高潔な者",                 "揺るがぬ者",
+        "聖戦者",             "悪を祓う者",            "悪を滅する者",             "光の代行者"},
 
     // Kikubaaqudgha -- scholarly death.
-    {"Tormented",          "Purveyor of Pain",      "Scholar of Death",         "Merchant of Misery",
-        "Artisan of Death",   "Dealer of Despair",     "Black Sun",                "Lord of Darkness"},
+    {"苦痛を受けし者",     "痛みを与える者",        "死を探求する者",           "苦痛の商人",
+        "死の芸術家",         "絶望を振り撒く者",      "黒き太陽",                 "暗黒の領主"},
 
     // Yredelemnul -- zombie death.
-    {"Traitor",            "Tainted",                "Torchbearer",             "Fey @Genus@",
-        "Black Crusader",     "Sculptor of Flesh",     "Harbinger of Death",       "Grim Reaper"},
+    {"反逆者",             "堕落者",                "松明を携えし者",           "狂気の@Genus@",
+        "黒の十字軍",         "死体を彩る者",          "死の体現者",               "永遠なる死の支配者"},
 
     // Xom.
-    {"Toy",                "Toy",                   "Toy",                      "Toy",
-        "Toy",                "Toy",                   "Toy",                      "Toy"},
+    {"ゾムの玩具",         "ゾムの玩具",            "ゾムの玩具",               "ゾムの玩具",
+        "ゾムの玩具",         "ゾムの玩具",            "ゾムの玩具",               "ゾムの玩具"},
 
     // Vehumet -- battle mage theme.
-    {"Meek",               "Sorcerer's Apprentice", "Scholar of Destruction",   "Caster of Ruination",
-        "Traumaturge",        "Battlemage",            "Warlock",                  "Luminary of Lethal Lore"},
+    {"敗北者",             "魔術師見習い",          "破壊を探求する者",         "破滅の詠唱者",
+        "魔術師",             "戦闘魔術師",            "大魔術師",                 "破壊魔術の指導者"},
 
     // Okawaru -- battle theme.
-    {"Coward",             "Struggler",             "Combatant",                "Warrior",
-        "Knight",             "Warmonger",             "Commander",                "Victor of a Thousand Battles"},
+    {"卑怯者",             "奮闘者",                "闘士",                     "武人",
+        "騎士",               "戦争屋",                "司令官",                   "千の戦の支配者"},
 
     // Makhleb -- chaos theme.
-    {"Orderly",            "Spawn of Chaos",        "Disciple of Destruction",  "Fanfare of Bloodshed",
-        "Fiendish",           "Demolition @Genus@",    "Pandemonic",               "Champion of Chaos"},
+    {"従卒",               "混沌の申し子",          "破壊者の門弟",             "虐殺の凱歌",
+        "悪魔の化身",         "@Genus@の破壊者",       "修羅",                     "混沌の代行者"},
 
     // Sif Muna -- scholarly theme.
-    {"Ignorant",           "Disciple",              "Student",                  "Adept",
-        "Scribe",             "Scholar",               "Sage",                     "Genius of the Arcane"},
+    {"愚か者",             "門弟",                  "研究者",                   "熟練者",
+        "知識を残す者",       "魔法学者",              "賢者",                     "秘術の支配者"},
 
     // Trog -- anger theme.
-    {"Puny",               "Troglodyte",            "Angry Troglodyte",         "Frenzied",
-        "@Genus@ of Prey",    "Rampant",               "Wild @Genus@",             "Bane of Scribes"},
+    {"弱者",               "世捨て人",              "怒れる奇人",               "荒れ狂う者",
+        "猛襲の@Genus@",      "猛威をふるう者",        "激怒する@Genus@",          "文明の破壊者"},
 
     // Nemelex Xobeh -- alluding to Tarot and cards.
-    {"Unlucky @Genus@",    "Pannier",               "Jester",                   "Fortune-Teller",
-        "Soothsayer",         "Magus",                 "Cardsharp",                "Hand of Fortune"},
+    {"不運な@Genus@",      "アイテム収拾人",        "道化",                     "占い師",
+        "予言者",             "カードの魔術師",        "イカサマ師",               "運命を手にする者"},
 
     // Elyvilon.
-    {"Sinner",                "Practitioner",       "Comforter",             "Caregiver",
-        "Mender",           "Pacifist",                "Purifying @Genus@",        "Bringer of Life"},
+    {"罪人",               "開業医",                "慰める者",                 "癒す者",
+        "修繕者",             "平和主義者",            "@Genus@の浄罪者",          "生命を司る者"},
 
     // Lugonu -- distortion theme.
-    {"Pure",               "Abyss-Baptised",        "Unweaver",                 "Distorting @Genus@",
-        "Agent of Entropy",   "Schismatic",            "Envoy of Void",            "Corrupter of Planes"},
+    {"純粋な者",           "深淵の洗礼を受けた者",  "瓦解させる者",             "歪んだ@Genus@",
+        "エントロピーの代行者", "乖離させる者",        "虚空の使者",               "次元の破壊者"},
 
     // Beogh -- messiah theme.
-    {"Apostate",           "Messenger",             "Proselytiser",             "Priest",
-        "Missionary",         "Evangelist",            "Apostle",                  "Messiah"},
+    {"背信者",             "伝令",                  "改宗者",                   "司祭",
+        "宣教師",             "福音伝道者",            "使徒",                    "救世主"},
 
     // Jiyva -- slime and jelly theme.
-    {"Scum",               "Squelcher",             "Ooze",                     "Jelly",
-        "Slime Creature",     "Dissolving @Genus@",    "Blob",                     "Royal Jelly"},
+    {"塵屑",               "咀嚼する者",            "ウーズ",                   "ジェリー",
+        "スライム",           "溶解せる@Genus@",       "ブロブ",                  "ロイヤルジェリー"},
 
     // Fedhas Madash -- nature theme.
-    {"@Walking@ Fertiliser", "Fungal",              "Green @Genus@",            "Cultivator",
-        "Fruitful",           "Photosynthesist",       "Green Death",              "Force of Nature"},
+    {"@Walking@肥料",      "真菌",                  "緑の@Genus@",              "繁茂させる者",
+        "実りをもたらす者",   "光合成する者",          "緑の殲滅者",               "自然の化身"},
 
     // Cheibriados -- slow theme
-    {"Hasty",              "Sluggish @Genus@",      "Deliberate",               "Unhurried",
-     "Contemplative",         "Epochal",               "Timeless",                 "@Adj@ Aeon"},
+    {"せっかち",           "のろまな@Genus@",       "熟慮者",                   "ゆっくり",
+        "瞑想者",             "時代を区切る者",        "時間超越者",               "永劫の@Adj@"},
 
     // Ashenzari -- divination theme
-    {"Star-crossed",       "Cursed",                "Initiated",                "Soothsayer",
-        "Seer",               "Oracle",                "Illuminatus",              "Omniscient"},
+    {"薄幸の者",           "呪われし者",            "秘呪に通じる者",           "予言者",
+        "千里眼",             "託宣者",                "啓示を受けし者",           "全知全能の賢者"},
 
     // Dithmenos -- darkness theme
-    {"Ember",              "Gloomy",                "Darkened",                 "Extinguished",
-        "Caliginous",         "Umbral",                "Hand of Shadow",           "Eternal Night"},
+    {"燃えさし",           "薄暗がり",              "暗転者",                   "消火者",
+        "暗黒",               "漆黒",                  "影の手",                   "永劫の夜"},
 
     // Gozag -- entrepreneur theme
-    {"Profligate",         "Pauper",                "Entrepreneur",             "Capitalist",
-        "Rich",               "Opulent",               "Tycoon",                   "Plutocrat"},
+    {"放蕩者",             "貧乏人",                "起業家",                   "資本家",
+        "裕福者",             "富裕者",                "大立者",                   "大富豪"},
 
     // Qazlal -- natural disaster theme
-    {"Unspoiled",          "@Adj@ Mishap",          "Lightning Rod",            "@Adj@ Disaster",
-        "Eye of the Storm",   "@Adj@ Catastrophe",     "@Adj@ Cataclysm",          "End of an Era"},
+    {"傷つかざる者",       "@Adj@の災難",           "避雷針",                   "@Adj@の大災害",
+        "台風の目",           "破局の@Adj@",           "大変動の@Adj@",            "紀元の終末者"},
 
     // Ru -- enlightenment theme
-    {"Sleeper",           "Questioner",             "Initiate",                 "Seeker of Truth",
-        "Walker of the Path","Lifter of the Veil",     "Drinker of Unreality",     "Transcendent"},
+    {"不覚者",             "質問者",                "秘術の伝授者",             "真実の探求者",
+        "真理の道の歩行者",   "ベールを上げる者",      "非現実を飲み干す者",       "卓越せる覚者"},
 };
 
 string god_title(god_type which_god, species_type which_species, int piety)
@@ -440,12 +448,12 @@ extern map<branch_type, set<level_id> > stair_level;
 // XXX: apply padding programmatically?
 static const char* const bribe_susceptibility_adjectives[] =
 {
-    "none       ",
-    "very low   ",
-    "low        ",
-    "moderate   ",
-    "high       ",
-    "very high  "
+    "不可         ",
+    "かなり難しい ",
+    "難しい       ",
+    "普通         ",
+    "簡単         ",
+    "非常に簡単   ",
 };
 
 /**
@@ -478,59 +486,59 @@ static void _list_bribable_branches(vector<branch_type> &targets)
  */
 static string _describe_branch_bribability()
 {
-    string ret = "You can bribe the following branches of the dungeon:\n";
-    vector<branch_type> targets;
+    string ret = jtransln("You can bribe the following branches of the dungeon:");
+    vector<branch_type>targets;
     _list_bribable_branches(targets);
 
     size_t width = 0;
     for (branch_type br : targets)
-        width = max(width, strlen(branches[br].shortname));
+        width = max(width, (size_t)strwidth(tagged_jtrans("[branch]", branches[br].shortname)));
 
     for (branch_type br : targets)
     {
         string line = " ";
-        line += branches[br].shortname;
+        line += tagged_jtrans("[branch]", branches[br].shortname);
         line += string(width + 2 - strwidth(line), ' ');
         // XXX: move this elsewhere?
         switch (br)
         {
             case BRANCH_ORC:
-                line += "(orcs)              ";
+                line += "(オーク)              ";
                 break;
             case BRANCH_ELF:
-                line += "(elves)             ";
+                line += "(エルフ               ";
                 break;
             case BRANCH_SNAKE:
-                line += "(nagas/salamanders) ";
+                line += "(ナーガ/サラマンダー) ";
                 break;
             case BRANCH_SHOALS:
-                line += "(merfolk)           ";
+                line += "(水棲の民)            ";
                 break;
             case BRANCH_VAULTS:
-                line += "(humans)            ";
+                line += "(人間)                ";
                 break;
             case BRANCH_ZOT:
-                line += "(draconians)        ";
+                line += "(ドラコニアン)        ";
                 break;
             case BRANCH_COCYTUS:
             case BRANCH_DIS:
             case BRANCH_GEHENNA:
             case BRANCH_TARTARUS:
-                line += "(demons)            ";
+                line += "(悪魔)                ";
                 break;
             default:
-                line += "(buggy)             ";
+                line += "(buggy)               ";
                 break;
         }
 
-        line += "Susceptibility: ";
+        line += jtrans("Susceptibility:") + " ";
         const int suscept = gozag_branch_bribe_susceptibility(br);
         ASSERT(suscept >= 0
                && suscept < (int)ARRAYSZ(bribe_susceptibility_adjectives));
         line += bribe_susceptibility_adjectives[suscept];
 
         if (!branch_bribe[br])
-            line += "not bribed";
+            line += jtrans("not bribed");
         else
             line += make_stringf("$%d", branch_bribe[br]);
 
@@ -557,9 +565,9 @@ static bool _check_description_cycle(god_desc_type gdesc)
     const char* place = nullptr;
     switch (gdesc)
     {
-        case GDESC_OVERVIEW: place = "<w>Overview</w>|Powers|Wrath"; break;
-        case GDESC_DETAILED: place = "Overview|<w>Powers</w>|Wrath"; break;
-        case GDESC_WRATH:    place = "Overview|Powers|<w>Wrath</w>"; break;
+        case GDESC_OVERVIEW: place = jtransc("<w>Overview</w>|Powers|Wrath"); break;
+        case GDESC_DETAILED: place = jtransc("Overview|<w>Powers</w>|Wrath"); break;
+        case GDESC_WRATH:    place = jtransc("Overview|Powers|<w>Wrath</w>"); break;
         default: die("Unknown god description type!");
     }
     formatted_string::parse_string(make_stringf("[<w>!</w>/<w>^</w>"
@@ -603,19 +611,20 @@ static void _print_string_wrapped(string str, int width)
  * @param gods[in]  The enums of the gods in question.
  * @return          A comma-separated list of the given gods' names.
  */
+
 static string _comma_separate_gods(const vector<god_type> &gods)
 {
     // ugly special case to prevent foo, and bar
     if (gods.size() == 2)
-        return god_name(gods[0]) + " and " + god_name(gods[1]);
+        return jtrans(god_name(gods[0])) + "と" + jtrans(god_name(gods[1]));
 
     string names = "";
     for (unsigned int i = 0; i < gods.size() - 1; i++)
-        names += god_name(gods[i]) + ", ";
+        names += jtrans(god_name(gods[i])) + "、";
     if (gods.size() > 1)
-        names += "and ";
+        names += "そして";
     if (gods.size() > 0)
-        names += god_name(gods[gods.size()-1]);
+        names += jtrans(god_name(gods[gods.size()-1]));
     return names;
 }
 
@@ -644,35 +653,25 @@ static string _describe_god_wrath_causes(god_type which_god)
     {
         case GOD_SHINING_ONE:
         case GOD_ELYVILON:
-            return uppercase_first(god_name(which_god)) +
-                   " forgives followers who leave " + god_name(which_god)+"'s"
-                   " service; however, those who take up the worship of evil"
-                   " gods will be punished. (" +
-                   _comma_separate_gods(evil_gods) + " are evil gods.)";
-
+            return make_stringf(jtransc("TSO and Ely wrath cause"),
+                                jtransc(god_name(which_god)),
+                                _comma_separate_gods(evil_gods).c_str());
         case GOD_ZIN:
-            return uppercase_first(god_name(which_god)) +
-                   " does not punish followers who leave "+god_name(which_god)+
-                   "'s service; however, those who take up the worship of evil"
-                   " or chaotic gods will be scourged. (" +
-                   _comma_separate_gods(evil_gods) + " are evil, and " +
-                   _comma_separate_gods(chaotic_gods) + " are chaotic.)";
+            return make_stringf(jtransc("Zin wrath cause"),
+                                jtransc(god_name(which_god)),
+                                _comma_separate_gods(evil_gods).c_str(),
+                                _comma_separate_gods(chaotic_gods).c_str());
         case GOD_RU:
-            return uppercase_first(god_name(which_god)) +
-                   " does not punish followers who leave "+god_name(which_god)+
-                   "'s service; however, their piety will be lost even upon"
-                   " rejoining, and their sacrifices remain forever.";
+            return make_stringf(jtransc("Ru wrath cause"),
+                                jtransc(god_name(which_god)));
         case GOD_XOM:
-            return "Unfaithful ex-followers will find themselves "
-                   "suffering through "+god_name(which_god)+"'s bad moods for "+
-                   "so long as "+god_name(which_god)+" can be bothered to " +
-                   "remember about them. Still, "+god_name(which_god)+
-                   "'s caprice remains; the unfaithful are rewarded just as "+
-                   "the faithful are punished.";
+            return make_stringf(jtransc("Xom wrath cause"),
+                                jtransc(god_name(which_god)),
+                                jtransc(god_name(which_god)),
+                                jtransc(god_name(which_god)));
         default:
-            return uppercase_first(god_name(which_god)) +
-                   " does not appreciate abandonment, and will call down"
-                   " fearful punishments on disloyal followers!";
+            return make_stringf(jtransc("default wrath cause"),
+                                jtransc(god_name(which_god)));
     }
 }
 
@@ -684,7 +683,7 @@ static string _describe_god_wrath_causes(god_type which_god)
  */
 static void _print_top_line(god_type which_god, int width)
 {
-    const string godname = uppercase_first(god_name(which_god, true));
+    const string godname = jtrans(god_name(which_god, true));
     textcolour(god_colour(which_god));
     const int len = width - strwidth(godname);
     cprintf("%s%s\n", string(len / 2, ' ').c_str(), godname.c_str());
@@ -726,10 +725,11 @@ static string _get_god_misc_info(god_type which_god)
         case GOD_JIYVA:
         case GOD_TROG:
         {
-            const string piety_only = "Note that " + god_name(which_god) +
-                                      " does not demand training of the"
-                                      " Invocations skill. All abilities are"
-                                      " purely based on piety.";
+            const string piety_only = jtrans(god_name(which_god)) + "は" +
+                jtrans("does not demand training of the"
+                       " Invocations skill. All abilities are"
+                       " purely based on piety.") +
+                jtrans("Note that");
 
             if (which_god == GOD_ASHENZARI
                 && which_god == you.religion
@@ -742,22 +742,16 @@ static string _get_god_misc_info(god_type which_god)
         }
 
         case GOD_KIKUBAAQUDGHA:
-            return "The power of Kikubaaqudgha's abilities is governed by "
-                   "Necromancy skill instead of Invocations.";
+            return jtrans("The power of Kikubaaqudgha's abilities is governed by "
+                          "Necromancy skill instead of Invocations.");
 
         case GOD_ELYVILON:
-            return "Healing hostile monsters may pacify them, turning them "
-                   "neutral. Pacification works best on natural beasts, "
-                   "worse on monsters of your species, worse on other "
-                   "species, worst of all on demons and undead, and not at "
-                   "all on sleeping or mindless monsters. If it succeeds, "
-                   "you gain half of the monster's experience value. Pacified "
-                   "monsters try to leave the level.";
+            return jtrans("elyvilon misc info");
 
         case GOD_NEMELEX_XOBEH:
-            return "The power of Nemelex Xobeh's abilities and of the "
-                   "cards' effects is governed by Evocations skill "
-                   "instead of Invocations.";
+            return jtrans("The power of Nemelex Xobeh's abilities and of the "
+                          "cards' effects is governed by Evocations skill "
+                          "instead of Invocations.");
 
         case GOD_GOZAG:
             return _describe_branch_bribability();
@@ -808,7 +802,7 @@ static string _god_penance_message(god_type which_god)
             which_god_penance = 2; // == "Come back to the one true church!"
     }
 
-    const string penance_message =
+    const string penance_message = jtrans(
         (which_god == GOD_NEMELEX_XOBEH
          && which_god_penance > 0 && which_god_penance <= 100)
             ? "%s doesn't play fair with you." :
@@ -817,10 +811,10 @@ static string _god_penance_message(god_type which_god)
         (which_god_penance >=  5)   ? "%s well remembers your sins." :
         (which_god_penance >   0)   ? "%s is ready to forgive your sins." :
         (you.worshipped[which_god]) ? "%s is ambivalent towards you."
-                                    : "%s is neutral towards you.";
+                                    : "%s is neutral towards you.");
 
     return make_stringf(penance_message.c_str(),
-                        uppercase_first(god_name(which_god)).c_str());
+                        jtransc(god_name(which_god)));
 }
 
 /**
@@ -834,9 +828,12 @@ static void _describe_god_powers(god_type which_god, int numcols)
     textcolour(LIGHTGREY);
     const char *header = "Granted powers:";
     const char *cost   = "(Cost)";
-    cprintf("\n\n%s%*s%s\n", header,
-            min(80, get_number_of_cols()) - 1 - strwidth(header) - strwidth(cost),
-            "", cost);
+    string align = string(min(80, get_number_of_cols()) - 1
+                          - strwidth(jtrans(header))
+                          - strwidth(jtrans(cost)), ' ');
+    cprintf("\n\n%s%s%s\n", jtransc(header),
+            sp2nbspc(align),
+            jtransc(cost));
     textcolour(god_colour(which_god));
 
     // mv: Some gods can protect you from harm.
@@ -867,12 +864,12 @@ static void _describe_god_powers(god_type which_god, int numcols)
                           (prot_chance >= 25) ? "sometimes"
                                               : "occasionally";
 
-        string buf = uppercase_first(god_name(which_god));
-        buf += " ";
-        buf += how;
-        buf += " watches over you";
-        buf += when;
-        buf += ".";
+
+        string buf = jtrans(god_name(which_god));
+        buf += "は";
+        buf += jtrans(how);
+        buf += jtrans("watches over you");
+        buf += jtrans(when);
 
         _print_final_god_abil_desc(which_god, buf, ABIL_NON_ABILITY);
     }
@@ -886,8 +883,8 @@ static void _describe_god_powers(god_type which_god, int numcols)
         (you.piety >= piety_breakpoint(1)) ? "sometimes" :
                                              "occasionally";
 
-        cprintf("%s %s shields you from chaos.\n",
-                uppercase_first(god_name(which_god)).c_str(), how);
+        cprintf(jtranslnc("%s %s shields you from chaos."),
+               jtransc(god_name(which_god)), jtransc(how));
     }
     else if (which_god == GOD_SHINING_ONE)
     {
@@ -899,16 +896,15 @@ static void _describe_god_powers(god_type which_god, int numcols)
             (you.piety >= piety_breakpoint(3)) ? "mostly" :
                                                  "partially";
 
-            cprintf("%s %s shields you from negative energy.\n",
-                    uppercase_first(god_name(which_god)).c_str(), how);
+            cprintf(jtranslnc("%s %s shields you from negative energy."),
+                    jtransc(god_name(which_god)), how);
         }
     }
     else if (which_god == GOD_TROG)
     {
         have_any = true;
-        string buf = "You can call upon "
-        + god_name(which_god)
-        + " to burn spellbooks in your surroundings.";
+        string buf = make_stringf(jtransc("You can call upon %s to burn spellbooks in your surroundings."),
+                                  jtransc(god_name(which_god)));
         _print_final_god_abil_desc(which_god, buf,
                                    ABIL_TROG_BURN_SPELLBOOKS);
     }
@@ -917,18 +913,19 @@ static void _describe_god_powers(god_type which_god, int numcols)
         if (you.piety >= piety_breakpoint(2))
         {
             have_any = true;
-            cprintf("%s shields you from corrosive effects.\n",
-                    uppercase_first(god_name(which_god)).c_str());
+            cprintf(jtranslnc("%s shields you from corrosive effects."),
+                    jtransc(god_name(which_god)));
         }
         if (you.piety >= piety_breakpoint(1))
         {
             have_any = true;
-            string buf = "You gain nutrition";
+            string buf = "あなたは";
+            buf += jtransln("when your fellow slimes consume items.");
             if (you.piety >= piety_breakpoint(4))
-                buf += ", power and health";
+                buf += "体力と魔力、および";
             else if (you.piety >= piety_breakpoint(3))
-                buf += " and power";
-            buf += " when your fellow slimes consume items.\n";
+                buf += "魔力および";
+            buf += "栄養を得る。";
             _print_final_god_abil_desc(which_god, buf,
                                        ABIL_NON_ABILITY);
         }
@@ -937,21 +934,21 @@ static void _describe_god_powers(god_type which_god, int numcols)
     {
         have_any = true;
         _print_final_god_abil_desc(which_god,
-                                   "You can pray to speed up decomposition.",
+                                   jtrans("You can pray to speed up decomposition."),
                                    ABIL_NON_ABILITY);
         _print_final_god_abil_desc(which_god,
-                                   "You can walk through plants and "
-                                   "fire through allied plants.",
+                                   jtrans("You can walk through plants and "
+                                          "fire through allied plants."),
                                    ABIL_NON_ABILITY);
     }
     else if (which_god == GOD_ASHENZARI)
     {
         have_any = true;
         _print_final_god_abil_desc(which_god,
-                                   "You are provided with a bounty of information.",
+                                   jtrans("You are provided with a bounty of information."),
                                    ABIL_NON_ABILITY);
         _print_final_god_abil_desc(which_god,
-                                   "You can pray to corrupt scrolls of remove curse on your square.",
+                                   jtrans("You can pray to corrupt scrolls of remove curse on your square."),
                                    ABIL_NON_ABILITY);
     }
     else if (which_god == GOD_CHEIBRIADOS)
@@ -959,8 +956,11 @@ static void _describe_god_powers(god_type which_god, int numcols)
         if (!player_under_penance())
         {
             have_any = true;
+            cprintf(jtranslnc("%s supports your attributes (+%d)."),
+                    jtransc(god_name(which_god)),
+                    chei_stat_boost(you.piety));
             _print_final_god_abil_desc(which_god,
-                                       "You can bend time to slow others.",
+                                       jtrans("You can bend time to slow others."),
                                        ABIL_CHEIBRIADOS_TIME_BEND);
         }
     }
@@ -970,12 +970,14 @@ static void _describe_god_powers(god_type which_god, int numcols)
         {
             have_any = true;
 
-            const string offer = numoffers == 1
-                               ? spell_title(*you.vehumet_gifts.begin())
-                               : "some of Vehumet's most lethal spells";
+            string offer = numoffers == 1
+                           ? tagged_jtrans("[spell]", spell_title(*you.vehumet_gifts.begin()))
+                           : jtrans("some of Vehumet's most lethal spells");
+            if (numoffers == 1)
+                offer += "の呪文";
 
             _print_final_god_abil_desc(which_god,
-                                       "You can memorise " + offer + ".",
+                                       "あなたは" + offer + "を覚えることができる。",
                                        ABIL_NON_ABILITY);
         }
     }
@@ -983,23 +985,23 @@ static void _describe_god_powers(god_type which_god, int numcols)
     {
         have_any = true;
         _print_final_god_abil_desc(which_god,
-                                   "You passively detect gold.",
+                                   jtrans("You passively detect gold."),
                                    ABIL_NON_ABILITY);
         _print_final_god_abil_desc(which_god,
-                                   uppercase_first(god_name(which_god))
-                                   + " turns your defeated foes' bodies"
-                                   + " to gold.",
+                                   jtrans(god_name(which_god))
+                                   + jtrans(" turns your defeated foes' bodies"
+                                            " to gold."),
                                    ABIL_NON_ABILITY);
         _print_final_god_abil_desc(which_god,
-                                   "Your enemies may become distracted by "
-                                   "glittering piles of gold.",
+                                   jtrans("Your enemies may become distracted by "
+                                          "glittering piles of gold."),
                                    ABIL_NON_ABILITY);
     }
     else if (which_god == GOD_QAZLAL)
     {
         have_any = true;
         _print_final_god_abil_desc(which_god,
-                                   "You are immune to your own clouds.",
+                                   jtrans("You are immune to your own clouds."),
                                    ABIL_NON_ABILITY);
     }
 
@@ -1027,7 +1029,7 @@ static void _describe_god_powers(god_type which_god, int numcols)
     }
 
     if (!have_any)
-        cprintf("None.\n");
+        cprintf(jtranslnc("None."));
 }
 
 static void _god_overview_description(god_type which_god, bool give_title)
@@ -1038,11 +1040,12 @@ static void _god_overview_description(god_type which_god, bool give_title)
     if (give_title)
     {
         textcolour(WHITE);
-        cprintf("Religion");
+        cprintf(jtransc("Religion"));
         textcolour(LIGHTGREY);
     }
     // Center top line even if it already contains "Religion" (len = 8)
-    _print_top_line(which_god, numcols - (give_title ? 2*8 : 0));
+    //                                In Japanese, "信仰" (width = 4)
+    _print_top_line(which_god, numcols - (give_title ? 4 : 0));
 
     // Print god's description.
     string god_desc = getLongDescription(god_name(which_god));
@@ -1052,10 +1055,10 @@ static void _god_overview_description(god_type which_god, bool give_title)
     if (you_worship(which_god))
     {
         // Print title based on piety.
-        cprintf("\nTitle  - ");
+        cprintf(sp2nbspc("\n" + jtrans("Title  -") + " "));
         textcolour(god_colour(which_god));
 
-        string title = god_title(which_god, you.species, you.piety);
+        string title = jtrans(god_title(which_god, you.species, you.piety));
         cprintf("%s", title.c_str());
     }
 
@@ -1064,7 +1067,7 @@ static void _god_overview_description(god_type which_god, bool give_title)
     // something better, do it.
 
     textcolour(LIGHTGREY);
-    cprintf("\nFavour - ");
+    cprintf(sp2nbspc("\n" + jtrans("Favour -") + " "));
     textcolour(god_colour(which_god));
 
     //mv: Player is praying at altar without appropriate religion.

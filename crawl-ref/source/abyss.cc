@@ -19,6 +19,7 @@
 #include "cloud.h"
 #include "colour.h"
 #include "coordit.h"
+#include "database.h"
 #include "dbg-scan.h"
 #include "delay.h"
 #include "dgn-overview.h"
@@ -401,13 +402,16 @@ void banished(const string &who)
         else
         {
             // On Abyss:5 we can't go deeper; cause a shift to a new area
-            mprf(MSGCH_BANISHMENT, "You are banished to a different region of the Abyss.");
+            mpr_nojoin(MSGCH_BANISHMENT, jtrans("You are banished to a different region of the Abyss."));
             abyss_teleport();
         }
         return;
     }
 
-    const string what = "Cast into the Abyss" + _who_banished(who);
+    string what = jtrans("Cast into the Abyss");
+    if (!who.empty())
+        what = jtrans(who) + "によって" + what;
+
     take_note(Note(NOTE_MESSAGE, 0, 0, what.c_str()), true);
 
     stop_delay(true);
@@ -567,7 +571,7 @@ public:
         const bool rune_is_near = abyss_rune_nearness();
 
         if (exit_was_near && !exit_is_near || rune_was_near && !rune_is_near)
-            xom_is_stimulated(200, "Xom snickers loudly.", true);
+            xom_is_stimulated(200, jtrans("Xom snickers loudly."), true);
 
         if (!rune_was_near && rune_is_near || !exit_was_near && exit_is_near)
             xom_is_stimulated(200);
@@ -617,7 +621,7 @@ static void _place_displaced_monsters()
             maybe_bloodify_square(mon->pos());
             if (you.can_see(mon))
             {
-                simple_monster_message(mon, " is pulled into the Abyss.",
+                simple_monster_message(mon, jtransc(" is pulled into the Abyss."),
                         MSGCH_BANISHMENT);
             }
             _abyss_lose_monster(*mon);
@@ -1626,7 +1630,7 @@ void abyss_teleport()
 {
     xom_abyss_feature_amusement_check xomcheck;
     dprf(DIAG_ABYSS, "New area Abyss teleport.");
-    mprf(MSGCH_BANISHMENT, "You are suddenly pulled into a different region of the Abyss!");
+    mpr_nojoin(MSGCH_BANISHMENT, jtrans("You are suddenly pulled into a different region of the Abyss!"));
     _abyss_generate_new_area();
     _write_abyssal_features();
     grd(you.pos()) = _veto_dangerous_terrain(grd(you.pos()));
@@ -1955,7 +1959,7 @@ bool is_level_incorruptible(bool quiet)
     if (_is_level_corrupted())
     {
         if (!quiet)
-            mpr("This place is already infused with evil and corruption.");
+            mpr(jtrans("This place is already infused with evil and corruption."));
         return true;
     }
 
@@ -1986,9 +1990,9 @@ bool lugonu_corrupt_level(int power)
     if (is_level_incorruptible())
         return false;
 
-    simple_god_message("'s Hand of Corruption reaches out!");
-    take_note(Note(NOTE_MESSAGE, 0, 0, make_stringf("Corrupted %s",
-              level_id::current().describe().c_str()).c_str()));
+    simple_god_message(jtransc("'s Hand of Corruption reaches out!"));
+    take_note(Note(NOTE_MESSAGE, 0, 0, make_stringf(jtransc("Corrupted %s"),
+              level_id::current().describe_j().c_str())));
     mark_corrupted_level(level_id::current());
 
     flash_view(UA_PLAYER, MAGENTA);

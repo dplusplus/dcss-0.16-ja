@@ -9,6 +9,7 @@
 
 #include "artefact.h"
 #include "attitude-change.h"
+#include "database.h"
 #include "delay.h"
 #include "describe.h"
 #include "dgn-overview.h"
@@ -220,8 +221,8 @@ void change_monster_type(monster* mons, monster_type targetc)
     // trj spills out jellies when polied, as if he'd been hit for mhp.
     if (mons->type == MONS_ROYAL_JELLY)
     {
-        simple_monster_message(mons, "'s form twists and warps, and jellies "
-                               "spill out!");
+        simple_monster_message(mons, jtransc("'s form twists and warps, and jellies "
+                                             "spill out!"));
         trj_spawn_fineff::schedule(nullptr, mons, mons->pos(),
                                    mons->hit_points);
     }
@@ -457,7 +458,7 @@ bool monster_polymorph(monster* mons, monster_type targetc,
     if (source_tier == -1)
     {
         return simple_monster_message(mons,
-            "'s appearance momentarily alters.");
+            jtransc("'s appearance momentarily alters."));
     }
     relax = 1;
 
@@ -477,7 +478,7 @@ bool monster_polymorph(monster* mons, monster_type targetc,
                 relax++;
 
             if (relax > 50)
-                return simple_monster_message(mons, " shudders.");
+                return simple_monster_message(mons, jtransc(" shudders."));
         }
         while (tries-- && (!_valid_morph(mons, targetc)
                            || source_tier != target_tier && !x_chance_in_y(relax, 200)
@@ -511,7 +512,7 @@ bool monster_polymorph(monster* mons, monster_type targetc,
     }
 
     if (!_valid_morph(mons, targetc))
-        return simple_monster_message(mons, " looks momentarily different.");
+        return simple_monster_message(mons, jtransc(" looks momentarily different."));
 
     change_monster_type(mons, targetc);
 
@@ -534,16 +535,21 @@ bool monster_polymorph(monster* mons, monster_type targetc,
         }
         else if (mons->is_shapeshifter())
             verb = "changes into ";
-        else if (_jiyva_slime_target(targetc))
-            verb = "quivers uncontrollably and liquefies into ";
+        else if (_jiyva_slime_target(targetc)) {
+//            verb = "quivers uncontrollably and liquefies into ";
+            verb = "はなすすべもなく震え、" + obj + "に変化した";
+            obj = "";
+        }
         else
             verb = "evaporates and reforms as ";
 
-        mprf("%s %s%s!", old_name_the.c_str(), verb.c_str(), obj.c_str());
+        mprf(jtransc("%s %s%s!"),
+             jtransc(mons->full_name(DESC_PLAIN)),
+             jtransc(obj), jtransc(verb));
     }
     else if (can_see)
     {
-        mprf("%s appears out of thin air!", mons->name(DESC_A).c_str());
+        mprf(jtransc("%s appears out of thin air!"), jtransc(mons->name(DESC_PLAIN)));
         autotoggle_autopickup(false);
     }
     else
@@ -551,8 +557,8 @@ bool monster_polymorph(monster* mons, monster_type targetc,
 
     if (need_note || could_see && can_see && MONST_INTERESTING(mons))
     {
-        string new_name = can_see ? mons->full_name(DESC_A)
-                                  : "something unseen";
+        string new_name = jtrans(can_see ? mons->full_name(DESC_PLAIN)
+                                         : "something unseen");
 
         take_note(Note(NOTE_POLY_MONSTER, 0, 0, old_name_a.c_str(),
                        new_name.c_str()));
@@ -615,7 +621,7 @@ void slimify_monster(monster* mon, bool hostile)
     // Bail out if jellies can't live here.
     if (!monster_habitable_grid(target, grd(mon->pos())))
     {
-        simple_monster_message(mon, " quivers momentarily.");
+        simple_monster_message(mon, jtransc(" quivers momentarily."));
         return;
     }
 

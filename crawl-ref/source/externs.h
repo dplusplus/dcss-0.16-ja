@@ -407,6 +407,7 @@ public:
 #endif
 
     string describe(bool long_name = false, bool with_number = true) const;
+    string describe_j(bool long_name = false, bool with_number = true) const;
 
     void clear()
     {
@@ -588,6 +589,10 @@ public:
                 bool ident = false, bool with_inscription = true,
                 bool quantity_in_words = false,
                 iflags_t ignore_flags = 0x0) const;
+    string name_en(description_level_type descrip, bool terse = false,
+                bool ident = false, bool with_inscription = true,
+                bool quantity_in_words = false,
+                iflags_t ignore_flags = 0x0) const;
     bool has_spells() const;
     bool cursed() const;
     colour_t get_colour() const;
@@ -649,6 +654,8 @@ public:
 
 private:
     string name_aux(description_level_type desc, bool terse, bool ident,
+                    bool with_inscription, iflags_t ignore_flags) const;
+    string name_aux_en(description_level_type desc, bool terse, bool ident,
                     bool with_inscription, iflags_t ignore_flags) const;
 
     colour_t randart_colour() const;

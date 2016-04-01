@@ -8,6 +8,7 @@
 #include "spl-wpnench.h"
 
 #include "areas.h"
+#include "database.h"
 #include "itemprop.h"
 #include "makeitem.h"
 #include "message.h"
@@ -72,10 +73,10 @@ static string _get_brand_msg(brand_type which_brand, bool is_range_weapon)
     case SPWPN_VORPAL:
         return " glows silver and looks extremely dangerous.";
     case SPWPN_DISTORTION:
-        msg = " seems to ";
-        msg += random_choose("twist", "bend", "vibrate",
-                             "flex", "wobble", "twang");
-        msg += (coinflip() ? " oddly." : " strangely.");
+        msg += (coinflip() ? "は奇妙に" : "は不思議に");
+        msg += random_choose("捻れた", "曲がった", "揺れた",
+                             "収縮した", "ぐらついた", "痙攣した");
+        msg += "。";
         return msg;
     case SPWPN_PAIN:
         return silenced(you.pos()) ? " writhes in agony." :
@@ -137,7 +138,7 @@ void end_weapon_brand(item_def &weapon, bool verbose)
         default: msg = " seems inexplicably less special."; break;
         }
 
-        mprf(MSGCH_DURATION, "%s%s", weapon.name(DESC_YOUR).c_str(), msg);
+        mprf(MSGCH_DURATION, "%s%s", weapon.name(DESC_YOUR).c_str(), jtransc(msg));
     }
 
     you.wield_change = true;
@@ -186,7 +187,7 @@ spret_type brand_weapon(brand_type which_brand, int power, bool fail)
 {
     if (!you.weapon())
     {
-        mpr("You aren't wielding a weapon.");
+        mpr(jtrans("You aren't wielding a weapon."));
         return SPRET_ABORT;
     }
 
@@ -195,9 +196,9 @@ spret_type brand_weapon(brand_type which_brand, int power, bool fail)
     if (!is_brandable_weapon(weapon, true))
     {
         if (weapon.base_type != OBJ_WEAPONS)
-            mpr("This isn't a weapon.");
+            mpr(jtrans("This isn't a weapon."));
         else
-            mpr("You cannot enchant this weapon.");
+            mpr(jtrans("You cannot enchant this weapon."));
         return SPRET_ABORT;
     }
 
@@ -205,7 +206,7 @@ spret_type brand_weapon(brand_type which_brand, int power, bool fail)
     // No need to brand with a brand it's already branded with.
     if (!has_temp_brand && get_weapon_brand(weapon) == which_brand)
     {
-        mpr("This weapon is already enchanted with that brand.");
+        mpr(jtrans("This weapon is already enchanted with that brand."));
         return SPRET_ABORT;
     }
 
@@ -223,14 +224,14 @@ spret_type brand_weapon(brand_type which_brand, int power, bool fail)
 
         if (!is_missile_brand_ok(missile, _convert_to_missile(which_brand), true))
         {
-            mpr("You cannot enchant this weapon with this spell.");
+            mpr(jtrans("You cannot enchant this weapon with this spell."));
             return SPRET_ABORT;
         }
 
         // If the brand isn't appropriate for that launcher, also say no.
         if (!_ok_for_launchers(which_brand))
         {
-            mpr("You cannot enchant this weapon with this spell.");
+            mpr(jtrans("You cannot enchant this weapon with this spell."));
             return SPRET_ABORT;
         }
     }
@@ -243,7 +244,7 @@ spret_type brand_weapon(brand_type which_brand, int power, bool fail)
     if (dangerous_disto)
     {
         const string prompt =
-              "Really brand " + weapon.name(DESC_INVENTORY) + "?";
+              "本当に" + weapon.name(DESC_INVENTORY) + "に魔力をかけますか？";
         if (!yesno(prompt.c_str(), false, 'n'))
         {
             canned_msg(MSG_OK);
@@ -265,7 +266,7 @@ spret_type brand_weapon(brand_type which_brand, int power, bool fail)
     bool extending = has_temp_brand && orig_brand == which_brand;
     bool emit_special_message = !extending;
     int duration_affected = _get_brand_duration(which_brand);
-    msg += _get_brand_msg(which_brand, is_range_weapon(weapon));
+    msg += jtrans(_get_brand_msg(which_brand, is_range_weapon(weapon)));
 
     if (which_brand == SPWPN_DISTORTION)
         power /= 2;
@@ -293,7 +294,7 @@ spret_type brand_weapon(brand_type which_brand, int power, bool fail)
     if (emit_special_message)
         mpr(msg);
     else
-        mprf("%s flashes.", weapon.name(DESC_YOUR).c_str());
+        mprf(jtransc("%s flashes."), weapon.name(DESC_YOUR).c_str());
 
     you.increase_duration(DUR_WEAPON_BRAND,
                           duration_affected + roll_dice(2, power), 50);
@@ -305,10 +306,11 @@ spret_type brand_weapon(brand_type which_brand, int power, bool fail)
 
 spret_type cast_confusing_touch(int power, bool fail)
 {
+    bool plural;
     fail_check();
-    msg::stream << you.hands_act("begin", "to glow ")
-                << (you.duration[DUR_CONFUSING_TOUCH] ? "brighter" : "red")
-                << "." << endl;
+    msg::stream << "あなたの" << you.hand_name(true, &plural) << "は"
+                << (you.duration[DUR_CONFUSING_TOUCH] ? "輝きを増した" : "赤く輝いた")
+                << "。" << endl;
 
     you.set_duration(DUR_CONFUSING_TOUCH,
                      max(10 + random2(power) / 5,
@@ -321,16 +323,16 @@ spret_type cast_confusing_touch(int power, bool fail)
 spret_type cast_sure_blade(int power, bool fail)
 {
     if (!you.weapon())
-        mpr("You aren't wielding a weapon!");
+        mpr(jtrans("You aren't wielding a weapon!"));
     else if (item_attack_skill(*you.weapon()) != SK_SHORT_BLADES)
-        mpr("You cannot bond with this weapon.");
+        mpr(jtrans("You cannot bond with this weapon."));
     else
     {
         fail_check();
         if (!you.duration[DUR_SURE_BLADE])
-            mpr("You become one with your weapon.");
+            mpr(jtrans("You become one with your weapon."));
         else if (you.duration[DUR_SURE_BLADE] < 25 * BASELINE_DELAY)
-            mpr("Your bond becomes stronger.");
+            mpr(jtrans("Your bond becomes stronger."));
 
         you.increase_duration(DUR_SURE_BLADE, 8 + (random2(power) / 10),
                               25, nullptr);

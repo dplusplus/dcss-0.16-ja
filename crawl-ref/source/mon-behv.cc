@@ -1203,10 +1203,10 @@ void behaviour_event(monster* mon, mon_event_type event, const actor *src,
 
             if (you.can_see(mon))
             {
-                mprf("%s attack snaps %s out of %s fear.",
-                        src ? src->name(DESC_ITS).c_str() : "the",
-                        mon->name(DESC_THE).c_str(),
-                        mon->pronoun(PRONOUN_POSSESSIVE).c_str());
+                mprf(jtransc("%s attack snaps %s out of %s fear."),
+                     src ? jtransc(src->name(DESC_ITS)) : "",
+                     jtransc(mon->name(DESC_THE)),
+                     jtransc(mon->pronoun(PRONOUN_POSSESSIVE)));
             }
             mon->del_ench(ENCH_FEAR, true);
         }
@@ -1346,13 +1346,13 @@ void behaviour_event(monster* mon, mon_event_type event, const actor *src,
             if (mon->friendly() && !crawl_state.game_is_arena())
             {
                 mon->foe = MHITYOU;
-                msg = "PLAIN:@The_monster@ returns to your side!";
+                msg = jtrans("PLAIN:@The_monster@ returns to your side!");
             }
             else if (!mon->is_child_tentacle())
             {
                 msg = getSpeakString(mon->name(DESC_PLAIN) + " cornered");
                 if (msg.empty())
-                    msg = "PLAIN:Cornered, @The_monster@ turns to fight!";
+                    msg = jtrans("PLAIN:Cornered, @The_monster@ turns to fight!");
             }
             mon->del_ench(ENCH_FEAR, true);
             mon->behaviour = BEH_SEEK;
@@ -1467,7 +1467,7 @@ void behaviour_event(monster* mon, mon_event_type event, const actor *src,
             {
                 ASSERT_RANGE(get_talent(ABIL_CONVERT_TO_BEOGH, false).hotkey,
                              'A', 'z' + 1);
-                mprf("(press <w>%c</w> on the <w>%s</w>bility menu to convert to Beogh)",
+                mprf(jtransc("(press <w>%c</w> on the <w>%s</w>bility menu to convert to Beogh)"),
                      get_talent(ABIL_CONVERT_TO_BEOGH, false).hotkey,
                      command_to_string(CMD_USE_ABILITY).c_str());
                 you.attribute[ATTR_SEEN_BEOGH] = 1;
@@ -1547,24 +1547,24 @@ static void _mons_indicate_level_exit(const monster* mon)
     const bool is_shaft = (get_trap_type(mon->pos()) == TRAP_SHAFT);
 
     if (feat_is_gate(feat))
-        simple_monster_message(mon, " passes through the gate.");
+        simple_monster_message(mon, jtransc(" passes through the gate."));
     else if (feat_is_travelable_stair(feat))
     {
         command_type dir = feat_stair_direction(feat);
         simple_monster_message(mon,
-            make_stringf(" %s the %s.",
-                dir == CMD_GO_UPSTAIRS     ? "goes up" :
-                dir == CMD_GO_DOWNSTAIRS   ? "goes down"
-                                           : "takes",
-                feat_is_escape_hatch(feat) ? "escape hatch"
-                                           : "stairs").c_str());
+            make_stringf("は%sを%s。",
+                feat_is_escape_hatch(feat) ? "脱出ハッチ"
+                                           : "階段",
+                dir == CMD_GO_UPSTAIRS     ? "昇った" :
+                dir == CMD_GO_DOWNSTAIRS   ? "下りた"
+                                           : "通り抜けた").c_str());
     }
     else if (is_shaft)
     {
         simple_monster_message(mon,
-            make_stringf(" %s the shaft.",
-                mons_flies(mon) ? "goes down"
-                                : "jumps into").c_str());
+                make_stringf(jtransc(" %s the shaft."),
+                mons_flies(mon) ? "を下りた"
+                                : "に飛び込んだ").c_str());
     }
 }
 

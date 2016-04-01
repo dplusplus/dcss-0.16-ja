@@ -35,6 +35,7 @@
 #include "itemname.h"
 #include "itemprop.h"
 #include "items.h"
+#include "japanese.h"
 #include "libutil.h"
 #include "mapmark.h"
 #include "message.h"
@@ -940,15 +941,10 @@ static void _mimic_vanish(const coord_def& pos, const string& name)
     if (!you.see_cell(pos))
         return;
 
-    const char* const smoke_str = can_place_smoke ? " in a puff of smoke" : "";
+    const string smoke_str = jtrans(can_place_smoke ? " in a puff of smoke" : "");
 
-    const bool can_cackle = !silenced(pos) && !silenced(you.pos());
-    const string db_cackle = getSpeakString("_laughs_");
-    const string cackle = db_cackle != "" ? db_cackle : "cackles";
-    const string cackle_str = can_cackle ? cackle + " and " : "";
-
-    mprf("The %s mimic %svanishes%s!",
-         name.c_str(), cackle_str.c_str(), smoke_str);
+    mprf(jtransc("The %s mimic %svanishes%s!"),
+         jtransc(name), smoke_str.c_str());
     interrupt_activity(AI_MIMIC);
 }
 
@@ -1000,7 +996,7 @@ void discover_mimic(const coord_def& pos)
 #endif
 
     if (you.see_cell(pos))
-        mprf(MSGCH_WARN, "The %s is a mimic!", name.c_str());
+        mprf(MSGCH_WARN, jtransc("The %s is a mimic!"), jtransc(name));
     if (item)
         destroy_item(item->index(), true);
     else
@@ -3137,7 +3133,7 @@ void mons_pacify(monster* mon, mon_attitude_type att, bool no_xp)
     if (mon->type == MONS_GERYON)
     {
         simple_monster_message(mon,
-            make_stringf(" discards %s horn.",
+            make_stringf(jtransc(" discards %s horn."),
                          mon->pronoun(PRONOUN_POSSESSIVE).c_str()).c_str());
         monster_drop_things(mon, false, item_is_horn_of_geryon);
     }
@@ -3572,7 +3568,7 @@ const char *mons_pronoun(monster_type mon_type, pronoun_type variant,
 {
     const gender_type gender = !visible ? GENDER_NEUTER
                                         : _mons_class_gender(mon_type);
-    return decline_pronoun(gender, variant);
+    return decline_pronoun_j(gender, variant);
 }
 
 // XXX: this is awful and should not exist
@@ -4298,7 +4294,7 @@ string do_mon_str_replacements(const string &in_msg, const monster* mons,
         msg = replace_all(msg, "@says@", "buggily says");
     }
     else
-        msg = replace_all(msg, "@says@", sound_list[s_type]);
+        msg = replace_all(msg, "@says@", jtrans(sound_list[s_type]));
 
     msg = apostrophise_fixup(msg);
 
@@ -5041,27 +5037,26 @@ string get_damage_level_string(mon_holy_type holi, mon_dam_level_type mdam)
     switch (mdam)
     {
     case MDAM_ALMOST_DEAD:
-        ss << "almost";
-        ss << (wounded_damaged(holi) ? " destroyed" : " dead");
+        ss << "ほとんど";
+        ss << (wounded_damaged(holi) ? "破壊されかけている" : "死にかけだ");
         return ss.str();
     case MDAM_SEVERELY_DAMAGED:
-        ss << "severely";
+        ss << "ひどく";
         break;
     case MDAM_HEAVILY_DAMAGED:
-        ss << "heavily";
+        ss << "すごく";
         break;
     case MDAM_MODERATELY_DAMAGED:
-        ss << "moderately";
         break;
     case MDAM_LIGHTLY_DAMAGED:
-        ss << "lightly";
+        ss << "軽く";
         break;
     case MDAM_OKAY:
     default:
-        ss << "not";
-        break;
+        ss << "傷つかなかった";
+        return ss.str();
     }
-    ss << (wounded_damaged(holi) ? " damaged" : " wounded");
+    ss << "傷ついた";
     return ss.str();
 }
 
@@ -5076,8 +5071,8 @@ void print_wounds(const monster* mons)
     mon_dam_level_type dam_level = mons_get_damage_level(mons);
     string desc = get_damage_level_string(mons->holiness(), dam_level);
 
-    desc.insert(0, " is ");
-    desc += ".";
+    desc.insert(0, "は");
+    desc += "。";
     simple_monster_message(mons, desc.c_str(), MSGCH_MONSTER_DAMAGE,
                            dam_level);
 }

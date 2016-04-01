@@ -47,24 +47,24 @@ function volcano_portal (e)
 
     local messager =
       timed_msg {
-        initmsg = { "You feel an oppressive heat about you.",
-                    "There is an entrance to a volcano on this level. "
-                    .. "Hurry and find it before the entrance collapses!" },
-        finalmsg = "The sound of falling rocks suddenly begins to subside.",
+        initmsg = { "あなたはうだるような熱気を感じた。",
+                    "この階には火山への入口がある。"
+                    .. "入口が崩れ落ちる前に急いで見つけ出すのだ！" },
+        finalmsg = "岩が落ちる音が突然止んだ。",
 
-        verb = 'rumble',
-        noisemaker = 'avalanche of rocks',
+        verb = 'ゴロゴロ言う',
+        noisemaker = 'なだれ落ちる岩石',
         ranges = {
-          { 5000, 'slow ' },  { 4000, '' },
-          { 2500, 'brisk ' }, { 1500, 'quick ' },
-          { 0, 'rapid ' }
+          { 5000, 'かすかな' },  { 4000, '小さな' },
+          { 2500, '' }, { 1500, '大きな' },
+          { 0, '騒々しい' }
         }
       }
 
     e.lua_marker('O',
       timed_marker {
-        disappear = "There is a deep roar from within the tunnel. Moments " ..
-                    "later, a river of lava pours forth, sealing it permanently.",
+        disappear = "隧道の奥から轟音が鳴り響いた。" ..
+                    "一瞬ののち溶岩の河が流れだし、隧道を永久に塞いでしまった。",
         entity = 'tunnel',
         turns = timeout_turns,
         single_timed = true,
@@ -101,13 +101,12 @@ function callback.volcano_in_radius_12(x, y)
   return dgn.point_in_radius(dgn.point(x, y), dgn.point(you.pos()), 12)
 end
 
-local large_warning = tw_machine(3, "The air gets thick with the scent of sulphur.",
-                                 "In the distance, the volcano erupts with a roar.",
-                                 "The volcano comes to life with a roar!")
+local large_warning = tw_machine(3, "大気は硫黄の臭いに満たされた。",
+                                 "遠くの方で火山が轟音と共に噴火した。",
+                                 "火山は轟音と共に活発化した！")
 
-local small_warning = tw_machine(3, nil, nil, nil, "The volcano roars to life, " ..
-                                 "belching forth lava!", "The air gets thick with " ..
-                                 "the scent of sulphur.",
+local small_warning = tw_machine(3, nil, nil, nil, "火山は轟音と共に活発化し、" ..
+                                 "溶岩が噴出した！", "大気は硫黄の臭いに満たされた。",
                                  "callback.volcano_in_radius_12")
 
 function place_large_volcano(e)

@@ -17,6 +17,7 @@
 #include "artefact.h"
 #include "cloud.h"
 #include "coordit.h"
+#include "database.h"
 #include "decks.h"
 #include "directn.h"
 #include "dungeon.h"
@@ -273,11 +274,11 @@ static bool _evoke_horn_of_geryon(item_def &item)
 
     if (silenced(you.pos()))
     {
-        mpr("You can't produce a sound!");
+        mpr(jtrans("You can't produce a sound!"));
         return false;
     }
 
-    mprf(MSGCH_SOUND, "You produce a hideous howling noise!");
+    mpr_nojoin(MSGCH_SOUND, jtrans("You produce a hideous howling noise!"));
     did_god_conduct(DID_UNHOLY, 3);
     int num = 1;
     if (you.skill(SK_EVOCATIONS, 10) + random2(90) > 130)
@@ -302,12 +303,12 @@ static bool _evoke_horn_of_geryon(item_def &item)
             created = true;
         if (mon && will_anger)
         {
-            mprf("%s is enraged by your holy aura!",
+            mprf(jtransc("%s is enraged by your holy aura!"),
                  mon->name(DESC_THE).c_str());
         }
     }
     if (!created)
-        mpr("Nothing answers your call.");
+        mpr(jtrans("Nothing answers your call."));
     return true;
 }
 
@@ -323,26 +324,26 @@ static bool _check_crystal_ball()
 #endif
     if (you.intel() <= 1)
     {
-        mpr("You lack the intelligence to focus on the shapes in the ball.");
+        mpr(jtrans("You lack the intelligence to focus on the shapes in the ball."));
         return false;
     }
 
     if (you.confused())
     {
-        mpr("You are unable to concentrate on the shapes in the ball.");
+        mpr(jtrans("You are unable to concentrate on the shapes in the ball."));
         return false;
     }
 
     if (you.magic_points == you.max_magic_points)
     {
-        mpr("With no energy to recover, the crystal ball of energy is "
-            "presently useless to you.");
+        mpr(jtrans("With no energy to recover, the crystal ball of energy is "
+                   "presently useless to you."));
         return false;
     }
 
     if (you.skill(SK_EVOCATIONS) < 2)
     {
-        mpr("You lack the skill to use this item.");
+        mpr(jtrans("You lack the skill to use this item."));
         return false;
     }
 
@@ -389,12 +390,12 @@ bool disc_of_storms()
     }
     if (x_chance_in_y(fail_rate, 100))
     {
-        mpr("The disc glows for a moment, then fades.");
+        mpr(jtrans("The disc glows for a moment, then fades."));
         return false;
     }
     if (x_chance_in_y(fail_rate, 100))
     {
-        mpr("Little bolts of electricity crackle over the disc.");
+        mpr(jtrans("Little bolts of electricity crackle over the disc."));
         return false;
     }
 
@@ -402,7 +403,7 @@ bool disc_of_storms()
         = roll_dice(2, 1 + you.skill_rdiv(SK_EVOCATIONS, 1, 7));
     ASSERT(disc_count);
 
-    mpr("The disc erupts in an explosion of electricity!");
+    mpr(jtrans("The disc erupts in an explosion of electricity!"));
     const int range = you.skill_rdiv(SK_EVOCATIONS, 1, 3) + 5; // 5--14
     const int power = 30 + you.skill(SK_EVOCATIONS, 2); // 30-84
     for (int i = 0; i < disc_count; ++i)
@@ -488,7 +489,7 @@ void zap_wand(int slot)
 {
     if (!form_can_use_wand())
     {
-        mpr("You have no means to grasp a wand firmly enough.");
+        mpr(jtrans("You have no means to grasp a wand firmly enough."));
         return;
     }
 
@@ -517,7 +518,7 @@ void zap_wand(int slot)
 
     if (player_mutation_level(MUT_NO_ARTIFICE))
     {
-        mpr("You cannot evoke magical items.");
+        mpr(jtrans("You cannot evoke magical items."));
         return;
     }
 
@@ -529,7 +530,7 @@ void zap_wand(int slot)
         item_slot = slot;
     else
     {
-        item_slot = prompt_invent_item("Zap which item?",
+        item_slot = prompt_invent_item(jtransc("Zap which item?"),
                                        MT_INVLIST,
                                        OBJ_WANDS,
                                        true, true, true, 0, -1, nullptr,
@@ -542,7 +543,7 @@ void zap_wand(int slot)
     item_def& wand = you.inv[item_slot];
     if (wand.base_type != OBJ_WANDS)
     {
-        mpr("You can't zap that!");
+        mpr(jtrans("You can't zap that!"));
         return;
     }
 
@@ -555,7 +556,7 @@ void zap_wand(int slot)
     const bool has_charges = wand.charges > 0;
     if (!has_charges && wand.used_count == ZAPCOUNT_EMPTY)
     {
-        mpr("This wand has no charges.");
+        mpr(jtrans("This wand has no charges."));
         return;
     }
 
@@ -607,8 +608,8 @@ void zap_wand(int slot)
     const int tracer_range = (alreadyknown && !randeff)
                            ? _wand_range(type_zapped) : _max_wand_range();
     const string zap_title =
-        "Zapping: " + get_menu_colour_prefix_tags(wand, DESC_INVENTORY)
-                    + (wasteful ? " <lightred>(will waste charges)</lightred>"
+        jtrans("Zapping: ") + " " + get_menu_colour_prefix_tags(wand, DESC_INVENTORY) + " "
+                    + (wasteful ? jtrans(" <lightred>(will waste charges)</lightred>")
                                 : "");
     direction_chooser_args args;
     args.mode = targ_mode;
@@ -736,7 +737,7 @@ void zap_wand(int slot)
 
         dprf("Wasted %d charges (wand %d -> %d)", wasted_charges,
              initial_charge, wand.charges);
-        mpr("Evoking this partially-identified wand wasted a few charges.");
+        mpr(jtrans("Evoking this partially-identified wand wasted a few charges."));
     }
 
     // Zap counts count from the last recharge.
@@ -763,11 +764,11 @@ void zap_wand(int slot)
     {
         if (!item_ident(wand, ISFLAG_KNOW_PLUSES))
         {
-            mpr("Your skill with magical items lets you calculate "
-                "the power of this device...");
+            mpr(jtrans("Your skill with magical items lets you calculate "
+                       "the power of this device..."));
         }
 
-        mprf("This wand has %d charge%s left.",
+        mprf(jtransc("This wand has %d charge%s left."),
              wand.plus, wand.plus == 1 ? "" : "s");
 
         set_ident_flags(wand, ISFLAG_KNOW_PLUSES);
@@ -1077,11 +1078,11 @@ static bool _box_of_beasts_veto_mon(monster_type mon)
 
 static bool _box_of_beasts(item_def &box)
 {
-    mpr("You open the lid...");
+    mpr(jtrans("You open the lid..."));
 
     if (!box.plus)
     {
-        mpr("...but the box appears empty, and falls apart.");
+        mpr(jtrans("...but the box appears empty, and falls apart."));
         ASSERT(in_inventory(box));
         dec_inv_item_quantity(box.link, 1);
         return false;
@@ -1123,7 +1124,7 @@ static bool _box_of_beasts(item_def &box)
         else
         {
             // we weren't able to come up with acceptable monsters
-            mpr("...but nothing happens.");
+            mpr(jtrans("...but nothing happens."));
             return false;
         }
 
@@ -1131,7 +1132,7 @@ static bool _box_of_beasts(item_def &box)
 
     if (success)
     {
-        mpr("...and something leaps out!");
+        mpr(jtrans("...and something leaps out!"));
         xom_is_stimulated(10);
         did_god_conduct(DID_CHAOS, random_range(5,10));
         // Decrease charges
@@ -1147,18 +1148,18 @@ static bool _box_of_beasts(item_def &box)
     }
     else
         // Failed to create monster for some reason
-        mpr("...but nothing happens.");
+        mpr(jtrans("...but nothing happens."));
 
     return success;
 }
 
 static bool _sack_of_spiders(item_def &sack)
 {
-    mpr("You reach into the bag...");
+    mpr(jtrans("You reach into the bag..."));
 
     if (!sack.plus)
     {
-        mpr("...but the bag is empty, and unravels at your touch.");
+        mpr(jtrans("...but the bag is empty, and unravels at your touch."));
         ASSERT(in_inventory(sack));
         dec_inv_item_quantity(sack.link, 1);
         return false;
@@ -1166,7 +1167,7 @@ static bool _sack_of_spiders(item_def &sack)
 
     if (one_chance_in(5))
     {
-        mpr("...but nothing happens.");
+        mpr(jtrans("...but nothing happens."));
         return false;
     }
 
@@ -1190,7 +1191,7 @@ static bool _sack_of_spiders(item_def &sack)
 
     if (success)
     {
-        mpr("...and things crawl out!");
+        mpr(jtrans("...and things crawl out!"));
         // Also generate webs on hostile monsters and trap them.
         int rad = LOS_RADIUS / 2 + 2;
         for (monster_near_iterator mi(you.pos(), LOS_SOLID); mi; ++mi)
@@ -1229,7 +1230,7 @@ static bool _sack_of_spiders(item_def &sack)
     }
     else
         // Failed to create monster for some reason
-        mpr("...but nothing happens.");
+        mpr(jtrans("...but nothing happens."));
 
     return success;
 }
@@ -1238,7 +1239,7 @@ static bool _ball_of_energy()
 {
     bool ret = false;
 
-    mpr("You gaze into the crystal ball.");
+    mpr(jtrans("You gaze into the crystal ball."));
 
     int use = random2(you.skill(SK_EVOCATIONS, 6));
 
@@ -1246,7 +1247,7 @@ static bool _ball_of_energy()
         lose_stat(STAT_INT, 1 + random2avg(7, 2), false, "using a ball of energy");
     else if (use < 5 && enough_mp(1, true))
     {
-        mpr("You feel your power drain away!");
+        mpr(jtrans("You feel your power drain away!"));
         dec_mp(you.magic_points);
     }
     else if (use < 10)
@@ -1258,12 +1259,12 @@ static bool _ball_of_energy()
         if (random2avg(77 - you.skill(SK_EVOCATIONS, 2), 4) > proportional
             || one_chance_in(25))
         {
-            mpr("You feel your power drain away!");
+            mpr(jtrans("You feel your power drain away!"));
             dec_mp(you.magic_points);
         }
         else
         {
-            mpr("You are suffused with power!");
+            mpr(jtrans("You are suffused with power!"));
             inc_mp(5 + random2avg(you.skill(SK_EVOCATIONS), 2));
 
             ret = true;
@@ -1462,14 +1463,14 @@ static bool _lamp_of_fire()
     const int pow = 8 + you.skill_rdiv(SK_EVOCATIONS, 9, 4);
     if (spell_direction(target, base_beam, DIR_TARGET, TARG_HOSTILE, 8,
                         true, true, false, nullptr,
-                        "Aim the lamp in which direction?", true, nullptr))
+                        jtransc("Aim the lamp in which direction?"), true, nullptr))
     {
         if (you.confused())
             target.confusion_fuzz();
 
         did_god_conduct(DID_FIRE, 6 + random2(3));
 
-        mpr("The flames dance!");
+        mpr(jtrans("The flames dance!"));
 
         vector<bolt> beams;
         vector<coord_def> elementals;
@@ -1721,26 +1722,26 @@ void wind_blast(actor* agent, int pow, coord_def target, bool card)
         const string source = card ? "card" : "fan";
 
         if (pow > 120)
-            mprf("A mighty gale blasts forth from the %s!", source.c_str());
+            mprf(jtransc("A mighty gale blasts forth from the %s!"), jtransc(source));
         else
-            mprf("A fierce wind blows from the %s.", source.c_str());
+            mprf(jtransc("A fierce wind blows from the %s."), jtransc(source));
     }
 
     noisy(8, agent->pos());
 
     if (player_affected)
-        mpr("You are blown backwards!");
+        mpr(jtrans("You are blown backwards!"));
 
     if (!affected_monsters.empty())
     {
         const string message =
-            make_stringf("%s %s blown away by the wind.",
+            make_stringf(jtransc("%s %s blown away by the wind."),
                          affected_monsters.describe().c_str(),
                          conjugate_verb("be", affected_monsters.count() > 1).c_str());
         if (strwidth(message) < get_number_of_cols() - 2)
             mpr(message);
         else
-            mpr("The monsters around you are blown away!");
+            mpr(jtrans("The monsters around you are blown away!"));
     }
 
     for (auto it : collisions)
@@ -1781,7 +1782,7 @@ static void _fan_of_gales_elementals()
             created = true;
     }
     if (created)
-        mpr("The winds coalesce and take form.");
+        mpr(jtrans("The winds coalesce and take form."));
 }
 
 static bool _is_rock(dungeon_feature_type feat)
@@ -1834,7 +1835,7 @@ static bool _stone_of_tremors()
             rubble_pos.push_back(*di);
     }
 
-    mpr("The dungeon trembles and rubble falls from the walls!");
+    mpr(jtrans("The dungeon trembles and rubble falls from the walls!"));
     noisy(15, you.pos());
 
     bolt rubble;
@@ -1875,7 +1876,7 @@ static bool _stone_of_tremors()
     for (coord_def pos : door_pos)
     {
         destroy_wall(pos);
-        mpr("The door collapses!");
+        mpr(jtrans("The door collapses!"));
     }
 
     // Collapse some walls and mark collapsed walls as valid elemental positions.
@@ -1910,7 +1911,7 @@ static bool _stone_of_tremors()
             created = true;
     }
     if (created)
-        mpr("The rubble rises up and takes form.");
+        mpr(jtrans("The rubble rises up and takes form."));
 
     return true;
 }
@@ -1934,7 +1935,7 @@ static bool _phial_of_floods()
 
     if (spell_direction(target, beam, DIR_NONE, TARG_HOSTILE,
                         LOS_RADIUS, true, true, false, nullptr,
-                        "Aim the phial where?"))
+                        jtransc("Aim the phial where?")))
     {
         if (you.confused())
         {
@@ -1980,7 +1981,7 @@ static bool _phial_of_floods()
                 created = true;
         }
         if (created)
-            mpr("The water rises up and takes form.");
+            mpr(jtrans("The water rises up and takes form."));
 
         return true;
     }
@@ -2002,7 +2003,7 @@ static spret_type _phantom_mirror()
 
     if (!spell_direction(spd, beam, DIR_TARGET, TARG_ANY,
                          LOS_RADIUS, false, true, false, nullptr,
-                         "Aiming: <white>Phantom Mirror</white>", true,
+                         jtransc("Aiming: <white>Phantom Mirror</white>"), true,
                          &tgt))
     {
         return SPRET_ABORT;
@@ -2011,24 +2012,24 @@ static spret_type _phantom_mirror()
     if (!victim || !you.can_see(victim))
     {
         if (beam.target == you.pos())
-            mpr("You can't use the mirror on yourself.");
+            mpr(jtrans("You can't use the mirror on yourself."));
         else
-            mpr("You can't see anything there to clone.");
+            mpr(jtrans("You can't see anything there to clone."));
         return SPRET_ABORT;
     }
 
     if (!actor_is_illusion_cloneable(victim))
     {
-        mpr("The mirror can't reflect that.");
+        mpr(jtrans("The mirror can't reflect that."));
         return SPRET_ABORT;
     }
 
     if (player_will_anger_monster(victim))
     {
         if (player_mutation_level(MUT_NO_LOVE))
-            mpr("The reflection would only feel hate for you!");
+            mpr(jtrans("The reflection would only feel hate for you!"));
         else
-            simple_god_message(" forbids your reflecting this monster.");
+            simple_god_message(jtransc(" forbids your reflecting this monster."));
         return SPRET_ABORT;
     }
 
@@ -2056,7 +2057,7 @@ static spret_type _phantom_mirror()
     mon->behaviour = BEH_SEEK;
     set_nearest_monster_foe(mon);
 
-    mprf("You reflect %s with the mirror, and the mirror shatters!",
+    mprf(jtransc("You reflect %s with the mirror, and the mirror shatters!"),
          victim->name(DESC_THE).c_str());
 
     return SPRET_SUCCESS;
@@ -2096,7 +2097,7 @@ static bool _rod_spell(item_def& irod, bool check_range)
 
     if (irod.plus < mana)
     {
-        mpr("The rod doesn't have enough magic points.");
+        mpr(jtrans("The rod doesn't have enough magic points."));
         crawl_state.zero_turns_taken();
         // Don't lose a turn for trying to evoke without enough MP - that's
         // needlessly cruel for an honest error.
@@ -2107,8 +2108,8 @@ static bool _rod_spell(item_def& irod, bool check_range)
     {
         // Abort if there are no hostiles within range, but flash the range
         // markers for a short while.
-        mpr("You can't see any susceptible monsters within range! "
-            "(Use <w>V</w> to cast anyway.)");
+        mpr(jtrans("You can't see any susceptible monsters within range! "
+                   "(Use <w>V</w> to cast anyway.)"));
 
         if (Options.use_animations & UA_RANGE)
         {
@@ -2143,7 +2144,7 @@ bool evoke_item(int slot, bool check_range)
 {
     if (you.form == TRAN_WISP)
     {
-        mpr("You cannot evoke items in this form.");
+        mpr(jtrans("You cannot evoke items in this form."));
         return false;
     }
 
@@ -2158,16 +2159,16 @@ bool evoke_item(int slot, bool check_range)
     }
     else if (player_mutation_level(MUT_NO_ARTIFICE) && !reaching)
     {
-        mpr("You cannot evoke magical items.");
+        mpr(jtrans("You cannot evoke magical items."));
         return false;
     }
 
     if (slot == -1)
     {
-        slot = prompt_invent_item("Evoke which item? (* to show all)",
-                                   MT_INVLIST,
-                                   OSEL_EVOKABLE, true, true, true, 0, -1,
-                                   nullptr, OPER_EVOKE);
+        slot = prompt_invent_item(jtransc("Evoke which item? (* to show all)"),
+                                  MT_INVLIST,
+                                  OSEL_EVOKABLE, true, true, true, 0, -1,
+                                  nullptr, OPER_EVOKE);
 
         if (prompt_failed(slot))
             return false;
@@ -2271,12 +2272,12 @@ bool evoke_item(int slot, bool check_range)
 #endif
                 )
         {
-            mpr("Your reserves of magic are already full.");
+            mpr(jtrans("Your reserves of magic are already full."));
             return false;
         }
         else if (x_chance_in_y(you.skill(SK_EVOCATIONS, 100) + 1100, 4000))
         {
-            mpr("You channel some magical energy.");
+            mpr(jtrans("You channel some magical energy."));
             inc_mp(1 + random2(3));
             make_hungry(50, false, true);
             pract = 1;
@@ -2289,7 +2290,7 @@ bool evoke_item(int slot, bool check_range)
         did_work = true; // easier to do it this way for misc items
 
         if (player_mutation_level(MUT_NO_ARTIFICE))
-            return mpr("You cannot evoke magical items."), false;
+            return mpr(jtrans("You cannot evoke magical items.")), false;
 
         if (is_deck(item))
         {
@@ -2310,7 +2311,7 @@ bool evoke_item(int slot, bool check_range)
         case MISC_FAN_OF_GALES:
             if (!evoker_is_charged(item))
             {
-                mpr("That is presently inert.");
+                mpr(jtrans("That is presently inert."));
                 return false;
             }
             wind_blast(&you, you.skill(SK_EVOCATIONS, 10), coord_def());
@@ -2322,7 +2323,7 @@ bool evoke_item(int slot, bool check_range)
         case MISC_LAMP_OF_FIRE:
             if (!evoker_is_charged(item))
             {
-                mpr("That is presently inert.");
+                mpr(jtrans("That is presently inert."));
                 return false;
             }
             if (_lamp_of_fire())
@@ -2338,7 +2339,7 @@ bool evoke_item(int slot, bool check_range)
         case MISC_STONE_OF_TREMORS:
             if (!evoker_is_charged(item))
             {
-                mpr("That is presently inert.");
+                mpr(jtrans("That is presently inert."));
                 return false;
             }
             if (_stone_of_tremors())
@@ -2353,7 +2354,7 @@ bool evoke_item(int slot, bool check_range)
         case MISC_PHIAL_OF_FLOODS:
             if (!evoker_is_charged(item))
             {
-                mpr("That is presently inert.");
+                mpr(jtrans("That is presently inert."));
                 return false;
             }
             if (_phial_of_floods())
@@ -2368,7 +2369,7 @@ bool evoke_item(int slot, bool check_range)
         case MISC_HORN_OF_GERYON:
             if (!evoker_is_charged(item))
             {
-                mpr("That is presently inert.");
+                mpr(jtrans("That is presently inert."));
                 return false;
             }
             if (_evoke_horn_of_geryon(item))
@@ -2403,7 +2404,7 @@ bool evoke_item(int slot, bool check_range)
             break;
 
         case MISC_QUAD_DAMAGE:
-            mpr("QUAD DAMAGE!");
+            mpr(jtrans("QUAD DAMAGE!"));
             you.duration[DUR_QUAD_DAMAGE] = 30 * BASELINE_DELAY;
             ASSERT(in_inventory(item));
             dec_inv_item_quantity(item.link, 1);

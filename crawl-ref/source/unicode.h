@@ -10,6 +10,13 @@ int strwidth(const char *s);
 int strwidth(const string &s);
 string chop_string(const char *s, int width, bool spaces = true);
 string chop_string(const string &s, int width, bool spaces = true);
+#define chop_stringc(s, w) (chop_string(s, w).c_str())
+string align_centre(const string &s, int width, char fillchar = ' ');
+#define align_centrec(s, w) (align_centre(s, w).c_str())
+string align_right(const string &s, int width, char fillchar = ' ');
+#define align_rightc(s, w) (align_right(s, w).c_str())
+string align_left(const string &s, int width, char fillchar = ' ');
+#define align_leftc(s, w) (align_left(s, w).c_str())
 
 int wctoutf8(char *d, ucs_t s);
 int utf8towc(ucs_t *d, const char *s);

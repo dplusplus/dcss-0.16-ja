@@ -74,7 +74,7 @@ function ($, comm, client, dungeon_renderer, display, minimap, enums, messages,
         client.set_layer("normal");
         $("#messages_container").css({
             "max-height": msg_height_px*msg_height/(msg_height+1),
-            "width": remaining_width
+            "width": "100%"
         });
         dungeon_renderer.fit_to(remaining_width, remaining_height,
                                 show_diameter);

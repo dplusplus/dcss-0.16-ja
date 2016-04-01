@@ -1,0 +1,113 @@
+%%%%
+is not enthusiastic about the mutagenic glow surrounding you.
+
+はあなたを取り巻く変異性の輝きをよく思っていない。
+%%%%
+does not appreciate the extra mutagenic glow surrounding you!
+
+はあなたを取り巻く強変異性の輝きを喜んでいない！
+%%%%
+forgives your inadvertent blood-drinking, just this once.
+
+はあなたが不注意に血液を口にしたのを今回だけ見逃した。
+%%%%
+expects more respect for your departed relatives.
+
+は同胞の亡骸に対するさらなる尊崇を要求した。
+%%%%
+forgives your inadvertent dishonourable attack, just this once.
+
+はあなたの恥ずべき攻撃を今回だけ見逃した。
+%%%%
+forgives your inadvertent attack on an ally, just this once.
+
+はあなたの仲間への不注意な攻撃を今回だけ見逃した。
+%%%%
+forgives your inadvertent attack on a neutral, just this once.
+
+はあなたの敵対していない者への不注意な攻撃を今回だけ見逃した。
+%%%%
+forgives your inadvertent unclean act, just this once.
+
+はあなたの不注意な不浄なる振る舞いを今回だけ見逃した。
+%%%%
+forgives your inadvertent chaotic act, just this once.
+
+はあなたの不注意な混沌なる振る舞いを今回だけ見逃した。
+%%%%
+expects more respect for holy creatures!
+
+は聖遺物へのさらなる尊崇を要求した！
+%%%%
+forgives your inadvertent unholy act, just this once.
+
+はあなたの不注意な不浄なる振る舞いを今回だけ見逃した。
+%%%%
+forgives your inadvertent holy act, just this once.
+
+はあなたの不注意な神聖なる振る舞いを今回だけ見逃した。
+%%%%
+doesn't appreciate your training magic!
+
+はあなたが魔法を訓練するのを喜ばない！
+%%%%
+does not appreciate your shedding blood when asking for salvation!
+
+は救済を求めながら他者の血を流す行為を喜ばない！
+%%%%
+forgives your inadvertent necromancy, just this once.
+
+はあなたの不注意な死霊術を今回だけ見逃した。
+%%%%
+forgives your accidental hurry, just this once.
+
+はあなたがうっかり急いでしまったのを今回だけ見逃した。
+%%%%
+thinks you should slow down.
+
+はあなたはもっと減速すべきだと考えている。
+%%%%
+forgives your accidental fire-starting, just this once.
+
+はあなたがうっかり火を灯してしまったのを今回だけ見逃した。
+%%%%
+does not appreciate your starting fires!
+
+はあなたが火を灯すのを喜ばない！
+%%%%
+accepts your kill.
+
+はあなたの殺しを善しとした。
+%%%%
+<white>%s is honoured by your kill.</white>
+
+<white>%sはあなたの殺しを誇りに思った。</white>
+%%%%
+appreciates your killing of a holy being.
+
+はあなたが聖なる存在を殺すのを喜んだ。
+%%%%
+appreciates your killing of a magic user.
+
+はあなたが魔術の使い手を殺すのを喜んだ。
+%%%%
+claims a new guest.
+
+は新たな訪問者を受け入れた。
+%%%%
+appreciates your killing of a heretic priest.
+
+はあなたが異端の司祭を殺すのを喜んだ。
+%%%%
+thoroughly appreciates the change of pace.
+
+はあなたの減速ぶりを大いに喜んだ。
+%%%%
+appreciates the change of pace.
+
+はあなたの減速ぶりを喜んだ。
+%%%%
+appreciates your extinguishing a source of fire.
+
+はあなたが火の元を消すのを喜んだ。
+%%%%

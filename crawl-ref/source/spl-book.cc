@@ -360,7 +360,7 @@ bool maybe_id_book(item_def &book, bool silent)
     {
         if (!silent)
         {
-            mpr("This book is beyond your current level of understanding.");
+            mpr(jtrans("This book is beyond your current level of understanding."));
             more();
         }
 
@@ -453,6 +453,11 @@ static void _index_book(item_def& book, spells_to_books &book_hash,
     }
 }
 
+static string _transform_name()
+{
+    return jtrans(transform_name() + string(" form"));
+}
+
 static bool _get_mem_list(spell_list &mem_spells,
                           spells_to_books &book_hash,
                           unsigned int &num_unreadable,
@@ -516,11 +521,11 @@ static bool _get_mem_list(spell_list &mem_spells,
         if (!just_check)
         {
             if (num_unknown > 1)
-                mprf(MSGCH_PROMPT, "You must pick up those books before reading them.");
+                mpr_nojoin(MSGCH_PROMPT, jtransc("You must pick up those books before reading them."));
             else if (num_unknown == 1)
-                mprf(MSGCH_PROMPT, "You must pick up this book before reading it.");
+                mpr_nojoin(MSGCH_PROMPT, jtransc("You must pick up this book before reading it."));
             else
-                mprf(MSGCH_PROMPT, "You aren't carrying or standing over any spellbooks.");
+                mpr_nojoin(MSGCH_PROMPT, jtransc("You aren't carrying or standing over any spellbooks."));
         }
         return false;
     }
@@ -528,16 +533,16 @@ static bool _get_mem_list(spell_list &mem_spells,
     {
         if (!just_check)
         {
-            mprf(MSGCH_PROMPT, "All of the spellbooks%s are beyond your "
-                 "current level of comprehension.",
-                 num_on_ground == 0 ? " you're carrying" : "");
+            mprf(MSGCH_PROMPT, jtransc("All of the spellbooks%s are beyond your "
+                                       "current level of comprehension."),
+                 num_on_ground == 0 ? jtransc(" you're carrying") : "");
         }
         return false;
     }
     else if (book_hash.empty())
     {
         if (!just_check)
-            mprf(MSGCH_PROMPT, "None of the spellbooks you are carrying contain any spells.");
+            mpr_nojoin(MSGCH_PROMPT, jtrans("None of the spellbooks you are carrying contain any spells."));
         return false;
     }
 
@@ -590,26 +595,26 @@ static bool _get_mem_list(spell_list &mem_spells,
             + num_restricted;
 
     if (num_known == total)
-        mprf(MSGCH_PROMPT, "You already know all available spells.");
+        mpr_nojoin(MSGCH_PROMPT, jtrans("You already know all available spells."));
     else if (num_restricted == total || num_restricted + num_known == total)
     {
-        mpr("You cannot currently memorise any of the available "
-             "spells because you cannot use those schools of magic.");
+        mpr(jtransc("You cannot currently memorise any of the available "
+                    "spells because you cannot use those schools of magic."));
     }
     else if (num_race == total || (num_known + num_race) == total
             || num_race + num_known + num_restricted == total)
     {
         if (form)
         {
-            mprf(MSGCH_PROMPT, "You cannot currently memorise any of the "
-                 "available spells because you are in %s form.",
-                 uppercase_first(transform_name()).c_str());
+            mprf(MSGCH_PROMPT, jtransc("You cannot currently memorise any of the "
+                                       "available spells because you are in %s form."),
+                 _transform_name().c_str());
         }
         else
         {
-            mprf(MSGCH_PROMPT, "You cannot memorise any of the available "
-                 "spells because you are %s.",
-                 article_a(species_name(you.species)).c_str());
+            mprf(MSGCH_PROMPT, jtransc("You cannot memorise any of the available "
+                                       "spells because you are %s."),
+                 jtransc(species_name(you.species)));
         }
     }
     else if (num_low_levels > 0 || num_low_xl > 0)
@@ -626,9 +631,9 @@ static bool _get_mem_list(spell_list &mem_spells,
 
     if (num_unreadable)
     {
-        mprf(MSGCH_PROMPT, "Additionally, %u of your spellbooks are beyond "
-             "your current level of understanding, and thus none of the "
-             "spells in them are available to you.", num_unreadable);
+        mprf(MSGCH_PROMPT, jtransc("Additionally, %u of your spellbooks are beyond "
+                                   "your current level of understanding, and thus none of the "
+                                   "spells in them are available to you."), num_unreadable);
     }
 
     return false;
@@ -739,13 +744,13 @@ static spell_type _choose_mem_spell(spell_list &spells,
     }
 #else
     spell_menu.set_title(
-        new MenuEntry("     Spells (Memorisation)         Type          "
-                      "                Failure  Level",
+        new MenuEntry("     " + jtrans("Spells (Memorisation)         Type          "
+                      "                Failure  Level"),
             MEL_TITLE));
 
     spell_menu.set_title(
-        new MenuEntry("     Spells (Description)          Type          "
-                      "                Failure  Level",
+        new MenuEntry("     " + jtrans("Spells (Description)          Type          "
+                      "                Failure  Level"),
             MEL_TITLE), false);
 #endif
 
@@ -756,8 +761,9 @@ static spell_type _choose_mem_spell(spell_list &spells,
     spell_menu.menu_action  = Menu::ACT_EXECUTE;
 
     const bool shortmsg = num_unreadable > 0 && num_race > 0;
-    string more_str = make_stringf("<lightgreen>%d %slevel%s left"
-                                   "<lightgreen>",
+    string more_str = "\n"
+                    + make_stringf(jtransc("<lightgreen>%d %slevel%s left"
+                                           "</lightgreen>"),
                                    player_spell_levels(),
                                    shortmsg ? "" : "spell ",
                                    (player_spell_levels() > 1
@@ -765,17 +771,15 @@ static spell_type _choose_mem_spell(spell_list &spells,
 
     if (num_unreadable > 0)
     {
-        more_str += make_stringf(", <lightmagenta>%u %sbook%s</lightmagenta>",
+        more_str += make_stringf(jtransc(", <lightmagenta>%u %sbook%s</lightmagenta>"),
                                  num_unreadable,
-                                 shortmsg ? "difficult "
-                                          : "overly difficult spell",
-                                 num_unreadable > 1 ? "s" : "");
+                                 "読めない");
     }
 
     if (num_race > 0)
     {
-        more_str += make_stringf(", <lightred>%u%s%s unmemorisable"
-                                 "</lightred>",
+        more_str += make_stringf(jtransc(", <lightred>%u%s%s unmemorisable"
+                                         "</lightred>"),
                                  num_race,
                                  shortmsg ? "" : " spell",
                                  // shorter message if we have both annotations
@@ -784,7 +788,7 @@ static spell_type _choose_mem_spell(spell_list &spells,
 
 #ifndef USE_TILE_LOCAL
     // Tiles menus get this information in the title.
-    more_str += "   Toggle display with '<w>!</w>'";
+    more_str += " " + jtrans("Toggle display with '<w>!</w>'");
 #endif
 
     spell_menu.set_more(formatted_string::parse_string(more_str));
@@ -815,7 +819,7 @@ static spell_type _choose_mem_spell(spell_list &spells,
         desc << "<" << colour_to_str(colour) << ">";
 
         desc << left;
-        desc << chop_string(spell_title(spell), 30);
+        desc << chop_string(tagged_jtrans("[spell]", spell_title(spell)), 30);
         desc << spell_schools_string(spell);
 
         int so_far = strwidth(desc.str()) - (colour_to_str(colour).length()+2);
@@ -868,7 +872,7 @@ bool can_learn_spell(bool silent)
     if (you.stat_zero[STAT_INT])
     {
         if (!silent)
-            mpr("Your brain is not functional enough to learn spells.");
+            mpr(jtrans("Your brain is not functional enough to learn spells."));
         return false;
     }
 
@@ -923,7 +927,7 @@ bool learn_spell()
  */
 string desc_cannot_memorise_reason(spell_type spell)
 {
-    return spell_uselessness_reason(spell, false, true);
+    return jtrans(spell_uselessness_reason(spell, false, true));
 }
 
 /**
@@ -949,25 +953,25 @@ static bool _learn_spell_checks(spell_type specspell)
 
     if (you.has_spell(specspell))
     {
-        mpr("You already know that spell!");
+        mpr(jtrans("You already know that spell!"));
         return false;
     }
 
     if (you.spell_no >= MAX_KNOWN_SPELLS)
     {
-        mpr("Your head is already too full of spells!");
+        mpr(jtrans("Your head is already too full of spells!"));
         return false;
     }
 
     if (you.experience_level < spell_difficulty(specspell))
     {
-        mpr("You're too inexperienced to learn that spell!");
+        mpr(jtrans("You're too inexperienced to learn that spell!"));
         return false;
     }
 
     if (player_spell_levels() < spell_levels_required(specspell))
     {
-        mpr("You can't memorise that many levels of magic yet!");
+        mpr(jtrans("You can't memorise that many levels of magic yet!"));
         return false;
     }
 
@@ -989,18 +993,18 @@ bool learn_spell(spell_type specspell)
     int severity = fail_severity(specspell);
 
     if (raw_spell_fail(specspell) >= 100 && !vehumet_is_offering(specspell))
-        mprf(MSGCH_WARN, "This spell is impossible to cast!");
+        mpr_nojoin(MSGCH_WARN, jtrans("This spell is impossible to cast!"));
     else if (severity > 0)
     {
-        mprf(MSGCH_WARN, "This spell is %s to cast%s",
-                         fail_severity_adjs[severity],
-                         severity > 1 ? "!" : ".");
+        mprf(MSGCH_WARN, jtransc("This spell is %s to cast%s"),
+             jtransc(fail_severity_adjs[severity]),
+             severity > 1 ? "！" : "。");
     }
 
     const string prompt = make_stringf(
-             "Memorise %s, consuming %d spell level%s and leaving %d?",
-             spell_title(specspell), spell_levels_required(specspell),
-             spell_levels_required(specspell) != 1 ? "s" : "",
+             jtransc("Memorise %s, consuming %d spell level%s and leaving %d?"),
+             spell_levels_required(specspell),
+             tagged_jtransc("[spell]", spell_title(specspell)),
              player_spell_levels() - spell_levels_required(specspell));
 
     // Deactivate choice from tile inventory.
@@ -1023,12 +1027,12 @@ bool forget_spell_from_book(spell_type spell, const item_def* book)
 {
     string prompt;
 
-    prompt += make_stringf("Forgetting %s from %s will destroy the book%s! "
-                           "Are you sure?",
-                           spell_title(spell),
+    prompt += make_stringf(jtransc("Forgetting %s from %s will destroy the book%s! "
+                                   "Are you sure?"),
+                           tagged_jtransc("[spell]", spell_title(spell)),
                            book->name(DESC_THE).c_str(),
-                           you_worship(GOD_SIF_MUNA)
-                               ? " and put you under penance" : "");
+                           jtransc(you_worship(GOD_SIF_MUNA)
+                                   ? " and put you under penance" : ""));
 
     // Deactivate choice from tile inventory.
     mouse_control mc(MOUSE_MODE_MORE);
@@ -1037,8 +1041,8 @@ bool forget_spell_from_book(spell_type spell, const item_def* book)
         canned_msg(MSG_OK);
         return false;
     }
-    mprf("As you tear out the page describing %s, the book crumbles to dust.",
-        spell_title(spell));
+    mprf(jtransc("As you tear out the page describing %s, the book crumbles to dust."),
+         tagged_jtransc("[spell]", spell_title(spell)));
 
     if (del_spell_from_memory(spell))
     {
@@ -1368,13 +1372,13 @@ bool make_book_level_randart(item_def &book, int level, string owner)
         name = god_name(god, false);
     else if (one_chance_in(30))
         name = god_name(GOD_SIF_MUNA, false);
-    else if (one_chance_in(3))
+    else if (false && one_chance_in(3)) // ランダム名はとりあえずオフ
         name = make_name(random_int(), false);
     else
         has_owner = false;
 
     if (has_owner)
-        name = apostrophise(name) + " ";
+        name = jtrans(name) + "の";
 
     // None of these books need a definite article prepended.
     book.props["is_named"].get_bool() = true;
@@ -1382,8 +1386,9 @@ bool make_book_level_randart(item_def &book, int level, string owner)
     string bookname;
     if (god == GOD_XOM && coinflip())
     {
-        bookname = getRandNameString("book_noun") + " of "
-                   + getRandNameString("Xom_book_title");
+        bookname = getRandNameString("Xom_book_title")
+                 + "の"
+                 + getRandNameString("book_noun");
         bookname = replace_name_parts(bookname, book);
     }
     else
@@ -1931,7 +1936,7 @@ bool make_book_theme_randart(item_def &book,
 
         if (owner.empty())
         {
-            if (god_gift || one_chance_in(5)) // Use a random name.
+            if (false && (god_gift || one_chance_in(5))) // Don't Use a random name.
                 owner = make_name(random_int(), false);
             else if (!god_gift && one_chance_in(9))
             {
@@ -1958,7 +1963,7 @@ bool make_book_theme_randart(item_def &book,
 
     if (!owner.empty())
     {
-        name = apostrophise(owner) + " ";
+        name = jtrans(owner) + "の";
         book.props["is_named"].get_bool() = true;
     }
     else
@@ -1978,12 +1983,11 @@ bool make_book_theme_randart(item_def &book,
     }
 
     if (!bookname.empty())
-        name += getRandNameString("book_noun") + " of " + bookname;
+        name += bookname + "の" + getRandNameString("book_noun");
     else
     {
         // Give a name that reflects the primary and secondary
         // spell disciplines of the spells contained in the book.
-        name += getRandNameString("book_name") + " ";
 
         // For the actual name there's a 66% chance of getting something like
         //  <book> of the Fiery Traveller (Translocation/Fire), else
@@ -2006,7 +2010,7 @@ bool make_book_theme_randart(item_def &book,
 
             if (disc1 != disc2)
             {
-                name += " and ";
+                name += "と";
                 type_name = getRandNameString(spelltype_long_name(disc2));
 
                 if (type_name.empty())
@@ -2017,7 +2021,7 @@ bool make_book_theme_randart(item_def &book,
         }
         else
         {
-            bookname = type_name + " ";
+            bookname = type_name;
 
             // Add the noun for the first discipline.
             type_name = getRandNameString(spelltype_long_name(disc1));
@@ -2034,6 +2038,8 @@ bool make_book_theme_randart(item_def &book,
             }
             name += bookname;
         }
+
+        name += getRandNameString("book_name");
     }
 
     set_artefact_name(book, name);
@@ -2123,7 +2129,7 @@ void make_book_Kiku_gift(item_def &book, bool first)
     for (int i = 0; i < RANDBOOK_SIZE; i++)
         spell_vec[i].get_int() = chosen_spells[i];
 
-    string name = "Kikubaaqudgha's ";
+    string name = jtrans("Kikubaaqudgha's ");
     book.props["is_named"].get_bool() = true;
     name += getRandNameString("book_name") + " ";
     string type_name = getRandNameString("Necromancy");

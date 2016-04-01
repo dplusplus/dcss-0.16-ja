@@ -28,13 +28,12 @@ end
 function bazaar_portal(timed)
   local messager =
     timed_msg {
-      initmsg = { "You hear coins being counted.",
-                  "An interdimensional caravan has stopped on this level "
-                  .. "and set up a bazaar. Hurry and find its entrance before "
-                  .. "they move on!" },
-      finalmsg = "You hear the last, dying notes of the bell.",
-      verb = 'tolling',
-      noisemaker = 'bell'
+      initmsg = { "あなたはコインを数える音を聞いた。",
+                  "次元を彷徨う隊商がこの階に留まって市場を開いている。"
+                  .. "彼らが移動する前に急いで見つけ出すのだ！" },
+      finalmsg = "あなたは鐘の音が止まるのを聞いた。",
+      verb = 'ガラガラ鳴る',
+      noisemaker = '鐘'
     }
   local blow = 200 + 30*(40 - you.absdepth()) + crawl.random2(200)
   local bhigh = blow + crawl.random2(blow) + 100

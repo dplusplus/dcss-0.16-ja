@@ -1,0 +1,53 @@
+%%%%
+############################## dat/clua/autofight.cc ##############################
+%%%%
+Failed to move towards target.
+
+標的まで向かうことに失敗した。
+%%%%
+You are too injured to fight recklessly!
+
+あなたは傷つきすぎており、むやみに攻撃できない！
+%%%%
+You are too confused!
+
+あなたは混乱している！
+%%%%
+No target in view!
+
+視界内に敵はいない！
+%%%%
+No target in range!
+
+射程内に敵はいない！
+%%%%
+Enabling autothrow.
+
+自動投擲をオンにしました。
+%%%%
+Disabling autothrow.
+
+自動投擲をオフにしました。
+%%%%
+############################## dat/clua/automagic.cc ##############################
+%%%%
+You are too depleted to cast spells recklessly!
+
+あなたは魔力が枯渇しておりむやみに呪文を唱えられない！
+%%%%
+Which spell slot to assign to automagic? (Enter to disable, Esc to cancel)
+
+どの呪文を自動詠唱に割り当てますか？ (Enterで使用不可、Escでキャンセル)
+%%%%
+Cancelled.
+
+キャンセルしました。
+%%%%
+Deactivated automagic.
+
+自動詠唱をオフにしました。
+%%%%
+Invalid spell slot.
+
+無効なスロットです。
+%%%%

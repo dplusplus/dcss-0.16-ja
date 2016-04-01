@@ -8,17 +8,35 @@
 #include "place.h"
 
 #include "branch.h"
+#include "database.h"
 #include "player.h"
+#include "stringutil.h"
+
+static string _level_id_describe(const level_id &id, bool long_name, bool with_number)
+{
+    string result = tagged_jtrans("[branch]", long_name ? branches[id.branch].longname
+                                                        : branches[id.branch].abbrevname);
+
+    if (with_number && brdepth[id.branch] != 1)
+    {
+        if (long_name)
+        {
+            result = make_stringf(jtransc("Level %d of %s"),
+                                  result.c_str(), id.depth);
+        }
+        else if (id.depth)
+            result = make_stringf("%s:%d", result.c_str(), id.depth);
+        else
+            result = make_stringf("%s:$", result.c_str());
+    }
+    return result;
+}
 
 // Prepositional form of branch level name.  For example, "in the
 // Abyss" or "on level 3 of the Main Dungeon".
 string prep_branch_level_name(level_id id)
 {
-    string place = id.describe(true, true);
-    if (!place.empty() && place != "Pandemonium")
-        place[0] = tolower(place[0]);
-    return place.find("level") == 0 ? "on " + place
-                                    : "in " + place;
+    return _level_id_describe(id, true, true);
 }
 
 bool single_level_branch(branch_type branch)

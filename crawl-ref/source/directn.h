@@ -302,12 +302,20 @@ string get_monster_equipment_desc(const monster_info& mi,
 string feature_description_at(const coord_def& where, bool covering = false,
                               description_level_type dtype = DESC_A,
                               bool add_stop = true, bool base_desc = false);
+string feature_description_at_en(const coord_def& where, bool covering = false,
+                                 description_level_type dtype = DESC_A,
+                                 bool add_stop = true, bool base_desc = false);
 string raw_feature_description(const coord_def& where);
 string feature_description(dungeon_feature_type grid,
                            trap_type trap = NUM_TRAPS,
                            const string & cover_desc = "",
                            description_level_type dtype = DESC_A,
                            bool add_stop = true, bool base_desc = false);
+string feature_description_en(dungeon_feature_type grid,
+                              trap_type trap = NUM_TRAPS,
+                              const string & cover_desc = "",
+                              description_level_type dtype = DESC_A,
+                              bool add_stop = true, bool base_desc = false);
 
 vector<dungeon_feature_type> features_by_desc(const base_pattern &pattern);
 

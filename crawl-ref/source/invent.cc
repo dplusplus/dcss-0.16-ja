@@ -16,6 +16,7 @@
 #include "artefact.h"
 #include "colour.h"
 #include "command.h"
+#include "database.h"
 #include "decks.h"
 #include "describe.h"
 #include "env.h"
@@ -80,8 +81,8 @@ InvEntry::InvEntry(const item_def &i, bool show_bg)
 
     if (item_is_stationary_net(i))
     {
-        text += make_stringf(" (holding %s)",
-                             net_holdee(i)->name(DESC_A).c_str());
+        text += make_stringf((" " + jtrans(" (holding %s)")).c_str(),
+                             jtransc(net_holdee(i)->name(DESC_PLAIN)));
     }
 
     if (i.base_type != OBJ_GOLD && in_inventory(i))
@@ -353,7 +354,7 @@ void InvMenu::set_preselect(const vector<SelItem> *pre)
 
 string slot_description()
 {
-    return make_stringf("%d/%d slots", inv_count(), ENDOFPACK);
+    return make_stringf(jtransc("%d/%d slots"), inv_count(), ENDOFPACK);
 }
 
 void InvMenu::set_title(const string &s)
@@ -370,9 +371,9 @@ void InvMenu::set_title(const string &s)
         // so that get_number_of_cols returns the appropriate value.
         cgotoxy(1, 1);
 
-        stitle = "Inventory: " + slot_description();
+        stitle = jtrans("Inventory:") + " " + slot_description();
 
-        string prompt = "(_ for help)";
+        string prompt = jtrans("(_ for help)");
         stitle = stitle + string(max(0, get_number_of_cols() - strwidth(stitle)
                                         - strwidth(prompt)),
                                  ' ') + prompt;
@@ -501,7 +502,7 @@ void InvMenu::load_inv_items(int item_selector, int excluded_slot,
     load_items(tobeshown, procfn);
 
     if (!item_count())
-        set_title(no_selectables_message(item_selector));
+        set_title(jtrans(no_selectables_message(item_selector)));
     else
         set_title("");
 }
@@ -821,14 +822,19 @@ menu_letter InvMenu::load_items(const vector<const item_def*> &mitems,
                     const string str = "Magical Staves ";
                     subtitle += string(strwidth(str) - strwidth(subtitle),
                                        ' ');
-                    subtitle += "(select all with <w>";
+
+                    string right_text = "(<w>";
                     for (char gly : glyphs)
-                         subtitle += gly;
-                    subtitle += "</w><blue>)";
+                         right_text += gly;
+                    right_text += jtrans("</w><blue>)");
+                    subtitle += string(get_number_of_cols() - strwidth(right_text)
+                                                            - strwidth(subtitle) + 14,
+                                       ' ')
+                              + right_text;
                 }
             }
 
-            add_entry(new MenuEntry(subtitle, MEL_SUBTITLE));
+            add_entry(new MenuEntry(sp2nbsp(subtitle), MEL_SUBTITLE));
         }
         items_in_class.clear();
 
@@ -957,7 +963,7 @@ bool InvMenu::process_key(int key)
             {
                 lastch = CONTROL('D');
                 temp_title = title->text;
-                set_title("Select to reset item to default: ");
+                set_title(jtrans("Select to reset item to default: ") + " ");
                 update_title();
             }
 
@@ -1004,20 +1010,20 @@ const char *item_class_name(int type, bool terse)
     {
         switch (type)
         {
-        case OBJ_GOLD:       return "Gold";
-        case OBJ_WEAPONS:    return "Hand Weapons";
-        case OBJ_MISSILES:   return "Missiles";
-        case OBJ_ARMOUR:     return "Armour";
-        case OBJ_WANDS:      return "Wands";
-        case OBJ_FOOD:       return "Comestibles";
-        case OBJ_SCROLLS:    return "Scrolls";
-        case OBJ_JEWELLERY:  return "Jewellery";
-        case OBJ_POTIONS:    return "Potions";
-        case OBJ_BOOKS:      return "Books";
-        case OBJ_STAVES:     return "Magical Staves";
-        case OBJ_RODS:       return "Rods";
-        case OBJ_ORBS:       return "Orbs of Power";
-        case OBJ_MISCELLANY: return "Miscellaneous";
+        case OBJ_GOLD:       return "金貨";
+        case OBJ_WEAPONS:    return "手持ち武器";
+        case OBJ_MISSILES:   return "飛び道具";
+        case OBJ_ARMOUR:     return "鎧/服";
+        case OBJ_WANDS:      return "杖";
+        case OBJ_FOOD:       return "食料";
+        case OBJ_SCROLLS:    return "巻物";
+        case OBJ_JEWELLERY:  return "装飾品";
+        case OBJ_POTIONS:    return "薬";
+        case OBJ_BOOKS:      return "魔法書";
+        case OBJ_STAVES:     return "魔法の杖";
+        case OBJ_RODS:       return "ロッド";
+        case OBJ_ORBS:       return "ゾットのオーブ";
+        case OBJ_MISCELLANY: return "その他";
         }
     }
     return "";
@@ -1365,7 +1371,7 @@ vector<SelItem> prompt_invent_items(
 
         if (need_prompt)
         {
-            mprf(MSGCH_PROMPT, "%s (<w>?</w> for menu, <w>Esc</w> to quit)",
+            mprf(MSGCH_PROMPT, jtransc("%s (<w>?</w> for menu, <w>Esc</w> to quit)"),
                  prompt);
         }
 
@@ -1444,7 +1450,7 @@ vector<SelItem> prompt_invent_items(
             ret = letter_to_index(keyin);
 
             if (!you.inv[ret].defined())
-                mpr("You don't have any such object.");
+                mpr(jtrans("You don't have any such object."));
             else
                 break;
         }
@@ -1538,7 +1544,7 @@ bool check_old_item_warning(const item_def& item,
         if (!needs_handle_warning(old_item, OPER_WIELD, penance))
             return true;
 
-        prompt += "Really unwield ";
+        prompt += jtrans("Really unwield ");
     }
     else if (oper == OPER_WEAR) // can we safely take off old item?
     {
@@ -1555,7 +1561,7 @@ bool check_old_item_warning(const item_def& item,
         if (!needs_handle_warning(old_item, OPER_TAKEOFF, penance))
             return true;
 
-        prompt += "Really take off ";
+        prompt += jtrans("Really take off ");
     }
     else if (oper == OPER_PUTON) // can we safely remove old item?
     {
@@ -1572,7 +1578,7 @@ bool check_old_item_warning(const item_def& item,
             if (!needs_handle_warning(old_item, OPER_TAKEOFF, penance))
                 return true;
 
-            prompt += "Really remove ";
+            prompt += jtrans("Really remove ");
         }
         else // rings handled in prompt_ring_to_remove
             return true;
@@ -1582,9 +1588,17 @@ bool check_old_item_warning(const item_def& item,
 
     // now ask
     prompt += old_item.name(DESC_INVENTORY);
-    prompt += "?";
+
+    switch (oper)
+    {
+    case OPER_WIELD: prompt += "を手放しますか？";
+    case OPER_WEAR:  prompt += "を脱ぎますか？";
+    case OPER_PUTON: prompt += "を外しますか？";
+    default: return true;
+    }
+
     if (penance)
-        prompt += " This could place you under penance!";
+        prompt += (" " + jtrans("This could place you under penance!"));
     return yesno(prompt.c_str(), false, 'n');
 }
 
@@ -1592,26 +1606,26 @@ static string _operation_verb(operation_types oper)
 {
     switch (oper)
     {
-    case OPER_WIELD:          return "wield";
-    case OPER_QUAFF:          return "quaff";
-    case OPER_DROP:           return "drop";
+    case OPER_WIELD:          return "手に持ち";
+    case OPER_QUAFF:          return "飲み";
+    case OPER_DROP:           return "置き";
     case OPER_EAT:            return you.species == SP_VAMPIRE ?
-                                      "drain" : "eat";
-    case OPER_TAKEOFF:        return "take off";
-    case OPER_WEAR:           return "wear";
-    case OPER_PUTON:          return "put on";
-    case OPER_REMOVE:         return "remove";
-    case OPER_READ:           return "read";
-    case OPER_MEMORISE:       return "memorise from";
-    case OPER_ZAP:            return "zap";
-    case OPER_FIRE:           return "fire";
-    case OPER_PRAY:           return "sacrifice";
-    case OPER_EVOKE:          return "evoke";
-    case OPER_DESTROY:        return "destroy";
-    case OPER_QUIVER:         return "quiver";
+                                      "血を飲み" : "食べ";
+    case OPER_TAKEOFF:        return "装備を外し";
+    case OPER_WEAR:           return "装備し";
+    case OPER_PUTON:          return "身につけ";
+    case OPER_REMOVE:         return "外し";
+    case OPER_READ:           return "読み";
+    case OPER_MEMORISE:       return "呪文を記憶し";
+    case OPER_ZAP:            return "振り";
+    case OPER_FIRE:           return "射撃し";
+    case OPER_PRAY:           return "捧げ";
+    case OPER_EVOKE:          return "発動し";
+    case OPER_DESTROY:        return "破壊し";
+    case OPER_QUIVER:         return "射撃準備し";
     case OPER_ANY:
     default:
-        return "choose";
+        return "選択し";
     }
 }
 
@@ -1800,19 +1814,25 @@ bool check_warning_inscriptions(const item_def& item,
         }
 
         // XXX: duplicates a check in delay.cc:_finish_delay()
-        string prompt = "Really " + _operation_verb(oper) + " ";
-        prompt += (in_inventory(item) ? item.name(DESC_INVENTORY)
-                                      : item.name(DESC_A));
+        string prompt = jtrans("Really ");
+
         if (nasty_stasis(item, oper)
             && item_ident(item, ISFLAG_KNOW_TYPE))
         {
-            prompt += string(" while ")
+            prompt += jtrans(string(" while ")
                       + (you.duration[DUR_TELEPORT] ? "about to teleport" :
-                         you.duration[DUR_SLOW] ? "slowed" : "hasted");
+                         you.duration[DUR_SLOW] ? "slowed" : "hasted"));
         }
-        prompt += "?";
+
+        prompt += (in_inventory(item) ? " " + item.name(DESC_INVENTORY)
+                                      : item.name(DESC_A)) + "を"
+                + _operation_verb(oper);
+
+        prompt += "ますか？";
         if (penance)
-            prompt += " This could place you under penance!";
+            prompt += " " + jtrans(" This could place you under penance!");
+
+        prompt += " [Y/N]";
         return yesno(prompt.c_str(), false, 'n')
                && check_old_item_warning(item, oper);
     }
@@ -1879,7 +1899,7 @@ int prompt_invent_item(const char *prompt,
         && type_expect != OSEL_WIELD)
     {
         mprf(MSGCH_PROMPT, "%s",
-             no_selectables_message(type_expect).c_str());
+             jtransc(no_selectables_message(type_expect)));
         return PROMPT_NOTHING;
     }
 
@@ -1910,7 +1930,7 @@ int prompt_invent_item(const char *prompt,
 
         if (need_prompt)
         {
-            mprf(MSGCH_PROMPT, "%s (<w>?</w> for menu, <w>Esc</w> to quit)",
+            mprf(MSGCH_PROMPT, jtransc("%s (<w>?</w> for menu, <w>Esc</w> to quit)"),
                  prompt);
         }
         else
@@ -2009,7 +2029,7 @@ int prompt_invent_item(const char *prompt,
             ret = letter_to_index(keyin);
 
             if (must_exist && !you.inv[ret].defined())
-                mpr("You don't have any such object.");
+                mpr(jtrans("You don't have any such object."));
             else if (!do_warning || check_warning_inscriptions(you.inv[ret], oper))
                 break;
         }
@@ -2082,8 +2102,8 @@ bool item_is_evokable(const item_def &item, bool reach, bool known,
                       bool all_wands, bool msg, bool equip)
 {
     const string error = item_is_melded(item)
-            ? "Your " + item.name(DESC_QUALNAME) + " is melded into your body."
-            : "That item can only be evoked when wielded.";
+            ? jtrans("Your ") + item.name(DESC_QUALNAME) + jtrans(" is melded into your body.")
+            : jtrans("That item can only be evoked when wielded.");
 
     if (is_unrandom_artefact(item))
     {
@@ -2114,7 +2134,7 @@ bool item_is_evokable(const item_def &item, bool reach, bool known,
         if (item.used_count == ZAPCOUNT_EMPTY)
         {
             if (msg)
-                mpr("This wand has no charges.");
+                mpr(jtrans("This wand has no charges."));
             return false;
         }
         return true;
@@ -2135,7 +2155,7 @@ bool item_is_evokable(const item_def &item, bool reach, bool known,
         }
 
         if (msg)
-            mpr("That item cannot be evoked!");
+            mpr(jtrans("That item cannot be evoked!"));
         return false;
 
     case OBJ_RODS:
@@ -2161,7 +2181,7 @@ bool item_is_evokable(const item_def &item, bool reach, bool known,
             return true;
         }
         if (msg)
-            mpr("That item cannot be evoked!");
+            mpr(jtrans("That item cannot be evoked!"));
         return false;
 
     case OBJ_MISCELLANY:
@@ -2176,7 +2196,7 @@ bool item_is_evokable(const item_def &item, bool reach, bool known,
         // else fall through
     default:
         if (msg)
-            mpr("That item cannot be evoked!");
+            mpr(jtrans("That item cannot be evoked!"));
         return false;
     }
 }

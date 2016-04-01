@@ -15,6 +15,7 @@
 #include <sstream>
 
 #include "ability.h"
+#include "database.h"
 #include "describe-god.h"
 #include "evoke.h"
 #include "exercise.h"
@@ -33,6 +34,7 @@
 #include "sprint.h"
 #include "state.h"
 #include "stringutil.h"
+#include "unicode.h"
 #include "unwind.h"
 
 typedef function<string ()> string_fn;
@@ -267,19 +269,19 @@ static void _change_skill_level(skill_type exsk, int n)
         mprf(MSGCH_INTRINSIC_GAIN, "You have mastered %s!", skill_name(exsk));
     else if (abs(n) == 1 && you.num_turns)
     {
-        mprf(MSGCH_INTRINSIC_GAIN, "Your %s%s skill %s to level %d!",
-             specify_base ? "base " : "",
-             skill_name(exsk), (n > 0) ? "increases" : "decreases",
-             you.skills[exsk]);
+        mprf(MSGCH_INTRINSIC_GAIN, jtransc("Your %s%s skill %s to level %d!"),
+             specify_base ? "もともとの" : "",
+             jtransc(skill_name(exsk)),
+             you.skills[exsk], jtransc((n > 0) ? "increases" : "decreases"));
     }
     else if (you.num_turns)
     {
-        mprf(MSGCH_INTRINSIC_GAIN, "Your %s%s skill %s %d levels and is now "
-             "at level %d!",
-             specify_base ? "base " : "",
-             skill_name(exsk),
-             (n > 0) ? "gained" : "lost",
-             abs(n), you.skills[exsk]);
+        mprf(MSGCH_INTRINSIC_GAIN, jtransc("Your %s%s skill %s %d levels and is now "
+                                           "at level %d!"),
+             specify_base ? "もともとの" : "",
+             jtransc(skill_name(exsk)),
+             abs(n), jtransc((n > 0) ? "gained" : "lost"),
+             you.skills[exsk]);
     }
 
     if (you.skills[exsk] == n && n > 0)
@@ -1256,7 +1258,7 @@ static string _replace_skill_keys(const string &text)
 
         ASSERT(!value.empty());
 
-        res << value;
+        res << jtrans(value);
 
         last = end + 1;
     }
@@ -1380,6 +1382,8 @@ string skill_title_by_rank(skill_type best_skill, uint8_t skill_rank,
     }
 
     {
+        result = jtrans(result);
+
         unwind_var<species_type> sp(Skill_Species, species);
         result = _replace_skill_keys(result);
     }
@@ -1670,22 +1674,25 @@ void dump_skills(string &text)
     {
         int real = you.skill((skill_type)i, 10, true);
         int cur  = you.skill((skill_type)i, 10);
+        string lvl = real == 270 ? "  27" :
+                     real >= 100 ? make_stringf("%.1f", real * 0.1)
+                                 : make_stringf(" %.1f", real * 0.1);
+
         if (real > 0 || (!you.auto_training && you.train[i] > 0))
         {
-            text += make_stringf(" %c Level %.*f%s %s\n",
+            text += make_stringf((" " + jtransln(" %c Level %.*f%s %s\n")).c_str(),
                                  real == 270       ? 'O' :
                                  !you.can_train[i] ? ' ' :
                                  you.train[i] == 2 ? '*' :
                                  you.train[i]      ? '+' :
                                                      '-',
-                                 real == 270 ? 0 : 1,
-                                 real * 0.1,
+                                 chop_string(jtrans(skill_name(static_cast<skill_type>(i))) + "スキル", 14).c_str(),
+                                 lvl.c_str(),
                                  real != cur
                                      ? make_stringf("(%.*f)",
                                            cur == 270 ? 0 : 1,
                                            cur * 0.1).c_str()
-                                     : "",
-                                 skill_name(static_cast<skill_type>(i)));
+                                     : "");
         }
     }
 }

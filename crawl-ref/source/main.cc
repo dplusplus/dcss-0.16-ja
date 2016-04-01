@@ -415,7 +415,7 @@ NORETURN static void _launch_game()
 
     if (!game_start && you.prev_save_version != Version::Long)
     {
-        const string note = make_stringf("Upgraded the game from %s to %s",
+        const string note = make_stringf(jtransc("Upgraded the game from %s to %s"),
                                          you.prev_save_version.c_str(),
                                          Version::Long);
         take_note(Note(NOTE_MESSAGE, 0, 0, note));
@@ -423,10 +423,10 @@ NORETURN static void _launch_game()
 
     if (!crawl_state.game_is_tutorial())
     {
-        msg::stream << "<yellow>Welcome" << (game_start? "" : " back") << ", "
-                    << you.your_name << " the "
-                    << species_name(you.species)
-                    << " " << you.class_name << ".</yellow>"
+        msg::stream << "<yellow>" << (game_start? jtrans("Welcome") : jtrans("Welcome back")) << "、"
+                    << jtrans(species_name(you.species)) << "の"
+                    << jtrans(you.class_name)
+                    << "『" << you.your_name << "』よ。</yellow>"
                     << endl;
     }
 
@@ -443,7 +443,7 @@ NORETURN static void _launch_game()
     _god_greeting_message(game_start);
 
     if (!crawl_state.game_is_tutorial())
-        mpr("Press <w>?</w> for a list of commands and other information.");
+        mpr(jtrans("Press <w>?</w> for a list of commands and other information."));
 
     _prep_input();
 
@@ -577,7 +577,7 @@ static void _wanderer_startup_message()
         // skills at the start of the game (one or two skills should be
         // easily guessed from starting equipment).  Anyway, we'll give
         // the player a message to warn them (and a reason why). - bwr
-        mpr("You wake up in a daze, and can't recall much.");
+        mpr(jtrans("You wake up in a daze, and can't recall much."));
     }
 }
 
@@ -585,7 +585,7 @@ static void _wanderer_note_items()
 {
     ostringstream equip_str;
     equip_str << you.your_name
-            << " set off with: ";
+            << jtrans(" set off with: ");
     bool first_item = true;
 
     for (int i = 0; i < ENDOFPACK; ++i)
@@ -652,10 +652,10 @@ static void _god_greeting_message(bool game_start)
 static void _take_starting_note()
 {
     ostringstream notestr;
-    notestr << you.your_name << ", the "
-            << species_name(you.species) << " "
-            << you.class_name
-            << ", began the quest for the Orb.";
+    notestr << jtrans(species_name(you.species)) << "の"
+            << jtrans(you.class_name)
+            << "『" << you.your_name << "』"
+            << "がオーブを探す冒険を始めた";
     take_note(Note(NOTE_MESSAGE, 0, 0, notestr.str().c_str()));
     mark_milestone("begin", "began the quest for the Orb.");
 
@@ -665,7 +665,7 @@ static void _take_starting_note()
 #ifdef WIZARD
     if (you.wizard)
     {
-        notestr << "You started the game in wizard mode.";
+        notestr << jtrans("You started the game in wizard mode.");
         take_note(Note(NOTE_MESSAGE, 0, 0, notestr.str().c_str()));
 
         notestr.str("");
@@ -689,7 +689,7 @@ static void _startup_hints_mode()
     Hints.hints_just_triggered = true;
 
     msg::streams(MSGCH_TUTORIAL)
-        << "Press any key to start the hints mode intro, or Escape to skip it."
+        << jtrans("Press any key to start the hints mode intro, or Escape to skip it.")
         << endl;
 
     flush_prev_message();
@@ -738,7 +738,7 @@ static void _do_wizard_command(int wiz_command, bool silent_fail)
         if (player_in_branch(BRANCH_ABYSS))
             wizard_set_abyss();
         else
-            mpr("You can only abyss_teleport() inside the Abyss.");
+            mpr(jtrans("You can only abyss_teleport() inside the Abyss."));
         break;
 
     case 'b': wizard_blink(); break;
@@ -788,7 +788,7 @@ static void _do_wizard_command(int wiz_command, bool silent_fail)
         if (player_in_branch(BRANCH_LABYRINTH))
             change_labyrinth(true);
         else
-            mpr("This only makes sense in a labyrinth!");
+            mpr(jtrans("This only makes sense in a labyrinth!"));
         break;
     // case 'K': break;
     case CONTROL('K'): wizard_clear_used_vaults(); break;
@@ -877,7 +877,7 @@ static void _do_wizard_command(int wiz_command, bool silent_fail)
             you.redraw_experience = true;
         }
         else
-            mpr("But you're not in Zot Defence!");
+            mpr(jtrans("But you're not in Zot Defence!"));
         break;
 
     case '!': wizard_memorise_spec_spell(); break;
@@ -898,7 +898,7 @@ static void _do_wizard_command(int wiz_command, bool silent_fail)
     case '_': wizard_join_religion(); break;
 
     case '=':
-        mprf("Cost level: %d  Total experience: %d  Next cost level: %d Skill cost: %d",
+        mprf(jtransc("Cost level: %d  Total experience: %d  Next cost level: %d Skill cost: %d"),
               you.skill_cost_level, you.total_experience,
               skill_cost_needed(you.skill_cost_level + 1),
               calc_skill_cost(you.skill_cost_level));
@@ -910,7 +910,7 @@ static void _do_wizard_command(int wiz_command, bool silent_fail)
 
     case ']':
         if (!wizard_add_mutation())
-            mpr("Failure to give mutation.");
+            mpr(jtrans("Failure to give mutation."));
         break;
     case '}': wizard_reveal_traps(); break;
 
@@ -935,7 +935,7 @@ static void _do_wizard_command(int wiz_command, bool silent_fail)
         if (!silent_fail)
         {
             formatted_mpr(formatted_string::parse_string(
-                              "Not a <magenta>Wizard</magenta> Command."));
+                              jtrans("Not a <magenta>Wizard</magenta> Command.")));
         }
         break;
     }
@@ -966,20 +966,20 @@ static void _handle_wizard_command()
 
     if (!you.wizard)
     {
-        mprf(MSGCH_WARN, "WARNING: ABOUT TO ENTER WIZARD MODE!");
+        mpr_nojoin(MSGCH_WARN, jtrans("WARNING: ABOUT TO ENTER WIZARD MODE!"));
 
 #ifndef SCORE_WIZARD_CHARACTERS
         if (!you.explore)
-            mprf(MSGCH_WARN, "If you continue, your game will not be scored!");
+            mpr_nojoin(MSGCH_WARN, jtrans("If you continue, your game will not be scored!"));
 #endif
 
-        if (!yes_or_no("Do you really want to enter wizard mode?"))
+        if (!yes_or_no(jtransc("Do you really want to enter wizard mode?")))
         {
             canned_msg(MSG_OK);
             return;
         }
 
-        take_note(Note(NOTE_MESSAGE, 0, 0, "Entered wizard mode."));
+        take_note(Note(NOTE_MESSAGE, 0, 0, jtrans("Entered wizard mode.")));
 
 #ifndef SCORE_WIZARD_CHARACTERS
         if (!you.explore)
@@ -992,14 +992,14 @@ static void _handle_wizard_command()
 
         if (crawl_state.cmd_repeat_start)
         {
-            crawl_state.cancel_cmd_repeat("Can't repeat entering wizard "
-                                          "mode.");
+            crawl_state.cancel_cmd_repeat(jtrans("Can't repeat entering wizard "
+                                                 "mode."));
             return;
         }
     }
 
     {
-        mprf(MSGCH_PROMPT, "Enter Wizard Command (? - help): ");
+        mpr_nojoin(MSGCH_PROMPT, jtrans("Enter Wizard Command (? - help): ") + " ");
         cursor_control con(true);
         wiz_command = getchm();
         if (wiz_command == '*')
@@ -1029,8 +1029,8 @@ static void _handle_wizard_command()
             break;
 
         default:
-            crawl_state.cant_cmd_repeat("You cannot repeat that "
-                                        "wizard command.");
+            crawl_state.cant_cmd_repeat(jtrans("You cannot repeat that "
+                                               "wizard command."));
             return;
         }
     }
@@ -1052,19 +1052,19 @@ static void _enter_explore_mode()
         _handle_wizard_command();
     else if (!you.explore)
     {
-        mprf(MSGCH_WARN, "WARNING: ABOUT TO ENTER EXPLORE MODE!");
+        mpr_nojoin(MSGCH_WARN, jtrans("WARNING: ABOUT TO ENTER EXPLORE MODE!"));
 
 #ifndef SCORE_WIZARD_CHARACTERS
         mprf(MSGCH_WARN, "If you continue, your game will not be scored!");
 #endif
 
-        if (!yes_or_no("Do you really want to enter explore mode?"))
+        if (!yes_or_no(jtransc("Do you really want to enter explore mode?")))
         {
             canned_msg(MSG_OK);
             return;
         }
 
-        take_note(Note(NOTE_MESSAGE, 0, 0, "Entered explore mode."));
+        take_note(Note(NOTE_MESSAGE, 0, 0, jtrans("Entered explore mode.")));
 
 #ifndef SCORE_WIZARD_CHARACTERS
         _log_wizmode_entrance();
@@ -1076,7 +1076,7 @@ static void _enter_explore_mode()
 
         if (crawl_state.cmd_repeat_start)
         {
-            crawl_state.cancel_cmd_repeat("Can't repeat entering explore mode");
+            crawl_state.cancel_cmd_repeat(jtrans("Can't repeat entering explore mode"));
             return;
         }
     }
@@ -1099,9 +1099,9 @@ static void _start_running(int dir, int mode)
             && (!you_worship(GOD_JIYVA) || you.penance[GOD_JIYVA]))
         {
             if (dir == RDIR_REST)
-                mprf(MSGCH_WARN, "You're standing next to a slime covered wall!");
+                mpr_nojoin(MSGCH_WARN, jtrans("You're standing next to a slime covered wall!"));
             else
-                mprf(MSGCH_WARN, "You're about to run into the slime covered wall!");
+                mpr_nojoin(MSGCH_WARN, jtrans("You're about to run into the slime covered wall!"));
             return;
         }
     }
@@ -1137,7 +1137,7 @@ static bool _cmd_is_repeatable(command_type cmd, bool is_again = false)
     case CMD_READ_MESSAGES:
     case CMD_SEARCH_STASHES:
     case CMD_LOOKUP_HELP:
-        mpr("You can't repeat informational commands.");
+        mpr(jtrans("You can't repeat informational commands."));
         return false;
 
     // Multi-turn commands
@@ -1154,7 +1154,7 @@ static bool _cmd_is_repeatable(command_type cmd, bool is_again = false)
     case CMD_MEMORISE_SPELL:
     case CMD_EXPLORE:
     case CMD_INTERLEVEL_TRAVEL:
-        mpr("You can't repeat multi-turn commands.");
+        mpr(jtrans("You can't repeat multi-turn commands."));
         return false;
 
     // Miscellaneous non-repeatable commands.
@@ -1178,20 +1178,20 @@ static bool _cmd_is_repeatable(command_type cmd, bool is_again = false)
     case CMD_EDIT_PLAYER_TILE:
 #endif
     case CMD_LUA_CONSOLE:
-        mpr("You can't repeat that command.");
+        mpr(jtrans("You can't repeat that command."));
         return false;
 
     case CMD_DISPLAY_MAP:
-        mpr("You can't repeat map commands.");
+        mpr(jtrans("You can't repeat map commands."));
         return false;
 
     case CMD_MOUSE_MOVE:
     case CMD_MOUSE_CLICK:
-        mpr("You can't repeat mouse clicks or movements.");
+        mpr(jtrans("You can't repeat mouse clicks or movements."));
         return false;
 
     case CMD_REPEAT_CMD:
-        mpr("You can't repeat the repeat command!");
+        mpr(jtrans("You can't repeat the repeat command!"));
         return false;
 
     case CMD_RUN_LEFT:
@@ -1202,14 +1202,14 @@ static bool _cmd_is_repeatable(command_type cmd, bool is_again = false)
     case CMD_RUN_DOWN_LEFT:
     case CMD_RUN_UP_RIGHT:
     case CMD_RUN_DOWN_RIGHT:
-        mpr("Why would you want to repeat a run command?");
+        mpr(jtrans("Why would you want to repeat a run command?"));
         return false;
 
     case CMD_PREV_CMD_AGAIN:
         ASSERT(!is_again);
         if (crawl_state.prev_cmd == CMD_NO_CMD)
         {
-            mpr("No previous command to repeat.");
+            mpr(jtrans("No previous command to repeat."));
             return false;
         }
 
@@ -1238,15 +1238,15 @@ static bool _cmd_is_repeatable(command_type cmd, bool is_again = false)
     case CMD_MOVE_DOWN_RIGHT:
         if (!i_feel_safe())
         {
-            return yesno("Really repeat movement command while monsters "
-                         "are nearby?", false, 'n');
+            return yesno(jtransc("Really repeat movement command while monsters "
+                                 "are nearby?"), false, 'n');
         }
 
         return true;
 
     case CMD_NO_CMD:
     case CMD_NO_CMD_DEFAULT:
-        mpr("Unknown command, not repeating.");
+        mpr(jtrans("Unknown command, not repeating."));
         return false;
 
     default:
@@ -1356,7 +1356,7 @@ static void _update_place_info()
 static void _input()
 {
     if (crawl_state.seen_hups)
-        save_game(true, "Game saved, see you later!");
+        save_game(true, jtransc("Game saved, see you later!"));
 
     crawl_state.clear_mon_acting();
 
@@ -1385,8 +1385,8 @@ static void _input()
     {
         // User pressed a key, so stop repeating commands and discard
         // the keypress.
-        crawl_state.cancel_cmd_repeat("Key pressed, interrupting command "
-                                      "repetition.");
+        crawl_state.cancel_cmd_repeat(jtrans("Key pressed, interrupting command "
+                                             "repetition."));
         crawl_state.prev_cmd = CMD_NO_CMD;
         flush_prev_message();
         getchm();
@@ -1410,8 +1410,8 @@ static void _input()
     {
         if (crawl_state.repeat_cmd != CMD_WIZARD)
         {
-            crawl_state.cancel_cmd_repeat("Cannot move, cancelling command "
-                                          "repetition.");
+            crawl_state.cancel_cmd_repeat(jtrans("Cannot move, cancelling command "
+                                                 "repetition."));
         }
         world_reacts();
         return;
@@ -1475,7 +1475,7 @@ static void _input()
         if (!has_pending_input() && !kbhit())
         {
             if (++crawl_state.lua_calls_no_turn > 1000)
-                mprf(MSGCH_ERROR, "Infinite lua loop detected, aborting.");
+                mpr_nojoin(MSGCH_ERROR, jtrans("Infinite lua loop detected, aborting."));
             else
             {
                 if (!clua.callfn("ready", 0, 0) && !clua.error.empty())
@@ -1500,7 +1500,7 @@ static void _input()
         const command_type cmd = you.turn_is_over ? CMD_NO_CMD : _get_next_cmd();
 
         if (crawl_state.seen_hups)
-            save_game(true, "Game saved, see you later!");
+            save_game(true, jtransc("Game saved, see you later!"));
 
         crawl_state.waiting_for_command = false;
 
@@ -1576,15 +1576,15 @@ static bool _can_take_stairs(dungeon_feature_type ftype, bool down,
     if (you.beheld() && !you.confused())
     {
         const monster* beholder = you.get_any_beholder();
-        mprf("You cannot move away from %s!",
-             beholder->name(DESC_THE, true).c_str());
+        mprf(jtransc("You cannot move away from %s!"),
+             jtransc(beholder->name(DESC_THE, true)));
         return false;
     }
 
     // Held
     if (you.attribute[ATTR_HELD])
     {
-        mprf("You can't do that while %s.", held_status());
+        mpr(jtrans(make_stringf("You can't do that while %s.", held_status())));
         return false;
     }
 
@@ -1611,18 +1611,18 @@ static bool _can_take_stairs(dungeon_feature_type ftype, bool down,
             && (!down || !known_shaft))
         {
             if (ftype == DNGN_STONE_ARCH)
-                mpr("There is nothing on the other side of the stone arch.");
+                mpr(jtrans("There is nothing on the other side of the stone arch."));
             else if (ftype == DNGN_ABANDONED_SHOP)
-                mpr("This shop appears to be closed.");
+                mpr(jtrans("This shop appears to be closed."));
             else if (ftype == DNGN_SEALED_STAIRS_UP
                      || ftype == DNGN_SEALED_STAIRS_DOWN )
             {
-                mpr("A magical barricade bars your way!");
+                mpr(jtrans("A magical barricade bars your way!"));
             }
             else if (down)
-                mpr("You can't go down here!");
+                mpr(jtrans("You can't go down here!"));
             else
-                mpr("You can't go up here!");
+                mpr(jtrans("You can't go up here!"));
             return false;
         }
     }
@@ -1643,13 +1643,13 @@ static bool _prompt_dangerous_portal(dungeon_feature_type ftype)
     {
     case DNGN_ENTER_PANDEMONIUM:
     case DNGN_ENTER_ABYSS:
-        return yesno("If you enter this portal you will not be able to return "
-                     "immediately. Continue?", false, 'n');
+        return yesno(jtransc("If you enter this portal you will not be able to return "
+                             "immediately. Continue?"), false, 'n');
 
     case DNGN_MALIGN_GATEWAY:
-        return yesno("Are you sure you wish to approach this portal? There's no "
-                     "telling what its forces would wreak upon your fragile "
-                     "self.", false, 'n');
+        return yesno(jtransc("Are you sure you wish to approach this portal? There's no "
+                             "telling what its forces would wreak upon your fragile "
+                             "self."), false, 'n');
 
     default:
         return true;
@@ -1668,9 +1668,9 @@ static bool _prompt_unique_pan_rune(dungeon_feature_type ygrd)
     item_def* rune = find_floor_item(OBJ_MISCELLANY, MISC_RUNE_OF_ZOT);
     if (rune && item_is_unique_rune(*rune))
     {
-        return yesno("An item of great power still resides in this realm, "
-                     "and once you leave you can never return. "
-                     "Are you sure you want to leave?", false, 'n');
+        return yesno(jtransc("An item of great power still resides in this realm, "
+                             "and once you leave you can never return. "
+                             "Are you sure you want to leave?"), false, 'n');
     }
     return true;
 }
@@ -1699,7 +1699,7 @@ static bool _prompt_stairs(dungeon_feature_type ygrd, bool down)
     {
         // "unsafe", as often you bail at single-digit hp and a wasted turn to
         // an overeager prompt cancellation might be nasty.
-        if (!yesno("Are you sure you want to leave this ziggurat?", false, 'n'))
+        if (!yesno(jtransc("Are you sure you want to leave this ziggurat?"), false, 'n'))
         {
             canned_msg(MSG_OK);
             return false;
@@ -1716,13 +1716,13 @@ static bool _prompt_stairs(dungeon_feature_type ygrd, bool down)
     // Escaping.
     if (!down && ygrd == DNGN_EXIT_DUNGEON && !player_has_orb())
     {
-        string prompt = make_stringf("Are you sure you want to leave %s?%s",
-                                     branches[root_branch].longname,
+        string prompt = make_stringf(jtransc("Are you sure you want to leave %s?%s"),
+                                     tagged_jtransc("[branch]", branches[root_branch].longname),
                                      crawl_state.game_is_tutorial() ? "" :
-                                     " This will make you lose the game!");
+                                     jtransc(" This will make you lose the game!"));
         if (!yesno(prompt.c_str(), false, 'n'))
         {
-            mpr("Alright, then stay!");
+            mpr(jtrans("Alright, then stay!"));
             return false;
         }
     }
@@ -1763,21 +1763,21 @@ static void _take_stairs(bool down)
 
 static void _experience_check()
 {
-    mprf("You are a level %d %s %s.",
+    mprf(jtransc("You are a level %d %s %s."),
          you.experience_level,
-         species_name(you.species).c_str(),
-         you.class_name.c_str());
+         jtransc(species_name(you.species)),
+         jtransc(you.class_name));
     int perc = get_exp_progress();
 
     if (you.experience_level < you.get_max_xl())
     {
-        mprf("You are %d%% of the way to level %d.", perc,
-              you.experience_level + 1);
+        mprf(jtransc("You are %d%% of the way to level %d."),
+             you.experience_level + 1, perc);
     }
     else
     {
-        mprf("I'm sorry, level %d is as high as you can go.", you.get_max_xl());
-        mpr("With the way you've been playing, I'm surprised you got this far.");
+        mprf(jtransc("I'm sorry, level %d is as high as you can go."), you.get_max_xl());
+        mpr(jtrans("With the way you've been playing, I'm surprised you got this far."));
     }
 
     if (you.species == SP_FELID)
@@ -1795,14 +1795,14 @@ static void _experience_check()
              / (exp_needed(xl + 1) - exp_needed(xl));
         perc = (nl - xl) * 100 - perc;
         mprf(you.lives < 2 ?
-             "You'll get an extra life in %d.%02d levels' worth of XP." :
-             "If you died right now, you'd get an extra life in %d.%02d levels' worth of XP.",
+             jtransc("You'll get an extra life in %d.%02d levels' worth of XP.") :
+             jtransc("If you died right now, you'd get an extra life in %d.%02d levels' worth of XP."),
              perc / 100, perc % 100);
     }
 
     handle_real_time();
-    msg::stream << "Play time: " << make_time_string(you.real_time)
-                << " (" << you.num_turns << " turns)"
+    msg::stream << jtrans("Play time:") + " " << make_time_string(you.real_time)
+                << " (" << you.num_turns << jtrans(" turns)")
                 << endl;
 #ifdef DEBUG_DIAGNOSTICS
     if (you.gourmand())
@@ -1820,18 +1820,18 @@ static void _do_remove_armour()
 {
     if (you.species == SP_FELID)
     {
-        mpr("You can't remove your fur, sorry.");
+        mpr(jtrans("You can't remove your fur, sorry."));
         return;
     }
 
     if (!form_can_wear())
     {
-        mpr("You can't wear or remove anything in your present form.");
+        mpr(jtrans("You can't wear or remove anything in your present form."));
         return;
     }
 
     int index = 0;
-    if (armour_prompt("Take off which item?", &index, OPER_TAKEOFF))
+    if (armour_prompt(jtransc("Take off which item?"), &index, OPER_TAKEOFF))
         takeoff_armour(index);
 }
 
@@ -1839,10 +1839,10 @@ static void _toggle_travel_speed()
 {
     you.travel_ally_pace = !you.travel_ally_pace;
     if (you.travel_ally_pace)
-        mpr("You pace your travel speed to your slowest ally.");
+        mpr(jtrans("You pace your travel speed to your slowest ally."));
     else
     {
-        mpr("You travel at normal speed.");
+        mpr(jtrans("You travel at normal speed."));
         you.running.travel_speed = 0;
     }
 }
@@ -1851,7 +1851,7 @@ static void _do_rest()
 {
     if (you.hunger_state == HS_STARVING && !you_min_hunger())
     {
-        mpr("You're too hungry to rest.");
+        mpr(jtrans("You're too hungry to rest."));
         return;
     }
 
@@ -1863,10 +1863,10 @@ static void _do_rest()
                     && you.hunger_state == HS_STARVING))
             && you.magic_points == you.max_magic_points)
         {
-            mpr("You start waiting.");
+            mpr(jtrans("You start waiting."));
         }
         else
-            mpr("You start resting.");
+            mpr(jtrans("You start resting."));
     }
 
     _start_running(RDIR_REST, RMODE_REST_DURATION);
@@ -1876,12 +1876,12 @@ static void _do_clear_map()
 {
     if (Options.show_travel_trail && env.travel_trail.size())
     {
-        mpr("Clearing travel trail.");
+        mpr(jtrans("Clearing travel trail."));
         clear_travel_trail();
     }
     else
     {
-        mpr("Clearing level map.");
+        mpr(jtrans("Clearing level map."));
         clear_map();
         crawl_view.set_player_at(you.pos());
     }
@@ -1895,8 +1895,8 @@ static void _do_display_map()
 #ifdef USE_TILE_LOCAL
     // Since there's no actual overview map, but the functionality
     // exists, give a message to explain what's going on.
-    mpr("Move the cursor to view the level map, or type <w>?</w> for "
-        "a list of commands.");
+    mpr(jtrans("Move the cursor to view the level map, or type <w>?</w> for "
+               "a list of commands."));
     flush_prev_message();
 #endif
 
@@ -1904,7 +1904,7 @@ static void _do_display_map()
     const bool travel = show_map(pos, true, true, true);
 
 #ifdef USE_TILE_LOCAL
-    mpr("Returning to the game...");
+    mpr(jtrans("Returning to the game..."));
 #endif
     if (travel)
         start_translevel_travel(pos);
@@ -1914,7 +1914,7 @@ static void _do_cycle_quiver(int dir)
 {
     if (you.species == SP_FELID)
     {
-        mpr("You can't grasp things well enough to throw them.");
+        mpr(jtrans("You can't grasp things well enough to throw them."));
         return;
     }
 
@@ -1930,16 +1930,16 @@ static void _do_cycle_quiver(int dir)
         you.m_quiver->on_item_fired(you.inv[next], true);
 
         if (next == cur)
-            mpr("No other missiles available. Use F to throw any item.");
+            mpr(jtrans("No other missiles available. Use F to throw any item."));
     }
     else if (cur == -1)
-        mpr("No missiles available. Use F to throw any item.");
+        mpr(jtrans("No missiles available. Use F to throw any item."));
 }
 
 static void _do_list_gold()
 {
     if (shopping_list.empty())
-        mprf("You have %d gold piece%s.", you.gold, you.gold != 1 ? "s" : "");
+        mprf(jtransc("You have %d gold piece%s."), you.gold, you.gold != 1 ? "s" : "");
     else
         shopping_list.display();
 }
@@ -2027,7 +2027,7 @@ void process_command(command_type cmd)
             Options.autopickup_on = 1;
         else
             Options.autopickup_on = 0;
-        mprf("Autopickup is now %s.", Options.autopickup_on > 0 ? "on" : "off");
+        mprf(jtransc("Autopickup is now %s."), Options.autopickup_on > 0 ? "開始" : "停止");
         break;
 
     case CMD_TOGGLE_VIEWPORT_MONSTER_HP: toggle_viewport_monster_hp(); break;
@@ -2066,8 +2066,8 @@ void process_command(command_type cmd)
         // else fall-through
     case CMD_WAIT:
         you.turn_is_over = true;
-        extract_manticore_spikes("You carefully extract the manticore spikes "
-                                 "from your body.");
+        extract_manticore_spikes(jtransc("You carefully extract the manticore spikes "
+                                         "from your body."));
         break;
 
     case CMD_PICKUP:
@@ -2164,7 +2164,7 @@ void process_command(command_type cmd)
 
     case CMD_CHARACTER_DUMP:
         if (!dump_char(you.your_name))
-            mpr("Char dump unsuccessful! Sorry about that.");
+            mpr(jtrans("Char dump unsuccessful! Sorry about that."));
 #ifdef USE_TILE_WEB
         else
             tiles.send_dump_info("command", you.your_name);
@@ -2205,7 +2205,7 @@ void process_command(command_type cmd)
                 if (you.see_cell(dest))
                     full_describe_square(dest);
                 else
-                    mpr("You can't see that place.");
+                    mpr(jtrans("You can't see that place."));
             }
         }
         break;
@@ -2243,8 +2243,8 @@ void process_command(command_type cmd)
     {
         const char * const prompt
             = (Options.restart_after_game && Options.restart_after_save)
-              ? "Save game and return to main menu?"
-              : "Save game and exit?";
+              ? jtransc("Save game and return to main menu?")
+              : jtransc("Save game and exit?");
         if (yesno(prompt, true, 'n'))
             save_game(true);
         else
@@ -2253,13 +2253,13 @@ void process_command(command_type cmd)
     }
 
     case CMD_SAVE_GAME_NOW:
-        mpr("Saving game... please wait.");
+        mpr(jtrans("Saving game... please wait."));
         save_game(true);
         break;
 
     case CMD_QUIT:
         if (crawl_state.disables[DIS_CONFIRMATIONS]
-            || yes_or_no("Are you sure you want to abandon this character and quit the game?"))
+            || yes_or_no(jtransc("Are you sure you want to abandon this character and quit the game?")))
         {
             ouch(INSTANT_DEATH, KILLED_BY_QUITTING);
         }
@@ -2282,9 +2282,9 @@ void process_command(command_type cmd)
     default:
         // The backslash in ?\? is there so it doesn't start a trigraph.
         if (crawl_state.game_is_hints())
-            mpr("Unknown command. (For a list of commands type <w>?\?</w>.)");
+            mpr(jtrans("Unknown command. (For a list of commands type <w>?\?</w>.)"));
         else // well, not examine, but...
-            mprf(MSGCH_EXAMINE_FILTER, "Unknown command.");
+            mpr_nojoin(MSGCH_EXAMINE_FILTER, jtrans("Unknown command."));
 
         break;
     }
@@ -2310,9 +2310,9 @@ static void _prep_input()
     {
         ASSERT(you_worship(GOD_ASHENZARI));
         if (you.seen_portals == 1)
-            mprf(MSGCH_GOD, "You have a vision of a gate.");
+            mpr_nojoin(MSGCH_GOD, jtrans("You have a vision of a gate."));
         else
-            mprf(MSGCH_GOD, "You have a vision of multiple gates.");
+            mpr_nojoin(MSGCH_GOD, jtrans("You have a vision of multiple gates."));
 
         you.seen_portals = 0;
     }
@@ -2333,11 +2333,11 @@ static void _check_banished()
         you.banished = false;
         ASSERT(brdepth[BRANCH_ABYSS] != -1);
         if (!player_in_branch(BRANCH_ABYSS))
-            mprf(MSGCH_BANISHMENT, "You are cast into the Abyss!");
+            mpr_nojoin(MSGCH_BANISHMENT, jtrans("You are cast into the Abyss!"));
         else if (you.depth < brdepth[BRANCH_ABYSS])
-            mprf(MSGCH_BANISHMENT, "You are cast deeper into the Abyss!");
+            mpr_nojoin(MSGCH_BANISHMENT, jtrans("You are cast deeper into the Abyss!"));
         else
-            mprf(MSGCH_BANISHMENT, "The Abyss bends around you!");
+            mpr_nojoin(MSGCH_BANISHMENT, jtrans("The Abyss bends around you!"));
         more();
         banished(you.banished_by);
     }
@@ -2424,9 +2424,9 @@ static void _update_golubria_traps()
             if (--trap->ammo_qty <= 0)
             {
                 if (you.see_cell(c))
-                    mpr("Your passage of Golubria closes with a snap!");
+                    mpr(jtrans("Your passage of Golubria closes with a snap!"));
                 else
-                    mprf(MSGCH_SOUND, "You hear a snapping sound.");
+                    mpr_nojoin(MSGCH_SOUND, jtrans("You hear a snapping sound."));
                 trap->destroy();
                 noisy(spell_effect_noise(SPELL_GOLUBRIAS_PASSAGE), c);
             }
@@ -2498,9 +2498,9 @@ void world_reacts()
         // a gigabyte of bzipped ttyrec.
         // We could extend the counters to 64 bits, but in the light of the
         // above, it's an useless exercise.
-        mpr("Outside, the world ends.");
-        mpr("Sorry, but your quest for the Orb is now rather pointless. "
-            "You quit...");
+        mpr(jtrans("Outside, the world ends."));
+        mpr(jtrans("Sorry, but your quest for the Orb is now rather pointless. "
+                   "You quit..."));
         // Please do not give it a custom ktyp or make it cool in any way
         // whatsoever, because players are insane.  Usually, not being dragged
         // down by sanity is good, but this is not the case here.
@@ -2722,14 +2722,14 @@ static void _swing_at_target(coord_def move)
         if (!cleave_targets.empty())
         {
             targetter_cleave hitfunc(&you, target);
-            if (stop_attack_prompt(hitfunc, "attack"))
+            if (stop_attack_prompt(hitfunc, "攻撃し"))
                 return;
 
             if (!you.fumbles_attack())
                 attack_cleave_targets(you, cleave_targets);
         }
         else if (!you.fumbles_attack())
-            mpr("You swing at nothing.");
+            mpr(jtrans("You swing at nothing."));
         make_hungry(3, true);
         // Take the usual attack delay.
         you.time_taken = you.attack_delay(you.weapon());
@@ -2757,7 +2757,7 @@ static void _open_door(coord_def move)
     // or the chosen direction actually contains a closed door.
     if (!player_can_open_doors())
     {
-        mpr("You can't open doors in your present form.");
+        mpr(jtrans("You can't open doors in your present form."));
         return;
     }
 
@@ -2771,7 +2771,7 @@ static void _open_door(coord_def move)
 
         if (num == 0)
         {
-            mpr("There's nothing to open nearby.");
+            mpr(jtrans("There's nothing to open nearby."));
             return;
         }
 
@@ -2780,7 +2780,7 @@ static void _open_door(coord_def move)
             door_move.delta = move;
         else
         {
-            mprf(MSGCH_PROMPT, "Which direction?");
+            mpr_nojoin(MSGCH_PROMPT, jtrans("Which direction?"));
             direction_chooser_args args;
             args.restricts = DIR_DIR;
             direction(door_move, args);
@@ -2805,7 +2805,7 @@ static void _open_door(coord_def move)
                                                                  MAT_ANY,
                                                                  "veto_reason");
         if (door_veto_message.empty())
-            mpr("The door is shut tight!");
+            mpr(jtrans("The door is shut tight!"));
         else
             mpr(door_veto_message);
         if (you.confused())
@@ -2834,14 +2834,14 @@ static void _open_door(coord_def move)
         if (!door_already_open.empty())
             mpr(door_already_open);
         else
-            mpr("It's already open!");
+            mpr(jtrans("It's already open!"));
         break;
     }
     case DNGN_SEALED_DOOR:
-        mpr("That door is sealed shut!");
+        mpr(jtrans("That door is sealed shut!"));
         break;
     default:
-        mpr("There isn't anything that you can open there!");
+        mpr(jtrans("There isn't anything that you can open there!"));
         break;
     }
     if (you.confused())
@@ -2852,13 +2852,13 @@ static void _close_door()
 {
     if (!player_can_open_doors())
     {
-        mpr("You can't close doors in your present form.");
+        mpr(jtrans("You can't close doors in your present form."));
         return;
     }
 
     if (you.attribute[ATTR_HELD])
     {
-        mprf("You can't close doors while %s.", held_status());
+        mprf(jtransc("You can't close doors while %s."), held_status());
         return;
     }
 
@@ -2869,7 +2869,7 @@ static void _close_door()
     int num = _check_adjacent(DNGN_OPEN_DOOR, move);
     if (num == 0)
     {
-        mpr("There's nothing to close nearby.");
+        mpr(jtrans("There's nothing to close nearby."));
         return;
     }
     // move got set in _check_adjacent
@@ -2877,7 +2877,7 @@ static void _close_door()
         door_move.delta = move;
     else
     {
-        mprf(MSGCH_PROMPT, "Which direction?");
+        mpr_nojoin(MSGCH_PROMPT, jtrans("Which direction?"));
         direction_chooser_args args;
         args.restricts = DIR_DIR;
         direction(door_move, args);
@@ -2891,7 +2891,7 @@ static void _close_door()
 
     if (door_move.delta.origin())
     {
-        mpr("You can't close doors on yourself!");
+        mpr(jtrans("You can't close doors on yourself!"));
         return;
     }
 
@@ -2907,10 +2907,10 @@ static void _close_door()
     case DNGN_CLOSED_DOOR:
     case DNGN_RUNED_DOOR:
     case DNGN_SEALED_DOOR:
-        mpr("It's already closed!");
+        mpr(jtrans("It's already closed!"));
         break;
     default:
-        mpr("There isn't anything that you can close there!");
+        mpr(jtrans("There isn't anything that you can close there!"));
         break;
     }
     if (you.confused())
@@ -2944,13 +2944,13 @@ static void _do_berserk_no_combat_penalty()
         switch (you.berserk_penalty)
         {
         case 2:
-            mprf(MSGCH_DURATION, "You feel a strong urge to attack something.");
+            mpr_nojoin(MSGCH_DURATION, jtrans("You feel a strong urge to attack something."));
             break;
         case 4:
-            mprf(MSGCH_DURATION, "You feel your anger subside.");
+            mpr_nojoin(MSGCH_DURATION, jtrans("You feel your anger subside."));
             break;
         case 6:
-            mprf(MSGCH_DURATION, "Your blood rage is quickly leaving you.");
+            mpr_nojoin(MSGCH_DURATION, jtrans("Your blood rage is quickly leaving you."));
             break;
         }
 
@@ -3017,12 +3017,12 @@ static void _swap_places(monster* mons, const coord_def &loc)
         }
         else
         {
-            mpr("Something prevents you from swapping places.");
+            mpr(jtrans("Something prevents you from swapping places."));
             return;
         }
     }
 
-    mpr("You swap places.");
+    mpr(jtrans("You swap places."));
 
     mons->move_to_pos(loc, true, true);
     return;
@@ -3087,8 +3087,7 @@ static void _move_player(coord_def move)
 
         if (dangerous != DNGN_FLOOR || bad_mons)
         {
-            string prompt = "Are you sure you want to stumble around while "
-                            "confused and next to ";
+            string prompt = "あなたは混乱しており、";
 
             if (dangerous != DNGN_FLOOR)
                 prompt += (dangerous == DNGN_LAVA ? "lava" : "deep water");
@@ -3099,16 +3098,16 @@ static void _move_player(coord_def move)
                     name.erase(0, 4);
                 if (bad_adj.find("your") != 0)
                     bad_adj = "the " + bad_adj;
-                prompt += bad_adj + name + bad_suff;
+                prompt += jtrans(bad_adj) + name + jtrans(bad_suff);
             }
-            prompt += "?";
+            prompt += "のそばに立っています。それでも移動しますか？";
 
             if (penance)
-                prompt += " This could place you under penance!";
+                prompt += " " + jtrans(" This could place you under penance!");
 
             monster* targ = monster_at(you.pos() + move);
             if (targ && !targ->wont_attack() && you.can_see(targ))
-                prompt += " (Use ctrl+direction to attack without moving)";
+                prompt += " " + jtrans(" (Use ctrl+direction to attack without moving)");
 
             if (!crawl_state.disables[DIS_CONFIRMATIONS]
                 && !yesno(prompt.c_str(), false, 'n'))
@@ -3123,8 +3122,8 @@ static void _move_player(coord_def move)
             // Don't choose a random location to try to attack into - allows
             // abuse, since trying to move (not attack) takes no time, and
             // shouldn't. Just force confused trees to use ctrl.
-            mpr("You cannot move. (Use ctrl+direction to attack without "
-                "moving)");
+            mpr(jtrans("You cannot move. (Use ctrl+direction to attack without "
+                       "moving)"));
             return;
         }
 
@@ -3134,7 +3133,7 @@ static void _move_player(coord_def move)
             move.y = random2(3) - 1;
             you.reset_prev_move();
             if (move.origin())
-                mpr("You're too confused to move!");
+                mpr(jtrans("You're too confused to move!"));
         }
 
         const coord_def new_targ = you.pos() + move;
@@ -3144,14 +3143,14 @@ static void _move_player(coord_def move)
             you.turn_is_over = true;
             if (you.digging) // no actual damage
             {
-                mprf("Your mandibles retract as you bump into %s",
+                mprf(jtransc("Your mandibles retract as you bump into %s"),
                      feature_description_at(new_targ, false,
                                             DESC_THE).c_str());
                 you.digging = false;
             }
             else
             {
-                mprf("You bump into %s",
+                mprf(jtransc("You bump into %s"),
                      feature_description_at(new_targ, false,
                                             DESC_THE).c_str());
             }
@@ -3183,7 +3182,7 @@ static void _move_player(coord_def move)
     {
         // Why isn't the border permarock?
         if (you.digging)
-            mpr("This wall is too hard to dig through.");
+            mpr(jtrans("This wall is too hard to dig through."));
         return;
     }
 
@@ -3208,9 +3207,9 @@ static void _move_player(coord_def move)
         if (!current || !fedhas_passthrough(current))
         {
             // Probably need a better message. -cao
-            mprf("You %s carefully through the %s.", walkverb.c_str(),
-                 mons_genus(targ_monst->type) == MONS_FUNGUS ? "fungus"
-                                                             : "plants");
+            mprf(jtransc("You %s carefully through the %s."),
+                 mons_genus(targ_monst->type) == MONS_FUNGUS ? "群生する茸"
+                                                             : "草むら");
         }
         targ_monst = nullptr;
     }
@@ -3234,9 +3233,9 @@ static void _move_player(coord_def move)
         {
             you.digging = false;
             if (feat_is_solid(grd(targ)))
-                mpr("You can't dig through that.");
+                mpr(jtrans("You can't dig through that."));
             else
-                mpr("You retract your mandibles.");
+                mpr(jtrans("You retract your mandibles."));
         }
     }
 
@@ -3313,7 +3312,7 @@ static void _move_player(coord_def move)
     {
         if (you.made_nervous_by(targ))
         {
-            mpr("You're too terrified to move while being watched!");
+            mpr(jtrans("You're too terrified to move while being watched!"));
             stop_running();
             moving = false;
             you.turn_is_over = false;
@@ -3340,7 +3339,7 @@ static void _move_player(coord_def move)
 
             if (danger && !player_has_orb())
             {
-                string prompt = "Are you sure you want to leave the Orb unguarded?";
+                string prompt = jtrans("Are you sure you want to leave the Orb unguarded?");
                 if (!yesno(prompt.c_str(), false, 'n'))
                 {
                     canned_msg(MSG_OK);
@@ -3358,8 +3357,8 @@ static void _move_player(coord_def move)
 
         if (you.duration[DUR_BARBS] && !you.props.exists(BARBS_MOVE_KEY))
         {
-            string prompt = "The barbs in your skin will harm you if you move."
-                            " Continue?";
+            string prompt = jtrans("The barbs in your skin will harm you if you move."
+                                   " Continue?");
             if (!yesno(prompt.c_str(), false, 'n'))
             {
                 canned_msg(MSG_OK);
@@ -3376,10 +3375,10 @@ static void _move_player(coord_def move)
         if (you.duration[DUR_WATER_HOLD])
         {
             if (you.can_swim())
-                mpr("You deftly slip free of the water engulfing you.");
+                mpr(jtrans("You deftly slip free of the water engulfing you."));
             else //Unless you're a natural swimmer, this takes longer than normal
             {
-                mpr("With effort, you pull free of the water engulfing you.");
+                mpr(jtrans("With effort, you pull free of the water engulfing you."));
                 you.time_taken = you.time_taken * 3 / 2;
             }
             you.duration[DUR_WATER_HOLD] = 1;
@@ -3388,7 +3387,7 @@ static void _move_player(coord_def move)
 
         if (you.digging)
         {
-            mprf("You dig through %s.", feature_description_at(targ, false,
+            mprf(jtransc("You dig through %s."), feature_description_at(targ, false,
                  DESC_THE, false).c_str());
             destroy_wall(targ);
             noisy(6, you.pos());
@@ -3429,14 +3428,14 @@ static void _move_player(coord_def move)
 
         if (you.duration[DUR_BARBS])
         {
-            mprf(MSGCH_WARN,"The barbed spikes dig painfully into your body "
-            "as you move.");
+            mpr_nojoin(MSGCH_WARN, jtrans("The barbed spikes dig painfully into your body "
+                                          "as you move."));
             ouch(roll_dice(2, you.attribute[ATTR_BARBS_POW]), KILLED_BY_BARBS);
             bleed_onto_floor(you.pos(), MONS_PLAYER, 2, false);
 
             // Sometimes decrease duration even when we move.
             if (one_chance_in(3))
-                extract_manticore_spikes("The manticore spikes snap loose.");
+                extract_manticore_spikes(jtransc("The manticore spikes snap loose."));
         }
 
         if (delay_is_run(current_delay_action()))
@@ -3493,11 +3492,11 @@ static void _move_player(coord_def move)
         if (you.is_stationary())
             canned_msg(MSG_CANNOT_MOVE);
         else if (grd(targ) == DNGN_OPEN_SEA)
-            mpr("The ferocious winds and tides of the open sea thwart your progress.");
+            mpr(jtrans("The ferocious winds and tides of the open sea thwart your progress."));
         else if (grd(targ) == DNGN_LAVA_SEA)
-            mpr("The endless sea of lava is not a nice place.");
+            mpr(jtrans("The endless sea of lava is not a nice place."));
         else if (feat_is_tree(grd(targ)) && you_worship(GOD_FEDHAS))
-            mpr("You cannot walk through the dense trees.");
+            mpr(jtrans("You cannot walk through the dense trees."));
 
         stop_running();
         move.reset();
@@ -3507,15 +3506,15 @@ static void _move_player(coord_def move)
     }
     else if (beholder && !attacking)
     {
-        mprf("You cannot move away from %s!",
-            beholder->name(DESC_THE).c_str());
+        mprf(jtransc("You cannot move away from %s!"),
+             jtransc(beholder->name(DESC_THE)));
         stop_running();
         return;
     }
     else if (fmonger && !attacking)
     {
-        mprf("You cannot move closer to %s!",
-            fmonger->name(DESC_THE).c_str());
+        mprf(jtransc("You cannot move closer to %s!"),
+             jtransc(fmonger->name(DESC_THE)));
         stop_running();
         return;
     }
@@ -3593,13 +3592,13 @@ static void _check_cmd_repeat(int last_turn)
         // it does take zero turns, to cancel command repetition
         // before we reach here.
 #ifdef WIZARD
-        crawl_state.cant_cmd_repeat("Can't repeat a command which "
-                                    "takes no turns (unless it's a "
-                                    "wizard command), cancelling ");
+        crawl_state.cant_cmd_repeat(jtrans("Can't repeat a command which "
+                                           "takes no turns (unless it's a "
+                                           "wizard command), cancelling "));
 #else
-        crawl_state.cant_cmd_repeat("Can't repeat a command which "
-                                    "takes no turns, cancelling "
-                                    "repetitions.");
+        crawl_state.cant_cmd_repeat(jtrans("Can't repeat a command which "
+                                           "takes no turns, cancelling "
+                                           "repetitions."));
 #endif
         crawl_state.cancel_cmd_repeat();
         return;
@@ -3622,7 +3621,7 @@ static void _run_input_with_keys(const keyseq& keys)
 
     if (get_macro_buf_size() < old_buf_size)
     {
-        mprf(MSGCH_ERROR, "(Key replay stole keys)");
+        mpr_nojoin(MSGCH_ERROR, jtrans("(Key replay stole keys)"));
         crawl_state.cancel_cmd_all();
     }
 }
@@ -3642,12 +3641,12 @@ static void _do_cmd_repeat()
     char buf[80];
 
     // Function ensures that the buffer contains only digits.
-    int ch = _get_num_and_char("Number of times to repeat, then command key: ",
+    int ch = _get_num_and_char((jtrans("Number of times to repeat, then command key: ") + " ").c_str(),
                                buf, sizeof(buf));
 
     if (strlen(buf) == 0)
     {
-        mpr("You must enter the number of times for the command to repeat.");
+        mpr(jtrans("You must enter the number of times for the command to repeat."));
         _cancel_cmd_repeat();
         return;
     }
@@ -3665,7 +3664,7 @@ static void _do_cmd_repeat()
     c_input_reset(true);
     if (ch == ' ' || ch == CK_ENTER)
     {
-        mprf(MSGCH_PROMPT, "Enter command to be repeated: ");
+        mpr_nojoin(MSGCH_PROMPT, jtrans("Enter command to be repeated: "));
         // Enable the cursor to read input.
         cursor_control con(true);
 
@@ -3727,7 +3726,7 @@ static void _do_prev_cmd_again()
 {
     if (is_processing_macro())
     {
-        mpr("Can't re-do previous command from within a macro.");
+        mpr(jtrans("Can't re-do previous command from within a macro."));
         flush_input_buffer(FLUSH_ABORT_MACRO);
         crawl_state.cancel_cmd_again();
         crawl_state.cancel_cmd_repeat();
@@ -3736,7 +3735,7 @@ static void _do_prev_cmd_again()
 
     if (crawl_state.prev_cmd == CMD_NO_CMD)
     {
-        mpr("No previous command to re-do.");
+        mpr(jtrans("No previous command to re-do."));
         crawl_state.cancel_cmd_again();
         crawl_state.cancel_cmd_repeat();
         repeat_again_rec.clear();
@@ -3745,7 +3744,7 @@ static void _do_prev_cmd_again()
 
     if (crawl_state.doing_prev_cmd_again)
     {
-        mprf(MSGCH_ERROR, "Trying to re-do re-do command, aborting.");
+        mpr_nojoin(MSGCH_ERROR, jtrans("Trying to re-do re-do command, aborting."));
         crawl_state.cancel_cmd_all();
         return;
     }

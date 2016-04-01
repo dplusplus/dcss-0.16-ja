@@ -1710,8 +1710,8 @@ void read_options(const string &s, bool runscript, bool clear_aliases)
 
 game_options::game_options()
 {
-    language = LANG_EN;
-    lang_name = 0;
+    language = LANG_JA;
+    lang_name = "ja";
     fake_langs.clear();
 #if 0
     if (Version::ReleaseType == VER_ALPHA)

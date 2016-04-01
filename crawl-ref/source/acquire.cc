@@ -17,6 +17,7 @@
 
 #include "artefact.h"
 #include "art-enum.h"
+#include "database.h"
 #include "decks.h"
 #include "dungeon.h"
 #include "food.h"
@@ -37,6 +38,7 @@
 #include "state.h"
 #include "stringutil.h"
 #include "terrain.h"
+#include "unicode.h"
 
 static armour_type _random_nonbody_armour_type()
 {
@@ -1462,7 +1464,7 @@ int acquirement_create_item(object_class_type class_wanted,
         && agent < NUM_GODS)
     {
         if (agent == GOD_XOM)
-            simple_god_message(" snickers.", GOD_XOM);
+            simple_god_message(jtransc(" snickers."), GOD_XOM);
         else
             return _failed_acquirement(quiet);
     }
@@ -1501,21 +1503,21 @@ bool acquirement(object_class_type class_wanted, int agent,
 
     static struct { object_class_type type; const char* name; } acq_classes[] =
     {
-        { OBJ_WEAPONS,    "Weapon" },
-        { OBJ_ARMOUR,     "Armour" },
-        { OBJ_JEWELLERY,  "Jewellery" },
-        { OBJ_BOOKS,      "Book" },
-        { OBJ_STAVES,     "Staff" },
-        { OBJ_WANDS,      "Wand" },
-        { OBJ_MISCELLANY, "Miscellaneous" },
+        { OBJ_WEAPONS,    "武器" },
+        { OBJ_ARMOUR,     "鎧・服" },
+        { OBJ_JEWELLERY,  "装飾品" },
+        { OBJ_BOOKS,      "魔法書" },
+        { OBJ_STAVES,     "魔法の杖" },
+        { OBJ_WANDS,      "ワンド" },
+        { OBJ_MISCELLANY, "発動アイテム" },
         { OBJ_FOOD,       0 }, // amended below
-        { OBJ_GOLD,       "Gold" },
-        { OBJ_MISSILES,   "Ammunition" },
+        { OBJ_GOLD,       "金貨" },
+        { OBJ_MISSILES,   "矢弾・石弾" },
     };
     ASSERT(acq_classes[7].type == OBJ_FOOD);
-    acq_classes[7].name = you_worship(GOD_FEDHAS) ? "Fruit":
-                          you.species == SP_VAMPIRE  ? "Blood":
-                                                       "Food";
+    acq_classes[7].name = you_worship(GOD_FEDHAS) ? "果物":
+                          you.species == SP_VAMPIRE  ? "血液":
+                                                       "食料";
 
     int thing_created = NON_ITEM;
 
@@ -1532,13 +1534,17 @@ bool acquirement(object_class_type class_wanted, int agent,
         string line;
         for (unsigned int i = 0; i < ARRAYSZ(acq_classes); i++)
         {
-            int len = max(strlen(acq_classes[i].name),
-                          strlen(acq_classes[(i + ARRAYSZ(acq_classes) / 2)
+            int len = max(strwidth(acq_classes[i].name),
+                          strwidth(acq_classes[(i + ARRAYSZ(acq_classes) / 2)
                                              % ARRAYSZ(acq_classes)].name));
+
+            string name = chop_string(acq_classes[i].name, len);
+
+
             if (bad_class[acq_classes[i].type])
-                line += make_stringf("     %-*s", len, "");
+                line += make_stringf("     %s", "");
             else
-                line += make_stringf(" [%c] %-*s", i + 'a', len, acq_classes[i].name);
+                line += make_stringf(" [%c] %s", i + 'a', name.c_str());
 
             if (i == ARRAYSZ(acq_classes) / 2 - 1 || i == ARRAYSZ(acq_classes) - 1)
             {
@@ -1547,7 +1553,7 @@ bool acquirement(object_class_type class_wanted, int agent,
                 line.clear();
             }
         }
-        mprf(MSGCH_PROMPT, "What kind of item would you like to acquire? (\\ to view known items)");
+        mpr_nojoin(MSGCH_PROMPT, jtrans("What kind of item would you like to acquire? (\\ to view known items)"));
 
         const int keyin = toalower(get_ch());
         if (keyin >= 'a' && keyin < 'a' + (int)ARRAYSZ(acq_classes))

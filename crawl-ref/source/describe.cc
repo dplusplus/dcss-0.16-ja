@@ -34,6 +34,7 @@
 #include "godabil.h"
 #include "goditem.h"
 #include "hints.h"
+#include "japanese.h"
 #include "invent.h"
 #include "itemprop.h"
 #include "items.h"
@@ -366,7 +367,7 @@ string artefact_inscription(const item_def& item)
     const vector<string> propnames = _randart_propnames(item);
 
     string insc = comma_separated_line(propnames.begin(), propnames.end(),
-                                       " ", " ");
+                                       " ", " ");
     if (!insc.empty() && insc[insc.length() - 1] == ',')
         insc.erase(insc.length() - 1);
     return insc;
@@ -437,6 +438,15 @@ struct property_descriptor
     bool is_graded_resist;
 };
 
+static string _randart_base_type_string(const item_def &item)
+{
+    const string basename = base_type_string(item);
+    return basename == "armour" ? "防具" :
+           basename != "jewellery" ? basename :
+           jewellery_is_amulet(item) ? "amulet" :
+                                       "ring";
+}
+
 static string _randart_descrip(const item_def &item)
 {
     string description;
@@ -454,11 +464,11 @@ static string _randart_descrip(const item_def &item)
         { ARTP_DEXTERITY, "It affects your dexterity (%d).", false},
         { ARTP_SLAYING, "It affects your accuracy and damage with ranged "
                         "weapons and melee attacks (%d).", false},
-        { ARTP_FIRE, "fire", true},
-        { ARTP_COLD, "cold", true},
+        { ARTP_FIRE, "火", true},
+        { ARTP_COLD, "冷気", true},
         { ARTP_ELECTRICITY, "It insulates you from electricity.", false},
-        { ARTP_POISON, "poison", true},
-        { ARTP_NEGATIVE_ENERGY, "negative energy", true},
+        { ARTP_POISON, "毒", true},
+        { ARTP_NEGATIVE_ENERGY, "負のエネルギー", true},
         { ARTP_SUSTAB, "It sustains your strength, intelligence and dexterity.", false},
         { ARTP_MAGIC, "It affects your resistance to hostile enchantments.", false},
         { ARTP_HP, "It affects your health (%d).", false},
@@ -494,7 +504,8 @@ static string _randart_descrip(const item_def &item)
         if (*type)
         {
             description += "\n";
-            description += type;
+            description += make_stringf(jtransc(type),
+                                        item.name(DESC_BASENAME).c_str());
         }
     }
 
@@ -510,8 +521,9 @@ static string _randart_descrip(const item_def &item)
 
             // FIXME Not the nicest hack.
             char buf[80];
+
             snprintf(buf, sizeof buf, "%+d", proprt[desc.property]);
-            sdesc = replace_all(sdesc, "%d", buf);
+            sdesc = replace_all(jtrans(sdesc), "%d", buf);
 
             if (desc.is_graded_resist)
             {
@@ -529,10 +541,14 @@ static string _randart_descrip(const item_def &item)
                     "It greatly protects you from ",
                     "It renders you almost immune to "
                 };
-                sdesc = prefixes[idx] + sdesc + '.';
+                sdesc = make_stringf(jtransc(prefixes[idx]),
+                                     sdesc.c_str()) + "。";
             }
 
-            description += '\n';
+            sdesc = make_stringf(sdesc.c_str(),
+                                 jtransc(_randart_base_type_string(item)));
+
+            description += "\n";
             description += sdesc;
         }
     }
@@ -544,7 +560,8 @@ static string _randart_descrip(const item_def &item)
         snprintf(buf, sizeof buf, "\nIt makes you %s%s stealthy.",
                  (stval < -1 || stval > 1) ? "much " : "",
                  (stval < 0) ? "less" : "more");
-        description += buf;
+        description += "\n" + make_stringf(jtransc(buf),
+                                           jtransc(_randart_base_type_string(item)));
     }
 
     return description;
@@ -730,88 +747,97 @@ static string _describe_demon(const string& name, flight_type fly)
     };
 
     ostringstream description;
-    description << "One of the many lords of Pandemonium, " << name << " has ";
+    description << jtrans("One of the many lords of Pandemonium, ") << name << "』は";
 
     const string a_body = HRANDOM_ELEMENT(body_descs, 2);
-    description << article_a(a_body) << "body";
+    description << jtrans(a_body) << "体";
 
     string head_desc = HRANDOM_ELEMENT(head_names, 1);
 
     switch (fly)
     {
     case FL_WINGED:
-        description << HRANDOM_ELEMENT(wing_names, 3);
-        if (head_desc.find(" with") == 0)
-            description << " and";
+        description << "と";
+        description << jtrans(HRANDOM_ELEMENT(wing_names, 3));
+
+        if (jtrans(head_desc).find("。") != string::npos)
+            description << "を持ち、";
+        else
+            description << "、そして";
+
         break;
 
     case FL_LEVITATE:
-        description << HRANDOM_ELEMENT(lev_names, 3);
-        if (head_desc.find(" with") == 0)
-            description << " and";
+        description << "で";
+        description << jtrans(HRANDOM_ELEMENT(lev_names, 3));
         break;
 
     default:
+        description << "で、";
         break;
     }
 
-    description << head_desc << ".";
+    description << jtrans(head_desc);
+    if (jtrans(head_desc).find("。") == string::npos)
+        description << "を持っている。";
 
     if (hash_rand(40, seed, 4) < 3)
     {
         if (you.can_smell())
         {
+            description << "\n";
+
             switch (hash_rand(4, seed, 5))
             {
             case 0:
-                description << " It stinks of brimstone.";
+                description << jtrans(" It stinks of brimstone.");
                 break;
             case 1:
-                description << " It is surrounded by a sickening stench.";
+                description << jtrans(" It is surrounded by a sickening stench.");
                 break;
             case 2:
-                description << " It smells delicious!";
+                description << jtrans(" It smells delicious!");
                 break;
             case 3:
-                description << " It smells like rotting flesh"
-                            << (you.species == SP_GHOUL ? " - yum!"
-                                                       : ".");
+                description << jtrans(" It smells like rotting flesh")
+                             + (you.species == SP_GHOUL ? " - yum!"
+                                                        : ".");
                 break;
             }
         }
     }
     else if (hash_rand(2, seed, 6))
-        description << HRANDOM_ELEMENT(misc_descs, 5);
+        description << "\n" << jtrans(HRANDOM_ELEMENT(misc_descs, 5));
 
     return description.str();
 }
 
 void append_weapon_stats(string &description, const item_def &item)
 {
-    description += "\nBase accuracy: ";
+    description += "\n" + jtrans("Base accuracy: ") + " ";
     _append_value(description, property(item, PWPN_HIT), true);
-    description += "  ";
+    description += "　";
 
     const int base_dam = property(item, PWPN_DAMAGE);
     const int ammo_type = fires_ammo_type(item);
     const int ammo_dam = ammo_type == MI_NONE ? 0 :
                                                 ammo_type_damage(ammo_type);
-    description += "Base damage: ";
+    description += jtrans("Base damage:") + " ";
     _append_value(description, base_dam + ammo_dam, false);
-    description += "  ";
+    description += "　";
 
-    description += "Base attack delay: ";
+    description += jtrans("Base attack delay:") + " ";
     _append_value(description, property(item, PWPN_SPEED) / 10.0f, false);
-    description += "  ";
+    description += "　";
 
-    description += "Minimum delay: ";
+    description += jtrans("Minimum delay:") + " ";
     _append_value(description, weapon_min_delay(item) / 10.0f, false);
 
     if (item_attack_skill(item) == SK_SLINGS)
     {
-        description += make_stringf("\nFiring bullets:    Base damage: %d",
-                                    base_dam +
-                                    ammo_type_damage(MI_SLING_BULLET));
+        description += "\n" + make_stringf(jtransc("\nFiring bullets:    Base damage: %d"),
+                                           base_dam +
+                                           ammo_type_damage(MI_SLING_BULLET));
     }
 }
 
@@ -850,7 +876,6 @@ static string _describe_weapon(const item_def &item, bool verbose)
 
     if (verbose)
     {
-        description += "\n";
         append_weapon_stats(description, item);
     }
 
@@ -863,18 +888,19 @@ static string _describe_weapon(const item_def &item, bool verbose)
         switch (item_attack_skill(item))
         {
         case SK_POLEARMS:
-            description += "\n\nIt can be evoked to extend its reach.";
+            description += "\n\n" + jtrans("It can be evoked to extend its reach.");
             break;
         case SK_AXES:
-            description += "\n\nIt can hit multiple enemies in an arc"
-                           " around the wielder.";
+            description += "\n\n" + jtrans("It can hit multiple enemies in an arc"
+                                           " around the wielder.");
             break;
         case SK_SHORT_BLADES:
             {
                 string adj = (item.sub_type == WPN_DAGGER) ? "extremely"
                                                            : "particularly";
-                description += "\n\nIt is " + adj + " good for stabbing"
-                               " unaware enemies.";
+                description += "\n\nこの武器は"
+                            + make_stringf(jtransc("%s good for stabbing unaware enemies."),
+                                           jtransc(adj));
             }
             break;
         default:
@@ -897,162 +923,150 @@ static string _describe_weapon(const item_def &item, bool verbose)
         case SPWPN_FLAMING:
             if (is_range_weapon(item))
             {
-                description += "It causes projectiles fired from it to burn "
-                    "those they strike,";
+                description += jtrans("It causes projectiles fired from it to burn "
+                    "those they strike,");
             }
             else
             {
-                description += "It has been specially enchanted to burn "
-                    "those struck by it,";
+                description += jtrans("It has been specially enchanted to burn "
+                    "those struck by it,");
             }
-            description += " causing extra injury to most foes and up to half "
-                           "again as much damage against particularly "
-                           "susceptible opponents.";
+            description += jtrans("causing extra injury flaming");
             if (!is_range_weapon(item) &&
                 (damtype == DVORP_SLICING || damtype == DVORP_CHOPPING))
             {
-                description += " Big, fiery blades are also staple "
-                    "armaments of hydra-hunters.";
+                description += "\n" + jtrans(" Big, fiery blades are also staple "
+                    "armaments of hydra-hunters.");
             }
             break;
         case SPWPN_FREEZING:
             if (is_range_weapon(item))
             {
-                description += "It causes projectiles fired from it to freeze "
-                    "those they strike,";
+                description += jtrans("It causes projectiles fired from it to freeze "
+                    "those they strike,");
             }
             else
             {
-                description += "It has been specially enchanted to freeze "
-                    "those struck by it,";
+                description += jtrans("It has been specially enchanted to freeze "
+                    "those struck by it,");
             }
-            description += " causing extra injury to most foes "
-                    "and up to half again as much damage against particularly "
-                    "susceptible opponents.";
-            if (is_range_weapon(item))
-                description += " They";
-            else
-                description += " It";
-            description += " can also slow down cold-blooded creatures.";
+            description += jtrans("causing extra injury freezing");
+
+            description += "\nその攻撃は" + jtrans(" can also slow down cold-blooded creatures.");
             break;
         case SPWPN_HOLY_WRATH:
-            description += "It has been blessed by the Shining One";
+            description += jtrans("It has been blessed by the Shining One");
             if (is_range_weapon(item))
             {
-                description += ", and any ";
-                description += ammo_name(item);
-                description += " fired from it will";
+                description += "放たれた" + jtrans(ammo_name(item)) + "は";
             }
-            else
-                description += " to";
-            description += " cause great damage to the undead and demons.";
+            description += jtrans(" cause great damage to the undead and demons.");
             break;
         case SPWPN_ELECTROCUTION:
             if (is_range_weapon(item))
             {
-                description += "It charges the ammunition it shoots with "
-                    "electricity; occasionally upon a hit, such missiles "
-                    "may discharge and cause terrible harm.";
+                description += jtrans("It charges the ammunition it shoots with "
+                                      "electricity; occasionally upon a hit, such missiles "
+                                      "may discharge and cause terrible harm.");
             }
             else
             {
-                description += "Occasionally, upon striking a foe, it will "
-                    "discharge some electrical energy and cause terrible "
-                    "harm.";
+                description += jtrans("Occasionally, upon striking a foe, it will "
+                                      "discharge some electrical energy and cause terrible "
+                                      "harm.");
             }
             break;
         case SPWPN_VENOM:
             if (is_range_weapon(item))
-                description += "It poisons the ammo it fires.";
+                description += jtrans("It poisons the ammo it fires.");
             else
-                description += "It poisons the flesh of those it strikes.";
+                description += jtrans("It poisons the flesh of those it strikes.");
             break;
         case SPWPN_PROTECTION:
-            description += "It protects the one who wields it against "
-                "injury (+5 to AC).";
+            description += jtrans("It protects the one who wields it against "
+                "injury (+5 to AC).");
             break;
         case SPWPN_EVASION:
-            description += "It affects your evasion (+5 to EV).";
+            description += jtrans("It affects your evasion (+5 to EV).");
             break;
         case SPWPN_DRAINING:
-            description += "A truly terrible weapon, it drains the "
-                "life of those it strikes.";
+            description += jtrans("A truly terrible weapon, it drains the "
+                "life of those it strikes.");
             break;
         case SPWPN_SPEED:
-            description += "Attacks with this weapon are significantly faster.";
+            description += jtrans("Attacks with this weapon are significantly faster.");
             break;
         case SPWPN_VORPAL:
             if (is_range_weapon(item))
             {
-                description += "Any ";
+                description += "この武器から放たれた";
                 description += ammo_name(item);
-                description += " fired from it inflicts extra damage.";
+                description += jtrans(" fired from it inflicts extra damage.");
             }
             else
             {
-                description += "It inflicts extra damage upon your "
-                    "enemies.";
+                description += jtrans("It inflicts extra damage upon your "
+                    "enemies.");
             }
             break;
         case SPWPN_CHAOS:
             if (is_range_weapon(item))
             {
-                description += "Each time it fires, it turns the "
+                description += jtrans("Each time it fires, it turns the "
                     "launched projectile into a different, random type "
-                    "of bolt.";
+                    "of bolt.");
             }
             else
             {
-                description += "Each time it hits an enemy it has a "
-                    "different, random effect.";
+                description += jtrans("Each time it hits an enemy it has a "
+                    "different, random effect.");
             }
             break;
         case SPWPN_VAMPIRISM:
-            description += "It inflicts no extra harm, but heals its "
-                "wielder somewhat when it strikes a living foe.";
+            description += jtrans("It inflicts no extra harm, but heals its "
+                "wielder somewhat when it strikes a living foe.");
             break;
         case SPWPN_PAIN:
-            description += "In the hands of one skilled in necromantic "
-                "magic, it inflicts extra damage on living creatures.";
+            description += jtrans("In the hands of one skilled in necromantic "
+                "magic, it inflicts extra damage on living creatures.");
             break;
         case SPWPN_DISTORTION:
-            description += "It warps and distorts space around it. "
-                "Unwielding it can cause banishment or high damage.";
+            description += jtrans("It warps and distorts space around it. "
+                "Unwielding it can cause banishment or high damage.");
             break;
         case SPWPN_PENETRATION:
-            description += "Ammo fired by it will pass through the "
+            description += jtrans("Ammo fired by it will pass through the "
                 "targets it hits, potentially hitting all targets in "
-                "its path until it reaches maximum range.";
+                "its path until it reaches maximum range.");
             break;
         case SPWPN_REAPING:
-            description += "If a monster killed with it leaves a "
+            description += jtrans("If a monster killed with it leaves a "
                 "corpse in good enough shape, the corpse will be "
-                "animated as a zombie friendly to the killer.";
+                "animated as a zombie friendly to the killer.");
             break;
         case SPWPN_ANTIMAGIC:
-            description += "It disrupts the flow of magical energy around "
+            description += jtrans("It disrupts the flow of magical energy around "
                     "spellcasters and certain magical creatures (including "
-                    "the wielder).";
+                    "the wielder).");
             break;
         case SPWPN_NORMAL:
             ASSERT(enchanted);
-            description += "It has no special brand (it is not flaming, "
+            description += jtrans("It has no special brand (it is not flaming, "
                     "freezing, etc), but is still enchanted in some way - "
-                    "positive or negative.";
+                    "positive or negative.");
             break;
         }
     }
 
     if (you.duration[DUR_WEAPON_BRAND] && &item == you.weapon())
     {
-        description += "\nIt is temporarily rebranded; it is actually a";
+        description += "\n" + jtrans("It is temporarily rebranded; it is actually a");
         if ((int) you.props[ORIGINAL_BRAND_KEY] == SPWPN_NORMAL)
-            description += "n unbranded weapon.";
+            description += jtrans("n unbranded weapon.");
         else
         {
-            description += " weapon of "
-                        + ego_type_string(item, false, you.props[ORIGINAL_BRAND_KEY])
-                        + ".";
+            description += jtrans("of " + ego_type_string(item, false, you.props[ORIGINAL_BRAND_KEY]))
+                        + "武器だ。";
         }
     }
 
@@ -1061,7 +1075,8 @@ static string _describe_weapon(const item_def &item, bool verbose)
         string rand_desc = _randart_descrip(item);
         if (!rand_desc.empty())
         {
-            description += "\n";
+            if(!description.empty())
+                description += "\n";
             description += rand_desc;
         }
 
@@ -1069,40 +1084,41 @@ static string _describe_weapon(const item_def &item, bool verbose)
         if (!item_ident(item, ISFLAG_KNOW_PROPERTIES)
             && item_type_known(item))
         {
-            description += "\nThis weapon may have some hidden properties.";
+            description += "\n" + jtrans("\nThis weapon may have some hidden properties.");
         }
     }
 
     if (verbose)
     {
-        description += "\n\nThis ";
+        description += "\n\nこの";
         if (is_unrandom_artefact(item))
-            description += get_artefact_base_name(item, true);
+            description += jtrans(get_artefact_base_name(item, true));
         else
-            description += "weapon";
-        description += " falls into the";
+            description += jtrans("weapon");
+        description += "は";
 
         const skill_type skill = item_attack_skill(item);
 
         description +=
-            make_stringf(" '%s' category. ",
-                         skill == SK_FIGHTING ? "buggy" : skill_name(skill));
+            make_stringf(jtransc(" '%s' category. "),
+                         skill == SK_FIGHTING ? "buggy" : jtransc(skill_name(skill)));
 
-        description += _handedness_string(item);
+        description += jtrans(_handedness_string(item));
 
         if (!you.could_wield(item, true))
-            description += "\nIt is too large for you to wield.";
+            description += "\n" + jtrans("\nIt is too large for you to wield.");
     }
 
     if (!is_artefact(item))
     {
         if (item_ident(item, ISFLAG_KNOW_PLUSES) && item.plus >= MAX_WPN_ENCHANT)
-            description += "\nIt cannot be enchanted further.";
+            description += "\n" + make_stringf(jtransc("\nIt cannot be enchanted further."),
+                                               "武器");
         else
         {
-            description += "\nIt can be maximally enchanted to +";
+            description += "\nこの武器は+";
             _append_value(description, MAX_WPN_ENCHANT, false);
-            description += ".";
+            description += "まで強化できる。";
         }
     }
 
@@ -1125,67 +1141,57 @@ static string _describe_ammo(const item_def &item)
 
     if (item.special && item_type_known(item))
     {
-        description += "\n\n";
+        description += "\n";
 
-        string threw_or_fired;
-        if (can_throw)
-        {
-            threw_or_fired += "threw";
-            if (can_launch)
-                threw_or_fired += " or ";
-        }
-        if (can_launch)
-            threw_or_fired += "fired";
+        string basename = ammo_name(static_cast<missile_type>(item.sub_type));
 
         switch (item.special)
         {
         case SPMSL_FLAME:
-            description += "It burns those it strikes, causing extra injury "
-                    "to most foes and up to half again as much damage against "
-                    "particularly susceptible opponents. Compared to normal "
-                    "ammo, it is twice as likely to be destroyed on impact.";
+            description += make_stringf(jtransc("spmsl flame desc"),
+                                        jtransc(basename), jtransc(basename));
             break;
         case SPMSL_FROST:
-            description += "It freezes those it strikes, causing extra injury "
-                    "to most foes and up to half again as much damage against "
-                    "particularly susceptible opponents. It can also slow down "
-                    "cold-blooded creatures. Compared to normal ammo, it is "
-                    "twice as likely to be destroyed on impact.";
+            description += make_stringf(jtransc("spmsl frost desc"),
+                                        jtransc(basename), jtransc(basename));
             break;
         case SPMSL_CHAOS:
-            description += "When ";
+            description += "この" + jtrans(basename) + "が";
 
             if (can_throw)
             {
-                description += "thrown, ";
+                description += "投擲された";
                 if (can_launch)
-                    description += "or ";
+                    description += "、または";
+                else
+                    description += "とき、";
             }
 
             if (can_launch)
-                description += "fired from an appropriate launcher, ";
+                description += jtrans("fired from an appropriate launcher, ");
 
-            description += "it turns into a bolt of a random type.";
+            description += jtrans("it turns into a bolt of a random type.");
             break;
         case SPMSL_POISONED:
-            description += "It is coated with poison.";
+            description += make_stringf(jtransc("It is coated with poison."),
+                                        jtransc(basename));
             break;
         case SPMSL_CURARE:
-            description += "It is tipped with asphyxiating poison. Compared "
-                           "to other needles, it is twice as likely to be "
-                           "destroyed on impact";
+            description += jtrans("It is tipped with asphyxiating poison. Compared "
+                                  "to other needles, it is twice as likely to be "
+                                  "destroyed on impact");
             break;
         case SPMSL_PARALYSIS:
-            description += "It is tipped with a paralysing substance.";
+            description += jtrans("It is tipped with a paralysing substance.");
             break;
         case SPMSL_SLOW:
-            description += "It is coated with a substance that causes slowness of the body.";
+            description += jtrans("It is coated with a substance that causes slowness of the body.");
             break;
         case SPMSL_SLEEP:
-            description += "It is coated with a fast-acting tranquilizer.";
+            description += jtrans("It is coated with a fast-acting tranquilizer.");
             break;
         case SPMSL_CONFUSION:
-            description += "It is tipped with a substance that causes confusion.";
+            description += jtrans("It is tipped with a substance that causes confusion.");
             break;
 #if TAG_MAJOR_VERSION == 34
         case SPMSL_SICKNESS:
@@ -1193,39 +1199,40 @@ static string _describe_ammo(const item_def &item)
             break;
 #endif
         case SPMSL_FRENZY:
-            description += "It is tipped with a substance that causes a mindless "
-                "rage, making people attack friend and foe alike.";
+            description += jtrans("It is tipped with a substance that causes a mindless "
+                                  "rage, making people attack friend and foe alike.");
             break;
        case SPMSL_RETURNING:
-            description += "A skilled user can throw it in such a way "
-                "that it will return to its owner.";
+            description += make_stringf(jtransc("A skilled user can throw it in such a way "
+                                                "that it will return to its owner."),
+                                        jtransc(basename));
             break;
         case SPMSL_PENETRATION:
-            description += "It will pass through any targets it hits, "
-                "potentially hitting all targets in its path until it "
-                "reaches maximum range.";
+            description += make_stringf(jtransc("It will pass through any targets it hits, "
+                                                "potentially hitting all targets in its path until it "
+                                                "reaches maximum range."),
+                                        jtransc(basename));
             break;
         case SPMSL_DISPERSAL:
-            description += "Any target it hits will blink, with a "
-                "tendency towards blinking further away from the one "
-                "who " + threw_or_fired + " it.";
+            description += make_stringf(jtransc("Any target it hits will blink, with a "
+                                                "tendency towards blinking further away from the one "
+                                                "who threw_or_fired it."),
+                                        jtransc(basename));
             break;
         case SPMSL_EXPLODING:
-            description += "It will explode into fragments upon "
-                "hitting a target, hitting an obstruction, or reaching "
-                "the end of its range.";
+            description += make_stringf(jtransc("It will explode into fragments upon "
+                                                "hitting a target, hitting an obstruction, or reaching "
+                                                "the end of its range."),
+                                        jtransc(basename));
             break;
         case SPMSL_STEEL:
-            description += "Compared to normal ammo, it does 30% more "
-                "damage.";
+            description += make_stringf(jtransc("Compared to normal ammo, it does 30% more "
+                                                "damage."),
+                                        jtransc(basename));
             break;
         case SPMSL_SILVER:
-            description += "Silver sears all those touched by chaos. "
-                "Compared to normal ammo, it does 75% more damage to "
-                "chaotic and magically transformed beings. It also does "
-                "extra damage against mutated beings according to how "
-                "mutated they are. With due care, silver ammo can still "
-                "be handled by those it affects.";
+            description += make_stringf(jtransc("spmsl silver desc"),
+                                        jtransc(basename), jtransc(basename));
             break;
         }
     }
@@ -1237,30 +1244,30 @@ static string _describe_ammo(const item_def &item)
 
 void append_armour_stats(string &description, const item_def &item)
 {
-    description += "\nBase armour rating: ";
+    description += "\n" + jtrans("\nBase armour rating: ") + " ";
     _append_value(description, property(item, PARM_AC), false);
-    description += "       ";
+    description += "       ";
 
     const int evp = property(item, PARM_EVASION);
-    description += "Encumbrance rating: ";
+    description += jtrans("Encumbrance rating: ") + " ";
     _append_value(description, -evp / 10, false);
 
     // only display player-relevant info if the player exists
     if (crawl_state.need_save && get_armour_slot(item) == EQ_BODY_ARMOUR)
     {
-        description += make_stringf("\nWearing mundane armour of this type "
-                                    "will give the following: %d AC",
-                                    you.base_ac_from(item));
+        description += "\n" + make_stringf(jtransc("\nWearing mundane armour of this type "
+                                                   "will give the following: %d AC"),
+                                           you.base_ac_from(item));
     }
 }
 
 void append_shield_stats(string &description, const item_def &item)
 {
-    description += "\nBase shield rating: ";
+    description += "\n" + jtrans("\nBase shield rating:") + " ";
     _append_value(description, property(item, PARM_AC), false);
-    description += "       ";
+    description += "       ";
 
-    description += "Skill to remove penalty: ";
+    description += "\n" + jtrans("\nSkill to remove penalty:") + " ";
     _append_value(description, you.get_shield_skill_to_offset_penalty(item),
             false);
 }
@@ -1268,13 +1275,17 @@ void append_shield_stats(string &description, const item_def &item)
 void append_missile_info(string &description, const item_def &item)
 {
     const int dam = property(item, PWPN_DAMAGE);
+    const string basename = ammo_name(static_cast<missile_type>(item.sub_type));
+
     if (dam)
-        description += make_stringf("\nBase damage: %d\n", dam);
+        description += "\n" + make_stringf(jtranslnc("\nBase damage: %d\n"), dam);
 
     if (ammo_always_destroyed(item))
-        description += "\nIt will always be destroyed on impact.";
+        description += "\n" + make_stringf(jtransc("\nIt will always be destroyed on impact."),
+                                           jtransc(basename));
     else if (!ammo_never_destroyed(item))
-        description += "\nIt may be destroyed on impact.";
+        description += "\n" + make_stringf(jtransc("It may be destroyed on impact."),
+                                           jtransc(basename));
 }
 
 //---------------------------------------------------------------
@@ -1293,84 +1304,82 @@ static string _describe_armour(const item_def &item, bool verbose)
         && item.sub_type != ARM_BUCKLER
         && item.sub_type != ARM_LARGE_SHIELD)
     {
-        description += "\n";
         append_armour_stats(description, item);
     }
     else if (verbose)
     {
-        description += "\n";
         append_shield_stats(description, item);
     }
 
     const int ego = get_armour_ego_type(item);
     if (ego != SPARM_NORMAL && item_type_known(item) && verbose)
     {
-        description += "\n\n";
+        description += (description.empty() ? "\n" : "\n\n");
 
         switch (ego)
         {
         case SPARM_RUNNING:
             if (item.sub_type == ARM_NAGA_BARDING)
-                description += "It allows its wearer to slither at a great speed.";
+                description += jtrans("It allows its wearer to slither at a great speed.");
             else
-                description += "It allows its wearer to run at a great speed.";
+                description += jtrans("It allows its wearer to run at a great speed.");
             break;
         case SPARM_FIRE_RESISTANCE:
-            description += "It protects its wearer from heat.";
+            description += jtrans("It protects its wearer from heat.");
             break;
         case SPARM_COLD_RESISTANCE:
-            description += "It protects its wearer from cold.";
+            description += jtrans("It protects its wearer from cold.");
             break;
         case SPARM_POISON_RESISTANCE:
-            description += "It protects its wearer from poison.";
+            description += jtrans("It protects its wearer from poison.");
             break;
         case SPARM_SEE_INVISIBLE:
-            description += "It allows its wearer to see invisible things.";
+            description += jtrans("It allows its wearer to see invisible things.");
             break;
         case SPARM_INVISIBILITY:
-            description += "When activated it hides its wearer from "
-                "the sight of others, but also increases "
-                "their metabolic rate by a large amount.";
+            description += jtrans("When activated it hides its wearer from "
+                                  "the sight of others, but also increases "
+                                  "their metabolic rate by a large amount.");
             break;
         case SPARM_STRENGTH:
-            description += "It increases the physical power of its wearer (+3 to strength).";
+            description += jtrans("It increases the physical power of its wearer (+3 to strength).");
             break;
         case SPARM_DEXTERITY:
-            description += "It increases the dexterity of its wearer (+3 to dexterity).";
+            description += jtrans("It increases the dexterity of its wearer (+3 to dexterity).");
             break;
         case SPARM_INTELLIGENCE:
-            description += "It makes you more clever (+3 to intelligence).";
+            description += jtrans("It makes you more clever (+3 to intelligence).");
             break;
         case SPARM_PONDEROUSNESS:
-            description += "It is very cumbersome, thus slowing your movement.";
+            description += jtrans("It is very cumbersome, thus slowing your movement.");
             break;
         case SPARM_FLYING:
-            description += "It can be activated to allow its wearer to "
-                "fly indefinitely.";
+            description += jtrans("It can be activated to allow its wearer to "
+                                  "fly indefinitely.");
             break;
         case SPARM_MAGIC_RESISTANCE:
-            description += "It increases its wearer's resistance "
-                "to enchantments.";
+            description += jtrans("It increases its wearer's resistance "
+                                  "to enchantments.");
             break;
         case SPARM_PROTECTION:
-            description += "It protects its wearer from harm (+3 to AC).";
+            description += jtrans("It protects its wearer from harm (+3 to AC).");
             break;
         case SPARM_STEALTH:
-            description += "It enhances the stealth of its wearer.";
+            description += jtrans("It enhances the stealth of its wearer.");
             break;
         case SPARM_RESISTANCE:
-            description += "It protects its wearer from the effects "
-                "of both cold and heat.";
+            description += jtrans("It protects its wearer from the effects "
+                                  "of both cold and heat.");
             break;
 
         // These two are only for robes.
         case SPARM_POSITIVE_ENERGY:
-            description += "It protects its wearer from "
-                "the effects of negative energy.";
+            description += jtrans("It protects its wearer from "
+                                  "the effects of negative energy.");
             break;
         case SPARM_ARCHMAGI:
-            description += "It increases the power of its wearer's "
-                "magical spells.";
+            description += jtrans("It increases the power of its wearer's "
+                                  "magical spells.");
             break;
 #if TAG_MAJOR_VERSION == 34
         case SPARM_PRESERVATION:
@@ -1378,18 +1387,18 @@ static string _describe_armour(const item_def &item, bool verbose)
             break;
 #endif
         case SPARM_REFLECTION:
-            description += "It reflects blocked things back in the "
-                "direction they came from.";
+            description += jtrans("It reflects blocked things back in the "
+                                  "direction they came from.");
             break;
 
         case SPARM_SPIRIT_SHIELD:
-            description += "It shields its wearer from harm at the cost "
-                "of magical power.";
+            description += jtrans("It shields its wearer from harm at the cost "
+                                  "of magical power.");
             break;
 
         // This is only for gloves.
         case SPARM_ARCHERY:
-            description += "It improves your effectiveness with ranged weaponry (Slay+4).";
+            description += jtrans("It improves your effectiveness with ranged weaponry (Slay+4).");
             break;
         }
     }
@@ -1399,13 +1408,14 @@ static string _describe_armour(const item_def &item, bool verbose)
         string rand_desc = _randart_descrip(item);
         if (!rand_desc.empty())
         {
-            description += "\n";
+            if(!description.empty())
+                description += "\n";
             description += rand_desc;
         }
 
         // Can't happen, right? (XXX)
         if (!item_ident(item, ISFLAG_KNOW_PROPERTIES) && item_type_known(item))
-            description += "\nThis armour may have some hidden properties.";
+            description += "\n" + jtrans("\nThis armour may have some hidden properties.");
     }
 
     if (!is_artefact(item))
@@ -1413,17 +1423,18 @@ static string _describe_armour(const item_def &item, bool verbose)
         const int max_ench = armour_max_enchant(item);
         if (armour_is_hide(item))
         {
-            description += "\nEnchanting it will turn it into a suit of "
-                           "magical armour.";
+            description += "\n" + jtrans("\nEnchanting it will turn it into a suit of "
+                                         "magical armour.");
         }
         else if (item.plus < max_ench || !item_ident(item, ISFLAG_KNOW_PLUSES))
         {
-            description += "\nIt can be maximally enchanted to +";
+            description += "\nこの防具は+";
             _append_value(description, max_ench, false);
-            description += ".";
+            description += "まで強化できる。";
         }
         else
-            description += "\nIt cannot be enchanted further.";
+            description += "\n" + make_stringf(jtransc("\nIt cannot be enchanted further."),
+                                               "防具");
     }
 
     return description;
@@ -1449,40 +1460,40 @@ static string _describe_jewellery(const item_def &item, bool verbose)
             switch (item.sub_type)
             {
             case RING_PROTECTION:
-                description += "\nIt affects your AC (";
+                description += "\n" + jtrans("\nIt affects your AC (") + " ";
                 _append_value(description, item.plus, true);
-                description += ").";
+                description += ")";
                 break;
 
             case RING_EVASION:
-                description += "\nIt affects your evasion (";
+                description += "\n" + jtrans("\nIt affects your evasion (") + " ";
                 _append_value(description, item.plus, true);
-                description += ").";
+                description += ")";
                 break;
 
             case RING_STRENGTH:
-                description += "\nIt affects your strength (";
+                description += "\n" + jtrans("\nIt affects your strength (") + " ";
                 _append_value(description, item.plus, true);
-                description += ").";
+                description += ")";
                 break;
 
             case RING_INTELLIGENCE:
-                description += "\nIt affects your intelligence (";
+                description += "\n" + jtrans("\nIt affects your intelligence (") + " ";
                 _append_value(description, item.plus, true);
-                description += ").";
+                description += ")";
                 break;
 
             case RING_DEXTERITY:
-                description += "\nIt affects your dexterity (";
+                description += "\n" + jtrans("\nIt affects your dexterity (") + " ";
                 _append_value(description, item.plus, true);
-                description += ").";
+                description += ")";
                 break;
 
             case RING_SLAYING:
-                description += "\nIt affects your accuracy and damage "
-                               "with ranged weapons and melee attacks (";
+                description += "\n" + jtrans("\nIt affects your accuracy and damage "
+                               "with ranged weapons and melee attacks (") + " ";
                 _append_value(description, item.plus, true);
-                description += ").";
+                description += ")";
                 break;
 
             default:
@@ -1497,15 +1508,16 @@ static string _describe_jewellery(const item_def &item, bool verbose)
         string rand_desc = _randart_descrip(item);
         if (!rand_desc.empty())
         {
-            description += "\n";
+            if(!description.empty())
+                description += "\n";
             description += rand_desc;
         }
         if (!item_ident(item, ISFLAG_KNOW_PROPERTIES) ||
             !item_ident(item, ISFLAG_KNOW_TYPE))
         {
-            description += "\nThis ";
-            description += (jewellery_is_amulet(item) ? "amulet" : "ring");
-            description += " may have hidden properties.";
+            description += "\nこの";
+            description += jtrans(jewellery_is_amulet(item) ? "amulet" : "ring");
+            description += jtrans(" may have hidden properties.");
         }
     }
 
@@ -1549,26 +1561,27 @@ static string _describe_deck(const item_def &item)
 
     description.reserve(100);
 
-    description += "\n";
-
     if (_check_buggy_deck(item, description))
         return "";
 
     if (item_type_known(item))
         description += deck_contents(item.sub_type) + "\n";
 
-    description += make_stringf("\nMost decks begin with %d to %d cards.",
-                                MIN_STARTING_CARDS,
-                                MAX_STARTING_CARDS);
+    description += "\n" + make_stringf(jtransc("\nMost decks begin with %d to %d cards."),
+                                       MIN_STARTING_CARDS,
+                                       MAX_STARTING_CARDS);
+
+    auto card_stringify = [](card_type card){ return tagged_jtrans("[card]", card_name(card)); };
 
     const vector<card_type> drawn_cards = get_drawn_cards(item);
     if (!drawn_cards.empty())
     {
         description += "\n";
-        description += "Drawn card(s): ";
+        description += jtrans("Drawn card(s): ") + " ";
         description += comma_separated_fn(drawn_cards.begin(),
                                           drawn_cards.end(),
-                                          card_name);
+                                          card_stringify,
+                                          "、", "、") + "のカード";
     }
 
     const int num_cards = cards_in_deck(item);
@@ -1597,10 +1610,11 @@ static string _describe_deck(const item_def &item)
     if (!seen_top_cards.empty())
     {
         description += "\n";
-        description += "Next card(s): ";
+        description += jtrans("Next card(s): ") + " ";
         description += comma_separated_fn(seen_top_cards.begin(),
                                           seen_top_cards.end(),
-                                          card_name);
+                                          card_stringify,
+                                          "、", "、") + "のカード";
     }
     if (!other_seen_cards.empty())
     {
@@ -1608,10 +1622,11 @@ static string _describe_deck(const item_def &item)
         sort(other_seen_cards.begin(), other_seen_cards.end(),
              _compare_card_names);
 
-        description += "Seen card(s): ";
+        description += jtrans("Seen card(s): ") + " ";
         description += comma_separated_fn(other_seen_cards.begin(),
                                           other_seen_cards.end(),
-                                          card_name);
+                                          card_stringify,
+                                          "、", "、") + "のカード";
     }
 
     return description;
@@ -1642,9 +1657,19 @@ string get_item_description(const item_def &item, bool verbose,
     if (!dump)
     {
         string name = item.name(DESC_INVENTORY_EQUIP);
-        if (!in_inventory(item))
-            name = uppercase_first(name);
-        description << name << ".";
+        string name_en = (item.base_type == OBJ_BOOKS &&
+                          is_artefact(item)) ? "" :
+                          is_artefact(item) ? uppercase_first(item.name_en(DESC_THE))
+                                            : uppercase_first(item.name_en(DESC_A));
+
+        if (strwidth(name) + strwidth(name_en) + 5 > get_number_of_cols())
+            name_en = "";
+
+        string title = name + string(max(0, get_number_of_cols() - strwidth(name)
+                                                                 - strwidth(name_en)) - 1,
+                                     ' ') + name_en;
+
+        description << sp2nbsp(title);
     }
 
 #ifdef DEBUG_DIAGNOSTICS
@@ -1702,14 +1727,15 @@ string get_item_description(const item_def &item, bool verbose,
         else if (is_artefact(item) && item_type_known(item)
                  && item.base_type == OBJ_JEWELLERY)
         {
-            description << "It is an ancient artefact.";
+            description << jtrans("It is an ancient artefact.");
             need_base_desc = false;
         }
 
         if (need_base_desc)
         {
             string db_name = item.name(DESC_DBNAME, true, false, false);
-            string db_desc = getLongDescription(db_name);
+            string db_name_en = item.name_en(DESC_DBNAME, true, false, false);
+            string db_desc = getLongDescription(db_name_en);
 
             if (db_desc.empty())
             {
@@ -1737,40 +1763,27 @@ string get_item_description(const item_def &item, bool verbose,
         }
     }
 
-    bool need_extra_line = true;
     string desc;
     switch (item.base_type)
     {
     // Weapons, armour, jewellery, books might be artefacts.
     case OBJ_WEAPONS:
-        desc = _describe_weapon(item, verbose);
-        if (desc.empty())
-            need_extra_line = false;
-        else
-            description << desc;
+        desc += _describe_weapon(item, verbose);
         break;
 
     case OBJ_ARMOUR:
-        desc = _describe_armour(item, verbose);
-        if (desc.empty())
-            need_extra_line = false;
-        else
-            description << desc;
+        desc += _describe_armour(item, verbose);
         break;
 
     case OBJ_JEWELLERY:
-        desc = _describe_jewellery(item, verbose);
-        if (desc.empty())
-            need_extra_line = false;
-        else
-            description << desc;
+        desc += _describe_jewellery(item, verbose);
         break;
 
     case OBJ_BOOKS:
         if (!player_can_memorise_from_spellbook(item))
         {
-            description << "\nThis book is beyond your current level of "
-                           "understanding.";
+            desc += "\n" + jtrans("\nThis book is beyond your current level of "
+                                          "understanding.");
 
             if (!item_type_known(item))
                 break;
@@ -1780,15 +1793,11 @@ string get_item_description(const item_def &item, bool verbose,
             && (Options.dump_book_spells || is_random_artefact(item)))
         {
             desc += describe_item_spells(item);
-            if (desc.empty())
-                need_extra_line = false;
-            else
-                description << desc;
         }
         break;
 
     case OBJ_MISSILES:
-        description << _describe_ammo(item);
+        desc += _describe_ammo(item);
         break;
 
     case OBJ_WANDS:
@@ -1797,9 +1806,9 @@ string get_item_description(const item_def &item, bool verbose,
 
         if (!item_ident(item, ISFLAG_KNOW_PLUSES) && !known_empty)
         {
-            description << "\nIf evoked without being fully identified,"
-                           " several charges will be wasted out of"
-                           " unfamiliarity with the device.";
+            desc += "\n" + jtrans("\nIf evoked without being fully identified,"
+                                  " several charges will be wasted out of"
+                                  " unfamiliarity with the device.");
         }
 
 
@@ -1809,15 +1818,15 @@ string get_item_description(const item_def &item, bool verbose,
             if (item.charges < max_charges
                 || !item_ident(item, ISFLAG_KNOW_PLUSES))
             {
-                description << "\nIt can have at most " << max_charges
-                            << " charges.";
+                desc += "\n" + make_stringf(jtransc("\nIt can have at most %d charges."),
+                                            max_charges);
             }
             else
-                description << "\nIt is fully charged.";
+                desc += "\n" + jtrans("\nIt is fully charged.");
         }
 
         if (known_empty)
-            description << "\nUnfortunately, it has no charges left.";
+            desc += "\n" + jtrans("\nUnfortunately, it has no charges left.");
         break;
     }
 
@@ -1827,51 +1836,51 @@ string get_item_description(const item_def &item, bool verbose,
 
         if (mons_class_leaves_hide(item.mon_type))
         {
-            description << "\n\n";
+            desc += "\n";
             if (item.props.exists(MANGLED_CORPSE_KEY))
             {
-                description << "This corpse is badly mangled; its hide is "
-                               "beyond any hope of recovery.";
+                desc += jtrans("This corpse is badly mangled; its hide is "
+                               "beyond any hope of recovery.");
             }
             else
             {
-                description << "Butchering may allow you to recover this "
-                               "creature's hide, which can be enchanted into "
-                               "armour.";
+                desc += jtrans("Butchering may allow you to recover this "
+                                      "creature's hide, which can be enchanted into "
+                                      "armour.");
             }
         }
         // intentional fall-through
     case OBJ_FOOD:
         if (item.base_type == OBJ_FOOD)
         {
-            description << "\n\n";
+            desc += "\n";
 
             const int turns = food_turns(item);
             ASSERT(turns > 0);
             if (turns > 1)
             {
-                description << "It is large enough that eating it takes "
-                            << ((turns > 2) ? "several" : "a couple of")
-                            << " turns, during which time the eater is vulnerable"
-                               " to attack.";
+                desc += jtrans(string("It is large enough that eating it takes ")
+                      + ((turns > 2) ? "several" : "a couple of")
+                      + " turns, during which time the eater is vulnerable"
+                      + " to attack.");
             }
             else
-                description << "It is small enough that eating it takes "
-                               "only one turn.";
+                desc += jtrans("It is small enough that eating it takes "
+                               "only one turn.");
         }
         if (item.base_type == OBJ_CORPSES || item.sub_type == FOOD_CHUNK)
         {
             switch (determine_chunk_effect(item, true))
             {
             case CE_POISONOUS:
-                description << "\n\nThis meat is poisonous.";
+                desc += "\n\n" + jtrans("\n\nThis meat is poisonous.");
                 break;
             case CE_MUTAGEN:
-                description << "\n\nEating this meat will cause random "
-                               "mutations.";
+                desc += "\n\n" + jtrans("\n\nEating this meat will cause random "
+                               "mutations.");
                 break;
             case CE_ROT:
-                description << "\n\nEating this meat will cause rotting.";
+                desc += "\n\n" + jtrans("\n\nEating this meat will cause rotting.");
                 break;
             default:
                 break;
@@ -1882,10 +1891,10 @@ string get_item_description(const item_def &item, bool verbose,
     case OBJ_RODS:
         if (verbose)
         {
-            description <<
-                "\nIt uses its own magic reservoir for casting spells, and "
-                "recharges automatically according to the recharging "
-                "rate.";
+            desc += "\n" +
+                jtrans("\nIt uses its own magic reservoir for casting spells, and "
+                       "recharges automatically according to the recharging "
+                       "rate.");
 
             const int max_charges = MAX_ROD_CHARGE;
             const int max_recharge_rate = MAX_WPN_ENCHANT;
@@ -1894,78 +1903,75 @@ string get_item_description(const item_def &item, bool verbose,
                 const int num_charges = item.charge_cap / ROD_CHARGE_MULT;
                 if (max_charges > num_charges)
                 {
-                    description << "\nIt can currently hold " << num_charges
-                                << " charges. It can be magically "
-                                << "recharged to contain up to "
-                                << max_charges << " charges.";
+                    desc += "\n" + make_stringf(jtransc("It can currently hold %d"
+                                                        " charges. It can be magically "
+                                                        "recharged to contain up to %d"
+                                                        " charges."),
+                                                num_charges, max_charges);
                 }
                 else
-                    description << "\nIts capacity can be increased no further.";
+                    desc += "\n" + jtrans("\nIts capacity can be increased no further.");
 
                 const int recharge_rate = item.special;
                 if (recharge_rate < max_recharge_rate)
                 {
-                    description << "\nIts current recharge rate is "
-                                << (recharge_rate >= 0 ? "+" : "")
-                                << recharge_rate << ". It can be magically "
-                                << "recharged up to +" << max_recharge_rate
-                                << ".";
+                    desc += "\n" + make_stringf(jtransc("Its current recharge rate is %+d"
+                                                        ". It can be magically "
+                                                        "recharged up to +%d."),
+                                                recharge_rate, max_recharge_rate);
                 }
                 else
-                    description << "\nIts recharge rate is at maximum.";
+                    desc += "\n" + jtrans("\nIts recharge rate is at maximum.");
             }
             else
             {
-                description << "\nIt can have at most " << max_charges
-                            << " charges and +" << max_recharge_rate
-                            << " recharge rate.";
+                desc += "\n" + make_stringf(jtransc("\nIt can have at most %d"
+                                                    " charges and +%d"
+                                                    " recharge rate."),
+                                            max_charges, max_recharge_rate);
             }
         }
         else if (Options.dump_book_spells)
         {
             desc += describe_item_spells(item);
-            if (desc.empty())
-                need_extra_line = false;
-            else
-                description << desc;
         }
 
         {
             string stats = "\n";
             append_weapon_stats(stats, item);
-            description << stats;
+            desc += stats;
         }
-        description << "\n\nIt falls into the 'Maces & Flails' category.";
+        desc += "\n\n" + jtrans("\n\nIt falls into the 'Maces & Flails' category.");
         break;
 
     case OBJ_STAVES:
         {
             string stats = "\n";
             append_weapon_stats(stats, item);
-            description << stats;
+            desc += stats;
         }
-        description << "\n\nIt falls into the 'Staves' category. ";
-        description << _handedness_string(item);
+        desc += "\n\n" + jtrans("\n\nIt falls into the 'Staves' category. ");
+        desc += jtrans(_handedness_string(item));
         break;
 
     case OBJ_MISCELLANY:
         if (is_deck(item))
-            description << _describe_deck(item);
+            desc += _describe_deck(item);
         if (is_xp_evoker(item))
         {
-            description << "\nOnce released, the spirits of this device will "
-                           "depart, leaving it ";
+            desc += "\n" + jtrans("\nOnce released, the spirits of this device will "
+                                   "depart, leaving it ");
 
             if (!item_is_horn_of_geryon(item))
-                description << "and all other devices of its kind ";
+                desc += jtrans("and all other devices of its kind ");
 
-            description << "inert. However, more spirits will be attracted as "
-                           "its bearer grows in power and wisdom.";
+            desc += jtrans("inert. However, more spirits will be attracted as "
+                                  "its bearer grows in power and wisdom.");
 
             if (!evoker_is_charged(item))
             {
-                mpr("The device is presently inert. Gaining experience will "
-                    "recharge it.");
+                mpr(jtrans("The device is presently inert. Gaining experience will "
+                           "recharge it."));
             }
         }
         break;
@@ -2002,31 +2008,31 @@ string get_item_description(const item_def &item, bool verbose,
     default:
         die("Bad item class");
     }
+    if (!desc.empty())
+        description << "\n" << desc;
 
     if (!verbose && item_known_cursed(item))
-        description << "\nIt has a curse placed upon it.";
+        description << "\n" << jtrans("\nIt has a curse placed upon it.");
     else
     {
         if (verbose)
         {
-            if (need_extra_line)
-                description << "\n";
             if (item_known_cursed(item))
-                description << "\nIt has a curse placed upon it.";
+                description << "\n" << jtrans("\nIt has a curse placed upon it.");
 
             if (is_artefact(item))
             {
                 if (item.base_type == OBJ_ARMOUR
                     || item.base_type == OBJ_WEAPONS)
                 {
-                    description << "\nThis ancient artefact cannot be changed "
-                        "by magic or mundane means.";
+                    description << "\n" << jtrans("\nThis ancient artefact cannot be changed "
+                                                  "by magic or mundane means.");
                 }
                 // Randart jewellery has already displayed this line.
                 else if (item.base_type != OBJ_JEWELLERY
                          || (item_type_known(item) && is_unrandom_artefact(item)))
                 {
-                    description << "\nIt is an ancient artefact.";
+                    description << "\n" << jtrans("It is an ancient artefact.");
                 }
             }
         }
@@ -2034,35 +2040,35 @@ string get_item_description(const item_def &item, bool verbose,
 
     if (conduct_type ct = good_god_hates_item_handling(item))
     {
-        description << "\n\n" << uppercase_first(god_name(you.religion))
-                    << " opposes the use of such an ";
+        description << "\n\n" << jtrans(god_name(you.religion))
+                    << jtrans(" opposes the use of such an ");
 
         if (ct == DID_NECROMANCY)
-            description << "evil";
+            description << jtrans("evil");
         else
-            description << "unholy";
+            description << jtrans("unholy");
 
-        description << " item.";
+        description << "アイテムを使用することにいい顔をしない。";
     }
     else if (god_hates_item_handling(item))
     {
-        description << "\n\n" << uppercase_first(god_name(you.religion))
-                    << " disapproves of the use of such an item.";
+        description << "\n\n" << jtrans(god_name(you.religion))
+                    << jtrans(" disapproves of the use of such an item.");
     }
 
     if (verbose && origin_describable(item))
-        description << "\n" << origin_desc(item) << ".";
+        description << "\n\n" << origin_desc(item);
 
     // This information is obscure and differs per-item, so looking it up in
     // a docs file you don't know to exist is tedious.  On the other hand,
     // it breaks the screen for people on very small terminals.
     if (verbose && get_number_of_lines() >= 28)
     {
-        description << "\n\n" << "Stash search prefixes: "
+        description << "\n\n" << jtrans("Stash search prefixes: ") + " "
                     << userdef_annotate_item(STASH_LUA_SEARCH_ANNOTATE, &item);
         string menu_prefix = item_prefix(item, false);
         if (!menu_prefix.empty())
-            description << "\nMenu/colouring prefixes: " << menu_prefix;
+            description << "\n" << jtrans("\nMenu/colouring prefixes: ") << " " << menu_prefix;
     }
 
     if (verbose && !noquote && (!item_type_known(item) || !is_random_artefact(item)))
@@ -2073,7 +2079,7 @@ string get_item_description(const item_def &item, bool verbose,
         if (is_unrandom_artefact(item) && item_type_known(item))
             quote = getQuoteString(get_artefact_name(item));
         else
-            quote = getQuoteString(item.name(DESC_DBNAME, true, false, false));
+            quote = getQuoteString(item.name_en(DESC_DBNAME, true, false, false));
 
         if (count_desc_lines(description.str(), lineWidth)
             + count_desc_lines(quote, lineWidth) < height)
@@ -2091,22 +2097,27 @@ void get_feature_desc(const coord_def &pos, describe_info &inf)
     dungeon_feature_type feat = env.map_knowledge(pos).feat();
 
     string desc      = feature_description_at(pos, false, DESC_A, false);
-    string db_name   = feat == DNGN_ENTER_SHOP ? "a shop" : desc;
+    string desc_en   = feature_description_at_en(pos, false, DESC_A, false);
+    string db_name   = feat == DNGN_ENTER_SHOP ? "a shop" : desc_en;
     string long_desc = getLongDescription(db_name);
 
-    inf.title = uppercase_first(desc);
-    if (!ends_with(desc, ".") && !ends_with(desc, "!")
-        && !ends_with(desc, "?"))
+    inf.title = desc + string(max(0, get_number_of_cols() - strwidth(desc) - strwidth(desc_en) - 1),
+                              ' ') + (desc != desc_en ? desc_en : "");
+
+    inf.title = replace_all(inf.title, " ", " "); // replace spaces to no-break spaces
+
+    if (strwidth(desc) + strwidth(desc_en) + 5 > get_number_of_cols())
     {
-        inf.title += ".";
+        // e.g. "a wall of the weird stuff which makes up Pandemonium"
+        inf.title = desc;
     }
 
     // If we couldn't find a description in the database then see if
     // the feature's base name is different.
     if (long_desc.empty())
     {
-        db_name   = feature_description_at(pos, false, DESC_A, false, true);
-        long_desc = getLongDescription(db_name);
+        desc_en   = feature_description_at_en(pos, false, DESC_A, false, true);
+        long_desc = getLongDescription(desc_en);
     }
 
     const string marker_desc =
@@ -2132,16 +2143,17 @@ void get_feature_desc(const coord_def &pos, describe_info &inf)
 
     // mention the ability to pray at altars
     if (feat_is_altar(feat))
-        long_desc += "(Pray here to learn more.)\n";
+        long_desc += "\n" + jtransln("(Pray here to learn more.)\n");
 
     inf.body << long_desc;
 
     if (const cloud_type cloud = env.map_knowledge(pos).cloud())
     {
-        const string cl_name = cloud_type_name(cloud);
-        const string cl_desc = getLongDescription(cl_name + " cloud");
-        inf.body << "\n\nA cloud of " << cl_name
-                 << (cl_desc.empty() ? "." : ".\n\n")
+        const string cl_name = cloud_type_name_j(cloud);
+        const string cl_name_en = cloud_type_name(cloud);
+        const string cl_desc = getLongDescription(cl_name_en + " cloud");
+        inf.body << "\n" << jtrans(cl_name) << "が漂っている。"
+                 << (cl_desc.empty() ? "" : "\n\n")
                  << cl_desc;
     }
 
@@ -2179,7 +2191,7 @@ static int _print_toggle_message(const describe_info &inf, int& key)
 
     const int bottom_line = min(30, get_number_of_lines());
     cgotoxy(1, bottom_line);
-    formatted_string::parse_string(_toggle_message).display();
+    formatted_string::parse_string(jtrans(_toggle_message)).display();
     if (!key)
         key = getchm();
 
@@ -2216,7 +2228,7 @@ void get_item_desc(const item_def &item, describe_info &inf)
     // Don't use verbose descriptions if the item contains spells,
     // so we can actually output these spells if space is scarce.
     const bool verbose = !item.has_spells();
-    inf.body << get_item_description(item, verbose, false, true);
+    inf.body << get_item_description(item, verbose);
 }
 
 // Returns true if spells can be shown to player.
@@ -2325,9 +2337,16 @@ static bool _actions_prompt(item_def &item, bool allow_inscribe, bool do_prompt)
     highlighter->init(coord_def(0, 0), coord_def(0, 0), "highlighter");
     menu.attach_object(highlighter);
 #endif
-    string prompt = "You can ";
+    string prompt_pre;
+    string prompt;
     int keyin;
     vector<command_type> actions;
+
+    if (is_artefact(item))
+        prompt_pre = "この" + jtrans(get_artefact_base_name(item)) + "に対し、";
+    else
+        prompt_pre = "この" + item.name(DESC_BASENAME) + "に対し、";
+
     actions.push_back(CMD_ADJUST_INVENTORY);
     if (item_equip_slot(item) == EQ_WEAPON)
         actions.push_back(CMD_UNWIELD_WEAPON);
@@ -2394,20 +2413,20 @@ static bool _actions_prompt(item_def &item, bool allow_inscribe, bool do_prompt)
     static map<command_type, string> act_str;
     if (act_str_init)
     {
-        act_str[CMD_WIELD_WEAPON]       = "(w)ield";
-        act_str[CMD_UNWIELD_WEAPON]     = "(u)nwield";
-        act_str[CMD_QUIVER_ITEM]        = "(q)uiver";
-        act_str[CMD_WEAR_ARMOUR]        = "(w)ear";
-        act_str[CMD_REMOVE_ARMOUR]      = "(t)ake off";
-        act_str[CMD_EVOKE]              = "e(v)oke";
-        act_str[CMD_EAT]                = "(e)at";
-        act_str[CMD_READ]               = "(r)ead";
-        act_str[CMD_WEAR_JEWELLERY]     = "(p)ut on";
-        act_str[CMD_REMOVE_JEWELLERY]   = "(r)emove";
-        act_str[CMD_QUAFF]              = "(q)uaff";
-        act_str[CMD_DROP]               = "(d)rop";
-        act_str[CMD_INSCRIBE_ITEM]      = "(i)nscribe";
-        act_str[CMD_ADJUST_INVENTORY]   = "(=)adjust";
+        act_str[CMD_WIELD_WEAPON]       = jtrans("(w)ield");
+        act_str[CMD_UNWIELD_WEAPON]     = jtrans("(u)nwield");
+        act_str[CMD_QUIVER_ITEM]        = jtrans("(q)uiver");
+        act_str[CMD_WEAR_ARMOUR]        = jtrans("(w)ear");
+        act_str[CMD_REMOVE_ARMOUR]      = jtrans("(t)ake off");
+        act_str[CMD_EVOKE]              = jtrans("e(v)oke");
+        act_str[CMD_EAT]                = jtrans("(e)at");
+        act_str[CMD_READ]               = jtrans("(r)ead");
+        act_str[CMD_WEAR_JEWELLERY]     = jtrans("(p)ut on");
+        act_str[CMD_REMOVE_JEWELLERY]   = jtrans("(r)emove");
+        act_str[CMD_QUAFF]              = jtrans("(q)uaff");
+        act_str[CMD_DROP]               = jtrans("(d)rop");
+        act_str[CMD_INSCRIBE_ITEM]      = jtrans("(i)nscribe");
+        act_str[CMD_ADJUST_INVENTORY]   = jtrans("(=)adjust");
         act_str_init = false;
     }
 
@@ -2428,16 +2447,20 @@ static bool _actions_prompt(item_def &item, bool allow_inscribe, bool do_prompt)
         tmp->set_visible(true);
 #endif
         prompt += act_str[*at];
-        if (at < actions.end() - 2)
-            prompt += ", ";
-        else if (at == actions.end() - 2)
-            prompt += " or ";
+        if (at <= actions.end() - 2)
+            prompt += "/";
     }
-    prompt += " the " + item.name(DESC_BASENAME) + ".";
+    prompt += "ことができる。";
 
-    prompt = "<cyan>" + prompt + "</cyan>";
+    prompt_pre = "<cyan>" + prompt_pre;
+    prompt += "</cyan>";
     if (do_prompt)
-        formatted_string::parse_string(prompt).display();
+    {
+        if(strwidth(prompt_pre) + strwidth(prompt) - 13 > get_number_of_cols()) // 13 for tags
+            prompt_pre += "\n";
+
+        formatted_string::parse_string(prompt_pre + prompt).display();
+    }
 
 #ifdef TOUCH_UI
 
@@ -2619,8 +2642,8 @@ void inscribe_item(item_def &item, bool msgwin)
         mprf_nocap(MSGCH_EQUIPMENT, "%s", item.name(DESC_INVENTORY).c_str());
 
     const bool is_inscribed = !item.inscription.empty();
-    string prompt = is_inscribed ? "Replace inscription with what? "
-                                 : "Inscribe with what? ";
+    string prompt = jtrans(is_inscribed ? "Replace inscription with what?"
+                                        : "Inscribe with what?") + " ";
 
     char buf[79];
     int ret;
@@ -2697,13 +2720,12 @@ static void _adjust_item(item_def &item)
 static string _player_spell_stats(const spell_type spell, bool rod)
 {
     string description;
-    description += make_stringf("\nLevel: %d", spell_difficulty(spell));
+    description += "\n" + make_stringf(jtransc("\nLevel: %d"), spell_difficulty(spell));
     if (!rod)
     {
         const string schools = spell_schools_string(spell);
-        description +=
-            make_stringf("        School%s: %s",
-                         schools.find("/") != string::npos ? "s" : "",
+        description += "        " +
+            make_stringf(jtransc("        School%s: %s"),
                          schools.c_str());
 
         if (!crawl_state.need_save
@@ -2713,33 +2735,38 @@ static string _player_spell_stats(const spell_type spell, bool rod)
         }
 
         const string failure = failure_rate_to_string(raw_spell_fail(spell));
-        description += make_stringf("        Fail: %s", failure.c_str());
+        description += "        " +
+            make_stringf(jtransc("        Fail: %s"), failure.c_str());
     }
 
-    description += "\n\nPower : ";
+    description += "\n\n魔法威力  : ";
     description += spell_power_string(spell, rod);
-    description += "\nRange : ";
+    description += "\n射程距離  : ";
     description += spell_range_string(spell, rod);
-    description += "\nHunger: ";
+    description += "\n満腹度消費: ";
     description += spell_hunger_string(spell, rod);
-    description += "\nNoise : ";
+    description += "\n騒音発生  : ";
     description += spell_noise_string(spell);
     description += "\n";
-    return description;
+
+    return sp2nbsp(description);
 }
 
 string get_skill_description(skill_type skill, bool need_title)
 {
-    string lookup = skill_name(skill);
+    string lookup_en = skill_name(skill);
+    string lookup = jtrans(lookup_en);
     string result = "";
 
     if (need_title)
     {
-        result = lookup;
+        result = lookup + string(max(0, get_number_of_cols() - strwidth(lookup)
+                                                             - strwidth(lookup_en) - 1),
+                                 ' ') + (lookup != lookup_en ? lookup_en : "");
         result += "\n\n";
     }
 
-    result += getLongDescription(lookup);
+    result += getLongDescription(lookup_en);
 
     switch (skill)
     {
@@ -2747,19 +2774,19 @@ string get_skill_description(skill_type skill, bool need_title)
             if (you.species == SP_DEMIGOD)
             {
                 result += "\n";
-                result += "How on earth did you manage to pick this up?";
+                result += jtrans("How on earth did you manage to pick this up?");
             }
             else if (you_worship(GOD_TROG))
             {
                 result += "\n";
-                result += "Note that Trog doesn't use Invocations, due to its "
-                          "close connection to magic.";
+                result += jtrans("Note that Trog doesn't use Invocations, due to its "
+                                 "close connection to magic.");
             }
             else if (you_worship(GOD_NEMELEX_XOBEH))
             {
                 result += "\n";
-                result += "Note that Nemelex uses Evocations rather than "
-                          "Invocations.";
+                result += jtrans("Note that Nemelex uses Evocations rather than "
+                                 "Invocations.");
             }
             break;
 
@@ -2767,8 +2794,8 @@ string get_skill_description(skill_type skill, bool need_title)
             if (you_worship(GOD_NEMELEX_XOBEH))
             {
                 result += "\n";
-                result += "This is the skill all of Nemelex's abilities rely "
-                          "on.";
+                result += jtrans("This is the skill all of Nemelex's abilities rely "
+                                 "on.");
             }
             break;
 
@@ -2776,8 +2803,8 @@ string get_skill_description(skill_type skill, bool need_title)
             if (you_worship(GOD_TROG))
             {
                 result += "\n";
-                result += "Keep in mind, though, that Trog will greatly "
-                          "disapprove of this.";
+                result += jtrans("Keep in mind, though, that Trog will greatly "
+                                 "disapprove of this.");
             }
             break;
         default:
@@ -2795,7 +2822,7 @@ string get_skill_description(skill_type skill, bool need_title)
 static int _hex_chance(const spell_type spell, const int hd)
 {
     const int pow = mons_power_for_hd(spell, hd, false) / ENCH_POW_FACTOR;
-    const int chance = hex_success_chance(you.res_magic(), pow, 100);
+    const int chance = hex_success_chance(you.res_magic(), pow, 100, true);
     if (spell == SPELL_STRIP_RESISTANCE)
         return chance + (100 - chance) / 3; // ignores mr 1/3rd of the time
     return chance;
@@ -2822,36 +2849,37 @@ static string _player_spell_desc(spell_type spell, const item_def* item)
     const int limit = summons_limit(spell);
     if (limit)
     {
-        description += "You can sustain at most " + number_in_words(limit)
-                        + " creature" + (limit > 1 ? "s" : "")
-                        + " summoned by this spell.\n";
+        description += make_stringf(jtranslnc("You can sustain at most %d"
+                                              " creature%s"
+                                              " summoned by this spell.\n"),
+                                    limit);
     }
 
     const bool rod = item && item->base_type == OBJ_RODS;
     if (god_hates_spell(spell, you.religion, rod))
     {
-        description += uppercase_first(god_name(you.religion))
-                       + " frowns upon the use of this spell.\n";
+        description += jtrans(god_name(you.religion))
+                     + jtransln(" frowns upon the use of this spell.\n");
         if (god_loathes_spell(spell, you.religion))
-            description += "You'd be excommunicated if you dared to cast it!\n";
+            description += jtransln("You'd be excommunicated if you dared to cast it!\n");
     }
     else if (god_likes_spell(spell, you.religion))
     {
-        description += uppercase_first(god_name(you.religion))
-                       + " supports the use of this spell.\n";
+        description += jtrans(god_name(you.religion))
+                     + jtransln(" supports the use of this spell.\n");
     }
 
     if (item && !player_can_memorise_from_spellbook(*item))
     {
-        description += "The spell is scrawled in ancient runes that are "
-                       "beyond your current level of understanding.\n";
+        description += jtransln("The spell is scrawled in ancient runes that are "
+                                "beyond your current level of understanding.\n");
     }
 
     if (spell_is_useless(spell, true, false, rod) && you_can_memorise(spell))
     {
-        description += "\nThis spell will have no effect right now: "
-                       + spell_uselessness_reason(spell, true, false, rod)
-                       + "\n";
+        description += "\n" + jtrans("This spell will have no effect right now:") + " "
+                     + jtrans(spell_uselessness_reason(spell, true, false, rod))
+                     + "\n";
     }
 
     return description;
@@ -2894,7 +2922,12 @@ static int _get_spell_description(const spell_type spell,
 {
     description.reserve(500);
 
-    description  = spell_title(spell);
+    description = tagged_jtrans("[spell]", spell_title(spell));
+    description = description + string(max(0, get_number_of_cols()
+                                           - strwidth(description)
+                                           - strwidth(spell_title(spell)) - 1),
+                                       ' ') + spell_title(spell);
+    description = sp2nbsp(description);
     description += "\n\n";
     const string long_descrip = getLongDescription(string(spell_title(spell))
                                                    + " spell");
@@ -2918,14 +2951,14 @@ static int _get_spell_description(const spell_type spell,
         // (draining, malmutation, levelling up)
         const int hd = mons_class_hit_dice(mon_owner->type);
         const int range = mons_spell_range(spell, hd);
-        description += "\nRange : "
+        description += "\n" + jtrans("Range :") + " "
                        + range_string(range, range, mons_char(mon_owner->type))
                        + "\n";
 
         // only display this if the player exists (not in the main menu)
         if (crawl_state.need_save && (get_spell_flags(spell) & SPFLAG_MR_CHECK))
         {
-            description += make_stringf("Chance to beat your MR: %d%%\n",
+            description += make_stringf(jtranslnc("Chance to beat your MR: %d%%\n"),
                                         _hex_chance(spell, hd));
         }
 
@@ -2949,15 +2982,15 @@ static int _get_spell_description(const spell_type spell,
     {
         if (you.has_spell(spell))
         {
-            description += "\n(F)orget this spell by destroying the book.\n";
+            description += "\n" + jtransln("(F)orget this spell by destroying the book.\n");
             if (you_worship(GOD_SIF_MUNA))
-                description +="Sif Muna frowns upon the destroying of books.\n";
+                description += jtransln("Sif Muna frowns upon the destroying of books.\n");
             return BOOK_FORGET;
         }
         else if (player_can_memorise_from_spellbook(*item)
                  && you_can_memorise(spell))
         {
-            description += "\n(M)emorise this spell.\n";
+            description += "\n" + jtransln("(M)emorise this spell.\n");
             return BOOK_MEM;
         }
     }
@@ -2975,8 +3008,9 @@ static int _get_spell_description(const spell_type spell,
 void get_spell_desc(const spell_type spell, describe_info &inf)
 {
     string desc;
+
     _get_spell_description(spell, nullptr, desc);
-    inf.body << desc;
+    inf.body << sp2nbsp(desc);
 }
 
 
@@ -3030,54 +3064,54 @@ static string _describe_draconian(const monster_info& mi)
 
     if (subsp != mi.type)
     {
-        description += "It has ";
+        description += "このモンスターは";
 
         switch (subsp)
         {
-        case MONS_BLACK_DRACONIAN:      description += "black ";   break;
-        case MONS_MOTTLED_DRACONIAN:    description += "mottled "; break;
-        case MONS_YELLOW_DRACONIAN:     description += "yellow ";  break;
-        case MONS_GREEN_DRACONIAN:      description += "green ";   break;
-        case MONS_PURPLE_DRACONIAN:     description += "purple ";  break;
-        case MONS_RED_DRACONIAN:        description += "red ";     break;
-        case MONS_WHITE_DRACONIAN:      description += "white ";   break;
-        case MONS_GREY_DRACONIAN:       description += "grey ";    break;
-        case MONS_PALE_DRACONIAN:       description += "pale ";    break;
+        case MONS_BLACK_DRACONIAN:      description += jtrans("black ");   break;
+        case MONS_MOTTLED_DRACONIAN:    description += jtrans("mottled "); break;
+        case MONS_YELLOW_DRACONIAN:     description += jtrans("yellow ");  break;
+        case MONS_GREEN_DRACONIAN:      description += jtrans("green ");   break;
+        case MONS_PURPLE_DRACONIAN:     description += jtrans("purple ");  break;
+        case MONS_RED_DRACONIAN:        description += jtrans("red ");     break;
+        case MONS_WHITE_DRACONIAN:      description += jtrans("white ");   break;
+        case MONS_GREY_DRACONIAN:       description += jtrans("grey ");    break;
+        case MONS_PALE_DRACONIAN:       description += jtrans("pale ");    break;
         default:
             break;
         }
 
-        description += "scales. ";
+        description += "鱗を持っている。\n";
     }
 
     switch (subsp)
     {
     case MONS_BLACK_DRACONIAN:
-        description += "Sparks flare out of its mouth and nostrils.";
+        description += jtrans("Sparks flare out of its mouth and nostrils.");
         break;
     case MONS_MOTTLED_DRACONIAN:
-        description += "Liquid flames drip from its mouth.";
+        description += jtrans("Liquid flames drip from its mouth.");
         break;
     case MONS_YELLOW_DRACONIAN:
-        description += "Acidic fumes swirl around it.";
+        description += jtrans("Acidic fumes swirl around it.");
         break;
     case MONS_GREEN_DRACONIAN:
-        description += "Venom drips from its jaws.";
+        description += jtrans("Venom drips from its jaws.");
         break;
     case MONS_PURPLE_DRACONIAN:
-        description += "Its outline shimmers with magical energy.";
+        description += jtrans("Its outline shimmers with magical energy.");
         break;
     case MONS_RED_DRACONIAN:
-        description += "Smoke pours from its nostrils.";
+        description += jtrans("Smoke pours from its nostrils.");
         break;
     case MONS_WHITE_DRACONIAN:
-        description += "Frost pours from its nostrils.";
+        description += jtrans("Frost pours from its nostrils.");
         break;
     case MONS_GREY_DRACONIAN:
-        description += "Its scales and tail are adapted to the water.";
+        description += jtrans("Its scales and tail are adapted to the water.");
         break;
     case MONS_PALE_DRACONIAN:
-        description += "It is cloaked in a pall of superheated steam.";
+        description += jtrans("It is cloaked in a pall of superheated steam.");
         break;
     default:
         break;
@@ -3088,51 +3122,57 @@ static string _describe_draconian(const monster_info& mi)
 
 static string _describe_chimera(const monster_info& mi)
 {
-    string description = "It has the head of ";
+    string description = "このモンスターは";
 
-    description += apply_description(DESC_A, get_monster_data(mi.base_type)->name);
+    description += apply_description_j(DESC_A, get_monster_data(mi.base_type)->name);
 
     monster_type part2 = get_chimera_part(&mi,2);
-    description += ", the head of ";
+    description += "の頭と";
     if (part2 == mi.base_type)
     {
-        description += "another ";
-        description += apply_description(DESC_PLAIN,
-                                         get_monster_data(part2)->name);
+        description += "別の";
+        description += apply_description_j(DESC_PLAIN,
+                                           get_monster_data(part2)->name) + "の";
     }
     else
-        description += apply_description(DESC_A, get_monster_data(part2)->name);
+        description += apply_description_j(DESC_A, get_monster_data(part2)->name) + "の";
 
     monster_type part3 = get_chimera_part(&mi,3);
-    description += ", and the head of ";
+    description += "頭、そして";
     if (part3 == mi.base_type || part3 == part2)
     {
         if (part2 == mi.base_type)
-            description += "yet ";
-        description += "another ";
-        description += apply_description(DESC_PLAIN,
-                                         get_monster_data(part3)->name);
+            description += "さらに";
+        description += "別の";
+        description += apply_description_j(DESC_PLAIN,
+                                           get_monster_data(part3)->name) + "の";
     }
     else
-        description += apply_description(DESC_A, get_monster_data(part3)->name);
+        description += apply_description_j(DESC_A, get_monster_data(part3)->name) + "の";
 
-    description += ". It has the body of ";
-    description += apply_description(DESC_A,
-                                     get_monster_data(mi.base_type)->name);
+    description += "頭を持つ。\nこのモンスターは";
+    description += apply_description_j(DESC_A,
+                                       get_monster_data(mi.base_type)->name);
+    description += "の体をして";
 
     const bool has_wings = mi.props.exists("chimera_batty")
                            || mi.props.exists("chimera_wings");
+
+    if (mi.props.exists("chimera_legs") || has_wings)
+        description += "おり、";
+
     if (mi.props.exists("chimera_legs"))
     {
         const monster_type leggy_part =
             get_chimera_part(&mi, mi.props["chimera_legs"].get_int());
-        if (has_wings)
-            description += ", ";
-        else
-            description += ", and ";
-        description += "the legs of ";
         description += apply_description(DESC_A,
                                          get_monster_data(leggy_part)->name);
+
+        description += "の肢";
+        if (has_wings)
+            description += "と";
+        else
+            description += "を持って";
     }
 
     if (has_wings)
@@ -3141,22 +3181,22 @@ static string _describe_chimera(const monster_info& mi)
             get_chimera_part(&mi, mi.props["chimera_batty"].get_int())
             : get_chimera_part(&mi, mi.props["chimera_wings"].get_int());
 
+        description += apply_description_j(DESC_A,
+                                           get_monster_data(wing_part)->name);
         switch (mons_class_flies(wing_part))
         {
         case FL_WINGED:
-            description += " and the wings of ";
+            description += "の翼を持って";
             break;
         case FL_LEVITATE:
-            description += " and it hovers like ";
+            description += "のように浮かんで";
             break;
         case FL_NONE:
-            description += " and it moves like "; // Unseen horrors
+            description += "のような動きをして"; // Unseen horrors
             break;
         }
-        description += apply_description(DESC_A,
-                                         get_monster_data(wing_part)->name);
     }
-    description += ".";
+    description += "いる。";
     return description;
 }
 
@@ -3165,18 +3205,18 @@ static string _describe_demonspawn_role(monster_type type)
     switch (type)
     {
     case MONS_BLOOD_SAINT:
-        return "It weaves powerful and unpredictable spells of devastation.";
+        return jtrans("It weaves powerful and unpredictable spells of devastation.");
     case MONS_CHAOS_CHAMPION:
-        return "It possesses chaotic, reality-warping powers.";
+        return jtrans("It possesses chaotic, reality-warping powers.");
     case MONS_WARMONGER:
-        return "It is devoted to combat, disrupting the magic of its foes as "
-               "it battles endlessly.";
+        return jtrans("It is devoted to combat, disrupting the magic of its foes as "
+                      "it battles endlessly.");
     case MONS_CORRUPTER:
-        return "It corrupts space around itself, and can twist even the very "
-               "flesh of its opponents.";
+        return jtrans("It corrupts space around itself, and can twist even the very "
+                      "flesh of its opponents.");
     case MONS_BLACK_SUN:
-        return "It shines with an unholy radiance, and wields powers of "
-               "darkness from its devotion to the deities of death.";
+        return jtrans("It shines with an unholy radiance, and wields powers of "
+                      "darkness from its devotion to the deities of death.");
     default:
         return "";
     }
@@ -3187,15 +3227,15 @@ static string _describe_demonspawn_base(int species)
     switch (species)
     {
     case MONS_MONSTROUS_DEMONSPAWN:
-        return "It is more beast now than whatever species it is descended from.";
+        return jtrans("It is more beast now than whatever species it is descended from.");
     case MONS_GELID_DEMONSPAWN:
-        return "It is covered in icy armour.";
+        return jtrans("It is covered in icy armour.");
     case MONS_INFERNAL_DEMONSPAWN:
-        return "It gives off an intense heat.";
+        return jtrans("It gives off an intense heat.");
     case MONS_PUTRID_DEMONSPAWN:
-        return "It is surrounded by sickly fumes and gases.";
+        return jtrans("It is surrounded by sickly fumes and gases.");
     case MONS_TORTUROUS_DEMONSPAWN:
-        return "It menaces with bony spines.";
+        return jtrans("It menaces with bony spines.");
     }
     return "";
 }
@@ -3211,7 +3251,7 @@ static string _describe_demonspawn(const monster_info& mi)
     {
         const string demonspawn_role = _describe_demonspawn_role(mi.type);
         if (!demonspawn_role.empty())
-            description += " " + demonspawn_role;
+            description += "\n" + demonspawn_role;
     }
 
     return description;
@@ -3283,7 +3323,7 @@ static const char* _describe_attack_flavour(attack_flavour flavour)
     case AF_STICKY_FLAME:    return "apply sticky flame";
     case AF_CHAOS:           return "cause unpredictable effects";
     case AF_STEAL:           return "steal items";
-    case AF_CRUSH:           return "constrict";
+    case AF_CRUSH:           return "拘束してくる"; // 直接変更
     case AF_REACH:           return "deal damage from a distance";
     case AF_HOLY:            return "deal extra damage to undead and demons";
     case AF_ANTIMAGIC:       return "drain magic";
@@ -3318,7 +3358,7 @@ static string _monster_attacks_description(const monster_info& mi)
         if (!attack_flavours.count(af))
         {
             attack_flavours.insert(af);
-            const char * const desc = _describe_attack_flavour(af);
+            const char * const desc = jtransc(_describe_attack_flavour(af));
             if (desc[0]) // non-empty
                 attack_descs.push_back(desc);
         }
@@ -3329,13 +3369,19 @@ static string _monster_attacks_description(const monster_info& mi)
 
     // Assumes nothing has both AT_REACH_STING and AF_REACH.
     if (reach_sting)
-        attack_descs.emplace_back(_describe_attack_flavour(AF_REACH));
+        attack_descs.emplace_back(jtrans(_describe_attack_flavour(AF_REACH)));
 
     if (!attack_descs.empty())
     {
-        result << uppercase_first(mi.pronoun(PRONOUN_SUBJECTIVE));
-        result << " may attack to " << comma_separated_line(attack_descs.begin(), attack_descs.end());
-        result << ".\n";
+        string pronoun = uppercase_first(mi.pronoun(PRONOUN_SUBJECTIVE));
+
+        if (pronoun == "It" || pronoun == "それ")
+            pronoun = "このモンスター";
+
+        result << pronoun << "は" << to_separated_line(attack_descs.begin(), attack_descs.end(), true,
+                                                       ("ことがある。\n" + pronoun + "は").c_str(),
+                                                       ("ことがある。\n" + pronoun + "は").c_str());
+        result << "ことがある。\n";
     }
 
     return result.str();
@@ -3345,11 +3391,11 @@ static string _monster_spells_description(const monster_info& mi)
 {
     // Show a generic message for pan lords, since they're secret.
     if (mi.type == MONS_PANDEMONIUM_LORD)
-        return "It may possess any of a vast number of diabolical powers.\n";
+        return jtransln("It may possess any of a vast number of diabolical powers.\n");
 
     // Ditto for (a)liches.
     if (mi.type == MONS_LICH || mi.type == MONS_ANCIENT_LICH)
-        return "It has mastered any of a vast number of powerful spells.\n";
+        return jtransln("It has mastered any of a vast number of powerful spells.\n");
 
     // Show monster spells and spell-like abilities.
     if (!mi.has_spells())
@@ -3357,7 +3403,8 @@ static string _monster_spells_description(const monster_info& mi)
 
     formatted_string description;
     describe_spellset(monster_spellset(mi), nullptr, description);
-    description.cprintf("Select a spell to read its description.\n");
+    description.cprintf("\n");
+    description.cprintf(jtranslnc("Select a spell to read its description.\n"));
     return description.tostring();
 }
 
@@ -3389,9 +3436,9 @@ static void _add_energy_to_string(int speed, int energy, string what,
 
     const int act_speed = (speed * 10) / energy;
     if (act_speed > 10)
-        fast.push_back(what + " " + _speed_description(act_speed));
+        fast.push_back(tagged_jtrans("[adj]", _speed_description(act_speed)) + jtrans(what));
     if (act_speed < 10)
-        slow.push_back(what + " " + _speed_description(act_speed));
+        slow.push_back(tagged_jtrans("[adj]", _speed_description(act_speed)) + jtrans(what));
 }
 
 
@@ -3440,7 +3487,7 @@ static void _print_bar(int value, int max, int scale,
 
     if (currently_disabled)
     {
-        result << " (Normal " << name << ")";
+        result << " (通常時)";
 
 #ifdef DEBUG_DIAGNOSTICS
         result << " (" << base_value << ")";
@@ -3459,7 +3506,7 @@ static void _print_bar(int value, int max, int scale,
 static void _describe_monster_ac(const monster_info& mi, ostringstream &result)
 {
     // max ac 40 (dispater)
-    _print_bar(mi.ac, 40, 5, "AC", result);
+    _print_bar(mi.ac, 40, 5, " AC ", result);
 }
 
 /**
@@ -3471,7 +3518,7 @@ static void _describe_monster_ac(const monster_info& mi, ostringstream &result)
 static void _describe_monster_ev(const monster_info& mi, ostringstream &result)
 {
     // max ev 30 (eresh) (also to make space for parens)
-    _print_bar(mi.ev, 30, 5, "EV", result, mi.base_ev);
+    _print_bar(mi.ev, 30, 5, "回避", result, mi.base_ev);
 }
 
 /**
@@ -3484,13 +3531,13 @@ static void _describe_monster_mr(const monster_info& mi, ostringstream &result)
 {
     if (mi.res_magic() == MAG_IMMUNE)
     {
-        result << "MR ∞";
+        result << "魔防 ∞\n";
         return;
     }
 
     const int max_mr = 200; // export this? is this already exported?
     const int bar_scale = MR_PIP;
-    _print_bar(mi.res_magic(), max_mr, bar_scale, "MR", result);
+    _print_bar(mi.res_magic(), max_mr, bar_scale, "魔防", result);
 }
 
 
@@ -3499,6 +3546,8 @@ static void _describe_monster_mr(const monster_info& mi, ostringstream &result)
 static string _monster_stat_description(const monster_info& mi)
 {
     ostringstream result;
+
+    result << "\n";
 
     _describe_monster_ac(mi, result);
     _describe_monster_ev(mi, result);
@@ -3550,70 +3599,80 @@ static string _monster_stat_description(const monster_info& mi)
     vector<string> resist_descriptions;
     if (!extreme_resists.empty())
     {
-        const string tmp = "immune to "
-            + comma_separated_line(extreme_resists.begin(),
-                                   extreme_resists.end());
+        const string tmp =
+            to_separated_line(extreme_resists.begin(),
+                              extreme_resists.end(), true, "や", "、", "、")
+            + jtrans("immune to");
         resist_descriptions.push_back(tmp);
     }
     if (!high_resists.empty())
     {
-        const string tmp = "very resistant to "
-            + comma_separated_line(high_resists.begin(), high_resists.end());
+        const string tmp =
+            to_separated_line(high_resists.begin(),
+                              high_resists.end(), true, "や", "、", "、")
+            + jtrans("very resistant to ");
         resist_descriptions.push_back(tmp);
     }
     if (!base_resists.empty())
     {
-        const string tmp = "resistant to "
-            + comma_separated_line(base_resists.begin(), base_resists.end());
+        const string tmp =
+            to_separated_line(base_resists.begin(),
+                              base_resists.end(), true, "や", "、", "、")
+            + jtrans("resistant to ");
         resist_descriptions.push_back(tmp);
     }
 
-    const char* pronoun = mi.pronoun(PRONOUN_SUBJECTIVE);
+    string pronoun = mi.pronoun(PRONOUN_SUBJECTIVE);
+
+    if (pronoun == "It" || pronoun == "それ")
+        pronoun = "このモンスター";
 
     if (mi.threat != MTHRT_UNDEF)
     {
-        result << uppercase_first(pronoun) << " looks "
-               << _get_threat_desc(mi.threat) << ".\n";
+        result << uppercase_first(pronoun) << "は"
+               << jtrans(_get_threat_desc(mi.threat))
+               << (mi.threat < MTHRT_TOUGH ? "。\n" : "だ。\n");
     }
 
     if (!resist_descriptions.empty())
     {
-        result << uppercase_first(pronoun) << " is "
+        result << uppercase_first(pronoun) << "は"
                << comma_separated_line(resist_descriptions.begin(),
                                        resist_descriptions.end(),
-                                       "; and ", "; ")
-               << ".\n";
+                                       "\n" + pronoun + "は",
+                                       "\n" + pronoun + "は")
+               << "\n";
     }
 
     // Is monster susceptible to anything? (On a new line.)
     if (!suscept.empty())
     {
-        result << uppercase_first(pronoun) << " is susceptible to "
-               << comma_separated_line(suscept.begin(), suscept.end())
-               << ".\n";
+        result << uppercase_first(pronoun) << "は"
+               << to_separated_line(suscept.begin(), suscept.end(), true,  "や", "、", "、")
+               << jtransln(" is susceptible to ");
     }
 
     if (mons_class_flag(mi.type, M_STATIONARY)
         && !mons_is_tentacle_or_tentacle_segment(mi.type))
     {
-        result << uppercase_first(pronoun) << " cannot move.\n";
+        result << uppercase_first(pronoun) << jtransln(" cannot move.\n");
     }
 
     // Monsters can glow from both light and radiation.
     if (mons_class_flag(mi.type, M_GLOWS_LIGHT))
-        result << uppercase_first(pronoun) << " is outlined in light.\n";
+        result << uppercase_first(pronoun) << jtransln(" is outlined in light.\n");
     if (mons_class_flag(mi.type, M_GLOWS_RADIATION))
-        result << uppercase_first(pronoun) << " is glowing with mutagenic radiation.\n";
+        result << uppercase_first(pronoun) << jtransln(" is glowing with mutagenic radiation.\n");
     if (mons_class_flag(mi.type, M_SHADOW))
-        result << uppercase_first(pronoun) << " is wreathed in shadows.\n";
+        result << uppercase_first(pronoun) << jtransln(" is wreathed in shadows.\n");
 
     // Seeing invisible.
     if (mi.can_see_invisible())
-        result << uppercase_first(pronoun) << " can see invisible.\n";
+        result << uppercase_first(pronoun) << jtransln(" can see invisible.\n");
 
     // Echolocation, wolf noses, jellies, etc
     if (!mons_can_be_blinded(mi.type))
-        result << uppercase_first(pronoun) << " is immune to blinding.\n";
+        result << uppercase_first(pronoun) << jtransln(" is immune to blinding.\n");
     // XXX: could mention "immune to dazzling" here, but that's spammy, since
     // it's true of such a huge number of monsters. (undead, statues, plants).
     // Might be better to have some place where players can see holiness &
@@ -3625,8 +3684,8 @@ static string _monster_stat_description(const monster_info& mi)
     bool did_speed = false;
     if (speed != 10 && speed != 0)
     {
-        did_speed = true;
-        result << uppercase_first(pronoun) << " is " << mi.speed_description();
+        result << uppercase_first(pronoun) << jtrans(" is ") << jtrans(mi.speed_description())
+               << "。\n";
     }
     const mon_energy_usage def = DEFAULT_ENERGY;
     if (!(mi.menergy == def))
@@ -3634,7 +3693,7 @@ static string _monster_stat_description(const monster_info& mi)
         const mon_energy_usage me = mi.menergy;
         vector<string> fast, slow;
         if (!did_speed)
-            result << uppercase_first(pronoun) << " ";
+            result << uppercase_first(pronoun) << "は";
         _add_energy_to_string(speed, me.move, "covers ground", fast, slow);
         // since MOVE_ENERGY also sets me.swim
         if (me.swim != me.move)
@@ -3652,6 +3711,8 @@ static string _monster_stat_description(const monster_info& mi)
         if (mons_class_itemuse(mi.type) >= MONUSE_STARTING_EQUIPMENT)
             _add_energy_to_string(speed, me.item, "uses items", fast, slow);
 
+        const string pronoun_is = "。\n" + pronoun + "は";
+
         if (speed >= 10)
         {
             if (did_speed && fast.size() == 1)
@@ -3659,14 +3720,18 @@ static string _monster_stat_description(const monster_info& mi)
             else if (!fast.empty())
             {
                 if (did_speed)
-                    result << ", ";
-                result << comma_separated_line(fast.begin(), fast.end());
+                    result << "、";
+                result << comma_separated_line(fast.begin(), fast.end(),
+                                               pronoun_is,
+                                               pronoun_is);
             }
             if (!slow.empty())
             {
                 if (did_speed || !fast.empty())
-                    result << ", but ";
-                result << comma_separated_line(slow.begin(), slow.end());
+                    result << "が、";
+                result << comma_separated_line(slow.begin(), slow.end(),
+                                               pronoun_is,
+                                               pronoun_is);
             }
         }
         else if (speed < 10)
@@ -3676,20 +3741,24 @@ static string _monster_stat_description(const monster_info& mi)
             else if (!slow.empty())
             {
                 if (did_speed)
-                    result << ", ";
-                result << comma_separated_line(slow.begin(), slow.end());
+                    result << "、";
+                result << comma_separated_line(slow.begin(), slow.end(),
+                                               pronoun_is,
+                                               pronoun_is);
             }
             if (!fast.empty())
             {
                 if (did_speed || !slow.empty())
-                    result << ", but ";
-                result << comma_separated_line(fast.begin(), fast.end());
+                    result << "が、";
+                result << comma_separated_line(fast.begin(), fast.end(),
+                                               pronoun_is,
+                                               pronoun_is);
             }
         }
-        result << ".\n";
+        result << "。\n";
     }
     else if (did_speed)
-        result << ".\n";
+        result << "。\n";
 
     // Can the monster fly, and how?
     // This doesn't give anything away since no (very) ugly things can
@@ -3700,36 +3769,36 @@ static string _monster_stat_description(const monster_info& mi)
     case FL_NONE:
         break;
     case FL_WINGED:
-        result << uppercase_first(pronoun) << " can fly.\n";
+        result << uppercase_first(pronoun) << jtransln(" can fly.\n");
         break;
     case FL_LEVITATE:
-        result << uppercase_first(pronoun) << " can fly magically.\n";
+        result << uppercase_first(pronoun) << jtransln(" can fly magically.\n");
         break;
     }
 
     // Unusual regeneration rates.
     if (!mi.can_regenerate())
-        result << uppercase_first(pronoun) << " cannot regenerate.\n";
+        result << uppercase_first(pronoun) << jtransln(" cannot regenerate.\n");
     else if (mons_class_fast_regen(mi.type))
-        result << uppercase_first(pronoun) << " regenerates quickly.\n";
+        result << uppercase_first(pronoun) << jtransln(" regenerates quickly.\n");
 
     // Size
     static const char * const sizes[] =
     {
-        "tiny",
-        "very small",
-        "small",
+        "極めて小さい",
+        "とても小さい",
+        "小さい",
         nullptr,     // don't display anything for 'medium'
-        "large",
-        "very large",
-        "giant",
+        "大きい",
+        "とても大きい",
+        "巨大だ",
     };
     COMPILE_CHECK(ARRAYSZ(sizes) == NUM_SIZE_LEVELS);
 
     if (sizes[mi.body_size()])
     {
-        result << uppercase_first(pronoun) << " is "
-        << sizes[mi.body_size()] << ".\n";
+        result << uppercase_first(pronoun) << jtrans(" is ")
+        << sizes[mi.body_size()] << "。\n";
     }
 
     result << _monster_attacks_description(mi);
@@ -3753,14 +3822,35 @@ static string _serpent_of_hell_flavour(monster_type m)
     }
 }
 
+static string _get_unique_title(const string& key)
+{
+    return jtrans_has_key(key) ? jtrans(key) : "";
+}
+
 // Fetches the monster's database description and reads it into inf.
 void get_monster_db_desc(const monster_info& mi, describe_info &inf,
                          bool &has_stat_desc, bool force_seen)
 {
+    string desc, desc_en;
     if (inf.title.empty())
-        inf.title = getMiscString(mi.common_name(DESC_DBNAME) + " title");
+    {
+        desc = getMiscString(mi.common_name_en(DESC_DBNAME) + " title");
+        desc_en = _get_unique_title(mi.common_name_en(DESC_DBNAME) + " title");
+    }
+    if (desc_en.empty())
+    {
+        desc = mi.full_name(DESC_A, true);
+        desc_en = uppercase_first(mi.full_name_en(DESC_A, true));
+    }
+
+    if (mi.type == MONS_CHIMERA)
+        desc_en = "A chimera";
+
     if (inf.title.empty())
-        inf.title = uppercase_first(mi.full_name(DESC_A, true)) + ".";
+        inf.title = desc + string(max(0, get_number_of_cols() - strwidth(desc)
+                                                              - strwidth(desc_en) - 1),
+                                  ' ') + (desc != desc_en ? desc_en : "");
+    inf.body << "\n";
 
     string db_name;
 
@@ -3817,12 +3907,12 @@ void get_monster_db_desc(const monster_info& mi, describe_info &inf,
     case MONS_VAMPIRE_KNIGHT:
     case MONS_VAMPIRE_MAGE:
         if (you.undead_state() == US_ALIVE && mi.attitude == ATT_HOSTILE)
-            inf.body << "\nIt wants to drink your blood!\n";
+            inf.body << "\n" + jtransln("It wants to drink your blood!\n");
         break;
 
     case MONS_REAPER:
         if (you.undead_state(false) == US_ALIVE && mi.attitude == ATT_HOSTILE)
-            inf.body <<  "\nIt has come for your soul!\n";
+            inf.body <<  "\n" + jtransln("It has come for your soul!\n");
         break;
 
     case MONS_RED_DRACONIAN:
@@ -3862,11 +3952,11 @@ void get_monster_db_desc(const monster_info& mi, describe_info &inf,
     }
 
     case MONS_PLAYER_GHOST:
-        inf.body << "The apparition of " << get_ghost_description(mi) << ".\n";
+        inf.body << get_ghost_description(mi) << jtransln("The apparition of ");
         break;
 
     case MONS_PLAYER_ILLUSION:
-        inf.body << "An illusion of " << get_ghost_description(mi) << ".\n";
+        inf.body << get_ghost_description(mi) << jtransln("An illusion of ");
         break;
 
     case MONS_PANDEMONIUM_LORD:
@@ -3905,34 +3995,38 @@ void get_monster_db_desc(const monster_info& mi, describe_info &inf,
     string result = _monster_stat_description(mi);
     if (!result.empty())
     {
-        inf.body << "\n" << result;
+        inf.body << result;
         has_stat_desc = true;
     }
+
+    string pronoun = uppercase_first(mi.pronoun(PRONOUN_SUBJECTIVE));
+    if (pronoun == "It" || pronoun == "それ")
+        pronoun = "このモンスター";
 
     bool stair_use = false;
     if (!mons_class_can_use_stairs(mi.type))
     {
-        inf.body << "\n" << uppercase_first(mi.pronoun(PRONOUN_SUBJECTIVE))
-                 << " is incapable of using stairs.\n";
+        inf.body << "\n" << pronoun
+                 << jtransln(" is incapable of using stairs.\n");
         stair_use = true;
     }
 
     if (mi.intel() <= I_PLANT)
     {
-        inf.body << uppercase_first(mi.pronoun(PRONOUN_SUBJECTIVE))
-                 << " is mindless.\n";
+        inf.body << pronoun
+                 << jtransln(" is mindless.\n");
     }
     else if (mi.intel() <= I_INSECT && you_worship(GOD_ELYVILON))
     {
-        inf.body << uppercase_first(mi.pronoun(PRONOUN_SUBJECTIVE))
-                 << " is not intelligent enough to pacify.\n";
+        inf.body << pronoun
+                 << jtransln(" is not intelligent enough to pacify.\n");
     }
 
 
     if (mi.is(MB_CHAOTIC))
     {
-        inf.body << uppercase_first(mi.pronoun(PRONOUN_SUBJECTIVE))
-                 << " is vulnerable to silver and hated by Zin.\n";
+        inf.body << pronoun
+                 << jtransln(" is vulnerable to silver and hated by Zin.\n");
     }
 
     if (in_good_standing(GOD_ZIN, 0))
@@ -3940,18 +4034,18 @@ void get_monster_db_desc(const monster_info& mi, describe_info &inf,
         const int check = mons_class_hit_dice(mi.type) - zin_recite_power();
         if (check >= 0)
         {
-            inf.body << uppercase_first(mi.pronoun(PRONOUN_SUBJECTIVE))
-                     << " is too strong to be recited to.";
+            inf.body << pronoun
+                     << jtrans(" is too strong to be recited to.");
         }
         else if (check >= -5)
         {
-            inf.body << uppercase_first(mi.pronoun(PRONOUN_SUBJECTIVE))
-                     << " may be too strong to be recited to.";
+            inf.body << pronoun
+                     << jtrans(" may be too strong to be recited to.");
         }
         else
         {
-            inf.body << uppercase_first(mi.pronoun(PRONOUN_SUBJECTIVE))
-                     << " is weak enough to be recited to.";
+            inf.body << pronoun
+                     << jtrans(" is weak enough to be recited to.");
         }
         if (you.wizard)
         {
@@ -3963,37 +4057,37 @@ void get_monster_db_desc(const monster_info& mi, describe_info &inf,
 
     if (mi.is(MB_SUMMONED))
     {
-        inf.body << "\n" << "This monster has been summoned, and is thus only "
+        inf.body << "\n" << jtrans("This monster has been summoned, and is thus only "
                        "temporary. Killing it yields no experience, nutrition "
-                       "or items";
+                       "or items");
         if (!stair_use)
-            inf.body << ", and it is incapable of using stairs";
-        inf.body << ".\n";
+            inf.body << jtrans(", and it is incapable of using stairs");
+        inf.body << "ない。\n";
     }
     else if (mi.is(MB_PERM_SUMMON))
     {
-        inf.body << "\n" << "This monster has been summoned in a durable "
+        inf.body << "\n" << pronoun << jtransln("This monster has been summoned in a durable "
                        "way, and only partially exists. Killing it yields no "
                        "experience, nutrition or items. You cannot easily "
-                       "abjure it, though.\n";
+                       "abjure it, though.\n");
     }
     else if (mons_class_leaves_hide(mi.type))
     {
+        inf.body << "\n" << pronoun << jtransln("mons class leaves hide");
+        /*
         inf.body << "\nIf " << mi.pronoun(PRONOUN_SUBJECTIVE) << " is slain "
         "and butchered, it may be possible to recover "
         << mi.pronoun(PRONOUN_POSSESSIVE) << " hide, which can be "
         "enchanted into armour.\n";
+        */
     }
 
     if (mi.is(MB_SUMMONED_CAPPED))
     {
-        inf.body << "\n" << "You have summoned too many monsters of this kind "
-                            "to sustain them all, and thus this one will "
-                            "shortly expire.\n";
+        inf.body << "\n" << jtransln("You have summoned too many monsters of this kind "
+                                     "to sustain them all, and thus this one will "
+                                     "shortly expire.\n");
     }
-
-    if (!inf.quote.empty())
-        inf.quote += "\n";
 
 #ifdef DEBUG_DIAGNOSTICS
     if (mi.pos.origin() || !monster_at(mi.pos))
@@ -4127,12 +4221,12 @@ int describe_monsters(const monster_info &mi, bool force_seen,
     if (!inf.quote.empty())
     {
         fs.add_item_formatted_string(
-                formatted_string::parse_string("\n" + _toggle_message));
+                formatted_string::parse_string("\n" + jtrans(_toggle_message)));
 
         qs.add_text(inf.title);
-        qs.add_text(inf.quote, false, get_number_of_cols() - 1);
+        qs.add_text("\n" + inf.quote, false, get_number_of_cols() - 1);
         qs.add_item_formatted_string(
-                formatted_string::parse_string("\n" + _toggle_message));
+                formatted_string::parse_string("\n" + jtrans(_toggle_message)));
     }
 
     fs.add_item_formatted_string(formatted_string::parse_string(inf.footer));
@@ -4157,7 +4251,7 @@ int describe_monsters(const monster_info &mi, bool force_seen,
 
 static const char* xl_rank_names[] =
 {
-    "weakling",
+    "",
     "average",
     "experienced",
     "powerful",
@@ -4171,7 +4265,7 @@ static string _xl_rank_name(const int xl_rank)
 {
     const string rank = xl_rank_names[xl_rank];
 
-    return article_a(rank);
+    return rank;
 }
 
 string short_ghost_description(const monster *mon, bool abbrev)
@@ -4181,18 +4275,9 @@ string short_ghost_description(const monster *mon, bool abbrev)
     const ghost_demon &ghost = *(mon->ghost);
     const char* rank = xl_rank_names[ghost_level_to_rank(ghost.xl)];
 
-    string desc = make_stringf("%s %s %s", rank,
-                               species_name(ghost.species).c_str(),
-                               get_job_name(ghost.job));
-
-    if (abbrev || strwidth(desc) > 40)
-    {
-        desc = make_stringf("%s %s%s",
-                            rank,
-                            get_species_abbrev(ghost.species),
-                            get_job_abbrev(ghost.job));
-    }
-
+    string desc = make_stringf("%s%sの%s", jtransc(rank),
+                               jtransc(species_name(ghost.species)),
+                               jtransc(get_job_name(ghost.job)));
     return desc;
 }
 
@@ -4241,12 +4326,12 @@ string get_ghost_description(const monster_info &mi, bool concise)
         break;
     }
 
-    gstr << mi.mname << " the "
-         << skill_title_by_rank(mi.u.ghost.best_skill,
-                        mi.u.ghost.best_skill_rank,
-                        gspecies,
-                        str, dex, mi.u.ghost.religion)
-         << ", " << _xl_rank_name(mi.u.ghost.xl_rank) << " ";
+    gstr << jtrans(skill_title_by_rank(mi.u.ghost.best_skill,
+                                       mi.u.ghost.best_skill_rank,
+                                       gspecies,
+                                       str, dex, mi.u.ghost.religion))
+         << "として名の知れた"
+         << jtrans(_xl_rank_name(mi.u.ghost.xl_rank));
 
     if (concise)
     {
@@ -4255,16 +4340,19 @@ string get_ghost_description(const monster_info &mi, bool concise)
     }
     else
     {
-        gstr << species_name(gspecies)
-             << " "
-             << get_job_name(mi.u.ghost.job);
+        gstr << jtrans(species_name(gspecies))
+             << "の"
+             << jtrans(get_job_name(mi.u.ghost.job));
     }
 
     if (mi.u.ghost.religion != GOD_NO_GOD)
     {
-        gstr << " of "
-             << god_name(mi.u.ghost.religion);
+        gstr << "にして"
+             << jtrans(god_name(mi.u.ghost.religion))
+             << "の信徒である";
     }
+
+    gstr << "『" << mi.mname << "』";
 
     return gstr.str();
 }

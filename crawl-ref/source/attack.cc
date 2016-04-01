@@ -15,6 +15,7 @@
 #include <cstring>
 
 #include "art-enum.h"
+#include "database.h"
 #include "delay.h"
 #include "english.h"
 #include "env.h"
@@ -24,6 +25,7 @@
 #include "godconduct.h"
 #include "itemname.h"
 #include "itemprop.h"
+#include "japanese.h"
 #include "message.h"
 #include "misc.h"
 #include "mon-behv.h"
@@ -53,7 +55,7 @@ attack::attack(actor *attk, actor *defn, actor *blame)
       ev_margin(0), weapon(nullptr),
       damage_brand(SPWPN_NORMAL), wpn_skill(SK_UNARMED_COMBAT),
       shield(nullptr), art_props(0), unrand_entry(nullptr),
-      attacker_to_hit_penalty(0), attack_verb("bug"), verb_degree(),
+      attacker_to_hit_penalty(0), attack_verb("bug"), verb_degree(), verb_degree2(),
       no_damage_message(), special_damage_message(), aux_attack(), aux_verb(),
       attacker_armour_tohit_penalty(0), attacker_shield_tohit_penalty(0),
       defender_shield(nullptr), miscast_level(-1), miscast_type(SPTYP_NONE),
@@ -365,7 +367,7 @@ string attack::anon_name(description_level_type desc)
  */
 string attack::anon_pronoun(pronoun_type pron)
 {
-    return decline_pronoun(GENDER_NEUTER, pron);
+    return decline_pronoun_j(GENDER_NEUTER, pron);
 }
 
 /* Initializes an attack, setting up base variables and values
@@ -488,9 +490,8 @@ bool attack::distortion_affects_defender()
             if (defender_visible)
             {
                 special_damage_message =
-                    make_stringf("%s %s in the distortional energy.",
-                                 defender_name(false).c_str(),
-                                 defender->conj_verb("bask").c_str());
+                    make_stringf(jtransc("%s %s in the distortional energy."),
+                                 jtransc(defender_name(false)));
             }
 
             defender->heal(1 + random2avg(7, 2), true); // heh heh
@@ -501,8 +502,8 @@ bool attack::distortion_affects_defender()
     if (one_chance_in(3))
     {
         special_damage_message =
-            make_stringf("Space bends around %s.",
-            defender_name(false).c_str());
+            make_stringf(jtransc("Space bends around %s."),
+                         jtransc(defender_name(false)));
         special_damage += 1 + random2avg(7, 2);
         return false;
     }
@@ -510,8 +511,8 @@ bool attack::distortion_affects_defender()
     if (one_chance_in(3))
     {
         special_damage_message =
-            make_stringf("Space warps horribly around %s!",
-                         defender_name(false).c_str());
+            make_stringf(jtransc("Space warps horribly around %s!"),
+                         jtransc(defender_name(false)));
         special_damage += 3 + random2avg(24, 2);
         return false;
     }
@@ -586,9 +587,8 @@ void attack::pain_affects_defender()
         if (defender_visible)
         {
             special_damage_message =
-                make_stringf("%s %s in agony.",
-                             defender->name(DESC_THE).c_str(),
-                             defender->conj_verb("writhe").c_str());
+                make_stringf(jtransc("%s %s in agony."),
+                             jtransc(defender->name(DESC_THE)));
         }
         special_damage += random2(1 + attacker->skill_rdiv(SK_NECROMANCY));
     }
@@ -658,14 +658,14 @@ void attack::chaos_affects_defender()
         if (!fake_chaos_attack && you.see_cell(defender->pos()))
         {
             if (defender->is_player())
-                mpr("You give off a flash of multicoloured light!");
+                mpr(jtrans("You give off a flash of multicoloured light!"));
             else if (you.can_see(defender))
             {
-                simple_monster_message(mon, " gives off a flash of"
-                                            " multicoloured light!");
+                simple_monster_message(mon, jtransc(" gives off a flash of"
+                                                    " multicoloured light!"));
             }
             else
-                mpr("There is a flash of multicoloured light!");
+                mpr(jtrans("There is a flash of multicoloured light!"));
         }
     }
 
@@ -727,8 +727,8 @@ void attack::chaos_affects_defender()
             if (obvious_effect)
             {
                 special_damage_message =
-                    make_stringf("%s is duplicated!",
-                                 defender_name(false).c_str());
+                    make_stringf(jtransc("%s is duplicated!"),
+                                 jtransc(defender_name(false)));
             }
 
             // The player shouldn't get new permanent followers from cloning.
@@ -1061,10 +1061,10 @@ void attack::drain_defender()
         {
             special_damage_message =
                 make_stringf(
-                    "%s %s %s!",
-                    atk_name(DESC_THE).c_str(),
-                    attacker->conj_verb("drain").c_str(),
-                    defender_name(true).c_str());
+                    jtransc("%s %s %s!"),
+                    jtransc(atk_name(DESC_THE)),
+                    jtransc(defender_name(true)),
+                    "衰弱させた");
         }
 
         attacker->god_conduct(DID_NECROMANCY, 2);
@@ -1077,10 +1077,9 @@ void attack::drain_defender_speed()
     {
         if (needs_message)
         {
-            mprf("%s %s %s vigour!",
-                 atk_name(DESC_THE).c_str(),
-                 attacker->conj_verb("drain").c_str(),
-                 def_name(DESC_ITS).c_str());
+            mprf(jtransc("%s %s %s vigour!"),
+                 jtransc(atk_name(DESC_THE)),
+                 jtransc(def_name(DESC_ITS)));
         }
 
         special_damage = 1 + random2(damage_done) / 2;
@@ -1111,7 +1110,7 @@ int attack::inflict_damage(int dam, beam_type flavour, bool clean)
 string attack::debug_damage_number()
 {
 #ifdef DEBUG_DIAGNOSTICS
-    return make_stringf(" for %d", damage_done);
+    return make_stringf(" [%d dmg]", damage_done);
 #else
     return "";
 #endif
@@ -1124,9 +1123,9 @@ string attack::debug_damage_number()
 string attack::attack_strength_punctuation(int dmg)
 {
     if (dmg < HIT_WEAK)
-        return ".";
+        return "。";
     else if (dmg < HIT_MED)
-        return "!";
+        return "！";
     else if (dmg < HIT_STRONG)
         return "!!";
     else
@@ -1147,10 +1146,10 @@ string attack::attack_strength_punctuation(int dmg)
  */
 string attack::evasion_margin_adverb()
 {
-    return (ev_margin <= -20) ? " completely" :
+    return (ev_margin <= -20) ? "完全に" :
            (ev_margin <= -12) ? "" :
-           (ev_margin <= -6)  ? " closely"
-                              : " barely";
+           (ev_margin <= -6)  ? "きわどく"
+                              : "ぎりぎり";
 }
 
 void attack::stab_message()
@@ -1162,40 +1161,40 @@ void attack::stab_message()
     case 6:     // big melee, monster surrounded/not paying attention
         if (coinflip())
         {
-            mprf("You %s %s from a blind spot!",
-                  (you.species == SP_FELID) ? "pounce on" : "strike",
-                  defender->name(DESC_THE).c_str());
+            mprf(jtransc("You %s %s from a blind spot!"),
+                 jtransc(defender->name(DESC_THE)),
+                 (you.species == SP_FELID) ? "に飛びかかった" : "を攻撃した");
         }
         else
         {
-            mprf("You catch %s momentarily off-guard.",
-                  defender->name(DESC_THE).c_str());
+            mprf(jtransc("You catch %s momentarily off-guard."),
+                 jtransc(defender->name(DESC_THE).c_str()));
         }
         break;
     case 4:     // confused/fleeing
         if (!one_chance_in(3))
         {
-            mprf("You catch %s completely off-guard!",
-                  defender->name(DESC_THE).c_str());
+            mprf(jtransc("You catch %s completely off-guard!"),
+                 jtransc(defender->name(DESC_THE)));
         }
         else
         {
-            mprf("You %s %s from behind!",
-                  (you.species == SP_FELID) ? "pounce on" : "strike",
-                  defender->name(DESC_THE).c_str());
+            mprf(jtransc("You %s %s from behind!"),
+                 jtransc(defender->name(DESC_THE)),
+                 (you.species == SP_FELID) ? "に後から飛びかかった" : "を後から攻撃した");
         }
         break;
     case 2:
     case 1:
         if (you.species == SP_FELID && coinflip())
         {
-            mprf("You pounce on the unaware %s!",
-                 defender->name(DESC_PLAIN).c_str());
+            mprf(jtransc("You pounce on the unaware %s!"),
+                 jtransc(defender->name(DESC_PLAIN)));
             break;
         }
-        mprf("%s fails to defend %s.",
-              defender->name(DESC_THE).c_str(),
-              defender->pronoun(PRONOUN_REFLEXIVE).c_str());
+        mprf(jtransc("%s fails to defend %s."),
+             jtransc(defender->name(DESC_THE)),
+             jtransc(defender->pronoun(PRONOUN_REFLEXIVE)));
         break;
     }
 
@@ -1565,11 +1564,10 @@ bool attack::attack_shield_blocked(bool verbose)
 
         if (needs_message && verbose)
         {
-            mprf("%s %s %s attack.",
-                 defender_name(false).c_str(),
-                 defender->conj_verb("block").c_str(),
-                 attacker == defender ? "its own"
-                                      : atk_name(DESC_ITS).c_str());
+            mprf(jtransc("%s %s %s attack."),
+                 jtransc(defender_name(false)),
+                 jtransc(attacker == defender ? "its own"
+                                              : atk_name(DESC_PLAIN).c_str()));
         }
 
         defender->shield_block_succeeded(attacker);
@@ -1645,9 +1643,9 @@ bool attack::apply_damage_brand(const char *what)
         {
             special_damage_message =
                 make_stringf(
-                    "%s %s%s",
-                    defender_name(false).c_str(),
-                    defender->conj_verb("convulse").c_str(),
+                    "%sは%s%s",
+                    jtransc(defender_name(false)),
+                    "打ちのめされた",
                     attack_strength_punctuation(special_damage).c_str());
         }
         break;
@@ -1658,9 +1656,9 @@ bool attack::apply_damage_brand(const char *what)
         else if (one_chance_in(3))
         {
             special_damage_message =
-                defender->is_player()?
+                jtrans(defender->is_player() ?
                    "You are electrocuted!"
-                :  "There is a sudden explosion of sparks!";
+                :  "There is a sudden explosion of sparks!");
             special_damage = 8 + random2(13);
             special_damage_flavour = BEAM_ELECTRICITY;
         }
@@ -1726,18 +1724,18 @@ bool attack::apply_damage_brand(const char *what)
         // We only get here if we've done base damage, so no
         // worries on that score.
         if (attacker->is_player())
-            mpr("You feel better.");
+            mpr(jtrans("You feel better."));
         else if (attacker_visible)
         {
             if (defender->is_player())
             {
-                mprf("%s draws strength from your injuries!",
-                     attacker->name(DESC_THE).c_str());
+                mprf(jtransc("%s draws strength from your injuries!"),
+                     jtransc(attacker->name(DESC_THE)));
             }
             else
             {
-                mprf("%s is healed.",
-                     attacker->name(DESC_THE).c_str());
+                mprf(jtransc("%s is healed."),
+                     jtransc(attacker->name(DESC_THE)));
             }
         }
 
@@ -1900,12 +1898,12 @@ void attack::calc_elemental_brand_damage(beam_type flavour,
     {
         // XXX: assumes "what" is singular
         special_damage_message = make_stringf(
-            "%s %s %s%s",
-            what ? what : atk_name(DESC_THE).c_str(),
-            what ? conjugate_verb(verb, false).c_str()
-                 : attacker->conj_verb(verb).c_str(),
+            "%sは%sを%s%s",
+            jtransc(what ? what : atk_name(DESC_THE)),
             // Don't allow reflexive if the subject wasn't the attacker.
-            defender_name(!what).c_str(),
+            jtransc(defender_name(!what)),
+            jtransc(what ? conjugate_verb(verb, false)
+                         : attacker->conj_verb(verb)),
             attack_strength_punctuation(special_damage).c_str());
     }
 }

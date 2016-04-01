@@ -15,6 +15,7 @@
 #include "act-iter.h"
 #include "areas.h"
 #include "cloud.h"
+#include "database.h"
 #include "directn.h"
 #include "env.h"
 #include "itemprop.h"
@@ -54,7 +55,7 @@ spret_type cast_iood(actor *caster, int pow, bolt *beam, float vx, float vy,
                 GOD_NO_GOD), true, true);
     if (!mon)
     {
-        mprf(MSGCH_ERROR, "Failed to spawn projectile.");
+        mpr_nojoin(MSGCH_ERROR, jtrans("Failed to spawn projectile."));
         return SPRET_ABORT;
     }
 
@@ -245,7 +246,7 @@ static void _iood_stop(monster& mon, bool msg = true)
     }
 
     if (msg)
-        simple_monster_message(&mon, " dissipates.");
+        simple_monster_message(&mon, jtransc(" dissipates."));
     dprf("iood: dissipating");
     monster_die(&mon, KILL_DISMISSED, NON_MONSTER);
 }
@@ -294,8 +295,8 @@ static bool _boulder_hit(monster& mon, const coord_def &pos)
     actor *victim = actor_at(pos);
     if (victim)
     {
-        simple_monster_message(&mon, (string(" smashes into ")
-                               + victim->name(DESC_THE) + "!").c_str());
+        simple_monster_message(&mon, ("は" + jtrans(victim->name(DESC_PLAIN))
+                                           + "にぶち当たった！").c_str());
 
         int dam = victim->apply_ac(roll_dice(3, 20));
         victim->hurt(&mon, dam, BEAM_MISSILE, KILLED_BY_ROLLING);
@@ -484,13 +485,13 @@ move_again:
             const int boulder_noisiness = 5; // don't want this to be big
             if (you.see_cell(pos) && you.see_cell(mon.pos()))
             {
-                mprf("%s hits %s", mon.name(DESC_THE, true).c_str(),
-                     feature_description_at(pos, false, DESC_A).c_str());
+                mprf(jtransc("%s hits %s"), jtransc(mon.name(DESC_PLAIN, true)),
+                     feature_description_at(pos, false, DESC_A, false).c_str());
                 if (!iood)
                     noisy(boulder_noisiness, pos);
             }
             else if (!iood && !silenced(you.pos()))
-                noisy(boulder_noisiness, pos, "You hear a crash.");
+                noisy(boulder_noisiness, pos, jtransc("You hear a crash."));
 
             if (!iood) // boulders need to stop now
             {
@@ -511,7 +512,7 @@ move_again:
                 if (mons->props["iood_distance"].get_int() < 2)
                 {
                     if (you.see_cell(pos))
-                        mpr("The orb fizzles.");
+                        mpr(jtrans("The orb fizzles."));
                     monster_die(mons, KILL_DISMISSED, NON_MONSTER);
                 }
 
@@ -519,7 +520,7 @@ move_again:
                 if (mon.props["iood_distance"].get_int() < 2)
                 {
                     if (you.see_cell(pos))
-                        mpr("The orb fizzles.");
+                        mpr(jtrans("The orb fizzles."));
                     monster_die(&mon, KILL_DISMISSED, NON_MONSTER);
                     return true;
                 }
@@ -527,9 +528,9 @@ move_again:
             else
             {
                 if (mon.observable())
-                    mpr("The orbs collide in a blinding explosion!");
+                    mpr(jtrans("The orbs collide in a blinding explosion!"));
                 else
-                    mpr("You hear a loud magical explosion!");
+                    mpr(jtrans("You hear a loud magical explosion!"));
                 noisy(40, pos);
                 monster_die(mons, KILL_DISMISSED, NON_MONSTER);
                 _iood_hit(mon, pos, true);
@@ -541,11 +542,11 @@ move_again:
         {
             if (mon.observable())
             {
-                mpr("The boulders collide with a stupendous crash!");
+                mpr(jtrans("The boulders collide with a stupendous crash!"));
                 noisy(20, pos);
             }
             else
-                noisy(20, pos, "You hear a loud crashing sound!");
+                noisy(20, pos, jtransc("You hear a loud crashing sound!"));
 
             // Remove ROLLING and add DAZED
             _iood_stop(mon);
@@ -579,11 +580,11 @@ move_again:
             if (!shield || !shield_reflects(*shield))
             {
                 if (victim->is_player())
-                    mprf("You block %s.", mon.name(DESC_THE, true).c_str());
+                    mprf(jtransc("You block %s."), jtransc(mon.name(DESC_THE, true)));
                 else
                 {
-                    simple_monster_message(mons, (" blocks "
-                        + mon.name(DESC_THE, true) + ".").c_str());
+                    simple_monster_message(mons,
+                                           ("は" + jtrans(mon.name(DESC_PLAIN, true)) + "を防いだ。").c_str());
                 }
                 victim->shield_block_succeeded(&mon);
                 _iood_stop(mon);
@@ -592,26 +593,27 @@ move_again:
 
             if (victim->is_player())
             {
-                mprf("Your %s reflects %s!",
-                    shield->name(DESC_PLAIN).c_str(),
-                    mon.name(DESC_THE, true).c_str());
+                mprf(jtransc("Your %s reflects %s!"),
+                     jtransc(shield->name(DESC_PLAIN)),
+                     jtransc(mon.name(DESC_THE, true)));
                 ident_reflector(shield);
             }
             else if (you.see_cell(pos))
             {
                 if (victim->observable())
                 {
-                    mprf("%s reflects %s with %s %s!",
-                        victim->name(DESC_THE, true).c_str(),
-                        mon.name(DESC_THE, true).c_str(),
-                        mon.pronoun(PRONOUN_POSSESSIVE).c_str(),
-                        shield->name(DESC_PLAIN).c_str());
+                    mprf(jtransc("%s reflects %s with %s %s!"),
+                         jtransc(victim->name(DESC_THE, true)),
+                         jtransc(shield->name(DESC_PLAIN)),
+                         jtransc(mon.name(DESC_THE, true)));
                     ident_reflector(shield);
                 }
                 else
                 {
-                    mprf("%s bounces off thin air!",
-                        mon.name(DESC_THE, true).c_str());
+                    mprf(jtransc("%s bounces off thin air!"),
+                         jtransc(mon.name(DESC_THE, true)))
+
+;
                 }
             }
             victim->shield_block_succeeded(&mon);
@@ -643,7 +645,7 @@ move_again:
     // it raises too many questions.
     if (!iood && (!feat_has_solid_floor(grd(pos)) || feat_is_water(grd(pos))))
     {
-        mprf("%s screeches to a halt.", mon.name(DESC_THE, true).c_str());
+        mprf(jtransc("%s screeches to a halt."), jtransc(mon.name(DESC_THE, true)));
         _iood_stop(mon,false);
         return true;
     }

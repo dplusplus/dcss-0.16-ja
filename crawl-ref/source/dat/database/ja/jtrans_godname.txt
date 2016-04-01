@@ -1,0 +1,285 @@
+%%%%
+Ashenzari
+
+アシェンザリ
+%%%%
+Ashenzari the Shackled
+
+束縛されしもの『アシェンザリ』
+%%%%
+Beogh
+
+ベオ
+%%%%
+Beogh the Brigand
+
+略奪者『ベオ』
+%%%%
+Cheibriados
+
+ケイブリアドス
+%%%%
+Cheibriados the Contemplative
+
+瞑想者『ケイブリアドス』
+%%%%
+Dithmenos
+
+ディスメノス
+%%%%
+Dithmenos the Shadowed
+
+陰影の『ディスメノス』
+%%%%
+Elyvilon
+
+エリヴィロン
+%%%%
+Elyvilon the Healer
+
+癒し手『エリヴィロン』
+%%%%
+Fedhas
+
+フェダス
+%%%%
+Fedhas Madash
+
+『フェダス・マダシュ』
+%%%%
+Gozag
+
+ゴザーグ
+%%%%
+Gozag Ym Sagoz the Greedy
+
+強欲なる『ゴザーグ・イム・サゴーズ』
+%%%%
+Jiyva
+
+ジーヴァ
+%%%%
+# Jiyva lastname
+
+
+%%%%
+Kikubaaqudgha
+
+キクバークッグァ
+%%%%
+Kikubaaqudgha lastname
+
+『キクバークッグァ』
+%%%%
+Lugonu
+
+ルゴヌ
+%%%%
+Lugonu the Unformed
+
+無形の『ルゴヌ』
+%%%%
+Makhleb
+
+マクレブ
+%%%%
+Makhleb the Destroyer
+
+破壊者『マクレブ』
+%%%%
+Nemelex Xobeh
+
+ネメレクス・ソベー
+%%%%
+Nemelex Xobeh the Trickster
+
+トリックスター『ネメレクス・ソベー』
+%%%%
+Okawaru
+
+オカワル
+%%%%
+Warmaster Okawaru
+
+戦上手の『オカワル』
+%%%%
+Qazlal
+
+クァズラル
+%%%%
+Qazlal Stormbringer
+
+嵐を呼ぶ者『クァズラル』
+%%%%
+Ru
+
+ルー
+%%%%
+Ru the Awakened
+
+覚者『ルー』
+%%%%
+Sif Muna
+
+シフ・ムーナ
+%%%%
+Sif Muna the Loreminder
+
+知識の守護者『シフ・ムーナ』
+%%%%
+The Shining One
+
+輝けるもの
+%%%%
+The Shining One lastname
+
+『輝けるもの』
+%%%%
+Trog
+
+トログ
+%%%%
+Trog the Wrathful
+
+激怒せる『トログ』
+%%%%
+Vehumet
+
+ヴェフメット
+%%%%
+Vehumet lastname
+
+『ヴェフメット』
+%%%%
+Xom
+
+ゾム
+%%%%
+Xom of Chaos
+
+混沌の『ゾム』
+%%%%
+Xom the Random
+
+無秩序の『ゾム』
+%%%%
+Xom the Random Number God
+
+乱数の神『ゾム』
+%%%%
+Xom the Tricky
+
+トリックの『ゾム』
+%%%%
+Xom the Less-Predictable
+
+予測不能の『ゾム』
+%%%%
+Xom the Unpredictable
+
+予測不可能の『ゾム』
+%%%%
+Xom of Many Doors
+
+数多の扉の『ゾム』
+%%%%
+Xom the Capricious
+
+気紛れの『ゾム』
+%%%%
+Xom of Bloodstained Whimsey
+
+血塗られし奇想の『ゾム』
+%%%%
+Xom of Enforced Whimsey
+
+奇想の執行者『ゾム』
+%%%%
+Xom of Bone-Dry Humour
+
+残忍なる機知の『ゾム』
+%%%%
+Xom of Malevolent Giggling
+
+邪悪なる戯れの『ゾム』
+%%%%
+Xom of Malicious Giggling
+
+悪意ある冗談の『ゾム』
+%%%%
+Xom the Psychotic
+
+狂気の『ゾム』
+%%%%
+Xom the Psychopath
+
+精神病質者『ゾム』
+%%%%
+Xom of Gnomic Intent
+
+戯れの『ゾム』
+%%%%
+Xom of Ineffable Intent
+
+恐るべき『ゾム』
+%%%%
+Xom of Fickle Intent
+
+移り気の『ゾム』
+%%%%
+Xom of Swiftly Tilting Intent
+
+前言撤回の『ゾム』
+%%%%
+Xom of Unknown Intent
+
+知られざる意図の『ゾム』
+%%%%
+Xom the Fickle
+
+移り気の『ゾム』
+%%%%
+Xom of Unknown Intention
+
+知られざる意図の『ゾム』
+%%%%
+The Xom-Meister
+
+『ゾム・マイスター』
+%%%%
+The Xom-Meister, Xom-a-lom-a-ding-dong
+
+『ゾム・マイスター ゾム-ア-ロム-ア-ディン-ドン』
+%%%%
+The Xom-Meister, Xom-o-Rama
+
+『ゾム・マイスター ゾム-オ-ラマ』
+%%%%
+The Xom-Meister, Xom-Xom-bo-Bom, Banana-Fana-fo-Fom
+
+『ゾム・マイスター ゾム-ゾム-ボ-ボン バナナ-ファナ-フォ-フォム』
+%%%%
+Xom the Begetter of Turbulence
+
+争乱をもたらすもの『ゾム』
+%%%%
+Xom the Begetter of Discontinuities
+
+無秩序をもたらすもの『ゾム』
+%%%%
+Yredelemnul
+
+イレデレンヌル
+%%%%
+Yredelemnul the Dark
+
+暗黒の『イレデレンヌル』
+%%%%
+Zin
+
+ジン
+%%%%
+Zin the Law-Giver
+
+法の制定者『ジン』
+%%%%

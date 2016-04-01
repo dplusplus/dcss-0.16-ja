@@ -13,6 +13,7 @@
 #include "areas.h"
 #include "art-enum.h"
 #include "coordit.h"
+#include "database.h"
 #include "dgnevent.h"
 #include "english.h"
 #include "env.h"
@@ -25,6 +26,7 @@
 #include "itemname.h"
 #include "itemprop.h"
 #include "item_use.h"
+#include "japanese.h"
 #include "message.h"
 #include "player-stats.h"
 #include "religion.h"
@@ -443,7 +445,7 @@ bool player::could_wield(const item_def &item, bool ignore_brand,
     if (bsize < SIZE_LARGE && item.is_type(OBJ_MISSILES, MI_LARGE_ROCK))
     {
         if (!quiet)
-            mpr("That's too large and heavy for you to wield.");
+            mpr(jtrans("That's too large and heavy for you to wield."));
         return false;
     }
 
@@ -453,7 +455,7 @@ bool player::could_wield(const item_def &item, bool ignore_brand,
         if (item.base_type == OBJ_ARMOUR || item.base_type == OBJ_JEWELLERY)
         {
             if (!quiet)
-                mprf("You can't wield %s.", base_type_string(item));
+                mprf(jtransc("You can't wield %s."), jtransc(base_type_string(item)));
             return false;
         }
 
@@ -462,7 +464,7 @@ bool player::could_wield(const item_def &item, bool ignore_brand,
     else if (species == SP_FELID)
     {
         if (!quiet)
-            mpr("You can't use weapons.");
+            mpr(jtrans("You can't use weapons."));
         return false;
     }
 
@@ -470,7 +472,7 @@ bool player::could_wield(const item_def &item, bool ignore_brand,
     if (!is_weapon_wieldable(item, bsize))
     {
         if (!quiet)
-            mpr("That's too large for you to wield.");
+            mpr(jtrans("That's too large for you to wield."));
         return false;
     }
 
@@ -484,7 +486,7 @@ bool player::could_wield(const item_def &item, bool ignore_brand,
     if (!ignore_brand && undead_or_demonic() && is_holy_item(item))
     {
         if (!quiet)
-            mpr("This weapon is holy and will not allow you to wield it.");
+            mpr(jtrans("This weapon is holy and will not allow you to wield it."));
         return false;
     }
 
@@ -522,12 +524,12 @@ string player::name(description_level_type dt, bool, bool) const
 
 string player::pronoun(pronoun_type pro, bool /*force_visible*/) const
 {
-    return decline_pronoun(GENDER_YOU, pro);
+    return decline_pronoun_j(GENDER_YOU, pro);
 }
 
 string player::conj_verb(const string &verb) const
 {
-    return conjugate_verb(verb, true);
+    return verb;
 }
 
 /**
@@ -544,7 +546,7 @@ static string _hand_name_singular()
         return "paw";
 
     if (you.has_usable_claws())
-        return "claw";
+        return "爪";
 
     if (you.has_usable_tentacles())
         return "tentacle";
@@ -568,9 +570,9 @@ string player::hand_name(bool plural, bool *can_plural) const
 
     const string singular = _hand_name_singular();
     if (plural && *can_plural)
-        return pluralise(singular);
+        return jpluralise(singular, "両");
 
-    return singular;
+    return jtrans(singular);
 }
 
 /**
@@ -644,7 +646,7 @@ string player::arm_name(bool plural, bool *can_plural) const
         *can_plural = true;
 
     string adj;
-    string str = "arm";
+    string str = jtrans("arm");
 
     if (player_genus(GENPC_DRACONIAN) || species == SP_NAGA)
         adj = "scaled";
@@ -660,11 +662,16 @@ string player::arm_name(bool plural, bool *can_plural) const
     else if (form == TRAN_SHADOW)
         adj = "shadowy";
 
-    if (!adj.empty())
-        str = adj + " " + str;
-
     if (plural)
-        str = pluralise(str);
+    {
+        if (species == SP_OCTOPODE)
+            str = jpluralise(str, "両方の");
+        else
+            str = jpluralise(str, "両");
+    }
+
+    if (!adj.empty())
+        str = jtrans(adj) + str;
 
     return str;
 }
@@ -702,7 +709,7 @@ bool player::fumbles_attack()
     {
         if (x_chance_in_y(4, dex()) || one_chance_in(5))
         {
-            mpr("Your unstable footing causes you to fumble your attack.");
+            mpr(jtrans("Your unstable footing causes you to fumble your attack."));
             did_fumble = true;
         }
         if (floundering())
@@ -756,7 +763,7 @@ static bool _chei_prevents_berserk_haste(bool intentional)
     // a part of your penance.
     if (!intentional)
     {
-        simple_god_message(" protects you from inadvertent hurry.");
+        simple_god_message(jtransc(" protects you from inadvertent hurry."));
         return true;
     }
 
@@ -765,7 +772,7 @@ static bool _chei_prevents_berserk_haste(bool intentional)
     if (!you_worship(GOD_CHEIBRIADOS))
         return false;
 
-    simple_god_message(" forces you to slow down.");
+    simple_god_message(jtransc(" forces you to slow down."));
     return true;
 }
 
@@ -796,18 +803,18 @@ bool player::go_berserk(bool intentional, bool potion)
     if (crawl_state.game_is_hints())
         Hints.hints_berserk_counter++;
 
-    mpr("A red film seems to cover your vision as you go berserk!");
+    mpr(jtrans("A red film seems to cover your vision as you go berserk!"));
 
     if (you.duration[DUR_FINESSE] > 0)
     {
         you.duration[DUR_FINESSE] = 0; // Totally incompatible.
-        mpr("Your finesse ends abruptly.");
+        mpr(jtrans("Your finesse ends abruptly."));
     }
 
     if (!_chei_prevents_berserk_haste(intentional))
-        mpr("You feel yourself moving faster!");
+        mpr(jtrans("You feel yourself moving faster!"));
 
-    mpr("You feel mighty!");
+    mpr(jtrans("You feel mighty!"));
 
     int berserk_duration = (20 + random2avg(19,2)) / 2;
 
@@ -855,7 +862,7 @@ bool player::can_go_berserk(bool intentional, bool potion, bool quiet) const
     if (berserk())
     {
         if (verbose)
-            mpr("You're already berserk!");
+            mpr(jtrans("You're already berserk!"));
         // or else you won't notice -- no message here.
         return false;
     }
@@ -863,7 +870,7 @@ bool player::can_go_berserk(bool intentional, bool potion, bool quiet) const
     if (duration[DUR_EXHAUSTED])
     {
         if (verbose)
-            mpr("You're too exhausted to go berserk.");
+            mpr(jtrans("You're too exhausted to go berserk."));
         // or else they won't notice -- no message here
         return false;
     }
@@ -871,14 +878,14 @@ bool player::can_go_berserk(bool intentional, bool potion, bool quiet) const
     if (duration[DUR_DEATHS_DOOR])
     {
         if (verbose)
-            mpr("Your body is effectively dead; that's not a shape for a blood rage.");
+            mpr(jtrans("Your body is effectively dead; that's not a shape for a blood rage."));
         return false;
     }
 
     if (beheld() && !player_equip_unrand(UNRAND_DEMON_AXE))
     {
         if (verbose)
-            mpr("You are too mesmerised to rage.");
+            mpr(jtrans("You are too mesmerised to rage."));
         // or else they won't notice -- no message here
         return false;
     }
@@ -886,7 +893,7 @@ bool player::can_go_berserk(bool intentional, bool potion, bool quiet) const
     if (afraid())
     {
         if (verbose)
-            mpr("You are too terrified to rage.");
+            mpr(jtrans("You are too terrified to rage."));
 
         return false;
     }
@@ -895,7 +902,7 @@ bool player::can_go_berserk(bool intentional, bool potion, bool quiet) const
     if (you.species == SP_DJINNI)
     {
         if (verbose)
-            mpr("Only creatures of flesh and blood can berserk.");
+            mpr(jtrans("Only creatures of flesh and blood can berserk."));
 
         return false;
     }
@@ -904,7 +911,7 @@ bool player::can_go_berserk(bool intentional, bool potion, bool quiet) const
     if (is_lifeless_undead())
     {
         if (verbose)
-            mpr("You cannot raise a blood rage in your lifeless body.");
+            mpr(jtrans("You cannot raise a blood rage in your lifeless body."));
 
         return false;
     }
@@ -916,14 +923,14 @@ bool player::can_go_berserk(bool intentional, bool potion, bool quiet) const
     if (stasis(false))
     {
         if (verbose)
-            mpr("You cannot go berserk while under stasis.");
+            mpr(jtrans("You cannot go berserk while under stasis."));
         return false;
     }
 
     if (!intentional && !potion && clarity())
     {
         if (verbose)
-            mpr("You're too calm and focused to rage.");
+            mpr(jtrans("You're too calm and focused to rage."));
         return false;
     }
 
@@ -931,7 +938,7 @@ bool player::can_go_berserk(bool intentional, bool potion, bool quiet) const
     if (hunger <= HUNGER_VERY_HUNGRY)
     {
         if (verbose)
-            mpr("You're too hungry to go berserk.");
+            mpr(jtrans("You're too hungry to go berserk."));
         return false;
     }
 
@@ -968,7 +975,7 @@ bool player::shove(const char* feat_name)
         {
             moveto(*di);
             if (*feat_name)
-                mprf("You are pushed out of the %s.", feat_name);
+                mprf(jtransc("You are pushed out of the %s."), jtransc(feat_name));
             dprf("Moved to (%d, %d).", pos().x, pos().y);
             return true;
         }

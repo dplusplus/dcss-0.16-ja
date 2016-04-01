@@ -33,6 +33,7 @@
 #include "cloud.h"
 #include "coordit.h"
 #include "dactions.h"
+#include "database.h"
 #include "dgn-overview.h"
 #include "directn.h"
 #include "dungeon.h"
@@ -1448,7 +1449,7 @@ bool load_level(dungeon_feature_type stair_taken, load_mode_type load_mode,
         && !get_level_annotation().empty()
         && !crawl_state.level_annotation_shown)
     {
-        mprf(MSGCH_PLAIN, YELLOW, "Level annotation: %s",
+        mprf(MSGCH_PLAIN, YELLOW, jtransc("Level annotation: %s"),
              get_level_annotation().c_str());
     }
 
@@ -1618,7 +1619,7 @@ static void _save_game_exit()
     // Prompt for saving macros.
     if (crawl_state.unsaved_macros
         && !crawl_state.seen_hups
-        && yesno("Save macros?", true, 'n'))
+        && yesno(jtransc("Save macros?"), true, 'n'))
     {
         macro_save();
     }

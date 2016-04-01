@@ -165,4 +165,7 @@ vector<string> split_string(const string &sep, string s, bool trim = true,
 string make_time_string(time_t abs_time, bool terse = false);
 string make_file_time(time_t when);
 
+string sp2nbsp(const string &s);
+#define sp2nbspc(s) (sp2nbsp(s).c_str())
+
 #endif

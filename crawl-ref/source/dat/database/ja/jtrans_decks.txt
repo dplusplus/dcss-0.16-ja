@@ -1,0 +1,201 @@
+%%%%
+[card]the Alchemist
+
+錬金術師
+%%%%
+[card]the Banshee
+
+泣き女
+%%%%
+[card]the Blade
+
+刃
+%%%%
+[card]the Cloud
+
+雲烟
+%%%%
+[card]the Crusade
+
+十字軍
+%%%%
+[card]the Curse
+
+呪縛
+%%%%
+[card]Damnation
+
+天罰
+%%%%
+[card]the Dance
+
+舞踏
+%%%%
+[card]Degeneration
+
+堕落
+%%%%
+[card]Dowsing
+
+探査
+%%%%
+[card]the Elements
+
+元素
+%%%%
+[card]the Elixir
+
+秘薬
+%%%%
+[card]Famine
+
+飢餓
+%%%%
+[card]the Feast
+
+饗宴
+%%%%
+[card]Focus
+
+特化
+%%%%
+[card]Fortitude
+
+堅牢
+%%%%
+[card]Foxfire
+
+狐火
+%%%%
+[card]the Hammer
+
+金鎚
+%%%%
+[card]the Helix
+
+螺旋
+%%%%
+[card]the Helm
+
+兜
+%%%%
+[card]the Illusion
+
+幻影
+%%%%
+[card]the Mercenary
+
+傭兵
+%%%%
+[card]the Orb
+
+球体
+%%%%
+[card]Pain
+
+苦痛
+%%%%
+[card]the Pentagram
+
+五芒星
+%%%%
+[card]Placid Magic
+
+沈静
+%%%%
+[card]the Potion
+
+水薬
+%%%%
+[card]the Rangers
+
+野伏
+%%%%
+[card]Repulsiveness
+
+醜悪
+%%%%
+[card]the Shadow
+
+影隠れ
+%%%%
+[card]the Shaft
+
+縦穴
+%%%%
+[card]Solitude
+
+孤独
+%%%%
+[card]the Stairs
+
+階段
+%%%%
+[card]the Storm
+
+嵐
+%%%%
+[card]Swap
+
+交換
+%%%%
+[card]the Swine
+
+豚
+%%%%
+[card]the Tomb
+
+玄室
+%%%%
+[card]Torment
+
+拷問
+%%%%
+[card]Velocity
+
+加速
+%%%%
+[card]Venom
+
+猛毒
+%%%%
+[card]Vitriol
+
+硫酸
+%%%%
+[card]Warpwright
+
+移動罠
+%%%%
+[card]Water
+
+水
+%%%%
+[card]Wild Magic
+
+暴走
+%%%%
+[card]the Wraith
+
+掠奪
+%%%%
+[card]Wrath
+
+憤怒
+%%%%
+[card]Xom
+
+ゾム
+%%%%
+It may contain the following cards:
+
+このデッキには
+%%%%
+(One in a hundred cards may be drawn from the deck of oddities, instead.)
+
+100枚に1枚の割合で「奇妙なデッキ」のカードが混じることがある。
+%%%%
+Hired %s for %d gold.
+
+%sを金貨%d枚で雇った
+%%%%

@@ -44,6 +44,7 @@
 #include "itemname.h"
 #include "itemprop.h"
 #include "items.h"
+#include "japanese.h"
 #include "lev-pand.h"
 #include "libutil.h"
 #include "mapmark.h"
@@ -3259,7 +3260,7 @@ static void _place_gozag_shop(dungeon_feature_type stair)
     string announce = make_stringf(
                                    "%s invites you to visit %s %s%s%s.",
                                    shop->shop_name.c_str(),
-                                   decline_pronoun(gender, PRONOUN_POSSESSIVE),
+                                   decline_pronoun_j(gender, PRONOUN_POSSESSIVE),
                                    shop_type_name(shop->type).c_str(),
                                    !shop->shop_suffix_name.empty() ? " " : "",
                                    shop->shop_suffix_name.c_str());

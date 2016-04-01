@@ -264,8 +264,10 @@ struct monster_info : public monster_info_base
     bool has_proper_name() const;
     string pluralised_name(bool fullname = true) const;
     string common_name(description_level_type desc = DESC_PLAIN) const;
+    string common_name_en(description_level_type desc = DESC_PLAIN) const;
     string proper_name(description_level_type desc = DESC_PLAIN) const;
     string full_name(description_level_type desc = DESC_PLAIN, bool use_comma = false) const;
+    string full_name_en(description_level_type desc = DESC_PLAIN, bool use_comma = false) const;
     string chimera_part_names() const;
 
     vector<string> attributes() const;
@@ -344,6 +346,7 @@ struct monster_info : public monster_info_base
 
 protected:
     string _core_name() const;
+    string _core_name_en() const;
     string _base_name() const;
     string _apply_adjusted_description(description_level_type desc, const string& s) const;
 };

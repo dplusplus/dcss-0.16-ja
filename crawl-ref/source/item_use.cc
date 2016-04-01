@@ -16,6 +16,7 @@
 #include "cloud.h"
 #include "colour.h"
 #include "coordit.h"
+#include "database.h"
 #include "decks.h"
 #include "delay.h"
 #include "describe.h"
@@ -249,7 +250,7 @@ bool wield_weapon(bool auto_wield, int slot, bool show_weff_messages,
         if (!auto_wield)
         {
             item_slot = prompt_invent_item(
-                            "Wield which item (- for none, * to show all)?",
+                            jtransc("Wield which item (- for none, * to show all)?"),
                             MT_INVLIST, OSEL_WIELD,
                             true, true, true, '-', -1, nullptr, OPER_WIELD);
         }
@@ -261,14 +262,14 @@ bool wield_weapon(bool auto_wield, int slot, bool show_weff_messages,
         return false;
     else if (item_slot == you.equip[EQ_WEAPON])
     {
-        mpr("You are already wielding that!");
+        mpr(jtrans("You are already wielding that!"));
         return true;
     }
 
     // Now we really change weapons! (Most likely, at least...)
     if (you.duration[DUR_SURE_BLADE])
     {
-        mpr("The bond with your blade fades away.");
+        mpr(jtrans("The bond with your blade fades away."));
         you.duration[DUR_SURE_BLADE] = 0;
     }
     // Reset the warning counter.
@@ -283,9 +284,10 @@ bool wield_weapon(bool auto_wield, int slot, bool show_weff_messages,
             if (needs_handle_warning(*wpn, OPER_WIELD, penance))
             {
                 string prompt =
-                    "Really unwield " + wpn->name(DESC_INVENTORY) + "?";
+                    make_stringf(jtransc("Really unwield %s?"),
+                                 wpn->name(DESC_INVENTORY).c_str());
                 if (penance)
-                    prompt += " This could place you under penance!";
+                    prompt += " " + jtrans(" This could place you under penance!");
 
                 if (!yesno(prompt.c_str(), false, 'n'))
                 {
@@ -422,13 +424,13 @@ void wear_armour(int slot) // slot is for tiles
 {
     if (you.species == SP_FELID)
     {
-        mpr("You can't wear anything.");
+        mpr(jtrans("You can't wear anything."));
         return;
     }
 
     if (!form_can_wear())
     {
-        mpr("You can't wear anything in your present form.");
+        mpr(jtrans("You can't wear anything in your present form."));
         return;
     }
 
@@ -436,7 +438,7 @@ void wear_armour(int slot) // slot is for tiles
 
     if (slot != -1)
         armour_wear_2 = slot;
-    else if (!armour_prompt("Wear which item?", &armour_wear_2, OPER_WEAR))
+    else if (!armour_prompt(jtrans("Wear which item?"), &armour_wear_2, OPER_WEAR))
         return;
 
     do_wear_armour(armour_wear_2, false);
@@ -459,7 +461,7 @@ bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
     if (base_type != OBJ_ARMOUR || you.species == SP_FELID)
     {
         if (verbose)
-            mpr("You can't wear that.");
+            mpr(jtrans("You can't wear that."));
 
         return false;
     }
@@ -470,7 +472,7 @@ bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
     if (you.species == SP_OCTOPODE && slot != EQ_HELMET && slot != EQ_SHIELD)
     {
         if (verbose)
-            mpr("You can't wear that!");
+            mpr(jtrans("You can't wear that!"));
         return false;
     }
 
@@ -478,8 +480,8 @@ bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
     {
         if (verbose)
         {
-            mprf("Your wings%s won't fit in that.", you.mutation[MUT_BIG_WINGS]
-                 ? "" : ", even vestigial as they are,");
+            mprf(jtransc("Your wings%s won't fit in that."), jtransc(you.mutation[MUT_BIG_WINGS]
+                 ? "" : ", even vestigial as they are,"));
         }
         return false;
     }
@@ -492,17 +494,17 @@ bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
             if (ignore_temporary || !player_is_shapechanged())
                 return true;
             else if (verbose)
-                mpr("You can wear that only in your normal form.");
+                mpr(jtrans("You can wear that only in your normal form."));
         }
         else if (verbose)
-            mpr("You can't wear that!");
+            mpr(jtrans("You can't wear that!"));
         return false;
     }
 
     if (player_mutation_level(MUT_MISSING_HAND) && slot == EQ_SHIELD)
     {
         if (verbose)
-            mpr("You don't have enough limbs.");
+            mpr(jtrans("You don't have enough limbs."));
         return false;
     }
 
@@ -512,7 +514,7 @@ bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
         if (!player_has_feet(!ignore_temporary))
         {
             if (verbose)
-                mpr("You have no feet.");
+                mpr(jtrans("You have no feet."));
             return false;
         }
 
@@ -525,7 +527,7 @@ bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
             {
                 if (verbose)
                 {
-                    mprf("The hauberk won't fit your %s.",
+                    mprf(jtransc("The hauberk won't fit your %s."),
                          you.hand_name(true).c_str());
                 }
                 return false;
@@ -535,7 +537,7 @@ bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
                 || player_mutation_level(MUT_ANTENNAE, false) >= 3)
             {
                 if (verbose)
-                    mpr("The hauberk won't fit your head.");
+                    mpr(jtrans("The hauberk won't fit your head."));
                 return false;
             }
         }
@@ -553,8 +555,8 @@ bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
                 {
                     if (verbose)
                     {
-                        mprf("You'd need your %s free.",
-                             parts[s - EQ_HELMET].c_str());
+                        mprf(jtransc("You'd need your %s free."),
+                             jtransc(parts[s - EQ_HELMET]));
                     }
                     return false;
                 }
@@ -563,10 +565,10 @@ bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
                 {
                     if (verbose)
                     {
-                        mprf(you_tran_can_wear(s)
-                                ? "The hauberk won't fit your %s."
-                                : "You have no %s!",
-                             parts[s - EQ_HELMET].c_str());
+                        mprf(jtransc(you_tran_can_wear(s)
+                                     ? "The hauberk won't fit your %s."
+                                     : "You have no %s!"),
+                             jtransc(parts[s - EQ_HELMET]));
                     }
                     return false;
                 }
@@ -580,7 +582,7 @@ bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
         // The explanation is iffy for loose headgear, especially crowns:
         // kings loved hooded hauberks, according to portraits.
         if (verbose)
-            mpr("You can't wear this over your hauberk.");
+            mpr(jtrans("You can't wear this over your hauberk."));
         return false;
     }
 
@@ -591,8 +593,8 @@ bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
     {
         if (verbose)
         {
-            mprf("This armour is too %s for you!",
-                 (bad_size > 0) ? "big" : "small");
+            mpr(jtrans(make_stringf("This armour is too %s for you!",
+                                    (bad_size > 0) ? "big" : "small")));
         }
 
         return false;
@@ -614,7 +616,7 @@ bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
         {
             if (verbose)
             {
-                mprf("You can't wear a glove with your huge claw%s!",
+                mprf(jtransc("You can't wear a glove with your huge claw%s!"),
                      player_mutation_level(MUT_MISSING_HAND) ? "" : "s");
             }
             return false;
@@ -626,14 +628,14 @@ bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
         if (player_mutation_level(MUT_HOOVES, false) == 3)
         {
             if (verbose)
-                mpr("You can't wear boots with hooves!");
+                mpr(jtrans("You can't wear boots with hooves!"));
             return false;
         }
 
         if (you.has_talons(false) == 3)
         {
             if (verbose)
-                mpr("Boots don't fit your talons!");
+                mpr(jtrans("Boots don't fit your talons!"));
             return false;
         }
 
@@ -644,14 +646,14 @@ bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
            )
         {
             if (verbose)
-                mpr("You have no legs!");
+                mpr(jtrans("You have no legs!"));
             return false;
         }
 
         if (!ignore_temporary && you.fishtail)
         {
             if (verbose)
-                mpr("You don't currently have feet!");
+                mpr(jtrans("You don't currently have feet!"));
             return false;
         }
     }
@@ -662,14 +664,14 @@ bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
         if (player_mutation_level(MUT_HORNS, false) == 3)
         {
             if (verbose)
-                mpr("You can't wear any headgear with your large horns!");
+                mpr(jtrans("You can't wear any headgear with your large horns!"));
             return false;
         }
 
         if (player_mutation_level(MUT_ANTENNAE, false) == 3)
         {
             if (verbose)
-                mpr("You can't wear any headgear with your large antennae!");
+                mpr(jtrans("You can't wear any headgear with your large antennae!"));
             return false;
         }
 
@@ -679,35 +681,35 @@ bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
             if (player_mutation_level(MUT_HORNS, false))
             {
                 if (verbose)
-                    mpr("You can't wear that with your horns!");
+                    mpr(jtrans("You can't wear that with your horns!"));
                 return false;
             }
 
             if (player_mutation_level(MUT_BEAK, false))
             {
                 if (verbose)
-                    mpr("You can't wear that with your beak!");
+                    mpr(jtrans("You can't wear that with your beak!"));
                 return false;
             }
 
             if (player_mutation_level(MUT_ANTENNAE, false))
             {
                 if (verbose)
-                    mpr("You can't wear that with your antennae!");
+                    mpr(jtrans("You can't wear that with your antennae!"));
                 return false;
             }
 
             if (player_genus(GENPC_DRACONIAN))
             {
                 if (verbose)
-                    mpr("You can't wear that with your reptilian head.");
+                    mpr(jtrans("You can't wear that with your reptilian head."));
                 return false;
             }
 
             if (you.species == SP_OCTOPODE)
             {
                 if (verbose)
-                    mpr("You can't wear that!");
+                    mpr(jtrans("You can't wear that!"));
                 return false;
             }
         }
@@ -716,7 +718,7 @@ bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
     if (!ignore_temporary && !form_can_wear_item(item, you.form))
     {
         if (verbose)
-            mpr("You can't wear that in your present form.");
+            mpr(jtrans("You can't wear that in your present form."));
         return false;
     }
 
@@ -729,7 +731,7 @@ bool do_wear_armour(int item, bool quiet)
     if (!invitem.defined())
     {
         if (!quiet)
-            mpr("You don't have any such object.");
+            mpr(jtrans("You don't have any such object."));
         return false;
     }
 
@@ -741,7 +743,7 @@ bool do_wear_armour(int item, bool quiet)
     if (item == you.equip[EQ_WEAPON])
     {
         if (!quiet)
-            mpr("You are wielding that object!");
+            mpr(jtrans("You are wielding that object!"));
         return false;
     }
 
@@ -751,7 +753,7 @@ bool do_wear_armour(int item, bool quiet)
             return !takeoff_armour(item);
         else
         {
-            mpr("You're already wearing that object!");
+            mpr(jtrans("You're already wearing that object!"));
             return false;
         }
     }
@@ -761,9 +763,9 @@ bool do_wear_armour(int item, bool quiet)
         if (!quiet)
         {
             if (you.species == SP_OCTOPODE)
-                mpr("You need the rest of your tentacles for walking.");
+                mpr(jtrans("You need the rest of your tentacles for walking."));
             else
-                mprf("You'd need another %s to do that!", you.hand_name(false).c_str());
+                mprf(jtransc("You'd need another %s to do that!"), you.hand_name(false).c_str());
         }
         return false;
     }
@@ -777,11 +779,11 @@ bool do_wear_armour(int item, bool quiet)
         if (!quiet)
         {
             if (you.species == SP_OCTOPODE)
-                mpr("You need the rest of your tentacles for walking.");
+                mpr(jtrans("You need the rest of your tentacles for walking."));
             else
             {
                 // Singular hand should have already been handled above.
-                mprf("You'd need three %s to do that!",
+                mprf(jtransc("You'd need three %s to do that!"),
                      you.hand_name(true).c_str());
             }
         }
@@ -820,7 +822,7 @@ bool takeoff_armour(int item)
 
     if (invitem.base_type != OBJ_ARMOUR)
     {
-        mpr("You aren't wearing that!");
+        mpr(jtrans("You aren't wearing that!"));
         return false;
     }
 
@@ -833,8 +835,8 @@ bool takeoff_armour(int item)
     const equipment_type slot = get_armour_slot(invitem);
     if (item == you.equip[slot] && you.melded[slot])
     {
-        mprf("%s is melded into your body!",
-             invitem.name(DESC_YOUR).c_str());
+        mprf(jtransc("%s is melded into your body!"),
+             invitem.name(DESC_PLAIN).c_str());
         return false;
     }
 
@@ -844,7 +846,7 @@ bool takeoff_armour(int item)
             return do_wear_armour(item, true);
         else
         {
-            mpr("You aren't wearing that object!");
+            mpr(jtrans("You aren't wearing that object!"));
             return false;
         }
     }
@@ -852,7 +854,7 @@ bool takeoff_armour(int item)
     // If we get here, we're wearing the item.
     if (invitem.cursed())
     {
-        mprf("%s is stuck to your body!", invitem.name(DESC_YOUR).c_str());
+        mprf(jtransc("%s is stuck to your body!"), invitem.name(DESC_PLAIN).c_str());
         return false;
     }
 
@@ -870,7 +872,7 @@ bool takeoff_armour(int item)
     case EQ_BOOTS:
         if (item != you.equip[slot])
         {
-            mpr("You aren't wearing that!");
+            mpr(jtrans("You aren't wearing that!"));
             return false;
         }
         break;
@@ -959,9 +961,9 @@ static int _prompt_ring_to_remove(int new_ring)
 
     clear_messages();
 
-    mprf(MSGCH_PROMPT,
-         "You're wearing all the rings you can. Remove which one?");
-    mprf(MSGCH_PROMPT, "(<w>?</w> for menu, <w>Esc</w> to cancel)");
+    mpr_nojoin(MSGCH_PROMPT,
+               jtrans("You're wearing all the rings you can. Remove which one?"));
+    mpr_nojoin(MSGCH_PROMPT, jtrans("(<w>?</w> for menu, <w>Esc</w> to cancel)"));
 
     // FIXME: Needs TOUCH_UI version
 
@@ -1138,7 +1140,7 @@ bool safe_to_remove(const item_def &item, bool quiet)
         && is_feat_dangerous(feat, false, true))
     {
         if (!quiet)
-            mpr("Losing flight right now would be fatal!");
+            mpr(jtrans("Losing flight right now would be fatal!"));
         return false;
     }
 
@@ -1209,15 +1211,14 @@ static bool _swap_rings(int ring_slot)
     {
         // Shouldn't happen, because hogs and bats can't put on jewellery at
         // all and thus won't get this far.
-        mpr("You can't wear that in your present form.");
+        mpr(jtrans("You can't wear that in your present form."));
         return false;
     }
     else if (available == 0)
     {
-        mprf("You're already wearing %s cursed ring%s!%s",
-             number_in_words(cursed).c_str(),
-             (cursed == 1 ? "" : "s"),
-             (cursed > 2 ? " Isn't that enough for you?" : ""));
+        mprf(jtransc("You're already wearing %s cursed ring%s!%s"),
+             cursed,
+             (cursed > 2 ? jtransc(" Isn't that enough for you?)") : ""));
         return false;
     }
     // The simple case - only one available ring.
@@ -1258,7 +1259,7 @@ static equipment_type _choose_ring_slot()
     clear_messages();
 
     mprf(MSGCH_PROMPT,
-         "Put ring on which %s? (<w>Esc</w> to cancel)", you.hand_name(false).c_str());
+         jtransc("Put ring on which %s? (<w>Esc</w> to cancel)"), you.hand_name(false).c_str());
 
     const vector<equipment_type> slots = _current_ring_types();
     for (auto eq : slots)
@@ -1271,16 +1272,16 @@ static equipment_type _choose_ring_slot()
 
         item_def* ring = you.slot_item(eq, true);
         if (ring)
-            msg += "</w> or " + ring->name(DESC_INVENTORY);
+            msg += jtrans("</w> or ") + " " + ring->name(DESC_INVENTORY);
         else
-            msg += "</w> - no ring";
+            msg += jtrans("</w> - no ring");
 
         if (eq == EQ_LEFT_RING)
-            msg += " (left)";
+            msg += " " + jtrans("(left)");
         else if (eq == EQ_RIGHT_RING)
-            msg += " (right)";
+            msg += " " + jtrans("(right)");
         else if (eq == EQ_RING_AMULET)
-            msg += " (amulet)";
+            msg += " " + jtrans("(amulet)");
         mprf_nocap("%s", msg.c_str());
     }
     flush_prev_message();
@@ -1321,20 +1322,20 @@ static bool _puton_item(int item_slot, bool prompt_slot)
                 return !remove_ring(item_slot);
             else
             {
-                mpr("You're already wearing that object!");
+                mpr(jtrans("You're already wearing that object!"));
                 return false;
             }
         }
 
     if (item_slot == you.equip[EQ_WEAPON])
     {
-        mpr("You are wielding that object.");
+        mpr(jtrans("You are wielding that object."));
         return false;
     }
 
     if (item.base_type != OBJ_JEWELLERY)
     {
-        mpr("You can only put on jewellery.");
+        mpr(jtrans("You can only put on jewellery."));
         return false;
     }
 
@@ -1343,7 +1344,7 @@ static bool _puton_item(int item_slot, bool prompt_slot)
     if (!you_tran_can_wear(item)
         && (is_amulet || !you_can_wear(EQ_RING_AMULET)))
     {
-        mpr("You can't wear that in your present form.");
+        mpr(jtrans("You can't wear that in your present form."));
         return false;
     }
 
@@ -1462,9 +1463,9 @@ bool puton_ring(int slot, bool allow_prompt)
         item_slot = slot;
     else
     {
-        item_slot = prompt_invent_item("Put on which piece of jewellery?",
-                                        MT_INVLIST, OBJ_JEWELLERY, true, true,
-                                        true, 0, -1, nullptr, OPER_PUTON);
+        item_slot = prompt_invent_item(jtransc("Put on which piece of jewellery?"),
+                                       MT_INVLIST, OBJ_JEWELLERY, true, true,
+                                       true, 0, -1, nullptr, OPER_PUTON);
     }
 
     if (prompt_failed(item_slot))
@@ -1505,9 +1506,9 @@ bool remove_ring(int slot, bool announce)
     if (!has_jewellery)
     {
         if (has_melded)
-            mpr("You aren't wearing any unmelded rings or amulets.");
+            mpr(jtrans("You aren't wearing any unmelded rings or amulets."));
         else
-            mpr("You aren't wearing any rings or amulets.");
+            mpr(jtrans("You aren't wearing any rings or amulets."));
 
         return false;
     }
@@ -1521,7 +1522,7 @@ bool remove_ring(int slot, bool announce)
     if (hand_used == EQ_NONE)
     {
         const int equipn =
-            (slot == -1)? prompt_invent_item("Remove which piece of jewellery?",
+            (slot == -1)? prompt_invent_item(jtransc("Remove which piece of jewellery?"),
                                              MT_INVLIST,
                                              OBJ_JEWELLERY, true, true, true,
                                              0, -1, nullptr, OPER_REMOVE,
@@ -1534,24 +1535,24 @@ bool remove_ring(int slot, bool announce)
         hand_used = item_equip_slot(you.inv[equipn]);
         if (hand_used == EQ_NONE)
         {
-            mpr("You aren't wearing that.");
+            mpr(jtrans("You aren't wearing that."));
             return false;
         }
         else if (you.inv[equipn].base_type != OBJ_JEWELLERY)
         {
-            mpr("That isn't a piece of jewellery.");
+            mpr(jtrans("That isn't a piece of jewellery."));
             return false;
         }
     }
 
     if (you.equip[hand_used] == -1)
     {
-        mpr("I don't think you really meant that.");
+        mpr(jtrans("I don't think you really meant that."));
         return false;
     }
     else if (you.melded[hand_used])
     {
-        mpr("You can't take that off while it's melded.");
+        mpr(jtrans("You can't take that off while it's melded."));
         return false;
     }
     else if (hand_used == EQ_AMULET
@@ -1560,7 +1561,7 @@ bool remove_ring(int slot, bool announce)
         // This can be removed in the future if more ring amulets are added.
         ASSERT(player_equip_unrand(UNRAND_FINGER_AMULET));
 
-        mpr("The amulet cannot be taken off without first removing the ring!");
+        mpr(jtrans("The amulet cannot be taken off without first removing the ring!"));
         return false;
     }
 
@@ -1575,11 +1576,11 @@ bool remove_ring(int slot, bool announce)
     {
         if (announce)
         {
-            mprf("%s is stuck to you!",
-                 you.inv[you.equip[hand_used]].name(DESC_YOUR).c_str());
+            mprf(jtransc("%s is stuck to you!"),
+                 you.inv[you.equip[hand_used]].name(DESC_PLAIN).c_str());
         }
         else
-            mpr("It's stuck to you!");
+            mpr(jtrans("It's stuck to you!"));
 
         set_ident_flags(you.inv[you.equip[hand_used]], ISFLAG_KNOW_CURSE);
         return false;
@@ -1591,7 +1592,7 @@ bool remove_ring(int slot, bool announce)
     if (!_safe_to_remove_or_wear(you.inv[ring_wear_2], true))
         return false;
 
-    mprf("You remove %s.", you.inv[ring_wear_2].name(DESC_YOUR).c_str());
+    mprf(jtransc("You remove %s."), you.inv[ring_wear_2].name(DESC_PLAIN).c_str());
 #ifdef USE_TILE_LOCAL
     const unsigned int old_talents = your_talents(false).size();
 #endif
@@ -1635,11 +1636,11 @@ void prompt_inscribe_item()
 {
     if (inv_count() < 1)
     {
-        mpr("You don't have anything to inscribe.");
+        mpr(jtrans("You don't have anything to inscribe."));
         return;
     }
 
-    int item_slot = prompt_invent_item("Inscribe which item?",
+    int item_slot = prompt_invent_item(jtransc("Inscribe which item?"),
                                        MT_INVLIST, OSEL_ANY);
 
     if (prompt_failed(item_slot))
@@ -1667,14 +1668,14 @@ static void _vampire_corpse_help()
         return;
 
     if (_check_blood_corpses_on_ground())
-        mpr("Use <w>e</w> to drain blood from corpses.");
+        mpr(jtrans("Use <w>e</w> to drain blood from corpses."));
 }
 
 void drink(int slot)
 {
     if (you_foodless(true))
     {
-        mpr("You can't drink.");
+        mpr(jtrans("You can't drink."));
         return;
     }
 
@@ -1700,13 +1701,13 @@ void drink(int slot)
 
     if (you.duration[DUR_NO_POTIONS])
     {
-        mpr("You cannot drink potions in your current state!");
+        mpr(jtrans("You cannot drink potions in your current state!"));
         return;
     }
 
     if (slot == -1)
     {
-        slot = prompt_invent_item("Drink which item?",
+        slot = prompt_invent_item(jtransc("Drink which item?"),
                                   MT_INVLIST, OBJ_POTIONS,
                                   true, true, true, 0, -1, nullptr,
                                   OPER_QUAFF);
@@ -1724,7 +1725,7 @@ void drink(int slot)
         if (you.species == SP_VAMPIRE && potion.base_type == OBJ_CORPSES)
             eat_food(slot);
         else
-            mpr("You can't drink that!");
+            mpr(jtrans("You can't drink that!"));
         return;
     }
 
@@ -1739,7 +1740,7 @@ void drink(int slot)
             )
         )
     {
-        mpr("You are much too full right now.");
+        mpr(jtrans("You are much too full right now."));
         return;
     }
 
@@ -1758,7 +1759,7 @@ void drink(int slot)
 
     if (alreadyknown && is_blood_potion(potion)
         && is_good_god(you.religion)
-        && !yesno("Really drink that potion of blood?", false, 'n'))
+        && !yesno(jtransc("Really drink that potion of blood?"), false, 'n'))
     {
         canned_msg(MSG_OK);
         return;
@@ -1781,7 +1782,7 @@ void drink(int slot)
 
     if (player_under_penance(GOD_GOZAG) && one_chance_in(3))
     {
-        simple_god_message(" petitions for your drink to fail.", GOD_GOZAG);
+        simple_god_message(jtransc(" petitions for your drink to fail."), GOD_GOZAG);
 
         you.turn_is_over = true;
 
@@ -2370,7 +2371,7 @@ static void _handle_read_book(int item_slot)
 
     if (you.stat_zero[STAT_INT])
     {
-        mpr("Reading books requires mental cohesion, which you lack.");
+        mpr(jtrans("Reading books requires mental cohesion, which you lack."));
         return;
     }
 
@@ -2463,7 +2464,7 @@ bool player_can_read()
 static string _no_items_reason(object_selector type)
 {
     if (!any_items_of_type(type))
-        return no_selectables_message(type);
+        return jtrans(no_selectables_message(type));
     return "";
 }
 
@@ -2575,11 +2576,11 @@ void read(int slot)
         return;
 
     int item_slot = (slot != -1) ? slot
-                                 : prompt_invent_item("Read which item?",
-                                                       MT_INVLIST,
-                                                       OBJ_SCROLLS,
-                                                       true, true, true, 0, -1,
-                                                       nullptr, OPER_READ);
+                                 : prompt_invent_item(jtransc("Read which item?"),
+                                                      MT_INVLIST,
+                                                      OBJ_SCROLLS,
+                                                      true, true, true, 0, -1,
+                                                      nullptr, OPER_READ);
 
     if (prompt_failed(item_slot))
         return;
@@ -2605,8 +2606,8 @@ void read(int slot)
 
     if (you.stat_zero[STAT_INT] && !one_chance_in(5))
     {
-        mpr("You almost manage to decipher the scroll,"
-            " but fail in this attempt.");
+        mpr(jtrans("You almost manage to decipher the scroll,"
+                   " but fail in this attempt."));
         return;
     }
 
@@ -2639,14 +2640,13 @@ void read_scroll(int item_slot)
 {
     item_def& scroll = you.inv[item_slot];
     const scroll_type which_scroll = static_cast<scroll_type>(scroll.sub_type);
-    const int prev_quantity = scroll.quantity;
     const bool alreadyknown = item_type_known(scroll);
 
     // For cancellable scrolls leave printing this message to their
     // respective functions.
     const string pre_succ_msg =
-            make_stringf("As you read the %s, it crumbles to dust.",
-                          scroll.name(DESC_QUALNAME).c_str());
+            make_stringf(jtransc("As you read the %s, it crumbles to dust."),
+                         scroll.name(DESC_QUALNAME).c_str());
     if (!_is_cancellable_scroll(which_scroll))
     {
         mpr(pre_succ_msg);
@@ -2684,8 +2684,8 @@ void read_scroll(int item_slot)
                              == SPRET_ABORT) && alreadyknown;
         }
         else if (alreadyknown
-                 && !yesno("Your blink will be uncontrolled - continue anyway?",
-                            false, 'n'))
+                 && !yesno(jtransc("Your blink will be uncontrolled - continue anyway?"),
+                           false, 'n'))
         {
             canned_msg(MSG_OK);
             cancel_scroll = true;
@@ -2713,7 +2713,7 @@ void read_scroll(int item_slot)
         break;
 
     case SCR_ACQUIREMENT:
-        mpr("This is a scroll of acquirement!");
+        mpr(jtrans("This is a scroll of acquirement!"));
         more();
         // Identify it early in case the player checks the '\' screen.
         set_ident_type(scroll, ID_KNOWN_TYPE);
@@ -2721,12 +2721,12 @@ void read_scroll(int item_slot)
         break;
 
     case SCR_FEAR:
-        mpr("You assume a fearsome visage.");
+        mpr(jtrans("You assume a fearsome visage."));
         mass_enchantment(ENCH_FEAR, 1000);
         break;
 
     case SCR_NOISE:
-        noisy(25, you.pos(), "You hear a loud clanging noise!");
+        noisy(25, you.pos(), jtransc("You hear a loud clanging noise!"));
         break;
 
     case SCR_SUMMONING:
@@ -2734,7 +2734,7 @@ void read_scroll(int item_slot)
         break;
 
     case SCR_FOG:
-        mpr("The scroll dissolves into smoke.");
+        mpr(jtransc("The scroll dissolves into smoke."));
         big_cloud(random_smoke_type(), &you, you.pos(), 50, 8 + random2(8));
         break;
 
@@ -2742,7 +2742,7 @@ void read_scroll(int item_slot)
         if (alreadyknown && testbits(env.level_flags, LFLAG_NO_MAP))
         {
             cancel_scroll = true;
-            mpr("It would have no effect in this place.");
+            mpr(jtrans("It would have no effect in this place."));
             break;
         }
         mpr(pre_succ_msg);
@@ -2773,9 +2773,9 @@ void read_scroll(int item_slot)
         }
 
         if (had_effect)
-            mpr("The creatures around you are filled with an inner flame!");
+            mpr(jtrans("The creatures around you are filled with an inner flame!"));
         else
-            mpr("The air around you briefly surges with heat, but it dissipates.");
+            mpr(jtrans("The air around you briefly surges with heat, but it dissipates."));
 
         bad_effect = true;
         break;
@@ -2790,8 +2790,8 @@ void read_scroll(int item_slot)
             bool plural = false;
             const string weapon_name =
                 weapon ? weapon->name(DESC_YOUR)
-                       : "Your " + you.hand_name(true, &plural);
-            mprf("%s very briefly gain%s a black sheen.",
+                       : jtrans("Your ") + you.hand_name(true, &plural);
+            mprf(jtransc("%s very briefly gain%s a black sheen."),
                  weapon_name.c_str(), plural ? "" : "s");
         }
         else
@@ -2808,7 +2808,7 @@ void read_scroll(int item_slot)
         if (!alreadyknown)
         {
             mpr(pre_succ_msg);
-            mpr("It is a scroll of enchant weapon.");
+            mpr(jtrans("It is a scroll of enchant weapon."));
             // Pause to display the message before jumping to the weapon list.
             more();
         }
@@ -2820,7 +2820,7 @@ void read_scroll(int item_slot)
         if (!alreadyknown)
         {
             mpr(pre_succ_msg);
-            mpr("It is a scroll of brand weapon.");
+            mpr(jtrans("It is a scroll of brand weapon."));
             // Pause to display the message before jumping to the weapon list.
             more();
         }
@@ -2832,7 +2832,7 @@ void read_scroll(int item_slot)
         if (!alreadyknown)
         {
             mpr(pre_succ_msg);
-            mpr("It is a scroll of identify.");
+            mpr(jtrans("It is a scroll of identify."));
             more();
             // Do this here so it doesn't turn up in the ID menu.
             set_ident_type(scroll, ID_KNOWN_TYPE);
@@ -2844,7 +2844,7 @@ void read_scroll(int item_slot)
         if (!alreadyknown)
         {
             mpr(pre_succ_msg);
-            mpr("It is a scroll of recharging.");
+            mpr(jtrans("It is a scroll of recharging."));
             more();
         }
         cancel_scroll = (recharge_wand(alreadyknown, pre_succ_msg) == -1);
@@ -2854,7 +2854,7 @@ void read_scroll(int item_slot)
         if (!alreadyknown)
         {
             mpr(pre_succ_msg);
-            mpr("It is a scroll of enchant armour.");
+            mpr(jtrans("It is a scroll of enchant armour."));
             more();
         }
         cancel_scroll =
@@ -2892,7 +2892,7 @@ void read_scroll(int item_slot)
         if (!alreadyknown)
             mpr(pre_succ_msg);
         if (you.spell_no == 0)
-            mpr("You feel forgetful for a moment.");
+            mpr(jtrans("You feel forgetful for a moment."));
         else if (!alreadyknown)
             cast_selective_amnesia();
         else
@@ -2926,8 +2926,7 @@ void read_scroll(int item_slot)
         && which_scroll != SCR_ENCHANT_ARMOUR
         && which_scroll != SCR_RECHARGING)
     {
-        mprf("It %s a %s.",
-             you.inv[item_slot].quantity < prev_quantity ? "was" : "is",
+        mprf(jtransc("It %s a %s."),
              scroll_name.c_str());
     }
 
@@ -2962,24 +2961,24 @@ bool stasis_blocks_effect(bool calc_unid,
             // Override message for formicids
             if (you.species == SP_FORMICID)
             {
-                mpr(formicid_msg ? formicid_msg :
-                                   "Your stasis keeps you stable.");
+                mpr(jtrans(formicid_msg ? formicid_msg :
+                                          "Your stasis keeps you stable.")) ;
             }
             else
             {
-                const string name(amulet? amulet->name(DESC_YOUR) : "Something");
-                const string message = make_stringf(msg, name.c_str());
+                const string name(amulet? amulet->name(DESC_PLAIN) : jtrans("Something"));
+                const string message = make_stringf(jtransc(msg), name.c_str());
 
                 if (noise)
                 {
                     if (!noisy(noise, you.pos(), message.c_str())
                         && silenced_msg)
                     {
-                        mprf(silenced_msg, name.c_str());
+                        mprf(jtransc(silenced_msg), name.c_str());
                     }
                 }
                 else
-                    mpr(message);
+                    mpr(jtrans(message));
             }
         }
         return true;

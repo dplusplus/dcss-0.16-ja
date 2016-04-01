@@ -6,6 +6,7 @@
 #include "areas.h"
 #include "branch.h"
 #include "cloud.h"
+#include "database.h"
 #include "env.h"
 #include "evoke.h"
 #include "food.h"
@@ -173,7 +174,7 @@ bool fill_status_info(int status, status_info* inf)
     {
 
     case DUR_CORROSION:
-        inf->light_text = make_stringf("Corr (%d)",
+        inf->light_text = make_stringf(jtransc("Corr (%d)"),
                           (-3 * you.props["corrosion_amount"].get_int()));
         break;
 
@@ -335,8 +336,8 @@ bool fill_status_info(int status, status_info* inf)
         string skills = manual_skill_names();
         if (!skills.empty())
         {
-            inf->short_text = "studying " + manual_skill_names(true);
-            inf->long_text = "You are studying " + skills + ".";
+            inf->short_text = jtrans(manual_skill_names(true)) + "を習得中";
+            inf->long_text = "あなたは" + jtrans(skills) + "を習得中だ。";
         }
         break;
     }
@@ -414,7 +415,7 @@ bool fill_status_info(int status, status_info* inf)
         break;
 
     case DUR_SONG_OF_SLAYING:
-        inf->light_text = make_stringf("Slay (%u)",
+        inf->light_text = make_stringf(jtransc("Slay (%u)"),
                                        you.props["song_of_slaying_bonus"].get_int());
         break;
 
@@ -566,15 +567,15 @@ bool fill_status_info(int status, status_info* inf)
                                                 : BLUE;
 
             inf->light_text = "Bribe";
-            inf->short_text = make_stringf("bribing [%s]",
+            inf->short_text = make_stringf("[%s]を買収中",
                                            comma_separated_line(places.begin(),
                                                                 places.end(),
                                                                 ", ", ", ")
                                                                 .c_str());
-            inf->long_text = "You are bribing "
-                             + comma_separated_line(places.begin(),
+            inf->long_text = "あなたは"
+                             + to_separated_line(places.begin(),
                                                     places.end())
-                             + ".";
+                             + "を買収している。";
         }
         break;
     }
@@ -582,7 +583,7 @@ bool fill_status_info(int status, status_info* inf)
     case DUR_HORROR:
     {
         const int horror = you.props[HORROR_PENALTY_KEY].get_int();
-        inf->light_text = make_stringf("Horr(%d)", -1 * horror);
+        inf->light_text = make_stringf(jtransc("Horr(%d)"), -1 * horror);
         if (horror >= HORROR_LVL_OVERWHELMING)
         {
             inf->light_colour = RED;
@@ -651,32 +652,32 @@ static void _describe_hunger(status_info* inf)
     {
     case HS_ENGORGED:
         inf->light_colour = LIGHTGREEN;
-        inf->light_text   = (vamp ? "Alive" : "Engorged");
+        inf->light_text   = (vamp ? "生者" : "腹一杯");
         break;
     case HS_VERY_FULL:
         inf->light_colour = GREEN;
-        inf->light_text   = "Very Full";
+        inf->light_text   = "とても満腹";
         break;
     case HS_FULL:
         inf->light_colour = GREEN;
-        inf->light_text   = "Full";
+        inf->light_text   = "満腹";
         break;
     case HS_HUNGRY:
         inf->light_colour = YELLOW;
-        inf->light_text   = (vamp ? "Thirsty" : "Hungry");
+        inf->light_text   = (vamp ? "乾いている" : "空腹");
         break;
     case HS_VERY_HUNGRY:
         inf->light_colour = YELLOW;
-        inf->light_text   = (vamp ? "Very Thirsty" : "Very Hungry");
+        inf->light_text   = (vamp ? "とても乾いている" : "とても空腹");
         break;
     case HS_NEAR_STARVING:
         inf->light_colour = YELLOW;
-        inf->light_text   = (vamp ? "Near Bloodless" : "Near Starving");
+        inf->light_text   = (vamp ? "ほとんど血液がない" : "餓死が近い");
         break;
     case HS_STARVING:
         inf->light_colour = RED;
-        inf->light_text   = (vamp ? "Bloodless" : "Starving");
-        inf->short_text   = (vamp ? "bloodless" : "starving");
+        inf->light_text   = (vamp ? "血液がない" : "餓死しかけ");
+        inf->short_text   = (vamp ? "血液がない" : "餓死しかけ");
         break;
     case HS_SATIATED: // no status light
     default:
@@ -785,9 +786,9 @@ static void _describe_poison(status_info* inf)
          (pois_perc > 65)   ? "seriously" :
          (pois_perc > 35)   ? "quite"
                             : "mildly";
-    inf->short_text   = adj + " poisoned"
+    inf->short_text   = jtrans(adj + " poisoned")
         + make_stringf(" (%d -> %d)", you.hp, poison_survival());
-    inf->long_text    = "You are " + inf->short_text + ".";
+    inf->long_text    = "あなたは" + inf->short_text + "。";
 }
 
 static void _describe_speed(status_info* inf)
@@ -880,7 +881,7 @@ static void _describe_sickness(status_info* inf)
                                           : "mildly ";
 
         inf->short_text = mod + "diseased";
-        inf->long_text  = "You are " + mod + "diseased.";
+        inf->long_text  = "あなたは" + jtrans("dur " + inf->short_text) + "。";
     }
 }
 

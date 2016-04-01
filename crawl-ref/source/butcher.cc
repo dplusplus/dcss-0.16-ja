@@ -9,6 +9,7 @@
 
 #include "bloodspatter.h"
 #include "command.h"
+#include "database.h"
 #include "delay.h"
 #include "env.h"
 #include "food.h"
@@ -37,7 +38,7 @@ static bool _should_butcher(const item_def& corpse)
 {
     if (is_forbidden_food(corpse)
         && (Options.confirm_butcher == CONFIRM_NEVER
-            || !yesno("Desecrating this corpse would be a sin. Continue anyway?",
+            || !yesno(jtransc("Desecrating this corpse would be a sin. Continue anyway?"),
                       false, 'n', true, false)))
     {
         if (Options.confirm_butcher != CONFIRM_NEVER)
@@ -82,7 +83,7 @@ void finish_butchering(item_def& corpse, bool bottling)
 
     if (bottling)
     {
-        mpr("You bottle the corpse's blood.");
+        mpr(jtrans("You bottle the corpse's blood."));
 
         if (mons_skeleton(corpse.mon_type) && one_chance_in(3))
             turn_corpse_into_skeleton_and_blood_potions(corpse);
@@ -91,7 +92,7 @@ void finish_butchering(item_def& corpse, bool bottling)
     }
     else
     {
-        mprf("You butcher %s.",
+        mprf(jtransc("You butcher %s."),
              corpse.name(DESC_THE).c_str());
 
         butcher_corpse(corpse);
@@ -99,7 +100,7 @@ void finish_butchering(item_def& corpse, bool bottling)
         if (you.berserk()
             && you.berserk_penalty != NO_BERSERK_PENALTY)
         {
-            mpr("You enjoyed that.");
+            mpr(jtrans("You enjoyed that."));
             you.berserk_penalty = 0;
         }
     }
@@ -153,7 +154,7 @@ void butchery(item_def* specific_corpse)
 {
     if (you.visible_igrd(you.pos()) == NON_ITEM)
     {
-        mpr("There isn't anything here!");
+        mpr(jtrans("There isn't anything here!"));
         return;
     }
 
@@ -176,8 +177,8 @@ void butchery(item_def* specific_corpse)
 
     if (corpses.empty())
     {
-        mprf("There isn't anything to %sbutcher here.",
-             bottle_blood ? "bottle or " : "");
+        mprf(jtransc("There isn't anything to %sbutcher here."),
+             bottle_blood ? jtransc("bottle or") : "");
         return;
     }
 
@@ -191,8 +192,8 @@ void butchery(item_def* specific_corpse)
         if (Options.confirm_butcher == CONFIRM_NEVER
             && !_should_butcher(*corpses[0].first))
         {
-            mprf("There isn't anything suitable to %sbutcher here.",
-                 bottle_blood ? "bottle or " : "");
+            mprf(jtransc("There isn't anything suitable to %sbutcher here."),
+                 bottle_blood ? jtransc("bottle or") : "");
             return;
         }
 
@@ -211,8 +212,8 @@ void butchery(item_def* specific_corpse)
         meat.push_back(entry.first);
 
     vector<SelItem> selected =
-        select_items(meat, bottle_blood ? "Choose a corpse to bottle or butcher"
-                                        : "Choose a corpse to butcher",
+        select_items(meat, jtransc(bottle_blood ? "Choose a corpse to bottle or butcher"
+                                                : "Choose a corpse to butcher"),
                      false, MT_ANY, _butcher_menu_title);
     redraw_screen();
     for (SelItem sel : selected)
@@ -245,9 +246,9 @@ void butchery(item_def* specific_corpse)
             {
                 const bool can_bottle =
                     can_bottle_blood_from_corpse(it->mon_type);
-                mprf(MSGCH_PROMPT, "%s %s? [(y)es/(c)hop/(n)o/(a)ll/(q)uit/?]",
-                     can_bottle ? "Bottle" : "Butcher",
-                     corpse_name.c_str());
+                mprf(MSGCH_PROMPT, jtransc("%s %s? [(y)es/(c)hop/(n)o/(a)ll/(q)uit/?]"),
+                     corpse_name.c_str(),
+                     can_bottle ? "から採血" : "を解体");
                 repeat_prompt = false;
 
                 switch (toalower(getchm(KMC_CONFIRM)))
@@ -287,8 +288,8 @@ void butchery(item_def* specific_corpse)
     // No point in displaying this if the player pressed 'a' above.
     if (!to_eat && !butcher_all)
     {
-        mprf("There isn't anything else to %sbutcher here.",
-             bottle_blood ? "bottle or " : "");
+        mprf(jtransc("There isn't anything else to %sbutcher here."),
+             bottle_blood ? jtransc("bottle or ") : "");
     }
 #endif
 

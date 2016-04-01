@@ -16,6 +16,7 @@
 
 #include "areas.h"
 #include "coordit.h"
+#include "database.h"
 #include "directn.h"
 #include "english.h"
 #include "env.h"
@@ -273,7 +274,7 @@ bool add_spell_to_memory(spell_type spell)
         }
 
     if (you.num_turns)
-        mprf("Spell assigned to '%c'.", index_to_letter(j));
+        mprf(jtransc("Spell assigned to '%c'."), index_to_letter(j));
 
     you.spell_letter_table[j] = i;
 
@@ -301,7 +302,7 @@ bool del_spell_from_memory_by_slot(int slot)
 
     spell_skills(you.spells[slot], you.stop_train);
 
-    mprf("Your memory of %s unravels.", spell_title(you.spells[slot]));
+    mprf(jtransc("Your memory of %s unravels."), tagged_jtransc("[spell]", spell_title(you.spells[slot])));
     you.spells[ slot ] = SPELL_NO_SPELL;
 
     for (j = 0; j < 52; j++)
@@ -1141,7 +1142,7 @@ string spell_uselessness_reason(spell_type spell, bool temp, bool prevent,
         // XXX: this is a little redundant with you_no_tele_reason()
         // but trying to sort out temp and ctele and so on is a mess
         if (you.species == SP_FORMICID)
-            return pluralise(species_name(you.species)) + " cannot teleport.";
+            return jtrans(species_name(you.species)) + jtrans(" cannot teleport.");
 
         if (temp && you.no_tele(false, false, true)
             && (!prevent || spell != SPELL_CONTROL_TELEPORT))

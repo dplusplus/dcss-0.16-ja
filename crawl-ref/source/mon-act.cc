@@ -16,6 +16,7 @@
 #include "cloud.h"
 #include "colour.h"
 #include "coordit.h"
+#include "database.h"
 #include "dbg-scan.h"
 #include "delay.h"
 #include "dungeon.h"
@@ -166,7 +167,7 @@ static void _escape_water_hold(monster* mons)
         {
             mons->speed_increment -= 5;
         }
-        simple_monster_message(mons, " pulls free of the water.");
+        simple_monster_message(mons, jtransc(" pulls free of the water."));
         mons->del_ench(ENCH_WATER_HOLD);
     }
 }
@@ -242,8 +243,8 @@ static bool _swap_monsters(monster* mover, monster* moved)
 
     if (you.can_see(mover) && you.can_see(moved))
     {
-        mprf("%s and %s swap places.", mover->name(DESC_THE).c_str(),
-             moved->name(DESC_THE).c_str());
+        mprf(jtransc("%s and %s swap places."), jtransc(mover->name(DESC_THE)),
+             jtransc(moved->name(DESC_THE)));
     }
 
     _escape_water_hold(mover);
@@ -918,9 +919,9 @@ static bool _handle_swoop(monster* mons)
                 {
                     if (you.can_see(mons))
                     {
-                        mprf("%s swoops through the air toward %s!",
-                             mons->name(DESC_THE).c_str(),
-                             defender->name(DESC_THE).c_str());
+                        mprf(jtransc("%s swoops through the air toward %s!"),
+                             jtransc(mons->name(DESC_THE)),
+                             jtransc(defender->name(DESC_THE)));
                     }
                     mons->move_to_pos(tracer.path_taken[j+1]);
                     fight_melee(mons, defender);
@@ -1041,7 +1042,7 @@ static bool _handle_scroll(monster* mons)
         {
             if (mons->caught() || mons_is_fleeing(mons) || mons->pacified())
             {
-                simple_monster_message(mons, " reads a scroll.");
+                simple_monster_message(mons, jtransc(" reads a scroll."));
                 read = true;
                 ident = ID_KNOWN_TYPE;
                 monster_teleport(mons, false);
@@ -1053,7 +1054,7 @@ static bool _handle_scroll(monster* mons)
         if ((mons->caught() || mons_is_fleeing(mons) || mons->pacified())
             && mons_near(mons) && !mons->no_tele(true, false))
         {
-            simple_monster_message(mons, " reads a scroll.");
+            simple_monster_message(mons, jtransc(" reads a scroll."));
             read = true;
             if (mons->caught())
             {
@@ -1068,8 +1069,8 @@ static bool _handle_scroll(monster* mons)
     case SCR_SUMMONING:
         if (mons_near(mons))
         {
-            simple_monster_message(mons, " reads a scroll.");
-            mprf("Wisps of shadow swirl around %s.", mons->name(DESC_THE).c_str());
+            simple_monster_message(mons, jtransc(" reads a scroll."));
+            mprf(jtransc("Wisps of shadow swirl around %s."), jtransc(mons->name(DESC_THE)));
             read = true;
             int count = roll_dice(2, 2);
             for (int i = 0; i < count; ++i)
@@ -1181,10 +1182,10 @@ static bool _setup_wand_beam(bolt& beem, monster* mons)
 static void _mons_fire_wand(monster* mons, item_def &wand, bolt &beem,
                             bool was_visible, bool niceWand)
 {
-    if (!simple_monster_message(mons, " zaps a wand."))
+    if (!simple_monster_message(mons, jtransc(" zaps a wand.")))
     {
         if (!silenced(you.pos()))
-            mprf(MSGCH_SOUND, "You hear a zap.");
+            mpr_nojoin(MSGCH_SOUND, jtrans("You hear a zap."));
     }
 
     // charge expenditure {dlb}
@@ -1199,7 +1200,7 @@ static void _mons_fire_wand(monster* mons, item_def &wand, bolt &beem,
         set_ident_type(OBJ_WANDS, wand_type, ID_KNOWN_TYPE);
         if (!mons->props["wand_known"].get_bool())
         {
-            mprf("It is %s.", wand.name(DESC_A).c_str());
+            mprf(jtransc("It is %s."), wand.name(DESC_A).c_str());
             mons->props["wand_known"] = true;
         }
 
@@ -1217,10 +1218,10 @@ static void _rod_fired_pre(monster* mons)
 {
     make_mons_stop_fleeing(mons);
 
-    if (!simple_monster_message(mons, " zaps a rod.")
+    if (!simple_monster_message(mons, jtransc(" zaps a rod."))
         && !silenced(you.pos()))
     {
-        mprf(MSGCH_SOUND, "You hear a zap.");
+        mpr_nojoin(MSGCH_SOUND, jtrans("You hear a zap."));
     }
 }
 
@@ -1639,14 +1640,14 @@ bool handle_throw(monster* mons, bolt & beem, bool teleport, bool check_only)
         if (interference == DO_BLOCK_ATTACK)
         {
             simple_monster_message(mons,
-                                " is stunned by your will and fails to attack.",
+                                jtransc(" is stunned by your will and fails to attack."),
                                 MSGCH_GOD);
             return false;
         }
         else if (interference == DO_REDIRECT_ATTACK)
         {
-            mprf(MSGCH_GOD, "You redirect %s's attack!",
-                    mons->name(DESC_THE).c_str());
+            mprf(MSGCH_GOD, jtransc("You redirect %s's attack!"),
+                 jtransc(mons->name(DESC_THE)));
             int pfound = 0;
             for (radius_iterator ri(you.pos(),
                 LOS_DEFAULT); ri; ++ri)
@@ -1744,8 +1745,8 @@ static void _confused_move_dir(monster *mons)
                     // But don't spam.
                     mons->props["no_conf_move"] = where;
                     simple_monster_message(mons,
-                        make_stringf(" stays still, afraid of the %s.",
-                        feat_type_name(grd(*ai))).c_str());
+                        make_stringf(jtransc(" stays still, afraid of the %s."),
+                                     jtransc(feat_type_name(grd(*ai)))).c_str());
                 }
                 mmov.reset();
                 break;
@@ -1806,7 +1807,7 @@ static void _pre_monster_move(monster* mons)
         monster* awakener = monster_by_mid(mons->props["vine_awakener"].get_int());
         if (awakener && !awakener->can_see(mons))
         {
-            simple_monster_message(mons, " falls limply to the ground.");
+            simple_monster_message(mons, jtransc(" falls limply to the ground."));
             monster_die(mons, KILL_RESET, NON_MONSTER);
             return;
         }
@@ -2140,11 +2141,11 @@ void handle_monster_move(monster* mons)
             {
                 if (you.can_see(mons))
                 {
-                    simple_monster_message(mons, " crackles loudly.",
+                    simple_monster_message(mons, jtransc(" crackles loudly."),
                                            MSGCH_WARN);
                 }
                 else
-                    mprf(MSGCH_SOUND, "You hear a loud crackle.");
+                    mpr_nojoin(MSGCH_SOUND, jtrans("You hear a loud crackle."));
             }
             // Done this way to keep the detonation timer predictable
             mons->speed_increment -= BASELINE_DELAY;
@@ -2186,7 +2187,7 @@ void handle_monster_move(monster* mons)
 
     if (mons->has_ench(ENCH_DAZED) && one_chance_in(5))
     {
-        simple_monster_message(mons, " is lost in a daze.");
+        simple_monster_message(mons, jtransc(" is lost in a daze."));
         mons->speed_increment -= non_move_energy;
         return;
     }
@@ -2461,7 +2462,7 @@ void handle_monster_move(monster* mons)
                         if (interference == DO_BLOCK_ATTACK)
                         {
                             simple_monster_message(mons,
-                                " is stunned by your will and fails to attack.",
+                                jtransc(" is stunned by your will and fails to attack."),
                                 MSGCH_GOD);
                             mons->speed_increment -= non_move_energy;
                             return;
@@ -2493,8 +2494,8 @@ void handle_monster_move(monster* mons)
                     // attack that target
                     mons->target = new_target->pos();
                     mons->foe = new_target->mindex();
-                    mprf(MSGCH_GOD, "You redirect %s's attack!",
-                         mons->name(DESC_THE).c_str());
+                    mprf(MSGCH_GOD, jtransc("You redirect %s's attack!"),
+                         jtransc(mons->name(DESC_THE)));
                     fight_melee(mons, new_target);
                 }
                 else
@@ -2630,11 +2631,11 @@ void monster::struggle_against_net()
             if (coinflip())
             {
                 if (mons_near(this) && !visible_to(&you))
-                    mpr("Something you can't see is thrashing in a web.");
+                    mpr(jtrans("Something you can't see is thrashing in a web."));
                 else
                 {
                     simple_monster_message(this,
-                                           " struggles to get unstuck from the web.");
+                                           jtransc(" struggles to get unstuck from the web."));
                 }
                 return;
             }
@@ -2658,9 +2659,9 @@ void monster::struggle_against_net()
         && !berserk_or_insane() && type != MONS_DANCING_WEAPON)
     {
         if (mons_near(this) && !visible_to(&you))
-            mpr("Something wriggles in the net.");
+            mpr(jtrans("Something wriggles in the net."));
         else
-            simple_monster_message(this, " struggles to escape the net.");
+            simple_monster_message(this, jtransc(" struggles to escape the net."));
 
         // Confused monsters have trouble finding the exit.
         if (has_ench(ENCH_CONFUSION) && !one_chance_in(5))
@@ -2676,9 +2677,9 @@ void monster::struggle_against_net()
     {    // e.g. ogre, large zombie (large); centaur, naga, hydra (big).
 
         if (mons_near(this) && !visible_to(&you))
-            mpr("Something wriggles in the net.");
+            mpr(jtrans("Something wriggles in the net."));
         else
-            simple_monster_message(this, " struggles against the net.");
+            simple_monster_message(this, jtransc(" struggles against the net."));
 
         // Confused monsters more likely to struggle without result.
         if (has_ench(ENCH_CONFUSION) && one_chance_in(3))
@@ -2734,11 +2735,11 @@ void monster::struggle_against_net()
             {
                 if (visible_to(&you))
                 {
-                    mprf("The net rips apart, and %s comes free!",
-                         name(DESC_THE).c_str());
+                    mprf(jtransc("The net rips apart, and %s comes free!"),
+                         jtransc(name(DESC_THE)));
                 }
                 else
-                    mpr("All of a sudden the net rips apart!");
+                    mpr(jtrans("All of a sudden the net rips apart!"));
             }
             destroy_item(net);
 
@@ -2761,8 +2762,8 @@ static void _ancient_zyme_sicken(monster* mons)
         {
             if (!you.duration[DUR_SICKENING])
             {
-                mprf(MSGCH_WARN, "You feel yourself growing ill in the presence of %s.",
-                    mons->name(DESC_THE).c_str());
+                mprf(MSGCH_WARN, jtransc("You feel yourself growing ill in the presence of %s."),
+                     jtransc(mons->name(DESC_THE)));
             }
 
             you.duration[DUR_SICKENING] += (2 + random2(4)) * BASELINE_DELAY;
@@ -2813,8 +2814,8 @@ static void _torpor_snail_slow(monster* mons)
     {
         if (!you.duration[DUR_SLOW])
         {
-            mprf("Being near %s leaves you feeling lethargic.",
-                 mons->name(DESC_THE).c_str());
+            mprf(jtransc("Being near %s leaves you feeling lethargic."),
+                 jtransc(mons->name(DESC_THE)));
         }
 
         if (you.duration[DUR_SLOW] <= 1)
@@ -3050,10 +3051,10 @@ static bool _jelly_divide(monster* parent)
     child->set_new_monster_id();
     child->move_to_pos(child_spot);
 
-    if (!simple_monster_message(parent, " splits in two!")
+    if (!simple_monster_message(parent, jtransc(" splits in two!"))
         && (player_can_hear(parent->pos()) || player_can_hear(child->pos())))
     {
-        mprf(MSGCH_SOUND, "You hear a squelching noise.");
+        mpr_nojoin(MSGCH_SOUND, jtrans("You hear a squelching noise."));
     }
 
     if (crawl_state.game_is_arena())
@@ -3132,8 +3133,8 @@ static bool _monster_eat_item(monster* mons, bool nearby)
 
         if (eaten && !shown_msg && player_can_hear(mons->pos()))
         {
-            mprf(MSGCH_SOUND, "You hear a%s slurping noise.",
-                 nearby ? "" : " distant");
+            mprf(MSGCH_SOUND, jtransc("You hear a%s slurping noise."),
+                 nearby ? "" : "遠くで");
             shown_msg = true;
         }
 
@@ -3141,7 +3142,7 @@ static bool _monster_eat_item(monster* mons, bool nearby)
         {
             gain = sacrifice_item_stack(*si, &js, quant);
             if (gain > PIETY_NONE)
-                simple_god_message(" appreciates your sacrifice.");
+                simple_god_message(jtransc(" appreciates your sacrifice."));
 
             jiyva_slurp_message(js);
         }
@@ -3179,9 +3180,9 @@ static bool _monster_eat_item(monster* mons, bool nearby)
             place_cloud(CLOUD_MIASMA, mons->pos(), 4 + random2(5), mons);
 
         if (death_ooze_ate_good)
-            simple_monster_message(mons, " twists violently!");
+            simple_monster_message(mons, jtransc(" twists violently!"));
         else if (eaten_net)
-            simple_monster_message(mons, " devours the net!");
+            simple_monster_message(mons, jtransc(" devours the net!"));
         else
             _jelly_divide(mons);
     }
@@ -3207,8 +3208,8 @@ static bool _monster_eat_single_corpse(monster* mons, item_def& item,
 
     if (nearby)
     {
-        mprf("%s eats %s.", mons->name(DESC_THE).c_str(),
-             item.name(DESC_THE).c_str());
+        mprf(jtransc("%s eats %s."), jtransc(mons->name(DESC_THE)),
+             jtransc(item.name(DESC_THE)));
     }
 
     // Butcher the corpse without leaving chunks.
@@ -3327,22 +3328,22 @@ static void _mons_open_door(monster* mons, const coord_def &pos)
     {
         viewwindow();
 
-        string open_str = "opens the ";
+        string open_str = "";
         open_str += adj;
         open_str += noun;
-        open_str += ".";
+        open_str += "を開けた。";
 
         // Should this be conditionalized on you.can_see(mons?)
         mons->seen_context = (all_door.size() <= 2) ? SC_DOOR : SC_GATE;
 
         if (!you.can_see(mons))
         {
-            mprf("Something unseen %s", open_str.c_str());
+            mprf("何か目に見えないものが%s", open_str.c_str());
             interrupt_activity(AI_FORCE_INTERRUPT);
         }
         else if (!you_are_delayed())
         {
-            mprf("%s %s", mons->name(DESC_A).c_str(),
+            mprf("%sが%s", jtransc(mons->name(DESC_A)),
                  open_str.c_str());
         }
     }
@@ -3816,8 +3817,8 @@ static void _jelly_grows(monster* mons)
 {
     if (player_can_hear(mons->pos()))
     {
-        mprf(MSGCH_SOUND, "You hear a%s slurping noise.",
-             mons_near(mons) ? "" : " distant");
+        mprf(MSGCH_SOUND, jtransc("You hear a%s slurping noise."),
+             mons_near(mons) ? "" : "遠くで");
     }
 
     const int avg_hp = mons_avg_hp(mons->type);
@@ -3887,8 +3888,8 @@ static void _ballisto_on_move(monster* mons, const coord_def& position)
 
     if (you.can_see(plant))
     {
-        mprf("%s grows in the wake of %s.",
-             plant->name(DESC_A).c_str(), mons->name(DESC_THE).c_str());
+        mprf(jtransc("%s grows in the wake of %s."),
+             jtransc(plant->name(DESC_A)), jtransc(mons->name(DESC_THE)));
     }
 
     // reset the cooldown.
@@ -3979,10 +3980,10 @@ static bool _do_move_monster(monster* mons, const coord_def& delta)
     if (mons->is_constricted())
     {
         if (mons->attempt_escape())
-            simple_monster_message(mons, " escapes!");
+            simple_monster_message(mons, jtransc(" escapes!"));
         else
         {
-            simple_monster_message(mons, " struggles to escape constriction.");
+            simple_monster_message(mons, jtransc(" struggles to escape constriction."));
             _swim_or_move_energy(mons);
             return true;
         }
@@ -4001,7 +4002,7 @@ static bool _do_move_monster(monster* mons, const coord_def& delta)
 
                 if (!you.can_see(mons))
                 {
-                    mpr("The door bursts into shrapnel!");
+                    mpr(jtrans("The door bursts into shrapnel!"));
                     interrupt_activity(AI_FORCE_INTERRUPT);
                 }
                 else
@@ -4026,11 +4027,11 @@ static bool _do_move_monster(monster* mons, const coord_def& delta)
 
                 if (!you.can_see(mons))
                 {
-                    mpr("The door mysteriously vanishes.");
+                    mpr(jtrans("The door mysteriously vanishes."));
                     interrupt_activity(AI_FORCE_INTERRUPT);
                 }
                 else
-                    simple_monster_message(mons, " eats the door!");
+                    simple_monster_message(mons, jtransc(" eats the door!"));
             }
         } // done door-eating jellies
     }
@@ -4039,7 +4040,7 @@ static bool _do_move_monster(monster* mons, const coord_def& delta)
     // moved back out of view, leaing the player nothing to see, so give
     // this message to avoid confusion.
     if (mons->seen_context == SC_JUST_SEEN && !you.see_cell(f))
-        simple_monster_message(mons, " moves out of view.");
+        simple_monster_message(mons, jtransc("moves out of view."));
     else if (crawl_state.game_is_hints() && (mons->flags & MF_WAS_IN_VIEW)
              && !you.see_cell(f))
     {
@@ -4126,8 +4127,8 @@ static bool _monster_move(monster* mons)
             {
                 if (one_chance_in(10))
                 {
-                    mprf(MSGCH_TALK_VISUAL, "%s rages.",
-                         mons->name(DESC_THE).c_str());
+                    mprf(MSGCH_TALK_VISUAL, jtransc("%s rages."),
+                         jtransc(mons->name(DESC_THE)));
                 }
                 noisy(noise_level, mons->pos(), mons->mid);
             }
@@ -4177,7 +4178,7 @@ static bool _monster_move(monster* mons)
         }
         if (adj_move.empty())
         {
-            simple_monster_message(mons, " flops around on dry land!");
+            simple_monster_message(mons, jtransc(" flops around on dry land!"));
             return false;
         }
 
@@ -4193,7 +4194,7 @@ static bool _monster_move(monster* mons)
             && (newpos == you.pos() && mons->wont_attack()
                 || (mon2 && mons->wont_attack() == mon2->wont_attack())))
         {
-            simple_monster_message(mons, " flops around on dry land!");
+            simple_monster_message(mons, jtransc(" flops around on dry land!"));
             return false;
         }
 
@@ -4312,7 +4313,7 @@ static bool _monster_move(monster* mons)
                 _mons_fire_wand(mons, wand, beem, you.can_see(mons), false);
             }
             else
-                simple_monster_message(mons, " falters for a moment.");
+                simple_monster_message(mons, jtransc(" falters for a moment."));
             mons->lose_energy(EUT_SPELL);
             return true;
         }
@@ -4332,13 +4333,13 @@ static bool _monster_move(monster* mons)
                 if (you.see_cell(target))
                 {
                     const bool actor_visible = you.can_see(mons);
-                    mprf("%s knocks down a tree!",
+                    mprf(jtransc("%s knocks down a tree!"),
                          actor_visible?
-                         mons->name(DESC_THE).c_str() : "Something");
+                         jtransc(mons->name(DESC_THE)) : jtransc("Something"));
                     noisy(25, target);
                 }
                 else
-                    noisy(25, target, "You hear a crashing sound.");
+                    noisy(25, target, jtransc("You hear a crashing sound."));
             }
             else if (player_can_hear(mons->pos() + mmov))
             {
@@ -4348,10 +4349,10 @@ static bool _monster_move(monster* mons)
 
                 // Message depends on whether caused by acid (Dissolution)
                 // or direct digging (boring beetles, formicids).
-                mprf(MSGCH_SOUND, (mons->type == MONS_DISSOLUTION) ?
-                     "You hear a sizzling sound." :
-                     "You hear a grinding noise."
-                     );
+                mpr_nojoin(MSGCH_SOUND, jtrans((mons->type == MONS_DISSOLUTION) ?
+                                               "You hear a sizzling sound." :
+                                               "You hear a grinding noise."
+                                               ));
             }
         }
     }

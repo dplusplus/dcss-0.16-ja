@@ -9,6 +9,7 @@
 #include "describe-spells.h"
 
 #include "cio.h"
+#include "database.h"
 #include "delay.h"
 #include "describe.h"
 #include "externs.h"
@@ -82,25 +83,28 @@ static string _ability_type_descriptor(mon_spell_slot_flags type,
 static string _booktype_header(mon_spell_slot_flags type, size_t num_books,
                                const monster_info &mi)
 {
-    const string pronoun = uppercase_first(mi.pronoun(PRONOUN_SUBJECTIVE));
+    string pronoun = uppercase_first(mi.pronoun(PRONOUN_SUBJECTIVE));
+
+    if (pronoun == "It" || pronoun == "それ")
+        pronoun = "このモンスター";
 
     if (type == MON_SPELL_WIZARD)
     {
-        return make_stringf("\n%s has mastered %s:", pronoun.c_str(),
-                            num_books > 1 ? "one of the following spellbooks"
-                                          : "the following spells");
+        return "\n" + make_stringf(jtranslnc("\n%s has mastered %s:"), pronoun.c_str(),
+                                   num_books > 1 ? jtransc("one of the following spellbooks")
+                                                 : jtransc("the following spells"));
     }
 
     const string descriptor = _ability_type_descriptor(type, mi.holi);
 
     if (num_books > 1)
     {
-        return make_stringf("\n%s possesses one of the following sets of %s abilities:",
-                            pronoun.c_str(), descriptor.c_str());
+        return "\n" + make_stringf(jtranslnc("\n%s possesses one of the following sets of %s abilities:"),
+                                   pronoun.c_str(), descriptor.c_str());
     }
 
-    return make_stringf("\n%s possesses the following %s abilities:",
-                        pronoun.c_str(), descriptor.c_str());
+    return "\n" + make_stringf(jtranslnc("\n%s possesses the following %s abilities:"),
+                               pronoun.c_str(), descriptor.c_str());
 }
 
 /**
@@ -287,7 +291,7 @@ static string _spell_schools(spell_type spell)
 
         if (!schools.empty())
             schools += "/";
-        schools += spelltype_long_name(school_flag);
+        schools += jtrans(spelltype_short_name(school_flag));
     }
 
     return schools;
@@ -352,7 +356,10 @@ static void _describe_book(const spellbook_contents &book,
 
     // only display header for book/rod spells
     if (source_item)
-        description.cprintf("\n Spells                             Type                      Level");
+    {
+        description.cprintf("\n ");
+        description.cprintf(jtransc("Spells                             Type                      Level"));
+    }
     description.cprintf("\n");
 
     // list spells in two columns, instead of one? (monster books)
@@ -372,7 +379,7 @@ static void _describe_book(const spellbook_contents &book,
                                   ' ';
         description.cprintf("%c - %s",
                             spell_letter,
-                            chop_string(spell_title(spell), 29).c_str());
+                            chop_string(tagged_jtransc("[spell]", spell_title(spell)), 29).c_str());
 
         // only display type & level for book/rod spells
         if (doublecolumn)
@@ -387,7 +394,7 @@ static void _describe_book(const spellbook_contents &book,
         }
 
         string schools =
-            source_item->base_type == OBJ_RODS ? "Evocations"
+            source_item->base_type == OBJ_RODS ? jtrans("Evocations")
                                                : _spell_schools(spell);
         description.cprintf("%s%d\n",
                             chop_string(schools, 30).c_str(),
@@ -396,6 +403,9 @@ static void _describe_book(const spellbook_contents &book,
 
     // are we halfway through a column?
     if (doublecolumn && book.spells.size() % 2)
+        description.cprintf("\n");
+
+    if (source_item)
         description.cprintf("\n");
 }
 
@@ -462,10 +472,9 @@ void list_spellset(const spellset &spells, const monster_info *mon_owner,
 
     description.textcolour(LIGHTGREY);
 
-    description.cprintf("Select a spell to read its description");
     if (can_memorize)
-        description.cprintf(", to memorize it or to forget it");
-    description.cprintf(".\n");
+        description.cprintf(jtransc(", to memorize it or to forget it"));
+    description.cprintf(jtransc("Select a spell to read its description"));
 
     spell_scroller ssc(spells, mon_owner, source_item);
     ssc.wrap_formatted_string(description);

@@ -1,0 +1,797 @@
+%%%%
+############################## art-data.h ##############################
+%%%%
+Sulking Sword
+
+憂う剣
+%%%%
+Singing Sword
+
+謳う剣
+%%%%
+Screaming Sword
+
+叫ぶ剣
+%%%%
+Wrath of Trog
+
+トログの怒り
+%%%%
+Mace of Variability
+
+変幻のメイス
+%%%%
+Glaive of Prune
+
+プルーンのグレイブ
+%%%%
+Sword of Power
+
+力の剣
+%%%%
+Staff of Olgreb
+
+オルグレブの杖
+%%%%
+Staff of Wucad Mu
+
+ウカド・ムーの杖
+%%%%
+Vampire's Tooth
+
+吸血鬼の牙
+%%%%
+Scythe of Curses
+
+呪いの大鎌
+%%%%
+Sceptre of Torment
+
+苦悩の王笏
+%%%%
+Sword of Zonguldrok
+
+ゾングルドルックの剣
+%%%%
+Sword of Cerebov
+
+セレボブの剣
+%%%%
+flamberge
+
+フランベルジュ
+%%%%
+Staff of Dispater
+
+ディスペータの杖
+%%%%
+Sceptre of Asmodeus
+
+アスモデウスの王笏
+%%%%
+faerie dragon armour
+
+フェアリードラゴンの鎧
+%%%%
+demon blade "Bloodbane"
+
+悪魔の刃『ブラッドベイン』
+%%%%
+scimitar of Flaming Death
+
+燃えさかる死のシミター
+%%%%
+eveningstar "Brilliance"
+
+輝けるイブニングスター
+%%%%
+demon blade "Leech"
+
+悪魔の刃『蛭』
+%%%%
+dagger of Chilly Death
+
+冷たき死のダガー
+%%%%
+dagger "Morg"
+
+ダガー『モーグ』
+%%%%
+scythe "Finisher"
+
+大鎌『とどめの一撃』
+%%%%
+greatsling "Punk"
+
+大型スリング『パンク』
+%%%%
+bow of Krishna "Sharnga"
+
+クリシュナの弓『シャーランガ』
+%%%%
+giant club "Skullcrusher"
+
+巨大棍棒『頭蓋砕き』
+%%%%
+glaive of the Guard
+
+番人のグレイブ
+%%%%
+sword of Jihad
+
+聖戦の剣
+%%%%
+arbalest "Hellfire"
+
+アーバレスト『地獄の業火』
+%%%%
+sword of the Doom Knight
+
+審判の騎士の剣
+%%%%
+morningstar "Eos"
+
+モーニングスター『エオス』
+%%%%
+spear of the Botono
+
+ボトノの槍
+%%%%
+trident of the Octopus King
+
+蛸の王のトライデント
+%%%%
+mithril axe "Arga"
+
+ミスリルの斧『アルガ』
+%%%%
+Elemental Staff
+
+元素の杖
+%%%%
+heavy crossbow "Sniper"
+
+大型クロスボウ『狙撃手』
+%%%%
+heavy crossbow
+
+大型クロスボウ
+%%%%
+triple xbow
+
+トリプルクロスボウ
+%%%%
+longbow "Piercer"
+
+ロングボウ『貫くもの』
+%%%%
+blowgun of the Assassin
+
+暗殺者の吹き矢筒
+%%%%
+lance "Wyrmbane"
+
+ランス『ドラゴン殺し』
+%%%%
+lance
+
+ランス
+%%%%
+Spriggan's Knife
+
+スプリガンのナイフ
+%%%%
+knife
+
+ナイフ
+%%%%
+plutonium sword
+
+プルトニウムの剣
+%%%%
+great mace "Undeadhunter"
+
+大型メイス『死者を狩るもの』
+%%%%
+whip "Snakebite"
+
+鞭『蛇の一咬み』
+%%%%
+knife of Accuracy
+
+必中のナイフ
+%%%%
+Lehudib's crystal spear
+
+レフディブの水晶槍
+%%%%
+captain's cutlass
+
+船長のカトラス
+%%%%
+storm bow
+
+嵐の弓
+%%%%
+large shield of Ignorance
+
+無知の大盾
+%%%%
+robe of Augmentation
+
+増強のローブ
+%%%%
+cloak of the Thief
+
+盗賊の外套
+%%%%
+large shield "Bullseye"
+
+大盾『ブルズアイ』
+%%%%
+crown of Dyrovepreva
+
+ダイロヴェプレヴァの王冠
+%%%%
+hat of the Bear Spirit
+
+熊の霊魂の帽子
+%%%%
+robe of Misfortune
+
+不運のローブ
+%%%%
+cloak of Flash
+
+閃光のクローク
+%%%%
+boots of the Assassin
+
+暗殺者のブーツ
+%%%%
+Lear's hauberk
+
+リア王の鎖かたびら
+%%%%
+skin of Zhor
+
+ズホルの皮
+%%%%
+salamander hide armour
+
+火蜥蜴の皮鎧
+%%%%
+gauntlets of War
+
+戦の手甲
+%%%%
+shield of Resistance
+
+耐性の盾
+%%%%
+robe of Folly
+
+愚劣のローブ
+%%%%
+Maxwell's patent armour
+
+マクスウェルの特許甲冑
+%%%%
+mask of the Dragon
+
+竜の仮面
+%%%%
+robe of Night
+
+闇夜のローブ
+%%%%
+armour of the Dragon King
+
+竜王の鎧
+%%%%
+hat of the Alchemist
+
+錬金術師の帽子
+%%%%
+fencer's gloves
+
+剣士の手袋
+%%%%
+cloak of Starlight
+
+星明かりのクローク
+%%%%
+ratskin cloak
+
+鼠の毛皮のクローク
+%%%%
+shield of the gong
+
+銅鑼の盾
+%%%%
+amulet of the Air
+
+大気の護符
+%%%%
+ring of Shadows
+
+影の指輪
+%%%%
+amulet of Cekugob
+
+セクゴブの護符
+%%%%
+amulet of the Four Winds
+
+四方位の風の護符
+%%%%
+necklace of Bloodlust
+
+血に飢えた首飾り
+%%%%
+ring of Shaolin
+
+少林寺の指輪
+%%%%
+ring of Robustness
+
+頑丈の指輪
+%%%%
+ring of the Mage
+
+賢者の指輪
+%%%%
+brooch of Shielding
+
+防護のブローチ
+%%%%
+robe of Clouds
+
+雲のローブ
+%%%%
+hat of Pondering
+
+熟考の帽子
+%%%%
+obsidian axe
+
+黒曜石の斧
+%%%%
+lightning scales
+
+稲妻の鱗の具装
+%%%%
+Black Knight's horse barding
+
+黒騎士の馬甲
+%%%%
+amulet of Vitality
+
+生命力の護符
+%%%%
+autumn katana
+
+秋日のカタナ
+%%%%
+katana
+
+カタナ
+%%%%
+shillelagh "Devastator"
+
+棍棒『デヴァステイター』
+%%%%
+shillelagh
+
+棍棒
+%%%%
+dragonskin cloak
+
+竜の皮のクローク
+%%%%
+ring of the Octopus King
+
+蛸の王の指輪
+%%%%
+Axe of Woe
+
+悲痛の斧
+%%%%
+exec axe
+
+処刑人の斧
+%%%%
+moon troll leather armour
+
+月世界のトロルの革鎧
+%%%%
+macabre finger necklace
+
+不気味な指のネックレス
+%%%%
+boots of the spider
+
+蜘蛛のブーツ
+%%%%
+dark maul
+
+ダークモール
+%%%%
+maul
+
+大金鎚
+%%%%
+hat of the High Council
+
+最高会議の帽子
+%%%%
+arc blade
+
+電弧の刃
+%%%%
+demon whip "Spellbinder"
+
+悪魔の鞭『スペルバインダー』
+%%%%
+lajatang of Order
+
+秩序のラジャタン
+%%%%
+great mace "Firestarter"
+
+大型メイス『ファイアスターター』
+%%%%
+orange crystal plate armour
+
+橙水晶の鎧
+%%%%
+Majin-Bo
+
+魔神棒
+%%%%
+quick blades "Gyre" and "Gimble"
+
+一対のクイックブレード『ジャイル』と『ギンブル』
+%%%%
+quick blade "Gyre"
+
+クイックブレード『ジャイル』
+%%%%
+quick blade "Gimble"
+
+クイックブレード『ギンブル』
+%%%%
+quick blades
+
+一対のクイックブレード
+%%%%
+Maxwell's etheric cage
+
+マクスウェルのエーテル檻
+%%%%
+crown of Eternal Torment
+
+永劫なる苦痛の王冠
+%%%%
+g.spiked club
+
+釘つき巨大棍棒
+%%%%
+############################## art-func.h ##############################
+%%%%
+The Sceptre summons one of its servants.
+
+王笏はしもべのひとつを召喚した。
+%%%%
+You don't feel so good about this...
+
+この存在にはあまり好感が持てない……
+%%%%
+The air shimmers briefly.
+
+一瞬大気が振動した。
+%%%%
+The Sword of Cerebov burns away your fire resistance.
+
+セレボブの剣はあなたの火への耐性を焼き払った。
+%%%%
+The Sword of Cerebov burns away %s fire resistance.
+
+セレボブの剣は%s火への耐性を焼き払った。
+%%%%
+A shiver runs down your spine.
+
+戦慄が脊髄まで走った。
+%%%%
+You're too close to death to use this item.
+
+あなたは死に近づいているためこのアイテムを使用できない。
+%%%%
+You feel the staff feeding on your energy!
+
+杖があなたのエネルギーを消費した！
+%%%%
+You smell chlorine.
+
+あなたは塩素の臭いを嗅いだ。
+%%%%
+The staff glows a sickly green.
+
+杖は毒々しい緑色に輝いた。
+%%%%
+The smell of chlorine vanishes.
+
+塩素の臭いが消えた。
+%%%%
+The staff's sickly green glow vanishes.
+
+杖は毒々しい緑色に輝くのをやめた。
+%%%%
+You sense an aura of extreme power.
+
+あなたは強大な力のオーラを感じた。
+%%%%
+The sword says, "Hi! I'm the Singing Sword!"
+
+その剣は『やあ！ わたしは謳う剣だよ！』と喋った。
+%%%%
+The Singing Sword hums in delight!
+
+『謳う剣』は歓喜の唸りを上げた！
+%%%%
+The Singing Sword sighs.
+
+『謳う剣』は溜息を漏らした。
+%%%%
+You feel pruney.
+
+あなたはプルーンの気分になった。
+%%%%
+A terribly searing pain shoots up your arm!
+
+恐ろしい灼けるような痛みがあなたの腕を駆けのぼった！
+%%%%
+You feel bloodthirsty!
+
+あなたは残忍な衝動を覚えた！
+%%%%
+You feel less violent.
+
+あなたの凶暴さは幾分収まった。
+%%%%
+Your reserves of magic are full.
+
+あなたの魔力はいっぱいだ。
+%%%%
+Magical energy flows into your mind!
+
+魔法のエネルギーがあなたの精神を駆け巡った！
+%%%%
+You feel a strange hunger, and smell blood in the air...
+
+あなたは奇妙な飢えに苛まれ、空気から血の臭いを嗅ぎだした。
+%%%%
+You feel strangely empty.
+
+あなたは奇妙な空腹感を感じた。
+%%%%
+You sense an extremely unholy aura.
+
+あなたは非常に邪悪な霊気を感じた。
+%%%%
+You hear a strange loud sound.
+
+あなたは奇妙な轟音を聞いた。
+%%%%
+A thin mist springs up around you!
+
+薄い霧があなたの周りに湧きだした！
+%%%%
+Visions of slaying %s flood into your mind.
+
+%sを抹殺する光景があなたの脳裏に浮かんだ。
+%%%%
+Your confusion fades away as the thirst for blood takes over your mind.
+
+血に飢えた感情があなたの精神を支配すると共に混乱が薄れていった。
+%%%%
+Your thirst for blood fades away.
+
+あなたの血に飢えた感情が薄れていった。
+%%%%
+You feel an overwhelming desire to commit suicide.
+
+あなたは突然自殺願望にとらわれた。
+%%%%
+You feel an overwhelming desire to slay dragons!
+
+あなたは突然ドラゴンを殺したい欲望にとらわれた。
+%%%%
+<grey>%s %s!</grey>
+
+<grey>%sは身もだえした！</grey>
+%%%%
+<green>The lance glows as it skewers %s.</green>
+
+<green>ランスは%sを串刺しにして輝いた。</green>
+%%%%
+%s %s blasted by disruptive energy!
+
+%sは破壊の力をその身に浴びた！
+%%%%
+Time to lay down the shillelagh law.
+
+戦いのルールを定めるときが来た。
+%%%%
+You feel oddly protected from the elements.
+
+あなたは奇妙に元素の力から守られたような気がした。
+%%%%
+You no longer feel protected from the elements.
+
+あなたはもう元素の力から守られてはいない。
+%%%%
+The light fades from your surroundings.
+
+あなたの周囲から明かりが去っていった。
+%%%%
+The light returns to your surroundings.
+
+あなたの周囲の明かりが戻ってきた。
+%%%%
+Mutagenic energy flows through the plutonium sword!
+
+プルトニウムの剣を通じて変異性のエネルギーが流れ込んできた！
+%%%%
+cleave
+
+切り裂いた
+%%%%
+in twain
+
+真っ二つに
+%%%%
+pulverise
+
+粉々にした
+%%%%
+into a thin bloody mist
+
+血の霧に変えて
+%%%%
+hew
+
+叩き切った
+%%%%
+savagely
+
+荒っぽく
+%%%%
+fatally mangle
+
+徹底的に切り刻んだ
+%%%%
+dissect
+
+切り裂いた
+%%%%
+like a pig carcass
+
+豚のように
+%%%%
+chop
+
+刻んだ
+%%%%
+into pieces
+
+粉々に
+%%%%
+butcher
+
+解体した
+%%%%
+messily
+
+乱暴に
+%%%%
+slaughter
+
+虐殺した
+%%%%
+joyfully
+
+歓喜しながら
+%%%%
+%s %s %s%s.
+
+%sは%sを%s%s。
+%%%%
+burn
+
+燃やした
+%%%%
+freeze
+
+凍りつかせた
+%%%%
+electrocute
+
+感電させた
+%%%%
+%s %s %s.
+
+%sは%sを%s。
+%%%%
+The arc blade crackles to life.
+
+電弧の刃は放電を始めた。
+%%%%
+The arc blade stops crackling.
+
+電弧の刃は放電をやめた。
+%%%%
+The arc blade crackles.
+
+電弧の刃は放電している。
+%%%%
+You hear the crackle of electricity.
+
+あなたは放電する音を聞いた。
+%%%%
+You are filled with an inner flame.
+
+あなたは内なる炎に満たされた。
+%%%%
+Your inner flame fades away.
+
+あなたの内なる炎は消え去った。
+%%%%
+%s is filled with an inner flame.
+
+%sは内なる炎に満たされた。
+%%%%
+The dagger glows with an icy blue light!
+
+ダガーは氷を思わせる蒼い光に輝いた！
+%%%%
+The dagger stops glowing.
+
+ダガーは輝きを止めた。
+%%%%
+%s is flash-frozen.
+
+%sは一瞬のうちに凍結された。
+%%%%
+You are encased in ice.
+
+あなたは凍結している。
+%%%%
+The scimitar bursts into red hot flame!
+
+シミターは赤熱の炎を吹き上げた！
+%%%%
+The scimitar stops flaming.
+
+シミターは燃えさかるのを止めた。
+%%%%
+You feel a darkness envelop your magic.
+
+あなたは闇の力が魔力を覆い隠すのを感じた。
+%%%%
+The darkness slowly releases its grasp on your magic.
+
+闇の力が支配していたあなたの魔力がゆっくりと解放された。
+%%%%
+You feel like a king!
+
+あなたは王様になった気分だ！
+%%%%
+You feel regal.
+
+あなたは王様にふさわしくなったような気がした。
+%%%%
+You knock %s %s to the ground with your cutlass!
+
+あなたは%sの%sをカトラスで地面に叩き落とした！
+%%%%

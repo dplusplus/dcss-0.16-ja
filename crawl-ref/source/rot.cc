@@ -11,6 +11,7 @@
 
 #include "areas.h"
 #include "butcher.h"
+#include "database.h"
 #include "delay.h"
 #include "english.h"
 #include "env.h"
@@ -408,8 +409,8 @@ static void _print_chunk_messages(int num_chunks, int num_chunks_gone)
     if (num_chunks_gone > 0)
     {
         mprf(MSGCH_ROTTEN_MEAT,
-             "%s of the chunks of flesh in your inventory have rotted away.",
-             num_chunks_gone == num_chunks ? "All" : "Some");
+             jtransc("%s of the chunks of flesh in your inventory have rotted away."),
+             num_chunks_gone == num_chunks ? "が全て" : "の一部が");
     }
 }
 
@@ -419,10 +420,9 @@ static void _potion_stack_changed_message(string item_name, int num_changed,
 {
     ASSERT(num_changed > 0);
 
-    mprf(MSGCH_ROTTEN_MEAT, "%s %s rot%s away.",
-         get_desc_quantity(num_changed, initial_quantity).c_str(),
-         item_name.c_str(),
-         num_changed == 1 ? "s" : "");
+    mprf(MSGCH_ROTTEN_MEAT, jtransc("%s %s rot%s away."),
+         num_changed,
+         item_name.c_str());
 }
 
 // Removes the oldest timer of a stack of blood potions.

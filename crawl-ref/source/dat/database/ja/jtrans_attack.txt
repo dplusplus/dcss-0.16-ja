@@ -1,0 +1,89 @@
+%%%%
+%s %s in the distortional energy.
+
+%sは歪曲の力を浴びた。
+%%%%
+Space bends around %s.
+
+%sの周りの空間が歪んだ。
+%%%%
+Space warps horribly around %s!
+
+%sの周りの空間が激しく歪んだ！
+%%%%
+%s %s in agony.
+
+%sは苦痛に悶えた。
+%%%%
+You give off a flash of multicoloured light!
+
+あなたは色とりどりの光を放った！
+%%%%
+gives off a flash of multicoloured light!
+
+は色とりどりの光を放った！
+%%%%
+There is a flash of multicoloured light!
+
+色とりどりの光が放たれた！
+%%%%
+%s is duplicated!
+
+%sが二体になった！
+%%%%
+%s %s %s!
+
+%sは%sを%s！
+%%%%
+%s %s %s vigour!
+
+%sは%sの活力を吸い取った！
+%%%%
+You %s %s from a blind spot!
+
+あなたは死角から%s%s！
+%%%%
+You catch %s momentarily off-guard.
+
+あなたは%sの防御がおろそかになる一瞬を突いた。
+%%%%
+You catch %s completely off-guard!
+
+あなたは防御ががら空きになった%sを攻撃した！
+%%%%
+You %s %s from behind!
+
+あなたは%s%s！
+%%%%
+You pounce on the unaware %s!
+
+あなたはこちらに気付いていない%sに飛びかかった！
+%%%%
+%s fails to defend %s.
+
+%sは%sの攻撃を防げなかった。
+%%%%
+%s %s %s attack.
+
+%sは%sの攻撃を防いだ。
+%%%%
+its own
+
+自分自身
+%%%%
+You are electrocuted!
+
+あなたは感電した！
+%%%%
+There is a sudden explosion of sparks!
+
+突然電気の火花が散った！
+%%%%
+%s draws strength from your injuries!
+
+%はあなたの傷口から力を吸い取った！
+%%%%
+%s is healed.
+
+%sは回復した。
+%%%%

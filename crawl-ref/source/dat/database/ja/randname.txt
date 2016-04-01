@@ -1,0 +1,1136 @@
+###############################################################################
+# Randart Names
+# -------------
+# randname.txt: lookup randart type
+#
+# This file contains the lists of keywords (and their weights) for some lookup
+# phrases of randart type, namely "weapon", "armour" and "jewellery" as well
+# as in combination with those gods that occasionally gift randarts, i.e.
+# "Trog weapon", "Okawaru weapon", "Okawaru armour", "Xom weapon", "Xom armour"
+# and "Xom jewellery". Incidentally, they are listed in precisely that order.
+# At the end of the file you will also find a few lists of adjectives used for
+# unidentified randart appearances.
+#
+# The syntax for keywords is the same as that of monster speech (details are in
+# docs/develop/monster_speech.txt). Any phrase encased in '@' symbols is one
+# the database will recognise as a keyword that needs to be replaced.
+# Definitions of such keywords can be found in 4 different places:
+#
+#  o  rand_wpn.txt  - keywords used mainly for weapons
+#  o  rand_arm.txt  - keywords used mainly for armour
+#  o  rand_all.txt  - keywords used for jewellery
+#                     as well as for all three types
+#  o  randbook.txt  - keywords used for randart books
+#  o  hardcoded (e.g. artefact.cc)
+#
+# The latter allows the use of phrases elsewhere defined in Crawl. The list of
+# hardcoded keywords is as follows:
+#
+#  * player_name     - player-chosen character name
+#  * player_species  - species of the character
+#  * branch_name     - name of a random Crawl branch
+#  * god_name        - name of a random Crawl god
+#  * xom_name        - one of Xom's long names
+#
+# In the case of god_name this actually allows some more refined handling. In
+# fact, the god will not be picked entirely at random as there are some
+# restrictions to make sure that e.g. no good god is chosen for evil weapons,
+# or that Zin doesn't get picked for randarts with mutagenic properties. Also,
+# if this keyword appears on a divine item gift it will always be replaced by
+# the god doing the gifting.
+#
+# Randart names may only have a maximum length of 25 symbols (spaces included).
+# This comparison takes place after all replacements have been taken care of,
+# and the name is thus complete. If a name turns out to be longer than this
+# threshold, the game will roll another one.
+#
+# Note that weapons and armour use database names for only half of all randarts
+# created (the others are entirely random names), for jewellery this is only
+# the case for one in five randarts. These chances are hardcoded.
+#
+# Feel free to play around with the keywords or their weights. The default
+# weight of an entry is w:10, and an entry is picked with a chance of its
+# weight out of the sum of all weights for entries in a group. Consequently if
+# you set the weight of a keyword to a really high value (say, 10,000) you can
+# test how it looks in the game. Even better, if you have wizard mode compiled
+# in (check in-game '?V' version information) you can use the wizard command
+# '&o' to create objects and '&+' to turn an ordinary object into a randart.
+#
+# Have fun!
+######################################################
+%%%%
+######################################################
+# 1. WEAPONS
+######################################################
+weapon
+
+# weapon specific keywords (see rand_wpn.txt)
+@_power_or_anger_@の
+
+@_battle_or_war_@の
+
+w:1
+@player_doom@の
+
+w:9
+@death_or_doom@の
+
+w:16
+@_strategy_or_justice_@の
+
+w:4
+@_people_name_@の
+
+w:8
+@_weapon_animal_@の
+
+w:2
+@_plant_name_@の
+
+w:7
+@_evil_stuff_@の
+
+w:5
+@_catastrophe_name_@の
+
+w:8
+@_chaos_name_@の
+
+w:8
+@_balance_or_order_@の
+
+@_economics_or_politics_@の
+
+w:8
+@branch_name@の
+
+w:7
+@_place_name_@の
+
+w:5
+@_discomfort_weapon_@の
+
+w:3
+@_mental_illness_weapon_@の
+
+w:4
+@_item_name_@の
+
+w:1
+@_magic_name_@の
+
+w:5
+@_substance_name_@の
+
+w:7
+@_science_name_@の
+
+w:5
+@other_weapon_name@の
+
+w:30
+『@_plain_weapon_name_@』
+
+# general keywords (see rand_all.txt)
+w:5
+@_time_name_@の
+
+w:5
+@_sky_or_light_@の
+
+w:18
+@_virtue_or_vice_@の
+
+@_number_or_qualifier_@@_thing_names_@の
+
+w:5
+@_destiny_name_@の
+
+w:9
+@god_name@の@divine_esteem@の
+
+# hardcoded keywords
+w:1
+@god_name@の
+%%%%
+######################################################
+# 2. ARMOUR
+######################################################
+robe
+
+@armour@
+%%%%
+body armour
+
+@armour@
+%%%%
+armour
+
+# armour specific keywords (see rand_arm.txt)
+@_armour_name_shielding_@の
+
+w:8
+@_armour_property_name_@の
+
+w:20
+@_wacky_armour_name_@の
+
+@_profession_name_@の
+
+@_politics_name_armour_@の
+
+w:3
+@_weather_name_@の
+
+w:17
+@_good_or_divine_@の
+
+w:5
+@_celestial_bodies_@の
+
+w:5
+@_instrument_name_@の
+
+w:20
+@_armour_animal_@の
+
+w:3
+@_flower_name_@の
+
+w:3
+@_critter_name_@の
+
+w:5
+@_evil_being_@の
+
+w:5
+@_mental_illness_armour_@の
+
+@_discomfort_and_inaction_@の
+
+@_game_name_@の
+
+w:15
+@_other_armour_name_@の
+
+w:1
+『@_plain_armour_name_@』
+
+# weapon specific keywords (see rand_arm.txt)
+w:25
+@_philosophy_or_science_@の
+
+w:15
+@_place_name_@の
+
+# general keywords (see rand_all.txt)
+@_time_name_@の
+
+w:8
+@_sky_or_light_@の
+
+w:30
+@_virtue_or_vice_@の
+
+w:16
+@_number_or_qualifier_@@_thing_names_@の
+
+w:20
+@god_name@の@divine_esteem@の
+
+# hardcoded keywords
+w:1
+@god_name@の
+
+w:15
+@branch_name@の
+%%%%
+######################################################
+# 3. JEWELLERY
+######################################################
+jewellery
+
+# jewellery specials (see rand_all.txt)
+w:3
+@_jewellery_animal_@の
+
+@_jewellery_special_name_@の
+
+@_suspicion_name_@の
+
+# as defined for weapons (see rand_wpn.txt)
+@_people_name_@の
+
+w:17
+@_balance_or_order_@の
+
+w:14
+@_philosophy_name_@の
+
+w:7
+@_mental_illness_weapon_@の
+
+@other_weapon_name@の
+
+# as defined for armour (see rand_arm.txt)
+w:20
+@_armour_animal_@の
+
+w:3
+@_flower_name_@の
+
+w:5
+@_evil_being_@の
+
+w:20
+@_good_or_divine_@の
+
+w:12
+@_politics_name_armour_@の
+
+w:1
+『@_plain_armour_name_@』
+
+# same for all three types (see rand_all.txt)
+w:13
+@_time_name_@の
+
+@_sky_or_light_@の
+
+w:20
+@god_name@の@divine_esteem@の
+
+ゾムの@_xom_esteem_@の
+
+w:7
+@_virtue_name_@の
+
+w:13
+@_vice_name_@の
+
+w:20
+@_number_or_qualifier_@@_thing_names_@の
+%%%%
+######################################################
+# GOD GIFT specials
+######################################################
+# TROG (weapons only)
+######################################################
+Trog weapon
+
+# names containing battle and death are more likely
+w:25
+@_power_or_anger_@の
+
+w:25
+@_battle_or_war_@の
+
+w:25
+@death_or_doom@の
+
+w:7
+@_strategy_name_@の
+
+w:15
+@_justice_name_@の
+
+w:30
+@_virtue_or_vice_@の
+
+w:1
+トログの
+
+w:20
+トログの@divine_esteem@の
+
+トログの@_anger_name_@の
+
+w:15
+@_weapon_animal_@の
+
+w:15
+@_evil_stuff_@の
+
+@_catastrophe_name_@の
+
+w:15
+@_chaos_name_@の
+
+w:20
+@_balance_or_order_@の
+
+w:20
+@_economics_or_politics_@の
+
+w:15
+@branch_name@の
+
+w:15
+@_place_name_@の
+
+w:15
+@_time_name_@の
+
+@_sky_or_light_@の
+
+w:20
+@_number_or_qualifier_@ @_thing_names_@の
+
+@_discomfort_weapon_@の
+
+@_mental_illness_weapon_@の
+
+@_item_name_@の
+
+w:15
+@_philosophy_name_@の
+
+@_science_name_@の
+
+@other_weapon_name@の
+
+@_monster_name_@@killer_name@の
+
+w:30
+『@_plain_weapon_name_@』
+%%%%
+######################################################
+# OKAWARU weapon
+######################################################
+Okawaru weapon
+
+# basically use normal set
+w:400
+@weapon@
+
+# with a few special cases
+w:2
+@player_name@の@_valour_name_@の
+
+w:3
+オカワルの@divine_esteem@の
+
+# and bonus probability for some of the more harmless themes
+@_strategy_or_justice_@の
+
+w:5
+@_philosophy_name_@の
+
+w:3
+@_balance_or_order_@の
+
+w:5
+@_power_name_@の
+
+w:2
+@_virtue_name_@の
+
+w:1
+@_diviner_name_@の
+
+w:5
+@_weapon_animal_@の
+
+w:5
+@_place_name_@の
+
+w:2
+@_item_name_@の
+%%%%
+######################################################
+# OKAWARU armour
+######################################################
+Okawaru robe
+
+@Okawaru armour@
+%%%%
+Okawaru body armour
+
+@Okawaru armour@
+%%%%
+Okawaru armour
+
+# again use normal chances with a few exceptions
+w:400
+@armour@
+
+w:2
+@player_name@の@_valour_name_@の
+
+w:2
+オカワルの@divine_esteem@の
+
+w:2
+@_armour_animal_@の
+
+w:1
+@_good_or_divine_@の
+
+w:2
+@_armour_name_shielding_@の
+
+w:1
+@_armour_property_name_@の
+
+w:1
+@_wacky_armour_name_@の
+
+w:2
+@_politics_name_armour_@の
+%%%%
+######################################################
+# XOM weapon
+######################################################
+# Xom will basically allow everything
+Xom weapon
+
+# increased chances (obviously!)
+w:5
+@_chaos_name_@の
+
+w:5
+ゾムの@_xom_esteem_@の
+
+w:2
+ゾムの@divine_esteem@の
+
+# uses the long name
+w:1
+@xom_name@の
+
+w:1
+@_game_name_@の
+
+w:400
+@weapon@
+
+# and why not some of the other names?
+@jewellery@
+
+@armour@
+%%%%
+######################################################
+# XOM armour
+######################################################
+Xom robe
+
+@Xom armour@
+%%%%
+Xom body armour
+
+@Xom armour@
+%%%%
+Xom armour
+
+# increased chances (obviously!)
+w:5
+@_chaos_name_@の
+
+w:5
+ゾムの@_xom_esteem_@の
+
+w:2
+ゾムの@divine_esteem@
+
+# uses the long name
+w:1
+ゾムの@xom_name@
+
+w:1
+@_game_name_@の
+
+w:1
+@player_death@の
+
+w:400
+@armour@
+
+# why not some other names?
+# (sadly, some weapon names don't make sense even for Xom)
+@jewellery@
+%%%%
+######################################################
+# XOM jewellery
+######################################################
+Xom jewellery
+
+# increased chances (obviously!)
+w:5
+@_chaos_name_@の
+
+w:5
+ゾムの@_xom_esteem_@の
+
+w:2
+ゾムの@divine_esteem@の
+
+# uses the long name
+w:1
+@xom_name@の
+
+w:1
+@_game_name_@の
+
+w:1
+@player_death@の
+
+w:1
+@player_doom@の
+
+w:300
+@jewellery@
+
+# why not some other names?
+# (sadly, some weapon names don't make sense even for Xom)
+@armour@
+%%%%
+######################################################
+# Library of randart APPEARANCE (un-identified).
+######################################################
+# common to all three types of randarts
+general appearance
+
+# brightly glowing
+まばゆく輝く
+
+# smoking
+煙を放つ
+
+# scorched
+焼け焦げた
+
+# twisted
+ねじれた
+
+# shimmering
+ちかちか光る
+
+# warped
+歪んだ
+
+# transparent
+透明な
+
+# translucent
+半透明の
+
+# encrusted
+飾られた
+
+# pitted
+穴だらけの
+
+# slimy
+ねばねばした
+
+# polished
+磨かれた
+
+# fine
+きれいな
+
+# crude
+粗末な
+
+# ancient
+古代の
+
+# faintly glowing
+かすかに輝く
+
+# steaming
+湯気をたてる
+
+# dazzling
+まばゆい
+
+# w:2
+# blackened
+w:2
+黒光りした
+%%%%
+weapon appearance
+
+# iridescent
+玉虫色の
+
+# bloodstained
+血まみれの
+
+# crystal
+水晶の
+
+# jewelled
+宝石で飾られた
+
+# ichor-stained
+膿の染みついた
+
+# w:3
+# ivory
+w:3
+象牙の
+
+# w:3
+# bone
+w:3
+骨の
+
+# w:1
+# サファイアの
+w:1
+sapphire
+
+# w:3
+# 真っ黒な
+w:3
+ebony
+
+# currently 16 entries, so their overall weight amounts 180
+w:180
+@general appearance@
+%%%%
+robe appearance
+
+# fabulously ornate
+きらびやかな
+
+# dull
+さえない色の
+
+# sheer
+薄手の
+
+# thick
+厚手の
+
+# heavy
+濃い色の
+
+# wizard
+魔法使いの
+
+# ominously black
+不気味な黒い
+
+# brightly glowing
+まばゆく輝く
+
+# smoking
+煙を放つ
+
+# twisted
+ねじれた
+
+# shimmering
+ちかちか光る
+
+# warped
+歪んだ
+
+# transparent
+透明な
+
+# slimy
+ねばねばした
+
+# fine
+きれいな
+
+# crude
+粗末な
+
+# ripped
+切り裂かれた
+
+# colourful
+色とりどりの
+
+# creamy pearl
+真珠色の
+
+# opalescent
+オパール色の
+
+# ancient
+古代の
+
+# faintly glowing
+かすかに輝く
+
+# steaming
+湯気をたてる
+
+# faintly humming
+かすかに唸る
+
+# bloodstained
+血まみれの
+
+# heavily jewelled
+宝石で埋め尽くされた
+
+# ichor-stained
+膿の染みついた
+
+# distressingly furry
+毛皮の
+
+# tattered
+ぼろぼろの
+
+# silken
+絹の
+
+# shadowed
+真っ黒な
+%%%%
+body armour appearance
+
+# w:3
+# smelly
+w:3
+臭う
+
+# w:3
+# bronze
+w:3
+青銅の
+
+# w:2
+#@_gemstone_@-studded
+w:2
+@_gemstone_@の付いた
+
+# @_gemstone_@-encrusted
+@_gemstone_@で飾られた
+
+w:200
+@armour appearance@
+%%%%
+armour appearance
+
+# faintly humming
+かすかに唸る
+
+# bloodstained
+血まみれの
+
+# heavily runed
+ルーンで埋め尽くされた
+
+# jewelled
+宝石で飾られた
+
+# ichor-stained
+膿の染みついた
+
+# distressingly furry
+
+# spiked
+棘の生えた
+
+w:160
+@general appearance@
+%%%%
+_gemstone_
+
+# diamond
+ダイヤモンド
+
+# ruby
+ルビー
+
+# jacinth
+青玉
+
+# sapphire
+サファイア
+
+# black opal
+黒オパール
+
+# emerald
+エメラルド
+
+# turquoise
+ターコイズ
+
+# citrine
+シトリン
+
+# aquamarine
+アクアマリン
+
+# amber
+琥珀
+
+# topaz
+トパーズ
+
+# jet
+黒玉
+
+# opal
+オパール
+
+# garnet
+ガーネット
+
+# amethyst
+アメジスト
+
+# jasper
+ジャスパー
+
+# obsidian
+黒曜石
+
+# agate
+瑪瑙
+
+# jade
+翡翠
+
+# pearl
+真珠
+
+# tiger eye
+虎目石
+%%%%
+######################################################
+# Jewellery appearance
+######################################################
+#
+# While for the appearance of randart weapons and armour you can just stick an
+# adjective in front of the object type name ("bloodstained dagger"),
+# unidentified non-artefact jewellery is described with both an adjective and
+# material ("runed wooden ring"), making a description like "runed ring" a bit
+# weird. So give randart jewellery an adjective that no non-artefact jewellery
+# would have, plus a material that a non-artefact might or might not have.
+_jewellery appearance_
+
+# scintillating
+きらきら光る
+
+# sparkling
+光彩を放つ
+
+# flickering
+明滅する
+
+# glittering
+光り輝く
+
+# smoking
+煙を放つ
+
+# scorched
+焼け焦げた
+
+# shimmering
+ちかちか光る
+
+# wavering
+波打った
+
+# warped
+歪んだ
+
+# transparent
+透明な
+
+# translucent
+半透明の
+
+# pitted
+穴だらけの
+
+# slimy
+ねばねばした
+
+# fine
+きれいな
+
+# crude
+粗末な
+
+# ancient
+古代の
+
+# brightly glowing
+まばゆく輝く
+
+# faintly glowing
+かすかに輝く
+
+# steaming
+湯気をたてる
+
+# heavily runed
+ルーンで埋め尽くされた
+
+# vibrating
+振動する
+
+# twitching
+ぴくぴく動く
+
+# coiled
+ばねのような
+
+# bound
+
+# clouded
+
+# w:2
+# serpentine
+%%%%
+_ring material_
+
+# wooden
+木の
+
+# ivory
+象牙の
+
+# bone
+骨の
+
+# amber
+琥珀の
+
+# silver
+銀の
+
+# golden
+黄金の
+
+# platinum
+白金の
+
+# iron
+鉄の
+
+# steel
+鋼鉄の
+
+# bronze
+青銅の
+
+# brass
+真鍮の
+
+# copper
+銅の
+
+# tin
+スズの
+
+# lead
+鉛の
+
+# pewter
+# しろめ(ピューター)はいまいち馴染みがないので割愛
+
+# granite
+花崗岩の
+
+# marble
+大理石の
+
+# jade
+翡翠の
+
+# turquoise
+ターコイズの
+
+# lapis lazuli
+ラピスラズリの
+
+# glass
+ガラスの
+
+# w:2
+# gossamer
+%%%%
+_amulet material_
+
+# ivory
+象牙の
+
+# bone
+骨の
+
+# graven
+銘の彫られた
+
+# silver
+銀の
+
+# golden
+黄金の
+
+# platinum
+白金の
+
+# iron
+鉄の
+
+# steel
+鋼鉄の
+
+# bronze
+青銅の
+
+# brass
+真鍮の
+
+# copper
+銅の
+
+# tin
+スズの
+
+# lead
+鉛の
+
+# pewter
+
+# zirconium
+ジルコンの
+
+# sapphire
+サファイアの
+
+# emerald
+エメラルドの
+
+# garnet
+ガーネットの
+
+# ruby
+ルビーの
+
+# jade
+翡翠の
+
+# ruby
+
+# crystal
+水晶の
+
+# ダイヤモンドの
+diamond
+
+# amethyst
+アメジストの
+%%%%
+ring appearance
+
+@_jewellery appearance_@@_ring material_@
+%%%%
+amulet appearance
+
+@_jewellery appearance_@@_amulet material_@
+%%%%

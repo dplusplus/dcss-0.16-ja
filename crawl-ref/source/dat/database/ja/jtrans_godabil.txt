@@ -1,0 +1,25 @@
+%%%%
+Abominations
+
+『忌まわしきもの』
+%%%%
+Ablutions
+
+『沐浴について』
+%%%%
+Apostates
+
+『背教録』
+%%%%
+Anathema
+
+『破門の書』
+%%%%
+The priest welcomes you and lets you live.
+
+オークの司祭はあなたを歓迎し、友好的になった。
+%%%%
+With a roar of approval, the orcs welcome you as one of their own, and spare your life.
+
+オーク達は賛同の声と共にあなたを同志として迎え入れ、友好的になった。
+%%%%

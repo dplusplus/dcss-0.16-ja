@@ -196,25 +196,25 @@ void list_armour()
 
         estr.str("");
         estr.clear();
+        string text = ((i == EQ_CLOAK)       ? "外套" :
+                       (i == EQ_HELMET)      ? "兜/帽子" :
+                       (i == EQ_GLOVES)      ? "手袋/籠手" :
+                       (i == EQ_SHIELD)      ? "盾" :
+                       (i == EQ_BODY_ARMOUR) ? "鎧/服" :
+                       (i == EQ_BOOTS ?
+                       (you.species == SP_CENTAUR ? "馬甲" :
+                           you.species == SP_NAGA ? "具装"
+                                                  : "靴")
+                                             : "unknown"));
 
-        estr << ((i == EQ_CLOAK)       ? "Cloak  " :
-                 (i == EQ_HELMET)      ? "Helmet " :
-                 (i == EQ_GLOVES)      ? "Gloves " :
-                 (i == EQ_SHIELD)      ? "Shield " :
-                 (i == EQ_BODY_ARMOUR) ? "Armour " :
-                 (i == EQ_BOOTS) ?
-                 ((you.species == SP_CENTAUR
-                   || you.species == SP_NAGA) ? "Barding"
-                                              : "Boots  ")
-                                 : "unknown")
-             << " : ";
+        estr << chop_string(text, strwidth("手袋/籠手")) << ": ";
 
         if (!you_can_wear(i, true))
-            estr << "    (unavailable)";
+            estr << "    " << jtrans("(unavailable)");
         else if (armour_id != -1 && !you_tran_can_wear(you.inv[armour_id])
                  || !you_tran_can_wear(i))
         {
-            estr << "    (currently unavailable)";
+            estr << "    " << jtrans("(currently unavailable)");
         }
         else if (armour_id != -1)
         {
@@ -223,9 +223,9 @@ void list_armour()
                                  "equip");
         }
         else if (!you_can_wear(i))
-            estr << "    (restricted)";
+            estr << "    " << jtrans("(restricted)");
         else
-            estr << "    none";
+            estr << "    " << jtrans("none");
 
         if (colour == MSGCOL_BLACK)
             colour = menu_colour(estr.str(), "", "equip");
@@ -248,9 +248,9 @@ void list_jewellery()
         const int jewellery_id = you.equip[i];
         int       colour       = MSGCOL_BLACK;
 
-        const char *slot =
-                 (i == EQ_LEFT_RING)   ? "Left ring" :
-                 (i == EQ_RIGHT_RING)  ? "Right ring" :
+        const string slot =
+                 (i == EQ_LEFT_RING)   ? "左" + you.hand_name(false) + "の指輪" :
+                 (i == EQ_RIGHT_RING)  ? "右" + you.hand_name(false) + "の指輪" :
                  (i == EQ_AMULET)      ? "Amulet" :
                  (i == EQ_RING_ONE)    ? "1st ring" :
                  (i == EQ_RING_TWO)    ? "2nd ring" :
@@ -267,7 +267,7 @@ void list_jewellery()
         if (jewellery_id != -1 && !you_tran_can_wear(you.inv[jewellery_id])
             || !you_tran_can_wear(i))
         {
-            item = "    (currently unavailable)";
+            item = "    " + jtrans("(currently unavailable)");
         }
         else if (jewellery_id != -1)
         {
@@ -276,14 +276,13 @@ void list_jewellery()
             colour = menu_colour(item, prefix, "equip");
         }
         else
-            item = "    none";
+            item = "    " + jtrans("none");
 
         if (colour == MSGCOL_BLACK)
             colour = menu_colour(item, "", "equip");
 
-        item = chop_string(make_stringf("%-*s: %s",
-                                        split ? cols > 96 ? 9 : 8 : 11,
-                                        slot, item.c_str()),
+        item = chop_string(make_stringf("%-13s: %s",
+                                        chop_string(jtransc(slot), 13).c_str(), item.c_str()),
                            split && i > EQ_AMULET ? (cols - 1) / 2 : cols);
         item = colour_string(item, colour);
 
@@ -321,68 +320,69 @@ static bool _cmdhelp_textfilter(const string &tag)
 }
 
 static const char *targeting_help_1 =
-    "<h>Examine surroundings ('<w>x</w><h>' in main):\n"
-    "<w>Esc</w> : cancel (also <w>Space</w>, <w>x</w>)\n"
-    "<w>Dir.</w>: move cursor in that direction\n"
-    "<w>.</w> : move to cursor (also <w>Enter</w>, <w>Del</w>)\n"
-    "<w>g</w> : pick up item at cursor\n"
-    "<w>v</w> : describe monster under cursor\n"
-    "<w>+</w> : cycle monsters forward (also <w>=</w>)\n"
-    "<w>-</w> : cycle monsters backward\n"
-    "<w>*</w> : cycle objects forward\n"
-    "<w>/</w> : cycle objects backward (also <w>;</w>)\n"
-    "<w>^</w> : cycle through traps\n"
-    "<w>_</w> : cycle through altars\n"
-    "<w><<</w>/<w>></w> : cycle through up/down stairs\n"
-    "<w>Tab</w> : cycle through shops and portals\n"
-    "<w>r</w> : move cursor to you\n"
-    "<w>e</w> : create/remove travel exclusion\n"
+    "<h>周辺を調べる (通常時に '<w>x</w><h>' コマンド):\n"
+    "<w>Esc</w> : キャンセル (<w>Space</w>, <w>x</w> も同様)\n"
+    "<w>Dir.</w>: その方向にカーソルを動かす\n"
+    "<w>.</w> : カーソル位置に移動 (<w>Enter</w>, <w>Del</w>も同様)\n"
+    "<w>g</w> : カーソル位置のアイテムを拾う\n"
+    "<w>v</w> : カーソル位置のモンスターの解説を見る\n"
+    "<w>+</w> : モンスターを順に切り替え (<w>=</w> も同様)\n"
+    "<w>-</w> : モンスターを逆順に切り替え\n"
+    "<w>*</w> : アイテムを順に切り替え\n"
+    "<w>/</w> : アイテムを逆順に切り替え (<w>;</w> も同様)\n"
+    "<w>^</w> : 罠を順に切り替え\n"
+    "<w>_</w> : 祭壇を順に切り替え\n"
+    "<w><<</w>/<w>></w> : 上り/下り階段を切り替え\n"
+    "<w>Tab</w> : 商店もしくはポータルを切り替え\n"
+    "<w>r</w> : カーソルをプレイヤーの位置に戻す\n"
+    "<w>e</w> : 立入禁止区域を設定/解除する\n"
 #ifndef USE_TILE_LOCAL
-    "<w>Ctrl-L</w> : targeting via monster list\n"
+    "<w>Ctrl-L</w> : モンスターリストから照準を合わせる\n"
 #endif
-    "<w>Ctrl-P</w> : repeat prompt\n"
+    "<w>Ctrl-P</w> : プロンプトを再度表示\n"
 ;
 #ifdef WIZARD
 static const char *targeting_help_wiz =
-    "<h>Wizard targeting commands:</h>\n"
-    "<w>Ctrl-C</w> : cycle through beam paths\n"
-    "<w>D</w>: get debugging information about the monster\n"
-    "<w>o</w>: give item to monster\n"
-    "<w>F</w>: cycle monster friendly/good neutral/neutral/hostile\n"
-    "<w>G</w>: make monster gain experience\n"
-    "<w>Ctrl-H</w>: heal the monster fully\n"
-    "<w>P</w>: apply divine blessing to monster\n"
-    "<w>m</w>: move monster or player\n"
-    "<w>M</w>: cause spell miscast for monster or player\n"
-    "<w>s</w>: force monster to shout or speak\n"
-    "<w>S</w>: make monster a summoned monster\n"
-    "<w>w</w>: calculate shortest path to any point on the map\n"
-    "<w>\"</w>: get debugging information about a portal\n"
-    "<w>~</w>: polymorph monster to specific type\n"
-    "<w>,</w>: bring down the monster to 1 hp\n"
-    "<w>(</w>: place a mimic\n"
-    "<w>Ctrl-B</w>: banish monster\n"
-    "<w>Ctrl-K</w>: kill monster\n"
+    "<h>照準時のウィザードモード専用コマンド:</h>\n"
+    "<w>Ctrl-C</w> : 射線表示に切り替え\n"
+    "<w>D</w>: 対象のモンスターのデバッグ情報を得る\n"
+    "<w>o</w>: 対象のモンスターにアイテムを持たせる\n"
+    "<w>F</w>: 対象のモンスターの状態を仲間/友好的/中立/敵対に切り替える\n"
+    "<w>G</w>: 対象のモンスターに経験値を与える\n"
+    "<w>Ctrl-H</w>: 対象のモンスターを全快させる\n"
+    "<w>P</w>: 対象のモンスターに神の祝福を与える\n"
+    "<w>m</w>: 対象のモンスターやプレイヤーを強制的に移動する\n"
+    "<w>M</w>: 対象のモンスターやプレイヤーの呪文失敗を引き起こす\n"
+    "<w>s</w>: 対象のモンスターを叫ばせる、もしくは喋らせる\n"
+    "<w>S</w>: 対象のモンスターを召喚されたモンスターとして扱う\n"
+    "<w>w</w>: マップの任意の場所からの最短距離を計算する\n"
+    "<w>\"</w>: ポータルのデバッグ情報を取得する\n"
+    "<w>~</w>: 対象のモンスターを変化させる\n"
+    "<w>,</w>: 対象のモンスターのHPを1に下げる\n"
+    "<w>(</w>: ミミックを配置する\n"
+    "<w>Ctrl-B</w>: モンスターをアビスに追放する\n"
+    "<w>Ctrl-K</w>: モンスターを殺す\n"
 ;
 #endif
 
 static const char *targeting_help_2 =
-    "<h>Targeting (zap wands, cast spells, etc.):\n"
-    "Most keys from examine surroundings work.\n"
-    "Some keys fire at the target. By default,\n"
-    "range is respected and beams don't stop.\n"
-    "<w>Enter</w> : fire (<w>Space</w>, <w>Del</w>)\n"
-    "<w>.</w> : fire, stop at target\n"
-    "<w>@</w> : fire, stop at target, ignore range\n"
-    "<w>!</w> : fire, don't stop, ignore range\n"
-    "<w>p</w> : fire at Previous target (also <w>f</w>)\n"
-    "<w>:</w> : show/hide beam path\n"
-    "<w>Shift-Dir.</w> : fire straight-line beam\n"
+    "<h>照準 (ワンドを振る、魔法を唱える等):\n"
+    "x コマンドのサブコマンドがほとんど使える。\n"
+    "いくつかのキーで標的に向けて発射する。\n"
+    "通常では射程距離が考慮されるが、ビーム状の\n"
+    "場合は停止しない。\n"
+    "<w>Enter</w> : 発射 (<w>Space</w>, <w>Del</w> も同様)\n"
+    "<w>.</w> : 発射して対象で止まる\n"
+    "<w>@</w> : 発射して対象で止まる(距離を無視)\n"
+    "<w>!</w> : 発射するが止まらない(距離を無視)\n"
+    "<w>p</w> : 前回の標的を狙う (<w>f</w> も同様)\n"
+    "<w>:</w> : 射線を表示/非表示する\n"
+    "<w>Shift-Dir.</w> : 指定した方向に一直線に発射\n"
     "\n"
-    "<h>Firing or throwing a missile:\n"
-    "<w>(</w> : cycle to next suitable missile.\n"
-    "<w>)</w> : cycle to previous suitable missile.\n"
-    "<w>i</w> : choose from Inventory.\n"
+    "<h>飛び道具を射撃または投擲する際:\n"
+    "<w>(</w> : 射撃/投擲に適したアイテムを順に選択\n"
+    "<w>)</w> : 射撃/投擲に適したアイテムを逆順に選択\n"
+    "<w>i</w> : 所持一覧から選択する\n"
 ;
 
 // Add the contents of the file fp to the scroller menu m.
@@ -758,7 +758,7 @@ void show_known_menu_help()
 
 void show_targeting_help()
 {
-    column_composer cols(2, 40);
+    column_composer cols(2, 50);
     // Page size is number of lines - one line for --more-- prompt.
     cols.set_pagesize(get_number_of_lines() - 1);
 

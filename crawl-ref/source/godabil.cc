@@ -3621,7 +3621,7 @@ bool cheibriados_slouch(int pow)
         }
 
     targetter_los hitfunc(&you, LOS_DEFAULT);
-    if (stop_attack_prompt(hitfunc, "harm", _act_slouchable))
+    if (stop_attack_prompt(hitfunc, "傷つけ", _act_slouchable))
         return false;
 
     mpr("You can feel time thicken for a moment.");
@@ -3844,11 +3844,11 @@ void spare_beogh_convert()
     you.one_time_ability_used.set(GOD_BEOGH);
 
     if (witc == 1)
-        mpr("The priest welcomes you and lets you live.");
+        mpr(jtrans("The priest welcomes you and lets you live."));
     else
     {
-        mpr("With a roar of approval, the orcs welcome you as one of their own,"
-            " and spare your life.");
+        mpr(jtrans("With a roar of approval, the orcs welcome you as one of their own,"
+                   " and spare your life."));
     }
 }
 

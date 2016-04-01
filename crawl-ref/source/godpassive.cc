@@ -9,6 +9,7 @@
 #include "branch.h"
 #include "cloud.h"
 #include "coordit.h"
+#include "database.h"
 #include "env.h"
 #include "files.h"
 #include "food.h"
@@ -26,6 +27,7 @@
 #include "state.h"
 #include "stringutil.h"
 #include "terrain.h"
+#include "unicode.h"
 
 int chei_stat_boost(int piety)
 {
@@ -93,7 +95,7 @@ void jiyva_eat_offlevel_items()
 
                 // Needs a message now to explain possible hp or mp
                 // gain from jiyva_slurp_bonus()
-                mpr("You hear a distant slurping noise.");
+                mpr(jtrans("You hear a distant slurping noise."));
                 sacrifice_item_stack(*si, &js);
                 item_was_destroyed(*si);
                 destroy_item(si.index());
@@ -305,79 +307,76 @@ void ash_check_bondage(bool msg)
 string ash_describe_bondage(int flags, bool level)
 {
     string desc;
+
     if (flags & ETF_WEAPON && flags & ETF_SHIELD
         && you.bondage[ET_WEAPON] != -1)
     {
         if (you.bondage[ET_WEAPON] == you.bondage[ET_SHIELD])
         {
-            const string verb = make_stringf("are%s",
-                                             you.bondage[ET_WEAPON] ? ""
-                                                                    : " not");
-            desc = you.hands_act(verb, "bound.\n");
+            bool plural;
+            desc = jtrans("Your") + you.hand_name(true, &plural) + "は呪縛されて"
+                                  + (you.bondage[ET_WEAPON] ? "いる" : "いない")
+                                  + "。\n";
         }
         else
         {
             // FIXME: what if you sacrificed a hand?
-            desc = make_stringf("Your %s %s is bound but not your %s %s.\n",
-                                you.bondage[ET_WEAPON] ? "weapon" : "shield",
-                                you.hand_name(false).c_str(),
-                                you.bondage[ET_WEAPON] ? "shield" : "weapon",
-                                you.hand_name(false).c_str());
+            desc = make_stringf(jtransc("Your %s %s is bound but not your %s %s."),
+                                jtransc(you.bondage[ET_WEAPON] ? "weapon" : "shield"),
+                                jtransc(you.bondage[ET_WEAPON] ? "shield" : "weapon"));
         }
     }
     else if (flags & ETF_WEAPON && you.bondage[ET_WEAPON] != -1)
     {
-        desc = make_stringf("Your weapon %s is %sbound.\n",
-                            you.hand_name(false).c_str(),
-                            you.bondage[ET_WEAPON] ? "" : "not ");
+        desc = make_stringf(jtranslnc("Your weapon %s is %sbound."),
+                            you.bondage[ET_WEAPON] ? "いる" : "いない");
     }
     else if (flags & ETF_SHIELD && you.bondage[ET_SHIELD] != -1)
     {
-        desc = make_stringf("Your shield %s is %sbound.\n",
-                            you.hand_name(false).c_str(),
-                            you.bondage[ET_SHIELD] ? "" : "not ");
+        desc = make_stringf(jtranslnc("Your shield %s is %sbound."),
+                                     you.bondage[ET_SHIELD] ? "いる" : "いない");
     }
 
     if (flags & ETF_ARMOUR && flags & ETF_JEWELS
         && you.bondage[ET_ARMOUR] == you.bondage[ET_JEWELS]
         && you.bondage[ET_ARMOUR] != -1)
     {
-        desc += make_stringf("You are %s bound in armour and magic.\n",
-                             you.bondage[ET_ARMOUR] == 0 ? "not" :
-                             you.bondage[ET_ARMOUR] == 1 ? "partially"
-                                                         : "fully");
+        desc += make_stringf(jtranslnc("You are %s bound in armour and magic."),
+                                      you.bondage[ET_ARMOUR] == 0 ? "呪縛されていない" :
+                                      you.bondage[ET_ARMOUR] == 1 ? "部分的に呪縛されている"
+                                                                  : "完全に呪縛されている");
     }
     else
     {
         if (flags & ETF_ARMOUR && you.bondage[ET_ARMOUR] != -1)
         {
-            desc += make_stringf("You are %s bound in armour.\n",
-                                 you.bondage[ET_ARMOUR] == 0 ? "not" :
-                                 you.bondage[ET_ARMOUR] == 1 ? "partially"
-                                                             : "fully");
+            desc += make_stringf(jtranslnc("You are %s bound in armour."),
+                                          you.bondage[ET_ARMOUR] == 0 ? "呪縛されていない" :
+                                          you.bondage[ET_ARMOUR] == 1 ? "部分的に呪縛されている"
+                                                                      : "完全に呪縛されている");
         }
 
         if (flags & ETF_JEWELS && you.bondage[ET_JEWELS] != -1)
         {
-            desc += make_stringf("You are %s bound in magic.\n",
-                                 you.bondage[ET_JEWELS] == 0 ? "not" :
-                                 you.bondage[ET_JEWELS] == 1 ? "partially"
-                                                             : "fully");
+            desc += make_stringf(jtranslnc("You are %s bound in magic."),
+                                 you.bondage[ET_JEWELS] == 0 ? "呪縛されていない" :
+                                 you.bondage[ET_JEWELS] == 1 ? "部分的に呪縛されている"
+                                                             : "完全に呪縛されている");
         }
     }
 
     if (level)
     {
-        desc += make_stringf("You are %s bound.",
-                             you.bondage_level == 0 ? "not" :
-                             you.bondage_level == 1 ? "slightly" :
-                             you.bondage_level == 2 ? "moderately" :
-                             you.bondage_level == 3 ? "seriously" :
-                             you.bondage_level == 4 ? "fully"
+        desc += make_stringf(jtranslnc("You are %s bound."),
+                             you.bondage_level == 0 ? "呪縛されていない" :
+                             you.bondage_level == 1 ? "いくらか呪縛されている" :
+                             you.bondage_level == 2 ? "かなり呪縛されている" :
+                             you.bondage_level == 3 ? "深刻に呪縛されている" :
+                             you.bondage_level == 4 ? "完全に呪縛されている"
                                                     : "buggily");
     }
 
-    return trim_string(desc);
+    return desc;
 }
 
 static bool _is_slot_cursed(equipment_type eq)

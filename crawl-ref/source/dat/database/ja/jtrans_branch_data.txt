@@ -1,0 +1,281 @@
+%%%%
+[branch]Dungeon
+
+迷宮
+%%%%
+[branch]the Dungeon
+
+迷宮
+%%%%
+[branch]D
+
+迷宮
+%%%%
+[branch]Temple
+
+寺院
+%%%%
+[branch]the Ecumenical Temple
+
+諸宗派の寺院
+%%%%
+[branch]Orcish Mines
+
+オークの坑道
+%%%%
+[branch]the Orcish Mines
+
+オークの坑道
+%%%%
+[branch]Orc
+
+オーク
+%%%%
+[branch]Elven Halls
+
+エルフの大広間
+%%%%
+[branch]the Elven Halls
+
+エルフの大広間
+%%%%
+[branch]Elf
+
+エルフ
+%%%%
+[branch]Lair
+
+獣の棲み処
+%%%%
+[branch]the Lair of Beasts
+
+獣の棲み処
+%%%%
+[branch]Swamp
+
+沼
+%%%%
+[branch]the Swamp
+
+沼
+%%%%
+[branch]Shoals
+
+浅瀬
+%%%%
+[branch]the Shoals
+
+浅瀬
+%%%%
+[branch]Snake Pit
+
+蛇穴
+%%%%
+[branch]the Snake Pit
+
+蛇穴
+%%%%
+[branch]Snake
+
+蛇
+%%%%
+[branch]Spider Nest
+
+蜘蛛の穴ぐら
+%%%%
+[branch]Spider
+
+蜘蛛
+%%%%
+[branch]Slime Pits
+
+スライムの穴ぐら
+%%%%
+[branch]the Pits of Slime
+
+スライムの穴ぐら
+%%%%
+[branch]Slime
+
+スライム
+%%%%
+[branch]Vaults
+
+宝物庫
+%%%%
+[branch]the Vaults
+
+宝物庫
+%%%%
+[branch]Crypt
+
+地下墓地
+%%%%
+[branch]the Crypt
+
+地下墓地
+%%%%
+[branch]Tomb
+
+霊廟
+%%%%
+[branch]the Tomb of the Ancients
+
+太古の霊廟
+%%%%
+[branch]Hell
+
+地獄
+%%%%
+[branch]the Vestibule of Hell
+
+地獄の玄関
+%%%%
+[branch]Dis
+
+ディース
+%%%%
+[branch]the Iron City of Dis
+
+鉄の都『ディース』
+%%%%
+[branch]Gehenna
+
+ゲヘナ
+%%%%
+[branch]Geh
+
+ゲヘナ
+%%%%
+[branch]Cocytus
+
+コキュトス
+%%%%
+[branch]Coc
+
+コキュトス
+%%%%
+[branch]Tartarus
+
+タルタロス
+%%%%
+[branch]Tar
+
+タルタロス
+%%%%
+[branch]Zot
+
+ゾットの領域
+%%%%
+[branch]the Realm of Zot
+
+ゾットの領域
+%%%%
+[branch]Abyss
+
+アビス
+%%%%
+[branch]the Abyss
+
+アビス
+%%%%
+[branch]Pandemonium
+
+パンデモニウム
+%%%%
+[branch]Pan
+
+万魔殿
+%%%%
+[branch]Ziggurat
+
+ジグラット
+%%%%
+[branch]a ziggurat
+
+ジグラット
+%%%%
+[branch]Zig
+
+ジグラット
+%%%%
+[branch]Labyrinth
+
+ラビリンス
+%%%%
+[branch]a labyrinth
+
+ラビリンス
+%%%%
+[branch]Bazaar
+
+バザール
+%%%%
+[branch]a bazaar
+
+バザール
+%%%%
+[branch]Trove
+
+埋蔵庫
+%%%%
+[branch]a treasure trove
+
+宝の埋蔵庫
+%%%%
+[branch]Sewer
+
+下水道
+%%%%
+[branch]a sewer
+
+下水道
+%%%%
+[branch]Ossuary
+
+納骨堂
+%%%%
+[branch]an ossuary
+
+納骨堂
+%%%%
+[branch]Bailey
+
+濠城
+%%%%
+[branch]a bailey
+
+濠城
+%%%%
+[branch]Ice Cave
+
+氷の洞穴
+%%%%
+[branch]an ice cave
+
+氷の洞穴
+%%%%
+[branch]Volcano
+
+火山
+%%%%
+[branch]a volcano
+
+火山
+%%%%
+[branch]Wizlab
+
+魔術研究所
+%%%%
+[branch]a wizard's laboratory
+
+魔術研究所
+%%%%
+[branch]Depths
+
+深層
+%%%%
+[branch]the Depths
+
+深層
+%%%%

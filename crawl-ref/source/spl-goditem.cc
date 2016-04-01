@@ -186,11 +186,11 @@ static spret_type _healing_spell(int healed, int max_healed,
     {
         if (not_self)
         {
-            mpr("You can only heal others!");
+            mpr(jtrans("You can only heal others!"));
             return SPRET_ABORT;
         }
 
-        mpr("You are healed.");
+        mpr(jtrans("You are healed."));
         inc_hp(healed);
         return SPRET_SUCCESS;
     }
@@ -217,31 +217,31 @@ static spret_type _healing_spell(int healed, int max_healed,
         {
             if (can_pacify == 0)
             {
-                mprf("The light of Elyvilon fails to reach %s.",
-                     mons->name(DESC_THE).c_str());
+                mprf(jtransc("The light of Elyvilon fails to reach %s."),
+                     jtransc(mons->name(DESC_THE)));
                 return SPRET_FAIL;
             }
             else if (can_pacify == -3)
             {
-                mprf("The light of Elyvilon almost touches upon %s.",
-                     mons->name(DESC_THE).c_str());
+                mprf(jtransc("The light of Elyvilon almost touches upon %s."),
+                     jtransc(mons->name(DESC_THE)));
                 return SPRET_FAIL;
             }
             else if (can_pacify == -4)
             {
-                mprf("%s is completely unfazed by your meager offer of peace.",
-                     mons->name(DESC_THE).c_str());
+                mprf(jtransc("%s is completely unfazed by your meager offer of peace."),
+                     jtransc(mons->name(DESC_THE)));
                 return SPRET_FAIL;
             }
             else
             {
                 if (can_pacify == -2)
                 {
-                    mprf("You cannot pacify this monster while %s is sleeping!",
-                         mons->pronoun(PRONOUN_SUBJECTIVE).c_str());
+                    mprf(jtransc("You cannot pacify this monster while %s is sleeping!"),
+                         jtransc(mons->pronoun(PRONOUN_SUBJECTIVE)));
                 }
                 else
-                    mpr("You cannot pacify this monster!");
+                    mpr(jtrans("You cannot pacify this monster!"));
                 return SPRET_ABORT;
             }
         }
@@ -270,7 +270,7 @@ static spret_type _healing_spell(int healed, int max_healed,
                 }
             }
             else
-                simple_monster_message(mons, " turns neutral.");
+                simple_monster_message(mons, jtransc(" turns neutral."));
 
             record_monster_defeat(mons, KILL_PACIFIED);
             mons_pacify(mons, ATT_NEUTRAL);
@@ -280,10 +280,10 @@ static spret_type _healing_spell(int healed, int max_healed,
     if (mons->heal(healed))
     {
         did_something = true;
-        mprf("You heal %s.", mons->name(DESC_THE).c_str());
+        mprf(jtransc("You heal %s."), jtransc(mons->name(DESC_THE)));
 
         if (mons->hit_points == mons->max_hit_points)
-            simple_monster_message(mons, " is completely healed.");
+            simple_monster_message(mons, jtransc(" is completely healed."));
         else
             print_wounds(mons);
     }
@@ -320,7 +320,7 @@ void debuff_player()
     if (you.attribute[ATTR_DELAYED_FIREBALL])
     {
         you.attribute[ATTR_DELAYED_FIREBALL] = 0;
-        mprf(MSGCH_DURATION, "Your charged fireball dissipates.");
+        mpr_nojoin(MSGCH_DURATION, jtrans("Your charged fireball dissipates."));
     }
 
     if (you.attribute[ATTR_REPEL_MISSILES])
@@ -355,12 +355,12 @@ void debuff_player()
             else if (i == DUR_TELEPORT)
             {
                 dur = 0;
-                mprf(MSGCH_DURATION, "You feel strangely stable.");
+                mpr_nojoin(MSGCH_DURATION, jtrans("You feel strangely stable."));
             }
             else if (i == DUR_PETRIFYING)
             {
                 dur = 0;
-                mprf(MSGCH_DURATION, "You feel limber!");
+                mpr_nojoin(MSGCH_DURATION, jtrans("You feel limber!"));
                 you.redraw_evasion = true;
             }
             else if (dur > 1)
@@ -374,8 +374,8 @@ void debuff_player()
     if (need_msg)
     {
         mprf(danger ? MSGCH_DANGER : MSGCH_WARN,
-             "%sYour magical effects are unravelling.",
-             danger ? "Careful! " : "");
+             jtransc("%sYour magical effects are unravelling."),
+             jtransc(danger ? "Careful! " : ""));
     }
 
     contaminate_player(-1 * (1000 + random2(4000)));
@@ -439,7 +439,7 @@ void debuff_monster(monster* mon)
             dispelled = true;
     }
     if (dispelled)
-        simple_monster_message(mon, "'s magical effects unravel!");
+        simple_monster_message(mon, jtransc("'s magical effects unravel!"));
 }
 
 int detect_traps(int pow)
@@ -590,11 +590,11 @@ static bool _selectively_remove_curse(const string &pre_msg)
     {
         if (!any_items_of_type(OSEL_CURSED_WORN) && used)
         {
-            mpr("You have uncursed all your worn items.");
+            mpr(jtrans("You have uncursed all your worn items."));
             return used;
         }
 
-        int item_slot = prompt_invent_item("Uncurse which item?", MT_INVLIST,
+        int item_slot = prompt_invent_item(jtransc("Uncurse which item?"), MT_INVLIST,
                                            OSEL_CURSED_WORN, true, true, false);
         if (prompt_failed(item_slot))
             return used;
@@ -605,7 +605,7 @@ static bool _selectively_remove_curse(const string &pre_msg)
             || !item_is_equipped(item)
             || &item == you.weapon() && !is_weapon(item))
         {
-            mpr("Choose a cursed equipped item, or Esc to abort.");
+            mpr(jtrans("Choose a cursed equipped item, or Esc to abort."));
             more();
             continue;
         }
@@ -659,16 +659,16 @@ bool remove_curse(bool alreadyknown, const string &pre_msg)
     {
         if (!pre_msg.empty())
             mpr(pre_msg);
-        mpr("You feel as if something is helping you.");
+        mpr(jtrans("You feel as if something is helping you."));
         learned_something_new(HINT_REMOVED_CURSE);
     }
     else if (alreadyknown)
-        mprf(MSGCH_PROMPT, "None of your equipped items are cursed.");
+        mpr_nojoin(MSGCH_PROMPT, jtrans("None of your equipped items are cursed."));
     else
     {
         if (!pre_msg.empty())
-            mpr(pre_msg);
-        mpr("You feel blessed for a moment.");
+            mpr(jtrans(pre_msg));
+        mpr(jtrans("You feel blessed for a moment."));
     }
 
     return success;
@@ -692,8 +692,8 @@ static bool _selectively_curse_item(bool armour, const string &pre_msg)
             || armour && item.base_type != OBJ_ARMOUR
             || !armour && item.base_type != OBJ_JEWELLERY)
         {
-            mprf("Choose an uncursed equipped piece of %s, or Esc to abort.",
-                 armour ? "armour" : "jewellery");
+            mprf(jtransc("Choose an uncursed equipped piece of %s, or Esc to abort."),
+                 armour ? "防具" : "装飾品");
             more();
             continue;
         }
@@ -722,8 +722,8 @@ bool curse_item(bool armour, const string &pre_msg)
     }
     if (!found)
     {
-        mprf(MSGCH_PROMPT, "You aren't wearing any piece of uncursed %s.",
-             armour ? "armour" : "jewellery");
+        mprf(MSGCH_PROMPT, jtransc("You aren't wearing any piece of uncursed %s."),
+             armour ? "防具" : "装飾品");
         return false;
     }
 
@@ -792,9 +792,9 @@ static bool _do_imprison(int pow, const coord_def& where, bool zin)
 
         if (!success)
         {
-            mprf(none_vis ? "You briefly glimpse something next to %s."
-                        : "You need more space to imprison %s.",
-                targname.c_str());
+            mprf(jtransc(none_vis ? "You briefly glimpse something next to %s."
+                                  : "You need more space to imprison %s."),
+                 jtransc(targname));
             return false;
         }
     }
@@ -890,11 +890,11 @@ static bool _do_imprison(int pow, const coord_def& where, bool zin)
     {
         if (zin)
         {
-            mprf("Zin imprisons %s with walls of pure silver!",
-                 targname.c_str());
+            mprf(jtransc("Zin imprisons %s with walls of pure silver!"),
+                 jtransc(targname));
         }
         else
-            mpr("Walls emerge from the floor!");
+            mpr(jtrans("Walls emerge from the floor!"));
 
         you.update_beholders();
         you.update_fearmongers();
@@ -911,7 +911,7 @@ bool entomb(int pow)
     // Zotdef - turned off
     if (crawl_state.game_is_zotdef())
     {
-        mpr("The dungeon rumbles ominously, and rocks fall from the ceiling!");
+        mpr(jtrans("The dungeon rumbles ominously, and rocks fall from the ceiling!"));
         return false;
     }
     if (_do_imprison(pow, you.pos(), false))
@@ -962,7 +962,7 @@ bool cast_smiting(int pow, monster* mons)
     {
         set_attack_conducts(conducts, mons);
 
-        mprf("You smite %s!", mons->name(DESC_THE).c_str());
+        mprf(jtransc("You smite %s!"), jtransc(mons->name(DESC_THE)));
 
         behaviour_event(mons, ME_ANNOY, &you);
     }
@@ -998,7 +998,7 @@ static void _holy_word_player(int pow, holy_word_source_type source, actor *atta
     if (!hploss)
         return;
 
-    mpr("You are blasted by holy energy!");
+    mpr(jtrans("You are blasted by holy energy!"));
 
     const char *aux = "holy word";
 
@@ -1051,9 +1051,9 @@ void holy_word_monsters(coord_def where, int pow, holy_word_source_type source,
     if (hploss)
     {
         if (source == HOLY_WORD_ZIN)
-            simple_monster_message(mons, " is blasted by Zin's holy word!");
+            simple_monster_message(mons, jtransc(" is blasted by Zin's holy word!"));
         else
-            simple_monster_message(mons, " convulses!");
+            simple_monster_message(mons, jtransc(" convulses!"));
     }
     mons->hurt(attacker, hploss, BEAM_MISSILE);
 
@@ -1084,9 +1084,8 @@ void holy_word(int pow, holy_word_source_type source, const coord_def& where,
 {
     if (!silent && attacker)
     {
-        mprf("%s %s a Word of immense power!",
-             attacker->name(DESC_THE).c_str(),
-             attacker->conj_verb("speak").c_str());
+        mprf(jtransc("%s %s a Word of immense power!"),
+             jtransc(attacker->name(DESC_THE)));
     }
 
     for (radius_iterator ri(where, LOS_SOLID); ri; ++ri)
@@ -1118,23 +1117,23 @@ void torment_player(actor *attacker, torment_source_type taux)
             if (random2(600) < you.piety) // 13.33% to 33.33% chance
             {
                 hploss = 0;
-                simple_god_message(" shields you from torment!");
+                simple_god_message(jtransc(" shields you from torment!"));
             }
             else if (random2(250) < you.piety) // 24% to 80% chance
             {
                 hploss -= random2(hploss - 1);
-                simple_god_message(" partially shields you from torment!");
+                simple_god_message(jtransc(" partially shields you from torment!"));
             }
         }
     }
 
     if (!hploss)
     {
-        mpr("You feel a surge of unholy energy.");
+        mpr(jtrans("You feel a surge of unholy energy."));
         return;
     }
 
-    mpr("Your body is wracked with pain!");
+    mpr(jtrans("Your body is wracked with pain!"));
 
 
     kill_method_type type = KILLED_BY_BEAM;
@@ -1199,7 +1198,7 @@ void torment_cell(coord_def where, actor *attacker, torment_source_type taux)
 
     if (hploss)
     {
-        simple_monster_message(mons, " convulses!");
+        simple_monster_message(mons, jtransc(" convulses!"));
 
         // Currently, torment doesn't annoy the monsters it affects
         // because it can't kill them, and because hostile monsters use

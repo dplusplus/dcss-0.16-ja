@@ -1,0 +1,517 @@
+%%%%
+############################## beam.cc ##############################
+%%%%
+[zap]mystic blast
+
+爆破の秘術
+%%%%
+[zap]sticky fire
+
+焼夷の炎
+%%%%
+[zap]lightning
+
+稲妻
+%%%%
+############################## evoke.cc ##############################
+%%%%
+[zap]trail of fire
+
+尾を引く炎
+%%%%
+[zap]flood of elemental water
+
+水の精霊の巻き起こした洪水
+%%%%
+############################## godabil.cc ##############################
+%%%%
+[zap]blast of magma
+
+溶岩の奔流
+%%%%
+[zap]blast of ice
+
+猛吹雪
+%%%%
+[zap]cutting wind
+
+カマイタチ
+%%%%
+[zap]blast of rubble
+
+石つぶて
+%%%%
+############################## mon-act.cc ##############################
+%%%%
+[zap]barrage of energy
+
+エネルギーの集中砲火
+%%%%
+############################## mon-cast.cc ##############################
+%%%%
+[zap]freezing blast
+
+凍結の雲
+# from SPELL_FREEZING_CLOUD
+%%%%
+[zap]living lightning
+
+生ける稲妻
+# from SPELL_BLINKBOLT(RAIJU)
+%%%%
+[zap]burst of hellfire
+
+地獄の業火の炸裂
+# from SPELL_HELLFIRE_BURST
+%%%%
+[zap]noxious blast
+
+悪臭雲
+# from SPELL_NOXIOUS_CLOUD
+%%%%
+[zap]blast of poison
+
+猛毒の雲
+# from SPELL_POISONOUS_CLOUD
+%%%%
+[zap]bolt of energy
+
+エネルギーの矢
+# from SPELL_ENERGY_BOLT
+%%%%
+[zap]splash of acid
+
+酸のしぶき
+# from SPELL_SPIT_ACID
+%%%%
+[zap]foul vapour
+
+腐敗した靄
+# from SPELL_MEPHITIC_CLOUD
+%%%%
+[zap]bolt of dispelling energy
+
+魔法解除の矢
+# from SPELL_QUICKSILVER_BOLT
+%%%%
+[zap]blast of hellfire
+
+地獄の業火の炸裂
+# from SPELL_HELLFIRE
+%%%%
+[zap]spray of metal splinters
+
+飛散する金属片
+# from SPELL_METAL_SPLINTERS
+%%%%
+[zap]blast of flame
+
+猛火の息
+# from SPELL_FIRE_BREATH
+%%%%
+[zap]searing blast
+
+灼熱の息
+# from SPELL_SEARING_BREATH
+%%%%
+[zap]blast of cold
+
+冷気の息
+# from COLD_BREATH
+%%%%
+[zap]blast of chilling breath
+
+極寒の息
+# from SPELL_CHILLING_BREATH
+%%%%
+[zap]blast of cleansing flame
+
+浄化の炎の息
+# from SPELL_HOLY_BREATH
+%%%%
+[zap]blast of calcifying dust
+
+石化の雲
+# from SPELL_PETRIFYING_CLOUD
+%%%%
+[zap]stream of webbing
+
+吐き出された蜘蛛の糸
+# from SPELL_ENSNARE
+%%%%
+[zap]ghostly flame
+
+鬼火
+# from SPELL_GHOSTLY_FLAMES
+%%%%
+[zap]ghostly fireball
+
+鬼火の火球
+# from SPELL_GHOSTLY_FIREBALL
+%%%%
+[zap]volley of thorns
+
+茨の斉射
+# from SPELL_THORN_VOLLEY
+%%%%
+[zap]flash freeze
+
+瞬間凍結
+# from SPELL_FLASH_FREEZE
+%%%%
+[zap]shadow bolt
+
+# obsolete?
+%%%%
+[zap]shadow shard
+
+# obsolete?
+%%%%
+[zap]glob of lava
+
+溶岩の塊
+# from SPELL_SPIT_LAVA
+%%%%
+[zap]bolt of electricity
+
+電光の矢
+# from SPELL_ELECTRICAL_BOLT
+%%%%
+[zap]volley of spikes
+
+射出された逆棘
+# from SPELL_THROW_BARBS
+%%%%
+[zap]vile air
+
+不快な空気
+# from SPELL_DEATH_RATTLE
+%%%%
+[zap]reflection of chaos
+
+混沌による反射
+# from SPELL_CHAOTIC_MIRROR
+%%%%
+############################## spl-clouds.cc ##############################
+%%%%
+[zap]freezing blast
+
+凍気の雲
+%%%%
+############################## spl-damage.cc ##############################
+%%%%
+[zap]great blast of fire
+
+燃えさかる爆炎
+%%%%
+[zap]lightning arc
+
+連鎖する稲妻
+%%%%
+[zap]arc of chaos
+
+# obsolete?
+%%%%
+[zap]shillelagh
+
+棍棒
+%%%%
+[zap]irradiate
+
+放射の光
+%%%%
+[zap]blast of rock fragments
+
+岩石の破片
+%%%%
+[zap]blast of petrified fragments
+
+石化した破片
+%%%%
+[zap]icy blast
+
+氷の破片
+%%%%
+[zap]blast of toenail fragments
+
+足爪の破片
+%%%%
+[zap]blast of metal fragments
+
+金属の破片
+%%%%
+[zap]blast of obsidian shards
+
+黒曜石の破片
+%%%%
+[zap]blast of orange crystal shards
+
+橙水晶の破片
+%%%%
+[zap]blast of crystal shards
+
+水晶の破片
+%%%%
+[zap]blast of sapphire shards
+
+サファイアの破片
+%%%%
+[zap]blast of bone shards
+
+骨片
+%%%%
+[zap]great icy blast
+
+雹の嵐
+%%%%
+############################## mon-death.cc ##############################
+%%%%
+[zap]explosion of spores
+
+胞子の爆発
+%%%%
+[zap]blast of lightning
+
+炸裂する稲妻
+%%%%
+[zap]blast of energy
+
+炸裂するエネルギー
+%%%%
+[zap]pyre of ghostly fire
+
+鬼火
+%%%%
+[zap]fiery explosion
+
+燃えさかる爆発
+%%%%
+############################## mon-project.cc ##############################
+%%%%
+[zap]orb of destruction
+
+破壊の爆裂球
+%%%%
+############################## spl-goditem.cc ##############################
+%%%%
+[zap]golden flame
+
+黄金の炎
+%%%%
+############################## spl-miscast.cc ##############################
+%%%%
+[zap]explosion
+
+爆発
+%%%%
+[zap]acid blast
+
+酸の爆発
+%%%%
+############################## spl-summoning.cc ##############################
+%%%%
+# [zap]barrage of energy
+
+# mon-act.ccと重複
+# from SPELL_BATTLESPHERE
+%%%%
+############################## timed_effects.cc ##############################
+%%%%
+[zap]magical storm
+
+魔力の嵐
+%%%%
+############################## xom.cc ##############################
+%%%%
+[zap]STAIR BEAM
+
+階段ビーム
+%%%%
+############################## zap-data.h ##############################
+%%%%
+[zap]acid
+
+強酸
+%%%%
+[zap]agony
+
+苦悶の光線
+%%%%
+[zap]ball of steam
+
+蒸気の爆裂球
+%%%%
+[zap]blast of choking fumes
+
+窒息の噴煙
+%%%%
+[zap]blast of sand
+
+砂の突風
+%%%%
+[zap]bolt of acid
+
+強酸の矢
+%%%%
+[zap]bolt of cold
+
+凍結の矢
+%%%%
+[zap]bolt of dispelling energy
+
+解呪の矢
+%%%%
+[zap]bolt of fire
+
+猛火の矢
+%%%%
+[zap]bolt of lightning
+
+稲妻の矢
+%%%%
+[zap]bolt of magma
+
+溶岩の矢
+%%%%
+[zap]bolt of negative energy
+負のエネルギーの矢
+%%%%
+[zap]bolt of poison
+
+毒液の矢
+%%%%
+[zap]burst of metal fragments
+
+鉄片の奔流
+%%%%
+[zap]crystal bolt
+
+水晶の矢
+%%%%
+[zap]crystal spear
+
+水晶の槍
+%%%%
+[zap]debugging ray
+
+debugging ray
+%%%%
+[zap]explosive bolt
+
+爆裂の矢
+%%%%
+[zap]fiery breath
+
+炎のブレス
+%%%%
+[zap]fireball
+
+ファイアボール
+%%%%
+[zap]flame tongue
+
+炎の舌先
+%%%%
+[zap]freezing breath
+
+凍結のブレス
+%%%%
+[zap]great wave of water
+
+大津波
+%%%%
+[zap]hellfire
+
+地獄の業火
+%%%%
+[zap]iron shot
+
+鉄塊の矢
+%%%%
+[zap]lance of force
+
+力場の槍
+%%%%
+[zap]large rocky blast
+
+岩つぶて
+%%%%
+[zap]magic dart
+
+魔法の矢
+%%%%
+[zap]narrow beam of energy
+
+エネルギーの光線
+%%%%
+[zap]orb of electricity
+
+電撃の爆裂球
+%%%%
+[zap]orb of energy
+
+エネルギーの爆裂球
+%%%%
+[zap]poison arrow
+
+毒の塊
+%%%%
+[zap]poison gas
+
+猛毒のガス
+%%%%
+[zap]porkalator
+
+豚化の光線
+%%%%
+[zap]puff of flame
+
+炎の塊
+%%%%
+[zap]puff of frost
+
+冷気の塊
+%%%%
+[zap]random bolt tracer
+
+%%%%
+[zap]rocky blast
+
+石つぶて
+%%%%
+[zap]searing ray
+
+焼灼の光線
+%%%%
+[zap]shard of ice
+
+氷の破片
+%%%%
+[zap]splash of liquid fire
+
+燃えたぎる液体の飛沫
+%%%%
+[zap]splash of poison
+
+毒の飛沫
+%%%%
+[zap]spray of energy
+
+エネルギーの飛沫
+%%%%
+[zap]sticky flame
+
+焼夷の炎
+%%%%
+[zap]sting
+
+毒針
+%%%%
+[zap]stone arrow
+
+石錐の矢
+%%%%
+[zap]zap
+
+稲妻の光線
+%%%%

@@ -16,6 +16,7 @@
 #include "branch.h"
 #include "cloud.h"
 #include "colour.h"
+#include "database.h"
 #include "describe.h"
 #include "directn.h"
 #include "english.h"
@@ -83,16 +84,15 @@ static void _surge_power(spell_type spell)
 
     if (enhanced)               // one way or the other {dlb}
     {
-        const string modifier = (enhanced  < -2) ? "extraordinarily" :
-                                (enhanced == -2) ? "extremely" :
-                                (enhanced ==  2) ? "strong" :
-                                (enhanced  >  2) ? "huge"
+        const string modifier = (enhanced  < -2) ? "並外れた" :
+                                (enhanced == -2) ? "きわめて強力な" :
+                                (enhanced ==  2) ? "強力な" :
+                                (enhanced  >  2) ? "大きな"
                                                  : "";
-        mprf("You feel %s %s",
-             !modifier.length() ? "a"
-                                : article_a(modifier).c_str(),
-             (enhanced < 0) ? "numb sensation."
-                            : "surge of power!");
+        mprf(jtransc("You feel %s %s"),
+             modifier.c_str(),
+             jtransc((enhanced < 0) ? "numb sensation."
+                                    : "surge of power!"));
     }
 }
 
@@ -105,7 +105,7 @@ static string _spell_base_description(spell_type spell, bool viewing)
     desc << "<" << colour_to_str(highlight) << ">" << left;
 
     // spell name
-    desc << chop_string(spell_title(spell), 30);
+    desc << chop_string(tagged_jtrans("[spell]", spell_title(spell)), 30);
 
     // spell schools
     desc << spell_schools_string(spell);
@@ -135,7 +135,7 @@ static string _spell_extra_description(spell_type spell, bool viewing)
     desc << "<" << colour_to_str(highlight) << ">" << left;
 
     // spell name
-    desc << chop_string(spell_title(spell), 30);
+    desc << chop_string(tagged_jtrans("[spell]", spell_title(spell)), 30);
 
     // spell power, spell range, hunger level, level
     const string rangestring = spell_range_string(spell);
@@ -168,16 +168,16 @@ int list_spells(bool toggle_with_I, bool viewing, bool allow_preselect,
     ToggleableMenu spell_menu(MF_SINGLESELECT | MF_ANYPRINTABLE
                               | MF_ALWAYS_SHOW_MORE | MF_ALLOW_FORMATTING,
                               text_only);
-    string titlestring = make_stringf("%-25.25s", title.c_str());
+    string titlestring = chop_string(jtransc(title), 34);
 #ifdef USE_TILE_LOCAL
     {
         // [enne] - Hack.  Make title an item so that it's aligned.
         ToggleableMenuEntry* me =
             new ToggleableMenuEntry(
-                " " + titlestring + "         Type          "
-                "                Failure   Level",
-                " " + titlestring + "         Power         "
-                "Range           " + "Hunger" + "    Level",
+                " " + titlestring +
+                jtrans("Type                          Failure   Level"),
+                " " + titlestring +
+                jtrans("Power         Range           Hunger    Level"),
                 MEL_ITEM);
         me->colour = BLUE;
         spell_menu.add_entry(me);
@@ -185,10 +185,10 @@ int list_spells(bool toggle_with_I, bool viewing, bool allow_preselect,
 #else
     spell_menu.set_title(
         new ToggleableMenuEntry(
-            " " + titlestring + "         Type          "
-            "                Failure   Level",
-            " " + titlestring + "         Power         "
-            "Range           " + "Hunger" + "    Level",
+            " " + titlestring +
+            jtrans("Type                          Failure   Level"),
+            " " + titlestring +
+            jtrans("Power         Range           Hunger    Level"),
             MEL_TITLE));
 #endif
     spell_menu.set_highlighter(nullptr);
@@ -204,7 +204,7 @@ int list_spells(bool toggle_with_I, bool viewing, bool allow_preselect,
     if (!viewing)
         spell_menu.menu_action = Menu::ACT_EXECUTE;
     more_str += "to toggle spell view.";
-    spell_menu.set_more(formatted_string::parse_string(more_str));
+    spell_menu.set_more(formatted_string::parse_string(jtrans(more_str)));
 
     // If there's only a single spell in the offered spell list,
     // taking the selector function into account, preselect that one.
@@ -568,20 +568,20 @@ static bool _can_cast()
 
     if (you.duration[DUR_WATER_HOLD] && !you.res_water_drowning())
     {
-        mpr("You cannot cast spells while unable to breathe!");
+        mpr(jtrans("You cannot cast spells while unable to breathe!"));
         return false;
     }
 
     if (you.stat_zero[STAT_INT])
     {
-        mpr("You lack the mental capacity to cast spells.");
+        mpr(jtrans("You lack the mental capacity to cast spells."));
         return false;
     }
 
     // Randart weapons.
     if (you.no_cast())
     {
-        mpr("Something interferes with your magic!");
+        mpr(jtrans("Something interferes with your magic!"));
         return false;
     }
 
@@ -599,13 +599,13 @@ static bool _can_cast()
 
     if (you.confused())
     {
-        mpr("You're too confused to cast spells.");
+        mpr(jtrans("You're too confused to cast spells."));
         return false;
     }
 
     if (silenced(you.pos()))
     {
-        mpr("You cannot cast spells when silenced!");
+        mpr(jtrans("You cannot cast spells when silenced!"));
         more();
         return false;
     }
@@ -688,12 +688,12 @@ bool cast_a_spell(bool check_range, spell_type spell)
                 }
 
                 if (you.last_cast_spell == SPELL_NO_SPELL)
-                    mprf(MSGCH_PROMPT, "Cast which spell? (? or * to list) ");
+                    mpr_nojoin(MSGCH_PROMPT, jtrans("Cast which spell? (? or * to list) "));
                 else
                 {
-                    mprf(MSGCH_PROMPT, "Casting: <w>%s</w>",
-                         spell_title(you.last_cast_spell));
-                    mprf(MSGCH_PROMPT, "Confirm with . or Enter, or press ? or * to list all spells.");
+                    mprf(MSGCH_PROMPT, jtransc("Casting: <w>%s</w>"),
+                         tagged_jtransc("[spell]", spell_title(you.last_cast_spell)));
+                    mpr_nojoin(MSGCH_PROMPT, jtrans("Confirm with . or Enter, or press ? or * to list all spells."));
                 }
 
                 keyin = get_ch();
@@ -730,7 +730,7 @@ bool cast_a_spell(bool check_range, spell_type spell)
             spell = you.last_cast_spell;
         else if (!isaalpha(keyin))
         {
-            mpr("You don't know that spell.");
+            mpr(jtrans("You don't know that spell."));
             crawl_state.zero_turns_taken();
             return false;
         }
@@ -740,7 +740,7 @@ bool cast_a_spell(bool check_range, spell_type spell)
 
     if (spell == SPELL_NO_SPELL)
     {
-        mpr("You don't know that spell.");
+        mpr(jtrans("You don't know that spell."));
         crawl_state.zero_turns_taken();
         return false;
     }
@@ -748,7 +748,7 @@ bool cast_a_spell(bool check_range, spell_type spell)
     const int cost = spell_mana(spell);
     if (!enough_mp(cost, true))
     {
-        mpr("You don't have enough magic to cast that spell.");
+        mpr(jtrans("You don't have enough magic to cast that spell."));
         crawl_state.zero_turns_taken();
         return false;
     }
@@ -757,8 +757,8 @@ bool cast_a_spell(bool check_range, spell_type spell)
     {
         // Abort if there are no hostiles within range, but flash the range
         // markers for a short while.
-        mpr("You can't see any susceptible monsters within range! "
-            "(Use <w>Z</w> to cast anyway.)");
+        mpr(jtrans("You can't see any susceptible monsters within range! "
+                   "(Use <w>Z</w> to cast anyway.)"));
 
         if (Options.use_animations & UA_RANGE)
         {
@@ -790,9 +790,9 @@ bool cast_a_spell(bool check_range, spell_type spell)
     {
         // None currently dock just piety, right?
         if (!yesno(god_loathes_spell(spell, you.religion) ?
-            "<lightred>Casting this spell will cause instant excommunication!"
-                "</lightred> Really cast?" :
-            "Casting this spell will put you into penance. Really cast?",
+            jtransc("<lightred>Casting this spell will cause instant excommunication!"
+                    "</lightred> Really cast?") :
+            jtransc("Casting this spell will put you into penance. Really cast?"),
             true, 'n'))
         {
             canned_msg(MSG_OK);
@@ -806,10 +806,10 @@ bool cast_a_spell(bool check_range, spell_type spell)
         && Options.fail_severity_to_confirm <= severity
         && !crawl_state.disables[DIS_CONFIRMATIONS])
     {
-        string prompt = make_stringf("The spell is %s to cast%s "
-                                     "Continue anyway?",
+        string prompt = make_stringf(jtransc("The spell is %s to cast%s "
+                                             "Continue anyway?"),
                                      fail_severity_adjs[severity],
-                                     severity > 1 ? "!" : ".");
+                                     severity > 1 ? "！ " : "。");
 
         if (!yesno(prompt.c_str(), false, 'n'))
         {
@@ -928,7 +928,7 @@ static void _spellcasting_side_effects(spell_type spell, god_type god,
     {
         if (you.duration[DUR_SAP_MAGIC] && real_spell)
         {
-            mprf(MSGCH_WARN, "Your control over your magic is sapped.");
+            mpr_nojoin(MSGCH_WARN, jtrans("Your control over your magic is sapped."));
             you.increase_duration(DUR_MAGIC_SAPPED,
                                   spell_difficulty(spell),
                                   100);
@@ -963,20 +963,20 @@ static void _try_monster_cast(spell_type spell, int powc,
 {
     if (monster_at(you.pos()))
     {
-        mpr("Couldn't try casting monster spell because you're "
-            "on top of a monster.");
+        mpr(jtrans("Couldn't try casting monster spell because you're "
+                   "on top of a monster."));
         return;
     }
 
     monster* mon = get_free_monster();
     if (!mon)
     {
-        mpr("Couldn't try casting monster spell because there is "
-            "no empty monster slot.");
+        mpr(jtrans("Couldn't try casting monster spell because there is "
+                   "no empty monster slot."));
         return;
     }
 
-    mpr("Invalid player spell, attempting to cast it as monster spell.");
+    mpr(jtrans("Invalid player spell, attempting to cast it as monster spell."));
 
     mon->mname      = "Dummy Monster";
     mon->type       = MONS_HUMAN;
@@ -1014,8 +1014,9 @@ static void _maybe_cancel_repeat(spell_type spell)
 {
     switch (spell)
     {
-    case SPELL_DELAYED_FIREBALL:        crawl_state.cant_cmd_repeat(make_stringf("You can't repeat %s.",
-                                                 spell_title(spell)));
+    case SPELL_DELAYED_FIREBALL:
+        crawl_state.cant_cmd_repeat(make_stringf(jtransc("You can't repeat %s."),
+                                                 tagged_jtransc("[spell]", spell_title(spell))));
         break;
 
     default:
@@ -1177,22 +1178,25 @@ static int _triangular_number(int n)
  * @param mr The magic resistance of the target.
  * @param powc The enchantment power.
  * @param scale The denominator of the result.
+ * @param round_up Should the resulting chance be rounded up (true) or
+ *        down (false, the default)?
  *
- * @return The chance, out of scale (rounded down), that the enchantment
- * affects the target.
+ * @return The chance, out of scale, that the enchantment affects the target.
  */
-int hex_success_chance(const int mr, int powc, int scale)
+int hex_success_chance(const int mr, int powc, int scale, bool round_up)
 {
-    powc = ench_power_stepdown(powc);
-    const int target = mr + 100 - powc;
+    const int pow = ench_power_stepdown(powc);
+    const int target = mr + 100 - pow;
+    const int denom = 101 * 100;
+    const int adjust = round_up ? denom - 1 : 0;
 
     if (target <= 0)
         return scale;
     if (target > 200)
         return 0;
     if (target <= 100)
-        return scale * (101 * 100 - _triangular_number(target)) / (101 * 100);
-    return scale * _triangular_number(201 - target) / (101 * 100);
+        return (scale * (denom - _triangular_number(target)) + adjust) / denom;
+    return (scale * _triangular_number(201 - target) + adjust) / denom;
 }
 
 // Include success chance in targeter for spells checking monster MR.
@@ -1273,7 +1277,7 @@ spret_type your_spells(spell_type spell, int powc,
 
         const char *prompt = get_spell_target_prompt(spell);
         if (dir == DIR_DIR)
-            mprf(MSGCH_PROMPT, "%s", prompt ? prompt : "Which direction?");
+            mprf(MSGCH_PROMPT, "%s", jtransc(prompt ? prompt : "Which direction?"));
 
         const bool needs_path = (!testbits(flags, SPFLAG_GRID)
                                  && !testbits(flags, SPFLAG_TARGET));
@@ -1299,8 +1303,8 @@ spret_type your_spells(spell_type spell, int powc,
                                    eff_pow);
         }
 
-        string title = "Aiming: <white>";
-        title += spell_title(spell);
+        string title = evoked ? "発動: <white>" : "詠唱: <white>";
+        title += tagged_jtrans("[spell]", spell_title(spell));
         title += "</white>";
 
         if (!spell_direction(spd, beam, dir, targ, range,
@@ -1322,7 +1326,7 @@ spret_type your_spells(spell_type spell, int powc,
         if (testbits(flags, SPFLAG_NOT_SELF) && spd.isMe())
         {
             if (spell == SPELL_TELEPORT_OTHER)
-                mpr("Sorry, this spell works on others only.");
+                mpr(jtrans("Sorry, this spell works on others only."));
             else
                 canned_msg(MSG_UNTHINKING_ACT);
 
@@ -1352,7 +1356,7 @@ spret_type your_spells(spell_type spell, int powc,
     if (allow_fail && you.duration[DUR_ANTIMAGIC]
         && x_chance_in_y(you.duration[DUR_ANTIMAGIC] / 3, you.hp_max))
     {
-        mpr("You fail to access your magic.");
+        mpr(jtrans("You fail to access your magic."));
         fail = antimagic = true;
     }
     else if (allow_fail)
@@ -1362,7 +1366,7 @@ spret_type your_spells(spell_type spell, int powc,
         if (!you_worship(GOD_SIF_MUNA)
             && you.penance[GOD_SIF_MUNA] && one_chance_in(20))
         {
-            god_speaks(GOD_SIF_MUNA, "You feel a surge of divine spite.");
+            god_speaks(GOD_SIF_MUNA, jtransc("You feel a surge of divine spite."));
 
             // This will cause failure and increase the miscast effect.
             spfl = -you.penance[GOD_SIF_MUNA];
@@ -1373,8 +1377,8 @@ spret_type your_spells(spell_type spell, int powc,
                  && one_chance_in(20))
         {
             // And you thought you'd Necromutate your way out of penance...
-            simple_god_message(" does not allow the disloyal to dabble in "
-                               "death!", GOD_KIKUBAAQUDGHA);
+            simple_god_message(jtransc(" does not allow the disloyal to dabble in "
+                                       "death!"), GOD_KIKUBAAQUDGHA);
 
             // The spell still goes through, but you get a miscast anyway.
             MiscastEffect(&you, nullptr, GOD_MISCAST + GOD_KIKUBAAQUDGHA,
@@ -1388,8 +1392,8 @@ spret_type your_spells(spell_type spell, int powc,
                  && one_chance_in(20))
         {
             // And you thought you'd Fire Storm your way out of penance...
-            simple_god_message(" does not allow the disloyal to dabble in "
-                               "destruction!", GOD_VEHUMET);
+            simple_god_message(jtransc(" does not allow the disloyal to dabble in "
+                                       "destruction!"), GOD_VEHUMET);
 
             // The spell still goes through, but you get a miscast anyway.
             MiscastEffect(&you, nullptr, GOD_MISCAST + GOD_VEHUMET,
@@ -1447,13 +1451,13 @@ spret_type your_spells(spell_type spell, int powc,
         if (antimagic)
             return SPRET_FAIL;
 
-        mprf("You miscast %s.", spell_title(spell));
+        mprf(jtransc("You miscast %s."), tagged_jtransc("[spell]", spell_title(spell)));
         flush_input_buffer(FLUSH_ON_FAILURE);
         learned_something_new(HINT_SPELL_MISCAST);
 
         if (decimal_chance(_chance_miscast_prot()))
         {
-            simple_god_message(" protects you from the effects of your miscast!");
+            simple_god_message(jtransc(" protects you from the effects of your miscast!"));
             return SPRET_FAIL;
         }
 
@@ -1490,11 +1494,11 @@ spret_type your_spells(spell_type spell, int powc,
 
         if (is_valid_spell(spell))
         {
-            mprf(MSGCH_ERROR, "Spell '%s' is not a player castable spell.",
-                 spell_title(spell));
+            mprf(MSGCH_ERROR, jtransc("Spell '%s' is not a player castable spell."),
+                 tagged_jtransc("[spell]", spell_title(spell)));
         }
         else
-            mprf(MSGCH_ERROR, "Invalid spell!");
+            mpr_nojoin(MSGCH_ERROR, jtrans("Invalid spell!"));
 
         return SPRET_ABORT;
     }
@@ -2165,12 +2169,12 @@ string spell_noise_string(spell_type spell)
     const int breakpoints[] = { 1, 2, 4, 8, 15, 20, 30 };
     COMPILE_CHECK(ARRAYSZ(noise_descriptions) == 1 + ARRAYSZ(breakpoints));
 
-    const char* desc = noise_descriptions[breakpoint_rank(noise, breakpoints,
-                                                ARRAYSZ(breakpoints))];
+    string desc = jtrans(noise_descriptions[breakpoint_rank(noise, breakpoints,
+                                                            ARRAYSZ(breakpoints))]);
 
 #ifdef WIZARD
     if (you.wizard)
-        return make_stringf("%s (%d)", desc, noise);
+        return make_stringf("%s (%d)", desc.c_str(), noise);
     else
 #endif
         return desc;
@@ -2199,7 +2203,7 @@ static string _wizard_spell_power_numeric_string(spell_type spell, bool rod)
 {
     const int cap = spell_power_cap(spell);
     if (cap == 0)
-        return "N/A";
+        return jtrans("N/A");
     const int power = min(calc_spell_power(spell, true, false, false, rod), cap);
     return make_stringf("%d (%d)", power, cap);
 }
@@ -2216,7 +2220,7 @@ string spell_power_string(spell_type spell, bool rod)
     const int capbars = power_to_barcount(spell_power_cap(spell));
     ASSERT(numbars <= capbars);
     if (numbars < 0)
-        return "N/A";
+        return jtrans("N/A");
     else
         return string(numbars, '#') + string(capbars - numbars, '.');
 }
@@ -2262,7 +2266,7 @@ string spell_range_string(spell_type spell, bool rod)
 string range_string(int range, int maxrange, ucs_t caster_char)
 {
     if (range <= 0)
-        return "N/A";
+        return jtrans("N/A");
 
     return stringize_glyph(caster_char) + string(range - 1, '-')
            + string(">") + string(maxrange - range, '.');
@@ -2280,7 +2284,7 @@ string spell_schools_string(spell_type spell)
         {
             if (already)
                 desc += "/";
-            desc += spelltype_long_name(bit);
+            desc += jtrans(spelltype_long_name(bit));
             already = true;
         }
     }

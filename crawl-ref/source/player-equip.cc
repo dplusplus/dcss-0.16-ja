@@ -8,6 +8,7 @@
 #include "areas.h"
 #include "artefact.h"
 #include "art-enum.h"
+#include "database.h"
 #include "delay.h"
 #include "english.h" // conjugate_verb
 #include "evoke.h"
@@ -32,6 +33,7 @@
 #include "spl-miscast.h"
 #include "spl-summoning.h"
 #include "spl-wpnench.h"
+#include "stringutil.h"
 #include "xom.h"
 
 static void _mark_unseen_monsters();
@@ -251,7 +253,7 @@ static void _equip_artefact_effect(item_def &item, bool *show_msgs, bool unmeld,
                        !(msg && unknown_proprt(ARTP_DEXTERITY)));
 
     if (unknown_proprt(ARTP_MUTAGENIC) && msg)
-        mpr("You feel a build-up of mutagenic energy.");
+        mpr(jtrans("You feel a build-up of mutagenic energy."));
 
     if (!unmeld && !item.cursed() && proprt[ARTP_CURSED] > 0
          && one_chance_in(proprt[ARTP_CURSED]))
@@ -331,7 +333,7 @@ static void _unequip_artefact_effect(item_def &item,
 
     if (proprt[ARTP_MUTAGENIC] && !meld)
     {
-        mpr("Mutagenic energies flood into your body!");
+        mpr(jtrans("Mutagenic energies flood into your body!"));
         contaminate_player(7000, true);
     }
 
@@ -353,30 +355,30 @@ static void _unequip_artefact_effect(item_def &item,
 static void _equip_use_warning(const item_def& item)
 {
     if (is_holy_item(item) && you_worship(GOD_YREDELEMNUL))
-        mpr("You really shouldn't be using a holy item like this.");
+        mpr(jtrans("You really shouldn't be using a holy item like this."));
     else if (is_unholy_item(item) && is_good_god(you.religion))
-        mpr("You really shouldn't be using an unholy item like this.");
+        mpr(jtrans("You really shouldn't be using an unholy item like this."));
     else if (is_corpse_violating_item(item) && you_worship(GOD_FEDHAS))
-        mpr("You really shouldn't be using a corpse-violating item like this.");
+        mpr(jtrans("You really shouldn't be using a corpse-violating item like this."));
     else if (is_evil_item(item) && is_good_god(you.religion))
-        mpr("You really shouldn't be using an evil item like this.");
+        mpr(jtrans("You really shouldn't be using an evil item like this."));
     else if (is_unclean_item(item) && you_worship(GOD_ZIN))
-        mpr("You really shouldn't be using an unclean item like this.");
+        mpr(jtrans("You really shouldn't be using an unclean item like this."));
     else if (is_chaotic_item(item) && you_worship(GOD_ZIN))
-        mpr("You really shouldn't be using a chaotic item like this.");
+        mpr(jtrans("You really shouldn't be using a chaotic item like this."));
     else if (is_hasty_item(item) && you_worship(GOD_CHEIBRIADOS))
-        mpr("You really shouldn't be using a hasty item like this.");
+        mpr(jtrans("You really shouldn't be using a hasty item like this."));
     else if (is_poisoned_item(item) && you_worship(GOD_SHINING_ONE))
-        mpr("You really shouldn't be using a poisoned item like this.");
+        mpr(jtrans("You really shouldn't be using a poisoned item like this."));
     else if (is_fiery_item(item) && you_worship(GOD_DITHMENOS))
-        mpr("You really shouldn't be using a fiery item like this.");
+        mpr(jtrans("You really shouldn't be using a fiery item like this."));
 }
 
 static void _wield_cursed(item_def& item, bool known_cursed, bool unmeld)
 {
     if (!item.cursed() || unmeld)
         return;
-    mprf("It sticks to your %s!", you.hand_name(false).c_str());
+    mprf(jtransc("It sticks to your %s!"), you.hand_name(false).c_str());
     int amusement = 16;
     if (!known_cursed)
     {
@@ -410,7 +412,7 @@ static void _equip_weapon_effect(item_def& item, bool showMsgs, bool unmeld)
         if (item.sub_type == MISC_LANTERN_OF_SHADOWS)
         {
             if (showMsgs)
-                mpr("The area is filled with flickering shadows.");
+                mpr(jtrans("The area is filled with flickering shadows."));
 
             you.attribute[ATTR_SHADOWS] = 1;
             update_vision_range();
@@ -438,7 +440,7 @@ static void _equip_weapon_effect(item_def& item, bool showMsgs, bool unmeld)
             }
 
             if (get_real_mp(true) >= 50)
-                mpr("You feel your magic capacity is already quite full.");
+                mpr(jtrans("You feel your magic capacity is already quite full."));
             else
                 canned_msg(MSG_MANA_INCREASE);
 
@@ -495,68 +497,69 @@ static void _equip_weapon_effect(item_def& item, bool showMsgs, bool unmeld)
                 switch (special)
                 {
                 case SPWPN_FLAMING:
-                    mpr("It bursts into flame!");
+                    mpr(jtrans("It bursts into flame!"));
                     break;
 
                 case SPWPN_FREEZING:
-                    mpr(is_range_weapon(item) ? "It is covered in frost."
-                                              : "It glows with a cold blue light!");
+                    mpr(jtrans(is_range_weapon(item) ? "It is covered in frost."
+                                                     : "It glows with a cold blue light!"));
                     break;
 
                 case SPWPN_HOLY_WRATH:
-                    mpr("It softly glows with a divine radiance!");
+                    mpr(jtrans("It softly glows with a divine radiance!"));
                     break;
 
                 case SPWPN_ELECTROCUTION:
                     if (!silenced(you.pos()))
-                        mprf(MSGCH_SOUND, "You hear the crackle of electricity.");
+                        mpr_nojoin(MSGCH_SOUND, jtrans("You hear the crackle of electricity."));
                     else
-                        mpr("You see sparks fly.");
+                        mpr(jtrans("You see sparks fly."));
                     break;
 
                 case SPWPN_VENOM:
-                    mpr("It begins to drip with poison!");
+                    mpr(jtrans("It begins to drip with poison!"));
                     break;
 
                 case SPWPN_PROTECTION:
-                    mpr("You feel protected!");
+                    mpr(jtrans("You feel protected!"));
                     break;
 
                 case SPWPN_EVASION:
-                    mpr("You feel nimbler!");
+                    mpr(jtrans("You feel nimbler!"));
                     break;
 
                 case SPWPN_DRAINING:
-                    mpr("You sense an unholy aura.");
+                    mpr(jtrans("You sense an unholy aura."));
                     break;
 
                 case SPWPN_SPEED:
-                    mpr(you.hands_act("tingle", "!"));
+                    mpr(jtrans("hands tingle"));
                     break;
 
                 case SPWPN_VAMPIRISM:
                     if (you.species == SP_VAMPIRE)
-                        mpr("You feel a bloodthirsty glee!");
-                    else if (you.undead_state() == US_ALIVE && !you_foodless())                        mpr("You feel a dreadful hunger.");
+                        mpr(jtrans("You feel a bloodthirsty glee!"));
+                    else if (you.undead_state() == US_ALIVE && !you_foodless())
+                        mpr(jtrans("You feel a dreadful hunger."));
                     else
-                        mpr("You feel an empty sense of dread.");
+                        mpr(jtrans("You feel an empty sense of dread."));
                     break;
 
                 case SPWPN_PAIN:
                 {
                     const string your_arm = you.arm_name(false);
                     if (you.skill(SK_NECROMANCY) == 0)
-                        mpr("You have a feeling of ineptitude.");
+                        mpr(jtrans("You have a feeling of ineptitude."));
                     else if (you.skill(SK_NECROMANCY) <= 6)
-                        mprf("Pain shudders through your %s!", your_arm.c_str());
+                        mprf(jtransc("Pain shudders through your %s!"), your_arm.c_str());
                     else
-                        mprf("A searing pain shoots up your %s!", your_arm.c_str());
+                        mprf(jtransc("A searing pain shoots up your %s!"), your_arm.c_str());
                     break;
                 }
 
                 case SPWPN_CHAOS:
-                    mpr("It is briefly surrounded by a scintillating aura "
-                        "of random colours.");
+                    mpr(jtrans("It is briefly surrounded by a scintillating aura "
+                               "of random colours."));
                     break;
 
                 case SPWPN_PENETRATION:
@@ -566,23 +569,23 @@ static void _equip_weapon_effect(item_def& item, bool showMsgs, bool unmeld)
                     bool plural = true;
                     string hand = you.hand_name(true, &plural);
 
-                    mprf("Your %s briefly %s through it before you manage "
-                         "to get a firm grip on it.",
+                    mprf(jtransc("Your %s briefly %s through it before you manage "
+                                 "to get a firm grip on it."),
                          hand.c_str(), conjugate_verb("pass", plural).c_str());
                     break;
                 }
 
                 case SPWPN_REAPING:
-                    mpr("It is briefly surrounded by shifting shadows.");
+                    mpr(jtrans("It is briefly surrounded by shifting shadows."));
                     break;
 
                 case SPWPN_ANTIMAGIC:
                     // Even if your maxmp is 0.
-                    mpr("You feel magic leave you.");
+                    mpr(jtrans("You feel magic leave you."));
                     break;
 
                 case SPWPN_DISTORTION:
-                    mpr("Space warps around you for a moment!");
+                    mpr(jtrans("Space warps around you for a moment!"));
                     break;
 
                 default:
@@ -669,34 +672,34 @@ static void _unequip_weapon_effect(item_def& item, bool showMsgs, bool meld)
             {
             case SPWPN_FLAMING:
                 if (showMsgs)
-                    mprf("%s stops flaming.", msg.c_str());
+                    mprf(jtransc("%s stops flaming."), msg.c_str());
                 break;
 
             case SPWPN_FREEZING:
             case SPWPN_HOLY_WRATH:
                 if (showMsgs)
-                    mprf("%s stops glowing.", msg.c_str());
+                    mprf(jtransc("%s stops glowing."), msg.c_str());
                 break;
 
             case SPWPN_ELECTROCUTION:
                 if (showMsgs)
-                    mprf("%s stops crackling.", msg.c_str());
+                    mprf(jtransc("%s stops crackling."), msg.c_str());
                 break;
 
             case SPWPN_VENOM:
                 if (showMsgs)
-                    mprf("%s stops dripping with poison.", msg.c_str());
+                    mprf(jtransc("%s stops dripping with poison."), msg.c_str());
                 break;
 
             case SPWPN_PROTECTION:
                 if (showMsgs)
-                    mpr("You feel less protected.");
+                    mpr(jtrans("You feel less protected."));
                 you.redraw_armour_class = true;
                 break;
 
             case SPWPN_EVASION:
                 if (showMsgs)
-                    mpr("You feel like more of a target.");
+                    mpr(jtrans("You feel like more of a target."));
                 you.redraw_evasion = true;
                 break;
 
@@ -704,9 +707,9 @@ static void _unequip_weapon_effect(item_def& item, bool showMsgs, bool meld)
                 if (showMsgs)
                 {
                     if (you.species == SP_VAMPIRE)
-                        mpr("You feel your glee subside.");
+                        mpr(jtrans("You feel your glee subside."));
                     else
-                        mpr("You feel the dreadful sensation subside.");
+                        mpr(jtrans("You feel the dreadful sensation subside."));
                 }
                 break;
 
@@ -728,8 +731,8 @@ static void _unequip_weapon_effect(item_def& item, bool showMsgs, bool meld)
                     if (you_worship(GOD_LUGONU))
                     {
                         god_speaks(GOD_LUGONU,
-                                   "Lugonu absorbs the residual spatial "
-                                   "distortion as you unwield your weapon.");
+                                   jtransc("Lugonu absorbs the residual spatial "
+                                           "distortion as you unwield your weapon."));
                         break;
                     }
                     // Makes no sense to discourage unwielding a temporarily
@@ -743,7 +746,7 @@ static void _unequip_weapon_effect(item_def& item, bool showMsgs, bool meld)
 
             case SPWPN_ANTIMAGIC:
                 calc_mp();
-                mpr("You feel magic returning to you.");
+                mpr(jtrans("You feel magic returning to you."));
                 break;
 
                 // NOTE: When more are added here, *must* duplicate unwielding
@@ -754,7 +757,7 @@ static void _unequip_weapon_effect(item_def& item, bool showMsgs, bool meld)
             {
                 end_weapon_brand(item);
                 // We're letting this through even if hiding messages.
-                mpr("Your temporary branding evaporates.");
+                mpr(jtrans("Your temporary branding evaporates."));
             }
         }
     }
@@ -788,8 +791,8 @@ static void _unequip_weapon_effect(item_def& item, bool showMsgs, bool meld)
     monster *spectral_weapon = find_spectral_weapon(&you);
     if (spectral_weapon)
     {
-        mprf("Your spectral weapon disappears as %s.",
-             meld ? "your weapon melds" : "you unwield");
+        mprf(jtransc("Your spectral weapon disappears as %s."),
+             jtransc(meld ? "your weapon melds" : "you unwield"));
         end_spectral_weapon(spectral_weapon, false, true);
     }
 }
@@ -799,14 +802,14 @@ static void _spirit_shield_message(bool unmeld)
     if (!unmeld && you.spirit_shield() < 2)
     {
         dec_mp(you.magic_points);
-        mpr("You feel your power drawn to a protective spirit.");
+        mpr(jtrans("You feel your power drawn to a protective spirit."));
         if (you.species == SP_DEEP_DWARF)
-            mpr("Now linked to your health, your magic stops regenerating.");
+            mpr(jtrans("Now linked to your health, your magic stops regenerating."));
     }
     else if (!unmeld && player_mutation_level(MUT_MANA_SHIELD))
-        mpr("You feel the presence of a powerless spirit.");
+        mpr(jtrans("You feel the presence of a powerless spirit."));
     else // unmeld or already spirit-shielded
-        mpr("You feel spirits watching over you.");
+        mpr(jtrans("You feel spirits watching over you."));
 }
 
 static void _equip_armour_effect(item_def& arm, bool unmeld,
@@ -820,29 +823,34 @@ static void _equip_armour_effect(item_def& arm, bool unmeld,
         {
         case SPARM_RUNNING:
             if (!you.fishtail)
-                mpr("You feel quick.");
+            {
+                if (you.species == SP_NAGA || you.species == SP_CENTAUR)
+                    mpr("あなたは脚が速くなったようだ。");
+                else
+                    mpr("あなたは足が速くなったようだ。");
+            }
             break;
 
         case SPARM_FIRE_RESISTANCE:
-            mpr("You feel resistant to fire.");
+            mpr(jtrans("You feel resistant to fire."));
             break;
 
         case SPARM_COLD_RESISTANCE:
-            mpr("You feel resistant to cold.");
+            mpr(jtrans("You feel resistant to cold."));
             break;
 
         case SPARM_POISON_RESISTANCE:
-            mpr("You feel resistant to poison.");
+            mpr(jtrans("You feel resistant to poison."));
             break;
 
         case SPARM_SEE_INVISIBLE:
-            mpr("You feel perceptive.");
+            mpr(jtrans("You feel perceptive."));
             autotoggle_autopickup(false);
             break;
 
         case SPARM_INVISIBILITY:
             if (!you.duration[DUR_INVIS])
-                mpr("You become transparent for a moment.");
+                mpr(jtrans("You become transparent for a moment."));
             break;
 
         case SPARM_STRENGTH:
@@ -858,7 +866,7 @@ static void _equip_armour_effect(item_def& arm, bool unmeld,
             break;
 
         case SPARM_PONDEROUSNESS:
-            mpr("You feel rather ponderous.");
+            mpr(jtrans("You feel rather ponderous."));
             break;
 
         case SPARM_FLYING:
@@ -868,7 +876,7 @@ static void _equip_armour_effect(item_def& arm, bool unmeld,
                 if (you.airborne())
                 {
                     you.attribute[ATTR_PERM_FLIGHT] = 1;
-                    mpr("You feel rather light.");
+                    mpr(jtrans("You feel rather light."));
                 }
                 else
                 {
@@ -878,40 +886,40 @@ static void _equip_armour_effect(item_def& arm, bool unmeld,
             }
             if (!unmeld)
             {
-                mprf("(use the <w>%s</w>bility menu to %s flying)",
-                     command_to_string(CMD_USE_ABILITY).c_str(),
-                     you.attribute[ATTR_LAST_FLIGHT_STATUS]
-                         ? "stop or start" : "start or stop");
+                mprf(jtransc("(use the <w>%s</w>bility menu to %s flying)"),
+                     jtransc(you.attribute[ATTR_LAST_FLIGHT_STATUS]
+                             ? "stop or start" : "start or stop"),
+                     command_to_string(CMD_USE_ABILITY).c_str());
             }
 
             break;
 
         case SPARM_MAGIC_RESISTANCE:
-            mpr("You feel resistant to hostile enchantments.");
+            mpr(jtrans("You feel resistant to hostile enchantments."));
             break;
 
         case SPARM_PROTECTION:
-            mpr("You feel protected.");
+            mpr(jtrans("You feel protected."));
             break;
 
         case SPARM_STEALTH:
             if (!player_mutation_level(MUT_NO_STEALTH))
-                mpr("You feel stealthy.");
+                mpr(jtrans("You feel stealthy."));
             break;
 
         case SPARM_RESISTANCE:
-            mpr("You feel resistant to extremes of temperature.");
+            mpr(jtrans("You feel resistant to extremes of temperature."));
             break;
 
         case SPARM_POSITIVE_ENERGY:
-            mpr("You feel more protected from negative energy.");
+            mpr(jtrans("You feel more protected from negative energy."));
             break;
 
         case SPARM_ARCHMAGI:
             if (!you.skill(SK_SPELLCASTING))
-                mpr("You feel strangely lacking in power.");
+                mpr(jtrans("You feel strangely lacking in power."));
             else
-                mpr("You feel powerful.");
+                mpr(jtrans("You feel powerful."));
             break;
 
         case SPARM_SPIRIT_SHIELD:
@@ -919,7 +927,7 @@ static void _equip_armour_effect(item_def& arm, bool unmeld,
             break;
 
         case SPARM_ARCHERY:
-            mpr("You feel that your aim is more steady.");
+            mpr(jtrans("You feel that your aim is more steady."));
             break;
         }
     }
@@ -932,7 +940,7 @@ static void _equip_armour_effect(item_def& arm, bool unmeld,
 
     if (arm.cursed() && !unmeld)
     {
-        mpr("Oops, that feels deathly cold.");
+        mpr(jtrans("Oops, that feels deathly cold."));
         learned_something_new(HINT_YOU_CURSED);
 
         if (!known_cursed)
@@ -987,26 +995,26 @@ static void _unequip_armour_effect(item_def& item, bool meld,
     {
     case SPARM_RUNNING:
         if (!you.fishtail)
-            mpr("You feel rather sluggish.");
+            mpr(jtrans("You feel rather sluggish."));
         break;
 
     case SPARM_FIRE_RESISTANCE:
-        mpr("You feel less resistant to fire.");
+        mpr(jtrans("You feel less resistant to fire."));
         break;
 
     case SPARM_COLD_RESISTANCE:
-        mpr("You feel less resistant to cold.");
+        mpr(jtrans("You feel less resistant to cold."));
         break;
 
     case SPARM_POISON_RESISTANCE:
         if (player_res_poison() <= 0)
-            mpr("You no longer feel resistant to poison.");
+            mpr(jtrans("You no longer feel resistant to poison."));
         break;
 
     case SPARM_SEE_INVISIBLE:
         if (!you.can_see_invisible())
         {
-            mpr("You feel less perceptive.");
+            mpr(jtrans("You feel less perceptive."));
             _mark_unseen_monsters();
         }
         break;
@@ -1033,7 +1041,7 @@ static void _unequip_armour_effect(item_def& item, bool meld,
         break;
 
     case SPARM_PONDEROUSNESS:
-        mpr("That put a bit of spring back into your step.");
+        mpr(jtrans("That put a bit of spring back into your step."));
         break;
 
     case SPARM_FLYING:
@@ -1045,41 +1053,41 @@ static void _unequip_armour_effect(item_def& item, bool meld,
         break;
 
     case SPARM_MAGIC_RESISTANCE:
-        mpr("You feel less resistant to hostile enchantments.");
+        mpr(jtrans("You feel less resistant to hostile enchantments."));
         break;
 
     case SPARM_PROTECTION:
-        mpr("You feel less protected.");
+        mpr(jtrans("You feel less protected."));
         break;
 
     case SPARM_STEALTH:
         if (!player_mutation_level(MUT_NO_STEALTH))
-            mpr("You feel less stealthy.");
+            mpr(jtrans("You feel less stealthy."));
         break;
 
     case SPARM_RESISTANCE:
-        mpr("You feel hot and cold all over.");
+        mpr(jtrans("You feel hot and cold all over."));
         break;
 
     case SPARM_POSITIVE_ENERGY:
-        mpr("You feel less protected from negative energy.");
+        mpr(jtrans("You feel less protected from negative energy."));
         break;
 
     case SPARM_ARCHMAGI:
-        mpr("You feel strangely numb.");
+        mpr(jtrans("You feel strangely numb."));
         break;
 
     case SPARM_SPIRIT_SHIELD:
         if (!you.spirit_shield())
         {
-            mpr("You feel strangely alone.");
+            mpr(jtrans("You feel strangely alone."));
             if (you.species == SP_DEEP_DWARF)
-                mpr("Your magic begins regenerating once more.");
+                mpr(jtrans("Your magic begins regenerating once more."));
         }
         break;
 
     case SPARM_ARCHERY:
-        mpr("Your aim is not that steady anymore.");
+        mpr(jtrans("Your aim is not that steady anymore."));
         break;
 
     default:
@@ -1106,14 +1114,14 @@ static void _remove_amulet_of_faith(item_def &item)
     else if (!you_worship(GOD_NO_GOD)
         && !you_worship(GOD_XOM))
     {
-        simple_god_message(" seems less interested in you.");
+        simple_god_message(jtransc(" seems less interested in you."));
 
         if (you_worship(GOD_GOZAG))
         {
             you.attribute[ATTR_GOZAG_POTIONS] += 2;
             you.attribute[ATTR_GOZAG_SHOPS]   += 2;
 
-            simple_god_message(" increases your offered prices.");
+            simple_god_message(jtransc(" increases your offered prices."));
             return;
         }
 
@@ -1122,8 +1130,8 @@ static void _remove_amulet_of_faith(item_def &item)
         if (you.piety - piety_loss > 10)
         {
             mprf(MSGCH_GOD,
-                 "%s leaches power out of you as you remove it.",
-                 item.name(DESC_YOUR).c_str());
+                 jtransc("%s leaches power out of you as you remove it."),
+                 item.name(DESC_PLAIN).c_str());
             dprf("%s: piety leach: %d",
                  item.name(DESC_PLAIN).c_str(), piety_loss);
             lose_piety(piety_loss);
@@ -1142,11 +1150,11 @@ static void _equip_jewellery_effect(item_def &item, bool unmeld,
     switch (item.sub_type)
     {
     case RING_FIRE:
-        mpr("You feel more attuned to fire.");
+        mpr(jtrans("You feel more attuned to fire."));
         break;
 
     case RING_ICE:
-        mpr("You feel more attuned to ice.");
+        mpr(jtrans("You feel more attuned to ice."));
         break;
 
     case RING_SEE_INVISIBLE:
@@ -1178,7 +1186,7 @@ static void _equip_jewellery_effect(item_def &item, bool unmeld,
         if ((you.max_magic_points + 9) *
             (1.0+player_mutation_level(MUT_HIGH_MAGIC)/10.0) > 50)
         {
-            mpr("You feel your magic capacity is already quite full.");
+            mpr(jtrans("You feel your magic capacity is already quite full."));
         }
         else
             canned_msg(MSG_MANA_INCREASE);
@@ -1189,35 +1197,35 @@ static void _equip_jewellery_effect(item_def &item, bool unmeld,
 
     case RING_TELEPORTATION:
         if (you.no_tele())
-            mpr("You feel a slight, muted jump rush through you.");
+            mpr(jtrans("You feel a slight, muted jump rush through you."));
         else
             // keep in sync with player_teleport
-            mprf("You feel slightly %sjumpy.",
-                 (player_teleport(false) > 8) ? "more " : "");
+            mprf(jtransc("You feel slightly %sjumpy."),
+                 jtransc((player_teleport(false) > 8) ? "more " : ""));
         break;
 
     case AMU_FAITH:
         if (you.species == SP_DEMIGOD)
-            mpr("You feel a surge of self-confidence.");
+            mpr(jtrans("You feel a surge of self-confidence."));
         else if (you_worship(GOD_RU) && you.piety >= piety_breakpoint(5))
         {
-            simple_god_message(" says: An ascetic of your devotion"
-                               " has no use for such trinkets.");
+            simple_god_message(jtransc(" says: An ascetic of your devotion"
+                                       " has no use for such trinkets."));
         }
         else
         {
-            mprf(MSGCH_GOD, "You feel a %ssurge of divine interest.",
-                            you_worship(GOD_NO_GOD) ? "strange " : "");
+            mpr_nojoin(MSGCH_GOD, jtransc(make_stringf("You feel a %ssurge of divine interest.",
+                                                       you_worship(GOD_NO_GOD) ? "strange " : "")));
         }
 
         if (you_worship(GOD_GOZAG))
-            simple_god_message(" discounts your offered prices.");
+            simple_god_message(jtransc(" discounts your offered prices."));
         break;
 
     case AMU_THE_GOURMAND:
         // What's this supposed to achieve? (jpeg)
         you.duration[DUR_GOURMAND] = 0;
-        mpr("You feel a craving for the dungeon's cuisine.");
+        mpr(jtrans("You feel a craving for the dungeon's cuisine."));
         break;
 
     case AMU_GUARDIAN_SPIRIT:
@@ -1233,10 +1241,10 @@ static void _equip_jewellery_effect(item_def &item, bool unmeld,
             amount += 30 + random2(150);
         if (amount)
         {
-            mprf("The amulet engulfs you in a%s magical discharge!",
-                 (amount > 250) ? " massive" :
-                 (amount >  50) ? " violent" :
-                                  "");
+            mpr(jtransc(make_stringf("The amulet engulfs you in a%s magical discharge!",
+                                     (amount > 250) ? " massive" :
+                                     (amount >  50) ? " violent" :
+                                     "")));
             // XXX: This can probably be improved.
             contaminate_player(pow(amount, 0.333) * 1000, item_type_known(item));
 
@@ -1246,15 +1254,15 @@ static void _equip_jewellery_effect(item_def &item, bool unmeld,
             if (you.duration[DUR_SLOW])
                 dir--;
             if (dir > 0)
-                mprf(MSGCH_DURATION, "You abruptly slow down.");
+                mpr_nojoin(MSGCH_DURATION, jtrans("You abruptly slow down."));
             else if (dir < 0)
-                mprf(MSGCH_DURATION, "Your slowness suddenly goes away.");
+                mpr_nojoin(MSGCH_DURATION, jtrans("Your slowness suddenly goes away."));
             if (you.duration[DUR_TELEPORT])
-                mprf(MSGCH_DURATION, "You feel strangely stable.");
+                mpr_nojoin(MSGCH_DURATION, jtrans("You feel strangely stable."));
             if (you.duration[DUR_BERSERK])
-                mprf(MSGCH_DURATION, "You violently calm down.");
+                mpr_nojoin(MSGCH_DURATION, jtrans("You violently calm down."));
             if (you.duration[DUR_FINESSE])
-                mprf(MSGCH_DURATION, "You suddenly lose your finesse.");
+                mpr_nojoin(MSGCH_DURATION, jtrans("You suddenly lose your finesse."));
             you.duration[DUR_HASTE] = 0;
             you.duration[DUR_SLOW] = 0;
             you.duration[DUR_TELEPORT] = 0;
@@ -1262,7 +1270,7 @@ static void _equip_jewellery_effect(item_def &item, bool unmeld,
             you.duration[DUR_FINESSE] = 0;
         }
         else
-            mprf("You feel %s static.", you.species == SP_FORMICID ? "familiarly" : "strangely");
+            mpr(jtrans(make_stringf("You feel %s static.", you.species == SP_FORMICID ? "familiarly" : "strangely")));
     }
 
     bool new_ident = false;
@@ -1283,8 +1291,8 @@ static void _equip_jewellery_effect(item_def &item, bool unmeld,
 
     if (item.cursed() && !unmeld)
     {
-        mprf("Oops, that %s feels deathly cold.",
-             jewellery_is_amulet(item)? "amulet" : "ring");
+        mprf(jtransc("Oops, that %s feels deathly cold."),
+             jtransc(jewellery_is_amulet(item)? "amulet" : "ring"));
         learned_something_new(HINT_YOU_CURSED);
 
         int amusement = 32;
@@ -1395,7 +1403,7 @@ static void _unequip_jewellery_effect(item_def &item, bool mesg, bool meld,
 
     case AMU_GUARDIAN_SPIRIT:
         if (you.species == SP_DEEP_DWARF)
-            mpr("Your magic begins regenerating once more.");
+            mpr(jtransc("Your magic begins regenerating once more."));
         break;
     }
 

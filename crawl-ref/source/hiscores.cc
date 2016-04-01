@@ -26,6 +26,7 @@
 #include "branch.h"
 #include "chardump.h"
 #include "cio.h"
+#include "database.h"
 #include "dungeon.h"
 #include "end.h"
 #include "english.h"
@@ -56,6 +57,7 @@
 #include "version.h"
 
 #define SCORE_VERSION "0.1"
+#define HISCORE_INDENT 25
 
 // enough memory allocated to snarf in the scorefile entries
 static unique_ptr<scorefile_entry> hs_list[SCORE_FILE_ENTRIES];
@@ -535,9 +537,22 @@ static string _hiscore_date_string(time_t time)
                                      date->tm_year + 1900);
 }
 
+static string _hiscore_date_string_j(time_t time)
+{
+    struct tm *date = TIME_FN(&time);
+
+    const char *mons[12] = { "Jan", "Feb", "Mar", "Apr", "May", "June",
+                             "July", "Aug", "Sept", "Oct", "Nov", "Dec" };
+
+    return make_stringf("%04d/%02d/%02d",
+                        date->tm_year + 1900,
+                        date->tm_mon+1,
+                        date->tm_mday);
+}
+
 static string _hiscore_newline_string()
 {
-    return "\n             ";
+    return "\n" + string(HISCORE_INDENT, ' ');
 }
 
 string hiscores_format_single_long(const scorefile_entry &se, bool verbose)
@@ -1324,21 +1339,21 @@ void scorefile_entry::init_death_cause(int dam, mid_t dsrc,
             death_source_name = mons->full_name(desc, true);
 
         if (mons_is_player_shadow(mons))
-            death_source_name = "their own shadow"; // heh
+            death_source_name = jtrans("their own shadow"); // heh
 
         if (mons->mid == MID_YOU_FAULTLESS)
-            death_source_name = "themself";
+            death_source_name = jtrans("themself");
 
         if (mons->has_ench(ENCH_SHAPESHIFTER))
-            death_source_name += " (shapeshifter)";
+            death_source_name += " " + jtrans("(shapeshifter)");
         else if (mons->has_ench(ENCH_GLOWING_SHAPESHIFTER))
-            death_source_name += " (glowing shapeshifter)";
+            death_source_name += " " + jtrans("(glowing shapeshifter)");
 
         if (mons->type == MONS_PANDEMONIUM_LORD)
-            death_source_name += " the pandemonium lord";
+            death_source_name += " " + jtrans("the pandemonium lord");
 
         if (mons->has_ench(ENCH_PHANTOM_MIRROR))
-            death_source_name += " (illusionary)";
+            death_source_name += " " + jtrans("(illusionary)");
 
         if (mons_is_unique(mons->type))
             death_source_flags.insert("unique");
@@ -1703,8 +1718,8 @@ void scorefile_entry::init(time_t dt)
 string scorefile_entry::hiscore_line(death_desc_verbosity verbosity) const
 {
     string line = character_description(verbosity);
-    line += death_description(verbosity);
     line += death_place(verbosity);
+    line += death_description(verbosity);
     line += game_time(verbosity);
 
     return line;
@@ -1716,7 +1731,8 @@ string scorefile_entry::game_time(death_desc_verbosity verbosity) const
 
     if (verbosity == DDV_VERBOSE)
     {
-        line += make_stringf("The game lasted %s (%d turns).",
+        line += _hiscore_newline_string();
+        line += make_stringf(jtransc("The game lasted %s (%d turns)."),
                              make_time_string(real_time).c_str(), num_turns);
 
         line += _hiscore_newline_string();
@@ -1869,25 +1885,24 @@ scorefile_entry::character_description(death_desc_verbosity verbosity) const
     // Please excuse the following bit of mess in the name of flavour ;)
     if (verbose)
     {
-        desc = make_stringf("%8d %s the %s (level %d",
-                  points, name.c_str(), title.c_str(), lvl);
+        desc = make_stringf(jtransc("%8d %s the %s (level %d"),
+                            points, title.c_str(), name.c_str(), lvl);
     }
     else
     {
-        desc = make_stringf("%8d %s the %s %s (level %d",
-                  points, name.c_str(),
+        desc = make_stringf(jtransc("%8d %s the %s %s (level %d"),
+                  points,
                   _species_name(race).c_str(),
-                  _job_name(job), lvl);
+                  _job_name(job),
+                  name.c_str(), lvl);
     }
 
     if (final_max_max_hp > 0)  // as the other two may be negative
     {
-        desc += make_stringf(", %d/%d", final_hp, final_max_hp);
+        desc += make_stringf(jtransc(", %d/%d"), final_hp, final_max_hp);
 
         if (final_max_hp < final_max_max_hp)
             desc += make_stringf(" (%d)", final_max_max_hp);
-
-        desc += " HPs";
     }
 
     desc += wiz_mode ? ") *WIZ*" : explore_mode ? ") *EXPLORE*" : ")";
@@ -1895,17 +1910,15 @@ scorefile_entry::character_description(death_desc_verbosity verbosity) const
 
     if (verbose)
     {
-        const char* srace = _species_name(race).c_str();
-        desc += make_stringf("Began as a%s %s %s",
-                 is_vowel(srace[0]) ? "n" : "",
-                 srace,
-                 _job_name(job));
+        const string srace = jtrans(_species_name(race).c_str());
+        desc += make_stringf(jtransc("この%sの%sは"),
+                             jtransc(_species_name(race)),
+                             jtransc(_job_name(job)));
 
         ASSERT(birth_time);
-        desc += " on ";
-        desc += _hiscore_date_string(birth_time);
+        desc += _hiscore_date_string_j(birth_time);
+        desc += "にゲームを開始し、";
 
-        desc = _append_sentence_delimiter(desc, ".");
         desc += _hiscore_newline_string();
 
         if (race != SP_DEMIGOD && god != GOD_NO_GOD)
@@ -1955,7 +1968,7 @@ string scorefile_entry::death_place(death_desc_verbosity verbosity) const
         place += "...";
 
     // where did we die?
-    place += " " + prep_branch_level_name(level_id(branch, dlvl));
+    place += prep_branch_level_name(level_id(branch, dlvl)) + "で";
 
     if (!mapdesc.empty())
         place += make_stringf(" (%s)", mapdesc.c_str());
@@ -1966,9 +1979,6 @@ string scorefile_entry::death_place(death_desc_verbosity verbosity) const
         place += " on ";
         place += _hiscore_date_string(death_time);
     }
-
-    place = _append_sentence_delimiter(place, ".");
-    place += _hiscore_newline_string();
 
     return place;
 }
@@ -1991,6 +2001,7 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
     const bool oneline = (verbosity == DDV_ONELINE);
 
     string desc;
+    string indent = string(HISCORE_INDENT, ' ');
 
     if (oneline)
         desc = " ";
@@ -2000,14 +2011,8 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
     case KILLED_BY_MONSTER:
         if (terse)
             desc += death_source_desc();
-        else if (oneline)
-            desc += "slain by " + death_source_desc();
         else
-        {
-            desc += damage_verb();
-            desc += " by ";
-            desc += death_source_desc();
-        }
+            desc += death_source_desc() + "に殺された";
 
         // put the damage on the weapon line if there is one
         if (auxkilldata.empty())
@@ -2016,25 +2021,25 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
 
     case KILLED_BY_HEADBUTT:
         if (terse)
-            desc += apostrophise(death_source_desc()) + " headbutt";
+            desc += death_source_desc() + "の頭突き";
         else
-            desc += "Headbutted by " + death_source_desc();
+            desc += death_source_desc() + "の頭突きで殺された";
         needs_damage = true;
         break;
 
     case KILLED_BY_ROLLING:
         if (terse)
-            desc += "squashed by " + death_source_desc();
+            desc += death_source_desc() + "に轢かれた";
         else
-            desc += "Rolled over by " + death_source_desc();
+            desc += death_source_desc() + "に轢かれて死んだ";
         needs_damage = true;
         break;
 
     case KILLED_BY_SPINES:
         if (terse)
-            desc += apostrophise(death_source_desc()) + " spines";
+            desc += death_source_desc() + "の棘";
         else
-            desc += "Impaled on " + apostrophise(death_source_desc()) + " spines" ;
+            desc += death_source_desc() + "の棘に串刺しにされて死んだ" ;
         needs_damage = true;
         break;
 
@@ -2042,24 +2047,25 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
         if (death_source_name.empty() || terse)
         {
             if (!terse)
-                desc += "Succumbed to poison";
+                desc += jtrans("Succumbed to poison");
             else if (!death_source_name.empty())
-                desc += "poisoned by " + death_source_name;
+                desc += death_source_name + jtrans("poisoned by ");
             else
-                desc += "poison";
+                desc += jtrans("poison");
             if (!auxkilldata.empty())
                 desc += " (" + auxkilldata + ")";
         }
         else if (auxkilldata.empty()
                  && death_source_name.find("poison") != string::npos)
         {
-            desc += "Succumbed to " + death_source_name;
+            desc += death_source_name + jtrans("Succumbed to ");
         }
         else
         {
-            desc += "Succumbed to " + ((death_source_name == "you")
-                      ? "their own" : apostrophise(death_source_name)) + " "
-                    + (auxkilldata.empty()? "poison" : auxkilldata);
+            desc += jtrans((death_source_name == "you") ? "their own" : death_source_name)
+                  + "の"
+                  + jtrans(auxkilldata.empty() ? "poison" : auxkilldata)
+                  + jtrans("Succumbed to ");
         }
         break;
 
@@ -2067,19 +2073,19 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
         ASSERT(!auxkilldata.empty()); // there are no nameless clouds
         if (terse)
             if (death_source_name.empty())
-                desc += "cloud of " + auxkilldata;
+                desc += auxkilldata + jtrans("cloud of ");
             else
-                desc += "cloud of " +auxkilldata + " [" +
-                        death_source_name == "you" ? "self" : death_source_name
+                desc += auxkilldata + jtrans("cloud of ") + " [" +
+                        death_source_name == "you" ? "自ら" : death_source_name
                         + "]";
         else
         {
-            desc += make_stringf("Engulfed by %s%s %s",
-                death_source_name.empty() ? "a" :
-                  death_source_name == "you" ? "their own" :
-                  apostrophise(death_source_name).c_str(),
-                death_source_name.empty() ? " cloud of" : "",
-                auxkilldata.c_str());
+            desc += make_stringf(jtransc("Engulfed by %s%s %s"),
+                                 jtransc(death_source_name.empty() ? "" :
+                                         death_source_name == "you" ? "their own" :
+                                         death_source_name),
+                                 jtransc(death_source_name.empty() ? " cloud of" : ""),
+                                 jtransc(auxkilldata));
         }
         needs_damage = true;
         break;
@@ -2088,10 +2094,9 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
         if (oneline || semiverbose)
         {
             // keeping this short to leave room for the deep elf spellcasters:
-            desc += make_stringf("%s by ",
-                      _range_type_verb(auxkilldata.c_str()));
-            desc += (death_source_name == "you") ? "themself"
-                                                 : death_source_desc();
+            desc += jtrans((death_source_name == "you") ? "themself"
+                                                        : death_source_desc())
+                  + "に撃たれて死んだ";
 
             if (semiverbose)
             {
@@ -2117,29 +2122,29 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
             if (death_source_name == "you")
             {
                 needs_damage = true;
-                desc += make_stringf("Killed by their own %s",
-                         auxkilldata.substr(3).c_str());
+                desc += make_stringf(jtransc("Killed by their own %s"),
+                                     auxkilldata.substr(3).c_str());
             }
             else
             {
                 needs_called_by_monster_line = true;
-                desc += make_stringf("Killed %s",
-                          auxkilldata.c_str());
+                desc += make_stringf(jtransc("Killed %s"),
+                                     auxkilldata.c_str());
             }
         }
         else
         {
+            if (death_source_name == "you")
+                desc += jtrans("themself");
+            else
+                desc += jtrans(death_source_desc());
+
             // Note: This is also used for the "by" cases in non-verbose
             //       mode since listing the monster is more imporatant.
             if (semiverbose)
-                desc += "Killed by ";
+                desc += jtrans("Killed by ");
             else if (!terse)
-                desc += "Killed from afar by ";
-
-            if (death_source_name == "you")
-                desc += "themself";
-            else
-                desc += death_source_desc();
+                desc += jtrans("Killed from afar by ");
 
             if (!auxkilldata.empty())
                 needs_beam_cause_line = true;
@@ -2154,9 +2159,9 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
         else
         {
             if (race == SP_MUMMY)
-                desc += "Turned to ash by lava";
+                desc += jtrans("Turned to ash by lava");
             else
-                desc += "Took a swim in molten lava";
+                desc += jtrans("Took a swim in molten lava");
         }
         break;
 
@@ -2164,40 +2169,40 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
         if (you.undead_state())
         {
             if (terse)
-                desc = "fell apart";
+                desc = jtrans("fell apart");
             else if (race == SP_MUMMY)
-                desc = "Soaked and fell apart";
+                desc = jtrans("Soaked and fell apart");
             else
-                desc = "Sank and fell apart";
+                desc = jtrans("Sank and fell apart");
         }
         else
         {
             if (!death_source_name.empty())
             {
-                desc += terse? "drowned by " : "Drowned by ";
                 desc += death_source_name;
+                desc += jtrans(terse ? "drowned by " : "Drowned by ");
                 needs_damage = true;
             }
             else
-                desc += terse? "drowned" : "Drowned";
+                desc += jtrans(terse ? "drowned" : "Drowned");
         }
         break;
 
     case KILLED_BY_STUPIDITY:
         if (terse)
-            desc += "stupidity";
+            desc += jtrans("stupidity");
         else if (species_is_unbreathing(static_cast<species_type>(race)))
-            desc += "Forgot to exist";
+            desc += jtrans("Forgot to exist");
         else
-            desc += "Forgot to breathe";
+            desc += jtrans("Forgot to breathe");
         break;
 
     case KILLED_BY_WEAKNESS:
-        desc += terse? "collapsed" : "Collapsed under their own weight";
+        desc += jtrans(terse ? "collapsed" : "Collapsed under their own weight");
         break;
 
     case KILLED_BY_CLUMSINESS:
-        desc += terse? "clumsiness" : "Slipped on a banana peel";
+        desc += jtrans(terse ? "clumsiness" : "Slipped on a banana peel");
         break;
 
     case KILLED_BY_TRAP:
@@ -2205,34 +2210,34 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
             desc += auxkilldata.c_str();
         else
         {
-            desc += make_stringf("Killed by triggering %s",
-                                 auxkilldata.c_str());
+            desc += make_stringf(jtransc("Killed by triggering %s"),
+                                 jtransc(auxkilldata));
         }
         needs_damage = true;
         break;
 
     case KILLED_BY_LEAVING:
         if (terse)
-            desc += "left";
+            desc += "脱出";
         else
         {
             if (num_runes > 0)
-                desc += "Got out of the dungeon";
+                desc += jtrans("Got out of the dungeon");
             else if (species_is_undead(static_cast<species_type>(race)))
-                desc += "Safely got out of the dungeon";
+                desc += jtrans("Safely got out of the dungeon");
             else
-                desc += "Got out of the dungeon alive";
+                desc += jtrans("Got out of the dungeon alive");
         }
         break;
 
     case KILLED_BY_WINNING:
-        desc += terse? "escaped" : "Escaped with the Orb";
+        desc += jtrans(terse ? "escaped" : "Escaped with the Orb");
         if (num_runes < 1)
-            desc += "!";
+            desc += "！";
         break;
 
     case KILLED_BY_QUITTING:
-        desc += terse? "quit" : "Quit the game";
+        desc += jtrans(terse ? "quit" : "Quit the game");
         break;
 
     case KILLED_BY_WIZMODE:
@@ -2241,50 +2246,51 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
 
     case KILLED_BY_DRAINING:
         if (terse)
-            desc += "drained";
+            desc += "衰弱";
         else
         {
-            desc += "Drained of all life";
             if (!death_source_desc().empty())
             {
-                desc += " by " + death_source_desc();
+                desc += death_source_desc() + "に";
 
                 if (!auxkilldata.empty())
                     needs_beam_cause_line = true;
             }
             else if (!auxkilldata.empty())
-                desc += " by " + auxkilldata;
+                desc += auxkilldata + "に";
+
+            desc += jtrans("Drained of all life");
         }
         break;
 
     case KILLED_BY_STARVATION:
-        desc += terse? "starvation" : "Starved to death";
+        desc += jtrans(terse ? "starvation" : "Starved to death");
         break;
 
     case KILLED_BY_FREEZING:    // refrigeration spell
-        desc += terse? "frozen" : "Froze to death";
+        desc += jtrans(terse ? "frozen" : "Froze to death");
         needs_damage = true;
         break;
 
     case KILLED_BY_BURNING:     // sticky flame
         if (terse)
-            desc += "burnt";
+            desc += jtrans("burnt");
         else if (!death_source_desc().empty())
         {
-            desc += "Incinerated by " + death_source_desc();
+            desc += death_source_desc() + jtrans("Incinerated by ");
 
             if (!auxkilldata.empty())
                 needs_beam_cause_line = true;
         }
         else
-            desc += "Burnt to a crisp";
+            desc += jtrans("Burnt to a crisp");
 
         needs_damage = true;
         break;
 
     case KILLED_BY_WILD_MAGIC:
         if (auxkilldata.empty())
-            desc += terse? "wild magic" : "Killed by wild magic";
+            desc += jtrans(terse ? "wild magic" : "Killed by wild magic");
         else
         {
             if (terse)
@@ -2305,13 +2311,13 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
         if (terse)
             desc += "xom";
         else
-            desc += auxkilldata.empty() ? "Killed for Xom's enjoyment"
-                                        : "Killed by " + auxkilldata;
+            desc += auxkilldata.empty() ? jtrans("Killed for Xom's enjoyment")
+                                        : auxkilldata + jtrans("Killed by ");
         needs_damage = true;
         break;
 
     case KILLED_BY_ROTTING:
-        desc += terse? "rotting" : "Rotted away";
+        desc += jtrans(terse ? "rotting" : "Rotted away");
         if (!auxkilldata.empty())
             desc += " (" + auxkilldata + ")";
         if (!death_source_desc().empty())
@@ -2320,65 +2326,64 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
 
     case KILLED_BY_TARGETING:
         if (terse)
-            desc += "shot self";
+            desc += jtrans("shot self");
         else
-        {
-            desc += "Killed themself with ";
-            if (auxkilldata.empty())
-                desc += "bad targeting";
-            else
-                desc += "a badly aimed " + auxkilldata;
-        }
+            desc += jtrans("Killed themself with ");
+
         needs_damage = true;
         break;
 
     case KILLED_BY_REFLECTION:
         needs_damage = true;
         if (terse)
-            desc += "reflected bolt";
+            desc += jtrans("reflected bolt");
         else
         {
-            desc += "Killed by a reflected ";
+            if (!death_source_name.empty() && !oneline && !semiverbose)
+            {
+                desc += death_source_name + "に跳ね返された";
+                needs_damage = false;
+            }
+            else
+                desc += jtrans("Killed by a reflected ");
+
             if (auxkilldata.empty())
-                desc += "bolt";
+                desc += jtrans("bolt");
             else
                 desc += auxkilldata;
 
-            if (!death_source_name.empty() && !oneline && !semiverbose)
-            {
-                desc += "\n";
-                desc += "             ";
-                desc += "... reflected by ";
-                desc += death_source_name;
-                needs_damage = false;
-            }
+            desc += "で死んだ";
         }
         break;
 
     case KILLED_BY_BOUNCE:
         if (terse)
-            desc += "bounced beam";
+            desc += jtrans("bounced beam");
         else
         {
-            desc += "Killed themself with a bounced ";
+            desc += jtrans("Killed themself with a bounced ");
             if (auxkilldata.empty())
-                desc += "beam";
+                desc += jtrans("beam");
             else
                 desc += auxkilldata;
+
+            desc += "で死んだ";
         }
         needs_damage = true;
         break;
 
     case KILLED_BY_SELF_AIMED:
         if (terse)
-            desc += "suicidal targeting";
+            desc += jtrans("suicidal targeting");
         else
         {
-            desc += "Shot themself with ";
+            desc += jtrans("Shot themself with ");
             if (auxkilldata.empty())
-                desc += "a beam";
+                desc += jtrans("a beam");
             else
-                desc += article_a(auxkilldata, true);
+                desc += auxkilldata;
+
+            desc += "で撃って死んだ";
         }
         needs_damage = true;
         break;
@@ -2387,79 +2392,78 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
         if (terse)
         {
             if (death_source_name.empty())
-                desc += "spore";
+                desc += jtrans("spore");
             else
                 desc += death_source_name;
         }
         else
         {
-            desc += "Killed by an exploding ";
             if (death_source_name.empty())
-                desc += "spore";
+                desc += jtrans("spore");
             else
                 desc += death_source_name;
+
+            desc += jtrans("Killed by an exploding ");
         }
         needs_damage = true;
         break;
 
     case KILLED_BY_TSO_SMITING:
-        desc += terse? "smitten by Shining One" : "Smitten by the Shining One";
+        desc += jtrans(terse ? "輝けるものの打擲" : "Smitten by the Shining One");
         needs_damage = true;
         break;
 
     case KILLED_BY_BEOGH_SMITING:
-        desc += terse? "smitten by Beogh" : "Smitten by Beogh";
+        desc += jtrans(terse ? "ベオの打擲" : "Smitten by Beogh");
         needs_damage = true;
         break;
 
     case KILLED_BY_PETRIFICATION:
-        desc += terse? "petrified" : "Turned to stone";
+        desc += jtrans(terse ? "petrified" : "Turned to stone");
         break;
 
     case KILLED_BY_SOMETHING:
         if (!auxkilldata.empty())
-            desc += (terse ? "" : "Killed by ") + auxkilldata;
+            desc += auxkilldata + (terse ? "" : jtrans("Killed by "));
         else
-            desc += terse? "died" : "Died";
+            desc += jtrans(terse ? "died" : "Died");
         needs_damage = true;
         break;
 
     case KILLED_BY_FALLING_DOWN_STAIRS:
-        desc += terse? "fell downstairs" : "Fell down a flight of stairs";
+        desc += jtrans(terse? "fell downstairs" : "Fell down a flight of stairs");
         needs_damage = true;
         break;
 
     case KILLED_BY_FALLING_THROUGH_GATE:
-        desc += terse? "fell through a gate" : "Fell down through a gate";
+        desc += jtrans(terse ? "fell through a gate" : "Fell down through a gate");
         needs_damage = true;
         break;
 
     case KILLED_BY_ACID:
         if (terse)
-            desc += "acid";
+            desc += jtrans("acid");
         else if (!death_source_desc().empty())
         {
-            desc += "Splashed by "
-                    + apostrophise(death_source_desc())
-                    + " acid";
+            desc += death_source_desc()
+                  + "の酸を浴びて死んだ";
         }
         else
-            desc += "Splashed with acid";
+            desc += jtrans("Splashed with acid");
         needs_damage = true;
         break;
 
     case KILLED_BY_CURARE:
-        desc += terse? "asphyx" : "Asphyxiated";
+        desc += jtrans(terse? "asphyx" : "Asphyxiated");
         break;
 
     case KILLED_BY_DIVINE_WRATH:
         if (terse)
-            desc += "divine wrath";
+            desc += jtrans("divine wrath");
         else
         {
-            desc += "Killed by ";
             if (auxkilldata.empty())
-                desc += "divine wrath";
+                desc += jtrans("divine wrath");
             else
             {
                 // Lugonu's touch or "the <retribution> of <deity>";
@@ -2469,6 +2473,7 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
 
                 desc += auxkilldata;
             }
+            desc += "に触れて死んだ";
         }
         needs_damage = true;
         if (!death_source_name.empty())
@@ -2477,13 +2482,13 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
 
     case KILLED_BY_DISINT:
         if (terse)
-            desc += "disintegration";
+            desc += jtrans("disintegration");
         else
         {
             if (death_source_name == "you")
-                desc += "Blew themself up";
+                desc += jtrans("Blew themself up");
             else
-                desc += "Blown up by " + death_source_desc();
+                desc += death_source_desc() + jtrans("Blown up by ");
             needs_beam_cause_line = true;
         }
 
@@ -2491,32 +2496,32 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
         break;
 
     case KILLED_BY_MIRROR_DAMAGE:
-        desc += terse ? "mirror damage" : "Killed by mirror damage";
+        desc += jtrans(terse ? "mirror damage" : "Killed by mirror damage");
         needs_damage = true;
         break;
 
     case KILLED_BY_FRAILTY:
-        desc += terse ? "frailty" : "Became unviable by " + auxkilldata;
+        desc += jtrans(terse ? "frailty" : auxkilldata + jtrans("Became unviable by "));
         break;
 
     case KILLED_BY_BARBS:
-        desc += terse ? "barbs" : "Succumbed to a manticore's barbed spikes";
+        desc += jtrans(terse ? "barbs" : "Succumbed to a manticore's barbed spikes");
         break;
 
     case KILLED_BY_BEING_THROWN:
         if (terse)
-            desc += apostrophise(death_source_desc()) + " throw";
+            desc += death_source_desc() + "の投擲";
         else
-            desc += "Thrown by " + death_source_desc();
+            desc += death_source_desc() + "に投げ飛ばされて死んだ";
         needs_damage = true;
         break;
 
     case KILLED_BY_COLLISION:
         if (terse)
-            desc += auxkilldata + " collision";
+            desc += auxkilldata + "との衝突";
         else
         {
-            desc += "Collided with " + auxkilldata;
+            desc += auxkilldata + "と衝突して死んだ";
             needs_called_by_monster_line = true;
         }
         needs_damage = true;
@@ -2541,7 +2546,7 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
         else
         {
             desc += "\n";
-            desc += "             ";
+            desc += indent;
             desc += "... caused by ";
             desc += auxkilldata;
         }
