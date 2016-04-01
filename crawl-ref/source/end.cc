@@ -330,7 +330,7 @@ NORETURN void end_game(scorefile_entry &se)
         macro_save();
 
     clrscr();
-    cprintf("Goodbye, %s.", you.your_name.c_str());
+    cprintf(jtransc("Goodbye, %s."), you.your_name.c_str());
     cprintf("\n\n    "); // Space padding where # would go in list format
 
     string hiscore = hiscores_format_single_long(se, true);
@@ -339,7 +339,7 @@ NORETURN void end_game(scorefile_entry &se)
 
     cprintf("%s", hiscore.c_str());
 
-    cprintf("\nBest Crawlers - %s\n",
+    cprintf(("\n" + jtransln("Best Crawlers - %s\n")).c_str(),
             crawl_state.game_type_name().c_str());
 
     // "- 5" gives us an extra line in case the description wraps on a line.

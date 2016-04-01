@@ -2051,11 +2051,373 @@ Save macros?
 
 マクロを保存しますか？[Y/N]
 %%%%
+Goodbye, %s.
+
+さようなら、%s！
+%%%%
+Best Crawlers - %s
+
+冒険者の殿堂 - %s
+%%%%
 ############################## files.cc ##############################
 %%%%
 Level annotation: %s
 
 階層の特記事項: %s
+%%%%
+############################## hiscores.cc ##############################
+%%%%
+their own shadow
+
+自らの影
+%%%%
+themself
+
+自業自得
+%%%%
+(shapeshifter)
+
+(変身能力者)
+%%%%
+(glowing shapeshifter)
+
+(暴走した変身能力者)
+%%%%
+the pandemonium lord
+
+パンデモニウムの君主
+%%%%
+(illusionary)
+
+(幻影)
+%%%%
+The game lasted %s (%d turns).
+
+ゲームの所要時間: %s (%dターン)
+%%%%
+%8d %s the %s (level %d
+
+%8d %s『%s』(レベル%d
+%%%%
+%8d %s the %s %s (level %d
+
+%8d %sの%s『%s』(レベル%d
+%%%%
+, %d/%d
+
+, HP %d/%d
+%%%%
+Succumbed to poison
+
+毒死
+%%%%
+poisoned by
+
+に毒に冒されて死んだ
+%%%%
+Succumbed to
+
+に冒されて死んだ
+%%%%
+their own
+
+自ら
+%%%%
+cloud of
+
+の雲
+%%%%
+Engulfed by %s%s %s
+
+%s%s%sに包まれて死んだ
+%%%%
+Killed by their own %s
+
+自らの%sで死んだ
+%%%%
+Killed %s
+
+%sで死んだ
+%%%%
+Killed by
+
+で死んだ
+%%%%
+Killed from afar by
+
+に撃たれて死んだ
+%%%%
+Turned to ash by lava
+
+溶岩で灰になって死んだ
+%%%%
+Took a swim in molten lava
+
+溶岩にダイブして死んだ
+%%%%
+fell apart
+
+バラバラになった
+%%%%
+Soaked and fell apart
+
+水に浸かってバラバラになった
+%%%%
+Sank and fell apart
+
+水に沈んでバラバラになった
+%%%%
+drowned by
+
+に溺れさせられた
+%%%%
+drowned
+
+溺死
+%%%%
+stupidity
+
+知力低下
+%%%%
+Forgot to exist
+
+存在することを忘れて消滅した
+%%%%
+Forgot to breathe
+
+呼吸することを忘れて死んだ
+%%%%
+collapsed
+
+身体崩壊
+%%%%
+Collapsed under their own weight
+
+自重に耐えきれず体が崩壊した
+%%%%
+clumsiness
+
+致命的不器用
+%%%%
+Slipped on a banana peel
+
+バナナの皮で滑って死んだ
+%%%%
+Killed by triggering %s
+
+%sを発動させて死んだ
+%%%%
+Got out of the dungeon
+
+ダンジョンを脱出した
+%%%%
+Safely got out of the dungeon
+
+安全にダンジョンを脱出した
+%%%%
+Got out of the dungeon alive
+
+ダンジョンから生還した
+%%%%
+escaped
+
+脱出した
+%%%%
+Escaped with the Orb
+
+オーブを手にして脱出した
+%%%%
+quit
+
+放棄
+%%%%
+Quit the game
+
+ゲームを放棄した
+%%%%
+wizmode
+
+ウィザードモード
+%%%%
+Entered wizard mode
+
+ウィザードモードに入った
+%%%%
+Drained of all life
+
+すべての生命力を吸われた
+%%%%
+starvation
+
+餓死
+%%%%
+Starved to death
+
+餓死した
+%%%%
+frozen
+
+凍結
+%%%%
+Froze to death
+
+凍死した
+%%%%
+burnt
+
+焼死
+%%%%
+Incinerated by
+
+に焼き殺された
+%%%%
+Burnt to a crisp
+
+黒焦げになって死んだ
+%%%%
+Killed by wild magic
+
+魔力の暴走によって死んだ
+%%%%
+Killed %s%s
+
+%s死んだ
+%%%%
+Killed for Xom's enjoyment
+
+ゾムにもてあそばれて死んだ
+%%%%
+rotting
+
+腐敗
+%%%%
+Rotted away
+
+体が腐敗して死んだ
+%%%%
+shot self
+
+自分を射撃
+%%%%
+Killed themself with
+
+自らを射撃して死んだ
+%%%%
+reflected bolt
+
+跳弾
+%%%%
+Killed by a reflected
+
+跳ね返った
+%%%%
+bounced beam
+
+跳弾
+%%%%
+Killed themself with a bounced
+
+跳ね返った自らの
+%%%%
+beam
+
+光線
+%%%%
+suicidal targeting
+
+自殺的照準
+%%%%
+Shot themself with
+
+自らを
+%%%%
+spore
+
+胞子
+%%%%
+Killed by an exploding
+
+の爆発を受けて死んだ
+%%%%
+smitten by Shining One
+
+輝けるものの打擲によって死んだ
+%%%%
+smitten by Beogh
+
+ベオの打擲によって死んだ
+%%%%
+petrified
+
+石化
+%%%%
+Turned to stone
+
+体が石になって死んだ
+%%%%
+Died
+
+死亡
+%%%%
+fell downstairs
+
+階段からの落下死
+%%%%
+Fell down a flight of stairs
+
+階段から落下して
+%%%%
+fell through a gate
+
+ゲートをくぐり抜けて死亡
+%%%%
+Fell down through a gate
+
+ゲートをくぐり抜けて死亡
+%%%%
+Splashed with acid
+
+酸を浴びて死んだ
+%%%%
+asphyx
+
+窒息死
+%%%%
+Asphyxiated
+
+窒息して死んだ
+%%%%
+divine wrath
+
+神の怒り
+%%%%
+disintegration
+
+分解
+%%%%
+Blew themself up
+
+自らを分解して死んだ
+%%%%
+Blown up by
+
+に分解させられて死んだ
+%%%%
+fraility
+
+虚弱体質
+%%%%
+Became unviable by
+
+でHPが底をついて死んだ
+%%%%
+barbs
+
+逆棘
+%%%%
+Succumbed to a manticore's barbed spikes
+
+マンティコアの逆棘で傷ついて死んだ
 %%%%
 ############################## invent.cc ##############################
 %%%%
