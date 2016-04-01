@@ -4181,6 +4181,24 @@ Runes of Zot: %d/%d
 
 ルーン: %d個中%d個
 %%%%
+############################## itemprop.cc ##############################
+%%%%
+The curse is absorbed by %s.
+
+呪いは%sの手に吸い込まれた。
+%%%%
+Your %s glows black briefly, but repels the curse.
+
+あなたの%sはしばらく黒く輝いたが、呪いをはねのけたようだ。
+%%%%
+Your %s glows black for a moment.
+
+あなたの%sは一瞬黒く輝いた。
+%%%%
+preserves the curse.
+
+はそれを呪ったままにした。
+%%%%
 ############################## items.cc ##############################
 %%%%
 Items here:

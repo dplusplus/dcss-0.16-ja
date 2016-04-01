@@ -694,8 +694,8 @@ bool curse_an_item(bool ignore_holy_wrath)
     // allowing these would enable mummy scumming
     if (you_worship(GOD_ASHENZARI))
     {
-        mprf(MSGCH_GOD, "The curse is absorbed by %s.",
-             god_name(GOD_ASHENZARI).c_str());
+        mprf(MSGCH_GOD, jtransc("The curse is absorbed by %s."),
+             jtransc(god_name(GOD_ASHENZARI)));
         return false;
     }
 
@@ -757,8 +757,8 @@ void do_curse_item(item_def &item, bool quiet)
             const bool was_known = is_artefact(item)
                                  ? artefact_known_property(item, ARTP_BRAND)
                                  : item_ident(item, ISFLAG_KNOW_TYPE);
-            mprf("Your %s glows black briefly, but repels the curse.",
-                 item.name(DESC_PLAIN).c_str());
+            mprf(jtransc("Your %s glows black briefly, but repels the curse."),
+                 jtransc(item.name(DESC_PLAIN)));
             if (is_artefact(item))
                 artefact_learn_prop(item, ARTP_BRAND);
             else
@@ -772,8 +772,8 @@ void do_curse_item(item_def &item, bool quiet)
 
     if (!quiet)
     {
-        mprf("Your %s glows black for a moment.",
-             item.name(DESC_PLAIN).c_str());
+        mprf(jtransc("Your %s glows black for a moment."),
+             jtransc(item.name(DESC_PLAIN)));
 
         // If we get the message, we know the item is cursed now.
         item.flags |= ISFLAG_KNOW_CURSE;
@@ -825,7 +825,7 @@ void do_uncurse_item(item_def &item, bool inscribe, bool no_ash,
 
     if (no_ash && you_worship(GOD_ASHENZARI))
     {
-        simple_god_message(" preserves the curse.");
+        simple_god_message(jtransc(" preserves the curse."));
         return;
     }
 
