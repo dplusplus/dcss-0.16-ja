@@ -5125,6 +5125,10 @@ auxname constrict
 
 拘束
 %%%%
+auxname grab
+
+掴み
+%%%%
 auxname kick
 
 蹴り
