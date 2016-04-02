@@ -8900,11 +8900,11 @@ Picks a random weapon
 
 武器をランダムに選びます。
 %%%%
-#Bksp - Return to character menu
+Bksp - Return to character menu
 
 Bksp - キャラクター選択画面に戻る
 %%%%
-#Lets you return back to Character choice menu
+Lets you return back to Character choice menu
 
 キャラクター選択画面に戻ります。
 %%%%
