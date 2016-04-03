@@ -431,6 +431,18 @@ magical portal
 
 魔法のポータル
 %%%%
+ice covered gate leading back out of this place
+
+ここから脱出する氷に覆われた門
+%%%%
+rocky tunnel leading out of this place
+
+ここから脱出する岩のトンネル
+%%%%
+portal leading out of this place
+
+ここから脱出するポータル
+%%%%
 staircase leading out of the dungeon
 
 ダンジョンの出口の階段
