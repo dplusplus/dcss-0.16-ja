@@ -1151,7 +1151,7 @@ VISUAL:@The_monster@はぷるぷる揺れている。
 'l'
 
 # @The_monster@ hisses menacingly.
-@The_monster@威嚇のシューッという音を立てている。
+@The_monster@は威嚇のシューッという音を立てている。
 %%%%
 'r'
 
