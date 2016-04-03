@@ -1750,10 +1750,10 @@ Gozag player ghost
 VISUAL:@The_monster@は金貨の詰まった財布をあなたに見せびらかした。
 
 # @The_monster@ says, "You're as good as gold."
-@The_monster@は『』と言った。
+@The_monster@は『とってもいい子、金貨みたいに』と言った。
 
 # @The_monster@ says, "I guess you can't buy your way into a good afterlife."
-@The_monster@は『』と言った。 says, "I guess you can't buy your way into a good afterlife."
+@The_monster@は『地獄の沙汰も金次第、とはいかんぞ』と言った。
 %%%%
 Jiyva player ghost
 
