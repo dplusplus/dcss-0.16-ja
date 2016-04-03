@@ -17098,6 +17098,306 @@ caught in a web
 
 蜘蛛の巣に巻き付かれている
 %%%%
+The net bounces off something gigantic!
+
+網はなにか巨大なものに当たって跳ね返された！
+%%%%
+is too large for the net to hold!
+
+は巨大すぎてこの網では捕まえられない！
+%%%%
+The net is caught on %s!
+
+網は%sに絡みついた！
+%%%%
+The net is caught on something unseen!
+
+網はなにか目に見えないものに絡みついた！
+%%%%
+The net passes right through %s!
+
+網は%sをすり抜けた！
+%%%%
+oozes right through the net!
+
+は網をすり抜けた！
+%%%%
+Something gets caught in the net!
+
+何者かが網の中に捕まっている！
+%%%%
+is caught in the net!
+
+は網の中に捕まっている！
+%%%%
+You become entangled in the net!
+
+あなたは網に絡めとられた！
+%%%%
+The net rips apart, and %s comes free!
+
+網がびりびりに破け、%sは自由を取り戻した！
+%%%%
+All of a sudden the net rips apart!
+
+突然網がびりびりに破けた！
+%%%%
+drifts right through the net!
+
+は網をすり抜けた！
+%%%%
+Shadows whirl around %s...
+
+影が%sの周りを取り囲んだ……
+%%%%
+...but the shadows disperse without effect.
+
+……しかし、影は何も起こさぬまま消えていった。
+%%%%
+You step safely past the trap.
+
+# zotdef
+%%%%
+carefully avoids the shaft.
+
+は慎重に縦穴の横を通り過ぎた。
+%%%%
+carefully avoids a trap.
+
+は慎重に罠の横を通り過ぎた。
+%%%%
+You enter the passage of Golubria.
+
+あなたはゴルブリアの通り道へと踏み込んだ。
+%%%%
+enters the passage of Golubria.
+
+はゴルブリアの通り道へと入っていった。
+%%%%
+You enter %s!
+
+あなたは%sに踏み込んだ！
+%%%%
+%s disappears.
+
+%sは消えた。
+%%%%
+%s vibrates slightly, failing to make a sound.
+
+%sはしばらく振動したが、音を立てることはなかった。
+%%%%
+%s emits a blaring wail!
+
+%sは警報音を鳴り響かせた！
+%%%%
+You avoid triggering a blade trap.
+
+あなたは刃の罠をやり過ごした。
+%%%%
+A huge blade swings just past you!
+
+巨大な刃があなたの通り過ぎた後を薙ぎ払った！
+%%%%
+A huge blade swings out and slices into you!
+
+巨大な刃が大きく振れて、あなたに突き刺さった！
+%%%%
+fails to trigger a blade trap.
+
+は刃の罠を動作させなかった。
+%%%%
+avoids a huge, swinging blade.
+
+は巨大な刃が大きく振れるのを避けた。
+%%%%
+A huge blade swings out!
+
+巨大な刃が大きく振れた！
+%%%%
+A huge blade swings out
+
+巨大な刃が大きく振れ
+%%%%
+The blade breaks!
+
+# zotdef
+%%%%%
+A net swings high above you.
+
+網はあなたの頭上を飛び越えた。
+%%%%%
+A net drops to the ground!
+
+網はそこらの地面に落ちた。
+%%%%%
+A large net falls onto you!
+
+大網があなたの頭上から被さった！
+%%%%%
+fails to trigger a net trap.
+
+は網の罠を動作させなかった。
+%%%%%
+nimbly jumps out of the way of a falling net.
+
+は身軽にジャンプして落ちてくる網を避けた。
+%%%%%
+A large net falls down!
+
+大網が上から降ってきた！
+%%%%%
+A large net falls down onto %s!
+
+大網が%sの上から降ってきた！
+%%%%%
+You tear through %s web.
+
+あなたは蜘蛛の巣を切り裂いた。
+%%%%%
+tears through a web.
+
+は蜘蛛の巣を切り裂いた。
+%%%%%
+passes through a web.
+
+は蜘蛛の巣をすり抜けた。
+%%%%%
+oozes through a web.
+
+は蜘蛛の巣をすり抜けた。
+%%%%%
+You pick your way through the web.
+
+あなたは蜘蛛の巣を避けながら歩を進めた。
+%%%%%
+You are caught in the web!
+
+あなたは蜘蛛の巣に捕まった！
+%%%%%
+evades a web.
+
+は蜘蛛の巣を避けた。
+%%%%%
+is caught in a web!
+
+は蜘蛛の巣に捕まった！
+%%%%%
+A web moves frantically as something is caught in it!
+
+中に何かがいるかのように蜘蛛の巣が激しく動いている！
+%%%%%
+You enter the Zot trap.
+
+あなたはゾットの罠に踏み込んだ。
+%%%%%
+Oh no! You have blundered into a Zot trap!
+
+しまった！あなたはゾットの罠に踏み込んでしまった！
+%%%%%
+You hear a loud "Zot"!
+
+あなたは『ゾット』の怒声を耳にした！
+%%%%%
+You hear a distant "Zot"!
+
+あなたは遠くに『ゾット』の声を聞いた！
+%%%%%
+The power of Zot is invoked against %s!
+
+ゾットの力があなたに向けて発動した！
+%%%%%
+The shaft disappears in a puff of logic!
+
+縦穴はぽんっと煙を立てて消え去った！
+%%%%
+The gas trap seems to be inoperative.
+
+# obsolete
+%%%%
+You found %s!
+
+あなたは%sを発見した！
+%%%%
+You struggle to detach yourself from the web.
+
+あなたはなんとか自分自身を蜘蛛の巣から引きはがした。
+%%%%
+You slice into the net.
+
+あなたは網を切り裂いた。
+%%%%
+You tear a large gash into the net.
+
+あなたは網をバラバラに切り裂いた。
+%%%%
+You struggle against the net.
+
+あなたは網を振りほどこうともがいている。
+%%%%
+The trap is out of ammunition!
+
+この罠はもう弾切れだ！
+%%%%
+You hear a soft click.
+
+あなたはカチッという音を耳にした。
+%%%%
+You avoid triggering %s.
+
+あなたは%sをやり過ごした。
+%%%%
+%s avoids triggering %s.
+
+%sは%sをやり過ごした。
+%%%%
+someone's
+
+何者かの
+%%%%
+%s shoots out and hits %s shield.
+
+%sが射出され、%s盾に当たった。
+%%%%
+%s hits %s%s!
+
+%sは%sに当たった%s！
+%%%%
+, but does no damage
+
+が、ダメージを与えられなかった
+%%%%
+A shaft opens up in the floor!
+
+縦穴が床に口を開けた！
+%%%%
+%s fall%s through the shaft.
+
+%sは縦穴を落ちていった。
+%%%%
+pulls away from the web.
+
+は蜘蛛の巣から身を引き離した。
+%%%%
+You disentangle yourself.
+
+あなたは自らを振りほどいた。
+%%%%
+tears the web.
+
+は蜘蛛の巣を破いた。
+%%%%
+The web tears apart.
+
+蜘蛛の巣がバラバラになった。
+%%%%
+You are even more entangled.
+
+あなたはまだ蜘蛛の巣が絡みついたままだ。
+%%%%
+A web harmlessly splats on %s.
+
+蜘蛛の巣は%sに絡みついている。
+%%%%
 ############################## travel.cc ##############################
 %%%%
 Have to go through %s. Continue?
