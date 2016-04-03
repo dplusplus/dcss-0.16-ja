@@ -930,6 +930,10 @@ boulder beetle
 
 岩石の甲虫
 %%%%
+boring beetle
+
+穿孔の甲虫
+%%%%
 death scarab
 
 死の太陽虫
