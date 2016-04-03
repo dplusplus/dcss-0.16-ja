@@ -17128,6 +17128,10 @@ Partly explored, can't reach some %s.
 
 部分的に探索したが、%sまで到達できない。
 %%%%
+Could not pick up %s here; shall I ignore %s?
+
+これ以上アイテムを拾えません。無視しますか？
+%%%%
 * - list branches
 
 * - 分岐から選択

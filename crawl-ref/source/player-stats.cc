@@ -535,7 +535,7 @@ bool lose_stat(stat_type which_stat, int stat_loss, bool force,
     }
 
     mprf(stat_loss > 0 ? MSGCH_WARN : MSGCH_PLAIN,
-         jtransc(make_stringf("You feel %%ss%%ss%s.",
+         jtransc(make_stringf("You feel %%s%%s %s.",
                               stat_desc(which_stat, SD_LOSS))),
          jtransc(stat_loss > 0 ? "" : " for a moment"),
          jtransc(stat_loss > 0 && player_sust_abil(false) ? "somewhat " : ""));
