@@ -11426,7 +11426,7 @@ recall your orcish followers
 
 オークの従者を呼び出すこと
 %%%%
-walk on water and give items to your follower
+walk on water and give items to your followers
 
 水の上を歩き、また従者にアイテムを与えること
 %%%%
