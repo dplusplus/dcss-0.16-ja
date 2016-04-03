@@ -639,9 +639,311 @@ gateway leading deeper into the Abyss
 
 アビスの深層への門
 %%%%
-############################## dat/des/* ##############################
+############################## dat/des/altar/overflow.des ##############################
+%%%%
+golden statue
+
+黄金の像
 %%%%
 wall of white crystal
 
 白水晶の壁
+%%%%
+silver wall
+
+白銀の壁
+%%%%
+############################## dat/des/arrival/*.des ##############################
+%%%%
+dead tree
+
+朽ち木
+%%%%
+adventurer's gravestone
+
+冒険者の墓石
+%%%%
+granite stump
+
+花崗岩の台座
+%%%%
+############################## dat/des/builder/shop.des ##############################
+%%%%
+Serpentskin Sales
+
+蛇毒専門店
+%%%%
+Pet Rocks
+
+石ころ専門店
+%%%%
+Blood Bar
+
+血液バー
+%%%%
+Off-Brand Ammunition
+
+飛び道具専門店
+%%%%
+Blasphemy Boutique
+
+冒涜的ブティック
+%%%%
+Evil Emporium
+
+邪悪百貨店
+%%%%
+Profane Products
+
+涜神雑貨店
+%%%%
+Sacrilege Store
+
+罰当たり商店
+%%%%
+Wicked Wares
+
+不道徳のお店
+%%%%
+Hallowed Reliquary
+
+神聖納骨堂
+%%%%
+Specialty Armours
+
+特別製装身具店
+%%%%
+Demolitions Depot
+
+危険物貯蔵庫
+%%%%
+Elemental Accessories
+
+精霊の装身具店
+%%%%
+Quality Used_Wands
+
+使用済みワンド店
+%%%%
+One-of-a-Kind Books
+
+個性派書店
+%%%%
+############################## dat/des/branches/*.des ##############################
+%%%%
+# coc
+ice-covered rock wall
+
+氷で覆われた岩壁
+%%%%
+ice-covered stone wall
+
+氷で覆われた石壁
+%%%%
+Frost-covered floor
+
+霜に覆われた床
+%%%%
+# crypt
+sarcophagus
+
+古代の石棺
+%%%%
+gravestone
+
+墓石
+%%%%
+# depths
+a gravestone
+
+墓石
+%%%%
+# depths_encompass
+iron statue
+
+鉄の像
+%%%%
+# geh
+Ashen ground
+
+灰の積もった地面
+%%%%
+tempered metal wall
+
+強化金属壁
+%%%%
+# lair
+elephant-shaped statue
+
+象の像
+%%%%
+# pan
+weirdly glowing ball
+
+奇妙に輝く球体
+%%%%
+# slime
+rune carved stone wall
+
+ルーンの彫られた石壁
+%%%%
+# vaults
+heavily etched metal wall
+
+鮮明に壁画の描かれた金属壁
+%%%%
+heavily etched wall of green crystal
+
+鮮明に壁画の描かれた緑水晶の壁
+%%%%
+############################## dat/des/portals/*.des ##############################
+%%%%
+# bazaar
+wall of crystal
+
+水晶の壁
+%%%%
+# icecave
+ice covered rock wall
+
+氷で覆われた岩壁
+%%%%
+ice choked empty arch of ancient stone
+
+氷に閉ざされている古代の石で造られたアーチ
+%%%%
+Some ice crusted shallow water
+
+氷の浮かんだ浅い水脈
+%%%%
+Some ice crusted deep water
+
+氷の浮かんだ深い水脈
+%%%%
+# sewer
+large window
+
+大きな窓
+%%%%
+# volcano
+rock-blocked tunnel
+
+岩でふさがれたトンネル
+%%%%
+glass window
+
+ガラス張りの窓
+%%%%
+# wizlab
+crystal clear mirror
+
+水晶製の透明な鏡
+%%%%
+strange generator
+
+奇妙な動力装置
+%%%%
+glistening fountain
+
+きらめく泉
+%%%%
+black marble wall
+
+黒大理石の壁
+%%%%
+marble floor
+
+大理石の床
+%%%%
+rose-covered archway
+
+薔薇に覆われたアーチ
+%%%%
+vine-covered statue
+
+蔓の絡みついた石像
+%%%%
+crumbling stone wall
+
+崩れた石壁
+%%%%
+the grass-covered ground
+
+草で覆われた地面
+%%%%
+strange rock wall
+
+風変わりな石壁
+%%%%
+highly decorated stone wall
+
+ごてごてに飾られた石壁
+%%%%
+rough-hewn floor
+
+荒削りの床
+%%%%
+Viscous fluid
+
+粘り気のある液体
+%%%%
+sinewy wall
+
+筋骨隆々たる肉の壁
+%%%%
+thin membrane
+
+薄い膜組織の壁
+%%%%
+pulsating floor
+
+脈打つ床
+%%%%
+autumnal tree
+
+紅葉の樹木
+%%%%
+strange statue
+
+奇妙な石像
+%%%%
+The dimension's edge
+
+次元の境界線
+%%%%
+damp floor
+
+湿っぽい床
+%%%%
+black wall
+
+真っ黒な壁
+%%%%
+carved rock wall
+
+彫刻のある岩壁
+%%%%
+############################## dat/des/serial/*.des ##############################
+%%%%
+broken pillar
+
+崩壊した柱
+%%%%
+############################## dat/des/sprint/*.des ##############################
+%%%%
+spawn point
+
+出発ポイント
+%%%%
+############################## dat/des/variable/*.des ##############################
+%%%%
+sealed sarcophagus
+
+封印された古代の石棺
+%%%%
+############################## dat/des/tutorial/*.des ##############################
+%%%%
+Exit from the tutorial
+
+チュートリアルの出口
 %%%%
