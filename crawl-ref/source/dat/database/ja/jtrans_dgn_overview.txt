@@ -39,7 +39,7 @@
 %%%%
 %d runed door%s
 
-%sつのルーンで封印された扉
+%dつのルーンで封印された扉
 %%%%
 Annotate level on other end of current stairs?
 
