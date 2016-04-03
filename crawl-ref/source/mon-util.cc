@@ -4236,8 +4236,8 @@ string do_mon_str_replacements(const string &in_msg, const monster* mons,
     }
     else
     {
-        const string godname = god_name(mons->god);
-        const string godcap = uppercase_first(godname);
+        const string godname = jtrans(god_name(mons->god));
+        const string godcap = godname;
         msg = replace_all(msg, "@a_God@", godname);
         msg = replace_all(msg, "@A_God@", godcap);
         msg = replace_all(msg, "@possessive_God@", godname);
