@@ -8724,7 +8724,7 @@ Your body decomposes!
 %%%%
 You feel weaker.
 
-あなたは力が弱くなったようだ。
+あなたは力が弱くなった。
 %%%%
 You feel stronger.
 
@@ -8740,7 +8740,7 @@ You feel clever.
 %%%%
 You feel clumsy.
 
-あなたは不器用になったようだ。
+あなたは不器用になった。
 %%%%
 You feel agile.
 
@@ -10854,33 +10854,9 @@ You feel weakend.
 
 あなたは弱くなった。
 %%%%
-You feel weaker.
-
-あなたは力が弱くなった。
-%%%%
-You feel stronger.
-
-あなたは力強くなった。
-%%%%
 You feel dopey.
 
 あなたは愚かになった。
-%%%%
-You feel stupid.
-
-あなたは愚かになった。
-%%%%
-You feel clever.
-
-あなたは賢くなった。
-%%%%
-You feel clumsy.
-
-あなたは不器用になった。
-%%%%
-You feel agile.
-
-あなたは機敏になった。
 %%%%
 strength
 
