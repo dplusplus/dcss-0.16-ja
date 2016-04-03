@@ -7520,21 +7520,28 @@ w:4
 # on sight
 beogh_converted_orc_reaction_sight
 
-@The_monster@ stares at you in amazement and kneels.
+# @The_monster@ stares at you in amazement and kneels.
+@The_monster@は驚きの表情であなたを見つつひざまずいた。
 
-@The_monster@ relaxes @possessive@ fighting stance and smiles at you.
+# @The_monster@ relaxes @possessive@ fighting stance and smiles at you.
+@The_monster@は戦闘態勢を解き、あなたに微笑みかけた。
 
-@The_monster@ falls on @possessive@ knees before you.
+# @The_monster@ falls on @possessive@ knees before you.
+@The_monster@はあなたの前にひざまずいた。
 %%%%
 beogh_converted_orc_speech_sight
 
-@Subjective@ shouts, "I'll follow thee gladly!"
+# @Subjective@ shouts, "I'll follow thee gladly!"
+@Subjective@は『喜んでそなたにお仕えいたします！』と叫んだ。
 
-@Subjective@ shouts, "Surely Beogh must have sent you!"
+# @Subjective@ shouts, "Surely Beogh must have sent you!"
+@Subjective@は『ベオがあなたを遣わしたに違いない！』と叫んだ。
 
-@Subjective@ asks, "Are you our saviour?"
+# @Subjective@ asks, "Are you our saviour?"
+@Subjective@は『あなたが私たちの救世主なのですか？』と尋ねた。
 
-@Subjective@ says, "I'm so glad you are here now."
+# @Subjective@ says, "I'm so glad you are here now."
+@Subjective@は『お目にかかれて光栄です』と言った。
 %%%%
 # through battle
 beogh_converted_orc_reaction_battle
