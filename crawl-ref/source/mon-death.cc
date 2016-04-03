@@ -1437,7 +1437,7 @@ static void _monster_die_cloud(const monster* mons, bool corpse, bool silent,
     if (cell_is_solid(mons->pos()))
         return;
 
-    string prefix = " ";
+    string prefix = "";
     if (corpse)
     {
         if (!mons_class_can_leave_corpse(mons_species(mons->type)))
