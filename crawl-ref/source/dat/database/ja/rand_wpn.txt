@@ -906,7 +906,7 @@ _chaos_name_
 仲裁
 
 # the Extremes
-緊急状態
+極限状況
 
 # Disorder
 障害
