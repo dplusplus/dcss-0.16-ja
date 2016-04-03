@@ -872,7 +872,7 @@ void explore_pickup_event(int did_pickup, int tried_pickup)
         if (explore_stopped_pos == you.pos())
         {
             const string prompt =
-                make_stringf("Could not pick up %s here; shall I ignore %s?",
+                make_stringf(jtransc("Could not pick up %s here; shall I ignore %s?"),
                              tried_pickup == 1? "an item" : "some items",
                              tried_pickup == 1? "it" : "them");
 
