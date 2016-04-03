@@ -2095,6 +2095,10 @@ The game lasted %s (%d turns).
 
 ゲームの所要時間: %s (%dターン)
 %%%%
+damage
+
+ダメージ
+%%%%
 %8d %s the %s (level %d
 
 %8d %s『%s』(レベル%d

@@ -1738,7 +1738,7 @@ string scorefile_entry::game_time(death_desc_verbosity verbosity) const
         line += _hiscore_newline_string();
     }
 
-    return line;
+    return sp2nbsp(line);
 }
 
 const char *scorefile_entry::damage_verb() const
@@ -1759,7 +1759,7 @@ string scorefile_entry::death_source_desc() const
 string scorefile_entry::damage_string(bool terse) const
 {
     return make_stringf("(%d%s)", damage,
-                        terse? "" : " damage");
+                        terse? "" : jtransc(" damage"));
 }
 
 string scorefile_entry::strip_article_a(const string &s) const
@@ -1950,7 +1950,7 @@ scorefile_entry::character_description(death_desc_verbosity verbosity) const
         }
     }
 
-    return desc;
+    return sp2nbsp(desc);
 }
 
 string scorefile_entry::death_place(death_desc_verbosity verbosity) const
@@ -2727,7 +2727,7 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
         desc = strip_article_a(desc);
     }
 
-    return desc;
+    return sp2nbsp(desc);
 }
 
 //////////////////////////////////////////////////////////////////////////////
