@@ -426,7 +426,7 @@ void up_stairs(dungeon_feature_type force_stair, bool wizard)
     if (old_level.branch != you.where_are_you)
     {
         mprf(jtransc("Welcome back to %s!"),
-             jtransc(branches[you.where_are_you].longname));
+             tagged_jtransc("[branch]", branches[you.where_are_you].longname));
         if ((brdepth[old_level.branch] > 1
              || old_level.branch == BRANCH_VESTIBULE)
             && !you.branches_left[old_level.branch])
