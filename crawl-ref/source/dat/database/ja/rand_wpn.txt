@@ -175,7 +175,7 @@ _battle_or_war_
 
 #killing
 # Blood-Lust
-血に飢えた
+血に飢えし
 
 # Joyful Slaughter
 快楽殺人者
