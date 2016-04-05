@@ -6922,11 +6922,11 @@ blinks into view!
 %%%%
 Terrible wounds spread across more of %s body!
 
-傷口がさらに%sの体に開いた！
+傷口がさらに%s体に開いた！
 %%%%
 Terrible wounds open up all over %s body!
 
-ひどい傷が%sの全身に刻まれた！
+ひどい傷が%s全身に刻まれた！
 %%%%
 The water rises up and strikes %s!
 
