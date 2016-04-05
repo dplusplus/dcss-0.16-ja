@@ -2213,7 +2213,7 @@ string item_def::name_aux(description_level_type desc, bool terse, bool ident,
             static const char *potion_colours[] =
             {
 #if TAG_MAJOR_VERSION == 34
-                "clear",
+                "透明な",
 #endif
                 "青い", "黒い", "銀色の", "青緑の", "紫の", "オレンジ色の",
                 "漆黒の", "赤い", "黄色い", "緑色の", "茶色の", "ルビー色の", "白い",
