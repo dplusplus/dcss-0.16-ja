@@ -5181,10 +5181,6 @@ auxname squeeze
 
 締めつけ
 %%%%
-blocks your attack.
-
-はあなたの攻撃を防いだ。
-%%%%
 Your %s passes through %s as %s momentarily phases out.
 
 あなたの%sは一瞬存在の薄まった%sをすり抜けた。
@@ -5225,37 +5221,9 @@ You %s %s%s%s
 
 あなたは%sに%s%s%s
 %%%%
-You are splashed with acid.
+hit
 
-あなたは酸のしぶきを浴びた。
-%%%%
-%s %s %s.
-
-%sは%sを%s。
-%%%%
-%s furiously retaliates!
-
-%sは怒って反撃した！
-%%%%
-%s headbutts %s, but does no damage.
-
-%sは%sに頭突きをしたが、ダメージを与えられなかった。
-%%%%
-%s headbutts %s%s
-
-%sは%sに頭突きをした%s
-%%%%
-You furiously retaliate!
-
-あなたは怒って反撃した！
-%%%%
-You headbutt %s, but do no damage.
-
-あなたは%sに頭突きをしたが、ダメージを与えられなかった。
-%%%%
-You headbutt %s%s
-
-あなたは%sに頭突きをした%s
+攻撃した
 %%%%
 clumsily bash
 
@@ -5526,6 +5494,10 @@ You feel your flesh %s away!
 
 あなたの肉が%s！
 %%%%
+looks less resilient
+
+は元気を失ったようだ
+%%%%
 The flame cauterises the wound!
 
 炎が傷口を焼いた！
@@ -5651,10 +5623,6 @@ kneecap
 
 肘当てを放った
 %%%%
-hit
-
-攻撃した
-%%%%
 bite
 
 噛んだ
@@ -5735,6 +5703,10 @@ from afar
 
 %sは燃えたぎる液体に包まれた%s
 %%%%
+You are splashed with acid!
+
+あなたは酸のしぶきを浴びた！
+%%%%
 %s %s engulfed in flames%s
 
 %sは炎に包まれた%s
@@ -5750,6 +5722,54 @@ from afar
 Your divine stamina protects you from poison!
 
 あなたの神秘の活力により毒をはねのけた！
+%%%%
+%s %s %s.
+
+%sは%sを%s。
+%%%%
+%s furiously retaliates!
+
+%sは怒って反撃した！
+%%%%
+%s headbutts %s, but does no damage.
+
+%sは%sに頭突きをしたが、ダメージを与えられなかった。
+%%%%
+%s headbutts %s%s
+
+%sは%sに頭突きをした%s
+%%%%
+You furiously retaliate!
+
+あなたは怒って反撃した！
+%%%%
+You headbutt %s, but do no damage.
+
+あなたは%sに頭突きをしたが、ダメージを与えられなかった。
+%%%%
+You headbutt %s%s
+
+あなたは%sに頭突きをした%s
+%%%%
+%s %s %s ground!
+
+%sは一歩も退かなかった！
+%%%%
+%s %s backwards!
+
+%sは後ろに突き飛ばされた！
+%%%%
+You bite %s, and draw %s blood!
+
+あなたは%sに噛みつき、血液を吸った！
+%%%%
+You draw %s blood!
+
+あなたは%sの血液を吸った！
+%%%%
+You feel %sbetter.
+
+あなたは%s気分が良くなった。
 %%%%
 ############################## menu.cc ##############################
 %%%%
@@ -6235,10 +6255,6 @@ is devoured by a tear in reality.
 's corpse armour sloughs away.
 
 の屍肉の鎧は剥げ落ちた。
-%%%%
-looks less resilient
-
-は元気を失ったようだ
 %%%%
 %s corrodes %s!
 

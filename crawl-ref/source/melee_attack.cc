@@ -3580,8 +3580,8 @@ bool melee_attack::do_knockback(bool trample)
     {
         if (needs_message)
         {
-            mprf("%s %s %s ground!",
-                 defender_name(false).c_str(),
+            mprf(jtransc("%s %s %s ground!"),
+                 jtransc(defender_name(false)),
                  defender->conj_verb("hold").c_str(),
                  defender->pronoun(PRONOUN_POSSESSIVE).c_str());
         }
@@ -3592,8 +3592,8 @@ bool melee_attack::do_knockback(bool trample)
     if (needs_message)
     {
         const string verb = defender->airborne() ? "are shoved" : "stumble";
-        mprf("%s %s backwards!",
-             defender_name(false).c_str(),
+        mprf(jtransc("%s %s backwards!"),
+             jtransc(defender_name(false)),
              defender->conj_verb(verb).c_str());
     }
 
@@ -3870,14 +3870,14 @@ bool melee_attack::_player_vampire_draws_blood(const monster* mon, const int dam
     // Now print message, need biting unless already done (never for bat form!)
     if (needs_bite_msg && you.form != TRAN_BAT)
     {
-        mprf("You bite %s, and draw %s blood!",
-             mon->name(DESC_THE, true).c_str(),
+        mprf(jtransc("You bite %s, and draw %s blood!"),
+             jtransc(mon->name(DESC_PLAIN, true)),
              mon->pronoun(PRONOUN_POSSESSIVE).c_str());
     }
     else
     {
-        mprf("You draw %s blood!",
-             apostrophise(mon->name(DESC_THE, true)).c_str());
+        mprf(jtransc("You draw %s blood!"),
+             jtransc(mon->name(DESC_PLAIN, true)));
     }
 
     // Regain hp.
@@ -3896,7 +3896,7 @@ bool melee_attack::_player_vampire_draws_blood(const monster* mon, const int dam
         if (heal > 0 && !you.duration[DUR_DEATHS_DOOR])
         {
             inc_hp(heal);
-            mprf("You feel %sbetter.", (you.hp == you.hp_max) ? "much " : "");
+            mprf(jtransc("You feel %sbetter."), (you.hp == you.hp_max) ? "さらに" : "");
         }
     }
 
