@@ -8980,13 +8980,137 @@ Xom revived you
 %%%%
 ############################## ouch.cc ##############################
 %%%%
+Your icy envelope dissipates!
+
+あなたの氷の鎧は砕け散ってしまった！
+%%%%
+You shrug off the wave.
+
+あなたは波を物ともしなかった。
+%%%%
+The water douses you terribly!
+
+水の奔流があなたにぶっかかった！
+%%%%
+The steam scalds you terribly!
+
+あなたは高熱の蒸気で大やけどを負った！
+%%%%
+The fire burns you terribly!
+
+あなたは激しく燃えあがった！
+%%%%
+You resist completely.
+
+# obsolete
+%%%%
+You feel a terrible chill!
+
+あなたはひどく冷気がこたえた！
+%%%%
+You are shocked senseless!
+
+あなたは激しい電撃を受けた！
+%%%%
+The negative energy saps you greatly!
+
+負のエネルギーがあなたを激しく衰弱させた！
+%%%%
+You feel a painful chill!
+
+あなたは凍気を耐え難く感じた！
+%%%%
+The lava burns you terribly!
+
+あなたは溶岩で大やけどを負った！
+%%%%
+You are bolstered by the flame.
+
+あなたは鬼火を吸収し回復した。
+%%%%
+The flames sap you greatly!
+
+鬼火があなたを激しく衰弱させた！
+%%%%
+The flames go out!
+
+燃えていた炎が消えた！
+%%%%
+You feel your flight won't last long.
+
+あなたはもうこれ以上飛べないような気がしてきた。
+%%%%
+You are now level %d!
+
+あなたはレベル%dに下がった！
+%%%%
+You feel drained.
+
+あなたは衰弱させられたのを感じた。
+%%%%
+A shower of butterflies erupts from you!
+
+蝶の大群があなたの体から湧きだした！
+%%%%
 butterfly on damage
 
 損傷時の蝶
 %%%%
+You shudder from the %s and a %s!
+
+攻撃を受けて身震いすると同時に、%s！
+%%%%
+flood of jellies pours out from you
+
+ジェリーの大群があなたの体から湧きだした
+%%%%
+jelly pops out
+
+ジェリーがあなたの体から湧きだした
+%%%%
+You focus on the pain.
+
+あなたは傷の痛みに集中した。
+%%%%
+You emit a cloud of dark smoke.
+
+あなたは真っ黒な煙幕を放った。
+%%%%
+You emit a cloud of colourful smoke!
+
+あなたは色とりどりの煙幕を放った！
+%%%%
 smoke on damage
 
 損傷時の煙
+%%%%
+You feel threatened and lose the ability to read scrolls!
+
+あなたは怯えのあまり、巻物を読むことができなくなった！
+%%%%
+You feel threatened and lose the ability to drink potions!
+
+あなたは怯えのあまり、薬を飲むことができなくなった！
+%%%%
+protects you from harm!
+
+があなたを損傷から護った！
+%%%%
+Ouch! That really hurt!
+
+っ!  これは本当に痛い！
+%%%%
+* * * LOW HITPOINT WARNING * * *
+
+* * * HP低下警告 * * *
+%%%%
+Die?
+
+死んでみる？
+%%%%
+Thought so.
+
+そうこなくっちゃ。
 %%%%
 ############################## place.cc ##############################
 %%%%

@@ -82,7 +82,7 @@ void maybe_melt_player_enchantments(beam_type flavour, int damage)
         if (you.mutation[MUT_ICEMAIL])
         {
             if (!you.duration[DUR_ICEMAIL_DEPLETED])
-                mprf(MSGCH_DURATION, "Your icy envelope dissipates!");
+                mpr_nojoin(MSGCH_DURATION, jtrans("Your icy envelope dissipates!"));
             you.duration[DUR_ICEMAIL_DEPLETED] = ICEMAIL_TIME;
             you.redraw_armour_class = true;
         }
@@ -121,10 +121,10 @@ int check_your_resists(int hurted, beam_type flavour, string source,
     case BEAM_WATER:
         hurted = resist_adjust_damage(&you, flavour, hurted);
         if (!hurted && doEffects)
-            mpr("You shrug off the wave.");
+            mpr(jtrans("You shrug off the wave."));
         else if (hurted > original && doEffects)
         {
-            mpr("The water douses you terribly!");
+            mpr(jtrans("The water douses you terribly!"));
             xom_is_stimulated(200);
         }
         break;
@@ -135,7 +135,7 @@ int check_your_resists(int hurted, beam_type flavour, string source,
             canned_msg(MSG_YOU_RESIST);
         else if (hurted > original && doEffects)
         {
-            mpr("The steam scalds you terribly!");
+            mpr(jtrans("The steam scalds you terribly!"));
             xom_is_stimulated(200);
         }
         break;
@@ -146,7 +146,7 @@ int check_your_resists(int hurted, beam_type flavour, string source,
             canned_msg(MSG_YOU_RESIST);
         else if (hurted > original && doEffects)
         {
-            mpr("The fire burns you terribly!");
+            mpr(jtrans("The fire burns you terribly!"));
             xom_is_stimulated(200);
         }
         break;
@@ -168,7 +168,7 @@ int check_your_resists(int hurted, beam_type flavour, string source,
             canned_msg(MSG_YOU_RESIST);
         else if (hurted > original && doEffects)
         {
-            mpr("You feel a terrible chill!");
+            mpr(jtrans("You feel a terrible chill!"));
             xom_is_stimulated(200);
         }
         break;
@@ -180,7 +180,7 @@ int check_your_resists(int hurted, beam_type flavour, string source,
             canned_msg(MSG_YOU_RESIST);
         else if (hurted > original && doEffects)
         {
-            mpr("You are shocked senseless!");
+            mpr(jtrans("You are shocked senseless!"));
             xom_is_stimulated(200);
         }
         break;
@@ -231,7 +231,7 @@ int check_your_resists(int hurted, beam_type flavour, string source,
             // drain_player handles the messaging here
             if (hurted > original)
             {
-                mpr("The negative energy saps you greatly!");
+                mpr(jtrans("The negative energy saps you greatly!"));
                 xom_is_stimulated(200);
             }
             drain_player(min(75, 35 + original * 2 / 3), true);
@@ -245,7 +245,7 @@ int check_your_resists(int hurted, beam_type flavour, string source,
             canned_msg(MSG_YOU_PARTIALLY_RESIST);
         else if (hurted > original && doEffects)
         {
-            mpr("You feel a painful chill!");
+            mpr(jtrans("You feel a painful chill!"));
             xom_is_stimulated(200);
         }
         break;
@@ -257,7 +257,7 @@ int check_your_resists(int hurted, beam_type flavour, string source,
             canned_msg(MSG_YOU_PARTIALLY_RESIST);
         else if (hurted > original && doEffects)
         {
-            mpr("The lava burns you terribly!");
+            mpr(jtrans("The lava burns you terribly!"));
             xom_is_stimulated(200);
         }
         break;
@@ -310,7 +310,7 @@ int check_your_resists(int hurted, beam_type flavour, string source,
             if (doEffects && hurted > 0)
             {
                 you.heal(roll_dice(2, 9));
-                mpr("You are bolstered by the flame.");
+                mpr(jtrans("You are bolstered by the flame."));
             }
             hurted = 0;
         }
@@ -321,7 +321,7 @@ int check_your_resists(int hurted, beam_type flavour, string source,
                 canned_msg(MSG_YOU_PARTIALLY_RESIST);
             else if (hurted > original && doEffects)
             {
-                mpr("The flames sap you greatly!");
+                mpr(jtrans("The flames sap you greatly!"));
                 xom_is_stimulated(200);
             }
         }
@@ -357,7 +357,7 @@ void expose_player_to_element(beam_type flavour, int strength, bool slow_cold_bl
 
     if (flavour == BEAM_WATER && you.duration[DUR_LIQUID_FLAMES])
     {
-        mprf(MSGCH_WARN, "The flames go out!");
+        mpr_nojoin(MSGCH_WARN, jtrans("The flames go out!"));
         you.duration[DUR_LIQUID_FLAMES] = 0;
         you.props.erase("sticky_flame_source");
         you.props.erase("sticky_flame_aux");
@@ -372,7 +372,7 @@ static void _lose_level_abilities()
     {
         you.increase_duration(DUR_FLIGHT, 50, 100);
         you.attribute[ATTR_PERM_FLIGHT] = 0;
-        mprf(MSGCH_WARN, "You feel your flight won't last long.");
+        mpr_nojoin(MSGCH_WARN, jtrans("You feel your flight won't last long."));
     }
 }
 
@@ -390,7 +390,7 @@ void lose_level()
     you.experience_level--;
 
     mprf(MSGCH_WARN,
-         "You are now level %d!", you.experience_level);
+         jtransc("You are now level %d!"), you.experience_level);
 
     calc_hp();
     calc_mp();
@@ -448,7 +448,7 @@ bool drain_player(int power, bool announce_full, bool ignore_protection)
 
     if (power > 0)
     {
-        mpr("You feel drained.");
+        mpr(jtrans("You feel drained."));
         xom_is_stimulated(15);
 
         you.attribute[ATTR_XP_DRAIN] += power;
@@ -635,15 +635,14 @@ static void _maybe_spawn_monsters(int dam, const char* aux,
         {
             if (mon == MONS_BUTTERFLY)
             {
-                mprf(MSGCH_GOD, "A shower of butterflies erupts from you!");
+                mpr_nojoin(MSGCH_GOD, jtrans("A shower of butterflies erupts from you!"));
                 take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, jtrans("butterfly on damage")), true);
             }
             else
             {
-                mprf("You shudder from the %s and a %s!",
-                     death_type == KILLED_BY_MONSTER ? "blow" : "blast",
-                     count_created > 1 ? "flood of jellies pours out from you"
-                                       : "jelly pops out");
+                mprf(jtransc("You shudder from the %s and a %s!"),
+                     jtransc(count_created > 1 ? "flood of jellies pours out from you"
+                                               : "jelly pops out"));
             }
         }
     }
@@ -664,20 +663,20 @@ static void _powered_by_pain(int dam)
         {
             if (you.magic_points < you.max_magic_points)
             {
-                mpr("You focus on the pain.");
+                mpr(jtrans("You focus on the pain."));
                 int mp = roll_dice(3, 2 + 3 * level);
-                mpr("You feel your power returning.");
+                mpr(jtrans("You feel your power returning."));
                 inc_mp(mp);
                 break;
             }
             break;
         }
         case 2:
-            mpr("You focus on the pain.");
+            mpr(jtrans("You focus on the pain."));
             potionlike_effect(POT_MIGHT, level * 20);
             break;
         case 3:
-            mpr("You focus on the pain.");
+            mpr(jtrans("You focus on the pain."));
             potionlike_effect(POT_AGILITY, level * 20);
             break;
         }
@@ -698,12 +697,12 @@ static void _maybe_fog(int dam)
                && x_chance_in_y(dam - lower_threshold,
                                 upper_threshold - lower_threshold)))
     {
-        mpr("You emit a cloud of dark smoke.");
+        mpr(jtrans("You emit a cloud of dark smoke."));
         big_cloud(CLOUD_BLACK_SMOKE, &you, you.pos(), 50, 4 + random2(5));
     }
     else if (you_worship(GOD_XOM) && x_chance_in_y(dam, 30 * upper_threshold))
     {
-        mprf(MSGCH_GOD, "You emit a cloud of colourful smoke!");
+        mpr_nojoin(MSGCH_GOD, jtrans("You emit a cloud of colourful smoke!"));
         big_cloud(CLOUD_MAGIC_TRAIL, &you, you.pos(), 50, 4 + random2(5),
                   -1, ETC_RANDOM);
         take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, jtrans("smoke on damage")), true);
@@ -849,7 +848,7 @@ void ouch(int dam, kill_method_type death_type, mid_t source, const char *aux,
             if (_is_damage_threatening(damage_fraction_of_hp))
             {
                 if (!you.duration[DUR_NO_SCROLLS])
-                    mpr("You feel threatened and lose the ability to read scrolls!");
+                    mpr(jtrans("You feel threatened and lose the ability to read scrolls!"));
 
                 you.increase_duration(DUR_NO_SCROLLS, 1 + random2(dam), 30);
             }
@@ -860,7 +859,7 @@ void ouch(int dam, kill_method_type death_type, mid_t source, const char *aux,
             if (_is_damage_threatening(damage_fraction_of_hp))
             {
                 if (!you.duration[DUR_NO_POTIONS])
-                    mpr("You feel threatened and lose the ability to drink potions!");
+                    mpr(jtrans("You feel threatened and lose the ability to drink potions!"));
 
                 you.increase_duration(DUR_NO_POTIONS, 1 + random2(dam), 30);
             }
@@ -908,7 +907,7 @@ void ouch(int dam, kill_method_type death_type, mid_t source, const char *aux,
 
         if (dam >= you.hp && you.hp_max > 0 && god_protects_from_harm())
         {
-            simple_god_message(" protects you from harm!");
+            simple_god_message(jtransc(" protects you from harm!"));
             return;
         }
 
@@ -925,7 +924,7 @@ void ouch(int dam, kill_method_type death_type, mid_t source, const char *aux,
         // Even if we have low HP messages off, we'll still give a
         // big hit warning (in this case, a hit for half our HPs) -- bwr
         if (dam > 0 && you.hp_max <= dam * 2)
-            mprf(MSGCH_DANGER, "Ouch! That really hurt!");
+            mpr_nojoin(MSGCH_DANGER, jtrans("Ouch! That really hurt!"));
 
         if (you.hp > 0 && dam > 0)
         {
@@ -934,7 +933,7 @@ void ouch(int dam, kill_method_type death_type, mid_t source, const char *aux,
                 && (death_type != KILLED_BY_POISON || poison_is_lethal()))
             {
                 flash_view_delay(UA_HP, RED, 50);
-                mprf(MSGCH_DANGER, "* * * LOW HITPOINT WARNING * * *");
+                mpr_nojoin(MSGCH_DANGER, jtrans("* * * LOW HITPOINT WARNING * * *"));
                 dungeon_events.fire_event(DET_HP_WARNING);
             }
 
@@ -1034,7 +1033,7 @@ void ouch(int dam, kill_method_type death_type, mid_t source, const char *aux,
 
             if (crawl_state.test || !yesno("Die?", false, 'n'))
             {
-                mpr("Thought so.");
+                mpr(jtrans("Thought so."));
                 take_note(Note(NOTE_DEATH, you.hp, you.hp_max,
                                 death_desc.c_str()), true);
                 _wizard_restore_life();
