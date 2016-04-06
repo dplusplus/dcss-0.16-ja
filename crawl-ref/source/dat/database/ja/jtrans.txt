@@ -9560,6 +9560,10 @@ You are engulfed in a nimbus of crackling magics!
 
 あなたはバチバチ爆ぜる魔力の雲に飲み込まれた！
 %%%%
+Your magical contamination has completely faded away.
+
+あなたは魔力汚染から完全に脱した。
+%%%%
 You feel %s contaminated with magical energies.
 
 あなたは魔法のエネルギーによる汚染が%sのを感じた。
