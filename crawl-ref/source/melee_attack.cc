@@ -1449,8 +1449,8 @@ bool melee_attack::player_aux_apply(unarmed_attack_type atk)
     else // no damage was done
     {
         mprf(jtransc("You %s %s%s."),
-             jtransc(aux_verb),
              jtransc(defender->name(DESC_THE)),
+             jtransc(aux_verb),
              jtransc(you.can_see(defender) ? ", but do no damage" : ""));
     }
 
