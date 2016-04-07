@@ -5211,7 +5211,7 @@ You feel invigorated.
 %%%%
 You %s %s%s.
 
-あなたは%sに%s%s。
+あなたは%s%s%s%s。
 %%%%
 , but do no damage
 
@@ -5219,7 +5219,7 @@ You %s %s%s.
 %%%%
 You %s %s%s%s
 
-あなたは%sに%s%s%s
+あなたは%s%s%s%s%s
 %%%%
 hit
 
@@ -5585,7 +5585,7 @@ sucker-punch
 %%%%
 elbow
 
-肘で撃った
+肘で打った
 %%%%
 pinch
 
@@ -5621,7 +5621,7 @@ trip-wire
 %%%%
 kneecap
 
-肘当てを放った
+膝を狙って攻撃した
 %%%%
 bite
 

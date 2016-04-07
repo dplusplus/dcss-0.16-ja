@@ -390,6 +390,25 @@ void melee_attack::apply_black_mark_effects()
  *
  * Returns true if combat should continue, false if it should end here.
  */
+
+string _melee_attack_particle(const string& verb)
+{
+    if (verb == "sucker-punch" || // 予想外の殴打を加えた
+        verb == "karate-kick" || // 空手の蹴りを放った
+        verb == "release spore at" || // 胞子を振りまいた
+        verb == "touch" || // 触れた
+        verb == "headbutt" || // 頭突きをした
+        verb == "pounce on") // 襲いかかった
+        return "に";
+    else if (verb == "eye-gouge" || // 眼を抉った
+             verb == "kneecap") // 膝を狙って攻撃した
+        return "の";
+    else if (verb == "wrestle") // 取っ組み合いをした
+        return "と";
+    else
+        return "を";
+}
+
 bool melee_attack::handle_phase_hit()
 {
     did_hit = true;
@@ -484,9 +503,10 @@ bool melee_attack::handle_phase_hit()
                       : attacker->conj_verb(mons_attack_verb());
 
         // TODO: Clean this up if possible, checking atype for do / does is ugly
-        mprf("%sは%sを%sが、損傷を与えなかった。",
+        mprf("%sは%s%s%sが、損傷を与えなかった。",
              jtransc(attacker->name(DESC_THE)),
              jtransc(defender_name(true)),
+             _melee_attack_particle(attack_verb).c_str(),
              jtransc(attack_verb));
     }
 
@@ -1450,6 +1470,7 @@ bool melee_attack::player_aux_apply(unarmed_attack_type atk)
     {
         mprf(jtransc("You %s %s%s."),
              jtransc(defender->name(DESC_THE)),
+             _melee_attack_particle(aux_verb).c_str(),
              jtransc(aux_verb),
              jtransc(you.can_see(defender) ? ", but do no damage" : ""));
     }
@@ -1467,6 +1488,7 @@ void melee_attack::player_announce_aux_hit()
 {
     mprf(jtransc("You %s %s%s%s"),
          jtransc(defender->name(DESC_THE)),
+         _melee_attack_particle(aux_verb).c_str(),
          jtransc(aux_verb),
          attack_strength_punctuation(damage_done).c_str(),
          debug_damage_number().c_str());
@@ -2548,16 +2570,18 @@ void melee_attack::announce_hit()
     if (attacker->is_monster())
     {
         // 不可視モンスターに対しては｢何かが～｣にする。
-        const char* fmt = you.can_see(attacker) ? "%sは%sを%s%s%s%s"
-                                                : "%sが%sを%s%s%s%s";
+        const char* fmt = you.can_see(attacker) ? "%sは%s%s%s%s%s%s"
+                                                : "%sが%s%s%s%s%s%s";
+        const string verb = mons_attack_verb();
 
         mprf(fmt,
              jtransc(atk_name(DESC_THE)),
              jtransc(defender_name(true)),
+             _melee_attack_particle(verb).c_str(),
              mons_attack_desc().c_str(),
-             jtransc(attacker->conj_verb(mons_attack_verb())),
-             debug_damage_number().c_str(),
-             attack_strength_punctuation(damage_done).c_str());
+             jtransc(verb),
+             attack_strength_punctuation(damage_done).c_str(),
+             debug_damage_number().c_str());
     }
     else
     {
@@ -2567,12 +2591,14 @@ void melee_attack::announce_hit()
             verb_degree = " " + verb_degree;
         }
 
-        mprf("あなたは%s%sを%s%s%s%s",
+        mprf("あなたは%s%s%s%s%s%s%s",
              jtransc(defender->name(DESC_THE)),
              jtransc(verb_degree),
+             _melee_attack_particle(attack_verb).c_str(),
              jtransc(verb_degree2),
-             jtransc(attack_verb), debug_damage_number().c_str(),
-             attack_strength_punctuation(damage_done).c_str());
+             jtransc(attack_verb),
+             attack_strength_punctuation(damage_done).c_str(),
+             debug_damage_number().c_str());
     }
 }
 
