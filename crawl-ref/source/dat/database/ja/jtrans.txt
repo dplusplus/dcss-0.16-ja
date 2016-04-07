@@ -16986,6 +16986,30 @@ free from constriction.
 
 した。
 %%%%
+seems more stable.
+
+の存在は安定したようだ。
+%%%%
+looks slightly unstable.
+
+は少し不確定になったようだ。
+%%%%
+flickers for a moment.
+
+の姿は一瞬ちらついた。
+%%%%
+disappears!
+
+は姿を消した！
+%%%%
+reappears nearby!
+
+はすぐそばに再び出現した！
+%%%%
+appears out of thin air!
+
+は何もない空中から現れた！
+%%%%
 ############################## terrain.cc ##############################
 %%%%
 The walls burn you!
