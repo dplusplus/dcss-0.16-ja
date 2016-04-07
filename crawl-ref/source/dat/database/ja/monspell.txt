@@ -930,7 +930,7 @@ non-humanoid wizard cast targeted
 # @The_monster@ stares @at@ @target@ and mumbles some strange words.
 @The_monster@は@target@をにらみつけ、奇妙な文句を呟いた。
 
-@The_monster@ casts a spell @at@ @target@.
+# @The_monster@ casts a spell @at@ @target@.
 @The_monster@は@target@に向かって呪文を唱えた。
 %%%%
 non-humanoid wizard cast
