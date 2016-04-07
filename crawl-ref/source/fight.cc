@@ -15,6 +15,7 @@
 #include "art-enum.h"
 #include "cloud.h"
 #include "coordit.h"
+#include "database.h"
 #include "delay.h"
 #include "env.h"
 #include "fineff.h"
@@ -254,8 +255,8 @@ bool fight_melee(actor *attacker, actor *defender, bool *did_hit, bool simu)
                 {
                     if (could_see || you.can_see(mons))
                     {
-                        mprf("%s hops backward while attacking.",
-                             mons->name(DESC_THE, true).c_str());
+                        mprf(jtransc("%s hops backward while attacking."),
+                             jtransc(mons->name(DESC_PLAIN, true)));
                     }
                     mons->speed_increment -= 2; // Add a small extra delay
                 }
@@ -500,9 +501,9 @@ bool wielded_weapon_check(item_def *weapon, bool no_message)
     if (no_message)
         return false;
 
-    string prompt  = "Really attack while wielding " + weapon->name(DESC_YOUR) + "?";
+    string prompt = jtrans("Really attack while wielding ") + weapon->name(DESC_PLAIN) + "で攻撃しますか？";
     if (penance)
-        prompt += " This could place you under penance!";
+        prompt += " " + jtrans("This could place you under penance!");
 
     const bool result = yesno(prompt.c_str(), true, 'n');
 

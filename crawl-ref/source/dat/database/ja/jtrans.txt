@@ -2059,6 +2059,20 @@ Best Crawlers - %s
 
 冒険者の殿堂 - %s
 %%%%
+############################## fight.cc ##############################
+%%%%
+%s hops backward while attacking.
+
+%sは攻撃中に後ろへと跳ねた。
+%%%%
+Really attack while wielding
+
+本当にあなたの手にしている
+%%%%
+This could place you under penance!
+
+神に懺悔をする羽目になりますよ！
+%%%%
 ############################## files.cc ##############################
 %%%%
 Level annotation: %s
@@ -2568,10 +2582,6 @@ Really take off
 Really remove
 
 本当に
-%%%%
-This could place you under penance!
-
-神に懺悔をする羽目になりますよ！
 %%%%
 Really
 
