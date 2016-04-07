@@ -55,7 +55,7 @@ bool yesno(const char *str, bool safe, int safeanswer, bool clear_after,
     if (interrupt_delays && !crawl_state.is_repeating_cmd())
         interrupt_activity(AI_FORCE_INTERRUPT);
 
-    string prompt = make_stringf("%s ", str ? str : "Buggy prompt?");
+    string prompt = make_stringf("%s ", str ? jtransc(str) : "Buggy prompt?");
 
 #ifdef TOUCH_UI
     Popup *pop = new Popup(prompt);
