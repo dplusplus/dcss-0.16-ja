@@ -1782,7 +1782,7 @@ void cloud_struct::announce_actor_engulfed(const actor *act,
     {
         mprf(jtransc("%s %s in %s."),
              jtransc(act->name(DESC_THE)),
-             cloud_name().c_str(),
+             jtransc(cloud_name()),
              beneficial ? "浸っている"
                         : "包まれている");
         return;
