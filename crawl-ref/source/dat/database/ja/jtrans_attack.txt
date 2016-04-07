@@ -61,7 +61,7 @@ You pounce on the unaware %s!
 %%%%
 %s fails to defend %s.
 
-%sは%sの攻撃を防げなかった。
+%sは防御できなかった。
 %%%%
 %s %s %s attack.
 
