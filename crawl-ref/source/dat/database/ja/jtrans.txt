@@ -12539,7 +12539,7 @@ Attack!
 %%%%
 You have masterd %s!
 
-あなたは%sをマスターした！
+あなたは%sスキルをマスターした！
 %%%%
 Your %s%s skill %s to level %d!
 
@@ -12564,6 +12564,22 @@ gained
 lost
 
 失って
+%%%%
+You resume training %s.
+
+あなたは%sスキルの訓練を再開した。
+%%%%
+You stop training %s.
+
+あなたは%sスキルの訓練を中断した。
+%%%%
+You need to enable at least one skill for training.
+
+あなたは少なくとも一つのスキルを訓練しないといけない。
+%%%%
+You cannot train any new skill.
+
+あなたはこれ以上新たなスキルを訓練することはできない。
 %%%%
 %c Level %.*f%s %s
 

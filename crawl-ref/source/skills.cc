@@ -266,11 +266,11 @@ static void _change_skill_level(skill_type exsk, int n)
     // are you drained/crosstrained/ash'd in the relevant skill?
     const bool specify_base = you.skill(exsk, 1) != you.skill(exsk, 1, true);
     if (you.skills[exsk] == 27)
-        mprf(MSGCH_INTRINSIC_GAIN, "You have mastered %s!", skill_name(exsk));
+        mprf(MSGCH_INTRINSIC_GAIN, jtransc("You have mastered %s!"), jtransc(skill_name(exsk)));
     else if (abs(n) == 1 && you.num_turns)
     {
         mprf(MSGCH_INTRINSIC_GAIN, jtransc("Your %s%s skill %s to level %d!"),
-             specify_base ? "もともとの" : "",
+             specify_base ? "補正無しの" : "",
              jtransc(skill_name(exsk)),
              you.skills[exsk], jtransc((n > 0) ? "increases" : "decreases"));
     }
@@ -278,7 +278,7 @@ static void _change_skill_level(skill_type exsk, int n)
     {
         mprf(MSGCH_INTRINSIC_GAIN, jtransc("Your %s%s skill %s %d levels and is now "
                                            "at level %d!"),
-             specify_base ? "もともとの" : "",
+             specify_base ? "補正無しの" : "",
              jtransc(skill_name(exsk)),
              abs(n), jtransc((n > 0) ? "gained" : "lost"),
              you.skills[exsk]);
@@ -479,7 +479,7 @@ static void _check_start_train()
             ++it;
 
     if (!skills.empty())
-        mprf("You resume training %s.", skill_names(skills).c_str());
+        mprf(jtransc("You resume training %s."), jtransc(skill_names(skills)));
 
     you.start_train.clear();
 }
@@ -508,7 +508,7 @@ static void _check_stop_train()
 
     if (!skills.empty())
     {
-        mprf("You stop training %s.", skill_names(skills).c_str());
+        mprf(jtransc("You stop training %s."), jtransc(skill_names(skills)));
         check_selected_skills();
     }
 
@@ -694,7 +694,7 @@ bool check_selected_skills()
 
     if (trainable_skill)
     {
-        mpr("You need to enable at least one skill for training.");
+        mpr(jtrans("You need to enable at least one skill for training."));
         more();
         reset_training();
         skill_menu();
@@ -705,7 +705,7 @@ bool check_selected_skills()
     if (could_train && !you.received_noskill_warning)
     {
         you.received_noskill_warning = true;
-        mpr("You cannot train any new skill.");
+        mpr(jtrans("You cannot train any new skill."));
     }
 
     return false;
