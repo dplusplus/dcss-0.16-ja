@@ -3055,6 +3055,8 @@ void excommunication(god_type new_god, bool immediate)
 static string _sacrifice_message(string msg, const string& itname, bool glowing,
                                  bool plural, piety_gain_t piety_gain)
 {
+    msg = jtrans(msg);
+
     if (glowing)
     {
         _replace(msg, "[", "");
@@ -3082,7 +3084,7 @@ static string _sacrifice_message(string msg, const string& itname, bool glowing,
         break;
     }
 
-    msg.insert(0, itname);
+    msg.insert(0, jtrans(itname));
     msg = tag_start + msg + tag_end;
 
     return msg;

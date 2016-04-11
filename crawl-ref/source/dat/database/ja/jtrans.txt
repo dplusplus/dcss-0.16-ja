@@ -11385,6 +11385,305 @@ in a vulnerable spot
 %%%%
 ############################## religion.cc ##############################
 %%%%
+# No god
+& eaten by a bored swarm of bugs.
+
+# unused
+%%%%
+& eaten by a swarm of bugs.
+
+# unused
+%%%%
+& eaten by a ravening swarm of bugs.
+
+# unused
+%%%%
+# Zin
+barely glow% and disappear%.
+
+はほんのわずか輝いて消え去った。
+%%%%
+glow% silver and disappear%.
+
+は銀色に輝いて消え去った。
+%%%%
+glow% blindingly silver and disappear%.
+
+は目も眩むほどの銀色の輝きを放って消え去った。
+%%%%
+# TSO
+glow% a dingy golden colour and disappear%.
+
+はくすんだ金色に輝いて消え去った。
+%%%%
+glow% a golden colour and disappear%.
+
+は金色に輝いて消え去った。
+%%%%
+glow% a brilliant golden colour and disappear%.
+
+は煌く金色に輝いて消え去った。
+%%%%
+# Kiku
+convulse% and rot% away.
+
+は小刻みに震え、腐敗していった。
+%%%%
+convulse% madly and rot% away.
+
+はがたがたと震え、腐敗していった。
+%%%%
+convulse% furiously and rot% away.
+
+は猛烈に震え、腐敗していった。
+%%%%
+# Yred
+slowly crumble% to dust.
+
+はゆっくりと分解され塵になった。
+%%%%
+crumble% to dust.
+
+は塵へと分解された。
+%%%%
+turn% to dust in an instant.
+
+はたちまち塵へと分解された。
+%%%%
+# Xom
+& eaten by a bored bug.
+
+はのろのろした虫に食べられた。
+%%%%
+& eaten by a bug.
+
+は虫に食べられた。
+%%%%
+& eaten by a greedy bug.
+
+は獰猛な虫に食べられた。
+%%%%
+# Vehu
+fade% into nothingness.
+
+はうっすらと消えていった。
+%%%%
+burn% into nothingness.
+
+は燃えながら消えていった。
+%%%%
+explode% into nothingness.
+
+は爆発して消え去った。
+%%%%
+# Okawaru
+slowly burn% to ash.
+
+はゆっくりと燃えて灰になった。
+%%%%
+& consumed by flame.
+
+は炎に焼き尽くされた。
+%%%%
+& consumed in a burst of flame.
+
+は炎の爆発で焼き尽された。
+%%%%
+# Makhleb
+disappear% without a sign.
+
+は唐突に消え去った。
+%%%%
+flare% red and disappear%.
+
+は赤い閃光を放って消え去った。
+%%%%
+flare% blood-red and disappear%.
+
+は血のように赤い閃光を放って消え去った。
+%%%%
+# Sif
+& gone without a[dditional] glow.
+
+は消え去った。
+%%%%
+glow% slightly [brighter ]for a moment, and & gone.
+
+は一瞬わずかに輝き[を増し]、消え去った。
+%%%%
+glow% [brighter ]for a moment, and & gone.
+
+は一瞬輝き[を増し]、消え去った。
+%%%%
+# Trog
+& slowly consumed by flames.
+
+はゆっくりと燃え尽きた。
+%%%%
+& consumed in a column of flame.
+
+は炎の柱に焼き尽された。
+%%%%
+& consumed in a roaring column of flame.
+
+は唸りを上げる炎の柱に焼き尽された。
+%%%%
+# Nemelex
+& eaten by a bored swarm of bugs.
+
+はのろのろした虫の群れに食いつくされた。
+%%%%
+& eaten by a swarm of bugs.
+
+は虫の群れに食いつくされた。
+%%%%
+& eaten by a ravening swarm of bugs
+
+は獰猛な虫の群れに食いつくされた。
+%%%%
+# Ely
+barely shimmer% and break% into pieces.
+
+はほんのわずか輝いてばらばらになった。
+%%%%
+shimmer% and break% into pieces.
+
+は輝いてばらばらになった。
+%%%%
+shimmer% wildly and break% into pieces.
+
+はぎらぎらと輝いてばらばらになった。
+%%%%
+# Lugonu
+disappear% into the void.
+
+は虚無へと消え去った。
+%%%%
+& consumed by the void.
+
+は虚無に飲み込まれた。
+%%%%
+& voraciously consumed by the void.
+
+は虚無にむさぼりつくされた。
+%%%%
+# Beogh
+slowly crumble% into the ground.
+
+はゆっくりと大地に溶け込んでいった。
+%%%%
+crumble% into the ground.
+
+は大地に溶け込んでいった。
+%%%%
+disintegrate% into the ground.
+
+は分解され大地に溶け込んでいった。
+%%%%
+# Jiyva
+slowly dissolve% into ooze.
+
+はゆっくりとどろどろに分解していった。
+%%%%
+dissolve% into ooze.
+
+はどろどろに融解していった。
+%%%%
+disappear% with a satisfied slurp.
+
+は満足げに捕食されて消え去った。
+%%%%
+# Fedhas
+& slowly absorbed by the ecosystem.
+
+はゆっくりとダンジョンの生態系に還っていった。
+%%%%
+& absorbed by the ecosystem.
+
+はダンジョンの生態系に還っていった。
+%%%%
+& instantly absorbed by the ecosystem.
+
+はたちまちダンジョンの生態系に還っていった。
+%%%%
+# Chei
+freeze% in place and instantly disappear%.
+
+はその場で動きを止め、たちまち消え去った。
+%%%%
+freeze% in place and disappear%.
+
+はその場で動きを止め、消え去った。
+%%%%
+freeze% in place and slowly fade%.
+
+はその場で動きを止め、ゆっくりと消え去った。
+%%%%
+# Ashe
+flicker% black.
+
+は黒く点滅した。
+%%%%
+pulsate% black.
+
+は黒く明滅した。
+%%%%
+strongly pulsate% black.
+
+は強烈に黒く明滅した。
+%%%%
+# Dithmenos
+slowly dissolves into the shadows.
+
+はゆっくりと影に溶け込んでいった。
+%%%%
+dissolves into the shadows.
+
+は影に溶け込んでいった。
+%%%%
+rapidly dissolves into the shadows.
+
+は急速に影に溶け込んでいった。
+%%%%
+# Gozag
+softly glitters and disappears.
+
+は穏やかに輝いて消え去った。
+%%%%
+glitters and disappears.
+
+は輝いて消え去った。
+%%%%
+brightly glitters and disappears.
+
+はまばゆく輝いて消え去った。
+%%%%
+# Qazlal
+slowly dissolves into the earth.
+
+はゆっくりと大地に還っていった。
+%%%%
+is consumed by the earth.
+
+は大地に還っていった。
+%%%%
+is consumed by a violent tear in the earth.
+
+は大地の裂け目に飲み込まれていった。
+%%%%
+# Ru
+disappears in a small burst of power.
+
+は小規模な力の奔流となって消え去った。
+%%%%
+disappears in a burst of power
+
+は力の奔流となって消え去った。
+%%%%
+disappears in an immense burst of power
+
+は大規模な力の奔流となって消え去った。
+%%%%
 recite Zin's Axioms of Law
 
 ジンの法の公理を説くこと
@@ -12132,6 +12431,22 @@ continues to slow your movements.
 The divine host forsakes you.
 
 神聖な神はあなたを見捨てた。
+%%%%
+Your body
+
+あなたの死体
+%%%%
+disappear% without a[dditional] glow.
+
+は消え去った。
+%%%%
+glow% slightly [brighter ]and disappear%.
+
+は一瞬わずかに輝き[を増し]、消え去った。
+%%%%
+glow% with a rainbow of weird colours and disappear%.
+
+は一瞬奇妙な虹色に輝き、消え去った。
 %%%%
 welcomes you%s!
 
