@@ -502,7 +502,7 @@ void actor::end_constriction(mid_t whom, bool intentional, bool quiet)
         if (intentional)
         {
             mprf(jtransc("%s %s %s grip on %s."),
-                 name(DESC_THE).c_str(),
+                 jtransc(name(DESC_PLAIN)),
                  jtransc(constrictee->name(DESC_THE)),
                  jtransc("release"));
         }
@@ -510,7 +510,7 @@ void actor::end_constriction(mid_t whom, bool intentional, bool quiet)
         {
             mprf(jtransc("%sは%sの締めつけから逃れた。"),
                  jtransc(constrictee->name(DESC_THE)),
-                 name(DESC_THE).c_str());
+                 jtransc(name(DESC_PLAIN)));
         }
     }
 }
