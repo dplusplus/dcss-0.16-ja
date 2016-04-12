@@ -2884,7 +2884,6 @@ void melee_attack::mons_apply_attack_flavour()
         {
             mprf(jtransc("%sは%sを凍りつかせた%s"),
                  jtransc(atk_name(DESC_THE)),
-                 attacker->conj_verb("freeze").c_str(),
                  jtransc(defender_name(true)),
                  attack_strength_punctuation(special_damage).c_str());
 
