@@ -5605,6 +5605,10 @@ strangle-hug
 
 締め上げた
 %%%%
+squeeze
+
+締めつけた
+%%%%
 tease
 
 ぐしゃぐしゃにした
