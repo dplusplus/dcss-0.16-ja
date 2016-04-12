@@ -67,6 +67,10 @@ You pounce on the unaware %s!
 
 %sは%sの攻撃を防いだ。
 %%%%
+melt
+
+溶かした
+%%%%
 its own
 
 自分自身

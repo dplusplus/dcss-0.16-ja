@@ -1901,7 +1901,8 @@ void attack::calc_elemental_brand_damage(beam_type flavour,
             "%sは%sを%s%s",
             jtransc(what ? what : atk_name(DESC_THE)),
             // Don't allow reflexive if the subject wasn't the attacker.
-            jtransc(defender_name(!what)),
+            (jtrans(defender_name(!what)) +
+             (verb == string("melt") ? "の体" : "")).c_str(),
             jtransc(what ? conjugate_verb(verb, false)
                          : attacker->conj_verb(verb)),
             attack_strength_punctuation(special_damage).c_str());
