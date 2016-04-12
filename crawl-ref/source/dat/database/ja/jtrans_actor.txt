@@ -9,7 +9,7 @@ wall
 %%%%
 %s %s %s grip on %s.
 
-%sは%sを締め付けから%s。
+%sは%sを締めつけから%s。
 %%%%
 release
 
