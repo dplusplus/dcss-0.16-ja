@@ -4541,9 +4541,10 @@ vector<string> explore_discoveries::apply_quantities(
             things.push_back(nt.name);
         else
         {
-            things.push_back(number_in_words(nt.thing)
-                             + " "
-                             + pluralise(nt.name, feature_plural_qualifiers));
+            things.push_back(make_stringf("%d%sの%s",
+                                          nt.thing,
+                                          general_counter_suffix(nt.thing),
+                                          nt.name.c_str()));
         }
     }
     return things;
