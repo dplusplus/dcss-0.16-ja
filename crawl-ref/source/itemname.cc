@@ -2087,6 +2087,7 @@ string item_def::name_aux(description_level_type desc, bool terse, bool ident,
         if (is_artefact(*this) && !dbname && !basename)
         {
             buff << jtrans(get_artefact_name(*this));
+            buff << make_stringf(" (%+d)", plus);
             break;
         }
 
