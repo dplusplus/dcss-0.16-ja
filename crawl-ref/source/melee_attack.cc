@@ -1446,7 +1446,7 @@ bool melee_attack::player_aux_apply(unarmed_attack_type atk)
 
             antimagic_affects_defender(damage_done * 32);
             mprf(jtransc("You drain %s %s."),
-                 jtransc(defender->name(DESC_THE)),
+                 jtransc(defender->name(DESC_PLAIN)),
                  jtransc(spell_user ? "magic" : "power"));
 
             if (you.magic_points != you.max_magic_points
@@ -3093,10 +3093,10 @@ void melee_attack::mons_apply_attack_flavour()
 
         if (needs_message && special_damage)
         {
-            mprf("%s %s %s%s",
-                 atk_name(DESC_THE).c_str(),
+            mprf("%1$sは%3$sの体を灼いた%4$s",
+                 jtransc(atk_name(DESC_PLAIN)),
                  attacker->conj_verb("sear").c_str(),
-                 defender_name(true).c_str(),
+                 jtransc(defender_name(true)),
                  attack_strength_punctuation(special_damage).c_str());
 
         }
@@ -3112,10 +3112,10 @@ void melee_attack::mons_apply_attack_flavour()
 
             if (you.can_see(attacker) || you.can_see(defender))
             {
-                mprf("%s drains %s %s.",
-                     attacker->name(DESC_THE).c_str(),
-                     defender->pronoun(PRONOUN_POSSESSIVE).c_str(),
-                     spell_user ? "magic" : "power");
+                mprf(jtransc("%s drains %s %s."),
+                     jtransc(attacker->name(DESC_PLAIN)),
+                     jtransc(defender->name(DESC_PLAIN)),
+                     jtransc(spell_user ? "magic" : "power"));
             }
 
             monster* vine = attacker->as_monster();
@@ -3127,9 +3127,9 @@ void melee_attack::mons_apply_attack_flavour()
                 mon_enchant me = vine->get_ench(ENCH_ANTIMAGIC);
                 vine->lose_ench_duration(me, random2(damage_done) + 1);
                 simple_monster_message(attacker->as_monster(),
-                                       spell_user
-                                       ? " looks very invigorated."
-                                       : " looks invigorated.");
+                                       jtransc(spell_user
+                                               ? " looks very invigorated."
+                                               : " looks invigorated."));
             }
         }
         break;
@@ -3177,10 +3177,10 @@ void melee_attack::mons_apply_attack_flavour()
 
             if (needs_message)
             {
-                mprf("%s %s %s in water!",
-                     atk_name(DESC_THE).c_str(),
+                mprf(jtransc("%s %s %s in water!"),
+                     jtransc(atk_name(DESC_PLAIN)),
                      attacker->conj_verb("engulf").c_str(),
-                     defender_name(true).c_str());
+                     jtransc(defender_name(true)));
             }
         }
 
@@ -3200,10 +3200,10 @@ void melee_attack::mons_apply_attack_flavour()
 
         if (needs_message && special_damage)
         {
-            mprf("%s %s %s!",
-                    atk_name(DESC_THE).c_str(),
-                    attacker->conj_verb("burn").c_str(),
-                    defender_name(true).c_str());
+            mprf("%1$sは%3$sを燃やした！",
+                 jtransc(atk_name(DESC_PLAIN)),
+                 attacker->conj_verb("burn").c_str(),
+                 jtransc(defender_name(true)));
 
             _print_resist_messages(defender, special_damage, BEAM_FIRE);
         }
@@ -3237,8 +3237,8 @@ void melee_attack::mons_apply_attack_flavour()
 
             if (needs_message && visible_effect)
             {
-                mprf("%s magical defenses are stripped away!",
-                     def_name(DESC_ITS).c_str());
+                mprf(jtransc("%s magical defenses are stripped away!"),
+                     jtransc(def_name(DESC_ITS)));
             }
         }
         break;
@@ -3265,11 +3265,11 @@ void melee_attack::mons_apply_attack_flavour()
 
             if (needs_message)
             {
-                mprf("%s %s %s%s",
-                    atk_name(DESC_THE).c_str(),
-                    attacker->conj_verb("drown").c_str(),
-                    defender_name(true).c_str(),
-                    attack_strength_punctuation(special_damage).c_str());
+                mprf("%1$sは%3$sを溺れさせた%4$s",
+                     jtransc(atk_name(DESC_PLAIN)),
+                     attacker->conj_verb("drown").c_str(),
+                     jtransc(defender_name(true)),
+                     attack_strength_punctuation(special_damage).c_str());
             }
         }
         break;
@@ -3287,8 +3287,8 @@ void melee_attack::mons_apply_attack_flavour()
         {
             if (needs_message)
             {
-                mprf("The air around %s erupts in flames!",
-                    defender_name(false).c_str());
+                mprf(jtransc("The air around %s erupts in flames!"),
+                     jtransc(defender_name(false)));
 
                 for (adjacent_iterator ai(defender->pos()); ai; ++ai)
                 {
@@ -3335,7 +3335,7 @@ void melee_attack::do_passive_freeze()
         if (!hurted)
             return;
 
-        simple_monster_message(mon, " is very cold.");
+        simple_monster_message(mon, jtransc(" is very cold."));
 
 #ifndef USE_TILE_LOCAL
         flash_monster_colour(mon, LIGHTBLUE, 200);
@@ -3378,7 +3378,7 @@ void melee_attack::do_passive_heat()
         if (!hurted)
             return;
 
-        simple_monster_message(mon, " is singed by your heat.");
+        simple_monster_message(mon, jtransc(" is singed by your heat."));
 
 #ifndef USE_TILE
         flash_monster_colour(mon, LIGHTRED, 200);
@@ -3408,8 +3408,8 @@ void melee_attack::mons_do_eyeball_confusion()
         if (mon->check_res_magic(ench_pow) <= 0
             && mons_class_is_confusable(mon->type))
         {
-            mprf("The eyeballs on your body gaze at %s.",
-                 mon->name(DESC_THE).c_str());
+            mprf(jtransc("The eyeballs on your body gaze at %s."),
+                 jtransc(mon->name(DESC_PLAIN)));
 
             if (!mon->check_clarity(false))
             {
@@ -3443,7 +3443,7 @@ void melee_attack::do_spines()
                 return;
 
             simple_monster_message(attacker->as_monster(),
-                                   " is struck by your spines.");
+                                   jtransc(" is struck by your spines."));
 
             attacker->hurt(&you, hurt);
         }
@@ -3471,9 +3471,10 @@ void melee_attack::do_spines()
                 return;
             if (you.can_see(defender) || attacker->is_player())
             {
-                mprf("%s %s struck by %s %s.", attacker->name(DESC_THE).c_str(),
+                mprf(jtransc("%s %s struck by %s %s."),
+                     jtransc(attacker->name(DESC_PLAIN)),
                      attacker->conj_verb("are").c_str(),
-                     defender->name(DESC_ITS).c_str(),
+                     jtransc(defender->name(DESC_PLAIN)),
                      defender->type == MONS_BRIAR_PATCH ? "thorns"
                                                         : "spines");
             }
@@ -3499,7 +3500,7 @@ void melee_attack::emit_foul_stench()
             && !cell_is_solid(mon->pos())
             && env.cgrid(mon->pos()) == EMPTY_CLOUD)
         {
-            mpr("You emit a cloud of foul miasma!");
+            mpr(jtrans("You emit a cloud of foul miasma!"));
             place_cloud(CLOUD_MIASMA, mon->pos(), 5 + random2(6), &you);
         }
     }

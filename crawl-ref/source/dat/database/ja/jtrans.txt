@@ -5737,9 +5737,57 @@ Your divine stamina protects you from poison!
 
 あなたの神秘の活力により毒をはねのけた！
 %%%%
+%s drains %s %s.
+
+%sは%sの%sを吸い取った。
+%%%%
+looks very invigorated.
+
+はとても元気になったようだ。
+%%%%
+looks invigorated.
+
+は元気になったようだ。
+%%%%
 %s %s %s.
 
 %sは%sを%s。
+%%%%
+%s %s %s in water!
+
+%1$sは%3$sを水に包んだ！
+%%%%
+%s magical defenses are stripped away!
+
+%s魔法的防御は破られた！
+%%%%
+The air around %s erupts in flames!
+
+%sの周囲の大気は炎に吹き飛ばされた！
+%%%%
+is very cold.
+
+は非常に寒そうだ。
+%%%%
+is singed by your heat.
+
+# obsolete
+%%%%
+The eyeballs on your body gaze at %s.
+
+あなたの体を覆う眼球は%sを見据えた。
+%%%%
+is struck by your spines.
+
+はあなたの棘で傷ついた。
+%%%%
+%s %s struck by %s %s.
+
+%1$sは%3$sの棘で傷ついた。
+%%%%
+You emit a cloud of foul miasma!
+
+あなたは瘴気の雲を生み出した！
 %%%%
 %s furiously retaliates!
 
