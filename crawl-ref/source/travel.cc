@@ -4544,7 +4544,7 @@ vector<string> explore_discoveries::apply_quantities(
             things.push_back(make_stringf("%d%sの%s",
                                           nt.thing,
                                           general_counter_suffix(nt.thing),
-                                          nt.name.c_str()));
+                                          jtransc(nt.name)));
         }
     }
     return things;
