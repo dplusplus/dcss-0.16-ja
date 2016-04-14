@@ -5755,7 +5755,7 @@ looks invigorated.
 %%%%
 %s %s %s in water!
 
-%1$sは%3$sを水に包んだ！
+%sは%sを水に包んだ！
 %%%%
 %s magical defenses are stripped away!
 
@@ -5783,7 +5783,7 @@ is struck by your spines.
 %%%%
 %s %s struck by %s %s.
 
-%1$sは%3$sの棘で傷ついた。
+%sは%sの棘で傷ついた。
 %%%%
 You emit a cloud of foul miasma!
 

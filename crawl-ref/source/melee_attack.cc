@@ -3093,9 +3093,8 @@ void melee_attack::mons_apply_attack_flavour()
 
         if (needs_message && special_damage)
         {
-            mprf("%1$sは%3$sの体を灼いた%4$s",
+            mprf("%sは%sの体を灼いた%s",
                  jtransc(atk_name(DESC_PLAIN)),
-                 attacker->conj_verb("sear").c_str(),
                  jtransc(defender_name(true)),
                  attack_strength_punctuation(special_damage).c_str());
 
@@ -3179,7 +3178,6 @@ void melee_attack::mons_apply_attack_flavour()
             {
                 mprf(jtransc("%s %s %s in water!"),
                      jtransc(atk_name(DESC_PLAIN)),
-                     attacker->conj_verb("engulf").c_str(),
                      jtransc(defender_name(true)));
             }
         }
@@ -3200,9 +3198,8 @@ void melee_attack::mons_apply_attack_flavour()
 
         if (needs_message && special_damage)
         {
-            mprf("%1$sは%3$sを燃やした！",
+            mprf("%sは%sを燃やした！",
                  jtransc(atk_name(DESC_PLAIN)),
-                 attacker->conj_verb("burn").c_str(),
                  jtransc(defender_name(true)));
 
             _print_resist_messages(defender, special_damage, BEAM_FIRE);
@@ -3265,9 +3262,8 @@ void melee_attack::mons_apply_attack_flavour()
 
             if (needs_message)
             {
-                mprf("%1$sは%3$sを溺れさせた%4$s",
+                mprf("%sは%sを溺れさせた%s",
                      jtransc(atk_name(DESC_PLAIN)),
-                     attacker->conj_verb("drown").c_str(),
                      jtransc(defender_name(true)),
                      attack_strength_punctuation(special_damage).c_str());
             }
@@ -3473,10 +3469,7 @@ void melee_attack::do_spines()
             {
                 mprf(jtransc("%s %s struck by %s %s."),
                      jtransc(attacker->name(DESC_PLAIN)),
-                     attacker->conj_verb("are").c_str(),
-                     jtransc(defender->name(DESC_PLAIN)),
-                     defender->type == MONS_BRIAR_PATCH ? "thorns"
-                                                        : "spines");
+                     jtransc(defender->name(DESC_PLAIN)));
             }
             attacker->hurt(defender, hurt, BEAM_MISSILE, KILLED_BY_SPINES);
         }
