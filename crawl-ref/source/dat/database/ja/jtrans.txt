@@ -16511,7 +16511,7 @@ for %d floors
 %%%%
 You %s a shaft%s!
 
-あなたは%s縦穴に%s%s！
+あなたは縦穴に%s%s！
 %%%%
 The shaft crumbles and collapses.
 
