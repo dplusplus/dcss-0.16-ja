@@ -1626,7 +1626,7 @@ bool mutate(mutation_type which_mutation, const string &reason, bool failMsg,
                 else
                     break;
                 mprf(MSGCH_MUTATION, "%s",
-                     replace_all(mdef.gain[you.mutation[mutat]-1], "腕",
+                     replace_all(jtrans(mdef.gain[you.mutation[mutat]-1]), "腕",
                                  arms).c_str());
                 gain_msg = false;
             }
@@ -1642,7 +1642,7 @@ bool mutate(mutation_type which_mutation, const string &reason, bool failMsg,
                 else
                     break;
                 mprf(MSGCH_MUTATION, "%s",
-                     replace_all(mdef.gain[you.mutation[mutat]-1], "片腕",
+                     replace_all(jtrans(mdef.gain[you.mutation[mutat]-1]), "片腕",
                                  hands).c_str());
                 gain_msg = false;
             }
@@ -1670,7 +1670,7 @@ bool mutate(mutation_type which_mutation, const string &reason, bool failMsg,
         notify_stat_change();
 
         if (gain_msg)
-            mprf(MSGCH_MUTATION, "%s", mdef.gain[you.mutation[mutat]-1]);
+            mprf(MSGCH_MUTATION, "%s", jtransc(mdef.gain[you.mutation[mutat]-1]));
 
         // Do post-mutation effects.
         switch (mutat)
