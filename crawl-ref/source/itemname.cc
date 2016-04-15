@@ -1909,7 +1909,7 @@ static string _name_weapon(const item_def &weap, description_level_type desc,
     const string cosmetic_text
         = show_cosmetic ? _cosmetic_text(weap, ignore_flags) : "";
     const string ego_prefix
-        = _ego_prefix(weap, desc, terse, ident, ignore_flags);
+        = _ego_prefix(weap, desc, false, ident, ignore_flags);
     const string curse_suffix
         = know_curse && weap.cursed() && terse ? " " + jtrans("(curse)") :  "";
     return curse_prefix + cosmetic_text + ego_prefix
@@ -2137,10 +2137,26 @@ string item_def::name_aux(description_level_type desc, bool terse, bool ident,
                     buff << jtrans(item_base_name(*this));
                 }
                 else {
+                    buff << jtrans(string("of ") + armour_ego_name(*this, false));
                     buff << jtrans(item_base_name(*this));
+
+                    // Don't list hides or QDA as +0.
+                    if (know_pluses
+                        && !((armour_is_hide(*this)
+                              || sub_type == ARM_QUICKSILVER_DRAGON_ARMOUR)
+                             && plus == 0))
+                    {
+                        buff << make_stringf(" (%+d)", plus);
+                    }
+
+                    if (know_curse && cursed() && terse)
+                        buff << " " << jtrans("(curse)");
+
                     buff << " {";
                     buff << armour_ego_name(*this, terse);
                     buff << "}";
+
+                    break;
                 }
             } else
                 buff << jtrans(item_base_name(*this));
