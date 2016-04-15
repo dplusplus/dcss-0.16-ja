@@ -1028,11 +1028,11 @@ Sorry, you can't do that.
 %%%%
 Ability - do what?                 Cost                          Failure
 
-能力 - どれを使用しますか？              コスト                    成功率
+能力 - どれを使用しますか？              コスト                    失敗率
 %%%%
 Ability - describe what?           Cost                          Failure
 
-能力 - どの説明を見ますか？              コスト                    成功率
+能力 - どの説明を見ますか？              コスト                    失敗率
 %%%%
 Press '<w>!</w>' or '<w>?</w>' to toggle between ability selection and description.
 
