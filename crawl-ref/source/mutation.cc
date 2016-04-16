@@ -1828,7 +1828,7 @@ static bool _delete_single_mutation_level(mutation_type mutat,
     notify_stat_change();
 
     if (lose_msg)
-        mprf(MSGCH_MUTATION, "%s", mdef.lose[you.mutation[mutat]]);
+        mprf(MSGCH_MUTATION, "%s", jtransc(mdef.lose[you.mutation[mutat]]));
 
     // Do post-mutation effects.
     if (mutat == MUT_FRAIL || mutat == MUT_ROBUST
