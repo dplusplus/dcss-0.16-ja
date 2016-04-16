@@ -1290,9 +1290,6 @@ string make_artefact_name(const item_def &item, bool appearance)
 
             if (name == "イェンダーの" && !jewellery_is_amulet(item))
                 continue;
-
-            if (name == "血に飢えしの")
-                name = "血に飢えし";
         }
         while (--tries > 0 && strwidth(name) > 25);
 
@@ -1301,7 +1298,13 @@ string make_artefact_name(const item_def &item, bool appearance)
         else
         {
             if (ends_with(name, "の"))
+            {
+                // the xxx of Blood-Lust
+                if (name == "血に飢えしの")
+                    name = "血に飢えし";
+
                 result += (name + basename);
+            }
             else
                 result += (basename + name);
         }
