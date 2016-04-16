@@ -21,4 +21,7 @@ string apply_description_j(description_level_type desc, const string &name,
                          int quantity = 1, bool num_in_words = false);
 string thing_do_grammar_j(description_level_type dtype, bool add_stop,
                           bool force_article, string desc);
+string get_desc_quantity_j(const int quant, const int total,
+                           string whose);
+
 #endif

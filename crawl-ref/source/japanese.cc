@@ -321,3 +321,17 @@ string thing_do_grammar_j(description_level_type dtype, bool add_stop,
         return desc;
     }
 }
+
+string get_desc_quantity_j(const int quant, const int total, string whose)
+{
+    if (total == quant)
+        return whose;
+    else if (quant == 1)
+        return whose + "のうちの一つ";
+    else if (quant == 2)
+        return whose + "のうちの二つ";
+    else if (quant >= total * 3 / 4)
+        return whose + "のほとんど";
+    else
+        return whose + "のうちいくつか";
+}
