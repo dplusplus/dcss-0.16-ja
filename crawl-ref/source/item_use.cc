@@ -84,13 +84,13 @@ bool can_wield(item_def *weapon, bool say_reason,
 
     if (you.melded[EQ_WEAPON] && unwield)
     {
-        SAY(mpr("Your weapon is melded into your body!"));
+        SAY(mpr(jtrans("Your weapon is melded into your body!")));
         return false;
     }
 
     if (!ignore_temporary_disability && !form_can_wield(you.form))
     {
-        SAY(mpr("You can't wield anything in your present form."));
+        SAY(mpr(jtrans("You can't wield anything in your present form.")));
         return false;
     }
 
@@ -99,8 +99,8 @@ bool can_wield(item_def *weapon, bool say_reason,
         && is_weapon(*you.weapon())
         && you.weapon()->cursed())
     {
-        SAY(mprf("You can't unwield your weapon%s!",
-                 !unwield ? " to draw a new one" : ""));
+        SAY(mprf(jtransc("You can't unwield your weapon%s!"),
+                 jtransc(!unwield ? " to draw a new one" : "す")));
         return false;
     }
 
@@ -111,7 +111,7 @@ bool can_wield(item_def *weapon, bool say_reason,
     if (player_mutation_level(MUT_MISSING_HAND)
             && you.hands_reqd(*weapon) == HANDS_TWO)
     {
-        SAY(mpr("You can't wield that without your missing limb."));
+        SAY(mpr(jtrans("You can't wield that without your missing limb.")));
         return false;
     }
 
@@ -119,7 +119,7 @@ bool can_wield(item_def *weapon, bool say_reason,
     {
         if (you.equip[i] != -1 && &you.inv[you.equip[i]] == weapon)
         {
-            SAY(mpr("You are wearing that object!"));
+            SAY(mpr(jtrans("You are wearing that object!")));
             return false;
         }
     }
@@ -132,7 +132,7 @@ bool can_wield(item_def *weapon, bool say_reason,
     {
         if (!ignore_temporary_disability && is_shield_incompatible(*weapon))
         {
-            SAY(mpr("You can't wield that with a shield."));
+            SAY(mpr(jtrans("You can't wield that with a shield.")));
             return false;
         }
         else
@@ -146,7 +146,7 @@ bool can_wield(item_def *weapon, bool say_reason,
     {
         if (say_reason)
         {
-            mpr("This weapon is holy and will not allow you to wield it.");
+            mpr(jtrans("This weapon is holy and will not allow you to wield it."));
             id_brand = true;
         }
     }
@@ -160,7 +160,7 @@ bool can_wield(item_def *weapon, bool say_reason,
     {
         if (say_reason)
         {
-            mpr("This weapon is vampiric, and you must be Full or above to equip it.");
+            mpr(jtrans("This weapon is vampiric, and you must be Full or above to equip it."));
             id_brand = true;
         }
     }
@@ -193,7 +193,7 @@ bool can_wield(item_def *weapon, bool say_reason,
 
     if (!ignore_temporary_disability && is_shield_incompatible(*weapon))
     {
-        SAY(mpr("You can't wield that with a shield."));
+        SAY(mpr(jtrans("You can't wield that with a shield.")));
         return false;
     }
 
@@ -1093,21 +1093,21 @@ static bool _safe_to_remove_or_wear(const item_def &item, bool remove, bool quie
     if (remove)
     {
         if (item.base_type == OBJ_WEAPONS)
-            verb = "Unwield";
+            verb = "手放す";
         else
-            verb = "Remov"; // -ing, not a typo
+            verb = "脱ぐ"; // -ing, not a typo
     }
     else
     {
         if (item.base_type == OBJ_WEAPONS)
-            verb = "Wield";
+            verb = "手にする";
         else
-            verb = "Wear";
+            verb = "装備する";
     }
 
-    string prompt = make_stringf("%sing this item will reduce your %s to zero "
-                                 "or below. Continue?", verb.c_str(),
-                                 stat_desc(red_stat, SD_NAME));
+    string prompt = make_stringf(jtransc("%sing this item will reduce your %s to zero "
+                                         "or below. Continue?"), verb.c_str(),
+                                 jtransc(stat_desc(red_stat, SD_NAME)));
     if (!yesno(prompt.c_str(), true, 'n', true, false))
     {
         canned_msg(MSG_OK);
@@ -1901,52 +1901,52 @@ static void _brand_weapon(item_def &wpn)
     {
     case SPWPN_VORPAL:
         flash_colour = YELLOW;
-        mprf("%s emits a brilliant flash of light!",itname.c_str());
+        mprf(jtransc("%s emits a brilliant flash of light!"), jtransc(itname));
         break;
 
     case SPWPN_PROTECTION:
         flash_colour = YELLOW;
-        mprf("%s projects an invisible shield of force!",itname.c_str());
+        mprf(jtransc("%s projects an invisible shield of force!"), jtransc(itname));
         break;
 
     case SPWPN_EVASION:
         flash_colour = YELLOW;
-        mprf("%s emits a repelling force!",itname.c_str());
+        mprf(jtransc("%s emits a repelling force!"), jtransc(itname));
         break;
 
     case SPWPN_FLAMING:
         flash_colour = RED;
-        mprf("%s is engulfed in flames!", itname.c_str());
+        mprf(jtransc("%s is engulfed in flames!"), jtransc(itname));
         break;
 
     case SPWPN_FREEZING:
         flash_colour = LIGHTCYAN;
-        mprf("%s is covered with a thin layer of ice!", itname.c_str());
+        mprf(jtransc("%s is covered with a thin layer of ice!"), jtransc(itname));
         break;
 
     case SPWPN_DRAINING:
         flash_colour = DARKGREY;
-        mprf("%s craves living souls!", itname.c_str());
+        mprf(jtransc("%s craves living souls!"), jtransc(itname));
         break;
 
     case SPWPN_VAMPIRISM:
         flash_colour = DARKGREY;
-        mprf("%s thirsts for the lives of mortals!", itname.c_str());
+        mprf(jtransc("%s thirsts for the lives of mortals!"), jtransc(itname));
         break;
 
     case SPWPN_VENOM:
         flash_colour = GREEN;
-        mprf("%s drips with poison.", itname.c_str());
+        mprf(jtransc("%s drips with poison."), jtransc(itname));
         break;
 
     case SPWPN_ELECTROCUTION:
         flash_colour = LIGHTCYAN;
-        mprf("%s crackles with electricity.", itname.c_str());
+        mprf(jtransc("%s crackles with electricity."), jtransc(itname));
         break;
 
     case SPWPN_CHAOS:
         flash_colour = random_colour();
-        mprf("%s erupts in a glittering mayhem of colour.", itname.c_str());
+        mprf(jtransc("%s erupts in a glittering mayhem of colour."), jtransc(itname));
         break;
 
     default:
@@ -1989,8 +1989,8 @@ static item_def* _scroll_choose_weapon(bool alreadyknown, const string &pre_msg,
 
     while (true)
     {
-        item_slot = prompt_invent_item(branding ? "Brand which weapon?"
-                                                : "Enchant which weapon?",
+        item_slot = prompt_invent_item(jtransc(branding ? "Brand which weapon?"
+                                                        : "Enchant which weapon?"),
                                        MT_INVLIST, selector,
                                        true, true, false);
 
@@ -2015,7 +2015,7 @@ static item_def* _scroll_choose_weapon(bool alreadyknown, const string &pre_msg,
 
         if (!is_item_selected(*wpn, selector))
         {
-            mpr("Choose a valid weapon, or Esc to abort.");
+            mpr(jtrans("Choose a valid weapon, or Esc to abort."));
             more();
 
             continue;
@@ -2057,13 +2057,13 @@ bool enchant_weapon(item_def &wpn, bool quiet)
             wpn.plus++;
             success = true;
             if (!quiet)
-                mprf("%s glows red for a moment.", iname.c_str());
+                mprf(jtransc("%s glows red for a moment."), jtransc(iname));
         }
 
         if (wpn.cursed())
         {
             if (!success)
-                mprf("%s glows silver for a moment.", iname.c_str());
+                mprf(jtransc("%s glows silver for a moment."), jtransc(iname));
             success = true;
         }
         // Mark the item as uncursed, whether or not it was cursed initially.
@@ -2071,7 +2071,7 @@ bool enchant_weapon(item_def &wpn, bool quiet)
     }
 
     if (!success && !quiet)
-        mprf("%s very briefly gains a red sheen.", iname.c_str());
+        mprf(jtransc("%s very briefly gains a red sheen."), jtransc(iname));
 
     if (success)
         you.wield_change = true;
@@ -2088,7 +2088,7 @@ static bool _identify(bool alreadyknown, const string &pre_msg)
         if (item_slot == -1)
         {
             item_slot = prompt_invent_item(
-                "Identify which item? (\\ to view known items)",
+                jtransc("Identify which item? (\\ to view known items)"),
                 MT_INVLIST, OSEL_UNIDENT, true, true, false, 0,
                 -1, nullptr, OPER_ANY, true);
         }
@@ -2117,7 +2117,7 @@ static bool _identify(bool alreadyknown, const string &pre_msg)
         if (fully_identified(item)
             && (!is_deck(item) || top_card_is_known(item)))
         {
-            mpr("Choose an unidentified item, or Esc to abort.");
+            mpr(jtrans("Choose an unidentified item, or Esc to abort."));
             more();
             item_slot = -1;
             continue;
@@ -2189,8 +2189,8 @@ bool enchant_armour(int &ac_change, bool quiet, item_def &arm)
     {
         if (!quiet)
         {
-            mprf("%s glows purple and changes!",
-                 arm.name(DESC_YOUR).c_str());
+            mprf(jtransc("%s glows purple and changes!"),
+                 jtransc(arm.name(DESC_YOUR)));
         }
 
         ac_change = property(arm, PARM_AC);
@@ -2210,8 +2210,8 @@ bool enchant_armour(int &ac_change, bool quiet, item_def &arm)
         {
             if (is_cursed)
             {
-                mprf("%s glows silver for a moment.",
-                     arm.name(DESC_YOUR).c_str());
+                mprf(jtransc("%s glows silver for a moment."),
+                     jtransc(arm.name(DESC_YOUR)));
             }
             else
                 canned_msg(MSG_NOTHING_HAPPENS);
@@ -2223,8 +2223,8 @@ bool enchant_armour(int &ac_change, bool quiet, item_def &arm)
     // Output message before changing enchantment and curse status.
     if (!quiet)
     {
-        mprf("%s glows green for a moment.",
-             arm.name(DESC_YOUR).c_str());
+        mprf(jtransc("%s glows green for a moment."),
+             jtransc(arm.name(DESC_YOUR)));
     }
 
     arm.plus++;
@@ -2241,7 +2241,7 @@ static int _handle_enchant_armour(bool alreadyknown, const string &pre_msg)
     {
         if (item_slot == -1)
         {
-            item_slot = prompt_invent_item("Enchant which item?", MT_INVLIST,
+            item_slot = prompt_invent_item(jtransc("Enchant which item?"), MT_INVLIST,
                                            OSEL_ENCH_ARM, true, true, false);
         }
 
@@ -2268,7 +2268,7 @@ static int _handle_enchant_armour(bool alreadyknown, const string &pre_msg)
 
         if (!is_enchantable_armour(arm, true, true))
         {
-            mpr("Choose some type of armour to enchant, or Esc to abort.");
+            mpr(jtrans("Choose some type of armour to enchant, or Esc to abort."));
             more();
 
             item_slot = -1;
@@ -2305,11 +2305,11 @@ void random_uselessness(int scroll_slot)
     switch (temp_rand)
     {
     case 0:
-        mprf("The dust glows %s!", weird_glowing_colour().c_str());
+        mprf(jtransc("The dust glows %s!"), jtransc(weird_glowing_colour()));
         break;
 
     case 1:
-        mprf("The scroll reassembles itself in your %s!",
+        mprf(jtransc("The scroll reassembles itself in your %s!"),
              you.hand_name(true).c_str());
         inc_inv_item_quantity(scroll_slot, 1);
         break;
@@ -2317,45 +2317,45 @@ void random_uselessness(int scroll_slot)
     case 2:
         if (you.weapon())
         {
-            mprf("%s glows %s for a moment.",
+            mprf(jtransc("%s glows %s for a moment."),
                  you.weapon()->name(DESC_YOUR).c_str(),
-                 weird_glowing_colour().c_str());
+                 jtransc(weird_glowing_colour()));
         }
         else
         {
-            mpr(you.hands_act("glow", weird_glowing_colour()
-                                      + " for a moment."));
+            mpr(you.hand_name(false) + "は一瞬" + jtrans(weird_glowing_colour())
+                                                + "に輝いた。");
         }
         break;
 
     case 3:
         if (you.species == SP_MUMMY)
-            mpr("Your bandages flutter.");
+            mpr(jtrans("Your bandages flutter."));
         else // if (you.can_smell())
-            mprf("You smell %s.", weird_smell().c_str());
+            mprf(jtransc("You smell %s."), jtransc(weird_smell()));
         break;
 
     case 4:
-        mpr("You experience a momentary feeling of inescapable doom!");
+        mpr(jtrans("You experience a momentary feeling of inescapable doom!"));
         break;
 
     case 5:
         if (player_mutation_level(MUT_BEAK) || one_chance_in(3))
-            mpr("Your brain hurts!");
+            mpr(jtrans("Your brain hurts!"));
         else if (you.species == SP_MUMMY || coinflip())
-            mpr("Your ears itch!");
+            mpr(jtrans("Your ears itch!"));
         else
-            mpr("Your nose twitches suddenly!");
+            mpr(jtrans("Your nose twitches suddenly!"));
         break;
 
     case 6:
-        mprf(MSGCH_SOUND, "You hear the tinkle of a tiny bell.");
+        mpr_nojoin(MSGCH_SOUND, jtrans("You hear the tinkle of a tiny bell."));
         noisy(2, you.pos());
         cast_summon_butterflies(100);
         break;
 
     case 7:
-        mprf(MSGCH_SOUND, "You hear %s.", weird_sound().c_str());
+        mprf(MSGCH_SOUND, jtransc("You hear %s."), jtransc(weird_sound()));
         noisy(2, you.pos());
         break;
     }
@@ -2479,27 +2479,27 @@ string cannot_read_item_reason(const item_def &item)
     if (item.base_type == OBJ_BOOKS)
     {
         if (item.sub_type == BOOK_MANUAL)
-            return "You can't read that!";
+            return jtrans("You can't read that!");
         return "";
     }
 
     // and scrolls - but nothing else.
     if (item.base_type != OBJ_SCROLLS)
-        return "You can't read that!";
+        return jtrans("You can't read that!");
 
     // the below only applies to scrolls. (it's easier to read books, since
     // that's just a UI/strategic thing.)
 
     if (silenced(you.pos()))
-        return "Magic scrolls do not work when you're silenced!";
+        return jtrans("Magic scrolls do not work when you're silenced!");
 
     // water elementals
     if (you.duration[DUR_WATER_HOLD] && !you.res_water_drowning())
-        return "You cannot read scrolls while unable to breathe!";
+        return jtrans("You cannot read scrolls while unable to breathe!");
 
     // ru
     if (you.duration[DUR_NO_SCROLLS])
-        return "You cannot read scrolls in your current state!";
+        return jtrans("You cannot read scrolls in your current state!");
 
 #if TAG_MAJOR_VERSION == 34
     // Prevent hot lava orcs reading scrolls
@@ -2521,19 +2521,19 @@ string cannot_read_item_reason(const item_def &item)
 
         case SCR_AMNESIA:
             if (you.spell_no == 0)
-                return "You have no spells to forget!";
+                return jtrans("You have no spells to forget!");
             return "";
 
         case SCR_CURSE_WEAPON:
             if (!you.weapon())
-                return "This scroll only affects a wielded weapon!";
+                return jtrans("This scroll only affects a wielded weapon!");
 
             // assumption: wielded weapons always have their curse & brand known
             if (you.weapon()->cursed())
-                return "Your weapon is already cursed!";
+                return jtrans("Your weapon is already cursed!");
 
             if (get_weapon_brand(*you.weapon()) == SPWPN_HOLY_WRATH)
-                return "Holy weapons cannot be cursed!";
+                return jtrans("Holy weapons cannot be cursed!");
             return "";
 
         case SCR_ENCHANT_ARMOUR:
@@ -2999,7 +2999,7 @@ void tile_item_pickup(int idx, bool part)
 {
     if (item_is_stationary(mitm[idx]))
     {
-        mpr("You can't pick that up.");
+        mpr(jtrans("You can't pick that up."));
         return;
     }
 
@@ -3016,7 +3016,7 @@ void tile_item_drop(int idx, bool partdrop)
     int quantity = you.inv[idx].quantity;
     if (partdrop && quantity > 1)
     {
-        quantity = prompt_for_int("Drop how many? ", true);
+        quantity = prompt_for_int((jtrans("Drop how many? ") + " ").c_str(), true);
         if (quantity < 1)
         {
             canned_msg(MSG_OK);
@@ -3124,7 +3124,7 @@ void tile_item_use(int idx)
         case OBJ_ARMOUR:
             if (!form_can_wear())
             {
-                mpr("You can't wear or remove anything in your present form.");
+                mpr(jtrans("You can't wear or remove anything in your present form."));
                 return;
             }
             if (equipped && !equipped_weapon)

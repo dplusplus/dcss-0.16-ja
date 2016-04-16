@@ -155,7 +155,7 @@ _colour_name_
 # Also used by Tome of Destruction below.
 glowing_colour_name
 
-@_glowing_adj_@ @_colour_name_@
+@_glowing_adj_@@_colour_name_@
 %%%%
 _writing_adj_
 
@@ -326,7 +326,7 @@ sound_name
 遠くの@_roaring_animal_name_@の激怒の咆哮
 #%the distant roaring of an enraged @_roaring_animal_name_@
 
-遠くの銅鑼の鳴る音
+遠くで銅鑼の鳴る音
 #%the chiming of a distant gong
 
 巨大な鐘がカランカランと鳴る音

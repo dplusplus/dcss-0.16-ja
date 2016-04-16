@@ -2617,6 +2617,46 @@ That item cannot be evoked!
 %%%%
 ############################## item_use.cc ##############################
 %%%%
+Your weapon is melded into your body!
+
+武器はあなたの体と融合している！
+%%%%
+You can't wield anything in your present form.
+
+現在の姿では何も手にすることができない。
+%%%%
+You can't unwield your weapon%s!
+
+あなたは武器を手放%sことができない！
+%%%%
+to draw a new one
+
+して新たな武器を持つ
+%%%%
+You can't wield that without your missing limb.
+
+あなたは片手ではその武器を手にすることができない。
+%%%%
+You are wearing that object!
+
+あなたはそのアイテムを装備している！
+%%%%
+You can't wield that with a shield.
+
+あなたはそれを盾と同時には装備できない。
+%%%%
+This weapon is holy and will not allow you to wield it.
+
+この神聖なる武器はあなたが装備することを拒む。
+%%%%
+This weapon is vampiric, and you must be Full or above to equip it.
+
+この吸血の武器は満腹状態以上でないと装備できない。
+%%%%
+As you grasp it, you feel your magic disrupted. Quickly, you stop.
+
+# obsolete
+%%%%
 Wield which item (- for none, * to show all)?
 
 どのアイテムを手に持ちますか？ (- で手を空ける, * で全アイテムから選択)
@@ -2711,11 +2751,11 @@ You can't wear a glove with your huge claw%s!
 %%%%
 You can't wear boots with hooves!
 
-あなたは蹄が邪魔してそれを装備できない。
+あなたは蹄が邪魔してブーツを装備できない。
 %%%%
 Boots don't fit your talons!
 
-それはあなたの爪に合わない！
+ブーツはあなたの爪に合わない！
 %%%%
 You have no legs!
 
@@ -2937,9 +2977,181 @@ petitions for your drink to fail.
 
 はあなたが飲むのを妨げた。
 %%%%
+%s emits a brilliant flash of light!
+
+%sは明るい閃光を放った！
+%%%%
+%s projects an invisible shield of force!
+
+%sは目に見えない力場の盾を形成した！
+%%%%
+%s emits a repelling force!
+
+%sは攻撃を逸らす力場を生み出した！
+%%%%
+%s is engulfed in flames!
+
+%sは炎に包まれた！
+%%%%
+%s is covered with a thin layer of ice!
+
+%sは氷の薄い膜に覆われた！
+%%%%
+%s craves living souls!
+
+%sは生者の魂を欲している！
+%%%%
+%s thirsts for the lives of mortals!
+
+%sは生者の活力を渇望している！
+%%%%
+%s drips with poison.
+
+%sは毒を滴らせた。
+%%%%
+%s crackles with electricity.
+
+%sは電気のバチバチいう音を立てた。
+%%%%
+%s erupts in a glittering mayhem of colour.
+
+%sはめまぐるしく色が変わる輝きを放った。
+%%%%
+Brand which weapon?
+
+どれを魔力の武器にしますか？
+%%%%
+Enchant which weapon?
+
+どの武器を強化しますか？
+%%%%
+Really abort (and waste the scroll)?
+
+本当に中断しますか？ (巻物は消費されます)
+%%%%
+Choose a valid weapon, or Esc to abort.
+
+ちゃんとした武器を選ぶか、Escキーで中断してください。
+%%%%
+%s glows red for a moment.
+
+%sは一瞬赤く輝いた。
+%%%%
+%s glows silver for a moment.
+
+%sは一瞬銀色に輝いた。
+%%%%
+%s very briefly gains a red sheen.
+
+%sは一瞬赤い光沢を帯びた。
+%%%%
+Identify which item? (\ to view known items)
+
+どのアイテムを鑑定しますか？ (\で既知のアイテム一覧)
+%%%%
+Choose an unidentified item, or Esc to abort.
+
+未鑑定のアイテムを選択するか、Escキーで中断してください。
+%%%%
+%s glows purple and changes!
+
+%sは紫色に輝き、形を変えた！
+%%%%
+Enchant which item?
+
+どのアイテムを強化しますか？
+%%%%
+Choose some type of armour to enchant, or Esc to abort.
+
+強化する防具を選択するか、Escキーで中断してください。
+%%%%
+The dust glows %s!
+
+床の塵は%sに輝いた！
+%%%%
+The scroll reassembles itself in your %s!
+
+巻物はあなたの%sの中で再構成された！
+%%%%
+%s glows %s for a moment.
+
+%sは一瞬%sに輝いた。
+%%%%
+Your bandages flutter.
+
+あなたの包帯はひらひらした。
+%%%%
+You smell %s.
+
+あなたは%sのにおいを嗅いだ。
+%%%%
+You experience a momentary feeling of inescapable doom!
+
+あなたは一瞬逃れ得ぬ破滅の予感がした！
+%%%%
+Your brain hurts!
+
+あなたは頭痛がした！
+%%%%
+Your ears itch!
+
+あなたは耳がかゆい！
+%%%%
+Your nose twitches suddenly!
+
+あなたの鼻が突然ひくひくした！
+%%%%
+You hear the tinkle of a tiny bell.
+
+あなたはベルの鳴る音を耳にした。
+%%%%
+You hear %s.
+
+あなたは%sを耳にした。
+%%%%
 Reading books requires mental cohesion, which you lack.
 
 魔法書を読むには集中力が必要だが、今のあなたには欠けている。
+%%%%
+This item has been removed, sorry!
+
+# obsolete
+%%%%
+Magic quickly surges around you.
+
+急速にあなたの周りに魔力が押し寄せた。
+%%%%
+You can't read that!
+
+あなたはそれを読めない！
+%%%%
+Magic scrolls do not work when you're silenced!
+
+あなたが静寂に包まれている間、巻物は使えない！
+%%%%
+You cannot read scrolls while unable to breathe!
+
+あなたが呼吸できない限り、巻物を読むことはできない！
+%%%%
+You cannot read scrolls in your current state!
+
+現状では巻物を読むことができない！
+%%%%
+You'd burn any scroll you tried to read!
+
+# obsolete
+%%%%
+You have no spells to forget!
+
+あなたは呪文を何一つ覚えていない！
+%%%%
+This scroll only affects a wielded weapon!
+
+この巻物は今手にしている武器にのみ効果をもたらす！
+%%%%
+Holy weapons cannot be cursed!
+
+神聖なる武器を呪うことはできない！
 %%%%
 Read which item?
 
@@ -2987,7 +3199,7 @@ The air around you briefly surges with heat, but it dissipates.
 %%%%
 %s very briefly gain%s a black sheen.
 
-%sは一瞬黒い光沢を放った。
+%sは一瞬黒い光沢を帯びた。
 %%%%
 It is a scroll of enchant weapon.
 
@@ -3020,6 +3232,18 @@ It %s a %s.
 Your stasis keeps you stable.
 
 あなたの体質は停滞状態を維持した。
+%%%%
+You can't pick that up.
+
+あなたはそれを拾い上げることができない。
+%%%%
+Drop how many?
+
+いくつ手放しますか？
+%%%%
+You can't wear or remove anything in your present form.
+
+現在の姿ではあなたは何も脱ぐことができない。
 %%%%
 ############################## itemname.cc ##############################
 %%%%
