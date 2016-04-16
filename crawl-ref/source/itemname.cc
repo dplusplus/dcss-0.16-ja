@@ -1440,12 +1440,13 @@ string ghost_brand_name(int brand)
 {
     // XXX: deduplicate these special cases
     if (brand == SPWPN_VAMPIRISM)
-        return "a vampiric weapon";
+        return jtrans("a vampiric weapon");
     if (brand == SPWPN_ANTIMAGIC)
-        return "an antimagic weapon";
+        return jtrans("an antimagic weapon");
     if (brand == SPWPN_VORPAL)
-        return "a vorpal weapon"; // can't use brand_type_name
-    return make_stringf("a weapon of %s", brand_type_name(brand, false));
+        return jtrans("a vorpal weapon"); // can't use brand_type_name
+    return make_stringf(jtransc("a weapon of %s"),
+                        jtransc(string("of ") + brand_type_name(brand, false)));
 }
 
 string ego_type_string(const item_def &item, bool terse, int override_brand)

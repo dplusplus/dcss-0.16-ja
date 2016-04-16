@@ -4279,6 +4279,22 @@ Akashic Record
 
 アカシック・レコード
 %%%%
+a vampiric weapon
+
+吸血の武器
+%%%%
+an antimagic weapon
+
+反魔法の武器
+%%%%
+a vorpal weapon
+
+殺戮の武器
+%%%%
+a weapon of %s
+
+%s武器
+%%%%
 rod
 
 ロッド
