@@ -377,6 +377,11 @@ static void _sdump_gold(dump_params &par)
                              you.attribute[ATTR_MISC_SPENDING]);
     }
 
+    if (par.se)
+    {
+        text = replace_all(text, "ている。", "ていた。");
+    }
+
     if (lines > 0)
         par.text += "\n";
     par.text += text;
