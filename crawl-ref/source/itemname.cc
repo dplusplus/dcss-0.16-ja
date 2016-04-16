@@ -2087,7 +2087,12 @@ string item_def::name_aux(description_level_type desc, bool terse, bool ident,
         if (is_artefact(*this) && !dbname && !basename)
         {
             buff << jtrans(get_artefact_name(*this));
-            buff << make_stringf(" (%+d)", plus);
+            if (know_pluses
+                        && !((armour_is_hide(*this)
+                              || sub_type == ARM_QUICKSILVER_DRAGON_ARMOUR)
+                             && plus == 0))
+                buff << make_stringf(" (%+d)", plus);
+
             break;
         }
 
