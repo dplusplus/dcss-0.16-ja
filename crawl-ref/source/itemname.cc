@@ -2401,9 +2401,17 @@ string item_def::name_aux(description_level_type desc, bool terse, bool ident,
     case OBJ_BOOKS:
         if (is_random_artefact(*this) && !dbname && !basename)
         {
-            buff << "魔法書『" << get_artefact_name(*this) << "』";
-            if (!know_type)
-                buff << jtrans("book");
+            if (know_type)
+            {
+                buff << "魔法書『"
+                     << get_artefact_name(*this)
+                     << "』";
+            }
+            else
+            {
+                buff << get_artefact_name(*this)
+                     << jtrans("book");
+            }
             break;
         }
         if (basename)

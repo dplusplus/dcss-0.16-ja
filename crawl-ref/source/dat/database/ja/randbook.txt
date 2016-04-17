@@ -191,35 +191,50 @@ w:3
 %%%%
 _book_adjective_
 
-glistering
+# glistering
+きらめく
 
-sparkling
+# sparkling
+ぴかぴか光る
 
-levitating
+# levitating
+宙に浮いている
 
-droning
+# droning
+うなり声を立てる
 
-conspicuous
+# conspicuous
+人目を引く
 
-inconspicuous
+# inconspicuous
+地味な
 
-colourful
+# colourful
+色彩豊かな
 
-graven
+# graven
+重厚な
 
-engraved
+# engraved
+彫版印刷の
 
-antique
+# antique
+骨董品の
 
-yellowed
+# yellowed
+黄ばんだ
 
-rare
+# rare
+珍しい
 
-black
+# black
+黒い
 
-blackened
+# blackened
+黒塗りの
 
-torn
+# torn
+引き裂かれた
 %%%%
 _the_book_magic_
 
