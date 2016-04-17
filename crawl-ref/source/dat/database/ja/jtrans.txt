@@ -3057,6 +3057,10 @@ Choose an unidentified item, or Esc to abort.
 
 %sは紫色に輝き、形を変えた！
 %%%%
+%s glows green for a moment.
+
+%sは一瞬緑色に輝いた。
+%%%%
 Enchant which item?
 
 どのアイテムを強化しますか？
