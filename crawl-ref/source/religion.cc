@@ -1515,7 +1515,7 @@ static bool _give_nemelex_gift(bool forced = false)
             deck.deck_rarity = rarity;
             deck.flags |= ISFLAG_KNOW_TYPE;
 
-            simple_god_message(" grants you a gift!");
+            simple_god_message(jtransc(" grants you a gift!"));
             more();
             canned_msg(MSG_SOMETHING_APPEARS);
 
@@ -2615,22 +2615,22 @@ void lose_piety(int pgn)
                 if (you_worship(GOD_ZIN))
                 {
                     simple_god_message(
-                        " is no longer ready to cure all your mutations.");
+                        jtransc(" is no longer ready to cure all your mutations."));
                 }
                 else if (you_worship(GOD_SHINING_ONE) && you.species != SP_FELID)
                 {
                     simple_god_message(
-                        " is no longer ready to bless your weapon.");
+                        jtransc(" is no longer ready to bless your weapon."));
                 }
                 else if (you_worship(GOD_KIKUBAAQUDGHA))
                 {
                     simple_god_message(
-                        " is no longer ready to enhance your necromancy.");
+                        jtransc(" is no longer ready to enhance your necromancy."));
                 }
                 else if (you_worship(GOD_LUGONU) && you.species != SP_FELID)
                 {
                     simple_god_message(
-                        " is no longer ready to corrupt your weapon.");
+                        jtransc(" is no longer ready to corrupt your weapon."));
                 }
             }
         }
@@ -2645,15 +2645,15 @@ void lose_piety(int pgn)
                 you.redraw_title = true;
 
                 _abil_chg_message(god_lose_power_messages[you.religion][i],
-                                  "You can no longer %s.", i);
+                                  jtransc("You can no longer %s."), i);
 
                 if (_need_water_walking() && !beogh_water_walk())
                     fall_into_a_pool(grd(you.pos()));
 
                 if (you_worship(GOD_QAZLAL) && i == 3)
                 {
-                    mprf(MSGCH_GOD, "The storm surrounding you is now too weak "
-                                    "to repel missiles.");
+                    mpr_nojoin(MSGCH_GOD, jtrans("The storm surrounding you is now too weak "
+                                                 "to repel missiles."));
                 }
             }
         }
@@ -2679,7 +2679,7 @@ void lose_piety(int pgn)
     if (you_worship(GOD_CHEIBRIADOS)
         && chei_stat_boost(old_piety) > chei_stat_boost())
     {
-        simple_god_message(" reduces the support of your attributes as your movement quickens.");
+        simple_god_message(jtransc(" reduces the support of your attributes as your movement quickens."));
         notify_stat_change();
     }
 
@@ -3098,8 +3098,8 @@ void print_sacrifice_message(god_type god, const item_def &item,
         // Weapons blessed by TSO don't get destroyed but are instead
         // returned whence they came. (jpeg)
         simple_god_message(
-            make_stringf(" %sreclaims %s.",
-                         piety_gain ? "gladly " : "",
+            make_stringf(jtransc(" %sreclaims %s."),
+                         jtransc(piety_gain ? "gladly " : ""),
                          item.name(DESC_THE).c_str()).c_str(),
             GOD_SHINING_ONE);
         return;
@@ -3317,7 +3317,7 @@ static void _god_welcome_handle_gear()
     item_def *amulet = you.slot_item(EQ_AMULET, false);
     if (amulet && amulet->sub_type == AMU_FAITH)
     {
-        mprf(MSGCH_GOD, "Your amulet flashes!");
+        mpr_nojoin(MSGCH_GOD, jtrans("Your amulet flashes!"));
         flash_view_delay(UA_PLAYER, god_colour(you.religion), 300);
     }
 
@@ -3343,9 +3343,9 @@ static void _god_welcome_handle_gear()
         const item_def& item = you.inv[you.equip[i]];
         if (god_hates_item(item))
         {
-            mprf(MSGCH_GOD, "%s warns you to remove %s.",
-                 uppercase_first(god_name(you.religion)).c_str(),
-                 item.name(DESC_YOUR, false, false, false).c_str());
+            mprf(MSGCH_GOD, jtransc("%s warns you to remove %s."),
+                 jtransc(god_name(you.religion)),
+                 item.name(DESC_PLAIN, false, false, false).c_str());
         }
     }
 }
@@ -3528,23 +3528,35 @@ void join_religion(god_type which_god, bool immediate)
     if (is_good_god(you.religion) && is_good_god(old_god))
     {
         // Some feedback that piety moved over.
+        string message;
         switch (you.religion)
         {
         case GOD_ELYVILON:
-            simple_god_message(make_stringf(jtransc(" says: Farewell. Go and aid the meek with"),
-                                            jtransc(god_name(you.religion))).c_str(), old_god);
+            message = make_stringf(jtransc(" says: Farewell. Go and aid the meek with"),
+                                   jtransc(god_name(you.religion)));
             break;
         case GOD_SHINING_ONE:
-            simple_god_message(make_stringf(jtransc(" says: Farewell. Go and vanquish evil with"),
-                                            jtransc(god_name(you.religion))).c_str(), old_god);
+            message = make_stringf(jtransc(" says: Farewell. Go and vanquish evil with"),
+                                   jtransc(god_name(you.religion)));
             break;
         case GOD_ZIN:
-            simple_god_message(make_stringf(jtransc(" says: Farewell. Go and enforce order with"),
-                                            jtransc(god_name(you.religion))).c_str(), old_god);
+            message = make_stringf(jtransc(" says: Farewell. Go and enforce order with"),
+                                   jtransc(god_name(you.religion)));
             break;
         default:
             mprf(MSGCH_ERROR, "Unknown good god.");
         }
+
+        if (old_god == GOD_ELYVILON)
+        {
+            // 棄教元がエリヴィロンの場合は語調を和らげる
+            message = replace_all(message, "さらばだ", "さようなら");
+            message = replace_all(message, "するがいい", "しなさい");
+            message = replace_all(message, "すがいい", "しなさい");
+        }
+
+        simple_god_message(message.c_str(), old_god);
+
         // Give a piety bonus when switching between good gods.
         if (old_piety > piety_breakpoint(0))
             gain_piety(old_piety - piety_breakpoint(0), 2, false);
@@ -3800,9 +3812,9 @@ god_type choose_god(god_type def_god)
 {
     char specs[80];
 
-    string help = def_god == NUM_GODS ? "by name"
-                                      : "default " + god_name(def_god);
-    string prompt = make_stringf("Which god (%s)? ", help.c_str());
+    string help = def_god == NUM_GODS ? jtrans("by name")
+                                      : jtrans("default ") + " " + jtrans(god_name(def_god));
+    string prompt = make_stringf((jtrans("Which god (%s)? ") + " ").c_str(), help.c_str());
 
     if (msgwin_get_line(prompt, specs, sizeof(specs)) != 0)
         return NUM_GODS; // FIXME: distinguish cancellation from no match

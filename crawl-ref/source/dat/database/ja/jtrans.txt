@@ -12320,6 +12320,73 @@ wreak a terrible wrath on your foes
 
 敵に対し激怒の力を浴びせること
 %%%%
+Kikubaaqudgha no longer protects you from necromantic miscasts or death curses.
+
+キクバークッグァはもうあなたを死霊術の失敗効果や死の呪いから守ってはくれない。
+%%%%
+Kikubaaqudgha will no longer protect you from unholy torment.
+
+キクバークッグァはもうあなたを不浄なる苦痛から守ってはくれない。
+%%%%
+Vehumet will no longer aid your destructive magics.
+
+ヴェフメットはもうあなたの破壊的な魔法の手助けをしてくれない。
+%%%%
+Vehumet will no longer extend the range of your destructive magics.
+
+ヴェフメットはもうあなたの破壊的な魔法の射程を伸ばしてくれない。
+%%%%
+Sif Muna no longer protects you from the effects of miscast magic.
+
+シフ・ムーナはもうあなたを魔法の失敗効果から守ってくれない。
+%%%%
+Beogh no longer aids your use of armour.
+
+ベオはもう鎧の使用を手助けしてくれない。
+%%%%
+walk on water or give items to your followers
+
+水の上を歩くことや従者にアイテムを与えること
+%%%%
+Cheibriados no longer slows and strengthens your metabolism.
+
+ケイブリアドスはもうあなたの代謝を遅くしたり強化したりしなくなった。
+%%%%
+Ashenzari no longer supports your skills.
+
+%%%%
+Ashenzari no longer reveals the unseen or keeps your mind clear.
+
+アシェンザリはもう見えざる者の存在を看破したり、あなたの意識を明晰に保ったりはしてくれない。
+%%%%
+Ashenzari no longer helps you to reconsider your skills.
+
+アシェンザリはもうあなたがスキルを再考するのを助けてはくれない。
+%%%%
+You no longer bleed smoke.
+
+あなたはもう黒煙を発しない。
+%%%%
+Your shadow no longer tangibly mimics your actions.
+
+あなたの影はもうあなたの行動を真似て行動しなくなった。
+%%%%
+Your storm dissipates completely.
+
+あなたを取り巻く嵐は完全に消え去った。
+%%%%
+You no longer adapt resistances upon receiving elemental damage.
+
+あなたはもう元素属性への耐性には熟達していない。
+%%%%
+You no longer exude an aura of power that intimidates your foes.
+
+あなたはもう敵を戸惑わせるオーラを発散しなくなった。
+%%%%
+Your aura of power no longer strikes those that harm you.
+
+あなたのオーラはもうあなたに危害を加えるものに危害を加えなくなった。
+%%%%
 you train your various spell casting skills
 
 様々な呪文スキルの鍛錬
@@ -12656,6 +12723,34 @@ will now unseal the treasures of the Slime Pits.
 
 はスライムの穴ぐらにある宝の封印を解いた。
 %%%%
+is no longer ready to cure all your mutations.
+
+は現状ではあなたの突然変異を全て治療する用意ができていない。
+%%%%
+is no longer ready to bless your weapon.
+
+は現状ではあなたの武器を祝福する用意ができていない。
+%%%%
+is no longer ready to enhance your necromancy.
+
+は現状ではあなたの死霊術を強化する用意ができていない。
+%%%%
+is no longer ready to corrupt your weapon.
+
+は現状ではあなたの武器に崩壊の力を与える用意ができていない。
+%%%%
+You can no longer %s.
+
+あなたはもう%sはできない。
+%%%%
+The storm surrounding you is now too weak to repel missiles.
+
+あなたを取り巻く嵐は弱まり、もう飛来物を逸らすことはできない。
+%%%%
+reduces the support of your attributes as your movement quickens.
+
+はあなたの動きを少し早めると共に、あなたの能力値への手助けを減じた。
+%%%%
 You have lost your religion!
 
 あなたは信仰を捨て去った！
@@ -12726,11 +12821,15 @@ continues to slow your movements.
 %%%%
 The divine host forsakes you.
 
-神聖な神はあなたを見捨てた。
+神聖なる御使いはあなたを見捨てた。
 %%%%
-Your body
+%sreclaims %s.
 
-あなたの死体
+は%s%sを回収した。
+%%%%
+gladly
+
+喜びながら
 %%%%
 disappear% without a[dditional] glow.
 
@@ -12743,6 +12842,18 @@ glow% slightly [brighter ]and disappear%.
 glow% with a rainbow of weird colours and disappear%.
 
 は一瞬奇妙な虹色に輝き、消え去った。
+%%%%
+Your body
+
+あなたの死体
+%%%%
+Your amulet flashes!
+
+あなたの身に付けている護符が光った！
+%%%%
+%s warns you to remove %s.
+
+%sはあなたに%sを脱ぐように警告した。
 %%%%
 welcomes you%s!
 
@@ -12830,7 +12941,7 @@ You have enough gold to %s.
 %%%%
 You bow before the missionary of Beogh.
 
-あなたはベオの宣教師の前に跪いた。
+あなたはベオの宣教師の前にひざまずいた。
 %%%%
 You %s the altar of %s.
 
@@ -12846,11 +12957,11 @@ does not accept service from beggars like you!
 %%%%
 The service fee for joining is currently %d gold; you have none.
 
-入会金は現在%dゴールドだ; あなたは一文たりとも持っていない。
+入会金は現在%dゴールドだ。あなたは一文たりとも持っていない。
 %%%%
 The service fee for joining is currently %d gold; you only have %d.
 
-入会金は現在%dゴールドだ; あなたは%dゴールドしか持っていない。
+入会金は現在%dゴールドだ。あなたは%dゴールドしか持っていない。
 %%%%
 does not accept worship from the loveless!
 
@@ -12878,11 +12989,23 @@ Gozag will waive the service fee if you
 %%%%
 The service fee for joining is currently %d gold; you have %d.
 
-入会金は現在%dゴールドだ; あなたは%dゴールド所持している。
+入会金は現在%dゴールドだ。あなたは%dゴールド所持している。
 %%%%
 %sDo you wish to %sjoin this religion?
 
 %sあなたは%s入信しますか？
+%%%%
+by name
+
+名前を指定してください
+%%%%
+default
+
+デフォルト:
+%%%%
+Which god (%s)?
+
+どの神を指定しますか？ (%s)
 %%%%
 ############################## rot.cc ##############################
 %%%%
