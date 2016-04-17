@@ -28,7 +28,7 @@ w:1
 Xom general gift
 
 # Xom grants you a gift!
-ゾムはあなたに贈物を与えた！
+ゾムはあなたに贈り物を授けた！
 
 # "Here."
 『ほれ』
