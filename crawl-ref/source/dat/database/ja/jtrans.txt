@@ -2837,6 +2837,10 @@ You're wearing all the rings you can. Remove which one?
 
 (<w>?</w> で一覧から選択, <w>Esc</w> でキャンセル)
 %%%%
+%sing this item will reduce your %s to zero or below. Continue?
+
+このアイテムを%sと、あなたの%sはゼロ以下に低下します。それでも続けますか？
+%%%%
 Losing flight right now would be fatal!
 
 いま飛行能力を失うことは致命的だ！
@@ -2936,6 +2940,14 @@ It's stuck to you!
 You remove %s.
 
 あなたは%sを外した。
+%%%%
+You can't turn invisible.
+
+あなたは不可視状態になることができない。
+%%%%
+Invisibility will do you no good right now; use anyway?
+
+この状態で透明化することは得策ではない。それでも使いますか？
 %%%%
 You don't have anything to inscribe.
 
