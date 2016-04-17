@@ -12034,7 +12034,7 @@ Kikubaaqudgha is protecting you from necromantic miscasts and death curses.
 %%%%
 Kikubaaqudgha is protecting you from unholy torment.
 
-キクバークッグァはあなたを不浄な苦痛から守る。
+キクバークッグァはあなたを不浄なる苦痛から守る。
 %%%%
 invoke torment by sacrificing a corpse
 
@@ -12274,7 +12274,7 @@ You now sometimes bleed smoke when heavily injured by enemies.
 %%%%
 Your shadow now sometimes tangibly mimics your actions.
 
-あなたの影は時々あなたの行動を真似る。
+あなたの影は時々あなたの行動を真似て行動する。
 %%%%
 transform into a swirling mass of shadows
 
