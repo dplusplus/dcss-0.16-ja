@@ -7381,7 +7381,7 @@ becomes somewhat translucent.
 's eyes start to glow.
 
 の眼が爛々と輝きだした。
-%%%
+%%%%
 ############################## mon-info.cc ##############################
 %%%%
 very slow
