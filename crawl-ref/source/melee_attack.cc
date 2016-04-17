@@ -1513,11 +1513,16 @@ string melee_attack::player_why_missed()
                                                  : string("armour"));
 
         if (armour_miss && !shield_miss)
-            return "あなたの" + armour_name + "は敵の攻撃を防いだ。";
+            return make_stringf("あなたは自分の%sが邪魔で%sを攻撃できなかった。",
+                                armour_name.c_str(),
+                                jtransc(defender->name(DESC_PLAIN)));
         else if (shield_miss && !armour_miss)
-            return "あなたの盾は敵の攻撃を防いだ。";
+            return make_stringf("あなたは自分の盾が邪魔で%sを攻撃できなかった。",
+                                jtransc(defender->name(DESC_PLAIN)));
         else
-            return "あなたの盾と" + armour_name + "は敵の攻撃を防いだ。";
+            return make_stringf("あなたは自分の盾と%sが邪魔で%sを攻撃できなかった。",
+                                armour_name.c_str(),
+                                jtransc(defender->name(DESC_PLAIN)));
     }
 
     return "あなたは" + jtrans(defender->name(DESC_THE))
