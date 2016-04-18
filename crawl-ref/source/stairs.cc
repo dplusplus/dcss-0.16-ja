@@ -955,7 +955,7 @@ void down_stairs(dungeon_feature_type force_stair, bool force_known_shaft,
         if (stair_taken == branches[branch].entry_stairs)
         {
             if (branches[branch].entry_message)
-                mpr(branches[branch].entry_message);
+                mpr(jtrans(branches[branch].entry_message));
             else
                 mprf(jtransc("Welcome to %s!"),
                      tagged_jtransc("[branch]", branches[branch].longname));

@@ -131,6 +131,11 @@
 
 地獄の玄関
 %%%%
+Welcome to Hell!\nPlease enjoy your stay.
+
+地獄へようこそ！
+どうぞお楽しみください。
+%%%%
 [branch]Dis
 
 ディース
@@ -187,6 +192,10 @@
 
 万魔殿
 %%%%
+You enter the halls of Pandemonium!\nTo return, you must find a gate leading back.
+
+あなたはパンデモニウムの大広間に突入した！\n迷宮へと戻るには、ここから脱出する門を探さねばならない。
+%%%%
 [branch]Ziggurat
 
 ジグラット
@@ -199,6 +208,10 @@
 
 ジグラット
 %%%%
+You land on top of a ziggurat so tall you cannot make out the ground.
+
+あなたはジグラットのはるか頂上へと舞い降りた。地面がよく見えないほどの高さだ。
+%%%%
 [branch]Labyrinth
 
 ラビリンス
@@ -207,6 +220,11 @@
 
 ラビリンス
 %%%%
+As you enter the labyrinth, previously moving walls settle noisily into place.\nYou hear the metallic echo of a distant snort before it fades into the rock.
+
+あなたがラビリンスに突入すると、それまで動いていた壁が騒音を立てつつその場に据え付けられた。
+遠くの方から牛の鼻息の金属的な反響音が岩壁に吸い込まれていくのが聞こえる。
+%%%%
 [branch]Bazaar
 
 バザール
@@ -214,6 +232,10 @@
 [branch]a bazaar
 
 バザール
+%%%%
+You enter an inter-dimensional bazaar!
+
+あなたは次元を旅する商隊のバザールに遭遇した！
 %%%%
 [branch]Trove
 
