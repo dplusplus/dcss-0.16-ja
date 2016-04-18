@@ -997,7 +997,11 @@ string jtrans(const string &key, const bool linefeed)
     if (key == "") return "";
 
     string tmp_key(key);
-    string text = _query_database(JtransDB, trim_string(tmp_key), true, true);
+
+    tmp_key = trim_string(tmp_key);
+    tmp_key = replace_all(tmp_key, "\n", "\\n");
+
+    string text = _query_database(JtransDB, tmp_key, true, true);
 
     if (text == "") return key;
 
