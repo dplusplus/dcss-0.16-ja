@@ -2047,6 +2047,38 @@ Not in Shoals or no heightmap; tide not available.
 %%%%
 ############################## end.cc ##############################
 %%%%
+Hit any key to exit...
+
+終了するにはどれかキーを押してください……
+%%%%
+Hit Enter to continue...
+
+続行するにはEnterを押してください……
+%%%%
+rasps: "You have failed me! Welcome... oblivion!"
+
+は言った: 『役立たずめ！ 忘却よ来たれ！』
+%%%%
+rasps: "You have failed me! Welcome... death!"
+
+は言った: 『役立たずめ！ 死よ来たれ！』
+%%%%
+claims you as an undead slave.
+
+はあなたに不死の下僕となることを要求した。
+%%%%
+Your body rises from the dead as a mindless zombie.
+
+あなたの死体は知性無きゾンビとなって起き上がった。
+%%%%
+Your body crumbles into a pile of gold.
+
+あなたの死体は金貨の山となって崩れ落ちた。
+%%%%
+Char dump unsuccessful! Sorry about that.
+
+キャラクターダンプに失敗しました！ 申し訳ありません。
+%%%%
 Save macros?
 
 マクロを保存しますか？[Y/N]
@@ -2058,6 +2090,15 @@ Goodbye, %s.
 Best Crawlers - %s
 
 冒険者の殿堂 - %s
+%%%%
+You can find your morgue file in the '%s' directory.
+
+死亡ダンプは'%s'ディレクトリに置いてあります。
+%%%%
+%s\nHit Enter to continue...
+
+%s
+続行するにはEnterを押してください……
 %%%%
 ############################## fight.cc ##############################
 %%%%

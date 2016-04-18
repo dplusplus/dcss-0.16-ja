@@ -80,7 +80,7 @@ static bool _print_error_screen(const char *message, ...)
     //       any formatting!
     error_msg = replace_all(error_msg, "<", "<<");
 
-    error_msg += "\n\n\nHit any key to exit...\n";
+    error_msg += "\n\n\n" + jtransln("Hit any key to exit...\n");
 
     // Break message into correctly sized lines.
     int width = 80;
@@ -167,7 +167,7 @@ NORETURN void end(int exit_code, bool print_error, const char *format, ...)
     if (need_pause && exit_code && !crawl_state.game_is_arena()
         && !crawl_state.seen_hups && !crawl_state.test)
     {
-        fprintf(stderr, "Hit Enter to continue...\n");
+        fprintf(stderr, jtranslnc("Hit Enter to continue...\n"));
         getchar();
     }
 #else
@@ -238,8 +238,8 @@ NORETURN void end_game(scorefile_entry &se)
         switch (you.religion)
         {
             case GOD_FEDHAS:
-                simple_god_message(" appreciates your contribution to the "
-                                   "ecosystem.");
+                simple_god_message(jtransc(" appreciates your contribution to the "
+                                           "ecosystem."));
                 break;
 
             case GOD_NEMELEX_XOBEH:
@@ -252,8 +252,8 @@ NORETURN void end_game(scorefile_entry &se)
 
                 if (holi == MH_NONLIVING || holi == MH_UNDEAD)
                 {
-                    simple_god_message(" rasps: \"You have failed me! "
-                                       "Welcome... oblivion!\"");
+                    simple_god_message(jtransc(" rasps: \"You have failed me! "
+                                               "Welcome... oblivion!\""));
                 }
                 else
                 {
@@ -265,11 +265,11 @@ NORETURN void end_game(scorefile_entry &se)
 
             case GOD_YREDELEMNUL:
                 if (you.undead_state() != US_ALIVE)
-                    simple_god_message(" claims you as an undead slave.");
+                    simple_god_message(jtransc(" claims you as an undead slave."));
                 else if (se.get_death_type() != KILLED_BY_DISINT
                          && se.get_death_type() != KILLED_BY_LAVA)
                 {
-                    mprf(MSGCH_GOD, "Your body rises from the dead as a mindless zombie.");
+                    mpr_nojoin(MSGCH_GOD, jtrans("Your body rises from the dead as a mindless zombie."));
                 }
                 // No message if you're not undead and your corpse is lost.
                 break;
@@ -278,7 +278,7 @@ NORETURN void end_game(scorefile_entry &se)
                 if (se.get_death_type() != KILLED_BY_DISINT
                     && se.get_death_type() != KILLED_BY_LAVA)
                 {
-                    mprf(MSGCH_GOD, "Your body crumbles into a pile of gold.");
+                    mpr_nojoin(MSGCH_GOD, jtrans("Your body crumbles into a pile of gold."));
                 }
                 break;
 
@@ -296,7 +296,7 @@ NORETURN void end_game(scorefile_entry &se)
     string fname = morgue_name(you.your_name, se.get_death_time());
     if (!dump_char(fname, true, true, &se))
     {
-        mpr("Char dump unsuccessful! Sorry about that.");
+        mpr(jtrans("Char dump unsuccessful! Sorry about that."));
         if (!crawl_state.seen_hups)
             more();
         clrscr();
@@ -346,7 +346,7 @@ NORETURN void end_game(scorefile_entry &se)
     hiscores_print_list(get_number_of_lines() - lines - 5);
 
 #ifndef DGAMELAUNCH
-    cprintf("\nYou can find your morgue file in the '%s' directory.",
+    cprintf(("\n" + jtrans("You can find your morgue file in the '%s' directory.")).c_str(),
             morgue_directory().c_str());
 #endif
 
@@ -390,7 +390,7 @@ NORETURN void game_ended_with_error(const string &message)
         }
         else
         {
-            fprintf(stderr, "%s\nHit Enter to continue...\n", message.c_str());
+            fprintf(stderr, jtranslnc("%s\nHit Enter to continue...\n"), message.c_str());
             getchar();
         }
         game_ended();
