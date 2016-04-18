@@ -255,7 +255,7 @@ string replace_name_parts(const string &name_in, const item_def& item)
                                "@player_name@"
                                + getRandNameString("killer_name"));
             name = replace_all(name, "@player_doom@",
-                               "@player_name@'s "
+                               "@player_name@の"
                                + getRandNameString("death_or_doom"));
         }
         else
