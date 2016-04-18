@@ -1074,7 +1074,7 @@ beak
 %%%%
 You have a beak for a mouth.
 
-あなたは嘴を持っている
+あなたは嘴を持っている。
 %%%%
 Your mouth lengthens and hardens into a beak!
 

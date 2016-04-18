@@ -400,7 +400,7 @@ string describe_mutations(bool center_title)
                 msg += " continuously";
             msg += ".\n";
 
-            result += jtrans(msg);
+            result += jtransln(msg);
             have_any = true;
         }
         break;
