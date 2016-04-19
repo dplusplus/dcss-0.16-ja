@@ -364,22 +364,22 @@ void MiscastEffect::do_msg(bool suppress_nothing_happens)
     string msg;
 
     if (!all_msg.empty())
-        msg = all_msg;
+        msg = jtrans(all_msg);
     else if (target->is_player())
-        msg = you_msg;
+        msg = jtrans(you_msg);
     else if (!mon_msg.empty())
     {
-        msg = mon_msg;
+        msg = jtrans(mon_msg);
         // Monster might be unseen with hands that can't be seen.
         ASSERT(msg.find("@hand") == string::npos);
     }
     else
     {
         if (you.can_see(target))
-            msg = mon_msg_seen;
+            msg = jtrans(mon_msg_seen);
         else
         {
-            msg = mon_msg_unseen;
+            msg = jtrans(mon_msg_unseen);
             // Can't see the hands of invisible monsters.
             ASSERT(msg.find("@hand") == string::npos);
         }
