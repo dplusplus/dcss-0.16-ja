@@ -321,7 +321,7 @@ string ash_describe_bondage(int flags, bool level)
         else
         {
             // FIXME: what if you sacrificed a hand?
-            desc = make_stringf(jtransc("Your %s %s is bound but not your %s %s."),
+            desc = make_stringf(jtranslnc("Your %s %s is bound but not your %s %s."),
                                 jtransc(you.bondage[ET_WEAPON] ? "weapon" : "shield"),
                                 jtransc(you.bondage[ET_WEAPON] ? "shield" : "weapon"));
         }
