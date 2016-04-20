@@ -684,6 +684,24 @@ void get_door_description(int door_size, const char** adjective, const char** no
     *noun = descriptions[idx+1];
 }
 
+void get_door_description_en(int door_size, const char** adjective, const char** noun)
+{
+    const char* descriptions[] =
+    {
+        "miniscule " , "buggy door",
+        ""           , "door",
+        "large "     , "door",
+        ""           , "gate",
+        "huge"       , "gate",
+    };
+
+    int max_idx = static_cast<int>(ARRAYSZ(descriptions) - 2);
+    const unsigned int idx = min(door_size*2, max_idx);
+
+    *adjective = descriptions[idx];
+    *noun = descriptions[idx+1];
+}
+
 coord_def get_random_stair()
 {
     vector<coord_def> st;
