@@ -12736,6 +12736,10 @@ use unnaturally quick items
 
 不自然に素早いアイテムを使うこと
 %%%%
+offers you knowledge of
+
+はあなたに
+%%%%
 You can now %s.
 
 あなたは%sができるようになった。

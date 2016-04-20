@@ -1970,24 +1970,23 @@ bool do_god_gift(bool forced)
                 if (!offers.empty())
                 {
                     you.vehumet_gifts = offers;
-                    string prompt = " offers you knowledge of ";
+                    string prompt = jtrans(" offers you knowledge of ");
                     for (auto it = offers.begin(); it != offers.end(); ++it)
                     {
                         if (it != offers.begin())
                         {
                             if (offers.size() > 2)
-                                prompt += ",";
-                            prompt += " ";
+                                prompt += "、";
                             auto next = it;
                             next++;
                             if (next == offers.end())
-                                prompt += "and ";
+                                prompt += "、そして";
                         }
-                        prompt += spell_title(*it);
+                        prompt += tagged_jtrans("[spell]", spell_title(*it)) + "の呪文";
                         _add_to_old_gifts(*it);
                         take_note(Note(NOTE_OFFERED_SPELL, *it));
                     }
-                    prompt += ".";
+                    prompt += "の知識を授けることを提案した。";
                     if (gifts >= NUM_VEHUMET_GIFTS - 1)
                     {
                         prompt += " These spells will remain available"
