@@ -314,6 +314,513 @@ Press one of the following keys to\nobtain more information on a certain\naspect
 
 <w>6</w>.      アイテムへの銘の効果(未訳)
 %%%%
+<h>Movement:
+
+<h>移動 / 攻撃:
+%%%%
+To move in a direction or to attack,
+
+目的の方向に移動または攻撃するには、
+%%%%
+use the numpad (try Numlock off and
+
+テンキーを使うかviライクなキーを使用
+%%%%
+on) or vi keys:
+
+すること。(Numlockに注意)
+%%%%
+<h>Rest/Search:
+
+<h>休憩/捜索:
+%%%%
+wait a turn (also <w>s</w>, <w>Del</w>)
+
+1ターン待つ。(<w>s</w>、<w>Del</w>でも可)
+%%%%
+rest and long wait; stops when
+
+休憩して長時間待機する。
+%%%%
+Health or Magic become full,
+
+HPやMPが全快になる、何かを発見す
+%%%%
+something is detected, or after
+
+る、100ターン経過することで解除
+%%%%
+100 turns over (<w>numpad-5</w>)
+
+される。(テンキーの<w>5</w>でも可)
+%%%%
+<h>Extended Movement:
+
+<h>その他の移動コマンド:
+%%%%
+auto-explore
+
+自動探索
+%%%%
+interlevel travel
+
+階層間自動移動
+%%%%
+Find items
+
+アイテム検索および移動
+%%%%
+set Waypoint
+
+中継地点の指定
+%%%%
+<w>/ Dir.</w>, <w>Shift-Dir.</w>: long walk
+
+<w>/ (方向)</w>または<w>Shift+(方向)</w>:
+         一方向に移動
+%%%%
+<w>* Dir.</w>, <w>Ctrl-Dir.</w> : attack without move
+
+<w>* (方向)</w>または<w>Ctrl+(方向)</w>:
+         移動せず指定した方向に攻撃
+%%%%
+<h>Autofight:
+
+<h>対象を自動で指定して攻撃:
+%%%%
+<w>Tab</w>       : attack nearest monster,\n            moving if necessary
+
+<w>Tab</w>       : 一番近くのモンスターを
+            可能なら移動して攻撃する。
+%%%%
+<w>Shift-Tab</w> : attack nearest monster\n            without moving
+
+<w>Shift-Tab</w> : 一番近くのモンスターを
+            移動せず攻撃する。
+%%%%
+<h>Item types (and common commands)
+
+<h>アイテムとそれに付随するコマンド:
+%%%%
+<cyan>)</cyan> : hand weapons (<w>%</w>ield)
+
+<cyan>)</cyan> : 手持ち武器 / <w>%</w>)ieldで装備する。
+%%%%
+<brown>(</brown> : missiles (<w>%</w>uiver, <w>%</w>ire, <w>%</w>/<w>%</w> cycle)
+
+<brown>(</brown> : 矢弾等 / <w>%</w>)uiverで準備する。
+    <w>%</w>)ireで射撃、<w>%</w>/<w>%</w>で切り替える。
+%%%%
+<cyan>[</cyan> : armour (<w>%</w>ear and <w>%</w>ake off)
+
+<cyan>[</cyan> : 防具 / <w>%</w>)earで装備する。
+    <w>%</w>)ake offで脱ぐ。
+%%%%
+<brown>percent</brown> : corpses and food (<w>%</w>hop up and <w>%</w>at)
+
+<brown>percent</brown> : 死体および食料 / <w>%</w>)hop upで死体を
+    肉に変え、<w>%</w>)atで食べる。
+%%%%
+<w>?</w> : scrolls (<w>%</w>ead)
+
+<w>?</w> : 巻物 / <w>%</w>)eadで読む。
+%%%%
+<magenta>!</magenta> : potions (<w>%</w>uaff)
+
+<magenta>!</magenta> : 水薬 / <w>%</w>)uaffで飲む。
+%%%%
+<blue>=</blue> : rings (<w>%</w>ut on and <w>%</w>emove)
+
+<blue>=</blue> : 指輪 / <w>%</w>)ut onで指にはめる。
+    <w>%</w>)emoveで外す。
+%%%%
+<red>"</red> : amulets (<w>%</w>ut on and <w>%</w>emove)
+
+<red>"</red> : 護符 / <w>%</w>)ut onで身に付ける。
+    <w>%</w>)emoveで外す。
+%%%%
+<lightgrey>/</lightgrey> : wands (e<w>%</w>oke)
+
+<lightgrey>/</lightgrey> : ワンド / e(<w>%</w>)okeで発動させる。
+%%%%
+</lightcyan> : books (<w>%</w>ead, <w>%</w>emorise, <w>%</w>ap, <w>%</w>ap)
+
+</lightcyan> : 魔法書 / <w>%</w>)eadで読む。
+    <w>%</w>)emoriseで呪文を記憶する。
+    <w>%</w>)apもしくは<w>%</w>)apで魔法を唱える。
+%%%%
+<brown>\</brown> : staves and rods (<w>%</w>ield and e<w>%</w>oke)
+
+<brown>\</brown> : 杖およびロッド / <w>%</w>)ieldで手に持ち、
+    e(<w>%</w>)okeで発動させる。
+%%%%
+<lightgreen>}</lightgreen> : miscellaneous items (e<w>%</w>oke)
+
+<lightgreen>}</lightgreen> : その他の発動アイテム
+    e(<w>%</w>)okeで発動させる。
+%%%%
+<yellow>$</yellow> : gold (<w>%</w> counts gold)
+
+<yellow>$</yellow> : 金貨 / <w>%</w>)で所持金を数える
+%%%%
+<lightmagenta>0</lightmagenta> : the Orb of Zot\n    Carry it to the surface and win!
+
+<lightmagenta>0</lightmagenta> : ゾットのオーブ
+    これを地上に持ち帰り勝利せよ！
+%%%%
+<h>Other Gameplay Actions:
+
+<h>その他のゲーム内での行動:
+%%%%
+use special Ability (<w>%!</w> for help)
+
+特別な能力を使う。(<w>%!</w>でヘルプ表示)
+%%%%
+Pray (<w>%</w> and <w>%!</w> for help)
+
+祈る。(<w>%</w>→<w>%/!</w>でヘルプ表示)
+%%%%
+cast spell, abort without targets
+
+魔法を唱える。
+    対象が見つからない場合中断する。
+%%%%
+cast spell, no matter what
+
+対象が見つからなくても構わず魔法を
+    唱える。
+%%%%
+list all spells
+
+習得済みの魔法一覧を見る。
+%%%%
+tell allies (<w>%t</w> to shout)
+
+仲間に指示を出す。(<w>%t</w>で叫ぶ)
+%%%%
+re-do previous command
+
+直前のコマンドを繰り返す。
+%%%%
+repeat next command # of times
+
+コマンドを指定した回数繰り返す。
+%%%%
+<h>Non-Gameplay Commands / Info
+
+<h>ゲームに影響しないコマンド / 情報:
+%%%%
+show Previous messages
+
+過去のメッセージログを見る。
+%%%%
+Redraw screen
+
+画面を再描画する。
+%%%%
+Clear main and level maps
+
+レベルマップを消去する。
+%%%%
+annotate the dungeon level
+
+この階層に注釈を付ける。
+%%%%
+dump character to file
+
+キャラクターダンプを出力する。
+%%%%
+add note (use <w>%:</w> to read notes)
+
+行動履歴に任意の文を記載する。
+         (<w>%:</w>で行動履歴を読む)
+%%%%
+add macro (also <w>Ctrl-D</w>)
+
+マクロを編集する。
+         (<w>Ctrl-D</w>でも可)
+%%%%
+reassign inventory/spell letters
+
+アイテムや呪文の文字割り当てを
+         変更する。
+%%%%
+edit player doll
+
+プレイヤーのタイルを編集する
+%%%%
+<w>F12</w> : read messages (online play only)
+
+<w>F12</w> : メッセージを読む。
+         (オンラインのみ)
+%%%%
+read messages (online play only)
+
+メッセージを読む。
+         (オンラインのみ)
+%%%%
+<h>Game Saving and Quitting:
+
+<h>ゲームの保存と放棄:
+%%%%
+Save game and exit
+
+ゲームを保存して終了する。
+%%%%
+Save and exit without query
+
+確認を省いてゲームを保存し、
+         終了する。
+%%%%
+Suicide the current character
+
+現在のキャラクターを死なせて
+%%%%
+and quit the game
+
+ゲームを放棄する。
+%%%%
+<h>Player Character Information:
+
+<h>プレイヤーキャラクター情報:
+%%%%
+display character status
+
+キャラクターのステータスを表示する。
+%%%%
+show skill screen
+
+スキル画面を表示する。
+%%%%
+show resistances
+
+耐性等を表示する。
+%%%%
+show religion screen
+
+信仰している神の情報を見る。
+%%%%
+show Abilities/mutations
+
+能力や突然変異の一覧を見る。
+%%%%
+show item knowledge
+
+既知のアイテム一覧を見る。
+%%%%
+show runes collected
+
+現在手にしているルーン一覧を見る。
+%%%%
+display worn armour
+
+装備している防具一覧を表示する。
+%%%%
+display worn jewellery
+
+身につけている装飾品を表示する。
+%%%%
+display gold in possession
+
+所持金を数える。
+%%%%
+display experience info
+
+経験値情報を表示する。
+%%%%
+<h>Dungeon Interaction and Information:
+
+<h>ダンジョン関連コマンド:
+%%%%
+<w>%</w>/<w>%</w> : Open/Close door
+
+<w>%</w>/<w>%</w> : ドアを開け閉めする。
+%%%%
+<w>%</w>/<w>%</w> : use staircase
+
+<w>%</w>/<w>%</w> : 階段を上り下りする。
+%%%%
+examine occupied tile and
+
+今いる場所を調べ、床のアイテム
+
+%%%%
+pickup part of a single stack
+
+からいくつか拾い上げる。
+%%%%
+eXamine surroundings/targets
+
+周囲の地形やモンスター等の
+         解説文を見る。
+%%%%
+eXamine level map (<w>%?</w> for help)
+
+フロアマップを見る。
+         (<w>%?</w>でヘルプ表示)
+%%%%
+list monsters, items, features
+
+周囲のモンスター、アイテム、
+%%%%
+in view
+
+祭壇、その他一覧を見る。
+%%%%
+toggle terrain-only view
+
+地形のみ表示にする/戻す。
+%%%%
+colour monsters in view by HP
+
+視界のモンスターのHPを色で
+         表示する。
+%%%%
+show monster weapons
+
+モンスターの武器を見る。
+%%%%
+show dungeon Overview
+
+ダンジョンの概要を見る。
+%%%%
+toggle auto-pickup
+
+自動拾いをオン/オフする。
+%%%%
+set your travel speed to your
+
+移動速度をあなたの一番足が遅い
+%%%%
+slowest ally
+
+仲間に合わせる。
+%%%%
+<h>Item Interaction (inventory):
+
+<h>アイテム操作コマンド(インベントリ):
+%%%%
+show Inventory list
+
+インベントリ一覧を見る。
+%%%%
+show inventory of equipped items
+
+装備している武器・防具一覧を見る。
+%%%%
+inscribe item
+
+アイテムに銘を付ける。
+%%%%
+Fire next appropriate item
+
+準備済みのアイテムを射撃/投擲する。
+%%%%
+select an item and Fire it
+
+指定したアイテムを射撃/投擲する。
+%%%%
+select item slot to be quivered
+
+指定したアイテムを射撃/投擲スロット
+    に割り当てる。
+%%%%
+Drain corpses (tries floor first)
+
+死体から血を吸う。
+    (床のものを優先する)
+%%%%
+Eat food (tries floor first)
+
+食べ物を食べる。(床のものを優先する)
+%%%%
+Quaff a potion
+
+薬を飲む。
+%%%%
+Read a scroll or book
+
+巻物や魔法書を読む。
+%%%%
+Memorise a spell from a book
+
+魔法書に記載された魔法を習得する。
+%%%%
+Wield an item (<w>-</w> for none)
+
+アイテムを武器として手に持つ。
+    ('<w>-</w>'で手を空にする)
+%%%%
+wield item a, or switch to b
+
+'a'に割り当てられた武器を'b'に
+    持ち換える、またはその逆。
+%%%%
+(use <w>%</w> to assign slots)
+
+('<w>%</w>'で文字割り当てを変更する)
+%%%%
+eVoke power of wielded item
+
+手にしているアイテムを発動させる。
+%%%%
+eVoke wand and miscellaneous item
+
+ワンドや発動アイテムを発動させる。
+%%%%
+<w>%</w>/<w>%</w> : Wear or Take off armour
+
+<w>%</w>/<w>%</w> : 防具を脱ぎ着する。
+%%%%
+<w>%</w>/<w>%</w> : Put on or Remove jewellery
+
+<w>%</w>/<w>%</w> : 装飾品を付け外しする。
+%%%%
+<h>Item Interaction (floor):
+
+<h>アイテム操作コマンド(床):
+%%%%
+pick up items (also <w>g</w>)
+
+アイテムを拾い上げる。(<w>g</w>でも可)
+%%%%
+(press twice for pick up menu)
+
+(二度押しでアイテム拾いメニュー)
+%%%%
+Drop an item
+
+アイテムを床に置く。
+%%%%
+<w>%#</w>: Drop exact number of items
+
+<w>%#</w>: 指定した個数のアイテムを置く。
+%%%%
+Drop the last item(s) you picked up
+
+最後に拾ったアイテムを床に置く。
+%%%%
+Chop up a corpse
+
+死体を刻んで肉に変える。
+%%%%
+Drain corpses on floor
+
+床の死体から血を吸う。
+%%%%
+Eat food from floor
+
+床の食べ物を食べる。
+%%%%
+<h>Additional help:
+
+<h>その他:
+%%%%
+Many commands have context sensitive help, among them <w>%</w>, <w>%</w>, <w>%</w> (or any form of targeting), <w>%</w>, and <w>%</w>.\nYou can read descriptions of your current spells (<w>%</w>), skills (<w>%?</w>) and abilities (<w>%!</w>).
+
+'<w>%</w>'、'<w>%</w>'(または任意の照準を必要とするコマンド)、'<w>%</w>'、'<w>%</w>'、'<w>%</w>'といった多くのコマンドについて文脈依存する操作体系がある。
+'<w>%</w>'コマンドで習得済みの魔法一覧、'<w>%?</w>'でスキル、'<w>%!</w>'で能力の解説を読むことができる。
+%%%%
 ############################## describe.cc ##############################
 %%%%
 It sustains your strength, intelligence and dexterity.
