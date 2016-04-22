@@ -171,6 +171,149 @@ Amulet ring
 
 (現在装着できない)
 %%%%
+<h>Dungeon Crawl Help
+
+<h>ダンジョンクロウル ヘルプ
+%%%%
+Press one of the following keys to\nobtain more information on a certain\naspect of Dungeon Crawl.
+
+ダンジョンクロウルについての詳細な
+ヘルプ情報を閲覧するには、項目の頭に
+記載されたキーを押してください。
+%%%%
+<w>?</w>: List of commands
+
+<w>?</w>: コマンド一覧
+%%%%
+<w>!</w>: Read Me!
+
+<w>!</w>: はじめに(未訳)
+%%%%
+<w>^</w>: Quickstart Guide
+
+<w>^</w>: クイックスタート(未訳)
+%%%%
+<w>:</w>: Browse character notes
+
+<w>:</w>: キャラクターの行動履歴を見る
+%%%%
+<w>~</w>: Macros help
+
+<w>~</w>: マクロ機能ヘルプ(未訳)
+%%%%
+<w>&</w>: Options help
+
+<w>&</w>: オプション設定ヘルプ(未訳)
+%%%%
+<w>%</w>: Table of aptitudes
+
+<w>%</w>: 種族のスキル適性一覧(未訳)
+%%%%
+<w>/</w>: Lookup description
+
+<w>/</w>: 解説文閲覧(未訳)
+%%%%
+<w>Q</w>: FAQ
+
+<w>Q</w>: FAQ(未訳)
+%%%%
+<w>V</w>: Version information
+
+<w>V</w>: バージョン情報(未訳)
+%%%%
+<w>Home</w>: This screen
+
+<w>Home</w>: ゲームに戻る
+# ｢この画面に戻る｣とすべきだが、実際の動作としてはゲーム画面に戻る
+%%%%
+<h>Manual Contents
+
+<h>マニュアル
+%%%%
+<w>*</w>       Table of contents
+
+<w>*</w>       目次
+%%%%
+<w>A</w>.      Overview
+
+<w>A</w>.      概要(未訳)
+%%%%
+<w>B</w>.      Starting Screen
+
+<w>B</w>.      起動画面(未訳)
+%%%%
+<w>C</w>.      Attributes and Stats
+
+<w>C</w>.      能力値(未訳)
+%%%%
+<w>D</w>.      Exploring the Dungeon
+
+<w>D</w>.      ダンジョンの探索(未訳)
+%%%%
+<w>E</w>.      Experience and Skills
+
+<w>E</w>.      経験レベルおよびスキル(未訳)
+%%%%
+<w>F</w>.      Monsters
+
+<w>F</w>.      モンスター(未訳)
+%%%%
+<w>G</w>.      Items
+
+<w>G</w>.      アイテム(未訳)
+%%%%
+<w>H</w>.      Spellcasting
+
+<w>H</w>.      呪文の詠唱(未訳)
+%%%%
+<w>I</w>.      Targeting
+
+<w>I</w>.      照準合わせ(未訳)
+%%%%
+<w>J</w>.      Religion
+
+<w>J</w>.      信仰(未訳)
+%%%%
+<w>K</w>.      Mutations
+
+<w>K</w>.      突然変異(未訳)
+%%%%
+<w>L</w>.      Licence, Contact, History
+
+<w>L</w>.      ライセンス、連絡先および歴史(未訳)
+%%%%
+<w>M</w>.      Macros, Options, Performance
+
+<w>M</w>.      マクロおよびオプション設定(未訳)
+%%%%
+<w>N</w>.      Philosophy
+
+<w>N</w>.      ゲームの方向性(未訳)
+%%%%
+<w>1</w>.      List of Character Species
+
+<w>1</w>.      種族一覧(未訳)
+%%%%
+<w>2</w>.      List of Character Backgrounds
+
+<w>2</w>.      ゲーム開始時の職業一覧(未訳)
+%%%%
+<w>3</w>.      List of Skills
+
+<w>3</w>.      スキル一覧(未訳)
+%%%%
+<w>4</w>.      List of Keys and Commands
+
+<w>4</w>.      コマンド詳細一覧(未訳)
+%%%%
+<w>5</w>.      List of Enchantments
+
+<w>5</w>.      ステータス表記一覧(未訳)
+%%%%
+<w>6</w>.      Inscriptions
+
+<w>6</w>.      アイテムへの銘の効果(未訳)
+%%%%
 ############################## describe.cc ##############################
 %%%%
 It sustains your strength, intelligence and dexterity.

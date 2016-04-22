@@ -632,52 +632,53 @@ static int _show_keyhelp_menu(const vector<formatted_string> &lines,
 
         cols.add_formatted(
             0,
-            "<h>Dungeon Crawl Help\n"
-            "\n"
-            "Press one of the following keys to\n"
-            "obtain more information on a certain\n"
-            "aspect of Dungeon Crawl.\n"
-
-            "<w>?</w>: List of commands\n"
-            "<w>!</w>: Read Me!\n"
-            "<w>^</w>: Quickstart Guide\n"
-            "<w>:</w>: Browse character notes\n"
-            "<w>~</w>: Macros help\n"
-            "<w>&</w>: Options help\n"
-            "<w>%</w>: Table of aptitudes\n"
-            "<w>/</w>: Lookup description\n"
-            "<w>Q</w>: FAQ\n"
+            jtransln("<h>Dungeon Crawl Help\n") +
+            "\n" +
+            jtransln("Press one of the following keys to\n"
+                     "obtain more information on a certain\n"
+                     "aspect of Dungeon Crawl.\n") +
+            "\n" +
+            jtransln("<w>?</w>: List of commands\n") +
+            jtransln("<w>!</w>: Read Me!\n") +
+            jtransln("<w>^</w>: Quickstart Guide\n") +
+            jtransln("<w>:</w>: Browse character notes\n") +
+            jtransln("<w>~</w>: Macros help\n") +
+            jtransln("<w>&</w>: Options help\n") +
+            jtransln("<w>%</w>: Table of aptitudes\n") +
+            jtransln("<w>/</w>: Lookup description\n") +
+            jtransln("<w>Q</w>: FAQ\n") +
 #ifdef USE_TILE_LOCAL
-            "<w>T</w>: Tiles key help\n"
+            "<w>T</w>: Tiles key help\n" +
 #endif
-            "<w>V</w>: Version information\n"
-            "<w>Home</w>: This screen\n",
+            jtransln("<w>V</w>: Version information\n") +
+            jtransln("<w>Home</w>: This screen\n"),
             true, true, _cmdhelp_textfilter);
 
         cols.add_formatted(
             1,
-            "<h>Manual Contents\n\n"
-            "<w>*</w>       Table of contents\n"
-            "<w>A</w>.      Overview\n"
-            "<w>B</w>.      Starting Screen\n"
-            "<w>C</w>.      Attributes and Stats\n"
-            "<w>D</w>.      Exploring the Dungeon\n"
-            "<w>E</w>.      Experience and Skills\n"
-            "<w>F</w>.      Monsters\n"
-            "<w>G</w>.      Items\n"
-            "<w>H</w>.      Spellcasting\n"
-            "<w>I</w>.      Targeting\n"
-            "<w>J</w>.      Religion\n"
-            "<w>K</w>.      Mutations\n"
-            "<w>L</w>.      Licence, Contact, History\n"
-            "<w>M</w>.      Macros, Options, Performance\n"
-            "<w>N</w>.      Philosophy\n"
-            "<w>1</w>.      List of Character Species\n"
-            "<w>2</w>.      List of Character Backgrounds\n"
-            "<w>3</w>.      List of Skills\n"
-            "<w>4</w>.      List of Keys and Commands\n"
-            "<w>5</w>.      List of Enchantments\n"
-            "<w>6</w>.      Inscriptions\n",
+            jtransln("<h>Manual Contents\n") +
+            "\n" +
+            jtransln("<w>*</w>       Table of contents\n") +
+            jtransln("<w>A</w>.      Overview\n") +
+            jtransln("<w>B</w>.      Starting Screen\n") +
+            jtransln("<w>C</w>.      Attributes and Stats\n") +
+            jtransln("<w>D</w>.      Exploring the Dungeon\n") +
+            jtransln("<w>E</w>.      Experience and Skills\n") +
+            jtransln("<w>F</w>.      Monsters\n") +
+            jtransln("<w>G</w>.      Items\n") +
+            jtransln("<w>H</w>.      Spellcasting\n") +
+            jtransln("<w>I</w>.      Targeting\n") +
+            jtransln("<w>J</w>.      Religion\n") +
+            jtransln("<w>K</w>.      Mutations\n") +
+            jtransln("<w>L</w>.      Licence, Contact, History\n") +
+            jtransln("<w>M</w>.      Macros, Options, Performance\n") +
+            jtransln("<w>N</w>.      Philosophy\n") +
+            jtransln("<w>1</w>.      List of Character Species\n") +
+            jtransln("<w>2</w>.      List of Character Backgrounds\n") +
+            jtransln("<w>3</w>.      List of Skills\n") +
+            jtransln("<w>4</w>.      List of Keys and Commands\n") +
+            jtransln("<w>5</w>.      List of Enchantments\n") +
+            jtransln("<w>6</w>.      Inscriptions\n"),
             true, true, _cmdhelp_textfilter);
 
         vector<formatted_string> blines = cols.formatted_lines();
