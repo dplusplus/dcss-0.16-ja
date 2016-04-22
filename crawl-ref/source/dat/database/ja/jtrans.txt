@@ -12051,7 +12051,7 @@ call upon Zin to create a sanctuary
 %%%%
 You and your allies can gain power from killing the unholy and evil.
 
-あなたとあなたの仲間は不浄な者や邪悪な者を倒すことで力を得ることができる。
+あなたと仲間たちは不浄な者や邪悪な者を倒すことで力を得ることができる。
 %%%%
 call upon the Shining One for a divine shield
 
@@ -12363,7 +12363,7 @@ Your aura of power can strike those that harm you.
 %%%%
 heal your body and restore your magic
 
-傷を癒し魔力を回復させること
+自らの傷を癒し魔力を回復させること
 %%%%
 gather your power into a mighty leap
 
@@ -12372,6 +12372,10 @@ gather your power into a mighty leap
 wreak a terrible wrath on your foes
 
 敵に対し激怒の力を浴びせること
+%%%%
+You and your allies can no longer gain power from killing the unholy and evil.
+
+あなたと仲間たちはもう不浄な者や邪悪な者を倒すことで力を得ることができない。
 %%%%
 Kikubaaqudgha no longer protects you from necromantic miscasts or death curses.
 
@@ -12389,9 +12393,25 @@ Vehumet will no longer extend the range of your destructive magics.
 
 ヴェフメットはもうあなたの破壊的な魔法の射程を伸ばしてくれない。
 %%%%
+forget spells at will
+
+自らの意志で呪文を忘れること
+%%%%
 Sif Muna no longer protects you from the effects of miscast magic.
 
 シフ・ムーナはもうあなたを魔法の失敗効果から守ってくれない。
+%%%%
+call upon Trog for regeneration and protection from hostile enchantments
+
+トログに再生能力と敵対的な魔法に対する防御を請うこと
+%%%%
+stack decks
+
+デッキを並び替えること
+%%%%
+depart the Abyss at will
+
+自らの意志でアビスから離脱すること
 %%%%
 Beogh no longer aids your use of armour.
 
@@ -12407,6 +12427,7 @@ Cheibriados no longer slows and strengthens your metabolism.
 %%%%
 Ashenzari no longer supports your skills.
 
+アシェンザリはもうあなたのスキルを支援してくれない。
 %%%%
 Ashenzari no longer reveals the unseen or keeps your mind clear.
 
@@ -12439,6 +12460,14 @@ You no longer exude an aura of power that intimidates your foes.
 Your aura of power no longer strikes those that harm you.
 
 あなたのオーラはもうあなたに危害を加えるものに危害を加えなくなった。
+%%%%
+use your power to heal your body and restore your magic
+
+力を使って自らの傷を癒し魔力を回復させること
+%%%%
+wreak a terrible wrath on all visible foes
+
+視界のすべての敵に対し激怒の力を浴びせること
 %%%%
 you train your various spell casting skills
 
