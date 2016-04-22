@@ -1829,7 +1829,7 @@ bool do_god_gift(bool forced)
             success = acquirement(gift_type, you.religion);
             if (success)
             {
-                simple_god_message(" grants you a gift!");
+                simple_god_message(jtransc(" grants you a gift!"));
                 more();
 
                 if (gift_type == OBJ_MISSILES)
@@ -1945,7 +1945,7 @@ bool do_god_gift(bool forced)
 
             if (success)
             {
-                simple_god_message(" grants you a gift!");
+                simple_god_message(jtransc(" grants you a gift!"));
                 more();
 
                 you.num_current_gifts[you.religion]++;
