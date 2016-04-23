@@ -395,7 +395,7 @@ set Waypoint
 %%%%
 <w>Shift-Tab</w> : attack nearest monster\n            without moving
 
-<w>Shift-Tab</w> : 一番近くのモンスターを
+<w>Shift+Tab</w> : 一番近くのモンスターを
             移動せず攻撃する。
 %%%%
 <h>Item types (and common commands)
@@ -538,7 +538,7 @@ add note (use <w>%:</w> to read notes)
 add macro (also <w>Ctrl-D</w>)
 
 マクロを編集する。
-         (<w>Ctrl-D</w>でも可)
+         (<w>Ctrl+D</w>でも可)
 %%%%
 reassign inventory/spell letters
 
@@ -5926,11 +5926,11 @@ deep water
 %%%%
 (Use ctrl+direction to attack without moving)
 
-(Ctrl+方向キーでその場を動かずに攻撃できます)
+(Ctrl+(方向)でその場を動かずに攻撃できます)
 %%%%
 You cannot move. (Use ctrl+direction to attack without moving)
 
-あなたはその場を動けない。(Ctrl+方向キーでその場を動かずに攻撃できます)
+あなたはその場を動けない。(Ctrl+(方向)でその場を動かずに攻撃できます)
 %%%%
 You're too confused to move!
 
