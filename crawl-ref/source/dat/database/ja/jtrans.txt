@@ -332,7 +332,7 @@ on) or vi keys:
 %%%%
 <h>Rest/Search:
 
-<h>休憩/捜索:
+<h>休憩 / 捜索:
 %%%%
 wait a turn (also <w>s</w>, <w>Del</w>)
 
@@ -447,7 +447,7 @@ set Waypoint
 
 </lightcyan> : 魔法書 / <w>%</w>)eadで読む。
     <w>%</w>)emoriseで呪文を記憶する。
-    <w>%</w>)apもしくは<w>%</w>)apで魔法を唱える。
+    <w>%</w>)apもしくは<w>%</w>)apで魔法を使う。
 %%%%
 <brown>\</brown> : staves and rods (<w>%</w>ield and e<w>%</w>oke)
 
@@ -820,6 +820,161 @@ Many commands have context sensitive help, among them <w>%</w>, <w>%</w>, <w>%</
 
 '<w>%</w>'、'<w>%</w>'(または任意の照準を必要とするコマンド)、'<w>%</w>'、'<w>%</w>'、'<w>%</w>'といった多くのコマンドについて文脈依存する操作体系がある。
 '<w>%</w>'コマンドで習得済みの魔法一覧、'<w>%?</w>'でスキル、'<w>%!</w>'で能力の解説を読むことができる。
+%%%%
+<w>Shift-Dir.</w> runs into one direction
+
+<w>Shift+(方向) 一直線に移動する。
+%%%%
+<w>%</w> or <w>%</w> : ascend/descend the stairs
+
+<w>%</w>/<w>%</w> : 階段を上り下りする。
+%%%%
+autoexplore
+
+自動探索
+%%%%
+<h>Attacking monsters
+
+<h>モンスターへの攻撃:
+%%%%
+Walking into a monster will attack it
+
+モンスターのいる場所の方向を押すと、
+%%%%
+with the wielded weapon or barehanded.
+
+手にした武器や素手で攻撃できる。
+%%%%
+<h>Ranged combat and magic
+
+<h>遠距離攻撃および魔法:
+%%%%
+<w>%</w> to throw/fire missiles
+
+<w>%</w>)  : 矢弾等を射撃/投擲する。
+%%%%
+<w>%</w>/<w>%</w> to cast spells (<w>%?/%</w> lists spells)
+
+<w>%</w>/<w>%</w> : 魔法を唱える。
+      (<w>%?/%</w> で一覧を見る)
+%%%%
+Memorise a new spell
+
+呪文を新たに覚える。
+%%%%
+read a book to forget a spell
+
+魔法書を破棄して呪文を忘却する。
+%%%%
+<console><cyan>)</cyan> : </console>hand weapons (<w>%</w>ield)
+
+<console><cyan>)</cyan> : </console>手持ち武器 / <w>%</w>)ieldで装備する。
+%%%%
+<console><brown>(</brown> : </console>missiles (<w>%</w>uiver, <w>%</w>ire, <w>%</w>/<w>%</w> cycle)
+
+<console><brown>(</brown> : </console>矢弾等 / <w>%</w>)uiverで準備する。
+    <w>%</w>)ireで射撃、<w>%</w>/<w>%</w>で切り替える。
+%%%%
+<console><cyan>[</cyan> : </console>armour (<w>%</w>ear and <w>%</w>ake off)
+
+<console><cyan>[</cyan> : </console>防具 <w>%</w>)earで装備する。
+    <w>%</w>)ake offで脱ぐ。
+%%%%
+<console><brown>percent</brown> : </console>corpses and food (<w>%</w>hop up and <w>%</w>at)
+
+<console><brown>percent</brown> : </console>死体および食料 / <w>%</w>)hop upで死体を
+    肉に変え、<w>%</w>)atで食べる。
+%%%%
+<console><w>?</w> : </console>scrolls (<w>%</w>ead)
+
+<console><w>?</w> : </console>巻物 <w>%</w>)eadで読む。
+%%%%
+<console><magenta>!</magenta> : </console>potions (<w>%</w>uaff)
+
+<console><magenta>!</magenta> : </console>水薬  / <w>%</w>)uaffで飲む。
+%%%%
+<console><blue>=</blue> : </console>rings (<w>%</w>ut on and <w>%</w>emove)
+
+<console><blue>=</blue> : </console>指輪 / <w>%</w>)ut onで指にはめる。
+    <w>%</w>)emoveで外す。
+%%%%
+<console><red>"</red> : </console>amulets (<w>%</w>ut on and <w>%</w>emove)
+
+<console><red>"</red> : </console>護符 / <w>%</w>)ut onで身につける。
+    <w>%</w>)emoveで外す。
+%%%%
+<console><lightgrey>/</lightgrey> : </console>wands (e<w>%</w>oke)
+
+<console><lightgrey>/</lightgrey> : </console>ンド e(<w>%</w>)okeで発動させる。
+%%%%
+</lightcyan> : </console>books (<w>%</w>ead, <w>%</w>emorise, <w>%</w>ap, <w>%</w>ap)
+
+</lightcyan> : </console>魔法書 / <w>%</w>)eadで読む。
+    <w>%</w>)emoriseで呪文を記憶する。
+    <w>%</w>)apもしくは<w>%</w>)apで魔法を使う。
+%%%%
+</brown> : </console>staves and rods (<w>%</w>ield and e<w>%</w>oke)
+
+</brown> : </console>杖およびロッド / <w>%</w>)ieldで手に持ち、
+    e(<w>%</w>)okeで発動させる。
+%%%%
+list inventory (select item to view it)
+
+インベントリ一覧を見る。
+    (アイテムを選択することで解説を見る)
+%%%%
+pick up item from ground (also <w>g</w>)
+
+地面からアイテムを拾い上げる。
+    (<w>g</w>でも可)
+%%%%
+drop item
+
+アイテムを床に置く。
+%%%%
+<h>Additional important commands
+
+<h>その他の重要なコマンド:
+%%%%
+Save the game and exit
+
+ゲームを保存して終了する。
+%%%%
+use an ability
+
+能力を使う。
+%%%%
+show character overview
+
+キャラクター概要を表示する。
+%%%%
+show religion overview
+
+信仰の概要を表示する。
+%%%%
+show map of the whole level
+
+フロア全体のマップを見る。
+%%%%
+<h>Targeting
+
+<h>照準合わせ:
+%%%%
+<w>Enter</w> or <w>.</w> or <w>Del</w> : confirm target
+
+<w>Enter</w>、<w>.</w>、<w>Del</w> : 目標を決定する。
+%%%%
+<w>+</w> and <w>-</w> : cycle between targets
+
+<w>+</w>/<w>-</w>  : 目標を順繰りに切り替える。
+%%%%
+<w>f</w> or <w>p</w> : shoot at previous target
+
+<w>f</w>、<w>p</w> : 前に指定した目標がまだ生きて
+%%%%
+if still alive and in sight
+
+いて、視界内にいればそれを撃つ。
 %%%%
 ############################## describe.cc ##############################
 %%%%

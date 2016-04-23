@@ -1172,112 +1172,112 @@ static void _add_formatted_hints_help(column_composer &cols)
     // First column.
     cols.add_formatted(
             0,
-            "<h>Movement:\n"
-            "To move in a direction or to attack, \n"
-            "use the numpad (try Numlock off and \n"
-            "on) or vi keys:\n",
+            jtransln("<h>Movement:\n") +
+            jtransln("To move in a direction or to attack, \n") +
+            jtransln("use the numpad (try Numlock off and \n") +
+            jtransln("on) or vi keys:\n"),
             false, true, _cmdhelp_textfilter);
 
-    _add_insert_commands(cols, 0, "                 <w>7 8 9      % % %",
+    _add_insert_commands(cols, 0, "                 " + jtrans("<w>7 8 9      % % %"),
                          CMD_MOVE_UP_LEFT, CMD_MOVE_UP, CMD_MOVE_UP_RIGHT, 0);
-    _add_insert_commands(cols, 0, "                  \\|/        \\|/", 0);
-    _add_insert_commands(cols, 0, "                 <w>4</w>-<w>5</w>-<w>6</w>      <w>%</w>-<w>%</w>-<w>%</w>",
+    _add_insert_commands(cols, 0, "                  " + jtrans("\\|/        \\|/"), 0);
+    _add_insert_commands(cols, 0, "                 " + jtrans("<w>4</w>-<w>5</w>-<w>6</w>      <w>%</w>-<w>%</w>-<w>%</w>"),
                          CMD_MOVE_LEFT, CMD_WAIT, CMD_MOVE_RIGHT, 0);
-    _add_insert_commands(cols, 0, "                  /|\\        /|\\", 0);
-    _add_insert_commands(cols, 0, "                 <w>1 2 3      % % %",
+    _add_insert_commands(cols, 0, "                  " + jtrans("/|\\        /|\\"), 0);
+    _add_insert_commands(cols, 0, "                 " + jtrans("<w>1 2 3      % % %"),
                          CMD_MOVE_DOWN_LEFT, CMD_MOVE_DOWN, CMD_MOVE_DOWN_RIGHT, 0);
 
     cols.add_formatted(0, " ", false, true, _cmdhelp_textfilter);
-    cols.add_formatted(0, "<w>Shift-Dir.</w> runs into one direction",
+    cols.add_formatted(0, jtrans("<w>Shift-Dir.</w> runs into one direction"),
                        false, true, _cmdhelp_textfilter);
-    _add_insert_commands(cols, 0, "<w>%</w> or <w>%</w> : ascend/descend the stairs",
+    _add_insert_commands(cols, 0, jtrans("<w>%</w> or <w>%</w> : ascend/descend the stairs"),
                          CMD_GO_UPSTAIRS, CMD_GO_DOWNSTAIRS, 0);
-    _add_command(cols, 0, CMD_EXPLORE, "autoexplore", 2);
+    _add_command(cols, 0, CMD_EXPLORE, jtrans("autoexplore"), 4);
 
     cols.add_formatted(
             0,
-            "<h>Rest/Search:\n",
+            jtransln("<h>Rest/Search:\n"),
             true, true, _cmdhelp_textfilter);
 
-    _add_command(cols, 0, CMD_WAIT, "wait a turn (also <w>s</w>, <w>Del</w>)", 2);
-    _add_command(cols, 0, CMD_REST, "rest and long wait; stops when", 2);
+    _add_command(cols, 0, CMD_WAIT, jtrans("wait a turn (also <w>s</w>, <w>Del</w>)"), 2);
+    _add_command(cols, 0, CMD_REST, jtrans("rest and long wait; stops when"), 2);
     cols.add_formatted(
             0,
-            "    Health or Magic become full,\n"
-            "    something is detected, or after\n"
-            "    100 turns over (<w>numpad-5</w>)\n",
+            "    " + jtransln("Health or Magic become full,\n") +
+            "    " + jtransln("something is detected, or after\n") +
+            "    " + jtransln("100 turns over (<w>numpad-5</w>)\n"),
             false, true, _cmdhelp_textfilter);
 
     cols.add_formatted(
             0,
-            "\n<h>Attacking monsters\n"
-            "Walking into a monster will attack it\n"
-            "with the wielded weapon or barehanded.",
+            "\n" + jtransln("\n<h>Attacking monsters\n") +
+            jtransln("Walking into a monster will attack it\n") +
+            jtransln("with the wielded weapon or barehanded."),
             false, true, _cmdhelp_textfilter);
 
     cols.add_formatted(
             0,
-            "\n<h>Ranged combat and magic\n",
+            "\n" + jtransln("<h>Ranged combat and magic\n"),
             false, true, _cmdhelp_textfilter);
 
-    _add_insert_commands(cols, 0, "<w>%</w> to throw/fire missiles",
+    _add_insert_commands(cols, 0, jtrans("<w>%</w> to throw/fire missiles"),
                          CMD_FIRE, 0);
-    _add_insert_commands(cols, 0, "<w>%</w>/<w>%</w> to cast spells "
-                                  "(<w>%?/%</w> lists spells)",
+    _add_insert_commands(cols, 0, jtrans("<w>%</w>/<w>%</w> to cast spells "
+                                         "(<w>%?/%</w> lists spells)"),
                          CMD_CAST_SPELL, CMD_FORCE_CAST_SPELL, CMD_CAST_SPELL,
                          CMD_DISPLAY_SPELLS, 0);
-    _add_command(cols, 0, CMD_MEMORISE_SPELL, "Memorise a new spell", 2);
-    _add_command(cols, 0, CMD_READ, "read a book to forget a spell", 2);
+    _add_command(cols, 0, CMD_MEMORISE_SPELL, jtrans("Memorise a new spell"), 4);
+    _add_command(cols, 0, CMD_READ, jtrans("read a book to forget a spell"), 4);
 
     // Second column.
     cols.add_formatted(
-            1, "<h>Item types (and common commands)\n",
+            1, jtransln("<h>Item types (and common commands)\n"),
             false, true, _cmdhelp_textfilter);
 
     _add_insert_commands(cols, 1,
-                         "<console><cyan>)</cyan> : </console>"
-                         "hand weapons (<w>%</w>ield)",
+                         jtrans("<console><cyan>)</cyan> : </console>"
+                                "hand weapons (<w>%</w>ield)"),
                          CMD_WIELD_WEAPON, 0);
     _add_insert_commands(cols, 1,
-                         "<console><brown>(</brown> : </console>"
-                         "missiles (<w>%</w>uiver, <w>%</w>ire, <w>%</w>/<w>%</w> cycle)",
+                         jtrans("<console><brown>(</brown> : </console>"
+                                "missiles (<w>%</w>uiver, <w>%</w>ire, <w>%</w>/<w>%</w> cycle)"),
                          CMD_QUIVER_ITEM, CMD_FIRE, CMD_CYCLE_QUIVER_FORWARD,
                          CMD_CYCLE_QUIVER_BACKWARD, 0);
     _add_insert_commands(cols, 1,
-                         "<console><cyan>[</cyan> : </console>"
-                         "armour (<w>%</w>ear and <w>%</w>ake off)",
+                         jtrans("<console><cyan>[</cyan> : </console>"
+                                "armour (<w>%</w>ear and <w>%</w>ake off)"),
                          CMD_WEAR_ARMOUR, CMD_REMOVE_ARMOUR, 0);
     _add_insert_commands(cols, 1,
-                         "<console><brown>percent</brown> : </console>"
-                         "corpses and food (<w>%</w>hop up and <w>%</w>at)",
+                         jtrans("<console><brown>percent</brown> : </console>"
+                                "corpses and food (<w>%</w>hop up and <w>%</w>at)"),
                          CMD_BUTCHER, CMD_EAT, 0);
     _add_insert_commands(cols, 1,
-                         "<console><w>?</w> : </console>"
-                         "scrolls (<w>%</w>ead)",
+                         jtrans("<console><w>?</w> : </console>"
+                                "scrolls (<w>%</w>ead)"),
                          CMD_READ, 0);
     _add_insert_commands(cols, 1,
-                         "<console><magenta>!</magenta> : </console>"
-                         "potions (<w>%</w>uaff)",
+                         jtrans("<console><magenta>!</magenta> : </console>"
+                                "potions (<w>%</w>uaff)"),
                          CMD_QUAFF, 0);
     _add_insert_commands(cols, 1,
-                         "<console><blue>=</blue> : </console>"
-                         "rings (<w>%</w>ut on and <w>%</w>emove)",
+                         jtrans("<console><blue>=</blue> : </console>"
+                                "rings (<w>%</w>ut on and <w>%</w>emove)"),
                          CMD_WEAR_JEWELLERY, CMD_REMOVE_JEWELLERY, 0);
     _add_insert_commands(cols, 1,
-                         "<console><red>\"</red> : </console>"
-                         "amulets (<w>%</w>ut on and <w>%</w>emove)",
+                         jtrans("<console><red>\"</red> : </console>"
+                                "amulets (<w>%</w>ut on and <w>%</w>emove)"),
                          CMD_WEAR_JEWELLERY, CMD_REMOVE_JEWELLERY, 0);
     _add_insert_commands(cols, 1,
-                         "<console><lightgrey>/</lightgrey> : </console>"
-                         "wands (e<w>%</w>oke)",
+                         jtrans("<console><lightgrey>/</lightgrey> : </console>"
+                                "wands (e<w>%</w>oke)"),
                          CMD_EVOKE, 0);
 
     string item_types =
                   "<console><lightcyan>";
     item_types += stringize_glyph(get_item_symbol(SHOW_ITEM_BOOK));
     item_types +=
-        "</lightcyan> : </console>"
-        "books (<w>%</w>ead, <w>%</w>emorise, <w>%</w>ap, <w>%</w>ap)";
+        jtrans("</lightcyan> : </console>"
+               "books (<w>%</w>ead, <w>%</w>emorise, <w>%</w>ap, <w>%</w>ap)");
     _add_insert_commands(cols, 1, item_types,
                          CMD_READ, CMD_MEMORISE_SPELL, CMD_CAST_SPELL,
                          CMD_FORCE_CAST_SPELL, 0);
@@ -1286,37 +1286,37 @@ static void _add_formatted_hints_help(column_composer &cols)
                   "<console><brown>";
     item_types += stringize_glyph(get_item_symbol(SHOW_ITEM_STAFF));
     item_types +=
-        "</brown> : </console>"
-        "staves and rods (<w>%</w>ield and e<w>%</w>oke)";
+        jtrans("</brown> : </console>"
+               "staves and rods (<w>%</w>ield and e<w>%</w>oke)");
     _add_insert_commands(cols, 1, item_types,
                          CMD_WIELD_WEAPON, CMD_EVOKE_WIELDED, 0);
 
     cols.add_formatted(1, " ", false, true, _cmdhelp_textfilter);
-    _add_command(cols, 1, CMD_DISPLAY_INVENTORY, "list inventory (select item to view it)", 2);
-    _add_command(cols, 1, CMD_PICKUP, "pick up item from ground (also <w>g</w>)", 2);
-    _add_command(cols, 1, CMD_DROP, "drop item", 2);
-    _add_command(cols, 1, CMD_DROP_LAST, "drop the last item(s) you picked up", 2);
+    _add_command(cols, 1, CMD_DISPLAY_INVENTORY, jtrans("list inventory (select item to view it)"), 2);
+    _add_command(cols, 1, CMD_PICKUP, jtrans("pick up item from ground (also <w>g</w>)"), 2);
+    _add_command(cols, 1, CMD_DROP, jtrans("drop item"), 2);
+    _add_command(cols, 1, CMD_DROP_LAST, jtrans("drop the last item(s) you picked up"), 2);
 
     cols.add_formatted(
             1,
-            "<h>Additional important commands\n",
+            jtransln("<h>Additional important commands\n"),
             true, true, _cmdhelp_textfilter);
 
-    _add_command(cols, 1, CMD_SAVE_GAME_NOW, "Save the game and exit", 2);
-    _add_command(cols, 1, CMD_REPLAY_MESSAGES, "show previous messages", 2);
-    _add_command(cols, 1, CMD_USE_ABILITY, "use an ability", 2);
-    _add_command(cols, 1, CMD_RESISTS_SCREEN, "show character overview", 2);
-    _add_command(cols, 1, CMD_DISPLAY_RELIGION, "show religion overview", 2);
-    _add_command(cols, 1, CMD_DISPLAY_MAP, "show map of the whole level", 2);
-    _add_command(cols, 1, CMD_DISPLAY_OVERMAP, "show dungeon overview", 2);
+    _add_command(cols, 1, CMD_SAVE_GAME_NOW, jtrans("Save the game and exit"), 2);
+    _add_command(cols, 1, CMD_REPLAY_MESSAGES, jtrans("show previous messages"), 2);
+    _add_command(cols, 1, CMD_USE_ABILITY, jtrans("use an ability"), 6);
+    _add_command(cols, 1, CMD_RESISTS_SCREEN, jtrans("show character overview"), 6);
+    _add_command(cols, 1, CMD_DISPLAY_RELIGION, jtrans("show religion overview"), 6);
+    _add_command(cols, 1, CMD_DISPLAY_MAP, jtrans("show map of the whole level"), 6);
+    _add_command(cols, 1, CMD_DISPLAY_OVERMAP, jtrans("show dungeon overview"), 2);
 
     cols.add_formatted(
             1,
-            "\n<h>Targeting\n"
-            "<w>Enter</w> or <w>.</w> or <w>Del</w> : confirm target\n"
-            "<w>+</w> and <w>-</w> : cycle between targets\n"
-            "<w>f</w> or <w>p</w> : shoot at previous target\n"
-            "         if still alive and in sight\n",
+            "\n" + jtransln("<h>Targeting\n") +
+            jtransln("<w>Enter</w> or <w>.</w> or <w>Del</w> : confirm target\n") +
+            jtransln("<w>+</w> and <w>-</w> : cycle between targets\n") +
+            jtransln("<w>f</w> or <w>p</w> : shoot at previous target\n") +
+            "       " + jtransln("if still alive and in sight\n"),
             false, true, _cmdhelp_textfilter);
 }
 
