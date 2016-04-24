@@ -1612,7 +1612,7 @@ electric eel
 # '@'
 Hellbinder
 
-地獄に繋がれし者
+地獄に繋がれしもの
 %%%%
 Cloud Mage
 
