@@ -940,9 +940,37 @@ string monster_info::_core_name() const
 
     //XXX: Hack to get poly'd TLH's name on death to look right.
     if (is(MB_NAME_SUFFIX) && type != MONS_LERNAEAN_HYDRA)
-        s += " " + mname;
+    {
+        if (mname == "necromancer" || // big kobold necromancer
+            mname == "captain" || // vault guard captain
+            mname == "wizard" || // oklob plant|sapling xxx
+            mname == "conjurer" ||
+            mname == "summoner" ||
+            mname == "shifter" ||
+            mname == "meteorologist" ||
+            mname == "demonologist" ||
+            mname == "annihilator" ||
+            mname == "priest")
+            s += "の" + jtrans(mname);
+        else
+            s += jtrans(mname);
+    }
     else if (is(MB_NAME_ADJECTIVE))
-        s = mname + " " + s;
+    {
+        if (mname == "apprentice") // apprentice kobold demonologist
+            s = replace_all(jtrans(mname), "の", "の" + jtrans(mname));
+        else if(mname == "conjurer" || // conjurer statue
+                mname == "fire elementalist" || // sprint_mu
+                mname == "water elementalist" ||
+                mname == "air elementalist" ||
+                mname == "earth elementalist" ||
+                mname == "zot")
+            s = jtrans(mname) + "の" + s;
+        else if(mname == "giant") // giant anaconda
+            s = "巨大" + s;
+        else
+            s = jtrans(mname) + s;
+    }
 
     return s;
 }
