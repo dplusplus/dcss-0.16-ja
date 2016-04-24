@@ -888,7 +888,7 @@ string monster_info::_core_name() const
             break;
         case MONS_UGLY_THING:
         case MONS_VERY_UGLY_THING:
-            s = jtrans(ugly_thing_colour_name(_colour) + " ") + s;
+            s = jtrans(ugly_thing_colour_name(_colour)) + s;
             break;
 
         case MONS_DRACONIAN_CALLER:
@@ -899,7 +899,7 @@ string monster_info::_core_name() const
         case MONS_DRACONIAN_KNIGHT:
         case MONS_DRACONIAN_SCORCHER:
             if (base_type != MONS_NO_MONSTER)
-                s = jtrans(draconian_colour_name(base_type) + " ") + s;
+                s = jtrans(draconian_colour_name(base_type)) + s;
             break;
 
         case MONS_BLOOD_SAINT:
@@ -908,7 +908,7 @@ string monster_info::_core_name() const
         case MONS_CORRUPTER:
         case MONS_BLACK_SUN:
             if (base_type != MONS_NO_MONSTER)
-                s = jtrans(demonspawn_base_name(base_type) + " ") + s;
+                s = jtrans(demonspawn_base_name(base_type)) + s;
             break;
 
         case MONS_DANCING_WEAPON:
