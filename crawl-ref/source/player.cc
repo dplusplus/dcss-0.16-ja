@@ -8200,12 +8200,12 @@ void player::set_gold(int amount)
                 if (gold >= cost && old_gold < cost)
                 {
                     mprf(MSGCH_GOD, jtransc("You now have enough gold to %s."),
-                         god_gain_power_messages[you.religion][i]);
+                         jtransc(god_gain_power_messages[you.religion][i]));
                 }
                 else if (old_gold >= cost && gold < cost)
                 {
                     mprf(MSGCH_GOD, jtransc("You no longer have enough gold to %s."),
-                         god_gain_power_messages[you.religion][i]);
+                         jtransc(god_gain_power_messages[you.religion][i]));
                 }
             }
         }
