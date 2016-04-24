@@ -11899,10 +11899,6 @@ start or stop
 
 開始する、またはやめる
 %%%%
-You feel resistant to hostile enchantments.
-
-あなたは敵対的な魔法への耐性が強まった気がした。
-%%%%
 You feel protected.
 
 あなたは護りの力を感じた
