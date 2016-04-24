@@ -154,11 +154,11 @@ Welcome to Hell!\nPlease enjoy your stay.
 %%%%
 [branch]Cocytus
 
-コキュトス
+コキュートス
 %%%%
 [branch]Coc
 
-コキュトス
+コキュートス
 %%%%
 [branch]Tartarus
 
