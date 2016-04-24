@@ -11955,10 +11955,6 @@ That put a bit of spring back into your step.
 
 あなたの足取りが軽やかになった。
 %%%%
-You feel less resistant to hostile enchantments.
-
-あなたの敵対的な魔法への耐性が薄れたようだ。
-%%%%
 You feel less stealthy.
 
 あなたの隠密性は低下したようだ。
