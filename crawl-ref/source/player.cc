@@ -8755,7 +8755,7 @@ void player_open_door(coord_def doorpos)
         if (!ignore_exclude && is_exclude_root(doorpos))
         {
             string prompt = make_stringf("This %s%s is marked as excluded! "
-                                         "Open it anyway?", adj, noun);
+                                         "Open it anyway?", jtransc(adj), jtransc(noun));
 
             if (!yesno(prompt.c_str(), true, 'n', true, false))
             {
@@ -8786,35 +8786,37 @@ void player_open_door(coord_def doorpos)
         {
             if (!berserk_open.empty())
             {
-                berserk_open += ".";
-                mprf(berserk_open.c_str(), adj, noun);
+                berserk_open = jtrans(berserk_open) + "。";
+                mprf(berserk_open.c_str(), jtransc(adj), jtransc(noun));
             }
             else
-                mprf(jtransc("The %s%s flies open!"), adj, noun);
+                mprf(jtransc("The %s%s flies open!"), jtransc(adj), jtransc(noun));
         }
         else
         {
             if (!berserk_open.empty())
             {
                 if (!berserk_adjective.empty())
-                    berserk_open += " " + berserk_adjective;
+                    berserk_open = replace_all(jtrans(berserk_open),
+                                               "あなたは",
+                                               "あなたは" + jtrans(berserk_adjective)) + "！";
                 else
-                    berserk_open += ".";
-                mprf(MSGCH_SOUND, berserk_open.c_str(), adj, noun);
+                    berserk_open = jtrans(berserk_open) + "。";
+                mprf(MSGCH_SOUND, berserk_open.c_str(), jtransc(adj), jtransc(noun));
             }
             else
-                mprf(MSGCH_SOUND, jtransc("The %s%s flies open with a bang!"), adj, noun);
+                mprf(MSGCH_SOUND, jtransc("The %s%s flies open with a bang!"), jtransc(adj), jtransc(noun));
             noisy(15, you.pos());
         }
     }
     else if (one_chance_in(skill) && !silenced(you.pos()))
     {
         if (!door_open_creak.empty())
-            mprf(MSGCH_SOUND, door_open_creak.c_str(), adj, noun);
+            mprf(MSGCH_SOUND, jtransc(door_open_creak), jtransc(adj), jtransc(noun));
         else
         {
             mprf(MSGCH_SOUND, jtransc("As you open the %s%s, it creaks loudly!"),
-                 adj, noun);
+                 jtransc(adj), jtransc(noun));
         }
         noisy(10, you.pos());
     }
@@ -8826,17 +8828,17 @@ void player_open_door(coord_def doorpos)
             if (!door_airborne.empty())
                 verb = door_airborne.c_str();
             else
-                verb = jtransc("You reach down and open the %s%s.");
+                verb = "You reach down and open the %s%s.";
         }
         else
         {
             if (!door_open_verb.empty())
                 verb = door_open_verb.c_str();
             else
-                verb = jtransc("You open the %s%s.");
+                verb = "You open the %s%s.";
         }
 
-        mprf(verb, adj, noun);
+        mprf(jtransc(verb), jtransc(adj), jtransc(noun));
     }
 
     vector<coord_def> excludes;
@@ -8944,26 +8946,28 @@ void player_close_door(coord_def doorpos)
         {
             if (!berserk_close.empty())
             {
-                berserk_close += ".";
-                mprf(berserk_close.c_str(), adj, noun);
+                berserk_close = jtrans(berserk_close) + "。";
+                mprf(berserk_close.c_str(), jtransc(adj), jtransc(noun));
             }
             else
-                mprf(jtransc("You slam the %s%s shut!"), adj, noun);
+                mprf(jtransc("You slam the %s%s shut!"), jtransc(adj), jtransc(noun));
         }
         else
         {
             if (!berserk_close.empty())
             {
                 if (!berserk_adjective.empty())
-                    berserk_close += " " + berserk_adjective;
+                    berserk_close = replace_all(jtrans(berserk_close),
+                                                "あなたは",
+                                                "あなたは" + jtrans(berserk_adjective)) + "！";
                 else
-                    berserk_close += ".";
-                mprf(MSGCH_SOUND, berserk_close.c_str(), adj, noun);
+                    berserk_close = jtrans(berserk_close) + "。";
+                mprf(MSGCH_SOUND, berserk_close.c_str(), jtransc(adj), jtransc(noun));
             }
             else
             {
                 mprf(MSGCH_SOUND, jtransc("you slam the %s%s shut with a bang!"),
-                                  adj, noun);
+                                  jtransc(adj), jtransc(noun));
             }
 
             noisy(15, you.pos());
@@ -8972,11 +8976,11 @@ void player_close_door(coord_def doorpos)
     else if (one_chance_in(skill) && !silenced(you.pos()))
     {
         if (!door_close_creak.empty())
-            mprf(MSGCH_SOUND, door_close_creak.c_str(), adj, noun);
+            mprf(MSGCH_SOUND, jtransc(door_close_creak), jtransc(adj), jtransc(noun));
         else
         {
             mprf(MSGCH_SOUND, jtransc("As you close the %s%s, it creaks loudly!"),
-                              adj, noun);
+                              jtransc(adj), jtransc(noun));
         }
 
         noisy(10, you.pos());
@@ -8989,17 +8993,17 @@ void player_close_door(coord_def doorpos)
             if (!door_airborne.empty())
                 verb = door_airborne.c_str();
             else
-                verb = jtransc("You reach down and close the %s%s.");
+                verb = "You reach down and close the %s%s.";
         }
         else
         {
             if (!door_close_verb.empty())
                 verb = door_close_verb.c_str();
             else
-                verb = jtransc("You close the %s%s.");
+                verb = "You close the %s%s.";
         }
 
-        mprf(verb, adj, noun);
+        mprf(jtransc(verb), jtransc(adj), jtransc(noun));
     }
 
     vector<coord_def> excludes;
