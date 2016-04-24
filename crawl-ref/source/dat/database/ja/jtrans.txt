@@ -15688,6 +15688,7 @@ You smell something strange.
 何か奇妙な臭いがした。
 %%%%
 Your bandages flutter.
+
 あなたの包帯がひらひらとはためいた。
 %%%%
 Your %s stand%s on end.
