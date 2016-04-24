@@ -7207,7 +7207,7 @@ You are splashed with acid!
 %%%%
 Your divine stamina protects you from poison!
 
-あなたの神秘の活力により毒をはねのけた！
+あなたの活性化された生命力が毒をはねのけた！
 %%%%
 %s drains %s %s.
 
@@ -11112,7 +11112,7 @@ You feel momentarily confused.
 %%%%
 Your divine stamina protects you from confusion!
 
-あなたの神秘の活力により混乱をはねのけた！
+あなたの活性化された生命力が混乱をはねのけた！
 %%%%
 You are %sconfused.
 
@@ -11128,7 +11128,7 @@ You feel %ssick.
 %%%%
 Your divine stamina protects you from the miasma!
 
-あなたの神秘の活力により瘴気をはねのけた！
+あなたの活性化された生命力が瘴気をはねのけた！
 %%%%
 The flames go out!
 
@@ -11307,7 +11307,7 @@ You feel terrible.
 %%%%
 Your divine stamina protects you from decay!
 
-あなたの神秘の活力により腐敗をはねのけた！
+あなたの活性化された生命力が腐敗をはねのけた！
 %%%%
 %s corrodes your equipment!
 
@@ -11335,7 +11335,7 @@ You suddenly lose the ability to move!
 %%%%
 Your divine stamina protects you from petrification!
 
-あなたの神秘の活力により石化をはねのけた！
+あなたの活性化された生命力が石化をはねのけた！
 %%%%
 Your limbs have turned to stone.
 
@@ -11351,7 +11351,7 @@ You have turned to stone.
 %%%%
 Your divine stamina protects you from disease!
 
-あなたの神秘の活力により病魔をはねのけた！
+あなたの活性化された生命力が病魔をはねのけた！
 %%%%
 You feel ill.
 
@@ -12554,7 +12554,7 @@ dexterity
 %%%%
 Your divine stamina protects you from %s loss.
 
-あなたの神秘の活力により%sの喪失をはねのけた！
+あなたの活性化された生命力が%sの喪失をはねのけた！
 %%%%
 You feel %s%s weakened.
 
