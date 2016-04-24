@@ -861,7 +861,7 @@ rose-covered archway
 %%%%
 vine-covered statue
 
-蔓の絡みついた石像
+蔓に覆われた石像
 %%%%
 crumbling stone wall
 
