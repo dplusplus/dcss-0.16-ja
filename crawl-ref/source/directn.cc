@@ -3198,7 +3198,7 @@ string feature_description_at_en(const coord_def& where, bool covering,
         set<coord_def> all_door;
         find_connected_identical(where, all_door);
         const char *adj, *noun;
-        get_door_description(all_door.size(), &adj, &noun);
+        get_door_description_en(all_door.size(), &adj, &noun);
 
         string desc;
         if (!door_desc_adj.empty())
