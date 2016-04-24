@@ -1212,7 +1212,7 @@ string monster_info::common_name(description_level_type desc) const
     string s = ss.str();
 
     if (desc == DESC_ITS)
-        s = apostrophise(s);
+        s += "の";
 
     return s;
 }
