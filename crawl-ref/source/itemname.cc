@@ -2527,7 +2527,7 @@ string item_def::name_aux(description_level_type desc, bool terse, bool ident,
         name_type = (name_flags & MF_NAME_MASK);
 
         if (!_name.empty() && name_type == MF_NAME_ADJECTIVE)
-            buff << jtrans(_name) << "の";
+            buff << jtrans(_name);
 
         if ((name_flags & MF_NAME_SPECIES) && name_type == MF_NAME_REPLACE)
             buff << jtrans(_name) << "の";
