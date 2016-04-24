@@ -2807,7 +2807,7 @@ static void _open_door(coord_def move)
         if (door_veto_message.empty())
             mpr(jtrans("The door is shut tight!"));
         else
-            mpr(door_veto_message);
+            mpr(jtrans(door_veto_message));
         if (you.confused())
             you.turn_is_over = true;
 
