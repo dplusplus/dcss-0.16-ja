@@ -976,6 +976,376 @@ if still alive and in sight
 
 いて、視界内にいればそれを撃つ。
 %%%%
+<yellow>Player stats</yellow>
+
+<yellow>プレイヤー能力値:</yellow>
+%%%%
+<w>A</w>      set all skills to level
+
+<w>A</w>      すべてのスキルを指定値まで上げる
+%%%%
+<w>Ctrl-D</w> change enchantments/durations
+
+<w>Ctrl-D</w> 持続効果を変更する
+%%%%
+<w>g</w>      exercise a skill
+
+<w>g</w>      スキルを鍛える
+%%%%
+<w>l</w>      change experience level
+
+<w>l</w>      経験レベルを変更する
+%%%%
+<w>Ctrl-P</w> list props
+
+<w>Ctrl-P</w> プロパティを列挙する
+%%%%
+<w>r</w>      change character's species
+
+<w>r</w>      プレイヤー種族を変更する
+%%%%
+<w>s</w>      gain 20000 skill points
+
+<w>s</w>      20000スキルポイントを得る
+%%%%
+<w>S</w>      set skill to level
+
+<w>S</w>      スキルを指定値に設定する
+%%%%
+<w>x</w>      gain an experience level
+
+<w>x</w>      経験レベルを1上げる
+%%%%
+<w>$</w>      get 1000 gold
+
+<w>$</w>      1000ゴールド得る
+%%%%
+<w>n</w>      lose all gold
+
+<w>n</w>      所持金をすべて失う
+%%%%
+<w>]</w>      get a mutation
+
+<w>]</w>      突然変異を得る
+%%%%
+<w>_</w>      gain religion
+
+<w>_</w>      指定した神を信仰する
+%%%%
+<w>^</w>      set piety to a value
+
+<w>^</w>      信仰値を変更する
+%%%%
+<w>@</w>      set Str Int Dex
+
+<w>@</w>      腕力/知力/器用を変更する
+%%%%
+<w>#</w>      load character from a dump file
+
+<w>#</w>      ダンプファイルからキャラクターを
+       読み込む
+%%%%
+<w>Ctrl-Z</w> gain lots of Zot Points
+
+<w>Ctrl-Z</w> 多くのゾットポイントを得る
+%%%%
+<w>&</w>      list all divine followers
+
+<w>&</w>      神聖なる従者をすべて列挙する
+%%%%
+<w>=</w>      show info about skill points
+
+<w>=</w>      スキルポイントの情報を得る
+%%%%
+<yellow>Create level features</yellow>
+
+<yellow>階層の要素を編集する:</yellow>
+%%%%
+<w>L</w>      place a vault by name
+
+<w>L</w>      名前を指定してvaultを生成する
+%%%%
+<w>T</w>      make a trap
+
+<w>T</w>      罠を張る
+%%%%
+<w>,</w>/<w>.</w>    create up/down staircase
+
+<w>,</w>/<w>.</w>    上り/下り階段を生成する
+%%%%
+<w>(</w>      turn cell into feature
+
+<w>(</w>      このマスを別の地形に変える
+%%%%
+<w>\</w>      make a shop
+
+<w>\</w>      店を生成する
+%%%%
+<w>Ctrl-K</w> mark all vaults as unused
+
+<w>Ctrl-K</w> すべてのvaultを未使用扱いにする
+%%%%
+<yellow>Other level related commands</yellow>
+
+<yellow>その他の階層関連コマンド:</yellow>
+%%%%
+<w>Ctrl-A</w> generate new Abyss area
+
+<w>Ctrl-A</w> 新たなアビスの領域を生成する
+%%%%
+<w>b</w>      controlled blink
+
+<w>Ctrl-A</w> 行き先を制御しての瞬間移動
+%%%%
+<w>B</w>      controlled teleport
+
+<w>B</w>      行き先を制御してのテレポート
+%%%%
+<w>Ctrl-B</w> banish yourself to the Abyss
+
+<w>Ctrl-B</w> 自らをアビスに追放する
+%%%%
+<w>k</w>      shift section of a labyrinth
+
+<w>k</w>      ラビリンスの区域を変更する
+%%%%
+<w>R</w>      change monster spawn rate
+
+<w>R</w>      モンスターの生成率を変更する
+%%%%
+<w>Ctrl-S</w> change Abyss speed
+
+<w>Ctrl-S</w> アビスの変容速度を変更する
+%%%%
+<w>u</w>/<w>d</w>    shift up/down one level
+
+<w>u</w>/<w>d</w>    1階上/下へ移動する
+%%%%
+<w>~</w>      go to a specific level
+
+<w>~</w>      分岐やポータルに移動する
+%%%%
+<w>:</w>      find branches and overflow\n       temples in the dungeon
+
+<w>:</w>      分岐や寺院外の祭壇の場所を表示する
+%%%%
+temples in the dungeon
+
+表示する
+%%%%
+<w>;</w>      list known levels and counters
+
+<w>;</w>      既知の階層とカウンターを表示する
+%%%%
+<w>{</w>      magic mapping
+
+<w>{</w>      魔法の地図の効果
+%%%%
+<w>}</w>      detect all traps on level
+
+<w>}</w>      階層のすべての罠を感知する
+%%%%
+<w>Ctrl-W</w> change Shoals' tide speed
+
+<w>Ctrl-W</w> 浅瀬における潮の速度を変更する
+%%%%
+<w>Ctrl-E</w> dump level builder information
+
+<w>Ctrl-E</w> 階層構築情報を表示する
+%%%%
+<w>Ctrl-R</w> regenerate current level
+
+<w>Ctrl-R</w> 現在の階層を再構成する
+%%%%
+<w>P</w>      create a level based on a vault
+
+<w>P</w>      指定したvaultをもとに階層を作成する
+%%%%
+<yellow>Other player related effects</yellow>
+
+<yellow>その他のプレイヤーに関する効果:</yellow>
+%%%%
+<w>c</w>      card effect
+
+<w>c</w>      カードを引く効果
+%%%%
+<w>Ctrl-G</w> save/load ghost (bones file)
+
+<w>Ctrl-G</w> bonesファイルから幽霊を
+       読み書きする
+%%%%
+<w>h</w>/<w>H</w>    heal yourself (super-Heal)
+
+<w>h</w>/<w>H</w>    自身を回復させる
+%%%%
+<w>e</w>      set hunger state
+
+<w>e</w>      満腹度を変更する
+%%%%
+<w>X</w>      make Xom do something now
+
+<w>X</w>      ゾムに何かをさせる
+%%%%
+<w>z</w>      cast spell by number/name
+
+<w>z</w>      名前/番号を指定して魔法を使う
+%%%%
+<w>!</w>      memorise spell
+
+<w>!</w>      魔法を習得する
+%%%%
+<w>W</w>      god wrath
+
+<w>W</w>      神の怒りを落とす
+%%%%
+<w>w</w>      god mollification
+
+<w>w</w>      神の怒りをなだめる
+%%%%
+<w>p</w>      polymorph into a form
+
+<w>p</w>      さまざまな姿に変わる
+%%%%
+<w>V</w>      toggle xray vision
+
+<w>V</w>      壁透視の切り替え
+%%%%
+<yellow>Monster related commands</yellow>
+
+<yellow>モンスター関連コマンド:</yellow>
+%%%%
+<w>D</w>      detect all monsters
+
+<w>D</w>      全てのモンスターを感知する
+%%%%
+<w>G</w>      dismiss all monsters
+
+<w>G</w>      モンスターを消す
+%%%%
+<w>m</w>/<w>M</w>    create monster by name/number
+
+<w>m</w>/<w>M</w>    名前または番号を指定して
+       モンスターを生成する
+%%%%
+<w>"</w>      list monsters
+
+<w>"</w>      モンスターを列挙する
+%%%%
+<yellow>Item related commands</yellow>
+
+<yellow>アイテム関連コマンド:</yellow>
+%%%%
+<w>a</w>      acquirement
+
+<w>a</w>      獲得の効果
+%%%%
+<w>C</w>      (un)curse item
+
+<w>C</w>      アイテムを呪う/呪いを解く
+%%%%
+<w>i</w>/<w>I</w>    identify/unidentify inventory
+
+<w>i</w>      所持アイテム全部を鑑定する
+<w>I</w>      所持アイテム全部を未鑑定にする
+%%%%
+<w>y</w>/<w>Y</w>    id/unid item types+level items
+
+<w>y</w>      アイテム全部を鑑定する
+<w>Y</w>      アイテム全部を未鑑定にする
+%%%%
+<w>o</w>/<w>%</w>    create an object
+
+<w>o</w>/<w>%</w>    オブジェクトを生成する
+%%%%
+<w>t</w>      tweak object properties
+
+<w>t</w>      オブジェクトの設定値を変更する
+%%%%
+<w>v</w>      show gold value of an item
+
+<w>v</w>      アイテムの価値を表示する
+%%%%
+<w>-</w>      get a god gift
+
+<w>-</w>      神の授かり物を得る
+%%%%
+<w>|</w>      create all unrand artefacts
+
+<w>|</w>      全ての固定★を生成する
+%%%%
+<w>+</w>      make randart from item
+
+<w>+</w>      アイテムをベースに☆を生成する
+%%%%
+<w>'</w>      list items
+
+<w>'</w>      アイテムを列挙する
+%%%%
+<w>J</w>      Jiyva off-level sacrifice
+
+<w>J</w>      別の階層にあるアイテムを
+       ジーヴァに捧げる
+%%%%
+<yellow>Debugging commands</yellow>
+
+<yellow>デバッグ用コマンド:</yellow>
+%%%%
+<w>f</w>      quick fight simulation
+
+<w>f</w>      簡易戦闘シミュレーション
+%%%%
+<w>F</w>      single scale fsim
+
+<w>F</w>      fsim(シングルスケール)
+%%%%
+<w>Ctrl-F</w> double scale fsim
+
+<w>Ctrl-F</w> fsim(ダブルスケール)
+%%%%
+<w>Ctrl-I</w> item generation stats
+
+<w>Ctrl-I</w> アイテム生成統計を出す
+%%%%
+<w>O</w>      measure exploration time
+
+<w>O</w>      探索ターンを計測する
+%%%%
+<w>Ctrl-T</w> dungeon (D)Lua interpreter
+
+<w>Ctrl-T</w> (D)Luaインタプリタ
+%%%%
+<w>Ctrl-U</w> client (C)Lua interpreter
+
+<w>Ctrl-U</w> (C)Luaインタプリタ
+%%%%
+<w>Ctrl-X</w> Xom effect stats
+
+<w>Ctrl-X</w> ゾム効果の統計を出す
+%%%%
+<w>Ctrl-Q</w> make some debug messages quiet
+
+<w>Ctrl-Q</w> デバッグメッセージを切る
+%%%%
+<w>Ctrl-C</w> force a crash
+
+<w>Ctrl-C</w> 強制的にクラッシュさせる
+%%%%
+<yellow>Other wizard commands</yellow>
+
+<yellow>その他のウィザードコマンド:</yellow>
+%%%%
+(not prefixed with <w>&</w>!)
+
+('<w>&</w>'を頭に付けない！)
+%%%%
+<w>x?</w>     list targeted commands
+
+<w>x?</w>     照準コマンドを列挙する
+%%%%
+<w>X?</w>     list map-mode commands
+
+<w>X?</w>     フロアマップコマンドを列挙する
+%%%%
 ############################## describe.cc ##############################
 %%%%
 It sustains your strength, intelligence and dexterity.

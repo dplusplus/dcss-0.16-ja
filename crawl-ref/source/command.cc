@@ -1352,110 +1352,110 @@ int list_wizard_commands(bool do_redraw_screen)
     cols.set_pagesize(get_number_of_lines());
 
     cols.add_formatted(0,
-                       "<yellow>Player stats</yellow>\n"
-                       "<w>A</w>      set all skills to level\n"
-                       "<w>Ctrl-D</w> change enchantments/durations\n"
-                       "<w>g</w>      exercise a skill\n"
-                       "<w>l</w>      change experience level\n"
-                       "<w>Ctrl-P</w> list props\n"
-                       "<w>r</w>      change character's species\n"
-                       "<w>s</w>      gain 20000 skill points\n"
-                       "<w>S</w>      set skill to level\n"
-                       "<w>x</w>      gain an experience level\n"
-                       "<w>$</w>      get 1000 gold\n"
-                       "<w>n</w>      lose all gold\n"
-                       "<w>]</w>      get a mutation\n"
-                       "<w>_</w>      gain religion\n"
-                       "<w>^</w>      set piety to a value\n"
-                       "<w>@</w>      set Str Int Dex\n"
-                       "<w>#</w>      load character from a dump file\n"
-                       "<w>Ctrl-Z</w> gain lots of Zot Points\n"
-                       "<w>&</w>      list all divine followers\n"
-                       "<w>=</w>      show info about skill points\n"
-                       "\n"
-                       "<yellow>Create level features</yellow>\n"
-                       "<w>L</w>      place a vault by name\n"
-                       "<w>T</w>      make a trap\n"
-                       "<w>,</w>/<w>.</w>    create up/down staircase\n"
-                       "<w>(</w>      turn cell into feature\n"
-                       "<w>\\</w>      make a shop\n"
-                       "<w>Ctrl-K</w> mark all vaults as unused\n"
-                       "\n"
-                       "<yellow>Other level related commands</yellow>\n"
-                       "<w>Ctrl-A</w> generate new Abyss area\n"
-                       "<w>b</w>      controlled blink\n"
-                       "<w>B</w>      controlled teleport\n"
-                       "<w>Ctrl-B</w> banish yourself to the Abyss\n"
-                       "<w>k</w>      shift section of a labyrinth\n"
-                       "<w>R</w>      change monster spawn rate\n"
-                       "<w>Ctrl-S</w> change Abyss speed\n"
-                       "<w>u</w>/<w>d</w>    shift up/down one level\n"
-                       "<w>~</w>      go to a specific level\n"
-                       "<w>:</w>      find branches and overflow\n"
-                       "       temples in the dungeon\n"
-                       "<w>;</w>      list known levels and counters\n"
-                       "<w>{</w>      magic mapping\n"
-                       "<w>}</w>      detect all traps on level\n"
-                       "<w>Ctrl-W</w> change Shoals' tide speed\n"
-                       "<w>Ctrl-E</w> dump level builder information\n"
-                       "<w>Ctrl-R</w> regenerate current level\n"
-                       "<w>P</w>      create a level based on a vault\n",
+                       jtransln("<yellow>Player stats</yellow>\n") +
+                       jtransln("<w>A</w>      set all skills to level\n") +
+                       jtransln("<w>Ctrl-D</w> change enchantments/durations\n") +
+                       jtransln("<w>g</w>      exercise a skill\n") +
+                       jtransln("<w>l</w>      change experience level\n") +
+                       jtransln("<w>Ctrl-P</w> list props\n") +
+                       jtransln("<w>r</w>      change character's species\n") +
+                       jtransln("<w>s</w>      gain 20000 skill points\n") +
+                       jtransln("<w>S</w>      set skill to level\n") +
+                       jtransln("<w>x</w>      gain an experience level\n") +
+                       jtransln("<w>$</w>      get 1000 gold\n") +
+                       jtransln("<w>n</w>      lose all gold\n") +
+                       jtransln("<w>]</w>      get a mutation\n") +
+                       jtransln("<w>_</w>      gain religion\n") +
+                       jtransln("<w>^</w>      set piety to a value\n") +
+                       jtransln("<w>@</w>      set Str Int Dex\n") +
+                       jtransln("<w>#</w>      load character from a dump file\n") +
+                       jtransln("<w>Ctrl-Z</w> gain lots of Zot Points\n") +
+                       jtransln("<w>&</w>      list all divine followers\n") +
+                       jtransln("<w>=</w>      show info about skill points\n") +
+                       "\n" +
+                       jtransln("<yellow>Create level features</yellow>\n") +
+                       jtransln("<w>L</w>      place a vault by name\n") +
+                       jtransln("<w>T</w>      make a trap\n") +
+                       jtransln("<w>,</w>/<w>.</w>    create up/down staircase\n") +
+                       jtransln("<w>(</w>      turn cell into feature\n") +
+                       jtransln("<w>\\</w>      make a shop\n") +
+                       jtransln("<w>Ctrl-K</w> mark all vaults as unused\n") +
+                       "\n" +
+                       jtransln("<yellow>Other level related commands</yellow>\n") +
+                       jtransln("<w>Ctrl-A</w> generate new Abyss area\n") +
+                       jtransln("<w>b</w>      controlled blink\n") +
+                       jtransln("<w>B</w>      controlled teleport\n") +
+                       jtransln("<w>Ctrl-B</w> banish yourself to the Abyss\n") +
+                       jtransln("<w>k</w>      shift section of a labyrinth\n") +
+                       jtransln("<w>R</w>      change monster spawn rate\n") +
+                       jtransln("<w>Ctrl-S</w> change Abyss speed\n") +
+                       jtransln("<w>u</w>/<w>d</w>    shift up/down one level\n") +
+                       jtransln("<w>~</w>      go to a specific level\n") +
+                       jtransln("<w>:</w>      find branches and overflow\n"
+                                "       temples in the dungeon\n") +
+                       jtransln("<w>;</w>      list known levels and counters\n") +
+                       jtransln("<w>{</w>      magic mapping\n") +
+                       jtransln("<w>}</w>      detect all traps on level\n") +
+                       jtransln("<w>Ctrl-W</w> change Shoals' tide speed\n") +
+                       jtransln("<w>Ctrl-E</w> dump level builder information\n") +
+                       jtransln("<w>Ctrl-R</w> regenerate current level\n") +
+                       jtransln("<w>P</w>      create a level based on a vault\n"),
                        true, true);
 
     cols.add_formatted(1,
-                       "<yellow>Other player related effects</yellow>\n"
-                       "<w>c</w>      card effect\n"
+                       jtransln("<yellow>Other player related effects</yellow>\n") +
+                       jtransln("<w>c</w>      card effect\n") +
 #ifdef DEBUG_BONES
-                       "<w>Ctrl-G</w> save/load ghost (bones file)\n"
+                       jtransln("<w>Ctrl-G</w> save/load ghost (bones file)\n") +
 #endif
-                       "<w>h</w>/<w>H</w>    heal yourself (super-Heal)\n"
-                       "<w>e</w>      set hunger state\n"
-                       "<w>X</w>      make Xom do something now\n"
-                       "<w>z</w>      cast spell by number/name\n"
-                       "<w>!</w>      memorise spell\n"
-                       "<w>W</w>      god wrath\n"
-                       "<w>w</w>      god mollification\n"
-                       "<w>p</w>      polymorph into a form\n"
-                       "<w>V</w>      toggle xray vision\n"
-                       "\n"
-                       "<yellow>Monster related commands</yellow>\n"
-                       "<w>D</w>      detect all monsters\n"
-                       "<w>G</w>      dismiss all monsters\n"
-                       "<w>m</w>/<w>M</w>    create monster by name/number\n"
-                       "<w>\"</w>      list monsters\n"
-                       "\n"
-                       "<yellow>Item related commands</yellow>\n"
-                       "<w>a</w>      acquirement\n"
-                       "<w>C</w>      (un)curse item\n"
-                       "<w>i</w>/<w>I</w>    identify/unidentify inventory\n"
-                       "<w>y</w>/<w>Y</w>    id/unid item types+level items\n"
-                       "<w>o</w>/<w>%</w>    create an object\n"
-                       "<w>t</w>      tweak object properties\n"
-                       "<w>v</w>      show gold value of an item\n"
-                       "<w>-</w>      get a god gift\n"
-                       "<w>|</w>      create all unrand artefacts\n"
-                       "<w>+</w>      make randart from item\n"
-                       "<w>'</w>      list items\n"
-                       "<w>J</w>      Jiyva off-level sacrifice\n"
-                       "\n"
-                       "<yellow>Debugging commands</yellow>\n"
-                       "<w>f</w>      quick fight simulation\n"
-                       "<w>F</w>      single scale fsim\n"
-                       "<w>Ctrl-F</w> double scale fsim\n"
-                       "<w>Ctrl-I</w> item generation stats\n"
-                       "<w>O</w>      measure exploration time\n"
-                       "<w>Ctrl-T</w> dungeon (D)Lua interpreter\n"
-                       "<w>Ctrl-U</w> client (C)Lua interpreter\n"
-                       "<w>Ctrl-X</w> Xom effect stats\n"
+                       jtransln("<w>h</w>/<w>H</w>    heal yourself (super-Heal)\n") +
+                       jtransln("<w>e</w>      set hunger state\n") +
+                       jtransln("<w>X</w>      make Xom do something now\n") +
+                       jtransln("<w>z</w>      cast spell by number/name\n") +
+                       jtransln("<w>!</w>      memorise spell\n") +
+                       jtransln("<w>W</w>      god wrath\n") +
+                       jtransln("<w>w</w>      god mollification\n") +
+                       jtransln("<w>p</w>      polymorph into a form\n") +
+                       jtransln("<w>V</w>      toggle xray vision\n") +
+                       "\n" +
+                       jtransln("<yellow>Monster related commands</yellow>\n") +
+                       jtransln("<w>D</w>      detect all monsters\n") +
+                       jtransln("<w>G</w>      dismiss all monsters\n") +
+                       jtransln("<w>m</w>/<w>M</w>    create monster by name/number\n") +
+                       jtransln("<w>\"</w>      list monsters\n") +
+                       "\n" +
+                       jtransln("<yellow>Item related commands</yellow>\n") +
+                       jtransln("<w>a</w>      acquirement\n") +
+                       jtransln("<w>C</w>      (un)curse item\n") +
+                       jtransln("<w>i</w>/<w>I</w>    identify/unidentify inventory\n") +
+                       jtransln("<w>y</w>/<w>Y</w>    id/unid item types+level items\n") +
+                       jtransln("<w>o</w>/<w>%</w>    create an object\n") +
+                       jtransln("<w>t</w>      tweak object properties\n") +
+                       jtransln("<w>v</w>      show gold value of an item\n") +
+                       jtransln("<w>-</w>      get a god gift\n") +
+                       jtransln("<w>|</w>      create all unrand artefacts\n") +
+                       jtransln("<w>+</w>      make randart from item\n") +
+                       jtransln("<w>'</w>      list items\n") +
+                       jtransln("<w>J</w>      Jiyva off-level sacrifice\n") +
+                       "\n" +
+                       jtransln("<yellow>Debugging commands</yellow>\n") +
+                       jtransln("<w>f</w>      quick fight simulation\n") +
+                       jtransln("<w>F</w>      single scale fsim\n") +
+                       jtransln("<w>Ctrl-F</w> double scale fsim\n") +
+                       jtransln("<w>Ctrl-I</w> item generation stats\n") +
+                       jtransln("<w>O</w>      measure exploration time\n") +
+                       jtransln("<w>Ctrl-T</w> dungeon (D)Lua interpreter\n") +
+                       jtransln("<w>Ctrl-U</w> client (C)Lua interpreter\n") +
+                       jtransln("<w>Ctrl-X</w> Xom effect stats\n") +
 #ifdef DEBUG_DIAGNOSTICS
-                       "<w>Ctrl-Q</w> make some debug messages quiet\n"
+                       jtransln("<w>Ctrl-Q</w> make some debug messages quiet\n") +
 #endif
-                       "<w>Ctrl-C</w> force a crash\n"
-                       "\n"
-                       "<yellow>Other wizard commands</yellow>\n"
-                       "(not prefixed with <w>&</w>!)\n"
-                       "<w>x?</w>     list targeted commands\n"
-                       "<w>X?</w>     list map-mode commands\n",
+                       jtransln("<w>Ctrl-C</w> force a crash\n") +
+                       "\n" +
+                       jtransln("<yellow>Other wizard commands</yellow>\n") +
+                       jtransln("(not prefixed with <w>&</w>!)\n") +
+                       jtransln("<w>x?</w>     list targeted commands\n") +
+                       jtransln("<w>X?</w>     list map-mode commands\n"),
                        true, true);
 
     int key = _show_keyhelp_menu(cols.formatted_lines(), false,
