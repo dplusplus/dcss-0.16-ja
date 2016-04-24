@@ -20035,15 +20035,89 @@ Platinum Reserve
 
 プラチナ取引所
 %%%%
+withered
+
+枯れ果てた
+%%%%
+charred
+
+黒焦げの
+%%%%
+frost-covered
+
+霜に覆われた
+%%%%
 Purification Station
 
 浄化局
+%%%%
+############################## dat/des/branches/abyss.des ##############################
+%%%%
+demonic
+
+悪魔的な
+%%%%
+mad acolyte of Lugonu
+
+『ルゴヌ』の狂信者
+%%%%
+############################## dat/des/branches/crypt.des ##############################
+%%%%
+skeletal archer
+
+骸骨の弓兵
+%%%%
+############################## dat/des/branches/lair.des ##############################
+%%%%
+young
+
+若い
 %%%%
 ############################## dat/des/branches/pan.des ##############################
 %%%%
 Entered the realm of
 
 の守る階層に到達した
+%%%%
+############################## dat/des/branches/pan.des ##############################
+%%%%
+baked
+
+オーブンで焼かれた
+%%%%
+baker
+
+のパン屋
+%%%%
+############################## dat/des/portals/ossuary.des ##############################
+%%%%
+decayed
+
+腐敗した
+%%%%
+############################## dat/des/portals/sewer.des ##############################
+%%%%
+sickly
+
+病気にかかった
+%%%%
+malarious
+
+マラリアにかかった
+%%%%
+apprentice
+
+見習い
+%%%%
+############################## dat/des/portals/volcano.des ##############################
+%%%%
+firespitter
+
+火を吐く
+%%%%
+lasher
+
+鞭打つ
 %%%%
 ############################## dat/des/portals/trove.des ##############################
 %%%%
@@ -20052,6 +20126,94 @@ to enter a treasure trove
 秘密の埋蔵庫に入る
 %%%%
 ############################## dat/des/portals/wizlab.des ##############################
+%%%%
+antique lich
+
+年季の入ったリッチ
+%%%%
+stramge machine
+
+奇妙な機械
+%%%%
+vine covered
+
+蔓に覆われた
+%%%%
+monstrous
+
+怪物じみた
+%%%%
+deformed
+
+奇形の
+%%%%
+twisted
+
+体のねじれた
+%%%%
+grotesque
+
+グロテスクな
+%%%%
+hideous
+
+見るも恐ろしい姿の
+%%%%
+febrile
+
+熱に浮かされた
+%%%%
+flesh golem
+
+肉のゴーレム
+%%%%
+Cigotuvi's Monster
+
+シゴツヴィの怪物
+%%%%
+fleshy orifice
+
+肉壁の開口部
+%%%%
+You part the %s%s
+
+あなたは%s%sを引き裂いて通り道を作った
+%%%%
+with a squelch!
+
+ガボガボと音を立てながら
+%%%%
+You squeeze the %s%s closed
+
+あなたは%s%sを両側から引っ張って閉じた
+%%%%
+You part the %s%s with a squelch!
+
+あなたはガボガボと音を立てながら%s%sを引き裂いて通り道を作った！
+%%%%
+You squeeze the %s%s closed with a squelch!
+
+あなたはガボガボと音を立てながら%s%sを両側から引っ張って閉じた！
+%%%%
+You reach down and part the %s%s.
+
+あなたは地上に舞い降り、%s%sを引き裂いて通り道を作った。
+%%%%
+You reach down and squeeze the %s%s closed.
+
+あなたは地上に舞い降り、%s%sを両側から引っ張って閉じた。
+%%%%
+You part the %s%s.
+
+あなたは%s%sを引き裂いて通り道を作った。
+%%%%
+You squeeze the %s%s shut.
+
+あなたは%s%sを両側から引っ張って閉じた。
+%%%%
+Statue of Wucad Mu
+
+ウカド・ムーの像
 %%%%
 Tukima's Studio
 
@@ -20143,6 +20305,70 @@ The arena falls silent.
 
 <yellow>ゲットレディ！</yellow>
 %%%%
+kamikaze kobold
+
+カミカゼ・コボルド
+%%%%
+drunken
+
+飲んだくれの
+%%%%
+greater
+
+強大な
+%%%%
+orb beetle
+
+球体の甲虫
+%%%%
+orb of ice
+
+氷の球体
+%%%%
+orb of electricity
+
+電気の球体
+%%%%
+naga warlord
+
+ナーガの族長
+%%%%
+witch
+
+魔女
+%%%%
+dire
+
+凶暴化した
+%%%%
+phase spider
+
+多相グモ
+%%%%
+dimme
+
+『ディメ』
+%%%%
+deep elf elementalist
+
+闇エルフの精霊使い
+%%%%
+sulfuric
+
+硫黄
+%%%%
+greater orb of eyes
+
+あまたの目の巨大球体
+%%%%
+captain
+
+隊長
+%%%%
+Master Blaster
+
+魔法を極めしもの
+%%%%
 FINAL BOSS!
 
 最終ボスだ！
@@ -20167,17 +20393,341 @@ The exit has been sealed! It will re-open when you get the next rune.
 
 出口が閉鎖された！ 次のルーンを手にすれば再び解放される。
 %%%%
+############################## dat/des/sprint/fedhas.des ##############################
+%%%%
+shifter
+
+移相者
+%%%%
+############################## dat/des/sprint/linesprint.des ##############################
+%%%%
+to the Dungeon
+
+迷宮へと通じる
+%%%%
+to the Temple
+
+寺院へと通じる
+%%%%
+to the Lair
+
+獣の棲み処へと通じる
+%%%%
+to the Lair:8
+
+獣の棲み処の8階へと通じる
+%%%%
+to the Orcish Mines
+
+オークの坑道へと通じる
+%%%%
+to the Orc:4
+
+オークの坑道の4階へと通じる
+%%%%
+to the Swamp
+
+沼へと通じる
+%%%%
+to the Shoal
+
+浅瀬へと通じる
+%%%%
+to the Spider Nest
+
+蜘蛛の穴ぐらへと通じる
+%%%%
+to the Snake Pit
+
+蛇穴へと通じる
+%%%%
+to the Vaults
+
+宝物庫へと通じる
+%%%%
+to Swamp:5
+
+沼の5階へと通じる
+%%%%
+to Shoals:5
+
+浅瀬の5階へと通じる
+%%%%
+to Spider:5
+
+蜘蛛の穴ぐらの5階へと通じる
+%%%%
+to Snake:5
+
+蛇穴の5階へと通じる
+%%%%
+to Vaults:5
+
+宝物庫の5階へと通じる
+%%%%
+to D:27
+
+迷宮の27階へと通じる
+%%%%
+to the Realm of Zot
+
+ゾットの領域へと通じる
+%%%%
+to the ~*~Extended Endgame~*~
+
+追加ステージへと通じる
+%%%%
+to the Crypt
+
+地下墓地へと通じる
+%%%%
+to the Forest
+
+森へと通じる
+%%%%
+to the Elven Halls
+
+エルフの大広間へと通じる
+%%%%
+to the Slime Pits
+
+スライムの穴ぐらへと通じる
+%%%%
+to the Tomb
+
+霊廟へと通じる
+%%%%
+to the Abyss
+
+アビスへ通じる
+%%%%
+to Hell & Pan
+
+地獄とパンデモニウムへと通じる
+%%%%
+############################## dat/des/sprint/meat.des ##############################
+%%%%
+bag of meat
+
+肉袋
+%%%%
+meat berserker
+
+肉の狂戦士
+%%%%
+tyrant
+
+暴君
+%%%%
+dread
+
+恐ろしきもの
+%%%%
+meat hydra
+
+肉のヒドラ
+%%%%
+large bag of meat
+
+巨大肉袋
+%%%%
+destroyer
+
+破壊者
+%%%%
+scourge
+
+鞭ヘビ
+%%%%
+sculptor of flesh
+
+肉の彫刻家
+%%%%
+observer
+
+監視者
+%%%%
+accursed
+
+呪われしもの
+%%%%
+meat beast
+
+肉獣
+%%%%
+wretched soul
+
+惨めな魂
+%%%%
+fleshlord
+
+肉の君主
+%%%%
+vile
+
+卑劣漢
+%%%%
+The Servant
+
+従僕
+%%%%
+The Captor
+
+捕らえるもの
+%%%%
+The Defiler
+
+汚染するもの
+%%%%
+The Meatlord
+
+肉の王者
+%%%%
+The Unspeakable
+
+名状しがたきもの
+%%%%
 ############################## dat/des/sprint/menkaure.des ##############################
 %%%%
 Murray drops in to check on your progress.
 
 『マーリー』があなたの進捗を確認しに立ち寄った。
 %%%%
+############################## dat/des/sprint/pitsprint.des ##############################
+%%%%
+to the Metal Vault (Medium)
+
+(難易度:中) 金属の宝物庫へと通じる
+%%%%
+to the Steel Vault (Very Hard)
+
+(難易度:高難度) 鋼鉄の宝物庫へと通じる
+%%%%
+to the Silver Vault (Extremely Hard)
+
+(難易度:超高難度) 銀の宝物庫へと通じる
+%%%%
+to the Crystal Vault (Extremely Hard)
+
+(難易度:超高難度) 水晶の宝物庫へと通じる
+%%%%
+to the Iron Vault (Extremely Hard)
+
+(難易度:超高難度) 鉄の宝物庫へと通じる
+%%%%
+to the Main Hall (Safe)
+
+(難易度:安全) メインホールへと通じる
+%%%%
+to the Hallway of Sentries (Extremely Hard)
+
+(難易度:超高難度) 歩哨の待機所へと通じる
+%%%%
+to the Coven (Very Hard)
+
+(難易度:高難度) 魔女の集会所へと通じる
+%%%%
+to the Armoury (Hard)
+
+(難易度:大) 兵器庫へと通じる
+%%%%
+to the Temple (Safe)
+
+(難易度:安全) 寺院へと通じる
+%%%%
+to the Store rooms (Easy)
+
+(難易度:簡単) 商店街へと通じる
+%%%%
+to the Grid Vault (Hard)
+
+(難易度:大) 区分けされた宝物庫へと通じる
+%%%%
+to the Entrance Hall (Safe)
+
+(難易度:安全) 入口の大広間へと通じる
+%%%%
+leading to the Armoury (Hard)
+
+(難易度:大) 兵器庫へと通じる
+%%%%
+to the Vestibule (Extremely Hard)
+
+(難易度:超高難度) 玄関へと通じる
+%%%%
+to a Minivault (Hard)
+
+(難易度:大) 小さな宝物庫へと通じる
+%%%%
+to the Golden Pit (Nightmare!)
+
+(難易度:悪夢！) 黄金の宝物庫へと通じる
+%%%%
+to the Final Vault (Nightmare!)
+
+(難易度:悪夢！) 最後の宝物庫へと通じる
+%%%%
 ############################## dat/des/sprint/sprint_mu.des ##############################
 %%%%
 You hear a whooshing noise from somewhere close by.
 
 あなたはどこか近くでシューッと言う音を聞いた。
+%%%%
+to the Ecumenical Temple
+
+諸宗派の寺院へと通じる
+%%%%
+to the Lair of Beasts
+
+獣の棲み処へと通じる
+%%%%
+to the Hive
+
+蜂の巣へと通じる
+%%%%
+to the Pits of Slime
+
+スライムの穴ぐらへと通じる
+%%%%
+to a bazaar
+
+バザールへと通じる
+%%%%
+to the Hall of Blades
+
+刃の広間へと通じる
+%%%%
+to the Tomb of the Ancients
+
+太古の霊廟へと通じる
+%%%%
+pristine
+
+汚れなき
+%%%%
+to Hell
+
+地獄へと通じる
+%%%%
+to the Iron City of Dis
+
+鉄の都ディースへと通じる
+%%%%
+to the ashen valley of Gehenna
+
+灰の谷ゲヘナへと通じる
+%%%%
+to the freezing wastes of Cocytus
+
+コキュートスの凍れる荒野へと通じる
+%%%%
+to the decaying netherworld of Tartarus
+
+タルタロスの腐朽地獄へと通じる
+%%%%
+You need three runes to open the Realm of Zot!
+
+ゾットの領域に進むにはルーンが3つ必要だ！
 %%%%
 ############################## dat/des/sprint/zigsprint.des ##############################
 %%%%
@@ -20188,6 +20738,63 @@ Your surroundings seem different!
 <magenta>An exit appears before you!</magenta>
 
 <magenta>あなたの目の前に出口が現れた！</magenta>
+%%%%
+############################## dat/des/variable/cathedral_bats.des ##############################
+%%%%
+megabat
+
+超巨大コウモリ
+%%%%
+A bat flies out of a crevice!
+
+裂け目からコウモリが飛び出した！
+%%%%
+############################## dat/des/variable/float.des ##############################
+%%%%
+master elementalist
+
+精霊を極めしもの
+%%%%
+############################## dat/des/variable/grated_community.des ##############################
+%%%%
+Slaves and Accessories
+
+隷属の小道具店
+%%%%
+Jerk-a-riffic Jerky
+
+おいしいジャーキー店
+%%%%
+Miraculous Elixirs
+
+不思議な霊薬店
+%%%%
+Legendary Smithy
+
+伝説の鍛冶屋
+%%%%
+############################## dat/des/variable/mini_monsters.des ##############################
+%%%%
+microbat
+
+超小型コウモリ
+%%%%
+skeletal bat
+
+骸骨のコウモリ
+%%%%
+ice bat
+
+氷のコウモリ
+%%%%
+ghost-faced bat
+
+ユウレイコウモリ
+# 実在のコウモリらしい。和名不明
+%%%%
+rotten bat
+
+腐敗したコウモリ
 %%%%
 ############################## dat/dlua/lm_tmsg.lua ##############################
 %%%%
