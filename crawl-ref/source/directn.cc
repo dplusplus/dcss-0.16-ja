@@ -3074,11 +3074,18 @@ string feature_description_at(const coord_def& where, bool covering,
         const char *adj, *noun;
         get_door_description(all_door.size(), &adj, &noun);
 
-        string desc = covering_description;
+        string desc;
+
+        if (starts_with(door_desc_suffix, " to ") || // for linesprint
+            starts_with(door_desc_suffix, " leading to ")) // for pitsprint
+            desc += jtrans(door_desc_suffix);
+
         if (!door_desc_adj.empty())
             desc += door_desc_adj;
         else
             desc += adj;
+
+        desc += covering_description;
 
         if (door_desc_veto.empty() || door_desc_veto != "veto")
         {
@@ -3099,7 +3106,9 @@ string feature_description_at(const coord_def& where, bool covering,
         else
             desc += noun;
 
-        desc += door_desc_suffix;
+        if (!starts_with(door_desc_suffix, " to the") &&
+            !starts_with(door_desc_suffix, " leading to the"))
+            desc += jtrans(door_desc_suffix);
 
         return thing_do_grammar_j(dtype, add_stop, false, desc);
     }
