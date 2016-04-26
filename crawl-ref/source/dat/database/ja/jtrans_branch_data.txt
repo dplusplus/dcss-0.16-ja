@@ -43,6 +43,18 @@
 
 エルフ
 %%%%
+[branch]Dwarven Hall
+
+ドワーフの大広間
+%%%%
+[branch]the Dwarven Hall
+
+ドワーフの大広間
+%%%%
+[branch]Dwarf
+
+ドワーフ
+%%%%
 [branch]Lair
 
 獣の棲み処
@@ -83,6 +95,10 @@
 
 蜘蛛の穴ぐら
 %%%%
+[branch]the Spider Nest
+
+蜘蛛の穴ぐら
+%%%%
 [branch]Spider
 
 蜘蛛
@@ -106,6 +122,18 @@
 [branch]the Vaults
 
 宝物庫
+%%%%
+[branch]Hall of Blades
+
+刃の広間
+%%%%
+[branch]the Hall of Blades
+
+刃の広間
+%%%%
+[branch]Blade
+
+刃の広間
 %%%%
 [branch]Crypt
 
@@ -175,6 +203,14 @@ Welcome to Hell!\nPlease enjoy your stay.
 [branch]the Realm of Zot
 
 ゾットの領域
+%%%%
+[branch]Forest
+
+森
+%%%%
+[branch]the Enchanted Forest
+
+魔法の森
 %%%%
 [branch]Abyss
 
