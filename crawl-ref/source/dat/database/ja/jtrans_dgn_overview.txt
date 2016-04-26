@@ -10,7 +10,11 @@
 (use <white>G</white> to reach them and <white>?/B</white> for more information)
 
 (移動するには <white>G</white> コマンドを使用してください)
-# <white>?/B</white> で詳しい情報を閲覧できます)
+      (<white>G</white> コマンドの後 <white>?/B</white> で詳しい情報を閲覧できます)
+%%%%
+<yellow>%*s</yellow> <darkgrey>(%d/%d)</darkgrey>%s
+
+<yellow>%*s</yellow><darkgrey>%s</darkgrey>%s
 %%%%
 <green>Altars:</green>
 
@@ -19,7 +23,7 @@
 (use <white>Ctrl-F "altar"</white> to reach them and <white>?/G</white> for information about gods)
 
 (移動するには <white>Ctrl-F</white> コマンドで<white>"祭壇"</white>を検索してください)
-# <white>?/B</white> で詳しい情報を閲覧できます)
+      (<white>Ctrl-F</white> コマンドの後<white>?/B</white> で詳しい情報を閲覧できます)
 %%%%
 <green>Shops:</green>
 

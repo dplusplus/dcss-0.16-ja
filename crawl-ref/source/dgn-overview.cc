@@ -268,11 +268,12 @@ static string _get_seen_branches(bool display)
                                   : it->abbrevname);
 
             snprintf(buffer, sizeof buffer,
-                "<yellow>%*s</yellow> <darkgrey>(%d/%d)</darkgrey>%s",
+                jtransc("<yellow>%*s</yellow> <darkgrey>(%d/%d)</darkgrey>%s"),
                 branch == root_branch ? -7 : 7,
-                chop_string(tagged_jtrans("[branch]", brname), 10).c_str(), lid.depth, brdepth[branch],
-                branch != BRANCH_DUNGEON ? make_stringf("%-11s", chop_string(entry_desc, 11).c_str()).c_str()
-                                         : "         ");
+                chop_stringc(tagged_jtrans("[branch]", brname), 12),
+                chop_stringc(make_stringf("(%d/%d)", lid.depth, brdepth[branch]), 7),
+                branch != BRANCH_DUNGEON ? chop_stringc(entry_desc, 6)
+                                         : "      ");
 
             disp += buffer;
             num_printed_branches++;
@@ -328,8 +329,8 @@ static string _get_unseen_branches()
                 if (it->mindepth != it->maxdepth)
                 {
                     snprintf(buffer, sizeof buffer,
-                        "<darkgrey>%6s: %s:%d-%d</darkgrey>",
-                            tagged_jtransc("[branch]", it->abbrevname),
+                        "<darkgrey>%8s: %s:%d-%d</darkgrey>",
+                            chop_stringc(tagged_jtrans("[branch]", it->abbrevname), 8),
                             tagged_jtransc("[branch]", branches[parent].abbrevname),
                             it->mindepth,
                             it->maxdepth);
@@ -337,8 +338,8 @@ static string _get_unseen_branches()
                 else
                 {
                     snprintf(buffer, sizeof buffer,
-                        "<darkgrey>%6s: %s:%d</darkgrey>",
-                            tagged_jtransc("[branch]", it->abbrevname),
+                        "<darkgrey>%8s: %s:%d</darkgrey>",
+                            chop_stringc(tagged_jtrans("[branch]", it->abbrevname), 8),
                             tagged_jtransc("[branch]", branches[parent].abbrevname),
                             it->mindepth);
                 }
@@ -349,7 +350,7 @@ static string _get_unseen_branches()
                 disp += (num_printed_branches % 4) == 0
                         ? "\n"
                         // Each branch entry takes up 27 spaces
-                        : string(27 + 21 - strwidth(buffer), ' ');
+                        : string(27 + 19 - strwidth(buffer), ' ');
             }
         }
     }
