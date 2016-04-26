@@ -505,7 +505,7 @@ You feel almost impervious to the effects of hostile enchantments.
 %%%%
 You feel less resistant to hostile enchantments.
 
-あなたは敵対的な魔法に対する耐性が薄れたようだ。
+あなたの敵対的な魔法に対する耐性は薄れたようだ。
 %%%%
 You feel vulnerable to hostile enchantments.
 
