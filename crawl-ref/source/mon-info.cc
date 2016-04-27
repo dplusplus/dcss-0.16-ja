@@ -1100,7 +1100,7 @@ string monster_info::_apply_adjusted_description(description_level_type desc,
     if (attitude == ATT_FRIENDLY && desc == DESC_THE)
         desc = DESC_YOUR;
 
-    return apply_description(desc, s);
+    return apply_description_j(desc, s);
 }
 
 string monster_info::common_name(description_level_type desc) const
