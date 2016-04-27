@@ -347,7 +347,7 @@ static string _get_unseen_branches()
                 disp += buffer;
                 num_printed_branches++;
 
-                disp += (num_printed_branches % 4) == 0
+                disp += (num_printed_branches % 3) == 0
                         ? "\n"
                         // Each branch entry takes up 27 spaces
                         : string(27 + 19 - strwidth(buffer), ' ');
