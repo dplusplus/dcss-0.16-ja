@@ -63,7 +63,7 @@ You are near starving!
 %%%%
 You refuse to eat these food items.
 
-あなたはこの食品を食べることを拒否する
+あなたはこの食品を食べることを拒否した。
 %%%%
 tastes terrible.
 
@@ -192,6 +192,10 @@ You lose consciousness!
 You have starved to death.
 
 あなたは飢え死にした。
+%%%%
+N/A
+
+－
 %%%%
 ############################## itemprop.cc ##############################
 %%%%
