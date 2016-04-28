@@ -1,4 +1,78 @@
 %%%%
+############################## describe.cc ##############################
+%%%%
+dart trap
+
+# obsolete
+%%%%
+arrow trap
+
+弓矢の罠
+%%%%
+spear trap
+
+槍の罠
+%%%%
+teleport trap
+
+テレポートの罠
+%%%%
+permanent teleport trap
+
+テレポートの永続罠
+%%%%
+alarm trap
+
+警報の罠
+%%%%
+blade trap
+
+刃の罠
+%%%%
+bolt trap
+
+クロスボウの罠
+%%%%
+net trap
+
+網の罠
+%%%%
+Zot trap
+
+ゾットの罠
+%%%%
+needle trap
+
+針の罠
+%%%%
+shaft
+
+縦穴
+%%%%
+passage of Golubria
+
+ゴルブリアの通り道
+%%%%
+pressure plate
+
+足踏みスイッチ
+%%%%
+web
+
+蜘蛛の巣
+%%%%
+gas trap
+
+# obsolete
+%%%%
+shadow trap
+
+影の怪物の罠
+%%%%
+dormant shadow trap
+
+影の怪物の罠(停止中)
+%%%%
 ############################## directn.cc ##############################
 %%%%
 Press: ? - help
@@ -262,38 +336,6 @@ open door
 mechanical trap
 
 機械仕掛けの罠
-%%%%
-teleport trap
-
-テレポートの罠
-%%%%
-shadow trap
-
-影の怪物の罠
-%%%%
-dormant shadow trap
-
-影の怪物の罠(停止中)
-%%%%
-alarm trap
-
-警報の罠
-%%%%
-Zot trap
-
-ゾットの罠
-%%%%
-passage of Golubria
-
-ゴルブリアの通り道
-%%%%
-shaft
-
-縦穴
-%%%%
-web
-
-蜘蛛の巣
 %%%%
 shop
 
