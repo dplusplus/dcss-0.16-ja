@@ -377,17 +377,17 @@ string zin_recite_text(const int seed, const int prayertype, int step)
     string recite = book_of_zin[chapter][step-1];
 
     //XXX: deduplicate this with database code
-    recite = replace_all(recite, "@sinners@", sinner_text[sinner_seed]);
+    recite = replace_all(recite, "@sinners@", jtrans(sinner_text[sinner_seed]));
 
-    recite = replace_all(recite, "@sin_adj@",  sin_text[sin_seed][0]);
-    recite = replace_all(recite, "@sin_noun@", sin_text[sin_seed][1]);
+    recite = replace_all(recite, "@sin_adj@", jtrans(sin_text[sin_seed][0]));
+    recite = replace_all(recite, "@sin_noun@", jtrans(sin_text[sin_seed][1]));
 
-    recite = replace_all(recite, "@virtuous@", virtue_text[virtue_seed][0]);
-    recite = replace_all(recite, "@virtue@",   virtue_text[virtue_seed][1]);
+    recite = replace_all(recite, "@virtuous@", jtrans(virtue_text[virtue_seed][0]));
+    recite = replace_all(recite, "@virtue@", jtrans(virtue_text[virtue_seed][1]));
 
-    recite = replace_all(recite, "@smite@", smite_text[smite_seed][0]);
-    recite = replace_all(recite, "@smitten@", smite_text[smite_seed][1]);
-    recite = replace_all(recite, "@Smitten@", uppercase_first(smite_text[smite_seed][1]));
+    recite = replace_all(recite, "@smite@", jtrans(smite_text[smite_seed][0]));
+    recite = replace_all(recite, "@smitten@", jtrans(smite_text[smite_seed][1]));
+    recite = replace_all(recite, "@Smitten@", jtrans(uppercase_first(smite_text[smite_seed][1])));
 
     return recite;
 }
@@ -533,21 +533,21 @@ bool zin_check_able_to_recite(bool quiet)
     if (you.duration[DUR_RECITE])
     {
         if (!quiet)
-            mpr("Finish your current sermon first, please.");
+            mpr(jtrans("Finish your current sermon first, please."));
         return false;
     }
 
     if (you.duration[DUR_BREATH_WEAPON])
     {
         if (!quiet)
-            mpr("You're too short of breath to recite.");
+            mpr(jtrans("You're too short of breath to recite."));
         return false;
     }
 
     if (you.duration[DUR_WATER_HOLD] && !you.res_water_drowning())
     {
         if (!quiet)
-            mpr("You cannot recite while unable to breathe!");
+            mpr(jtrans("You cannot recite while unable to breathe!"));
         return false;
     }
 
@@ -672,9 +672,9 @@ bool zin_recite_to_single_monster(const coord_def& where)
     if (mon->can_speak() && one_chance_in(5))
     {
         if (check < -10)
-            simple_monster_message(mon, " guffaws at your puny god.");
+            simple_monster_message(mon, jtransc(" guffaws at your puny god."));
         else if (check < -5)
-            simple_monster_message(mon, " sneers at your recitation.");
+            simple_monster_message(mon, jtransc(" sneers at your recitation."));
     }
 
     if (check <= 0)
@@ -857,7 +857,7 @@ bool zin_recite_to_single_monster(const coord_def& where)
         if (mon->add_ench(mon_enchant(ENCH_DAZED, degree, &you,
                           (degree + random2(spellpower)) * BASELINE_DELAY)))
         {
-            simple_monster_message(mon, " is dazed by your recitation.");
+            simple_monster_message(mon, jtransc(" is dazed by your recitation."));
             affected = true;
         }
         break;
@@ -869,9 +869,9 @@ bool zin_recite_to_single_monster(const coord_def& where)
                              (degree + random2(spellpower)) * BASELINE_DELAY)))
         {
             if (prayertype == RECITE_HERETIC)
-                simple_monster_message(mon, " is confused by your recitation.");
+                simple_monster_message(mon, jtransc(" is confused by your recitation."));
             else
-                simple_monster_message(mon, " stumbles about in disarray.");
+                simple_monster_message(mon, jtransc(" stumbles about in disarray."));
             affected = true;
         }
         break;
@@ -880,9 +880,9 @@ bool zin_recite_to_single_monster(const coord_def& where)
         if (mon->add_ench(mon_enchant(ENCH_PARALYSIS, 0, &you,
                           (degree + random2(spellpower)) * BASELINE_DELAY)))
         {
-            simple_monster_message(mon,
+            simple_monster_message(mon, jtransc(
                 minor ? " is awed by your recitation."
-                      : " is aghast at the heresy of your recitation.");
+                      : " is aghast at the heresy of your recitation."));
             affected = true;
         }
         break;
@@ -898,23 +898,23 @@ bool zin_recite_to_single_monster(const coord_def& where)
             {
             case RECITE_HERETIC:
                 if (minor)
-                    simple_monster_message(mon, "'s eyes and ears begin to bleed.");
+                    simple_monster_message(mon, jtransc("'s eyes and ears begin to bleed."));
                 else
                 {
-                    mprf("%s bleeds profusely from %s eyes and ears.",
-                         mon->name(DESC_THE).c_str(),
-                         mon->pronoun(PRONOUN_POSSESSIVE).c_str());
+                    mprf(jtransc("%s bleeds profusely from %s eyes and ears."),
+                         jtransc(mon->name(DESC_PLAIN)),
+                         jtransc(mon->pronoun(PRONOUN_POSSESSIVE)));
                 }
                 break;
             case RECITE_CHAOTIC:
-                simple_monster_message(mon,
+                simple_monster_message(mon, jtransc(
                     minor ? "'s chaotic flesh is covered in bleeding sores."
-                          : "'s chaotic flesh erupts into weeping sores!");
+                          : "'s chaotic flesh erupts into weeping sores!"));
                 break;
             case RECITE_IMPURE:
-                simple_monster_message(mon,
+                simple_monster_message(mon, jtransc(
                     minor ? "'s impure flesh is covered in bleeding sores."
-                          : "'s impure flesh erupts into weeping sores!");
+                          : "'s impure flesh erupts into weeping sores!"));
                 break;
             default:
                 die("bad recite bleed");
@@ -925,9 +925,9 @@ bool zin_recite_to_single_monster(const coord_def& where)
 
     case ZIN_SMITE:
         if (minor)
-            simple_monster_message(mon, " is smitten by the wrath of Zin.");
+            simple_monster_message(mon, jtransc(" is smitten by the wrath of Zin."));
         else
-            simple_monster_message(mon, " is blasted by the fury of Zin!");
+            simple_monster_message(mon, jtransc(" is blasted by the fury of Zin!"));
         // XXX: This duplicates code in cast_smiting().
         mon->hurt(&you, 7 + (random2(spellpower) * 33 / 191));
         if (mon->alive())
@@ -938,7 +938,7 @@ bool zin_recite_to_single_monster(const coord_def& where)
     case ZIN_BLIND:
         if (mon->add_ench(mon_enchant(ENCH_BLIND, degree, &you, INFINITE_DURATION)))
         {
-            simple_monster_message(mon, " is struck blind by the wrath of Zin!");
+            simple_monster_message(mon, jtransc(" is struck blind by the wrath of Zin!"));
             affected = true;
         }
         break;
@@ -947,7 +947,7 @@ bool zin_recite_to_single_monster(const coord_def& where)
         if (mon->add_ench(mon_enchant(ENCH_SILVER_CORONA, degree, &you,
                           (degree + random2(spellpower)) * BASELINE_DELAY)))
         {
-            simple_monster_message(mon, " is limned with silver light.");
+            simple_monster_message(mon, jtransc(" is limned with silver light."));
             affected = true;
         }
         break;
@@ -957,9 +957,9 @@ bool zin_recite_to_single_monster(const coord_def& where)
         if (mon->add_ench(mon_enchant(ENCH_ANTIMAGIC, degree, &you,
                           (degree + random2(spellpower)) * BASELINE_DELAY)))
         {
-            simple_monster_message(mon,
+            simple_monster_message(mon, jtransc(
                 minor ? " quails at your recitation."
-                      : " looks feeble and powerless before your recitation.");
+                      : " looks feeble and powerless before your recitation."));
             affected = true;
         }
         break;
@@ -967,7 +967,7 @@ bool zin_recite_to_single_monster(const coord_def& where)
     case ZIN_MUTE:
         if (mon->add_ench(mon_enchant(ENCH_MUTE, degree, &you, INFINITE_DURATION)))
         {
-            simple_monster_message(mon, " is struck mute by the wrath of Zin!");
+            simple_monster_message(mon, jtransc(" is struck mute by the wrath of Zin!"));
             affected = true;
         }
         break;
@@ -975,7 +975,7 @@ bool zin_recite_to_single_monster(const coord_def& where)
     case ZIN_MAD:
         if (mon->add_ench(mon_enchant(ENCH_MAD, degree, &you, INFINITE_DURATION)))
         {
-            simple_monster_message(mon, " is driven mad by the wrath of Zin!");
+            simple_monster_message(mon, jtransc(" is driven mad by the wrath of Zin!"));
             affected = true;
         }
         break;
@@ -983,7 +983,7 @@ bool zin_recite_to_single_monster(const coord_def& where)
     case ZIN_DUMB:
         if (mon->add_ench(mon_enchant(ENCH_DUMB, degree, &you, INFINITE_DURATION)))
         {
-            simple_monster_message(mon, " is left stupefied by the wrath of Zin!");
+            simple_monster_message(mon, jtransc(" is left stupefied by the wrath of Zin!"));
             affected = true;
         }
         break;
@@ -1003,10 +1003,10 @@ bool zin_recite_to_single_monster(const coord_def& where)
 
                 if (mon->alive())
                 {
-                    simple_monster_message(mon,
+                    simple_monster_message(mon, jtransc(
                       (damage < 25) ? "'s chaotic flesh sizzles and spatters!" :
                       (damage < 50) ? "'s chaotic flesh bubbles and boils."
-                                    : "'s chaotic flesh runs like molten wax.");
+                                    : "'s chaotic flesh runs like molten wax."));
 
                     print_wounds(mon);
                     behaviour_event(mon, ME_WHACK, &you);
@@ -1015,7 +1015,7 @@ bool zin_recite_to_single_monster(const coord_def& where)
                 else
                 {
                     simple_monster_message(mon,
-                        " melts away into a sizzling puddle of chaotic flesh.");
+                        jtransc(" melts away into a sizzling puddle of chaotic flesh."));
                     monster_die(mon, KILL_YOU, NON_MONSTER);
                 }
             }
@@ -1034,9 +1034,9 @@ bool zin_recite_to_single_monster(const coord_def& where)
         {
             mon->add_ench(mon_enchant(ENCH_SICK, degree, &you,
                           (degree + random2(spellpower)) * BASELINE_DELAY));
-            simple_monster_message(mon,
+            simple_monster_message(mon, jtransc(
                 minor ? "'s impure flesh begins to rot away."
-                      : "'s impure flesh sloughs off!");
+                      : "'s impure flesh sloughs off!"));
             affected = true;
         }
         break;
@@ -1074,7 +1074,7 @@ static void _zin_saltify(monster* mon)
                                : mons_species(mon->type);
     const int hd = mon->get_hit_dice();
 
-    simple_monster_message(mon, " is turned into a pillar of salt by the wrath of Zin!");
+    simple_monster_message(mon, jtransc(" is turned into a pillar of salt by the wrath of Zin!"));
 
     // If the monster leaves a corpse when it dies, destroy the corpse.
     int corpse = monster_die(mon, KILL_YOU, NON_MONSTER);
@@ -1105,8 +1105,8 @@ void zin_recite_interrupt()
 {
     if (!you.duration[DUR_RECITE])
         return;
-    mprf(MSGCH_DURATION, "Your recitation is interrupted.");
-    mpr("You feel short of breath.");
+    mpr_nojoin(MSGCH_DURATION, jtrans("Your recitation is interrupted."));
+    mpr(jtrans("You feel short of breath."));
     you.duration[DUR_RECITE] = 0;
 
     you.increase_duration(DUR_BREATH_WEAPON, random2(10) + random2(30));
@@ -1114,7 +1114,7 @@ void zin_recite_interrupt()
 
 bool zin_vitalisation()
 {
-    simple_god_message(" grants you divine stamina.");
+    simple_god_message(jtransc(" grants you divine stamina."));
 
     // Feed the player slightly.
     if (you.hunger_state < HS_FULL)
@@ -1134,7 +1134,7 @@ bool zin_vitalisation()
 
 void zin_remove_divine_stamina()
 {
-    mprf(MSGCH_DURATION, "Your divine stamina fades away.");
+    mpr_nojoin(MSGCH_DURATION, jtrans("Your divine stamina fades away."));
     notify_stat_change(STAT_STR, -you.attribute[ATTR_DIVINE_STAMINA], true);
     notify_stat_change(STAT_INT, -you.attribute[ATTR_DIVINE_STAMINA], true);
     notify_stat_change(STAT_DEX, -you.attribute[ATTR_DIVINE_STAMINA], true);
@@ -1146,14 +1146,14 @@ bool zin_remove_all_mutations()
 {
     if (!how_mutated())
     {
-        mpr("You have no mutations to be cured!");
+        mpr(jtrans("You have no mutations to be cured!"));
         return false;
     }
 
     you.one_time_ability_used.set(GOD_ZIN);
     take_note(Note(NOTE_GOD_GIFT, you.religion));
 
-    simple_god_message(" draws all chaos from your body!");
+    simple_god_message(jtransc(" draws all chaos from your body!"));
     delete_all_mutations("Zin's power");
 
     return true;
@@ -1168,9 +1168,9 @@ bool zin_sanctuary()
 
     // Yes, shamelessly stolen from NetHack...
     if (!silenced(you.pos())) // How did you manage that?
-        mprf(MSGCH_SOUND, "You hear a choir sing!");
+        mpr_nojoin(MSGCH_SOUND, jtrans("You hear a choir sing!"));
     else
-        mpr("You are suddenly bathed in radiance!");
+        mpr(jtrans("You are suddenly bathed in radiance!"));
 
     flash_view(UA_PLAYER, WHITE);
 
