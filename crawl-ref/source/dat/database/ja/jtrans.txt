@@ -14875,7 +14875,7 @@ safe
 %%%%
 slightly dangerous
 
-やや危険
+少し危険
 %%%%
 quite dangerous
 

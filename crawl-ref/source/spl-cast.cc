@@ -808,7 +808,7 @@ bool cast_a_spell(bool check_range, spell_type spell)
     {
         string prompt = make_stringf(jtransc("The spell is %s to cast%s "
                                              "Continue anyway?"),
-                                     fail_severity_adjs[severity],
+                                     jtransc(fail_severity_adjs[severity]),
                                      severity > 1 ? "！ " : "。");
 
         if (!yesno(prompt.c_str(), false, 'n'))
