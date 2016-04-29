@@ -2730,17 +2730,6 @@ string mons_type_name(monster_type mc, description_level_type desc)
 
     result += me->name;
 
-    // Vowel fix: Change 'a orc' to 'an orc'..
-    if (result.length() >= 3
-        && (result[0] == 'a' || result[0] == 'A')
-        && result[1] == ' '
-        && is_vowel(result[2])
-        // XXX: Hack
-        && !starts_with(&result[2], "one-"))
-    {
-        result.insert(1, "n");
-    }
-
     return result;
 }
 
