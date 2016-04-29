@@ -1854,8 +1854,8 @@ bool kiku_receive_corpses(int pow)
     {
         if (you_worship(GOD_KIKUBAAQUDGHA))
         {
-            simple_god_message(corpses_created > 1 ? " delivers you corpses!"
-                                                   : " delivers you a corpse!");
+            simple_god_message(jtransc(corpses_created > 1 ? " delivers you corpses!"
+                                                           : " delivers you a corpse!"));
         }
         maybe_update_stashes();
         return true;
@@ -1863,7 +1863,7 @@ bool kiku_receive_corpses(int pow)
     else
     {
         if (you_worship(GOD_KIKUBAAQUDGHA))
-            simple_god_message(" can find no cadavers for you!");
+            simple_god_message(jtransc(" can find no cadavers for you!"));
         return false;
     }
 }

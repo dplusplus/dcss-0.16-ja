@@ -540,6 +540,18 @@ fights you
 
 はあなたに反抗した
 %%%%
+delivers you corpses!
+
+はあなたに死体をいくつか授けた！
+%%%%
+delivers you a corpse!
+
+はあなたに死体を授けた！
+%%%%
+can find no cadavers for you!
+
+はあなたに授ける死体を手配できなかった！
+%%%%
 The priest welcomes you and lets you live.
 
 オークの司祭はあなたを歓迎し、友好的になった。
