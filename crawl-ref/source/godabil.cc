@@ -1329,8 +1329,8 @@ bool trog_burn_spellbooks()
         {
             if (item_is_spellbook(*si))
             {
-                mprf("Burning your own %s might not be such a smart idea!",
-                        you.foot_name(true).c_str());
+                mprf(jtransc("Burning your own %s might not be such a smart idea!"),
+                     you.foot_name(true).c_str());
                 return false;
             }
         }
@@ -1369,7 +1369,7 @@ bool trog_burn_spellbooks()
             // Ignore {!D} inscribed books.
             if (!check_warning_inscriptions(*si, OPER_DESTROY))
             {
-                mpr("Won't ignite {!D} inscribed spellbook.");
+                mpr(jtrans("Won't ignite {!D} inscribed spellbook."));
                 continue;
             }
 
@@ -1390,7 +1390,7 @@ bool trog_burn_spellbooks()
             if (cloud != EMPTY_CLOUD)
             {
                 // Reinforce the cloud.
-                mpr("The fire roars with new energy!");
+                mpr(jtrans("The fire roars with new energy!"));
                 const int extra_dur = count + random2(rarity / 2);
                 env.cloud[cloud].decay += extra_dur * 5;
                 env.cloud[cloud].set_whose(KC_YOU);
@@ -1400,7 +1400,7 @@ bool trog_burn_spellbooks()
             const int duration = min(4 + count + random2(rarity/2), 23);
             place_cloud(CLOUD_FIRE, *ri, duration, &you);
 
-            mprf(MSGCH_GOD, "The spellbook%s burst%s into flames.",
+            mprf(MSGCH_GOD, jtransc("The spellbook%s burst%s into flames."),
                  count == 1 ? ""  : "s",
                  count == 1 ? "s" : "");
         }
@@ -1408,12 +1408,12 @@ bool trog_burn_spellbooks()
 
     if (totalpiety)
     {
-        simple_god_message(" is delighted!", GOD_TROG);
+        simple_god_message(jtransc(" is delighted!"), GOD_TROG);
         gain_piety(totalpiety);
     }
     else if (totalblocked)
     {
-        mprf("The spellbook%s fail%s to ignite!",
+        mprf(jtransc("The spellbook%s fail%s to ignite!"),
              totalblocked == 1 ? ""  : "s",
              totalblocked == 1 ? "s" : "");
         for (auto c : mimics)
@@ -1422,7 +1422,7 @@ bool trog_burn_spellbooks()
     }
     else
     {
-        mpr("You cannot see a spellbook to ignite!");
+        mpr(jtrans("You cannot see a spellbook to ignite!"));
         return false;
     }
 
@@ -1434,14 +1434,14 @@ void trog_do_trogs_hand(int pow)
     you.increase_duration(DUR_TROGS_HAND,
                           5 + roll_dice(2, pow / 3 + 1), 100,
                           "Your skin crawls.");
-    mprf(MSGCH_DURATION, "You feel resistant to hostile enchantments.");
+    mpr_nojoin(MSGCH_DURATION, jtrans("You feel resistant to hostile enchantments."));
 }
 
 void trog_remove_trogs_hand()
 {
     if (you.duration[DUR_REGENERATION] == 0)
-        mprf(MSGCH_DURATION, "Your skin stops crawling.");
-    mprf(MSGCH_DURATION, "You feel less resistant to hostile enchantments.");
+        mpr_nojoin(MSGCH_DURATION, jtrans("Your skin stops crawling."));
+    mpr_nojoin(MSGCH_DURATION, jtrans("You feel less resistant to hostile enchantments."));
     you.duration[DUR_TROGS_HAND] = 0;
 }
 

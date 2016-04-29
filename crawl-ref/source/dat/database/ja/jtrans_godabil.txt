@@ -445,6 +445,34 @@ Your divine vigour fades away.
 
 あなたに与えられた神秘の活力は消え去った。
 %%%%
+Burning your own %s might not be such a smart idea!
+
+あなたの%sを燃やすのは得策ではない！
+%%%%
+Won't ignite {!D} inscribed spellbook.
+
+{!D}と銘を刻まれた魔法書は燃やされない。
+%%%%
+The fire roars with new energy!
+
+炎は新たな燃料を得て燃えさかった！
+%%%%
+The spellbook%s burst%s into flames.
+
+魔法書は燃え上がった。
+%%%%
+is delighted!
+
+は喜んだ！
+%%%%
+The spellbook%s fail%s to ignite!
+
+魔法書は燃えなかった！
+%%%%
+You cannot see a spellbook to ignite!
+
+燃やせる魔法書が見える所にない！
+%%%%
 The priest welcomes you and lets you live.
 
 オークの司祭はあなたを歓迎し、友好的になった。
