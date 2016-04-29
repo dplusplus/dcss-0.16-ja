@@ -437,6 +437,14 @@ You feel purified!
 
 あなたは浄化されたような気がした！
 %%%%
+%s grants you divine vigour.
+
+%sはあなたに神秘の活力を授けた。
+%%%%
+Your divine vigour fades away.
+
+あなたに与えられた神秘の活力は消え去った。
+%%%%
 The priest welcomes you and lets you live.
 
 オークの司祭はあなたを歓迎し、友好的になった。

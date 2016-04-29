@@ -1251,8 +1251,8 @@ bool elyvilon_divine_vigour()
 
     if (!you.duration[DUR_DIVINE_VIGOUR])
     {
-        mprf("%s grants you divine vigour.",
-             god_name(GOD_ELYVILON).c_str());
+        mprf(jtransc("%s grants you divine vigour."),
+             jtransc(god_name(GOD_ELYVILON)));
 
         const int vigour_amt = 1 + you.skill_rdiv(SK_INVOCATIONS, 1, 3);
         const int old_hp_max = you.hp_max;
@@ -1281,7 +1281,7 @@ bool elyvilon_divine_vigour()
 
 void elyvilon_remove_divine_vigour()
 {
-    mprf(MSGCH_DURATION, "Your divine vigour fades away.");
+    mpr_nojoin(MSGCH_DURATION, jtrans("Your divine vigour fades away."));
     you.duration[DUR_DIVINE_VIGOUR] = 0;
     you.attribute[ATTR_DIVINE_VIGOUR] = 0;
     calc_hp();
