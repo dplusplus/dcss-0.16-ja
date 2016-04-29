@@ -3739,9 +3739,9 @@ bool ashenzari_transfer_knowledge()
     // We reset the view to force view transfer next time.
     you.skill_menu_view = SKM_NONE;
 
-    mprf("As you forget about %s, you feel ready to understand %s.",
-         skill_name(you.transfer_from_skill),
-         skill_name(you.transfer_to_skill));
+    mprf(jtransc("As you forget about %s, you feel ready to understand %s."),
+         jtransc(skill_name(you.transfer_from_skill)),
+         jtransc(skill_name(you.transfer_to_skill)));
 
     you.transfer_total_skill_points = you.transfer_skill_points;
 
@@ -3753,9 +3753,9 @@ bool ashenzari_end_transfer(bool finished, bool force)
 {
     if (!force && !finished)
     {
-        mprf("You are currently transferring knowledge from %s to %s.",
-             skill_name(you.transfer_from_skill),
-             skill_name(you.transfer_to_skill));
+        mprf(jtransc("You are currently transferring knowledge from %s to %s."),
+             jtransc(skill_name(you.transfer_from_skill)),
+             jtransc(skill_name(you.transfer_to_skill)));
         if (!yesno("Are you sure you want to cancel the transfer?", false, 'n'))
         {
             canned_msg(MSG_OK);
@@ -3763,10 +3763,10 @@ bool ashenzari_end_transfer(bool finished, bool force)
         }
     }
 
-    mprf("You %s forgetting about %s and learning about %s.",
-         finished ? "have finished" : "stop",
-         skill_name(you.transfer_from_skill),
-         skill_name(you.transfer_to_skill));
+    mprf(jtransc("You %s forgetting about %s and learning about %s."),
+         jtransc(skill_name(you.transfer_from_skill)),
+         jtransc(skill_name(you.transfer_to_skill)),
+         finished ? "終えた" : "中断した");
     you.transfer_from_skill = SK_NONE;
     you.transfer_to_skill = SK_NONE;
     you.transfer_skill_points = 0;

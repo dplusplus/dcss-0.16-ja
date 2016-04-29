@@ -772,6 +772,22 @@ You return to the normal time flow.
 
 あなたは通常の時間の流れに戻った。
 %%%%
+As you forget about %s, you feel ready to understand %s.
+
+あなたが%sについてのことを忘れていくにつれて、%sへの理解が深まっていった。
+%%%%
+You are currently transferring knowledge from %s to %s.
+
+あなたは現在%sスキルから%sスキルに知識を移している。
+%%%%
+Are you sure you want to cancel the transfer?
+
+本当に知識の移行を中断しますか？
+%%%%
+You %s forgetting about %s and learning about %s.
+
+あなたは%sスキルを忘れて%sスキルを覚えるのを%s。
+%%%%
 The priest welcomes you and lets you live.
 
 オークの司祭はあなたを歓迎し、友好的になった。
