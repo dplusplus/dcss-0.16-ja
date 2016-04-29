@@ -702,7 +702,7 @@ Beogh idol other
 ベオはあなたの種族に呪いを放った。
 
 # Beogh curses everyone not orcish, especially @player_genus_plural@.
-ベオはオーク以外の全ての種族、とりわけ@player_genus_plural@を呪った。
+ベオはオーク以外の全ての種族、とりわけ@player_genus@を呪った。
 
 # Beogh swears eternal hatred towards @player_god@.
 ベオは@player_god@に向かって永遠の憎悪を誓った。

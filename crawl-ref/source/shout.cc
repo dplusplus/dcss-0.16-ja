@@ -22,6 +22,7 @@
 #include "ghost.h"
 #include "godabil.h"
 #include "hints.h"
+#include "japanese.h"
 #include "jobs.h"
 #include "libutil.h"
 #include "macro.h"
@@ -409,7 +410,7 @@ void item_noise(const item_def &item, string msg, int loudness)
     if (msg.empty()) // give default noises
     {
         channel = MSGCH_SOUND;
-        msg = "You hear a strange noise.";
+        msg = jtrans("You hear a strange noise.");
     }
 
     // Replace weapon references.  Can't use DESC_THE because that includes
@@ -423,13 +424,13 @@ void item_noise(const item_def &item, string msg, int loudness)
     // replace references to player name and god
     msg = replace_all(msg, "@player_name@", you.your_name);
     msg = replace_all(msg, "@player_god@",
-                      you_worship(GOD_NO_GOD) ? "atheism"
-                      : god_name(you.religion, coinflip()));
+                      jtrans(you_worship(GOD_NO_GOD) ? "atheism"
+                      : god_name(you.religion, coinflip())));
     msg = replace_all(msg, "@player_genus@", species_name(you.species, true));
     msg = replace_all(msg, "@a_player_genus@",
                           article_a(species_name(you.species, true)));
     msg = replace_all(msg, "@player_genus_plural@",
-                      pluralise(species_name(you.species, true)));
+                      jpluralise(species_name(you.species, true), "", "たち"));
 
     msg = maybe_pick_random_substring(msg);
     msg = maybe_capitalise_substring(msg);

@@ -1438,7 +1438,7 @@ VISUAL:@The_monster@はあまりにも小さく囁いたので何を言ったか
 VISUAL:一瞬@the_monster@を見失った。
 
 # @The_monster@ whispers, "Be very very quiet, I'm hunting @player_genus_plural@." @player_only@
-@The_monster@は『シーッ、静かに！ @player_genus_plural@狩りだ！』と囁いた。
+@The_monster@は『シーッ、静かに！ @player_genus@狩りだ！』と囁いた。
 # よくある言い回しのようだがよく分からない。意訳
 
 # VISUAL:For a moment, @the_monster@ blends into the shadows.
@@ -4707,9 +4707,11 @@ VISUAL:@The_monster@ is momentarily distracted by a flea in @possessive@ coat.
 
 @The_monster@ @_Grum_verb_@, "You're dog chow, @player_name@!"
 
-@The_monster@ asks, "What kind of bones do @player_genus_plural@ have? My dogs are dying to find out." @player_only@
+# @The_monster@ asks, "What kind of bones do @player_genus_plural@ have? My dogs are dying to find out." @player_only@
+@The_monster@は『@player_genus@の骨は一体どんな感じなんだ？ 俺の犬が欲しがってるんだ』と尋ねた。 @player_only@
 
-@The_monster@ says @to_foe@, "What's my secret? I feed my dogs @player_genus_plural@. It makes their fur nice and shiny." @player_only@
+# @The_monster@ says @to_foe@, "What's my secret? I feed my dogs @player_genus_plural@. It makes their fur nice and shiny." @player_only@
+@The_monster@は@to_foe@に『秘密にしてることは何かって？ @player_genus@を犬に食わせるんだ。毛皮が光っていい感じになるぜ』と言った。 @player_only@
 
 @The_monster@ looks @at_foe@ and @_Grum_verb_@, "Time to put down the runt of the litter."
 

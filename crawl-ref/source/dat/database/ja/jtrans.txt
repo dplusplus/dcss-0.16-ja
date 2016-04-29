@@ -9970,6 +9970,18 @@ discards %s horn.
 
 は角笛を取り落とした。
 %%%%
+Your god
+
+あなたの神
+%%%%
+ground
+
+地面
+%%%%
+my god
+
+我が神
+%%%%
 ############################## mutation.cc ##############################
 %%%%
 Innate Abilities, Weirdness & Mutations
@@ -14433,6 +14445,14 @@ Available shop types:
 指定可能な店の種別:
 %%%%
 ############################## shout.cc ##############################
+%%%%
+You hear a strange noise.
+
+あなたは奇妙な騒音を耳にした。
+%%%%
+atheism
+
+不信心者
 %%%%
 You feel a strong urge to %s, but you are unable to make a sound!
 

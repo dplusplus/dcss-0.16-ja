@@ -795,9 +795,11 @@ _rare_speaking_no_tension_
 w:1
 @The_weapon@ snarls, "Dear diary, yet another boring day with @player_name@..."
 
-@The_weapon@ says, "In my experience, @player_genus_plural@ are mediocre at best."
+# @The_weapon@ says, "In my experience, @player_genus_plural@ are mediocre at best."
+@The_weapon@は『経験からすると、ひいき目に見ても@player_genus@は平凡だ』と言った。
 
-@The_weapon@ groans, "Among all @player_genus_plural@, @player_name@ is the worst."
+# @The_weapon@ groans, "Among all @player_genus_plural@, @player_name@ is the worst."
+@The_weapon@『@player_genus_plural@の中でも、@player_name@が最低だ』とうめいた。
 
 @The_weapon@ says, "Unhand me, foul miscreant!"
 
