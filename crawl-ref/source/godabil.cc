@@ -3869,7 +3869,7 @@ bool dithmenos_shadow_step()
     args.range = range;
     args.just_looking = false;
     args.needs_path = false;
-    args.top_prompt = "Aiming: <white>Shadow Step</white>";
+    args.top_prompt = jtrans("Aiming: <white>Shadow Step</white>");
     dist sdirect;
     direction(sdirect, args);
     if (!sdirect.isValid || tgt.landing_site.origin())
@@ -3932,13 +3932,13 @@ bool dithmenos_shadow_step()
     // perhaps this should be handled more gracefully.
     if (!you.move_to_pos(tgt.landing_site))
     {
-        mpr("Something blocks your shadow step.");
+        mpr(jtrans("Something blocks your shadow step."));
         return true;
     }
 
     const actor *victim = actor_at(sdirect.target);
-    mprf("You step into %s shadow.",
-         apostrophise(victim->name(DESC_THE)).c_str());
+    mprf(jtransc("You step into %s shadow."),
+         jtransc(victim->name(DESC_PLAIN)));
 
     return true;
 }
@@ -4150,8 +4150,8 @@ void dithmenos_shadow_spell(bolt* orig_beam, spell_type spell)
     beem.target = target;
     beem.aimed_at_spot = orig_beam->aimed_at_spot;
 
-    mprf(MSGCH_FRIEND_SPELL, "%s mimicks your spell!",
-         mon->name(DESC_THE).c_str());
+    mprf(MSGCH_FRIEND_SPELL, jtransc("%s mimicks your spell!"),
+         jtransc(mon->name(DESC_PLAIN)));
     mons_cast(mon, beem, shadow_spell, MON_SPELL_WIZARD, false);
 
     shadow_monster_reset(mon);
