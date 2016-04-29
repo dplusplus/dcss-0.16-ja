@@ -473,6 +473,34 @@ You cannot see a spellbook to ignite!
 
 燃やせる魔法書が見える所にない！
 %%%%
+That's not an orcish ally!
+
+その仲間はオーク族ではない！
+%%%%
+That orc has not proved itself worthy of your gift.
+
+そのオークはあなたに物を授かるほど名を上げていない。
+%%%%
+%s has already been given a gift.
+
+%sはすでにあなたに物を授かっている。
+%%%%
+No worthy followers in sight.
+
+授け物にふさわしい仲間が見える所にいない。
+%%%%
+Select a follower to give a gift to.
+
+授け物を与える仲間を選んでください。
+%%%%
+Give which item?
+
+どのアイテムを与えますか？
+%%%%
+%s can't use that.
+
+%sはそれを扱えない。
+%%%%
 The priest welcomes you and lets you live.
 
 オークの司祭はあなたを歓迎し、友好的になった。

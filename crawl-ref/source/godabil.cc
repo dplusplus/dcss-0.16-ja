@@ -1482,14 +1482,14 @@ bool beogh_can_gift_items_to(const monster* mons, bool quiet)
     if (!is_orcish_follower(mons))
     {
         if (!quiet)
-            mpr("That's not an orcish ally!");
+            mpr(jtrans("That's not an orcish ally!"));
         return false;
     }
 
     if (!mons->is_named())
     {
         if (!quiet)
-            mpr("That orc has not proved itself worthy of your gift.");
+            mpr(jtrans("That orc has not proved itself worthy of your gift."));
         return false;
     }
 
@@ -1497,8 +1497,8 @@ bool beogh_can_gift_items_to(const monster* mons, bool quiet)
     {
         if (!quiet)
         {
-            mprf("%s has already been given a gift.",
-                 mons->name(DESC_THE, false).c_str());
+            mprf(jtransc("%s has already been given a gift."),
+                 jtransc(mons->name(DESC_PLAIN, false)));
         }
         return false;
     }
@@ -1527,7 +1527,7 @@ bool beogh_gift_item()
 {
     if (!_valid_beogh_gift_targets_in_sight())
     {
-        mpr("No worthy followers in sight.");
+        mpr(jtrans("No worthy followers in sight."));
         return false;
     }
 
@@ -1541,7 +1541,7 @@ bool beogh_gift_item()
     args.may_target_monster = true;
     args.cancel_at_self = true;
     args.show_floor_desc = true;
-    args.top_prompt = "Select a follower to give a gift to.";
+    args.top_prompt = jtrans("Select a follower to give a gift to.");
 
     direction(spd, args);
 
@@ -1552,7 +1552,7 @@ bool beogh_gift_item()
     if (!beogh_can_gift_items_to(mons, false))
         return false;
 
-    int item_slot = prompt_invent_item("Give which item?",
+    int item_slot = prompt_invent_item(jtransc("Give which item?"),
                                        MT_INVLIST, OSEL_ANY, true);
 
     if (item_slot == PROMPT_ABORT || item_slot == PROMPT_NOTHING)
@@ -1576,7 +1576,7 @@ bool beogh_gift_item()
              && (!mons_weapon
                  || mons->hands_reqd(*mons_weapon) != HANDS_TWO)))
     {
-        mprf("%s can't use that.", mons->name(DESC_THE, false).c_str());
+        mprf(jtransc("%s can't use that."), jtransc(mons->name(DESC_PLAIN, false)));
 
         return false;
     }
