@@ -2206,7 +2206,7 @@ void handle_monster_move(monster* mons)
         if (bernoulli(gold, 3.0/100.0))
         {
             simple_monster_message(mons,
-                    " is distracted by the nearby gold.");
+                                   jtransc(" is distracted by the nearby gold."));
             mons->add_ench(
                 mon_enchant(ENCH_GOLD_LUST, 1, nullptr,
                             random_range(1, 5) * BASELINE_DELAY));
