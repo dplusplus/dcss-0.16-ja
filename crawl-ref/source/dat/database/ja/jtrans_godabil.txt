@@ -524,6 +524,22 @@ You feel cleansed.
 
 あなたは浄化されたような気持ちがした。
 %%%%
+There are no remains here to animate!
+
+ここには起き上がらせる死体がない！
+%%%%
+%s soul %s.
+
+%sの魂は%s。
+%%%%
+is now yours
+
+今やあなたのものだ
+%%%%
+fights you
+
+はあなたに反抗した
+%%%%
 The priest welcomes you and lets you live.
 
 オークの司祭はあなたを歓迎し、友好的になった。

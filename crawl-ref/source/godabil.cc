@@ -1691,7 +1691,7 @@ bool yred_animate_remains_or_dead()
         if (animate_remains(you.pos(), CORPSE_BODY, BEH_FRIENDLY,
                             MHITYOU, &you, "", GOD_YREDELEMNUL) < 0)
         {
-            mpr("There are no remains here to animate!");
+            mpr(jtrans("There are no remains here to animate!"));
             return false;
         }
     }
@@ -1760,8 +1760,8 @@ void yred_make_enslaved_soul(monster* mon, bool force_hostile)
     mon->stop_constricting_all(false);
     mon->stop_being_constricted();
 
-    mprf("%s soul %s.", whose.c_str(),
-         !force_hostile ? "is now yours" : "fights you");
+    mprf(jtransc("%s soul %s."), jtransc(whose),
+         jtransc(!force_hostile ? "is now yours" : "fights you"));
 }
 
 bool kiku_receive_corpses(int pow)
