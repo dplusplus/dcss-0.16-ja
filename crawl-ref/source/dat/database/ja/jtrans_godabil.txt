@@ -501,6 +501,29 @@ Give which item?
 
 %sはそれを扱えない。
 %%%%
+You call upon nearby slimes to pray to %s.
+
+あなたは近くのスライム族に%sへの祈りを捧げるように頼んだ。
+%%%%
+The nearby slimes join the prayer.
+
+近くのスライム族の群れが祈りに加わった。
+%%%%
+A nearby slime joins the prayer.
+
+近くのスライム族が祈りに加わった。
+%%%%
+You have no bad mutations to be cured!
+
+あなたの体には治すべき悪性変異が存在しない！
+%%%%
+Jiyva's power
+
+%%%%
+You feel cleansed.
+
+あなたは浄化されたような気持ちがした。
+%%%%
 The priest welcomes you and lets you live.
 
 オークの司祭はあなたを歓迎し、友好的になった。

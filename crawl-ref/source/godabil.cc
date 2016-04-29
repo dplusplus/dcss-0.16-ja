@@ -1612,8 +1612,8 @@ bool beogh_gift_item()
 
 void jiyva_paralyse_jellies()
 {
-    mprf("You call upon nearby slimes to pray to %s.",
-         god_name(you.religion).c_str());
+    mprf(jtransc("You call upon nearby slimes to pray to %s."),
+         jtransc(god_name(you.religion)));
 
     int jelly_count = 0;
     for (radius_iterator ri(you.pos(), LOS_DEFAULT); ri; ++ri)
@@ -1631,9 +1631,9 @@ void jiyva_paralyse_jellies()
     if (jelly_count > 0)
     {
         if (jelly_count > 1)
-            mpr("The nearby slimes join the prayer.");
+            mpr(jtrans("The nearby slimes join the prayer."));
         else
-            mpr("A nearby slime joins the prayer.");
+            mpr(jtrans("A nearby slime joins the prayer."));
 
         lose_piety(max(5, min(jelly_count, 20)));
     }
@@ -1643,7 +1643,7 @@ bool jiyva_remove_bad_mutation()
 {
     if (!how_mutated())
     {
-        mpr("You have no bad mutations to be cured!");
+        mpr(jtrans("You have no bad mutations to be cured!"));
         return false;
     }
 
@@ -1654,7 +1654,7 @@ bool jiyva_remove_bad_mutation()
         return false;
     }
 
-    mpr("You feel cleansed.");
+    mpr(jtrans("You feel cleansed."));
     return true;
 }
 
