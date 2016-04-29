@@ -1200,14 +1200,14 @@ void tso_divine_shield()
         if (you.shield()
             || you.duration[DUR_CONDENSATION_SHIELD])
         {
-            mprf("Your shield is strengthened by %s divine power.",
-                 apostrophise(god_name(GOD_SHINING_ONE)).c_str());
+            mprf(jtransc("Your shield is strengthened by %s divine power."),
+                 jtransc(god_name(GOD_SHINING_ONE)));
         }
         else
-            mpr("A divine shield forms around you!");
+            mpr(jtrans("A divine shield forms around you!"));
     }
     else
-        mpr("Your divine shield is renewed.");
+        mpr(jtrans("Your divine shield is renewed."));
 
     you.redraw_armour_class = true;
 
@@ -1223,7 +1223,7 @@ void tso_divine_shield()
 
 void tso_remove_divine_shield()
 {
-    mprf(MSGCH_DURATION, "Your divine shield disappears!");
+    mpr_nojoin(MSGCH_DURATION, jtrans("Your divine shield disappears!"));
     you.duration[DUR_DIVINE_SHIELD] = 0;
     you.attribute[ATTR_DIVINE_SHIELD] = 0;
     you.redraw_armour_class = true;
@@ -1231,7 +1231,7 @@ void tso_remove_divine_shield()
 
 void elyvilon_purification()
 {
-    mpr("You feel purified!");
+    mpr(jtrans("You feel purified!"));
 
     you.disease = 0;
     you.rotting = 0;

@@ -417,6 +417,26 @@ You are suddenly bathed in radiance!
 
 あなたは突然光に包まれた！
 %%%%
+Your shield is strengthened by %s divine power.
+
+あなたの盾は%sの御業により強化された。
+%%%%
+A divine shield forms around you!
+
+神気の盾があなたの周囲に張られた！
+%%%%
+Your divine shield is renewed.
+
+あなたの周囲の神気の盾が張り直された。
+%%%%
+Your divine shield disappears!
+
+あなたの周囲の神気の盾は消え去った！
+%%%%
+You feel purified!
+
+あなたは浄化されたような気がした！
+%%%%
 The priest welcomes you and lets you live.
 
 オークの司祭はあなたを歓迎し、友好的になった。
