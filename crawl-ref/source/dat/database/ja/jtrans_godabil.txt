@@ -812,3 +812,91 @@ You step into %s shadow.
 
 %sはあなたの呪文を真似した！
 %%%%
+You need at least %d gold to purchase potions right now!
+
+薬を今すぐ買うには最低でも%dゴールド必要だ！
+%%%%
+[%c] - %d gold -
+
+[%c] - %dゴールド -
+%%%%
+Purchase which effect?
+
+どの効果の薬を購入しますか？
+%%%%
+You don't have enough gold for that!
+
+それをするのに十分な金を持っていない！
+%%%%
+You currently need %d gold to open negotiations with a merchant.
+
+商人との交渉を始めるにはまず%dゴールドが必要だ。
+%%%%
+No merchants are willing to come to this level in the absence of new frontiers.
+
+このうまみのない階層に来ようとする商人はいなかった。
+%%%%
+You need to be standing on an open floor tile to call a shop here.
+
+あなたが店を招致するにはある程度開けた場所に立っている必要がある。
+%%%%
+Blood
+
+血液
+%%%%
+Carrion
+
+腐肉
+%%%%
+[%c] %5d gold - %s %s %s
+
+[%c] %5dゴールド - %s%s
+%%%%
+Fund which merchant?
+
+どの商人に投資しますか？
+%%%%
+You don't have enough gold to fund that merchant!
+
+あなたはその商人に投資するのに十分な金を持っていない！
+%%%%
+%s shop name:%s%s%s gozag
+
+
+%%%%
+%s sets up shop in %s.
+
+%sは%sに店を開いた。
+%%%%
+A shop appears before you!
+
+店があなたの目の前に現れた！
+%%%%
+Your bribe of %s has been exhausted.
+
+%sの買収契約は終了した。
+%%%%
+You need at least %d gold to offer a bribe.
+
+買収を持ちかけるには少なくとも%dゴールドが必要だ。
+%%%%
+the denizens of %s
+
+%sの住人
+%%%%
+You can't bribe %s or %s.
+
+あなたは%sや%sを買収できない。
+%%%%
+You can't bribe %s.
+
+あなたは%sを買収できない。
+%%%%
+Do you want to bribe the denizens of %s?
+
+%sの住人を買収しますか？
+%%%%
+spreads your bribe to %s!
+
+はあなたの買収契約を%sに広めた！
+%%%%

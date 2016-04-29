@@ -937,6 +937,13 @@ const char* potion_type_name(int potiontype)
     }
 }
 
+const char* potion_type_name_j(int potiontype)
+{
+    string jname = jtrans(string("potion of ") + potion_type_name(potiontype));
+
+    return replace_all(jname, "の薬", "").c_str();
+}
+
 static const char* scroll_type_name(int scrolltype)
 {
     switch (static_cast<scroll_type>(scrolltype))

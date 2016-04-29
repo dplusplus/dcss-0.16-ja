@@ -152,5 +152,6 @@ string ego_type_string(const item_def &item, bool terse = false, int override_br
 string ghost_brand_name(int brand);
 
 const char* potion_type_name(int potiontype);  //used in xom.cc
+const char* potion_type_name_j(int potiontype);
 const char* jewellery_effect_name(int jeweltype) PURE; //used in l_item.cc
 #endif

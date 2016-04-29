@@ -4225,7 +4225,7 @@ bool gozag_setup_potion_petition(bool quiet)
     {
         if (!quiet)
         {
-            mprf("You need at least %d gold to purchase potions right now!",
+            mprf(jtransc("You need at least %d gold to purchase potions right now!"),
                  gold_min);
         }
         return false;
@@ -4308,15 +4308,15 @@ bool gozag_potion_petition()
         for (int i = 0; i < GOZAG_MAX_POTIONS; i++)
         {
             faith_price = _gozag_faith_adjusted_price(prices[i]);
-            string line = make_stringf("  [%c] - %d gold - ", i + 'a',
+            string line = make_stringf(("  " + jtrans("[%c] - %d gold -") + " ").c_str(), i + 'a',
                                        faith_price);
             vector<string> pot_names;
             for (int j = 0; j < pots[i]->size(); j++)
-                pot_names.emplace_back(potion_type_name((*pots[i])[j].get_int()));
-            line += comma_separated_line(pot_names.begin(), pot_names.end());
+                pot_names.emplace_back(potion_type_name_j((*pots[i])[j].get_int()));
+            line += to_separated_line(pot_names.begin(), pot_names.end(), false, ", ", ", ", ", ");
             mpr_nojoin(MSGCH_PLAIN, line.c_str());
         }
-        mprf(MSGCH_PROMPT, "Purchase which effect?");
+        mpr_nojoin(MSGCH_PROMPT, jtrans("Purchase which effect?"));
         keyin = toalower(get_ch()) - 'a';
         if (keyin < 0 || keyin > GOZAG_MAX_POTIONS - 1)
             continue;
@@ -4324,7 +4324,7 @@ bool gozag_potion_petition()
         faith_price = _gozag_faith_adjusted_price(prices[keyin]);
         if (you.gold < faith_price)
         {
-            mpr("You don't have enough gold for that!");
+            mpr(jtrans("You don't have enough gold for that!"));
             more();
             continue;
         }
@@ -4433,8 +4433,8 @@ bool gozag_setup_call_merchant(bool quiet)
     {
         if (!quiet)
         {
-            mprf("You currently need %d gold to open negotiations with a "
-                 "merchant.", gold_min);
+            mprf(jtransc("You currently need %d gold to open negotiations with a "
+                         "merchant."), gold_min);
         }
         return false;
     }
@@ -4451,8 +4451,8 @@ bool gozag_setup_call_merchant(bool quiet)
         {
             if (!quiet)
             {
-                mprf("No merchants are willing to come to this level in the "
-                     "absence of new frontiers.");
+                mpr(jtrans("No merchants are willing to come to this level in the "
+                           "absence of new frontiers."));
                 return false;
             }
         }
@@ -4460,8 +4460,8 @@ bool gozag_setup_call_merchant(bool quiet)
         {
             if (!quiet)
             {
-                mprf("You need to be standing on an open floor tile to call a "
-                     "shop here.");
+                mpr(jtrans("You need to be standing on an open floor tile to call a "
+                           "shop here."));
                 return false;
             }
         }
@@ -4577,17 +4577,17 @@ static string _describe_gozag_shop(int index)
 
     const char offer_letter = 'a' + index;
     const string shop_name =
-        apostrophise(you.props[make_stringf(GOZAG_SHOPKEEPER_NAME_KEY,
-                                            index)].get_string());
+        you.props[make_stringf(GOZAG_SHOPKEEPER_NAME_KEY,
+                               index)].get_string() + "の";
     const shop_type type = _gozag_shop_type(index);
-    const string special_name = _gozag_special_shop_name(type);
+    const string special_name = jtrans(_gozag_special_shop_name(type));
     const string type_name = !special_name.empty() ?
                                 special_name :
                                 shop_type_name(type);
     const string suffix =
         you.props[make_stringf(GOZAG_SHOP_SUFFIX_KEY, index)].get_string();
 
-    return make_stringf("  [%c] %5d gold - %s %s %s",
+    return make_stringf(("  " + jtrans("[%c] %5d gold - %s %s %s")).c_str(),
                         offer_letter,
                         cost,
                         shop_name.c_str(),
@@ -4610,14 +4610,14 @@ static int _gozag_choose_shop()
     for (int i = 0; i < _gozag_max_shops(); i++)
         mpr_nojoin(MSGCH_PLAIN, _describe_gozag_shop(i).c_str());
 
-    mprf(MSGCH_PROMPT, "Fund which merchant?");
+    mpr_nojoin(MSGCH_PROMPT, jtrans("Fund which merchant?"));
     const int shop_index = toalower(get_ch()) - 'a';
     if (shop_index < 0 || shop_index > _gozag_max_shops() - 1)
         return _gozag_choose_shop(); // tail recurse
 
     if (you.gold < _gozag_shop_price(shop_index))
     {
-        mpr("You don't have enough gold to fund that merchant!");
+        mpr(jtrans("You don't have enough gold to fund that merchant!"));
         more();
         return _gozag_choose_shop(); // tail recurse
     }
@@ -4641,11 +4641,11 @@ static string _gozag_shop_spec(int index)
     if (!suffix.empty())
         suffix = " suffix:" + suffix;
 
-    string spec_type = _gozag_special_shop_name(type);
+    string spec_type = jtrans(_gozag_special_shop_name(type));
     if (!spec_type.empty())
         spec_type = " type:" + spec_type;
 
-    return make_stringf("%s shop name:%s%s%s gozag",
+    return make_stringf(jtransc("%s shop name:%s%s%s gozag"),
                         shoptype_to_str(type),
                         replace_all(name, " ", "_").c_str(),
                         suffix.c_str(),
@@ -4677,8 +4677,8 @@ static void _gozag_place_shop_offlevel(int index, vector<level_id> &candidates)
 
     const string name =
         you.props[make_stringf(GOZAG_SHOPKEEPER_NAME_KEY, index)];
-    mprf(MSGCH_GOD, "%s sets up shop in %s.", name.c_str(),
-         branches[lid.branch].longname);
+    mprf(MSGCH_GOD, jtransc("%s sets up shop in %s."), name.c_str(),
+         tagged_jtransc("[branch]", branches[lid.branch].longname));
     dprf("%s", lid.describe().c_str());
 
     mark_offlevel_shop(lid, _gozag_shop_type(index));
@@ -4707,7 +4707,7 @@ static void _gozag_place_shop_here(int index)
                                            DNGN_ABANDONED_SHOP));
     env.markers.clear_need_activate();
 
-    mprf(MSGCH_GOD, "A shop appears before you!");
+    mpr_nojoin(MSGCH_GOD, jtrans("A shop appears before you!"));
 }
 
 /**
@@ -4954,8 +4954,8 @@ void gozag_deduct_bribe(branch_type br, int amount)
     branch_bribe[br] = max(0, branch_bribe[br] - amount);
     if (branch_bribe[br] <= 0)
     {
-        mprf(MSGCH_DURATION, "Your bribe of %s has been exhausted.",
-             branches[br].longname);
+        mprf(MSGCH_DURATION, jtransc("Your bribe of %s has been exhausted."),
+             tagged_jtransc("[branch]", branches[br].longname));
         add_daction(DACT_BRIBE_TIMEOUT);
     }
 }
@@ -4966,7 +4966,7 @@ bool gozag_check_bribe_branch(bool quiet)
     if (you.gold < bribe_amount)
     {
         if (!quiet)
-            mprf("You need at least %d gold to offer a bribe.", bribe_amount);
+            mprf(jtransc("You need at least %d gold to offer a bribe."), bribe_amount);
         return false;
     }
     branch_type branch = you.where_are_you;
@@ -4981,11 +4981,11 @@ bool gozag_check_bribe_branch(bool quiet)
                 break;
             }
     }
-    const string who = make_stringf("the denizens of %s",
-                                   branches[branch].longname);
+    const string who = make_stringf(jtransc("the denizens of %s"),
+                                    tagged_jtransc("[branch]", branches[branch].longname));
     const string who2 = branch2 != NUM_BRANCHES
-                        ? make_stringf("the denizens of %s",
-                                       branches[branch2].longname)
+                        ? make_stringf(jtransc("the denizens of %s"),
+                                       tagged_jtransc("[branch]", branches[branch2].longname))
                         : "";
     if (!gozag_branch_bribable(branch)
         && (branch2 == NUM_BRANCHES
@@ -4994,9 +4994,9 @@ bool gozag_check_bribe_branch(bool quiet)
         if (!quiet)
         {
             if (branch2 != NUM_BRANCHES)
-                mprf("You can't bribe %s or %s.", who.c_str(), who2.c_str());
+                mprf(jtransc("You can't bribe %s or %s."), who.c_str(), who2.c_str());
             else
-                mprf("You can't bribe %s.", who.c_str());
+                mprf(jtransc("You can't bribe %s."), who.c_str());
         }
         return false;
     }
@@ -5016,8 +5016,8 @@ bool gozag_bribe_branch()
                 && gozag_branch_bribable(it->id))
             {
                 string prompt =
-                    make_stringf("Do you want to bribe the denizens of %s?",
-                                 it->longname);
+                    make_stringf(jtransc("Do you want to bribe the denizens of %s?"),
+                                 tagged_jtransc("[branch]", it->longname));
                 if (yesno(prompt.c_str(), true, 'n'))
                 {
                     branch = it->id;
@@ -5026,25 +5026,25 @@ bool gozag_bribe_branch()
                 break;
             }
     }
-    string who = make_stringf("the denizens of %s",
-                              branches[branch].longname);
+    string who = make_stringf(jtransc("the denizens of %s"),
+                              tagged_jtransc("[branch]", branches[branch].longname));
     if (!gozag_branch_bribable(branch))
     {
-        mprf("You can't bribe %s.", who.c_str());
+        mprf(jtransc("You can't bribe %s."), who.c_str());
         return false;
     }
 
     string prompt =
-        make_stringf("Do you want to bribe the denizens of %s?",
-                     branches[branch].longname);
+        make_stringf(jtransc("Do you want to bribe the denizens of %s?"),
+                     tagged_jtransc("[branch]", branches[branch].longname));
 
     if (prompted || yesno(prompt.c_str(), true, 'n'))
     {
         you.del_gold(bribe_amount);
         you.attribute[ATTR_GOZAG_GOLD_USED] += bribe_amount;
         branch_bribe[branch] += bribe_amount;
-        string msg = make_stringf(" spreads your bribe to %s!",
-                                  branches[branch].longname);
+        string msg = make_stringf(jtransc(" spreads your bribe to %s!"),
+                                  tagged_jtransc("[branch]", branches[branch].longname));
         simple_god_message(msg.c_str());
         add_daction(DACT_SET_BRIBES);
         return true;
