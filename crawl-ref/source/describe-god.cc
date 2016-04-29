@@ -361,9 +361,9 @@ string god_title(god_type which_god, species_type which_species, int piety)
         title = divine_title[which_god][_piety_level(piety)];
 
     //XXX: unify with stuff in skills.cc
-    title = replace_all(title, "@Genus@", species_name(which_species, true, false));
-    title = replace_all(title, "@Adj@", species_name(which_species, false, true));
-    title = replace_all(title, "@Walking@", (species_walking_verb(which_species) + "ing"));
+    title = replace_all(title, "@Genus@", jtrans(species_name(which_species, true, false)));
+    title = replace_all(title, "@Adj@", jtrans(species_name(which_species, false, true)));
+    title = replace_all(title, "@Walking@", jtrans(species_walking_verb(which_species)));
 
     return title;
 }

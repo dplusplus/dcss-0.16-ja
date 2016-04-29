@@ -1170,29 +1170,28 @@ skill_type str_to_skill(const string &skill)
 
 static string _stk_adj_cap()
 {
-    return species_name(Skill_Species, false, true);
+    return jtrans(species_name(Skill_Species, false, true));
 }
 
 static string _stk_genus_cap()
 {
-    return species_name(Skill_Species, true, false);
+    return jtrans(species_name(Skill_Species, true, false));
 }
 
 static string _stk_genus_nocap()
 {
-    string s = _stk_genus_cap();
-    return lowercase(s);
+    return _stk_genus_cap();
 }
 
 static string _stk_genus_short_cap()
 {
-    return Skill_Species == SP_DEMIGOD ? "God" :
+    return Skill_Species == SP_DEMIGOD ? jtrans("God") :
            _stk_genus_cap();
 }
 
 static string _stk_walker()
 {
-    return species_walking_verb(Skill_Species) + "er";
+    return jtrans(species_walking_verb(Skill_Species)) + "者";
 }
 
 static string _stk_weight()
