@@ -3551,7 +3551,7 @@ void lugonu_bend_space()
 
 void cheibriados_time_bend(int pow)
 {
-    mpr("The flow of time bends around you.");
+    mpr(jtrans("The flow of time bends around you."));
 
     for (adjacent_iterator ai(you.pos()); ai; ++ai)
     {
@@ -3563,14 +3563,14 @@ void cheibriados_time_bend(int pow)
             if (res_margin > 0)
             {
                 mprf("%s%s",
-                     mon->name(DESC_THE).c_str(),
+                     jtransc(mon->name(DESC_PLAIN)),
                      mon->resist_margin_phrase(res_margin).c_str());
                 continue;
             }
 
             simple_god_message(
-                make_stringf(" rebukes %s.",
-                             mon->name(DESC_THE).c_str()).c_str(),
+                make_stringf(jtransc(" rebukes %s."),
+                             jtransc(mon->name(DESC_PLAIN))).c_str(),
                              GOD_CHEIBRIADOS);
             do_slow_monster(mon, &you);
         }
@@ -3627,7 +3627,7 @@ bool cheibriados_slouch(int pow)
     if (stop_attack_prompt(hitfunc, "傷つけ", _act_slouchable))
         return false;
 
-    mpr("You can feel time thicken for a moment.");
+    mpr(jtrans("You can feel time thicken for a moment."));
     dprf("your speed is %d", player_movement_speed());
 
     apply_area_visible(_slouch_monsters, pow, &you);
@@ -3664,14 +3664,14 @@ void cheibriados_temporal_distortion()
     you.moveto(old_pos);
     you.duration[DUR_TIME_STEP] = 0;
 
-    mpr("You warp the flow of time around you!");
+    mpr(jtrans("You warp the flow of time around you!"));
 }
 
 void cheibriados_time_step(int pow) // pow is the number of turns to skip
 {
     const coord_def old_pos = you.pos();
 
-    mpr("You step out of the flow of time.");
+    mpr(jtrans("You step out of the flow of time."));
     flash_view(UA_PLAYER, LIGHTBLUE);
     you.moveto(coord_def(0, 0));
     you.duration[DUR_TIME_STEP] = pow;
@@ -3705,7 +3705,7 @@ void cheibriados_time_step(int pow) // pow is the number of turns to skip
     you.duration[DUR_TIME_STEP] = 0;
 
     flash_view(UA_PLAYER, 0);
-    mpr("You return to the normal time flow.");
+    mpr(jtrans("You return to the normal time flow."));
 }
 
 bool ashenzari_transfer_knowledge()

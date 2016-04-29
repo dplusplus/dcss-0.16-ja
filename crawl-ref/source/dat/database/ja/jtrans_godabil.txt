@@ -744,6 +744,34 @@ a spatial distortion
 
 
 %%%%
+The flow of time bends around you.
+
+あなたの周りの時間の流れが歪んだ。
+%%%%
+rebukes %s.
+
+は%sを咎めた。
+%%%%
+There's no one hasty visible. Invoke Slouch anyway?
+
+見える範囲に素早い敵がいませんが、それでも屈服を発動させますか？
+%%%%
+You can feel time thicken for a moment.
+
+あなたは時間の流れが濃密になるのを感じ取れた。
+%%%%
+You warp the flow of time around you!
+
+あなたは周囲の時間の流れを歪めた！
+%%%%
+You step out of the flow of time.
+
+あなたは時の流れから抜け出した。
+%%%%
+You return to the normal time flow.
+
+あなたは通常の時間の流れに戻った。
+%%%%
 The priest welcomes you and lets you live.
 
 オークの司祭はあなたを歓迎し、友好的になった。
