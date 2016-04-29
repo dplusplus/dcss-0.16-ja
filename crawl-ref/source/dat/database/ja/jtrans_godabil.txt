@@ -552,6 +552,182 @@ can find no cadavers for you!
 
 はあなたに授ける死体を手配できなかった！
 %%%%
+Some toadstools
+
+何本ものからかさキノコ
+%%%%
+A toadstool
+
+からかさキノコ
+%%%%
+nearby corpses
+
+近くの死体
+%%%%
+a nearby corpse
+
+近くの死体
+%%%%
+the ground
+
+地面
+%%%%
+%s grow%s from %s.
+
+%sが%sから生えてきた。
+%%%%
+A ring of toadstools grows before your very eyes.
+
+からかさキノコの群生があなたのまさに目の前で生長した。
+%%%%
+Some toadstools grow in a peculiar arc.
+
+いくつかのからかさキノコは奇妙な弧を描いて生長した。
+%%%%
+A toadstool grows.
+
+からかさキノコが生長した。
+%%%%
+A toadstool grows %s.
+
+からかさキノコが%sで生長した。
+%%%%
+'s flesh rots away.
+
+の屍肉は腐り落ちた。
+%%%%
+rots away and dies.
+
+の体は腐り果てて死んだ。
+%%%%
+That felt like a moral victory.
+
+それは精神的勝利を感じさせた。
+%%%%
+appreciates your contribution to the ecosystem.
+
+は生態系へのあなたの貢献を喜んだ。
+%%%%
+A plant, strengthened by %s, grows up from the ground.
+
+植物は%sによって強化され、生長した。
+%%%%
+A plant grows up from the ground.
+
+植物が生長した。
+%%%%
+Select sunlight destination.
+
+陽光を当てる場所を選択してください。
+%%%%
+In the bright light, you notice %s.
+
+まばゆい光の中に%s浮かび上がった。
+%%%%
+an invisible shape
+
+目に見えない何かの姿が
+%%%%
+some invisible shapes
+
+目に見えない何かの姿がいくつか
+%%%%
+Some water evaporates in the bright sunlight.
+
+まばゆい陽光を浴びて水が蒸発した。
+%%%%
+%d pieces of fruit are consumed!
+
+果物が%s個消費された！
+%%%%
+A piece of fruit is consumed!
+
+果物がひとつ消費された！
+%%%%
+No empty adjacent squares.
+
+隣の場所が空いていない。
+%%%%
+No fruit available.
+
+使える果物がない。
+%%%%
+How many plants will you create?
+
+植物をいくつ生成しますか？
+%%%%
+%s grow%s in the rain.
+
+植物が雨で生長した。
+%%%%
+Will you create these spores?
+
+巨大胞子を生成しますか？
+%%%%
+cannot be evolved
+
+進化できない
+%%%%
+can evolve into
+
+に進化できる
+%%%%
+The mold grows into a ballistomycete.
+
+カビが生長して放出菌糸になった。
+%%%%
+Your piety has decreased.
+
+あなたの信仰値が減少した。
+%%%%
+No evolvable flora in sight.
+
+進化させる対象が見える所にない。
+%%%%
+Select plant or fungus to evolve.
+
+進化させる植物もしくはキノコ類を選択してください。
+%%%%
+The tree has already reached the pinnacle of evolution.
+
+この樹木はこれ以上進化させられない。
+%%%%
+You must target a plant or fungus.
+
+植物もしくはキノコ類を選択してください。
+%%%%
+You can evolve only complete plants, not seeds.
+
+あなたが進化させられるのは生長した植物であり、種ではない。
+%%%%
+has already reached the pinnacle of evolution.
+
+はこれ以上進化させられない。
+%%%%
+Only plants or fungi may be evolved.
+
+植物もしくはキノコ類のみ進化させることができます。
+%%%%
+Not enough fruit available.
+
+十分な果物を持っていない。
+%%%%
+Not enough piety available.
+
+信仰値が十分でない。
+%%%%
+appears stronger.
+
+は強大になった。
+%%%%
+can now pick up its mycelia and move.
+
+は菌糸を振りまいて歩くことができるようになった。
+%%%%
+appears agitated.
+
+は活発化した。
+%%%%
 The priest welcomes you and lets you live.
 
 オークの司祭はあなたを歓迎し、友好的になった。

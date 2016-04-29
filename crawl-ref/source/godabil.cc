@@ -2125,8 +2125,8 @@ static bool _mushroom_spawn_message(int seen_targets, int seen_corpses)
     string where = seen_corpses  > 1 ? "nearby corpses" :
                    seen_corpses == 1 ? "a nearby corpse"
                                      : "the ground";
-    mprf("%s grow%s from %s.",
-         what.c_str(), seen_targets > 1 ? "" : "s", where.c_str());
+    mprf(jtransc("%s grow%s from %s."),
+         jtransc(what), jtransc(where));
 
     return true;
 }
@@ -2222,11 +2222,11 @@ static int _spawn_corpse_mushrooms(item_def& corpse,
             corpse.special = 0;
 
             if (you.see_cell(corpse.pos))
-                mpr("A ring of toadstools grows before your very eyes.");
+                mpr(jtrans("A ring of toadstools grows before your very eyes."));
             else if (ring_seen > 1)
-                mpr("Some toadstools grow in a peculiar arc.");
+                mpr(jtrans("Some toadstools grow in a peculiar arc."));
             else if (ring_seen > 0)
-                mpr("A toadstool grows.");
+                mpr(jtrans("A toadstool grows."));
 
             seen_targets = -1;
 
@@ -2292,8 +2292,8 @@ static int _spawn_corpse_mushrooms(item_def& corpse,
                 placed_targets++;
                 if (current == you.pos())
                 {
-                    mprf("A toadstool grows %s.",
-                         player_has_feet() ? "at your feet" : "before you");
+                    mprf(jtransc("A toadstool grows %s."),
+                         jtransc(player_has_feet() ? "at your feet" : "before you"));
                     current = mushroom->pos();
                 }
                 else if (you.see_cell(current))
@@ -2346,7 +2346,7 @@ int fedhas_fungal_bloom()
                 // Maybe turn a zombie into a skeleton.
                 if (mons_skeleton(mons_zombie_base(target)))
                 {
-                    simple_monster_message(target, "'s flesh rots away.");
+                    simple_monster_message(target, jtransc("'s flesh rots away."));
 
                     downgrade_zombie_to_skeleton(target);
 
@@ -2361,7 +2361,7 @@ int fedhas_fungal_bloom()
                 // Ghoul-type monsters are always destroyed.
             case MONS_GHOUL:
             {
-                simple_monster_message(target, " rots away and dies.");
+                simple_monster_message(target, jtransc(" rots away and dies."));
 
                 kills = true;
 
@@ -2447,12 +2447,12 @@ int fedhas_fungal_bloom()
         _mushroom_spawn_message(seen_mushrooms, seen_corpses);
 
     if (kills)
-        mpr("That felt like a moral victory.");
+        mpr(jtrans("That felt like a moral victory."));
 
     if (processed_count)
     {
-        simple_god_message(" appreciates your contribution to the "
-                           "ecosystem.");
+        simple_god_message(jtransc(" appreciates your contribution to the "
+                                   "ecosystem."));
         // Doubling the expected value per sacrifice to approximate the
         // extra piety gain blood god worshipers get for the initial kill.
         // -cao
@@ -2493,11 +2493,11 @@ static bool _create_plant(coord_def& target, int hp_adjust = 0)
         {
             if (hp_adjust)
             {
-                mprf("A plant, strengthened by %s, grows up from the ground.",
-                     god_name(GOD_FEDHAS).c_str());
+                mprf(jtransc("A plant, strengthened by %s, grows up from the ground."),
+                     jtransc(god_name(GOD_FEDHAS)));
             }
             else
-                mpr("A plant grows up from the ground.");
+                mpr(jtrans("A plant grows up from the ground."));
         }
         return true;
     }
@@ -2520,7 +2520,7 @@ spret_type fedhas_sunlight(bool fail)
     args.range = LOS_RADIUS;
     args.needs_path = false;
     args.may_target_monster = false;
-    args.top_prompt = "Select sunlight destination.";
+    args.top_prompt = jtrans("Select sunlight destination.");
     direction(spelld, args);
 
     if (!spelld.isValid)
@@ -2576,8 +2576,8 @@ spret_type fedhas_sunlight(bool fail)
 
     if (revealed_count)
     {
-        mprf("In the bright light, you notice %s.", revealed_count == 1 ?
-             "an invisible shape" : "some invisible shapes");
+        mprf(jtransc("In the bright light, you notice %s."),
+             jtransc(revealed_count == 1 ? "an invisible shape" : "some invisible shapes"));
     }
 
     return SPRET_SUCCESS;
@@ -2657,7 +2657,7 @@ void process_sunlights(bool future)
     }
 
     if (evap_count)
-        mpr("Some water evaporates in the bright sunlight.");
+        mpr(jtrans("Some water evaporates in the bright sunlight."));
 
     invalidate_agrid(true);
 }
@@ -2863,9 +2863,9 @@ static void _decrease_amount(vector<pair<int, int> >& available, int amount)
         dec_inv_item_quantity(avail.second, decrease_amount);
     }
     if (total_decrease > 1)
-        mprf("%d pieces of fruit are consumed!", total_decrease);
+        mprf(jtransc("%d pieces of fruit are consumed!"), total_decrease);
     else
-        mpr("A piece of fruit is consumed!");
+        mpr(jtrans("A piece of fruit is consumed!"));
 }
 
 // Create a ring or partial ring around the caster.  The user is
@@ -2924,7 +2924,7 @@ bool fedhas_plant_ring_from_fruit()
     // And how many plants does the user want to create?
     int target_count;
     if (!_prompt_amount(max_use, target_count,
-                        "How many plants will you create?"))
+                        jtrans("How many plants will you create?")))
     {
         // User cancelled at the prompt.
         return false;
@@ -3068,7 +3068,7 @@ int fedhas_rain(const coord_def &target)
 
     if (spawned_count > 0)
     {
-        mprf("%s grow%s in the rain.",
+        mprf(jtransc("%s grow%s in the rain."),
              (spawned_count > 1 ? "Some plants" : "A plant"),
              (spawned_count > 1 ? "" : "s"));
     }
@@ -3246,8 +3246,8 @@ static vector<string> _evolution_name(const monster_info& mon)
 {
     monster_conversion conversion;
     if (!_possible_evolution(mon, conversion))
-        return { "cannot be evolved" };
-    return { "can evolve into " + mons_type_name(conversion.new_type, DESC_A) };
+        return { jtrans("cannot be evolved") };
+    return { jtrans(mons_type_name(conversion.new_type, DESC_PLAIN)) + jtrans("can evolve into ") };
 }
 
 bool mons_is_evolvable(const monster* mon)
@@ -3274,8 +3274,8 @@ static bool _place_ballisto(const coord_def& pos)
         mons_make_god_gift(plant, GOD_FEDHAS);
 
         remove_mold(pos);
-        mpr("The mold grows into a ballistomycete.");
-        mpr("Your piety has decreased.");
+        mpr(jtrans("The mold grows into a ballistomycete."));
+        mpr(jtrans("Your piety has decreased."));
         lose_piety(1);
         return true;
     }
@@ -3311,7 +3311,7 @@ bool fedhas_check_evolve_flora(bool quiet)
     if (!in_range)
     {
         if (!quiet)
-            mpr("No evolvable flora in sight.");
+            mpr(jtrans("No evolvable flora in sight."));
         return false;
     }
 
@@ -3328,7 +3328,7 @@ bool fedhas_check_evolve_flora(bool quiet)
     args.may_target_monster = false;
     args.cancel_at_self = true;
     args.show_floor_desc = true;
-    args.top_prompt = "Select plant or fungus to evolve.";
+    args.top_prompt = jtrans("Select plant or fungus to evolve.");
     args.get_desc_func = _evolution_name;
 
     direction(spelld, args);
@@ -3349,9 +3349,9 @@ bool fedhas_check_evolve_flora(bool quiet)
                                     env.grid(spelld.target)))
         {
             if (feat_is_tree(env.grid(spelld.target)))
-                mpr("The tree has already reached the pinnacle of evolution.");
+                mpr(jtrans("The tree has already reached the pinnacle of evolution."));
             else
-                mpr("You must target a plant or fungus.");
+                mpr(jtrans("You must target a plant or fungus."));
             return false;
         }
         you.props[FEDHAS_EVOLVE_TARGET_KEY].get_coord() = spelld.target;
@@ -3361,14 +3361,15 @@ bool fedhas_check_evolve_flora(bool quiet)
     if (!_possible_evolution(monster_info(plant), upgrade))
     {
         if (plant->type == MONS_GIANT_SPORE)
-            mpr("You can evolve only complete plants, not seeds.");
+            mpr(jtrans("You can evolve only complete plants, not seeds."));
         else  if (mons_is_plant(plant))
         {
-            simple_monster_message(plant, " has already reached the pinnacle"
-                                   " of evolution.");
+            simple_monster_message(plant,
+                                   jtransc(" has already reached the pinnacle"
+                                           " of evolution."));
         }
         else
-            mpr("Only plants or fungi may be evolved.");
+            mpr(jtrans("Only plants or fungi may be evolved."));
 
         return false;
     }
@@ -3380,14 +3381,14 @@ bool fedhas_check_evolve_flora(bool quiet)
 
         if (total_fruit < upgrade.fruit_cost)
         {
-            mpr("Not enough fruit available.");
+            mpr(jtrans("Not enough fruit available."));
             return false;
         }
     }
 
     if (upgrade.piety_cost && upgrade.piety_cost > you.piety)
     {
-        mpr("Not enough piety available.");
+        mpr(jtrans("Not enough piety available."));
         return false;
     }
 
@@ -3417,33 +3418,35 @@ void fedhas_evolve_flora()
     case MONS_PLANT:
     case MONS_BUSH:
     {
-        string evolve_desc = " can now spit acid";
+        string evolve_desc = "は";
         int skill = you.skill(SK_INVOCATIONS);
         if (skill >= 20)
-            evolve_desc += " continuously";
+            evolve_desc += "絶え間なく";
         else if (skill >= 15)
-            evolve_desc += " quickly";
+            evolve_desc += "きわめて素早く";
         else if (skill >= 10)
-            evolve_desc += " rather quickly";
+            evolve_desc += "素早く";
         else if (skill >= 5)
-            evolve_desc += " somewhat quickly";
-        evolve_desc += ".";
+            evolve_desc += "わりと素早く";
+        evolve_desc += "酸を吐き出すことができる。";
 
-        simple_monster_message(plant, evolve_desc.c_str());
+        if (mons_near(plant))
+            mpr_nojoin(MSGCH_PLAIN, "この" + plant->name(DESC_PLAIN) + evolve_desc);
+
         break;
     }
 
     case MONS_OKLOB_SAPLING:
-        simple_monster_message(plant, " appears stronger.");
+        simple_monster_message(plant, jtransc(" appears stronger."));
         break;
 
     case MONS_FUNGUS:
     case MONS_TOADSTOOL:
-        simple_monster_message(plant, " can now pick up its mycelia and move.");
+        simple_monster_message(plant, jtransc(" can now pick up its mycelia and move."));
         break;
 
     case MONS_BALLISTOMYCETE:
-        simple_monster_message(plant, " appears agitated.");
+        simple_monster_message(plant, jtransc(" appears agitated."));
         env.level_state |= LSTATE_GLOW_MOLD;
         break;
 
@@ -3490,7 +3493,7 @@ void fedhas_evolve_flora()
     if (upgrade.piety_cost)
     {
         lose_piety(upgrade.piety_cost);
-        mpr("Your piety has decreased.");
+        mpr(jtrans("Your piety has decreased."));
     }
 }
 
