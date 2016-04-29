@@ -900,3 +900,47 @@ spreads your bribe to %s!
 
 はあなたの買収契約を%sに広めた！
 %%%%
+Aiming: <white>Upheaval</white>
+
+照準: <white>自然の怒り</white>
+%%%%
+Magma suddenly erupts from the ground!
+
+突然地面からマグマが湧きあがった！
+%%%%
+A blizzard blasts the area with ice!
+
+周囲の空間を猛吹雪が襲った！
+%%%%
+A storm cloud blasts the area with cutting wind!
+
+雷雲が巻き起こり、周囲をカマイタチが切り裂いた！
+%%%%
+The ground shakes violently, spewing rubble!
+
+地面が激しく揺れ、瓦礫が吹き出した！
+%%%%
+Ka-crash!
+
+ドッカーン！
+%%%%
+You can't see any clouds you can empower.
+
+生命を吹き込むことができる雲が見える所にない。
+%%%%
+Clouds arounds you coalesce and take form!
+
+あなたの周囲の雲が凝集し、具現化した！
+%%%%
+There isn't enough space here!
+
+ここには十分な広さがない！
+%%%%
+There are friendlies around; are you sure you want to hurt them?
+
+ここには友好的な存在がいますが、本当にそれらに危害を加えますか？
+%%%%
+Nature churns violently around you!
+
+自然の猛威があなたの周囲をめちゃめちゃにかき回した！
+%%%%

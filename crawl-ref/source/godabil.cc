@@ -5085,7 +5085,7 @@ spret_type qazlal_upheaval(coord_def target, bool quiet, bool fail)
         targetter_smite tgt(&you, LOS_RADIUS, 0, max_radius);
         if (!spell_direction(spd, beam, DIR_TARGET, TARG_HOSTILE,
                              LOS_RADIUS, false, true, false, nullptr,
-                             "Aiming: <white>Upheaval</white>", true,
+                             jtransc("Aiming: <white>Upheaval</white>"), true,
                              &tgt))
         {
             return SPRET_ABORT;
@@ -5170,7 +5170,7 @@ spret_type qazlal_upheaval(coord_def target, bool quiet, bool fail)
     if (!quiet)
     {
         scaled_delay(100);
-        mprf(MSGCH_GOD, "%s", message.c_str());
+        mprf(MSGCH_GOD, "%s", jtransc(message));
     }
     else
         scaled_delay(25);
@@ -5225,7 +5225,7 @@ spret_type qazlal_upheaval(coord_def target, bool quiet, bool fail)
     }
 
     if (wall_count && !quiet)
-        mpr("Ka-crash!");
+        mpr(jtrans("Ka-crash!"));
 
     return SPRET_SUCCESS;
 }
@@ -5260,7 +5260,7 @@ void qazlal_elemental_force()
 
     if (targets.empty())
     {
-        mpr("You can't see any clouds you can empower.");
+        mpr(jtrans("You can't see any clouds you can empower."));
         return;
     }
 
@@ -5314,7 +5314,7 @@ void qazlal_elemental_force()
     }
 
     if (placed)
-        mprf(MSGCH_GOD, "Clouds arounds you coalesce and take form!");
+        mpr_nojoin(MSGCH_GOD, jtrans("Clouds arounds you coalesce and take form!"));
     else
         canned_msg(MSG_NOTHING_HAPPENS); // can this ever happen?
 }
@@ -5355,7 +5355,7 @@ bool qazlal_disaster_area()
 
     if (targets.empty())
     {
-        mpr("There isn't enough space here!");
+        mpr(jtrans("There isn't enough space here!"));
         return false;
     }
 
@@ -5367,7 +5367,7 @@ bool qazlal_disaster_area()
         return false;
     }
 
-    mprf(MSGCH_GOD, "Nature churns violently around you!");
+    mpr_nojoin(MSGCH_GOD, jtrans("Nature churns violently around you!"));
 
     int count = max(1, min((int)targets.size(),
                             max(you.skill_rdiv(SK_INVOCATIONS, 1, 2),
