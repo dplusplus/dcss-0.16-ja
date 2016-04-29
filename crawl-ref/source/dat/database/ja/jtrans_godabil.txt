@@ -728,6 +728,22 @@ appears agitated.
 
 は活発化した。
 %%%%
+%s basks in the distortional energy.
+
+%sは歪曲のエネルギーに浸った。
+%%%%
+Space bends %saround you!
+
+あなたの周りの空間が%s歪んだ！
+%%%%
+sharply
+
+急激に
+%%%%
+a spatial distortion
+
+
+%%%%
 The priest welcomes you and lets you live.
 
 オークの司祭はあなたを歓迎し、友好的になった。

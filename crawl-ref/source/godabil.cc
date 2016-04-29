@@ -3511,8 +3511,8 @@ static int _lugonu_warp_monster(monster* mon, int pow)
     const int damage = 1 + random2(pow / 6);
     if (mons_genus(mon->type) == MONS_BLINK_FROG)
     {
-        mprf("%s basks in the distortional energy.",
-             mon->name(DESC_THE).c_str());
+        mprf(jtransc("%s basks in the distortional energy."),
+             jtransc(mon->name(DESC_PLAIN)));
         mon->heal(damage, false);
     }
     else
@@ -3538,7 +3538,7 @@ void lugonu_bend_space()
     const int pow = 4 + skill_bump(SK_INVOCATIONS);
     const bool area_warp = random2(pow) > 9;
 
-    mprf("Space bends %saround you!", area_warp ? "sharply " : "");
+    mprf(jtransc("Space bends %saround you!"), jtransc(area_warp ? "sharply " : ""));
 
     if (area_warp)
         _lugonu_warp_area(pow);
