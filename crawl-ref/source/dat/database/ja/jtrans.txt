@@ -13538,7 +13538,7 @@ You exude an aura of power that intimidates your foes.
 %%%%
 Your aura of power can strike those that harm you.
 
-あなたのオーラはあなたに危害を加えるものに危害を加える。
+あなたが纏うオーラは自らに危害を加えるものに反撃する。
 %%%%
 heal your body and restore your magic
 
@@ -13638,7 +13638,7 @@ You no longer exude an aura of power that intimidates your foes.
 %%%%
 Your aura of power no longer strikes those that harm you.
 
-あなたのオーラはもうあなたに危害を加えるものに危害を加えなくなった。
+あなたの纏うオーラはもう自らに危害を加えるものに反撃することができなくなった。
 %%%%
 use your power to heal your body and restore your magic
 
