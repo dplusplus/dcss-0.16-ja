@@ -7335,15 +7335,15 @@ Select what? (regex)
 %%%%
 Something appears %s!
 
-%s何かが現れた！
+%sに何かが現れた！
 %%%%
 at your feet
 
-あなたの足元に
+あなたの足元
 %%%%
 before you
 
-あなたの目の前に
+あなたの目の前
 %%%%
 Nothing appears to happen.
 
