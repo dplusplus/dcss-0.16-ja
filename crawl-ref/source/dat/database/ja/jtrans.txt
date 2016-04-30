@@ -13538,7 +13538,7 @@ You exude an aura of power that intimidates your foes.
 %%%%
 Your aura of power can strike those that harm you.
 
-あなたが纏うオーラは自らに危害を加えるものに反撃する。
+さらに、あなたが纏うオーラは自らに危害を加えるものに反撃する。
 %%%%
 heal your body and restore your magic
 
