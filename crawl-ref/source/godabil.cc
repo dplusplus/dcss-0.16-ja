@@ -5977,7 +5977,7 @@ void ru_offer_new_sacrifices()
                                   possible_sacrifices.end());
     }
 
-    simple_god_message(" believes you are ready to make a new sacrifice.");
+    simple_god_message(jtransc(" believes you are ready to make a new sacrifice."));
     more();
 }
 
@@ -6003,8 +6003,9 @@ static void _apply_ru_sacrifice(mutation_type sacrifice)
 
 static bool _execute_sacrifice(int piety_gain, const char* message)
 {
-    mprf("Ru asks you to %s.", message);
-    mprf("This is %s sacrifice.", _describe_sacrifice_piety_gain(piety_gain));
+    mprf(jtransc("Ru asks you to %s."), jtransc(message));
+    mprf(jtransc("This is %s sacrifice."),
+         jtransc(_describe_sacrifice_piety_gain(piety_gain)));
     if (!yesno("Do you really want to make this sacrifice?",
                false, 'n'))
     {
@@ -6044,8 +6045,8 @@ static void _extra_sacrifice_code(ability_type sac)
         // Drop your shield if there is one
         if (shield != nullptr)
         {
-            mprf("You can no longer hold %s!",
-                shield->name(DESC_YOUR).c_str());
+            mprf(jtransc("You can no longer hold %s!"),
+                 jtransc(shield->name(DESC_PLAIN)));
             unequip_item(EQ_SHIELD);
         }
 
@@ -6054,8 +6055,8 @@ static void _extra_sacrifice_code(ability_type sac)
         {
             if (you.hands_reqd(*weapon) == HANDS_TWO)
             {
-                mprf("You can no longer hold %s!",
-                    weapon->name(DESC_YOUR).c_str());
+                mprf(jtransc("You can no longer hold %s!"),
+                     jtransc(weapon->name(DESC_PLAIN)));
                 unequip_item(EQ_WEAPON);
             }
         }
@@ -6083,14 +6084,14 @@ static void _extra_sacrifice_code(ability_type sac)
                 }
             }
 
-            mprf("You can no longer wear %s!",
-                ring->name(DESC_YOUR).c_str());
+            mprf(jtransc("You can no longer wear %s!"),
+                 jtransc(ring->name(DESC_YOUR)));
             unequip_item(ring_slot);
             if (open_ring_slot)
             {
-                mprf("You put %s back on %s %s!",
-                     ring->name(DESC_YOUR).c_str(),
-                     (you.species == SP_OCTOPODE ? "another" : "your other"),
+                mprf(jtransc("You put %s back on %s %s!"),
+                     jtransc(ring->name(DESC_PLAIN)),
+                     (you.species == SP_OCTOPODE ? "別の" : "もう片方の"),
                      you.hand_name(true).c_str());
                 puton_ring(ring_inv_slot, false);
             }
@@ -6143,17 +6144,17 @@ string ru_sac_text(ability_type sac)
     {
         ASSERT(sacrifice_muts.size() == 1);
         const mutation_type mut = AS_MUT(sacrifice_muts[0]);
-        return make_stringf(" (%s)", mutation_name(mut));
+        return make_stringf(" (%sの変異)", jtransc(mutation_name(mut)));
     }
 
     // "Tloc/Fire/Ice"
     const string school_names
-        = comma_separated_fn(sacrifice_muts.begin(), sacrifice_muts.end(),
-                [](CrawlStoreValue mut) {
-                    return _arcane_mutation_to_school_abbr(AS_MUT(mut));
-                }, "/", "/");
+        = to_separated_fn(sacrifice_muts.begin(), sacrifice_muts.end(),
+             [](CrawlStoreValue mut) {
+                 return jtrans(_arcane_mutation_to_school_abbr(AS_MUT(mut)));
+             }, "/", "/", "/");
 
-    return make_stringf(" (%s)", school_names.c_str());
+    return make_stringf(" (%s)", jtransc(school_names));
 }
 
 bool ru_do_sacrifice(ability_type sac)
@@ -6186,22 +6187,27 @@ bool ru_do_sacrifice(ability_type sac)
             // format the text that will be displayed
             if (is_sac_arcana)
             {
+                string school_name = jtrans(skill_name(arcane_mutation_to_skill(mut)));
+
                 if (i == num_sacrifices - 1)
                 {
-                    sac_text = make_stringf("%sand %s", sac_text.c_str(),
-                        _arcane_mutation_to_school_name(mut));
+                    sac_text += "、および" + school_name;
+                }
+                else if (i != 0)
+                {
+                    sac_text += "、" + school_name;
                 }
                 else
-                {
-                    sac_text = make_stringf("%s%s, ", sac_text.c_str(),
-                        _arcane_mutation_to_school_name(mut));
-                }
+                    sac_text += school_name;
             }
             else
                 sac_text = static_cast<string>(mutation_desc_for_text(mut));
         }
-        offer_text = make_stringf("%s: %s", sac_def.sacrifice_text,
-            sac_text.c_str());
+
+        if (sac == ABIL_RU_SACRIFICE_ARCANA)
+            offer_text = jtrans(sac_text) + jtrans(sac_def.sacrifice_text);
+        else
+            offer_text = jtrans(sac_def.sacrifice_text) + jtrans(sac_text);
         mile_text = make_stringf("%s: %s.", sac_def.milestone_text,
             sac_text.c_str());
     }
@@ -6210,11 +6216,11 @@ bool ru_do_sacrifice(ability_type sac)
         variable_sac = false;
         mut = sac_def.mutation;
         num_sacrifices = 1;
-        const char* handtxt = "";
+        string handtxt;
         if (sac == ABIL_RU_SACRIFICE_HAND)
-            handtxt = you.hand_name(true).c_str();
+            handtxt = you.hand_name(false) + "を捧げる";
 
-        offer_text = make_stringf("%s%s", sac_def.sacrifice_text, handtxt);
+        offer_text = make_stringf("%s%s", jtransc(sac_def.sacrifice_text), handtxt.c_str());
         mile_text = make_stringf("%s.", sac_def.milestone_text);
     }
 
@@ -6281,7 +6287,7 @@ bool ru_do_sacrifice(ability_type sac)
     set_piety(new_piety);
 
     if (you.piety == piety_breakpoint(5))
-        simple_god_message(" indicates that your awakening is complete.");
+        simple_god_message(jtransc(" indicates that your awakening is complete."));
 
     // Clean up.
     _ru_expire_sacrifices();
@@ -6302,7 +6308,7 @@ bool ru_reject_sacrifices(bool skip_prompt)
 
     _ru_expire_sacrifices();
     ru_reset_sacrifice_timer(false);
-    simple_god_message(" will take longer to evaluate your readiness.");
+    simple_god_message(jtransc(" will take longer to evaluate your readiness."));
     return true;
 }
 
@@ -6351,39 +6357,39 @@ void ru_do_retribution(monster* mons, int damage)
 
     if (power > 50 && (mons->antimagic_susceptible()))
     {
-        mprf(MSGCH_GOD, "You focus your will and drain %s's magic in "
-                "retribution!", mons->name(DESC_THE).c_str());
+        mprf(MSGCH_GOD, jtransc("You focus your will and drain %s's magic in "
+                                "retribution!"), jtransc(mons->name(DESC_PLAIN)));
         mons->add_ench(mon_enchant(ENCH_ANTIMAGIC, 1, act, power+random2(320)));
     }
     else if (power > 35)
     {
-        mprf(MSGCH_GOD, "You focus your will and paralyse %s in retribution!",
-                mons->name(DESC_THE).c_str());
+        mprf(MSGCH_GOD, jtransc("You focus your will and paralyse %s in retribution!"),
+             jtransc(mons->name(DESC_PLAIN)));
         mons->add_ench(mon_enchant(ENCH_PARALYSIS, 1, act, power+random2(60)));
     }
     else if (power > 25)
     {
-        mprf(MSGCH_GOD, "You focus your will and slow %s in retribution!",
-                mons->name(DESC_THE).c_str());
+        mprf(MSGCH_GOD, jtransc("You focus your will and slow %s in retribution!"),
+             jtransc(mons->name(DESC_PLAIN)));
         mons->add_ench(mon_enchant(ENCH_SLOW, 1, act, power+random2(100)));
     }
     else if (power > 10 && mons_can_be_blinded(mons->type))
     {
-        mprf(MSGCH_GOD, "You focus your will and blind %s in retribution!",
-                mons->name(DESC_THE).c_str());
+        mprf(MSGCH_GOD, jtransc("You focus your will and blind %s in retribution!"),
+             jtransc(mons->name(DESC_PLAIN)));
         mons->add_ench(mon_enchant(ENCH_BLIND, 1, act, power+random2(100)));
     }
     else if (power > 0)
     {
-        mprf(MSGCH_GOD, "You focus your will and illuminate %s in retribution!",
-                mons->name(DESC_THE).c_str());
+        mprf(MSGCH_GOD, jtransc("You focus your will and illuminate %s in retribution!"),
+             jtransc(mons->name(DESC_PLAIN)));
         mons->add_ench(mon_enchant(ENCH_CORONA, 1, act, power+random2(150)));
     }
 }
 
 void ru_draw_out_power()
 {
-    mpr("You are restored by drawing out deep reserves of power within.");
+    mpr(jtrans("You are restored by drawing out deep reserves of power within."));
 
     //Escape nets and webs
     int net = get_trapping_net(you.pos());
@@ -6393,13 +6399,13 @@ void ru_draw_out_power()
         if (trap && trap->type == TRAP_WEB)
         {
             destroy_trap(you.pos());
-            mpr("You burst free from the webs!");
+            mpr(jtrans("You burst free from the webs!"));
         }
     }
     else
     {
         destroy_item(net);
-        mpr("You burst free from the net!");
+        mpr(jtrans("You burst free from the net!"));
     }
 
     // Escape constriction
@@ -6427,7 +6433,7 @@ bool ru_power_leap()
 
     if (crawl_state.is_repeating_cmd())
     {
-        crawl_state.cant_cmd_repeat("You can't repeat power leap.");
+        crawl_state.cant_cmd_repeat(jtrans("You can't repeat power leap."));
         crawl_state.cancel_cmd_again();
         crawl_state.cancel_cmd_repeat();
         return false;
@@ -6444,12 +6450,12 @@ bool ru_power_leap()
         targetter_smite tgt(&you, range, explosion_size, explosion_size);
         if (!spell_direction(beam, fake_beam, DIR_LEAP, TARG_ANY,
                              range, false, false, false, nullptr,
-                             "Aiming: <white>Power Leap</white>", true,
+                             jtransc("Aiming: <white>Power Leap</white>"), true,
                              &tgt)
             && crawl_state.seen_hups)
         {
             clear_messages();
-            mpr("Cancelling leap due to HUP.");
+            mpr(jtrans("Cancelling leap due to HUP."));
             return false;
         }
 
@@ -6460,8 +6466,8 @@ bool ru_power_leap()
         if (beholder)
         {
             clear_messages();
-            mprf("You cannot leap away from %s!",
-                 beholder->name(DESC_THE, true).c_str());
+            mprf(jtransc("You cannot leap away from %s!"),
+                 jtransc(beholder->name(DESC_THE, true)));
             continue;
         }
 
@@ -6469,8 +6475,8 @@ bool ru_power_leap()
         if (fearmonger)
         {
             clear_messages();
-            mprf("You cannot leap closer to %s!",
-                 fearmonger->name(DESC_THE, true).c_str());
+            mprf(jtransc("You cannot leap closer to %s!"),
+                 jtransc(fearmonger->name(DESC_THE, true)));
             continue;
         }
 
@@ -6478,20 +6484,20 @@ bool ru_power_leap()
         if (mons && you.can_see(mons))
         {
             clear_messages();
-            mpr("You can't leap on top of the monster!");
+            mpr(jtrans("You can't leap on top of the monster!"));
             continue;
         }
 
         if (grd(beam.target) == DNGN_OPEN_SEA)
         {
             clear_messages();
-            mpr("You can't leap into the sea!");
+            mpr(jtrans("You can't leap into the sea!"));
             continue;
         }
         else if (grd(beam.target) == DNGN_LAVA_SEA)
         {
             clear_messages();
-            mpr("You can't leap into the sea of lava!");
+            mpr(jtrans("You can't leap into the sea of lava!"));
             continue;
         }
         else if (!check_moveto(beam.target, "leap"))
@@ -6506,12 +6512,12 @@ bool ru_power_leap()
         else if (you.trans_wall_blocking(beam.target))
         {
             clear_messages();
-            mpr("There's something in the way!");
+            mpr(jtrans("There's something in the way!"));
         }
         else
         {
             clear_messages();
-            mpr("You can only leap to visible locations.");
+            mpr(jtrans("You can only leap to visible locations."));
         }
     }
 
@@ -6520,7 +6526,7 @@ bool ru_power_leap()
     if (you.attempt_escape(2)) // I'm hoping this returns true if not constrict
     {
         if (cell_is_solid(beam.target) || monster_at(beam.target))
-            mpr("Something unexpectedly blocked you, preventing you from leaping!");
+            mpr(jtrans("Something unexpectedly blocked you, preventing you from leaping!"));
         else
             move_player_to_grid(beam.target, false);
     }
@@ -6594,22 +6600,22 @@ static int _apply_apocalypse(coord_def where, int pow, int dummy, actor* agent)
         case 0:
             if (mons->antimagic_susceptible())
             {
-                message = " loses " + mons->pronoun(PRONOUN_POSSESSIVE)
-                          + " magic into the devouring truth!";
+                message = "は自らの"
+                        + jtrans(" magic into the devouring truth!");
                 enchantment = ENCH_ANTIMAGIC;
                 duration = 500 + random2(200);
                 dmg += roll_dice(die_size, 4);
                 break;
             } // if not antimagicable, fall through to paralysis.
         case 1:
-            message = " is paralysed by terrible understanding!";
+            message = jtrans(" is paralysed by terrible understanding!");
             enchantment = ENCH_PARALYSIS;
             duration = 80 + random2(60);
             dmg += roll_dice(die_size, 4);
             break;
 
         case 2:
-            message = " slows down under the weight of truth!";
+            message = jtrans(" slows down under the weight of truth!");
             enchantment = ENCH_SLOW;
             duration = 300 + random2(100);
             dmg += roll_dice(die_size, 6);
@@ -6640,7 +6646,7 @@ bool ru_apocalypse()
             return false;
         }
     }
-    mpr("You reveal the great annihilating truth to your foes!");
+    mpr(jtrans("You reveal the great annihilating truth to your foes!"));
     noisy(30, you.pos());
     apply_area_visible(_apply_apocalypse, you.piety, &you);
     drain_player(100, false, true);

@@ -944,3 +944,158 @@ Nature churns violently around you!
 
 自然の猛威があなたの周囲をめちゃめちゃにかき回した！
 %%%%
+believes you are ready to make a new sacrifice.
+
+はあなたが新たな代償を捧げる準備ができたと確信した。
+%%%%
+an incredible
+
+絶大なる
+%%%%
+a major
+
+多大なる
+%%%%
+a significant
+
+大きな
+%%%%
+a modest
+
+そこそこの
+%%%%
+a trivial
+
+取るに足らぬ
+%%%%
+Ru sacrifice
+
+%%%%
+Ru asks you to %s.
+
+ルーはあなたに%sかと尋ねた。
+%%%%
+This is %s sacrifice.
+
+それは%s犠牲だ。
+%%%%
+Do you really want to make this sacrifice?
+
+本当にそれを代償として捧げますか？
+%%%%
+You can no longer hold %s!
+
+あなたはもう%sを手に取ることができない！
+%%%%
+You can no longer wear %s!
+
+あなたはもう%sを装備することができない！
+%%%%
+You put %s back on %s %s!
+
+あなたは%sを%s%sに付け替えた！
+%%%%
+indicates that your awakening is complete.
+
+はあなたの信仰が完全に高まったことを示した。
+%%%%
+Do you really want to reject the sacrifices Ru is offering?
+
+本当にルーが提案した代償を捧げるのを拒否しますか？
+%%%%
+will take longer to evaluate your readiness.
+
+はあなたの準備を評価するのを先送りにした。
+%%%%
+You focus your will and drain %s's magic in retribution!
+
+あなたは意志を集中し、応報として%sの魔力を吸い取った！
+%%%%
+You focus your will and paralyse %s in retribution!
+
+あなたは意志を集中し、応報として%sを麻痺させた！
+%%%%
+You focus your will and slow %s in retribution!
+
+あなたは意志を集中し、応報として%sの動きを鈍くした！
+%%%%
+You focus your will and blind %s in retribution!
+
+あなたは意志を集中し、応報として%sの目を見えなくさせた！
+%%%%
+You focus your will and illuminate %s in retribution!
+
+あなたは意志を集中し、応報として%sの姿を煌々と照らし出した！
+%%%%
+You are restored by drawing out deep reserves of power within.
+
+あなたは奥底に秘められた力を発揮し、自らの体を回復させた。
+%%%%
+You burst free from the webs!
+
+あなたは蜘蛛の巣から爆発的に飛び出した！
+%%%%
+You burst free from the net!
+
+あなたは網の中から爆発的に飛び出した！
+%%%%
+You can't repeat power leap.
+
+あなたは力強き跳躍を連続しては行えない。
+%%%%
+Aiming: <white>Power Leap</white>
+
+照準: <white>力強き跳躍</white>
+%%%%
+Cancelling leap due to HUP.
+
+HUPシグナルを受信したため、跳躍をキャンセルします。
+%%%%
+You cannot leap away from %s!
+
+あなたは跳躍して%sから遠ざかることができない！
+%%%%
+You cannot leap closer to %s!
+
+あなたは跳躍して%sに近づくことができない！
+%%%%
+You can't leap on top of the monster!
+
+あなたはモンスターの頭上に跳ぶことはできない！
+%%%%
+You can't leap into the sea!
+
+あなたは海中に飛び込むことはできない！
+%%%%
+You can't leap into the sea of lava!
+
+あなたは溶岩の海に飛び込むことはできない！
+%%%%
+You can only leap to visible locations.
+
+あなたは目に見える場所にしか跳ぶことができない。
+%%%%
+Something unexpectedly blocked you, preventing you from leaping!
+
+何者かが不意にあなたの跳躍を妨げた！
+%%%%
+magic into the devouring truth!
+
+魔力を失い、事実に飲み込まれた！
+%%%%
+is paralysed by terrible understanding!
+
+は恐るべき事実に直面して体の自由を失った！
+%%%%
+slows down under the weight of truth!
+
+は真実の重みの前に動きが遅くなった！
+%%%%
+There are no visible enemies. Unleash your apocalypse anyway?
+
+目に見える所に敵がいませんが、黙示録の惨劇を解き放ちますか？
+%%%%
+You reveal the great annihilating truth to your foes!
+
+あなたは絶大なる惨劇という現実を敵に突きつけた！
+%%%%

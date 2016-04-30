@@ -14282,6 +14282,120 @@ Which god (%s)?
 
 %dつの%sが腐ってしまった。
 %%%%
+############################## sacrifice-data.h ##############################
+%%%%
+corrupt yourself with
+
+自らの肉体を崩壊させる
+%%%%
+sacrificed purity
+
+# milestone text
+%%%%
+sacrifice your ability to read while threatened
+
+身を脅かされている間巻物を読む能力を捧げる
+%%%%
+sacrificed words
+
+# milestone text
+%%%%
+sacrifice your ability to drink while threatened
+
+身を脅かされている間薬を飲む能力を捧げる
+%%%%
+sacrificed drink
+
+# milestone text
+%%%%
+sacrificed essence
+
+# milestone text
+%%%%
+sacrificed health
+
+# milestone text
+%%%%
+sacrifice your ability to go unnoticed
+
+身を隠して行動する能力を捧げる
+%%%%
+sacrificed stealth
+
+# milestone text
+%%%%
+sacrifice all use of magical tools
+
+あらゆる魔法仕掛けの道具を使う能力を捧げる
+%%%%
+sacrificed evocations
+
+# milestone text
+%%%%
+sacrifice your ability to be loved
+
+他者から愛される能力を捧げる
+%%%%
+sacrificed love
+
+# milestone text
+%%%%
+sacrifice your courage
+
+自らの勇気を捧げる
+%%%%
+sacrificed courage
+
+# milestone text
+%%%%
+sacrifice all use of
+
+を使用することを捧げる
+%%%%
+sacrificed arcana
+
+# milestone text
+%%%%
+sacrifice your Dodging skill
+
+自らの回避スキルを捧げる
+%%%%
+sacrificed dodging
+
+# milestone text
+%%%%
+sacrifice your Armour skill
+
+自らの鎧スキルを捧げる
+%%%%
+sacrificed armour
+
+# milestone text
+%%%%
+sacrifice one of your
+
+自らの片
+%%%%
+sacrificed a hand
+
+# milestone text
+%%%%
+sacrifice your experiences
+
+自らの経験を捧げる
+%%%%
+sacrificed experience
+
+# milestone text
+%%%%
+sacrifice your skill
+
+自らの熟練度を捧げる
+%%%%
+sacrificed skill
+
+# milestone text
+%%%%
 ############################## shopping.cc ##############################
 %%%%
 [<w>Esc</w>/<w>R-Click</w>] exit
