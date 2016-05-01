@@ -5637,21 +5637,6 @@ static vector<ability_type> _get_possible_sacrifices()
 }
 
 /**
- * What's the name of the spell school corresponding to the given Ru mutation?
- *
- * @param mutation  The variety of MUT_NO_*_MAGIC in question.
- * @return          A long school name ("Summoning", "Translocations", etc.)
- */
-static const char* _arcane_mutation_to_school_name(mutation_type mutation)
-{
-    // XXX: this does a really silly dance back and forth between school &
-    // spelltype.
-    const skill_type sk = arcane_mutation_to_skill(mutation);
-    const spschool_flag_type school = skill2spell_type(sk);
-    return spelltype_long_name(school);
-}
-
-/**
  * What's the abbreviation of the spell school corresponding to the given Ru
  * mutation?
  *
@@ -6206,6 +6191,10 @@ bool ru_do_sacrifice(ability_type sac)
 
         if (sac == ABIL_RU_SACRIFICE_ARCANA)
             offer_text = jtrans(sac_text) + jtrans(sac_def.sacrifice_text);
+        else if (sac == ABIL_RU_SACRIFICE_HEALTH ||
+                 sac == ABIL_RU_SACRIFICE_ESSENCE ||
+                 sac == ABIL_RU_SACRIFICE_PURITY)
+            offer_text = jtrans(sac_def.sacrifice_text) + tagged_jtrans("[sacrifice]", sac_text);
         else
             offer_text = jtrans(sac_def.sacrifice_text) + jtrans(sac_text);
         mile_text = make_stringf("%s: %s.", sac_def.milestone_text,

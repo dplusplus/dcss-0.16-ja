@@ -393,6 +393,10 @@ slow healing
 
 遅再生
 %%%%
+[sacrifice]slow healing
+
+(遅再生)
+%%%%
 You heal slowly when monsters are visible.
 
 あなたはモンスターが視界にいる間回復が遅くなる。
@@ -472,6 +476,10 @@ weak muscles (Str -2)
 
 
 %%%%
+[sacrifice]weak muscles (Str -2)
+
+(腕力 -2)
+%%%%
 # MUT_DOPEY
 dopey
 
@@ -489,6 +497,10 @@ dopiness (-2 Int)
 
 
 %%%%
+[sacrifice]dopiness (-2 Int)
+
+(知力 -2)
+%%%%
 # MUT_CLUMSY
 clumsy
 
@@ -505,6 +517,10 @@ You are very clumsy. (Dex -4)
 clumsiness (Dex -2)
 
 
+%%%%
+[sacrifice]clumsiness (Dex -2)
+
+(器用 -2)
 %%%%
 # MUT_TELEPORT_CONTROL
 teleport control
@@ -900,6 +916,10 @@ chronic screaming
 
 
 %%%%
+[sacrifice]chronic screaming
+
+(叫ぶ衝動)
+%%%%
 # MUT_CLARITY
 clarity
 
@@ -998,6 +1018,10 @@ You feel a little healthier.
 deteriorating body
 
 
+%%%%
+[sacrifice]deteriorating body
+
+(慢性の能力低下)
 %%%%
 # MUT_BLURRY_VISION
 blurry vision
@@ -1705,6 +1729,10 @@ Your magical capacity is extremely low (-30% MP).
 reduced magical capacity (-10% MP)
 
 
+%%%%
+[sacrifice]reduced magical capacity (-10% MP)
+
+(MP -10%)
 %%%%
 # MUT_WILD_MAGIC
 wild magic
@@ -2420,6 +2448,10 @@ Your system partly accepts artificial healing.
 insusceptibility to healing potions and wands
 
 
+%%%%
+[sacrifice]insusceptibility to healing potions and wands
+
+(道具による回復不可)
 %%%%
 # MUT_DISTORTION_FIELD
 repulsion field
@@ -3654,6 +3686,10 @@ vulnerability to harm (AC -3)
 
 
 %%%%
+[sacrifice]vulnerability to harm (AC -3)
+
+(AC -3)
+%%%%
 # MUT_SLOW_REFLEXES
 slow reflexes
 
@@ -3689,6 +3725,10 @@ You reflexes speed back up.
 slowed reflexes (EV -3)
 
 
+%%%%
+[sacrifice]slowed reflexes (EV -3)
+
+(EV -3)
 %%%%
 # MUT_MAGICAL_VULNERABILITY
 magic vulnerability
@@ -3727,6 +3767,10 @@ vulnerability to magic (MR-)
 
 
 %%%%
+[sacrifice]vulnerability to magic (MR-)
+
+(MR-)
+%%%%
 # MUT_ANTI_WIZARDRY
 disrupted magic
 
@@ -3763,6 +3807,10 @@ Your ability to control magic is less disrupted.
 disrupted casting (-Wiz)
 
 
+%%%%
+[sacrifice]disrupted casting (-Wiz)
+
+(-Wiz)
 %%%%
 # MUT_MP_WANDS
 MP-powered wands
