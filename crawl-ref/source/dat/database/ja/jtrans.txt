@@ -7335,15 +7335,15 @@ Select what? (regex)
 %%%%
 Something appears %s!
 
-%s何かが現れた！
+%sに何かが現れた！
 %%%%
 at your feet
 
-あなたの足元に
+あなたの足元
 %%%%
 before you
 
-あなたの目の前に
+あなたの目の前
 %%%%
 Nothing appears to happen.
 
@@ -9454,7 +9454,7 @@ stops rolling.
 %%%%
 is no longer mute.
 
-はもう音を消されていない。
+は声が出るようになった。
 %%%%
 is no longer blind.
 
@@ -13538,7 +13538,7 @@ You exude an aura of power that intimidates your foes.
 %%%%
 Your aura of power can strike those that harm you.
 
-あなたのオーラはあなたに危害を加えるものに危害を加える。
+さらに、あなたが纏うオーラは自らに危害を加えるものに反撃する。
 %%%%
 heal your body and restore your magic
 
@@ -13638,7 +13638,7 @@ You no longer exude an aura of power that intimidates your foes.
 %%%%
 Your aura of power no longer strikes those that harm you.
 
-あなたのオーラはもうあなたに危害を加えるものに危害を加えなくなった。
+あなたの纏うオーラはもう自らに危害を加えるものに反撃することができなくなった。
 %%%%
 use your power to heal your body and restore your magic
 
@@ -14281,6 +14281,120 @@ Which god (%s)?
 %s %s rot%s away.
 
 %dつの%sが腐ってしまった。
+%%%%
+############################## sacrifice-data.h ##############################
+%%%%
+corrupt yourself with
+
+自らの肉体を崩壊させる
+%%%%
+sacrificed purity
+
+# milestone text
+%%%%
+sacrifice your ability to read while threatened
+
+身を脅かされている間巻物を読む能力を捧げる
+%%%%
+sacrificed words
+
+# milestone text
+%%%%
+sacrifice your ability to drink while threatened
+
+身を脅かされている間薬を飲む能力を捧げる
+%%%%
+sacrificed drink
+
+# milestone text
+%%%%
+sacrificed essence
+
+# milestone text
+%%%%
+sacrificed health
+
+# milestone text
+%%%%
+sacrifice your ability to go unnoticed
+
+身を隠して行動する能力を捧げる
+%%%%
+sacrificed stealth
+
+# milestone text
+%%%%
+sacrifice all use of magical tools
+
+あらゆる魔法仕掛けの道具を使う能力を捧げる
+%%%%
+sacrificed evocations
+
+# milestone text
+%%%%
+sacrifice your ability to be loved
+
+他者から愛される能力を捧げる
+%%%%
+sacrificed love
+
+# milestone text
+%%%%
+sacrifice your courage
+
+自らの勇気を捧げる
+%%%%
+sacrificed courage
+
+# milestone text
+%%%%
+sacrifice all use of
+
+を使用することを捧げる
+%%%%
+sacrificed arcana
+
+# milestone text
+%%%%
+sacrifice your Dodging skill
+
+自らの回避スキルを捧げる
+%%%%
+sacrificed dodging
+
+# milestone text
+%%%%
+sacrifice your Armour skill
+
+自らの鎧スキルを捧げる
+%%%%
+sacrificed armour
+
+# milestone text
+%%%%
+sacrifice one of your
+
+自らの片
+%%%%
+sacrificed a hand
+
+# milestone text
+%%%%
+sacrifice your experiences
+
+自らの経験を捧げる
+%%%%
+sacrificed experience
+
+# milestone text
+%%%%
+sacrifice your skill
+
+自らの熟練度を捧げる
+%%%%
+sacrificed skill
+
+# milestone text
 %%%%
 ############################## shopping.cc ##############################
 %%%%

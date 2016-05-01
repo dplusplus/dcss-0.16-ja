@@ -202,7 +202,7 @@ int yesnoquit(const char* str, bool safe, int safeanswer, bool allow_all,
     mouse_control mc(MOUSE_MODE_YESNO);
 
     string prompt =
-    make_stringf("%s%s ", str ? str : "Buggy prompt?",
+    make_stringf("%s%s ", str ? jtransc(str) : "Buggy prompt?",
                  _list_allowed_keys(alt_yes, alt_yes2,
                                     safe, allow_all).c_str());
     while (true)

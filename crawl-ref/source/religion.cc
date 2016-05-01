@@ -2240,7 +2240,18 @@ static bool _abil_chg_message(const char *pmsg, const char *youcanmsg,
     you.piety = old_piety;
 
     if (isupper(pmsg[0]))
-        god_speaks(you.religion, jtransc(pm));
+    {
+        pm = jtrans(pm);
+
+        if (you_worship(GOD_RU))
+        {
+            pm = replace_all(pm, "発散する", "発散した");
+            pm = replace_all(pm, "さらに、", "");
+            pm = replace_all(pm, "反撃する。", "反撃することができるようになった。");
+        }
+
+        god_speaks(you.religion, pm.c_str());
+    }
     else
     {
         god_speaks(you.religion,
