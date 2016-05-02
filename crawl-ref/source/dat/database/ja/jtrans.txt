@@ -8934,6 +8934,10 @@ turns back into a corpse!
 
 %sがどこからともなく現れた！
 %%%%
+the ghost of
+
+の幽霊
+%%%%
 %s heals %s%s
 
 %sは%sを癒した%s
