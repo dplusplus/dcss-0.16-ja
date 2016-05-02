@@ -170,7 +170,7 @@ Welcome to Hell!\nPlease enjoy your stay.
 %%%%
 [branch]the Iron City of Dis
 
-鉄の都『ディース』
+鉄の都ディース
 %%%%
 [branch]Gehenna
 
