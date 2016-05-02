@@ -401,7 +401,8 @@ string _melee_attack_particle(const string& verb)
         verb == "pounce on") // 襲いかかった
         return "に";
     else if (verb == "eye-gouge" || // 眼を抉った
-             verb == "kneecap") // 膝を狙って攻撃した
+             verb == "kneecap" || // 膝を狙って攻撃した
+             verb == "eviscerate") // 内臓をくりぬいた
         return "の";
     else if (verb == "wrestle") // 取っ組み合いをした
         return "と";
