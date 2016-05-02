@@ -2887,6 +2887,8 @@ void mark_milestone(const string &type, const string &milestone,
 
     const string milestone_file =
         (Options.save_dir + "milestones" + crawl_state.game_type_qualifier());
+    const string common_milestone_file =
+        (Options.save_dir + "common-milestones" + crawl_state.game_type_qualifier());
     const scorefile_entry se(0, MID_NOBODY, KILL_MISC, nullptr);
     se.set_base_xlog_fields();
     xlog_fields xl = se.get_fields();
@@ -2908,6 +2910,11 @@ void mark_milestone(const string &type, const string &milestone,
     {
         fprintf(fp, "%s\n", xlog_line.c_str());
         lk_close(fp, milestone_file);
+    }
+    if (FILE *fpcom = lk_open("a", common_milestone_file))
+    {
+        fprintf(fpcom, "%s\n", xlog_line.c_str());
+        lk_close(fpcom, common_milestone_file);
     }
 #endif // DGL_MILESTONES
 }
