@@ -610,7 +610,7 @@ void bolt::initialise_fire()
             && (!mon || !mon->observable()))
         {
             mprf(jtransc("%s appears from out of thin air!"),
-                 jtransc(name));
+                 tagged_jtransc("[zap]", name));
         }
     }
 

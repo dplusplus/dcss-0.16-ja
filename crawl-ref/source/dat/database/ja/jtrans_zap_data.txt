@@ -13,6 +13,306 @@
 
 稲妻
 %%%%
+[zap]missile
+
+飛び道具
+%%%%
+[zap]magic missile
+
+魔法の矢
+%%%%
+[zap]fire
+
+火炎
+%%%%
+[zap]cold
+
+冷気
+%%%%
+[zap]water
+
+水しぶき
+%%%%
+[zap]magic
+
+魔力
+%%%%
+[zap]electricity
+
+電気
+%%%%
+[zap]noxious fumes
+
+悪臭の霧
+%%%%
+[zap]poison
+
+毒
+%%%%
+[zap]negative energy
+
+負のエネルギー
+%%%%
+[zap]acid
+
+強酸
+%%%%
+[zap]miasma
+
+瘴気
+%%%%
+[zap]spores
+
+胞子
+%%%%
+[zap]poison arrow
+
+毒の塊
+%%%%
+[zap]hellfire
+
+地獄の業火
+%%%%
+[zap]steam
+
+蒸気
+%%%%
+[zap]energy
+
+エネルギー
+%%%%
+[zap]holy energy
+
+聖なるエネルギー
+%%%%
+[zap]fragments
+
+破片
+%%%%
+[zap]magma
+
+マグマ
+%%%%
+[zap]ice
+
+氷つぶて
+%%%%
+[zap]devastation
+
+破滅の光線
+%%%%
+[zap]random
+
+ランダムな
+%%%%
+[zap]chaos
+
+混沌
+%%%%
+[zap]ghostly flame
+
+鬼火
+%%%%
+[zap]slow
+
+減速の魔法
+%%%%
+[zap]haste
+
+加速の魔法
+%%%%
+[zap]might
+
+腕力強化の魔法
+%%%%
+[zap]healing
+
+回復の魔法
+%%%%
+[zap]paralysis
+
+麻痺の魔法
+%%%%
+[zap]confusion
+
+混乱の魔法
+%%%%
+[zap]invisibility
+
+透明化の魔法
+%%%%
+[zap]digging
+
+採掘の魔法
+%%%%
+[zap]teleportation
+
+テレポートの魔法
+%%%%
+[zap]polymorph
+
+変化の魔法
+%%%%
+[zap]malmutation
+
+悪性変異の魔法
+%%%%
+[zap]enslave
+
+隷属の魔法
+%%%%
+[zap]banishment
+
+アビスへの追放の魔法
+%%%%
+[zap]enslave soul
+
+魂の隷属の魔法
+%%%%
+[zap]pain
+
+苦痛の魔法
+%%%%
+[zap]dispel undead
+
+アンデッドの解呪の魔法
+%%%%
+[zap]disintegration
+
+分解
+%%%%
+[zap]blink
+
+瞬間移動の魔法
+%%%%
+[zap]blink close
+
+瞬間接敵の魔法
+%%%%
+[zap]petrify
+
+石化の魔法
+%%%%
+[zap]backlight
+
+後光
+%%%%
+[zap]porkalator
+
+豚化の魔法
+%%%%
+[zap]hibernation
+
+魔法の眠り
+%%%%
+[zap]sleep
+
+眠りの魔法
+%%%%
+[zap]berserk
+
+バーサークの魔法
+%%%%
+[zap]visual effects
+
+視覚効果
+%%%%
+[zap]torment damage
+
+苦痛の魔法
+%%%%
+[zap]ink
+
+墨
+%%%%
+[zap]cleansing flame
+
+浄化の炎
+%%%%
+[zap]air
+
+疾風
+%%%%
+[zap]inner flame
+
+内なる炎
+%%%%
+[zap]calcifying dust
+
+石化の雲
+%%%%
+[zap]magic web
+
+魔法の網
+%%%%
+[zap]sentinel's mark
+
+番兵の標的
+%%%%
+[zap]dimension anchor
+
+次元の碇
+%%%%
+[zap]vulnerability
+
+脆弱化
+%%%%
+[zap]malign offering
+
+悪意の供物の魔法
+%%%%
+[zap]virulence
+
+免疫の低下の魔法
+%%%%
+[zap]ignite poison
+
+毒の燃焼の魔法
+%%%%
+[zap]agility
+
+敏捷化の魔法
+%%%%
+[zap]sap magic
+
+魔法の阻害
+%%%%
+[zap]corrupt body
+
+身体の崩壊の魔法
+%%%%
+[zap]chaotic reflection
+
+混沌の反射
+%%%%
+[zap]crystal bolt
+
+水晶の矢
+%%%%
+[zap]drain magic
+
+魔力の簒奪
+%%%%
+[zap]tukima's dance
+
+ツキマーの舞踏
+%%%%
+[zap]bouncy tracer
+
+反射追跡光線
+%%%%
+[zap]breath of the dead
+
+死者の吐息
+%%%%
+[zap]resistance
+
+耐性の魔法
+%%%%
+[zap]attraction
+
+誘惑の魔法
+%%%%
 ############################## evoke.cc ##############################
 %%%%
 [zap]trail of fire
@@ -138,11 +438,6 @@
 
 吐き出された蜘蛛の糸
 # from SPELL_ENSNARE
-%%%%
-[zap]ghostly flame
-
-鬼火
-# from SPELL_GHOSTLY_FLAMES
 %%%%
 [zap]ghostly fireball
 
@@ -329,10 +624,6 @@
 %%%%
 ############################## zap-data.h ##############################
 %%%%
-[zap]acid
-
-強酸
-%%%%
 [zap]agony
 
 苦悶の光線
@@ -420,10 +711,6 @@ debugging ray
 
 大津波
 %%%%
-[zap]hellfire
-
-地獄の業火
-%%%%
 [zap]iron shot
 
 鉄塊の矢
@@ -451,10 +738,6 @@ debugging ray
 [zap]orb of energy
 
 エネルギーの爆裂球
-%%%%
-[zap]poison arrow
-
-毒の塊
 %%%%
 [zap]poison gas
 

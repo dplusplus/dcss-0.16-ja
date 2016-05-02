@@ -874,7 +874,7 @@ Frenzy
 [spell]Sap Magic
 
 # monster only
-Sap Magic
+魔法の阻害
 %%%%
 [spell]Scattershot
 
