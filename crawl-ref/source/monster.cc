@@ -2450,6 +2450,65 @@ string monster::name(description_level_type desc, bool force_vis,
     ;
 }
 
+static string _mon_special_name_en(const monster& mon, description_level_type desc,
+                                   bool force_seen)
+{
+    if (desc == DESC_NONE)
+        return "";
+
+    const bool arena_submerged = crawl_state.game_is_arena() && !force_seen
+        && mon.submerged();
+
+    if (mon.type == MONS_NO_MONSTER)
+        return "DEAD MONSTER";
+    else if (invalid_monster_type(mon.type) && mon.type != MONS_PROGRAM_BUG)
+        return _invalid_monster_str(mon.type);
+
+    // Handle non-visible case first.
+    if (!force_seen && !mon.observable() && !arena_submerged)
+        {
+            switch (desc)
+                {
+                case DESC_THE: case DESC_A: case DESC_PLAIN: case DESC_YOUR:
+                    return "something";
+                case DESC_ITS:
+                    return "something's";
+                default:
+                    return "it (buggy)";
+                }
+        }
+
+    if (desc == DESC_DBNAME)
+        {
+            monster_info mi(&mon, MILEV_NAME);
+            return mi.db_name();
+        }
+
+    return "";
+}
+
+string monster::name_en(description_level_type desc, bool force_vis,
+                     bool force_article) const
+{
+    string s = _mon_special_name_en(*this, desc, force_vis);
+    if (!s.empty() || desc == DESC_NONE)
+        return s;
+
+    monster_info mi(this, MILEV_NAME);
+    // i.e. to produce "the Maras" instead of just "Maras"
+    if (force_article)
+        mi.mb.set(MB_NAME_UNQUALIFIED, false);
+    return mi.proper_name_en(desc)
+#ifdef DEBUG_MONINDEX
+    // This is incredibly spammy, too bad for regular debug builds, but
+    // I keep re-adding this over and over during debugging.
+           + (Options.quiet_debug_messages[DIAG_MONINDEX]
+              ? string()
+              : make_stringf("«%d:%d»", mindex(), mid))
+#endif
+    ;
+}
+
 string monster::base_name(description_level_type desc, bool force_vis) const
 {
     string s = _mon_special_name(*this, desc, force_vis);

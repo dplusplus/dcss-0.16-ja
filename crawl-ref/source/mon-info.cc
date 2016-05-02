@@ -1352,12 +1352,25 @@ string monster_info::proper_name(description_level_type desc) const
     if (has_proper_name())
     {
         if (desc == DESC_ITS)
-            return apostrophise(mname);
+            return mname + "の";
         else
             return mname;
     }
     else
         return common_name(desc);
+}
+
+string monster_info::proper_name_en(description_level_type desc) const
+{
+    if (has_proper_name())
+    {
+        if (desc == DESC_ITS)
+            return apostrophise(mname);
+        else
+            return mname;
+    }
+    else
+        return common_name_en(desc);
 }
 
 string monster_info::full_name(description_level_type desc, bool use_comma) const
