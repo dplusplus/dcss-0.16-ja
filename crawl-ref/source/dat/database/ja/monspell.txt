@@ -668,7 +668,7 @@ ghost moth cast
 unseen ghost moth cast targeted
 
 # You feel you are being watched by something. @player_only@
-あなたは何かに見られているような気がした。 @player_only@
+あなたは何かに見られているような気がした。@player_only@
 %%%%
 golden eye cast targeted
 
@@ -949,7 +949,7 @@ unseen non-humanoid wizard cast
 wizard cast targeted
 
 # @The_monster@ gestures @at@ @target@ while chanting.
-@The_monster@ gestures @at@ @target@ while chanting.
+@The_monster@は呪文を唱えながら@target@に向かって身振りをした。
 
 # @The_monster@ points @at@ @target@ and mumbles some strange words.
 @The_monster@は@target@を指さして奇妙なつぶやき声を上げた。
