@@ -6001,7 +6001,7 @@ set off with:
 %%%%
 You started the game in wizard mode.
 
-あなたはウィザードモードでゲームを開始した。
+あなたはウィザードモードでゲームを開始した
 %%%%
 Press any key to start the hints mode intro, or Escape to skip it.
 
