@@ -677,14 +677,14 @@ w:3
 骨の
 
 # w:1
-# サファイアの
+# sapphire
 w:1
-sapphire
+サファイアの
 
 # w:3
-# 真っ黒な
+# ebony
 w:3
-ebony
+真っ黒な
 
 # currently 16 entries, so their overall weight amounts 180
 w:180
