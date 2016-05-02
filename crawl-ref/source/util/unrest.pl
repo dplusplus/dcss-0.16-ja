@@ -28,19 +28,19 @@ s/&amp;/&/g;
 s/\\(.)/$1/g;
 
 # Table of contents.
-my $contents = "Contents\n--------\n";
+my $contents = "目次\n--------\n";
 for (/\*{9,}\n(.\. .+)\n\*{9,}/g)
 {
     /(.)\. (.+)/;
-    $contents .= "\nAppendices\n" if $1 eq "1";
+    $contents .= "\n付表\n" if $1 eq "1";
     $contents .= "$1.      $2\n";
 }
 s/\.\. contents::\n   :depth: 5/$contents/;
 
 # Main headers.
 my $DCSShead = <<END;
-                       DUNGEON CRAWL Stone Soup
-                            - the manual -
+                   ダンジョンクロウルストーンスープ
+                            - 取扱説明書 -
 END
 s/\+{9,}\nDungeon Crawl Stone Soup manual\n\+{9,}\n/$DCSShead/;
 s/#{9,}\nManual\n#{9,}\n\n//;
