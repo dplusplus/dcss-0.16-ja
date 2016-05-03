@@ -1380,7 +1380,8 @@ string monster_info::full_name(description_level_type desc, bool use_comma) cons
 
     if (has_proper_name())
     {
-        string s = common_name() + "『" + mname + "』";
+        string stripped_mname = replace_all(replace_all(mname, "『", ""), "』", "");
+        string s = common_name() + "『" + stripped_mname + "』";
         if (desc == DESC_ITS)
             s += "の";
         return s;
