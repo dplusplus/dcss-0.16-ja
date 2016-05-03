@@ -2,6 +2,10 @@ language = ja
 show_more = false
 travel_delay = -1
 
+dump_order = header,hiscore,stats,misc,notes,inventory,
+dump_order += skills,spells,overview,mutations,messages,screenshot,
+dump_order += monlist,kills,action_counts
+
 ##### Crawl Init file ###############################################
 # For descriptions of all options, as well as some more in-depth information
 # on setting them, consult the file
