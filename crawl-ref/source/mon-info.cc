@@ -869,7 +869,7 @@ string monster_info::_core_name() const
     else if (nametype == MONS_LERNAEAN_HYDRA)
         s = jtrans("Lernaean hydra"); // TODO: put this into mon-data.h
     else if (nametype == MONS_ROYAL_JELLY)
-        s = jtrans("royal jelly");
+        s = jtrans("the royal jelly");
     else if (mons_species(nametype) == MONS_SERPENT_OF_HELL)
         s = jtrans("Serpent of Hell");
     else if (invalid_monster_type(nametype) && nametype != MONS_PROGRAM_BUG)
