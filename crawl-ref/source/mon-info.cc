@@ -1139,7 +1139,10 @@ string monster_info::common_name(description_level_type desc) const
     {
         ASSERT(num_heads > 0);
 
-        ss << num_heads << jtrans("-headed ");
+        if (type != MONS_LERNAEAN_HYDRA)
+            ss << num_heads << jtrans("-headed ");
+        else
+            ss << num_heads << "の首を持つ";
     }
 
     if (mons_class_is_chimeric(type))
