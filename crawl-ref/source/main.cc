@@ -1939,7 +1939,12 @@ static void _do_cycle_quiver(int dir)
 static void _do_list_gold()
 {
     if (shopping_list.empty())
-        mprf(jtransc("You have %d gold piece%s."), you.gold, you.gold != 1 ? "s" : "");
+    {
+        if (you.gold > 0)
+            mprf(jtransc("You have %d gold piece%s."), you.gold, you.gold != 1 ? "s" : "");
+        else
+            mpr("あなたは一枚も金貨を持っていない。");
+    }
     else
         shopping_list.display();
 }
