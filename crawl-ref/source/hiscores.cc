@@ -2081,11 +2081,11 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
         else
         {
             desc += make_stringf(jtransc("Engulfed by %s%s %s"),
-                                 jtransc(death_source_name.empty() ? "" :
-                                         death_source_name == "you" ? "their own" :
-                                         death_source_name),
-                                 jtransc(death_source_name.empty() ? " cloud of" : ""),
-                                 jtransc(auxkilldata));
+                                 death_source_name.empty() ? "" :
+                                 (jtrans(death_source_name == "you" ? "their own" :
+                                         death_source_name) + "の").c_str(),
+                                 jtransc(auxkilldata),
+                                 jtransc(death_source_name.empty() ? " cloud of" : ""));
         }
         needs_damage = true;
         break;
