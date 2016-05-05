@@ -283,6 +283,10 @@ mostly
 
 ほとんど
 %%%%
+partially
+
+ある程度
+%%%%
 %s %s shields you from negative energy.
 
 %sは負のエネルギーからあなたを%s守る。

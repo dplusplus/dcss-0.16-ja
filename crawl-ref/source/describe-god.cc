@@ -897,7 +897,7 @@ static void _describe_god_powers(god_type which_god, int numcols)
                                                  "partially";
 
             cprintf(jtranslnc("%s %s shields you from negative energy."),
-                    jtransc(god_name(which_god)), how);
+                    jtransc(god_name(which_god)), jtransc(how));
         }
     }
     else if (which_god == GOD_TROG)
