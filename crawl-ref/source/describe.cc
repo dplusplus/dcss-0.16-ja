@@ -1646,6 +1646,11 @@ bool is_dumpable_artefact(const item_def &item)
 // get_item_description
 //
 //---------------------------------------------------------------
+string _spacer(const int length)
+{
+    return length < 0 ? "" : string(length, ' ');
+}
+
 string get_item_description(const item_def &item, bool verbose,
                             bool dump, bool noquote)
 {
@@ -1661,13 +1666,13 @@ string get_item_description(const item_def &item, bool verbose,
                           is_artefact(item)) ? "" :
                           is_artefact(item) ? uppercase_first(item.name_en(DESC_THE))
                                             : uppercase_first(item.name_en(DESC_A));
+        string spacer = _spacer(get_number_of_cols() - strwidth(name)
+                                                     - strwidth(name_en) - 1);
 
         if (strwidth(name) + strwidth(name_en) + 5 > get_number_of_cols())
             name_en = "";
 
-        string title = name + string(max(0, get_number_of_cols() - strwidth(name)
-                                                                 - strwidth(name_en)) - 1,
-                                     ' ') + name_en;
+        string title = name + spacer + name_en;
 
         description << sp2nbsp(title);
     }
@@ -2100,11 +2105,12 @@ void get_feature_desc(const coord_def &pos, describe_info &inf)
     string desc_en   = feature_description_at_en(pos, false, DESC_A, false);
     string db_name   = feat == DNGN_ENTER_SHOP ? "a shop" : desc_en;
     string long_desc = getLongDescription(db_name);
+    string spacer    = _spacer(get_number_of_cols() - strwidth(desc)
+                                                    - strwidth(desc_en) - 1);
 
-    inf.title = desc + string(max(0, get_number_of_cols() - strwidth(desc) - strwidth(desc_en) - 1),
-                              ' ') + (desc != desc_en ? desc_en : "");
+    inf.title = desc + spacer + (desc != desc_en ? desc_en : "");
 
-    inf.title = replace_all(inf.title, " ", " "); // replace spaces to no-break spaces
+    inf.title = sp2nbsp(inf.title);
 
     if (strwidth(desc) + strwidth(desc_en) + 5 > get_number_of_cols())
     {
@@ -2757,12 +2763,12 @@ string get_skill_description(skill_type skill, bool need_title)
     string lookup_en = skill_name(skill);
     string lookup = jtrans(lookup_en);
     string result = "";
+    string spacer = _spacer(get_number_of_cols() - strwidth(lookup)
+                                                 - strwidth(lookup_en) - 1);
 
     if (need_title)
     {
-        result = lookup + string(max(0, get_number_of_cols() - strwidth(lookup)
-                                                             - strwidth(lookup_en) - 1),
-                                 ' ') + (lookup != lookup_en ? lookup_en : "");
+        result = lookup + spacer + (lookup != lookup_en ? lookup_en : "");
         result += "\n\n";
     }
 
@@ -2812,7 +2818,7 @@ string get_skill_description(skill_type skill, bool need_title)
             break;
     }
 
-    return result;
+    return sp2nbsp(result);
 }
 
 /**
@@ -2923,10 +2929,11 @@ static int _get_spell_description(const spell_type spell,
     description.reserve(500);
 
     description = tagged_jtrans("[spell]", spell_title(spell));
-    description = description + string(max(0, get_number_of_cols()
-                                           - strwidth(description)
-                                           - strwidth(spell_title(spell)) - 1),
-                                       ' ') + spell_title(spell);
+
+    string spacer = _spacer(get_number_of_cols() - strwidth(description)
+                                                 - strwidth(spell_title(spell)) - 1);
+
+    description = description + spacer + spell_title(spell);
     description = sp2nbsp(description);
     description += "\n\n";
     const string long_descrip = getLongDescription(string(spell_title(spell))
@@ -3847,9 +3854,12 @@ void get_monster_db_desc(const monster_info& mi, describe_info &inf,
         desc_en = "A chimera";
 
     if (inf.title.empty())
-        inf.title = desc + string(max(0, get_number_of_cols() - strwidth(desc)
-                                                              - strwidth(desc_en) - 1),
-                                  ' ') + (desc != desc_en ? desc_en : "");
+    {
+        string spacer = _spacer(get_number_of_cols() - strwidth(desc)
+                                                     - strwidth(desc_en) - 1);
+
+        inf.title = desc + spacer + (desc != desc_en ? desc_en : "");
+    }
     inf.body << "\n";
 
     string db_name;
