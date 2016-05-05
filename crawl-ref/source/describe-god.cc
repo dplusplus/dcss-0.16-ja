@@ -266,7 +266,7 @@ static const char *divine_title[NUM_GODS][8] =
         "導士",               "正しき者",              "無垢清浄の者",             "秩序の代行者"},
 
     // The Shining One.
-    {"不名誉な存在"        "侍祭",                  "高潔な者",                 "揺るがぬ者",
+    {"不名誉な存在",       "侍祭",                  "高潔な者",                 "揺るがぬ者",
         "聖戦者",             "悪を祓う者",            "悪を滅する者",             "光の代行者"},
 
     // Kikubaaqudgha -- scholarly death.
