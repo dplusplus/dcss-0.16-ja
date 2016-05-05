@@ -18726,23 +18726,23 @@ You are horrified!
 
 魔力汚染
 %%%%
-very slightly contaminated
+[dur]very slightly contaminated
 
 わずかに魔力汚染されている
 %%%%
-contaminated
+[dur]contaminated
 
 魔力汚染されている
 %%%%
-heavily contaminated
+[dur]heavily contaminated
 
 だいぶ魔力汚染されている
 %%%%
-very heavily contaminated
+[dur]very heavily contaminated
 
 かなり魔力汚染されている
 %%%%
-very very heavily contaminated
+[dur]very very heavily contaminated
 
 極めて魔力汚染されている
 %%%%
