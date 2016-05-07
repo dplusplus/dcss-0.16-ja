@@ -69,7 +69,7 @@ giant spiked club
 %%%%
 dagger
 
-短剣
+ダガー
 %%%%
 quick blade
 
