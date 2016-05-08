@@ -9784,11 +9784,11 @@ Couldn't find a path from (%d,%d) to (%d,%d).
 %%%%
 's form twists and warps, and jellies spill out!
 
-%sは身をよじり、ジェリーの群れを産み出した！
+は身をよじり、ジェリーの群れを産み出した！
 %%%%
 's appearance momentarily alters.
 
-%sの姿は一瞬変化した。
+の姿は一瞬変化した。
 %%%%
 shudders.
 
