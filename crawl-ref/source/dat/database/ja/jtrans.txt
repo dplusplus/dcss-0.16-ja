@@ -9786,6 +9786,18 @@ Couldn't find a path from (%d,%d) to (%d,%d).
 
 は身をよじり、ジェリーの群れを産み出した！
 %%%%
+shaped Royal Jelly
+
+に変化した『ロイヤルジェリー』
+%%%%
+shaped Lernaean hydra
+
+に変化した『レルネーのヒドラ』
+%%%%
+shaped Serpent of Hell
+
+に変化した『地獄のサーペント』
+%%%%
 's appearance momentarily alters.
 
 の姿は一瞬変化した。
@@ -9809,6 +9821,10 @@ grows a second head
 changes into
 
 に変化した
+%%%%
+evaporates and reforms as
+
+一瞬消え、%sに変化した
 %%%%
 %s %s%s!
 

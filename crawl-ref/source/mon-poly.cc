@@ -242,19 +242,19 @@ void change_monster_type(monster* mons, monster_type targetc)
     if (mons->type == MONS_ROYAL_JELLY
         || mons->mname == "shaped Royal Jelly")
     {
-        name   = "shaped Royal Jelly";
+        name   = jtrans("shaped Royal Jelly");
         flags |= MF_INTERESTING | MF_NAME_SUFFIX;
     }
     else if (mons->type == MONS_LERNAEAN_HYDRA
              || mons->mname == "shaped Lernaean hydra")
     {
-        name   = "shaped Lernaean hydra";
+        name   = jtrans("shaped Lernaean hydra");
         flags |= MF_INTERESTING | MF_NAME_SUFFIX;
     }
     else if (mons->mons_species() == MONS_SERPENT_OF_HELL
              || mons->mname == "shaped Serpent of Hell")
     {
-        name   = "shaped Serpent of Hell";
+        name   = jtrans("shaped Serpent of Hell");
         flags |= MF_INTERESTING | MF_NAME_SUFFIX;
     }
     else if (!mons->mname.empty())
@@ -488,8 +488,7 @@ bool monster_polymorph(monster* mons, monster_type targetc,
 
     bool could_see = you.can_see(mons);
     bool need_note = (could_see && MONST_INTERESTING(mons));
-    string old_name_a = mons->full_name(DESC_A);
-    string old_name_the = mons->full_name(DESC_THE);
+    string old_name_plain = mons->full_name(DESC_PLAIN);
     monster_type oldc = mons->type;
 
     if (targetc == RANDOM_TOUGHER_MONSTER)
@@ -525,7 +524,7 @@ bool monster_polymorph(monster* mons, monster_type targetc,
         string verb = "";
         string obj = "";
 
-        obj = can_see ? mons_type_name(targetc, DESC_A)
+        obj = can_see ? mons_type_name(targetc, DESC_PLAIN)
                       : "something you cannot see";
 
         if (oldc == MONS_OGRE && targetc == MONS_TWO_HEADED_OGRE)
@@ -536,15 +535,18 @@ bool monster_polymorph(monster* mons, monster_type targetc,
         else if (mons->is_shapeshifter())
             verb = "changes into ";
         else if (_jiyva_slime_target(targetc)) {
-//            verb = "quivers uncontrollably and liquefies into ";
-            verb = "はなすすべもなく震え、" + obj + "に変化した";
+            verb = "なすすべもなく震え、" + jtrans(obj) + "に変化した";
             obj = "";
         }
         else
-            verb = "evaporates and reforms as ";
+        {
+            verb = make_stringf(jtransc("evaporates and reforms as "),
+                                jtransc(obj));
+            obj = "";
+        }
 
         mprf(jtransc("%s %s%s!"),
-             jtransc(mons->full_name(DESC_PLAIN)),
+             jtransc(old_name_plain),
              jtransc(obj), jtransc(verb));
     }
     else if (can_see)
@@ -560,7 +562,7 @@ bool monster_polymorph(monster* mons, monster_type targetc,
         string new_name = jtrans(can_see ? mons->full_name(DESC_PLAIN)
                                          : "something unseen");
 
-        take_note(Note(NOTE_POLY_MONSTER, 0, 0, old_name_a.c_str(),
+        take_note(Note(NOTE_POLY_MONSTER, 0, 0, old_name_plain.c_str(),
                        new_name.c_str()));
 
         if (can_see)
