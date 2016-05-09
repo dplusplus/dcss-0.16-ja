@@ -541,9 +541,6 @@ static string _hiscore_date_string_j(time_t time)
 {
     struct tm *date = TIME_FN(&time);
 
-    const char *mons[12] = { "Jan", "Feb", "Mar", "Apr", "May", "June",
-                             "July", "Aug", "Sept", "Oct", "Nov", "Dec" };
-
     return make_stringf("%04d/%02d/%02d",
                         date->tm_year + 1900,
                         date->tm_mon+1,
@@ -1964,6 +1961,13 @@ string scorefile_entry::death_place(death_desc_verbosity verbosity) const
     if (verbosity == DDV_ONELINE || verbosity == DDV_TERSE)
         return " (" + level_id(branch, dlvl).describe() + ")";
 
+    if (verbose && death_time
+        && !_hiscore_same_day(birth_time, death_time))
+    {
+        place += _hiscore_date_string_j(death_time);
+        place += "に";
+    }
+
     if (verbose && death_type != KILLED_BY_QUITTING && death_type != KILLED_BY_WIZMODE)
         place += "...";
 
@@ -1972,13 +1976,6 @@ string scorefile_entry::death_place(death_desc_verbosity verbosity) const
 
     if (!mapdesc.empty())
         place += make_stringf(" (%s)", mapdesc.c_str());
-
-    if (verbose && death_time
-        && !_hiscore_same_day(birth_time, death_time))
-    {
-        place += " on ";
-        place += _hiscore_date_string(death_time);
-    }
 
     return place;
 }
