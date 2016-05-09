@@ -548,7 +548,7 @@ static void _sdump_notes(dump_params &par)
     if (note_list.empty())
         return;
 
-    text += jtransln("notes header");
+    text += jtransln("Notes\nTurn   | Place    | Note\n");
     text += "--------------------------------------------------------------\n";
     for (const Note &note : note_list)
     {
@@ -1433,11 +1433,13 @@ void display_notes()
     scr.set_more();
     scr.set_tag("notes");
     scr.set_highlighter(new MenuHighlighter);
-    scr.set_title(new MenuEntry("Turn   | Place    | Note"));
+    scr.set_title(new MenuEntry(jtrans("Turn   | Place    | Note")));
     for (const Note &note : note_list)
     {
         string prefix = note.describe(true, true, false);
         string suffix = note.describe(false, false, true);
+        int colwidth_turn = note.describe(true, false, false).length();
+        int colwidth_place = note.describe(false, true, false).length() - 5;
         if (suffix.empty())
             continue;
 
@@ -1453,8 +1455,9 @@ void display_notes()
         scr.add_entry(new MenuEntry(prefix + parts[0]));
         for (unsigned int j = 1; j < parts.size(); ++j)
         {
-            scr.add_entry(new MenuEntry(string(prefix.length()-2, ' ') +
-                                        string("| ") + parts[j]));
+            scr.add_entry(new MenuEntry(string(colwidth_turn, ' ') + "|" +
+                                        string(colwidth_place, ' ') + "| " +
+                                        parts[j]));
         }
     }
     scr.show();
