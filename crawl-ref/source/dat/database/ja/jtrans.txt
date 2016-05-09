@@ -18464,7 +18464,7 @@ You are moving sluggishly
 %%%%
 [dur]glowing
 
-後光
+発光
 %%%%
 You are glowing.
 
