@@ -25,7 +25,7 @@ You %svisited %d bazaar
 %%%%
 You %s%s %d ziggurat
 
-あなたは%d回
+あなたは%d回ジグラット%s
 %%%%
 (completing %d)
 
