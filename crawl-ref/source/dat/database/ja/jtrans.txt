@@ -6607,59 +6607,99 @@ blocks your attack.
 
 はあなたの攻撃を防いだ。
 %%%%
-auxname constrict
+grab
 
-拘束
+掴んだ
 %%%%
-auxname grab
+[auxname]grab
 
 掴み
 %%%%
-auxname kick
+kick
+
+蹴った
+%%%%
+[auxname]kick
 
 蹴り
 %%%%
-auxname tentacle spike
+claw
+
+かきむしった
+%%%%
+pierce
+
+刺し貫いた
+%%%%
+[auxname]tentacle spike
 
 棘の生えた触手
 %%%%
-auxname headbutt
+headbutt
+
+頭突きをした
+%%%%
+[auxname]headbutt
 
 頭突き
 %%%%
-auxname peck
+peck
+
+ついばんだ
+%%%%
+[auxname]peck
 
 ついばみ
 %%%%
-auxname tail-slap
+tail-slap
+
+尻尾で打ちつけた
+%%%%
+[auxname]tail-slap
 
 尻尾の一撃
 %%%%
-auxname punch
+punch
 
-パンチ
+殴った
 %%%%
-auxname slash
+[auxname]slash
 
 切り払い
 %%%%
-auxname claw
+[auxname]claw
 
 爪
 %%%%
-auxname tentacle-slap
+[auxname]tentacle-slap
 
 触手の一撃
 %%%%
-auxname bite
+[auxname]punch
+
+パンチ
+%%%%
+bite
+
+噛んだ
+%%%%
+[auxname]bite
 
 噛みつき
 %%%%
-auxname bludgeon
+bludgeon
+
+殴りつけた
+%%%%
+[auxname]bludgeon
 
 殴打
 %%%%
-auxname squeeze
+squeeze
+
+締めつけた
+%%%%
+[auxname]squeeze
 
 締めつけ
 %%%%
@@ -6836,10 +6876,6 @@ sock
 
 殴った
 %%%%
-bludgeon
-
-殴りつけた
-%%%%
 shatter
 
 粉砕した
@@ -6915,10 +6951,6 @@ devastate
 scratch
 
 引っかいた
-%%%%
-claw
-
-かきむしった
 %%%%
 mangle
 
@@ -7077,10 +7109,6 @@ strangle-hug
 
 締め上げた
 %%%%
-squeeze
-
-締めつけた
-%%%%
 tease
 
 ぐしゃぐしゃにした
@@ -7109,10 +7137,6 @@ kneecap
 
 膝を狙って攻撃した
 %%%%
-bite
-
-噛んだ
-%%%%
 sting
 
 刺した
@@ -7129,29 +7153,9 @@ engulf
 
 とりまいた
 %%%%
-peck
-
-ついばんだ
-%%%%
-headbutt
-
-頭突きをした
-%%%%
-punch
-
-殴った
-%%%%
-kick
-
-蹴った
-%%%%
 tentacle-slap
 
 触手で打ちつけた
-%%%%
-tail-slap
-
-尻尾で打ちつけた
 %%%%
 gore
 

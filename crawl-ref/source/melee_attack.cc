@@ -1280,13 +1280,14 @@ bool melee_attack::player_aux_test_hit()
     if (to_hit >= phaseless_evasion && defender_visible)
     {
         mprf(jtransc("Your %s passes through %s as %s momentarily phases out."),
-             jtransc(string("auxname ") + aux_attack),
+             tagged_jtransc("[auxname]", aux_attack),
              jtransc(defender->name(DESC_THE)),
              defender->pronoun(PRONOUN_SUBJECTIVE).c_str());
     }
     else
     {
-        mprf(jtransc("Your %s misses %s."), jtransc(string("auxname ") + aux_attack),
+        mprf(jtransc("Your %s misses %s."),
+             tagged_jtransc("[auxname]", aux_attack),
              jtransc(defender->name(DESC_THE)));
     }
 
