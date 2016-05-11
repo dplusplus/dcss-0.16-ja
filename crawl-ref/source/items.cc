@@ -1155,6 +1155,7 @@ static string _base_type_string(const item_def &item)
         case ARM_PEARL_DRAGON_ARMOUR:
         case ARM_SHADOW_DRAGON_ARMOUR:
         case ARM_QUICKSILVER_DRAGON_ARMOUR:
+        case ARM_CRYSTAL_PLATE_ARMOUR:
             return "armour";
         case ARM_CENTAUR_BARDING:
             return "馬甲";
