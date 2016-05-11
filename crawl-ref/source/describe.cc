@@ -1000,7 +1000,7 @@ static string _describe_weapon(const item_def &item, bool verbose)
             if (is_range_weapon(item))
             {
                 description += "この武器から放たれた";
-                description += ammo_name(item);
+                description += jtrans(ammo_name(item));
                 description += jtrans(" fired from it inflicts extra damage.");
             }
             else
