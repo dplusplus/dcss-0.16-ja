@@ -1456,7 +1456,7 @@ Your feet stretch into talons.
 
 あなたの足は伸縮し、鉤爪になった。
 %%%%
-Your talons dull and shrink into feet."
+Your talons dull and shrink into feet.
 
 あなたの足の爪は鋭さを失い、縮んだ。
 %%%%
