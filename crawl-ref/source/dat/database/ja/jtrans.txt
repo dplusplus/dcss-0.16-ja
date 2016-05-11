@@ -12089,7 +12089,7 @@ Your slowness suddenly goes away.
 %%%%
 You feel strangely stable.
 
-あなたは妙に安定したと感じた。
+あなたは奇妙な安定感を覚えた。
 %%%%
 You violently calm down.
 
@@ -15627,10 +15627,6 @@ Your charged fireball dissipates.
 
 あなたが準備していた遅延式ファイアボールは消滅した。
 %%%%
-You feel strangely stable.
-
-あなたは奇妙な安定感を覚えた。
-%%%%
 You feel limber!
 
 あなたは体が柔らかくなった！
@@ -17656,10 +17652,6 @@ A powerful magic prevents control of your teleportation.
 It is impossible to concentrate on your destination while mesmerised.
 
 あなたは魅了されている間は移動先に集中することができない。
-%%%%
-You feel strangely stable.
-
-あなたは奇妙な安定感を覚えた。
 %%%%
 You feel strangely unstable.
 
