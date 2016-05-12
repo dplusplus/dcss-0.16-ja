@@ -2432,7 +2432,8 @@ string item_def::name_aux(description_level_type desc, bool terse, bool ident,
         else
         {
             if (item_typ == BOOK_MANUAL)
-                buff << jtrans(skill_name(static_cast<skill_type>(plus))) << jtrans("manual of");
+                buff << tagged_jtrans("[skill]", skill_name(static_cast<skill_type>(plus)))
+                     << jtrans("manual of");
             else
                 buff << jtrans(sub_type_string(*this, !dbname));
         }

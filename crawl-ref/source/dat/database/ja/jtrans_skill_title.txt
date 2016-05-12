@@ -1,573 +1,573 @@
 %%%%
-Fighting
+[skill]Fighting
 
 戦闘
 %%%%
-Skirmisher
+[title]Skirmisher
 
 斥候
 %%%%
-Fighter
+[title]Fighter
 
 戦士
 %%%%
-Warrior
+[title]Warrior
 
 勇士
 %%%%
-Slayer
+[title]Slayer
 
 討伐者
 %%%%
-Conqueror
+[title]Conqueror
 
 征服者
 %%%%
-Short Blades
+[skill]Short Blades
 
 短剣
 %%%%
-Cutter
+[title]Cutter
 
 切りかかる者
 %%%%
-Slicer
+[title]Slicer
 
 斬り刻む者
 %%%%
-Swashbuckler
+[title]Swashbuckler
 
 乱暴者
 %%%%
-Cutthroat
+[title]Cutthroat
 
 殺し屋
 %%%%
-Politician
+[title]Politician
 
 策略家
 %%%%
-Long Blades
+[skill]Long Blades
 
 長剣
 %%%%
-Slasher
+[title]Slasher
 
 斬りかかる者
 %%%%
-Carver
+[title]Carver
 
 肉切り
 %%%%
-Fencer
+[title]Fencer
 
 剣士
 %%%%
-@Adj@ Blade
+[title]@Adj@ Blade
 
 @Adj@の剣豪
 %%%%
-Swordmaster
+[title]Swordmaster
 
 剣の達人
 %%%%
-Axes
+[skill]Axes
 
 斧
 %%%%
-Chopper
+[title]Chopper
 
 切りつける者
 %%%%
-Cleaver
+[title]Cleaver
 
 切り刻む者
 %%%%
-Severer
+[title]Severer
 
 分断者
 %%%%
-Executioner
+[title]Executioner
 
 処刑人
 %%%%
-Axe Maniac
+[title]Axe Maniac
 
 斧の兇手
 %%%%
-Maces & Flails
+[skill]Maces & Flails
 
 鈍器
 %%%%
-Cudgeler
+[title]Cudgeler
 
 強打する者
 %%%%
-Basher
+[title]Basher
 
 打ちつける者
 %%%%
-Bludgeoner
+[title]Bludgeoner
 
 打倒者
 %%%%
-Shatterer
+[title]Shatterer
 
 粉砕者
 %%%%
-Skullcrusher
+[title]Skullcrusher
 
 頭蓋粉砕者
 %%%%
-Polearms
+[skill]Polearms
 
 長柄武器
 %%%%
-Poker
+[title]Poker
 
 貫く者
 %%%%
-Spear-Bearer
+[title]Spear-Bearer
 
 槍を帯びし者
 %%%%
-Impaler
+[title]Impaler
 
 刺殺者
 %%%%
-Phalangite
+[title]Phalangite
 
 ファランクス兵
 %%%%
-@Adj@ Porcupine
+[title]@Adj@ Porcupine
 
 @Adj@の千槍
 %%%%
-Staves
+[skill]Staves
 
 棒術
 %%%%
-Twirler
+[title]Twirler
 
 振りまわす者
 %%%%
-Cruncher
+[title]Cruncher
 
 砕く者
 %%%%
-Stickfighter
+[title]Stickfighter
 
 棒術の戦士
 %%%%
-Pulveriser
+[title]Pulveriser
 
 粉砕者
 %%%%
-Chief of Staff
+[title]Chief of Staff
 
 錫杖の主人
 %%%%
-Slings
+[skill]Slings
 
 スリング
 %%%%
-Vandal
+[title]Vandal
 
 野人
 %%%%
-Slinger
+[title]Slinger
 
 投石者
 %%%%
-Whirler
+[title]Whirler
 
 旋回の手
 %%%%
-Slingshot
+[title]Slingshot
 
 投石の達人
 %%%%
-@Adj@ Catapult
+[title]@Adj@ Catapult
 
 @Adj@の射出人
 %%%%
-Bows
+[skill]Bows
 
 弓
 %%%%
-Shooter
+[title]Shooter
 
 射手
 %%%%
-Archer
+[title]Archer
 
 弓術家
 %%%%
-Marks@genus@
+[title]Marks@genus@
 
 @genus@の名射手
 %%%%
-Crack Shot
+[title]Crack Shot
 
 熟練弓術家
 %%%%
-Merry @Genus@
+[title]Merry @Genus@
 
 @Genus@の英傑
 %%%%
-Crossbows
+[skill]Crossbows
 
 クロスボウ
 %%%%
-Bolt Thrower
+[title]Bolt Thrower
 
 石弓の射手
 %%%%
-Quickloader
+[title]Quickloader
 
 速射人
 %%%%
-Sharpshooter
+[title]Sharpshooter
 
 射撃の名手
 %%%%
-Sniper
+[title]Sniper
 
 狙撃の名手
 %%%%
-@Adj@ Arbalest
+[title]@Adj@ Arbalest
 
 @Adj@の名弩
 %%%%
-Throwing
+[skill]Throwing
 
 投擲
 %%%%
-Chucker
+[title]Chucker
 
 放つ者
 %%%%
-Thrower
+[title]Thrower
 
 放ち手
 %%%%
-Deadly Accurate
+[title]Deadly Accurate
 
 鋭き名手
 %%%%
-Hawkeye
+[title]Hawkeye
 
 鷹の目の名手
 %%%%
-@Adj@ Ballista
+[title]@Adj@ Ballista
 
 @Adj@の槍投手
 %%%%
-Armour
+[skill]Armour
 
 甲冑
 %%%%
-Covered
+[title]Covered
 
 覆われし者
 %%%%
-Protected
+[title]Protected
 
 護られし者
 %%%%
-Tortoise
+[title]Tortoise
 
 陸亀
 %%%%
-Impregnable
+[title]Impregnable
 
 攻め難き者
 %%%%
-Invulnerable
+[title]Invulnerable
 
 徹さざる者
 %%%%
-Dodging
+[skill]Dodging
 
 躱し身
 %%%%
-Ducker
+[title]Ducker
 
 避ける者
 %%%%
-Nimble
+[title]Nimble
 
 素早き者
 %%%%
-Spry
+[title]Spry
 
 身軽き者
 %%%%
-Acrobat
+[title]Acrobat
 
 軽業師
 %%%%
-Intangible
+[title]Intangible
 
 無形の者
 %%%%
-Stealth
+[skill]Stealth
 
 隠密
 %%%%
-Sneak
+[title]Sneak
 
 忍び寄る者
 %%%%
-Covert
+[title]Covert
 
 隠れし者
 %%%%
-Unseen
+[title]Unseen
 
 見えざる者
 %%%%
-Imperceptible
+[title]Imperceptible
 
 気配なき者
 %%%%
-Ninja
+[title]Ninja
 
 忍者
 %%%%
-Shields
+[skill]Shields
 
 盾
 %%%%%
-Shield-Bearer
+[title]Shield-Bearer
 
 盾を帯びし者
 %%%%
-Blocker
+[title]Blocker
 
 遮る者
 %%%%
-Peltast
+[title]Peltast
 
 盾の名手
 %%%%
-Hoplite
+[title]Hoplite
 
 重装歩兵
 %%%%
-@Adj@ Barricade
+[title]@Adj@ Barricade
 
 @Adj@の防塞
 %%%%
-Unarmed Combat
+[skill]Unarmed Combat
 
 徒手格闘
 %%%%
-Ruffian
+[title]Ruffian
 
 暴漢
 %%%%
-Grappler
+[title]Grappler
 
 格闘者
 %%%%
-Brawler
+[title]Brawler
 
 乱闘者
 %%%%
-Wrestler
+[title]Wrestler
 
 力士
 %%%%
-@Weight@weight Champion
+[title]@Weight@weight Champion
 
-@Weight@の王者
+@Weight@王者
 %%%%
-Spellcasting
+[skill]Spellcasting
 
 呪文詠唱
 %%%%
-Magician
+[title]Magician
 
 手品師
 %%%%
-Thaumaturge
+[title]Thaumaturge
 
 奇術師
 %%%%
-Eclecticist
+[title]Eclecticist
 
 識者
 %%%%
-Sorcerer
+[title]Sorcerer
 
 魔道士
 %%%%
-Archmage
+[title]Archmage
 
 大賢者
 %%%%
-Conjurations
+[skill]Conjurations
 
 妖術
 %%%%
-Conjurer
+[title]Conjurer
 
 妖術師
 %%%%
-Destroyer
+[title]Destroyer
 
 破壊者
 %%%%
-Devastator
+[title]Devastator
 
 壊滅者
 %%%%
-Ruinous
+[title]Ruinous
 
 損なう者
 %%%%
-Annihilator
+[title]Annihilator
 
 殲滅者
 %%%%
-Hexes
+[skill]Hexes
 
 呪術
 %%%%
-Vexing
+[title]Vexing
 
 敵対者
 %%%%
-Jinx
+[title]Jinx
 
 不運を呼ぶ者
 %%%%
-Bewitcher
+[title]Bewitcher
 
 蠱惑する者
 %%%%
-Maledictor
+[title]Maledictor
 
 呪術師
 %%%%
-Spellbinder
+[title]Spellbinder
 
 呪縛する者
 %%%%
-Charms
+[skill]Charms
 
 加護
 %%%%
-Charmwright
+[title]Charmwright
 
 秘術師
 %%%%
-Infuser
+[title]Infuser
 
 魔力の注ぎ手
 %%%%
-Anointer
+[title]Anointer
 
 聖術を扱う者
 %%%%
-Gracecrafter
+[title]Gracecrafter
 
 英知をもたらす者
 %%%%
-Miracle Worker
+[title]Miracle Worker
 
 奇跡の創造主
 %%%%
-Summonings
+[skill]Summonings
 
 召喚術
 %%%%
-Caller
+[title]Caller
 
 呼ばわる者
 %%%%
-Summoner
+[title]Summoner
 
 召喚師
 %%%%
-Convoker
+[title]Convoker
 
 招集する者
 %%%%
-Demonologist
+[title]Demonologist
 
 悪魔術師
 %%%%
-Hellbinder
+[title]Hellbinder
 
 地獄を呼ぶ者
 %%%%
-Necromancy
+[skill]Necromancy
 
 死霊術
 %%%%
-Grave Robber
+[title]Grave Robber
 
 墓荒らし
 %%%%
-Reanimator
+[title]Reanimator
 
 蘇生をなす者
 %%%%
-Necromancer
+[title]Necromancer
 
 死人使い
 %%%%
-Thanatomancer
+[title]Thanatomancer
 
 死の魔術師
 %%%%
-@Genus_Short@ of Death
+[title]@Genus_Short@ of Death
 
 @Genus_Short@の死神
 %%%%
-Translocations
+[skill]Translocations
 
 転位術
 %%%%
-Grasshopper
+[title]Grasshopper
 
 跳躍者
 %%%%
-Placeless @Genus@
+[title]Placeless @Genus@
 
 神出鬼没の@Genus@
 %%%%
-Blinker
+[title]Blinker
 
 瞬間移動者
 %%%%
-Portalist
+[title]Portalist
 
 門の遣い手
 %%%%
-Plane @Walker@
+[title]Plane @Walker@
 
 次元渡航者
 %%%%
-Transmutations
+[skill]Transmutations
 
 変異術
 %%%%
-Changer
+[title]Changer
 
 変化する者
 %%%%
-Transmogrifier
+[title]Transmogrifier
 
 変転する者
 %%%%
-Alchemist
+[title]Alchemist
 
 錬金術師
 %%%%
-Malleable
+[title]Malleable
 
 変身術師
 %%%%
@@ -575,336 +575,261 @@ Shapeless @Genus@
 
 変幻自在の@Genus@
 %%%%
-Fire Magic
+[skill]Fire Magic
 
 炎の魔術
 %%%%
-Firebug
+[title]Firebug
 
 火付け
 %%%%
-Arsonist
+[title]Arsonist
 
 放火能力者
 %%%%
-Scorcher
+[title]Scorcher
 
 焼き払う者
 %%%%
-Pyromancer
+[title]Pyromancer
 
 火焔の魔術師
 %%%%
-Infernalist
+[title]Infernalist
 
 劫火の担い手
 %%%%
-Ice Magic
+[skill]Ice Magic
 
 氷の魔術
 %%%%
-Chiller
+[title]Chiller
 
 冷却者
 %%%%
-Frost Mage
+[title]Frost Mage
 
 霜の魔術師
 %%%%
-Gelid
+[title]Gelid
 
 氷の魔術師
 %%%%
-Cryomancer
+[title]Cryomancer
 
 凍気の魔術師
 %%%%
-Englaciator
+[title]Englaciator
 
 氷河の主
 %%%%
-Air Magic
+[skill]Air Magic
 
 風の魔術
 %%%%
-Gusty
+[title]Gusty
 
 突風使い
 %%%%
-Zephyrmancer
+[title]Zephyrmancer
 
 そよ風の術師
 %%%%
-Stormcaller
+[title]Stormcaller
 
 嵐を呼ぶもの
 %%%%
-Cloud Mage
+[title]Cloud Mage
 
 雲烟の魔術師
 %%%%
-Meteorologist
+[title]Meteorologist
 
 気象の魔術師
 %%%%
-Earth Magic
+[skill]Earth Magic
 
 地の魔術
 %%%%
-Digger
+[title]Digger
 
 採掘者
 %%%%
-Geomancer
+[title]Geomancer
 
 地占術師
 %%%%
-Earth Mage
+[title]Earth Mage
 
 大地の魔術師
 %%%%
-Metallomancer
+[title]Metallomancer
 
 金属の魔術師
 %%%%
-Petrodigitator
+[title]Petrodigitator
 
 磐石の揺らし手
 %%%%
-Poison Magic
+[skill]Poison Magic
 
 毒の魔術
 %%%%
-Stinger
+[title]Stinger
 
 毒の針
 %%%%
-Tainter
+[title]Tainter
 
 冒す者
 %%%%
-Polluter
+[title]Polluter
 
 穢す者
 %%%%
-Contaminator
+[title]Contaminator
 
 汚染者
 %%%%
-Envenomancer
+[title]Envenomancer
 
 猛毒の放ち手
 %%%%
-Invocations
+[skill]Invocations
 
 祈祷
 %%%%
-Unbeliever
+[title]Unbeliever
 
 不信心者
 %%%%
-Agnostic
+[title]Agnostic
 
 不可知論者
 %%%%
-Dissident
+[title]Dissident
 
 反体制者
 %%%%
-Heretic
+[title]Heretic
 
 異端者
 %%%%
-Apostate
+[title]Apostate
 
 背教者
 %%%%
-Evocations
+[skill]Evocations
 
 発動
 %%%%
-Charlatan
+[title]Charlatan
 
 いかさま師
 %%%%
-Prestidigitator
+[title]Prestidigitator
 
 奇術の遣い手
 %%%%
-Fetichist
+[title]Fetichist
 
 呪物の遣い手
 %%%%
-Evocator
+[title]Evocator
 
 喚起をなす者
 %%%%
-Talismancer
+[title]Talismancer
 
 霊験の担い手
 %%%%
-Unarmed Combat
-
-徒手格闘
-%%%%
-Insei
+# Unarmed Combat (martial arts)
+[title]Insei
 
 門弟
 %%%%
-Martial Artist
+[title]Martial Artist
 
 有段者
 %%%%
-Black Belt
+[title]Black Belt
 
 師範代
 %%%%
-Sensei
+[title]Sensei
 
 達人
 %%%%
-Grand Master
+[title]Grand Master
 
 最上師範
 %%%%
 # Unarmed Combat (claw and teeth)
-Scratcher
+[title]Scratcher
 
 引き裂き
 %%%%
-Gouger
+[title]Gouger
 
 目潰し
 %%%%
-Ripper
+[title]Ripper
 
 切り裂き狂
 %%%%
-Eviscerator
+[title]Eviscerator
 
 殺し屋
 %%%%
-Sabretooth
+[title]Sabretooth
 
 鋭利な牙
 %%%%
-####################################################
-#speciesの分類
-##########################
-%%%%
-Elven
-
-エルフ
-%%%%
-Orcish
-
-オーク
-%%%%
-Vine
-
-蔓
-%%%%
-Demonic
-
-悪魔
-%%%%
-Ogreish
-
-オーガ
-%%%%
-Trollish
-
-トロル
-%%%%
-Divine
-
-神々
-%%%%
-Ghoulish
-
-屍鬼
-%%%%
-Merfolkian
-
-水棲の民
-%%%%
-Vampiric
-
-吸血鬼
-%%%%
-Yakish
-
-ヤク
-%%%%
-Octopoid
-
-蛸
-%%%%
-Feline
-
-猫
-%%%%
-Dwarven
-
-ドワーフ
-%%%%
-Dwarf
-
-ドワーフ
-%%%%
-Cat
-
-猫
-%%%%
-Octopus
-
-蛸
-%%%%
-Heavy
+[title]Heavy
 
 ヘビー級
 %%%%
-Cruiser
+[title]Cruiser
 
 クルーザー級
 %%%%
-Middle
+[title]Middle
 
 ミドル級
 %%%%
-Light
+[title]Light
 
 ライト級
 %%%%
-Feather
+[title]Feather
 
 フェザー級
 %%%%
-Fly
+[title]Fly
 
 フライ級
 %%%%
-Bacteria
+[title]Bacteria
 
 バクテリア級
 %%%%
-Adventurer
+[title]Adventurer
 
 冒険者
 %%%%
-Blademaster
+[title]Blademaster
 
 剣豪
 %%%%
-Master Archer
+[title]Master Archer
 
 達人射手
 %%%%
-Ogre Mage
+[title]Ogre Mage
 
 オーガメイジ
 %%%%
-Petite Mort
+[title]Petite Mort
 
 小さき死神
 %%%%

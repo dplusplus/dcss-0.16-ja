@@ -3740,8 +3740,8 @@ bool ashenzari_transfer_knowledge()
     you.skill_menu_view = SKM_NONE;
 
     mprf(jtransc("As you forget about %s, you feel ready to understand %s."),
-         jtransc(skill_name(you.transfer_from_skill)),
-         jtransc(skill_name(you.transfer_to_skill)));
+         tagged_jtransc("[skill]", skill_name(you.transfer_from_skill)),
+         tagged_jtransc("[skill]", skill_name(you.transfer_to_skill)));
 
     you.transfer_total_skill_points = you.transfer_skill_points;
 
@@ -3754,8 +3754,8 @@ bool ashenzari_end_transfer(bool finished, bool force)
     if (!force && !finished)
     {
         mprf(jtransc("You are currently transferring knowledge from %s to %s."),
-             jtransc(skill_name(you.transfer_from_skill)),
-             jtransc(skill_name(you.transfer_to_skill)));
+             tagged_jtransc("[skill]", skill_name(you.transfer_from_skill)),
+             tagged_jtransc("[skill]", skill_name(you.transfer_to_skill)));
         if (!yesno("Are you sure you want to cancel the transfer?", false, 'n'))
         {
             canned_msg(MSG_OK);
@@ -3764,8 +3764,8 @@ bool ashenzari_end_transfer(bool finished, bool force)
     }
 
     mprf(jtransc("You %s forgetting about %s and learning about %s."),
-         jtransc(skill_name(you.transfer_from_skill)),
-         jtransc(skill_name(you.transfer_to_skill)),
+         tagged_jtransc("[skill]", skill_name(you.transfer_from_skill)),
+         tagged_jtransc("[skill]", skill_name(you.transfer_to_skill)),
          finished ? "終えた" : "中断した");
     you.transfer_from_skill = SK_NONE;
     you.transfer_to_skill = SK_NONE;
@@ -6172,7 +6172,8 @@ bool ru_do_sacrifice(ability_type sac)
             // format the text that will be displayed
             if (is_sac_arcana)
             {
-                string school_name = jtrans(skill_name(arcane_mutation_to_skill(mut)));
+                string school_name = tagged_jtrans("[skill]",
+                                                   skill_name(arcane_mutation_to_skill(mut)));
 
                 if (i == num_sacrifices - 1)
                 {

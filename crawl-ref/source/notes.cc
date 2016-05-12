@@ -301,12 +301,12 @@ string Note::describe(bool when, bool where, bool what) const
             result << "ジンに金貨" << first << "枚を寄付した";
             break;
         case NOTE_GAIN_SKILL:
-            result << jtransc(skill_name(static_cast<skill_type>(first))) << "スキルが"
-                      "レベル" << second << "に到達した";
+            result << tagged_jtransc("[skill]", skill_name(static_cast<skill_type>(first)))
+                   << "スキルがレベル" << second << "に到達した";
             break;
         case NOTE_LOSE_SKILL:
-            result << jtransc(skill_name(static_cast<skill_type>(first))) << "スキルが"
-                      "レベル" << second << "に減少した";
+            result << tagged_jtransc("[skill]", skill_name(static_cast<skill_type>(first)))
+                   << "スキルがレベル" << second << "に減少した";
             break;
         case NOTE_SEEN_MONSTER:
             if (what && first == MONS_PANDEMONIUM_LORD)

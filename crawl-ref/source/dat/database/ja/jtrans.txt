@@ -3275,6 +3275,12 @@ You can find your morgue file in the '%s' directory.
 %s
 続行するにはEnterを押してください……
 %%%%
+############################## evoke.cc ##############################
+%%%%
+%lu skills
+
+%lu種のスキル
+%%%%
 ############################## fight.cc ##############################
 %%%%
 %s hops backward while attacking.
@@ -15094,6 +15100,70 @@ God
 %c %-14s %s%sレベル
 %%%%
 ############################## species.cc ##############################
+%%%%
+Elven
+
+エルフ
+%%%%
+Orcish
+
+オーク
+%%%%
+Vine
+
+蔓
+%%%%
+Dwarven
+
+ドワーフ
+%%%%
+Feline
+
+猫
+%%%%
+Cat
+
+猫
+%%%%
+Octopoid
+
+蛸
+%%%%
+Octopus
+
+蛸
+%%%%
+Ogreish
+
+オーガ
+%%%%
+Trollish
+
+トロル
+%%%%
+Divine
+
+神々
+%%%%
+Demonic
+
+悪魔
+%%%%
+Ghoulish
+
+屍鬼
+%%%%
+Merfolkian
+
+水棲の民
+%%%%
+Vampiric
+
+吸血鬼
+%%%%
+Yakish
+
+ヤク
 %%%%
 Slid
 

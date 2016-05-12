@@ -224,7 +224,7 @@ void SkillMenuEntry::set_name(bool keep_hotkey)
     }
 
     m_name->set_text(make_stringf("%s %-10s", get_prefix().c_str(),
-                                  jtransc(skill_name(m_sk))));
+                                  tagged_jtransc("[skill]", skill_name(m_sk))));
     m_name->set_fg_colour(get_colour());
 #ifdef USE_TILE_LOCAL
     if (is_set(SKMF_SKILL_ICONS))

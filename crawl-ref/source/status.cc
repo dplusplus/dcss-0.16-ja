@@ -336,7 +336,7 @@ bool fill_status_info(int status, status_info* inf)
         string skills = manual_skill_names();
         if (!skills.empty())
         {
-            inf->short_text = jtrans(manual_skill_names(true)) + "を習得中";
+            inf->short_text = manual_skill_names(true) + "を習得中";
             inf->long_text = "あなたは" + jtrans(skills) + "を習得中だ。";
         }
         break;

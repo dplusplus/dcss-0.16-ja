@@ -266,12 +266,13 @@ static void _change_skill_level(skill_type exsk, int n)
     // are you drained/crosstrained/ash'd in the relevant skill?
     const bool specify_base = you.skill(exsk, 1) != you.skill(exsk, 1, true);
     if (you.skills[exsk] == 27)
-        mprf(MSGCH_INTRINSIC_GAIN, jtransc("You have mastered %s!"), jtransc(skill_name(exsk)));
+        mprf(MSGCH_INTRINSIC_GAIN, jtransc("You have mastered %s!"),
+             tagged_jtransc("[skill]", skill_name(exsk)));
     else if (abs(n) == 1 && you.num_turns)
     {
         mprf(MSGCH_INTRINSIC_GAIN, jtransc("Your %s%s skill %s to level %d!"),
              specify_base ? "補正無しの" : "",
-             jtransc(skill_name(exsk)),
+             tagged_jtransc("[skill]", skill_name(exsk)),
              you.skills[exsk], jtransc((n > 0) ? "increases" : "decreases"));
     }
     else if (you.num_turns)
@@ -279,7 +280,7 @@ static void _change_skill_level(skill_type exsk, int n)
         mprf(MSGCH_INTRINSIC_GAIN, jtransc("Your %s%s skill %s %d levels and is now "
                                            "at level %d!"),
              specify_base ? "補正無しの" : "",
-             jtransc(skill_name(exsk)),
+             tagged_jtransc("[skill]", skill_name(exsk)),
              abs(n), jtransc((n > 0) ? "gained" : "lost"),
              you.skills[exsk]);
     }
@@ -453,7 +454,9 @@ static void _check_abil_skills()
 
 string skill_names(const skill_set &skills)
 {
-    return comma_separated_fn(begin(skills), end(skills), skill_name);
+    return to_separated_fn(begin(skills), end(skills),
+                           [] (const skill_type &st) { return tagged_jtrans("[skill]", skill_name(st)); },
+                           "、", "、", "そして");
 }
 
 static void _check_start_train()
@@ -479,7 +482,8 @@ static void _check_start_train()
             ++it;
 
     if (!skills.empty())
-        mprf(jtransc("You resume training %s."), jtransc(skill_names(skills)));
+        mprf(jtransc("You resume training %s."),
+             skill_names(skills).c_str());
 
     you.start_train.clear();
 }
@@ -508,7 +512,8 @@ static void _check_stop_train()
 
     if (!skills.empty())
     {
-        mprf(jtransc("You stop training %s."), jtransc(skill_names(skills)));
+        mprf(jtransc("You stop training %s."),
+             skill_names(skills).c_str());
         check_selected_skills();
     }
 
@@ -1227,6 +1232,11 @@ static string _stk_weight()
     }
 }
 
+static string _stk_weight_j()
+{
+    return tagged_jtrans("[title]", _stk_weight());
+}
+
 static skill_title_key_t _skill_title_keys[] =
 {
     stk("Adj", _stk_adj_cap),
@@ -1234,7 +1244,7 @@ static skill_title_key_t _skill_title_keys[] =
     stk("genus", _stk_genus_nocap),
     stk("Genus_Short", _stk_genus_short_cap),
     stk("Walker", _stk_walker),
-    stk("Weight", _stk_weight),
+    stk("Weight", _stk_weight_j),
 };
 
 static string _replace_skill_keys(const string &text)
@@ -1257,7 +1267,7 @@ static string _replace_skill_keys(const string &text)
 
         ASSERT(!value.empty());
 
-        res << jtrans(value);
+        res << tagged_jtrans("[title]", value);
 
         last = end + 1;
     }
@@ -1381,10 +1391,8 @@ string skill_title_by_rank(skill_type best_skill, uint8_t skill_rank,
     }
 
     {
-        result = jtrans(result);
-
         unwind_var<species_type> sp(Skill_Species, species);
-        result = _replace_skill_keys(result);
+        result = _replace_skill_keys(tagged_jtrans("[title]", result));
     }
 
     return result.empty() ? string("Invalid Title")
@@ -1685,7 +1693,7 @@ void dump_skills(string &text)
                                  you.train[i] == 2 ? '*' :
                                  you.train[i]      ? '+' :
                                                      '-',
-                                 chop_string(jtrans(skill_name(static_cast<skill_type>(i))) + "スキル", 14).c_str(),
+                                 chop_string(tagged_jtrans("[skill]", skill_name(static_cast<skill_type>(i))) + "スキル", 16).c_str(),
                                  lvl.c_str(),
                                  real != cur
                                      ? make_stringf("(%.*f)",

@@ -4336,10 +4336,11 @@ string get_ghost_description(const monster_info &mi, bool concise)
         break;
     }
 
-    gstr << jtrans(skill_title_by_rank(mi.u.ghost.best_skill,
-                                       mi.u.ghost.best_skill_rank,
-                                       gspecies,
-                                       str, dex, mi.u.ghost.religion))
+    gstr << tagged_jtrans("[skill]",
+                          skill_title_by_rank(mi.u.ghost.best_skill,
+                                              mi.u.ghost.best_skill_rank,
+                                              gspecies,
+                                              str, dex, mi.u.ghost.religion))
          << "として名の知れた"
          << jtrans(_xl_rank_name(mi.u.ghost.xl_rank));
 
