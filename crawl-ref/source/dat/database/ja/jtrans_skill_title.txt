@@ -379,7 +379,7 @@ Wrestler
 
 力士
 %%%%
-@Weight@ weight Champion
+@Weight@weight Champion
 
 @Weight@の王者
 %%%%
