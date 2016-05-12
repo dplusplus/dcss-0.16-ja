@@ -69,9 +69,9 @@ Spit Acid
 酸の唾液
 #{ ABIL_SPIT_ACID, "Spit Acid", 0, 0, 125, 0, 0, ABFLAG_BREATH},
 %%%%
-#Fly
+Fly
 
-#飛行
+飛行
 #{ ABIL_FLY, "Fly", 3, 0, 100, 0, 0, ABFLAG_NONE},
 %%%%
 Stop Flying
