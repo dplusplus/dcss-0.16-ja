@@ -3694,6 +3694,33 @@ void join_religion(god_type which_god, bool immediate)
     learned_something_new(HINT_CONVERT);
 }
 
+string _prayer_action_particle()
+{
+    string action = get_form()->player_prayer_action();
+    string where, p;
+
+    if (ends_with(action, " onto") || ends_with(action, " on"))
+        where = "の上";
+    else if (ends_with(action, " around"))
+        where = "の周り";
+    else
+        where = "の前";
+
+    if (starts_with(action, "bow ") ||
+        ends_with(action, "front of") ||
+        you.form == TRAN_TREE ||
+        you.form == TRAN_PORCUPINE ||
+        you.form == TRAN_WISP ||
+        you.form == TRAN_FUNGUS)
+        p = "で";
+    else if (you.form == TRAN_SPIDER)
+        p = "を";
+    else
+        p = "に";
+
+    return where + p;
+}
+
 void god_pitch(god_type which_god)
 {
     if (which_god == GOD_BEOGH && grd(you.pos()) != DNGN_ALTAR_BEOGH)
@@ -3702,6 +3729,7 @@ void god_pitch(god_type which_god)
     {
         mprf(jtransc("You %s the altar of %s."),
              jtransc(god_name(which_god)),
+             _prayer_action_particle().c_str(),
              jtransc(get_form()->player_prayer_action()));
     }
     more();

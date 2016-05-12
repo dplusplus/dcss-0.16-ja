@@ -455,7 +455,7 @@ static void _index_book(item_def& book, spells_to_books &book_hash,
 
 static string _transform_name()
 {
-    return jtrans(transform_name() + string(" form"));
+    return jtrans(transform_name() + string("-form"));
 }
 
 static bool _get_mem_list(spell_list &mem_spells,

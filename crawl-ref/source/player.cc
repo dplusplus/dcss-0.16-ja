@@ -6070,7 +6070,7 @@ static const string felid_shout_verbs[] = {"meow", "yowl", "caterwaul"};
 string player::shout_verb(bool directed) const
 {
     if (!get_form()->shout_verb.empty())
-        return get_form()->shout_verb;
+        return tagged_jtrans("[form]", get_form()->shout_verb);
 
     const int screaminess = max(player_mutation_level(MUT_SCREAM) - 1, 0);
 

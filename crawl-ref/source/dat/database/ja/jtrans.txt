@@ -3295,6 +3295,368 @@ Level annotation: %s
 
 階層の特記事項: %s
 %%%%
+############################## form-data.h ##############################
+%%%%
+# TRAN_SPIDER
+[form]Spider
+
+蜘蛛
+%%%%
+spider-form
+
+蜘蛛の形態
+%%%%
+a venomous arachnid creature.
+
+毒を持つ蜘蛛のような生き物の姿を
+%%%%
+Fangs
+
+牙
+%%%%
+[form]hiss
+
+キーキー鳴く
+%%%%
+front leg
+
+前脚
+%%%%
+crawl onto
+
+這い回った
+%%%%
+[form]flesh
+
+元の姿
+%%%%
+# TRAN_BLADE_HANDS
+[form]Blade
+
+刃の手
+%%%%
+blade
+
+刃の手
+%%%%
+blade-form
+
+刃の手の形態
+%%%%
+shred
+
+切り刻んだ
+%%%%
+scythe-like blade
+
+鎌のような刃
+%%%%
+# TRAN_STATUE
+[form]Statue
+
+石像
+%%%%
+statue-form
+
+石像の形態
+%%%%
+a stone statue.
+
+石像化
+%%%%
+place yourself before
+
+腰を据えた
+%%%%
+[form]stone
+
+石の体
+%%%%
+# TRAN_ICE_BEAST
+[form]Ice
+
+氷獣
+%%%%
+ice-form
+
+氷の獣の形態
+%%%%
+a creature of crystalline ice.
+
+水晶のように透き通った氷の生き物の姿を
+%%%%
+front paw
+
+前脚
+%%%%
+bow your head before
+
+おじぎをした
+%%%%
+# TRAN_DRAGON
+[form]Dragon
+
+竜化
+%%%%
+dragon-form
+
+ドラゴンの形態
+%%%%
+a fearsome dragon!
+
+恐ろしいドラゴンの姿を
+%%%%
+[form]roar
+
+吠える
+%%%%
+foreclaw
+
+前脚の爪
+%%%%
+# TRAN_LICH
+[form]Lich
+
+屍化
+%%%%
+lich-form
+
+リッチの形態
+%%%%
+a lich.
+
+リッチの姿を
+%%%%
+[form]bone
+
+元の姿
+%%%%
+# TRAN_BAT
+[form]Bat
+
+蝙蝠
+%%%%
+bat-form
+
+蝙蝠の形態
+%%%%
+[form]squeak
+
+キーキー鳴く
+%%%%
+perch on
+
+止まった
+%%%%
+# TRAN_PIG
+[form]Pig
+
+豚化
+%%%%
+pig-form
+
+豚の形態
+%%%%
+a filthy swine.
+
+豚の姿を
+%%%%
+[form]squeal
+
+ブーブーと鳴く
+%%%%
+front trotter
+
+前脚
+%%%%
+# TRAN_APPENDAGE
+[form]App
+
+半獣
+%%%%
+appendage
+
+半獣の躰
+%%%%
+appendage-form
+
+半獣の形態
+%%%%
+# TRAN_TREE
+[form]Tree
+
+樹化
+%%%%
+tree-form
+
+樹木の形態
+%%%%
+a tree.
+
+樹木
+%%%%
+Branches
+
+枝
+%%%%
+smack
+
+ぴしゃりと打った
+%%%%
+[form]creak
+
+きしむ音を立てる
+%%%%
+root
+
+根
+%%%%
+sway towards
+
+枝を揺らした
+%%%%
+[form]wood
+
+元の姿
+%%%%
+# TRAN_PORCUPINE
+[form]Porc
+
+豪猪
+%%%%
+porcupine-form
+
+豪猪の形態
+%%%%
+a spiny porcupine.
+
+ヤマアラシの姿を
+%%%%
+Teeth
+
+歯
+%%%%
+curl into a sanctuary of spikes before
+
+棘だらけの体を丸めた
+%%%%
+# TRAN_WISP
+[form]Wisp
+
+霧化
+%%%%
+wisp-form
+
+霧の形態
+%%%%
+an insubstantial wisp.
+
+稀薄な霧の姿を
+%%%%
+Misty tendrils
+
+霧の手先
+%%%%
+[form]whoosh
+
+ヒューッと音を立てる
+%%%%
+misty tendril
+
+霧の手先
+%%%%
+strand
+
+下部
+%%%%
+swirl around
+
+渦を巻いた
+%%%%
+[form]vapour
+
+元の姿
+%%%%
+# TRAN_JELLY
+[form]Jelly
+
+ジェリー
+%%%%
+jelly-form
+
+ジェリーの形態
+%%%%
+a lump of jelly.
+
+ジェリーの姿を
+%%%%
+# TRAN_FUNGUS
+[form]Fungus
+
+茸化
+%%%%
+fungus-form
+
+茸の形態
+%%%%
+a sentient fungus.
+
+知性あるキノコの姿を
+%%%%
+Spores
+
+胞子
+%%%%
+release spores at
+
+胞子を放った
+%%%%
+[form]sporulate
+
+胞子を放つ
+%%%%
+hypha
+
+菌糸
+%%%%
+release spores on
+
+胞子を放った
+%%%%
+# TRAN_SHADOW
+[form]Shadow
+
+影化
+%%%%
+shadow-form
+
+影の形態
+%%%%
+a swirling mass of dark shadows.
+
+渦巻く漆黒の影の姿を
+%%%%
+# TRAN_HYDRA
+[form]Hydra
+
+ヒドラ
+%%%%
+hydra-form
+
+ヒドラの形態
+%%%%
+nip at
+
+つねった
+%%%%
+gouge
+
+えぐった
+%%%%
+chomp
+
+むしゃむしゃ食べた
+%%%%
 ############################## hiscores.cc ##############################
 %%%%
 their own shadow
@@ -7720,7 +8082,7 @@ talon
 %%%%
 trotter
 
-豚足
+脚
 %%%%
 root
 
@@ -14230,7 +14592,7 @@ You bow before the missionary of Beogh.
 %%%%
 You %s the altar of %s.
 
-あなたは%sの祭壇の前で%s。
+あなたは%sの祭壇%s%s。
 %%%%
 does not accept worship from the ignorant!
 
@@ -19376,69 +19738,317 @@ You feel a sudden draft!
 %%%%
 ############################## transform.cc ##############################
 %%%%
-spider form
+You %s %s
 
-蜘蛛の形態
+あなたは%sしている。
 %%%%
-blade form
+You fly out of the water as y
 
-刃の手の形態
+水面から空中に飛び上がると同時に
 %%%%
-statue form
+As you dive into the water, y
 
-石像の形態
+水中に飛び込むと同時に
 %%%%
-ice form
+%sou turn into %s
 
-氷の躯の形態
+%sあなたは%sに変わった。
 %%%%
-dragon form
+Your transformation has ended.
 
-ドラゴンの形態
-%%%%
-lich form
-
-リッチの形態
-%%%%
-bat form
-
-蝙蝠の形態
-%%%%
-pig form
-
-豚の形態
-%%%%
-appendage form
-
-半獣の形態
-%%%%
-tree form
-
-樹木の形態
-%%%%
-porcupine form
-
-豪猪の形態
-%%%%
-wisp form
-
-霧の形態
-%%%%
-fungus form
-
-茸の形態
-%%%%
-shadow form
-
-影の形態
-%%%%
-hydra form
-
-ヒドラの形態
+変身の効果時間は終わった。
 %%%%
 hover solemnly before
 
 浮かびながら姿勢を正した
+%%%%
+your old self.
+
+元の姿
+%%%%
+You %s blades for %s.
+
+あなたは刃の%sを持っている。
+%%%%
+Your %s turn%s into%s razor-sharp scythe blade%s.
+
+あなたの%sはカミソリのように鋭い鎌状の刃へと変化した。
+%%%%
+Your %s revert%s to %s normal proportions.
+
+あなたの%sは元の形状に戻った。
+%%%%
+You inwardly fear your resemblance to a lawn ornament.
+
+あなたは自分が庭の置物に似たものになることを内心恐れた。
+%%%%
+Your body stiffens and grows slower.
+
+あなたの体は硬直し、動きが遅くなった。
+%%%%
+a living statue of rough stone.
+
+荒削りの生ける石像
+%%%%
+You revert to a slightly less stony form.
+
+あなたは元のガーゴイルの姿に戻った。
+%%%%
+You revert to your normal fleshy form.
+
+あなたは元の姿に戻った。
+%%%%
+Stone claws
+
+石の爪
+%%%%
+Stone tentacles
+
+石の触手
+%%%%
+Stone fist%s
+
+石の拳
+%%%%
+Your icy form melts away into molten rock.
+
+# obsolete
+%%%%
+You warm up again.
+
+あなたの体は暖かさを取り戻した。
+%%%%
+Ice fist%s
+
+氷の拳
+%%%%
+Your body is suffused with negative energy!
+
+あなたの体は負のエネルギーに覆われている！
+%%%%
+You feel yourself come back to life.
+
+あなたは生命を取り戻した気がした。
+%%%%
+You feel your undeath return to normal.
+
+あなたは自らの不死性が通常に戻った気がした。
+%%%%
+You %s in %sbat-form.
+
+あなたは%sコウモリの姿をしている。
+%%%%
+a %sbat.
+
+%sコウモリの姿
+%%%%
+One of your tentacles %s a temporary spike.
+
+あなたの持つ触手のひとつから一時的に棘が生えて%s。
+%%%%
+You %s grown temporary %s.
+
+あなたは一時的に発達した%sを備えている。
+%%%%
+You grow a pair of large bovine horns.
+
+あなたは牛のような一対の大きな角を生やした。
+%%%%
+One of your tentacles grows a vicious spike.
+
+あなたの持つ触手の一つからおぞましい棘が生えてきた。
+%%%%
+Your feet morph into talons.
+
+あなたの%sは鉤爪へと変化した。
+%%%%
+You feel less woody.
+
+あなたはもう樹木の姿ではなくなった。
+%%%%
+You stop sporulating.
+
+あなたは胞子を振りまくのを止めた。
+%%%%
+You feel less shadowy.
+
+あなたは影の雰囲気が薄れた気がした。
+%%%%
+You emerge from the shadows.
+
+あなたは影の中から姿を現した。
+%%%%
+a %d-headed hydra.
+
+%d首ヒドラの姿を
+%%%%
+Bite (x%d)
+
+噛みつき (x%d)
+%%%%
+%s is pushed off your body!
+
+%sはあなたの体から押し出された！
+%%%%
+%s unmelds from your body.
+
+%sはあなたの体と分離した。
+%%%%
+You can't transform into a tree while standing in a cloud of %s.
+
+あなたは%sの雲の中にいる間は樹木に変化することはできない。
+%%%%
+You would %s in your new form.
+
+その姿に変化すると%sしまう。
+%%%%
+%s will reduce your %s to zero.  Continue?
+
+%s、あなたの%sはゼロ以下になります。それでも続行しますか？
+%%%%
+Turning back
+
+変化を解くと
+%%%%
+Transforming
+
+変化すると
+%%%%
+%d of your heads shrink away.
+
+あなたは%d本の首を失った。
+%%%%
+One of your heads shrinks away.
+
+あなたは首を一本失った。
+%%%%
+%d new heads grow.
+
+新たな首が%d本生えてきた。
+%%%%
+A new head grows.
+
+新たな首が一本生えてきた。
+%%%%
+protects your body from unnatural transformation!
+
+はあなたの体を不自然な変異から守った！
+%%%%
+You are stuck in your current form!
+
+あなたは今の姿から変わることができない！
+%%%%
+You extend your transformation's duration.
+
+あなたは変身していられる残り時間を延ばした。
+%%%%
+You fail to extend your transformation any further.
+
+あなたは変身していられる残り時間を延ばすことに失敗した。
+%%%%
+Your unliving flesh cannot be transformed in this way.
+
+あなたの死せる肉体はこの方法では変身することはできない。
+%%%%
+The transformation conflicts with an enchantment already in effect.
+
+それに変身することはすでに効果を発揮している魔法と両立できない。
+%%%%
+Your temperature is too high to benefit from that spell.
+
+# obsolete
+%%%%
+You have no appropriate body parts free.
+
+これ以上変異させられる部位がない。
+%%%%
+Your mandibles meld away.
+
+あなたの大顎は一時的に消え去った。
+%%%%
+Your new body merges with your stone armour.
+
+あなたの新たな体は石の肌と溶けあった。
+%%%%
+Your new body is particularly stony.
+
+# obsolete
+%%%%
+Your new body cracks your icy armour.
+
+あなたの新たな体は氷の鎧を砕いた。
+%%%%
+Your new body merges with your icy armour.
+
+あなたの新たな体は氷の鎧と溶けあった。
+%%%%
+You disentangle yourself from the web.
+
+あなたは自分の体を蜘蛛の巣から振りほどいた。
+%%%%
+Your roots penetrate the ground.
+
+あなたの根っこは大地に食い込んだ。
+%%%%
+You shred the web into pieces!
+
+あなたは蜘蛛の巣をばらばらに引き裂いた！
+%%%%
+The net rips apart!
+
+網はばらばらに引き裂かれた！
+%%%%
+You stop regenerating.
+
+あなたの体は再生しなくなった。
+%%%%
+You fade into the shadows.
+
+あなたは影へと溶け込んでいった。
+%%%%
+You feel less conspicuous.
+
+あなたは存在感が薄くなった気がした。
+%%%%
+gaining the %s transformation
+
+%sに変身した際に
+%%%%
+shrink
+
+退化した
+%%%%
+disappear
+
+消え去った
+%%%%
+Your %s %s%s.
+
+あなたが持つ%sの変異は%s。
+%%%%
+%s cracks your icy armour.
+
+%sは氷の鎧を砕いた。
+%%%%
+losing the %s form
+
+%sの変身が解けた際に
+%%%%
+You quickly transform back into your natural form.
+
+あなたは即座に元の姿へと戻った。
+%%%%
+Your legs become a tail as you enter the water.
+
+水中に入ると、あなたの%sは尾鰭へと変わった。
+%%%%
+Your legs become a tail as you dive into the water.
+
+水中に飛び込むと、あなたの%sは尾鰭へと変わった。
+%%%%
+...but don't expect to remain undetected.
+
+……しかし、敵に気付かれないままでいることは期待できない。
 %%%%
 ############################## traps.cc ##############################
 %%%%

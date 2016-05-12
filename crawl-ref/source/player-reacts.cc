@@ -210,7 +210,7 @@ static void _decrement_petrification(int delay)
         // flesh when not petrified
         const string flesh_equiv = get_form()->flesh_equivalent.empty() ?
                                             "元の姿" :
-                                            get_form()->flesh_equivalent;
+            tagged_jtrans("[form]", get_form()->flesh_equivalent);
 
         mprf(MSGCH_DURATION, jtransc("You turn to %s and can move again."),
              jtransc(flesh_equiv));

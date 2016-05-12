@@ -335,3 +335,33 @@ string get_desc_quantity_j(const int quant, const int total, string whose)
     else
         return whose + "のうちいくつか";
 }
+
+string jconj_verb(const string& verb, jconj conj)
+{
+    string v = verb;
+
+    switch(conj)
+    {
+        // 必要に応じて随時追加
+    case JCONJ_IRRE:
+        break;
+    case JCONJ_CONT:
+        break;
+    case JCONJ_TERM:
+        break;
+    case JCONJ_ATTR:
+        break;
+    case JCONJ_HYPO:
+        break;
+    case JCONJ_IMPR:
+        break;
+    case JCONJ_PERF:
+        v = replace_all(v, "立てる", "立てた");
+        v = replace_all(v, "鳴く", "鳴いた");
+        v = replace_all(v, "放つ", "放った");
+        v = replace_all(v, "吠える", "吠えた");
+        break;
+    }
+
+    return v;
+}

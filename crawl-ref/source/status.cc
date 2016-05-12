@@ -897,8 +897,8 @@ static void _describe_transform(status_info* inf)
         return;
 
     const Form * const form = get_form();
-    inf->light_text = form->short_name;
-    inf->short_text = form->get_long_name();
+    inf->light_text = tagged_jtrans("[form]", form->short_name);
+    inf->short_text = jtrans(form->get_long_name());
     inf->long_text = form->get_description();
 
     const bool vampbat = (you.species == SP_VAMPIRE && you.form == TRAN_BAT);
