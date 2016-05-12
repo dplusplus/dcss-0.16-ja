@@ -1642,23 +1642,23 @@ demonspawn
 %%%%
 monstrous demonspawn
 
-恐るべき血族
+怪物じみた血族
 %%%%
 gelid demonspawn
 
-凍り付く血族
+凍てつく血族
 %%%%
 infernal demonspawn
 
-極悪非道の血族
+業火の血族
 %%%%
 putrid demonspawn
 
-堕落した血族
+腐敗した血族
 %%%%
 torturous demonspawn
 
-拷問の血族
+苦痛の血族
 %%%%
 blood saint
 
