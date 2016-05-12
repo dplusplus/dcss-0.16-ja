@@ -382,9 +382,9 @@ static string _describe_ash_skill_boost()
     ostringstream desc;
     desc.setf(ios::left);
     desc << "<white>";
-    desc << setw(18) << "Bound part";
-    desc << setw(30) << "Boosted skills";
-    desc << "Bonus\n";
+    desc << align_left(jtrans("Bound part"), 18);
+    desc << align_left(jtrans("Boosted skills"), 30);
+    desc << jtransln("Bonus\n");
     desc << "</white>";
 
     for (int i = ET_WEAPON; i < NUM_ET; i++)
@@ -392,11 +392,10 @@ static string _describe_ash_skill_boost()
         if (you.bondage[i] <= 0 || i == ET_SHIELD && you.bondage[i] == 3)
             continue;
 
-        desc << setw(18);
         if (i == ET_WEAPON && you.bondage[i] == 3)
-            desc << "Hands";
+            desc << align_left(jtrans("Hands"), 18);
         else
-            desc << bondage_parts[i];
+            desc << align_left(jtrans(bondage_parts[i]), 18);
 
         string skills;
         map<skill_type, int8_t> boosted_skills = ash_get_boosted_skills(eq_type(i));
@@ -423,20 +422,20 @@ static string _describe_ash_skill_boost()
             // the same level.
             ASSERT(bonus == it->second);
             if (it->first == SK_CONJURATIONS)
-                skills += "Magic schools";
+                skills += jtrans("Magic schools");
             else
-                skills += skill_name(it->first);
+                skills += tagged_jtrans("[skill]", skill_name(it->first));
 
             if (boosted_skills.size() > 2)
                 skills += ", ";
             else if (boosted_skills.size() == 2)
-                skills += " and ";
+                skills += "および";
 
             boosted_skills.erase(it++);
         }
 
-        desc << setw(30) << skills;
-        desc << bonus_level[bonus -1] << "\n";
+        desc << align_left(skills + "スキル", 30);
+        desc << jtransln(bonus_level[bonus -1]);
     }
 
     return desc.str();

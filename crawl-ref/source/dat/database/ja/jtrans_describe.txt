@@ -101,6 +101,58 @@ You can pray to sacrifice all fresh corpses on your square.
 
 あなたは足下にある全ての新鮮な死体を祈って捧げることができる。
 %%%%
+Ashenzari won't support your skills until you bind yourself with cursed items.
+
+アシェンザリはあなたが自らの体を呪われた装備で呪縛しない限りスキルを補強しない。
+%%%%
+Weapon hand
+
+武器の方の手
+%%%%
+Shield hand
+
+盾の方の手
+%%%%
+Armour
+
+防具
+%%%%
+Jewellery
+
+装飾品
+%%%%
+Low
+
+低
+%%%%
+Medium
+
+中
+%%%%
+High
+
+高
+%%%%
+Bound part
+
+呪縛部位
+%%%%
+Boosted skills
+
+補強されるスキル
+%%%%
+Bonus
+
+補正
+%%%%
+Hands
+
+両手
+%%%%
+Magic schools
+
+魔法
+%%%%
 You can bribe the following branches of the dungeon:
 
 あなたは下に記された迷宮の分岐を買収できる:
