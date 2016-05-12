@@ -1471,15 +1471,15 @@ tentacle spike
 %%%%
 One of your tentacles bears a spike.
 
-あなたの触手の一つは棘を持っている。
+あなたの触手の一つから棘が生えている。
 %%%%
 One of your tentacles bears a nasty spike.
 
-あなたの触手の一つは恐ろしい棘を持っている。
+あなたの触手の一つから恐ろしい棘が生えている。
 %%%%
 One of your tentacles bears a large vicious spike.
 
-あなたの触手の一つは大きな汚らしい棘を持っている。
+あなたの触手の一つからおぞましい大きな棘が生えている。
 %%%%
 One of your lower tentacles grows a sharp spike.
 
