@@ -1971,7 +1971,7 @@ bool make_book_theme_randart(item_def &book,
 
     string bookname = "";
     if (!title.empty())
-        bookname = title;
+        bookname = jtrans(title);
     else
     {
         // Sometimes use a completely random title.

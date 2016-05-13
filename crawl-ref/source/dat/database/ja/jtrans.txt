@@ -20872,6 +20872,12 @@ XOM is BORED!
 
 ゾムは退屈している！
 %%%%
+############################## dat/des/altar/trog_burn_book.des ##############################
+%%%%
+Retrieval
+
+挽回
+%%%%
 ############################## dat/des/altar/overflow.des ##############################
 %%%%
 Platinum Reserve
@@ -20931,6 +20937,16 @@ baked
 baker
 
 のパン屋
+%%%%
+############################## dat/des/branches/zot.des ##############################
+%%%%
+the Zealot
+
+狂信者
+%%%%
+Fire and Brimstone
+
+火と硫黄
 %%%%
 ############################## dat/des/portals/ossuary.des ##############################
 %%%%
@@ -21582,6 +21598,16 @@ Your surroundings seem different!
 
 <magenta>あなたの目の前に出口が現れた！</magenta>
 %%%%
+############################## dat/des/tutorial/lesson4.des ##############################
+%%%%
+Introduction to Spellcasting
+
+呪文詠唱入門
+%%%%
+Necromancy for Newbies
+
+初心者のための死霊術
+%%%%
 ############################## dat/des/variable/cathedral_bats.des ##############################
 %%%%
 megabat
@@ -21638,6 +21664,39 @@ ghost-faced bat
 rotten bat
 
 腐敗したコウモリ
+%%%%
+Nature
+
+自然
+%%%%
+# ホルヘ・ルイス・ボルヘス『バベルの図書館』ネタらしい
+Dhcmrlchtdj
+
+
+%%%%
+Combed Thunderclap
+
+櫛けずられた雷鳴
+%%%%
+Plaster Cramp
+
+漆喰クランプ
+%%%%
+Axaxaxas mlö
+
+
+%%%%
+Forking Paths
+
+分岐する道
+%%%%
+Ts'ui Pên
+
+ツイ・ペン
+%%%%
+Sand
+
+砂
 %%%%
 ############################## dat/dlua/lm_tmsg.lua ##############################
 %%%%
