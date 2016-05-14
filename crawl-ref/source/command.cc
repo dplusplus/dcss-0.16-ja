@@ -165,7 +165,7 @@ static string _get_version_changes()
 
     result += "\n\n";
 
-    return result;
+    return replace_all(result, "\n\n", "\n \n");
 }
 
 //#define DEBUG_FILES
