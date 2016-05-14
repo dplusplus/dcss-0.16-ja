@@ -638,7 +638,7 @@ Some water evaporates in the bright sunlight.
 %%%%
 %d pieces of fruit are consumed!
 
-果物が%s個消費された！
+果物が%d個消費された！
 %%%%
 A piece of fruit is consumed!
 
