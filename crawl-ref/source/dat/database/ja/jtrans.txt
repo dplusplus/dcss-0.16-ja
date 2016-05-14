@@ -4888,6 +4888,10 @@ You can't carry that many items.
 
 あなたはこれ以上多くのアイテムを持つことはできない。
 %%%%
+hide
+
+皮
+%%%%
 Original Equipment
 
 初期装備
