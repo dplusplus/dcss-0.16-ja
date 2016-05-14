@@ -119,6 +119,19 @@ There isn't anything else to %sbutcher here.
 %%%%
 ############################## command.cc ##############################
 %%%%
+<w>Features</w>\n--------
+
+<w>コンパイル時に有効化された機能</w>
+------------------------------
+%%%%
+For earlier changes, see changelog.txt in the docs/ directory.
+
+これより以前の変更点を見るには、docs/changelog.txtを参照してください。
+%%%%
+For a list of changes, see changelog.txt in the docs/ directory.
+
+変更点一覧を見るには、docs/changelog.txtを参照してください。
+%%%%
 (unavailable)
 
 (装備できない)
@@ -170,6 +183,18 @@ Amulet ring
 (currently unavailable)
 
 (現在装着できない)
+%%%%
+No questions found in FAQ! Please submit a bug report!
+
+質問が記載されていません！ バグ報告をお願いします！
+%%%%
+Frequently Asked Questions
+
+よくある質問
+%%%%
+No answer found in the FAQ! Please submit a bug report!
+
+回答が記載されていません！ バグ報告をお願いします！
 %%%%
 <h>Dungeon Crawl Help
 

@@ -76,13 +76,13 @@ static const char *features[] =
 
 static string _get_version_information()
 {
-    return string("This is <w>" CRAWL " ") + Version::Long + "</w>\n";
+    return string("このゲームは<w>" CRAWL "</w>のバージョン<w>") + Version::Long + "</w>です\n";
 }
 
 static string _get_version_features()
 {
-    string result = "<w>Features</w>\n"
-                    "--------\n";
+    string result = jtransln("<w>Features</w>\n"
+                             "--------\n");
 
     for (const char *feature : features)
     {
@@ -154,16 +154,16 @@ static string _get_version_changes()
     {
         result.erase(1+result.find_last_not_of('\n'));
         result += "\n\n";
-        result += "For earlier changes, see changelog.txt "
-                  "in the docs/ directory.";
+        result += jtrans("For earlier changes, see changelog.txt "
+                         "in the docs/ directory.");
     }
     else
     {
-        result += "For a list of changes, see changelog.txt in the docs/ "
-                  "directory.";
+        result += jtrans("For a list of changes, see changelog.txt in the docs/ "
+                         "directory.");
     }
 
-    result += "\n\n";
+    result += "\n";
 
     return replace_all(result, "\n\n", "\n \n");
 }
@@ -463,11 +463,11 @@ static bool _handle_FAQ()
     vector<string> question_keys = getAllFAQKeys();
     if (question_keys.empty())
     {
-        mpr("No questions found in FAQ! Please submit a bug report!");
+        mpr(jtrans("No questions found in FAQ! Please submit a bug report!"));
         return false;
     }
     Menu FAQmenu(MF_SINGLESELECT | MF_ANYPRINTABLE | MF_ALLOW_FORMATTING);
-    MenuEntry *title = new MenuEntry("Frequently Asked Questions");
+    MenuEntry *title = new MenuEntry(jtrans("Frequently Asked Questions"));
     title->colour = YELLOW;
     FAQmenu.set_title(title);
     const int width = get_number_of_cols();
@@ -514,8 +514,8 @@ static bool _handle_FAQ()
             string answer = getFAQ_Answer(key);
             if (answer.empty())
             {
-                answer = "No answer found in the FAQ! Please submit a "
-                         "bug report!";
+                answer = jtrans("No answer found in the FAQ! Please submit a "
+                                "bug report!");
             }
             answer = "Q: " + getFAQ_Question(key) + "\n" + answer;
             linebreak_string(answer, width - 1, true);
