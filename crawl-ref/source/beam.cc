@@ -3370,7 +3370,7 @@ bool bolt::misses_player()
     {
         // active voice to imply stronger effect
         mprf(jtransc(defl == 1 ? "The %s is repelled." : "You deflect the %s!"),
-             jtransc(name));
+             tagged_jtransc("[zap]", name));
         you.ablate_deflection();
     }
     else if (!_test_beam_hit(real_tohit, dodge, pierce, defl, r))
