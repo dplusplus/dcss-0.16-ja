@@ -2893,9 +2893,9 @@ bool fedhas_plant_ring_from_fruit()
     if (max_use == 0)
     {
         if (adjacent.empty())
-            mpr("No empty adjacent squares.");
+            mpr(jtrans("No empty adjacent squares."));
         else
-            mpr("No fruit available.");
+            mpr(jtrans("No fruit available."));
 
         return false;
     }
