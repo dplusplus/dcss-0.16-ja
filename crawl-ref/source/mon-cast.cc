@@ -7176,7 +7176,7 @@ void mons_cast_noise(monster* mons, const bolt &pbolt,
     if (targeted)
         _speech_fill_target(targ_prep, target, mons, pbolt, gestured);
 
-    msg = replace_all(msg, "@target@", tagged_jtrans("[zap]", target));
+    msg = replace_all(msg, "@target@", jtrans(target));
 
     string beam_name;
     if (!targeted)
