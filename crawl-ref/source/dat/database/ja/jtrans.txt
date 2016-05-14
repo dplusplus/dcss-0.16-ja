@@ -251,7 +251,7 @@ It lets you fly.
 %%%%
 It lets you blink.
 
-この%sあなたに瞬間移動の発動を可能とさせる。
+この%sはあなたに瞬間移動の発動を可能とさせる。
 %%%%
 It lets you go berserk.
 
