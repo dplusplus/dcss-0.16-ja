@@ -3202,7 +3202,7 @@ void hogs_to_humans()
                         "original forms!";
     }
 
-    kirke_death_fineff::schedule(jtransc(final_msg));
+    kirke_death_fineff::schedule(final_msg);
 }
 
 /**
