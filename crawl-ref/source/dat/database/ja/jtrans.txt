@@ -1371,6 +1371,24 @@ temples in the dungeon
 
 <w>X?</w>     フロアマップコマンドを列挙する
 %%%%
+############################## dactions.cc ##############################
+%%%%
+turns against you!
+
+は寝返った！
+%%%%
+is freed.
+
+は自由になった。
+%%%%
+becomes indifferent.
+
+はあなたに従うのをやめた。
+%%%%
+The hog vanishes!
+
+豚の姿は消えた！
+%%%%
 ############################## describe.cc ##############################
 %%%%
 It sustains your strength, intelligence and dexterity.

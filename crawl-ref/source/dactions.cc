@@ -10,6 +10,7 @@
 #include "act-iter.h"
 #include "attitude-change.h"
 #include "coordit.h"
+#include "database.h"
 #include "decks.h"
 #include "dungeon.h"
 #include "items.h"
@@ -211,12 +212,12 @@ void apply_daction_to_mons(monster* mon, daction_type act, bool local,
             if (local && (act == DACT_ALLY_TROG
                           || act == DACT_ALLY_MAKHLEB))
             {
-                simple_monster_message(mon, " turns against you!");
+                simple_monster_message(mon, jtransc(" turns against you!"));
             }
             break;
 
         case DACT_OLD_ENSLAVED_SOULS_POOF:
-            simple_monster_message(mon, " is freed.");
+            simple_monster_message(mon, jtransc(" is freed."));
             // The monster disappears.
             monster_die(mon, KILL_DISMISSED, NON_MONSTER);
             break;
@@ -238,7 +239,7 @@ void apply_daction_to_mons(monster* mon, daction_type act, bool local,
                 mon->mname = "freed slave";
             }
             else if (local)
-                simple_monster_message(mon, " becomes indifferent.");
+                simple_monster_message(mon, jtransc(" becomes indifferent."));
             mon->behaviour = BEH_WANDER;
             break;
 
@@ -468,7 +469,8 @@ static void _daction_hog_to_human(monster *mon, bool in_transit)
     behaviour_event(mon, ME_EVAL);
 
     if (could_see && !can_see)
-        mpr("The hog vanishes!");
+        mpr(jtrans("The hog vanishes!"));
     else if (!could_see && can_see)
-        mprf("%s appears from out of thin air!", mon->name(DESC_A).c_str());
+        mprf(jtransc("%s appears from out of thin air!"),
+             (jtrans(mon->name(DESC_PLAIN)) + "の姿").c_str());
 }
