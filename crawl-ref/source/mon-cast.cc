@@ -7186,7 +7186,7 @@ void mons_cast_noise(monster* mons, const bolt &pbolt,
     else
         beam_name = pbolt.get_short_name();
 
-    msg = replace_all(msg, "@beam@", beam_name);
+    msg = replace_all(msg, "@beam@", tagged_jtrans("[zap]", beam_name));
 
     const msg_channel_type chan =
         (unseen              ? MSGCH_SOUND :
