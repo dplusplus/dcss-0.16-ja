@@ -1702,7 +1702,7 @@ void yred_make_enslaved_soul(monster* mon, bool force_hostile)
     add_daction(DACT_OLD_ENSLAVED_SOULS_POOF);
     remove_enslaved_soul_companion();
 
-    const string whose = you.can_see(mon) ? apostrophise(mon->name(DESC_THE))
+    const string whose = you.can_see(mon) ? jtrans(mon->name(DESC_PLAIN))
                                           : mon->pronoun(PRONOUN_POSSESSIVE);
 
     // Remove the monster's soul-enslaving enchantment, as it's no
