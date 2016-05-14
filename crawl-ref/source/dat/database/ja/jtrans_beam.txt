@@ -5,7 +5,7 @@ You hear a mighty clap of thunder!
 %%%%
 %s appears from out of thin air!
 
-%sがどこからともなく現れた！
+%sがいきなり目の前に現れた！
 %%%%
 burns
 
