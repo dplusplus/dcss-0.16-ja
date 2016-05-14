@@ -12,6 +12,7 @@
 #include "bloodspatter.h"
 #include "coordit.h"
 #include "dactions.h"
+#include "database.h"
 #include "directn.h"
 #include "english.h"
 #include "env.h"
@@ -500,7 +501,7 @@ void shock_serpent_discharge_fineff::fire()
 void delayed_action_fineff::fire()
 {
     if (final_msg)
-        mpr(final_msg);
+        mpr(jtrans(final_msg));
     add_daction(action);
 }
 

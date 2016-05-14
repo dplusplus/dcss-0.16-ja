@@ -3140,7 +3140,7 @@ void pikel_band_neutralise()
     else if (visible_slaves > 1)
         final_msg = "With Pikel's spell broken, the former slaves thank you for their freedom.";
 
-    delayed_action_fineff::schedule(DACT_PIKEL_SLAVES, jtransc(final_msg));
+    delayed_action_fineff::schedule(DACT_PIKEL_SLAVES, final_msg);
 }
 
 /**
