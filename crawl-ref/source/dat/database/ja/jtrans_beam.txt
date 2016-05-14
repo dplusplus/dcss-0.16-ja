@@ -427,14 +427,6 @@ The %s %s %s.
 
 %sは%s%s。
 %%%%
-The %s is repelled.
-
-%sは弾かれた。
-%%%%
-You deflect the %s!
-
-あなたは%sを逸らした！
-%%%%
 The %s hits something.
 
 %sは何かに命中した。
