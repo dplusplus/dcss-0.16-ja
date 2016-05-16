@@ -2332,7 +2332,10 @@ void random_uselessness(int scroll_slot)
         if (you.species == SP_MUMMY)
             mpr(jtrans("Your bandages flutter."));
         else // if (you.can_smell())
-            mprf(jtransc("You smell %s."), jtransc(weird_smell()));
+        {
+            string msg = make_stringf(jtransc("You smell %s."), jtransc(weird_smell()));
+            mpr(replace_all(msg, "ようなの", "ような"));
+        }
         break;
 
     case 4:
