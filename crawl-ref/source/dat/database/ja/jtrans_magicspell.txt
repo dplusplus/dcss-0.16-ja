@@ -1108,7 +1108,7 @@ Summon Emperor Scopions
 [spell]Summon Hell Beast
 
 # monster only
-Summon Hell Beast
+地獄の獣人の召喚
 %%%%
 [spell]Summon Holies
 
