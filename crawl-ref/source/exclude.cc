@@ -13,6 +13,7 @@
 #include "cloud.h"
 #include "coord.h"
 #include "coordit.h"
+#include "database.h"
 #include "dgn-overview.h"
 #include "english.h"
 #include "env.h"
@@ -98,8 +99,8 @@ void set_auto_exclude(const monster* mon)
         //        (as is possible for some vaults), this could be really
         //        annoying. (jpeg)
         mprf(MSGCH_WARN,
-             "Marking area around %s as unsafe for travelling.",
-             mon->name(DESC_THE).c_str());
+             jtransc("Marking area around %s as unsafe for travelling."),
+             jtransc(mon->name(DESC_THE)));
 
 #ifdef USE_TILE
         viewwindow();

@@ -2070,6 +2070,12 @@ You can find your morgue file in the '%s' directory.
 
 %lu種のスキル
 %%%%
+############################## exclude.cc ##############################
+%%%%
+Marking area around %s as unsafe for travelling.
+
+この%sの周囲を自動移動の禁止範囲に指定した。
+%%%%
 ############################## fight.cc ##############################
 %%%%
 %s hops backward while attacking.
