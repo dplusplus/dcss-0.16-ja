@@ -259,8 +259,18 @@ static string _get_seen_branches(bool display)
             lid = find_deepest_explored(lid);
 
             string entry_desc;
+            branch_type br = NUM_BRANCHES;
             for (auto lvl : stair_level[branch])
-                entry_desc += " " + lvl.describe_j(false, true);
+            {
+                if (entry_desc.empty())
+                    entry_desc += lvl.describe_abbrev_j(false, true);
+                else if (br == lvl.branch)
+                    entry_desc += make_stringf(",%d", lvl.depth);
+                else
+                    entry_desc += " " + lvl.describe_abbrev_j(false, true);
+
+                br = lvl.branch;
+            }
 
             // "D" is a little too short here.
             const char *brname = (branch == BRANCH_DUNGEON
@@ -329,18 +339,18 @@ static string _get_unseen_branches()
                 if (it->mindepth != it->maxdepth)
                 {
                     snprintf(buffer, sizeof buffer,
-                        "<darkgrey>%8s: %s:%d-%d</darkgrey>",
-                            chop_stringc(tagged_jtrans("[branch]", it->abbrevname), 8),
-                            tagged_jtransc("[branch]", branches[parent].abbrevname),
+                        "<darkgrey>%12s: %s:%d-%d</darkgrey>",
+                            chop_stringc(tagged_jtrans("[branch]", it->abbrevname), 12),
+                            tagged_jtransc("[branch]", branches[parent].abbrevname_j),
                             it->mindepth,
                             it->maxdepth);
                 }
                 else
                 {
                     snprintf(buffer, sizeof buffer,
-                        "<darkgrey>%8s: %s:%d</darkgrey>",
-                            chop_stringc(tagged_jtrans("[branch]", it->abbrevname), 8),
-                            tagged_jtransc("[branch]", branches[parent].abbrevname),
+                        "<darkgrey>%12s: %s:%d</darkgrey>",
+                            chop_stringc(tagged_jtrans("[branch]", it->abbrevname), 12),
+                            tagged_jtransc("[branch]", branches[parent].abbrevname_j),
                             it->mindepth);
                 }
 

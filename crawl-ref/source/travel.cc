@@ -3239,6 +3239,27 @@ string level_id::describe_j(bool long_name, bool with_number) const
     return result;
 }
 
+string level_id::describe_abbrev_j(bool long_name, bool with_number) const
+{
+    string result = tagged_jtrans("[branch]",
+                    (long_name ? branches[branch].longname
+                               : branches[branch].abbrevname_j));
+
+    if (with_number && brdepth[branch] != 1)
+    {
+        if (long_name)
+        {
+            result = make_stringf("%sの%d階",
+                                  result.c_str(), depth);
+        }
+        else if (depth)
+            result = make_stringf("%s:%d", result.c_str(), depth);
+        else
+            result = make_stringf("%s:$", result.c_str());
+    }
+    return result;
+}
+
 level_id level_id::parse_level_id(const string &s) throw (string)
 {
     string::size_type cpos = s.find(':');
