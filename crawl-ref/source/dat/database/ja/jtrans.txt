@@ -10884,7 +10884,7 @@ You are pushed out of the %s.
 %%%%
 You feel a build-up of mutagenic energy.
 
-あなたは身体を強化する変異性のエネルギーを感じた。
+あなたは変異性のエネルギーが強まるのを感じた。
 %%%%
 Mutagenic energies flood into your body!
 
