@@ -15362,11 +15362,11 @@ A rift temporarily opens in the fabric of space!
 %%%%
 Space warps crazily around you!
 
-あなたの周りの空間がめちゃくちゃに歪んだ！
+あなたの周囲の空間がめちゃくちゃに歪んだ！
 %%%%
 Space warps crazily around @the_monster@!
 
-@the_monster@の周りの空間がめちゃくちゃに歪んだ！
+@the_monster@の周囲の空間がめちゃくちゃに歪んだ！
 %%%%
 Shadowy shapes form in the air around you, then vanish.
 
@@ -16386,11 +16386,11 @@ You feel very strange.
 %%%%
 Space warps around you!
 
-あなたの周りの空間が歪んだ！
+あなたの周囲の空間が歪んだ！
 %%%%
 Space warps around @the_monster@!
 
-@the_monster@の周りの空間が歪んだ！
+@the_monster@の周囲の空間が歪んだ！
 %%%%
 A piece of empty space twists and writhes.
 
