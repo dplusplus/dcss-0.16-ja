@@ -431,7 +431,7 @@
 %%%%
 [zap]blast of calcifying dust
 
-石化の雲
+石化する雲
 # from SPELL_PETRIFYING_CLOUD
 %%%%
 [zap]stream of webbing
