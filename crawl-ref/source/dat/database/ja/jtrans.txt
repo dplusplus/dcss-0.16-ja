@@ -8535,6 +8535,10 @@ You can no longer detect the %s.
 
 あなたは%sの姿を探知できない。
 %%%%
+breaks free of your control!
+
+はあなたの束縛から逃れた！
+%%%%
 is no longer charmed.
 
 はもう魅了されていない。
