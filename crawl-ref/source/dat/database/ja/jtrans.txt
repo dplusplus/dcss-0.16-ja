@@ -9847,7 +9847,7 @@ You feel threatened and lose the ability to drink potions!
 %%%%
 protects you from harm!
 
-があなたを損傷から護った！
+があなたを危害から護った！
 %%%%
 Ouch! That really hurt!
 
