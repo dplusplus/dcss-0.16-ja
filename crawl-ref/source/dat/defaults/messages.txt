@@ -6,30 +6,29 @@ msc := message_colour
 
 # Really important messages
 #
-msc += $danger:drains you
-msc += $danger:feel drained
-msc += $danger:strangely unstable
-msc += $danger:curare-tipped.*hits you
-msc += $danger:Space warps.* around you
-msc += $danger:Space bends around you
-msc += $danger:sense of stasis
-msc += $danger:clumsily bash
-msc += $danger:goes berserk!
-msc += $danger:Forgetting.* will destroy the book
-msc += $danger:The blast of calcifying dust hits you!
-msc += $danger:you are engulfed in calcifying dust
-msc += $danger:is moving more slowly
+msc += $danger:はあなたの.*を吸い取った
+msc += $danger:衰弱させられたのを感じた
+msc += $danger:奇妙な落ち着かない感じがした
+msc += $danger:クラーレ毒.*あなたに命中した
+msc += $danger:あなたの周囲の空間が.*歪んだ
+msc += $danger:奇妙な停滞感を覚えた
+msc += $danger:不器用に殴打した
+msc += $danger:バーサークした
+msc += $danger:忘れるには魔法書を破り捨て
+msc += $danger:石化する雲はあなたに命中した！
+msc += $danger:あなたは石化する雲の中に包まれている
+msc += $danger:はさらに動きが鈍くなった
 # Don't recolour acquirement messages along with messages about invisible monsters.
-msc += lightgrey:Something appears (at your feet|before you)
-msc += $danger:^Something .* you
-msc += $danger:you block its attack
-msc += $danger:constricts you
-msc += $danger:you convulse
-msc += $danger:You feel a build-up of mutagenic energy
-msc += $danger:place you under penance
+msc += lightgrey:あなたの(足下|目の前)に何かが現れた！
+msc += $danger:^何かが.*あなた
+msc += $danger:あなたは.*を防いだ
+msc += $danger:はあなたを締めつけた
+msc += $danger:あなたは打ちのめされた
+msc += $danger:あなたは変異性のエネルギーが強まるのを感じた
+msc += $danger:神に懺悔をする羽目
 
-msc += $item_dmg:acid corrodes
-msc += $item_dmg:rots? away
+msc += $item_dmg:酸.*腐蝕した
+msc += $item_dmg:(腐っていく|腐りはじめた)
 
 # Less urgent, but still significant messages
 #
@@ -53,56 +52,57 @@ msc += $warning:岩が落ちる音が突然
 msc += $warning:なだれ落ちる岩石.*ゴロゴロ
 msc += $warning:秘術の力.*パチパチ
 msc += $warning:魔法のポータル.*パチパチ
-msc += lightcyan:LOW MAGIC WARNING
-msc += $warning:fails to return
-msc += $warning:no longer ripe
+msc += lightcyan:MP低下警告
+msc += $warning:うまく受け取れなかった！
+msc += $warning:はもはや囚われていない。
 
 # Unimportant messages and combat clutter
 #
-msc += $boring:You start (resting|waiting)
-msc += $boring:Unknown command
-msc += $boring:そのコマンドは存在しません
-msc += $boring:disappears? in a puff of smoke
-msc += $boring:dissolves? into (sparkling lights|shadows)
-msc += $boring:crumbles away
-msc += $boring:returns to the deep
-msc += $boring:shimmers and vanishes
+msc += $boring:あなたは(休憩|待機)を始めた。
+msc += $boring:そのコマンドは存在しません。
+msc += $boring:煙.*消え去った。
+msc += $boring:は影に溶け込んでいった。
+msc += $boring:は閃光とともに消え去った
+msc += $boring:は崩れ落ちた。
+msc += $boring:深淵へと還った
+msc += $boring:揺らめいて消え去った
 #
-msc += $boring:plain:miss(es)? (the|you|it)
-msc += $boring:but (do no|doesn't do any) damage
-msc += $boring:(prevent|prevents) you from hitting
-msc += $boring:nimbly evade
-msc += $boring:waved at by a branch
-msc += $boring:lunges up near
-msc += $boring:Your air elemental.*the air
+msc += $boring:plain:攻撃を.*外した
+msc += $boring:plain:あなたから外れた
+msc += $boring:ダメージを与えられなかった
+msc += $boring:あなたは.*が邪魔で.*攻撃できなかった
+msc += $boring:身軽にかわした
+msc += $boring:は枝に振り回された
+msc += $boring:木の根が近くの.*を突いた
+msc += $boring:あなたの風の精霊.*(大気へと溶け込んだ|虚空から現れた)
 
 ## Messages so important to require a --more--
 
-force_more_message += You have reached level
-force_more_message += Your scales start
-force_more_message += You fall through a shaft
-force_more_message += Marking area around .* as unsafe
-force_more_message += .*breaks free of your control
+force_more_message += あなたは.*レベル.*になった！
+force_more_message += あなたの鱗は成熟して.*になった。
+force_more_message += あなたは縦穴に.*落ちた！
+force_more_message += 自動移動の禁止範囲に指定した
+force_more_message += はあなたの束縛から逃れた
 
 ## Reduce chance of drowning because flight or form runs out:
-force_more_message += Careful!
+force_more_message += 注意！
 
 # Announcements of timed portal vaults:
-force_more_message += interdimensional caravan
-force_more_message += distant snort
-force_more_message += roar of battle
-force_more_message += wave of frost
-force_more_message += hiss of flowing sand
-force_more_message += sound of rushing water
-force_more_message += oppressive heat about you
-force_more_message += crackle of arcane power
+force_more_message += 次元を彷徨う隊商
+force_more_message += 遠くから牛の鼻息
+force_more_message += 戦いの鬨の声
+force_more_message += 冷気の波
+force_more_message += 砂がさらさら言う音
+force_more_message += 水がどぼどぼと流れる音
+force_more_message += うだるような熱気
+force_more_message += 秘術の力がパチパチ音を立てる
 
 # Abyss exits and rune
-force_more_message += Found a gateway leading out of the Abyss
-force_more_message += Found .* abyssal rune of Zot
+force_more_message += アビスからの出口の門を見つけた
+force_more_message += 深淵のルーンを見つけた
 
 # Generally exciting things that are somewhat automated
-force_more_message += You pick up the .* rune and feel its power
+force_more_message += あなたは.*のルーンを手にし、その力を感じた
 
 # First chance of Beogh conversion
-force_more_message += press .* to convert to Beogh
+force_more_message += ベオに改宗するには.*を押してください
