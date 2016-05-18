@@ -14109,11 +14109,11 @@ Memorise %s, consuming %d spell level%s and leaving %d?
 %%%%
 Forgetting %s from %s will destroy the book%s! Are you sure?
 
-%sに記載された%sの呪文を忘れるには魔法書を破り捨て%sる必要があります！ 続行しますか？
+%sに記載された%sの呪文を忘れるには魔法書を破り捨て%s必要があります！ 続行しますか？
 %%%%
 and put you under penance
 
-て神に懺悔す
+て罪を償う
 %%%%
 As you tear out the page describing %s, the book crumbles to dust.
 

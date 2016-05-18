@@ -1029,10 +1029,10 @@ bool forget_spell_from_book(spell_type spell, const item_def* book)
 
     prompt += make_stringf(jtransc("Forgetting %s from %s will destroy the book%s! "
                                    "Are you sure?"),
-                           tagged_jtransc("[spell]", spell_title(spell)),
                            book->name(DESC_THE).c_str(),
+                           tagged_jtransc("[spell]", spell_title(spell)),
                            jtransc(you_worship(GOD_SIF_MUNA)
-                                   ? " and put you under penance" : ""));
+                                   ? " and put you under penance" : "る"));
 
     // Deactivate choice from tile inventory.
     mouse_control mc(MOUSE_MODE_MORE);
