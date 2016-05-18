@@ -12088,7 +12088,7 @@ You can't quiver worn items.
 %%%%
 %s %s %s but does no damage.
 
-%sは%sに%sが、傷つかなかった。
+%sは%sに%sが、ダメージを与えられなかった。
 %%%%
 pierces through
 
