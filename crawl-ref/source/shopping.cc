@@ -723,7 +723,10 @@ static bool _in_a_shop(int shopidx, int &num_in_list)
 
                     if (outside_items)
                     {
-                        mpr("店主『持ちきれない分は外に置いておきますね。』");
+                        mprf(jtransc("I'll put %s outside for you."),
+                             num_items == 1             ? "it" :
+                              num_items == outside_items ? "them"
+                             : "some of them");
                     }
                     bought_something = true;
                 }
