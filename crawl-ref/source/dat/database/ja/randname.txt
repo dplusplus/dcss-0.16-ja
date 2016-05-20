@@ -982,6 +982,7 @@ _jewellery appearance_
 # bound
 
 # clouded
+雲をまとった
 
 # w:2
 # serpentine
@@ -1120,8 +1121,8 @@ _amulet material_
 # crystal
 水晶の
 
-# ダイヤモンドの
-diamond
+# diamond
+ダイヤモンドの
 
 # amethyst
 アメジストの
