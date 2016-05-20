@@ -2549,7 +2549,6 @@ void ShoppingList::gold_changed(int old_amount, int new_amount)
                 desc += thing[SHOPPING_THING_VERB_KEY].get_string();
             else
                 desc = "";
-            desc += " ";
 
             desc += describe_thing(thing, DESC_A);
 
@@ -2951,7 +2950,7 @@ string ShoppingList::describe_thing(const CrawlHashTable& thing,
     if (pos.id == level_id::current())
         desc += jtrans("this level");
     else
-        desc += pos.id.describe_j();
+        desc += pos.id.describe_j(true);
 
     desc += "に売っている" + name_thing(thing, descrip);
 
