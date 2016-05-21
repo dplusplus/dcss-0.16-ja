@@ -19935,7 +19935,7 @@ The Orb of Zot has appeared in the centre of the arena!
 
 ゾットのオーブが闘技場の中央に出現した！
 %%%%
-<yellow>You have won a prize for killing the boss!</yellow>"
+<yellow>You have won a prize for killing the boss!</yellow>
 
 <yellow>あなたはボスを倒して賞品を手にした！</yellow>
 %%%%
