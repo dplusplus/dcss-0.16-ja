@@ -4346,6 +4346,10 @@ serpentine rune of Zot
 
 蛇行のルーン
 %%%%
+elven rune of Zot
+
+エルフのルーン
+%%%%
 golden rune of Zot
 
 黄金のルーン
@@ -4361,6 +4365,10 @@ barnacled rune of Zot
 gossamer rune of Zot
 
 遊糸のルーン
+%%%%
+mossy rune of Zot
+
+苔のルーン
 %%%%
 demonic rune of Zot
 
