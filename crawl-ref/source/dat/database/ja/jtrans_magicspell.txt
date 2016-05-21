@@ -911,8 +911,7 @@ Shadow Bolt
 %%%%
 [spell]Shadow Shard
 
-# obsolete?
-Shadow Shard
+影の欠片
 %%%%
 [spell]Shatter
 

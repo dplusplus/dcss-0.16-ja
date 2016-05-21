@@ -4019,6 +4019,8 @@ monster* shadow_monster(bool equip)
 
     mgrd(you.pos()) = mon->mindex();
 
+    mon->mname = "あなたの影";
+
     return mon;
 }
 

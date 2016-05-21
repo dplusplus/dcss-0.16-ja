@@ -460,7 +460,7 @@
 %%%%
 [zap]shadow shard
 
-# obsolete?
+影の欠片
 %%%%
 [zap]glob of lava
 

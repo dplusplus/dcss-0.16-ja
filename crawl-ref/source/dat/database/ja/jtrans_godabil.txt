@@ -810,7 +810,7 @@ You step into %s shadow.
 %%%%
 %s mimicks your spell!
 
-%sはあなたの呪文を真似した！
+%sがあなたの呪文を真似した！
 %%%%
 You need at least %d gold to purchase potions right now!
 
