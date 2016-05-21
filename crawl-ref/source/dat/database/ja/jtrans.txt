@@ -7793,130 +7793,6 @@ becomes somewhat translucent.
 
 の眼が爛々と輝きだした。
 %%%%
-############################## mon-info.cc ##############################
-%%%%
-very slow
-
-かなり遅い
-%%%%
-slow
-
-遅い
-%%%%
-extremely fast
-
-極めて素早い
-%%%%
-very fast
-
-かなり素早い
-%%%%
-fast
-
-素早い
-%%%%
-[adj]very slow
-
-かなり遅く
-%%%%
-[adj]slow
-
-遅く
-%%%%
-[adj]extremely fast
-
-極めて素早く
-%%%%
-[adj]very fast
-
-かなり素早く
-%%%%
-[adj]fast
-
-素早く
-%%%%
-normal
-
-普通だ
-%%%%
-says
-
-言った
-%%%%
-shouts
-
-叫んだ
-%%%%
-barks
-
-うなった
-%%%%
-roars
-
-吠えた
-%%%%
-screams
-
-叫んだ
-%%%%
-bellows
-
-大声で鳴いた
-%%%%
-trumpets
-
-パオーンと鳴いた
-%%%%
-screeches
-
-キーキー鳴いた
-%%%%
-buzzes
-
-ブンブンうなった
-%%%%
-moans
-
-うめき声を上げた
-%%%%
-gurgles
-
-ぶくぶく音を立てた
-%%%%
-croaks
-
-ゲコゲコ鳴いた
-%%%%
-growls
-
-うなった
-%%%%
-hisses
-
-シューッと音を立てた
-%%%%
-sneers
-
-嘲笑った
-%%%%
-caws
-
-モーと鳴いた
-%%%%
-rumbles
-
-重々しく言った
-%%%%
-breathes
-
-静かに言った
-%%%%
-whispers
-
-囁いた
-%%%%
-############################## mutation.cc ##############################
-%%%%
 You feel troubled.
 
 あなたは不安になった。
@@ -8879,45 +8755,97 @@ constricted by
 
 に拘束されている
 %%%%
+spectral
+
+幽体の
+%%%%
+ghost
+
+幽霊
+%%%%
+illusion
+
+幻影
+%%%%
+shaped pillar of salt
+
+形の塩の柱
+%%%%
+shaped block of ice
+
+形の氷の塊
+%%%%
+shaped shifter
+
+変身能力者
+%%%%
+helpless
+
+哀れな
+%%%%
+submerged
+
+水中の
+%%%%
+ghostly
+
+霊体の
+%%%%
+sensed
+
+感知済みの
+%%%%
+active
+
+活発な
+%%%%
+-headed
+
+首
+%%%%
 very slow
 
 かなり遅い
-%%%%
-slow
-
-遅い
-%%%%
-extremely fast
-
-極めて素早い
-%%%%
-very fast
-
-かなり素早い
-%%%%
-fast
-
-素早い
 %%%%
 [adj]very slow
 
 かなり遅く
 %%%%
+slow
+
+遅い
+%%%%
 [adj]slow
 
 遅く
+%%%%
+extremely fast
+
+極めて素早い
 %%%%
 [adj]extremely fast
 
 極めて素早く
 %%%%
+very fast
+
+かなり素早い
+%%%%
 [adj]very fast
 
 かなり素早く
 %%%%
+fast
+
+素早い
+%%%%
 [adj]fast
 
 素早く
+%%%%
+[adj]very slow
+
+かなり遅く
 %%%%
 normal
 
@@ -9180,6 +9108,82 @@ ground
 my god
 
 我が神
+%%%%
+says
+
+言った
+%%%%
+shouts
+
+叫んだ
+%%%%
+barks
+
+うなった
+%%%%
+roars
+
+吠えた
+%%%%
+screams
+
+叫んだ
+%%%%
+bellows
+
+大声で鳴いた
+%%%%
+trumpets
+
+パオーンと鳴いた
+%%%%
+screeches
+
+キーキー鳴いた
+%%%%
+buzzes
+
+ブンブンうなった
+%%%%
+moans
+
+うめき声を上げた
+%%%%
+gurgles
+
+ぶくぶく音を立てた
+%%%%
+croaks
+
+ゲコゲコ鳴いた
+%%%%
+growls
+
+うなった
+%%%%
+hisses
+
+シューッと音を立てた
+%%%%
+sneers
+
+嘲笑った
+%%%%
+caws
+
+モーと鳴いた
+%%%%
+rumbles
+
+重々しく言った
+%%%%
+breathes
+
+静かに言った
+%%%%
+whispers
+
+囁いた
 %%%%
 ############################## mutation.cc ##############################
 %%%%
