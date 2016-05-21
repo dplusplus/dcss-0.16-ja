@@ -13661,6 +13661,10 @@ Purchase for %d gold? (y/n)
 
 金貨%d枚で購入しますか？ (y/n)
 %%%%
+I'll put %s outside for you.
+
+店主『持ちきれない分は外に置いておきますね。』
+%%%%
 No such item.
 
 そのようなアイテムはありません。

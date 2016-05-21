@@ -723,7 +723,10 @@ static bool _in_a_shop(int shopidx, int &num_in_list)
 
                     if (outside_items)
                     {
-                        mpr("店主『持ちきれない分は外に置いておきますね。』");
+                        mprf(jtransc("I'll put %s outside for you."),
+                             num_items == 1             ? "it" :
+                              num_items == outside_items ? "them"
+                             : "some of them");
                     }
                     bought_something = true;
                 }
@@ -2546,7 +2549,6 @@ void ShoppingList::gold_changed(int old_amount, int new_amount)
                 desc += thing[SHOPPING_THING_VERB_KEY].get_string();
             else
                 desc = "";
-            desc += " ";
 
             desc += describe_thing(thing, DESC_A);
 
@@ -2948,7 +2950,7 @@ string ShoppingList::describe_thing(const CrawlHashTable& thing,
     if (pos.id == level_id::current())
         desc += jtrans("this level");
     else
-        desc += pos.id.describe_j();
+        desc += pos.id.describe_j(true);
 
     desc += "に売っている" + name_thing(thing, descrip);
 
