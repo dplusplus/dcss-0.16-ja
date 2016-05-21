@@ -6069,14 +6069,14 @@ static void _extra_sacrifice_code(ability_type sac)
             }
 
             mprf(jtransc("You can no longer wear %s!"),
-                 jtransc(ring->name(DESC_YOUR)));
+                 jtransc(ring->name(DESC_PLAIN)));
             unequip_item(ring_slot);
             if (open_ring_slot)
             {
                 mprf(jtransc("You put %s back on %s %s!"),
                      jtransc(ring->name(DESC_PLAIN)),
                      (you.species == SP_OCTOPODE ? "別の" : "もう片方の"),
-                     you.hand_name(true).c_str());
+                     you.hand_name(false).c_str());
                 puton_ring(ring_inv_slot, false);
             }
         }
