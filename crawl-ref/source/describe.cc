@@ -3172,8 +3172,8 @@ static string _describe_chimera(const monster_info& mi)
     {
         const monster_type leggy_part =
             get_chimera_part(&mi, mi.props["chimera_legs"].get_int());
-        description += apply_description(DESC_A,
-                                         get_monster_data(leggy_part)->name);
+        description += apply_description_j(DESC_A,
+                                           get_monster_data(leggy_part)->name);
 
         description += "の肢";
         if (has_wings)

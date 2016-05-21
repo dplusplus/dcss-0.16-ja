@@ -5643,7 +5643,7 @@ mon_resist_type bolt::apply_enchantment_to_monster(monster* mon)
             if (you.can_see(mon))
             {
                 mprf(jtransc("%s magical defenses are stripped away."),
-                     jtransc(mon->name(DESC_PLAIN)));
+                     jtransc(mon->name(DESC_ITS)));
                 obvious_effect = true;
             }
         }
@@ -5675,7 +5675,7 @@ mon_resist_type bolt::apply_enchantment_to_monster(monster* mon)
             if (you.can_see(mon))
             {
                 mprf(jtransc("The poison in %s body grows stronger."),
-                     mon->name(DESC_PLAIN).c_str());
+                     mon->name(DESC_ITS).c_str());
             }
         }
 

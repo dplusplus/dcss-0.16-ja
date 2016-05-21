@@ -1567,7 +1567,7 @@ bool attack::attack_shield_blocked(bool verbose)
             mprf(jtransc("%s %s %s attack."),
                  jtransc(defender_name(false)),
                  jtransc(attacker == defender ? "its own"
-                                              : atk_name(DESC_PLAIN).c_str()));
+                                              : atk_name(DESC_ITS).c_str()));
         }
 
         defender->shield_block_succeeded(attacker);

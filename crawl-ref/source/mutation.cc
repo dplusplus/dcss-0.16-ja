@@ -2520,7 +2520,7 @@ static bool _balance_demonic_guardian()
             && !one_chance_in(3)
             && !mons->has_ench(ENCH_LIFE_TIMER))
         {
-            mprf(jtransc("%s %s!"), jtransc(mons->name(DESC_PLAIN)),
+            mprf(jtransc("%s %s!"), jtransc(mons->name(DESC_THE)),
                  summoned_poof_msg(*mons).c_str());
             monster_die(*mons, KILL_NONE, NON_MONSTER);
         }

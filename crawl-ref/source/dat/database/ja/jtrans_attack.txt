@@ -65,7 +65,7 @@ You pounce on the unaware %s!
 %%%%
 %s %s %s attack.
 
-%sは%sの攻撃を防いだ。
+%sは%s攻撃を防いだ。
 %%%%
 melt
 
@@ -73,7 +73,7 @@ melt
 %%%%
 its own
 
-自分自身
+自分自身の
 %%%%
 You are electrocuted!
 

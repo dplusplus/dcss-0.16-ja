@@ -899,7 +899,7 @@ bool zin_recite_to_single_monster(const coord_def& where)
                 else
                 {
                     mprf(jtransc("%s bleeds profusely from %s eyes and ears."),
-                         jtransc(mon->name(DESC_PLAIN)),
+                         jtransc(mon->name(DESC_THE)),
                          jtransc(mon->pronoun(PRONOUN_POSSESSIVE)));
                 }
                 break;
@@ -1702,7 +1702,7 @@ void yred_make_enslaved_soul(monster* mon, bool force_hostile)
     add_daction(DACT_OLD_ENSLAVED_SOULS_POOF);
     remove_enslaved_soul_companion();
 
-    const string whose = you.can_see(mon) ? jtrans(mon->name(DESC_PLAIN))
+    const string whose = you.can_see(mon) ? jtrans(mon->name(DESC_THE))
                                           : mon->pronoun(PRONOUN_POSSESSIVE);
 
     // Remove the monster's soul-enslaving enchantment, as it's no
@@ -3509,7 +3509,7 @@ static int _lugonu_warp_monster(monster* mon, int pow)
     if (mons_genus(mon->type) == MONS_BLINK_FROG)
     {
         mprf(jtransc("%s basks in the distortional energy."),
-             jtransc(mon->name(DESC_PLAIN)));
+             jtransc(mon->name(DESC_THE)));
         mon->heal(damage, false);
     }
     else
@@ -3560,14 +3560,14 @@ void cheibriados_time_bend(int pow)
             if (res_margin > 0)
             {
                 mprf("%s%s",
-                     jtransc(mon->name(DESC_PLAIN)),
+                     jtransc(mon->name(DESC_THE)),
                      mon->resist_margin_phrase(res_margin).c_str());
                 continue;
             }
 
             simple_god_message(
                 make_stringf(jtransc(" rebukes %s."),
-                             jtransc(mon->name(DESC_PLAIN))).c_str(),
+                             jtransc(mon->name(DESC_THE))).c_str(),
                              GOD_CHEIBRIADOS);
             do_slow_monster(mon, &you);
         }
@@ -3935,7 +3935,7 @@ bool dithmenos_shadow_step()
 
     const actor *victim = actor_at(sdirect.target);
     mprf(jtransc("You step into %s shadow."),
-         jtransc(victim->name(DESC_PLAIN)));
+         jtransc(victim->name(DESC_THE)));
 
     return true;
 }
@@ -4148,7 +4148,7 @@ void dithmenos_shadow_spell(bolt* orig_beam, spell_type spell)
     beem.aimed_at_spot = orig_beam->aimed_at_spot;
 
     mprf(MSGCH_FRIEND_SPELL, jtransc("%s mimicks your spell!"),
-         jtransc(mon->name(DESC_PLAIN)));
+         jtransc(mon->name(DESC_THE)));
     mons_cast(mon, beem, shadow_spell, MON_SPELL_WIZARD, false);
 
     shadow_monster_reset(mon);
@@ -6345,31 +6345,31 @@ void ru_do_retribution(monster* mons, int damage)
     if (power > 50 && (mons->antimagic_susceptible()))
     {
         mprf(MSGCH_GOD, jtransc("You focus your will and drain %s's magic in "
-                                "retribution!"), jtransc(mons->name(DESC_PLAIN)));
+                                "retribution!"), jtransc(mons->name(DESC_THE)));
         mons->add_ench(mon_enchant(ENCH_ANTIMAGIC, 1, act, power+random2(320)));
     }
     else if (power > 35)
     {
         mprf(MSGCH_GOD, jtransc("You focus your will and paralyse %s in retribution!"),
-             jtransc(mons->name(DESC_PLAIN)));
+             jtransc(mons->name(DESC_THE)));
         mons->add_ench(mon_enchant(ENCH_PARALYSIS, 1, act, power+random2(60)));
     }
     else if (power > 25)
     {
         mprf(MSGCH_GOD, jtransc("You focus your will and slow %s in retribution!"),
-             jtransc(mons->name(DESC_PLAIN)));
+             jtransc(mons->name(DESC_THE)));
         mons->add_ench(mon_enchant(ENCH_SLOW, 1, act, power+random2(100)));
     }
     else if (power > 10 && mons_can_be_blinded(mons->type))
     {
         mprf(MSGCH_GOD, jtransc("You focus your will and blind %s in retribution!"),
-             jtransc(mons->name(DESC_PLAIN)));
+             jtransc(mons->name(DESC_THE)));
         mons->add_ench(mon_enchant(ENCH_BLIND, 1, act, power+random2(100)));
     }
     else if (power > 0)
     {
         mprf(MSGCH_GOD, jtransc("You focus your will and illuminate %s in retribution!"),
-             jtransc(mons->name(DESC_PLAIN)));
+             jtransc(mons->name(DESC_THE)));
         mons->add_ench(mon_enchant(ENCH_CORONA, 1, act, power+random2(150)));
     }
 }

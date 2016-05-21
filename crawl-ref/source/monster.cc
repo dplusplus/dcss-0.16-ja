@@ -1145,7 +1145,7 @@ void monster::pickup_message(const item_def &item, int near)
         }
 
         mprf(jtransc("%s picks up %s."),
-             jtransc(name(DESC_PLAIN)),
+             jtransc(name(DESC_THE)),
              item.base_type == OBJ_GOLD ? jtransc("some gold")
                                         : item.name(DESC_A).c_str());
     }
@@ -1288,7 +1288,7 @@ bool monster::drop_item(int eslot, int near)
         if (need_message(near))
         {
             mprf(jtransc("%s %s as %s drops %s!"),
-                 jtransc(pitem->name(DESC_PLAIN)),
+                 jtransc(pitem->name(DESC_THE)),
                  jtransc(name(DESC_PLAIN)),
                  pitem->quantity > 1 ? "それら" : "それ",
                  summoned_poof_msg(this, *pitem).c_str());
@@ -1301,7 +1301,7 @@ bool monster::drop_item(int eslot, int near)
     {
         if (need_message(near))
         {
-            mprf(jtransc("%s drops %s."), name(DESC_PLAIN).c_str(),
+            mprf(jtransc("%s drops %s."), name(DESC_THE).c_str(),
                  pitem->name(DESC_A).c_str());
         }
 
@@ -2869,7 +2869,7 @@ bool monster::fumbles_attack()
     {
         if (you.can_see(this))
         {
-            mprf(jtransc("%s %s"), jtransc(name(DESC_PLAIN)), jtransc(liquefied(pos())
+            mprf(jtransc("%s %s"), jtransc(name(DESC_THE)), jtransc(liquefied(pos())
                  ? "becomes momentarily stuck in the liquid earth."
                  : "splashes around in the water."));
         }
@@ -3001,7 +3001,7 @@ void monster::expose_to_element(beam_type flavour, int strength,
                 && you.can_see(this))
             {
                 mprf(jtransc("The heat melts %s icy armour."),
-                     jtransc(name(DESC_PLAIN)));
+                     jtransc(name(DESC_THE)));
             }
         }
         if (has_ench(ENCH_ICEMAIL))
@@ -4518,7 +4518,7 @@ bool monster::drain_exp(actor *agent, bool quiet, int pow)
         return false;
 
     if (!quiet && you.can_see(this))
-        mprf(jtransc("%s is drained!"), jtransc(name(DESC_PLAIN)));
+        mprf(jtransc("%s is drained!"), jtransc(name(DESC_THE)));
 
     // If quiet, don't clean up the monster in order to credit properly.
     hurt(agent, 2 + random2(3), BEAM_NEG, KILLED_BY_DRAINING, "", "", !quiet);
@@ -4546,7 +4546,7 @@ bool monster::rot(actor *agent, int amount, int immediate, bool quiet)
 
     if (!quiet && you.can_see(this))
     {
-        mprf("%s%s！", jtransc(name(DESC_PLAIN)),
+        mprf("%s%s！", jtransc(name(DESC_THE)),
              jtransc(amount > 0 ? "の体は腐敗した" : "looks less resilient"));
     }
 
@@ -4589,13 +4589,13 @@ void monster::corrode_equipment(const char* corrosion_source)
         {
             mprf(jtransc("%s corrodes %s!"),
                  jtransc(corrosion_source),
-                 jtransc(name(DESC_PLAIN)));
+                 jtransc(name(DESC_THE)));
         }
         else
         {
             mprf(jtransc("%s corrodes %s equipment!"),
                  jtransc(corrosion_source),
-                 jtransc(name(DESC_PLAIN)));
+                 jtransc(name(DESC_THE)));
         }
     }
 
@@ -4622,7 +4622,7 @@ void monster::splash_with_acid(const actor* evildoer, int /*acid_strength*/,
         if (you.can_see(this))
         {
             mprf(jtransc("%s writhes in agony as %s flesh is eaten away!"),
-                 jtransc(name(DESC_PLAIN)),
+                 jtransc(name(DESC_THE)),
                  pronoun(PRONOUN_POSSESSIVE).c_str());
         }
     }
@@ -5270,7 +5270,7 @@ bool monster::sicken(int amount)
     {
         // Yes, could be confused with poisoning.
         mprf(jtransc("%s looks sick."),
-             jtransc(name(DESC_PLAIN)));
+             jtransc(name(DESC_THE)));
     }
 
     add_ench(mon_enchant(ENCH_SICK, 0, 0, amount * BASELINE_DELAY));
@@ -5283,7 +5283,7 @@ bool monster::bleed(const actor* agent, int amount, int degree)
     if (!has_ench(ENCH_BLEED) && you.can_see(this))
     {
         mprf(jtransc("%s begins to bleed from %s wounds!"),
-             jtransc(name(DESC_PLAIN)),
+             jtransc(name(DESC_THE)),
              pronoun(PRONOUN_POSSESSIVE).c_str());
     }
 
@@ -5731,7 +5731,7 @@ void monster::apply_location_effects(const coord_def &oldpos,
         else if (!monster_habitable_grid(this, grd(oldpos)))
         {
             mprf(jtransc("%s dives back into the %s!"),
-                 jtransc(name(DESC_PLAIN)),
+                 jtransc(name(DESC_THE)),
                  jtransc(feat_type_name(grd(pos()))));
             del_ench(ENCH_AQUATIC_LAND);
         }
@@ -6270,7 +6270,7 @@ item_type_id_state_type monster::evoke_jewellery_effect(jewellery_type jtype)
         wield_melee_weapon();
 
     mprf(jtransc("%s evokes %s %s."),
-         jtransc(name(DESC_PLAIN)),
+         jtransc(name(DESC_THE)),
          jtransc(jewellery_is_amulet(jtype) ? "amulet" : "ring"));
 
     item_type_id_state_type ident = ID_MON_TRIED_TYPE;
@@ -6424,7 +6424,7 @@ void monster::react_to_damage(const actor *oppressor, int damage,
                 if (observable())
                 {
                     mprf(jtransc("As %s mount dies, %s plunges down into %s!"),
-                         jtransc(name(DESC_PLAIN)),
+                         jtransc(name(DESC_THE)),
                          jtransc(grd(pos()) == DNGN_LAVA ?
                                  "lava and is incinerated" :
                                  "deep water and drowns"));
@@ -6433,7 +6433,7 @@ void monster::react_to_damage(const actor *oppressor, int damage,
             else if (fly_died && observable())
             {
                 mprf(jtransc("%s jumps down from %s now dead mount."),
-                     jtransc(name(DESC_PLAIN)),
+                     jtransc(name(DESC_THE)),
                      pronoun(PRONOUN_POSSESSIVE).c_str());
             }
         }
@@ -6514,7 +6514,7 @@ void monster::steal_item_from_player()
         string msg = getSpeakString("Maurice confused nonstealing");
         if (!msg.empty() && msg != "__NONE")
         {
-            msg = replace_all(msg, "@The_monster@", name(DESC_PLAIN));
+            msg = replace_all(msg, "@The_monster@", name(DESC_THE));
             mprf(MSGCH_TALK, "%s", msg.c_str());
         }
         return;
@@ -6589,7 +6589,7 @@ void monster::steal_item_from_player()
             if (!complaint.empty())
             {
                 complaint = replace_all(complaint, "@The_monster@",
-                                        name(DESC_PLAIN));
+                                        name(DESC_THE));
                 mprf(MSGCH_TALK, "%s", complaint.c_str());
             }
 
@@ -6646,7 +6646,7 @@ void monster::steal_item_from_player()
         }
         mitm[inv[MSLOT_GOLD]].flags |= ISFLAG_THROWN;
         mprf(jtransc("%s steals %s your gold!"),
-             jtransc(name(DESC_PLAIN)),
+             jtransc(name(DESC_THE)),
              stolen_amount == you.gold ? "すべて" : "いくらか");
 
         you.attribute[ATTR_GOLD_FOUND] -= stolen_amount;

@@ -753,7 +753,7 @@ void swap_with_monster(monster* mon_to_swap)
     // If it was submerged, it surfaces first.
     mon.del_ench(ENCH_SUBMERGED);
 
-    mprf(jtransc("You swap places with %s."), jtransc(mon.name(DESC_PLAIN)));
+    mprf(jtransc("You swap places with %s."), jtransc(mon.name(DESC_THE)));
 
     mon.move_to_pos(you.pos(), true, true);
 
@@ -840,7 +840,7 @@ void entered_malign_portal(actor* act)
     if (you.can_see(act))
     {
         mprf(jtransc("%s %s twisted violently and ejected from the portal!"),
-             jtransc(act->name(DESC_PLAIN)), act->conj_verb("be").c_str());
+             jtransc(act->name(DESC_THE)), act->conj_verb("be").c_str());
     }
 
     act->blink(false);

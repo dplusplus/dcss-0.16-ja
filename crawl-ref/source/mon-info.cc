@@ -780,7 +780,7 @@ monster_info::monster_info(const monster* m, int milev)
         actor * const constrictor = actor_by_mid(m->constricted_by);
         if (constrictor)
         {
-            constrictor_name = jtrans(constrictor->name(DESC_PLAIN, true))
+            constrictor_name = jtrans(constrictor->name(DESC_A, true))
                 + jtrans((m->held == HELD_MONSTER ? "held by "
                                                   : "constricted by "));
         }
@@ -795,7 +795,7 @@ monster_info::monster_info(const monster* m, int milev)
         {
             if (const actor* const constrictee = actor_by_mid(entry.first))
             {
-                constricting_name.push_back(jtrans(constrictee->name(DESC_PLAIN, true))
+                constricting_name.push_back(jtrans(constrictee->name(DESC_A, true))
                                             + gerund);
             }
         }
@@ -1101,6 +1101,21 @@ string monster_info::_apply_adjusted_description(description_level_type desc,
     if (attitude == ATT_FRIENDLY && desc == DESC_THE)
         desc = DESC_YOUR;
 
+    return apply_description(desc, s);
+}
+
+string monster_info::_apply_adjusted_description_j(description_level_type desc,
+                                                 const string& s) const
+{
+    if (desc == DESC_ITS)
+        desc = DESC_THE;
+
+    if (is(MB_NAME_THE) && desc == DESC_A)
+        desc = DESC_THE;
+
+    if (attitude == ATT_FRIENDLY && desc == DESC_THE)
+        desc = DESC_YOUR;
+
     return apply_description_j(desc, s);
 }
 
@@ -1213,7 +1228,12 @@ string monster_info::common_name(description_level_type desc) const
             ss << "に変身した" << jtrans("shaped shifter");
     }
 
-    string s = ss.str();
+    string s;
+    // only respect unqualified if nothing was added ("Sigmund" or "The spectral Sigmund")
+    if (!is(MB_NAME_UNQUALIFIED) || has_proper_name() || ss.str() != core)
+        s = _apply_adjusted_description_j(desc, ss.str());
+    else
+        s = ss.str();
 
     if (desc == DESC_ITS)
         s += "の";

@@ -5748,15 +5748,15 @@ You attempt to attack %s, but flinch away in fear!
 %%%%
 %s momentarily %s out as %s attack passes through %s%s
 
-%sは一瞬存在を薄めて%sの攻撃をすり抜けた。
+%sは一瞬存在を薄めて%s攻撃をすり抜けた。
 %%%%
 %s shroud bends %s attack away%s
 
-%sの帷子は%sの攻撃を逸らした%s
+%s帷子は%s攻撃を逸らした%s
 %%%%
 %s shroud falls apart!
 
-%sの帷子は霧消した！
+%s帷子は霧消した！
 %%%%
 You %sdevour %s!
 
@@ -5884,7 +5884,7 @@ Your %s misses %s.
 %%%%
 You drain %s %s.
 
-あなたは%sの%sを吸い取った。
+あなたは%s%sを吸い取った。
 %%%%
 magic
 
@@ -6229,7 +6229,7 @@ is burned by acid!
 %%%%
 %s blade passes through %s shield.
 
-%sの刃は%sの盾を突き抜けた。
+%s刃は%s盾を突き抜けた。
 %%%%
 # klown_attack
 poke
@@ -6382,7 +6382,7 @@ Your divine stamina protects you from poison!
 %%%%
 %s drains %s %s.
 
-%sは%sの%sを吸い取った。
+%sは%s%sを吸い取った。
 %%%%
 looks very invigorated.
 
@@ -6426,7 +6426,7 @@ is struck by your spines.
 %%%%
 %s %s struck by %s %s.
 
-%sは%sの棘で傷ついた。
+%sは%s棘で傷ついた。
 %%%%
 You emit a cloud of foul miasma!
 
@@ -8769,7 +8769,7 @@ The shadowy forms in the deep grow still as others approach.
 %%%%
 Shadowy forms rise from the deep at %s song!
 
-%sの歌に呼ばれ、霊魂が深淵より蘇った！
+%s歌に呼ばれ、霊魂が深淵より蘇った！
 %%%%
 is no longer in an insane frenzy.
 
@@ -8849,7 +8849,7 @@ The winds around %s calm down.
 %%%%
 %s song is interrupted.
 
-%sの歌は中断された。
+%s歌は中断された。
 %%%%
 ############################## mon-grow.cc ##############################
 %%%%

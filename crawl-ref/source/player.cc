@@ -8253,7 +8253,7 @@ bool player::attempt_escape(int attempts)
     if (roll_dice(4 + escape_attempts, 8 + div_rand_round(strength(), 4))
         >= roll_dice(5, 8 + div_rand_round(themonst->get_hit_dice(), 4)))
     {
-        mprf(jtransc("You escape %s's grasp."), jtransc(themonst->name(DESC_PLAIN, true)));
+        mprf(jtransc("You escape %s's grasp."), jtransc(themonst->name(DESC_THE, true)));
 
         // Stun the monster to prevent it from constricting again right away.
         themonst->speed_increment -= 5;
@@ -8383,7 +8383,7 @@ static string _constriction_description()
             cinfo += "\n";
 
         cinfo += make_stringf(jtransc("You are being %s by %s."),
-                      jtransc(monster_by_mid(you.constricted_by)->name(DESC_PLAIN)));
+                      jtransc(monster_by_mid(you.constricted_by)->name(DESC_A)));
     }
 
     if (you.constricting && !you.constricting->empty())

@@ -4017,7 +4017,7 @@ string do_mon_str_replacements(const string &in_msg, const monster* mons,
                 foe_name = foe_name.substr(0, pos);
         }
         else
-            foe_name = foe->name(DESC_PLAIN);
+            foe_name = foe->name(DESC_THE);
 
         msg = replace_all(msg, "@foe_possessive@", "@foe@の");
         msg = replace_all(msg, "@foe@", jtrans(foe_name));
@@ -4043,7 +4043,7 @@ string do_mon_str_replacements(const string &in_msg, const monster* mons,
 
     if (mons->is_named() && you.can_see(mons))
     {
-        const string name = jtrans(mons->name(DESC_PLAIN));
+        const string name = jtrans(mons->name(DESC_THE));
 
         msg = replace_all(msg, "@the_something@", name);
         msg = replace_all(msg, "@The_something@", name);
@@ -4088,22 +4088,22 @@ string do_mon_str_replacements(const string &in_msg, const monster* mons,
 
     string something = jtrans(mons->name(DESC_PLAIN));
     msg = replace_all(msg, "@something@", something);
-    msg = replace_all(msg, "@a_something@", something);
-    msg = replace_all(msg, "@the_something@", something);
+    msg = replace_all(msg, "@a_something@", jtrans(mons->name(DESC_A)));
+    msg = replace_all(msg, "@the_something@", jtrans(mons->name(nocap)));
     msg = replace_all(msg, "@Something@", something);
-    msg = replace_all(msg, "@A_something@", something);
-    msg = replace_all(msg, "@The_something@", something);
+    msg = replace_all(msg, "@A_something@", jtrans(mons->name(DESC_A)));
+    msg = replace_all(msg, "@The_something@", jtrans(mons->name(nocap)));
 
     // Player name.
     msg = replace_all(msg, "@player_name@", you.your_name);
 
     string plain = mons->name(DESC_PLAIN);
-    msg = replace_all(msg, "@monster@", plain);
-    msg = replace_all(msg, "@a_monster@", plain);
-    msg = replace_all(msg, "@the_monster@", plain);
-    msg = replace_all(msg, "@Monster@", plain);
-    msg = replace_all(msg, "@A_monster@", plain);
-    msg = replace_all(msg, "@The_monster@", plain);
+    msg = replace_all(msg, "@monster@",     plain);
+    msg = replace_all(msg, "@a_monster@",   jtrans(mons->name(DESC_A)));
+    msg = replace_all(msg, "@the_monster@", jtrans(mons->name(nocap)));
+    msg = replace_all(msg, "@Monster@",     plain);
+    msg = replace_all(msg, "@A_monster@",   jtrans(mons->name(DESC_A)));
+    msg = replace_all(msg, "@The_monster@", jtrans(mons->name(nocap)));
 
     msg = replace_all(msg, "@Subjective@",
                       mons->pronoun(PRONOUN_SUBJECTIVE));

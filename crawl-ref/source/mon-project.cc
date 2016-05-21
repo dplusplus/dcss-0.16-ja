@@ -295,7 +295,7 @@ static bool _boulder_hit(monster& mon, const coord_def &pos)
     actor *victim = actor_at(pos);
     if (victim)
     {
-        simple_monster_message(&mon, ("は" + jtrans(victim->name(DESC_PLAIN))
+        simple_monster_message(&mon, ("は" + jtrans(victim->name(DESC_THE))
                                            + "にぶち当たった！").c_str());
 
         int dam = victim->apply_ac(roll_dice(3, 20));
@@ -485,7 +485,7 @@ move_again:
             const int boulder_noisiness = 5; // don't want this to be big
             if (you.see_cell(pos) && you.see_cell(mon.pos()))
             {
-                mprf(jtransc("%s hits %s"), jtransc(mon.name(DESC_PLAIN, true)),
+                mprf(jtransc("%s hits %s"), jtransc(mon.name(DESC_THE, true)),
                      feature_description_at(pos, false, DESC_A, false).c_str());
                 if (!iood)
                     noisy(boulder_noisiness, pos);
@@ -584,7 +584,7 @@ move_again:
                 else
                 {
                     simple_monster_message(mons,
-                                           ("は" + jtrans(mon.name(DESC_PLAIN, true)) + "を防いだ。").c_str());
+                                           ("は" + jtrans(mon.name(DESC_THE, true)) + "を防いだ。").c_str());
                 }
                 victim->shield_block_succeeded(&mon);
                 _iood_stop(mon);

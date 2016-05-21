@@ -719,7 +719,7 @@ void trap_def::trigger(actor& triggerer, bool flat_footed)
         if (!you_trigger && !you_know && !in_sight)
             hide();
         if (you_trigger)
-            mprf(jtransc("You enter %s!"), jtransc(name(DESC_PLAIN)));
+            mprf(jtransc("You enter %s!"), jtransc(name(DESC_A)));
         if (ammo_qty > 0 && !--ammo_qty)
         {
             // can't use trap_destroyed, as we might recurse into a shaft
@@ -727,7 +727,7 @@ void trap_def::trigger(actor& triggerer, bool flat_footed)
             if (in_sight)
             {
                 env.map_knowledge(pos).set_feature(DNGN_FLOOR);
-                mprf(jtransc("%s disappears."), jtransc(name(DESC_PLAIN)));
+                mprf(jtransc("%s disappears."), jtransc(name(DESC_THE)));
             }
             disarm();
         }
@@ -745,7 +745,7 @@ void trap_def::trigger(actor& triggerer, bool flat_footed)
             if (you_know && in_sight)
             {
                 mprf(jtransc("%s vibrates slightly, failing to make a sound."),
-                     jtransc(name(DESC_PLAIN)));
+                     jtransc(name(DESC_THE)));
             }
         }
         else
@@ -754,7 +754,7 @@ void trap_def::trigger(actor& triggerer, bool flat_footed)
             if (you_trigger)
             {
                 msg = make_stringf(jtransc("%s emits a blaring wail!"),
-                                   jtransc(name(DESC_PLAIN)));
+                                   jtransc(name(DESC_THE)));
             }
             else
             {
@@ -828,7 +828,7 @@ void trap_def::trigger(actor& triggerer, bool flat_footed)
                     if (m->visible_to(&you))
                     {
                         msg += "て、";
-                        msg += jtrans(m->name(DESC_PLAIN));
+                        msg += jtrans(m->name(DESC_THE));
                         msg += "に突き刺さっ";
                     }
                     msg += "た！";
@@ -925,7 +925,7 @@ void trap_def::trigger(actor& triggerer, bool flat_footed)
                     if (m->visible_to(&you))
                     {
                         mprf(jtransc("A large net falls down onto %s!"),
-                             jtransc(m->name(DESC_PLAIN)));
+                             jtransc(m->name(DESC_THE)));
                     }
                     else
                         mpr(jtrans("A large net falls down!"));
@@ -1067,7 +1067,7 @@ void trap_def::trigger(actor& triggerer, bool flat_footed)
                 if (in_sight)
                 {
                     mprf(jtransc("The power of Zot is invoked against %s!"),
-                         jtransc(targ->name(DESC_PLAIN)));
+                         jtransc(targ->name(DESC_THE)));
                 }
                 MiscastEffect(targ, nullptr, ZOT_TRAP_MISCAST, SPTYP_RANDOM,
                               3, "the power of Zot");
@@ -1292,7 +1292,7 @@ void search_around()
         {
             ptrap->reveal();
             mprf(jtransc("You found %s!"),
-                 jtransc(ptrap->name(DESC_PLAIN)));
+                 jtransc(ptrap->name(DESC_A)));
             learned_something_new(HINT_SEEN_TRAP, *ri);
         }
     }
@@ -1632,7 +1632,7 @@ void trap_def::shoot_ammo(actor& act, bool was_known)
     {
         if (!force_hit && (one_chance_in(5) || was_known && !one_chance_in(4)))
         {
-            mprf(jtransc("You avoid triggering %s."), jtransc(name(DESC_PLAIN)));
+            mprf(jtransc("You avoid triggering %s."), jtransc(name(DESC_A)));
             return;         // no ammo generated either
         }
     }
@@ -1641,7 +1641,7 @@ void trap_def::shoot_ammo(actor& act, bool was_known)
         if (was_known && you.see_cell(pos) && you.can_see(&act))
         {
             mprf(jtransc("%s avoids triggering %s."), jtransc(act.name(DESC_THE)),
-                 jtransc(name(DESC_PLAIN)));
+                 jtransc(name(DESC_A)));
         }
         return;
     }
@@ -1662,13 +1662,13 @@ void trap_def::shoot_ammo(actor& act, bool was_known)
     {
         if (act.is_player())
         {
-            mprf(jtransc("%s shoots out and misses you."), jtransc(shot.name(DESC_PLAIN)));
+            mprf(jtransc("%s shoots out and misses you."), jtransc(shot.name(DESC_A)));
             practise(EX_DODGE_TRAP);
         }
         else if (you.see_cell(act.pos()))
         {
-            mprf(jtransc("%s misses %s!"), jtransc(shot.name(DESC_PLAIN)),
-                 jtransc(act.name(DESC_PLAIN)));
+            mprf(jtransc("%s misses %s!"), jtransc(shot.name(DESC_A)),
+                 jtransc(act.name(DESC_THE)));
         }
     }
     else if (!force_hit
@@ -1679,10 +1679,10 @@ void trap_def::shoot_ammo(actor& act, bool was_known)
         if (act.is_player())
             owner = jtrans("your");
         else if (you.can_see(&act))
-            owner = jtrans(act.name(DESC_PLAIN)) + "の";
+            owner = jtrans(act.name(DESC_THE)) + "の";
         else // "its" sounds abysmal; animals don't use shields
             owner = jtrans("someone's");
-        mprf(jtransc("%s shoots out and hits %s shield."), jtransc(shot.name(DESC_PLAIN)),
+        mprf(jtransc("%s shoots out and hits %s shield."), jtransc(shot.name(DESC_A)),
              owner.c_str());
 
         act.shield_block_succeeded(0);
@@ -1700,7 +1700,7 @@ void trap_def::shoot_ammo(actor& act, bool was_known)
 
         if (act.is_player())
         {
-            mprf(jtransc("%s shoots out and hits you!"), jtransc(shot.name(DESC_PLAIN)));
+            mprf(jtransc("%s shoots out and hits you!"), jtransc(shot.name(DESC_A)));
 
             string n = name(DESC_A);
 

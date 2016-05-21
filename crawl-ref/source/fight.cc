@@ -256,7 +256,7 @@ bool fight_melee(actor *attacker, actor *defender, bool *did_hit, bool simu)
                     if (could_see || you.can_see(mons))
                     {
                         mprf(jtransc("%s hops backward while attacking."),
-                             jtransc(mons->name(DESC_PLAIN, true)));
+                             jtransc(mons->name(DESC_THE, true)));
                     }
                     mons->speed_increment -= 2; // Add a small extra delay
                 }

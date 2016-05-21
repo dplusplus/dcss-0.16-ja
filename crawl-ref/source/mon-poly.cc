@@ -488,7 +488,8 @@ bool monster_polymorph(monster* mons, monster_type targetc,
 
     bool could_see = you.can_see(mons);
     bool need_note = (could_see && MONST_INTERESTING(mons));
-    string old_name_plain = mons->full_name(DESC_PLAIN);
+    string old_name_a = mons->full_name(DESC_A);
+    string old_name_the = mons->full_name(DESC_THE);
     monster_type oldc = mons->type;
 
     if (targetc == RANDOM_TOUGHER_MONSTER)
@@ -524,7 +525,7 @@ bool monster_polymorph(monster* mons, monster_type targetc,
         string verb = "";
         string obj = "";
 
-        obj = can_see ? mons_type_name(targetc, DESC_PLAIN)
+        obj = can_see ? mons_type_name(targetc, DESC_A)
                       : "something you cannot see";
 
         if (oldc == MONS_OGRE && targetc == MONS_TWO_HEADED_OGRE)
@@ -546,12 +547,12 @@ bool monster_polymorph(monster* mons, monster_type targetc,
         }
 
         mprf(jtransc("%s %s%s!"),
-             jtransc(old_name_plain),
+             jtransc(old_name_the),
              jtransc(obj), jtransc(verb));
     }
     else if (can_see)
     {
-        mprf(jtransc("%s appears out of thin air!"), jtransc(mons->name(DESC_PLAIN)));
+        mprf(jtransc("%s appears out of thin air!"), jtransc(mons->name(DESC_A)));
         autotoggle_autopickup(false);
     }
     else
@@ -559,10 +560,10 @@ bool monster_polymorph(monster* mons, monster_type targetc,
 
     if (need_note || could_see && can_see && MONST_INTERESTING(mons))
     {
-        string new_name = jtrans(can_see ? mons->full_name(DESC_PLAIN)
+        string new_name = jtrans(can_see ? mons->full_name(DESC_A)
                                          : "something unseen");
 
-        take_note(Note(NOTE_POLY_MONSTER, 0, 0, old_name_plain.c_str(),
+        take_note(Note(NOTE_POLY_MONSTER, 0, 0, old_name_a.c_str(),
                        new_name.c_str()));
 
         if (can_see)

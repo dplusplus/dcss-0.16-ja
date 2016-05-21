@@ -509,7 +509,7 @@ is firmly anchored in space.
 %%%%
 The poison in %s body grows stronger.
 
-%sの体内の毒が強まった。
+%s体内の毒が強まった。
 %%%%
 grows more vulnerable to poison.
 

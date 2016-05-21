@@ -908,7 +908,7 @@ void move_solo_tentacle(monster* tentacle)
         if (you.can_see(tentacle))
         {
             mprf(jtransc("The vine drags %s backwards!"),
-                 jtransc(constrictee->name(DESC_PLAIN)));
+                 jtransc(constrictee->name(DESC_THE)));
         }
 
         if (constrictee->as_player())
@@ -1097,7 +1097,7 @@ void move_child_tentacles(monster* mons)
             if (you.can_see(tentacle))
             {
                 mprf(jtransc("The tentacle pulls %s backwards!"),
-                     jtransc(constrictee->name(DESC_PLAIN)));
+                     jtransc(constrictee->name(DESC_THE)));
             }
 
             if (constrictee->as_player())
