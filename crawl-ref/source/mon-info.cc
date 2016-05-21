@@ -1168,7 +1168,7 @@ string monster_info::common_name(description_level_type desc) const
             && (me = get_monster_data(u.ghost.acting_part)))
         {
             // Specify an acting head
-            ss << "に生えた" << me->name << "の頭";
+            ss << "に生えた" << jtrans(me->name) << "の頭";
         }
         else
             // Suffix parts in brackets
