@@ -18241,7 +18241,7 @@ You have no dexterity!
 
 溶岩
 %%%%
-DMsl
+[dur]DMsl
 
 偏向
 %%%%
