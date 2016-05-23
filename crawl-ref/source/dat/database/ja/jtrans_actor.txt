@@ -59,6 +59,10 @@ easily %s.
 
 %sは%sに%s！
 %%%%
+something
+
+何か
+%%%%
 %s violently %s moving!
 
 %sは荒っぽく%s！

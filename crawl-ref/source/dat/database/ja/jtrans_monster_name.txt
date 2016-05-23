@@ -627,10 +627,6 @@ glowing shapeshifter
 
 暴走した変身能力者
 %%%%
-shaped shifter
-
-変身能力者
-%%%%
 Killer Klown
 
 殺人ピエロ
@@ -1887,17 +1883,9 @@ pillar of salt
 
 塩の柱
 %%%%
-shaped pillar of salt
-
-形の塩の柱
-%%%%
 block of ice
 
 氷の塊
-%%%%
-shaped block of ice
-
-形の氷の塊
 %%%%
 diamond obelisk
 
@@ -2332,46 +2320,4 @@ Asmodeus
 Ereshkigal
 
 『エレシュキガル』
-%%%%
-############################## other ##############################
-%%%%
-spectral
-
-幽体の
-%%%%
-ghost
-
-幽霊
-%%%%
-illusion
-
-幻影
-%%%%
-helpless
-
-哀れな
-%%%%
-submerged
-
-水中の
-%%%%
-ghostly
-
-霊体の
-%%%%
-sensed
-
-感知済みの
-%%%%
-active
-
-活発な
-%%%%
--headed
-
-首
-%%%%
-something
-
-何か
 %%%%
