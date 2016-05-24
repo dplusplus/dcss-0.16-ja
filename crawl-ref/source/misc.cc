@@ -554,7 +554,7 @@ bool bad_attack(const monster *mon, string& adj, string& suffix,
     {
         if (god_hates_attacking_friend(you.religion, mon))
         {
-            adj = "あなたの従者";
+            adj = "あなたの従者である";
 
             monster_info mi(mon, MILEV_NAME);
 
@@ -567,7 +567,7 @@ bool bad_attack(const monster *mon, string& adj, string& suffix,
 
             monster_info mi(mon, MILEV_NAME);
             if (mi.is(MB_NAME_UNQUALIFIED))
-                adj += "従者";
+                adj += "従者である";
         }
 
         return true;
@@ -617,13 +617,7 @@ bool stop_attack_prompt(const monster* mon, bool beam_attack,
     if (!bad_attack(mon, adj, suffix, penance, attack_pos, check_landing_only))
         return false;
 
-    // Listed in the form: "your rat", "Blork the orc".
-    string mon_name = mon->name(DESC_PLAIN);
-    if (!mon_name.find("the ")) // no "your the royal jelly" nor "the the RJ"
-        mon_name.erase(0, 4);
-    if (adj.find("your"))
-        adj = "the " + adj;
-    mon_name = adj + mon_name;
+    string mon_name = adj + mon->name(DESC_PLAIN);
     string verb;
     if (beam_attack)
     {
