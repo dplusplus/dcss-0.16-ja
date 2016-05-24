@@ -3106,7 +3106,7 @@ string feature_description_at(const coord_def& where, bool covering,
         else
             desc += noun;
 
-        if (!starts_with(door_desc_suffix, " to the") &&
+        if (!starts_with(door_desc_suffix, " to ") &&
             !starts_with(door_desc_suffix, " leading to the"))
             desc += jtrans(door_desc_suffix);
 
