@@ -3095,14 +3095,10 @@ static void _move_player(coord_def move)
             string prompt = "あなたは混乱しており、";
 
             if (dangerous != DNGN_FLOOR)
-                prompt += (dangerous == DNGN_LAVA ? "lava" : "deep water");
+                prompt += jtrans(dangerous == DNGN_LAVA ? "lava" : "deep water");
             else
             {
                 string name = bad_mons->name(DESC_PLAIN);
-                if (name.find("the ") == 0)
-                    name.erase(0, 4);
-                if (bad_adj.find("your") != 0)
-                    bad_adj = "the " + bad_adj;
                 prompt += jtrans(bad_adj) + name + jtrans(bad_suff);
             }
             prompt += "のそばに立っています。それでも移動しますか？";
