@@ -47,6 +47,7 @@
 #include "prompt.h"
 #include "religion.h"
 #include "shout.h"
+#include "skills.h"
 #include "spl-clouds.h"
 #include "spl-goditem.h"
 #include "spl-miscast.h"
@@ -2765,7 +2766,7 @@ static int _xom_miscast(const int max_level, const bool nasty,
     const char* levels[4] = { "無害な", "ちょっとした", "", "激しい" };
     const auto school = spschools_type::exponent(random2(SPTYP_LAST_EXPONENT + 1));
     string desc = make_stringf(jtransc("%s %s miscast"), levels[level],
-                               spelltype_short_name(school));
+                               tagged_jtransc("[skill]", skill_name(spell_type2skill(school))));
 #ifdef NOTE_DEBUG_XOM
     if (nasty)
         desc += " (Xom was nasty)";
