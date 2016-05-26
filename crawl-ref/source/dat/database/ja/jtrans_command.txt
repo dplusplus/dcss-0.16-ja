@@ -1000,7 +1000,7 @@ if still alive and in sight
 %%%%
 <w>b</w>      controlled blink
 
-<w>Ctrl-A</w> 行き先を制御しての瞬間移動
+<w>b</w>      行き先を制御しての瞬間移動
 %%%%
 <w>B</w>      controlled teleport
 
