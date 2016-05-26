@@ -451,10 +451,6 @@ looks drowsy...
 
 はまどろんでいる……
 %%%%
-seems to speed up.
-
-は動きが速くなったようだ。
-%%%%
 seems to grow stronger.
 
 は力強くなったようだ。
