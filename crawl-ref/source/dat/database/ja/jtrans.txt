@@ -4912,27 +4912,43 @@ Original Equipment
 %%%%
 You bought it in a shop
 
-あなたは%sの店でこの%sを買った。
+あなたは%sの店でこの%sを買った
+%%%%
+Buggy Original Equipment:
+
+# message for bug
 %%%%
 You acquired it
 
-あなたは%sでこの%sを獲得した。
+あなたは%sでこの%sを獲得した
+%%%%
+You drew the Genie
+
+# obsolete
+%%%%
+Your wizardly powers created it
+
+ウィザードコマンドにより%sでこの%sを生成した
 %%%%
 gifted it to you
 
-は%sでこの%sをあなたに授けた。
+は%sでこの%sをあなたに授けた
+%%%%
+You stumbled upon it
+
+# message for bug
 %%%%
 You subdued it
 
-あなたは%sでこの%sを倒した。
+あなたは%sでこの%sを倒した
 %%%%
 You took it off
 
-あなたは%%sでこの%%sを%sから奪った。
+あなたは%%sでこの%%sを%sから奪った
 %%%%
 You found it
 
-あなたは%sでこの%sを見つけた。
+あなたは%sでこの%sを見つけた
 %%%%
 You can't pick that up.
 

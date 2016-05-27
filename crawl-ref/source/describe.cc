@@ -2062,7 +2062,7 @@ string get_item_description(const item_def &item, bool verbose,
     }
 
     if (verbose && origin_describable(item))
-        description << "\n\n" << origin_desc(item);
+        description << "\n\n" << origin_desc(item, true);
 
     // This information is obscure and differs per-item, so looking it up in
     // a docs file you don't know to exist is tedious.  On the other hand,

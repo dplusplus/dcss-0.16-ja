@@ -736,10 +736,7 @@ static void _sdump_inventory(dump_params &par)
                 inv_count--;
 
                 if (origin_describable(you.inv[j]) && _dump_item_origin(you.inv[j]))
-                {
                     text2 = "\n" "   (" + origin_desc(you.inv[j]) + ")";
-                    text += replace_all(text2, "。", "");
-                }
 
                 if (is_dumpable_artefact(you.inv[j])
                     || Options.dump_book_spells

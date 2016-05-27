@@ -1213,7 +1213,7 @@ static string _base_type_string(const item_def &item)
     }
 }
 
-string origin_desc(const item_def &item)
+string origin_desc(const item_def &item, bool add_stop)
 {
     if (!origin_describable(item))
         return "";
@@ -1272,7 +1272,11 @@ string origin_desc(const item_def &item)
         desc += jtrans("You found " + _article_it(item) + " ");
 
     string basename = jtrans(_base_type_string(item));
-    return make_stringf(desc.c_str(), _origin_place_desc(item).c_str(), basename.c_str());
+    string text = make_stringf(desc.c_str(), _origin_place_desc(item).c_str(), basename.c_str());
+
+    if (add_stop) text += "。";
+
+    return text;
 }
 
 /**
