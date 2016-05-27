@@ -19217,6 +19217,14 @@ You avoid triggering %s.
 
 %sは%sをやり過ごした。
 %%%%
+%s shoots out and misses you.
+
+%sが射出されたが、あなたには当たらなかった。
+%%%%
+%s misses %s!
+
+%sは%sから外れた！
+%%%%
 someone's
 
 何者かの
@@ -19224,6 +19232,10 @@ someone's
 %s shoots out and hits %s shield.
 
 %sが射出され、%s盾に当たった。
+%%%%
+%s shoots out and hits you!
+
+%sが射出され、あなたに当たった！
 %%%%
 %s hits %s%s!
 
