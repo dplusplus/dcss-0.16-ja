@@ -719,7 +719,7 @@ void trap_def::trigger(actor& triggerer, bool flat_footed)
         if (!you_trigger && !you_know && !in_sight)
             hide();
         if (you_trigger)
-            mprf(jtransc("You enter %s!"), jtransc(name(DESC_A)));
+            mprf(jtransc("You enter %s!"), jtransc(name(DESC_PLAIN)));
         if (ammo_qty > 0 && !--ammo_qty)
         {
             // can't use trap_destroyed, as we might recurse into a shaft
@@ -727,7 +727,7 @@ void trap_def::trigger(actor& triggerer, bool flat_footed)
             if (in_sight)
             {
                 env.map_knowledge(pos).set_feature(DNGN_FLOOR);
-                mprf(jtransc("%s disappears."), jtransc(name(DESC_THE)));
+                mprf(jtransc("%s disappears."), jtransc(name(DESC_PLAIN)));
             }
             disarm();
         }
@@ -745,7 +745,7 @@ void trap_def::trigger(actor& triggerer, bool flat_footed)
             if (you_know && in_sight)
             {
                 mprf(jtransc("%s vibrates slightly, failing to make a sound."),
-                     jtransc(name(DESC_THE)));
+                     jtransc(name(DESC_PLAIN)));
             }
         }
         else
@@ -754,7 +754,7 @@ void trap_def::trigger(actor& triggerer, bool flat_footed)
             if (you_trigger)
             {
                 msg = make_stringf(jtransc("%s emits a blaring wail!"),
-                                   jtransc(name(DESC_THE)));
+                                   jtransc(name(DESC_PLAIN)));
             }
             else
             {
@@ -1292,7 +1292,7 @@ void search_around()
         {
             ptrap->reveal();
             mprf(jtransc("You found %s!"),
-                 jtransc(ptrap->name(DESC_A)));
+                 jtransc(ptrap->name(DESC_PLAIN)));
             learned_something_new(HINT_SEEN_TRAP, *ri);
         }
     }
@@ -1632,7 +1632,7 @@ void trap_def::shoot_ammo(actor& act, bool was_known)
     {
         if (!force_hit && (one_chance_in(5) || was_known && !one_chance_in(4)))
         {
-            mprf(jtransc("You avoid triggering %s."), jtransc(name(DESC_A)));
+            mprf(jtransc("You avoid triggering %s."), jtransc(name(DESC_PLAIN)));
             return;         // no ammo generated either
         }
     }
@@ -1640,7 +1640,7 @@ void trap_def::shoot_ammo(actor& act, bool was_known)
     {
         if (was_known && you.see_cell(pos) && you.can_see(&act))
         {
-            mprf(jtransc("%s avoids triggering %s."), jtransc(act.name(DESC_THE)),
+            mprf(jtransc("%s avoids triggering %s."), jtransc(act.name(DESC_PLAIN)),
                  jtransc(name(DESC_A)));
         }
         return;
