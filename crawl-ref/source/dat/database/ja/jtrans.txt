@@ -4928,7 +4928,7 @@ You drew the Genie
 %%%%
 Your wizardly powers created it
 
-ウィザードコマンドにより%sでこの%sを生成した
+あなたはウィザードコマンドにより%sでこの%sを生成した
 %%%%
 gifted it to you
 

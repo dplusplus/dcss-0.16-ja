@@ -1233,18 +1233,18 @@ string origin_desc(const item_def &item, bool add_stop)
                 desc += jtrans("You bought " + _article_it(item) + " in a shop ");
                 break;
             case IT_SRC_START:
-                desc += "Buggy Original Equipment: ";
+                desc += jtrans("Buggy Original Equipment: ");
                 break;
             case AQ_SCROLL:
                 desc += jtrans("You acquired " + _article_it(item) + " ");
                 break;
 #if TAG_MAJOR_VERSION == 34
             case AQ_CARD_GENIE:
-                desc += "You drew the Genie ";
+                desc += jtrans("You drew the Genie ");
                 break;
 #endif
             case AQ_WIZMODE:
-                desc += "Your wizardly powers created "+ _article_it(item)+ " ";
+                desc += jtrans("Your wizardly powers created "+ _article_it(item)+ " ");
                 break;
             default:
                 if (iorig > GOD_NO_GOD && iorig < NUM_GODS)
@@ -1255,7 +1255,7 @@ string origin_desc(const item_def &item, bool add_stop)
                 else
                 {
                     // Bug really.
-                    desc += "You stumbled upon " + _article_it(item) + " ";
+                    desc += jtrans("You stumbled upon " + _article_it(item) + " ");
                 }
                 break;
             }
