@@ -628,8 +628,8 @@ void yell(const actor* mon)
         mprf(jtransc("You %s%s at %s!"),
              you.duration[DUR_RECITE] ? (mon->name(DESC_THE) + "に").c_str()
                                       : (mon->name(DESC_THE) + "に向かって").c_str(),
-             you.duration[DUR_RECITE] ? " your recitation" : "",
-             shout_verb.c_str());
+             jtransc(you.duration[DUR_RECITE] ? " your recitation" : ""),
+             jtransc(shout_verb));
         noisy(noise_level, you.pos());
         return;
     }

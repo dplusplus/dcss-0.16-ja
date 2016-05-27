@@ -13807,7 +13807,7 @@ You %s%s at %s!
 
 あなたは%s%s%s！
 %%%%
-Your resitation
+your recitation
 
 ジンの法理を説こうとして
 %%%%
