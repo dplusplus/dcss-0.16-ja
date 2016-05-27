@@ -309,16 +309,11 @@ string Note::describe(bool when, bool where, bool what) const
                    << "スキルがレベル" << second << "に減少した";
             break;
         case NOTE_SEEN_MONSTER:
-            if (what && first == MONS_PANDEMONIUM_LORD)
-                result << jtrans(" the pandemonium lord") << "『" << name << "』に遭遇した";
-            else
-                result << name << "に遭遇した";
+            result << name << "に遭遇した";
             break;
         case NOTE_DEFEAT_MONSTER:
             if (second)
                 result << name << "(仲間)" << desc;
-            else if (what && first == MONS_PANDEMONIUM_LORD)
-                result << jtrans(" the pandemonium lord") << "『" << name << "』" << desc;
             else
                 result << name << desc;
             break;

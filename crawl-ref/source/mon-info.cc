@@ -932,7 +932,7 @@ string monster_info::_core_name() const
             s = mname + "の" + jtrans("illusion");
             break;
         case MONS_PANDEMONIUM_LORD:
-            s = mname;
+            s = jtrans(" the pandemonium lord") + "『" + mname + "』";
             break;
         default:
             break;
