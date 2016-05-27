@@ -401,11 +401,6 @@ string Note::describe(bool when, bool where, bool what) const
         }
     }
 
-    if (type == NOTE_SEEN_MONSTER || type == NOTE_DEFEAT_MONSTER)
-    {
-        if (what && first == MONS_PANDEMONIUM_LORD)
-            result << " the pandemonium lord";
-    }
     return result.str();
 }
 
