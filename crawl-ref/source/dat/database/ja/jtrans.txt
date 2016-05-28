@@ -1267,7 +1267,7 @@ The device is presently inert. Gaining experience will recharge it.
 %%%%
 It has a curse placed upon it.
 
-これは呪いがかかっている。
+これには呪いがかかっている。
 %%%%
 This ancient artefact cannot be changed by magic or mundane means.
 
