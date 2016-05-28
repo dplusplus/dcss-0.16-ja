@@ -8793,7 +8793,7 @@ shaped block of ice
 %%%%
 shaped shifter
 
-変身能力者
+に変身した変身能力者
 %%%%
 helpless
 
