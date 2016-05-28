@@ -1674,13 +1674,13 @@ static void _name_deck_en(const item_def &deck, description_level_type desc,
  * prefixed.)
  */
 static string _curse_prefix(const item_def &weap, description_level_type desc,
-                            bool terse, bool ident, iflags_t ignore_flags)
+                            bool terse, bool ident, iflags_t ignore_flags, bool ja = false)
 {
     if (!_know_curse(weap, desc, ident, ignore_flags) || terse)
         return "";
 
     if (weap.cursed())
-        return jtrans("cursed");
+        return ja ? jtrans("cursed") : "cursed ";
 
     if (!Options.show_uncursed)
         return "";
@@ -1696,7 +1696,7 @@ static string _curse_prefix(const item_def &weap, description_level_type desc,
     if (!ident && !item_type_known(weap)
         || !is_artefact(weap))
     {
-        return jtrans("uncursed");
+        return ja ? jtrans("uncursed") : "uncursed ";
     }
     return "";
 }
@@ -1854,7 +1854,7 @@ static string _name_weapon(const item_def &weap, description_level_type desc,
     const bool know_ego =    _know_ego(weap, desc, ident, ignore_flags);
 
     const string curse_prefix
-        = _curse_prefix(weap, desc, terse, ident, ignore_flags);
+        = _curse_prefix(weap, desc, terse, ident, ignore_flags, true);
     const string plus_text = know_pluses ? _plus_suffix(weap) : "";
 
     if (desc == DESC_BASENAME)
