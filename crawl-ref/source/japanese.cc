@@ -361,6 +361,13 @@ string jconj_verb(const string& verb, jconj conj)
         v = replace_all(v, "放つ", "放った");
         v = replace_all(v, "吠える", "吠えた");
         break;
+    case JCONJ_PASS:
+        v = replace_all(v, "を追放した", "が追放された"); // _takenote_kill_verb()
+        v = replace_all(v, "を中立化した", "が中立化させられた");
+        v = replace_all(v, "を隷属させた", "が隷属させられた");
+        v = replace_all(v, "をスライムに変えた", "がスライムに変えられた");
+        v = replace_all(v, "を殺した", "が殺された");
+        break;
     }
 
     return v;

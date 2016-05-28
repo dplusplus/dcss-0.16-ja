@@ -15,6 +15,7 @@
 #include "database.h"
 #include "english.h"
 #include "hiscores.h"
+#include "japanese.h"
 #include "message.h"
 #include "mutation.h"
 #include "options.h"
@@ -313,7 +314,7 @@ string Note::describe(bool when, bool where, bool what) const
             break;
         case NOTE_DEFEAT_MONSTER:
             if (second)
-                result << name << "(仲間)" << desc;
+                result << "仲間の" << name << jconj_verb(desc, JCONJ_PASS);
             else
                 result << name << desc;
             break;

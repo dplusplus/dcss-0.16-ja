@@ -18,6 +18,7 @@ enum jconj
     JCONJ_HYPO, // 仮定形
     JCONJ_IMPR, // 命令形
     JCONJ_PERF, // 完了形
+    JCONJ_PASS, // 受動態
 };
 
 const char * counter_suffix_weapon(const item_def& item);

@@ -676,7 +676,7 @@ void seen_monster(monster* mons)
 
     if (MONST_INTERESTING(mons))
     {
-        string name = mons->name(DESC_A, true);
+        string name = mons->full_name(DESC_A, true);
         if (mons->type == MONS_PLAYER_GHOST)
         {
             name += make_stringf(" (%s)",
