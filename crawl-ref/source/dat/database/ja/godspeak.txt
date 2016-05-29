@@ -611,7 +611,7 @@ Xom laughter
 ゾムは高笑いをした！
 
 # Xom roars with laughter!
-ゾムは笑いながら吠えた！
+ゾムは高々と笑い声を上げた！
 
 # Xom thinks this is hilarious!
 ゾムは陽気なようだ！
