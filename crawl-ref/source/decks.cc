@@ -2060,7 +2060,7 @@ static void _focus_card(int power, deck_rarity_type rarity)
 
     const char* stats[3] = { "Str", "Int", "Dex" };
     take_note(Note(NOTE_FOCUS_CARD, you.base_stats[best_stat], you.base_stats[worst_stat],
-              stats[best_stat], stats[worst_stat]));
+                   jtrans(stats[best_stat]), jtrans(stats[worst_stat])));
 }
 
 static void _remove_bad_mutation()

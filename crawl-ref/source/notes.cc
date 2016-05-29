@@ -388,8 +388,9 @@ string Note::describe(bool when, bool where, bool what) const
                    << "の呪文の知識を授ける提案をした";
             break;
         case NOTE_FOCUS_CARD:
-            result << "特化のカードを引いた: " << name << "スキルがレベル" << first << "に増加し、"
-                   << desc << "スキルがレベル" << second << "に減少した";
+            result << tagged_jtrans("[card]", "Focus") << "のカードを引いた: "
+                   << name << "が" << first << "に増加するかわりに"
+                   << desc << "が" << second << "に減少した";
             break;
         default:
             result << "Buggy note description: unknown note type";

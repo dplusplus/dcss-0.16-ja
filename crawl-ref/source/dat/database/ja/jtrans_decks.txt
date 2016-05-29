@@ -500,6 +500,18 @@ You feel more catlike.
 
 あなたはさらに動きが静かになったようだ。
 %%%%
+Str
+
+腕力
+%%%%
+Int
+
+知力
+%%%%
+Dex
+
+器用さ
+%%%%
 You feel transcendent for a moment.
 
 あなたは一瞬超越的な感覚を覚えた。
