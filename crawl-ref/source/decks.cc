@@ -239,7 +239,7 @@ static map<misc_item_type, deck_type_data> all_decks =
 static void _check_odd_card(uint8_t flags)
 {
     if ((flags & CFLAG_ODDITY) && !(flags & CFLAG_SEEN))
-        mpr("This card doesn't seem to belong here.");
+        mpr(jtrans("This card doesn't seem to belong here."));
 }
 
 static bool _card_forbidden(card_type card)
@@ -519,7 +519,8 @@ static card_type _draw_top_card(item_def& deck, bool message,
     {
         const char *verb = (_flags & CFLAG_DEALT) ? "deal" : "draw";
 
-        mprf("You %s a card... It is %s.", verb, card_name(card));
+        mprf(jtransc("You %s a card... It is %s."),
+             tagged_jtransc("[card]", card_name(card)), jtransc(verb));
 
         _check_odd_card(_flags);
     }
@@ -762,7 +763,7 @@ static int _choose_inventory_deck(const char* prompt)
 
     if (!is_deck(you.inv[slot]))
     {
-        mpr("That isn't a deck!");
+        mpr(jtrans("That isn't a deck!"));
         return -1;
     }
 
@@ -790,7 +791,8 @@ bool deck_identify_first(int slot)
 
     _set_card_and_flags(deck, -1, card, flags | CFLAG_SEEN);
 
-    mprf("You get a glimpse of the first card. It is %s.", card_name(card));
+    mprf(jtransc("You get a glimpse of the first card. It is %s."),
+         tagged_jtransc("[card]", card_name(card)));
     return true;
 }
 
@@ -799,7 +801,7 @@ bool deck_identify_first(int slot)
 // failed/aborted along the way.
 bool deck_deal()
 {
-    const int slot = _choose_inventory_deck("Deal from which deck?");
+    const int slot = _choose_inventory_deck(jtransc("Deal from which deck?"));
     if (slot == -1)
     {
         crawl_state.zero_turns_taken();
@@ -812,7 +814,7 @@ bool deck_deal()
     CrawlHashTable &props = deck.props;
     if (props["stacked"].get_bool())
     {
-        mpr("This deck seems insufficiently random for dealing.");
+        mpr(jtrans("This deck seems insufficiently random for dealing."));
         crawl_state.zero_turns_taken();
         return false;
     }
@@ -821,9 +823,9 @@ bool deck_deal()
     _deck_ident(deck);
 
     if (num_cards == 1)
-        mpr("There's only one card left!");
+        mpr(jtrans("There's only one card left!"));
     else if (num_cards < 4)
-        mprf("The deck only has %d cards.", num_cards);
+        mprf(jtransc("The deck only has %d cards."), num_cards);
 
     const int num_to_deal = (num_cards < 4 ? num_cards : 4);
 
@@ -843,7 +845,7 @@ bool deck_deal()
     // Nemelex doesn't like dealers with inadequate decks.
     if (num_to_deal < 4)
     {
-        mpr("Nemelex gives you another card to finish dealing.");
+        mpr(jtrans("Nemelex gives you another card to finish dealing."));
         draw_from_deck_of_punishment(true);
     }
 
@@ -865,9 +867,10 @@ static void _redraw_stacked_cards(const vector<card_type>& draws,
 {
     for (unsigned int i = 0; i < draws.size(); ++i)
     {
-        cgotoxy(1, i+2);
+        cgotoxy(2, i+3);
         textcolour(selected == i ? WHITE : LIGHTGREY);
-        cprintf("%u - %s", i+1, card_name(draws[i]));
+        cprintf("%u - %s", i+1,
+                (tagged_jtrans("[card]", card_name(draws[i])) + "のカード").c_str());
         clear_to_end_of_line();
     }
 }
@@ -903,19 +906,22 @@ string which_decks(card_type card)
 
     if (!decks.empty())
     {
-        output += "It is usually found in decks of "
-               +  comma_separated_line(decks.begin(), decks.end());
+        output += jtrans("It is usually found in decks of ")
+            + to_separated_fn(decks.begin(), decks.end(),
+                              [] (const string &s) {
+                                  return jtrans("deck of " + s);
+                              }, "、", "、", "および");
         if (punishment)
-            output += ", or in Nemelex Xobeh's deck of punishment";
-        output += ".";
+            output += jtrans(", or in Nemelex Xobeh's deck of punishment");
+        output += "に含まれている。";
     }
     else if (punishment)
     {
-        output += "It is usually only found in Nemelex Xobeh's deck of "
-                  "punishment.";
+        output += jtrans("It is usually only found in Nemelex Xobeh's deck of "
+                         "punishment.");
     }
     else
-        output += " It is normally not part of any deck.";
+        output += jtrans(" It is normally not part of any deck.");
 
     return output;
 }
@@ -935,16 +941,16 @@ static void _describe_cards(vector<card_type> cards)
         string name = card_name(card);
         string desc = getLongDescription(name + " card");
         if (desc.empty())
-            desc = "No description found.";
+            desc = jtrans("No description found.");
 
         name = uppercase_first(name);
         if (first)
             first = false;
         else
             data << "\n";
-        data << "<w>" << name << "</w>\n"
+        data << "<w>" << tagged_jtrans("[card]", name) << "のカード</w>\n"
              << get_linebreak_string(desc, get_number_of_cols() - 1)
-             << "\n" << which_decks(card) << "\n";
+             << "\n" << which_decks(card) << "\n \n";
     }
     formatted_scroller fs(0, data.str());
     fs.show();
@@ -955,7 +961,7 @@ static void _describe_cards(vector<card_type> cards)
 // Return false if the operation was failed/aborted along the way.
 bool deck_stack()
 {
-    const int slot = _choose_inventory_deck("Stack which deck?");
+    const int slot = _choose_inventory_deck(jtransc("Stack which deck?"));
     if (slot == -1)
     {
         crawl_state.zero_turns_taken();
@@ -970,14 +976,14 @@ bool deck_stack()
     const int num_cards    = cards_in_deck(deck);
 
     if (num_cards == 1)
-        mpr("There's only one card left!");
+        mpr(jtrans("There's only one card left!"));
     else if (num_cards < 5)
-        mprf("The deck only has %d cards.", num_cards);
+        mprf(jtransc("The deck only has %d cards."), num_cards);
     else if (num_cards == 5)
-        mpr("The deck has exactly five cards.");
+        mpr(jtrans("The deck has exactly five cards."));
     else
     {
-        mprf("You draw the first five cards out of %d and discard the rest.",
+        mprf(jtransc("You draw the first five cards out of %d and discard the rest."),
              num_cards);
     }
     more();
@@ -1031,11 +1037,11 @@ bool stack_five(int slot)
                 clrscr();
                 cgotoxy(1,1);
                 textcolour(WHITE);
-                cprintf("Press a digit to select a card, then another digit "
-                        "to swap it.");
+                cprintf(jtransc("Press a digit to select a card, then another digit "
+                                "to swap it."));
                 cgotoxy(1,10);
-                cprintf("Press ? for the card descriptions, or Enter to "
-                        "accept.");
+                cprintf(jtransc("Press ? for the card descriptions, or Enter to "
+                                "accept."));
 
                 _redraw_stacked_cards(draws, selected);
                 need_prompt_redraw = false;
@@ -1047,7 +1053,7 @@ bool stack_five(int slot)
             {
                 cgotoxy(1,11);
                 textcolour(LIGHTGREY);
-                cprintf("Are you done? (press y or Y to confirm)");
+                cprintf(sp2nbspc(jtransc("Are you done? (press y or Y to confirm)")));
                 if (toupper(getchk()) == 'Y')
                     break;
 
@@ -1098,7 +1104,7 @@ bool stack_five(int slot)
 // Draw the next three cards, discard two and pick one.
 bool deck_triple_draw()
 {
-    const int slot = _choose_inventory_deck("Triple draw from which deck?");
+    const int slot = _choose_inventory_deck(jtransc("Triple draw from which deck?"));
     if (slot == -1)
     {
         crawl_state.zero_turns_taken();
@@ -1130,7 +1136,7 @@ bool draw_three(int slot)
     if (num_cards == 1)
     {
         // Only one card to draw, so just draw it.
-        mpr("There's only one card left!");
+        mpr(jtrans("There's only one card left!"));
         evoke_deck(deck);
         return true;
     }
@@ -1154,11 +1160,11 @@ bool draw_three(int slot)
     {
         if (need_prompt_redraw)
         {
-            mpr("You draw... (choose one card, ? for their descriptions)");
+            mpr(jtrans("You draw... (choose one card, ? for their descriptions)"));
             for (int i = 0; i < num_to_draw; ++i)
             {
                 msg::streams(MSGCH_PROMPT) << (static_cast<char>(i + 'a')) << " - "
-                                           << card_name(draws[i]) << endl;
+                                           << tagged_jtrans("[card]", card_name(draws[i])) << "のカード" << endl;
             }
             need_prompt_redraw = false;
         }
@@ -1223,7 +1229,7 @@ void draw_from_deck_of_punishment(bool deal)
     card_type card = _random_card(MISC_DECK_OF_PUNISHMENT, DECK_RARITY_COMMON,
                                   oddity);
 
-    mprf("You %s a card...", deal ? "deal" : "draw");
+    mprf(jtransc("You %s a card..."), deal ? "使った" : "引いた");
     card_effect(card, DECK_RARITY_COMMON, flags);
 }
 
@@ -1299,9 +1305,10 @@ void evoke_deck(item_def& deck)
             if (card != old_card)
             {
                 flags |= CFLAG_PUNISHMENT;
-                simple_god_message(" seems to have exchanged this card "
-                                   "behind your back!", GOD_NEMELEX_XOBEH);
-                mprf("It's actually %s.", card_name(card));
+                simple_god_message(jtransc(" seems to have exchanged this card "
+                                           "behind your back!"), GOD_NEMELEX_XOBEH);
+                mprf(jtransc("It's actually %s."),
+                     tagged_jtransc("[card]", card_name(card)));
                 // You never completely appease Nemelex, but the effects
                 // get less frequent.
                 you.penance[GOD_NEMELEX_XOBEH] -=
@@ -1368,21 +1375,21 @@ static void _suppressed_card_message(god_type god, conduct_type done)
     switch (done)
     {
         case DID_NECROMANCY:
-        case DID_UNHOLY: forbidden_act = "evil"; break;
+        case DID_UNHOLY: forbidden_act = "邪悪な"; break;
 
-        case DID_POISON: forbidden_act = "poisonous"; break;
+        case DID_POISON: forbidden_act = "毒の"; break;
 
-        case DID_CHAOS: forbidden_act = "chaotic"; break;
+        case DID_CHAOS: forbidden_act = "混沌の"; break;
 
-        case DID_HASTY: forbidden_act = "hasty"; break;
+        case DID_HASTY: forbidden_act = "加速させる"; break;
 
-        case DID_FIRE: forbidden_act = "fiery"; break;
+        case DID_FIRE: forbidden_act = "燃えさかる"; break;
 
         default: forbidden_act = "buggy"; break;
     }
 
-    mprf("By %s power, the %s magic on the card dissipates harmlessly.",
-         apostrophise(god_name(you.religion)).c_str(), forbidden_act.c_str());
+    mprf(jtransc("By %s power, the %s magic on the card dissipates harmlessly."),
+         jtransc(god_name(you.religion)), forbidden_act.c_str());
 }
 
 // Actual card implementations follow.
@@ -1399,7 +1406,7 @@ static void _swap_monster_card(int power, deck_rarity_type rarity)
     // Don't choose yourself unless there are no monsters nearby.
     monster* mon_to_swap = choose_random_nearby_monster(0, _is_swappable);
     if (!mon_to_swap)
-        mpr("You spin around.");
+        mpr(jtrans("You spin around."));
     else
         swap_with_monster(mon_to_swap);
 }
@@ -1414,7 +1421,7 @@ static void _velocity_card(int power, deck_rarity_type rarity)
     if (you.duration[DUR_SLOW] && (power_level > 0 || coinflip()))
     {
         if (you_worship(GOD_CHEIBRIADOS))
-            simple_god_message(" protects you from inadvertent hurry.");
+            simple_god_message(jtransc(" protects you from inadvertent hurry."));
         else
         {
             you.duration[DUR_SLOW] = 1;
@@ -1512,10 +1519,10 @@ static void _velocity_card(int power, deck_rarity_type rarity)
             }
 
             if (did_haste)
-                simple_monster_message(mon, " seems to speed up.");
+                simple_monster_message(mon, jtransc(" seems to speed up."));
 
             if (did_swift)
-                simple_monster_message(mon, " is moving somewhat quickly.");
+                simple_monster_message(mon, jtransc(" is moving somewhat quickly."));
         }
     }
 
@@ -1582,7 +1589,7 @@ static void _warpwright_card(int power, deck_rarity_type rarity)
 
     if (player_in_branch(BRANCH_ABYSS))
     {
-        mpr("The power of the Abyss blocks your magic.");
+        mpr(jtrans("The power of the Abyss blocks your magic."));
         return;
     }
 
@@ -1613,7 +1620,7 @@ static void _shaft_card(int power, deck_rarity_type rarity)
             && place_specific_trap(you.pos(), TRAP_SHAFT))
         {
             find_trap(you.pos())->reveal();
-            mpr("A shaft materialises beneath you!");
+            mpr(jtrans("A shaft materialises beneath you!"));
         }
 
         for (radius_iterator di(you.pos(), LOS_NO_TRANS); di; ++di)
@@ -1671,7 +1678,7 @@ static void _stairs_card(int /*power*/, deck_rarity_type /*rarity*/)
 
     if (stairs_avail.empty())
     {
-        mpr("No stairs available to move.");
+        mpr(jtrans("No stairs available to move."));
         return;
     }
 
@@ -1786,11 +1793,11 @@ static void _damaging_card(card_type card, int power, deck_rarity_type rarity,
         break;
     }
 
-    string prompt = "You have ";
-    prompt += participle;
-    prompt += " ";
-    prompt += card_name(card);
-    prompt += ".";
+    string prompt = "あなたは";
+    prompt += tagged_jtrans("[card]", card_name(card));
+    prompt += "のカードを";
+    prompt += jtrans(participle);
+    prompt += "。";
 
     bolt beam;
     beam.range = LOS_RADIUS;
@@ -1829,10 +1836,10 @@ static void _damaging_card(card_type card, int power, deck_rarity_type rarity,
             if (venom_vuln)
             {
                 if (you.res_poison(false) >= 3)
-                    mpr("Releasing that poison makes you feel less healthy for a moment.");
+                    mpr(jtrans("Releasing that poison makes you feel less healthy for a moment."));
                 else
                 {
-                    mpr("Releasing that poison leaves you vulnerable to poison.");
+                    mpr(jtrans("Releasing that poison leaves you vulnerable to poison."));
                     you.increase_duration(DUR_POISON_VULN, 10 - power_level * 5 + random2(6), 50);
                 }
             }
@@ -1920,13 +1927,13 @@ static void _helm_card(int power, deck_rarity_type rarity)
         cast_stoneskin(random2(power/4));
     if (do_resistance)
     {
-        mpr("You feel resistant.");
+        mpr(jtrans("You feel resistant."));
         you.increase_duration(DUR_RESISTANCE, random2(power/7) + 1);
     }
     if (do_shield)
     {
         if (you.duration[DUR_MAGIC_SHIELD] == 0)
-            mpr("A magical shield forms in front of you.");
+            mpr(jtrans("A magical shield forms in front of you."));
         you.increase_duration(DUR_MAGIC_SHIELD, random2(power/6) + 1);
     }
 
@@ -1954,21 +1961,22 @@ static void _blade_card(int power, deck_rarity_type rarity)
             const bool bladed = can_cut_meat(*weapon);
             const bool axe = item_attack_skill(*weapon) == SK_AXES;
             mprf(MSGCH_DURATION,
-                 "%s %s %ssharp%s", weapon->name(DESC_YOUR).c_str(),
-                 conjugate_verb("look", weapon->quantity > 1).c_str(),
-                 (bladed) ? "" : "oddly ",
-                 (axe) ? " (like it always does)." : ".");
+                 jtransc("%s %s %ssharp%s"), weapon->name(DESC_YOUR).c_str(),
+                 jtransc(bladed ? "" : "oddly "),
+                 jtransc(axe ? " (like it always does)." : ""),
+                 (bladed) ? "" : "なったように");
         }
         else
         {
             // FIXME: no "oddly" for claws?
-            mprf(MSGCH_DURATION, "%s",
-                 you.hands_act("look", "oddly sharp.").c_str());
+            mpr_nojoin(MSGCH_DURATION,
+                       (make_stringf("あなたの%sは奇妙に鋭くなったように見えた。",
+                                     you.hand_name(true).c_str())).c_str());
         }
 
     }
     else
-        mprf(MSGCH_DURATION, "Your cleaving ability is renewed.");
+        mpr_nojoin(MSGCH_DURATION, jtrans("Your cleaving ability is renewed."));
 }
 
 static void _shadow_card(int power, deck_rarity_type rarity)
@@ -1978,8 +1986,8 @@ static void _shadow_card(int power, deck_rarity_type rarity)
 
     if (power_level != 1 && !player_mutation_level(MUT_NO_STEALTH))
     {
-        mpr(you.duration[DUR_STEALTH] ? "You feel more catlike."
-                                      : "You feel stealthy.");
+        mpr(jtrans(you.duration[DUR_STEALTH] ? "You feel more catlike."
+                                             : "You feel stealthy."));
         you.increase_duration(DUR_STEALTH, duration);
     }
 
@@ -2008,7 +2016,7 @@ static void _potion_card(int power, deck_rarity_type rarity)
     if (you_worship(GOD_CHEIBRIADOS) && (pot == POT_HASTE
                                          || pot == POT_BERSERK_RAGE))
     {
-        simple_god_message(" protects you from inadvertent hurry.");
+        simple_god_message(jtransc(" protects you from inadvertent hurry."));
         return;
     }
 
@@ -2059,7 +2067,7 @@ static void _remove_bad_mutation()
 {
     // Ensure that only bad mutations are removed.
     if (!delete_mutation(RANDOM_BAD_MUTATION, "helix card", false, false, false, true))
-        mpr("You feel transcendent for a moment.");
+        mpr(jtrans("You feel transcendent for a moment."));
 }
 
 static void _helix_card(int power, deck_rarity_type rarity)
@@ -2166,9 +2174,9 @@ static void _dowsing_card(int power, deck_rarity_type rarity)
     if (things_to_do[1])
     {
         if (detect_traps(random2(power)))
-            mpr("You sense traps nearby.");
+            mpr(jtrans("You sense traps nearby."));
         if (detect_items(random2(power)))
-            mpr("You sense items nearby.");
+            mpr(jtrans("You sense items nearby."));
     }
     if (things_to_do[2])
     {
@@ -2197,14 +2205,14 @@ static void _godly_wrath()
     }
 
     if (tries <= 0)
-        mpr("You somehow manage to escape divine attention...");
+        mpr(jtrans("You somehow manage to escape divine attention..."));
 }
 
 static void _curse_card(int power, deck_rarity_type rarity)
 {
     const int power_level = _get_power_level(power, rarity);
 
-    mpr("You feel a malignant aura surround you.");
+    mpr(jtrans("You feel a malignant aura surround you."));
     if (power_level >= 2)
     {
         // Curse (almost) everything.
@@ -2249,7 +2257,7 @@ static void _crusade_card(int power, deck_rarity_type rarity)
             // Might be too good.
             if (mi->get_hit_dice() * 35 < random2(power))
             {
-                simple_monster_message(*mi, " is converted.");
+                simple_monster_message(*mi, jtransc(" is converted."));
                 mi->add_ench(ENCH_CHARM);
                 mons_att_changed(*mi);
             }
@@ -2299,7 +2307,7 @@ static void _summon_demon_card(int power, deck_rarity_type rarity)
     // and thus not print the message.
     // This hack appears later in this file as well.
     if (!_friendly(dct, 5 - power_level))
-        mpr("You see a puff of smoke.");
+        mpr(jtrans("You see a puff of smoke."));
 
     _friendly(dct2, 5 - power_level);
 }
@@ -2412,7 +2420,7 @@ static void _summon_dancing_weapon(int power, deck_rarity_type rarity)
         mon->ghost_demon_init();
     }
     else
-        mpr("You see a puff of smoke.");
+        mpr(jtrans("You see a puff of smoke."));
 }
 
 static void _summon_flying(int power, deck_rarity_type rarity)
@@ -2451,7 +2459,7 @@ static void _summon_flying(int power, deck_rarity_type rarity)
     }
 
     if (hostile_invis)
-        mpr("You sense the presence of something unfriendly.");
+        mpr(jtrans("You sense the presence of something unfriendly."));
 }
 
 static void _summon_rangers(int power, deck_rarity_type rarity)
@@ -2506,7 +2514,7 @@ static void _summon_ugly(int power, deck_rarity_type rarity)
                                   you.pos(), MHITYOU, MG_AUTOFOE),
                         false))
     {
-        mpr("You see a puff of smoke.");
+        mpr(jtrans("You see a puff of smoke."));
     }
 
     if (power_level == 2 || !friendly)
@@ -2559,7 +2567,7 @@ static void _mercenary_card(int power, deck_rarity_type rarity)
 
         if (!mon)
         {
-            mpr("You see a puff of smoke.");
+            mpr(jtrans("You see a puff of smoke."));
             return;
         }
 
@@ -2583,16 +2591,16 @@ static void _mercenary_card(int power, deck_rarity_type rarity)
 
     if (hated)
     {
-        simple_monster_message(mon, " is unwilling to work for you!");
+        simple_monster_message(mon, jtransc(" is unwilling to work for you!"));
         return;
     }
 
     const int fee = fuzz_value(exper_value(mon), 15, 15);
     if (fee > you.gold)
     {
-        mprf("You cannot afford %s fee of %d gold!",
-             mon->name(DESC_ITS).c_str(), fee);
-        simple_monster_message(mon, " attacks!");
+        mprf(jtransc("You cannot afford %s fee of %d gold!"),
+             jtransc(mon->full_name(DESC_PLAIN)), fee);
+        simple_monster_message(mon, jtransc(" attacks!"));
         return;
     }
 
@@ -2607,22 +2615,22 @@ bool recruit_mercenary(int mid)
         return true; // wut?
 
     int fee = mon->props["mercenary_fee"].get_int();
-    const string prompt = make_stringf("Pay %s fee of %d gold?",
-                                       mon->name(DESC_ITS).c_str(), fee);
+    const string prompt = make_stringf(jtransc("Pay %s fee of %d gold?"),
+                                       jtransc(mon->full_name(DESC_PLAIN)), fee);
     bool paid = yesno(prompt.c_str(), false, 0);
     const string message = make_stringf(jtransc("Hired %s for %d gold."),
-                                        mon->full_name(DESC_A).c_str(), fee);
+                                        jtransc(mon->full_name(DESC_PLAIN)), fee);
     if (crawl_state.seen_hups)
         return false;
 
     mon->props.erase("mercenary_fee");
     if (!paid)
     {
-        simple_monster_message(mon, " attacks!");
+        simple_monster_message(mon, jtransc(" attacks!"));
         return true;
     }
 
-    simple_monster_message(mon, " joins your ranks!");
+    simple_monster_message(mon, jtransc(" joins your ranks!"));
     mon->attitude = ATT_FRIENDLY;
     mons_att_changed(mon);
     take_note(Note(NOTE_MESSAGE, 0, 0, message.c_str()), true);
@@ -2645,7 +2653,7 @@ static void _alchemist_card(int power, deck_rarity_type rarity)
         you.del_gold(hp * 2);
         inc_hp(hp);
         gold_used += hp * 2;
-        mpr("You feel better.");
+        mpr(jtrans("You feel better."));
         dprf("Gained %d health, %d gold remaining.", hp, gold_max - gold_used);
     }
     // Maybe spend some more gold to regain magic.
@@ -2656,12 +2664,12 @@ static void _alchemist_card(int power, deck_rarity_type rarity)
         you.del_gold(mp * 5);
         inc_mp(mp);
         gold_used += mp * 5;
-        mpr("You feel your power returning.");
+        mpr(jtrans("You feel your power returning."));
         dprf("Gained %d magic, %d gold remaining.", mp, gold_max - gold_used);
     }
 
     if (gold_used > 0)
-        mprf("%d of your gold pieces vanish!", gold_used);
+        mprf(jtransc("%d of your gold pieces vanish!"), gold_used);
     else
         canned_msg(MSG_NOTHING_HAPPENS);
 }
@@ -2717,7 +2725,7 @@ static void _cloud_card(int power, deck_rarity_type rarity)
     }
 
     if (something_happened)
-        mpr("Clouds appear around you!");
+        mpr(jtrans("Clouds appear around you!"));
     else
         canned_msg(MSG_NOTHING_HAPPENS);
 }
@@ -2731,11 +2739,11 @@ static void _fortitude_card(int power, deck_rarity_type rarity)
 
     if (!strong)
     {
-        mprf(MSGCH_DURATION, "You are filled with a great fortitude.");
+        mpr_nojoin(MSGCH_DURATION, jtrans("You are filled with a great fortitude."));
         notify_stat_change(STAT_STR, 10, true, "");
     }
     else
-        mprf(MSGCH_DURATION, "You become more resolute.");
+        mpr_nojoin(MSGCH_DURATION, jtrans("You become more resolute."));
 }
 
 static void _storm_card(int power, deck_rarity_type rarity)
@@ -2855,7 +2863,7 @@ static void _degeneration_card(int power, deck_rarity_type rarity)
             {
                 const int daze_time = (5 + 5 * power_level) * BASELINE_DELAY;
                 mons->add_ench(mon_enchant(ENCH_DAZED, 0, &you, daze_time));
-                simple_monster_message(mons, " is dazed by the mutagenic energy.");
+                simple_monster_message(mons, jtransc(" is dazed by the mutagenic energy."));
             }
             else
                 continue;
@@ -2873,7 +2881,7 @@ static void _placid_magic_card(int power, deck_rarity_type rarity)
     const int power_level = _get_power_level(power, rarity);
     const int drain = max(you.magic_points - random2(power_level * 3), 0);
 
-    mpr("You feel magic draining away.");
+    mpr(jtrans("You feel magic draining away."));
 
     drain_mp(drain);
     debuff_player();
@@ -2895,8 +2903,8 @@ static void _placid_magic_card(int power, deck_rarity_type rarity)
                                                     mons->get_hit_dice()))
                              * BASELINE_DELAY;
         mons->add_ench(mon_enchant(ENCH_ANTIMAGIC, 0, &you, duration));
-        mprf("%s magic leaks into the air.",
-             apostrophise(mons->name(DESC_THE)).c_str());
+        mprf(jtransc("%s magic leaks into the air."),
+             jtransc(mons->name(DESC_PLAIN)));
     }
 }
 
@@ -2932,7 +2940,7 @@ static void _wild_magic_card(int power, deck_rarity_type rarity)
             mp += random2(5);
 
         inc_mp(mp);
-        mpr("You feel a surge of magic.");
+        mpr(jtrans("You feel a surge of magic."));
     }
     else
         canned_msg(MSG_NOTHING_HAPPENS);
@@ -2989,7 +2997,9 @@ void card_effect(card_type which_card, deck_rarity_type rarity,
             && which_card != CARD_PAIN && which_card != CARD_VENOM
             && which_card != CARD_ORB)
         {
-            mprf("You have %s %s.", participle, card_name(which_card));
+            mprf(jtransc("You have %s %s."),
+                 tagged_jtransc("[card]", card_name(which_card)),
+                 jtransc(participle));
         }
     }
 
@@ -2999,11 +3009,11 @@ void card_effect(card_type which_card, deck_rarity_type rarity,
         {
             // Being a self-centered deity, Xom *always* finds this
             // maximally hilarious.
-            god_speaks(GOD_XOM, "Xom roars with laughter!");
+            god_speaks(GOD_XOM, jtransc("Xom roars with laughter!"));
             you.gift_timeout = 200;
         }
         else if (player_under_penance(GOD_XOM))
-            god_speaks(GOD_XOM, "Xom laughs nastily.");
+            god_speaks(GOD_XOM, jtransc("Xom laughs nastily."));
     }
 
     switch (which_card)
@@ -3058,14 +3068,14 @@ void card_effect(card_type which_card, deck_rarity_type rarity,
 
     case CARD_FAMINE:
         if (you_foodless())
-            mpr("You feel rather smug.");
+            mpr(jtrans("You feel rather smug."));
         else
             set_hunger(min(you.hunger, HUNGER_STARVING / 2), true);
         break;
 
     case CARD_FEAST:
         if (you_foodless())
-            mpr("You feel a horrible emptiness.");
+            mpr(jtrans("You feel a horrible emptiness."));
         else
             set_hunger(HUNGER_MAXIMUM, true);
         break;
@@ -3073,7 +3083,7 @@ void card_effect(card_type which_card, deck_rarity_type rarity,
     case CARD_SWINE:
         if (!transform(5 + power/10 + random2(power/10), TRAN_PIG, true))
         {
-            mpr("You feel like a pig.");
+            mpr(jtrans("You feel like a pig."));
             break;
         }
         break;
@@ -3310,5 +3320,5 @@ void nemelex_shuffle_decks()
     // Wildly inaccurate, but of similar quality as the old code which
     // was triggered by the presence of any deck anywhere.
     if (you.num_total_gifts[GOD_NEMELEX_XOBEH])
-        god_speaks(GOD_NEMELEX_XOBEH, "You hear Nemelex Xobeh chuckle.");
+        god_speaks(GOD_NEMELEX_XOBEH, jtransc("You hear Nemelex Xobeh chuckle."));
 }

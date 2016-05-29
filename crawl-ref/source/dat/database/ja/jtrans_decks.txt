@@ -1,111 +1,156 @@
 %%%%
-[card]the Alchemist
+deck of escape
 
-錬金術師
+脱出のデッキ
 %%%%
-[card]the Banshee
+deck of destruction
 
-泣き女
+破壊のデッキ
 %%%%
-[card]the Blade
+deck of dungeons
 
-刃
+迷宮のデッキ
 %%%%
-[card]the Cloud
+deck of summoning
 
-雲烟
+召喚のデッキ
 %%%%
-[card]the Crusade
+deck of wonders
 
-十字軍
+不思議のデッキ
 %%%%
-[card]the Curse
+deck of oddities
 
-呪縛
+奇妙なデッキ
+%%%%
+deck of punishment
+
+懲罰のデッキ
+%%%%
+deck of war
+
+戦争のデッキ
+%%%%
+deck of changes
+
+変幻のデッキ
+%%%%
+deck of defence
+
+守護のデッキ
+%%%%
+This card doesn't seem to belong here.
+
+このカードはこのデッキのものではないようだ。
+%%%%
+# obsolete cards
+#
+# the Portal
+# the Warp
+# Battlelust
+# Metamorphosis
+# Shuffle
+# Experience
+# the Sage
+# the Trowel
+# the Minefield
+# the Genie
+# Vitrification
+# the Bargain
+# the Herd
+# the Bones
+%%%%
+[card]Water
+
+水
+%%%%
+[card]Swap
+
+換
+%%%%
+[card]Velocity
+
+加速
 %%%%
 [card]Damnation
 
 天罰
 %%%%
-[card]the Dance
+[card]Solitude
 
-舞踏
-%%%%
-[card]Degeneration
-
-堕落
-%%%%
-[card]Dowsing
-
-探査
-%%%%
-[card]the Elements
-
-元素
+孤独
 %%%%
 [card]the Elixir
 
 秘薬
 %%%%
-[card]Famine
+[card]the Helm
 
-飢餓
+兜
 %%%%
-[card]the Feast
+[card]the Blade
 
-饗宴
+刃
+%%%%
+[card]the Shadow
+
+影
+%%%%
+[card]the Potion
+
+水薬
 %%%%
 [card]Focus
 
 特化
 %%%%
-[card]Fortitude
-
-堅牢
-%%%%
-[card]Foxfire
-
-狐火
-%%%%
-[card]the Hammer
-
-金鎚
-%%%%
 [card]the Helix
 
-螺旋
+二重螺旋
 %%%%
-[card]the Helm
+[card]Dowsing
 
-兜
+探査
 %%%%
-[card]the Illusion
+[card]the Stairs
 
-幻影
+階段
 %%%%
-[card]the Mercenary
+[card]the Tomb
 
-傭兵
+玄室
 %%%%
-[card]the Orb
+[card]the Banshee
 
-球体
+泣き女
 %%%%
-[card]Pain
+[card]Wild Magic
 
-苦痛
-%%%%
-[card]the Pentagram
-
-五芒星
+暴走
 %%%%
 [card]Placid Magic
 
 沈静
 %%%%
-[card]the Potion
+[card]the Crusade
 
-水薬
+十字軍
+%%%%
+[card]the Elements
+
+元素
+%%%%
+[card]the Pentagram
+
+五芒星
+%%%%
+[card]the Dance
+
+舞踏
+%%%%
+[card]Foxfire
+
+狐火
 %%%%
 [card]the Rangers
 
@@ -115,77 +160,93 @@
 
 醜悪
 %%%%
-[card]the Shadow
+[card]Xom
 
-影隠れ
+ゾム
 %%%%
-[card]the Shaft
+[card]Famine
 
-縦穴
+飢餓
 %%%%
-[card]Solitude
+[card]the Feast
 
-孤独
-%%%%
-[card]the Stairs
-
-階段
-%%%%
-[card]the Storm
-
-嵐
-%%%%
-[card]Swap
-
-交換
-%%%%
-[card]the Swine
-
-豚
-%%%%
-[card]the Tomb
-
-玄室
-%%%%
-[card]Torment
-
-拷問
-%%%%
-[card]Velocity
-
-加速
-%%%%
-[card]Venom
-
-猛毒
-%%%%
-[card]Vitriol
-
-硫酸
+御馳走
 %%%%
 [card]Warpwright
 
 移動罠
 %%%%
-[card]Water
+[card]the Shaft
 
-水
+縦穴
 %%%%
-[card]Wild Magic
+[card]Vitriol
 
-暴走
+硫酸
 %%%%
-[card]the Wraith
+[card]the Cloud
 
-掠奪
+雲烟
+%%%%
+[card]the Hammer
+
+金鎚
+%%%%
+[card]Venom
+
+猛毒
+%%%%
+[card]the Storm
+
+嵐
+%%%%
+[card]Fortitude
+
+堅牢
+%%%%
+[card]Pain
+
+苦痛
+%%%%
+[card]Torment
+
+拷問
 %%%%
 [card]Wrath
 
 憤怒
 %%%%
-[card]Xom
+[card]the Wraith
 
-ゾム
+掠奪
+%%%%
+[card]the Curse
+
+呪縛
+%%%%
+[card]the Swine
+
+豚
+%%%%
+[card]the Alchemist
+
+錬金術師
+%%%%
+[card]the Orb
+
+球体
+%%%%
+[card]the Mercenary
+
+傭兵
+%%%%
+[card]the Illusion
+
+幻影
+%%%%
+[card]Degeneration
+
+堕落
 %%%%
 It may contain the following cards:
 
@@ -195,7 +256,372 @@ It may contain the following cards:
 
 100枚に1枚の割合で「奇妙なデッキ」のカードが混じることがある。
 %%%%
+deal
+
+使った
+%%%%
+draw
+
+引いた
+%%%%
+You %s a card... It is %s.
+
+あなたは%sのカードを%s。
+%%%%
+This isn't a deck at all!
+
+# message for bug
+%%%%
+Seems this deck never had any cards in the first place!
+
+# message for bug
+%%%%
+'cards' property isn't a vector.
+
+# message for bug
+%%%%
+'cards' vector doesn't contain bytes.
+
+# message for bug
+%%%%
+Strange, this deck is already empty.
+
+# message for bug
+%%%%
+But there should have been
+
+# message for bug
+%%%%
+cards left.
+
+# message for bug
+%%%%
+A swarm of software bugs snatches the deck from you and whisks it away.
+
+# message for bug
+%%%%
+buggy cards found in the deck, discarding them.
+
+# message for bug
+%%%%
+Deck was created with zero cards???
+
+# message for bug
+%%%%
+Deck was created with *negative* cards?!
+
+# message for bug
+%%%%
+Deck has more cards than it was created with?
+
+# message for bug
+%%%%
+more cards than flags.
+
+# message for bug
+%%%%
+#            strm << "Have you used " << deck.used_count << " cards, or "
+#                 << (deck.initial_cards - num_cards) << "? Oops.";
+# message for bug
+%%%%
+#            strm << "There are " << num_cards << " cards left, not "
+#                 << (-deck.used_count) << ".  Oops.";
+# message for bug
+%%%%
+Problems might not have been completely fixed; still use deck?
+
+# message for bug
+%%%%
+That isn't a deck!
+
+それはカードのデッキじゃない！
+%%%%
+You get a glimpse of the first card. It is %s.
+
+あなたはデッキの一番上に%sのカードがあることを知った。
+%%%%
+Deal from which deck?
+
+どのデッキを使用しますか？
+%%%%
+This deck seems insufficiently random for dealing.
+
+このデッキは十分に混ざっていないようだ。
+%%%%
+There's only one card left!
+
+このデッキにはカードがもう一枚しかない！
+%%%%
+The deck only has %d cards.
+
+このデッキにはカードが%d枚しか残っていない。
+%%%%
+Nemelex gives you another card to finish dealing.
+
+ネメレクス・ソベーはあなたが切りよくカードを使えるように追加のカードをよこした。
+%%%%
+It is usually found in decks of
+
+このカードは通常
+%%%%
+, or in Nemelex Xobeh's deck of punishment
+
+、もしくはネメレクス・ソベーの懲罰のデッキ
+%%%%
+It is usually only found in Nemelex Xobeh's deck of punishment.
+
+このカードは通常ネメレクス・ソベーの懲罰のデッキにのみ含まれている。
+%%%%
+It is normally not part of any deck.
+
+このカードは通常はどのカードのデッキにも含まれていない。
+%%%%
+No description found.
+
+解説文が存在しません。
+%%%%
+Stack which deck?
+
+どのデッキを並べ替えますか？
+%%%%
+The deck has exactly five cards.
+
+このデッキにはちょうど5枚カードが残っている。
+%%%%
+You draw the first five cards out of %d and discard the rest.
+
+あなたは%d枚のカードのデッキのうち上から5枚を並べ替え、残りを捨てた。
+%%%%
+Press a digit to select a card, then another digit to swap it.
+
+数字キーを押してカードを選択し、次にそれと入れ替えるカードを選択してください。
+%%%%
+Press ? for the card descriptions, or Enter to accept.
+
+? キーを押すとカードの説明が読めます。Enterキーで決定します。
+%%%%
+Are you done? (press y or Y to confirm)
+
+これに決めますか？ (よろしければ y または Y を押してください)
+%%%%
+Triple draw from which deck?
+
+どのデッキから3枚抜き出しますか？
+%%%%
+You draw... (choose one card, ? for their descriptions)
+
+あなたはカードを引いた…… (カードを選択してください。? キーで解説を表示)
+%%%%
+You %s a card...
+
+あなたはカードを%s……
+%%%%
+seems to have exchanged this card behind your back!
+
+があなたの背後からそのカードを取り替えたようだ！
+%%%%
+It's actually %s.
+
+それは実際は%sのカードだった。
+%%%%
+By %s power, the %s magic on the card dissipates harmlessly.
+
+%sの御業により、%s魔術のカードはあなたを害することなく消え去った。
+%%%%
+You spin around.
+
+あなたはその場で回転した。
+%%%%
+protects you from inadvertent hurry.
+
+はあなたを意図しない加速から保護した。
+%%%%
+is moving somewhat quickly.
+
+の動きがいくらか敏捷になった。
+%%%%
+drawing a card
+
+天罰のカードを引いたこと
+%%%%
+The power of the Abyss blocks your magic.
+
+アビスの力がそのカードの魔力を妨害している。
+%%%%
+A shaft materialises beneath you!
+
+あなたの足下に縦穴が具現化した！
+%%%%
+No stairs available to move.
+
+動かせるような階段がここにはない。
+%%%%
+dealt
+
+使った
+%%%%
+drawn
+
+引いた
+%%%%
+Releasing that poison makes you feel less healthy for a moment.
+
+猛毒を放つことにより、一瞬だけあなたは具合が悪くなった。
+%%%%
+Releasing that poison leaves you vulnerable to poison.
+
+猛毒を放つことにより、あなたは毒に弱くなった。
+%%%%
+You feel resistant.
+
+あなたは耐性が強まったような気がした。
+%%%%
+A magical shield forms in front of you.
+
+魔法の盾があなたの前方に形成された。
+%%%%
+%s %s %ssharp%s
+
+%sは%s%s鋭く%s見えた。
+%%%%
+oddly
+
+奇妙に
+%%%%
+(like it always does).
+
+いつものように
+%%%%
+Your cleaving ability is renewed.
+
+あなたの薙ぎ払いの能力の効果時間が延長された。
+%%%%
+You feel more catlike.
+
+あなたはさらに動きが静かになったようだ。
+%%%%
+You feel transcendent for a moment.
+
+あなたは一瞬超越的な感覚を覚えた。
+%%%%
+helix card
+
+二重螺旋のカード
+%%%%
+You sense traps nearby.
+
+あなたは近くにある罠を感知した。
+%%%%
+You sense items nearby.
+
+あなたは近くにあるアイテムを感知した。
+%%%%
+You feel telepathic!
+
+あなたはテレパシー能力が備わったように感じた！
+%%%%
+You somehow manage to escape divine attention...
+
+あなたはなんとか神の注意から逃れようとした……
+%%%%
+You feel a malignant aura surround you.
+
+あなたは周囲に悪意ある霊気がとりまくのを感じた。
+%%%%
+is converted.
+
+は改宗した。
+%%%%
+You sense the presence of something unfriendly.
+
+あなたは非友好的な何者かの存在を感じた。
+%%%%
+is unwilling to work for you!
+
+はあなたに従うつもりはない！
+%%%%
+You cannot afford %s fee of %d gold!
+
+あなたは%sを雇うのに必要な%dゴールドを持っていない！
+%%%%
+attacks!
+
+が攻撃してきた！
+%%%%
+Pay %s fee of %d gold?
+
+%sを%dゴールドで雇いますか？
+%%%%
 Hired %s for %d gold.
 
 %sを金貨%d枚で雇った
+# take_note
+%%%%
+joins your ranks!
+
+はあなたの仲間に加わった！
+%%%%
+%d of your gold pieces vanish!
+
+%dゴールドが手元から消えた！
+%%%%
+Clouds appear around you!
+
+あなたの周囲に雲が湧きだした！
+%%%%
+You are filled with a great fortitude.
+
+あなたは不屈の精神を発揮した。
+%%%%
+You become more resolute.
+
+あなたはさらに決意を固めた。
+%%%%
+is dazed by the mutagenic energy.
+
+は変異性のエネルギーを浴びてふらふらしている。
+%%%%
+You feel magic draining away.
+
+あなたは魔力が吸われていくのを感じた。
+%%%%
+a card of wild magic
+
+暴走のカード
+%%%%
+You feel a surge of magic.
+
+あなたは魔力の高まりを感じた。
+%%%%
+You have %s %s.
+
+あなたは%sのカードを%s。
+%%%%
+Xom laughs nastily.
+
+ゾムは嫌らしく笑った。
+%%%%
+You feel rather smug.
+
+あなたはどうってことない顔をしている。
+%%%%
+You feel a horrible emptiness.
+
+あなたは空しさを覚えた。
+%%%%
+You feel like a pig.
+
+あなたは豚のような気分になった。
+%%%%
+This type of card no longer exists!
+
+# obsolete
+%%%%
+You have %s a buggy card!
+
+# message for bug
+%%%%
+You hear Nemelex Xobeh chuckle.
+
+あなたはネメレクス・ソベーがくすくす笑うのを耳にした。
 %%%%

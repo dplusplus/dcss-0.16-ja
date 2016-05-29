@@ -988,7 +988,7 @@ static int _describe_card(const string &key, const string &suffix,
     const string card_name = key.substr(0, key.size() - suffix.size());
     const card_type card = name_to_card(card_name);
     ASSERT(card != NUM_CARDS);
-    return _describe_key(key, suffix, footer, which_decks(card) + "\n");
+    return _describe_key(key, suffix, footer, "\n" + which_decks(card) + "\n");
 }
 
 /**

@@ -4414,42 +4414,6 @@ deck of cards
 
 カードのデッキ
 %%%%
-deck of escape
-
-脱出のデッキ
-%%%%
-deck of destruction
-
-破壊のデッキ
-%%%%
-deck of summoning
-
-召喚のデッキ
-%%%%
-deck of wonders
-
-不思議のデッキ
-%%%%
-deck of oddities
-
-奇妙なデッキ
-%%%%
-deck of punishment
-
-懲罰のデッキ
-%%%%
-deck of war
-
-戦争のデッキ
-%%%%
-deck of changes
-
-変幻のデッキ
-%%%%
-deck of defence
-
-守護のデッキ
-%%%%
 crystal ball of energy
 
 魔力の水晶球
