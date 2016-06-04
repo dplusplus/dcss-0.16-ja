@@ -18605,6 +18605,46 @@ You feel a sudden draft!
 
 あなたはすきま風を感じた。
 %%%%
+The walls disappear%s!
+
+壁は%s消え去った！
+%%%%
+prematurely
+
+本来よりも早く
+%%%%
+Zin %s %s %s.
+
+ジンは%sを%s%s%s。
+%%%%
+releases
+
+解き放った
+%%%%
+dismisses
+
+解除した
+%%%%
+the silver walls,
+
+白銀の壁
+%%%%
+from %s prison
+
+牢獄から
+%%%%
+but there is nothing inside them
+
+が、中には何もいなかった
+%%%%
+You hear a deep rumble.
+
+あなたは何かが崩れる轟音を耳にした。
+%%%%
+You feel the ground shudder.
+
+あなたは大地が震えるのを感じた。
+%%%%
 ############################## transform.cc ##############################
 %%%%
 You %s %s

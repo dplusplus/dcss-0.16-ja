@@ -1666,24 +1666,24 @@ static void _drop_tomb(const coord_def& pos, bool premature, bool zin)
     if (count)
     {
         if (seen_change && !zin)
-            mprf("The walls disappear%s!", premature ? " prematurely" : "");
+            mprf(jtransc("The walls disappear%s!"),
+                 jtransc(premature ? " prematurely" : ""));
         else if (seen_change && zin)
         {
-            mprf("Zin %s %s %s.",
-                 (mon) ? "releases"
-                       : "dismisses",
-                 (mon) ? mon->name(DESC_THE).c_str()
-                       : "the silver walls,",
-                 (mon) ? make_stringf("from %s prison",
-                             mon->pronoun(PRONOUN_POSSESSIVE).c_str()).c_str()
-                       : "but there is nothing inside them");
+            mprf(jtransc("Zin %s %s %s."),
+                 jtransc((mon) ? mon->name(DESC_THE).c_str()
+                               : "the silver walls,"),
+                 (mon) ? jtransc("from %s prison") : "",
+                 jtransc((mon) ? "releases" : "dismisses"),
+                 jtransc((mon) ? ""
+                               : "but there is nothing inside them"));
         }
         else
         {
             if (!silenced(you.pos()))
-                mprf(MSGCH_SOUND, "You hear a deep rumble.");
+                mpr_nojoin(MSGCH_SOUND, jtrans("You hear a deep rumble."));
             else
-                mpr("You feel the ground shudder.");
+                mpr(jtrans("You feel the ground shudder."));
         }
     }
 }
