@@ -1595,7 +1595,7 @@ static void _name_deck(const item_def &deck, description_level_type desc,
     buff << " {";
     // A marked deck!
     if (top_card_is_known(deck))
-        buff << jtrans(card_name(top_card(deck)));
+        buff << tagged_jtrans("[card]", card_name(top_card(deck))) << "のカード";
 
     // How many cards have been drawn, or how many are left.
     if (deck.used_count != 0)
@@ -1604,11 +1604,9 @@ static void _name_deck(const item_def &deck, description_level_type desc,
             buff << ", ";
 
         if (deck.used_count > 0)
-            buff << "drawn: ";
+            buff << abs(deck.used_count) << "枚消費";
         else
-            buff << "left: ";
-
-        buff << abs(deck.used_count) << "枚";
+            buff << "残り" << abs(deck.used_count) << "枚";
     }
 
     buff << "}";
