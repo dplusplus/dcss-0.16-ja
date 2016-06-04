@@ -1055,7 +1055,7 @@ static string _origin_monster_name(const item_def &item)
         return "player ghost";
     else if (monnum == MONS_PANDEMONIUM_LORD)
         return "pandemonium lord";
-    return mons_type_name(monnum, DESC_A);
+    return mons_type_name(monnum, DESC_PLAIN);
 }
 
 static string _origin_place_desc(const item_def &item)
