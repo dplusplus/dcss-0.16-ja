@@ -2682,16 +2682,6 @@ string mons_type_name(monster_type mc, description_level_type desc)
 {
     string result;
 
-    if (!mons_is_unique(mc))
-    {
-        switch (desc)
-        {
-        case DESC_THE:       result = "the "; break;
-        case DESC_A:         result = "a ";   break;
-        case DESC_PLAIN: default:             break;
-        }
-    }
-
     switch (mc)
     {
     case RANDOM_MONSTER:
