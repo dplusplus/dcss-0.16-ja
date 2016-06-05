@@ -450,7 +450,7 @@ The power of the Abyss blocks your magic.
 %%%%
 A shaft materialises beneath you!
 
-あなたの足下に縦穴が具現化した！
+あなたの足下に縦穴が出現した！
 %%%%
 No stairs available to move.
 
