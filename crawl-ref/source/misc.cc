@@ -306,7 +306,13 @@ bool i_feel_safe(bool announce, bool want_move, bool just_monsters,
     if (visible.size() == 1)
     {
         const monster& m = *visible[0];
-        msg = make_stringf(jtransc("%s is nearby!"), m.name(DESC_A).c_str());
+        string name = m.name(DESC_PLAIN);
+
+        if (name != "竜巻")
+            msg = make_stringf(jtransc("%s is nearby!"), m.name(DESC_A).c_str());
+        else
+            msg = name + "が近くにある！";
+
     }
     else if (visible.size() > 1)
         msg = "There are monsters nearby!";
