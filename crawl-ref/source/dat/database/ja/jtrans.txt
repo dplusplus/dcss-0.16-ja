@@ -16780,6 +16780,10 @@ fires!
 
 は発射した！
 %%%%
+A tornado forms.
+
+大竜巻が発生した。
+%%%%
 ############################## spl-tornado.cc ##############################
 %%%%
 There are friendlies around, are you sure you want to hurt them?

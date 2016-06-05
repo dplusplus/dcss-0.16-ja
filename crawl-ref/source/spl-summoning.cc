@@ -3665,6 +3665,6 @@ void summon_twister(int power_level)
                           BEH_HOSTILE, &you, 1 + random2(power_level + 1),
                           0, pos, MHITYOU, MG_FORCE_PLACE)))
     {
-        mpr("A tornado forms.");
+        mpr(jtrans("A tornado forms."));
     }
 }
