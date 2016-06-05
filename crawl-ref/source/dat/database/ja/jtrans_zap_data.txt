@@ -489,6 +489,14 @@
 %%%%
 ############################## spl-clouds.cc ##############################
 %%%%
+[zap]stinking cloud
+
+悪臭を放つ雲
+%%%%
+[zap]blast of poison
+
+猛毒の雲
+%%%%
 [zap]freezing blast
 
 凍気の雲
