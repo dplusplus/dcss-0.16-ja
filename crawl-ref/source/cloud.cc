@@ -1766,6 +1766,14 @@ string cloud_struct::cloud_name(const string &defname,
                               cloud_type_name(type, terse);
 }
 
+string cloud_struct::cloud_name_j(const string &defname,
+                                     bool terse) const
+{
+    return !name.empty()    ? name :
+           !defname.empty() ? defname :
+                              cloud_type_name_j(type, terse);
+}
+
 void cloud_struct::announce_actor_engulfed(const actor *act,
                                            bool beneficial) const
 {
@@ -1782,7 +1790,7 @@ void cloud_struct::announce_actor_engulfed(const actor *act,
     {
         mprf(jtransc("%s %s in %s."),
              jtransc(act->name(DESC_THE)),
-             jtransc(cloud_name()),
+             jtransc(cloud_name_j()),
              beneficial ? "浸っている"
                         : "包まれている");
         return;
