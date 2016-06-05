@@ -908,7 +908,12 @@ string counted_monster_list::describe(description_level_type desc,
         if (i != list.begin())
         {
             ++i;
-            out += (i == list.end() ? "そして" : "、");
+            if (prev(i, 2) == list.begin() && i == list.end())
+                out += "と";
+            else if (i != list.end())
+                out += "、";
+            else
+                out += "、そして";
         }
         else
             ++i;
