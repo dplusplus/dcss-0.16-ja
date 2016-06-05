@@ -6644,7 +6644,7 @@ You see a ghostly outline there, and the spell fizzles.
 %%%%
 You're standing in a cloud of %s!
 
-あなたは%sの雲に包まれている！
+あなたは%sに包まれている！
 %%%%
 There is a lethal amount of poison in your body!
 
