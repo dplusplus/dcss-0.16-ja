@@ -3108,7 +3108,7 @@ static void _move_player(coord_def move)
 
             monster* targ = monster_at(you.pos() + move);
             if (targ && !targ->wont_attack() && you.can_see(targ))
-                prompt += " " + jtrans(" (Use ctrl+direction to attack without moving)");
+                prompt += "\n " + jtrans(" (Use ctrl+direction to attack without moving)");
 
             if (!crawl_state.disables[DIS_CONFIRMATIONS]
                 && !yesno(prompt.c_str(), false, 'n'))
