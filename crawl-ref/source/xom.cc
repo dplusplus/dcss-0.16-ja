@@ -1066,7 +1066,7 @@ static void _note_potion_effect(potion_type pot)
 
     string potion_msg = jtransc("potion effect ");
 
-    potion_msg += ("(" + potion_name + ")");
+    potion_msg += ("(" + jtrans("potion of " + potion_name) + ")");
 
     take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, potion_msg.c_str()), true);
 }
