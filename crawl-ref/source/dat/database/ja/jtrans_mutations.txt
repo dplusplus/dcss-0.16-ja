@@ -2690,7 +2690,7 @@ rough, black scales (+AC, -Dex)
 
 %%%%
 # MUT_RUGGED_BROWN_SCALES
-rugged brown slaces
+rugged brown scales
 
 頑丈な茶色の鱗
 %%%%
