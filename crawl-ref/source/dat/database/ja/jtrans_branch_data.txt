@@ -256,6 +256,10 @@ You land on top of a ziggurat so tall you cannot make out the ground.
 
 ラビリンス
 %%%%
+[branch]Lab
+
+ラビリンス
+%%%%
 As you enter the labyrinth, previously moving walls settle noisily into place.\nYou hear the metallic echo of a distant snort before it fades into the rock.
 
 あなたがラビリンスに突入すると、それまで動いていた壁が騒音を立てつつその場に据え付けられた。
