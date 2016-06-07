@@ -1436,7 +1436,7 @@ void display_notes()
         string prefix = note.describe(true, true, false);
         string suffix = note.describe(false, false, true);
         int colwidth_turn = note.describe(true, false, false).length();
-        int colwidth_place = note.describe(false, true, false).length() - 5;
+        int colwidth_place = MAX_NOTE_PLACE_LEN + 2;
         if (suffix.empty())
             continue;
 
