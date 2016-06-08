@@ -2724,9 +2724,7 @@ int monster_die(monster* mons, killer_type killer,
                                         ? mons->props["old_heads"].get_int()
                                         : mons->number;
             unwind_var<unsigned int> number(mons->number, num);
-            const string message = "は" +
-                                   mons->pronoun(PRONOUN_POSSESSIVE) +
-                                   "本来の姿に戻り、後には" +
+            const string message = "は本来の姿に戻り、後には" +
                                    mons->pronoun(PRONOUN_SUBJECTIVE) +
                                    "の死体が残った。";
             simple_monster_message(mons, message.c_str());
