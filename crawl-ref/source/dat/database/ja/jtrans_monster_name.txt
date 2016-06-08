@@ -1380,7 +1380,7 @@ adder
 %%%%
 water moccasin
 
-ヌママムシ
+沼マムシ
 %%%%
 black mamba
 
