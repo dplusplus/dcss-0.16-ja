@@ -3103,7 +3103,7 @@ void card_effect(card_type which_card, deck_rarity_type rarity,
     case CARD_METAMORPHOSIS:
     case CARD_SUMMON_ANIMAL:
     case CARD_SUMMON_SKELETON:
-        mpr("This type of card no longer exists!");
+        mpr(jtrans("This type of card no longer exists!"));
         break;
 #endif
 
