@@ -19497,6 +19497,18 @@ run
 
 %sに遭遇した。
 %%%%
+You feel aware of your surroundings.
+
+あなたは周囲の地形を感知した。
+%%%%
+%d altar%s
+
+%dつの祭壇
+%%%%
+%d shop%s/portal%s
+
+%dつの商店またはポータル
+%%%%
 Showing terrain only. Press <w>%s</w> to return to normal view.
 
 地形のみを表示しています。通常表示に戻るには<w>%s</w>を押してください。

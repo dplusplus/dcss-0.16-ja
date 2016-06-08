@@ -624,7 +624,7 @@ bool magic_mapping(int map_radius, int proportion, bool suppress_msg,
     if (!suppress_msg)
     {
         if (did_map)
-            mpr("You feel aware of your surroundings.");
+            mpr(jtrans("You feel aware of your surroundings."));
         else
             canned_msg(MSG_DISORIENTED);
 
@@ -632,19 +632,20 @@ bool magic_mapping(int map_radius, int proportion, bool suppress_msg,
 
         if (num_altars > 0)
         {
-            sensed.push_back(make_stringf("%d altar%s", num_altars,
+            sensed.push_back(make_stringf(jtransc("%d altar%s"), num_altars,
                                           num_altars > 1 ? "s" : ""));
         }
 
         if (num_shops_portals > 0)
         {
             const char* plur = num_shops_portals > 1 ? "s" : "";
-            sensed.push_back(make_stringf("%d shop%s/portal%s",
+            sensed.push_back(make_stringf(jtransc("%d shop%s/portal%s"),
                                           num_shops_portals, plur, plur));
         }
 
         if (!sensed.empty())
-            mpr_comma_separated_list("You sensed ", sensed);
+            mpr("あなたは" + to_separated_line(sensed.begin(), sensed.end())
+                           + "を見つけた。");
     }
 
     return did_map;
