@@ -355,7 +355,7 @@ string Note::describe(bool when, bool where, bool what) const
             result << Options.user_note_prefix << name;
             break;
         case NOTE_MESSAGE:
-            result << name;
+            result << jtrans(name);
             break;
         case NOTE_SEEN_FEAT:
             result << name << "を見つけた";
