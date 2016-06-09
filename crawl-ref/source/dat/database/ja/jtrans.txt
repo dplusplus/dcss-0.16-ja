@@ -10664,9 +10664,17 @@ You open the %s%s.
 
 あなたは%s%sを開けた。
 %%%%
+door
+
+扉
+%%%%
 doorway
 
 戸口
+%%%%
+gate
+
+門
 %%%%
 gateway
 
