@@ -404,20 +404,56 @@
 飛散する金属片
 # from SPELL_METAL_SPLINTERS
 %%%%
+[zap]metal splinters
+
+金属片
+%%%%
 [zap]blast of flame
 
 猛火の息
 # from SPELL_FIRE_BREATH
+%%%%
+[zap]blast of fiery breath
+
+燃えさかる火炎の息
+%%%%
+[zap]flames
+
+火炎
 %%%%
 [zap]searing blast
 
 灼熱の息
 # from SPELL_SEARING_BREATH
 %%%%
+[zap]blast of searing breath
+
+灼けつく息
+%%%%
+[zap]blast of chaos
+
+混沌の息
+%%%%
+[zap]blast of chaotic breath
+
+混沌の息
+%%%%
 [zap]blast of cold
 
 冷気の息
 # from COLD_BREATH
+%%%%
+[zap]blast of icy breath
+
+冷気の息
+%%%%
+[zap]frost
+
+冷気
+%%%%
+[zap]chilling blast
+
+極寒の息
 %%%%
 [zap]blast of chilling breath
 
@@ -433,6 +469,10 @@
 
 石化する雲
 # from SPELL_PETRIFYING_CLOUD
+%%%%
+[zap]beam of golden light
+
+#obsolete
 %%%%
 [zap]stream of webbing
 
