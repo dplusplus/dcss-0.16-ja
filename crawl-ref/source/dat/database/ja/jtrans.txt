@@ -8795,6 +8795,10 @@ active
 
 首
 %%%%
+(fellow slime)
+
+(仲間のスライム)
+%%%%
 very slow
 
 かなり遅い
