@@ -1449,9 +1449,9 @@ static void _monster_die_cloud(const monster* mons, bool corpse, bool silent,
     string msg = "は" + summoned_poof_msg(mons) + "！";
 
     cloud_type cloud = CLOUD_NONE;
-    if (msg.find("smoke") != string::npos)
+    if (msg.find("煙") != string::npos)
         cloud = random_smoke_type();
-    else if (msg.find("chaos") != string::npos)
+    else if (msg.find("混沌") != string::npos)
         cloud = CLOUD_CHAOS;
 
     if (!silent)
