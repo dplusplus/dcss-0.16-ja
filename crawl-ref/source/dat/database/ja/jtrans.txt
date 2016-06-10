@@ -13743,7 +13743,7 @@ travel|examine|<w>delete</w>
 %%%%
 You cannot afford %s; travel there anyway? (y/N)
 
-現在%sを手に入れることができませんが、それでも移動しますか？ (y/N)
+現在%sを買う金がありませんが、それでも移動しますか？ (y/N)
 %%%%
 Your shopping list is now empty.
 
