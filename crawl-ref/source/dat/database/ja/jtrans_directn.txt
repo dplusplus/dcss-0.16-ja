@@ -681,6 +681,12 @@ gateway leading deeper into the Abyss
 
 アビスの深層への門
 %%%%
+############################## spl-goditem.cc ##############################
+%%%%
+a gleaming silver wall
+
+薄く光る白銀の壁
+%%%%
 ############################## dat/des/altar/overflow.des ##############################
 %%%%
 golden statue
