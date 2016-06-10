@@ -1600,7 +1600,7 @@ static void _recharge_rod(item_def &rod, int aut, bool in_inv)
 
     if (in_inv && rod.charges == rod.charge_cap)
     {
-        msg::stream << "Your " << rod.name(DESC_QUALNAME) << " has recharged."
+        msg::stream << jtrans("Your ") << rod.name(DESC_QUALNAME) << jtrans(" has recharged.")
                     << endl;
         if (is_resting())
             stop_running();

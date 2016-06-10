@@ -18677,6 +18677,10 @@ You feel a sudden draft!
 
 あなたはすきま風を感じた。
 %%%%
+has recharged.
+
+は再び使えるようになった。
+%%%%
 The walls disappear%s!
 
 壁は%s消え去った！
