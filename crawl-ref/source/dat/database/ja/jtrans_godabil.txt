@@ -519,6 +519,7 @@ You have no bad mutations to be cured!
 %%%%
 Jiyva's power
 
+ジーヴァの御業
 %%%%
 You feel cleansed.
 
@@ -970,6 +971,7 @@ a trivial
 %%%%
 Ru sacrifice
 
+ルーへの捧げ物
 %%%%
 Ru asks you to %s.
 

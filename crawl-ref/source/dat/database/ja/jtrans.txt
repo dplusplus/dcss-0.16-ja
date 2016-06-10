@@ -6352,6 +6352,10 @@ You are splashed with acid!
 
 あなたは酸のしぶきを浴びた！
 %%%%
+mutagenic touch
+
+変異の手
+%%%%
 %s %s engulfed in flames%s
 
 %sは炎に包まれた%s
@@ -9997,6 +10001,10 @@ Your scales start taking on a fiery red colour.
 
 あなたの鱗は成熟して燃えさかるように赤い色になった。
 %%%%
+draconian maturity
+
+ドラコニアンの成長
+%%%%
 Your scales start taking on an icy white colour.
 
 あなたの鱗は成熟して氷のように白い色になった。
@@ -10049,6 +10057,10 @@ You have reached level %d!
 
 あなたはレベル%dになった！
 %%%%
+level up
+
+レベルアップ
+%%%%
 You feel more in touch with the powers of death.
 
 あなたは死の力との接触が強まったような気がした。
@@ -10077,6 +10089,10 @@ Your scales feel tougher.
 
 あなたの鱗は丈夫になった。
 %%%%
+draconian growth
+
+ドラコニアンの成長
+%%%%
 You can now fly continuously.
 
 あなたは継続的に飛ぶことができるようになった。
@@ -10089,9 +10105,25 @@ Your demonic ancestry asserts itself...
 
 あなたの悪魔的な血統が顕在化した……
 %%%%
+demonic ancestry
+
+血族変異
+%%%%
 You have gained the ability to fly.
 
 あなたは空を飛ぶ能力を得た。
+%%%%
+growing up
+
+成長
+%%%%
+gargoyle growth
+
+ガーゴイルの成長
+%%%%
+vine stalker growth
+
+歩き蔓の成長
 %%%%
 %s (%d).
 
@@ -13138,6 +13170,10 @@ you hasten yourself or others
 use unnaturally quick items
 
 不自然に素早いアイテムを使うこと
+%%%%
+Jiyva's grace
+
+ジーヴァの恩寵
 %%%%
 offers you knowledge of
 
@@ -19544,6 +19580,16 @@ Showing terrain only. Press <w>%s</w> to return to normal view.
 Returning to normal view.
 
 通常表示に戻りました。
+%%%%
+############################## wiz-you.cc ##############################
+%%%%
+wizard race change
+
+ウィザードコマンドによる種族変化
+%%%%
+wizard power
+
+ウィザードコマンドによる変異
 %%%%
 ############################## xom.cc ##############################
 %%%%

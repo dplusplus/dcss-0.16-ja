@@ -1739,7 +1739,7 @@ bool mutate(mutation_type which_mutation, const string &reason, bool failMsg,
         if (mutclass != MUTCLASS_TEMPORARY)
         {
             take_note(Note(NOTE_GET_MUTATION, mutat, you.mutation[mutat],
-                           reason.c_str()));
+                           jtransc(reason)));
         }
         else
         {
@@ -1840,7 +1840,7 @@ static bool _delete_single_mutation_level(mutation_type mutat,
         calc_mp();
 
     if (!transient)
-        take_note(Note(NOTE_LOSE_MUTATION, mutat, you.mutation[mutat], reason.c_str()));
+        take_note(Note(NOTE_LOSE_MUTATION, mutat, you.mutation[mutat], jtransc(reason)));
 
     if (you.hp <= 0)
     {

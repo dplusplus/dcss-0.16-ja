@@ -105,6 +105,10 @@ This meat tastes really weird.
 
 この肉はとても奇妙な味がする。
 %%%%
+mutagenic meat
+
+変異性の肉
+%%%%
 This raw flesh %s
 
 この生肉%s
@@ -152,6 +156,10 @@ This %sblood tastes delicious!
 This blood tastes really weird!
 
 この血は奇妙な味がした！
+%%%%
+mutagenic blood
+
+変異性の血液
 %%%%
 It contains deadly poison!
 
