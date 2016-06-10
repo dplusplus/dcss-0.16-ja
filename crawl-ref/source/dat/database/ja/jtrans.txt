@@ -7877,6 +7877,10 @@ channels a blast of cleansing flame!
 
 は浄化の炎を炸裂させた！
 %%%%
+thin air
+
+何もない空中
+%%%%
 at %s
 
 %sに向かって
