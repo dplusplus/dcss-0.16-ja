@@ -8247,19 +8247,19 @@ falls apart.
 %%%%
 disappear%s in a puff of smoke
 
-は煙とともに消え去った
+煙とともに消え去った
 %%%%
 dissolve%s into shadows
 
-は影の中に溶けこんでいった
+影の中に溶けこんでいった
 %%%%
 degenerate%s into a cloud of primal chaos
 
-は原初の混沌の渦に溶け込んでいった
+原初の混沌の渦に溶け込んでいった
 %%%%
 fade%s away
 
-は薄れて消えていった
+薄れて消えていった
 %%%%
 dissolve%s into sparkling lights
 

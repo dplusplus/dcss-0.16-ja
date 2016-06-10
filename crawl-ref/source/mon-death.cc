@@ -1446,7 +1446,7 @@ static void _monster_die_cloud(const monster* mons, bool corpse, bool silent,
         prefix = jtrans("'s corpse ");
     }
 
-    string msg = summoned_poof_msg(mons) + "！";
+    string msg = "は" + summoned_poof_msg(mons) + "！";
 
     cloud_type cloud = CLOUD_NONE;
     if (msg.find("smoke") != string::npos)
@@ -2369,7 +2369,7 @@ int monster_die(monster* mons, killer_type killer,
                     }
                     else
                     {
-                        string msg = summoned_poof_msg(mons) + "！";
+                        string msg = "は" + summoned_poof_msg(mons) + "！";
                         simple_monster_message(mons, msg.c_str());
                     }
                 }
