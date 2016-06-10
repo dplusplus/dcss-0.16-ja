@@ -3388,7 +3388,8 @@ bool bolt::misses_player()
         if (_test_beam_hit(real_tohit, dodge_more, pierce, defl, r))
             mprf(jtransc("The %s %s you!"), tagged_jtransc("[zap]", name), hit_verb.c_str());
         else
-            mprf(jtransc("Helpless, you fail to dodge the %s."), jtransc(name));
+            mprf(jtransc("Helpless, you fail to dodge the %s."),
+                 tagged_jtransc("[zap]", name));
 
         miss = false;
     }
