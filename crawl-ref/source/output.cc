@@ -1586,7 +1586,7 @@ string mpr_monster_list(bool past)
     if (describe.size() == 1)
         msg += describe[0];
     else
-        msg += to_separated_line(describe.begin(), describe.end(), true, "、");
+        msg += to_separated_line(describe.begin(), describe.end(), true, "および");
     msg += "を目にし";
 
     if (past)
