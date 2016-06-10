@@ -6949,6 +6949,10 @@ is devoured by a tear in reality.
 
 の屍肉の鎧は剥げ落ちた。
 %%%%
+%s is drained!
+
+%sは衰弱した！
+%%%%
 %s corrodes %s!
 
 %sは%sを腐蝕させた！
