@@ -834,7 +834,7 @@ void do_look_around(const coord_def &whence)
     args.restricts = DIR_TARGET;
     args.just_looking = true;
     args.needs_path = false;
-    args.target_prefix = "Here";
+    args.target_prefix = "選択目標";
     args.may_target_monster = "Move the cursor around to observe a square.";
     args.default_place = whence;
     direction(lmove, args);
