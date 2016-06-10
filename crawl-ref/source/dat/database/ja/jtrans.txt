@@ -16752,6 +16752,22 @@ Space distorts slightly along a thin shroud covering your body.
 %%%%
 ############################## spl-summoning.cc ##############################
 %%%%
+protects a fellow warrior from your evil magic!
+
+は従者の戦士をあなたの邪悪なる魔術から守った！
+%%%%
+shields an ally from your puny magic!
+
+は従者をつまらぬ魔術から守った！
+%%%%
+You begin to abjure the creatures around you!
+
+あなたは周囲の怪物たちを解放しはじめた！
+%%%%
+You extend your aura of abjuration.
+
+あなたは解放のオーラの効果時間を延ばした。
+%%%%
 You recall your battlesphere and imbue it with additional charge.
 
 あなたは戦闘球を呼び出し、更なる力を吹き込んだ。

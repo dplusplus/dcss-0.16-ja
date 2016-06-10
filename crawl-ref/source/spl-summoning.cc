@@ -2567,7 +2567,7 @@ static int _abjuration(int pow, monster *mon)
             sockage = sockage * (30 - mon->get_hit_dice()) / 45;
             if (sockage < duration)
             {
-                simple_god_message(" protects a fellow warrior from your evil magic!",
+                simple_god_message(jtransc(" protects a fellow warrior from your evil magic!"),
                                    GOD_SHINING_ONE);
                 shielded = true;
             }
@@ -2577,7 +2577,7 @@ static int _abjuration(int pow, monster *mon)
             sockage = sockage * 8 / 15;
             if (sockage < duration)
             {
-                simple_god_message(" shields an ally from your puny magic!",
+                simple_god_message(jtransc(" shields an ally from your puny magic!"),
                                    GOD_TROG);
                 shielded = true;
             }
@@ -2585,7 +2585,7 @@ static int _abjuration(int pow, monster *mon)
 
         mon_enchant abj = mon->get_ench(ENCH_ABJ);
         if (!mon->lose_ench_duration(abj, sockage) && !shielded)
-            simple_monster_message(mon, " shudders.");
+            simple_monster_message(mon, jtransc(" shudders."));
     }
 
     return true;
@@ -2613,9 +2613,9 @@ spret_type cast_aura_of_abjuration(int pow, bool fail)
     fail_check();
 
     if (!you.duration[DUR_ABJURATION_AURA])
-        mpr("You begin to abjure the creatures around you!");
+        mpr(jtrans("You begin to abjure the creatures around you!"));
     else
-        mpr("You extend your aura of abjuration.");
+        mpr(jtrans("You extend your aura of abjuration."));
 
     you.increase_duration(DUR_ABJURATION_AURA,  6 + roll_dice(2, pow / 12), 50);
     you.props["abj_aura_pow"].get_int() = pow;
