@@ -394,7 +394,7 @@ static void _describe_book(const spellbook_contents &book,
         }
 
         string schools =
-            source_item->base_type == OBJ_RODS ? jtrans("Evocations")
+            source_item->base_type == OBJ_RODS ? tagged_jtrans("[skill]", "Evocations")
                                                : _spell_schools(spell);
         description.cprintf("%s%d\n",
                             chop_string(schools, 30).c_str(),
