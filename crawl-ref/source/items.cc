@@ -998,7 +998,7 @@ void origin_set_inventory(void (*oset)(item_def &item))
 
 static string _milestone_rune(const item_def &item)
 {
-    return string("found ") + item.name(DESC_A) + ".";
+    return item.name(DESC_A) + "を手に入れた";
 }
 
 static void _milestone_check(const item_def &item)
@@ -1006,7 +1006,7 @@ static void _milestone_check(const item_def &item)
     if (item_is_rune(item))
         mark_milestone("rune", _milestone_rune(item));
     else if (item_is_orb(item))
-        mark_milestone("orb", "found the Orb of Zot!");
+        mark_milestone("orb", jtrans("found the Orb of Zot!"));
 }
 
 static void _check_note_item(item_def &item)
