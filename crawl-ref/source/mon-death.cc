@@ -551,7 +551,7 @@ static string _milestone_kill_verb(killer_type killer)
     return killer == KILL_BANISHED ? "を追放した" :
            killer == KILL_PACIFIED ? "を中立化した" :
            killer == KILL_ENSLAVED ? "を隷属させた" :
-           killer == KILL_SLIMIFIED ? "をスライムに変えた" : "を殺した";
+           killer == KILL_SLIMIFIED ? "をスライムに変えた" : "を倒した";
 }
 
 void record_monster_defeat(monster* mons, killer_type killer)
@@ -572,7 +572,7 @@ void record_monster_defeat(monster* mons, killer_type killer)
     {
         monster_info mi(mons);
         string milestone;
-        milestone += get_ghost_description(mi, true);
+        milestone += mi.mname;
         milestone += jtrans(" the ghost of ");
         milestone += _milestone_kill_verb(killer);
         mark_milestone("ghost", milestone);
@@ -583,10 +583,8 @@ void record_monster_defeat(monster* mons, killer_type killer)
              && !testbits(mons->flags, MF_SPECTRALISED))
     {
         mark_milestone("uniq",
-                       _milestone_kill_verb(killer)
-                       + " "
-                       + mons->name(DESC_THE, true)
-                       + ".");
+                       mons->name(DESC_THE, true)
+                       + _milestone_kill_verb(killer));
     }
 }
 
