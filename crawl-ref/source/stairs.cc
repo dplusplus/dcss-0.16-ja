@@ -432,9 +432,7 @@ void up_stairs(dungeon_feature_type force_stair, bool wizard)
             && !you.branches_left[old_level.branch])
         {
             string old_branch_string = branches[old_level.branch].longname;
-            if (old_branch_string.find("The ") == 0)
-                old_branch_string[0] = tolower(old_branch_string[0]);
-            mark_milestone("br.exit", "left " + old_branch_string + ".",
+            mark_milestone("br.exit", tagged_jtrans("[branch]", old_branch_string) + "から離れた",
                            old_level.describe());
             you.branches_left.set(old_level.branch);
         }
