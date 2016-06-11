@@ -18275,6 +18275,10 @@ You %s %swards.
 
 あなたは%sへと%s。
 %%%%
+left a ziggurat at level %d.
+
+ジグラットを%d階で放棄した
+%%%%
 In your confused state, you trip and fall back down the stairs.
 
 あなたは混乱しつつ、階段を転がり落ちた。
