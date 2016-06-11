@@ -379,7 +379,7 @@ static int _abyss_create_items(const map_bitmask &abyss_genlevel_mask,
 
 static string _who_banished(const string &who)
 {
-    return who.empty() ? who : " (" + who + ")";
+    return who.empty() ? who : who + "によって";
 }
 
 void banished(const string &who)
@@ -392,7 +392,7 @@ void banished(const string &who)
     if (!player_in_branch(BRANCH_ABYSS))
     {
         mark_milestone("abyss.enter",
-                       "was cast into the Abyss!" + _who_banished(who));
+                       _who_banished(who) + jtrans("was cast into the Abyss!"));
     }
 
     if (player_in_branch(BRANCH_ABYSS))
