@@ -3266,8 +3266,8 @@ void level_change(bool skip_attribute_increase)
                             {
                                 mpr_nojoin(MSGCH_MUTATION, jtrans("You feel monstrous as "
                                                                   "your demonic heritage exerts itself."));
-                                mark_milestone("monstrous", "discovered their "
-                                               "monstrous ancestry!");
+                                mark_milestone("monstrous", jtrans("discovered their "
+                                               "monstrous ancestry!"));
                             }
                             break;
                         }

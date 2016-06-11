@@ -10910,6 +10910,10 @@ You feel monstrous as your demonic heritage exerts itself.
 
 受け継がれし悪魔の力があなた自身に働き、強大になったと感じた。
 %%%%
+discovered their monstrous ancestry!
+
+自らの悪魔の血脈を感じ取った！
+%%%%
 Your demonic ancestry asserts itself...
 
 あなたの悪魔的な血統が顕在化した……
