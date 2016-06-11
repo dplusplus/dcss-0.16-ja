@@ -2569,8 +2569,8 @@ bool gain_piety(int original_gain, int denominator, bool should_scale_piety)
         if (you.piety >= piety_breakpoint(5)
             && you.piety_max[you.religion] < piety_breakpoint(5))
         {
-            mark_milestone("god.maxpiety", "became the Champion of "
-                           + god_name(you.religion) + ".");
+            mark_milestone("god.maxpiety",
+                           jtrans(god_name(you.religion)) + "の敬虔な信徒となった");
         }
         you.piety_max[you.religion] = you.piety;
     }
