@@ -815,18 +815,18 @@ void down_stairs(dungeon_feature_type force_stair, bool force_known_shaft,
     // reaching the Abyss.
     if (!force_stair && old_feat == DNGN_ENTER_ABYSS)
     {
-        mark_milestone("abyss.enter", "entered the Abyss!");
+        mark_milestone("abyss.enter", jtrans("entered the Abyss!"));
         take_note(Note(NOTE_MESSAGE, 0, 0, jtrans("Voluntarily entered the Abyss.")), true);
     }
     else if (old_feat == DNGN_EXIT_THROUGH_ABYSS)
     {
-        mark_milestone("abyss.enter", "escaped (hah) into the Abyss!");
+        mark_milestone("abyss.enter", jtrans("escaped (hah) into the Abyss!"));
         take_note(Note(NOTE_MESSAGE, 0, 0, jtrans("Took an exit into the Abyss.")), true);
     }
     else if (stair_find == DNGN_EXIT_ABYSS
              && you.char_direction != GDT_GAME_START)
     {
-        mark_milestone("abyss.exit", "escaped from the Abyss!");
+        mark_milestone("abyss.exit", jtrans("escaped from the Abyss!"));
         you.attribute[ATTR_BANISHMENT_IMMUNITY] = you.elapsed_time + 100
                                                   + random2(100);
         you.banished_by = "";

@@ -18359,13 +18359,25 @@ Heavy smoke blows from the lock!
 
 もうもうたる煙が錠前から上がった！
 %%%%
+entered the Abyss!
+
+はアビスに突入した！
+%%%%
 Voluntarily entered the Abyss.
 
 自らの意志でアビスに突入した
 %%%%
+escaped (hah) into the Abyss!
+
+アビスを経由する出口を通った
+%%%%
 Took an exit into the Abyss.
 
 パンデモニウムを出てアビスに突入した
+%%%%
+escaped from the Abyss!
+
+アビスを脱出した！
 %%%%
 Escaped the Abyss
 
