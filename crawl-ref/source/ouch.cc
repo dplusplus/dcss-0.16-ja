@@ -1058,7 +1058,9 @@ void ouch(int dam, kill_method_type death_type, mid_t source, const char *aux,
               true);
     if (you.lives && !non_death)
     {
-        mark_milestone("death", lowercase_first(se.long_kill_message()).c_str());
+        string kill_message = nbsp2sp(se.short_kill_message());
+
+        mark_milestone("death", trim_string(kill_message));
 
         you.deaths++;
         you.lives--;
