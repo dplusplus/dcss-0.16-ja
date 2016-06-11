@@ -317,6 +317,10 @@ You enter an inter-dimensional bazaar!
 
 氷の洞穴
 %%%%
+[branch]IceCv
+
+氷の洞穴
+%%%%
 [branch]Volcano
 
 火山
