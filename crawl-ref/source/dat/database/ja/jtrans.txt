@@ -14295,6 +14295,7 @@ corrupt yourself with
 sacrificed purity
 
 # milestone text
+自らの清浄さを犠牲にした
 %%%%
 sacrifice your ability to read while threatened
 
@@ -14303,6 +14304,7 @@ sacrifice your ability to read while threatened
 sacrificed words
 
 # milestone text
+危険時に巻物を読む能力を犠牲にした
 %%%%
 sacrifice your ability to drink while threatened
 
@@ -14311,14 +14313,17 @@ sacrifice your ability to drink while threatened
 sacrificed drink
 
 # milestone text
+危険時に水薬を飲む能力を犠牲にした
 %%%%
 sacrificed essence
 
 # milestone text
+自らの魔力を犠牲にした
 %%%%
 sacrificed health
 
 # milestone text
+自らの健康を犠牲にした
 %%%%
 sacrifice your ability to go unnoticed
 
@@ -14327,6 +14332,7 @@ sacrifice your ability to go unnoticed
 sacrificed stealth
 
 # milestone text
+隠密能力を犠牲にした
 %%%%
 sacrifice all use of magical tools
 
@@ -14335,6 +14341,7 @@ sacrifice all use of magical tools
 sacrificed evocations
 
 # milestone text
+発動能力を犠牲にした
 %%%%
 sacrifice your ability to be loved
 
@@ -14343,6 +14350,7 @@ sacrifice your ability to be loved
 sacrificed love
 
 # milestone text
+誰からも嫌われるようになった
 %%%%
 sacrifice your courage
 
@@ -14351,6 +14359,7 @@ sacrifice your courage
 sacrificed courage
 
 # milestone text
+勇敢な心を犠牲にした
 %%%%
 sacrifice all use of
 
@@ -14359,6 +14368,7 @@ sacrifice all use of
 sacrificed arcana
 
 # milestone text
+魔術を犠牲にした
 %%%%
 sacrifice your Dodging skill
 
@@ -14367,6 +14377,7 @@ sacrifice your Dodging skill
 sacrificed dodging
 
 # milestone text
+回避能力を犠牲にした
 %%%%
 sacrifice your Armour skill
 
@@ -14375,6 +14386,7 @@ sacrifice your Armour skill
 sacrificed armour
 
 # milestone text
+鎧を着る能力を犠牲にした
 %%%%
 sacrifice one of your
 
@@ -14383,6 +14395,7 @@ sacrifice one of your
 sacrificed a hand
 
 # milestone text
+自らの片腕を捧げた
 %%%%
 sacrifice your experiences
 
@@ -14391,6 +14404,7 @@ sacrifice your experiences
 sacrificed experience
 
 # milestone text
+自らの経験を捧げた
 %%%%
 sacrifice your skill
 
@@ -14399,6 +14413,7 @@ sacrifice your skill
 sacrificed skill
 
 # milestone text
+自らの熟練度を捧げた
 %%%%
 ############################## shopping.cc ##############################
 %%%%
