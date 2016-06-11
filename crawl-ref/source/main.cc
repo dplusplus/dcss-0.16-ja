@@ -657,7 +657,7 @@ static void _take_starting_note()
             << "『" << you.your_name << "』"
             << "がオーブを探す冒険を始めた";
     take_note(Note(NOTE_MESSAGE, 0, 0, notestr.str().c_str()));
-    mark_milestone("begin", "began the quest for the Orb.");
+    mark_milestone("begin", jtrans("began the quest for the Orb."));
 
     notestr.str("");
     notestr.clear();

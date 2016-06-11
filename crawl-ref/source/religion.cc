@@ -1089,7 +1089,7 @@ void dec_penance(god_type god, int val)
         you.penance[god] = 0;
 
         mark_milestone("god.mollify",
-                       "mollified " + god_name(god) + ".");
+                       jtrans(god_name(god)) + "の赦しを得た");
 
         const bool dead_jiyva = (god == GOD_JIYVA && jiyva_is_dead());
 
@@ -1158,7 +1158,7 @@ void dec_penance(god_type god, int val)
         if ((you.penance[god] -= val) > 100)
             return;
         mark_milestone("god.mollify",
-                       "partially mollified " + god_name(god) + ".");
+                       jtrans(god_name(god)) + "の赦しをいくらか得た");
         simple_god_message(" seems mollified... mostly.", god);
         take_note(Note(NOTE_MOLLIFY_GOD, god));
     }
@@ -2569,8 +2569,8 @@ bool gain_piety(int original_gain, int denominator, bool should_scale_piety)
         if (you.piety >= piety_breakpoint(5)
             && you.piety_max[you.religion] < piety_breakpoint(5))
         {
-            mark_milestone("god.maxpiety", "became the Champion of "
-                           + god_name(you.religion) + ".");
+            mark_milestone("god.maxpiety",
+                           jtrans(god_name(you.religion)) + "の敬虔な信徒となった");
         }
         you.piety_max[you.religion] = you.piety;
     }
@@ -2795,7 +2795,7 @@ void excommunication(god_type new_god, bool immediate)
         update_player_symbol();
     }
 
-    mark_milestone("god.renounce", "abandoned " + god_name(old_god) + ".");
+    mark_milestone("god.renounce", jtrans(god_name(old_god)) + "への信仰を捨てた");
 #ifdef DGL_WHEREIS
     whereis_record();
 #endif
@@ -3433,8 +3433,8 @@ void join_religion(god_type which_god, bool immediate)
     whereis_record();
 #endif
 
-    mark_milestone("god.worship", "became a worshipper of "
-                   + god_name(you.religion) + ".");
+    mark_milestone("god.worship",
+                   jtrans(god_name(you.religion)) + "の信徒となった");
 
     simple_god_message(
         make_stringf(jtransc(" welcomes you%s!"),

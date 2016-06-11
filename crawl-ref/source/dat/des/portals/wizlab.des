@@ -110,7 +110,7 @@ function wizlab_setup (e)
 end
 
 function wizlab_milestone (e, wizlab_desc)
-    crawl.mark_milestone("br.enter", "entered " .. wizlab_desc .. ".", "parent")
+    crawl.mark_milestone("br.enter", crawl.jtrans(wizlab_desc) .. "に突入した", "parent")
     crawl.take_note(crawl.jtrans(wizlab_desc) .. "に突入した")
 end
 

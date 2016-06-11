@@ -6150,6 +6150,7 @@ bool ru_do_sacrifice(ability_type sac)
     string offer_text;
     string mile_text;
     string sac_text;
+    string sac_arcana_text;
     const bool is_sac_arcana = sac == ABIL_RU_SACRIFICE_ARCANA;
     int piety_gain = 0;
 
@@ -6173,17 +6174,23 @@ bool ru_do_sacrifice(ability_type sac)
             {
                 string school_name = tagged_jtrans("[skill]",
                                                    skill_name(arcane_mutation_to_skill(mut)));
+                string school_name_abbr = jtrans(_arcane_mutation_to_school_abbr(mut));
 
                 if (i == num_sacrifices - 1)
                 {
                     sac_text += "、および" + school_name;
+                    sac_arcana_text += "/" + school_name_abbr;
                 }
                 else if (i != 0)
                 {
                     sac_text += "、" + school_name;
+                    sac_arcana_text += "/" + school_name_abbr;
                 }
                 else
+                {
                     sac_text += school_name;
+                    sac_arcana_text += school_name_abbr;
+                }
             }
             else
                 sac_text = static_cast<string>(mutation_desc_for_text(mut));
@@ -6197,8 +6204,11 @@ bool ru_do_sacrifice(ability_type sac)
             offer_text = jtrans(sac_def.sacrifice_text) + tagged_jtrans("[sacrifice]", sac_text);
         else
             offer_text = jtrans(sac_def.sacrifice_text) + jtrans(sac_text);
-        mile_text = make_stringf("%s: %s.", sac_def.milestone_text,
-            sac_text.c_str());
+
+        if (!sac_arcana_text.empty()) sac_text = make_stringf("(%s)", sac_arcana_text.c_str());
+
+        mile_text = make_stringf("%s %s", jtransc(sac_def.milestone_text),
+                                 tagged_jtransc("[sacrifice]", sac_text));
     }
     else
     {
@@ -6210,7 +6220,7 @@ bool ru_do_sacrifice(ability_type sac)
             handtxt = you.hand_name(false) + "を捧げる";
 
         offer_text = make_stringf("%s%s", jtransc(sac_def.sacrifice_text), handtxt.c_str());
-        mile_text = make_stringf("%s.", sac_def.milestone_text);
+        mile_text = jtrans(sac_def.milestone_text);
     }
 
     piety_gain = _get_sacrifice_piety(sac);

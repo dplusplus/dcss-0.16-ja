@@ -230,7 +230,7 @@ void leaving_level_now(dungeon_feature_type stair_used)
     {
         if (you.depth == 27)
             you.zigs_completed++;
-        mark_milestone("zig.exit", make_stringf("left a ziggurat at level %d.",
+        mark_milestone("zig.exit", make_stringf(jtransc("left a ziggurat at level %d."),
                        you.depth));
     }
 
@@ -432,9 +432,7 @@ void up_stairs(dungeon_feature_type force_stair, bool wizard)
             && !you.branches_left[old_level.branch])
         {
             string old_branch_string = branches[old_level.branch].longname;
-            if (old_branch_string.find("The ") == 0)
-                old_branch_string[0] = tolower(old_branch_string[0]);
-            mark_milestone("br.exit", "left " + old_branch_string + ".",
+            mark_milestone("br.exit", tagged_jtrans("[branch]", old_branch_string) + "から離れた",
                            old_level.describe());
             you.branches_left.set(old_level.branch);
         }
@@ -695,8 +693,8 @@ void down_stairs(dungeon_feature_type force_stair, bool force_known_shaft,
 
         if (!known_shaft)
         {
-            mark_milestone("shaft", "fell down a shaft to "
-                                    + shaft_dest.describe() + ".");
+            mark_milestone("shaft",
+                           shaft_dest.describe_j() + "へと通じる縦穴に落ちた");
         }
 
         handle_items_on_shaft(you.pos(), false);
@@ -817,18 +815,18 @@ void down_stairs(dungeon_feature_type force_stair, bool force_known_shaft,
     // reaching the Abyss.
     if (!force_stair && old_feat == DNGN_ENTER_ABYSS)
     {
-        mark_milestone("abyss.enter", "entered the Abyss!");
+        mark_milestone("abyss.enter", jtrans("entered the Abyss!"));
         take_note(Note(NOTE_MESSAGE, 0, 0, jtrans("Voluntarily entered the Abyss.")), true);
     }
     else if (old_feat == DNGN_EXIT_THROUGH_ABYSS)
     {
-        mark_milestone("abyss.enter", "escaped (hah) into the Abyss!");
+        mark_milestone("abyss.enter", jtrans("escaped (hah) into the Abyss!"));
         take_note(Note(NOTE_MESSAGE, 0, 0, jtrans("Took an exit into the Abyss.")), true);
     }
     else if (stair_find == DNGN_EXIT_ABYSS
              && you.char_direction != GDT_GAME_START)
     {
-        mark_milestone("abyss.exit", "escaped from the Abyss!");
+        mark_milestone("abyss.exit", jtrans("escaped from the Abyss!"));
         you.attribute[ATTR_BANISHMENT_IMMUNITY] = you.elapsed_time + 100
                                                   + random2(100);
         you.banished_by = "";

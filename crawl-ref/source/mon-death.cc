@@ -548,18 +548,10 @@ static void _hints_inspect_kill()
 
 static string _milestone_kill_verb(killer_type killer)
 {
-    return killer == KILL_BANISHED ? "banished" :
-           killer == KILL_PACIFIED ? "pacified" :
-           killer == KILL_ENSLAVED ? "enslaved" :
-           killer == KILL_SLIMIFIED ? "slimified" : "killed";
-}
-
-static string _takenote_kill_verb(killer_type killer)
-{
     return killer == KILL_BANISHED ? "を追放した" :
            killer == KILL_PACIFIED ? "を中立化した" :
            killer == KILL_ENSLAVED ? "を隷属させた" :
-           killer == KILL_SLIMIFIED ? "をスライムに変えた" : "を殺した";
+           killer == KILL_SLIMIFIED ? "をスライムに変えた" : "を倒した";
 }
 
 void record_monster_defeat(monster* mons, killer_type killer)
@@ -574,14 +566,15 @@ void record_monster_defeat(monster* mons, killer_type killer)
     {
         take_note(Note(NOTE_DEFEAT_MONSTER, mons->type, mons->friendly(),
                        mons->full_name(DESC_A).c_str(),
-                       _takenote_kill_verb(killer)));
+                       _milestone_kill_verb(killer)));
     }
     if (mons->type == MONS_PLAYER_GHOST)
     {
         monster_info mi(mons);
-        string milestone = _milestone_kill_verb(killer) + " the ghost of ";
-        milestone += get_ghost_description(mi, true);
-        milestone += ".";
+        string milestone;
+        milestone += mi.mname;
+        milestone += jtrans(" the ghost of ");
+        milestone += _milestone_kill_verb(killer);
         mark_milestone("ghost", milestone);
     }
     // Or summoned uniques, which a summoned ghost is treated as {due}
@@ -590,10 +583,8 @@ void record_monster_defeat(monster* mons, killer_type killer)
              && !testbits(mons->flags, MF_SPECTRALISED))
     {
         mark_milestone("uniq",
-                       _milestone_kill_verb(killer)
-                       + " "
-                       + mons->name(DESC_THE, true)
-                       + ".");
+                       mons->name(DESC_THE, true)
+                       + _milestone_kill_verb(killer));
     }
 }
 
