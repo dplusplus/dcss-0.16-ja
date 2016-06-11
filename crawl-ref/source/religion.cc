@@ -1089,7 +1089,7 @@ void dec_penance(god_type god, int val)
         you.penance[god] = 0;
 
         mark_milestone("god.mollify",
-                       "mollified " + god_name(god) + ".");
+                       jtrans(god_name(god)) + "の赦しを得た");
 
         const bool dead_jiyva = (god == GOD_JIYVA && jiyva_is_dead());
 
@@ -1158,7 +1158,7 @@ void dec_penance(god_type god, int val)
         if ((you.penance[god] -= val) > 100)
             return;
         mark_milestone("god.mollify",
-                       "partially mollified " + god_name(god) + ".");
+                       jtrans(god_name(god)) + "の赦しをいくらか得た");
         simple_god_message(" seems mollified... mostly.", god);
         take_note(Note(NOTE_MOLLIFY_GOD, god));
     }
