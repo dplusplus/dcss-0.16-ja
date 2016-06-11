@@ -423,25 +423,20 @@ void Note::check_milestone() const
         if (br != -1 && br != BRANCH_WIZLAB)
         {
             ASSERT_RANGE(br, 0, NUM_BRANCHES);
-            string branch = place.describe(true, false);
-
-            if (branch.find("The ") == 0)
-                branch[0] = tolower(branch[0]);
+            string branch = place.describe_j(true, false);
 
             if (dep == 1)
             {
                 mark_milestone(br == BRANCH_ZIGGURAT ? "zig.enter" : "br.enter",
-                               "entered " + branch + ".", "parent");
+                               branch + "に突入した", "parent");
             }
             else if (dep == _dungeon_branch_depth(br)
                      || br == BRANCH_ZIGGURAT)
             {
-                string level = place.describe(true, true);
-                if (level.find("Level ") == 0)
-                    level[0] = tolower(level[0]);
+                string level = place.describe_j(true, true);
 
                 mark_milestone(br == BRANCH_ZIGGURAT ? "zig" : "br.end",
-                               "reached " + level + ".");
+                               level + "に到達した");
             }
         }
     }
