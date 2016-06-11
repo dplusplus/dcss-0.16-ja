@@ -2795,7 +2795,7 @@ void excommunication(god_type new_god, bool immediate)
         update_player_symbol();
     }
 
-    mark_milestone("god.renounce", "abandoned " + god_name(old_god) + ".");
+    mark_milestone("god.renounce", jtrans(god_name(old_god)) + "への信仰を捨てた");
 #ifdef DGL_WHEREIS
     whereis_record();
 #endif
@@ -3433,8 +3433,8 @@ void join_religion(god_type which_god, bool immediate)
     whereis_record();
 #endif
 
-    mark_milestone("god.worship", "became a worshipper of "
-                   + god_name(you.religion) + ".");
+    mark_milestone("god.worship",
+                   jtrans(god_name(you.religion)) + "の信徒となった");
 
     simple_god_message(
         make_stringf(jtransc(" welcomes you%s!"),
