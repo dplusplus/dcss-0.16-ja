@@ -6987,7 +6987,7 @@ turns to stone!
 %%%%
 stops moving altogether!
 
-は一斉に動きを止めた！
+は完全に動きを止めた！
 %%%%
 %s looks sick.
 
