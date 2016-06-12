@@ -4646,6 +4646,10 @@ Akashic Record
 
 アカシック・レコード
 %%%%
+orb of Zot
+
+ゾットのオーブ
+%%%%
 a vampiric weapon
 
 吸血の武器
