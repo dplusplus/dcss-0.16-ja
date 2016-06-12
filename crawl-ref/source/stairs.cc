@@ -694,7 +694,7 @@ void down_stairs(dungeon_feature_type force_stair, bool force_known_shaft,
         if (!known_shaft)
         {
             mark_milestone("shaft",
-                           shaft_dest.describe_j() + "へと通じる縦穴に落ちた");
+                           shaft_dest.describe_j(true) + "へと通じる縦穴に落ちた");
         }
 
         handle_items_on_shaft(you.pos(), false);
