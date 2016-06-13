@@ -174,6 +174,7 @@ static TextDB AllDBs[] =
            "jtrans_food.txt",
            */
            "jtrans_godabil.txt",
+           "jtrans_godblessing.txt",
            /*
            "jtrans_godcompanions.txt",
            */
