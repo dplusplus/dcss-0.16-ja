@@ -17604,6 +17604,10 @@ left a ziggurat at level %d.
 
 ジグラットを%d階で放棄した
 %%%%
+zig.exit27
+
+ジグラットを27階まで制覇した
+%%%%
 In your confused state, you trip and fall back down the stairs.
 
 あなたは混乱しつつ、階段を転がり落ちた。
