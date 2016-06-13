@@ -10,6 +10,7 @@
 #include <algorithm>
 
 #include "branch.h"
+#include "database.h"
 #include "dgn-overview.h"
 #include "message.h"
 #include "mon-util.h"
@@ -145,7 +146,7 @@ bool recall_offlevel_ally(mid_t mid)
     // The monster is now on this level
     remove_monster_from_transit(comp->level, mid);
     comp->level = level_id::current();
-    simple_monster_message(mons, " is recalled.");
+    simple_monster_message(mons, jtransc(" is recalled."));
 
     // Now that the monster is onlevel, we can safely apply traps to it.
     // old location isn't very meaningful, so use current loc
@@ -198,7 +199,7 @@ void wizard_list_companions()
 {
     if (companion_list.size() == 0)
     {
-        mpr("You have no companions.");
+        mpr(jtrans("You have no companions."));
         return;
     }
 
@@ -206,8 +207,9 @@ void wizard_list_companions()
     {
         companion &comp = entry.second;
         monster &mon = comp.mons.mons;
-        mprf("%s (%d)(%s:%d)", mon.name(DESC_PLAIN, true).c_str(), mon.mid,
-             branches[comp.level.branch].abbrevname, comp.level.depth);
+        mprf("%s (%d)(%s:%d)", mon.full_name(DESC_PLAIN, true).c_str(), mon.mid,
+             tagged_jtransc("[branch]", branches[comp.level.branch].abbrevname),
+             comp.level.depth);
     }
 }
 
