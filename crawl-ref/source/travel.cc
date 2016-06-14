@@ -2628,7 +2628,7 @@ void start_translevel_travel(const level_pos &pos)
             _populate_stair_distances(pos);
     }
 
-    trans_travel_dest = _get_trans_travel_dest(level_target);
+    trans_travel_dest = _get_trans_travel_dest_j(level_target);
 
     if (!i_feel_safe(true, true))
         return;
