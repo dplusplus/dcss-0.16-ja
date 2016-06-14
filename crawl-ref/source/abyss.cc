@@ -379,7 +379,7 @@ static int _abyss_create_items(const map_bitmask &abyss_genlevel_mask,
 
 static string _who_banished(const string &who)
 {
-    return who.empty() ? who : who + "によって";
+    return who.empty() ? who : jtrans(who) + "によって";
 }
 
 void banished(const string &who)

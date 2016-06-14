@@ -11092,6 +11092,10 @@ Lugonu absorbs the residual spatial distortion as you unwield your weapon.
 
 ルゴヌはあなたが武器を手放した際の余波の空間歪曲を吸い取った。
 %%%%
+a distortion unwield
+
+歪曲の武器を手放したこと
+%%%%
 You feel magic returning to you.
 
 あなたは魔力が戻ってきたような気がした。
