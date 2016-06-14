@@ -1959,7 +1959,7 @@ string scorefile_entry::death_place(death_desc_verbosity verbosity) const
         return "";
 
     if (verbosity == DDV_ONELINE || verbosity == DDV_TERSE)
-        return " (" + level_id(branch, dlvl).describe() + ")";
+        return " (" + level_id(branch, dlvl).describe_j() + ")";
 
     if (verbose && death_time
         && !_hiscore_same_day(birth_time, death_time))
