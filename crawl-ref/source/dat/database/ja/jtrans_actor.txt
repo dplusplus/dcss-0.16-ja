@@ -45,7 +45,7 @@ barely %s.
 %%%%
 easily %s.
 
-それを楽々とやり過ごした。
+はそれを楽々とやり過ごした。
 %%%%
 %s with almost no effort.
 
