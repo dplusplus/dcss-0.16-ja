@@ -3046,7 +3046,7 @@ string feature_description_at(const coord_def& where, bool covering,
     // They suffer, among other problems, from an information leak.
     if (!marker_desc.empty())
     {
-        marker_desc = covering_description + marker_desc;
+        marker_desc = covering_description + jtrans(marker_desc);
 
         return thing_do_grammar_j(dtype, add_stop, false, marker_desc);
     }
