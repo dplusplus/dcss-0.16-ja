@@ -970,7 +970,7 @@ void monster::remove_enchantment_effect(const mon_enchant &me, bool quiet)
 
     case ENCH_CONTROL_WINDS:
         if (!quiet && you.can_see(this))
-            mprf(jtransc("The winds cease moving at %s will."), jtransc(name(DESC_ITS)));
+            mprf(jtransc("The winds cease moving at %s will."), jtransc(name(DESC_PLAIN)));
         break;
 
     case ENCH_TOXIC_RADIANCE:
