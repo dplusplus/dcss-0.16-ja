@@ -17694,7 +17694,7 @@ Heavy smoke blows from the lock!
 %%%%
 entered the Abyss!
 
-はアビスに突入した！
+アビスに突入した！
 %%%%
 Voluntarily entered the Abyss.
 
