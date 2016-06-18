@@ -17716,6 +17716,10 @@ escaped from the Abyss!
 
 アビスを脱出した！
 %%%%
+You pass through the gate.
+
+あなたは門をくぐり抜けた。
+%%%%
 Escaped the Abyss
 
 アビスを脱出した

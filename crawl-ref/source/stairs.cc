@@ -863,7 +863,7 @@ void down_stairs(dungeon_feature_type force_stair, bool force_known_shaft,
         || stair_find == DNGN_EXIT_PANDEMONIUM
         || stair_find == DNGN_EXIT_THROUGH_ABYSS)
     {
-        mpr("You pass through the gate.");
+        mpr(jtrans("You pass through the gate."));
         take_note(Note(NOTE_MESSAGE, 0, 0, jtrans(
             stair_find == DNGN_EXIT_ABYSS ? "Escaped the Abyss" :
             stair_find == DNGN_EXIT_PANDEMONIUM ? "Escaped Pandemonium" :
