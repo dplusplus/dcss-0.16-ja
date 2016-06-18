@@ -117,8 +117,8 @@ static void _moveto_maybe_repel_stairs()
         if (slide_feature_over(you.pos()))
         {
             mprf(jtransc("%s slides away as you move %s it!"),
-                 jtransc(prep),
-                 jtransc(stair_str));
+                 jtransc(stair_str),
+                 jtransc(prep));
 
             if (player_in_a_dangerous_place() && one_chance_in(5))
                 xom_is_stimulated(25);

@@ -1622,7 +1622,7 @@ string feat_preposition(dungeon_feature_type feat, bool active, const actor* who
     if (dir == CMD_GO_UPSTAIRS && feat_is_escape_hatch(feat))
     {
         if (active)
-            return "下";
+            return "所";
         else
             return "上";
     }
@@ -1630,7 +1630,7 @@ string feat_preposition(dungeon_feature_type feat, bool active, const actor* who
     if (airborne)
     {
         if (active)
-            return "上";
+            return "上空";
         else
             return "下";
     }

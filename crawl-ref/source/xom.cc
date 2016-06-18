@@ -2959,7 +2959,7 @@ bool move_stair(coord_def stair_pos, bool away, bool allow_under)
     ray_def ray;
     if (!find_ray(begin, towards, ray, opc_solid_see))
     {
-        mprf(MSGCH_ERROR, "Couldn't find ray between player and stairs.");
+        mpr_nojoin(MSGCH_ERROR, jtrans("Couldn't find ray between player and stairs."));
         return stairs_moved;
     }
 
@@ -2994,7 +2994,7 @@ bool move_stair(coord_def stair_pos, bool away, bool allow_under)
             return stairs_moved;
         }
 
-        mprf(MSGCH_ERROR, "Ray didn't cross stairs.");
+        mpr_nojoin(MSGCH_ERROR, jtrans("Ray didn't cross stairs."));
     }
 
     if (away && past_stairs <= 0)
@@ -3021,8 +3021,8 @@ bool move_stair(coord_def stair_pos, bool away, bool allow_under)
 
     string stair_str = feature_description_at(stair_pos, false, DESC_THE, false);
 
-    mprf("%s slides %s you!", stair_str.c_str(),
-         away ? "away from" : "towards");
+    mprf(jtransc("%s slides %s you!"), stair_str.c_str(),
+         away ? "から遠ざかった" : "の近くに寄ってきた");
 
     // Animate stair moving.
     const feature_def &feat_def = get_feature_def(feat);

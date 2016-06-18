@@ -9901,7 +9901,7 @@ Level %d of %s
 %%%%
 %s slides away as you move %s it!
 
-あなたが%sの所まで進むと%sが移動した。
+あなたが%sの%sに進むとそれは滑るように移動した。
 %%%%
 Really %s into that cloud of %s?
 
@@ -19797,6 +19797,18 @@ confusion
 confusion (+ monsters)
 
 混乱(モンスター含む)
+%%%%
+Couldn't find ray between player and stairs.
+
+
+%%%%
+Ray didn't cross stairs.
+
+
+%%%%
+%s slides %s you!
+
+%sは滑るように動いてあなた%s！
 %%%%
 repel stairs
 
