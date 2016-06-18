@@ -2841,8 +2841,8 @@ void melee_attack::mons_apply_attack_flavour()
         if (one_chance_in(4))
         {
             defender->malmutate(you.can_see(attacker) ?
-                apostrophise(attacker->name(DESC_PLAIN)) + " mutagenic touch" :
-                "mutagenic touch");
+                attacker->name(DESC_PLAIN) + "による" + jtrans(" mutagenic touch") :
+                jtrans("mutagenic touch"));
         }
         break;
 
