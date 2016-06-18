@@ -19966,9 +19966,41 @@ young
 %%%%
 ############################## dat/des/branches/pan.des ##############################
 %%%%
+The air here is shimmering with an eerie glow.
+
+周囲の大気がぞっとするような光をちらちらと輝かせている。
+%%%%
+You sense a powerful magical presence. It is not pleased.
+
+あなたは強力な魔力の存在を感じ取った。それは心地いいものではない。
+%%%%
+Searing heat pours from the floors and walls of this place.
+
+灼けつくような熱がこの場所の床や壁から溢れだしている。
+%%%%
+Shadowy figures dance across your vision.
+
+真っ黒な像があなたの目の前で踊っている。
+%%%%
+The mighty Pandemonium lord
+
+ここには強大なるパンデモニウムの君主
+%%%%
+resides here.
+
+が居を構えている。
+%%%%
 Entered the realm of
 
 の守る階層に到達した
+%%%%
+The grate goes up!
+
+鉄格子が上がった！
+%%%%
+You hear a sound of rusty metal sliding.
+
+あなたは錆びついた金属が滑るような音を耳にした。
 %%%%
 ############################## dat/des/branches/pan.des ##############################
 %%%%
