@@ -10552,11 +10552,15 @@ wielding %s
 %%%%
 wearing %s %s preventing teleportation
 
-%d%s個のテレポートを防ぐ%sの装備
+%d%sのテレポートを防ぐ%sの装備
 %%%%
 artefacts
 
 アーティファクト
+%%%%
+wearing %s
+
+%sの装備
 %%%%
 You cannot teleport because you are %s.
 

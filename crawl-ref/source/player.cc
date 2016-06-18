@@ -6988,13 +6988,13 @@ string player::no_tele_reason(bool calc_unid, bool blinking) const
     vector<string> problems;
 
     if (duration[DUR_DIMENSION_ANCHOR])
-        problems.emplace_back("locked down by Dimension Anchor");
+        problems.emplace_back(jtrans("locked down by Dimension Anchor"));
 
     if (form == TRAN_TREE)
-        problems.emplace_back("held in place by your roots");
+        problems.emplace_back(jtrans("held in place by your roots"));
 
     if (crawl_state.game_is_zotdef() && orb_haloed(pos()))
-        problems.emplace_back("in the halo of the Orb");
+        problems.emplace_back(jtrans("in the halo of the Orb"));
 
     const bool stasis_block = stasis_blocks_effect(calc_unid, nullptr);
     vector<item_def> notele_items;
@@ -7010,10 +7010,10 @@ string player::no_tele_reason(bool calc_unid, bool blinking) const
             if (item.base_type == OBJ_WEAPONS)
             {
                 problems.push_back(make_stringf(jtransc("wielding %s"),
-                                                jtransc(item.name(DESC_A))));
+                                                jtransc(item.name(DESC_A, false, false, false))));
             }
             else
-                worn_notele.push_back(item.name(DESC_A));
+                worn_notele.push_back(item.name(DESC_A, false, false, false));
 
             if (item.base_type == OBJ_JEWELLERY && jewellery_is_amulet(item))
                 amulet_handled = true;
@@ -7026,7 +7026,7 @@ string player::no_tele_reason(bool calc_unid, bool blinking) const
             {
                 item_def *amulet = slot_item(EQ_AMULET);
                 ASSERT(amulet);
-                worn_notele.push_back(amulet->name(DESC_A));
+                worn_notele.push_back(amulet->name(DESC_A, false, false, false));
                 found_nonartefact = !is_artefact(*amulet);
             }
             //...but we also don't want to report "buggy stasis" from it.
@@ -7046,7 +7046,7 @@ string player::no_tele_reason(bool calc_unid, bool blinking) const
             problems.push_back(
                 make_stringf(jtransc("wearing %s"),
                              to_separated_line(worn_notele.begin(),
-                                               worn_notele.end(), true, "、", "、", "、および").c_str()));
+                                               worn_notele.end(), true, "を装備、および").c_str()));
         }
 
         if (stasis_block && !found_stasis)
@@ -7061,8 +7061,8 @@ string player::no_tele_reason(bool calc_unid, bool blinking) const
         return ""; // no problem
 
     return make_stringf(jtransc("You cannot teleport because you are %s."),
-                        comma_separated_line(problems.begin(),
-                                             problems.end()).c_str());
+                        to_separated_line(problems.begin(), problems.end(),
+                                          false, "、および", "、", "、").c_str());
 }
 
 /**
