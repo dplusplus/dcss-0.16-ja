@@ -3324,6 +3324,8 @@ bool bolt::misses_player()
             {
                 mprf(jtransc("Your %s reflects the %s!"),
                      you.shield()->name(DESC_PLAIN).c_str(),
+                     tagged_jtrans_has_key("[zap]", name) ?
+                     tagged_jtransc("[zap]", name) :
                      jtransc(name));
                 reflect();
             }
@@ -3331,6 +3333,8 @@ bool bolt::misses_player()
             {
                 penet = true;
                 mprf(jtransc("The %s pierces through your %s!"),
+                     tagged_jtrans_has_key("[zap]", name) ?
+                     tagged_jtransc("[zap]", name) :
                      jtransc(name),
                      jtransc(you.shield() ? you.shield()->name(DESC_PLAIN).c_str()
                                           : "shielding"));
@@ -4717,6 +4721,8 @@ bool bolt::attempt_block(monster* mon)
                 {
                     mprf(jtransc("%s reflects the %s off %s %s!"),
                          jtransc(mon->name(DESC_THE)),
+                         tagged_jtrans_has_key("[zap]", name) ?
+                         tagged_jtransc("[zap]", name) :
                          jtransc(name),
                          jtransc(shield->name(DESC_PLAIN).c_str()));
                     ident_reflector(shield);
