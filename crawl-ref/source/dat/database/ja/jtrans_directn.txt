@@ -183,6 +183,10 @@ There is an entrance to
 
 ここには
 %%%%
+Beware, the minotaur awaits!
+
+気をつけろ、ミノタウロスが待ち受けているぞ！
+%%%%
 , spattered with blood
 
 血の飛び散った

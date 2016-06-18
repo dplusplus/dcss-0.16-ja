@@ -2950,7 +2950,7 @@ void describe_floor()
     mpr_nojoin(channel, prefix + feat + suffix);
 
     if (grid == DNGN_ENTER_LABYRINTH)
-        mprf(MSGCH_EXAMINE, "Beware, the minotaur awaits!");
+        mpr_nojoin(MSGCH_EXAMINE, jtrans("Beware, the minotaur awaits!"));
 }
 
 static string _base_feature_desc(dungeon_feature_type grid, trap_type trap)
