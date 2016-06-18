@@ -230,7 +230,8 @@ Welcome to Hell!\nPlease enjoy your stay.
 %%%%
 You enter the halls of Pandemonium!\nTo return, you must find a gate leading back.
 
-あなたはパンデモニウムの大広間に突入した！\n迷宮へと戻るには、ここから脱出する門を探さねばならない。
+あなたはパンデモニウムの大広間に突入した！
+迷宮へと戻るには、ここから脱出する門を探さねばならない。
 %%%%
 [branch]Ziggurat
 
