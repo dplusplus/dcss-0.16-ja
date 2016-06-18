@@ -1964,6 +1964,8 @@ bool make_book_theme_randart(item_def &book,
     if (!owner.empty())
     {
         name = jtrans(owner) + "の";
+        name = replace_all(name, "『", "");
+        name = replace_all(name, "』", "");
         book.props["is_named"].get_bool() = true;
     }
     else
