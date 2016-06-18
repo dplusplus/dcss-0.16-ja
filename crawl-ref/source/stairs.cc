@@ -777,7 +777,7 @@ void down_stairs(dungeon_feature_type force_stair, bool force_known_shaft,
         more();
 
         mprf(jtransc("You insert the %s rune into the lock."),
-             jtransc(rune_type_name(runes[2]) + string("rune of Zot")));
+             jtransc(rune_type_name(runes[2]) + string(" rune of Zot")));
 
         if (silenced(you.pos()))
             mpr(jtrans("The gate opens wide!"));
