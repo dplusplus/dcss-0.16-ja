@@ -1989,8 +1989,8 @@ bool do_god_gift(bool forced)
                     prompt += "の知識を授けることを提案した。";
                     if (gifts >= NUM_VEHUMET_GIFTS - 1)
                     {
-                        prompt += " These spells will remain available"
-                                  " as long as you worship Vehumet.";
+                        prompt += "\n" + jtrans(" These spells will remain available"
+                                                " as long as you worship Vehumet.");
                     }
 
                     you.duration[DUR_VEHUMET_GIFT] = (100 + random2avg(100, 2)) * BASELINE_DELAY;

@@ -13217,6 +13217,10 @@ offers you knowledge of
 
 はあなたに
 %%%%
+These spells will remain available as long as you worship Vehumet.
+
+これらの魔法はヴェフメットを信仰している限りいつでも習得できる。
+%%%%
 You can now %s.
 
 あなたは%sができるようになった。
