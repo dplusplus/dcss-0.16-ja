@@ -19334,6 +19334,10 @@ The power of Zot is invoked against %s!
 
 ゾットの力があなたに向けて発動した！
 %%%%%
+the power of Zot
+
+ゾットの罠の効果
+%%%%%
 The shaft disappears in a puff of logic!
 
 縦穴はぽんっと煙を立てて消え去った！
