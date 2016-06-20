@@ -17810,6 +17810,14 @@ Too many matches; use a more specific search.
 %%%%
 ############################## status.cc ##############################
 %%%%
+(expiring)
+
+(時間切れ寸前)
+%%%%
+Expiring:
+
+時間切れ寸前:
+%%%%
 Corr (%d)
 
 腐蝕(%d)

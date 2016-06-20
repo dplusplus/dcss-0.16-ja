@@ -103,9 +103,10 @@ static void _mark_expiring(status_info* inf, bool expiring)
     if (expiring)
     {
         if (!inf->short_text.empty())
-            inf->short_text += " (expiring)";
+            inf->short_text = tagged_jtrans("[dur]", inf->short_text)
+                            + jtrans(" (expiring)");
         if (!inf->long_text.empty())
-            inf->long_text = "Expiring: " + inf->long_text;
+            inf->long_text = jtrans("Expiring: ") + " " + inf->long_text;
     }
 }
 
