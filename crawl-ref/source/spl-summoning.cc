@@ -134,12 +134,12 @@ spret_type cast_sticks_to_snakes(int pow, god_type god, bool fail)
 {
     if (!you.weapon())
     {
-        mpr(you.hands_act("feel", "slithery!"));
+        mpr(jtrans("Your") + you.hand_name(true) + jtrans("feel slithery!"));
         return SPRET_ABORT;
     }
 
     const item_def& wpn = *you.weapon();
-    const string abort_msg = make_stringf("%s feel%s slithery for a moment!",
+    const string abort_msg = make_stringf(jtransc("%s feel%s slithery for a moment!"),
                                           wpn.name(DESC_YOUR).c_str(),
                                           wpn.quantity > 1 ? "" : "s");
 

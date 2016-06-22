@@ -16845,6 +16845,14 @@ Space distorts slightly along a thin shroud covering your body.
 %%%%
 ############################## spl-summoning.cc ##############################
 %%%%
+feel slithery!
+
+は一瞬蛇のような光沢を帯びた！
+%%%%
+%s feel%s slithery for a moment!
+
+%sは一瞬蛇のような光沢を帯びた！
+%%%%
 protects a fellow warrior from your evil magic!
 
 は従者の戦士をあなたの邪悪なる魔術から守った！
