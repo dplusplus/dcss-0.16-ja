@@ -8443,7 +8443,7 @@ is no longer charmed.
 %%%%
 is no longer hexed.
 
-はもう呪われていない。
+はもう呪縛されていない。
 %%%%
 is no longer bribed.
 

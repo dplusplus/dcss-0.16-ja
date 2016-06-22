@@ -307,7 +307,7 @@ void monster::add_enchantment_effect(const mon_enchant &ench, bool quiet)
                 mprf(jtransc(friendly() ?
                              "You detect the %s %s." :
                              "You can no longer detect the %s %s."),
-                     ench.ench == ENCH_HEXED ? "呪われた" :
+                     ench.ench == ENCH_HEXED ? "呪縛された" :
                      ench.ench == ENCH_CHARM ? "魅了された"
                                              : "買収された",
                      name(DESC_PLAIN, true).c_str());
@@ -651,7 +651,7 @@ void monster::remove_enchantment_effect(const mon_enchant &me, bool quiet)
                 else
                     mprf(jtransc("%s is no longer %s."), jtransc(name(DESC_THE, true)),
                          me.ench == ENCH_CHARM   ? "魅了されて"
-                         : me.ench == ENCH_HEXED ? "呪われて"
+                         : me.ench == ENCH_HEXED ? "呪縛されて"
                                                  : "買収されて");
 
                 mprf(jtransc(friendly() ? "You can once again detect the %s."
