@@ -4784,6 +4784,10 @@ skeleton
 
 骸骨
 %%%%
+You have identified the last healing potion.
+
+あなたは傷を回復する薬を全部識別した。
+%%%%
 unknown
 
 未鑑定の
@@ -5015,6 +5019,10 @@ Drop what?
 Your pack is full.
 
 あなたの荷袋は満杯だ。
+%%%%
+You have identified the last %s.
+
+あなたは%sを全部識別した。
 %%%%
 ############################## kills.cc ##############################
 %%%%

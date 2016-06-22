@@ -3309,7 +3309,7 @@ void identify_healing_pots()
 
     if (ident_count == 1 && tried_count == 1)
     {
-        mpr("You have identified the last healing potion.");
+        mpr(jtrans("You have identified the last healing potion."));
         if (set_ident_type(OBJ_POTIONS, POT_CURING, ID_KNOWN_TYPE))
             pack_item_identify_message(OBJ_POTIONS, POT_CURING);
         if (set_ident_type(OBJ_POTIONS, POT_HEAL_WOUNDS, ID_KNOWN_TYPE))

@@ -4993,7 +4993,7 @@ static void _identify_last_item(item_def &item)
     const string class_name = item.base_type == OBJ_JEWELLERY ?
                                     item_base_name(item) :
                                     item_class_name(item.base_type, true);
-    mprf("You have identified the last %s.", class_name.c_str());
+    mprf(jtransc("You have identified the last %s."), jtransc(class_name));
 
     if (in_inventory(item))
     {
