@@ -18822,6 +18822,14 @@ You feel the ground shudder.
 
 あなたは大地が震えるのを感じた。
 %%%%
+The runic seals fade away.
+
+ルーンによる扉の封印が解けた。
+%%%%
+The runic seal fades away.
+
+ルーンによる扉の封印が解けた。
+%%%%
 ############################## transform.cc ##############################
 %%%%
 You %s %s
