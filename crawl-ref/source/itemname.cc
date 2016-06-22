@@ -2528,7 +2528,7 @@ string item_def::name_aux(description_level_type desc, bool terse, bool ident,
 
         uint64_t name_type, name_flags = 0;
 
-        const string _name  = get_corpse_name(*this, &name_flags);
+        string _name  = get_corpse_name(*this, &name_flags);
         const bool   shaped = starts_with(_name, "shaped ");
         name_type = (name_flags & MF_NAME_MASK);
 
@@ -2551,7 +2551,14 @@ string item_def::name_aux(description_level_type desc, bool terse, bool ident,
             && !(name_flags & MF_NAME_SPECIES) && name_type != MF_NAME_SUFFIX
             && !dbname)
         {
-            buff << jtrans(_name) << "の";
+            _name = jtrans(_name);
+
+            // escape "オークのオークの『ブロルク』の死体"
+            string::size_type found;
+            if((found = _name.find("『")) != string::npos)
+                _name = _name.substr(found);
+
+            buff << _name << "の";
         }
 
         if (item_typ == CORPSE_BODY)
