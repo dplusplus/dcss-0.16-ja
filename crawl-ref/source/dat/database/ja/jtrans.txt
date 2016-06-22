@@ -5766,7 +5766,7 @@ You attempt to attack %s, but flinch away in fear!
 %%%%
 You %sdevour %s!
 
-あなたは%sを%sむさぼり食らった！
+あなたは%s%sをむさぼり食らった！
 %%%%
 You spit out %s as %s twists & changes in your mouth!
 
