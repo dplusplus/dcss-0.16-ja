@@ -1158,7 +1158,7 @@ Yredelemnul penance
 Yredelemnul welcome
 
 # Yredelemnul says: Carry the black torch! Rouse the idle dead!
-イレデレンヌルは言った：『黒き松明を運べ！ 死体の偶像を喚起せよ！』
+イレデレンヌルは言った：『黒き松明を運べ！ 動かぬ死体を呼び起こせ！』
 %%%%
 Zin penance
 
