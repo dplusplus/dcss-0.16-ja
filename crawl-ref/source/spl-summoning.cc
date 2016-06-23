@@ -2250,13 +2250,13 @@ bool monster_simulacrum(monster *mon, bool actual)
 static const char *_count_article(int number, bool definite)
 {
     if (number == 0)
-        return "No";
+        return "No"; // _count_article()呼び出し側で対応
     else if (definite)
-        return "The";
+        return "そこにある";
     else if (number == 1)
-        return "A";
+        return "";
     else
-        return "Some";
+        return "いくつかの";
 }
 
 bool twisted_resurrection(actor *caster, int pow, beh_type beha,
@@ -2385,7 +2385,7 @@ bool twisted_resurrection(actor *caster, int pow, beh_type beha,
 
     if (seen_lost)
     {
-        mprf("%s %s into %s!",
+        mprf(jtransc("%s %s into %s!"),
              _count_article(seen_lost, seen_crawlies + seen_masses == 0),
              seen_lost == 1 ? "corpse collapses" : "corpses collapse",
              seen_lost_piles == 1 ? "a pulpy mess" : "pulpy messes");
@@ -2393,7 +2393,7 @@ bool twisted_resurrection(actor *caster, int pow, beh_type beha,
 
     if (seen_crawlies > 0)
     {
-        mprf("%s %s to drag %s along the ground!",
+        mprf(jtransc("%s %s to drag %s along the ground!"),
              _count_article(seen_crawlies, seen_lost + seen_masses == 0),
              seen_crawlies == 1 ? "corpse begins" : "corpses begin",
              seen_crawlies == 1 ? "itself" : "themselves");
@@ -2401,7 +2401,7 @@ bool twisted_resurrection(actor *caster, int pow, beh_type beha,
 
     if (seen_masses > 0)
     {
-        mprf("%s corpses meld into %s of writhing flesh!",
+        mprf(jtransc("%s corpses meld into %s of writhing flesh!"),
              _count_article(2, seen_crawlies + seen_lost == 0),
              seen_masses == 1 ? "an agglomeration" : "agglomerations");
     }

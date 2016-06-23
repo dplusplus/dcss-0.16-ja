@@ -16861,6 +16861,18 @@ feel slithery!
 
 %sは一瞬蛇のような光沢を帯びた！
 %%%%
+%s %s into %s!
+
+%s死体がどろどろの肉塊となって崩れ去った！
+%%%%
+%s %s to drag %s along the ground!
+
+%s死体が地面を這いずりはじめた！
+%%%%
+%s corpses meld into %s of writhing flesh!
+
+%s死体が融合し、ひとかたまりの蠢く肉塊と化した！
+%%%%
 protects a fellow warrior from your evil magic!
 
 は従者の戦士をあなたの邪悪なる魔術から守った！
