@@ -19958,13 +19958,99 @@ XOM is BORED!
 
 ゾムは退屈している！
 %%%%
-############################## dat/des/altar/trog_burn_book.des ##############################
+############################## dat/des/altar/ashenzari_visionary.des ##############################
 %%%%
-Retrieval
+Ashenzari says, "See what I see, mortal..."
 
-挽回
+アシェンザリは『私の見ている物を見よ、定命の者よ……』と言った。
+%%%%
+############################## dat/des/altar/kiku_cage.des ##############################
+%%%%
+Miasma emanates from the human's flesh.
+
+瘴気がその人間の肉体から湧き出している。
+%%%%
+The human rises from the dead!
+
+人間はゾンビとなって蘇った！
+%%%%
+############################## dat/des/altar/lugonu_bribe.des ##############################
+%%%%
+An item emerges from the Abyss! Perhaps it is an incitement to worship... or even an insult?
+
+アイテムがアビスから招来された！ これは信仰を鼓舞するものか……はたまた侮辱するものか？
+%%%%
+############################## dat/des/altar/nemelex_the_gamble.des ##############################
+%%%%
+"Care to risk it all for some fabulous prizes, mortal?"
+
+『危険を冒して素晴らしき賞品を手に入れるか、定命の者よ？』
+%%%%
+"Through this portal lies a prize... or peril!"
+
+『門をくぐれば賞品が……もしくは危機が！』
+%%%%
+"The prize could be yours... at the risk of your life!"
+
+『賞品が手に入るやも……命の危険はあるがな！』
+%%%%
+"Care for a little wager, mortal?"
+
+『ちょっと賭け事をしてみないか、定命の者よ？』
+%%%%
+Nemelex Xobeh says,
+
+ネメレクス・ソベーは
+%%%%
+"Beware! This is a limited time offer!"
+
+『期間限定！ 注意するのだ！』
+%%%%
+Nemelex Xobeh says, "You win!"
+
+ネメレクス・ソベーは『おまえの勝ちだ！』と言った。
+%%%%
+Nemelex Xobeh says, "You lose!"
+
+ネメレクス・ソベーは『おまえの負けだ！』と言った。
+%%%%
+Your surroundings suddenly seem different.
+
+あなたは突然周囲の風景が違ったものになったように感じた。
+%%%%
+<white>The teleporter glows with a rainbow of weird colours and disappears.</white>
+
+<white>転送装置は奇妙な虹色の光に輝き、そして消え去った。</white>
+%%%%
+############################## dat/des/altar/okawaru_arena.des ##############################
+%%%%
+The portcullises are lifted away, releasing the combatants.
+
+吊るし門が上げられ、戦士たちが解き放たれた。
+%%%%
+The doors seal shut behind you!
+
+あなたの背後の扉が固く閉じられた！
+%%%%
+Okawaru booms, "Excellent! You may choose a reward."
+
+オカワルの『素晴らしい！ 褒美を選ぶがよい』という声が響き渡った。
+%%%%
+The gates behind the altar rise, and the entry reopens.
+
+祭壇の奥の鉄格子が上がり、入り口の扉は再び開いた。
+%%%%
+It reads,\n"Warrior's weapon\n gracefully paints petals red.\n Honourable art."\nProceed?
+
+扉にはこう書かれていた:
+"戦士の武器は見事に花弁を朱に染める"
+この先に進みますか？
 %%%%
 ############################## dat/des/altar/overflow.des ##############################
+%%%%
+As you approach the altar, the fountains begin to flow with blood!
+
+あなたが祭壇に近づくと、泉から血が湧きだした！
 %%%%
 Platinum Reserve
 
@@ -19985,6 +20071,94 @@ frost-covered
 Purification Station
 
 浄化局
+%%%%
+############################## dat/des/altar/trog_burn_book.des ##############################
+%%%%
+The spellbook bursts into flames!
+
+魔法書は燃え上がった！
+%%%%
+Trog roars with delight!
+
+トログは歓喜の声を上げた！
+%%%%
+Retrieval
+
+挽回
+%%%%
+############################## dat/des/altar/trog_wizard.des ##############################
+%%%%
+Flames erupt from the bowels of the wizard!
+
+炎が魔術師の体内から吹き上がった！
+%%%%
+Trog roars with satisfaction!
+
+トログは満足の声を上げた！
+%%%%
+Flames erupt from the wizard's
+
+炎が魔術師の
+%%%%
+cell!
+
+床から吹き上がった！
+%%%%
+Trog roars with frustration!
+
+トログは不満の声を上げた！
+%%%%
+############################## dat/des/altar/vehumet_trees.des ##############################
+%%%%
+Vehumet offers to free you in exchange for your devotion to destruction.
+
+ヴェフメットはあなたの献身を破壊へと変えることを提案した。
+%%%%
+Suddenly, the trees start to burn!
+
+突然木が燃え出した！
+%%%%
+############################## dat/des/altar/xom_monty_hall.des ##############################
+%%%%
+You feel as though Xom is toying with you.
+
+ゾムがあなたをもてあそんでいるかのような気がした。
+%%%%
+Suddenly, the walls become transparent!
+
+突然壁が透明になった！
+%%%%
+############################## dat/des/altar/xom_sheep.des ##############################
+%%%%
+Walls come down!
+
+壁が消滅した！
+%%%%
+A sheep catches fire!
+
+羊の体に火がついた！
+%%%%
+You hear mad divine giggling.
+
+あなたは神の狂気の笑い声を耳にした。
+%%%%
+############################## dat/des/altar/yredelemnul_ordeal.des ##############################
+%%%%
+You sense Yredelemnul urging you to kill the trapped human.
+
+イレデレンヌルはあなたが罠にかかった人間を殺すことを熱望しているようだ。
+%%%%
+Yredelemnul welcomes your deed!
+
+イレデレンヌルはあなたの行いを歓迎した！
+%%%%
+You feel a numb sensation.
+
+あなたは無力感を感じた。
+%%%%
+You hear a strange fizzling.
+
+あなたは奇妙なシュワシュワいう音を耳にした。
 %%%%
 ############################## dat/des/branches/abyss.des ##############################
 %%%%
