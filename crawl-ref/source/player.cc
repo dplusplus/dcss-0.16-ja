@@ -8732,7 +8732,7 @@ void player_open_door(coord_def doorpos)
 
         if (!door_open_prompt.empty())
         {
-            door_open_prompt += " (y/N)";
+            door_open_prompt = jtrans(door_open_prompt) + " (y/N)";
             if (!yesno(door_open_prompt.c_str(), true, 'n', true, false))
             {
                 if (is_exclude_root(doorpos))

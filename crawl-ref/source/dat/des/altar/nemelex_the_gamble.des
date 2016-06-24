@@ -8,8 +8,8 @@ function callback.grunt_nemelex_gamble_announce(data,triggerable,triggerer,marke
             "\"The prize could be yours... at the risk of your life!\"",
             "\"Care for a little wager, mortal?\""
         }
-        crawl.god_speaks("Nemelex Xobeh", "Nemelex Xobeh says, " ..
-                         msg[crawl.random_range(1, 4)])
+        crawl.god_speaks("Nemelex Xobeh", crawl.jtrans("Nemelex Xobeh says, ") ..
+                         crawl.jtrans(msg[crawl.random_range(1, 4)]) .. "と言った。")
         crawl.god_speaks("Nemelex Xobeh", "\"Beware! This is a limited time offer!\"")
     end
 end

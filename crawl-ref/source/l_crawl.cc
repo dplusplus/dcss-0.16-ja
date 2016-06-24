@@ -1035,7 +1035,26 @@ static int crawl_jtrans(lua_State *ls)
 {
     const char *s = luaL_checkstring(ls, 1);
 
-    lua_pushstring(ls, jtrans(s).c_str());
+    lua_pushstring(ls, jtransc(s));
+
+    return 1;
+}
+
+static int crawl_jtransln(lua_State *ls)
+{
+    const char *s = luaL_checkstring(ls, 1);
+
+    lua_pushstring(ls, jtranslnc(s));
+
+    return 1;
+}
+
+static int crawl_tagged_jtrans(lua_State *ls)
+{
+    const char *tag = luaL_checkstring(ls, 1);
+    const char *key = luaL_checkstring(ls, 2);
+
+    lua_pushstring(ls, tagged_jtransc(tag, key));
 
     return 1;
 }
@@ -1109,6 +1128,8 @@ static const struct luaL_reg crawl_clib[] =
 #endif
     { "version",            crawl_version },
     { "jtrans",             crawl_jtrans },
+    { "jtransln",           crawl_jtransln },
+    { "tagged_jtrans",      crawl_tagged_jtrans },
     { nullptr, nullptr },
 };
 
@@ -1255,7 +1276,7 @@ LUAFN(_crawl_god_speaks)
     if (!message)
         return 0;
 
-    god_speaks(god, message);
+    god_speaks(god, jtransc(message));
     return 0;
 }
 

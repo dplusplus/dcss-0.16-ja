@@ -17,7 +17,7 @@ function callback.grunt_ashenzari_visionary_reveal(data,triggerable,triggerer,ma
         else
           msg = msg .. "、"
         end
-        msg = msg .. name
+        msg = msg .. crawl.tagged_jtrans("[branch]", name)
       end
       crawl.take_note(msg .. "の映像を見た")
     end
