@@ -200,7 +200,7 @@ You are mighty.
 
 麻痺
 %%%%
-[dur]palalysed
+[dur]paralysed
 
 麻痺中
 %%%%
