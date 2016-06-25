@@ -18746,7 +18746,7 @@ magically
 %%%%
 toss away
 
-投げ捨てた
+放り投げた
 %%%%
 shoot
 
