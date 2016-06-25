@@ -139,6 +139,10 @@ Sorry, you can't target what you can't see.
 
 残念ながら、見えないところを標的にはできない。
 %%%%
+silenced
+
+静寂に包まれている
+%%%%
 Disturbance
 
 障害物
@@ -219,9 +223,241 @@ an abandoned shop
 
 打ち捨てられた店
 %%%%
+sleepwalking
+
+夢遊病
+%%%%
+resting
+
+休息中
+%%%%
+fleeing
+
+逃走中
+%%%%
+hasn't noticed you
+
+あなたに気づいていない
+%%%%
+clinging
+
+壁にくっついている
+%%%%
+mesmerising
+
+あなたを魅了中
+%%%%
+peaceful
+
+平和的
+%%%%
+indifferent
+
+冷淡
+%%%%
+summoned
+
+一時的に召喚中
+%%%%
+durably summoned
+
+永続的に召喚中
+%%%%
+expiring
+
+召喚の時間切れが近い
+%%%%
+haloed
+
+光輪に照らされている
+%%%%
+umbra
+
+影の帳に包まれている
+%%%%
+possessable
+
+魂の隷属準備中
+%%%%
+disembodied soul
+
+肉体から分離した魂
+%%%%
+reflecting injuries
+
+痛み分け状態
+%%%%
+inner flame
+
+内なる炎
+%%%%
+fire blocked by
+
+射線が
+%%%%
+is clinging to the wall.
+
+は壁にくっついている。
+%%%%
+You are mesmerised by her song.
+
+あなたは彼女の歌に魅了されている。
+%%%%
+appears to be
+
+は
+%%%%
+is fleeing.
+
+は逃走している。
+%%%%
+doesn't appear to have noticed you.
+
+はあなたに気づいていないようだ。
+%%%%
+is friendly.
+
+は友好的だ。
+%%%%
+seems to be peaceful towards you.
+
+はあなたに対し平和的なようだ。
+%%%%
+is indifferent to you.
+
+はあなたに冷淡なようだ。
+%%%%
+has been summoned
+
+は召喚されて
+%%%%
+, and is expiring
+
+おり、もうすぐ時間切れになる
+%%%%
+but will not time out
+
+いるが、時間切れにならない
+%%%%
+.
+
+。
+%%%%
+is illuminated by a divine halo.
+
+は神気の光輪に照らされている。
+%%%%
+is wreathed by an umbra.
+
+は影の帳に包まれている。
+%%%%
+is mindless.
+
+は精神構造を持たない。
+%%%%
+is chaotic.
+
+は混沌に身を置いている。
+%%%%
+soul is ripe for the taking.
+
+は魂の隷属を受ける準備ができている。
+%%%%
+is a disembodied soul.
+
+肉体から分離した魂だ。
+%%%%
+is reflecting injuries back at attackers.
+
+は自らが受けた傷を攻撃者に返す。
+%%%%
+is filled with an inner flame.
+
+は内なる炎に満たされている。
+%%%%
+charmed
+
+仲間
+%%%%
+insane
+
+狂気
+%%%%
+neutral
+
+中立
+%%%%
 a wand
 
 ワンド
+%%%%
+lies inside a sanctuary
+
+聖域に指定されて
+%%%%
+is shrouded in silence
+
+静寂に包まれて
+%%%%
+is lit by a halo
+
+光輪に照らされて
+%%%%
+is wreathed by an umbra
+
+影の帳に包まれて
+%%%%
+is liquefied
+
+液状化して
+%%%%
+is covered in magical glow
+
+魔力により輝いて
+%%%%
+is bathed in translocation energy
+
+転移術のエネルギーにさらされて
+%%%%
+This square %s.
+
+この場所は%s
+%%%%
+There is a cloud of %s here.
+
+ここには%sがある。
+%%%%
+You see %s here.
+
+ここには%sがある。
+%%%%
+There is a strange disturbance in the water here.
+
+ここでは奇妙な水の流れが渦巻いている。
+%%%%
+There is a strange disturbance in the cloud here.
+
+ここでは奇妙な雲の流れが渦巻いている。
+%%%%
+%s is out of range.
+
+%sは範囲外だ。
+%%%%
+(<w>Right-click</w> for more information.)
+
+(さらなる情報を得るには<w>右クリック</w>してください)
+%%%%
+(Press <w>v</w> for more information.)
+
+(さらなる情報を得るには <w>v</w> キーを押してください)
+%%%%
+(Right-click for more information.)
+
+(さらなる情報を得るには右クリックしてください)
+%%%%
+(Press 'v' for more information.)
+
+(さらなる情報を得るには 'v' キーを押してください)
 %%%%
 ############################## feature-data.h ##############################
 %%%%

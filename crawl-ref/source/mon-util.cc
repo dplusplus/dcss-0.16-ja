@@ -4996,7 +4996,7 @@ string get_damage_level_string(mon_holy_type holi, mon_dam_level_type mdam)
     {
     case MDAM_ALMOST_DEAD:
         ss << "ほとんど";
-        ss << (wounded_damaged(holi) ? "破壊されかけている" : "死にかけだ");
+        ss << (wounded_damaged(holi) ? "破壊されかけている" : "死にかけている");
         return ss.str();
     case MDAM_SEVERELY_DAMAGED:
         ss << "ひどく";

@@ -1571,7 +1571,7 @@ static string _verbose_info0(const monster_info& mi)
     if (mi.is(MB_INNER_FLAME))
         return "内炎";
     if (mi.is(MB_DUMB))
-        return "沈黙";
+        return "茫然自失";
     if (mi.is(MB_PARALYSED))
         return "麻痺";
     if (mi.is(MB_CAUGHT))
@@ -1759,16 +1759,16 @@ vector<string> monster_info::attributes() const
     vector<string> v;
 
     if (is(MB_BERSERK))
-        v.emplace_back("berserk");
+        v.emplace_back("バーサーク中");
     if (is(MB_HASTED) || is(MB_BERSERK))
     {
         if (!is(MB_SLOWED))
-            v.emplace_back("fast");
+            v.emplace_back("加速中");
         else
-            v.emplace_back("fast+slow");
+            v.emplace_back("加減速中");
     }
     else if (is(MB_SLOWED))
-        v.emplace_back("slow");
+        v.emplace_back("減速中");
     if (is(MB_STRONG) || is(MB_BERSERK))
         v.emplace_back("unusually strong");
 
@@ -1820,14 +1820,12 @@ vector<string> monster_info::attributes() const
         v.emplace_back("inspiring fear");
     if (is(MB_BREATH_WEAPON))
     {
-        v.push_back(string("catching ")
-                    + pronoun(PRONOUN_POSSESSIVE) + " breath");
+        v.emplace_back("catching its breath");
     }
     if (is(MB_WITHDRAWN))
     {
         v.emplace_back("regenerating health quickly");
-        v.push_back(string("protected by ")
-                    + pronoun(PRONOUN_POSSESSIVE) + " shell");
+        v.emplace_back("protected by its shell");
     }
     if (is(MB_DAZED))
         v.emplace_back("dazed");
@@ -1865,7 +1863,7 @@ vector<string> monster_info::attributes() const
     if (is(MB_FLAYED))
         v.emplace_back("covered in terrible wounds");
     if (is(MB_WEAK))
-        v.emplace_back("weak");
+        v.emplace_back("弱体化中");
     if (is(MB_DIMENSION_ANCHOR))
         v.emplace_back("unable to translocate");
     if (is(MB_CONTROL_WINDS))
@@ -1935,6 +1933,10 @@ string monster_info::wounds_description(bool use_colour) const
         const int col = channel_to_colour(MSGCH_MONSTER_DAMAGE, dam);
         desc = colour_string(desc, col);
     }
+    desc = replace_all(desc, "傷ついた", "傷ついている");
+    desc = replace_all(desc, "傷つかなかった", "無傷");
+    desc = replace_all(desc, "死にかけている", "死にかけ");
+
     return desc;
 }
 
@@ -1950,7 +1952,7 @@ string monster_info::constriction_description() const
     }
 
     string constricting = comma_separated_line(constricting_name.begin(),
-                                               constricting_name.end());
+                                               constricting_name.end(), ", ");
 
     if (constricting != "")
     {

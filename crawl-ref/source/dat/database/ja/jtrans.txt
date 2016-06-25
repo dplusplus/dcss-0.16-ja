@@ -8829,6 +8829,266 @@ active
 
 (仲間のスライム)
 %%%%
+unusually strong
+
+強化中
+%%%%
+poisoned
+
+毒に冒されている
+%%%%
+sick
+
+病気に冒されている
+%%%%
+rotting away
+
+腐敗中
+%%%%
+softly glowing
+
+輝いている
+%%%%
+frenzied and insane
+
+正気を失っている
+%%%%
+consumed by blood-lust
+
+血に飢えている
+%%%%
+inspired to greatness
+
+興奮している
+%%%%
+bewildered and confused
+
+混乱中
+%%%%
+slightly transparent
+
+透明化中
+%%%%
+in your thrall
+
+隷属中
+%%%%
+covered in liquid flames
+
+焼夷の炎を浴びている
+%%%%
+entangled in a net
+
+網に絡めとられている
+%%%%
+entangled in a web
+
+蜘蛛の巣に引っかかっている
+%%%%
+petrified
+
+石化中
+%%%%
+slowly petrifying
+
+石化進行中
+%%%%
+susceptible to magic
+
+魔法に弱い
+%%%%
+covering ground quickly
+
+敏捷化中
+%%%%
+radiating silence
+
+沈黙を振りまいている
+%%%%
+paralysed
+
+麻痺中
+%%%%
+bleeding
+
+出血中
+%%%%
+repelling missiles
+
+飛来物を弾いている
+%%%%
+deflecting missiles
+
+飛来物を逸らしている
+%%%%
+inspiring fear
+
+恐怖に怯えている
+%%%%
+catching its breath
+
+息が上がっている
+%%%%
+regenerating health quickly
+
+急速に回復している
+%%%%
+dazed
+
+眩暈中
+%%%%
+mute
+
+沈黙中
+%%%%
+blind
+
+盲目状態
+%%%%
+stupefied
+
+茫然自失
+%%%%
+lost in madness
+
+激怒している
+%%%%
+standing in death's doorway
+
+死のとば口に立っている
+%%%%
+regenerating
+
+再生中
+%%%%
+rolling
+
+回転中
+%%%%
+stone skin
+
+石の皮膚を纏っている
+%%%%
+covered in an icy film
+
+氷の層に覆われている
+%%%%
+misshapen and mutated
+
+奇形の体をしている
+%%%%
+chanting recall
+
+招来の呪文を詠唱中
+%%%%
+sheltered from injuries
+
+創傷から護られている
+%%%%
+engulfed in water
+
+水に包まれている
+%%%%
+unable to breathe
+
+呼吸することができない
+%%%%
+covered in terrible wounds
+
+体全体がひどい傷で覆われている
+%%%%
+unable to translocate
+
+転位できない
+%%%%
+controlling the winds
+
+風を操っている
+%%%%
+radiating toxic energy
+
+毒の波動を放っている
+%%%%
+movement impaired by roots
+
+木の根で動きが阻害されている
+%%%%
+more vulnerable to fire
+
+さらに火に弱くなっている
+%%%%
+surrounded by raging winds
+
+荒れ狂う風に包まれている
+%%%%
+surrounded by restless winds
+
+止むことない風に包まれている
+%%%%
+skewered by manticore barbs
+
+マンティコアの逆棘が刺さっている
+%%%%
+more vulnerable to poison
+
+さらに毒に弱くなっている
+%%%%
+surrounded by an icy envelope
+
+氷の鎧を身にまとっている
+%%%%
+unusually agile
+
+非常に素早い
+%%%%
+encased in ice
+
+凍結している
+%%%%
+absorbing vital energies
+
+生命力を吸い取っている
+%%%%
+magic-sapped
+
+魔法が阻害されている
+%%%%
+shrouded
+
+ゴルブリアの帷子を纏っている
+%%%%
+covered in acid
+
+酸を浴びている
+%%%%
+covering ground slowly
+
+大地をゆっくりと動いている
+%%%%
+lightly drained
+
+少し衰弱している
+%%%%
+heavily drained
+
+ひどく衰弱している
+%%%%
+protected by a disc of dense vapour
+
+凝縮された大気の円盤に守られている
+%%%%
+unusually resistant
+
+非常に耐性が強い
+%%%%
+control wrested from you
+
+あなたに指揮権を奪われている
+%%%%
+corpse armoured
+
+屍肉の鎧を纏っている
+%%%%
 very slow
 
 かなり遅い

@@ -1599,6 +1599,14 @@ string cloud_name_at_index(int cloudno)
         return cloud_type_name(env.cloud[cloudno].type);
 }
 
+string cloud_name_at_index_j(int cloudno)
+{
+    if (!env.cloud[cloudno].name.empty())
+        return env.cloud[cloudno].name;
+    else
+        return cloud_type_name_j(env.cloud[cloudno].type);
+}
+
 string cloud_type_name(cloud_type type, bool terse)
 {
     if (type <= CLOUD_NONE || type >= NUM_CLOUD_TYPES)
