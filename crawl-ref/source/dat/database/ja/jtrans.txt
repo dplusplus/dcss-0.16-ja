@@ -20428,9 +20428,35 @@ mad acolyte of Lugonu
 %%%%
 ############################## dat/des/branches/crypt.des ##############################
 %%%%
+There is a click. Suddenly, the grates are dropped!
+
+カチッという音がして、突然鉄格子が降りた！
+%%%%
+There is a click. Nothing appears to happen.
+
+カチッという音がしたが、何も起きなかった。
+%%%%
+Something awakens from inside the sarcophagi!
+
+石棺の中から何かが起き出してきた！
+%%%%
+The ground shakes!
+
+地面が振動した！
+%%%%
+You hear grinding stone!
+
+あなたは石がギシギシとこすれる音を耳にした！
+%%%%
 skeletal archer
 
 骸骨の弓兵
+%%%%
+############################## dat/des/branches/dis.des ##############################
+%%%%
+You hear the creaking of ancient metal!
+
+あなたは太古の金属が軋む音を立てるのを耳にした！
 %%%%
 ############################## dat/des/branches/lair.des ##############################
 %%%%
@@ -20476,7 +20502,99 @@ You hear a sound of rusty metal sliding.
 
 あなたは錆びついた金属が滑るような音を耳にした。
 %%%%
+############################## dat/des/branches/shoals.des ##############################
+%%%%
+The surface of the water froths suddenly, and then rushes away.
+
+水面が突然泡立ち、こちらに押し寄せてきた。
+%%%%
+############################## dat/des/branches/slime.des ##############################
+%%%%
+An unexplained breeze blows through the dungeon.
+
+不可解なそよ風がダンジョンを通り抜けた。
+%%%%
+You hear the sound of toppling stones.
+
+あなたは石のぐらつく音を耳にした。
+%%%%
+Suddenly, all colour oozes out of the stone walls.
+
+突然、石の壁からすべての色がにじみ出してきた。
+%%%%
+You feel a strange vibration for a moment.
+
+あなたは一瞬奇妙な振動を感じた。
+%%%%
+You feel a great sense of loss, and a brush of the Abyss.
+
+あなたは大いなる喪失の感覚とアビスへの接触を感じ取った。
+%%%%
+############################## dat/des/branches/spider.des ##############################
+%%%%
+A basket of spiders falls from above!
+
+蜘蛛の群れが頭上から落ちてきた！
+%%%%
+You notice webbing strewn about the room and hear a chittering noise in the background.
+
+あなたは部屋中に貼られた蜘蛛の巣と周囲から聞こえるキチキチという音に気づいた。
+%%%%
+Something lightly brushes against you...
+
+何かがあなたの顔に触れた……
+%%%%
+You realise it was just a hanging strand of cobweb; you push it aside and calm your nerves.
+
+あなたはそれがただの蜘蛛の巣だということに気づき、手で押しのけて落ち着きを取り戻した。
+%%%%
+The chamber up ahead is thickly strewn with cobwebs.
+
+その小部屋はびっしりと蜘蛛の巣に覆われている。
+%%%%
+############################## dat/des/branches/swamp.des ##############################
+%%%%
+A figure emerges from the depths of the water!
+
+何者かの姿が水の深みから飛び出してきた！
+%%%%
+The water ripples visibly.
+
+何かの波紋が生じた。
+%%%%
+############################## dat/des/branches/tar.des ##############################
+%%%%
+You hear an unearthly scream, and the grinding of stone!
+
+あなたはこの世のものとも思えぬ絶叫と、石の軋むような音を耳にした！
+%%%%
+The path is suddenly blocked!
+
+行く手が突然遮られた！
+%%%%
+############################## dat/des/branches/vaults.des ##############################
+%%%%
+Your surroundings suddenly seem different!
+
+突然周囲の風景が一変した！
+%%%%
+There is a strange hissing noise.
+
+奇妙なシューッという音がした。
+%%%%
 ############################## dat/des/branches/zot.des ##############################
+%%%%
+You have a sense of imminent foreboding.
+
+あなたは差し迫った危機を予感した。
+%%%%
+One of the plants suddenly grows acid sacs!
+
+一つの植物が突然酸の嚢を発達させた！
+%%%%
+Another plant grows acid sacs!
+
+さらに別の植物が酸の嚢を発達させた！
 %%%%
 the Zealot
 
