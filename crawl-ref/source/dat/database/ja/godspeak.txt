@@ -1077,7 +1077,6 @@ Lugonu newgame
 
 #Lugonu says: Depart the Abyss and spread corruption, my servant!
 #<lightgrey>(use the <w>a</w>bility menu to exit the Abyss)</lightgrey>
-
 ルゴヌは言った：『我がしもべよ、アビスを出でて崩壊を拡散するのだ！』
 <lightgrey> ※a)bility メニューからアビスを脱出できます。</lightgrey>
 %%%%
