@@ -17359,7 +17359,7 @@ Your surroundings seem slightly different.
 %%%%
 Your surroundings suddenly seem different.
 
-突然周囲の風景が一変した！
+突然周囲の風景が一変した。
 %%%%
 You begin teleporting projectiles to their destination.
 
@@ -20273,10 +20273,6 @@ Nemelex Xobeh says, "You win!"
 Nemelex Xobeh says, "You lose!"
 
 ネメレクス・ソベーは『おまえの負けだ！』と言った。
-%%%%
-Your surroundings suddenly seem different.
-
-あなたは突然周囲の風景が違ったものになったように感じた。
 %%%%
 <white>The teleporter glows with a rainbow of weird colours and disappears.</white>
 
