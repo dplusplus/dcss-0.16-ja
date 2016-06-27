@@ -2974,7 +2974,7 @@ string feature_description(dungeon_feature_type grid, trap_type trap,
                            description_level_type dtype,
                            bool add_stop, bool base_desc)
 {
-    string desc = cover_desc + _base_feature_desc(grid, trap);
+    string desc = cover_desc + jtrans(_base_feature_desc(grid, trap));
 
     if (grid == DNGN_FLOOR && dtype == DESC_A)
         dtype = DESC_THE;
