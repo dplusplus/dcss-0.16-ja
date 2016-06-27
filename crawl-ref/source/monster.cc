@@ -2519,6 +2519,16 @@ string monster::base_name(description_level_type desc, bool force_vis) const
     return mi.common_name(desc);
 }
 
+string monster::base_name_en(description_level_type desc, bool force_vis) const
+{
+    string s = _mon_special_name_en(*this, desc, force_vis);
+    if (!s.empty() || desc == DESC_NONE)
+        return s;
+
+    monster_info mi(this, MILEV_NAME);
+    return mi.common_name_en(desc);
+}
+
 string monster::full_name(description_level_type desc, bool use_comma) const
 {
     string s = _mon_special_name(*this, desc, true);
@@ -2527,6 +2537,16 @@ string monster::full_name(description_level_type desc, bool use_comma) const
 
     monster_info mi(this, MILEV_NAME);
     return mi.full_name(desc);
+}
+
+string monster::full_name_en(description_level_type desc, bool use_comma) const
+{
+    string s = _mon_special_name_en(*this, desc, true);
+    if (!s.empty() || desc == DESC_NONE)
+        return s;
+
+    monster_info mi(this, MILEV_NAME);
+    return mi.full_name_en(desc);
 }
 
 string monster::pronoun(pronoun_type pro, bool force_visible) const
