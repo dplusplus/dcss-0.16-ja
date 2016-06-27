@@ -8257,7 +8257,7 @@ The vine%s fall%s limply to the ground.
 %%%%
 The terrible wounds on %s body vanish.
 
-%sの体の裂傷は消え去った。
+%s体の裂傷は消え去った。
 %%%%
 The forest abruptly stops moving.
 

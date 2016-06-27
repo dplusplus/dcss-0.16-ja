@@ -2793,7 +2793,7 @@ void heal_flayed_effect(actor* act, bool quiet, bool blood_only)
         if (you.can_see(act) && !quiet)
         {
             mprf(jtransc("The terrible wounds on %s body vanish."),
-                 act->name(DESC_ITS).c_str());
+                 jtransc(act->name(DESC_ITS)));
         }
 
         act->heal(act->props["flay_damage"].get_int());
