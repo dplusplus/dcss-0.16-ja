@@ -4052,8 +4052,8 @@ void xom_new_level_noise_or_stealth()
         if (!player_under_penance(GOD_XOM) && coinflip())
         {
             god_speaks(GOD_XOM, jtransc(_get_xom_speech("stealth player")));
-            mpr(you.duration[DUR_STEALTH] ? "You feel more catlike."
-                                          : "You feel stealthy.");
+            mpr(jtrans(you.duration[DUR_STEALTH] ? "You feel more catlike."
+                                                 : "You feel stealthy."));
             you.increase_duration(DUR_STEALTH, 10 + random2(80));
             take_note(Note(NOTE_XOM_EFFECT, you.piety, -1,
                            jtrans("stealth player")), true);
