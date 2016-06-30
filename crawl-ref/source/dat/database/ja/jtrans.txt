@@ -14809,10 +14809,6 @@ The %s grounds out.
 
 %sが大地を這った。
 %%%%
-You hear a mighty clap of thunder!
-
-あなたは強烈な雷鳴を聞いた！
-%%%%
 A swirling arc of seething chaos appears!
 
 煮え立ち渦巻く混沌が顕現した！

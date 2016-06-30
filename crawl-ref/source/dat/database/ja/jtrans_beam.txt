@@ -1,7 +1,7 @@
 %%%%
 You hear a mighty clap of thunder!
 
-あなたは激しい雷鳴を聞いた！
+あなたは轟く雷鳴を耳にした！
 %%%%
 %s appears from out of thin air!
 
