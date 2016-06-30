@@ -666,6 +666,14 @@
 %%%%
 ############################## xom.cc ##############################
 %%%%
+[zap]Xom's lightning strike
+
+ゾムの雷撃
+%%%%
+[zap]Xom's destruction
+
+ゾムの破壊
+%%%%
 [zap]STAIR BEAM
 
 階段ビーム

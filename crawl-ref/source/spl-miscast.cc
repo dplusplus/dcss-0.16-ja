@@ -20,6 +20,7 @@
 #include "food.h"
 #include "item_use.h"
 #include "itemprop.h"
+#include "japanese.h"
 #include "mapmark.h"
 #include "message.h"
 #include "misc.h"
@@ -410,7 +411,7 @@ void MiscastEffect::do_msg(bool suppress_nothing_happens)
         plural = can_plural_hand;
         msg = replace_all(msg, "@hand@",  hand_str);
         if (can_plural_hand)
-            msg = replace_all(msg, "@hands@", "両" + hand_str);
+            msg = replace_all(msg, "@hands@", jpluralise(hand_str, "両"));
         else
             msg = replace_all(msg, "@hands@", hand_str);
     }

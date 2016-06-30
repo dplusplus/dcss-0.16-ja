@@ -186,7 +186,7 @@ static string _get_xom_speech(const string key)
         result = getSpeakString("Xom " XOM_SPEECH("general effect"));
 
     if (result.empty())
-        return "Xom makes something happen.";
+        return jtrans("Xom makes something happen.");
 
     return result;
 }
@@ -270,13 +270,13 @@ static void _xom_is_stimulated(int maxinterestingness,
 
     if (was_stimulated || force_message)
     {
-        god_speaks(GOD_XOM,
+        god_speaks(GOD_XOM, jtransc(
                    ((interestingness > 160) ? message_array[5] :
                     (interestingness >  80) ? message_array[4] :
                     (interestingness >  60) ? message_array[3] :
                     (interestingness >  40) ? message_array[2] :
                     (interestingness >  20) ? message_array[1]
-                                            : message_array[0]));
+                                            : message_array[0])));
         //updating piety status line
         you.redraw_title = true;
     }
@@ -349,12 +349,12 @@ void xom_tick()
         new_xom_favour = describe_xom_favour();
         if (old_xom_favour != new_xom_favour)
         {
-            const string msg = "You are now " + new_xom_favour;
+            const string msg = jtrans(new_xom_favour);
             god_speaks(you.religion, msg.c_str());
         }
 
         if (you.gift_timeout == 1)
-            simple_god_message(" is getting BORED.");
+            simple_god_message(jtransc(" is getting BORED."));
     }
 
     if (x_chance_in_y(2 + you.faith(), 6))
@@ -380,9 +380,9 @@ void xom_tick()
             if (interest > 0)
             {
                 if (interest < 25)
-                    simple_god_message(" is interested.");
+                    simple_god_message(jtransc(" is interested."));
                 else
-                    simple_god_message(" is intrigued.");
+                    simple_god_message(jtransc(" is intrigued."));
 
                 you.gift_timeout += interest;
                 //updating piety status line
@@ -586,7 +586,7 @@ static int _xom_makes_you_cast_random_spell(int sever, int tension,
     if (debug)
         return result;
 
-    god_speaks(GOD_XOM, _get_xom_speech("spell effect").c_str());
+    god_speaks(GOD_XOM, jtransc(_get_xom_speech("spell effect")));
 
 #if defined(DEBUG_DIAGNOSTICS) || defined(DEBUG_RELIGION) || defined(DEBUG_XOM)
     mprf(MSGCH_DIAGNOSTICS,
@@ -594,7 +594,8 @@ static int _xom_makes_you_cast_random_spell(int sever, int tension,
          spell, spellenum);
 #endif
 
-    const string note = make_stringf(jtransc("cast spell '%s'"), jtransc(spell_title(spell)));
+    const string note = make_stringf(jtransc("cast spell '%s'"),
+                                     tagged_jtransc("[spell]", spell_title(spell)));
     take_note(Note(NOTE_XOM_EFFECT, you.piety, tension, note), true);
 
     your_spells(spell, sever, false);
@@ -611,7 +612,7 @@ static int _xom_magic_mapping(int sever, int tension, bool debug = false)
     if (debug)
         return XOM_GOOD_DIVINATION;
 
-    god_speaks(GOD_XOM, _get_xom_speech("divination").c_str());
+    god_speaks(GOD_XOM, jtransc(_get_xom_speech("divination")));
 
     take_note(Note(NOTE_XOM_EFFECT, you.piety, tension,
               jtrans("divination: magic mapping")), true);
@@ -632,7 +633,7 @@ static int _xom_detect_items(int sever, int tension, bool debug = false)
     if (debug)
         return XOM_GOOD_DIVINATION;
 
-    god_speaks(GOD_XOM, _get_xom_speech("divination").c_str());
+    god_speaks(GOD_XOM, jtransc(_get_xom_speech("divination")));
 
     take_note(Note(NOTE_XOM_EFFECT, you.piety, tension,
               jtrans("divination: detect items")), true);
@@ -640,7 +641,7 @@ static int _xom_detect_items(int sever, int tension, bool debug = false)
     if (detect_items(sever) == 0)
         canned_msg(MSG_DETECT_NOTHING);
     else
-        mpr("You detect items!");
+        mpr(jtrans("You detect items!"));
 
     return XOM_GOOD_DIVINATION;
 }
@@ -650,7 +651,7 @@ static int _xom_detect_creatures(int sever, int tension, bool debug = false)
     if (debug)
         return XOM_GOOD_DIVINATION;
 
-    god_speaks(GOD_XOM, _get_xom_speech("divination").c_str());
+    god_speaks(GOD_XOM, jtransc(_get_xom_speech("divination")));
 
     take_note(Note(NOTE_XOM_EFFECT, you.piety, tension,
               jtrans("divination: detect creatures")), true);
@@ -667,10 +668,10 @@ static int _xom_detect_creatures(int sever, int tension, bool debug = false)
         // still on the map when the original one has been killed.  Then
         // another one is spawned, so the number is the same as before.
         // There's no way we can check this, however.
-        mpr("You detect no further creatures.");
+        mpr(jtrans("You detect no further creatures."));
     }
     else
-        mpr("You detect creatures!");
+        mpr(jtrans("You detect creatures!"));
 
     return XOM_GOOD_DIVINATION;
 }
@@ -743,14 +744,14 @@ static void _xom_make_item(object_class_type base, int subtype, int power)
     if (feat_destroys_item(grd(you.pos()), mitm[thing_created],
                            !silenced(you.pos())))
     {
-        simple_god_message(" snickers.", GOD_XOM);
+        simple_god_message(jtransc(" snickers."), GOD_XOM);
         destroy_item(thing_created, true);
         thing_created = NON_ITEM;
     }
 
     if (thing_created == NON_ITEM)
     {
-        god_speaks(GOD_XOM, "\"No, never mind.\"");
+        god_speaks(GOD_XOM, jtransc("\"No, never mind.\""));
         return;
     }
 
@@ -776,7 +777,7 @@ static void _xom_acquirement(object_class_type force_class)
     if (!acquirement(force_class, GOD_XOM, false, &item_index)
         || item_index == NON_ITEM)
     {
-        god_speaks(GOD_XOM, "\"No, never mind.\"");
+        god_speaks(GOD_XOM, jtransc("\"No, never mind.\""));
         return;
     }
 
@@ -793,7 +794,7 @@ static void _xom_acquirement(object_class_type force_class)
 static int _xom_give_item(int power, bool debug = false)
 {
     if (!debug)
-        god_speaks(GOD_XOM, _get_xom_speech("general gift").c_str());
+        god_speaks(GOD_XOM, jtransc(_get_xom_speech("general gift")));
 
     // There are two kinds of Xom gifts: acquirement and random object.
     // The result from acquirement is very good (usually as good or
@@ -993,14 +994,14 @@ static void _do_chaos_upgrade(item_def &item, const monster* mon)
 
         description_level_type desc = mon->friendly() ? DESC_YOUR :
                                                         DESC_THE;
-        string msg = apostrophise(mon->name(desc));
+        string msg = jtrans(mon->name(desc));
 
-        msg += " ";
+        msg += "の";
 
         msg += item.name(DESC_PLAIN, false, false, false);
 
-        msg += " is briefly surrounded by a scintillating aura of "
-               "random colours.";
+        msg += jtrans(" is briefly surrounded by a scintillating aura of "
+                      "random colours.");
 
         mpr(msg);
     }
@@ -1088,7 +1089,7 @@ static int _xom_do_potion(bool debug = false)
     }
     while (!get_potion_effect(pot)->can_quaff());
 
-    god_speaks(GOD_XOM, _get_xom_speech("potion effect").c_str());
+    god_speaks(GOD_XOM, jtransc(_get_xom_speech("potion effect")));
 
     if (pot == POT_BERSERK_RAGE)
         you.berserk_penalty = NO_BERSERK_PENALTY;
@@ -1123,7 +1124,7 @@ static int _xom_confuse_monsters(int sever, bool debug = false)
         if (mi->check_clarity(false))
         {
             if (!rc)
-                god_speaks(GOD_XOM, _get_xom_speech("confusion").c_str());
+                god_speaks(GOD_XOM, jtransc(_get_xom_speech("confusion")));
 
             rc = true;
         }
@@ -1132,9 +1133,9 @@ static int _xom_confuse_monsters(int sever, bool debug = false)
         {
             // Only give this message once.
             if (!rc)
-                god_speaks(GOD_XOM, _get_xom_speech("confusion").c_str());
+                god_speaks(GOD_XOM, jtransc(_get_xom_speech("confusion")));
 
-            simple_monster_message(*mi, " looks rather confused.");
+            simple_monster_message(*mi, jtransc(" looks rather confused."));
             rc = true;
         }
     }
@@ -1184,7 +1185,7 @@ static int _xom_send_allies(int sever, bool debug = false)
 
     if (num_actually_summoned)
     {
-        god_speaks(GOD_XOM, _get_xom_speech("multiple summons").c_str());
+        god_speaks(GOD_XOM, jtransc(_get_xom_speech("multiple summons")));
 
         // Take a note.
         static char summ_buf[80];
@@ -1214,7 +1215,7 @@ static int _xom_send_one_ally(int sever, bool debug = false)
 
     if (monster *summons = create_monster(mg))
     {
-        god_speaks(GOD_XOM, _get_xom_speech("single summon").c_str());
+        god_speaks(GOD_XOM, jtransc(_get_xom_speech("single summon")));
 
         // Take a note.
         static char summ_buf[80];
@@ -1241,8 +1242,8 @@ static int _xom_polymorph_nearby_monster(bool helpful, bool debug = false)
             if (debug)
                 return helpful ? XOM_GOOD_POLYMORPH : XOM_BAD_POLYMORPH;
 
-            god_speaks(GOD_XOM, helpful ? _get_xom_speech("good monster polymorph").c_str()
-                                        : _get_xom_speech("bad monster polymorph").c_str());
+            god_speaks(GOD_XOM, jtransc(helpful ? _get_xom_speech("good monster polymorph")
+                                                : _get_xom_speech("bad monster polymorph")));
 
             bool see_old = you.can_see(mon);
             string old_name = mon->full_name(DESC_PLAIN);
@@ -1273,7 +1274,7 @@ static int _xom_polymorph_nearby_monster(bool helpful, bool debug = false)
                 // Take a note.
                 static char poly_buf[120];
                 snprintf(poly_buf, sizeof(poly_buf), jtransc("polymorph %s -> %s"),
-                         old_name.c_str(), new_name.c_str());
+                         jtransc(old_name), jtransc(new_name));
 
                 string poly = poly_buf;
 #ifdef NOTE_DEBUG_XOM
@@ -1304,9 +1305,9 @@ static void _confuse_monster(monster* mons, int sever)
           &menv[ANON_FRIENDLY_MONSTER], random2(sever) * 10)))
     {
         if (was_confused)
-            simple_monster_message(mons, " looks rather more confused.");
+            simple_monster_message(mons, jtransc(" looks rather more confused."));
         else
-            simple_monster_message(mons, " looks rather confused.");
+            simple_monster_message(mons, jtransc(" looks rather confused."));
     }
 }
 
@@ -1401,7 +1402,7 @@ static int _xom_swap_weapons(bool debug = false)
     if (debug)
         return XOM_BAD_SWAP_WEAPONS;
 
-    god_speaks(GOD_XOM, _get_xom_speech("swap weapons").c_str());
+    god_speaks(GOD_XOM, jtransc(_get_xom_speech("swap weapons")));
 
     const int num_mons = mons_wpn.size();
     // Pick a random monster...
@@ -1427,7 +1428,7 @@ static int _xom_swap_weapons(bool debug = false)
     unwind_var<int> save_speedinc(mon->speed_increment);
     if (!mon->pickup_item(mitm[index], false, true))
     {
-        mprf(MSGCH_ERROR, "Monster wouldn't take item.");
+        mpr_nojoin(MSGCH_ERROR, jtrans("Monster wouldn't take item."));
         mon->inv[MSLOT_WEAPON] = monwpn;
         mon->equip(mitm[monwpn], MSLOT_WEAPON, 0);
         unlink_item(index);
@@ -1441,8 +1442,8 @@ static int _xom_swap_weapons(bool debug = false)
     // monster is dead.
     mitm[index].flags |= ISFLAG_THROWN;
 
-    mprf("%s wields %s!",
-         mon->name(DESC_THE).c_str(),
+    mprf(jtransc("%s wields %s!"),
+         jtransc(mon->name(DESC_THE)),
          myweapon.name(DESC_YOUR).c_str());
     mon->equip(myweapon, MSLOT_WEAPON, 0);
 
@@ -1474,8 +1475,8 @@ static int _xom_swap_weapons(bool debug = false)
     dec_mitm_item_quantity(monwpn, myitem.quantity);
     you.m_quiver->on_inv_quantity_changed(freeslot, myitem.quantity);
 
-    mprf("You wield %s %s!",
-         mon->name(DESC_ITS).c_str(),
+    mprf(jtransc("You wield %s %s!"),
+         jtransc(mon->name(DESC_PLAIN)),
          you.inv[freeslot].name(DESC_PLAIN).c_str());
     take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, jtrans("swap weapons")), true);
 
@@ -1509,7 +1510,7 @@ static int _xom_rearrange_pieces(int sever, bool debug = false)
     if (debug)
         return XOM_GOOD_SWAP_MONSTERS;
 
-    god_speaks(GOD_XOM, _get_xom_speech("rearrange the pieces").c_str());
+    god_speaks(GOD_XOM, jtransc(_get_xom_speech("rearrange the pieces")));
 
     const int num_mons = mons.size();
 
@@ -1537,7 +1538,7 @@ static int _xom_rearrange_pieces(int sever, bool debug = false)
             {
                 if (!did_message)
                 {
-                    mpr("Some monsters swap places.");
+                    mpr(jtrans("Some monsters swap places."));
                     did_message = true;
                 }
                 if (one_chance_in(3))
@@ -1602,7 +1603,7 @@ static int _xom_snakes_to_sticks(int sever, bool debug = false)
 
                 take_note(Note(NOTE_XOM_EFFECT, you.piety, -1,
                                jtrans("snakes to sticks")), true);
-                god_speaks(GOD_XOM, _get_xom_speech("snakes to sticks").c_str());
+                god_speaks(GOD_XOM, jtransc(_get_xom_speech("snakes to sticks")));
                 action = true;
             }
 
@@ -1628,7 +1629,7 @@ static int _xom_snakes_to_sticks(int sever, bool debug = false)
             item.quantity = 1;
 
             // Output some text since otherwise snakes will disappear silently.
-            mprf("%s reforms as %s.", mi->name(DESC_THE).c_str(),
+            mprf(jtransc("%s reforms as %s."), mi->name(DESC_THE).c_str(),
                  item.name(DESC_A).c_str());
 
             // Dismiss monster silently.
@@ -1677,7 +1678,7 @@ static int _xom_animate_monster_weapon(int sever, bool debug = false)
     if (debug)
         return XOM_GOOD_ANIMATE_MON_WPN;
 
-    god_speaks(GOD_XOM, _get_xom_speech("animate monster weapon").c_str());
+    god_speaks(GOD_XOM, jtransc(_get_xom_speech("animate monster weapon")));
 
     const int num_mons = mons_wpn.size();
     // Pick a random monster...
@@ -1704,8 +1705,8 @@ static int _xom_animate_monster_weapon(int sever, bool debug = false)
     mon->unequip(*(mon->mslot_item(MSLOT_WEAPON)), MSLOT_WEAPON, 0, true);
     mon->inv[MSLOT_WEAPON] = NON_ITEM;
 
-    mprf("%s %s dances into the air!",
-         apostrophise(mon->name(DESC_THE)).c_str(),
+    mprf(jtransc("%s %s dances into the air!"),
+         jtransc(mon->name(DESC_THE)),
          mitm[wpn].name(DESC_PLAIN).c_str());
 
     destroy_item(dancing->inv[MSLOT_WEAPON]);
@@ -1725,15 +1726,15 @@ static int _xom_give_mutations(bool good, bool debug = false)
         if (debug)
             return good ? XOM_GOOD_MUTATION : XOM_BAD_MUTATION;
 
-        god_speaks(GOD_XOM, good ? _get_xom_speech("good mutations").c_str()
-                                 : _get_xom_speech("random mutations").c_str());
+        god_speaks(GOD_XOM, jtransc(good ? _get_xom_speech("good mutations")
+                                         : _get_xom_speech("random mutations")));
 
         const int num_tries = random2(4) + 1;
 
         static char mut_buf[80];
         snprintf(mut_buf, sizeof(mut_buf), jtransc("give %smutation%s"),
 #ifdef NOTE_DEBUG_XOM
-                 good ? "good " : "random ",
+                 good ? "良性" : "ランダムな",
 #else
                  "",
 #endif
@@ -1741,7 +1742,7 @@ static int _xom_give_mutations(bool good, bool debug = false)
 
         take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, mut_buf), true);
 
-        mpr("Your body is suffused with distortional energy.");
+        mpr(jtrans("Your body is suffused with distortional energy."));
 
         dec_hp(random2(you.hp), false);
         deflate_hp(you.hp_max / 2, true);
@@ -1808,7 +1809,7 @@ static int _xom_throw_divine_lightning(bool debug = false)
         protection = true;
     }
 
-    god_speaks(GOD_XOM, "The area is suffused with divine lightning!");
+    god_speaks(GOD_XOM, jtransc("The area is suffused with divine lightning!"));
 
     bolt beam;
 
@@ -1828,7 +1829,7 @@ static int _xom_throw_divine_lightning(bool debug = false)
 
     if (you.attribute[ATTR_DIVINE_LIGHTNING_PROTECTION])
     {
-        mpr("Your divine protection wanes.");
+        mpr(jtrans("Your divine protection wanes."));
         you.attribute[ATTR_DIVINE_LIGHTNING_PROTECTION] = 0;
     }
 
@@ -1913,7 +1914,7 @@ static int _xom_change_scenery(bool debug = false)
     candidates.insert(end(candidates), begin(open_doors), end(open_doors));
     candidates.insert(end(candidates), begin(closed_doors), end(closed_doors));
 
-    const string speech = _get_xom_speech("scenery");
+    const string speech = jtrans(_get_xom_speech("scenery"));
     if (candidates.empty())
     {
         if (!one_chance_in(8))
@@ -1993,8 +1994,8 @@ static int _xom_change_scenery(bool debug = false)
     if (fountains_blood > 0)
     {
         string fountains = make_stringf(
-                 "%s fountain%s start%s gushing blood",
-                 fountains_blood == 1 ? "a" : "some",
+                 jtransc("%s fountain%s start%s gushing blood"),
+                 fountains_blood == 1 ? "" : "いくつかの",
                  fountains_blood == 1 ? ""  : "s",
                  fountains_blood == 1 ? "s" : "");
 
@@ -2005,30 +2006,30 @@ static int _xom_change_scenery(bool debug = false)
     }
     if (!effects.empty())
     {
-        mprf("%s!",
+        mprf(jtransc("%s!"),
              comma_separated_line(effects.begin(), effects.end(),
-                                  ", and ").c_str());
+                                  "！\n", "！\n").c_str());
         effects.clear();
     }
 
     if (doors_open > 0)
     {
-        effects.push_back(make_stringf("%s door%s burst%s open",
-                                       doors_open == 1 ? "A"    :
-                                       doors_open == 2 ? "Two"
-                                                       : "Several",
+        effects.push_back(make_stringf(jtransc("%s door%s burst%s open"),
+                                       doors_open == 1 ? ""    :
+                                       doors_open == 2 ? "2つの"
+                                                       : "いくつかの",
                                        doors_open == 1 ? ""  : "s",
                                        doors_open == 1 ? "s" : ""));
         terse.push_back(make_stringf(jtransc("%d doors open"), doors_open));
     }
     if (doors_close > 0)
     {
-        string closed = make_stringf("%s%s door%s slam%s shut",
-                 doors_close == 1 ? "a"    :
-                 doors_close == 2 ? "two"
-                                  : "several",
-                 doors_open > 0   ? (doors_close == 1 ? "nother" : " other")
+        string closed = make_stringf(jtransc("%s%s door%s slam%s shut"),
+                 doors_open > 0   ? "別の"
                                   : "",
+                 doors_close == 1 ? ""    :
+                 doors_close == 2 ? "2つの"
+                                  : "いくつかの",
                  doors_close == 1 ? ""  : "s",
                  doors_close == 1 ? "s" : "");
         if (effects.empty())
@@ -2038,12 +2039,14 @@ static int _xom_change_scenery(bool debug = false)
     }
     if (!effects.empty())
     {
-        take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, (jtrans("scenery: ") + " "
-            + comma_separated_line(terse.begin(), terse.end(), ", ", ", ")).c_str()),
-            true);
-        mprf("%s!",
+        for(auto msg : terse)
+        {
+            take_note(Note(NOTE_XOM_EFFECT, you.piety, -1,
+                           (jtrans("scenery: ") + " " + msg).c_str()), true);
+        }
+        mprf(jtransc("%s!"),
              comma_separated_line(effects.begin(), effects.end(),
-                                  ", and ").c_str());
+                                  "！\n", "！\n").c_str());
     }
 
     if (doors_open || doors_close)
@@ -2095,7 +2098,7 @@ static int _xom_destruction(int sever, bool debug = false)
 
             // Only give this message once.
             if (!rc)
-                god_speaks(GOD_XOM, _get_xom_speech("destruction").c_str());
+                god_speaks(GOD_XOM, jtransc(_get_xom_speech("destruction")));
             rc = true;
 
             beam.explode();
@@ -2103,7 +2106,7 @@ static int _xom_destruction(int sever, bool debug = false)
         else
         {
             if (!rc)
-                god_speaks(GOD_XOM, _get_xom_speech("fake destruction").c_str());
+                god_speaks(GOD_XOM, jtransc(_get_xom_speech("fake destruction")));
             rc = true;
             backlight_monster(*mi);
         }
@@ -2129,8 +2132,8 @@ static int _xom_enchant_monster(bool helpful, bool debug = false)
     if (debug)
         return helpful ? XOM_GOOD_ENCHANT_MONSTER : XOM_BAD_ENCHANT_MONSTER;
 
-    god_speaks(GOD_XOM, helpful ? _get_xom_speech("good enchant monster").c_str()
-                                : _get_xom_speech("bad enchant monster").c_str());
+    god_speaks(GOD_XOM, jtransc(helpful ? _get_xom_speech("good enchant monster")
+                                        : _get_xom_speech("bad enchant monster")));
 
     beam_type ench;
 
@@ -2265,7 +2268,7 @@ static int _xom_is_good(int sever, int tension, bool debug = false)
             return XOM_GOOD_FOG;
         big_cloud(CLOUD_RANDOM_SMOKE, &you, you.pos(), 50, 8 + random2(8));
         take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, jtrans("fog")), true);
-        god_speaks(GOD_XOM, _get_xom_speech("cloud").c_str());
+        god_speaks(GOD_XOM, jtransc(_get_xom_speech("cloud")));
         done = XOM_GOOD_FOG;
     }
     else if (random2(tension) < 15 && x_chance_in_y(16, sever))
@@ -2289,7 +2292,7 @@ static int _xom_is_good(int sever, int tension, bool debug = false)
         // The Xom teleportation train takes you on instant
         // teleportation to a few random areas, stopping randomly but
         // most likely in an area that is not dangerous to you.
-        god_speaks(GOD_XOM, _get_xom_speech("teleportation journey").c_str());
+        god_speaks(GOD_XOM, jtransc(_get_xom_speech("teleportation journey")));
         int count = 0;
         do
         {
@@ -2306,7 +2309,9 @@ static int _xom_is_good(int sever, int tension, bool debug = false)
         // Take a note.
         static char tele_buf[80];
         snprintf(tele_buf, sizeof(tele_buf),
-                 jtransc("%d-stop teleportation journey%s"), count,
+                 jtransc(count > 1 ? "%d-stop teleportation journey%s"
+                                   : "テレポート"),
+                 count,
 #ifdef NOTE_DEBUG_XOM
                  player_in_a_dangerous_place() ? " (dangerous)" : // see below
 #endif
@@ -2322,7 +2327,7 @@ static int _xom_is_good(int sever, int tension, bool debug = false)
         // This can fail with radius 1, or in open areas.
         if (_vitrify_area(random2avg(sever / 4, 2) + 1))
         {
-            god_speaks(GOD_XOM, _get_xom_speech("vitrification").c_str());
+            god_speaks(GOD_XOM, jtransc(_get_xom_speech("vitrification")));
             take_note(Note(NOTE_XOM_EFFECT, you.piety, tension,
                            jtrans("vitrification")), true);
             done = XOM_GOOD_VITRIFY;
@@ -2463,9 +2468,9 @@ static void _xom_zero_miscast()
                 vec = &priority;
 
             vec->push_back(feat_name
-                           + " seems to fall away from under you!");
+                           + jtrans(" seems to fall away from under you!"));
             vec->push_back(feat_name
-                           + " seems to rush up at you!");
+                           + jtrans(" seems to rush up at you!"));
 
             if (feat_is_water(feat))
             {
@@ -2493,11 +2498,11 @@ static void _xom_zero_miscast()
             name = item.name(DESC_YOUR, false, false, false);
         else
         {
-            name  = "One of ";
             name += item.name(DESC_YOUR, false, false, false);
+            name += jtrans("One of ");
         }
-        messages.push_back(name + " falls out of your pack, then "
-                           "immediately jumps back in!");
+        messages.push_back(name + jtrans(" falls out of your pack, then "
+                                         "immediately jumps back in!"));
     }
 
     //////////////////////////////////////////////
@@ -2511,19 +2516,13 @@ static void _xom_zero_miscast()
     }
 
     {
-        string str = "A monocle briefly appears over your ";
-        str += coinflip() ? "right" : "left";
+        string str = "片眼鏡がしばらくの間あなたの";
+        str += coinflip() ? "右" : "左";
         if (you.form == TRAN_SPIDER)
         {
-            if (coinflip())
-                str += " primary";
-            else
-            {
-                str += random_choose(" front", " middle", " rear");
-                str += " secondary";
-            }
+            str += "側の";
         }
-        str += " eye.";
+        str += "目に掛かった。";
         messages.push_back(str);
     }
 
@@ -2544,9 +2543,8 @@ static void _xom_zero_miscast()
 
     if (_could_wear_eq(EQ_WEAPON))
     {
-        string str = "A fancy cane briefly appears in your ";
-        str += you.hand_name(false);
-        str += ".";
+        string str = make_stringf(jtransc("A fancy cane briefly appears in your "),
+                                  you.hand_name(false).c_str());
 
         messages.push_back(str);
     }
@@ -2556,10 +2554,9 @@ static void _xom_zero_miscast()
 
     if ((item = _tran_get_eq(EQ_HELMET)))
     {
-        string str = "Your ";
-        str += item->name(DESC_BASENAME, false, false, false);
-        str += " leaps into the air, briefly spins, then lands back on "
-               "your head!";
+        string str = make_stringf(jtransc("Your %s leaps into the air, briefly spins, then lands back on "
+                                          "your head!"),
+                                  item->name(DESC_BASENAME, false, false, false).c_str());
 
         messages.push_back(str);
     }
@@ -2569,23 +2566,21 @@ static void _xom_zero_miscast()
     {
         string name = item->name(DESC_BASENAME, false, false, false);
         name = replace_all(name, "pair of ", "");
+        name = replace_all(name, "一対の", "");
 
-        string str = "You compulsively click the heels of your ";
-        str += name;
-        str += " together three times.";
+        string str = make_stringf(jtransc("You compulsively click the heels of your %s together three times."),
+                                  name.c_str());
+        messages.push_back(str);
     }
 
     if ((item = _tran_get_eq(EQ_SHIELD)))
     {
-        string str = "Your ";
-        str += item->name(DESC_BASENAME, false, false, false);
-        str += " spins!";
-
+        string str = make_stringf(jtransc("Your %s spins!"),
+                                  item->name(DESC_BASENAME, false, false, false).c_str());
         messages.push_back(str);
 
-        str = "Your ";
-        str += item->name(DESC_BASENAME, false, false, false);
-        str += " briefly flashes a lurid colour!";
+        str = make_stringf(jtransc("Your %s briefly flashes a lurid colour!"),
+                           item->name(DESC_BASENAME, false, false, false).c_str());
         messages.push_back(str);
     }
 
@@ -2594,37 +2589,31 @@ static void _xom_zero_miscast()
         string str;
         string name = item->name(DESC_BASENAME, false, false, false);
 
-        if (name.find("dragon") != string::npos)
+        if (name.find("ドラゴン") != string::npos)
         {
-            str  = "The scales on your ";
-            str += name;
-            str += " wiggle briefly.";
+            str = make_stringf(jtransc("The scales on your %s wiggle briefly."),
+                                name.c_str());
         }
         else if (item->sub_type == ARM_ANIMAL_SKIN)
         {
-            str  = "The fur on your ";
-            str += name;
-            str += " grows longer at an alarming rate, then retracts back "
-                   "to normal.";
+            str = make_stringf(jtransc("The fur on your %s grows longer at an alarming rate, then retracts back "
+                                       "to normal."), name.c_str());
         }
         else if (item->sub_type == ARM_LEATHER_ARMOUR)
         {
-            str  = "Your ";
-            str += name;
-            str += " briefly grows fur, then returns to normal.";
+            str = make_stringf(jtransc("Your %s briefly grows fur, then returns to normal."),
+                               name.c_str());
         }
         else if (item->sub_type == ARM_ROBE)
         {
-            str  = "You briefly become tangled in your ";
-            str += pluralise(name);
-            str += ".";
+            str = make_stringf(jtransc("You briefly become tangled in your %s."),
+                               name.c_str());
         }
         else if (item->sub_type >= ARM_RING_MAIL
                  && item->sub_type <= ARM_PLATE_ARMOUR)
         {
-            str  = "Your ";
-            str += name;
-            str += " briefly appears rusty.";
+            str = make_stringf(jtransc("Your %s briefly appears rusty."),
+                               name.c_str());
         }
 
         if (!str.empty())
@@ -2640,18 +2629,15 @@ static void _xom_zero_miscast()
         item = &you.inv[idx];
 
         string name = item->name(DESC_YOUR, false, false, false);
-        string verb = coinflip() ? "glow" : "vibrate";
+        string verb = coinflip() ? "輝いた" : "振動した";
 
-        if (item->quantity == 1)
-            verb += "s";
-
-        messages.push_back(name + " briefly " + verb + ".");
+        messages.push_back(name + "がしばらくの間" + verb + "。");
     }
 
     if (!priority.empty() && coinflip())
-        mpr(priority[random2(priority.size())]);
+        mpr(jtrans(priority[random2(priority.size())]));
     else
-        mpr(messages[random2(messages.size())]);
+        mpr(jtrans(messages[random2(messages.size())]));
 }
 
 static void _get_hand_type(string &hand, bool &can_plural)
@@ -2671,7 +2657,7 @@ static void _get_hand_type(string &hand, bool &can_plural)
         item_def* item;
         if ((item = _tran_get_eq(EQ_BOOTS)) && item->sub_type == ARM_BOOTS)
         {
-            hand_vec.emplace_back("boot");
+            hand_vec.emplace_back("足");
             plural = true;
         }
         else
@@ -2712,7 +2698,7 @@ static void _get_hand_type(string &hand, bool &can_plural)
 
     const unsigned int choice = random2(hand_vec.size());
 
-    hand       = hand_vec[choice];
+    hand       = jtrans(hand_vec[choice]);
     can_plural = plural_vec[choice];
 }
 
@@ -2757,7 +2743,7 @@ static int _xom_miscast(const int max_level, const bool nasty,
     if (level == 0 && one_chance_in(3))
     {
         take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, jtrans("silly message")), true);
-        god_speaks(GOD_XOM, _get_xom_speech(speech_str).c_str());
+        god_speaks(GOD_XOM, jtransc(_get_xom_speech(speech_str)));
         _xom_zero_miscast();
         return XOM_BAD_MISCAST_PSEUDO;
     }
@@ -2782,7 +2768,7 @@ static int _xom_miscast(const int max_level, const bool nasty,
     // killing the player.
     const int lethality_margin  = nasty ? 0 : random_range(1, 4);
 
-    god_speaks(GOD_XOM, _get_xom_speech(speech_str).c_str());
+    god_speaks(GOD_XOM, jtransc(_get_xom_speech(speech_str)));
 
     MiscastEffect(&you, nullptr, GOD_MISCAST + GOD_XOM,
                   (spschool_flag_type)school, level, cause_str, NH_DEFAULT,
@@ -2802,7 +2788,7 @@ static int _xom_chaos_upgrade_nearby_monster(bool debug = false)
     if (debug)
         return XOM_BAD_CHAOS_UPGRADE;
 
-    god_speaks(GOD_XOM, _get_xom_speech("chaos upgrade").c_str());
+    god_speaks(GOD_XOM, jtransc(_get_xom_speech("chaos upgrade")));
 
     mon_inv_type slots[] = {MSLOT_WEAPON, MSLOT_ALT_WEAPON, MSLOT_MISSILE};
 
@@ -2848,9 +2834,9 @@ static int _xom_player_confusion_effect(int sever, bool debug = false)
 
     if (confuse_player(5 + random2(3), true))
     {
-        god_speaks(GOD_XOM, _get_xom_speech("confusion").c_str());
-        mprf(MSGCH_WARN, "You are %sconfused.",
-             conf ? "more " : "");
+        god_speaks(GOD_XOM, jtransc(_get_xom_speech("confusion")));
+        mprf(MSGCH_WARN, jtransc("You are %sconfused."),
+             conf ? "さらに" : "");
 
         rc = true;
 
@@ -2872,7 +2858,7 @@ static int _xom_player_confusion_effect(int sever, bool debug = false)
                            &menv[ANON_FRIENDLY_MONSTER], random2(sever) * 10)))
                 {
                     simple_monster_message(*mi,
-                                           " looks rather confused.");
+                                           jtransc(" looks rather confused."));
                 }
                 mons_too = true;
             }
@@ -3089,7 +3075,7 @@ static int _xom_repel_stairs(bool debug = false)
         return XOM_BAD_STAIRS;
 
     // Don't mention staircases if there aren't any nearby.
-    string stair_msg = _get_xom_speech("repel stairs");
+    string stair_msg = jtrans(_get_xom_speech("repel stairs"));
     if (stair_msg.find("@staircase@") != string::npos)
     {
         string feat_name;
@@ -3102,7 +3088,7 @@ static int _xom_repel_stairs(bool debug = false)
         }
         else
             feat_name = "staircase";
-        stair_msg = replace_all(stair_msg, "@staircase@", feat_name);
+        stair_msg = replace_all(stair_msg, "@staircase@", jtrans(feat_name));
     }
 
     god_speaks(GOD_XOM, stair_msg.c_str());
@@ -3125,7 +3111,7 @@ static int _xom_repel_stairs(bool debug = false)
     if (!count_moved)
     {
         if (one_chance_in(8))
-            mpr("Nothing appears to happen... Ominous!");
+            mpr(jtrans("Nothing appears to happen... Ominous!"));
         else
             canned_msg(MSG_NOTHING_HAPPENS);
     }
@@ -3147,7 +3133,7 @@ static int _xom_colour_smoke_trail(bool debug = false)
 
     take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, jtrans("colour smoke trail")), true);
 
-    const string speech = _get_xom_speech("colour smoke trail");
+    const string speech = jtrans(_get_xom_speech("colour smoke trail"));
     god_speaks(GOD_XOM, speech.c_str());
 
     return XOM_BAD_COLOUR_SMOKE_TRAIL;
@@ -3156,7 +3142,7 @@ static int _xom_colour_smoke_trail(bool debug = false)
 static int _xom_draining_torment_effect(int sever, bool debug = false)
 {
     // Drains stats or skills, or torments the player.
-    const string speech = _get_xom_speech("draining or torment");
+    const string speech = jtrans(_get_xom_speech("draining or torment"));
     const bool nasty = _xom_feels_nasty();
     const string aux = "the vengeance of Xom";
 
@@ -3229,7 +3215,7 @@ static int _xom_draining_torment_effect(int sever, bool debug = false)
 static int _xom_summon_hostiles(int sever, bool debug = false)
 {
     bool rc = false;
-    const string speech = _get_xom_speech("hostile monster");
+    const string speech = jtrans(_get_xom_speech("hostile monster"));
 
     int result = XOM_DID_NOTHING;
 
@@ -3355,9 +3341,9 @@ int xom_maybe_reverts_banishment(bool xom_banished, bool debug)
         if (!debug)
         {
             more();
-            god_speaks(GOD_XOM, xom_banished
-                ? _get_xom_speech("revert own banishment").c_str()
-                : _get_xom_speech("revert other banishment").c_str());
+            god_speaks(GOD_XOM, jtransc(xom_banished
+                ? _get_xom_speech("revert own banishment")
+                : _get_xom_speech("revert other banishment")));
             down_stairs(DNGN_EXIT_ABYSS);
             take_note(Note(NOTE_XOM_EFFECT, you.piety, -1,
                            jtrans("revert banishment")), true);
@@ -3375,7 +3361,7 @@ static int _xom_do_banishment(bool debug = false)
     if (debug)
         return xom_maybe_reverts_banishment(true, debug);
 
-    god_speaks(GOD_XOM, _get_xom_speech("banishment").c_str());
+    god_speaks(GOD_XOM, jtransc(_get_xom_speech("banishment")));
 
     // Handles note taking.
     banished("Xom");
@@ -3392,7 +3378,10 @@ static int _xom_noise(bool debug = false)
     // Ranges from shout to shatter volume.
     const int noisiness = 12 + random2(19);
 
-    god_speaks(GOD_XOM, _get_xom_speech("noise").c_str());
+    string speech = _get_xom_speech("noise");
+    
+
+    god_speaks(GOD_XOM, jtransc(_get_xom_speech("noise")));
     // Xom isn't subject to silence.
     fake_noisy(noisiness, you.pos());
 
@@ -3424,7 +3413,7 @@ static int _xom_blink_monsters(bool debug = false)
 
         // Only give this message once.
         if (!blinks)
-            god_speaks(GOD_XOM, _get_xom_speech("blink monsters").c_str());
+            god_speaks(GOD_XOM, jtransc(_get_xom_speech("blink monsters")));
 
         if (blink_to_player)
             blink_other_close(*mi, you.pos());
@@ -3498,7 +3487,7 @@ static int _xom_is_bad(int sever, int tension, bool debug = false)
                               nullptr, random_range(5,15));
             take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, jtrans("chaos cloud")),
                       true);
-            god_speaks(GOD_XOM, _get_xom_speech("cloud").c_str());
+            god_speaks(GOD_XOM, jtransc(_get_xom_speech("cloud")));
             done = XOM_BAD_CHAOS_CLOUD;
             badness = 2;
         }
@@ -3532,7 +3521,7 @@ static int _xom_is_bad(int sever, int tension, bool debug = false)
             // teleportation to a few random areas, stopping if either
             // an area is dangerous to you or randomly.
             god_speaks(GOD_XOM,
-                       _get_xom_speech("teleportation journey").c_str());
+                       jtransc(_get_xom_speech("teleportation journey")));
             int count = 0;
             do
             {
@@ -3674,8 +3663,8 @@ static void _handle_accidental_death(const int orig_hp,
     }
 
     canned_msg(MSG_YOU_DIE);
-    god_speaks(GOD_XOM, _get_xom_speech(speech_type).c_str());
-    god_speaks(GOD_XOM, _get_xom_speech("resurrection").c_str());
+    god_speaks(GOD_XOM, jtransc(_get_xom_speech(speech_type)));
+    god_speaks(GOD_XOM, jtransc(_get_xom_speech("resurrection")));
 
     int pre_mut_hp = you.hp;
     if (you.hp <= 0)
@@ -3732,9 +3721,9 @@ int xom_acts(bool niceness, int sever, int tension, bool debug)
         ASSERT(you.wizard);
         ASSERT(!you.did_escape_death());
         if (is_feat_dangerous(grd(you.pos())))
-            mprf(MSGCH_DIAGNOSTICS, "Player is standing in deadly terrain, skipping Xom act.");
+            mpr_nojoin(MSGCH_DIAGNOSTICS, jtrans("Player is standing in deadly terrain, skipping Xom act."));
         else
-            mprf(MSGCH_DIAGNOSTICS, "Player is already dead, skipping Xom act.");
+            mpr_nojoin(MSGCH_DIAGNOSTICS, jtrans("Player is already dead, skipping Xom act."));
         return XOM_PLAYER_DEAD;
     }
     else if (_player_is_dead())
@@ -3752,13 +3741,13 @@ int xom_acts(bool niceness, int sever, int tension, bool debug)
         if (crawl_state.is_god_retribution())
         {
             niceness = false;
-            simple_god_message(" asks Xom for help in punishing you, and "
-                               "Xom happily agrees.", which_god);
+            simple_god_message(jtransc(" asks Xom for help in punishing you, and "
+                                       "Xom happily agrees."), which_god);
         }
         else
         {
             niceness = true;
-            simple_god_message(" calls in a favour from Xom.", which_god);
+            simple_god_message(jtransc(" calls in a favour from Xom."), which_god);
         }
     }
 
@@ -3852,7 +3841,7 @@ int xom_acts(bool niceness, int sever, int tension, bool debug)
         const string new_xom_favour = describe_xom_favour();
         if (was_bored || old_xom_favour != new_xom_favour)
         {
-            const string msg = "You are now " + new_xom_favour;
+            const string msg = jtrans(new_xom_favour);
             god_speaks(you.religion, msg.c_str());
         }
 #ifdef NOTE_DEBUG_XOM
@@ -3865,7 +3854,7 @@ int xom_acts(bool niceness, int sever, int tension, bool debug)
         // If we didn't reroll at least mention the new favour
         // now it's not "BORING thing" anymore.
         const string new_xom_favour = describe_xom_favour();
-        const string msg = "You are now " + new_xom_favour;
+        const string msg = jtrans(new_xom_favour);
         god_speaks(you.religion, msg.c_str());
     }
 
@@ -3917,14 +3906,14 @@ void xom_death_message(const kill_method_type killed_by)
     if (!_death_is_funny(killed_by) && you.hp >= -1 * random2(3)
         && death_tension <= random2(10))
     {
-        god_speaks(GOD_XOM, _get_xom_speech("boring death").c_str());
+        god_speaks(GOD_XOM, jtransc(_get_xom_speech("boring death")));
     }
     // Unusual methods of dying, really low hp, or high tension make
     // for funny deaths.
     else if (_death_is_funny(killed_by) || you.hp <= -10
              || death_tension >= 20)
     {
-        god_speaks(GOD_XOM, _get_xom_speech("laughter").c_str());
+        god_speaks(GOD_XOM, jtransc(_get_xom_speech("laughter")));
     }
 
     // All others just get ignored by Xom.
@@ -4020,7 +4009,7 @@ bool xom_saves_your_life(const kill_method_type death_type, const char *aux)
 
     const string key = _get_death_type_keyword(death_type);
     // XOM_SPEECH("life saving actor") or XOM_SPEECH("life saving general")
-    string speech = _get_xom_speech("life saving " + key);
+    string speech = jtrans(_get_xom_speech("life saving " + key));
     god_speaks(GOD_XOM, speech.c_str());
 
     // Give back some hp.
@@ -4038,7 +4027,7 @@ bool xom_saves_your_life(const kill_method_type death_type, const char *aux)
         you.stat_zero[s] = 0;
     }
 
-    god_speaks(GOD_XOM, "Xom revives you!");
+    god_speaks(GOD_XOM, jtransc("Xom revives you!"));
 
     // Ideally, this should contain the death cause but that is too much
     // trouble for now.
@@ -4062,7 +4051,7 @@ void xom_new_level_noise_or_stealth()
     {
         if (!player_under_penance(GOD_XOM) && coinflip())
         {
-            god_speaks(GOD_XOM, _get_xom_speech("stealth player").c_str());
+            god_speaks(GOD_XOM, jtransc(_get_xom_speech("stealth player")));
             mpr(you.duration[DUR_STEALTH] ? "You feel more catlike."
                                           : "You feel stealthy.");
             you.increase_duration(DUR_STEALTH, 10 + random2(80));

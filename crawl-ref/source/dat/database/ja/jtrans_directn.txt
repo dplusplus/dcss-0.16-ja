@@ -487,7 +487,7 @@ metal wall
 %%%%
 wall of green crystal
 
-緑色の水晶の壁
+緑水晶の壁
 %%%%
 rock wall
 

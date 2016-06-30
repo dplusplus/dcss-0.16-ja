@@ -14809,10 +14809,6 @@ The %s grounds out.
 
 %sが大地を這った。
 %%%%
-You hear a mighty clap of thunder!
-
-あなたは強烈な雷鳴を聞いた！
-%%%%
 A swirling arc of seething chaos appears!
 
 煮え立ち渦巻く混沌が顕現した！
@@ -16239,7 +16235,7 @@ Wisps of condensation drift in the air.
 %%%%
 Your @hands@ feel@hand_conj@ numb with cold.
 
-あなたの@hands@の感覚がなくなった。
+あなたの@hands@が冷たくなり、感覚がなくなった。
 %%%%
 You feel uncomfortably cold.
 
@@ -19986,9 +19982,101 @@ wizard power
 %%%%
 ############################## xom.cc ##############################
 %%%%
+Xom is interested.
+
+ゾムは興味を示している。
+%%%%
+Xom is mildly amused.
+
+ゾムはいくらか楽しんでいる。
+%%%%
+Xom is amused.
+
+ゾムは楽しんでいる。
+%%%%
+Xom is highly amused!
+
+ゾムはとても楽しんでいる！
+%%%%
+Xom thinks this is hilarious!
+
+ゾムは非常に楽しんでいる！
+%%%%
+Xom roars with laughter!
+
+ゾムは高々と笑い声を上げた！
+%%%%
+Xom is very interested.
+
+ゾムはとても興味を示している。
+%%%%
+Xom is extremely interested.
+
+ゾムは非常に興味を示している。
+%%%%
+Xom is intrigued!
+
+ゾムは夢中になっている！
+%%%%
+Xom is very intrigued!
+
+ゾムはとても夢中になっている！
+%%%%
+Xom is fascinated!
+
+ゾムは大興奮している！
+%%%%
+a very special plaything of Xom.
+
+あなたはゾムの慰みものだ。
+%%%%
+a special plaything of Xom.
+
+あなたはゾムの特別な慰みものだ。
+%%%%
+a plaything of Xom.
+
+あなたはゾムのお気に入りの慰みものだ。
+%%%%
+a toy of Xom.
+
+あなたはゾムの玩具だ。
+%%%%
+a favourite toy of Xom.
+
+あなたはゾムのお気に入りの玩具だ。
+%%%%
+a beloved toy of Xom.
+
+あなたはゾムの大切な玩具だ。
+%%%%
+Xom's teddy bear.
+
+あなたはゾムのテディベアだ。
+%%%%
+a BORING thing.
+
+あなたはゾムに飽きられてしまった。
+%%%%
+Xom makes something happen.
+
+ゾムが何かした。
+%%%%
+is getting BORED.
+
+は飽きてしまった。
+%%%%
+is interested.
+
+は興味を示している。
+%%%%
+is intrigued.
+
+は夢中になっている。
+%%%%
 cast spell '%s'
 
-%sを唱えた
+%sの呪文を唱えた
 %%%%
 divination: magic mapping
 
@@ -19998,17 +20086,45 @@ divination: detect items
 
 予見術: アイテムの探知
 %%%%
+You detect items!
+
+あなたはアイテムを感知した！
+%%%%
 divination: detect creatures
 
 予見術: モンスターの感知
+%%%%
+You detect no further creatures.
+
+これ以上他にモンスターを感知できない。
+%%%%
+You detect creatures!
+
+あなたはモンスターを感知した！
+%%%%
+snickers.
+
+はくすくす笑った。
+%%%%
+"No, never mind."
+
+『いや、気にするな』
 %%%%
 god gift: %s
 
 神の下賜: %s
 %%%%
+is briefly surrounded by a scintillating aura of random colours.
+
+はしばらくの間様々な色が煌くオーラに包まれた。
+%%%%
 potion effect
 
 薬の投与
+%%%%
+looks rather confused.
+
+は混乱しているようだ。
 %%%%
 confuse monster(s)
 
@@ -20026,9 +20142,33 @@ polymorph %s -> %s
 
 %sから%sに変化
 %%%%
+something unseen
+
+何か目に見えないもの
+%%%%
+looks rather more confused.
+
+はさらに混乱したようだ。
+%%%%
 swap weapons
 
 武器の交換
+%%%%
+Monster wouldn't take item.
+
+モンスターはアイテムを手に取ろうとしなかった。
+%%%%
+%s wields %s!
+
+%sは%sを手に取った！
+%%%%
+You wield %s %s!
+
+あなたは%sの%sを手に取った！
+%%%%
+Some monsters swap places.
+
+モンスターどうしの位置が入れ替わった。
 %%%%
 swap monsters
 
@@ -20038,9 +20178,37 @@ snakes to sticks
 
 蛇の棒切れ
 %%%%
+%s reforms as %s.
+
+%sは%sへと変化した。
+%%%%
+%s %s dances into the air!
+
+%sの%sが空中で踊りだした！
+%%%%
 give %smutation%s
 
-突然変異の付与
+%s突然変異の付与
+%%%%
+Your body is suffused with distortional energy.
+
+あなたの体は歪曲のエネルギーに覆われている。
+%%%%
+Xom's grace
+
+ゾムの恩寵
+%%%%
+Xom's mischief
+
+ゾムの悪戯
+%%%%
+The area is suffused with divine lightning!
+
+あたり一面が神の雷を浴びた！
+%%%%
+Your divine protection wanes.
+
+あなたへの神の保護がなくなった。
 %%%%
 divine lightning%s
 
@@ -20054,13 +20222,29 @@ scenery: create altars
 
 地形: 祭壇の造成
 %%%%
+%s fountain%s start%s gushing blood
+
+%s泉から血が湧きだした
+%%%%
 %d fountains blood
 
 %dつの血の泉
 %%%%
+%s!
+
+%s！
+%%%%
+%s door%s burst%s open
+
+%s扉が開いた
+%%%%
 %d doors open
 
 %dつの扉が開いた
+%%%%
+%s%s door%s slam%s shut
+
+%s扉がバタンと閉じた
 %%%%
 %d doors close
 
@@ -20094,9 +20278,205 @@ fog
 
 %d連続のテレポート
 %%%%
+Xom's lifesaving
+
+ゾムの生命保護
+%%%%
 vitrification
 
 ガラス化
+%%%%
+Nothing appears to happen... Ominous!
+
+何も起きなかった……不気味だ！
+%%%%
+The lava spits out sparks!
+
+溶岩がほとばしった！
+%%%%
+The water briefly bubbles.
+
+水面がしばらくの間泡立った。
+%%%%
+The water briefly swirls.
+
+水面がしばらくの間渦巻いた。
+%%%%
+The water briefly glows.
+
+水面がしばらくの間輝いた。
+%%%%
+From the corner of your eye you spot something lurking in the deep water.
+
+あなたの視界の隅で何かが深い水底で待ち伏せているのが見えた。
+%%%%
+The idol of Beogh turns to glare at you.
+
+ベオの偶像がこちらを睨みつけた。
+%%%%
+The orcish idol turns to glare at you.
+
+オークの像がこちらを睨みつけた。
+%%%%
+The granite statue turns to stare at you.
+
+花崗岩の像がこちらを見つめた。
+%%%%
+Dim shapes swim through the translucent wall.
+
+半透明の壁から靄が湧きだした。
+%%%%
+Dim shapes swim through the green crystal wall.
+
+緑水晶の壁から靄が湧きだした。
+%%%%
+Tendrils of electricity crawl over the metal wall!
+
+金属の壁から稲妻がほとばしった！
+%%%%
+The water in the fountain briefly bubbles.
+
+噴水の水がしばらくの間泡立った。
+%%%%
+The water in the fountain briefly swirls.
+
+噴水の水がしばらくの間渦巻いた。
+%%%%
+The water in the fountain briefly glows.
+
+噴水の水がしばらくの間輝いた。
+%%%%
+Water briefly sprays from the dry fountain.
+
+涸れた噴水からしばらくの間水が噴出した。
+%%%%
+Dust puffs up from the dry fountain.
+
+涸れた噴水から埃が巻き上がった。
+%%%%
+The stone arch briefly shows a sunny meadow on the other side.
+
+石のアーチの向こうにしばらくの間日の当たる草原が見えた。
+%%%%
+seems to fall away from under you!
+
+があなたの場所から遠ざかった！
+%%%%
+seems to rush up at you!
+
+があなたの方に押し寄せた！
+%%%%
+Something invisible splashes into the water beneath you!
+
+何か目に見えないものがあなたの下の水面で跳ねた！
+%%%%
+The water briefly recedes away from you.
+
+しばらくの間あなたから周囲の水が退いた。
+%%%%
+Something invisible splashes into the water beside you!
+
+何か目に見えないものがあなたの足元の水面で跳ねた！
+%%%%
+One of
+
+のうちの一つ
+%%%%
+falls out of your pack, then immediately jumps back in!
+
+が袋から飛び出し、すぐに跳ね返って中に入った！
+%%%%
+You briefly get tangled in your bandages.
+
+あなたの包帯が一瞬もつれた。
+%%%%
+You trip over your bandages.
+
+あなたは一瞬包帯につまずいた。
+%%%%
+Your eyebrows briefly feel incredibly bushy.
+
+一瞬あなたの眉毛が信じられないほどふさふさになった。
+%%%%
+Your eyebrows wriggle.
+
+あなたの眉毛がのたうった。
+%%%%
+You do an impromptu tapdance.
+
+あなたは即興でタップダンスを踊った。
+%%%%
+A fancy cane briefly appears in your
+
+あなたの%sの中に一瞬ステッキが握られた。
+%%%%
+Your cloak billows in an unfelt wind.
+
+あなたのクロークは予期せぬ風ではためいた。
+%%%%
+Your %s leaps into the air, briefly spins, then lands back on your head!
+
+あなたの%sが空中に飛び上がり、一回転して再びあなたの頭に被さった！
+%%%%
+You compulsively click the heels of your %s together three times.
+
+あなたは衝動的に%sのかかとを3回打ち鳴らした。
+%%%%
+Your %s spins!
+
+あなたの%sが回転した！
+%%%%
+Your %s briefly flashes a lurid colour!
+
+あなたの%sが一瞬不気味な光を放った！
+%%%%
+The scales on your %s wiggle briefly.
+
+あなたの%sの鱗が一瞬ぴくぴくと動いた。
+%%%%
+The fur on your %s grows longer at an alarming rate, then retracts back to normal.
+
+あなたの%sに生えた毛が異様に伸びたが、すぐに元に戻った。
+%%%%
+Your %s briefly grows fur, then returns to normal.
+
+あなたの%sから急に毛が生えてきたが、すぐに元に戻った。
+%%%%
+You briefly become tangled in your %s.
+
+あなたは着ている%sに一瞬動きを取られた。
+%%%%
+Your %s briefly appears rusty.
+
+あなたの%sが一瞬錆びたように見えた。
+%%%%
+mandible
+
+顎
+%%%%
+nose
+
+鼻
+%%%%
+ear
+
+耳
+%%%%
+elbow
+
+肘
+%%%%
+the mischief of Xom
+
+ゾムの悪戯
+%%%%
+the capriciousness of Xom
+
+ゾムの酔狂
+%%%%
+the severe capriciousness of Xom
+
+ゾムの残酷な気紛れ
 %%%%
 silly message
 
@@ -20109,6 +20489,10 @@ silly message
 chaos upgrade
 
 混沌の力の付与
+%%%%
+You are %sconfused.
+
+あなたは%s混乱した。
 %%%%
 confusion
 
@@ -20130,6 +20514,14 @@ Ray didn't cross stairs.
 
 %sは滑るように動いてあなた%s！
 %%%%
+escape hatch
+
+脱出ハッチ
+%%%%
+staircase
+
+階段
+%%%%
 repel stairs
 
 逃げる階段
@@ -20137,6 +20529,10 @@ repel stairs
 colour smoke trail
 
 色つきの煙
+%%%%
+the vengeance of Xom
+
+ゾムのしっぺ返し
 %%%%
 stat loss: -%d %s (%d/%d)
 
@@ -20178,45 +20574,41 @@ chaos cloud
 
 混沌の雲
 %%%%
-stealth player
+Player is standing in deadly terrain, skipping Xom act.
 
-プレイヤーの隠匿
+プレイヤーは致命的な場所に立っているため、ゾムの手から逃れた。
 %%%%
-a very special plaything of Xom.
+Player is already dead, skipping Xom act.
 
-あなたはゾムの慰みものだ。
+プレイヤーはすでに死んでいるため、ゾムの手から逃れた。
 %%%%
-a special plaything of Xom.
+asks Xom for help in punishing you, and Xom happily agrees.
 
-あなたはゾムの特別な慰みものだ。
+はゾムにあなたへの懲罰の手助けを頼み、ゾムはそれに喜んで賛同した。
 %%%%
-a plaything of Xom.
+calls in a favour from Xom.
 
-あなたはゾムのお気に入りの慰みものだ。
-%%%%
-a toy of Xom.
-
-あなたはゾムの玩具だ。
-%%%%
-a favourite toy of Xom.
-
-あなたはゾムのお気に入りの玩具だ。
-%%%%
-a beloved toy of Xom.
-
-あなたはゾムの大切な玩具だ。
-%%%%
-Xom's teddy bear.
-
-あなたはゾムのテディベアだ。
-%%%%
-a BORING thing.
-
-あなたはゾムに飽きられてしまった。
+がゾムからの呼びかけに応じてやってきた。
 %%%%
 XOM is BORED!
 
 ゾムは退屈している！
+%%%%
+Xom revives you!
+
+ゾムはあなたを蘇らせた！
+%%%%
+You feel more catlike.
+
+あなたはさらに隠密性が増した。
+%%%%
+You feel stealthy.
+
+あなたは隠密性が高くなったようだ。
+%%%%
+stealth player
+
+プレイヤーの隠匿
 %%%%
 ############################## dat/des/altar/ashenzari_visionary.des ##############################
 %%%%
