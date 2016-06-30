@@ -72,7 +72,7 @@ Xom multiple summons
 『我が子らよ、この定命の者に仕えよ』
 
 # Xom grants you some temporary aid.
-ゾムはあなたに一時的な救援をいくつか与えた。
+ゾムはあなたにいくらかの増援を一時的に与えた。
 
 # Xom momentarily opens a gate.
 ゾムは一時的に門を開いた。
@@ -90,7 +90,7 @@ Xom scenery
 ゾムは周囲の光景に文句を言った。
 
 # Xom alters the dungeon around you.
-ゾムはあなたの周囲のダンジョンを変化させた。
+ゾムはあなたの周囲の地形を変化させた。
 
 # "There, this looks better."
 『どうだ、この方が見栄えが良いだろう』
@@ -353,7 +353,7 @@ Xom spell effect
 Xom colour smoke trail
 
 # "Go forth and redecorate, my child!"
-『行け！ そして改装するのだ！ 我が子よ！』
+『行け！ そして飾り立てるのだ！ 我が子よ！』
 
 # "This place needs a little more atmosphere."
 『この空間にはもっと空気が必要だな』
@@ -371,7 +371,7 @@ Xom vitrification
 壁の構造が突然変化した。
 
 # Xom alters the dungeon around you.
-ゾムはあなたの周りを変化させた。
+ゾムはあなたの周囲の地形を変化させた。
 %%%%
 # strengthens friendlies, weakens hostiles
 Xom good monster polymorph
@@ -424,7 +424,7 @@ Xom random mutations
 Xom snakes to sticks
 
 # Xom transforms those around you.
-ゾムはあなたの周囲を変化させた。
+ゾムはあなたの周囲のものを変化させた。
 
 # "I like them better like this."
 『私はこっちの方が好みだ』
