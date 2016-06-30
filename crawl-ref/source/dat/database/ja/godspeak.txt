@@ -287,7 +287,7 @@ Xom chaos upgrade
 Xom noise
 
 # Xom makes a sudden noise! You hear @weapon_noise@
-ゾムは突然騒音を鳴らした！ あなたは@weapon_noise@を聞いた。
+ゾムは突然騒音を鳴らした！ あなたは@weapon_noise@
 
 w:1
 # "Boo!"
