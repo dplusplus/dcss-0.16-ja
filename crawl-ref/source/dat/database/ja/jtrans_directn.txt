@@ -891,19 +891,19 @@ sacrificial altar of Ru
 %%%%
 fountain of clear blue water
 
-澄んだ青い水の泉
+澄んだ青い水の噴水
 %%%%
 fountain of sparkling water
 
-煌く水の泉
+煌く水の噴水
 %%%%
 fountain of blood
 
-血の泉
+血の噴水
 %%%%
 dry fountain
 
-枯れた泉
+涸れた噴水
 %%%%
 short-range portal
 
@@ -1133,7 +1133,7 @@ strange generator
 %%%%
 glistening fountain
 
-きらめく泉
+きらめく噴水
 %%%%
 black marble wall
 

@@ -1842,7 +1842,7 @@ const char* feat_type_name(dungeon_feature_type feat)
     if (feat == DNGN_ENTER_SHOP || feat == DNGN_ABANDONED_SHOP)
         return "店";
     if (feat_is_fountain(feat))
-        return "泉";
+        return "噴水";
     if (feat == DNGN_UNSEEN)
         return "unknown terrain";
     return "床";

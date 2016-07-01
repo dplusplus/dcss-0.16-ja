@@ -20224,11 +20224,11 @@ scenery: create altars
 %%%%
 %s fountain%s start%s gushing blood
 
-%s泉から血が湧きだした
+%s噴水から血が湧きだした
 %%%%
 %d fountains blood
 
-%dつの血の泉
+%dつの血の噴水
 %%%%
 %s!
 
@@ -20698,7 +20698,7 @@ It reads,\n"Warrior's weapon\n gracefully paints petals red.\n Honourable art."\
 %%%%
 As you approach the altar, the fountains begin to flow with blood!
 
-あなたが祭壇に近づくと、泉から血が湧きだした！
+あなたが祭壇に近づくと、噴水から血が湧きだした！
 %%%%
 Platinum Reserve
 
