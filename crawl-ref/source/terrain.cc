@@ -1826,7 +1826,7 @@ const char* feat_type_name(dungeon_feature_type feat)
     if (feat_is_statuelike(feat))
         return "石像";
     if (feat_is_water(feat))
-        return "たまり";
+        return "水たまり";
     if (feat_is_lava(feat))
         return "溶岩";
     if (feat_is_altar(feat))
