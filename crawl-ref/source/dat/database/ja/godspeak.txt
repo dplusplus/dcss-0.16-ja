@@ -647,7 +647,7 @@ Xom laughter
 # Xom titters!
 ゾムはけらけら笑った！
 
-Xom chuckles heartily!
+# Xom chuckles heartily!
 ゾムは心からくすくす笑った！
 
 # Xom chortles!
