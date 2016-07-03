@@ -1034,7 +1034,7 @@ void trap_def::trigger(actor& triggerer, bool flat_footed)
                 xom_is_stimulated(25);
 
             MiscastEffect(&you, nullptr, ZOT_TRAP_MISCAST, SPTYP_RANDOM,
-                           3, name(DESC_A));
+                           3, name(DESC_PLAIN));
         }
         else if (m)
         {
