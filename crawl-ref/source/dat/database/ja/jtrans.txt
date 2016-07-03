@@ -7387,6 +7387,10 @@ devours the net!
 
 %sは%sを食らった。
 %%%%
+Something unseen %s
+
+何かが%s
+%%%%
 %s grows in the wake of %s.
 
 %sは%sの活動と共に育ちはじめた。

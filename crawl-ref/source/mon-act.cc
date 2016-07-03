@@ -3338,7 +3338,7 @@ static void _mons_open_door(monster* mons, const coord_def &pos)
 
         if (!you.can_see(mons))
         {
-            mprf("何か目に見えないものが%s", open_str.c_str());
+            mprf(jtransc("Something unseen %s"), open_str.c_str());
             interrupt_activity(AI_FORCE_INTERRUPT);
         }
         else if (!you_are_delayed())
