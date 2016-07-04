@@ -1115,7 +1115,7 @@ void describe_god(god_type which_god, bool give_title)
 {
     if (which_god == GOD_NO_GOD) //mv: No god -> say it and go away.
     {
-        mpr("You are not religious.");
+        mpr(jtrans("You are not religious."));
         return;
     }
 

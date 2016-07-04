@@ -15,7 +15,7 @@ You've transgressed heavily! Be penitent!
 %%%%
 You are under penance.
 
-あなたは懺悔の途上にある。
+あなたは贖罪の途上にある。
 %%%%
 You should show more discipline.
 
@@ -233,6 +233,10 @@ does not demand training of the Invocations skill. All abilities are purely base
 
 祈祷スキルの訓練を要求しない。全ての能力は純粋に信仰値に依存すること
 %%%%
+Note that
+
+に注意。
+%%%%
 The power of Kikubaaqudgha's abilities is governed by Necromancy skill instead of Invocations.
 
 キクバークッグァの与える能力は祈祷スキルではなく死霊術スキルに左右される。
@@ -254,10 +258,6 @@ elyvilon misc info
 The power of Nemelex Xobeh's abilities and of the cards' effects is governed by Evocations skill instead of Invocations.
 
 ネメレクス・ソベーの与える能力とカードの効果は祈祷スキルではなく発動スキルに左右される。
-%%%%
-Note that
-
-に注意。
 %%%%
 %s doesn't play fair with you.
 
@@ -361,7 +361,7 @@ You can pray to speed up decomposition.
 %%%%
 You can walk through plants and fire through allied plants.
 
-あなたは植物の間を通り、仲間の植物に発射物が当たらなくなる。
+あなたは植物の間を通り抜けることができ、仲間の植物ごしに射撃することができる。
 %%%%
 You are provided with a bounty of information.
 
@@ -373,7 +373,7 @@ You can pray to corrupt scrolls of remove curse on your square.
 %%%%
 %s supports your attributes (+%d).
 
-%sはあなたの能力値を強化(+%d)する。
+%sはあなたの能力値を強化する。(+%d)
 %%%%
 You can bend time to slow others.
 
@@ -414,6 +414,10 @@ Title  -
 Favour -
 
 好意 -
+%%%%
+You are not religious.
+
+あなたは神を信仰していない。
 %%%%
 ############################## describe-spells.cc ##############################
 %%%%
