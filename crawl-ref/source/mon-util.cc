@@ -3970,11 +3970,12 @@ string do_mon_str_replacements(const string &in_msg, const monster* mons,
     {
         foe_species = jtrans(species_name(you.species, true));
 
-        msg = _replace_speech_tag(msg, " @to_foe@", "");
-        msg = _replace_speech_tag(msg, " @at_foe@", "");
-
-        msg = _replace_speech_tag(msg, " @to_foe@", "");
-        msg = _replace_speech_tag(msg, " @at_foe@", "");
+        msg = _replace_speech_tag(msg, "@to_foe@に向かって", "");
+        msg = _replace_speech_tag(msg, "@at_foe@に向かって", "");
+        msg = _replace_speech_tag(msg, "@to_foe@に", "");
+        msg = _replace_speech_tag(msg, "@at_foe@に", "");
+        msg = _replace_speech_tag(msg, "@to_foe@を", "");
+        msg = _replace_speech_tag(msg, "@at_foe@を", "");
 
         msg = replace_all(msg, "@player_only@", "");
         msg = replace_all(msg, " @foe,@", ",");
@@ -4009,6 +4010,9 @@ string do_mon_str_replacements(const string &in_msg, const monster* mons,
         else
             foe_name = foe->name(DESC_THE);
 
+        msg = _replace_speech_tag(msg, "@to_foe@", "@foe@に");
+        msg = _replace_speech_tag(msg, "@at_foe@", "@foe@に");
+
         msg = replace_all(msg, "@foe_possessive@", "@foe@の");
         msg = replace_all(msg, "@foe@", jtrans(foe_name));
         msg = replace_all(msg, "@Foe@", jtrans(foe_name));
@@ -4028,6 +4032,7 @@ string do_mon_str_replacements(const string &in_msg, const monster* mons,
 
         foe_species = genus;
     }
+    msg = replace_all(msg, "@null@", ""); // erase spacer
 
     description_level_type nocap = DESC_THE, cap = DESC_THE;
 
