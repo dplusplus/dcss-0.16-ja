@@ -162,7 +162,7 @@ bool deviant_route_warning::warn_continue_travel(
 
     target = dest;
     const string prompt = make_stringf(jtransc("Have to go through %s. Continue?"),
-                                       deviant.describe().c_str());
+                                       deviant.describe_j(true).c_str());
     // If the user says "Yes, shut up and take me there", we won't ask
     // again for that destination. If the user says "No", we will
     // prompt again.
