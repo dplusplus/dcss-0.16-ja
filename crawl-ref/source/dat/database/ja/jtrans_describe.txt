@@ -427,7 +427,7 @@ You are not religious.
 %%%%
 one of the following spellbooks
 
-は下記の魔法書のうち1つ
+下記の魔法書のうち1つ
 %%%%
 the following spells
 
@@ -440,6 +440,10 @@ the following spells
 %s possesses the following %s abilities:
 
 %sは下記の能力を持っている:
+%%%%
+Set
+
+組み合わせ
 %%%%
 Spells                             Type                      Level
 

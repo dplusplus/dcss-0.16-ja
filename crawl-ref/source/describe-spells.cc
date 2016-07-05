@@ -126,7 +126,7 @@ static void _monster_spellbooks(const monster_info &mi,
     if (num_books == 0)
         return;
 
-    const string set_name = type == MON_SPELL_WIZARD ? "Book" : "Set";
+    const string set_name = jtrans(type == MON_SPELL_WIZARD ? "Book" : "Set");
 
     // Loop through books and display spells/abilities for each of them
     for (size_t i = 0; i < num_books; ++i)
