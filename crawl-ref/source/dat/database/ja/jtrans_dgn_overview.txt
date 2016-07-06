@@ -45,6 +45,10 @@
 
 %dつのルーンで封印された扉
 %%%%
+corrupted
+
+崩壊している
+%%%%
 Annotate level on other end of current stairs?
 
 この階段の向こうの階層に注釈を付けますか？ [y/(n)]

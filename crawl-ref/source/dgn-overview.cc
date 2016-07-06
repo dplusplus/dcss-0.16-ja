@@ -767,7 +767,7 @@ void mark_corrupted_level(level_id li)
 {
     if (!level_annotations[li].empty())
         level_annotations[li] += ", ";
-    level_annotations[li] += "corrupted";
+    level_annotations[li] += jtrans("corrupted");
 }
 
 ////////////////////////////////////////////////////////////////////////
