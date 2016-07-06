@@ -799,9 +799,9 @@ static string _describe_demon(const string& name, flight_type fly)
                 description << jtrans(" It smells delicious!");
                 break;
             case 3:
-                description << jtrans(" It smells like rotting flesh")
+                description << jtrans(string(" It smells like rotting flesh")
                              + (you.species == SP_GHOUL ? " - yum!"
-                                                        : ".");
+                                                        : "."));
                 break;
             }
         }
@@ -1195,7 +1195,7 @@ static string _describe_ammo(const item_def &item)
             break;
 #if TAG_MAJOR_VERSION == 34
         case SPMSL_SICKNESS:
-            description += "It has been contaminated by something likely to cause disease.";
+            description += jtrans("It has been contaminated by something likely to cause disease.");
             break;
 #endif
         case SPMSL_FRENZY:
@@ -2703,7 +2703,7 @@ void inscribe_item(item_def &item, bool msgwin)
 static void _adjust_item(item_def &item)
 {
     _safe_newline();
-    string prompt = "<cyan>Adjust to which letter? </cyan>";
+    string prompt = jtrans("<cyan>Adjust to which letter? </cyan>");
     formatted_string::parse_string(prompt).display();
     const int keyin = getch_ck();
     // TODO: CK_RESIZE?
@@ -4342,19 +4342,10 @@ string get_ghost_description(const monster_info &mi, bool concise)
                                               gspecies,
                                               str, dex, mi.u.ghost.religion))
          << "として名の知れた"
-         << jtrans(_xl_rank_name(mi.u.ghost.xl_rank));
-
-    if (concise)
-    {
-        gstr << get_species_abbrev(gspecies)
-             << get_job_abbrev(mi.u.ghost.job);
-    }
-    else
-    {
-        gstr << jtrans(species_name(gspecies))
-             << "の"
-             << jtrans(get_job_name(mi.u.ghost.job));
-    }
+         << jtrans(_xl_rank_name(mi.u.ghost.xl_rank))
+         << jtrans(species_name(gspecies))
+         << "の"
+         << jtrans(get_job_name(mi.u.ghost.job));
 
     if (mi.u.ghost.religion != GOD_NO_GOD)
     {

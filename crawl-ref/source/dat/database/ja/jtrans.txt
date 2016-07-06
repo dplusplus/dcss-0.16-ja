@@ -275,7 +275,7 @@ It prevents most forms of teleportation.
 %%%%
 It may make you go berserk in combat.
 
-この%sは戦闘中にあなたを狂戦士化させる。
+この%sは戦闘中にあなたをバーサークさせる。
 %%%%
 It may re-curse itself when equipped.
 
@@ -303,7 +303,7 @@ It increases your rate of regeneration.
 %%%%
 It can be evoked to create a twister.
 
-これは発動して竜巻を発生させることができる。
+この%sを発動させて竜巻を発生させることができる。
 %%%%
 It makes you extremely vulnerable to
 
@@ -686,6 +686,10 @@ It seems completely insane!
 
 かの王は見るからに正気を失っている！
 %%%%
+It seems somehow familiar.
+
+かの王の姿はどこか見覚えがある。
+%%%%
 One of the many lords of Pandemonium,
 
 パンデモニウムの数多の王の一柱である『
@@ -706,7 +710,7 @@ It smells like rotting flesh.
 
 このモンスターからは腐肉の臭いがする。
 %%%%
-It smells like rotting flesh - yum!.
+It smells like rotting flesh - yum!
 
 このモンスターからは腐肉の臭いがする――うまそう！
 %%%%
@@ -816,11 +820,11 @@ It poisons the ammo it fires.
 %%%%
 It poisons the flesh of those it strikes.
 
-この武器で攻撃すると傷口を毒に浸す。
+この武器で攻撃すると傷口から毒を送り込む。
 %%%%
 It protects the one who wields it against injury (+5 to AC).
 
-この武器は装備している者を攻撃から守る。(AC +5)
+この武器は装備している者を攻撃から守る。(AC +5)
 %%%%
 A truly terrible weapon, it drains the life of those it strikes.
 
@@ -953,13 +957,17 @@ It is tipped with a substance that causes confusion.
 
 この針には混乱を引き起こす物質が塗られている。
 %%%%
+It has been contaminated by something likely to cause disease.
+
+# obsolete
+%%%%
 It is tipped with a substance that causes a mindless rage, making people attack friend and foe alike.
 
 この針には見境のない憤怒を引き起こす物質が塗られており、仲間を敵と同じように攻撃する。
 %%%%
 A skilled user can throw it in such a way that it will return to its owner.
 
-熟練した者はこの%sを所有者の元に戻ってくるようにを投げることができる。
+熟練した者はこの%sを所有者の元に戻ってくるように投げることができる。
 %%%%
 It will pass through any targets it hits, potentially hitting all targets in its path until it reaches maximum range.
 
@@ -1045,11 +1053,11 @@ It protects its wearer from poison.
 %%%%
 It allows its wearer to see invisible things.
 
-この防具は着用者が見えざる者を見ることを可能にする。
+この防具は着用者が目に見えぬ存在を見ることを可能にする。
 %%%%
 When activated it hides its wearer from the sight of others, but also increases their metabolic rate by a large amount.
 
-この防具は発動することで着用者を一時的に透明にするが、透明化の最中には代謝エネルギーの消費が大幅に増加する。
+この防具は発動することで着用者を一時的に透明にするが、透明化の最中には満腹度の消費が大幅に増加する。
 %%%%
 It increases the physical power of its wearer (+3 to strength).
 
@@ -1105,7 +1113,7 @@ It shields its wearer from harm at the cost of magical power.
 %%%%
 It improves your effectiveness with ranged weaponry (Slay+4).
 
-この防具は遠隔射撃の効果を高める(命中・ダメージ +4)
+この防具は遠隔射撃の効果を高める。(命中・ダメージ +4)
 %%%%
 This armour may have some hidden properties.
 
@@ -1145,7 +1153,7 @@ may have hidden properties.
 %%%%
 Most decks begin with %d to %d cards.
 
-ほとんどのデッキは%d枚から%d枚のカードを含んでいる。
+ほとんどのデッキは%d枚から%d枚のカードで構成されている。
 %%%%
 Drawn card(s):
 
@@ -1299,7 +1307,11 @@ Menu/colouring prefixes:
 %%%%
 (Pray here to learn more.)
 
-(詳しい情報を見るには、ここに立って(P)rayコマンドを使用してください)
+(詳しい情報を見るには、ここに立って(p)rayコマンドを使用してください)
+%%%%
+Press '<w>!</w>' or <w>Right-click</w> to toggle between the description and quote.
+
+解説と引用を切り替えるには '<w>!</w>' を押すか右クリックしてください。
 %%%%
 Press '<w>!</w>' to toggle between the description and quote.
 
@@ -1369,6 +1381,10 @@ Inscribe with what?
 
 どういう銘を付けますか？
 %%%%
+<cyan>Adjust to which letter? </cyan>
+
+<cyan>どのキーに割り当てなおしますか？</cyan>
+%%%%
 Level: %d
 
 レベル: %d
@@ -1387,11 +1403,11 @@ How on earth did you manage to pick this up?
 %%%%
 Note that Trog doesn't use Invocations, due to its close connection to magic.
 
-魔術との関連性が深いため、トログは祈祷スキルを使わないことに注意すること。
+トログは魔術との関連性が深い祈祷スキルを使わないことに注意すること。
 %%%%
 Note that Nemelex uses Evocations rather than Invocations.
 
-ネメレクスは祈祷スキルより発動スキルを使うことに注意すること。
+ネメレクスは祈祷スキルではなく発動スキルを使うことに注意すること。
 %%%%
 This is the skill all of Nemelex's abilities rely on.
 
@@ -1531,7 +1547,7 @@ It is devoted to combat, disrupting the magic of its foes as it battles endlessl
 %%%%
 It corrupts space around itself, and can twist even the very flesh of its opponents.
 
-このモンスターは自らの周囲の空間を崩壊させ、敵対する者のの肉体をもねじれさせることがある。
+このモンスターは自らの周囲の空間を崩壊させ、敵対する者の肉体をもねじれさせることがある。
 %%%%
 It shines with an unholy radiance, and wields powers of darkness from its devotion to the deities of death.
 
@@ -1700,10 +1716,6 @@ cause unpredictable effects
 steal items
 
 アイテムを強奪する
-%%%%
-constrict
-
-拘束する
 %%%%
 deal damage from a distance
 
