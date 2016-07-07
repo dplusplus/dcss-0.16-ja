@@ -3622,10 +3622,6 @@ Char dump unsuccessful! Sorry about that.
 
 残念ながらキャラクターのダンプは失敗しました。
 %%%%
-You can't see that place.
-
-その場所は見えない。
-%%%%
 Save game and return to main manu?
 
 セーブしてメインメニューに戻りますか？

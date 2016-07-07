@@ -99,6 +99,10 @@ Press: ? - help
 
 , 方向 - カーソル移動
 %%%%
+No monsters, items or features are visible.
+
+視界内にはモンスターやアイテム、および特別な地形は存在しない。
+%%%%
 Monsters
 
 モンスター
@@ -109,19 +113,35 @@ Features
 %%%%
 (select to target/travel, '!' to examine):
 
-(各キーで対象に照準を合わせる、もしくは移動します。'!'で解説モードに切り替え)
+(各キーで対象に照準を合わせるか、もしくは移動します。'!'で解説モードに切り替え)
 %%%%
 (select to examine, '!' to target/travel):
 
 (各キーで対象の解説文を表示します。'!'で照準/移動モードに切り替え)
 %%%%
+, keeping you mesmerised
+
+, あなたを魅了している
+%%%%
+(not visited)
+
+(まだ通過していない)
+%%%%
+Move the cursor around to observe a square.
+
+区画を調べるには周辺にカーソルを動かしてください。
+%%%%
 There's something in the way.
 
 その方向には何かがある。
 %%%%
+Sorry, you can't target what you can't see.
+
+残念ながら、見えないところを標的にはできない。
+%%%%
 That would be overly suicidal.
 
-それは自殺的だ。
+それは自殺行為だ。
 %%%%
 Really target yourself?
 
@@ -129,15 +149,35 @@ Really target yourself?
 %%%%
 Sorry, you can't target yourself.
 
-残念ながら、自分自身を標的にできない。
+残念ながら、自分自身を標的にはできない。
 %%%%
 Are you sure you want to fizzle?
 
 本当に取りやめますか？
 %%%%
-Sorry, you can't target what you can't see.
+All monsters which could be auto-targeted are covered by a wall or statue which interrupts your line of fire, even though it doesn't interrupt your line of sight.
 
-残念ながら、見えないところを標的にはできない。
+自動照準指定可能なすべてのモンスターは射線を遮る壁もしくは像に防護される(それが視界を遮らない場合でも)
+%%%%
+To return to the main mode, press <w>Escape</w>.
+
+メインモードに戻るには、<w>Esc</w> キーを押してください。
+%%%%
+You can't see any item there.
+
+ここにはアイテムは見つからない。
+%%%%
+Marked for pickup.
+
+拾うように設定しました。
+%%%%
+Targeting interrupted by HUP signal.
+
+HUPシグナルにより照準作業を中断しました。
+%%%%
+Out of range.
+
+範囲外です。
 %%%%
 silenced
 
@@ -154,6 +194,26 @@ Aim
 There is something else lying underneath.
 
 さらにその下に何かがある。
+%%%%
+This spell doesn't need a beam path
+
+この呪文は光線状に射出されない。
+%%%%
+Your target is gone.
+
+対象物はどこかに行った。
+%%%%
+Trying to run portal debug at %d/%d...
+
+# for debug
+%%%%
+Got result: %s!
+
+# for debug
+%%%%
+Brought monster down to 1 HP.
+
+モンスターのHPを1にしました。
 %%%%
 You cannot set exclusions on this level.
 
@@ -174,6 +234,14 @@ Reduced exclusion size to a single square.
 [unseen terrain]
 
 [視界外の地形]
+%%%%
+There is a cloud of
+
+ここには
+%%%%
+You can't see that place.
+
+その場所は見えない。
 %%%%
 There is
 
@@ -203,19 +271,19 @@ Beware, the minotaur awaits!
 
 苔に覆われた
 %%%%
-dooradj open
+[adj]open
 
 開かれた
 %%%%
-dooradj runed
+[adj]runed
 
 ルーンで封印された
 %%%%
-dooradj sealed
+[adj]sealed
 
 封印の印が刻まれた
 %%%%
-dooradj closed
+[adj]closed
 
 閉じられた
 %%%%
@@ -430,6 +498,22 @@ There is a cloud of %s here.
 You see %s here.
 
 ここには%sがある。
+%%%%
+You.
+
+あなた自身
+%%%%
+There is a non-visible %smonster here.
+
+ここには目に見えない%sモンスターがいる。
+%%%%
+exposed by water
+
+が水によって居場所を察知された
+%%%%
+exposed by cloud
+
+が雲によって居場所を察知された
 %%%%
 There is a strange disturbance in the water here.
 

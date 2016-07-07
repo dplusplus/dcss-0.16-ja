@@ -588,7 +588,7 @@ void full_describe_view()
 
     if (list_mons.empty() && list_items.empty() && list_features.empty())
     {
-        mpr("No monsters, items or features are visible.");
+        mpr(jtrans("No monsters, items or features are visible."));
         return;
     }
 
@@ -652,10 +652,16 @@ void full_describe_view()
 
             string str = get_monster_equipment_desc(mi, DESC_FULL, DESC_A, true);
             if (mi.is(MB_MESMERIZING))
-                str += ", keeping you mesmerised";
+                str += jtrans(", keeping you mesmerised");
 
-            if (mi.dam != MDAM_OKAY)
-                str += ", " + mi.damage_desc();
+            string dmg_string = mi.damage_desc();
+            if (mi.dam != MDAM_OKAY) {
+                dmg_string = replace_all(dmg_string, "傷ついた", "傷ついている");
+                dmg_string = replace_all(dmg_string, "傷つかなかった", "無傷");
+                dmg_string = replace_all(dmg_string, "死にかけている", "死にかけ");
+
+                str += ", " + dmg_string;
+            }
 
             string consinfo = mi.constriction_description();
             if (!consinfo.empty())
@@ -728,7 +734,7 @@ void full_describe_view()
 #endif
             desc += feature_description_at(c, false, DESC_A, false);
             if (is_unknown_stair(c))
-                desc += " (not visited)";
+                desc += " " + jtrans(" (not visited)");
             FeatureMenuEntry *me = new FeatureMenuEntry(desc, c, hotkey);
             me->tag        = "description";
             // Hack to make features selectable.
@@ -1107,14 +1113,14 @@ bool direction_chooser::find_default_monster_target(coord_def& result) const
         {
             // Special colouring in tutorial or hints mode.
             const bool need_hint = Hints.hints_events[HINT_TARGET_NO_FOE];
-            mprf(need_hint ? MSGCH_TUTORIAL : MSGCH_PROMPT,
+            mpr_nojoin(need_hint ? MSGCH_TUTORIAL : MSGCH_PROMPT, jtrans(
                 "All monsters which could be auto-targeted are covered by "
                 "a wall or statue which interrupts your line of fire, even "
-                "though it doesn't interrupt your line of sight.");
+                "though it doesn't interrupt your line of sight."));
 
             if (need_hint)
             {
-                mprf(MSGCH_TUTORIAL, "To return to the main mode, press <w>Escape</w>.");
+                mpr_nojoin(MSGCH_TUTORIAL, jtrans("To return to the main mode, press <w>Escape</w>."));
                 Hints.hints_events[HINT_TARGET_NO_FOE] = false;
             }
         }
@@ -1350,7 +1356,7 @@ bool direction_chooser::select(bool allow_out_of_range, bool endpoint)
         && !in_range(target()))
     {
         mprf(MSGCH_EXAMINE_FILTER, "%s",
-             hitfunc? hitfunc->why_not.c_str() : "That is beyond the maximum range.");
+             jtransc(hitfunc? hitfunc->why_not.c_str() : "That is beyond the maximum range."));
         return false;
     }
     moves.isEndpoint = endpoint || (mons && _mon_exposed(mons));
@@ -1367,7 +1373,7 @@ bool direction_chooser::pickup_item()
         ii = env.map_knowledge(target()).item();
     if (!ii || !ii->is_valid(true))
     {
-        mprf(MSGCH_EXAMINE_FILTER, "You can't see any item there.");
+        mpr_nojoin(MSGCH_EXAMINE_FILTER, jtrans("You can't see any item there."));
         return false;
     }
     ii->flags |= ISFLAG_THROWN; // make autoexplore greedy
@@ -1396,7 +1402,7 @@ bool direction_chooser::pickup_item()
 
     if (!just_looking) // firing/casting prompt
     {
-        mprf(MSGCH_EXAMINE_FILTER, "Marked for pickup.");
+        mpr_nojoin(MSGCH_EXAMINE_FILTER, jtrans("Marked for pickup."));
         return false;
     }
 
@@ -1415,7 +1421,7 @@ bool direction_chooser::handle_signals()
         moves.isValid  = false;
         moves.isCancel = true;
 
-        mprf(MSGCH_ERROR, "Targeting interrupted by HUP signal.");
+        mpr_nojoin(MSGCH_ERROR, jtrans("Targeting interrupted by HUP signal."));
         return true;
     }
     return false;
@@ -1440,7 +1446,7 @@ void direction_chooser::print_target_description(bool &did_cloud) const
     if (!in_range(target()))
     {
         mprf(MSGCH_EXAMINE_FILTER, "%s",
-             hitfunc ? hitfunc->why_not.c_str() : "Out of range.");
+             jtransc(hitfunc ? hitfunc->why_not.c_str() : "Out of range."));
     }
 }
 
@@ -1646,7 +1652,7 @@ void direction_chooser::toggle_beam()
 {
     if (!needs_path)
     {
-        mprf(MSGCH_EXAMINE_FILTER, "This spell doesn't need a beam path.");
+        mpr_nojoin(MSGCH_EXAMINE_FILTER, jtrans("This spell doesn't need a beam path."));
         return;
     }
 
@@ -1675,7 +1681,7 @@ bool direction_chooser::select_previous_target()
     }
     else
     {
-        mprf(MSGCH_EXAMINE_FILTER, "Your target is gone.");
+        mpr_nojoin(MSGCH_EXAMINE_FILTER, jtrans("Your target is gone."));
         flush_prev_message();
         return false;
     }
@@ -1735,14 +1741,14 @@ void direction_chooser::handle_wizard_command(command_type key_command,
         return;
 
     case CMD_TARGET_WIZARD_DEBUG_PORTAL:
-        mprf(MSGCH_DIAGNOSTICS, "Trying to run portal debug at %d/%d...",
+        mprf(MSGCH_DIAGNOSTICS, jtransc("Trying to run portal debug at %d/%d..."),
             target().x, target().y);
 
         marker_result =
             env.markers.property_at(target(), MAT_ANY, "portal_debug").c_str();
 
-        mprf(MSGCH_DIAGNOSTICS, "Got result: %s!",
-            marker_result.empty() ? "nothing" : marker_result.c_str());
+        mprf(MSGCH_DIAGNOSTICS, jtransc("Got result: %s!"),
+             jtransc(marker_result.empty() ? "nothing" : marker_result));
 
         return;
 
@@ -1803,7 +1809,7 @@ void direction_chooser::handle_wizard_command(command_type key_command,
 
     case CMD_TARGET_WIZARD_HURT_MONSTER:
         m->hit_points = 1;
-        mpr("Brought monster down to 1 HP.");
+        mpr(jtrans("Brought monster down to 1 HP."));
         flush_prev_message();
         break;
 
@@ -2189,14 +2195,13 @@ void get_square_desc(const coord_def &c, describe_info &inf)
     if (const monster_info *mi = env.map_knowledge(c).monsterinfo())
     {
         // First priority: monsters.
-        string desc = uppercase_first(get_monster_equipment_desc(*mi))
-                    + ".\n";
+        string desc = get_monster_equipment_desc(*mi) + "。\n";
         const string wounds = mi->wounds_description_sentence();
         if (!wounds.empty())
             desc += uppercase_first(wounds) + "\n";
         const string constrictions = mi->constriction_description();
         if (!constrictions.empty())
-            desc += "It is " + constrictions + ".\n";
+            desc += string(mi->pronoun(PRONOUN_SUBJECTIVE)) + "は" + constrictions + "。\n";
         desc += _get_monster_desc(*mi);
 
         inf.title = desc;
@@ -2219,8 +2224,8 @@ void get_square_desc(const coord_def &c, describe_info &inf)
     const cloud_type cloud = env.map_knowledge(c).cloud();
     if (cloud != CLOUD_NONE)
     {
-        inf.prefix = "There is a cloud of " + cloud_type_name(cloud)
-                     + " here.\n\n";
+        inf.prefix = jtrans("There is a cloud of ") + cloud_type_name_j(cloud)
+                     + "がある。\n\n";
     }
 }
 
@@ -3090,13 +3095,13 @@ string feature_description_at(const coord_def& where, bool covering,
         if (door_desc_veto.empty() || door_desc_veto != "veto")
         {
             if (grid == DNGN_OPEN_DOOR)
-                desc += jtrans("dooradj " "open ");
+                desc += tagged_jtrans("[adj]", "open ");
             else if (grid == DNGN_RUNED_DOOR)
-                desc += jtrans("dooradj " "runed ");
+                desc += tagged_jtrans("[adj]", "runed ");
             else if (grid == DNGN_SEALED_DOOR)
-                desc += jtrans("dooradj " "sealed ");
+                desc += tagged_jtrans("[adj]", "sealed ");
             else
-                desc += jtrans("dooradj " "closed ");
+                desc += tagged_jtrans("[adj]", "closed ");
         }
 
         desc += door_desc_prefix;
@@ -3338,11 +3343,11 @@ static string _mon_enchantments_string(const monster_info& mi)
 
     if (!enchant_descriptors.empty())
     {
-        return uppercase_first(mi.pronoun(PRONOUN_SUBJECTIVE))
-            + " is "
+        return string(mi.pronoun(PRONOUN_SUBJECTIVE))
+            + "は"
             + comma_separated_line(enchant_descriptors.begin(),
                                    enchant_descriptors.end())
-            + ".";
+            + "。";
     }
     else
         return "";
@@ -3515,13 +3520,13 @@ static string _get_monster_desc(const monster_info& mi)
 static void _describe_monster(const monster_info& mi)
 {
     // First print type and equipment.
-    string text = uppercase_first(get_monster_equipment_desc(mi)) + ".";
+    string text = uppercase_first(get_monster_equipment_desc(mi)) + "。";
     const string wounds_desc = mi.wounds_description_sentence();
     if (!wounds_desc.empty())
         text += " " + uppercase_first(wounds_desc);
     const string constriction_desc = mi.constriction_description();
     if (!constriction_desc.empty())
-        text += " It is" + constriction_desc + ".";
+        text += string(mi.pronoun(PRONOUN_SUBJECTIVE)) + "は" + constriction_desc + "。";
     mprf(MSGCH_EXAMINE, "%s", text.c_str());
 
     // Print the rest of the description.
@@ -3805,16 +3810,16 @@ static void _describe_cell(const coord_def& where, bool in_range)
 #endif
 
     if (where == you.pos() && !crawl_state.arena_suspended)
-        mprf(MSGCH_EXAMINE_FILTER, "You.");
+        mpr_nojoin(MSGCH_EXAMINE_FILTER, jtrans("You."));
 
     if (const monster* mon = monster_at(where))
     {
 #ifdef DEBUG_DIAGNOSTICS
         if (!mon->visible_to(&you))
         {
-            mprf(MSGCH_DIAGNOSTICS, "There is a non-visible %smonster here.",
+            mprf(MSGCH_DIAGNOSTICS, jtransc("There is a non-visible %smonster here."), jtransc(
                  _mon_exposed_in_water(mon) ? "exposed by water " :
-                 _mon_exposed_in_cloud(mon) ? "exposed by cloud " : "");
+                 _mon_exposed_in_cloud(mon) ? "exposed by cloud " : ""));
         }
 #else
         if (!mon->visible_to(&you))
