@@ -145,6 +145,28 @@ Not in Shoals or no heightmap; tide not available.
 
 浅瀬にいないか陸地にいるため、潮の操作はできない。
 %%%%
+############################## dungeon.cc ##############################
+%%%%
+You sense the appearance of a powerful magical force which warps space.
+
+あなたは空間を歪める強大な魔法の力場の存在を感じ取った。
+%%%%
+A powerful force appears that prevents you from remembering where you've been.
+
+自分が今どこにいるか把握するのを妨げる強大な力場が発生した。
+%%%%
+You sense the disappearance of a powerful magical force which warped space.
+
+あなたは空間を歪めていた強大な魔法の力場の消滅を感じ取った。
+%%%%
+You sense the disappearance of the force that prevented you from remembering where you've been.
+
+あなたは自分が今どこにいるか把握するのを妨げる強大な力場の消滅を感じ取った。
+%%%%
+%s invites you to visit %s %s%s%s.
+
+%sは%s%s%s%sへとあなたを招いている。
+%%%%
 ############################## end.cc ##############################
 %%%%
 Hit any key to exit...

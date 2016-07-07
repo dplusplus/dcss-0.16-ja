@@ -4529,14 +4529,7 @@ static void _setup_gozag_shop(int index, vector<shop_type> &valid_shops)
     you.props[make_stringf(GOZAG_SHOPKEEPER_NAME_KEY, index)].get_string()
                                     = make_name(random_int(), false);
 
-    const bool need_suffix = type != SHOP_GENERAL
-                             && type != SHOP_GENERAL_ANTIQUE
-                             && type != SHOP_DISTILLERY;
-    you.props[make_stringf(GOZAG_SHOP_SUFFIX_KEY, index)].get_string()
-                                    = need_suffix
-                                      ? random_choose("Shoppe", "Boutique",
-                                                      "Emporium", "Shop")
-                                      : "";
+    you.props[make_stringf(GOZAG_SHOP_SUFFIX_KEY, index)].get_string() = "";
 
     you.props[make_stringf(GOZAG_SHOP_COST_KEY, index)].get_int()
         = gozag_price_for_shop();

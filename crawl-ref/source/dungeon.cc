@@ -27,6 +27,7 @@
 #include "chardump.h"
 #include "cloud.h"
 #include "coordit.h"
+#include "database.h"
 #include "directn.h"
 #include "dbg-maps.h"
 #include "dbg-scan.h"
@@ -598,14 +599,14 @@ bool set_level_flags(uint32_t flags, bool silent)
 
     if (could_control && !can_control && !silent)
     {
-        mprf(MSGCH_WARN, "You sense the appearance of a powerful magical force "
-                         "which warps space.");
+        mpr_nojoin(MSGCH_WARN, jtrans("You sense the appearance of a powerful magical force "
+                                      "which warps space."));
     }
 
     if (could_map && !can_map && !silent)
     {
-        mprf(MSGCH_WARN, "A powerful force appears that prevents you from "
-                         "remembering where you've been.");
+        mpr_nojoin(MSGCH_WARN, jtrans("A powerful force appears that prevents you from "
+                                      "remembering where you've been."));
     }
 
     return old_flags != env.level_flags;
@@ -626,16 +627,16 @@ bool unset_level_flags(uint32_t flags, bool silent)
     {
         // Isn't really a "recovery", but I couldn't think of where
         // else to send it.
-        mprf(MSGCH_RECOVERY, "You sense the disappearance of a powerful "
-                             "magical force which warped space.");
+        mpr_nojoin(MSGCH_RECOVERY, jtrans("You sense the disappearance of a powerful "
+                                          "magical force which warped space."));
     }
 
     if (!could_map && can_map && !silent)
     {
         // Isn't really a "recovery", but I couldn't think of where
         // else to send it.
-        mprf(MSGCH_RECOVERY, "You sense the disappearance of the force that "
-                             "prevented you from remembering where you've been.");
+        mpr_nojoin(MSGCH_RECOVERY, jtrans("You sense the disappearance of the force that "
+                                          "prevented you from remembering where you've been."));
     }
 
     return old_flags != env.level_flags;
@@ -3254,11 +3255,10 @@ static void _place_gozag_shop(dungeon_feature_type stair)
     env.pgrid(*shop_place) |= FPROP_SEEN_OR_NOEXP;
     seen_notable_thing(grd(*shop_place), *shop_place);
 
-    const gender_type gender = random_choose(GENDER_FEMALE, GENDER_MALE,
-                                             GENDER_NEUTER);
+    const gender_type gender = random_choose(GENDER_FEMALE, GENDER_MALE);
 
     string announce = make_stringf(
-                                   "%s invites you to visit %s %s%s%s.",
+                                   jtransc("%s invites you to visit %s %s%s%s."),
                                    shop->shop_name.c_str(),
                                    decline_pronoun_j(gender, PRONOUN_POSSESSIVE),
                                    shop_type_name(shop->type).c_str(),
