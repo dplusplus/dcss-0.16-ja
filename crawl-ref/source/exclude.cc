@@ -52,11 +52,13 @@ static bool _need_auto_exclude(const monster* mon, bool sleepy = false)
     // This only works if the name is lowercased.
     string name = mon->name(DESC_BASENAME, mon->is_stationary()
                                            && testbits(mon->flags, MF_SEEN));
-    lowercase(name);
+    string name_en = mon->name_en(DESC_BASENAME, mon->is_stationary()
+                                           && testbits(mon->flags, MF_SEEN));
+    lowercase(name_en);
 
     for (const text_pattern &pat : Options.auto_exclude)
     {
-        if (pat.matches(name)
+        if ((pat.matches(name) || pat.matches(name_en))
             && _mon_needs_auto_exclude(mon, sleepy)
             && (mon->attitude == ATT_HOSTILE
                 || mon->type == MONS_HYPERACTIVE_BALLISTOMYCETE))
