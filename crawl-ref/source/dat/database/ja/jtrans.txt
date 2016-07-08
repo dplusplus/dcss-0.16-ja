@@ -222,12 +222,6 @@ You can find your morgue file in the '%s' directory.
 %s
 続行するにはEnterを押してください……
 %%%%
-############################## evoke.cc ##############################
-%%%%
-%lu skills
-
-%lu種のスキル
-%%%%
 ############################## exclude.cc ##############################
 %%%%
 Marking area around %s as unsafe for travelling.

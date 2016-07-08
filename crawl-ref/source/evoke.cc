@@ -106,7 +106,7 @@ static bool _reaching_weapon_attack(const item_def& wpn)
 {
     if (you.caught())
     {
-        mprf("You cannot attack while %s.", held_status());
+        mpr(jtrans(make_stringf("You cannot attack while %s.", held_status())));
         return false;
     }
 
@@ -117,7 +117,7 @@ static bool _reaching_weapon_attack(const item_def& wpn)
     args.restricts = DIR_TARGET;
     args.mode = TARG_HOSTILE;
     args.range = 2;
-    args.top_prompt = "Attack whom?";
+    args.top_prompt = jtrans("Attack whom?");
     args.cancel_at_self = true;
     targetter_reach hitfunc(&you, REACH_TWO);
     args.hitfunc = &hitfunc;
@@ -157,7 +157,7 @@ static bool _reaching_weapon_attack(const item_def& wpn)
 
     if (x_distance > 2 || y_distance > 2)
     {
-        mpr("Your weapon cannot reach that far!");
+        mpr(jtrans("Your weapon cannot reach that far!"));
         return false; // Shouldn't happen with confused swings
     }
 
@@ -171,14 +171,14 @@ static bool _reaching_weapon_attack(const item_def& wpn)
         // can reach _past_.
         if (you.confused())
         {
-            mpr("You swing wildly and hit a wall.");
+            mpr(jtrans("You swing wildly and hit a wall."));
             you.time_taken = attack_delay;
             make_hungry(3, true);
             return true;
         }
         else
         {
-            mpr("There's a wall in the way.");
+            mpr(jtrans("There's a wall in the way."));
             return false;
         }
     }
@@ -217,7 +217,7 @@ static bool _reaching_weapon_attack(const item_def& wpn)
                 if (mons->wont_attack())
                 {
                     // Let's assume friendlies cooperate.
-                    mpr("You could not reach far enough!");
+                    mpr(jtrans("You could not reach far enough!"));
                     you.time_taken = attack_delay;
                     make_hungry(3, true);
                     return true;
@@ -225,12 +225,12 @@ static bool _reaching_weapon_attack(const item_def& wpn)
             }
         }
         if (success)
-            mpr("You reach to attack!");
+            mpr(jtrans("You reach to attack!"));
         else
         {
-            mprf("%s is in the way.",
+            mprf(jtransc("%s is in the way."), jtransc(
                  mons->observable() ? mons->name(DESC_THE).c_str()
-                                    : "Something you can't see");
+                                    : "Something you can't see"));
         }
     }
 
@@ -241,11 +241,11 @@ static bool _reaching_weapon_attack(const item_def& wpn)
 
         if (you.confused())
         {
-            mprf("You swing wildly%s", beam.isMe() ?
-                                       " and almost hit yourself!" : ".");
+            mprf(jtransc("You swing wildly%s"),  jtransc(beam.isMe() ?
+                                       " and almost hit yourself!" : "た。"));
         }
         else
-            mpr("You attack empty space.");
+            mpr(jtrans("You attack empty space."));
         you.time_taken = attack_delay;
         make_hungry(3, true);
         return true;
@@ -803,7 +803,7 @@ int recharge_wand(bool known, const string &pre_msg)
     {
         if (item_slot == -1)
         {
-            item_slot = prompt_invent_item("Charge which item?", MT_INVLIST,
+            item_slot = prompt_invent_item(jtransc("Charge which item?"), MT_INVLIST,
                                             OSEL_RECHARGE, true, true, false);
         }
 
@@ -830,7 +830,7 @@ int recharge_wand(bool known, const string &pre_msg)
 
         if (!item_is_rechargeable(wand, known))
         {
-            mpr("Choose an item to recharge, or Esc to abort.");
+            mpr(jtrans("Choose an item to recharge, or Esc to abort."));
             more();
 
             // Try again.
@@ -857,21 +857,21 @@ int recharge_wand(bool known, const string &pre_msg)
 
             if (charged && item_ident(wand, ISFLAG_KNOW_PLUSES))
             {
-                desc = make_stringf(" and now has %d charge%s",
+                desc = make_stringf(jtransc(" and now has %d charge%s"),
                                     new_charges, new_charges == 1 ? "" : "s");
             }
 
             if (known && !pre_msg.empty())
                 mpr(pre_msg);
 
-            mprf("%s %s for a moment%s.",
+            mprf(jtransc("%s %s for a moment%s."),
                  wand.name(DESC_YOUR).c_str(),
-                 charged ? "glows" : "flickers",
+                 charged ? "輝いた。" : "明滅した。",
                  desc.c_str());
 
             if (!charged && !item_ident(wand, ISFLAG_KNOW_PLUSES))
             {
-                mprf("It has %d charges and is fully charged.", new_charges);
+                mprf(jtransc("It has %d charges and is fully charged."), new_charges);
                 set_ident_flags(wand, ISFLAG_KNOW_PLUSES);
             }
 
@@ -914,7 +914,7 @@ int recharge_wand(bool known, const string &pre_msg)
             if (known && !pre_msg.empty())
                 mpr(pre_msg);
 
-            mprf("%s glows for a moment.", wand.name(DESC_YOUR).c_str());
+            mprf(jtransc("%s glows for a moment."), wand.name(DESC_YOUR).c_str());
         }
 
         you.wield_change = true;
@@ -961,8 +961,8 @@ void finish_manual(int slot)
     item_def& manual(you.inv[slot]);
     const skill_type skill = static_cast<skill_type>(manual.plus);
 
-    mprf("You have finished your manual of %s and toss it away.",
-         skill_name(skill));
+    mprf(jtransc("You have finished your manual of %s and toss it away."),
+         tagged_jtransc("[skill]", skill_name(skill)));
     dec_inv_item_quantity(slot, 1);
 }
 
