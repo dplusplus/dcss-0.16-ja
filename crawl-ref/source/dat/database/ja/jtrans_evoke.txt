@@ -29,7 +29,7 @@ You could not reach far enough!
 %%%%
 You reach to attack!
 
-なたは攻撃を届かせた！
+あなたは攻撃を届かせた！
 %%%%
 %s is in the way.
 
