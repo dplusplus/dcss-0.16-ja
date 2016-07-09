@@ -4730,7 +4730,7 @@ You're too confused!
 %%%%
 You can't do that in your present form.
 
-あなたは現在の姿ではそれはできない。
+あなたは現在の姿ではそうすることはできない。
 %%%%
 You aren't carrying anything.
 
