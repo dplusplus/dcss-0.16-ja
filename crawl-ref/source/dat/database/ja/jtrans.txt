@@ -266,9 +266,106 @@ This could place you under penance!
 %%%%
 ############################## files.cc ##############################
 %%%%
+The ghost fades into the shadows.
+
+幽霊が影の中から現れた。
+%%%%
+Your summoned %s left behind.
+
+召喚されたあなたの従者%sは置き去りにされた。
+%%%%
+Your mindless thrall%s behind.
+
+あなたの知性なき奴隷%sは置き去りにされた。
+%%%%
+You are filled with an overwhelming sense of foreboding!
+
+あなたはひどく悪い予感がした！
+%%%%
+You feel a terrible frisson of fear!
+
+あなたは恐怖に身を震わせた。
+%%%%
+You are flooded with an inexplicable sense of dread!
+
+あなたは言い知れぬ恐怖に打ちのめされた！
+%%%%
+You feel that you have entered a very terrible place...
+
+あなたはひどく恐ろしい場所に足を踏み入れてしまったと感じた……
+%%%%
+There is something very spooky about this place!
+
+なにかひどく気味の悪いものがここにいる！
+%%%%
 Level annotation: %s
 
 階層の特記事項: %s
+%%%%
+%s slides away from you right after you %s it!
+
+あなたが%sの%sに進むとそれは滑るように移動して遠ざかった。
+%%%%
+%s settles down.
+
+%sはその場で動かなくなった。
+%%%%
+See you soon, %s!
+
+さようなら、%s！
+%%%%
+No ghost files for this level.
+
+# for wizard
+%%%%
+Ghost file invalidated before read.
+
+# for wizard
+%%%%
+Broken bones file: %s
+
+%%%%
+Refusing to load buggy ghost from file "%s"!
+
+%%%%
+Loaded ghost file with %u ghost(s)
+
+%%%%
+Placed ghost is not alive.
+
+%%%%
+Placed ghost is not MONS_PLAYER_GHOST, but %s
+
+%%%%
+Unable to place %u ghost(s)
+
+%%%%
+This game comes from an incompatible version of Crawl (
+
+%%%%
+Unless you reinstall that version, you can't load it.
+
+%%%%
+Do you want to DELETE that game and start a new one?
+
+%%%%
+Cannot load an incompatible save from version %s
+
+%%%%
+This game comes from a previous release of Crawl.  If you load it now, you won't be able to go back. Continue?
+
+%%%%
+Please reinstall the stable version then.
+
+%%%%
+Save data is invalid.
+
+%%%%
+There exists a save by that name but it appears to be invalid.\n(Error: %s).  Do you want to delete it?
+
+%%%%
+Aborting; you may try to recover it somehow.
+
 %%%%
 ############################## form-data.h ##############################
 %%%%

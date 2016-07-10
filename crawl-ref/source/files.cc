@@ -948,7 +948,7 @@ static void _grab_followers()
             && fol->hit_points < fol->max_hit_points / 2)
         {
             if (fol->visible_to(&you))
-                mpr("The ghost fades into the shadows.");
+                mpr(jtrans("The ghost fades into the shadows."));
             monster_teleport(fol, true);
         }
     }
@@ -981,14 +981,14 @@ static void _grab_followers()
             // Summons won't follow and will time out.
             if (non_stair_using_summons > 0)
             {
-                mprf("Your summoned %s left behind.",
-                     non_stair_using_allies > 1 ? "allies are" : "ally is");
+                mprf(jtransc("Your summoned %s left behind."),
+                     non_stair_using_allies > 1 ? "たち" : "");
             }
             else
             {
                 // Permanent undead are left behind but stay.
-                mprf("Your mindless thrall%s behind.",
-                     non_stair_using_allies > 1 ? "s stay" : " stays");
+                mprf(jtransc("Your mindless thrall%s behind."),
+                     non_stair_using_allies > 1 ? "たち" : "");
             }
         }
         memset(travel_point_distance, 0, sizeof(travel_distance_grid_t));
@@ -1198,7 +1198,7 @@ static void _make_level(dungeon_feature_type stair_taken,
 
         // did we actually manage to load more than one ghost (file)?
         if (doubleghost)
-            mpr(_double_ghost_spookmessage());
+            mpr(jtrans(_double_ghost_spookmessage()));
     }
     env.turns_on_level = 0;
     // sanctuary
@@ -1514,14 +1514,14 @@ bool load_level(dungeon_feature_type stair_taken, load_mode_type load_mode,
                 if (coinflip()
                     && slide_feature_over(you.pos()))
                 {
-                    mprf("%s slides away from you right after you %s it!",
+                    mprf(jtransc("%s slides away from you right after you %s it!"),
                          stair_str.c_str(), verb.c_str());
                 }
 
                 if (coinflip())
                 {
                     // Stairs stop fleeing from you now you actually caught one.
-                    mprf("%s settles down.", stair_str.c_str());
+                    mprf(jtransc("%s settles down."), stair_str.c_str());
                     you.duration[DUR_REPEL_STAIRS_MOVE]  = 0;
                     you.duration[DUR_REPEL_STAIRS_CLIMB] = 0;
                 }
@@ -1650,7 +1650,7 @@ void save_game(bool leave_game, const char *farewellmsg)
     {
         if (!dump_char(you.your_name, true))
         {
-            mpr("Char dump unsuccessful! Sorry about that.");
+            mpr(jtrans("Char dump unsuccessful! Sorry about that."));
             if (!crawl_state.seen_hups)
                 more();
         }
