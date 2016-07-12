@@ -23,15 +23,15 @@ There's nothing here to drain!
 %%%%
 Your blood-deprived body can't sustain your rage any longer.
 
-あなたの血を失った肉体ではもはや狂戦士でいられない。
+あなたの血を失った肉体ではもうバーサーク状態を維持できない。
 %%%%
 Your blood-deprived body can't sustain your transformation much longer.
 
-あなたの血を失った肉体ではもはや変化し続けられない。
+あなたの血を失った肉体ではもはや変化し続けることができない。
 %%%%
 Your blood-filled body can't sustain your transformation much longer.
 
-あなたの血に満ちた肉体はもはや変化し続けられない。
+あなたの血に満ちた肉体はもはや変化し続けることができない。
 %%%%
 You can't stomach any more blood right now.
 
