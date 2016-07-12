@@ -367,6 +367,84 @@ There exists a save by that name but it appears to be invalid.\n(Error: %s).  Do
 Aborting; you may try to recover it somehow.
 
 %%%%
+############################## fineff.cc ##############################
+%%%%
+Your damage is reflected back at you!
+
+あなたの与えたダメージがそのまま返ってきた！
+%%%%
+mirrors your injury!
+
+はあなたの受けた傷を返した！
+%%%%
+suffers a backlash!
+
+は反撃を受けた！
+%%%%
+%s shudders%s.
+
+%sは体を%s震わせた。
+%%%%
+alarmingly
+
+猛烈に
+%%%%
+violently
+
+激しく
+%%%%
+vigorously
+
+勢いよく
+%%%%
+%s spits out another jelly.
+
+%sの体からジェリーが分裂した。
+%%%%
+%s spits out %s more jellies.
+
+%sは%s体のジェリーの群れを生み出した。
+%%%%
+One of the royal jelly's fragments survives.
+
+『ロイヤルジェリー』の破片の一つはまだ生き残っている。
+%%%%
+The dying royal jelly spits out %s more jellies.
+
+『ロイヤルジェリー』は死に際に%s体のジェリーの群れを生み出した。
+%%%%
+shudders and is absorbed by its neighbour.
+
+は身を震わせ、隣の群れと融合した。
+%%%%
+shudders and withdraws towards its neighbour.
+
+は身を震わせ、隣の群れから遠ざかった。
+%%%%
+%s electric aura discharges%s!
+
+%s電気のオーラが%s放電した！
+%%%%
+The air sparks with electricity!
+
+電気の火花が空中で炸裂した！
+%%%%
+The lightning shocks %s.
+
+%sは稲妻を浴びた。
+%%%%
+a shock serpent
+
+電撃の大蛇
+%%%%
+electric aura
+
+電気のオーラ
+%%%%
+The injured %s weaves a defensive illusion!
+
+手負いの%sは身を守るために幻影を生み出した！
+%%%%
 ############################## form-data.h ##############################
 %%%%
 # TRAN_SPIDER
