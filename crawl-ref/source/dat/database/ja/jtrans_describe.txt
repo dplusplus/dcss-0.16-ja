@@ -2195,10 +2195,6 @@ attacks
 
 攻撃する
 %%%%
-shoots
-
-射撃する
-%%%%
 cast spells
 
 魔法を唱える

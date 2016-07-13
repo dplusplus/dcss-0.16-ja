@@ -3443,9 +3443,11 @@ static void _add_energy_to_string(int speed, int energy, string what,
 
     const int act_speed = (speed * 10) / energy;
     if (act_speed > 10)
-        fast.push_back(tagged_jtrans("[adj]", _speed_description(act_speed)) + jtrans(what));
+        fast.push_back(tagged_jtrans("[adj]", _speed_description(act_speed))
+                       + jconj_verb(jtrans(what), JCONJ_PRES));
     if (act_speed < 10)
-        slow.push_back(tagged_jtrans("[adj]", _speed_description(act_speed)) + jtrans(what));
+        slow.push_back(tagged_jtrans("[adj]", _speed_description(act_speed))
+                       + jconj_verb(jtrans(what), JCONJ_PRES));
 }
 
 

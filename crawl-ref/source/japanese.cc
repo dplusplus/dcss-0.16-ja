@@ -368,6 +368,8 @@ string jconj_verb(const string& verb, jconj conj)
         v = replace_all(v, "をスライムに変えた", "がスライムに変えられた");
         v = replace_all(v, "を殺した", "が殺された");
         break;
+    case JCONJ_PRES:
+        v = replace_all(v, "射撃した", "射撃する");
     }
 
     return v;
