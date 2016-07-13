@@ -712,11 +712,11 @@ void monster::remove_enchantment_effect(const mon_enchant &me, bool quiet)
     if (!quiet)
         {
             if (visible_to(&you))
-                simple_monster_message(this, " stops glowing.");
+                simple_monster_message(this, jtransc(" stops glowing."));
             else if (has_ench(ENCH_INVIS) && mons_near(this))
             {
                 mprf(jtransc("%s stops glowing and disappears."),
-                     name(DESC_THE, true).c_str());
+                     jtransc(name(DESC_THE, true)));
             }
         }
         break;

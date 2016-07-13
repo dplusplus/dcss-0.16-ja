@@ -6806,6 +6806,14 @@ is no longer bribed.
 
 はもう買収されていない。
 %%%%
+stops glowing.
+
+は輝きを失った。
+%%%%
+%s stops glowing and disappears.
+
+%sは輝きを失い、同時に姿を消した。
+%%%%
 stops burning.
 
 を燃やしていた炎が消えた。
