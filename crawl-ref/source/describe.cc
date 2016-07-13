@@ -3691,6 +3691,7 @@ static string _monster_stat_description(const monster_info& mi)
     bool did_speed = false;
     if (speed != 10 && speed != 0)
     {
+        did_speed = true;
         result << uppercase_first(pronoun) << jtrans(" is ") << jtrans(mi.speed_description())
                << "。\n";
     }
@@ -3718,54 +3719,53 @@ static string _monster_stat_description(const monster_info& mi)
         if (mons_class_itemuse(mi.type) >= MONUSE_STARTING_EQUIPMENT)
             _add_energy_to_string(speed, me.item, "uses items", fast, slow);
 
-        const string pronoun_is = "。\n" + pronoun + "は";
+        const string pronoun_is = pronoun + "は";
+        const string nlpronoun_is = "。\n" + pronoun_is;
 
         if (speed >= 10)
         {
             if (did_speed && fast.size() == 1)
-                result << " and " << fast[0];
+                result << pronoun_is<< fast[0];
             else if (!fast.empty())
             {
                 if (did_speed)
                     result << "、";
                 result << comma_separated_line(fast.begin(), fast.end(),
-                                               pronoun_is,
-                                               pronoun_is);
+                                               nlpronoun_is,
+                                               nlpronoun_is);
             }
             if (!slow.empty())
             {
                 if (did_speed || !fast.empty())
                     result << "が、";
                 result << comma_separated_line(slow.begin(), slow.end(),
-                                               pronoun_is,
-                                               pronoun_is);
+                                               nlpronoun_is,
+                                               nlpronoun_is);
             }
         }
         else if (speed < 10)
         {
             if (did_speed && slow.size() == 1)
-                result << " and " << slow[0];
+                result << pronoun_is << slow[0];
             else if (!slow.empty())
             {
                 if (did_speed)
                     result << "、";
                 result << comma_separated_line(slow.begin(), slow.end(),
-                                               pronoun_is,
-                                               pronoun_is);
+                                               nlpronoun_is,
+                                               nlpronoun_is);
             }
             if (!fast.empty())
             {
                 if (did_speed || !slow.empty())
                     result << "が、";
                 result << comma_separated_line(fast.begin(), fast.end(),
-                                               pronoun_is,
-                                               pronoun_is);
+                                               nlpronoun_is,
+                                               nlpronoun_is);
             }
         }
         result << "。\n";
     }
-    else if (did_speed)
-        result << "。\n";
 
     // Can the monster fly, and how?
     // This doesn't give anything away since no (very) ugly things can
