@@ -710,9 +710,9 @@ static void _decrement_durations()
                               coinflip(), "You flicker for a moment."))
     {
         if (you.invisible())
-            mprf(MSGCH_DURATION, "You feel more conspicuous.");
+            mpr_nojoin(MSGCH_DURATION, jtrans("You feel more conspicuous."));
         else
-            mprf(MSGCH_DURATION, "You flicker back into view.");
+            mpr_nojoin(MSGCH_DURATION, jtrans("You flicker back into view."));
         you.attribute[ATTR_INVIS_UNCANCELLABLE] = 0;
     }
 
