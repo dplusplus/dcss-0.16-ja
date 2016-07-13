@@ -400,7 +400,7 @@ Your divine stamina fades away.
 %%%%
 You have no mutations to be cured!
 
-あなたの体に治療すべき突然変異はない！
+あなたの体には治療すべき突然変異はない！
 %%%%
 draws all chaos from your body!
 
@@ -408,6 +408,7 @@ draws all chaos from your body!
 %%%%
 Zin's power
 
+ジンの御業
 %%%%
 You hear a choir sing!
 
@@ -475,7 +476,7 @@ You cannot see a spellbook to ignite!
 %%%%
 That's not an orcish ally!
 
-その仲間はオーク族ではない！
+それはオーク族の仲間ではない！
 %%%%
 That orc has not proved itself worthy of your gift.
 
@@ -731,7 +732,7 @@ appears agitated.
 %%%%
 %s basks in the distortional energy.
 
-%sは歪曲のエネルギーに浸った。
+%sは歪曲のエネルギーを吸収した。
 %%%%
 Space bends %saround you!
 
@@ -743,7 +744,7 @@ sharply
 %%%%
 a spatial distortion
 
-
+空間歪曲
 %%%%
 The flow of time bends around you.
 
@@ -775,7 +776,7 @@ You return to the normal time flow.
 %%%%
 As you forget about %s, you feel ready to understand %s.
 
-あなたが%sについてのことを忘れていくにつれて、%sへの理解が深まっていった。
+あなたが%sの扱いを忘れていくにつれて、%sへの理解が深まっていった。
 %%%%
 You are currently transferring knowledge from %s to %s.
 
