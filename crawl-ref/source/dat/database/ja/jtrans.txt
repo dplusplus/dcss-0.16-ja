@@ -11962,22 +11962,6 @@ Your storm instantly dissipates.
 
 あなたの周囲の嵐はたちまち消え去った。
 %%%%
-Your resistance to fire fades away.
-
-あなたの火への耐性は薄れていった。
-%%%%
-Your resistance to cold fades away.
-
-あなたの冷気への耐性は薄れていった。
-%%%%
-Your resistance to electricity fades away.
-
-あなたの電撃への耐性は薄れていった。
-%%%%
-Your resistance to physical damage fades away.
-
-あなたの防御力は弱まっていった。
-%%%%
 continues to slow your movements.
 
 はあなたの動きを遅くし続けている。
