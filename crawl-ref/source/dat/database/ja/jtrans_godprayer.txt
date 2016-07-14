@@ -105,11 +105,11 @@ You pay a tithe of %d gold.
 %%%%
 ignores your late donation.
 
-はあなたの支払いの悪さを見逃した。
+はあなたの支払いの悪さを大目に見た。
 %%%%
 You don't have anything to sacrifice.
 
-あなたは捧げるものを持っていない。
+あなたは寄付する金を持っていない。
 %%%%
 Do you wish to donate half of your money?
 
