@@ -12964,10 +12964,6 @@ does not allow the disloyal to dabble in death!
 
 は不誠実な者が死に関わるのを許さない！
 %%%%
-the malice of Kikubaaqudgha
-
-キクバークッグァの悪意
-%%%%
 does not allow the disloyal to dabble in destruction!
 
 は不誠実なものが破壊に関わるのを許さない！
@@ -18810,10 +18806,6 @@ elbow
 the mischief of Xom
 
 ゾムの悪戯
-%%%%
-the capriciousness of Xom
-
-ゾムの酔狂
 %%%%
 the severe capriciousness of Xom
 
