@@ -338,7 +338,7 @@
 [skill]Shields
 
 盾
-%%%%%
+%%%%
 [title]Shield-Bearer
 
 盾を帯びし者

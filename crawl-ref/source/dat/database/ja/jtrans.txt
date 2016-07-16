@@ -4038,7 +4038,7 @@ You dig through %s.
 The barbed spikes dig painfully into your body as you move.
 
 あなたが動いたせいで逆棘はさらに食い込んだ。
-%%%
+%%%%
 The manticore spikes snap loose.
 
 マンティコアの逆棘は緩んで抜け落ちた。
@@ -6937,7 +6937,7 @@ is no longer more vulnerable to fire.
 is no longer more vulnerable to poison.
 
 はもう毒に弱くなくなった。
-%%%%%
+%%%%
 %s icy envelope dissipates!
 
 %sの氷の鎧は消滅した！
@@ -9290,7 +9290,7 @@ You can't shaft yourself on this terrain.
 A shaft appears beneath you!
 
 縦穴があなたの足下に空いた！
-%%%%%
+%%%%
 You now have enough gold to %s.
 
 あなたは%sのに十分な額の所持金がある。
@@ -14233,7 +14233,7 @@ protects you from your miscast necromantic spell!
 averts the curse.
 
 は呪いを防いだ。
-%%%
+%%%%
 partially averts the curse.
 
 は呪いをいくらか防いだ。
@@ -17882,95 +17882,95 @@ A huge blade swings out
 The blade breaks!
 
 # zotdef
-%%%%%
+%%%%
 A net swings high above you.
 
 網はあなたの頭上を飛び越えた。
-%%%%%
+%%%%
 A net drops to the ground!
 
 網はそこらの地面に落ちた。
-%%%%%
+%%%%
 A large net falls onto you!
 
 大網があなたの頭上から被さった！
-%%%%%
+%%%%
 fails to trigger a net trap.
 
 は網の罠を動作させなかった。
-%%%%%
+%%%%
 nimbly jumps out of the way of a falling net.
 
 は身軽にジャンプして落ちてくる網を避けた。
-%%%%%
+%%%%
 A large net falls down!
 
 大網が上から降ってきた！
-%%%%%
+%%%%
 A large net falls down onto %s!
 
 大網が%sの上から降ってきた！
-%%%%%
+%%%%
 You tear through %s web.
 
 あなたは蜘蛛の巣を切り裂いた。
-%%%%%
+%%%%
 tears through a web.
 
 は蜘蛛の巣を切り裂いた。
-%%%%%
+%%%%
 passes through a web.
 
 は蜘蛛の巣をすり抜けた。
-%%%%%
+%%%%
 oozes through a web.
 
 は蜘蛛の巣をすり抜けた。
-%%%%%
+%%%%
 You pick your way through the web.
 
 あなたは蜘蛛の巣を避けながら歩を進めた。
-%%%%%
+%%%%
 You are caught in the web!
 
 あなたは蜘蛛の巣に捕まった！
-%%%%%
+%%%%
 evades a web.
 
 は蜘蛛の巣を避けた。
-%%%%%
+%%%%
 is caught in a web!
 
 は蜘蛛の巣に捕まった！
-%%%%%
+%%%%
 A web moves frantically as something is caught in it!
 
 中に何かがいるかのように蜘蛛の巣が激しく動いている！
-%%%%%
+%%%%
 You enter the Zot trap.
 
 あなたはゾットの罠に踏み込んだ。
-%%%%%
+%%%%
 Oh no! You have blundered into a Zot trap!
 
 しまった！あなたはゾットの罠に踏み込んでしまった！
-%%%%%
+%%%%
 You hear a loud "Zot"!
 
 あなたは『ゾット』の怒声を耳にした！
-%%%%%
+%%%%
 You hear a distant "Zot"!
 
 あなたは遠くに『ゾット』の声を聞いた！
-%%%%%
+%%%%
 The power of Zot is invoked against %s!
 
 ゾットの力があなたに向けて発動した！
-%%%%%
+%%%%
 the power of Zot
 
 ゾットの罠の効果
-%%%%%
+%%%%
 The shaft disappears in a puff of logic!
 
 縦穴はぽんっと煙を立てて消え去った！

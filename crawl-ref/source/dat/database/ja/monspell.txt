@@ -304,12 +304,12 @@ Searing Breath cast
 
 # @The_monster@ breathes @beam@ @at@ @target@.
 @The_monster@は@target@に向かって@beam@を放った。
-%%%%%
+%%%%
 Electrical Bolt cast
 
 # @The_monster@ shoots out a bolt of @beam@ @at@ @target@!
 @The_monster@は@target@に向かって@beam@を放った。
-%%%%%
+%%%%
 Spit Lava cast
 
 # @The_monster@ spits lava @at@ @target@.
