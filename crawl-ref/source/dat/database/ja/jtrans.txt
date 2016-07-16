@@ -6094,7 +6094,7 @@ offers %s to %s, and fills with unholy energy.
 %%%%
 invokes %s protection!
 
-は%sを守護した！
+は%sの加護を受けた！
 %%%%
 puts on a burst of speed!
 
