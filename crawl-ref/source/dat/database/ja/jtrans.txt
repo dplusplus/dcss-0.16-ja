@@ -1343,7 +1343,7 @@ is melded into your body.
 %%%%
 That item can only be evoked when wielded.
 
-このアイテムは手に持っているときのみ発動できる。
+このアイテムは手に持たないと発動できない。
 %%%%
 This wand has no charges.
 
