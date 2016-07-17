@@ -866,7 +866,7 @@ int recharge_wand(bool known, const string &pre_msg)
 
             mprf(jtransc("%s %s for a moment%s."),
                  wand.name(DESC_YOUR).c_str(),
-                 charged ? "輝いた。" : "明滅した。",
+                 charged ? "輝いた" : "明滅した",
                  desc.c_str());
 
             if (!charged && !item_ident(wand, ISFLAG_KNOW_PLUSES))
