@@ -19389,9 +19389,21 @@ strange machine
 
 奇妙な機械
 %%%%
+Tukima's Studio
+
+ツキマーの工房
+%%%%
 vine covered
 
 蔓に覆われた
+%%%%
+Eringya's Formal Garden
+
+エリンギャの庭園
+%%%%
+Doroklohe's Tomb
+
+ドルオロクヒの墳墓
 %%%%
 monstrous
 
@@ -19465,22 +19477,6 @@ You squeeze the %s%s shut.
 
 あなたは%s%sを両側から引っ張って閉じた。
 %%%%
-Statue of Wucad Mu
-
-ウカド・ムーの像
-%%%%
-Tukima's Studio
-
-ツキマーの工房
-%%%%
-Eringya's Formal Garden
-
-エリンギャの庭園
-%%%%
-Doroklohe's Tomb
-
-ドルオロクヒの墳墓
-%%%%
 Cigotuvi's Fleshworks
 
 シゴツヴィの解体場
@@ -19492,6 +19488,10 @@ Iskenderun's Mystic Tower
 Zonguldrok's Shrine
 
 ゾングルドルックの神殿
+%%%%
+Statue of Wucad Mu
+
+ウカド・ムーの像
 %%%%
 Wucad Mu's Monastery
 
