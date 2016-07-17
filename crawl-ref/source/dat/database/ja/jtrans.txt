@@ -1441,11 +1441,11 @@ Your wings%s won't fit in that.
 %%%%
 You can wear that only in your normal form.
 
-あなたは通常の状態でのみそれを装備することができる。
+あなたは通常の状態でないとそれを装備することができない。
 %%%%
 You don't have enough limbs.
 
-あなたは腕が足りない。
+あなたは盾を持つには腕が足りない。
 %%%%
 You have no feet.
 
@@ -1511,13 +1511,17 @@ You can't wear any headgear with your large antennae!
 
 あなたのその巨大な触角ではいかなる兜も装備できない！
 %%%%
+You can't wear that with your horns!
+
+あなたは角が邪魔でそれを装備できない！
+%%%%
 You can't wear that with your beak!
 
-あなたのその嘴ではそれを装備できない！
+あなたは嘴が邪魔でそれを装備できない！
 %%%%
 You can't wear that with your antennae!
 
-あなたのその触角ではそれを装備できない！
+あなたは触角が邪魔でそれを装備できない！
 %%%%
 You can't wear that with your reptilian head.
 
@@ -1583,13 +1587,9 @@ Losing flight right now would be fatal!
 
 いま飛行能力を失うことは致命的だ！
 %%%%
-You can't wear that in your present form.
-
-現在の姿ではそれを身につけることができない。
-%%%%
 You're already wearing %s cursed ring%s!%s
 
-あなたは既に%dつの呪われた指輪を身につけている！ %s
+あなたは既に%sつの呪われた指輪を身につけている！ %s
 %%%%
 Isn't that enough for you?
 
@@ -1618,10 +1618,6 @@ Put ring on which %s? (<w>Esc</w> to cancel)
 (amulet)
 
 (護符)
-%%%%
-You're already wearing that object!
-
-あなたは既にそれを身につけている！
 %%%%
 You are wielding that object.
 
@@ -1661,7 +1657,7 @@ I don't think you really meant that.
 %%%%
 You can't take that off while it's melded.
 
-あなたはそれが融合している間取り外すことができない。
+あなたはそれと融合している間取り外すことができない。
 %%%%
 The amulet cannot be taken off without first removing the ring!
 
@@ -1681,7 +1677,7 @@ You remove %s.
 %%%%
 You can't turn invisible.
 
-あなたは不可視状態になることができない。
+あなたは姿をくらますことはできない。
 %%%%
 Invisibility will do you no good right now; use anyway?
 
@@ -1833,7 +1829,7 @@ The scroll reassembles itself in your %s!
 %%%%
 Your bandages flutter.
 
-あなたの包帯はひらひらした。
+あなたの包帯がひらひらとはためいた。
 %%%%
 You smell %s.
 
@@ -1865,7 +1861,7 @@ You hear %s.
 %%%%
 Reading books requires mental cohesion, which you lack.
 
-魔法書を読むには集中力が必要だが、今のあなたには欠けている。
+魔法書を読むには集中力が必要だが、今のあなたにはそれが欠けている。
 %%%%
 This item has been removed, sorry!
 
@@ -1873,7 +1869,7 @@ This item has been removed, sorry!
 %%%%
 Magic quickly surges around you.
 
-急速にあなたの周りに魔力が押し寄せた。
+急速にあなたの周りで魔力が渦巻いた。
 %%%%
 You can't read that!
 
@@ -1901,7 +1897,11 @@ You have no spells to forget!
 %%%%
 This scroll only affects a wielded weapon!
 
-この巻物は今手にしている武器にのみ効果をもたらす！
+この巻物は今手にしている武器にのみ効果がある！
+%%%%
+Your weapon is already cursed!
+
+あなたの持つ武器はすでに呪われている！
 %%%%
 Holy weapons cannot be cursed!
 
@@ -1913,11 +1913,11 @@ Read which item?
 %%%%
 You almost manage to decipher the scroll, but fail in this attempt.
 
-あなたはなんとかして巻物を解読しようとしたが、できなかった。
+あなたはなんとかして巻物を解読しようとしたが、失敗に終わった。
 %%%%
 As you read the %s, it crumbles to dust.
 
-あなたが%sを読むやいなや巻物は崩れ去った。
+あなたが%sを読むと、巻物は崩れ去った。
 %%%%
 Your blink will be uncontrolled - continue anyway?
 

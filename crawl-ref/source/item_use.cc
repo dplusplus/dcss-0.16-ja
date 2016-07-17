@@ -1217,7 +1217,7 @@ static bool _swap_rings(int ring_slot)
     else if (available == 0)
     {
         mprf(jtransc("You're already wearing %s cursed ring%s!%s"),
-             cursed,
+             to_string(cursed).c_str(),
              (cursed > 2 ? jtransc(" Isn't that enough for you?)") : ""));
         return false;
     }
@@ -1618,7 +1618,7 @@ bool dont_use_invis()
 
     if (you.haloed() || you.glows_naturally())
     {
-        mpr("You can't turn invisible.");
+        mpr(jtrans("You can't turn invisible."));
         return true;
     }
     else if (get_contamination_level() > 1
