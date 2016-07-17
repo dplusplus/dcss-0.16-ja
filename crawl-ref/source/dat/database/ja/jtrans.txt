@@ -19437,6 +19437,10 @@ Cigotuvi's Monster
 
 シゴツヴィの怪物
 %%%%
+Cigotuvi
+
+シゴツヴィ
+%%%%
 fleshy orifice
 
 肉壁の開口部
@@ -19481,6 +19485,10 @@ Cigotuvi's Fleshworks
 
 シゴツヴィの解体場
 %%%%
+Iskenderun
+
+イスケンデルン
+%%%%
 Iskenderun's Mystic Tower
 
 イスケンデルンの魔導の塔
@@ -19496,6 +19504,10 @@ Statue of Wucad Mu
 Wucad Mu's Monastery
 
 ウカド・ムーの修道院
+%%%%
+Golubria
+
+ゴルブリア
 %%%%
 The Roulette of Golubria
 
