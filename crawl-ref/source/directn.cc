@@ -3104,10 +3104,10 @@ string feature_description_at(const coord_def& where, bool covering,
                 desc += tagged_jtrans("[adj]", "closed ");
         }
 
-        desc += door_desc_prefix;
+        desc += jtrans(door_desc_prefix);
 
         if (!door_desc_noun.empty())
-            desc += door_desc_noun;
+            desc += jtrans(door_desc_noun);
         else
             desc += noun;
 

@@ -19943,6 +19943,10 @@ to the Pits of Slime
 
 スライムの穴ぐらへと通じる
 %%%%
+open sea?
+
+外海？
+%%%%
 to a bazaar
 
 バザールへと通じる
@@ -19954,6 +19958,10 @@ to the Hall of Blades
 to the Tomb of the Ancients
 
 太古の霊廟へと通じる
+%%%%
+water elementalist
+
+水の精霊使い
 %%%%
 pristine
 
