@@ -2001,9 +2001,17 @@ You can't wear or remove anything in your present form.
 %%%%
 ############################## itemname.cc ##############################
 %%%%
-god gift
+tried by monster
 
-下賜物
+モンスターが使用した
+%%%%
+tried
+
+# obsolete?
+%%%%
+tried on item
+
+# obsolete?
 %%%%
 (melded)
 
@@ -2012,6 +2020,10 @@ god gift
 (quivered)
 
 (準備中)
+%%%%
+(curse)
+
+(呪われている)
 %%%%
 vampiric
 
@@ -2117,42 +2129,6 @@ of slashing
 
 切れ味の
 %%%%
-cursed
-
-呪われた
-%%%%
-(curse)
-
-(呪われている)
-%%%%
-uncursed
-
-呪われていない
-%%%%
-pair of
-
-一対の
-%%%%
-runed
-
-ルーンが刻まれた
-%%%%
-glowing
-
-輝く
-%%%%
-embroidered
-
-刺繍された
-%%%%
-shiny
-
-光る
-%%%%
-dyed
-
-色で染められた
-%%%%
 of speedy slighering
 
 俊敏の
@@ -2237,10 +2213,6 @@ of archery
 
 射手の
 %%%%
-wand
-
-ワンド
-%%%%
 wand of flame
 
 火炎のワンド
@@ -2320,18 +2292,6 @@ wand of random effects
 wand of disintegration
 
 分解のワンド
-%%%%
-{empty}
-
-{空}
-%%%%
-{recharged}
-
-{充填済み}
-%%%%
-potion
-
-薬
 %%%%
 potion of curing
 
@@ -2424,10 +2384,6 @@ potion of lignification
 potion of beneficial mutation
 
 良性突然変異の薬
-%%%%
-scroll
-
-巻物
 %%%%
 scroll of identify
 
@@ -2833,10 +2789,6 @@ manual of
 
 の手引書
 %%%%
-book
-
-魔法書
-%%%%
 book of Minor Magic
 
 下級魔術の魔法書
@@ -2985,94 +2937,6 @@ book of Beasts
 
 獣の魔法書
 %%%%
-Necronomicon
-
-ネクロノミコン
-%%%%
-Grand Grimoire
-
-グラン・グリモア
-%%%%
-Young Poisoner's Handbook
-
-初級毒殺者の手引書
-%%%%
-Fen Folio
-
-フェン・フォリオ
-%%%%
-Akashic Record
-
-アカシック・レコード
-%%%%
-orb of Zot
-
-ゾットのオーブ
-%%%%
-a vampiric weapon
-
-吸血の武器
-%%%%
-an antimagic weapon
-
-反魔法の武器
-%%%%
-a vorpal weapon
-
-殺戮の武器
-%%%%
-a weapon of %s
-
-%s武器
-%%%%
-rod
-
-ロッド
-%%%%
-lightning rod
-
-稲妻のロッド
-%%%%
-iron rod
-
-鉄弾のロッド
-%%%%
-rod of the swarm
-
-大群のロッド
-%%%%
-rod of lightning
-
-稲妻のロッド
-%%%%
-rod of iron
-
-鉄弾のロッド
-%%%%
-rod of shadows
-
-影の怪物のロッド
-%%%%
-rod of inaccuracy
-
-不正確の矢のロッド
-%%%%
-rod of ignition
-
-燃焼のロッド
-%%%%
-rod of clouds
-
-雲烟のロッド
-%%%%
-rod of destruction
-
-破壊のロッド
-%%%%
-staff
-
-杖
-%%%%
 staff of wizardry
 
 魔術の杖
@@ -3117,9 +2981,161 @@ staff of summoning
 
 召喚の杖
 %%%%
+lightning rod
+
+稲妻のロッド
+%%%%
+iron rod
+
+鉄弾のロッド
+%%%%
+rod of the swarm
+
+大群のロッド
+%%%%
+rod of lightning
+
+稲妻のロッド
+%%%%
+rod of iron
+
+鉄弾のロッド
+%%%%
+rod of shadows
+
+影の怪物のロッド
+%%%%
+rod of inaccuracy
+
+不正確の矢のロッド
+%%%%
+rod of ignition
+
+燃焼のロッド
+%%%%
+rod of clouds
+
+雲烟のロッド
+%%%%
+rod of destruction
+
+破壊のロッド
+%%%%
+wand
+
+ワンド
+%%%%
+scroll
+
+巻物
+%%%%
+potion
+
+薬
+%%%%
+book
+
+魔法書
+%%%%
+staff
+
+杖
+%%%%
+rod
+
+ロッド
+%%%%
+corpse
+
+死体
+%%%%
 gold piece
 
 金貨
+%%%%
+Necronomicon
+
+ネクロノミコン
+%%%%
+Grand Grimoire
+
+グラン・グリモア
+%%%%
+Young Poisoner's Handbook
+
+初級毒殺者の手引書
+%%%%
+Fen Folio
+
+フェン・フォリオ
+%%%%
+Akashic Record
+
+アカシック・レコード
+%%%%
+orb of Zot
+
+ゾットのオーブ
+%%%%
+a vampiric weapon
+
+吸血の武器
+%%%%
+an antimagic weapon
+
+反魔法の武器
+%%%%
+a vorpal weapon
+
+殺戮の武器
+%%%%
+a weapon of %s
+
+%s武器
+%%%%
+of hellfire
+
+地獄の業火の
+%%%%
+cursed
+
+呪われた
+%%%%
+uncursed
+
+呪われていない
+%%%%
+runed
+
+ルーンが刻まれた
+%%%%
+glowing
+
+輝く
+%%%%
+pair of
+
+一対の
+%%%%
+embroidered
+
+刺繍された
+%%%%
+shiny
+
+光る
+%%%%
+dyed
+
+色で染められた
+%%%%
+{empty}
+
+{空}
+%%%%
+{recharged}
+
+{充填済み}
 %%%%
 decaying skeleton
 
@@ -3128,14 +3144,6 @@ decaying skeleton
 mangled
 
 切り裂かれた
-%%%%
-corpse
-
-死体
-%%%%
-skeleton
-
-骸骨
 %%%%
 You have identified the last healing potion.
 

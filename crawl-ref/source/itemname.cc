@@ -114,7 +114,7 @@ static string _item_inscription(const item_def &item, bool ident, bool equipped)
     vector<string> insparts;
 
     if (!ident && !equipped && item_type_tried(item))
-        insparts.push_back(_tried_inscription(item));
+        insparts.push_back(jtrans(_tried_inscription(item)));
 
     if (const char *orig = _interesting_origin(item))
     {
