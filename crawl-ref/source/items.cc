@@ -77,6 +77,7 @@
 #include "throw.h"
 #include "travel.h"
 #include "unwind.h"
+#include "unicode.h"
 #include "viewchar.h"
 #include "view.h"
 #include "xom.h"
@@ -208,7 +209,7 @@ static int _cull_items()
 
     // XXX: Not the prettiest of messages, but the player
     // deserves to know whenever this kicks in. -- bwr
-    mprf(MSGCH_WARN, "Too many items on level, removing some.");
+    mpr_nojoin(MSGCH_WARN, jtrans("Too many items on level, removing some."));
 
     // Rules:
     //  1. Don't cleanup anything nearby the player
@@ -1722,7 +1723,7 @@ static bool _put_item_in_inv(item_def& it, int quant_got, bool quiet, bool& put_
     if (it.base_type == OBJ_ORBS && crawl_state.game_is_zotdef()
         && runes_in_pack() < 15)
     {
-        mpr("You must possess at least fifteen runes to touch the sacred Orb which you defend.");
+        mpr(jtrans("You must possess at least fifteen runes to touch the sacred Orb which you defend."));
         return true;
     }
 
@@ -2411,7 +2412,7 @@ bool drop_item(int item_dropped, int quant_drop)
     {
         if (!Options.easy_unequip)
         {
-            mpr("You will have to take that off first.");
+            mpr(jtrans("You will have to take that off first."));
             return false;
         }
 
@@ -2425,7 +2426,7 @@ bool drop_item(int item_dropped, int quant_drop)
         && you.inv[item_dropped].base_type == OBJ_WEAPONS
         && you.inv[item_dropped].cursed())
     {
-        mprf("%s is stuck to you!", you.inv[item_dropped].name(DESC_THE).c_str());
+        mprf(jtransc("%s is stuck to you!"), you.inv[item_dropped].name(DESC_THE).c_str());
         return false;
     }
 
@@ -2434,7 +2435,7 @@ bool drop_item(int item_dropped, int quant_drop)
         if (item_dropped == you.equip[i] && you.equip[i] != -1)
         {
             if (!Options.easy_unequip)
-                mpr("You will have to take that off first.");
+                mpr(jtrans("You will have to take that off first."));
             else if (check_warning_inscriptions(you.inv[item_dropped],
                                                 OPER_TAKEOFF))
             {
@@ -4114,14 +4115,15 @@ static void _rune_from_specs(const char* _specs, item_def &item)
         string line;
         for (int i = 0; i < NUM_RUNE_TYPES; i++)
         {
-            line += make_stringf("[%c] %-10s ", i + 'a', rune_type_name(i));
+            line += make_stringf("[%c] %-10s ", i + 'a',
+                                 chop_string(rune_type_name_j(i), 10).c_str());
             if (i % 5 == 4 || i == NUM_RUNE_TYPES - 1)
             {
                 mprf(MSGCH_PROMPT, "%s", line.c_str());
                 line.clear();
             }
         }
-        mprf(MSGCH_PROMPT, "Which rune (ESC to exit)? ");
+        mpr_nojoin(MSGCH_PROMPT, jtrans("Which rune (ESC to exit)? "));
 
         int keyin = toalower(get_ch());
 
@@ -4191,11 +4193,11 @@ static void _deck_from_specs(const char* _specs, item_def &item,
 
     while (item.sub_type == MISC_DECK_UNKNOWN)
     {
-        mprf(MSGCH_PROMPT,
-             "[a] escape     [b] destruction [c] summoning [d] wonders");
-        mprf(MSGCH_PROMPT,
-             "[e] war         [f] changes  [g] defence");
-        mpr("Which deck (ESC to exit)? ");
+        mpr_nojoin(MSGCH_PROMPT,
+                   jtrans("[a] escape     [b] destruction [c] summoning [d] wonders"));
+        mpr_nojoin(MSGCH_PROMPT,
+                   jtrans("[e] war         [f] changes  [g] defence"));
+        mpr(jtrans("Which deck (ESC to exit)? "));
 
         const int keyin = toalower(get_ch());
 
@@ -4247,7 +4249,7 @@ static void _deck_from_specs(const char* _specs, item_def &item,
     {
         while (true)
         {
-            mprf(MSGCH_PROMPT, "[a] plain [b] ornate [c] legendary? (ESC to exit)");
+            mpr_nojoin(MSGCH_PROMPT, jtrans("[a] plain [b] ornate [c] legendary? (ESC to exit)"));
 
             int keyin = toalower(get_ch());
 
@@ -4490,7 +4492,7 @@ bool get_item_by_name(item_def *item, const char* specs,
                 item->skill = skill;
             else
             {
-                mpr("Sorry, no books on that skill today.");
+                mpr(jtrans("Sorry, no books on that skill today."));
                 item->skill = SK_FIGHTING; // Was probably that anyway.
             }
             item->skill_points = random_range(2000, 3000);
@@ -4530,8 +4532,8 @@ bool get_item_by_name(item_def *item, const char* specs,
         if (is_blood_potion(*item))
         {
             const char* prompt;
-            prompt = "# turns away from rotting? "
-                     "[ENTER for fully fresh] ";
+            prompt = "腐敗するまで何ターンを指定しますか？ "
+                     "[Enterで最大ターンになります] ";
             int age = prompt_for_int(prompt, false);
 
             if (age <= 0)
@@ -4903,9 +4905,9 @@ object_class_type get_item_mimic_type()
         mprf("[%c] %s ", letter, item_class_name(cls, true));
         choices[letter++] = cls;
     }
-    mprf("[%c] random", letter);
+    mprf(jtransc("[%c] random"), letter);
     choices[letter] = OBJ_RANDOM;
-    mprf(MSGCH_PROMPT, "\nWhat kind of item mimic? ");
+    mpr_nojoin(MSGCH_PROMPT, "\n" + jtrans("What kind of item mimic? "));
     const int keyin = toalower(get_ch());
 
     if (!choices.count(keyin))

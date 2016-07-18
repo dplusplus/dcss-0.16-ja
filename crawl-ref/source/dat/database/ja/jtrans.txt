@@ -1189,6 +1189,10 @@ Inventory:
 
 所持品一覧:
 %%%%
+(_ for help)
+
+(_ でヘルプ表示)
+%%%%
 You aren't carrying anything.
 
 あなたは何も持っていない。
@@ -3197,6 +3201,10 @@ preserves the curse.
 %%%%
 ############################## items.cc ##############################
 %%%%
+Too many items on level, removing some.
+
+階層のアイテムが多すぎるため、いくつかを削除しました。
+%%%%
 Items here:
 
 ここにはアイテムがある:
@@ -3216,26 +3224,6 @@ Pick up what?
 Select pick up quantity by entering a number, then select the item
 
 個数を指定して拾うには数字を押した後に選択してください。
-%%%%
-There are no items here.
-
-ここには何もない。
-%%%%
-You can't reach the bottom while floating on water.
-
-あなたは水に浮いている間水底に手を伸ばせない。
-%%%%
-There are no objects that can be picked up here.
-
-ここには拾える物がない。
-%%%%
-There are several objects here.
-
-ここにはいくつかの物がある。
-%%%%
-Pick up %s? ((y)es/(n)o/(a)ll/(m)enu/*?g,/q)
-
-%sを拾いますか？ ((y)はい/(n)いいえ/(a)全部/(m)一覧/*?g,/q)
 %%%%
 You can't carry that many items.
 
@@ -3293,9 +3281,41 @@ You found it
 
 あなたは%sでこの%sを見つけた
 %%%%
-You can't pick that up.
+Are you sure you want to pick up this pile of gold now?
 
-あなたはそれを拾えない。
+本当にこの金貨の山を拾いますか？
+%%%%
+Pick up how many of %s (; or enter for all)?
+
+%sのうちいくつを拾いますか？(; か ENTER で全選択)
+%%%%
+There are no items here.
+
+ここには何もない。
+%%%%
+You can't reach the bottom while floating on water.
+
+あなたは水に浮いている間水底に手を伸ばせない。
+%%%%
+There are no objects that can be picked up here.
+
+ここには拾える物がない。
+%%%%
+There are several objects here.
+
+ここにはいくつかの物がある。
+%%%%
+Pick up %s? ((y)es/(n)o/(a)ll/(m)enu/*?g,/q)
+
+%sを拾いますか？ ((y)はい/(n)いいえ/(a)全部/(m)一覧/*?g,/q)
+%%%%
+You now have %d gold piece%s.
+
+あなたは今%d枚の金貨を持っている。
+%%%%
+You must possess at least fifteen runes to touch the sacred Orb which you defend.
+
+# for zotdef
 %%%%
 You pick up the %s rune and feel its power.
 
@@ -3327,7 +3347,7 @@ You pick up the Orb of Zot!
 %%%%
 The lords of Pandemonium are not amused. Beware!
 
-パンデモニウムの君主達は不機嫌になった。気をつけろ！
+パンデモニウムの君主たちは不機嫌になった。気をつけろ！
 %%%%
 tells them not to hurry.
 
@@ -3335,23 +3355,15 @@ tells them not to hurry.
 %%%%
 Now all you have to do is get back out of the dungeon!
 
-今あなたがすべきことはダンジョンを脱出することのみだ！
-%%%%
-Are you sure you want to pick up this pile of gold now?
-
-本当にこの金貨の山を拾いますか？
-%%%%
-Pick up how many of %s (; or enter for all)?
-
-%sのうちいくつを拾いますか？(; か ENTER で全選択)
-%%%%
-You now have %d gold piece%s.
-
-あなたは今%d枚の金貨を持っている。
+今あなたがすべきことはダンジョンの脱出のみだ！
 %%%%
 %s (gained %d)
 
 %s (新たに%d%s入手)
+%%%%
+You will have to take that off first.
+
+まず装備を外してからにしてください。
 %%%%
 Too many items on this level, not dropping the item.
 
@@ -3373,13 +3385,53 @@ Drop what?
 
 何を置きますか？
 %%%%
-(_ for help)
-
-(_ でヘルプ表示)
-%%%%
 Your pack is full.
 
 あなたの荷袋は満杯だ。
+%%%%
+Which rune (ESC to exit)?
+
+ルーンの種類を選択してください (ESCでキャンセル)
+%%%%
+[a] escape     [b] destruction [c] summoning [d] wonders
+
+[a] 脱出   [b] 破壊   [c] 召喚   [d] 不思議
+%%%%
+[e] war         [f] changes  [g] defence
+
+[e] 戦争   [f] 変幻   [g] 守護
+%%%%
+Which deck (ESC to exit)?
+
+デッキの種類を選択してください (ESCでキャンセル)
+%%%%
+[a] plain [b] ornate [c] legendary? (ESC to exit)
+
+[a] 普通  [b] レア  [c] 伝説的 を選択してください (Escでキャンセル)
+%%%%
+How many cards?
+
+カードの枚数を指定してください。
+%%%%
+What ego type?
+
+エゴ種別を選択してください。
+%%%%
+A manual for which skill?
+
+どのスキルの手引書ですか？
+%%%%
+Sorry, no books on that skill today.
+
+申し訳ありませんが、そのスキルの手引書はありません。
+%%%%
+[%c] random
+
+# not used
+%%%%
+What kind of item mimic?
+
+# not used
 %%%%
 You have identified the last %s.
 

@@ -1159,6 +1159,13 @@ const char* rune_type_name(short p)
     }
 }
 
+const char* rune_type_name_j(short p)
+{
+    string jname = jtrans(rune_type_name(p) + string(" rune of Zot"));
+
+    return replace_all(jname, "のルーン", "").c_str();
+}
+
 const char* deck_rarity_name(deck_rarity_type rarity)
 {
     switch (rarity)

@@ -291,7 +291,7 @@ int prompt_for_int(const char *prompt, bool nonneg)
 {
     char specs[80];
 
-    msgwin_get_line(prompt, specs, sizeof(specs));
+    msgwin_get_line(jtrans(prompt), specs, sizeof(specs));
 
     if (specs[0] == '\0')
         return nonneg ? -1 : 0;
