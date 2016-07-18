@@ -1405,7 +1405,7 @@ static bool _write_dump(const string &fname, dump_params &par, bool quiet)
 
     if (handle != nullptr)
     {
-        string dump = replace_all(par.text, " ", " "); // replace no-break space to space
+        string dump = sp2nbsp(par.text);
 
         fputs(OUTS(dump), handle);
         fclose(handle);
