@@ -2894,7 +2894,7 @@ static string _player_spell_desc(spell_type spell, const item_def* item)
                      + "\n";
     }
 
-    return description;
+    return sp2nbsp(description);
 }
 
 
