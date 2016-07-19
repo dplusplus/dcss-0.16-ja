@@ -3475,6 +3475,56 @@ Vanquished Creatures
 
 %u体のモンスターを倒した。
 %%%%
+############################## lookup_help.cc ##############################
+%%%%
+Describe which?
+
+どの解説文を見ますか？
+%%%%
+(CTRL-S to sort by monster toughness)
+
+(Ctrl+Sでモンスターの耐久値を基準に並び替えします)
+%%%%
+(CTRL-S to sort by name)
+
+(Ctrl+Sでモンスターの名前で並び替えします)
+%%%%
+This spell is not found in any books or rods.
+
+この呪文はどのロッドや魔法書にも含まれていない。
+%%%%
+This spell can be found in the following book
+
+この呪文は以下の魔法書に記載されている:
+%%%%
+This spell can be found in the following rod
+
+この呪文は以下のロッドによって用いることができる:
+%%%%
+This entry is an exact match for '
+
+この記事は'
+%%%%
+'. To see non-exact matches, press space.
+
+'の完全一致によるものです。いまい検索するにはSpaceを押してください。
+%%%%
+This cloud is opaque; one tile will not block vision, but multiple will.
+
+この雲は不透明であり、2マス以上では視界を遮るようになる。
+%%%%
+Enter a single letter to list %s displayed by that symbol.
+
+
+%%%%
+Describe a %s; partial names and regexps are fine.%s
+
+
+%%%%
+Description must contain at least one non-space.
+
+解説文は少なくとも1文字の非空白文字を含まないといけません。
+%%%%
 ############################## macro.cc ##############################
 %%%%
 Input %s action:
