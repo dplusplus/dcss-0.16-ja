@@ -3609,6 +3609,10 @@ Cannot bind user function keys to a command.
 
 ユーザーファンクションキーをコマンドに関連づけられません。
 %%%%
+Cannot bind synthetic keys to a command.
+
+合成キーをコマンドに関連付けられません。
+%%%%
 ############################## main.cc ##############################
 %%%%
 Upgraded the game from %s to %s
