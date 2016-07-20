@@ -3653,7 +3653,7 @@ You started the game in wizard mode.
 %%%%
 Press any key to start the hints mode intro, or Escape to skip it.
 
-任意のキーを押すことでヒントモードを開始できます(Escキーで飛ばせます)。
+任意のキーを押すことで解説文を表示できます。(Escキーで飛ばせます)
 %%%%
 You can only abyss_teleport() inside the Abyss.
 
@@ -4151,7 +4151,7 @@ With effort, you pull free of the water engulfing you.
 %%%%
 You dig through %s.
 
-あなたは%sを掘り抜けた。
+あなたは%sを掘り抜いた。
 %%%%
 The barbed spikes dig painfully into your body as you move.
 
