@@ -5674,11 +5674,11 @@ and becomes anchored to this world
 %%%%
 Angry insects surge out from beneath %s foliage!
 
-怒り狂った昆虫が%sの巣から飛び出した！
+怒り狂った蜂が巣から飛び出した！
 %%%%
 Agitated ravens fly out from beneath %s foliage!
 
-カラスが%sの巣から飛び出した！
+カラスが巣から飛び出した！
 %%%%
 You escape the reach of the grasping roots.
 
