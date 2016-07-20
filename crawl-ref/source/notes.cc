@@ -374,7 +374,10 @@ string Note::describe(bool when, bool where, bool what) const
 #endif
             break;
         case NOTE_PARALYSIS:
-            result << name << "に" << first << "ターン麻痺させられた";
+            if (name == "you")
+                result << first << "ターン麻痺した";
+            else
+                result << jtrans(name) << "に" << first << "ターン麻痺させられた";
             break;
         case NOTE_NAMED_ALLY:
             result << name << "が仲間になった";
