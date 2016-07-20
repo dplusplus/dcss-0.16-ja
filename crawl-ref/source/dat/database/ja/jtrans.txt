@@ -5157,7 +5157,7 @@ There is a strange disturbance nearby!
 %%%%
 You are too frail to live.
 
-あなたはこれ以上生きるには虚弱すぎる。
+あなたは虚弱すぎて死んでしまった。
 %%%%
 You rejoin the land of the living...
 
