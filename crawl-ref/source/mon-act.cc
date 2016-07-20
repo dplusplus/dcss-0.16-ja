@@ -1959,7 +1959,7 @@ static void _grand_avatar_act(monster* mons)
             fire_tracer(mons, beam);
             if (mons_should_fire(beam))
             {
-                simple_monster_message(mons, " fires!");
+                simple_monster_message(mons, jtransc(" fires!"));
                 beam.fire();
                 mons->lose_energy(EUT_SPECIAL);
                 grand_avatar_reset(mons);

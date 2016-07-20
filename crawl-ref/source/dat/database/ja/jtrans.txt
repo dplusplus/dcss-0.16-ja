@@ -5894,13 +5894,13 @@ moves out of view.
 
 %sは怒り狂った。
 %%%%
-flops around on dry land!"
+flops around on dry land!
 
 は乾いた地面をじたばたとはね回った！
 %%%%
 falters for a moment.
 
-はしばらくの間ひるんだ。
+は一瞬よろめいた。
 %%%%
 %s knocks down a tree!
 
