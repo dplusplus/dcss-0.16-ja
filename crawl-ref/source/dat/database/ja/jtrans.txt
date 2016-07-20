@@ -5308,7 +5308,7 @@ Item %s, held by monster %s, being picked up by monster %s.
 %%%%
 %s %s as %s drops %s!
 
-%sは%sが%sを手放すやいなや%s！
+%sは%sが%sを手放すと%s！
 %%%%
 %s drops %s.
 
@@ -5509,6 +5509,10 @@ looks weaker.
 drinks a potion.
 
 は薬を飲んだ。
+%%%%
+is healed!
+
+の傷が治った！
 %%%%
 %s evokes %s %s.
 

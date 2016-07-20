@@ -6183,7 +6183,7 @@ item_type_id_state_type monster::drink_potion_effect(potion_type pot_eff,
 
     case POT_HEAL_WOUNDS:
         if (heal(10 + random2avg(28, 3)))
-            simple_monster_message(this, "の傷が治った！");
+            simple_monster_message(this, jtransc(" is healed!"));
         break;
 
     case POT_BLOOD:
@@ -6193,7 +6193,7 @@ item_type_id_state_type monster::drink_potion_effect(potion_type pot_eff,
         if (mons_species() == MONS_VAMPIRE)
         {
             heal(10 + random2avg(28, 3));
-            simple_monster_message(this, "の傷が治った！");
+            simple_monster_message(this, jtransc(" is healed!"));
         }
         break;
 
