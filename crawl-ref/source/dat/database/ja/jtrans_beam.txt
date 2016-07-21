@@ -407,7 +407,7 @@ The %s pierces through %s %s!
 
 %sは%sの%sをすり抜けた！
 %%%%
-%s block the %s.
+%s blocks the %s.
 
 %sは%sを防いだ。
 %%%%
