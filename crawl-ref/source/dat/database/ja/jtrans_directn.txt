@@ -877,6 +877,10 @@ hole to the Spider Nest
 
 蜘蛛の穴ぐらの入口
 %%%%
+crawl-hole back to the Lair
+
+獣の棲み処へ戻る出口
+%%%%
 staircase to the Depths
 
 深層への階段
