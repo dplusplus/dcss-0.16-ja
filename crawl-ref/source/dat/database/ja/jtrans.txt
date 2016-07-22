@@ -3309,9 +3309,9 @@ Pick up %s? ((y)es/(n)o/(a)ll/(m)enu/*?g,/q)
 
 %sを拾いますか？ ((y)はい/(n)いいえ/(a)全部/(m)一覧/*?g,/q)
 %%%%
-You now have %d gold piece%s.
+You now have %d gold piece%s%s.
 
-あなたは今%d枚の金貨を持っている。
+あなたは今%d枚の金貨を持っている。%s
 %%%%
 You must possess at least fifteen runes to touch the sacred Orb which you defend.
 

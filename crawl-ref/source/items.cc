@@ -1695,7 +1695,7 @@ void get_gold(const item_def& item, int quant, bool quiet)
                             ? make_stringf(" (新たに%d枚入手)", quant)
                             : "";
 
-        mprf(jtransc("You now have %d gold piece%s."),
+        mprf(jtransc("You now have %d gold piece%s%s."),
              you.gold, gain.c_str());
         learned_something_new(HINT_SEEN_GOLD);
     }
