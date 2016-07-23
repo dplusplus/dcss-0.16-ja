@@ -18401,6 +18401,14 @@ run
 
 %sに遭遇した。
 %%%%
+a foul
+
+忌まわしき
+%%%%
+Gozag incites your enemies against you.
+
+ゴザーグはあなたに敵対するものに手助けした。
+%%%%
 You feel aware of your surroundings.
 
 あなたは周囲の地形を感知した。
