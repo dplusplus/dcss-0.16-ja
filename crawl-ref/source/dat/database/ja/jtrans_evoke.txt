@@ -161,7 +161,7 @@ Choose an item to recharge, or Esc to abort.
 %%%%
 and now has %d charge%s
 
-残りの使用回数は%d回だ
+。残りの使用回数は%d回だ
 %%%%
 %s %s for a moment%s.
 
