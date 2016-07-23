@@ -201,7 +201,7 @@ The orb of energy explodes!
 %%%%
 %s life force is offered up.
 
-%sの生命力が抜き取られた。
+%s生命力が抜き取られた。
 %%%%
 %s %s healed.
 
