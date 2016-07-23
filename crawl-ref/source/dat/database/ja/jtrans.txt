@@ -20135,6 +20135,66 @@ Your surroundings seem different!
 
 <magenta>あなたの目の前に出口が現れた！</magenta>
 %%%%
+############################## dat/des/traps/beogh_trap.des ##############################
+%%%%
+Your presence is welcomed at the altar of Beogh.
+
+あなたのベオの祭壇への参拝は歓迎された。
+%%%%
+The orc god booms: Stay away, heretic!
+
+オークの神の声が響き渡った: 立ち去れ、異教者よ！
+%%%%
+The orc god booms: Stay away, mortal!
+
+オークの神の声が響き渡った: 立ち去れ、定命の者よ！
+%%%%
+Beogh's servants are called upon to defend the altar!
+
+ベオの下僕が祭壇を守るべく召喚された！
+%%%%
+############################## dat/des/traps/boulders.des ##############################
+%%%%
+A part of the floor depresses, but nothing seems to happen.
+
+床の一部分が沈みこんだが、特に何も起こらなかったようだ。
+%%%%
+An iron grate slams shut!
+
+鉄格子がガラガラと音を立てて閉まった！
+%%%%
+You hear a soft click.
+
+あなたはカチッという小さな音を耳にした。
+%%%%
+############################## dat/des/traps/grate.des ##############################
+%%%%
+You hear a faint grinding sound.
+
+あなたは何かが軋むかすかな音を耳にした。
+%%%%
+You hear an iron grate slam shut!
+
+あなたは鉄格子がガラガラと閉まる音を耳にした！
+%%%%
+############################## dat/des/traps/rats_trap.des ##############################
+%%%%
+You hear a faint click.
+
+あなたはカチッというかすかな音を耳にした。
+%%%%
+You hear a click.
+
+あなたはカチッという音を耳にした。
+%%%%
+You step on to a pressure plate.
+
+あなたは足踏みスイッチを踏んだ。
+%%%%
+Suddenly a wall slides open!
+
+突然壁が開いた！
+%%%%
 ############################## dat/des/tutorial/lesson4.des ##############################
 %%%%
 Introduction to Spellcasting
