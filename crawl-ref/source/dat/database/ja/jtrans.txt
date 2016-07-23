@@ -10276,7 +10276,7 @@ You feel less confused.
 %%%%
 You feel less vulnerable to hostile enchantments.
 
-あなたは敵対的な魔法に対し弱くなったような気がした。
+あなたは敵対的な魔法への耐性が元に戻ったような気がした。
 %%%%
 You feel less slimy.
 
