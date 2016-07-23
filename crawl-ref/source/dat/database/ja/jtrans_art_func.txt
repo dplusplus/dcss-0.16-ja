@@ -57,6 +57,10 @@ Sword of Cerebov
 
 セレボブの剣
 %%%%
+great serpentine sword
+
+凄まじく曲がりくねった剣
+%%%%
 flamberge
 
 フランベルジュ
@@ -65,9 +69,17 @@ Staff of Dispater
 
 ディスペータの杖
 %%%%
+golden staff
+
+黄金の杖
+%%%%
 Sceptre of Asmodeus
 
 アスモデウスの王笏
+%%%%
+ruby sceptre
+
+ルビーの王笏
 %%%%
 faerie dragon armour
 
@@ -388,6 +400,10 @@ shillelagh
 dragonskin cloak
 
 竜の皮のクローク
+%%%%
+opalescent scaly cloak
+
+乳白色の鱗のクローク
 %%%%
 ring of the Octopus King
 
