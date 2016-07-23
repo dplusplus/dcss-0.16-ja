@@ -6046,14 +6046,6 @@ begins to attack, but is stunned by your will!
 
 は攻撃しようとしたが、あなたの意志に従い中断した！
 %%%%
-You redirect %s's attack!
-
-あなたは%sの攻撃を逸らした！
-%%%%
-falters for a moment.
-
-は一瞬よろめいた。
-%%%%
 protects your fellow warrior from evil magic!
 
 はあなたの下僕を邪悪な魔術から守った！
@@ -6192,7 +6184,7 @@ Something tries to feed on your intellect!
 %%%%
 Orcish apparitions take form around you.
 
-幽体のオークの群れがあなたの周囲で姿を現した。
+幽体のオークの群れがあなたの周囲に姿を現した。
 %%%%
 is surrounded by Orcish apparitions.
 
@@ -6396,7 +6388,7 @@ out of sight
 %%%%
 Hit by %s thrown by %s
 
-%sに投げられた%sに命中した
+%sが投げた%sに命中した
 %%%%
 %s throws you!
 
@@ -6410,10 +6402,6 @@ out of view
 
 見えない角度から
 %%%%
-chants %s song.
-
-は%s歌を歌った。
-%%%%
 its luring
 
 魅惑的な
@@ -6421,6 +6409,10 @@ its luring
 a haunting
 
 意識に残る
+%%%%
+chants %s song.
+
+は%s歌を歌った。
 %%%%
 You hear %s.
 
