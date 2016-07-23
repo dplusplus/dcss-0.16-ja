@@ -374,7 +374,7 @@ Debugging Ray
 %%%%
 [spell]Dragon's Call
 
-ドラゴンの召喚
+ドラゴンの呼び声
 %%%%
 [spell]Drain Life
 
@@ -1064,8 +1064,7 @@ Shadow Bolt
 %%%%
 [spell]Summon Dragon
 
-# obsolete
-Summon Dragon
+ドラゴンの召喚
 %%%%
 [spell]Summon Drakes
 
