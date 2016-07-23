@@ -291,11 +291,11 @@ static void _sdump_visits(dump_params &par)
         int num_zigs = place_info.num_visits;
         text += make_stringf(jtransc("You %s%s %d ziggurat"),
                              num_zigs,
-                             (num_zigs == you.zigs_completed) ? "を踏破し、"
-                                                              : "に行き、");
+                             (num_zigs == you.zigs_completed) ? "を踏破し"
+                                                              : "に行き");
 
         if (num_zigs != you.zigs_completed && you.zigs_completed)
-            text += make_stringf(" (completing %d)", you.zigs_completed);
+            text += make_stringf(jtransc(" (completing %d)"), you.zigs_completed);
 
         text += make_stringf(jtransc(", and %s %d of %s levels"),
                              place_info.levels_seen);
