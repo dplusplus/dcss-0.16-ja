@@ -6550,6 +6550,21 @@ By Zin's power, the fiery explosion is contained.
 
 ジンの御業により、燃えさかる爆発の威力は抑えられた。
 %%%%
+exploding inner flame
+
+%%%%
+ignited by themself
+
+%%%%
+ignited by their pet
+
+%%%%
+set off by themself
+
+%%%%
+set off by their pet
+
+%%%%
 %s blazes out!
 
 %sは燃え上がった！
