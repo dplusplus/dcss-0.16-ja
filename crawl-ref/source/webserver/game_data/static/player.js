@@ -345,7 +345,7 @@ function ($, comm, enums, map_knowledge, messages, options) {
             else
                 species_god += player.species + " of " + player.god;
         }
-        if (player.god == "Xom")
+        if (player.god == "Xom" || player.god == "ゾム")
         {
             if (player.piety_rank >=0)
             {
@@ -355,6 +355,8 @@ function ($, comm, enums, map_knowledge, messages, options) {
             else
                 $("#stats_piety").text("......"); // very special plaything
         }
+        else if (player.god == "Gozag" || player.god == "ゴザーグ")
+            $("#stats_piety").text("");
         else if ((player.piety_rank > 0 || player.god != "")
                  && player.god != "Gozag")
         {
