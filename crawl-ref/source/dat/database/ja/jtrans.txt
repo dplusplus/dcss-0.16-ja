@@ -7635,6 +7635,14 @@ Couldn't find a path from (%d,%d) to (%d,%d).
 %%%%
 ############################## mon-place.cc ##############################
 %%%%
+%s shoves you out of the %s!
+
+%sがあなたを%sの外に押し出した！
+%%%%
+stairwell
+
+階段
+%%%%
 %s is enraged by your holy aura!
 
 %sはあなたの放つ聖なるオーラで激怒した！

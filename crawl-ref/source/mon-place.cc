@@ -1091,9 +1091,9 @@ monster* place_monster(mgen_data mg, bool force_pos, bool dont_place)
     // Message to player from stairwell/gate/abyss appearance.
     if (shoved)
     {
-        mprf("%s shoves you out of the %s!",
-             mon->visible_to(&you) ? mon->name(DESC_A).c_str() : "Something",
-             stair_type == DCHAR_ARCH ? "gateway" : "stairwell");
+        mprf(jtransc("%s shoves you out of the %s!"),
+             jtransc(mon->visible_to(&you) ? mon->name(DESC_A).c_str() : "Something"),
+             jtransc(stair_type == DCHAR_ARCH ? "gateway" : "stairwell"));
     }
     else if (mg.proximity == PROX_NEAR_STAIRS && you.can_see(mon))
     {
