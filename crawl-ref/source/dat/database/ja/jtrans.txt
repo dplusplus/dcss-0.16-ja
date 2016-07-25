@@ -7275,18 +7275,6 @@ illusion
 
 幻影
 %%%%
-shaped pillar of salt
-
-形の塩の柱
-%%%%
-shaped block of ice
-
-形の氷の塊
-%%%%
-shaped shifter
-
-に変身した変身能力者
-%%%%
 helpless
 
 哀れな
@@ -7310,6 +7298,18 @@ active
 -headed
 
 首
+%%%%
+shaped pillar of salt
+
+形の塩の柱
+%%%%
+shaped block of ice
+
+形の氷の塊
+%%%%
+shaped shifter
+
+に変身した変身能力者
 %%%%
 (fellow slime)
 
@@ -7419,6 +7419,10 @@ regenerating health quickly
 
 急速に回復している
 %%%%
+protected by its shell
+
+自らの甲羅に守られている
+%%%%
 dazed
 
 眩暈中
@@ -7449,7 +7453,7 @@ regenerating
 %%%%
 rolling
 
-回転中
+転がり中
 %%%%
 stone skin
 
@@ -7614,10 +7618,6 @@ fast
 [adj]fast
 
 素早く
-%%%%
-[adj]very slow
-
-かなり遅く
 %%%%
 normal
 

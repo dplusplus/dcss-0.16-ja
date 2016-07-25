@@ -1919,7 +1919,7 @@ string monster_info::wounds_description_sentence() const
     if (wounds.empty())
         return "";
     else
-        return string(pronoun(PRONOUN_SUBJECTIVE)) + " is " + wounds + ".";
+        return string(pronoun(PRONOUN_SUBJECTIVE)) + "は" + wounds + "。";
 }
 
 string monster_info::wounds_description(bool use_colour) const
