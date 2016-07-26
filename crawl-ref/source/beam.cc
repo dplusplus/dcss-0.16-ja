@@ -3286,7 +3286,7 @@ bool bolt::misses_player()
         if (flavour != BEAM_VISUAL)
             mprf(jtransc("The %s %s you!"),
                  jtrans_zap_name(name).c_str(),
-                 hit_verb.c_str());
+                 jtransc(hit_verb));
         return false;
     }
 
@@ -3390,7 +3390,8 @@ bool bolt::misses_player()
 
         if (_test_beam_hit(real_tohit, dodge_more, pierce, defl, r))
             mprf(jtransc("The %s %s you!"),
-                 jtrans_zap_name(name).c_str(), hit_verb.c_str());
+                 jtrans_zap_name(name).c_str(),
+                 jtransc(hit_verb));
         else
             mprf(jtransc("Helpless, you fail to dodge the %s."),
                  jtrans_zap_name(name).c_str());
@@ -3875,7 +3876,8 @@ void bolt::affect_player()
             if (hit_verb.empty())
                 hit_verb = engulfs ? "をとりまいた" : "に命中した";
             mprf(jtransc("The %s %s you!"),
-                 jtrans_zap_name(name).c_str(), hit_verb.c_str());
+                 jtrans_zap_name(name).c_str(),
+                 jtransc(hit_verb));
         }
 
         // Irresistible portion of resistable effect; must happen before MR
@@ -4831,7 +4833,8 @@ void bolt::affect_monster(monster* mon)
             {
                 mprf(jtransc("The %s %s %s."),
                      jtrans_zap_name(name).c_str(),
-                     jtransc(mon->name(DESC_THE)), hit_verb.c_str());
+                     jtransc(mon->name(DESC_THE)),
+                     jtransc(hit_verb));
             }
             else if (heard && !noise_msg.empty())
                 mprf(MSGCH_SOUND, "%s", jtransc(noise_msg));

@@ -5946,6 +5946,10 @@ passes through the gate.
 %%%%
 ############################## mon-cast.cc ##############################
 %%%%
+skewers
+
+に突き刺さった
+%%%%
 %s goes into a battle-frenzy!
 
 %sは戦いに熱狂した！
