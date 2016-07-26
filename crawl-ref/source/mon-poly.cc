@@ -546,6 +546,9 @@ bool monster_polymorph(monster* mons, monster_type targetc,
             obj = "";
         }
 
+        if (old_name_the == obj)
+            obj = "別の" + obj + "の姿";
+
         mprf(jtransc("%s %s%s!"),
              jtransc(old_name_the),
              jtransc(obj), jtransc(verb));
