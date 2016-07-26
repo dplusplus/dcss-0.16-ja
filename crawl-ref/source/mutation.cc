@@ -768,10 +768,10 @@ static void _display_vampire_attributes()
         {"苦痛への耐性     ", "           ", "           ", "       ", "       ", "           ", " +    "},
 
         {"\n<w>変異能力</w>\n"
-         "蝙蝠の躯         ", "×          ", "×          ", "○      ", "○      ", "○          ", "その他"},
+         "蝙蝠の躯         ", "×         ", "×         ", "○     ", "○     ", "○         ", "その他"},
 
         {"他の変異能力・\n"
-         "バーサーク       ", "○          ", "○          ", "×      ", "×      ", "×          ", "×    "}
+         "バーサーク       ", "○         ", "○         ", "×     ", "×     ", "×         ", "×    "}
     };
 
     int current = 0;
@@ -815,7 +815,7 @@ static void _display_vampire_attributes()
     result += jtrans(_vampire_Ascreen_footer);
 
     formatted_scroller attrib_menu;
-    attrib_menu.add_text(result);
+    attrib_menu.add_text(sp2nbsp(result));
 
     attrib_menu.show();
     if (attrib_menu.getkey() == '!'
