@@ -7731,6 +7731,14 @@ Failed to spawn projectile.
 
 射出物の生成に失敗しました。
 %%%%
+wavering
+
+揺らめく
+%%%%
+weakly hits
+
+に当たった
+%%%%
 %s hits %s
 
 %sは%sにぶつかった。
@@ -7777,7 +7785,7 @@ Your %s reflects %s!
 %%%%
 %s screeches to a halt.
 
-%sはキキーっと音を立てて止まった。
+%sはキキーッと音を立てて止まった。
 %%%%
 ############################## mon-tentacle.cc ##############################
 %%%%
