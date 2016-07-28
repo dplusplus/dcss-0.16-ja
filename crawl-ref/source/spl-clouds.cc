@@ -520,7 +520,7 @@ spret_type cast_cloud_cone(const actor *caster, int pow, const coord_def &pos,
     }
     mprf(jtransc("%s %s a blast of %s!"),
          jtransc(caster->name(DESC_THE)),
-         cloud_type_name(cloud).c_str());
+         cloud_type_name_j(cloud).c_str());
 
     if (cloud == CLOUD_FIRE && caster->is_player())
         did_god_conduct(DID_FIRE, min(5 + pow/2, 23));

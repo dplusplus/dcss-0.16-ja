@@ -1818,7 +1818,7 @@ static bool maybe_abort_ignite()
 
         if (cloud.type == CLOUD_MEPHITIC || cloud.type == CLOUD_POISON)
         {
-            prompt += cloud_type_name(cloud.type, true);
+            prompt += cloud_type_name_j(cloud.type, true);
             prompt += "の中に立っている！ それでも毒の燃焼の呪文を唱えますか？";
             return !yesno(prompt.c_str(), false, 'n');
         }

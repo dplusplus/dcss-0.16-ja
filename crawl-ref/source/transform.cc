@@ -1635,7 +1635,7 @@ static bool _transformation_is_safe(transformation_type which_trans,
             if (!quiet)
             {
                 mprf(jtransc("You can't transform into a tree while standing in a cloud of %s."),
-                     jtransc(cloud_type_name(cloud)));
+                     cloud_type_name_j(cloud).c_str());
             }
             return false;
         }
