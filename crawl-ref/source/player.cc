@@ -4770,7 +4770,7 @@ void contaminate_player(int change, bool controlled, bool msg)
         {
             mpr_nojoin((change > 0) ? MSGCH_WARN : MSGCH_RECOVERY,
                        make_stringf(jtransc("You feel %s contaminated with magical energies."),
-                                    (change > 0) ? "重くなったった" : "軽くなった"));
+                                    (change > 0) ? "重くなった" : "軽くなった"));
         }
 
         if (change > 0)
@@ -8754,8 +8754,8 @@ void player_open_door(coord_def doorpos)
 
         if (!ignore_exclude && is_exclude_root(doorpos))
         {
-            string prompt = make_stringf("This %s%s is marked as excluded! "
-                                         "Open it anyway?", jtransc(adj), jtransc(noun));
+            string prompt = make_stringf(jtransc("This %s%s is marked as excluded! "
+                                                 "Open it anyway?"), jtransc(adj), jtransc(noun));
 
             if (!yesno(prompt.c_str(), true, 'n', true, false))
             {

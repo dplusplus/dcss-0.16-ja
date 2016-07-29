@@ -8707,10 +8707,6 @@ You cannot enter lava in your current form.
 
 現在の姿では溶岩の中には入れない。
 %%%%
-Are you sure you want to
-
-本当に
-%%%%
 while you are losing your buoyancy?
 
 飛行能力が失われようとしていますが、
@@ -8718,6 +8714,10 @@ while you are losing your buoyancy?
 while your transformation is expiring?
 
 変身が解けようとしていますが、
+%%%%
+Are you sure you want to
+
+本当に
 %%%%
 Really %s into a travel-excluded area?
 
@@ -9133,7 +9133,7 @@ You are practically glowing with residual magic!
 %%%%
 Your entire body has taken on an eerie glow!
 
-あなたは全身に不気味な光を受けた！
+あなたは全身から不気味な光を放った！
 %%%%
 You are engulfed in a nimbus of crackling magics!
 
@@ -9162,6 +9162,10 @@ Your divine stamina protects you from confusion!
 You are %sconfused.
 
 あなたは%s混乱した。
+%%%%
+You are lethally poisoned!
+
+あなたは致命的なほどに毒を受けた！
 %%%%
 You are %spoisoned.
 
@@ -9420,7 +9424,7 @@ You feel strangely conspicuous.
 %%%%
 You can't fall asleep again this soon!
 
-あなたは二度寝できない！
+あなたはそんなに早く二度寝できない！
 %%%%
 You fall asleep.
 
