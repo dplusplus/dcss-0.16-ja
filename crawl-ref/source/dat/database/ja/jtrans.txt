@@ -10593,6 +10593,10 @@ Increase (S)trength, (I)ntelligence, or (D)exterity?
 
 どの能力を伸ばしますか？ (S)腕力 (I)知力 (D)器用さ
 %%%%
+'s power touches on your attributes.
+
+の御業があなたの能力値を変更した。
+%%%%
 You feel weakend.
 
 あなたは弱くなった。
