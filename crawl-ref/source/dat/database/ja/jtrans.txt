@@ -9974,7 +9974,7 @@ start or stop
 %%%%
 You feel protected.
 
-あなたは護りの力を感じた
+あなたは守られているような気がした。
 %%%%
 You feel stealthy.
 
@@ -10663,13 +10663,17 @@ Your %s has recovered.
 %%%%
 ############################## potion.cc ##############################
 %%%%
-You feel better.
+You shouldn't drink that now.
 
-あなたは気分が良くなった。
+あなたは今薬を飲むべきではない。
 %%%%
 You feel queasy.
 
 あなたは吐き気がした。
+%%%%
+You feel better.
+
+あなたは気分が良くなった。
 %%%%
 You have no ailments to cure.
 
@@ -10742,6 +10746,10 @@ You cannot fly right now.
 That liquid tasted very nasty...
 
 この液体はひどい味がする……
+%%%%
+a potion of poison
+
+毒の薬
 %%%%
 You feel slightly nauseous.
 
@@ -10837,7 +10845,7 @@ You feel slightly irritated.
 %%%%
 You cannot go berserk now.
 
-あなたは今は狂戦士化できない。
+あなたは今はバーサークできない。
 %%%%
 You cannot mutate %s
 
@@ -10857,7 +10865,7 @@ You feel extremely strange.
 %%%%
 You feel dead inside.
 
-あなたは体の中が不活発になったと感じた。
+あなたは体の中が不活発だと感じた。
 %%%%
 You feel fantastic!
 
@@ -10867,9 +10875,9 @@ You feel fantastic for a moment.
 
 あなたは一瞬素晴らしい感じがした。
 %%%%
-You feel protected.
+drinking a potion of degeneration
 
-あなたは守られているような気がした。
+能力低下の薬の服用
 %%%%
 There was something very wrong with that liquid.
 

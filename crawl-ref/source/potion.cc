@@ -41,7 +41,7 @@ bool PotionEffect::quaff(bool was_known) const
 {
     if (was_known && !can_quaff())
     {
-        mpr("You shouldn't drink that now.");
+        mpr(jtrans("You shouldn't drink that now."));
         return false;
     }
     effect();
