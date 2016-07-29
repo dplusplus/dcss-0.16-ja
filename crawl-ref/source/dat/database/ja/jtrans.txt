@@ -9734,6 +9734,14 @@ You cannot go berserk while under stasis.
 
 停滞状態ではバーサークすることができない。
 %%%%
+You're too calm and focused to rage.
+
+あなたは激怒に身を任せるほど我を忘れていない。
+%%%%
+You're too hungry to go berserk.
+
+あなたは腹が空きすぎていてバーサークすることができない。
+%%%%
 You are pushed out of the %s.
 
 あなたは%sに押しやられた。
