@@ -9792,7 +9792,7 @@ You really shouldn't be using a fiery item like this.
 
 あなたはこのような光を放つアイテムを用いるべきではない。
 %%%%
- It sticks to your %s!
+It sticks to your %s!
 
 それはあなたの%sから離れない！
 %%%%
@@ -9890,7 +9890,7 @@ You feel the dreadful sensation subside.
 %%%%
 Lugonu absorbs the residual spatial distortion as you unwield your weapon.
 
-ルゴヌはあなたが武器を手放した際の余波の空間歪曲を吸い取った。
+ルゴヌはあなたが武器を手放した際に起こった空間歪曲を吸い取った。
 %%%%
 a distortion unwield
 
@@ -9906,7 +9906,7 @@ Your temporary branding evaporates.
 %%%%
 Your spectral weapon disappears as %s.
 
-幽体の武器は%sやいなや消え去った。
+幽体の武器は%sとともに消え去った。
 %%%%
 your weapon melds
 
@@ -10151,10 +10151,6 @@ You feel strangely static.
 Oops, that %s feels deathly cold.
 
 うわ！ この%sは凄まじく冷たい！
-%%%%
-Your magic begins regenerating once more.
-
-あなたの魔力は再び回復しはじめた。
 %%%%
 ############################## player-reacts.cc ##############################
 %%%%
