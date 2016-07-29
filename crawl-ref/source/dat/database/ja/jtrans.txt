@@ -10285,7 +10285,7 @@ Your icy shield evaporates.
 %%%%
 Your icy shield starts to melt.
 
-あなたの氷の盾は溶け始めている。
+あなたの氷の盾は溶けはじめている。
 %%%%
 Your magical shield disappears.
 
@@ -10301,7 +10301,7 @@ You feel uncertain.
 %%%%
 You start to feel a little uncertain.
 
-あなたは少し不確定になってきたようだ。
+あなたの存在は少し不確定になってきたようだ。
 %%%%
 Your unholy channel expires.
 
@@ -10441,7 +10441,7 @@ You feel your flesh rotting away.
 %%%%
 Your life is in your own hands again!
 
-あなたの生命は再びあなたの元に戻った。
+あなたは再び自らの生命をその手に取り戻した。
 %%%%
 Your time is quickly running out!
 
