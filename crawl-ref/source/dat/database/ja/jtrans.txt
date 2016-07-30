@@ -8445,6 +8445,18 @@ Please select your background.
 
 あなたの職業を選んでください。
 %%%%
+large rocks
+
+大岩
+%%%%
+tomahawks
+
+トマホーク
+%%%%
+javelins
+
+ジャベリン
+%%%%
 + - Viable random choice
 
 + - 適した武器をランダムに選ぶ
