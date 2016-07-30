@@ -10972,13 +10972,29 @@ You can't quiver worn items.
 %%%%
 ############################## ranged_attack.cc ##############################
 %%%%
-%s %s %s%s
+Shot with a%s %s by %s
 
-%sは%s%sを%s%s
+%sの%sに撃たれた
+%%%%
+Hit by a%s %s thrown by %s
+
+%sの投げた%sに当たった
+%%%%
+%s is repelled.
+
+%sは弾かれた。
+%%%%
+%s momentarily %s out as %s passes through %s%s
+
+%sは一瞬存在感を薄め、%sをやりすごした%s
 %%%%
 %s %s %s but does no damage.
 
 %sは%sに%sが、ダメージを与えられなかった。
+%%%%
+%s pierces through %s %s!
+
+%sは%sの%sをかいくぐって命中した！
 %%%%
 pierces through
 
