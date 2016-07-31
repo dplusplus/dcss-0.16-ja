@@ -8181,7 +8181,7 @@ You are amphibious.
 %%%%
 You can wear up to %s rings at the same time.
 
-あなたはいちどきに%dつの指輪を装備することができる。
+あなたはいちどきに%sつの指輪を装備することができる。
 %%%%
 You can use your tentacles to constrict many enemies at once.
 
@@ -9352,7 +9352,7 @@ wielding %s
 %%%%
 wearing %s %s preventing teleportation
 
-%d%sのテレポートを防ぐ%sの装備
+%s%sのテレポートを防ぐ%sの装備
 %%%%
 artefacts
 
@@ -12436,7 +12436,7 @@ Which god (%s)?
 %%%%
 %s %s rot%s away.
 
-%dつの%sが腐ってしまった。
+%sつの%sが腐ってしまった。
 %%%%
 ############################## sacrifice-data.h ##############################
 %%%%
@@ -18489,7 +18489,7 @@ Found %s
 %%%%
 Found %s %s.
 
-%dつの%sを見つけた。
+%s%sの%sを見つけた。
 %%%%
 item
 

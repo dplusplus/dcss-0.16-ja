@@ -421,7 +421,7 @@ static void _potion_stack_changed_message(string item_name, int num_changed,
     ASSERT(num_changed > 0);
 
     mprf(MSGCH_ROTTEN_MEAT, jtransc("%s %s rot%s away."),
-         num_changed,
+         to_string(num_changed).c_str(),
          item_name.c_str());
 }
 
