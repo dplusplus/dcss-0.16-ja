@@ -4532,7 +4532,7 @@ template <class C> void explore_discoveries::say_any(
     if (has_duplicates(coll.begin(), coll.end()))
     {
         mprf(jtransc("Found %s %s."),
-             to_string(size).c_str(),
+             to_stringc(size),
              general_counter_suffix(size),
              jtransc(category));
         return;
@@ -4542,7 +4542,7 @@ template <class C> void explore_discoveries::say_any(
 
     if (strwidth(message) >= get_number_of_cols())
         mprf(jtransc("Found %s %s."),
-             to_string(size).c_str(),
+             to_stringc(size),
              general_counter_suffix(size),
              jtransc(category));
     else

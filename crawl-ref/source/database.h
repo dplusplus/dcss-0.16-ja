@@ -112,6 +112,8 @@ string to_separated_line(Z start, Z end, bool to_j = true,
     return to_separated_fn(start, end, stringify, first, second, fin);
 }
 
+#define to_stringc(x) (to_string(x).c_str())
+
 vector<string> getAllFAQKeys();
 string getFAQ_Question(const string &key);
 string getFAQ_Answer(const string &question);

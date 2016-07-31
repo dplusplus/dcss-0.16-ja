@@ -1217,7 +1217,7 @@ static bool _swap_rings(int ring_slot)
     else if (available == 0)
     {
         mprf(jtransc("You're already wearing %s cursed ring%s!%s"),
-             to_string(cursed).c_str(),
+             to_stringc(cursed),
              (cursed > 2 ? jtransc(" Isn't that enough for you?)") : ""));
         return false;
     }

@@ -7037,7 +7037,7 @@ string player::no_tele_reason(bool calc_unid, bool blinking) const
         {
             problems.push_back(
                 make_stringf(jtransc("wearing %s %s preventing teleportation"),
-                             to_string(worn_notele.size()).c_str(),
+                             to_stringc(worn_notele.size()),
                              general_counter_suffix(worn_notele.size()),
                              jtransc(found_nonartefact ? "items": "artefacts")));
         }

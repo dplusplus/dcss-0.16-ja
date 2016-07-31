@@ -515,7 +515,7 @@ string describe_mutations(bool center_title)
         result += jtransln("You are amphibious.\n");
         result += _annotate_form_based(
             make_stringf(jtransc("You can wear up to %s rings at the same time."),
-                         to_string(you.has_usable_tentacles(false)).c_str()).c_str(),
+                         to_stringc(you.has_usable_tentacles(false))).c_str(),
             !get_form()->slot_available(EQ_RING_EIGHT));
         result += _annotate_form_based(
             jtrans("You can use your tentacles to constrict many enemies at once."),

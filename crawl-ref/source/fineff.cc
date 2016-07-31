@@ -308,7 +308,7 @@ void trj_spawn_fineff::fire()
         {
             mprf(jtransc("%s spits out %s more jellies."),
                  monnam.c_str(),
-                 to_string(spawned).c_str());
+                 to_stringc(spawned));
         }
     }
     else if (spawned == 1)
@@ -316,7 +316,7 @@ void trj_spawn_fineff::fire()
     else
     {
         mprf(jtransc("The dying royal jelly spits out %s more jellies."),
-             to_string(spawned).c_str());
+             to_stringc(spawned));
     }
 }
 
