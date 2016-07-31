@@ -1094,8 +1094,8 @@ void dec_penance(god_type god, int val)
         const bool dead_jiyva = (god == GOD_JIYVA && jiyva_is_dead());
 
         simple_god_message(
-            make_stringf(" seems mollified%s.",
-                         dead_jiyva ? ", and vanishes" : "").c_str(),
+            make_stringf(jtransc(" seems mollified%s."),
+                         jtransc(dead_jiyva ? ", and vanishes" : "")).c_str(),
             god);
 
         if (dead_jiyva)
@@ -1119,18 +1119,18 @@ void dec_penance(god_type god, int val)
             else if (god == GOD_SHINING_ONE
                      && you.piety >= piety_breakpoint(0))
             {
-                mprf(MSGCH_GOD, "Your divine halo returns!");
+                mpr_nojoin(MSGCH_GOD, jtrans("Your divine halo returns!"));
                 invalidate_agrid(true);
             }
             else if (god == GOD_ASHENZARI
                      && you.piety >= piety_breakpoint(2))
             {
-                mprf(MSGCH_GOD, "Your vision regains its divine sight.");
+                mpr_nojoin(MSGCH_GOD, jtrans("Your vision regains its divine sight."));
                 autotoggle_autopickup(false);
             }
             else if (god == GOD_CHEIBRIADOS)
             {
-                simple_god_message(" restores the support of your attributes.");
+                simple_god_message(jtransc(" restores the support of your attributes."));
                 redraw_screen();
                 notify_stat_change();
             }
@@ -1138,13 +1138,13 @@ void dec_penance(god_type god, int val)
             else if (god == GOD_DITHMENOS
                      && you.piety >= piety_breakpoint(0))
             {
-                mprf(MSGCH_GOD, "Your aura of darkness returns!");
+                mpr_nojoin(MSGCH_GOD, jtrans("Your aura of darkness returns!"));
                 invalidate_agrid(true);
             }
             else if (god == GOD_QAZLAL
                      && you.piety >= piety_breakpoint(0))
             {
-                mprf(MSGCH_GOD, "A storm instantly forms around you!");
+                mpr_nojoin(MSGCH_GOD, jtrans("A storm instantly forms around you!"));
                 you.redraw_armour_class = true; // also handles shields
             }
             // When you've worked through all your penance, you get
@@ -1159,7 +1159,7 @@ void dec_penance(god_type god, int val)
             return;
         mark_milestone("god.mollify",
                        jtrans(god_name(god)) + "の赦しをいくらか得た");
-        simple_god_message(" seems mollified... mostly.", god);
+        simple_god_message(jtransc(" seems mollified... mostly."), god);
         take_note(Note(NOTE_MOLLIFY_GOD, god));
     }
     else
@@ -1255,7 +1255,7 @@ static void _inc_penance(god_type god, int val)
         else if (god == GOD_SHINING_ONE)
         {
             if (you.haloed())
-                mprf(MSGCH_GOD, god, "Your divine halo fades away.");
+                mpr_nojoin(MSGCH_GOD, god, jtrans("Your divine halo fades away."));
 
             if (you.duration[DUR_DIVINE_SHIELD])
                 tso_remove_divine_shield();
@@ -1282,36 +1282,36 @@ static void _inc_penance(god_type god, int val)
         else if (god == GOD_DITHMENOS)
         {
             if (you.umbraed())
-                mprf(MSGCH_GOD, god, "Your aura of darkness fades away.");
+                mpr_nojoin(MSGCH_GOD, god, jtrans("Your aura of darkness fades away."));
             invalidate_agrid();
         }
         else if (god == GOD_QAZLAL)
         {
             if (you.piety >= piety_breakpoint(0))
             {
-                mprf(MSGCH_GOD, god, "The storm surrounding you dissipates.");
+                mpr_nojoin(MSGCH_GOD, god, jtrans("The storm surrounding you dissipates."));
                 you.redraw_armour_class = true;
             }
             if (you.duration[DUR_QAZLAL_FIRE_RES])
             {
-                mprf(MSGCH_DURATION, "Your resistance to fire fades away.");
+                mpr_nojoin(MSGCH_DURATION, jtrans("Your resistance to fire fades away."));
                 you.duration[DUR_QAZLAL_FIRE_RES] = 0;
             }
             if (you.duration[DUR_QAZLAL_COLD_RES])
             {
-                mprf(MSGCH_DURATION, "Your resistance to cold fades away.");
+                mpr_nojoin(MSGCH_DURATION, jtrans("Your resistance to cold fades away."));
                 you.duration[DUR_QAZLAL_COLD_RES] = 0;
             }
             if (you.duration[DUR_QAZLAL_ELEC_RES])
             {
-                mprf(MSGCH_DURATION,
-                     "Your resistance to electricity fades away.");
+                mpr_nojoin(MSGCH_DURATION,
+                           jtrans("Your resistance to electricity fades away."));
                 you.duration[DUR_QAZLAL_ELEC_RES] = 0;
             }
             if (you.duration[DUR_QAZLAL_AC])
             {
-                mprf(MSGCH_DURATION,
-                     "Your resistance to physical damage fades away.");
+                mpr_nojoin(MSGCH_DURATION,
+                           jtrans("Your resistance to physical damage fades away."));
                 you.duration[DUR_QAZLAL_AC] = 0;
                 you.redraw_armour_class = true;
             }
@@ -1883,7 +1883,7 @@ bool do_god_gift(bool forced)
                     you.num_total_gifts[you.religion]++;
                 }
                 else
-                    mpr("You feel as though nothing has changed.");
+                    mpr(jtrans("You feel as though nothing has changed."));
             }
             break;
 
@@ -2282,11 +2282,11 @@ void dock_piety(int piety_loss, int penance)
         if (last_piety_lecture != you.num_turns)
         {
             // output guilt message:
-            mprf("You feel%sguilty.",
-                 (piety_loss == 1) ? " a little " :
-                 (piety_loss <  5) ? " " :
-                 (piety_loss < 10) ? " very "
-                                   : " extremely ");
+            mprf(jtransc("You feel%sguilty."),
+                 (piety_loss == 1) ? "少し" :
+                 (piety_loss <  5) ? "" :
+                 (piety_loss < 10) ? "かなり"
+                                   : "重大な");
         }
 
         last_piety_lecture = you.num_turns;
@@ -2300,7 +2300,7 @@ void dock_piety(int piety_loss, int penance)
         if (last_penance_lecture != you.num_turns)
         {
             god_speaks(you.religion,
-                       "\"You will pay for your transgression, mortal!\"");
+                       jtransc("\"You will pay for your transgression, mortal!\""));
         }
         last_penance_lecture = you.num_turns;
         _inc_penance(penance);
@@ -4640,9 +4640,9 @@ static void _place_delayed_monsters()
 
             string msg;
             if (placed > 0)
-                msg = _delayed_success[0];
+                msg = jtrans(_delayed_success[0]);
             else
-                msg = _delayed_failure[0];
+                msg = jtrans(_delayed_failure[0]);
 
             if (placed == 1)
             {
@@ -4674,8 +4674,9 @@ static void _place_delayed_monsters()
             }
 
             // Fake its coming from simple_god_message().
-            if (msg[0] == ' ' || msg[0] == '\'')
-                msg = uppercase_first(god_name(mg.god)) + msg;
+            if (msg[0] == ' ' || msg[0] == '\''
+                || starts_with(msg, "は"))
+                msg = jtrans(god_name(mg.god)) + msg;
 
             msg = apostrophise_fixup(msg);
             trim_string(msg);

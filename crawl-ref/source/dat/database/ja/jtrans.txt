@@ -11567,7 +11567,6 @@ step out of the time flow
 The more cursed you are, the more Ashenzari supports your skills.
 
 呪縛されればされるほど、アシェンザリはさらなるスキルの支援を行う。
-
 %%%%
 Ashenzari reveals the unseen and keeps your mind clear.
 
@@ -12041,9 +12040,77 @@ use unnaturally quick items
 
 不自然に素早いアイテムを使うこと
 %%%%
+seems mollified%s.
+
+は機嫌を直し%sた。
+%%%%
+, and vanishes
+
+て消え去っ
+%%%%
+Your divine halo returns!
+
+あなたは再び光輪を放つようになった！
+%%%%
+Your vision regains its divine sight.
+
+あなたは神の視野を取り戻した。
+%%%%
+restores the support of your attributes.
+
+は再びあなたの能力値を強化した。
+%%%%
+Your aura of darkness returns!
+
+あなたは闇のオーラを再び纏った。
+%%%%
+A storm instantly forms around you!
+
+あなたは再び様々な雲を生み出すようになった。
+%%%%
+seems mollified... mostly.
+
+はいくらか機嫌を直したようだ。
+%%%%
+Your divine halo fades away.
+
+あなたの光輪は薄れていった。
+%%%%
+Your aura of darkness fades away.
+
+あなたの周囲の闇のオーラは薄れていった。
+%%%%
+The storm surrounding you dissipates.
+
+あなたを取り巻く嵐が消滅した。
+%%%%
+Your resistance to fire fades away.
+
+あなたの火炎への耐性が薄れていった。
+%%%%
+Your resistance to cold fades away.
+
+あなたの冷気への耐性が薄れていった。
+%%%%
+Your resistance to electricity fades away.
+
+あなたの電気への耐性が薄れていった。
+%%%%
+Your resistance to physical damage fades away.
+
+あなたの物理ダメージへの耐性が薄れていった。
+%%%%
 Jiyva's grace
 
 ジーヴァの恩寵
+%%%%
+grants you @an@ undead servant@s@!
+
+はあなたに不死の従僕を授けた！
+%%%%
+You feel as though nothing has changed.
+
+何も起こらなかったようだ。
 %%%%
 offers you knowledge of
 
@@ -12052,6 +12119,14 @@ offers you knowledge of
 These spells will remain available as long as you worship Vehumet.
 
 これらの魔法はヴェフメットを信仰している限りいつでも習得できる。
+%%%%
+You feel%sguilty.
+
+あなたは%s罪を感じた。
+%%%%
+"You will pay for your transgression, mortal!"
+
+『汝の罪を贖え、定命の者よ！』
 %%%%
 You can now %s.
 
@@ -12145,10 +12220,6 @@ All of your followers decide to abandon you.
 
 従者たちはあなたを見捨てることを決意した。
 %%%%
-Your divine halo fades away.
-
-あなたの光輪は薄れていった。
-%%%%
 All of your fellow slimes turn on you.
 
 仲間のスライムたちはあなたに敵対した。
@@ -12156,10 +12227,6 @@ All of your fellow slimes turn on you.
 The plants of the dungeon turn on you.
 
 ダンジョン内の植物はあなたに敵対した。
-%%%%
-Your aura of darkness fades away.
-
-あなたの周囲の闇のオーラは薄れていった。
 %%%%
 Your funded stores close, unable to pay their debts without your funds.
 
@@ -12275,7 +12342,7 @@ says: You will suffer for embracing such %s!
 %%%%
 grants you a jelly!
 
-はジェリーをあなたに授けた！
+はジェリーをあなたに遣わした！
 %%%%
 You pay a service fee of %d gold.
 
@@ -12339,7 +12406,7 @@ refuses to forgive you so easily!
 %%%%
 Gozag will waive the service fee if you
 
-ゴザーグは今入会するなら入会金を免除してくれるようだ！
+ゴザーグは今なら入会金を免除してくれるようだ！
 %%%%
 The service fee for joining is currently %d gold; you have %d.
 
