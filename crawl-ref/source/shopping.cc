@@ -2762,7 +2762,7 @@ void ShoppingList::display()
             {
                 // HACK: Assume it's some kind of portal vault.
                 const string info = make_stringf(
-                             "%s with an entry fee of %d gold pieces.",
+                             jtransc("%s with an entry fee of %d gold pieces."),
                              describe_thing(*thing, DESC_A).c_str(),
                              (int) thing_cost(*thing));
 

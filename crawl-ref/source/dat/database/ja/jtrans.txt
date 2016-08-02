@@ -12605,6 +12605,10 @@ examine|<w>buy</w>
 
 ] 購入リストに入れる
 %%%%
+(unknown)
+
+(未鑑定)
+%%%%
 %4d gold   %s
 
 %4dゴールド  %s
@@ -12709,10 +12713,6 @@ travel|examine|<w>delete</w>
 
 %*s%5dゴールド  %s%s
 %%%%
-(unknown)
-
-(未鑑定)
-%%%%
 <yellow>You have %d gp</yellow>
 
 <yellow>あなたは%d枚の金貨を持っている。</yellow>
@@ -12720,6 +12720,10 @@ travel|examine|<w>delete</w>
 You cannot afford %s; travel there anyway? (y/N)
 
 現在%sを買う金がありませんが、それでも移動しますか？ (y/N)
+%%%%
+%s with an entry fee of %d gold pieces.
+
+%sへの入場料は%dゴールドです。
 %%%%
 Your shopping list is now empty.
 
