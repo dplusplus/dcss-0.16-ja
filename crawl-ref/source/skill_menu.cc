@@ -572,7 +572,7 @@ string SkillMenuSwitch::get_name(skill_menu_state state)
     case SKM_SHOW_ALL:       return "全て";
     case SKM_LEVEL_ENHANCED:
         return (skm.is_set(SKMF_ENHANCED)
-                && skm.is_set(SKMF_REDUCED)) ? "changed" :
+                && skm.is_set(SKMF_REDUCED)) ? "変更後" :
                    skm.is_set(SKMF_ENHANCED) ? "補正あり"
                                              : "reduced";
     case SKM_LEVEL_NORMAL:   return "なし";
@@ -828,7 +828,7 @@ bool SkillMenu::exit()
 
     if (!enabled_skill && !all_skills_maxed())
     {
-        set_help("<lightred>You need to enable at least one skill.</lightred>");
+        set_help(jtrans("<lightred>You need to enable at least one skill.</lightred>"));
         return false;
     }
 
