@@ -13109,11 +13109,6 @@ kneel at
 %%%%
 ############################## spl-book.cc ##############################
 %%%%
-# refer to describe.cc part
-# This book is beyond your current level of understanding.
-
-# この魔法書は今のあなたのレベルでは理解できない。
-%%%%
 You must pick up those books before reading them.
 
 これらの魔法書を読む前に、地面から拾い上げる必要がある。
@@ -13144,7 +13139,7 @@ You already know all available spells.
 %%%%
 You cannot currently memorise any of the available spells because you cannot use those schools of magic.
 
-あなたはその種別の魔法を使えないため現状これらの呪文を記憶することができない。
+あなたはその種別の魔法を使えないため、現状これらの呪文を記憶することができない。
 %%%%
 You cannot currently memorise any of the available spells because you are in %s form.
 
@@ -13185,6 +13180,10 @@ Toggle display with '<w>!</w>'
 Your brain is not functional enough to learn spells.
 
 あなたの脳みそでは魔法を覚えることができない。
+%%%%
+You already know that spell!
+
+あなたは既にその呪文を習得している！
 %%%%
 Your head is already too full of spells!
 

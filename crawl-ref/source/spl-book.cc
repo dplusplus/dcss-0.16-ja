@@ -2136,7 +2136,7 @@ void make_book_Kiku_gift(item_def &book, bool first)
     name += getRandNameString("book_name") + " ";
     string type_name = getRandNameString("Necromancy");
     if (type_name.empty())
-        name += "Necromancy";
+        name += tagged_jtrans("[skill]", "Necromancy");
     else
         name += type_name;
     set_artefact_name(book, name);
