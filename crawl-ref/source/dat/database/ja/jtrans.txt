@@ -13458,7 +13458,7 @@ You can't place the cloud on a creature.
 %%%%
 The fire roars with new energy!
 
-炎は新たに燃え上がった！
+炎は火勢を増して燃え上がった！
 %%%%
 The fire roars!
 
