@@ -13626,6 +13626,10 @@ Aaaarggghhhhh!
 
 「ギャアアァァァァ！」
 %%%%
+vampiric drain backlash
+
+ヴァンパイアの吸血の反動
+%%%%
 You feel life coursing into your body.
 
 あなたは自分の体に生命力が流れ込んでくるのを感じた。
@@ -13896,7 +13900,7 @@ by Olgreb's Toxic Radiance
 %%%%
 toxic radiance
 
-
+毒気の光輪
 %%%%
 Without enough magic to sustain it, your searing ray dissipates.
 
