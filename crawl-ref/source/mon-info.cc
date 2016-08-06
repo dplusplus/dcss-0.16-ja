@@ -41,6 +41,7 @@
 #ifdef USE_TILE
 #include "tilepick.h"
 #endif
+#include "transform.h"
 #include "traps.h"
 
 static monster_info_flags ench_to_mb(const monster& mons, enchant_type ench)
@@ -1119,6 +1120,22 @@ string monster_info::_apply_adjusted_description_j(description_level_type desc,
     return apply_description_j(desc, s);
 }
 
+static string _jnumber_for_hydra_heads(int i)
+{
+    ASSERT((0 < i) && (i <= 27)); // for Lernaean hydra
+
+    string nums[10] = {"", "一", "二", "三", "四", "五", "六", "七", "八", "九"};
+    string num;
+
+    if(i >= 20)
+        num += nums[i / 10];
+    if(i >= 10)
+        num += "十";
+    num += nums[i % 10];
+
+    return num;
+}
+
 string monster_info::common_name(description_level_type desc) const
 {
     const string core = _core_name();
@@ -1155,9 +1172,9 @@ string monster_info::common_name(description_level_type desc) const
         ASSERT(num_heads > 0);
 
         if (type != MONS_LERNAEAN_HYDRA)
-            ss << num_heads << jtrans("-headed ");
+            ss << _jnumber_for_hydra_heads(num_heads) << jtrans("-headed ");
         else
-            ss << num_heads << "の首を持つ";
+            ss << _jnumber_for_hydra_heads(num_heads) << "の首を持つ";
     }
 
     if (mons_class_is_chimeric(type))
