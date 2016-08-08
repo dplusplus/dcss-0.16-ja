@@ -13992,10 +13992,6 @@ You feel as if something is helping you.
 
 あなたは何か偉大な存在から助けを受けたような気がした。
 %%%%
-None of your equipped items are cursed.
-
-あなたの装備しているアイテムは何も呪われていない。
-%%%%
 You feel blessed for a moment.
 
 あなたは一瞬祝福されたような気がした。
@@ -14006,7 +14002,7 @@ Choose an uncursed equipped piece of %s, or Esc to abort.
 %%%%
 You aren't wearing any piece of uncursed %s.
 
-あなたは呪われていない%sを装備していない。
+あなたの装備している%sは全て呪われている。
 %%%%
 You briefly glimpse something next to %s.
 
@@ -14068,17 +14064,9 @@ You feel a surge of unholy energy.
 
 あなたは不浄なエネルギーの奔流を感じた。
 %%%%
-# Your body is wracked with pain!
-
-# あなたの肉体は苦痛を受けている！
-%%%%
 Symbol of Torment
 
 苦痛の紋章
-%%%%
-Sceptre of Torment
-
-苦悩の王笏
 %%%%
 a scroll of torment
 

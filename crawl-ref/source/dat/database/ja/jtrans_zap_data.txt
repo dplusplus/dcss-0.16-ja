@@ -641,6 +641,10 @@
 
 黄金の炎
 %%%%
+[zap]the Shining One's cleansing flame
+
+輝けるものの浄化の炎
+%%%%
 ############################## spl-miscast.cc ##############################
 %%%%
 [zap]explosion
