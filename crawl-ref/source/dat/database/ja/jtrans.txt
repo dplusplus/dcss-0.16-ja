@@ -1271,15 +1271,15 @@ You aren't carrying any fruit.
 %%%%
 None of your equipped items are cursed.
 
-あなたの装備しているアイテムは呪われていない。
+あなたの装備しているアイテムは何も呪われていない。
 %%%%
 You aren't wearing any piece of uncursed armour.
 
-あなたの装備している防具は呪われていない。
+あなたの装備している防具は全て呪われている。
 %%%%
 You aren't wearing any piece of uncursed jewellery.
 
-あなたの装備している装飾品は呪われていない。
+あなたの装備している装飾品は全て呪われている。
 %%%%
 You aren't carrying any weapons that can be branded.
 
