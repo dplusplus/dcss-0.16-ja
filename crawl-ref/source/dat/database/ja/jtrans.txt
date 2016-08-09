@@ -18723,10 +18723,6 @@ potion effect
 
 薬の投与
 %%%%
-looks rather confused.
-
-は混乱しているようだ。
-%%%%
 confuse monster(s)
 
 モンスターの混乱
