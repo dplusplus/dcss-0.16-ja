@@ -14310,10 +14310,6 @@ You feel susceptible to magic.
 
 @The_monster@は魔法に弱くなったようだ。
 %%%%
-The air around @the_monster@ crackles with energy!
-
-@the_monster@の周りの大気がエネルギーを帯びてバチバチと爆ぜた！
-%%%%
 Waves of light ripple over your body.
 
 光の波があなたの体の上を流れた。
@@ -14378,9 +14374,9 @@ You spin around.
 
 @The_monster@はその場でクルクルと回転した。
 %%%%
-Strange energies run through your body.
+A spot of thin air glows %s for a moment.
 
-奇妙なエネルギーがあなたの体を通り抜けた。
+空中の一点が一瞬%sに輝いた。
 %%%%
 The world appears momentarily distorted!
 
@@ -14433,6 +14429,14 @@ You are caught in a strong localised spatial distortion.
 A piece of empty space twists and writhes.
 
 局所的な空間歪曲が起こった。
+%%%%
+Space warps around you!
+
+あなたの周囲の空間が歪んだ！
+%%%%
+Space warps around @the_monster@!
+
+@the_monster@の周囲の空間が歪んだ！
 %%%%
 You are crushed and pinned by an extremely strong localised spatial distortion!
 
@@ -14568,7 +14572,7 @@ You feel a little dazed.
 %%%%
 You suddenly recall your previous life!
 
-あなたは突然生前のことを思い出した。
+あなたは突然生前の記憶を思い出した！
 %%%%
 You have damaged your brain!
 
@@ -14581,10 +14585,6 @@ You have a terrible headache.
 You lose your focus.
 
 あなたは集中力を失った。
-%%%%
-You suddenly feel drained of magical energy!
-
-あなたは突然魔力を吸われたような気がした！
 %%%%
 You lose concentration completely!
 
@@ -14756,7 +14756,7 @@ Something reaches out for @the_monster@...
 %%%%
 Something reaches out from thin air...
 
-何かが宙に向かって這い出した……
+何かが宙から這い出した……
 %%%%
 Death has come for you...
 
@@ -14776,7 +14776,7 @@ The thin air crackles with energy!
 %%%%
 There is a strange surge of energy around @the_monster@.
 
-奇妙なエネルギーの高まりが@the_monsterの周囲に発生した。
+奇妙なエネルギーの高まりが@the_monster@の周囲に発生した。
 %%%%
 Waves of light ripple in the air.
 
@@ -14824,15 +14824,15 @@ Your limbs ache and wobble like jelly!
 %%%%
 Your body is flooded with distortional energies!
 
-あなたの体は歪曲のエネルギーで満ち溢れた！
+あなたの体は歪曲のエネルギーに満ち溢れた！
 %%%%
 @The_monster@'s body is flooded with distortional energies!
 
-@The_monster@の体は歪曲のエネルギーで満ち溢れた！
+@The_monster@の体は歪曲のエネルギーに満ち溢れた！
 %%%%
 You feel very strange.
 
-あなたは非常に奇妙な気分がした。
+あなたはとても奇妙な気分になった。
 %%%%
 The air around you burns with energy!
 
@@ -15465,22 +15465,6 @@ There is a sudden blast of acid!
 Wisps of shadow whirl around...
 
 影の群れが周囲を取り巻いた……
-%%%%
-You feel very strange.
-
-あなたはとても奇妙な気分になった。
-%%%%
-Space warps around you!
-
-あなたの周囲の空間が歪んだ！
-%%%%
-Space warps around @the_monster@!
-
-@the_monster@の周囲の空間が歪んだ！
-%%%%
-A piece of empty space twists and writhes.
-
-局所的な空間歪曲が起こった。
 %%%%
 Magical energy is drained from your %s
 
