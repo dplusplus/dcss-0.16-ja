@@ -776,9 +776,9 @@ void bolt::fake_flavour()
     else if (real_flavour == BEAM_CRYSTAL && flavour == BEAM_CRYSTAL)
     {
         flavour = coinflip() ? BEAM_FIRE : BEAM_COLD;
-        hit_verb = (flavour == BEAM_FIRE) ? "burns" :
-                   (flavour == BEAM_COLD) ? "freezes"
-                                          : "bugs";
+        hit_verb = "を" + jtrans((flavour == BEAM_FIRE) ? "burns" :
+                                 (flavour == BEAM_COLD) ? "freezes"
+                                                        : "bugs");
     }
 }
 
