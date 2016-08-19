@@ -4678,7 +4678,7 @@ You grow two more!
 %%%%
 is burned by acid!
 
-酸で焼かれた！
+は酸で焼かれた！
 %%%%
 %s %s electrocuted!
 
