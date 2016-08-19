@@ -1101,7 +1101,7 @@ Summon Emperor Scopions
 %%%%
 [spell]Summon Guardian Golem
 
-ゴーレムの番人の召喚
+守護者のゴーレムの召喚
 %%%%
 [spell]Summon Hell Beast
 
