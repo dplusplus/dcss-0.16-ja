@@ -9261,7 +9261,7 @@ Your tail turns into legs as you fly out of the water.
 %%%%
 You swoop lightly up into the air.
 
-あなたは空から軽やかに襲いかかった。
+あなたは空へと軽やかに舞い上がった。
 %%%%
 You fly up into the air.
 
