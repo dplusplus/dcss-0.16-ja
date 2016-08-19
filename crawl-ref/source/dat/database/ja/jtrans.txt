@@ -15822,6 +15822,230 @@ feel slithery!
 
 %sは一瞬蛇のような光沢を帯びた！
 %%%%
+You create some snakes!
+
+あなたは蛇の群れを生み出した！
+%%%%
+You create a snake!
+
+あなたは蛇を生み出した！
+%%%%
+A chill wind blows around you.
+
+冷たい風があなたの周囲に巻き起こった。
+%%%%
+%s %s %s %s!
+
+%sは%sを召喚した！
+%%%%
+%s appears.
+
+%sが現れた。
+%%%%
+You cannot issue another dragon's call so soon.
+
+あなたはそんなに早くドラゴンの呼び声を再び唱えることはできない。
+%%%%
+You call out to the draconic realm, and the dragon horde roars back!
+
+あなたがドラゴンの棲み処に呼びかけると、ドラゴンの巣から咆哮が返ってきた！
+%%%%
+A dragon arrives to answer your call!
+
+ドラゴンがあなたの呼びかけに応えて出現した！
+%%%%
+Having expended the last of your magical power, your connection to the dragon horde fades.
+
+魔力を使い果たしたため、ドラゴンの巣との繋がりがなくなった。
+%%%%
+A dragon appears.
+
+ドラゴンが現れた。
+%%%%
+A mana viper appears with a sibilant hiss.
+
+マナバイパーがシューッという鳴き声とともに現れた。
+%%%%
+You are momentarily dazzled by a brilliant light.
+
+あなたは眩しい光で一瞬眩惑された。
+%%%%
+You can't see a target there!
+
+そこには対象物が見えない！
+%%%%
+is already dancing.
+
+はすでに宙を舞っている。
+%%%%
+%s vibrate%s crazily for a second.
+
+%sはしばらくの間激しく振動した。
+%%%%
+%s twitches for a moment.
+
+%sは一瞬引きつった。
+%%%%
+%s dances into the air!
+
+%sは宙に浮かび上がった！
+%%%%
+booms: How dare you animate that foul thing!
+
+の声が響き渡った: 『よくもそんな汚らわしい物に命を吹き込んだな！』
+%%%%
+animate foul thing elyvilon
+
+の声が響き渡った: 『よくもまあそんな汚らわしい物に命を吹き込みましたね！』
+%%%%
+You create some ball lightning!
+
+あなたは球雷を生み出した！
+%%%%
+You can't construct there.
+
+そこには形成できない。
+%%%%
+That space is already occupied.
+
+そこには先客がいる。
+%%%%
+Something you can't see is blocking your construction!
+
+何か目に見えないものがそこで邪魔している！
+%%%%
+An electric hum fills the air.
+
+電気の唸る音があたりに満ちた。
+%%%%
+A guardian golem appears, shielding your allies.
+
+守護者のゴーレムが出現し、あなたの仲間をかばった。
+%%%%
+A beastly little devil appears in a puff of frigid air.
+
+残忍な小悪魔が冷たい風と共に現れた。
+%%%%
+A metallic apparition takes form in the air.
+
+金属的な小悪魔が空中に現れた。
+%%%%
+A shadowy apparition takes form in the air.
+
+影のように黒い小悪魔が空中に現れた。
+%%%%
+A beastly little devil appears in a puff of flame.
+
+残忍な小悪魔が火球と共に現れた。
+%%%%
+A demon appears!
+
+悪魔が現れた！
+%%%%
+You don't feel so good about this...
+
+この存在にはあまり好感が持てない……
+%%%%
+It doesn't seem very happy.
+
+それはあまり喜んでいるようには見えない。
+%%%%
+You open a gate to Pandemonium!
+
+あなたはパンデモニウムへの門を開いた！
+%%%%
+Wisps of shadow whirl around you...
+
+ゆらめく影があなたの周りで渦巻いている……
+%%%%
+The shadows disperse without effect.
+
+影は何も起こすことなく霧散した。
+%%%%
+opening a malign portal
+
+邪悪な通り道の開通
+%%%%
+A gateway cannot be opened in this cramped space!
+
+このような狭苦しい空間では門を開くことはできない！
+%%%%
+summoning horrible things
+
+おぞましきものの召喚
+%%%%
+A forested plane collides here with a resounding crunch!
+
+森林が激しい音を立てて侵食した！
+%%%%
+You need more open space to cast this spell.
+
+この呪文を唱えるにはもう少し開けた場所が必要だ。
+%%%%
+The dead have arisen!
+
+死体の群れが起き上がった！
+%%%%
+The dead are %s!
+
+死体が動き出した！
+%%%%
+The headless hydra %s sways and immediately collapses!
+
+首を全て落とされたヒドラの%sは体をよろめかせ、たちまち崩壊した！
+%%%%
+The flesh is too rotten for a proper zombie; only a skeleton remains.
+
+肉が腐りすぎているため、ゾンビにはならず骨だけが残った。
+%%%%
+The corpse you are %s rises to %s!
+
+あなたが%s死体が起き上がり、%s！
+%%%%
+drinking from
+
+血を吸った
+%%%%
+butchering
+
+解体した
+%%%%
+join your ranks
+
+あなたの配下に加わった
+%%%%
+There is nothing here that can be animated!
+
+動き出すべきものがここにはない！
+%%%%
+...but the skeleton had no space to rise!
+
+……しかし、骸骨が起き上がる場所は残されていなかった！
+%%%%
+Before your eyes, flesh is ripped from the corpse!
+
+あなたの眼前で死体から肉が剥がれ落ちた！
+%%%%
+There is no skeleton here to animate!
+
+動き出すべき骸骨がここにはない！
+%%%%
+The headless hydra simulacr%s immediately collapse%s into snow!
+
+首を全て落とされたヒドラの幻像はたちまち崩壊して雪片へと化した！
+%%%%
+The flesh of the corpse you are %s vaporises!
+
+あなたが%s死体の肉が蒸発した！
+%%%%
+Some icy apparitions appear!
+
+凍てつく幻影の群れが現れた！
+%%%%
+An icy apparition appears!
+
+凍てつく幻影が現れた！
+%%%%
 %s %s into %s!
 
 %s死体がどろどろの肉塊となって崩れ去った！
@@ -15834,6 +16058,34 @@ feel slithery!
 
 %s死体が融合し、ひとかたまりの蠢く肉塊と化した！
 %%%%
+An evil force gathers, but it quickly dissipates.
+
+邪悪な力が集まったが、急速に消え去っていった。
+%%%%
+You cannot haunt those who bear you no hostility.
+
+あなたに敵意を抱いていない相手に対して招霊の呪文を唱えることはできない。
+%%%%
+Insubstantial figures form in the air.
+
+とらえどころのない影の群れが空中に現れた。
+%%%%
+You sense hostile presences.
+
+あなたは敵意を持った存在に気付いた。
+%%%%
+An insubstantial figure forms in the air.
+
+とらえどころのない影が空中に現れた。
+%%%%
+%s %s a servant imbued with %s destructive magic!
+
+%sは破壊的な魔術の力を吹き込まれた下僕を召喚した！
+%%%%
+appears!
+
+が現れた！
+%%%%
 protects a fellow warrior from your evil magic!
 
 は従者の戦士をあなたの邪悪なる魔術から守った！
@@ -15841,6 +16093,10 @@ protects a fellow warrior from your evil magic!
 shields an ally from your puny magic!
 
 は従者をつまらぬ魔術から守った！
+%%%%
+Send 'em back where they came from!
+
+やつらを元いたところに追い返せ！
 %%%%
 You begin to abjure the creatures around you!
 
@@ -15866,10 +16122,6 @@ conjures a globe of magical energy!
 
 は魔力の球体を幻出させた！
 %%%%
-appears!
-
-現れた！
-%%%%
 Your battlesphere expends the last of its energy and dissipates.
 
 戦闘球は最後の力を絞り出し、消滅した。
@@ -15889,6 +16141,38 @@ dissipates.
 fires!
 
 は発射した！
+%%%%
+You can't conjure that within a solid object!
+
+あなたは晶柱をその固体物に重ねられない！
+%%%%
+You can't place the prism on a creature.
+
+あなたは晶柱をモンスターと同じ場所に置けない。
+%%%%
+%s %s a prism of explosive energy!
+
+%sは爆発する晶柱を召喚した！
+%%%%
+A prism of explosive energy appears from nowhere!
+
+爆発性のエネルギーをはらんだ晶柱がどこからともなく現れた！
+%%%%
+%s vibrate%s crazily for a second.
+
+%sはしばらくの間激しく振動した。
+%%%%
+You draw out your weapon's spirit!
+
+あなたは自らの武器を幽体化させた！
+%%%%
+fades away.
+
+は消え去った。
+%%%%
+You feel your bond with your spectral weapon wane.
+
+あなたは幽体化した武器との繋がりが消えていくのを感じた。
 %%%%
 A tornado forms.
 
