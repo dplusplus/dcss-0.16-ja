@@ -16244,7 +16244,7 @@ You can't blink into that!
 %%%%
 There's something in the way!
 
-なにかが道の途中にいる！
+なにかが行く手を遮っている！
 %%%%
 You can only blink to visible locations.
 
@@ -16324,7 +16324,7 @@ You cannot teleport closer to %s!
 %%%%
 Nearby solid objects disrupt your rematerialisation!
 
-付近の固形物があなたの再物質化を阻害した！
+付近の固体物があなたの再物質化を阻害した！
 %%%%
 Even you can't go there right now. Sorry!
 
@@ -16412,7 +16412,7 @@ The air shimmers briefly around you.
 %%%%
 You can't place that within a solid object!
 
-あなたは固形物の所には特異点を置くことができない！
+あなたは固体物の所には特異点を置くことができない！
 %%%%
 You can't place the singularity on a creature.
 
