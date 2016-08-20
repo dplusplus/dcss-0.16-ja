@@ -16190,7 +16190,7 @@ A great vortex of raging winds %s.
 %%%%
 appears around you
 
-あなたの周囲に現れた。
+あなたの周囲に現れた
 %%%%
 appears and lifts you up
 
