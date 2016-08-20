@@ -16651,11 +16651,11 @@ You can't regenerate without divine aid.
 %%%%
 You're too dead to regenerate.
 
-あなたは再生するには死にすぎている。
+あなたの死せる体は再生の呪文を受け付けない。
 %%%%
 Your brain is too dead to use.
 
-あなたの脳味噌は死にすぎており使えない。
+あなたの死せる脳味噌は働かなかった。
 %%%%
 This spell is useless without hands.
 
@@ -16665,13 +16665,9 @@ You must stand on solid ground to cast this.
 
 これを唱えるには固い地面の上に立つ必要がある。
 %%%%
-You are already charged.
-
-既に装填済みだ。
-%%%%
 You're too dead.
 
-あなたは死にすぎている。
+あなたの死せる体ではこの呪文は使えない。
 %%%%
 You can't be poisoned.
 
