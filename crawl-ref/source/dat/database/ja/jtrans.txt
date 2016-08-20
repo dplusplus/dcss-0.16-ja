@@ -16701,11 +16701,11 @@ You can only summon one forest at a time!
 %%%%
 bursts into flame!
 
-から炎が迸った！
+は吹きあがる炎に包まれた！
 %%%%
 frosts over!
 
-は霜に覆われた。
+は霜に覆われた！
 %%%%
 glows blue.
 
@@ -16769,11 +16769,11 @@ stops glowing.
 %%%%
 stops dripping with poison.
 
-は毒の滴りが止まった。
+は毒を滴らせるのをやめた。
 %%%%
 stops crackling.
 
-の爆ぜる音が止まった。
+の爆ぜるのをやめた。
 %%%%
 seems straighter.
 
@@ -16819,6 +16819,10 @@ You cannot enchant this weapon with this spell.
 
 あなたはこの武器を魔力の武器にすることができない。
 %%%%
+rebranding a weapon of distortion
+
+歪曲の武器の魔力を上書きしたこと
+%%%%
 %s flashes.
 
 %sはまぶしく光った。
@@ -16837,7 +16841,7 @@ You become one with your weapon.
 %%%%
 Your bond becomes stronger.
 
-あなたの武器との絆は強まった。
+あなたの武器との絆は深まった。
 %%%%
 ############################## stairs.cc ##############################
 %%%%
