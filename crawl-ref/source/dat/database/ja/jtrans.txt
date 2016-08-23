@@ -18527,6 +18527,22 @@ You struggle to detach yourself from the web.
 
 あなたはなんとか自分自身を蜘蛛の巣から引きはがした。
 %%%%
+You slice the net and break free!
+
+あなたは網を切り裂いて自由を取り戻した！
+%%%%
+You cut the net and break free!
+
+あなたは網を切って自由を取り戻した！
+%%%%
+You shred the net and break free!
+
+あなたは網を引き裂いて自由を取り戻した！
+%%%%
+You rip the net and break free!
+
+あなたは網をちぎって自由を取り戻した！
+%%%%
 You slice into the net.
 
 あなたは網を切り裂いた。

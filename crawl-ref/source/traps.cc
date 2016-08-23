@@ -1455,9 +1455,9 @@ void free_self_from_net()
 
         if (hold < -7)
         {
-            mprf(jtransc("You %s the net and break free!"),
-                 can_slice ? (damage >= 4? "slice" : "cut") :
-                             (damage >= 4? "shred" : "rip"));
+            mprf(jtransc(make_stringf("You %s the net and break free!",
+                                      can_slice ? (damage >= 4? "slice" : "cut") :
+                                                  (damage >= 4? "shred" : "rip"))));
 
             destroy_item(net);
 
