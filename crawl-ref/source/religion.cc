@@ -1628,7 +1628,7 @@ static void _delayed_gift_callback(const mgen_data &mg, monster *&mon,
 
 static bool _jiyva_mutate()
 {
-    simple_god_message(" alters your body.");
+    simple_god_message(jtransc(" alters your body."));
 
     const int rand = random2(100);
 

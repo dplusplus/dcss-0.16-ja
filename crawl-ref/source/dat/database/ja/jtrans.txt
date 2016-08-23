@@ -12100,6 +12100,10 @@ Your resistance to physical damage fades away.
 
 あなたの物理ダメージへの耐性が薄れていった。
 %%%%
+alters your body.
+
+はあなたの体を変容させた。
+%%%%
 Jiyva's grace
 
 ジーヴァの恩寵
