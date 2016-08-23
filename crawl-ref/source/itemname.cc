@@ -2003,8 +2003,7 @@ static string _name_weapon_en(const item_def &weap, description_level_type desc,
 
     const string cosmetic_text
         = show_cosmetic ? _cosmetic_text(weap, ignore_flags) : "";
-    const string ego_prefix
-        = _ego_prefix(weap, desc, terse, ident, ignore_flags);
+    const string ego_prefix = _ego_prefix_en(weap, desc, terse, ident, ignore_flags);
     const string ego_suffix = know_ego ? _ego_suffix(weap, terse) : "";
     const string curse_suffix
         = know_curse && weap.cursed() && terse ? " (curse)" :  "";
