@@ -13810,6 +13810,14 @@ You shatter!
 
 あなたは粉砕された！
 %%%%
+by Lee's Rapid Deconstruction
+
+リーの瞬間解体術によって
+%%%%
+%s shatters!
+
+%sは粉砕された！
+%%%%
 The trees move their gnarly branches around.
 
 樹木がその節くれ立った枝をあたりに這わせた。
