@@ -1019,7 +1019,7 @@ const char *item_class_name(int type, bool terse)
         case OBJ_SCROLLS:    return "巻物";
         case OBJ_JEWELLERY:  return "装飾品";
         case OBJ_POTIONS:    return "薬";
-        case OBJ_BOOKS:      return "魔法書";
+        case OBJ_BOOKS:      return "魔法書/手引書";
         case OBJ_STAVES:     return "魔法の杖";
         case OBJ_RODS:       return "ロッド";
         case OBJ_ORBS:       return "ゾットのオーブ";

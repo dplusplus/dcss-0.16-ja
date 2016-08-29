@@ -713,7 +713,7 @@ static void _sdump_inventory(dump_params &par)
             case OBJ_SCROLLS:    text += "\n巻物";             break;
             case OBJ_JEWELLERY:  text += "\n装飾品";           break;
             case OBJ_POTIONS:    text += "\n水薬";             break;
-            case OBJ_BOOKS:      text += "\n魔法書";           break;
+            case OBJ_BOOKS:      text += "\n魔法書/手引書";    break;
             case OBJ_STAVES:     text += "\n魔法の杖";         break;
             case OBJ_RODS:       text += "\nロッド";           break;
             case OBJ_ORBS:       text += "\nゾットのオーブ";   break;
