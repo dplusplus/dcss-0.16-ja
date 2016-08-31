@@ -2044,7 +2044,7 @@ void MiscastEffect::_transmutation(int severity)
             // Player only (for now).
             bool plural;
             string hair = _hair_str(target, plural);
-            you_msg = make_stringf("Your %s momentarily turn%s into snakes!",
+            you_msg = make_stringf(jtransc("Your %s momentarily turn%s into snakes!"),
                                    hair.c_str(), plural ? "" : "s");
         }
         }
