@@ -4548,10 +4548,6 @@ like a drum
 
 太鼓のように
 %%%%
-hammer
-
-叩いた
-%%%%
 like a gong
 
 銅鑼のように

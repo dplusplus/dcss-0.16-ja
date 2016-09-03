@@ -1741,7 +1741,7 @@ void melee_attack::set_attack_verb(int damage)
             {
                 {"crush",   "like a grape"},
                 {"beat",    "like a drum"},
-                {"hammer",  "like a gong"},
+                {"叩いた",  "like a gong"},
                 {"pound",   "like an anvil"},
                 {"flatten", "like a pancake"}
             };
