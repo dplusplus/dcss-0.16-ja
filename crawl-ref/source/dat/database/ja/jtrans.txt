@@ -13450,7 +13450,7 @@ You can't place the cloud on %s.
 %%%%
 There's already a cloud there!
 
-そこには既に雲が漂っている。
+そこには既に雲が漂っている！
 %%%%
 You can't place the cloud on a creature.
 
@@ -17702,6 +17702,48 @@ You are invisible.
 You are invisible (but backlit and visible).
 
 あなたは透明化している(ただし光っている)。
+%%%%
+############################## target.cc ##############################
+%%%%
+You cannot see that place.
+
+その場所はここから見えない。
+%%%%
+You cannot affect that.
+
+その地形には効果がない。
+%%%%
+You can't get through.
+
+通り抜けることができない。
+%%%%
+You can't reach that far!
+
+そんなに遠くまで届かない！
+%%%%
+There's already a cloud there.
+
+そこには既に雲が漂っている。
+%%%%
+The effect is blocked.
+
+効果は今ひとつのようだ。
+%%%%
+You cannot target yourself.
+
+自分自身を対象にはできない。
+%%%%
+There is no safe place near that location.
+
+その場所の近くには安全な箇所が存在しない。
+%%%%
+There isn't a shadow there.
+
+そこには影は存在しない。
+%%%%
+That shadow isn't sufficiently still.
+
+その影は同じ所にとどまっていない。
 %%%%
 ############################## teleport.cc ##############################
 %%%%
