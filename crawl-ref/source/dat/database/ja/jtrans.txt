@@ -2783,15 +2783,15 @@ phantom mirror
 %%%%
 manual
 
-手引書
+虎の巻
 %%%%
 manuals
 
-手引書
+虎の巻
 %%%%
 manual of
 
-の手引書
+の虎の巻
 %%%%
 book of Minor Magic
 
@@ -3419,11 +3419,11 @@ What ego type?
 %%%%
 A manual for which skill?
 
-どのスキルの手引書ですか？
+どのスキルの虎の巻ですか？
 %%%%
 Sorry, no books on that skill today.
 
-申し訳ありませんが、そのスキルの手引書はありません。
+申し訳ありませんが、そのスキルの虎の巻はありません。
 %%%%
 [%c] random
 
@@ -12924,7 +12924,7 @@ The species aptitude is in <white>white</white>.
 %%%%
 Manual usage is in <green>green</green>.
 
-手引書を持っているスキルは<green>緑色</green>で表示されます。
+虎の巻を持っているスキルは<green>緑色</green>で表示されます。
 %%%%
 Transfer Knowledge: select the %s skill
 

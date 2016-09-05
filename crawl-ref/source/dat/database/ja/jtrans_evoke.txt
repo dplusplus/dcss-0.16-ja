@@ -177,7 +177,7 @@ It has %d charges and is fully charged.
 %%%%
 You have finished your manual of %s and toss it away.
 
-あなたは%sの手引書を読破し、それを放り投げた。
+あなたは%sの虎の巻を読破し、それを放り投げた。
 %%%%
 %lu skills
 
