@@ -1199,7 +1199,11 @@ static string _base_type_string(const item_def &item)
         else
             return "ring";
     case OBJ_POTIONS: return "potion";
-    case OBJ_BOOKS: return "book";
+    case OBJ_BOOKS:
+        if (item.sub_type == BOOK_MANUAL)
+            return "manual";
+        else
+            return "book";
     case OBJ_STAVES: return "staff";
     case OBJ_RODS: return "rod";
     case OBJ_ORBS: return "orb";
