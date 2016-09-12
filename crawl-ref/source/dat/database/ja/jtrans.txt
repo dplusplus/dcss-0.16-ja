@@ -19951,9 +19951,17 @@ baker
 %%%%
 ############################## dat/des/portals/ossuary.des ##############################
 %%%%
+There is a click, and some walls slide away!
+
+カチッという音がし、壁が開いて道ができた！
+%%%%
 decayed
 
 腐敗した
+%%%%
+You feel the presence of a powerful and evil guardian...
+
+あなたは邪悪なる守護者の強大なる気配を感じた……
 %%%%
 ############################## dat/des/portals/sewer.des ##############################
 %%%%
@@ -19970,6 +19978,42 @@ apprentice
 見習い
 %%%%
 ############################## dat/des/portals/volcano.des ##############################
+%%%%
+The volcano erupts! Nearby, a roof collapses.
+
+火山が噴火し、周囲で天井が崩れ落ちた！
+%%%%
+There is a rumble as the volcano erupts. The roof shakes.
+
+火山が噴火するとともに轟音が響き渡り、天井が震えた。
+%%%%
+The ground shudders ominously.
+
+大地が奇妙に振動した。
+%%%%
+In the distance, the volcano explodes with a roar! Lava spreads onto the path.
+
+遠く離れた場所で、火山が轟音と共に爆発した！ 溶岩が行く手に広がった。
+%%%%
+The air is thick with the scent of sulphur.
+
+大気が硫黄の臭いに満たされた。
+%%%%
+There is another distant roar. More lava overflows!
+
+遠くの別の場所でさらに轟音が鳴り響いた。溶岩がさらにあふれ出した！
+%%%%
+The ground moves violently!
+
+大地が鳴動した！
+%%%%
+The volcano erupts again! A thin layer of lava overflows to fill the cavern.
+
+再び火山が爆発した！ 溶岩があふれ出し、洞窟を埋め尽くそうとしている。
+%%%%
+The ground shudders. Some of the lava has hardened enough to walk over!
+
+大地が振動した。溶岩のある箇所では上を歩けるほど冷え固まっている！
 %%%%
 firespitter
 
