@@ -20833,3 +20833,57 @@ The walls and floor vibrate strangely for a moment.
 
 壁と床が一瞬奇妙に振動した。
 %%%%
+############################## dat/dlua/lm_trove.lua ##############################
+%%%%
+The portal is engraved with runes symbolizing the primacy of the material over the divine. Those who enter it may find riches, but when they return, they will find that whatever gods they held dear have forgotten them in their absence.
+
+
+%%%%
+lose all piety
+
+信仰値を全て失う
+%%%%
+Try making this Trove use an item (or a different item)?
+
+# for debug
+%%%%
+Switched to a new item.
+
+# for debug
+%%%%
+To change the item the trove wants, first drop it on the trove tile.
+
+# for debug
+%%%%
+Make this portal take your piety?
+
+# for debug
+%%%%
+It's a nopiety trove.
+
+# for debug
+%%%%
+The portal draws power from the presence of the item and buzzes to life!
+
+ポータルはルーンから力を吸収し、うなりを上げて作動を開始した！
+%%%%
+You don't have the item to give! Perhaps you haven't completely identified the item yet?
+
+あなたはそのアイテムを持っていない！ ひょっとしたらまだ鑑定していないだけかも？
+%%%%
+You must unequip the item first!
+
+まずはそのアイテムを手から放してください！
+%%%%
+The portal accepts the item and buzzes to life!
+
+ポータルはアイテムを飲み込み、うなりを上げて作動を開始した！
+%%%%
+This portal proclaims the superiority of the material over the divine; those who enter it will find they have lost all favor with their chosen deity. Enter anyway?
+
+このポータルは信仰値を要求しており、通ったものは全ての信仰値を失います。それでも入りますか？
+%%%%
+You feel utterly alone.
+
+あなたはすっかり孤独になってしまった。
+%%%%

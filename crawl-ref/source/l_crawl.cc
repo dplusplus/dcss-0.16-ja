@@ -1059,6 +1059,25 @@ static int crawl_tagged_jtrans(lua_State *ls)
     return 1;
 }
 
+static int crawl_jcounter(lua_State *ls)
+{
+    const string base_type = luaL_checkstring(ls, 1);
+    string counter;
+
+    if (base_type == "wand" || base_type == "potion")
+        counter = "本";
+    else if (base_type == "book")
+        counter = "冊";
+    else if (base_type == "scroll")
+        counter = "巻";
+    else
+        counter = "buggy";
+
+    lua_pushstring(ls, counter.c_str());
+
+    return 1;
+}
+
 static const struct luaL_reg crawl_clib[] =
 {
     { "mpr",                crawl_mpr },
@@ -1130,6 +1149,7 @@ static const struct luaL_reg crawl_clib[] =
     { "jtrans",             crawl_jtrans },
     { "jtransln",           crawl_jtransln },
     { "tagged_jtrans",      crawl_tagged_jtrans },
+    { "jcounter",          crawl_jcounter },
     { nullptr, nullptr },
 };
 
