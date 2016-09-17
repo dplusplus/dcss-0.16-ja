@@ -953,7 +953,7 @@ static void _spellcasting_side_effects(spell_type spell, god_type god,
 */
 bool spell_is_uncastable(spell_type spell, string &msg, bool temp, bool evoked)
 {
-    msg = spell_uselessness_reason(spell, temp, true, evoked);
+    msg = jtrans(spell_uselessness_reason(spell, temp, true, evoked));
     return msg != "";
 }
 
