@@ -14004,6 +14004,10 @@ You feel blessed for a moment.
 
 あなたは一瞬祝福されたような気がした。
 %%%%
+Curse which item?
+
+どのアイテムを呪縛しますか？
+%%%%
 Choose an uncursed equipped piece of %s, or Esc to abort.
 
 呪われていない%sを選択してください。(ESCキーでキャンセル)
