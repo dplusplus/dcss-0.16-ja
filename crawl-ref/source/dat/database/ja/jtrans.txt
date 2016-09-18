@@ -19643,6 +19643,10 @@ As you approach the altar, the fountains begin to flow with blood!
 
 あなたが祭壇に近づくと、噴水から血が湧きだした！
 %%%%
+Fedhas urges you to decompose the vile beasts imprisoned behind the altar.
+
+フェダスは祭壇の奥に閉じ込められた忌まわしき怪物どもを滅ぼすようにあなたを促した。
+%%%%
 Platinum Reserve
 
 プラチナ取引所
@@ -19962,6 +19966,10 @@ decayed
 You feel the presence of a powerful and evil guardian...
 
 あなたは邪悪なる守護者の強大なる気配を感じた……
+%%%%
+Something ancient and evil stirs ahead...
+
+太古の邪悪なる存在が行く先で蠢いている……
 %%%%
 ############################## dat/des/portals/sewer.des ##############################
 %%%%
@@ -20748,6 +20756,10 @@ A bat flies out of a crevice!
 裂け目からコウモリが飛び出した！
 %%%%
 ############################## dat/des/variable/float.des ##############################
+%%%%
+You almost think you hear a voice: "Seek not undue power, mortal."
+
+あなたは不意に『身に余る力を求めるなかれ、定命の者よ』と声が聞こえたような気がしてきた。
 %%%%
 master elementalist
 
