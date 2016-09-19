@@ -17045,6 +17045,129 @@ Welcome to %s!
 
 %sへようこそ！
 %%%%
+############################## startup.cc ##############################
+%%%%
+Loading databases...
+
+データベース読み込み中……
+%%%%
+Loading spells and features...
+
+呪文および地形を読み込み中……
+%%%%
+Loading maps...
+
+マップを読み込み中……
+%%%%
+Loading complete, press any key to start.
+
+読み込み完了しました。任意のキーを押して開始してください。
+%%%%
+Dungeon Crawl
+
+ダンジョンクロウル
+%%%%
+Dungeon Crawl: The main game: full of monsters, items, gods and danger!
+
+メインモード: 様々なモンスター、アイテム、神、そして危険が待ち受けています！
+%%%%
+Tutorial for Dungeon Crawl
+
+ダンジョンクロウル チュートリアル
+%%%%
+Tutorial that covers the basics of Dungeon Crawl survival.
+
+ダンジョンクロウルにおける生存術の基本を解説するモードです。
+%%%%
+Hints Mode for Dungeon Crawl
+
+ダンジョンクロウル 解説モード
+%%%%
+A mostly normal game that provides more advanced hints than the tutorial.
+
+チュートリアルモードよりさらに踏み入った解説を行うモードです。
+%%%%
+Dungeon Sprint
+
+ダンジョンスプリント
+%%%%
+Hard, fixed single level game mode.
+
+固定された単一の階層を探索する高難度なゲームモードです。
+%%%%
+Instructions
+
+ヘルプ
+%%%%
+Help menu.
+
+ゲームの取扱説明書です。
+%%%%
+The Arena
+
+アリーナ
+%%%%
+Pit computer controlled teams versus each other!
+
+指定したモンスターを敵味方に分けて争わせるモードです。
+%%%%
+High Scores
+
+ハイスコア
+%%%%
+View the high score list.
+
+ハイスコア一覧を表示します。
+%%%%
+New Game
+
+新たにゲームを開始する
+%%%%
+Enter your name:
+
+名前を入力してください:
+%%%%
+Choices:
+
+ゲームモード選択:
+%%%%
+Saved games:
+
+保存されたゲーム一覧:
+%%%%
+Use the up/down keys to select the type of game or load a character.
+
+↑/↓のキーを押してゲームモードを選択するか、ゲーム再開を選択してください。
+%%%%
+You can type your name; if you leave it blank you will be asked later.\nPress Enter to start
+
+プレイヤー名を入力してください。空白のままにしておいて後で入力することもできます。
+Enterを押して開始
+%%%%
+, Tab to repeat the last game's choice
+
+するか、Tabを押して前選んだものと同じにするか選択
+%%%%
+Enter your choice of teams:
+
+対戦組み合わせを入力してください:
+%%%%
+Examples:
+
+指定例:
+%%%%
+Sigmund v Jessica
+
+# default
+%%%%
+99 orc v the royal jelly
+
+# default
+%%%%
+20-headed hydra v 10 kobold ; scimitar ego:flaming
+
+# default
+%%%%
 ############################## stash.cc ##############################
 %%%%
 , %d item%s
