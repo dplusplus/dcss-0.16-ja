@@ -17170,6 +17170,14 @@ Sigmund v Jessica
 %%%%
 ############################## stash.cc ##############################
 %%%%
+(gone by now)
+
+(腐敗中)
+%%%%
+(skeletalised by now)
+
+(白骨化)
+%%%%
 , %d item%s
 
 , %d個のアイテム
@@ -17181,6 +17189,12 @@ Sigmund v Jessica
 %s%s (%u gold)
 
 %s%s (%uゴールド)
+%%%%
+I'll no longer ignore what I see on this square.
+
+%%%%
+Ok, I'll ignore what I see on this square.
+
 %%%%
 Enter for "%s"
 
