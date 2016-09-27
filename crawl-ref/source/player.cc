@@ -5948,17 +5948,16 @@ string player_save_info::short_desc() const
     if (!qualifier.empty())
         desc << "[" << qualifier << "] ";
 
-    desc << name << ", a level " << experience_level << ' '
-         << species_name << ' ' << class_name;
+    if (religion != GOD_NO_GOD)
+        desc << jtrans(god_name) << "の信徒にして";
 
-    if (religion == GOD_JIYVA)
-        desc << " of " << god_name << " " << jiyva_second_name;
-    else if (religion != GOD_NO_GOD)
-        desc << " of " << god_name;
+    desc << "レベル" << experience_level << "の"
+         << jtrans(species_name) << "の" << jtrans(class_name)
+         << "『" << name << "』";
 
 #ifdef WIZARD
     if (wizard)
-        desc << " (WIZ)";
+        desc << " (ウィザードモード)";
 #endif
 
     return desc.str();
