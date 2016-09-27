@@ -17264,6 +17264,10 @@ You are moving sluggishly
 
 魅了されている
 %%%%
+You are mesmerised.
+
+あなたは魅了されている。
+%%%%
 [dur]glowing
 
 発光
@@ -17316,21 +17320,13 @@ Your movement is slowed on this liquid ground.
 
 増強
 %%%%
-Your hands are glowing red.
+are glowing red.
 
-あなたの手は赤く輝いている。
-%%%%
-Expiring: You are surrounded by a ring of flames.
-
-継続中: あなたは炎の円環に囲まれている。
+は赤く輝いている。
 %%%%
 You are surrounded by a ring of flames.
 
 あなたは炎の円環に囲まれている。
-%%%%
-Expiring: You are immune to clouds of flame.
-
-継続中: あなたは火炎の雲に対して傷つかない。
 %%%%
 You are immune to clouds of flame.
 
@@ -17558,15 +17554,19 @@ You are horrified!
 %%%%
 [dur]heavily contaminated
 
-だいぶ魔力汚染されている
+かなり魔力汚染されている
 %%%%
 [dur]very heavily contaminated
 
-かなり魔力汚染されている
+極めて魔力汚染されている
 %%%%
 [dur]very very heavily contaminated
 
-極めて魔力汚染されている
+# this is silly but no one will ever see it
+%%%%
+[dur]impossibly contaminated
+
+# (likewise)
 %%%%
 [dur]Regen
 
