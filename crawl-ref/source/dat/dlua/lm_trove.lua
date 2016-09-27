@@ -632,7 +632,7 @@ function TroveMarker:note_payed(toll_item, item_taken, rune_name)
   -- Ugly special case. At this point in the code there is no rune item, so we
   -- can not rely on any of the normal item naming code.
   if toll_item == "rune" then
-    crawl.take_note(prefix .. "the " .. rune_name .. "を見せた")
+    crawl.take_note(prefix .. crawl.jtrans(rune_name) .. "を見せた")
     return
   end
 
