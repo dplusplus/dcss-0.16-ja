@@ -311,7 +311,7 @@ static void _sdump_visits(dump_params &par)
         place_info = you.get_place_info(br);
         if (!place_info.num_visits)
             continue;
-        string name = branches[br].shortname;
+        string name = tagged_jtrans("[branch]", branches[br].shortname);
         if (place_info.num_visits > 1)
             name += make_stringf(jtransc(" (%d times)"), place_info.num_visits);
         misc_portals.push_back(name);
