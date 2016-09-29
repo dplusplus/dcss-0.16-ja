@@ -17990,7 +17990,7 @@ Throwing
 %%%%
 (i - inventory. (,) - cycle)
 
-(i - 一覧から選択 , - 切り替え)
+(i - 一覧から選択 (,) - 切り替え)
 %%%%
 There is %s there.
 
