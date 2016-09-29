@@ -17868,7 +17868,7 @@ There's already a cloud there.
 %%%%
 The effect is blocked.
 
-効果は今ひとつのようだ。
+効果がなかったようだ。
 %%%%
 You cannot target yourself.
 
