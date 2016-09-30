@@ -18098,6 +18098,14 @@ throws
 %%%%
 ############################## timed_effect.cc ##############################
 %%%%
+the effects of Hell
+
+地獄効果
+%%%%
+'s power protects you from the chaos of Hell!
+
+の御業によりあなたは地獄の混沌から守られた！
+%%%%
 You hear an odd grinding sound!
 
 あなたは奇妙な軋む音を聞いた！
@@ -18112,7 +18120,51 @@ The floor suddenly vibrates beneath you!
 %%%%
 You feel a sudden draft!
 
-あなたはすきま風を感じた。
+あなたは突然すきま風を感じた！
+%%%%
+Your body shudders with the violent release of wild energies!
+
+あなたの体は荒々しいエネルギーの解放で震えた！
+%%%%
+mutagenic glow
+
+変異の輝き
+%%%%
+Your body momentarily shudders from a surge of wild energies until Zin's power calms it.
+
+ジンの御業により、エネルギーの奔流によるあなたの体の震えが止まった。
+%%%%
+Your disease is taking its toll.
+
+病気により能力値が下がった。
+%%%%
+disease
+
+病気
+%%%%
+deterioration mutation
+
+能力低下
+%%%%
+gurgles merrily.
+
+は陽気にぶくぶくと音を立てた。
+%%%%
+You hear %s splatter%s.
+
+あなたはバチャバチャという%s音を耳にした。
+%%%%
+says: Divide and consume!
+
+は『分裂して貪るのだ！』と言った。
+%%%%
+You feel a genetic drift.
+
+あなたは体が変異していくのを感じた。
+%%%%
+end of evolution
+
+進化終了
 %%%%
 has recharged.
 
@@ -18130,14 +18182,6 @@ Zin %s %s %s.
 
 ジンは%sを%s%s%s。
 %%%%
-releases
-
-解き放った
-%%%%
-dismisses
-
-解除した
-%%%%
 the silver walls,
 
 白銀の壁
@@ -18145,6 +18189,14 @@ the silver walls,
 from %s prison
 
 牢獄から
+%%%%
+releases
+
+解き放った
+%%%%
+dismisses
+
+解除した
 %%%%
 but there is nothing inside them
 

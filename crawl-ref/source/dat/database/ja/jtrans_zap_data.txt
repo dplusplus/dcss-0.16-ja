@@ -668,6 +668,10 @@
 
 魔力の嵐
 %%%%
+[zap]a magical explosion
+
+魔力の爆発
+%%%%
 ############################## xom.cc ##############################
 %%%%
 [zap]Xom's lightning strike

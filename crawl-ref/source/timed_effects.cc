@@ -203,7 +203,7 @@ static void _hell_effects(int /*time_delta*/)
     if (you_worship(GOD_ZIN) && x_chance_in_y(you.piety, MAX_PIETY * 2)
         || is_sanctuary(you.pos()))
     {
-        simple_god_message("'s power protects you from the chaos of Hell!");
+        simple_god_message(jtransc("'s power protects you from the chaos of Hell!"));
         return;
     }
 
@@ -752,8 +752,8 @@ static void _handle_magic_contamination()
 // Bad effects from magic contamination.
 static void _magic_contamination_effects()
 {
-    mprf(MSGCH_WARN, "Your body shudders with the violent release "
-                     "of wild energies!");
+    mpr_nojoin(MSGCH_WARN, jtrans("Your body shudders with the violent release "
+                                  "of wild energies!"));
 
     const int contam = you.magic_contamination;
 
@@ -812,8 +812,8 @@ static void _handle_magic_contamination(int /*time_delta*/)
     {
         if (is_sanctuary(you.pos()))
         {
-            mprf(MSGCH_GOD, "Your body momentarily shudders from a surge of wild "
-                            "energies until Zin's power calms it.");
+            mpr_nojoin(MSGCH_GOD, jtrans("Your body momentarily shudders from a surge of wild "
+                                         "energies until Zin's power calms it."));
         }
         else
             _magic_contamination_effects();
@@ -859,7 +859,7 @@ static void _recover_stats(int /*time_delta*/)
                  && you.piety >= piety_breakpoint(0)
                  && coinflip()))
         {
-            mprf(MSGCH_WARN, "Your disease is taking its toll.");
+            mpr_nojoin(MSGCH_WARN, jtrans("Your disease is taking its toll."));
             lose_stat(STAT_RANDOM, 1, false, "disease");
         }
     }
@@ -938,15 +938,15 @@ static void _jiyva_effects(int /*time_delta*/)
             switch (random2(3))
             {
                 case 0:
-                    simple_god_message(" gurgles merrily.");
+                    simple_god_message(jtransc(" gurgles merrily."));
                     break;
                 case 1:
-                    mprf(MSGCH_SOUND, "You hear %s splatter%s.",
-                         total_jellies > 1 ? "a series of" : "a",
+                    mprf(MSGCH_SOUND, jtransc("You hear %s splatter%s."),
+                         total_jellies > 1 ? "複数の" : "",
                          total_jellies > 1 ? "s" : "");
                     break;
                 case 2:
-                    simple_god_message(" says: Divide and consume!");
+                    simple_god_message(jtransc(" says: Divide and consume!"));
                     break;
             }
         }
@@ -970,7 +970,7 @@ static void _evolve(int time_delta)
                > (int)exp_needed(you.experience_level + 1))
         {
             you.attribute[ATTR_EVOL_XP] = 0;
-            mpr("You feel a genetic drift.");
+            mpr(jtrans("You feel a genetic drift."));
             bool evol = one_chance_in(5) ?
                 delete_mutation(RANDOM_BAD_MUTATION, "evolution", false) :
                 mutate(coinflip() ? RANDOM_GOOD_MUTATION : RANDOM_MUTATION,
