@@ -18362,7 +18362,7 @@ You emerge from the shadows.
 %%%%
 a %d-headed hydra.
 
-%d首ヒドラの姿を
+%s首ヒドラの姿を
 %%%%
 Bite (x%d)
 
@@ -18398,7 +18398,7 @@ Transforming
 %%%%
 %d of your heads shrink away.
 
-あなたは%d本の首を失った。
+あなたは%s本の首を失った。
 %%%%
 One of your heads shrinks away.
 
@@ -18406,7 +18406,7 @@ One of your heads shrinks away.
 %%%%
 %d new heads grow.
 
-新たな首が%d本生えてきた。
+新たな首が%s本生えてきた。
 %%%%
 A new head grows.
 

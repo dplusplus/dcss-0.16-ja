@@ -374,3 +374,19 @@ string jconj_verb(const string& verb, jconj conj)
 
     return v;
 }
+
+string jnumber_for_hydra_heads(int heads)
+{
+    ASSERT((0 < heads) && (heads <= 27)); // for Lernaean hydra
+
+    string nums[10] = {"", "一", "二", "三", "四", "五", "六", "七", "八", "九"};
+    string num;
+
+    if(heads >= 20)
+        num += nums[heads / 10];
+    if(heads >= 10)
+        num += "十";
+    num += nums[heads % 10];
+
+    return num;
+}

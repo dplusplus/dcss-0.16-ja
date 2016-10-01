@@ -22,6 +22,7 @@
 #include "itemname.h"
 #include "itemprop.h"
 #include "items.h"
+#include "japanese.h"
 #include "message.h"
 #include "mon-death.h"
 #include "mutation.h"
@@ -1020,7 +1021,9 @@ public:
      */
     string get_transform_description() const
     {
-        return make_stringf(jtransc("a %d-headed hydra."), you.heads());
+        return make_stringf(
+                            jtransc("a %d-headed hydra."),
+                            jnumber_for_hydra_heads(you.heads()).c_str());
     }
 
     /**
@@ -1715,14 +1718,16 @@ static void _print_head_change_message(int old_heads, int new_heads)
     if (old_heads > new_heads)
     {
         if (plural)
-            mprf(jtransc("%d of your heads shrink away."), delta);
+            mprf(jtransc("%d of your heads shrink away."),
+                 jnumber_for_hydra_heads(delta).c_str());
         else
             mpr(jtrans("One of your heads shrinks away."));
         return;
     }
 
     if (plural)
-        mprf(jtransc("%d new heads grow."), delta);
+        mprf(jtransc("%d new heads grow."),
+             jnumber_for_hydra_heads(delta).c_str());
     else
         mpr(jtrans("A new head grows."));
 }

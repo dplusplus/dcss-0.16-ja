@@ -37,5 +37,6 @@ string thing_do_grammar_j(description_level_type dtype, bool add_stop,
 string get_desc_quantity_j(const int quant, const int total,
                            string whose);
 string jconj_verb(const string& verb, jconj conj);
+string jnumber_for_hydra_heads(int heads);
 
 #endif
