@@ -18378,7 +18378,7 @@ Bite (x%d)
 %%%%
 You can't transform into a tree while standing in a cloud of %s.
 
-あなたは%sの雲の中にいる間は樹木に変化することはできない。
+あなたは%sの中にいる間は樹木に変化することはできない。
 %%%%
 You would %s in your new form.
 
