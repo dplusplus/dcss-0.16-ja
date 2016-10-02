@@ -515,7 +515,7 @@ void set_exclude(const coord_def &p, int radius, bool autoexcl, bool vaultexcl,
         {
             const int cl = env.cgrid(p);
             if (env.cgrid(p) != EMPTY_CLOUD)
-                exc->desc = cloud_name_at_index(cl) + " cloud";
+                exc->desc = cloud_name_at_index_j(cl);
         }
         else if (exc->radius == radius)
             return;
@@ -558,7 +558,7 @@ void set_exclude(const coord_def &p, int radius, bool autoexcl, bool vaultexcl,
         {
             const int cl = env.cgrid(p);
             if (env.cgrid(p) != EMPTY_CLOUD)
-                desc = cloud_name_at_index(cl) + " cloud";
+                desc = cloud_name_at_index_j(cl);
         }
 
         curr_excludes.add_exclude(p, radius, autoexcl, desc, vaultexcl);
@@ -609,7 +609,10 @@ string exclude_set::get_exclusion_desc()
             continue;
 
         if (ex.desc != "")
-            desc.push_back(ex.desc);
+        {
+            ex.desc = replace_all(ex.desc, "(detected)", "(発見済)");
+            desc.push_back(jtrans(ex.desc));
+        }
         else
             count_other++;
     }
@@ -656,9 +659,8 @@ string exclude_set::get_exclusion_desc()
 
     if (count_other > 0)
     {
-        desc.push_back(make_stringf("%d %sexclusion%s",
-                                    count_other, desc.empty() ? "" : "more ",
-                                    count_other > 1 ? "s" : ""));
+        desc.push_back(make_stringf(jtransc("%d %sexclusion%s"),
+                                    count_other > 1 ? "群" : ""));
     }
     else if (desc.empty())
         return "";
@@ -669,10 +671,10 @@ string exclude_set::get_exclusion_desc()
         desc_str += "exclusion";
         if (desc.size() > 1)
             desc_str += "s";
-        desc_str += ": ";
+        desc_str = jtrans(desc_str) + ": ";
     }
     return desc_str + comma_separated_line(desc.begin(), desc.end(),
-                                           " and ", ", ");
+                                           ", ", ", ");
 }
 
 void marshallExcludes(writer& outf, const exclude_set& excludes)
