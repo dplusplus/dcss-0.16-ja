@@ -18618,6 +18618,10 @@ enters the passage of Golubria.
 
 はゴルブリアの通り道へと入っていった。
 %%%%
+But it is blocked!
+
+しかし出口は塞がれていた！
+%%%%
 You enter %s!
 
 あなたは%sに踏み込んだ！
@@ -18797,6 +18801,22 @@ You tear a large gash into the net.
 You struggle against the net.
 
 あなたは網を振りほどこうともがいている。
+%%%%
+You slip out of the net!
+
+あなたは網から抜け出して自由になった！
+%%%%
+You break free from the net!
+
+あなたは網を破いて自由になった！
+%%%%
+You try to slip out of the net.
+
+あなたは網から抜け出そうとしている。
+%%%%
+You struggle to escape the net.
+
+あなたは網から逃れようともがいている。
 %%%%
 The trap is out of ammunition!
 
