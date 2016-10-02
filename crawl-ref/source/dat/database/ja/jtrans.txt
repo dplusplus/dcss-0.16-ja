@@ -18904,18 +18904,6 @@ Stop exploring?
 
 自動探索を中止しますか？
 %%%%
-Key pressed, stopping %s.
-
-キーが押されたため、%sを中止します。
-%%%%
-You're confused, stopping %s.
-
-混乱しているため、%sを中止します。
-%%%%
-You're in a travel-excluded area, stopping %s.
-
-自動移動禁止区域の中にいるため、%sを中止します。
-%%%%
 Partly explored, obstructed by runed door.
 
 部分的に探索したが、残りの部分はルーンで封印された扉でふさがれている。
@@ -18931,6 +18919,18 @@ Partly explored, can't reach some %s.
 Could not pick up %s here; shall I ignore %s?
 
 これ以上アイテムを拾えません。無視しますか？
+%%%%
+Key pressed, stopping %s.
+
+キーが押されたため、%sを中止します。
+%%%%
+You're confused, stopping %s.
+
+混乱しているため、%sを中止します。
+%%%%
+You're in a travel-excluded area, stopping %s.
+
+自動移動禁止区域の中にいるため、%sを中止します。
 %%%%
 * - list branches
 
@@ -18948,6 +18948,18 @@ Where to? %s
 
 どこへ向かう？ %s
 %%%%
+Branch not generated this game.
+
+その分岐は今回のゲームでは生成されていません。
+%%%%
+Branch has no entry stairs.
+
+その分岐の入口の階段は生成されていません。
+%%%%
+Go there anyway?
+
+それでも移動を行いますか？
+%%%%
 What level of %s? (default %s, ? - help)
 
 %sの何階ですか？ (初期値: %s階, ? - ヘルプ)
@@ -18963,6 +18975,10 @@ Sorry, you can't auto-travel out of here.
 Sorry, I don't know how to get there.
 
 残念ながら、到達経路を割り出せません。
+%%%%
+Level memory is imperfect, aborting.
+
+# for error message
 %%%%
 Things which can be sacrificed:
 
@@ -19024,6 +19040,18 @@ Waypoint %d assigned to %s.
 
 %sを%d番の中継地点に登録しました。
 %%%%
+(under bush)
+
+(藪の中)
+%%%%
+(under plant)
+
+(迷宮草の根元)
+%%%%
+Found %s %s.
+
+%s%sの%sを見つけた。
+%%%%
 Found
 
 を見つけた。
@@ -19031,10 +19059,6 @@ Found
 Found %s
 
 %sを見つけた。
-%%%%
-Found %s %s.
-
-%s%sの%sを見つけた。
 %%%%
 item
 

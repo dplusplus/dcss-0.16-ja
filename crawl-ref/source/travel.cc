@@ -2238,18 +2238,18 @@ static int _prompt_travel_branch(int prompt_flags)
                         && is_random_subbranch((branch_type)i)
                         && you.wizard) // don't leak mimics
                     {
-                        msg += "Branch not generated this game. ";
+                        msg += jtrans("Branch not generated this game. ");
                     }
 
                     if (target.entry_stairs == NUM_FEATURES
                         && br[i] != BRANCH_DUNGEON)
                     {
-                        msg += "Branch has no entry stairs. ";
+                        msg += jtrans("Branch has no entry stairs. ");
                     }
 
                     if (!msg.empty())
                     {
-                        msg += "Go there anyway?";
+                        msg += jtrans("Go there anyway?");
                         if (!yesno(msg.c_str(), true, 'n'))
                             return ID_CANCEL;
                     }
@@ -2620,7 +2620,7 @@ void start_translevel_travel(const level_pos &pos)
         {
             if (!_loadlev_populate_stair_distances(pos))
             {
-                mpr("Level memory is imperfect, aborting.");
+                mpr(jtrans("Level memory is imperfect, aborting."));
                 return ;
             }
         }
@@ -4453,9 +4453,9 @@ void explore_discoveries::add_item(const item_def &i)
     string itemname = get_menu_colour_prefix_tags(i, DESC_A);
     monster* mon = monster_at(i.pos);
     if (mon && mons_species(mon->type) == MONS_BUSH)
-        itemname += " (under bush)";
+        itemname += " " + jtrans("(under bush)");
     else if (mon && mon->type == MONS_PLANT)
-        itemname += " (under plant)";
+        itemname += " " + jtrans("(under plant)");
 
     items.emplace_back(itemname, i);
 
