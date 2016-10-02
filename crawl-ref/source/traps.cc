@@ -759,8 +759,9 @@ void trap_def::trigger(actor& triggerer, bool flat_footed)
             else
             {
                 string dir = _direction_string(pos, !in_sight);
-                msg = string("あなたは") + ((in_sight) ? "" : "遠くで")
-                    + (!dir.empty() ? (dir + "の方向から") : "真後ろで")
+                msg = string("あなたは")
+                    + (!dir.empty() ? (dir + "の方向から") : (in_sight ? "真後ろから" : "真後ろで"))
+                    + ((in_sight) ? "" : "遠く")
                     + "鳴り響く警報音を耳にした。";
             }
 
