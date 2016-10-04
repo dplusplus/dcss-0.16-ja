@@ -19144,6 +19144,15 @@ run
 
 移動
 %%%%
+############################## tutorial.cc ##############################
+%%%%
+In Crawl, death is a sad but common occurrence. Note that there's usually something you could have done to survive, for example by using some kind of item, running away, resting between fights, or by avoiding combat entirely. Keep trying, eventually you'll prevail!
+
+ダンジョンクロウルにおいては、死は悲しい出来事ですがよくある事でもあります。
+ある種のアイテムを使ったり、走って逃げたり、戦いの合間に休息したり、あらゆる
+局面で戦闘を避けるなどといった手段で生き延びることができることに留意してください。
+勝利のために試行錯誤しましょう！
+%%%%
 ############################## view.cc ##############################
 %%%%
 %s come into view.

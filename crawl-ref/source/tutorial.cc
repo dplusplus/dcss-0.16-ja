@@ -7,6 +7,7 @@
 
 #include "tutorial.h"
 
+#include "database.h"
 #include "hints.h"
 #include "message.h"
 #include "skills.h"
@@ -63,10 +64,10 @@ void tutorial_death_message()
 {
     canned_msg(MSG_YOU_DIE);
     mpr_nojoin(MSGCH_TUTORIAL,
-               "In Crawl, death is a sad but common occurrence. "
-               "Note that there's usually something you could have done to "
-               "survive, for example by using some kind of item, running away, "
-               "resting between fights, or by avoiding combat entirely. "
-               "Keep trying, eventually you'll prevail!");
+               jtrans("In Crawl, death is a sad but common occurrence. "
+                      "Note that there's usually something you could have done to "
+                      "survive, for example by using some kind of item, running away, "
+                      "resting between fights, or by avoiding combat entirely. "
+                      "Keep trying, eventually you'll prevail!"));
     more();
 }
