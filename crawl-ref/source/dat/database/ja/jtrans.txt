@@ -19353,6 +19353,16 @@ Set abyss speed to what? (now %d, higher value = higher speed)
 
 アビスの変容速度を何に設定しますか？ (現在%d、値が大きいほど速くなる)
 %%%%
+############################## wiz-dump.cc ##############################
+%%%%
+cannot load dump file
+
+DCSS日本語版ではダンプファイル読み込み機能は動作しません。
+%%%%
+Which dump file?
+
+どのダンプファイルを読み込みますか？
+%%%%
 ############################## wiz-you.cc ##############################
 %%%%
 wizard race change
