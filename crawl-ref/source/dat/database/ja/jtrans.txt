@@ -3527,7 +3527,7 @@ This entry is an exact match for '
 %%%%
 '. To see non-exact matches, press space.
 
-'の完全一致によるものです。いまい検索するにはSpaceを押してください。
+'の完全一致によるものです。あいまい検索するにはSpaceを押してください。
 %%%%
 This cloud is opaque; one tile will not block vision, but multiple will.
 
