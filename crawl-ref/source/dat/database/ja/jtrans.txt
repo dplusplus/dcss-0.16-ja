@@ -19187,6 +19187,172 @@ Returning to normal view.
 
 通常表示に戻りました。
 %%%%
+############################## wiz-dgn.cc ##############################
+%%%%
+Can't go down from the bottom of a branch.
+
+分岐の最下階から下には行けません。
+%%%%
+Bug in determining level exit.
+
+# for error
+%%%%
+Create what kind of feature mimic?
+
+どの種類の地形のミミックを生成しますか？
+%%%%
+Create which feature?
+
+どの種類の地形を生成しますか？
+%%%%
+No features matching '%s'
+
+'%s'という地形は見つかりませんでした。
+%%%%
+No exact match for feature '%s', possible matches are:
+
+'%s'に完全一致する名称の地形はありませんでした。ありそうな候補は以下の通り:
+%%%%
+This isn't a valid feature mimic. Create it anyway?
+
+この地形ではミミックとして生成できません。それでも生成しますか？
+%%%%
+Branch %d (%s) is on %s
+
+分岐%d(%s)への入口は%sに生成されています
+%%%%
+Branch %d (%s) was not generated this game
+
+分岐%d(%s)は今回のゲームでは自然生成されていません
+%%%%
+Overflow temples:
+
+寺院外に生成された祭壇:
+%%%%
+%u on D:%u (%s)
+
+迷宮の%u階に%u箇所 (%s)
+%%%%
+Revealed %d traps.
+
+罠を%d箇所発見しました。
+%%%%
+no revealed traps
+
+罠はありませんでした。
+%%%%
+Force level to be mappable?
+
+強制的にマップを表示しますか？
+%%%%
+Sorry, this level can't take any more traps.
+
+残念ながら、この階にはこれ以上罠を置くことができません。
+%%%%
+You need to be on a floor square to make a trap.
+
+罠を張るには通常の地面の上に立っている必要があります。
+%%%%
+What kind of trap?
+
+どの種類の罠を張りますか？
+%%%%
+I know no traps named "%s".
+
+"%s"という名前の罠は知りません。
+%%%%
+No exact match for feature '%s', possible matches are:
+
+'%s'に完全一致する名称の罠はありませんでした。ありそうな候補は以下の通り:
+%%%%
+Created %s, marked it undiscovered.
+
+%sを生成し、未発見の状態にしました。
+%%%%
+a random trap
+
+ランダムな種類の罠
+%%%%
+Could not create trap - too many traps on level.
+
+罠を生成することができませんでした ― この階には罠が多すぎます。
+%%%%
+NOTE: Shaft traps aren't valid on this level.
+
+注意: 縦穴の罠がこの階にあると異常な結果を及ぼすことがあります。
+%%%%
+Insufficient floor-space for new Wal-Mart.
+
+このマスは店を開くのに適した立地ではありません。
+%%%%
+There are too many shops on this level.
+
+この階には店が多すぎます。
+%%%%
+What kind of shop?
+
+どの種類の店を開きますか？
+%%%%
+Done.
+
+完了.
+%%%%
+Can't find map named '%s'.
+
+'%s'という名称のマップは見つかりませんでした。
+%%%%
+Only match is '%s', use that?
+
+見つかった候補は'%s'のみですが、これを選択しますか？
+%%%%
+No exact matches for '%s', possible matches are:
+
+'%s'に完全一致する名称のマップはありませんでした。ありそうな候補は以下の通り:
+%%%%
+Placing %s on top of you would put part of the map outside of the level, cancelling.
+
+# for error
+%%%%
+%s decides where it goes, can't place where you are.
+
+# for error
+%%%%
+Successfully placed %s.
+
+マップ'%s'の生成に成功しました。
+%%%%
+Failed to place %s.
+
+マップ'%s'の生成に失敗しました。
+%%%%
+Enter map name:
+
+マップ名を入力してください:
+%%%%
+Enter map name (prefix it with * for local placement):
+
+マップ名を入力してください(頭に*を付けることで今いる場所に生成できます):
+%%%%
+Level stack:
+
+階層スタック:
+%%%%
+Known levels:
+
+既知の階層:
+%%%%
+`- total
+
+`- 総合
+%%%%
+All vaults are now eligible for [re]use.
+
+全てのvaultが(再)使用可能になった。
+%%%%
+Set abyss speed to what? (now %d, higher value = higher speed)
+
+アビスの変容速度を何に設定しますか？ (現在%d、値が大きいほど速くなる)
+%%%%
 ############################## wiz-you.cc ##############################
 %%%%
 wizard race change
