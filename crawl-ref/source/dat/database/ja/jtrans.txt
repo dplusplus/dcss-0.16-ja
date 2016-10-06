@@ -19363,6 +19363,32 @@ Which dump file?
 
 どのダンプファイルを読み込みますか？
 %%%%
+############################## wiz-fsim.cc ##############################
+%%%%
+Select a monster, or hit Escape to use default.
+
+モンスターを選択するか、Escを押してデフォルトの対象にしてください。
+%%%%
+Enter monster name (or MONS spec):
+
+モンスターの名称(またはモンスター指定文)を入力してください:
+%%%%
+Failed to create monster.
+
+モンスターの生成に失敗しました。
+%%%%
+Could not put monster adjacent to player.
+
+プレイヤーの隣接位置にモンスターを配置することができませんでした。
+%%%%
+Cancelling simulation.
+
+シミュレーションを中断しました。
+%%%%
+(A)ttack or (D)efense?
+
+(A)攻撃または(D)防御を選択してください。
+%%%%
 ############################## wiz-you.cc ##############################
 %%%%
 wizard race change
