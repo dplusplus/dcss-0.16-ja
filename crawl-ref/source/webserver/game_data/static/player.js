@@ -321,6 +321,8 @@ function ($, comm, enums, map_knowledge, messages, options) {
                 $("#stats_time_caption").text("時間:");
                 $("#stats_weapon").prev().text("手持武器:");
                 $("#stats_quiver").prev().text("射撃準備:");
+
+                $("#more").text("--続く--");
             }
             else
             {
