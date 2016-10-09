@@ -11,6 +11,7 @@
 
 #include "artefact.h"
 #include "colour.h"
+#include "database.h"
 #include "decks.h"
 #include "describe.h"
 #include "dungeon.h"
@@ -41,7 +42,8 @@ int create_item_named(string name, coord_def p, string *error)
     if (item != NON_ITEM)
         link_items();
     else if (error)
-        *error = "Failed to create item '" + name + "'";
+        *error = make_stringf(jtransc("Failed to create item '%s'"),
+                              name.c_str());
 
     return item;
 }

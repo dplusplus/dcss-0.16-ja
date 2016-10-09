@@ -135,6 +135,12 @@ The hog vanishes!
 
 豚の姿は消えた！
 %%%%
+############################## dbg-util.cc ##############################
+%%%%
+Which monster by name?
+
+モンスターの名前を入力してください。
+%%%%
 ############################## dgn-shoals.cc ##############################
 %%%%
 The tide is released from %s call.
@@ -3632,6 +3638,12 @@ Cannot bind user function keys to a command.
 Cannot bind synthetic keys to a command.
 
 合成キーをコマンドに関連付けられません。
+%%%%
+############################## makeitem.cc ##############################
+%%%%
+Failed to create item '%s'
+
+'%s'というアイテムを生成するのに失敗しました。
 %%%%
 ############################## main.cc ##############################
 %%%%
@@ -19388,6 +19400,291 @@ Cancelling simulation.
 (A)ttack or (D)efense?
 
 (A)攻撃または(D)防御を選択してください。
+%%%%
+############################## wiz-item.cc ##############################
+%%%%
+Enter name of item (or ITEM spec):
+
+アイテムの名称(またはアイテム指定文)を入力してください:
+%%%%
+Error: %s
+
+エラー: %s
+%%%%
+) - weapons     ( - missiles  [ - armour  / - wands    ?  - scrolls
+
+) - 武器         ( - 矢弾等    [ - 防具     / - ワンド   ? - 巻物
+%%%%
+= - jewellery   ! - potions   : - books   | - staves   \  - rods
+
+= - 装飾品       ! - 水薬      : - 魔法書類 | - 杖       \ - ロッド
+%%%%
+} - miscellany  X - corpses   %% - food    $ - gold     0  - the Orb
+
+} - 発動アイテム X - 死体      % - 食料     $ - 金貨     0 - ゾットのオーブ
+%%%%
+ESC - exit
+
+Esc - キャンセル
+%%%%
+What class of item?
+
+どの種別のアイテムを生成しますか？
+%%%%
+Could not allocate item.
+
+アイテムの割り当てができませんでした。
+%%%%
+How much gold?
+
+金貨をどのくらい生成しますか？
+%%%%
+No such monster.
+
+そのようなモンスターはいません。
+%%%%
+That monster doesn't leave corpses; make one anyway?
+
+そのモンスターは死体を残すことはありません。それでも選択しますか？
+%%%%
+You can't make a draconian corpse by its background.
+
+ドラコニアンの職業を区別して死体を生成することはできません。
+%%%%
+How many heads?
+
+ヒドラの首を何本にしますか？
+%%%%
+Failed to create corpse.
+
+死体を生成するのに失敗しました。
+%%%%
+What type of item?
+
+どのアイテムを生成しますか？
+%%%%
+("all" for all)
+
+("all"で全ての魔法書を生成)
+%%%%
+You can't tweak the randart properties of an equipped item.
+
+アーティファクトの設定を装備中に調整することはできません。
+%%%%
+Change which field?
+
+どの値を変更しますか？
+%%%%
+Toggling %s to %s.
+
+%sを%sにしました。
+%%%%
+off
+
+オフ
+%%%%
+on
+
+オン
+%%%%
+%s was %d.
+
+%sの値は現在%dになっています。
+%%%%
+New value?
+
+新しい値を何にしますか？
+%%%%
+Value for %s must be non-negative
+
+%sの値は0以上でないといけません。
+%%%%
+a - plus  b - plus2  c - %s  d - quantity  e - flags  ESC - exit
+
+# for wizard
+%%%%
+You can't set this flag on a non-artefact.
+
+このフラグはアーティファクトでないアイテムには設定できません。
+%%%%
+Make book fixed [t]heme or fixed [l]evel?
+
+魔法書の[t]傾向および[l]レベルのどちらを変更しますか？
+%%%%
+Value of which artefact?
+
+どのアーティファクトの価値を表示しますか？
+%%%%
+That item is not an artefact!
+
+そのアイテムはアーティファクトではありません！
+%%%%
+Make an artefact out of which item?
+
+どのアイテムをランダムアーティファクト化しますか？
+%%%%
+That item is already an unrandom artefact.
+
+そのアイテムは固定アーティファクトです。
+%%%%
+That item cannot be turned into an artefact.
+
+そのアイテムをアーティファクト化することはできません。
+%%%%
+Is already a randart; wipe and re-use?
+
+そのアイテムはすでにランダムアーティファクトです。再生成しますか？
+%%%%
+No such god, leaving item origin alone.
+
+該当する神がいませんでした。
+%%%%
+God gift of %s.
+
+%sからの授かり物として扱います。
+%%%%
+Failed to turn book into randart.
+
+魔法書をランダムアーティファクト化するのに失敗しました。
+%%%%
+Failed to turn item into randart.
+
+アイテムをランダムアーティファクト化するのに失敗しました。
+%%%%
+(Un)curse which item?
+
+どのアイテムを呪縛/解呪切り替えしますか？
+%%%%
+That type of item cannot be cursed.
+
+その種別のアイテムを呪うことはできません。
+%%%%
+You feel a rush of knowledge.
+
+所持アイテムを全て鑑定しました。
+%%%%
+You feel a rush of antiknowledge.
+
+所持アイテムを全て未鑑定状態にしました。
+%%%%
+Item stacks (by location and top item):
+
+# ???
+%%%%
+Floor items (stacks only show top item):
+
+# ???
+%%%%
+Too many items on level.
+
+この階にはアイテムが多すぎます。
+%%%%
+[a] Weapons [b] Armours [c] Jewellery      [d] Books
+
+[a] 武器       [b] 鎧・服 [c] 装飾品       [d] 魔法書
+%%%%
+[e] Staves  [f] Wands   [g] Miscellaneous  [h] Food
+
+[e] 杖・ロッド [f] ワンド [g] 発動アイテム [h] 食料
+%%%%
+What kind of item would you like to get acquirement stats on?
+
+どの種別のアイテムで獲得処理統計を取りますか？
+%%%%
+How many iterations?
+
+何回測定を行いますか？
+%%%%
+Stopping early due to keyboard input.
+
+キーボード入力により中断しました。
+%%%%
+Acquirement failed, stopping early.
+
+中断したため、獲得に失敗しました。
+%%%%
+%2d%% done.
+
+%2d%%終了。
+%%%%
+No items generated.
+
+アイテムは生成されませんでした。
+%%%%
+Acquiring %s for:
+
+%sの獲得処理統計:
+%%%%
+%s %s, Level %d %s %s%s
+
+%s『%s』レベル%dの%sの%s%s
+%%%%
+Not wearing or wielding anything.
+
+何も手に持っていないし、装備もしていない。
+%%%%
+Skills:
+
+スキル:
+%%%%
+%-13s:  %2d/%2d spells unseen
+
+# ???
+%%%%
+Acquirement called %d times, total quantity = %d
+
+%%%%
+%5.2f%% artefacts.
+
+%%%%
+Maximum combined pluses: %d
+
+%%%%
+Average combined pluses: %5.2f
+
+%%%%
+Egos (including artefacts):
+
+%%%%
+Maximum plus: %d
+
+%%%%
+Average plus: %5.2f
+
+%%%%
+Egos (excluding artefacts):
+
+%%%%
+Primary disciplines/levels of randart books:
+
+%%%%
+Manuals:
+
+虎の巻:
+%%%%
+Results written into 'items.stat'.
+
+測定結果を'items.stat'ファイルに出力しました。
+%%%%
+Generate randart stats on which item?
+
+%%%%
+Can't make a randart out of that type of item.
+
+%%%%
+Randarts generated: %d valid, %d invalid
+
+%%%%
+Generate stats for: [a] acquirement [b] randart properties
+
+%%%%
+Which card?
+
+どのカードの効果を発揮しますか？
+%%%%
+Unknown card.
+
+不明なカード名です。
 %%%%
 ############################## wiz-you.cc ##############################
 %%%%
