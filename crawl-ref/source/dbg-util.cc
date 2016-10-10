@@ -347,7 +347,7 @@ void debug_dump_mon(const monster* mon, bool recurse)
     }
 }
 
-skill_type debug_prompt_for_skill(const char *prompt)
+skill_type debug_prompt_for_skill(const string &prompt)
 {
     char specs[80];
     msgwin_get_line_autohist(prompt, specs, sizeof(specs));

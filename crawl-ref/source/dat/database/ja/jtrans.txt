@@ -473,6 +473,11 @@ The injured %s weaves a defensive illusion!
 %%%%
 ############################## form-data.h ##############################
 %%%%
+# TRAN_NONE
+[form]none
+
+元の姿
+%%%%
 # TRAN_SPIDER
 [form]Spider
 
@@ -650,6 +655,10 @@ front trotter
 
 半獣
 %%%%
+[form]appendage
+
+半獣
+%%%%
 appendage
 
 半獣の躰
@@ -701,6 +710,10 @@ sway towards
 %%%%
 # TRAN_PORCUPINE
 [form]Porc
+
+豪猪
+%%%%
+[form]porcupine
 
 豪猪
 %%%%
@@ -19688,13 +19701,242 @@ Unknown card.
 %%%%
 ############################## wiz-you.cc ##############################
 %%%%
+That species isn't available.
+
+その種族には変化できません。
+%%%%
 wizard race change
 
 ウィザードコマンドによる種族変化
 %%%%
+%s falls away.
+
+%sは地面に落ちた。
+%%%%
+What species would you like to be now?
+
+何の種族に変化しますか？
+%%%%
+Cast which spell?
+
+どの呪文を唱えますか？
+%%%%
+Cannot find that spell.
+
+そのような呪文は見つかりませんでした。
+%%%%
+Memorise which spell?
+
+どの魔法を習得しますか？
+%%%%
+Set hunger state to s(T)arving, (N)ear starving, (H)ungry
+
+どの満腹度に設定しますか？
+(T)餓死しかけ (N)餓死が近い (H)空腹
+%%%%
+or (S)atiated
+
+(S)満腹
+%%%%
+(S)atiated, (F)ull or (E)ngorged
+
+(S)普通 (F)満腹 (E)腹一杯
+%%%%
+Ghouls can never be full or above!
+
+グールは満腹状態以上になることはありません！
+%%%%
+Piety needs to be between 0 and %d.
+
+信仰値は0から%dの間に設定してください。
+%%%%
+Ru piety can't be greater than %d.
+
+ルーへの信仰値は%dを越えることはできません。
+%%%%
+Enter new interest (current = %d, Enter for 0):
+
+ゾムの関心値を入力してください。 (現在値 = %d, 空入力で0)
+%%%%
+Interest must be between 0 and 255.
+
+関心値は0から255の間の値にしてください。
+%%%%
+Set piety to %d, interest to %d.
+
+信仰値を%dに、関心値を%dに設定しました。
+%%%%
+Are you sure you want to be excommunicated?
+
+本当に棄教しますか？
+%%%%
+Setting piety to %d.
+
+信仰値を%dに設定しました。
+%%%%
+You are not religious!
+
+あなたは神を信仰していない！
+%%%%
+Current progress to next sacrifice: %d  Progress needed: %d
+
+次の代償までの現在の進行度: %d 要求される進行度: %d
+%%%%
+Enter new piety value (current = %d, Enter for 0):
+
+設定したい信仰値を入力してください。 (現在値 = %d, 空入力で0)
+%%%%
+Which skill (by name)?
+
+どのスキルを鍛えますか？(名前を指定)
+%%%%
+That skill doesn't seem to exist.
+
+そのようなスキルは存在しないようだ。
+%%%%
+Exercising...
+
+鍛錬中……
+%%%%
+To what level?
+
+レベルを何に設定しますか？
+%%%%
+%s %s to skill level %.1f.
+
+%sスキルを%.1fに%sました。
+%%%%
+Set all skills to what level?
+
+全てのスキルを何レベルに設定しますか？
+%%%%
+You are immune to mutations; remove immunity?
+
+あなたは変異に対する免疫を獲得しています。除去しますか？
+%%%%
+You are resistant to mutations; remove resistance?
+
+あなたは変異に対する耐性を獲得しています。除去しますか？
+%%%%
+Force mutation to happen?
+
+強制的に変異させますか？
+%%%%
+Can't mutate when immune to mutations without forcing it.
+
+強制変異でない、かつ変異に対する免疫があるため変異できません。
+%%%%
+Treat mutation as god gift?
+
+神による変異として扱いますか？
+%%%%
+Which mutation (name, 'good', 'bad', 'any', 'xom', 'slime', 'corrupt', 'qazlal')?
+
+どの変異にしますか？(名前を指定、もしくはgood/bad/any/xom/slime/corrupt/qazlalを選択)
+%%%%
 wizard power
 
 ウィザードコマンドによる変異
+%%%%
+Your mutation resistance has increased.
+
+あなたの変異に対する耐性は上昇した。
+%%%%
+No matching mutation names.
+
+該当する変異名は見つかりませんでした。
+%%%%
+No exact match for mutation '%s', possible matches are:
+
+'%s'に完全一致する名称の変異はありませんでした。ありそうな候補は以下の通り:
+%%%%
+How many levels to increase or decrease?
+
+何レベルに増加または減少させますか？
+%%%%
+Enter values for X, Y, Z (space separated) or return:
+
+スペースで区切ってX, Y, Zの値を入力してください。(空入力なら(X, Y, Z) = (0, 0, 0))
+%%%%
+Enter values for Str, Int, Dex (space separated):
+
+設定する腕力、知力、器用さの値をスペースで区切って入力してください。
+%%%%
+Edit which duration (letter or name)?
+
+どの持続効果を設定しますか？(文字指定、もしくは名前)
+%%%%
+No existing durations to choose from.
+
+選択できる持続効果がありません。
+%%%%
+Invalid choice.
+
+不正な選択です。
+%%%%
+No durations matching '%s'.
+
+'%s'に該当する持続効果はありませんでした。
+%%%%
+No exact match for duration '%s', possible matches are:
+
+'%s'に完全一致する名称の持続効果はありませんでした。ありそうな候補は以下の通り:
+%%%%
+Set '%s' to:
+
+'%s'の残り時間を以下に設定します:
+%%%%
+Can't set duration directly to 0, setting it to 1 instead.
+
+持続効果の残り時間を直接0にすることはできないため、1に設定します。
+%%%%
+props: %s
+
+プロパティ: %s
+%%%%
+Enter new experience level:
+
+目的の経験レベル値を入力してください:
+%%%%
+Train skills?
+
+スキルを鍛錬しますか？
+%%%%
+Experience level set to %d.
+
+経験レベルを%dに設定しました。
+%%%%
+Nothing happens.
+
+何事も起こらなかった。
+%%%%
+That god doesn't seem to exist!
+
+そのような神は存在しません！
+%%%%
+You suffer the terrible wrath of No God.
+
+あなたは名もなき神の怒りにさらされた。
+%%%%
+%s is not feeling wrathful today.
+
+%sは今のところは機嫌がおさまっているようだ。
+%%%%
+Which form (ESC to exit)?
+
+どの姿になりますか？ (Escでキャンセル)
+%%%%
+Transformation failed.
+
+変化に失敗しました。
+%%%%
+You already have no god!
+
+あなたは既に神を信仰していない！
+%%%%
+You already worship that god!
+
+あなたは既にその神を信仰している！
 %%%%
 ############################## xom.cc ##############################
 %%%%

@@ -287,7 +287,7 @@ int prompt_for_quantity(const char *prompt)
 // If !nonneg, then it returns an integer, and 0 on fail
 //
 //---------------------------------------------------------------
-int prompt_for_int(const char *prompt, bool nonneg)
+int prompt_for_int(const string &prompt, bool nonneg)
 {
     char specs[80];
 
@@ -305,7 +305,7 @@ int prompt_for_int(const char *prompt, bool nonneg)
     return ret;
 }
 
-double prompt_for_float(const char* prompt)
+double prompt_for_float(const string &prompt)
 {
     char specs[80];
 
