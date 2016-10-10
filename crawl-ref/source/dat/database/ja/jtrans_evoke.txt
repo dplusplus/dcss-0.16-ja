@@ -193,7 +193,7 @@ You open the lid...
 %%%%
 ...but nothing happens.
 
-……しかし何事も起こらなかった！
+……しかし何事も起こらなかった。
 %%%%
 ...and something leaps out!
 
