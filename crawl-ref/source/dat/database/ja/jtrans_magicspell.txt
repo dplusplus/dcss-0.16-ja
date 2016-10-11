@@ -188,7 +188,7 @@
 [spell]Chain of Chaos
 
 # obsolete?
-Chain of Chaos
+連鎖する混沌
 %%%%
 [spell]Chain Lightning
 
@@ -324,7 +324,7 @@ Chain of Chaos
 [spell]Debugging Ray
 
 # for debug
-Debugging Ray
+デバッグ光線
 %%%%
 [spell]Deflect Missiles
 
@@ -492,7 +492,7 @@ Debugging Ray
 %%%%
 [spell]Frenzy
 
-Frenzy
+凶暴化
 %%%%
 [spell]Fulminant Prism
 
@@ -903,7 +903,7 @@ Frenzy
 [spell]Shadow Bolt
 
 # obsolete?
-Shadow Bolt
+影の矢
 %%%%
 [spell]Shadow Creatures
 
@@ -1079,7 +1079,7 @@ Shadow Bolt
 [spell]Summon Emperor Scorpions
 
 # obsolete?
-Summon Emperor Scopions
+皇帝サソリの召喚
 %%%%
 [spell]Summon Eyeballs
 
@@ -1111,7 +1111,7 @@ Summon Emperor Scopions
 [spell]Summon Holies
 
 # obsolete
-Summon Holies
+神聖なるものの召喚
 %%%%
 [spell]Summon Horrible Things
 
@@ -1128,7 +1128,7 @@ Summon Holies
 [spell]Summon Illusion
 
 # obsolete?
-Summon Illusion
+幻影の召喚
 %%%%
 [spell]Summon Iron Elementals
 
