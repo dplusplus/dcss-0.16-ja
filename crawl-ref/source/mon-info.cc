@@ -960,7 +960,7 @@ string monster_info::_core_name() const
     else if (is(MB_NAME_ADJECTIVE))
     {
         if (mname == "apprentice") // apprentice kobold demonologist
-            s = replace_all(jtrans(mname), "の", "の" + jtrans(mname));
+            s = replace_all(s, "の", "の" + jtrans(mname));
         else if(mname == "conjurer" || // conjurer statue
                 mname == "fire elementalist" || // sprint_mu
                 mname == "water elementalist" ||
