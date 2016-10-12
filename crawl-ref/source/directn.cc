@@ -3085,11 +3085,6 @@ string feature_description_at(const coord_def& where, bool covering,
             starts_with(door_desc_suffix, " leading to ")) // for pitsprint
             desc += jtrans(door_desc_suffix);
 
-        if (!door_desc_adj.empty())
-            desc += door_desc_adj;
-        else
-            desc += adj;
-
         desc += covering_description;
 
         if (door_desc_veto.empty() || door_desc_veto != "veto")
@@ -3103,6 +3098,11 @@ string feature_description_at(const coord_def& where, bool covering,
             else
                 desc += tagged_jtrans("[adj]", "closed ");
         }
+
+        if (!door_desc_adj.empty())
+            desc += door_desc_adj;
+        else
+            desc += adj;
 
         desc += jtrans(door_desc_prefix);
 
