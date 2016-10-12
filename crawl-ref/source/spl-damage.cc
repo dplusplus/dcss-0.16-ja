@@ -187,6 +187,15 @@ bool cast_hellfire_burst(int pow, bolt &beam)
     return true;
 }
 
+static string jtrans_zap_name(const string &name)
+{
+    string tag = "[zap]";
+    if (tagged_jtrans_has_key(tag, name))
+        return tagged_jtrans(tag, name);
+    else
+        return jtrans(name);
+}
+
 // XXX no friendly check
 spret_type cast_chain_spell(spell_type spell_cast, int pow,
                             const actor *caster, bool fail)
@@ -315,7 +324,8 @@ spret_type cast_chain_spell(spell_type spell_cast, int pow,
         if (target.x == -1)
         {
             if (see_source)
-                mprf(jtransc("The %s grounds out."), jtransc(beam.name));
+                mprf(jtransc("The %s grounds out."),
+                     jtrans_zap_name(beam.name).c_str());
 
             break;
         }
@@ -341,9 +351,11 @@ spret_type cast_chain_spell(spell_type spell_cast, int pow,
         first = false;
 
         if (see_source && !see_targ)
-            mprf(jtransc("The %s arcs out of your line of sight!"), jtransc(beam.name));
+            mprf(jtransc("The %s arcs out of your line of sight!"),
+                 jtrans_zap_name(beam.name).c_str());
         else if (!see_source && see_targ)
-            mprf(jtransc("The %s suddenly appears!"), jtransc(beam.name));
+            mprf(jtransc("The %s suddenly appears!"),
+                 jtrans_zap_name(beam.name).c_str());
 
         beam.source = source;
         beam.target = target;
