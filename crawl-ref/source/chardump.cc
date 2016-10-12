@@ -830,7 +830,7 @@ static void _sdump_spells(dump_params &par)
                 spell_line += " - ";
                 spell_line += tagged_jtrans("[spell]", spell_title(spell));
 
-                spell_line = chop_string(spell_line, 29);
+                spell_line = chop_string(spell_line, 30);
                 spell_line += " ";
 
                 bool already = false;
@@ -845,15 +845,15 @@ static void _sdump_spells(dump_params &par)
                     }
                 }
 
-                spell_line = chop_string(spell_line, 41);
+                spell_line = chop_string(spell_line, 42);
 
                 spell_line += spell_power_string(spell);
 
-                spell_line = chop_string(spell_line, 53);
+                spell_line = chop_string(spell_line, 54);
 
                 spell_line += failure_rate_to_string(raw_spell_fail(spell));
 
-                spell_line = chop_string(spell_line, 61);
+                spell_line = chop_string(spell_line, 62);
 
                 spell_line += make_stringf("%d       ", spell_difficulty(spell));
 
