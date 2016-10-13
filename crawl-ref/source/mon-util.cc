@@ -1552,25 +1552,8 @@ bool mons_enslaved_soul(const monster* mon)
 bool name_zombie(monster* mon, monster_type mc, const string &mon_name)
 {
     mon->mname = mon_name;
-
-    // Special case for Blork the orc: shorten his name to "Blork" to
-    // avoid mentions of "Blork the orc the orc zombie".
-    if (mc == MONS_BLORK_THE_ORC)
-        mon->mname = "Blork";
-    // Also for the Lernaean hydra: treat Lernaean as an adjective to
-    // avoid mentions of "the Lernaean hydra the X-headed hydra zombie".
-    else if (mc == MONS_LERNAEAN_HYDRA)
-    {
-        mon->mname = "Lernaean";
-        mon->flags |= MF_NAME_ADJECTIVE;
-    }
-    // Also for the Enchantress: treat Enchantress as an adjective to
-    // avoid mentions of "the Enchantress the spriggan zombie".
-    else if (mc == MONS_THE_ENCHANTRESS)
-    {
-        mon->mname = "Enchantress";
-        mon->flags |= MF_NAME_ADJECTIVE;
-    }
+    if (mons_is_unique(mc))
+        mon->flags |= MF_NAME_REPLACE;
 
     if (starts_with(mon->mname, "shaped "))
         mon->flags |= MF_NAME_SUFFIX;
