@@ -21780,6 +21780,24 @@ master elementalist
 
 精霊を極めしもの
 %%%%
+############################## dat/des/variable/geyser.des ##############################
+%%%%
+A fountain of clear blue water erupts!
+
+噴水から青く澄んだ水が噴き出した！
+%%%%
+A fountain of sparkling water erupts!
+
+噴水からきらめく水が噴き出した！
+%%%%
+You hear a distant splash.
+
+あなたは遠くから聞こえる水音を耳にした。
+%%%%
+The fountain becomes smaller until it vanishes.
+
+噴水はだんだんと小さくなって消えてしまった。
+%%%%
 ############################## dat/des/variable/grated_community.des ##############################
 %%%%
 Slaves and Accessories
