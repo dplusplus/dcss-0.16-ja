@@ -13377,6 +13377,14 @@ You can't repeat %s.
 
 あなたは%sの呪文を繰り返すことができません。
 %%%%
+magic immune
+
+呪術無効
+%%%%
+chance %d%%
+
+成功率 %d%%
+%%%%
 Sorry, this spell works on others only.
 
 残念ながら、その呪文は他者にしか効果を及ぼしません。

@@ -1205,10 +1205,10 @@ vector<string> desc_success_chance(const monster_info& mi, int pow)
     vector<string> descs;
     const int mr = mi.res_magic();
     if (mr == MAG_IMMUNE)
-        descs.push_back("magic immune");
+        descs.push_back(jtrans("magic immune"));
     else
     {
-        descs.push_back(make_stringf("chance %d%%",
+        descs.push_back(make_stringf(jtransc("chance %d%%"),
                                      hex_success_chance(mr, pow, 100)).c_str());
     }
     return descs;
