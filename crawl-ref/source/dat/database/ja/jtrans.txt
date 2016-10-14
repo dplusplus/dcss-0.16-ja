@@ -8584,6 +8584,10 @@ Xom revived you
 
 ゾムがあなたを蘇らせた
 %%%%
+Enter note:
+
+行動履歴に記入する:
+%%%%
 ############################## orb.cc ##############################
 %%%%
 The orb lets out a hideous shriek!

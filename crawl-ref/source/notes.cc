@@ -510,7 +510,7 @@ void load_notes(reader& inf)
 void make_user_note()
 {
     char buf[400];
-    bool validline = !msgwin_get_line("Enter note: ", buf, sizeof(buf));
+    bool validline = !msgwin_get_line(jtrans("Enter note: ") + " ", buf, sizeof(buf));
     if (!validline || (!*buf))
         return;
     Note unote(NOTE_USER_NOTE);
