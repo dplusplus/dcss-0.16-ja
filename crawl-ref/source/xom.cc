@@ -2751,8 +2751,10 @@ static int _xom_miscast(const int max_level, const bool nasty,
     // Take a note.
     const char* levels[4] = { "無害な", "ちょっとした", "", "激しい" };
     const auto school = spschools_type::exponent(random2(SPTYP_LAST_EXPONENT + 1));
+    string skill = (school != SPTYP_DIVINATION) ? tagged_jtrans("[skill]", skill_name(spell_type2skill(school)))
+                                                : jtrans("Divination");
     string desc = make_stringf(jtransc("%s %s miscast"), levels[level],
-                               tagged_jtransc("[skill]", skill_name(spell_type2skill(school))));
+                               skill.c_str());
 #ifdef NOTE_DEBUG_XOM
     if (nasty)
         desc += " (Xom was nasty)";
