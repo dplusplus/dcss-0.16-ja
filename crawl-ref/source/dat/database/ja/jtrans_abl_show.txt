@@ -481,7 +481,7 @@ Stop Recall
 %%%%
 Shadow Step
 
-影移動
+影渡り
 #{ ABIL_DITHMENOS_SHADOW_STEP, "Shadow Step",
 %%%%
 Shadow Form

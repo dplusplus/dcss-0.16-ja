@@ -800,7 +800,7 @@ With a roar of approval, the orcs welcome you as one of their own, and spare you
 %%%%
 Aiming: <white>Shadow Step</white>
 
-照準: <white>影移動</white>
+照準: <white>影渡り</white>
 %%%%
 engulfs
 
@@ -808,7 +808,7 @@ engulfs
 %%%%
 Something blocks your shadow step.
 
-何かがあなたの影移動を妨害した。
+何かがあなたの影渡りを妨害した。
 %%%%
 You step into %s shadow.
 
