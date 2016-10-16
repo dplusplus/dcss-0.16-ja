@@ -48,7 +48,7 @@
 // Creates a specific monster by mon type number.
 void wizard_create_spec_monster()
 {
-    int mon = prompt_for_int("Which monster by number? ", true);
+    int mon = prompt_for_int(jtrans("Which monster by number? ") + " ", true);
 
     if (mon == -1 || (mon >= NUM_MONSTERS
                       && mon != RANDOM_MONSTER
@@ -72,7 +72,7 @@ void wizard_create_spec_monster()
 void wizard_create_spec_monster_name()
 {
     char specs[1024];
-    mprf(MSGCH_PROMPT, "Enter monster name (or MONS spec): ");
+    mpr_nojoin(MSGCH_PROMPT, jtrans("Enter monster name (or MONS spec): ") + " ");
     if (cancellable_get_line_autohist(specs, sizeof specs) || !*specs)
     {
         canned_msg(MSG_OK);
@@ -104,7 +104,7 @@ void wizard_create_spec_monster_name()
     mons_spec mspec = mlist.get_monster(0);
     if (mspec.type == MONS_NO_MONSTER)
     {
-        mprf(MSGCH_DIAGNOSTICS, "Such a monster couldn't be found.");
+        mpr_nojoin(MSGCH_DIAGNOSTICS, jtrans("Such a monster couldn't be found."));
         return;
     }
 
@@ -122,7 +122,7 @@ void wizard_create_spec_monster_name()
 
     if (!in_bounds(place))
     {
-        mprf(MSGCH_DIAGNOSTICS, "Found no space to place monster.");
+        mpr_nojoin(MSGCH_DIAGNOSTICS, jtrans("Found no space to place monster."));
         return;
     }
 
@@ -133,7 +133,7 @@ void wizard_create_spec_monster_name()
 
     if (!dgn_place_monster(mspec, place, true, false))
     {
-        mprf(MSGCH_DIAGNOSTICS, "Unable to place monster.");
+        mpr_nojoin(MSGCH_DIAGNOSTICS, jtrans("Unable to place monster."));
         return;
     }
 
@@ -154,7 +154,7 @@ void wizard_create_spec_monster_name()
         }
         if (idx >= MAX_MONSTERS)
         {
-            mpr("Couldn't find player kraken!");
+            mpr(jtrans("Couldn't find player kraken!"));
             return;
         }
     }
@@ -179,7 +179,7 @@ void wizard_create_spec_monster_name()
 
         if (idx >= MAX_MONSTERS)
         {
-            mpr("Couldn't find player ghost, probably going to crash.");
+            mpr(jtrans("Couldn't find player ghost, probably going to crash."));
             more();
             return;
         }
@@ -190,7 +190,7 @@ void wizard_create_spec_monster_name()
         ghost.name = "John Doe";
 
         char input_str[80];
-        msgwin_get_line("Make player ghost which species? (case-sensitive) ",
+        msgwin_get_line(jtrans("Make player ghost which species? (case-sensitive) ") + " ",
                         input_str, sizeof(input_str));
 
         species_type sp_id = get_species_by_abbrev(input_str);
@@ -198,12 +198,12 @@ void wizard_create_spec_monster_name()
             sp_id = str_to_species(input_str);
         if (sp_id == SP_UNKNOWN)
         {
-            mpr("No such species, making it Human.");
+            mpr(jtrans("No such species, making it Human."));
             sp_id = SP_HUMAN;
         }
         ghost.species = static_cast<species_type>(sp_id);
 
-        msgwin_get_line("Give player ghost which background? ",
+        msgwin_get_line(jtrans("Give player ghost which background? ") + " ",
                         input_str, sizeof(input_str));
 
         int job_id = get_job_by_abbrev(input_str);
@@ -213,7 +213,7 @@ void wizard_create_spec_monster_name()
 
         if (job_id == JOB_UNKNOWN)
         {
-            mpr("No such background, making it a Fighter.");
+            mpr(jtrans("No such background, making it a Fighter."));
             job_id = JOB_FIGHTER;
         }
         ghost.job = static_cast<job_type>(job_id);
@@ -285,8 +285,8 @@ void debug_list_monsters()
             char buf[80];
             if (count > 1)
             {
-                snprintf(buf, sizeof(buf), "%d %s", count,
-                         pluralise(prev_name).c_str());
+                snprintf(buf, sizeof(buf), "%sx%d",
+                         prev_name.c_str(), count);
             }
             else
                 snprintf(buf, sizeof(buf), "%s", prev_name.c_str());
@@ -316,28 +316,33 @@ void debug_list_monsters()
 
     char buf[80];
     if (count > 1)
-        snprintf(buf, sizeof(buf), "%d %s", count, pluralise(prev_name).c_str());
+        snprintf(buf, sizeof(buf), "%sx%d",
+                 prev_name.c_str(), count);
     else
         snprintf(buf, sizeof(buf), "%s", prev_name.c_str());
     mons.emplace_back(buf);
 
-    mpr_comma_separated_list("Monsters: ", mons);
+    if (nfound)
+        mpr_comma_separated_list((jtrans("Monsters: ") + " "), mons, ", ", ", ",
+                                 MSGCH_PLAIN, 0, ".");
+    else
+        mpr(jtrans("Monsters:"));
 
     if (total_adj_exp == total_exp)
     {
-        mprf("%d monsters, %d total exp value (%d non-uniq)",
+        mprf(jtransc("%d monsters, %d total exp value (%d non-uniq)"),
              nfound, total_exp, total_nonuniq_exp);
     }
     else
     {
-        mprf("%d monsters, %d total exp value (%d non-uniq, %d adjusted)",
+        mprf(jtransc("%d monsters, %d total exp value (%d non-uniq, %d adjusted)"),
              nfound, total_exp, total_nonuniq_exp, total_adj_exp);
     }
 }
 
 void wizard_spawn_control()
 {
-    mprf(MSGCH_PROMPT, "(c)hange spawn rate or (s)pawn monsters? ");
+    mpr_nojoin(MSGCH_PROMPT, jtrans("(c)hange spawn rate or (s)pawn monsters? ") + " ");
     const int c = toalower(getchm());
 
     char specs[256];
@@ -345,7 +350,7 @@ void wizard_spawn_control()
 
     if (c == 'c')
     {
-        mprf(MSGCH_PROMPT, "Set monster spawn rate to what? (now %d, lower value = higher rate) ",
+        mprf(MSGCH_PROMPT, (jtrans("Set monster spawn rate to what? (now %d, lower value = higher rate) ") + " ").c_str(),
              env.spawn_random_rate);
 
         if (!cancellable_get_line(specs, sizeof(specs)))
@@ -368,12 +373,12 @@ void wizard_spawn_control()
 
         if (max_spawn <= 0)
         {
-            mprf(MSGCH_PROMPT, "Level already filled with monsters, "
-                               "get rid of some of them first.");
+            mpr_nojoin(MSGCH_PROMPT, jtrans("Level already filled with monsters, "
+                                            "get rid of some of them first."));
             return;
         }
 
-        mprf(MSGCH_PROMPT, "Spawn how many random monsters (max %d)? ",
+        mprf(MSGCH_PROMPT, (jtrans("Spawn how many random monsters (max %d)? ") + " ").c_str(),
              max_spawn);
 
         if (!cancellable_get_line(specs, sizeof(specs)))
@@ -420,8 +425,7 @@ void debug_stethoscope(int mon)
         i = mon;
     else
     {
-        mprf(MSGCH_PROMPT, "Which monster?");
-
+        mpr_nojoin(MSGCH_PROMPT, jtrans("Which monster?"));
         direction(stth, direction_chooser_args());
 
         if (!stth.isValid)
@@ -434,14 +438,14 @@ void debug_stethoscope(int mon)
 
         if (env.cgrid(stethpos) != EMPTY_CLOUD)
         {
-            mprf(MSGCH_DIAGNOSTICS, "cloud type: %d delay: %d",
+            mprf(MSGCH_DIAGNOSTICS, jtransc("cloud type: %d delay: %d"),
                  env.cloud[ env.cgrid(stethpos) ].type,
                  env.cloud[ env.cgrid(stethpos) ].decay);
         }
 
         if (!monster_at(stethpos))
         {
-            mprf(MSGCH_DIAGNOSTICS, "item grid = %d", igrd(stethpos));
+            mprf(MSGCH_DIAGNOSTICS, jtransc("item grid = %d"), igrd(stethpos));
             return;
         }
 
@@ -451,7 +455,7 @@ void debug_stethoscope(int mon)
     monster& mons(menv[i]);
 
     // Print type of monster.
-    mprf(MSGCH_DIAGNOSTICS, "%s (id #%d; type=%d loc=(%d,%d) align=%s)",
+    mprf(MSGCH_DIAGNOSTICS, jtransc("%s (id #%d; type=%d loc=(%d,%d) align=%s)"),
          mons.name(DESC_THE, true).c_str(),
          i, mons.type, mons.pos().x, mons.pos().y,
          ((mons.attitude == ATT_HOSTILE)        ? "hostile" :
@@ -522,8 +526,8 @@ void debug_stethoscope(int mon)
                    : ""));
 
     // Print resistances.
-    mprf(MSGCH_DIAGNOSTICS, "resist: fire=%d cold=%d elec=%d pois=%d neg=%d "
-                            "acid=%d sticky=%s rot=%s",
+    mprf(MSGCH_DIAGNOSTICS, jtransc("resist: fire=%d cold=%d elec=%d pois=%d neg=%d "
+                                    "acid=%d sticky=%s rot=%s"),
          mons.res_fire(),
          mons.res_cold(),
          mons.res_elec(),
@@ -533,10 +537,10 @@ void debug_stethoscope(int mon)
          mons.res_sticky_flame() ? "yes" : "no",
          mons.res_rotting() ? "yes" : "no");
 
-    mprf(MSGCH_DIAGNOSTICS, "ench: %s",
+    mprf(MSGCH_DIAGNOSTICS, jtransc("ench: %s"),
          mons.describe_enchantments().c_str());
 
-    mprf(MSGCH_DIAGNOSTICS, "props: %s",
+    mprf(MSGCH_DIAGNOSTICS, jtransc("props: %s"),
          mons.describe_props().c_str());
 
     ostringstream spl;
@@ -591,8 +595,8 @@ void debug_stethoscope(int mon)
     {
         ASSERT(mons.ghost.get());
         const ghost_demon &ghost = *mons.ghost;
-        mprf(MSGCH_DIAGNOSTICS, "Ghost damage: %d; brand: %d; att_type: %d; "
-                                "att_flav: %d",
+        mprf(MSGCH_DIAGNOSTICS, jtransc("Ghost damage: %d; brand: %d; att_type: %d; "
+                                        "att_flav: %d"),
              ghost.damage, ghost.brand, ghost.att_type, ghost.att_flav);
     }
 }
@@ -617,8 +621,8 @@ void wizard_dismiss_all_monsters(bool force_all)
     char buf[1024] = "";
     if (!force_all)
     {
-        mprf(MSGCH_PROMPT, "What monsters to dismiss (ENTER for all, "
-                           "\"harmful\", \"mobile\" or a regex)? ");
+        mpr_nojoin(MSGCH_PROMPT, jtrans("What monsters to dismiss (ENTER for all, "
+                                        "\"harmful\", \"mobile\" or a regex)? ") + " ");
         bool validline = !cancellable_get_line_autohist(buf, sizeof buf);
 
         if (!validline)
@@ -636,7 +640,7 @@ void wizard_dismiss_all_monsters(bool force_all)
 
 void debug_make_monster_shout(monster* mon)
 {
-    mprf(MSGCH_PROMPT, "Make the monster (S)hout or (T)alk? ");
+    mpr_nojoin(MSGCH_PROMPT, jtrans("Make the monster (S)hout or (T)alk? ") + " ");
 
     char type = (char) getchm(KMC_DEFAULT);
     type = toalower(type);
@@ -647,7 +651,7 @@ void debug_make_monster_shout(monster* mon)
         return;
     }
 
-    int num_times = prompt_for_int("How many times? ", false);
+    int num_times = prompt_for_int(type == 's' ? "何回叫ばせますか？ " : "何回喋らせますか？ ", false);
 
     if (num_times <= 0)
     {
@@ -658,9 +662,9 @@ void debug_make_monster_shout(monster* mon)
     if (type == 's')
     {
         if (silenced(you.pos()))
-            mpr("You are silenced and likely won't hear any shouts.");
+            mpr(jtrans("You are silenced and likely won't hear any shouts."));
         else if (silenced(mon->pos()))
-            mpr("The monster is silenced and likely won't give any shouts.");
+            mpr(jtrans("The monster is silenced and likely won't give any shouts."));
 
         for (int i = 0; i < num_times; ++i)
             handle_monster_shouts(mon, true);
@@ -668,26 +672,26 @@ void debug_make_monster_shout(monster* mon)
     else
     {
         if (mon->invisible())
-            mpr("The monster is invisible and likely won't speak.");
+            mpr(jtrans("The monster is invisible and likely won't speak."));
 
         if (silenced(you.pos()) && !silenced(mon->pos()))
         {
-            mpr("You are silenced but the monster isn't; you will "
-                "probably hear/see nothing.");
+            mpr(jtrans("You are silenced but the monster isn't; you will "
+                       "probably hear/see nothing."));
         }
         else if (!silenced(you.pos()) && silenced(mon->pos()))
-            mpr("The monster is silenced and likely won't say anything.");
+            mpr(jtrans("The monster is silenced and likely won't say anything."));
         else if (silenced(you.pos()) && silenced(mon->pos()))
         {
-            mpr("Both you and the monster are silenced, so you likely "
-                "won't hear anything.");
+            mpr(jtrans("Both you and the monster are silenced, so you likely "
+                       "won't hear anything."));
         }
 
         for (int i = 0; i< num_times; ++i)
             mons_speaks(mon);
     }
 
-    mpr("== Done ==");
+    mpr(jtrans("== Done =="));
 }
 
 void wizard_gain_monster_level(monster* mon)
@@ -696,7 +700,7 @@ void wizard_gain_monster_level(monster* mon)
     // but cap the levels gained to just 1.
     bool worked = mon->gain_exp(INT_MAX - mon->experience, 1);
     if (!worked)
-        simple_monster_message(mon, " seems unable to mature further.", MSGCH_WARN);
+        simple_monster_message(mon, jtransc(" seems unable to mature further."), MSGCH_WARN);
 
     // (The gain_exp() method will chop the monster's experience down
     // to half-way between its new level and the next, so we needn't
@@ -705,7 +709,7 @@ void wizard_gain_monster_level(monster* mon)
 
 void wizard_apply_monster_blessing(monster* mon)
 {
-    mprf(MSGCH_PROMPT, "Apply blessing of (B)eogh, The (S)hining One, or (R)andomly? ");
+    mpr_nojoin(MSGCH_PROMPT, jtrans("Apply blessing of (B)eogh, The (S)hining One, or (R)andomly? ") + " ");
 
     char type = (char) getchm(KMC_DEFAULT);
     type = toalower(type);
@@ -722,7 +726,7 @@ void wizard_apply_monster_blessing(monster* mon)
         god = GOD_SHINING_ONE;
 
     if (!bless_follower(mon, god, true))
-        mprf("%s won't bless this monster for you!", god_name(god).c_str());
+        mprf(jtransc("%s won't bless this monster for you!"), jtransc(god_name(god)));
 }
 
 void wizard_give_monster_item(monster* mon)
@@ -730,11 +734,11 @@ void wizard_give_monster_item(monster* mon)
     mon_itemuse_type item_use = mons_itemuse(mon);
     if (item_use < MONUSE_STARTING_EQUIPMENT)
     {
-        mpr("That type of monster can't use any items.");
+        mpr(jtrans("That type of monster can't use any items."));
         return;
     }
 
-    int player_slot = prompt_invent_item("Give which item to monster?",
+    int player_slot = prompt_invent_item(jtransc("Give which item to monster?"),
                                           MT_DROP, -1);
 
     if (prompt_failed(player_slot))
@@ -743,7 +747,7 @@ void wizard_give_monster_item(monster* mon)
     for (int i = 0; i < NUM_EQUIP; ++i)
         if (you.equip[i] == player_slot)
         {
-            mpr("Can't give equipped items to a monster.");
+            mpr(jtrans("Can't give equipped items to a monster."));
             return;
         }
 
@@ -760,14 +764,14 @@ void wizard_give_monster_item(monster* mon)
         if (item.inscription.find("first") != string::npos
             || item.inscription.find("primary") != string::npos)
         {
-            mpr("Putting weapon into primary slot by inscription");
+            mpr(jtrans("Putting weapon into primary slot by inscription"));
             mon_slot = MSLOT_WEAPON;
             break;
         }
         else if (item.inscription.find("second") != string::npos
                  || item.inscription.find("alt") != string::npos)
         {
-            mpr("Putting weapon into alt slot by inscription");
+            mpr(jtrans("Putting weapon into alt slot by inscription"));
             mon_slot = MSLOT_ALT_WEAPON;
             break;
         }
@@ -778,13 +782,13 @@ void wizard_give_monster_item(monster* mon)
         {
             if (mon->inv[MSLOT_WEAPON] == NON_ITEM)
             {
-                mpr("Dual wielding monster, putting into empty primary slot");
+                mpr(jtrans("Dual wielding monster, putting into empty primary slot"));
                 mon_slot = MSLOT_WEAPON;
                 break;
             }
             else if (mon->inv[MSLOT_ALT_WEAPON] == NON_ITEM)
             {
-                mpr("Dual wielding monster, putting into empty alt slot");
+                mpr(jtrans("Dual wielding monster, putting into empty alt slot"));
                 mon_slot = MSLOT_ALT_WEAPON;
                 break;
             }
@@ -796,7 +800,7 @@ void wizard_give_monster_item(monster* mon)
             && (is_range_weapon(mitm[mon->inv[MSLOT_WEAPON]])
                 == is_range_weapon(item)))
         {
-            mpr("Replacing primary slot with similar weapon");
+            mpr(jtrans("Replacing primary slot with similar weapon"));
             mon_slot = MSLOT_WEAPON;
             break;
         }
@@ -804,7 +808,7 @@ void wizard_give_monster_item(monster* mon)
             && (is_range_weapon(mitm[mon->inv[MSLOT_ALT_WEAPON]])
                 == is_range_weapon(item)))
         {
-            mpr("Replacing alt slot with similar weapon");
+            mpr(jtrans("Replacing alt slot with similar weapon"));
             mon_slot = MSLOT_ALT_WEAPON;
             break;
         }
@@ -812,19 +816,19 @@ void wizard_give_monster_item(monster* mon)
         // Prefer the empty slot (if any)
         if (mon->inv[MSLOT_WEAPON] == NON_ITEM)
         {
-            mpr("Putting weapon into empty primary slot");
+            mpr(jtrans("Putting weapon into empty primary slot"));
             mon_slot = MSLOT_WEAPON;
             break;
         }
         else if (mon->inv[MSLOT_ALT_WEAPON] == NON_ITEM)
         {
-            mpr("Putting weapon into empty alt slot");
+            mpr(jtrans("Putting weapon into empty alt slot"));
             mon_slot = MSLOT_ALT_WEAPON;
             break;
         }
 
         // Default to primary weapon slot
-        mpr("Defaulting to primary slot");
+        mpr(jtrans("Defaulting to primary slot"));
         mon_slot = MSLOT_WEAPON;
         break;
 
@@ -859,7 +863,7 @@ void wizard_give_monster_item(monster* mon)
         mon_slot = MSLOT_JEWELLERY;
         break;
     default:
-        mpr("You can't give that type of item to a monster.");
+        mpr(jtrans("You can't give that type of item to a monster."));
         return;
     }
 
@@ -876,7 +880,7 @@ void wizard_give_monster_item(monster* mon)
             break;
 
         default:
-            mpr("That type of monster can only use weapons and armour.");
+            mpr(jtrans("That type of monster can only use weapons and armour."));
             return;
         }
     }
@@ -884,7 +888,7 @@ void wizard_give_monster_item(monster* mon)
     int index = get_mitm_slot(10);
     if (index == NON_ITEM)
     {
-        mpr("Too many items on level, bailing.");
+        mpr(jtrans("Too many items on level, bailing."));
         return;
     }
 
@@ -911,7 +915,7 @@ void wizard_give_monster_item(monster* mon)
     unwind_var<int> save_speedinc(mon->speed_increment);
     if (!mon->pickup_item(mitm[index], false, true))
     {
-        mpr("Monster wouldn't take item.");
+        mpr(jtrans("Monster wouldn't take item."));
         if (old_eq != NON_ITEM && mon_slot != NUM_MONSTER_SLOTS)
         {
             mon->inv[mon_slot] = old_eq;
@@ -928,22 +932,22 @@ void wizard_give_monster_item(monster* mon)
 
     if ((mon->flags & MF_HARD_RESET) && !(item.flags & ISFLAG_SUMMONED))
     {
-        mprf(MSGCH_WARN, "WARNING: Monster has MF_HARD_RESET and all its "
-             "items will disappear when it does.");
+        mpr_nojoin(MSGCH_WARN, jtrans("WARNING: Monster has MF_HARD_RESET and all its "
+             "items will disappear when it does."));
     }
     else if ((item.flags & ISFLAG_SUMMONED) && !mon->is_summoned())
     {
-        mprf(MSGCH_WARN, "WARNING: Item is summoned and will disappear when "
-             "the monster does.");
+        mpr_nojoin(MSGCH_WARN, jtrans("WARNING: Item is summoned and will disappear when "
+             "the monster does."));
     }
     // Monster's old item moves to player's inventory.
     if (old_eq != NON_ITEM)
     {
-        mpr("Fetching monster's old item.");
+        mpr(jtrans("Fetching monster's old item."));
         if (mitm[old_eq].flags & ISFLAG_SUMMONED)
         {
-            mprf(MSGCH_WARN, "WARNING: Item is summoned and shouldn't really "
-                 "be anywhere but in the inventory of a summoned monster.");
+            mpr_nojoin(MSGCH_WARN, jtrans("WARNING: Item is summoned and shouldn't really "
+                "be anywhere but in the inventory of a summoned monster."));
         }
         mitm[old_eq].pos.reset();
         mitm[old_eq].link = NON_ITEM;
@@ -966,7 +970,7 @@ static void _move_monster(const coord_def& where, int idx1)
     dist moves;
     direction_chooser_args args;
     args.needs_path = false;
-    args.top_prompt = "Move monster to where?";
+    args.top_prompt = jtrans("Move monster to where?");
     direction(moves, args);
 
     if (!moves.isValid || !in_bounds(moves.target))
@@ -999,7 +1003,7 @@ void wizard_move_player_or_monster(const coord_def& where)
 
     if (already_moving)
     {
-        mpr("Already doing a move command.");
+        mpr(jtrans("Already doing a move command."));
         return;
     }
 
@@ -1011,7 +1015,7 @@ void wizard_move_player_or_monster(const coord_def& where)
     {
         if (crawl_state.arena_suspended)
         {
-            mpr("You can't move yourself into the arena.");
+            mpr(jtrans("You can't move yourself into the arena."));
             more();
             return;
         }
@@ -1028,11 +1032,11 @@ void wizard_make_monster_summoned(monster* mon)
     int summon_type = 0;
     if (mon->is_summoned(nullptr, &summon_type) || summon_type != 0)
     {
-        mprf(MSGCH_PROMPT, "Monster is already summoned.");
+        mpr_nojoin(MSGCH_PROMPT, jtrans("Monster is already summoned."));
         return;
     }
 
-    int dur = prompt_for_int("What summon longevity (1 to 6)? ", true);
+    int dur = prompt_for_int(jtrans("What summon longevity (1 to 6)? ") + " ", true);
 
     if (dur < 1 || dur > 6)
     {
@@ -1040,10 +1044,10 @@ void wizard_make_monster_summoned(monster* mon)
         return;
     }
 
-    mprf(MSGCH_PROMPT, "[a] clone [b] animated [c] chaos [d] miscast [e] zot");
-    mprf(MSGCH_PROMPT, "[f] wrath [g] lantern  [h] aid   [m] misc    [s] spell");
+    mpr_nojoin(MSGCH_PROMPT, jtrans("[a] clone [b] animated [c] chaos [d] miscast [e] zot"));
+    mpr_nojoin(MSGCH_PROMPT, jtrans("[f] wrath [g] lantern  [h] aid   [m] misc    [s] spell"));
 
-    mprf(MSGCH_PROMPT, "Which summon type? ");
+    mpr_nojoin(MSGCH_PROMPT, jtrans("Which summon type? ") + " ");
 
     char choice = toalower(getchm());
 
@@ -1071,7 +1075,7 @@ void wizard_make_monster_summoned(monster* mon)
         {
             char specs[80];
 
-            msgwin_get_line("Cast which spell by name? ",
+            msgwin_get_line(jtrans("Cast which spell by name? ") + " ",
                             specs, sizeof(specs));
 
             if (specs[0] == '\0')
@@ -1083,7 +1087,7 @@ void wizard_make_monster_summoned(monster* mon)
             spell_type spell = spell_by_name(specs, true);
             if (spell == SPELL_NO_SPELL)
             {
-                mprf(MSGCH_PROMPT, "No such spell.");
+                mpr_nojoin(MSGCH_PROMPT, jtrans("No such spell."));
                 return;
             }
             type = (int) spell;
@@ -1096,7 +1100,7 @@ void wizard_make_monster_summoned(monster* mon)
     }
 
     mon->mark_summoned(dur, true, type);
-    mpr("Monster is now summoned.");
+    mpr(jtrans("Monster is now summoned."));
 }
 
 void wizard_polymorph_monster(monster* mon)
@@ -1112,19 +1116,19 @@ void wizard_polymorph_monster(monster* mon)
 
     if (invalid_monster_type(type))
     {
-        mprf(MSGCH_PROMPT, "Invalid monster type.");
+        mpr_nojoin(MSGCH_PROMPT, jtrans("Invalid monster type."));
         return;
     }
 
     if (type == old_type)
     {
-        mpr("Old type and new type are the same, not polymorphing.");
+        mpr(jtrans("Old type and new type are the same, not polymorphing."));
         return;
     }
 
     if (mons_species(type) == mons_species(old_type))
     {
-        mpr("Target species must be different from current species.");
+        mpr(jtrans("Target species must be different from current species."));
         return;
     }
 
@@ -1132,7 +1136,7 @@ void wizard_polymorph_monster(monster* mon)
 
     if (!mon->alive())
     {
-        mprf(MSGCH_ERROR, "Polymorph killed monster?");
+        mpr_nojoin(MSGCH_ERROR, jtrans("Polymorph killed monster?"));
         return;
     }
 
@@ -1140,11 +1144,11 @@ void wizard_polymorph_monster(monster* mon)
 
     if (mon->type == old_type)
     {
-        mpr("Trying harder");
+        mpr(jtrans("Trying harder"));
         change_monster_type(mon, type);
         if (!mon->alive())
         {
-            mprf(MSGCH_ERROR, "Polymorph killed monster?");
+            mpr_nojoin(MSGCH_ERROR, jtrans("Polymorph killed monster?"));
             return;
         }
 
@@ -1152,9 +1156,9 @@ void wizard_polymorph_monster(monster* mon)
     }
 
     if (mon->type == old_type)
-        mpr("Polymorph failed.");
+        mpr(jtrans("Polymorph failed."));
     else if (mon->type != type)
-        mpr("Monster turned into something other than the desired type.");
+        mpr(jtrans("Monster turned into something other than the desired type."));
 }
 
 void debug_pathfind(int idx)
@@ -1162,7 +1166,7 @@ void debug_pathfind(int idx)
     if (idx == NON_MONSTER)
         return;
 
-    mpr("Choose a destination!");
+    mpr(jtrans("Choose a destination!"));
 #ifndef USE_TILE_LOCAL
     more();
 #endif
@@ -1178,7 +1182,7 @@ void debug_pathfind(int idx)
     }
 
     monster& mon = menv[idx];
-    mprf("Attempting to calculate a path from (%d, %d) to (%d, %d)...",
+    mprf(jtransc("Attempting to calculate a path from (%d, %d) to (%d, %d)..."),
          mon.pos().x, mon.pos().y, dest.x, dest.y);
     monster_pathfind mp;
     bool success = mp.init_pathfind(&mon, dest, true, true);
@@ -1191,21 +1195,21 @@ void debug_pathfind(int idx)
             tiles.update_minimap(pos);
 #endif
         string path_str;
-        mpr("Here's the shortest path: ");
+        mpr(jtrans("Here's the shortest path: ") + " ");
         for (coord_def pos : path)
             path_str += make_stringf("(%d, %d)  ", pos.x, pos.y);
         mpr(path_str);
-        mprf("-> path length: %u", (unsigned int)path.size());
+        mprf(jtransc("-> path length: %u"), (unsigned int)path.size());
 
         mpr("");
         path = mp.calc_waypoints();
         path_str = "";
         mpr("");
-        mpr("And here are the needed waypoints: ");
+        mpr(jtrans("And here are the needed waypoints: ") + " ");
         for (coord_def pos : path)
             path_str += make_stringf("(%d, %d)  ", pos.x, pos.y);
         mpr(path_str);
-        mprf("-> #waypoints: %u", (unsigned int)path.size());
+        mprf(jtransc("-> #waypoints: %u"), (unsigned int)path.size());
     }
 }
 
@@ -1234,12 +1238,12 @@ void debug_miscast(int target_index)
 
     if (!target->alive())
     {
-        mpr("Can't make already dead target miscast.");
+        mpr(jtrans("Can't make already dead target miscast."));
         return;
     }
 
     char specs[100];
-    mprf(MSGCH_PROMPT, "Miscast which school or spell, by name? ");
+    mpr_nojoin(MSGCH_PROMPT, jtrans("Miscast which school or spell, by name? ") + " ");
     if (cancellable_get_line_autohist(specs, sizeof specs) || !*specs)
     {
         canned_msg(MSG_OK);
@@ -1260,13 +1264,14 @@ void debug_miscast(int target_index)
 
     if (spell == SPELL_NO_SPELL && school == SPTYP_NONE)
     {
-        mpr("No matching spell or spell school.");
+        mpr(jtrans("No matching spell or spell school."));
         return;
     }
     else if (spell != SPELL_NO_SPELL && school != SPTYP_NONE)
     {
-        mprf("Ambiguous: can be spell '%s' or school '%s'.",
-            spell_title(spell), spelltype_short_name(school));
+        mprf(jtransc("Ambiguous: can be spell '%s' or school '%s'."),
+             tagged_jtransc("[spell]", spell_title(spell)),
+             jtransc(spelltype_short_name(school)));
         return;
     }
 
@@ -1277,20 +1282,20 @@ void debug_miscast(int target_index)
 
         if (!disciplines)
         {
-            mprf("Spell '%s' has no disciplines.", spell_title(spell));
+            mprf(jtransc("Spell '%s' has no disciplines."), spell_title(spell));
             return;
         }
     }
 
     if (spell != SPELL_NO_SPELL)
-        mprf("Miscasting spell %s.", spell_title(spell));
+        mprf(jtransc("Miscasting spell %s."), tagged_jtransc("[spell]", spell_title(spell)));
     else
-        mprf("Miscasting school %s.", spelltype_long_name(school));
+        mprf(jtransc("Miscasting school %s."), spelltype_long_name(school));
 
     if (spell != SPELL_NO_SPELL)
-        mprf(MSGCH_PROMPT, "Enter spell_power,raw_spell_failure: ");
+        mpr_nojoin(MSGCH_PROMPT, jtrans("Enter spell_power,raw_spell_failure: ") + " ");
     else
-        mprf(MSGCH_PROMPT, "Enter miscast_level or spell_power,raw_spell_failure: ");
+        mpr_nojoin(MSGCH_PROMPT, jtrans("Enter miscast_level or spell_power,raw_spell_failure: ") + " ");
 
     if (cancellable_get_line_autohist(specs, sizeof specs) || !*specs)
     {
@@ -1316,7 +1321,7 @@ void debug_miscast(int target_index)
     {
         if (spell != SPELL_NO_SPELL)
         {
-            mpr("Can only enter fixed miscast level for schools, not spells.");
+            mpr(jtrans("Can only enter fixed miscast level for schools, not spells."));
             return;
         }
 
@@ -1328,14 +1333,14 @@ void debug_miscast(int target_index)
         }
         else if (level > 3)
         {
-            mpr("Miscast level can be at most 3.");
+            mpr(jtrans("Miscast level can be at most 3."));
             return;
         }
     }
 
     // Handle repeats ourselves since miscasts are likely to interrupt
     // command repetions, especially if the player is the target.
-    int repeats = prompt_for_int("Number of repetitions? ", true);
+    int repeats = prompt_for_int(jtrans("Number of repetitions? ") + " ", true);
     if (repeats < 1)
     {
         canned_msg(MSG_OK);
@@ -1381,7 +1386,7 @@ void debug_miscast(int target_index)
     {
         if (kbhit())
         {
-            mpr("Key pressed, interrupting miscast testing.");
+            mpr(jtrans("Key pressed, interrupting miscast testing."));
             getchm();
             break;
         }
@@ -1397,7 +1402,7 @@ void debug_miscast(int target_index)
 #ifdef DEBUG_BONES
 void debug_ghosts()
 {
-    mprf(MSGCH_PROMPT, "(C)reate or (L)oad bones file?");
+    mpr_nojoin(MSGCH_PROMPT, jtrans("(C)reate or (L)oad bones file?"));
     const char c = toalower(getchm());
 
     if (c == 'c')

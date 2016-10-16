@@ -19711,6 +19711,369 @@ Unknown card.
 
 不明なカード名です。
 %%%%
+############################## wiz-mon.cc ##############################
+%%%%
+Which monster by number?
+
+目的のモンスター番号を入力してください。
+%%%%
+Such a monster couldn't be found.
+
+そのようなモンスターは見つかりませんでした。
+%%%%
+Found no space to place monster.
+
+モンスターを配置する場所がありません。
+%%%%
+Unable to place monster.
+
+モンスターの配置に失敗しました。
+%%%%
+Couldn't find player kraken!
+
+%%%%
+Couldn't find player ghost, probably going to crash.
+
+%%%%
+Make player ghost which species? (case-sensitive)
+
+プレイヤーゴーストの種族をどれに指定しますか？ (大文字小文字を区別)
+%%%%
+No such species, making it Human.
+
+そのような種族はありません。人間として扱います。
+%%%%
+Give player ghost which background?
+
+プレイヤーの職業をどれに指定しますか？
+%%%%
+No such background, making it a Fighter.
+
+そのような職業はありません。戦士として扱います。
+%%%%
+Monsters:
+
+モンスター:
+%%%%
+%d monsters, %d total exp value (%d non-uniq)
+
+%d体のモンスター(合計経験値 %d、非ユニーク合計経験値 %d)
+%%%%
+%d monsters, %d total exp value (%d non-uniq, %d adjusted)
+
+%d体のモンスター(合計経験値 %d、非ユニーク合計経験値 %d, 補正済み合計経験値 %d)
+%%%%
+(c)hange spawn rate or (s)pawn monsters?
+
+(c)モンスターの生成率を設定する または(s)モンスターを自然生成する を選択してください。
+%%%%
+Set monster spawn rate to what? (now %d, lower value = higher rate)
+
+モンスター生成率を何に設定しますか？ (現在%d、小さい値ほど高頻度で生成される)
+%%%%
+Level already filled with monsters, get rid of some of them first.
+
+この階層は既にモンスターで埋め尽くされているため、まずそれらを排除してください。
+%%%%
+Spawn how many random monsters (max %d)?
+
+ランダムなモンスターを何体生成させますか？ (最大%d体)
+%%%%
+Which monster?
+
+どのモンスターを調べますか？
+%%%%
+cloud type: %d delay: %d
+
+%%%%
+item grid = %d
+
+%%%%
+%s (id #%d; type=%d loc=(%d,%d) align=%s)
+
+%%%%
+resist: fire=%d cold=%d elec=%d pois=%d neg=%d acid=%d sticky=%s rot=%s
+
+%%%%
+ench: %s
+
+%%%%
+props: %s
+
+%%%%
+Ghost damage: %d; brand: %d; att_type: %d; att_flav: %d
+
+%%%%
+What monsters to dismiss (ENTER for all, "harmful", "mobile" or a regex)?
+
+どのモンスターを除去しますか？
+(空入力で全てを除去。"harmful" "mobile"などのパターンや正規表現が使えます)
+%%%%
+Make the monster (S)hout or (T)alk?
+
+モンスターに(S)叫ばせる、もしくは(T)喋らせる を選択してください。
+%%%%
+How many times?
+
+%%%%
+You are silenced and likely won't hear any shouts.
+
+あなたは静寂に包まれており、叫び声は全く耳に入らなかった。
+%%%%
+The monster is silenced and likely won't give any shouts.
+
+そのモンスターは静寂に包まれており、その叫び声は全く耳に入らなかった。
+%%%%
+The monster is invisible and likely won't speak.
+
+そのモンスターは目に見えず、喋ろうとしないようだ。
+%%%%
+You are silenced but the monster isn't; you will probably hear/see nothing.
+
+あなたは静寂に包まれているがそのモンスターはそうではない。 あなたは何も見えず、何も聞こえないようだ。
+%%%%
+The monster is silenced and likely won't say anything.
+
+そのモンスターは静寂に包まれており、何も喋れないようだ。
+%%%%
+Both you and the monster are silenced, so you likely won't hear anything.
+
+あなたとそのモンスターは共に静寂に包まれており、何も聞くことができないようだ。
+%%%%
+== Done ==
+
+== 終了 ==
+%%%%
+seems unable to mature further.
+
+はこれ以上経験を積むことができないようだ。
+%%%%
+Apply blessing of (B)eogh, The (S)hining One, or (R)andomly?
+
+(B)ベオ (S)輝けるもの (R)ランダム のどの神の加護を与えますか？
+%%%%
+%s won't bless this monster for you!
+
+%sはあなたのためにそのモンスターを祝福したりはしない！
+%%%%
+That type of monster can't use any items.
+
+その種別のモンスターはどのアイテムも扱うことができない。
+%%%%
+Give which item to monster?
+
+モンスターに何のアイテムを与えますか？
+%%%%
+Can't give equipped items to a monster.
+
+装備中のアイテムをモンスターに与えることはできません。
+%%%%
+Putting weapon into primary slot by inscription
+
+銘の指定により武器を1つめのスロットに配置しました。
+%%%%
+Putting weapon into alt slot by inscription
+
+銘の指定により武器を2つめのスロットに配置しました。
+%%%%
+Dual wielding monster, putting into empty primary slot
+
+二刀流できるモンスターに対し、武器を1つめのスロットに配置しました。
+%%%%
+Dual wielding monster, putting into empty alt slot
+
+二刀流できるモンスターに対し、武器を2つめのスロットに配置しました。
+%%%%
+Replacing primary slot with similar weapon
+
+1つめのスロットの武器を類似の武器と交換しました。
+%%%%
+Replacing alt slot with similar weapon
+
+2つめのスロットの武器を類似の武器と交換しました。
+%%%%
+Putting weapon into empty primary slot
+
+武器を1つめの空のスロットに配置しました。
+%%%%
+Putting weapon into empty alt slot
+
+武器を2つめの空のスロットに配置しました。
+%%%%
+Defaulting to primary slot
+
+1つめのスロットに配置します。
+%%%%
+You can't give that type of item to a monster.
+
+その種別のアイテムをモンスターに与えることはできません。
+%%%%
+That type of monster can only use weapons and armour.
+
+その種別のモンスターは武器もしくは防具しか扱うことができません。
+%%%%
+Too many items on level, bailing.
+
+この階層にはアイテムが多すぎるため、中断します。
+%%%%
+Monster wouldn't take item.
+
+このモンスターはアイテムを拾うことがありません。
+%%%%
+WARNING: Monster has MF_HARD_RESET and all its items will disappear when it does.
+
+%%%%
+WARNING: Item is summoned and will disappear when the monster does.
+
+%%%%
+Fetching monster's old item.
+
+モンスターの持っていたアイテムを手にしました。
+%%%%
+WARNING: Item is summoned and shouldn't really be anywhere but in the inventory of a summoned monster.
+
+%%%%
+Move monster to where?
+
+モンスターをどこに移動させますか？
+%%%%
+Already doing a move command.
+
+既に移動コマンドを実行しています。
+%%%%
+You can't move yourself into the arena.
+
+アリーナの中に自分自身を移動させることはできません。
+%%%%
+Monster is already summoned.
+
+モンスターは既に召喚されています。
+%%%%
+What summon longevity (1 to 6)?
+
+召喚が維持される時間をどう設定しますか？ (1～6)
+%%%%
+[a] clone [b] animated [c] chaos [d] miscast [e] zot
+
+%%%%
+[f] wrath [g] lantern  [h] aid   [m] misc    [s] spell
+
+%%%%
+Which summon type?
+
+どの召喚タイプにしますか？
+%%%%
+No such spell.
+
+そのような魔法は存在しません。
+%%%%
+Monster is now summoned.
+
+このモンスターは召喚されたものとして扱われました。
+%%%%
+Invalid monster type.
+
+不正なモンスター種別です。
+%%%%
+Old type and new type are the same, not polymorphing.
+
+変化前と変化後が同一のため、変化を行いませんでした。
+%%%%
+Target species must be different from current species.
+
+変化後の種族と現在の種族は異なっている必要があります。
+%%%%
+Polymorph killed monster?
+
+%%%%
+Trying harder
+
+%%%%
+Polymorph failed.
+
+変化に失敗しました。
+%%%%
+Monster turned into something other than the desired type.
+
+モンスターはなにか目的のとは違う種別に変化した。
+%%%%
+Choose a destination!
+
+目的地を選択してください！
+%%%%
+Attempting to calculate a path from (%d, %d) to (%d, %d)...
+
+(%d, %d) から(%d, %d)への経路を計算しています……
+%%%%
+Here's the shortest path:
+
+最短経路は以下の通りです:
+%%%%
+-> path length: %u
+
+-> 経路長: %u
+%%%%
+And here are the needed waypoints:
+
+そして、以下の中継ポイントが必要となります:
+%%%%
+-> #waypoints: %u
+
+-> #中継ポイント: %u
+%%%%
+Can't make already dead target miscast.
+
+既に死んでしまったものに対し魔法失敗効果を発動させることはできません。
+%%%%
+No matching spell or spell school.
+
+該当する魔法や魔法種別がありません。
+%%%%
+Ambiguous: can be spell '%s' or school '%s'.
+
+曖昧な入力: ｢%s｣の魔法、もしくは｢%s｣領域。
+%%%%
+Spell '%s' has no disciplines.
+
+｢%s｣の魔法にはdisciplines情報がありません。
+%%%%
+Miscasting spell %s.
+
+%sの魔法に失敗しました。
+%%%%
+Miscasting school %s.
+
+%sの魔法に失敗しました。
+%%%%
+Enter spell_power,raw_spell_failure:
+
+%%%%
+Enter miscast_level or spell_power,raw_spell_failure:
+
+%%%%
+Can only enter fixed miscast level for schools, not spells.
+
+%%%%
+Miscast level can be at most 3.
+
+魔法失敗レベルは3以下を指定してください。
+%%%%
+Number of repetitions?
+
+何回繰り返しますか？
+%%%%
+wizard testing miscast
+
+ウィザードコマンドによる魔法失敗
+%%%%
+Key pressed, interrupting miscast testing.
+
+キーが押されたため、魔法失敗のテストを中断します。
+%%%%
+(C)reate or (L)oad bones file?
+
+骨ファイルを(C)生成 しますか、それとも(L)読み込み しますか？
+%%%%
 ############################## wiz-you.cc ##############################
 %%%%
 That species isn't available.
