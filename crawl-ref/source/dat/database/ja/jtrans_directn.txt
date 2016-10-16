@@ -447,13 +447,17 @@ charmed
 
 仲間
 %%%%
+friendly
+
+友好的
+%%%%
 insane
 
 狂気
 %%%%
 neutral
 
-中立
+中立的
 %%%%
 a wand
 

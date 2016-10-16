@@ -3555,24 +3555,24 @@ string get_monster_equipment_desc(const monster_info& mi,
         {
             vector<string> attributes;
             if (mi.is(MB_CHARMED))
-                attributes.emplace_back("charmed");
+                attributes.emplace_back(jtrans("charmed"));
             else if (mi.attitude == ATT_FRIENDLY)
-                attributes.emplace_back("友好的");
+                attributes.emplace_back(jtrans("friendly"));
             else if (mi.attitude == ATT_GOOD_NEUTRAL)
-                attributes.emplace_back("peaceful");
+                attributes.emplace_back(jtrans("peaceful"));
             else if (mi.is(MB_INSANE))
-                attributes.emplace_back("insane");
+                attributes.emplace_back(jtrans("insane"));
             else if (mi.attitude != ATT_HOSTILE)
-                attributes.emplace_back("neutral");
+                attributes.emplace_back(jtrans("neutral"));
 
             if (mi.is(MB_SUMMONED))
-                attributes.emplace_back("summoned");
+                attributes.emplace_back(jtrans("summoned"));
 
             if (mi.is(MB_PERM_SUMMON))
-                attributes.emplace_back("durably summoned");
+                attributes.emplace_back(jtrans("durably summoned"));
 
             if (mi.is(MB_SUMMONED_CAPPED))
-                attributes.emplace_back("expiring");
+                attributes.emplace_back(jtrans("expiring"));
 
             string str = comma_separated_line(attributes.begin(),
                                               attributes.end());
@@ -3582,12 +3582,20 @@ string get_monster_equipment_desc(const monster_info& mi,
                 || mi.type == MONS_PLAYER_GHOST)
             {
                 if (!str.empty())
-                    str += " ";
+                {
+                    if (ends_with(str, "仲間") || ends_with(str, "狂気")
+                                               || ends_with(str, "召喚中"))
+                        str += "の";
+                    else if (ends_with(str, "的"))
+                        str += "な";
+                    else if (!ends_with(str, "近い"))
+                        str += ", ";
+                }
 
                 if (mi.type == MONS_DANCING_WEAPON)
-                    str += "dancing weapon";
+                    str += jtrans("dancing weapon");
                 else if (mi.type == MONS_PANDEMONIUM_LORD)
-                    str += "pandemonium lord";
+                    str += jtrans("pandemonium lord");
                 else if (mi.type == MONS_PLAYER_GHOST)
                     str += "プレイヤーの幽霊";
             }

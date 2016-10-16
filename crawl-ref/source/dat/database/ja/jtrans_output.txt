@@ -7,11 +7,11 @@ Nothing quivered
 
 (射撃準備していない)
 %%%%
-friendly
+[adj]friendly
 
 友好的な
 %%%%
-neutral
+[adj]neutral
 
 中立的な
 %%%%
