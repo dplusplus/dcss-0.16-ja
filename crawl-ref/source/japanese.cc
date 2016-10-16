@@ -265,11 +265,11 @@ string jpluralise(const string &name, const char *prefix, const char *suffix)
 
 static const char * const _pronoun_declension_j[][NUM_PRONOUN_CASES] =
 {
-    // subj     poss        refl          obj
-    { "それ",   "その",     "それ自身",   "それを"   }, // neuter
-    { "彼",     "彼の",     "彼自身",     "彼を"     }, // masculine
-    { "彼女",   "彼女の",   "彼女自身",   "彼女を"   }, // feminine
-    { "あなた", "あなたの", "あなた自身", "あなたを" }, // 2nd person
+    // subj     poss        refl        obj
+    { "それ",   "その",     "自ら",     "それを"   }, // neuter
+    { "彼",     "彼の",     "彼自身",   "彼を"     }, // masculine
+    { "彼女",   "彼女の",   "彼女自身", "彼女を"   }, // feminine
+    { "あなた", "あなたの", "自分自身", "あなたを" }, // 2nd person
 };
 
 const char *decline_pronoun_j(gender_type gender, pronoun_type variant)
