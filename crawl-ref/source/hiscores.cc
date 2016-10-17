@@ -1210,12 +1210,13 @@ string scorefile_entry::make_oneline(const string &ml) const
     vector<string> lines = split_string("\n", ml);
     for (int i = 0, size = lines.size(); i < size; ++i)
     {
-        string &s = lines[i];
+        string s = nbsp2sp(lines[i]);
         if (s.find("...") == 0)
         {
             s = s.substr(3);
             trim_string(s);
         }
+        lines[i] = s;
     }
     return comma_separated_line(lines.begin(), lines.end(), " ", " ");
 }
