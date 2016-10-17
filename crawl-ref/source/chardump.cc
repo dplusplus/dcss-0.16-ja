@@ -90,6 +90,14 @@ static void _sdump_lua(dump_params &);
 static bool _write_dump(const string &fname, dump_params &,
                         bool print_dump_path = false);
 
+static string _trim_section(const string& section_text)
+{
+    if (trimmed_string(section_text).empty())
+        return "";
+
+    return "\n" + trimmed_string(section_text) + "\n";
+}
+
 struct dump_section_handler
 {
     const char *name;
@@ -182,35 +190,37 @@ bool dump_char(const string &fname, bool quiet, bool full_id,
 
 static void _sdump_header(dump_params &par)
 {
+    string text;
     string type = crawl_state.game_type_name();
     if (type.empty())
         type = CRAWL;
     else
         type += " DCSS";
 
-    par.text += " " + type + " version " + Version::Long;
+    text += " " + type + " version " + Version::Long;
 #ifdef USE_TILE_LOCAL
-    par.text += " (tiles)";
+    text += " (tiles)";
 #elif defined(USE_TILE_WEB)
     if (::tiles.is_controlled_from_web())
-        par.text += " (webtiles)";
+        text += " (webtiles)";
     else
-        par.text += " (console)";
+        text += " (console)";
 #else
-    par.text += " (console)";
+    text += " (console)";
 #endif
-    par.text += " character file.\n\n";
+    text += " character file.\n\n";
+
+    par.text += _trim_section(text);
 }
 
 static void _sdump_stats(dump_params &par)
 {
-    par.text += dump_overview_screen(par.full_id);
-    par.text += "\n";
+    par.text += _trim_section(dump_overview_screen(par.full_id));
 }
 
 static void _sdump_hunger(dump_params &par)
 {
-    string text = "あなたは" + string(hunger_level()) + "。\n\n";
+    string text = "あなたは" + string(hunger_level()) + "。";
 
     if (par.se)
     {
@@ -219,14 +229,17 @@ static void _sdump_hunger(dump_params &par)
         text = replace_all(text, "いる。", "いた。");
     }
 
-    par.text += text;
+    par.text += _trim_section(text);
 }
 
 static void _sdump_transform(dump_params &par)
 {
-    string &text(par.text);
+    string text;
     if (you.form)
-        text += get_form()->get_description(par.se) + "\n\n";}
+        text += get_form()->get_description(par.se);
+
+    par.text += _trim_section(text);
+}
 
 static branch_type single_portals[] =
 {
@@ -333,7 +346,7 @@ static void _sdump_visits(dump_params &par)
         text = replace_all(text, "ている。", "た。");
     }
 
-    par.text += text;
+    par.text += _trim_section(text);
 }
 
 static void _sdump_gold(dump_params &par)
@@ -382,9 +395,7 @@ static void _sdump_gold(dump_params &par)
         text = replace_all(text, "ている。", "ていた。");
     }
 
-    if (lines > 0)
-        par.text += "\n";
-    par.text += text;
+    par.text += _trim_section(text);
 }
 
 static void _sdump_misc(dump_params &par)
@@ -395,8 +406,6 @@ static void _sdump_misc(dump_params &par)
     _sdump_transform(par);
     _sdump_visits(par);
     _sdump_gold(par);
-
-    par.text += "\n";
 }
 
 #define TO_PERCENT(x, y) (100.0f * (static_cast<float>(x)) / (static_cast<float>(y)))
@@ -434,7 +443,7 @@ static string _sdump_turns_place_info(PlaceInfo place_info, string name = "")
 
 static void _sdump_turns_by_place(dump_params &par)
 {
-    string &text(par.text);
+    string text;
 
     vector<PlaceInfo> all_visited = you.get_all_place_info(true);
 
@@ -468,7 +477,7 @@ static void _sdump_turns_by_place(dump_params &par)
     text += "               ";
     text += "+-------+-------+-------+-------+-------+----------------------\n";
 
-    text += "\n";
+    par.text += _trim_section(text);
 }
 
 static void _sdump_newline(dump_params &par)
@@ -478,7 +487,10 @@ static void _sdump_newline(dump_params &par)
 
 static void _sdump_separator(dump_params &par)
 {
-    par.text += string(79, '-') + "\n";
+    if (!ends_with(par.text, "\n"))
+        par.text += "\n";
+
+    par.text += string(79, '-');
 }
 
 #ifdef CLUA_BINDINGS
@@ -528,23 +540,25 @@ string munge_description(string inStr)
 
 static void _sdump_messages(dump_params &par)
 {
+    string text;
     // A little message history:
     if (Options.dump_message_count > 0)
     {
-        par.text += jtransln("Message History\n\n");
-        par.text += get_last_messages(Options.dump_message_count);
+        text += jtransln("Message History\n\n");
+        text += get_last_messages(Options.dump_message_count);
     }
+
+    par.text += _trim_section(text);
 }
 
 static void _sdump_screenshot(dump_params &par)
 {
-    par.text += screenshot();
-    par.text += "\n";
+    par.text += _trim_section(screenshot());
 }
 
 static void _sdump_notes(dump_params &par)
 {
-    string &text(par.text);
+    string text;
     if (note_list.empty())
         return;
 
@@ -555,7 +569,8 @@ static void _sdump_notes(dump_params &par)
         text += note.describe();
         text += "\n";
     }
-    text += "\n";
+
+    par.text += _trim_section(text);
 }
 
  //---------------------------------------------------------------
@@ -565,19 +580,20 @@ static void _sdump_notes(dump_params &par)
  //---------------------------------------------------------------
 static void _sdump_location(dump_params &par)
 {
+    string text;
     if (you.depth == 0 && player_in_branch(BRANCH_DUNGEON))
-        par.text += jtrans("You escaped");
+        text += jtrans("You escaped");
     else if (par.se)
-        par.text += "あなたは" + prep_branch_level_name() + "にいた";
+        text += "あなたは" + prep_branch_level_name() + "にいた";
     else
-        par.text += "あなたは" + prep_branch_level_name() + "にいる";
+        text += "あなたは" + prep_branch_level_name() + "にいる";
 
-    par.text += "。\n";
+    par.text += _trim_section(text + "。");
 }
 
 static void _sdump_religion(dump_params &par)
 {
-    string &text(par.text);
+    string text;
     if (!you_worship(GOD_NO_GOD))
     {
         text += "あなたは" + jtrans(god_name(you.religion)) + "を";
@@ -611,6 +627,8 @@ static void _sdump_religion(dump_params &par)
             text += "\n";
         }
     }
+
+    par.text += _trim_section(text);
 }
 
 static bool _dump_item_origin(const item_def &item)
@@ -669,8 +687,7 @@ static void _sdump_inventory(dump_params &par)
 {
     int i, j;
 
-    string &text(par.text);
-    string text2;
+    string text, text2;
 
     int inv_class2[NUM_OBJECT_CLASSES];
     int inv_count = 0;
@@ -750,7 +767,8 @@ static void _sdump_inventory(dump_params &par)
             }
         }
     }
-    text += "\n";
+
+    par.text += _trim_section(text);
 }
 
 //---------------------------------------------------------------
@@ -760,12 +778,13 @@ static void _sdump_inventory(dump_params &par)
 //---------------------------------------------------------------
 static void _sdump_skills(dump_params &par)
 {
-    string &text(par.text);
+    string text;
 
     text += jtransln("Skills:\n");
 
     dump_skills(text);
-    text += "\n";
+
+    par.text += _trim_section(text);
 }
 
 //---------------------------------------------------------------
@@ -874,12 +893,12 @@ static void _sdump_spells(dump_params &par)
         text = replace_all(text, "いる:", "いた:");
     }
 
-    par.text += text;
+    par.text += _trim_section(text);
 }
 
 static void _sdump_kills(dump_params &par)
 {
-    par.text += replace_all(you.kills->kill_info(), "\n\n\n", "\n\n");
+    par.text += _trim_section(you.kills->kill_info());
 }
 
 static string _sdump_kills_place_info(PlaceInfo place_info, string name = "")
@@ -927,7 +946,7 @@ static string _sdump_kills_place_info(PlaceInfo place_info, string name = "")
 
 static void _sdump_kills_by_place(dump_params &par)
 {
-    string &text(par.text);
+    string text;
 
     vector<PlaceInfo> all_visited = you.get_all_place_info(true);
 
@@ -964,15 +983,15 @@ static void _sdump_kills_by_place(dump_params &par)
 
     if (!result.empty())
         text += header + result + footer + "\n";
+
+    par.text += _trim_section(text);
 }
 
 static void _sdump_overview(dump_params &par)
 {
     string overview =
         formatted_string::parse_string(overview_description_string(false));
-    trim_string(overview);
-    par.text += overview;
-    par.text += "\n\n";
+    par.text += _trim_section(overview);
 }
 
 static void _sdump_hiscore(dump_params &par)
@@ -981,31 +1000,35 @@ static void _sdump_hiscore(dump_params &par)
         return;
 
     string hiscore = hiscores_format_single_long(*(par.se), true);
-    trim_string(hiscore);
-    par.text += hiscore;
-    par.text += "\n\n";
+
+    par.text += _trim_section(hiscore);
 }
 
 static void _sdump_monster_list(dump_params &par)
 {
-    string monlist = mpr_monster_list(par.se);
+    string monlist = mpr_monster_list(par.se), text;
     trim_string(monlist);
     while (!monlist.empty())
-        par.text += wordwrap_line(monlist, 80) + "\n";
-    par.text += "\n";
+        text += wordwrap_line(monlist, 80) + "\n";
+
+    par.text += _trim_section(text);
 }
 
 static void _sdump_vault_list(dump_params &par)
 {
+    string text;
+
     if (par.full_id || par.se
 #ifdef WIZARD
         || you.wizard
 #endif
      )
     {
-        par.text += "Vault maps used:\n";
-        par.text += dump_vault_maps();
+        text += "Vault maps used:\n";
+        text += dump_vault_maps();
     }
+
+    par.text += _trim_section(text);
 }
 
 static bool _sort_by_first(pair<int, FixedVector<int, 28> > a,
@@ -1144,6 +1167,8 @@ static string _describe_action_subtype(caction_type type, int subtype)
 
 static void _sdump_action_counts(dump_params &par)
 {
+    string text;
+
     if (you.action_count.empty())
         return;
     int max_lt = (min<int>(you.max_level, 27) - 1) / 3;
@@ -1152,14 +1177,14 @@ static void _sdump_action_counts(dump_params &par)
     if (max_lt)
         max_lt++;
 
-    par.text += make_stringf("\n%-29s", chop_stringc(jtrans("Action"), 29));
+    text += make_stringf("\n%-29s", chop_stringc(jtrans("Action"), 29));
     for (int lt = 0; lt < max_lt; lt++)
-        par.text += make_stringf(" | %2d-%2d", lt * 3 + 1, lt * 3 + 3);
-    par.text += " ||  " + jtrans("total");
-    par.text += "\n------------------------------";
+        text += make_stringf(" | %2d-%2d", lt * 3 + 1, lt * 3 + 3);
+    text += " ||  " + jtrans("total");
+    text += "\n------------------------------";
     for (int lt = 0; lt < max_lt; lt++)
-        par.text += "+-------";
-    par.text += "++-------\n";
+        text += "+-------";
+    text += "++-------\n";
 
     for (int cact = 0; cact < NUM_CACTIONS; cact++)
     {
@@ -1183,38 +1208,41 @@ static void _sdump_action_counts(dump_params &par)
         {
             if (ac == action_vec.begin())
             {
-                par.text += _describe_action(caction_type(cact));
-                par.text += ": ";
+                text += _describe_action(caction_type(cact));
+                text += ": ";
             }
             else
-                par.text += "          ";
-            par.text += chop_string(_describe_action_subtype(caction_type(cact), ac->first), 19);
+                text += "          ";
+            text += chop_string(_describe_action_subtype(caction_type(cact), ac->first), 19);
             for (int lt = 0; lt < max_lt; lt++)
             {
                 int ltotal = 0;
                 for (int i = lt * 3; i < lt * 3 + 3; i++)
                     ltotal += ac->second[i];
                 if (ltotal)
-                    par.text += make_stringf(" |%6d", ltotal);
+                    text += make_stringf(" |%6d", ltotal);
                 else
-                    par.text += " |      ";
+                    text += " |      ";
             }
-            par.text += make_stringf(" ||%6d", ac->second[27]);
-            par.text += "\n";
+            text += make_stringf(" ||%6d", ac->second[27]);
+            text += "\n";
         }
     }
-    par.text += "\n";
+
+    par.text += _trim_section(text);
 }
 
 static void _sdump_mutations(dump_params &par)
 {
-    string &text(par.text);
+    string text;
 
     if (how_mutated(true, false))
     {
         text += (formatted_string::parse_string(describe_mutations(false)));
         text += "\n";
     }
+
+    par.text += _trim_section(text);
 }
 
 // ========================================================================
@@ -1380,6 +1408,11 @@ void dump_map(const char* fname, bool debug, bool dist)
     fclose(fp);
 }
 
+static string _trim_dump(const string &dump_text)
+{
+    return trimmed_string(dump_text) + "\n";
+}
+
 static bool _write_dump(const string &fname, dump_params &par, bool quiet)
 {
     bool succeeded = false;
@@ -1405,7 +1438,7 @@ static bool _write_dump(const string &fname, dump_params &par, bool quiet)
 
     if (handle != nullptr)
     {
-        string dump = nbsp2sp(par.text);
+        string dump = _trim_dump(nbsp2sp(par.text));
 
         fputs(OUTS(dump), handle);
         fclose(handle);
