@@ -90,12 +90,24 @@ static void _sdump_lua(dump_params &);
 static bool _write_dump(const string &fname, dump_params &,
                         bool print_dump_path = false);
 
+static string _multiline_trim(const string &text)
+{
+    vector<string> lines = split_string("\n", text, false);
+    for(int i = 0, size = lines.size(); i < size; ++i)
+    {
+        string s = nbsp2sp(lines[i]);
+        lines[i] = trim_string_right(s);
+    }
+
+    return comma_separated_line(lines.begin(), lines.end(), "\n", "\n");
+}
+
 static string _trim_section(const string& section_text)
 {
     if (trimmed_string(section_text).empty())
         return "";
 
-    return "\n" + trimmed_string(section_text) + "\n";
+    return "\n" + trimmed_string(_multiline_trim(section_text)) + "\n";
 }
 
 struct dump_section_handler
