@@ -1343,12 +1343,12 @@ void scorefile_entry::init_death_cause(int dam, mid_t dsrc,
             death_source_name = jtrans("themself");
 
         if (mons->has_ench(ENCH_SHAPESHIFTER))
-            death_source_name += " " + jtrans("(shapeshifter)");
+            death_source_name += jtrans("(shapeshifter)");
         else if (mons->has_ench(ENCH_GLOWING_SHAPESHIFTER))
-            death_source_name += " " + jtrans("(glowing shapeshifter)");
+            death_source_name += jtrans("(glowing shapeshifter)");
 
         if (mons->has_ench(ENCH_PHANTOM_MIRROR))
-            death_source_name += " " + jtrans("(illusionary)");
+            death_source_name += jtrans("(illusionary)");
 
         if (mons_is_unique(mons->type))
             death_source_flags.insert("unique");
