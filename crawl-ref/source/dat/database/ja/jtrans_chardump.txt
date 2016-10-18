@@ -92,6 +92,10 @@ table legend turns by place
  F = この場所で階層間でない自動移動を行って費やしたターンをあなたが訪れた
      階層の数で割ったもの
 %%%%
+Total
+
+全体
+%%%%
 Message History
 
 メッセージ履歴:
@@ -148,6 +152,10 @@ table legend kills by place
  E = ゲーム全体においてこの場所で得た経験値のパーセンテージ
  F = この場所で得た経験値をあなたが訪れた階層の数で割ったもの
 %%%%
+Vault maps used:
+
+使用された特殊マップ名:
+%%%%
 Deck
 
 デッキ
@@ -155,10 +163,6 @@ Deck
 Action
 
 行動
-%%%%
-total
-
-全体
 %%%%
 Char dumped successfully.
 

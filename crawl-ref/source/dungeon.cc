@@ -72,6 +72,7 @@
 #include "tileview.h"
 #include "timed_effects.h"
 #include "traps.h"
+#include "unicode.h"
 
 #ifdef DEBUG_DIAGNOSTICS
 #define DEBUG_TEMPLES
@@ -7079,14 +7080,14 @@ string dump_vault_maps()
         if (!you.vault_list.count(lid))
             continue;
 
-        out += lid.describe() + ": " + string(max(8 - int(lid.describe().length()), 0), ' ');
+        out += lid.describe_j() + ": " + string(max(10 - strwidth(lid.describe_j()), 0), ' ');
 
         vector<string> &maps(you.vault_list[lid]);
 
         string vaults = comma_separated_line(maps.begin(), maps.end(), ", ");
         out += wordwrap_line(vaults, 70) + "\n";
         while (!vaults.empty())
-            out += "          " + wordwrap_line(vaults, 70, false) + "\n";
+            out += "            " + wordwrap_line(vaults, 70, false) + "\n";
     }
     return out;
 }

@@ -1036,7 +1036,7 @@ static void _sdump_vault_list(dump_params &par)
 #endif
      )
     {
-        text += "Vault maps used:\n";
+        text += jtransln("Vault maps used:\n");
         text += dump_vault_maps();
     }
 
