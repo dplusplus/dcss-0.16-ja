@@ -1347,9 +1347,6 @@ void scorefile_entry::init_death_cause(int dam, mid_t dsrc,
         else if (mons->has_ench(ENCH_GLOWING_SHAPESHIFTER))
             death_source_name += " " + jtrans("(glowing shapeshifter)");
 
-        if (mons->type == MONS_PANDEMONIUM_LORD)
-            death_source_name += " " + jtrans("the pandemonium lord");
-
         if (mons->has_ench(ENCH_PHANTOM_MIRROR))
             death_source_name += " " + jtrans("(illusionary)");
 
