@@ -319,7 +319,7 @@ string describe_mutations(bool center_title)
 {
     string result;
     bool have_any = false;
-    const char *mut_title = jtransc("Innate Abilities, Weirdness & Mutations");
+    const string mut_title = jtrans("Innate Abilities, Weirdness & Mutations");
     string scale_type = "plain brown";
 
     _num_full_suppressed = _num_part_suppressed = 0;
