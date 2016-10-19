@@ -1210,6 +1210,11 @@ static bool _artefact_name_lookup(string &result, const item_def &item,
     return !result.empty();
 }
 
+static bool _is_ring_of_yendor(string &name, const item_def &item)
+{
+    return (name == "イェンダーの" && !jewellery_is_amulet(item));
+}
+
 string make_artefact_name(const item_def &item, bool appearance)
 {
     ASSERT(is_artefact(item));
@@ -1287,11 +1292,9 @@ string make_artefact_name(const item_def &item, bool appearance)
 
              // If still nothing found, try base type alone.
              || _artefact_name_lookup(name, item, _get_artefact_type(item)));
-
-            if (name == "イェンダーの" && !jewellery_is_amulet(item))
-                continue;
         }
-        while (--tries > 0 && strwidth(name) > 25);
+        // artefact's name must be "amulet of Yendor", not "ring of Yendor"
+        while (--tries > 0 && (strwidth(name) > 25 || _is_ring_of_yendor(name, item)));
 
         if (name.empty()) // still nothing found?
             result += "of Bugginess";
