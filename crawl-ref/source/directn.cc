@@ -3125,7 +3125,7 @@ string feature_description_at(const coord_def& where, bool covering,
                                    covering_description, dtype,
                                    add_stop, base_desc);
     case DNGN_ABANDONED_SHOP:
-        return thing_do_grammar_j(dtype, add_stop, false, "an abandoned shop");
+        return thing_do_grammar_j(dtype, add_stop, false, jtrans("an abandoned shop"));
 
     case DNGN_ENTER_SHOP:
         return shop_name(where) + (add_stop ? "だ。" : "");
