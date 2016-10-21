@@ -513,7 +513,7 @@ grows more vulnerable to poison.
 %%%%
 suddenly seems more agile.
 
-は突然俊敏になったようだ。
+は突然機敏になったようだ。
 %%%%
 seems less certain of their magic.
 

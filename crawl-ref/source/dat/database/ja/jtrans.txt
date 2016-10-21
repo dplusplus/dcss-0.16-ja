@@ -5599,10 +5599,6 @@ seems to grow stronger.
 
 は強くなったようだ。
 %%%%
-suddenly seems more agile.
-
-は突然動きが素早くなったようだ。
-%%%%
 %s steals %s your gold!
 
 %sはあなたの金貨を%s盗み取った！
@@ -7118,7 +7114,7 @@ is no longer more vulnerable to poison.
 %%%%
 is no longer unusually agile.
 
-はもう動きが素早くなくなった。
+はもう動きが機敏でなくなった。
 %%%%
 is no longer encased in ice.
 
@@ -7574,7 +7570,7 @@ surrounded by an icy envelope
 %%%%
 unusually agile
 
-非常に素早い
+非常に機敏
 %%%%
 encased in ice
 
@@ -10310,7 +10306,7 @@ You no longer feel sluggish.
 %%%%
 You start to feel a little faster.
 
-あなたの動きが素早さを取り戻しつつある。
+あなたの動きが元の速度を取り戻しつつある。
 %%%%
 Your resistance to elements expires.
 
@@ -10790,11 +10786,11 @@ You feel clever all of a sudden.
 %%%%
 You feel more agile all of a sudden.
 
-あなたは突然、より素早くなった。
+あなたは突然、より機敏になった。
 %%%%
 You feel agile all of a sudden.
 
-あなたは突然素早くなった。
+あなたは突然機敏になった。
 %%%%
 You cannot fly right now.
 
