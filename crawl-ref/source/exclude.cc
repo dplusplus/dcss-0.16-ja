@@ -640,8 +640,8 @@ string exclude_set::get_exclusion_desc()
                         desc.push_back(old_desc);
                     else
                     {
-                        desc.push_back(make_stringf("%d %s",
-                                       count, pluralise(old_desc).c_str()));
+                        desc.push_back(make_stringf(jtransc("%d %s"),
+                                       old_desc.c_str(), count));
                         count = 1;
                     }
                     old_desc = tmp;
@@ -652,8 +652,8 @@ string exclude_set::get_exclusion_desc()
             desc.push_back(old_desc);
         else
         {
-            desc.push_back(make_stringf("%d %s",
-                           count, pluralise(old_desc).c_str()));
+            desc.push_back(make_stringf(jtransc("%d %s"),
+                           old_desc.c_str(), count));
         }
     }
 

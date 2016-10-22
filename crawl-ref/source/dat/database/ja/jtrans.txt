@@ -242,6 +242,10 @@ downstairs
 
 下り階段
 %%%%
+%d %s
+
+%s x%d
+%%%%
 %d %sexclusion%s
 
 %dつの注意対象%s
