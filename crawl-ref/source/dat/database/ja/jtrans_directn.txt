@@ -1025,9 +1025,17 @@ golden statue
 
 黄金の像
 %%%%
+Platinum Reserve
+
+プラチナ取引所
+%%%%
 wall of white crystal
 
 白水晶の壁
+%%%%
+Purification Station
+
+浄化局
 %%%%
 silver wall
 
@@ -1046,6 +1054,12 @@ adventurer's gravestone
 granite stump
 
 花崗岩の台座
+%%%%
+############################## dat/des/branches/elf.des ##############################
+%%%%
+Elven Fire
+
+エルフの炎の店
 %%%%
 ############################## dat/des/builder/shop.des ##############################
 %%%%
@@ -1101,7 +1115,7 @@ Elemental Accessories
 
 精霊の装身具店
 %%%%
-Quality Used_Wands
+Quality Used Wands
 
 使用済みワンド店
 %%%%
@@ -1313,17 +1327,79 @@ broken pillar
 
 崩壊した柱
 %%%%
-############################## dat/des/sprint/*.des ##############################
+############################## dat/des/sprint/arena_sprint.des ##############################
 %%%%
 spawn point
 
 出発ポイント
 %%%%
-############################## dat/des/variable/*.des ##############################
+Identification Station
+
+鑑定局
+%%%%
+Must-Have Magic
+
+おすすめ魔法の店
+%%%%
+Do-It-Yourself Clinic
+
+DIY病院
+%%%%
+Advanced Armour
+
+特別製防具店
+%%%%
+Basic Armour
+
+通常防具店
+%%%%
+Bee Food
+
+蜂のおやつ店
+%%%%
+Staff Store
+
+杖専門店
+%%%%
+Weapon Rack
+
+武器倉庫
+%%%%
+Bottled Wisdom
+
+瓶詰めの知識店
+%%%%
+Premium Goods
+
+高級品店
+%%%%
+Miscellaneous Merchandise
+
+雑貨屋
+%%%%
+############################## dat/des/variable/float.des ##############################
 %%%%
 sealed sarcophagus
 
 封印された古代の石棺
+%%%%
+############################## dat/des/variable/grated_community.des ##############################
+%%%%
+Slaves and Accessories
+
+隷属の小道具店
+%%%%
+Jerk-a-riffic Jerky
+
+おいしいジャーキー店
+%%%%
+Miraculous Elixirs
+
+不思議な霊薬店
+%%%%
+Legendary Smithy
+
+伝説の鍛冶屋
 %%%%
 ############################## dat/des/tutorial/*.des ##############################
 %%%%

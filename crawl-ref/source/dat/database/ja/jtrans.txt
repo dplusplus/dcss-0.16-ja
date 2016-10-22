@@ -21029,10 +21029,6 @@ Fedhas urges you to decompose the vile beasts imprisoned behind the altar.
 
 フェダスは祭壇の奥に閉じ込められた忌まわしき怪物どもを滅ぼすようにあなたを促した。
 %%%%
-Platinum Reserve
-
-プラチナ取引所
-%%%%
 withered
 
 枯れ果てた
@@ -21044,10 +21040,6 @@ charred
 frost-covered
 
 霜に覆われた
-%%%%
-Purification Station
-
-浄化局
 %%%%
 ############################## dat/des/altar/trog_burn_book.des ##############################
 %%%%
@@ -22164,24 +22156,6 @@ You hear a distant splash.
 The fountain becomes smaller until it vanishes.
 
 噴水はだんだんと小さくなって消えてしまった。
-%%%%
-############################## dat/des/variable/grated_community.des ##############################
-%%%%
-Slaves and Accessories
-
-隷属の小道具店
-%%%%
-Jerk-a-riffic Jerky
-
-おいしいジャーキー店
-%%%%
-Miraculous Elixirs
-
-不思議な霊薬店
-%%%%
-Legendary Smithy
-
-伝説の鍛冶屋
 %%%%
 ############################## dat/des/variable/mini_monsters.des ##############################
 %%%%
