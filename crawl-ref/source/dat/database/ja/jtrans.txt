@@ -9649,11 +9649,11 @@ The acid
 %%%%
 That's too large and heavy for you to wield.
 
-それは大きく、重すぎて装備することができない。
+それは大きく、重すぎて武器として振るうことができない。
 %%%%
 You can't wield %s.
 
-あなたは%sを装備することができない。
+あなたは%sを武器として扱うことはできない。
 %%%%
 You can't use weapons.
 
@@ -9661,11 +9661,11 @@ You can't use weapons.
 %%%%
 That's too large for you to wield.
 
-それは大きすぎて装備することができない。
+それは大きすぎて武器として振るうことができない。
 %%%%
 This weapon is holy and will not allow you to wield it.
 
-この聖なる武器をあなたが装備することは許されない。
+この聖なる武器をあなたが振るうことは許されない。
 %%%%
 paw
 
