@@ -2335,9 +2335,6 @@ string item_def::name_aux(description_level_type desc, bool terse, bool ident,
                 buff << jtrans("cursed");
             else if (Options.show_uncursed && desc != DESC_PLAIN
                      && (!is_randart || !know_type)
-                     && (!ring_has_pluses(*this) || !know_pluses)
-                     // If the item is worn, its curse status is known,
-                     // no need to belabour the obvious.
                      && get_equip_slot(this) == -1)
             {
                 buff << jtrans("uncursed");
