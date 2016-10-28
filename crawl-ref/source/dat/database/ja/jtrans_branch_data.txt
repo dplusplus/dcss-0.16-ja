@@ -157,7 +157,7 @@
 %%%%
 [branch]the Vestibule of Hell
 
-地獄の玄関
+地獄の入り口
 %%%%
 Welcome to Hell!\nPlease enjoy your stay.
 
