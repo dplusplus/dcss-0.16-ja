@@ -71,7 +71,7 @@ function ($, comm, client, util, options) {
         {
             var repeats = $("<span>");
             repeats.addClass("repeats");
-            repeats.text("(" + data.repeats + "x)");
+            repeats.text(" (x" + data.repeats + ")");
             msg_elem.append(" ");
             msg_elem.append(repeats);
         }

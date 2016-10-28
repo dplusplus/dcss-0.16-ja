@@ -113,7 +113,7 @@ struct message_item
         // TODO: colour the repeats indicator?
         string rep = "";
         if (repeats > 1)
-            rep = make_stringf(" x%d", repeats);
+            rep = make_stringf(" (x%d)", repeats);
         return text + rep;
     }
 
@@ -121,7 +121,7 @@ struct message_item
     {
         string rep = "";
         if (repeats > 1)
-            rep = make_stringf(" x%d", repeats);
+            rep = make_stringf(" (x%d)", repeats);
         return pure_text() + rep;
     }
 
