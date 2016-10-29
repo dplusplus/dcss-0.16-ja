@@ -21303,7 +21303,7 @@ You have a sense of imminent foreboding.
 %%%%
 One of the plants suddenly grows acid sacs!
 
-一つの植物が突然酸の嚢を発達させた！
+植物の一つが突然酸の嚢を発達させた！
 %%%%
 Another plant grows acid sacs!
 
