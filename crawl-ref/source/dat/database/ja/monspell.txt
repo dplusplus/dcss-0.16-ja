@@ -481,7 +481,7 @@ Lehudib's Crystal Spear the Serpent of Hell cast
 Mennas cast
 
 # VISUAL:@The_monster@ gestures frantically.
-VISUAL:@The_monster@半狂乱の身振りをした。
+VISUAL:@The_monster@は半狂乱の身振りをした。
 %%%%
 ########################################################################
 # Individual monsters
