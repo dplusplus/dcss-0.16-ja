@@ -912,7 +912,7 @@ Succumbed to poison
 %%%%
 poisoned by
 
-に毒に冒されて死んだ
+による毒を受けた
 %%%%
 Succumbed to
 
