@@ -1401,8 +1401,8 @@ void scorefile_entry::init_death_cause(int dam, mid_t dsrc,
 
     if (death_type == KILLED_BY_POISON)
     {
-        death_source_name = you.props["poisoner"].get_string();
-        auxkilldata = you.props["poison_aux"].get_string();
+        death_source_name = jtrans(you.props["poisoner"].get_string());
+        auxkilldata = jtrans(you.props["poison_aux"].get_string());
     }
 
     if (death_type == KILLED_BY_BURNING)
