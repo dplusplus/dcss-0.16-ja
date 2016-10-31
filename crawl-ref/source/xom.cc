@@ -2307,15 +2307,13 @@ static int _xom_is_good(int sever, int tension, bool debug = false)
         maybe_update_stashes();
 
         // Take a note.
-        static char tele_buf[80];
-        snprintf(tele_buf, sizeof(tele_buf),
-                 jtransc(count > 1 ? "%d-stop teleportation journey%s"
-                                   : "テレポート"),
-                 count,
+        string tele_buf = make_stringf(jtransc(count > 1 ? "%d-stop teleportation journey%s"
+                                                         : "テレポート"),
+                                       count);
 #ifdef NOTE_DEBUG_XOM
-                 player_in_a_dangerous_place() ? " (dangerous)" : // see below
+        if (player_in_a_dangerous_place())
+            tele_buf += " " + jtrans(" (dangerous)");
 #endif
-                 "");
         take_note(Note(NOTE_XOM_EFFECT, you.piety, tension, tele_buf), true);
         done = XOM_GOOD_TELEPORT;
     }
@@ -3539,13 +3537,12 @@ static int _xom_is_bad(int sever, int tension, bool debug = false)
             badness = player_in_a_dangerous_place() ? 3 : 1;
 
             // Take a note.
-            static char tele_buf[80];
-            snprintf(tele_buf, sizeof(tele_buf),
-                     jtransc("%d-stop teleportation journey%s"), count,
+            string tele_buf = make_stringf(jtransc(count > 1 ? "%d-stop teleportation journey%s"
+                                                             : "テレポート"),
+                                           count);
 #ifdef NOTE_DEBUG_XOM
-                     badness == 3 ? " (dangerous)" : "");
-#else
-                     "");
+            if(badness == 3)
+                tele_buf += " " + jtrans(" (dangerous)");
 #endif
             take_note(Note(NOTE_XOM_EFFECT, you.piety, tension, tele_buf),
                       true);
