@@ -20607,6 +20607,10 @@ fog
 
 %d連続のテレポート
 %%%%
+(dangerous)
+
+(危険)
+%%%%
 Xom's lifesaving
 
 ゾムの生命保護
