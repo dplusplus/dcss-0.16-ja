@@ -2137,7 +2137,7 @@ void get_feature_desc(const coord_def &pos, describe_info &inf)
 
     // suppress this if the feature changed out of view
     if (!marker_desc.empty() && grd(pos) == feat)
-        long_desc += marker_desc;
+        long_desc += sp2nbsp(marker_desc);
 
     // Display branch descriptions on the entries to those branches.
     if (feat_is_stair(feat))
