@@ -91,10 +91,11 @@ function TroveMarker:fdesc_long (marker)
               self:item_name() .. "を手放す必要がある。"
     end
   elseif toll.nopiety then
-    state = "The portal is engraved with runes symbolizing the primacy of the "
+    state = crawl.jtrans(
+               "The portal is engraved with runes symbolizing the primacy of the "
             .. "material over the divine. Those who enter it may find riches, "
             .. "but when they return, they will find that whatever gods they "
-            .. "held dear have forgotten them in their absence."
+            .. "held dear have forgotten them in their absence.")
   else
     error("\nThis portal is very buggy.")
   end

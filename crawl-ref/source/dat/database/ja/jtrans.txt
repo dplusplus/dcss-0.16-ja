@@ -21207,6 +21207,10 @@ resides here.
 
 が居を構えている。
 %%%%
+ominous statue.
+
+不吉な像
+%%%%
 Entered the realm of
 
 の守る階層に到達した
@@ -21593,7 +21597,7 @@ You now have 1 arena point.
 %%%%
 <white>There is nothing to do now but take the Orb and leave.</white>
 
-<white></white>
+<white>あとはオーブを手にしてここから立ち去ることだけだ。</white>
 %%%%
 <white>Congratulations, champion.</white>
 
@@ -21661,7 +21665,7 @@ deep elf elementalist
 %%%%
 sulfuric
 
-硫黄
+硫
 %%%%
 greater orb of eyes
 
@@ -21669,7 +21673,7 @@ greater orb of eyes
 %%%%
 captain
 
-隊長
+の隊長
 %%%%
 Master Blaster
 
@@ -21893,6 +21897,25 @@ The Unspeakable
 
 名状しがたきもの
 %%%%
+--                    </red><lightred>You have destroyed The Meatlord.</lightred><red>                      --
+
+--                       </red><lightred>あなたは肉の王者を倒した。</lightred><red>                         --
+%%%%
+--                    </red><lightred>あなたが新たなるチャンピオンだ。</lightred><red>                      --
+
+%%%%
+The Orb of Zot has appeared underneath you.
+
+ゾットのオーブがあなたの足下に出現した。
+%%%%
+--                    </red><lightred>You have destroyed The Unspeakable.</lightred><red>                   --
+
+--                      </red><lightred>あなたは名状しがたきものを倒した。</lightred><red>                  --
+%%%%
+<lightgreen>The slimy rune of Zot has appeared underneath you.</lightgreen>
+
+<lightgreen>ぬめりのルーンがあなたの足下に出現した。</lightgreen>
+%%%%
 ############################## dat/des/sprint/menkaure.des ##############################
 %%%%
 Murray drops in to check on your progress.
@@ -21999,6 +22022,10 @@ open sea?
 
 外海？
 %%%%
+flickering
+
+きらきら光る
+%%%%
 to a bazaar
 
 バザールへと通じる
@@ -22042,6 +22069,10 @@ to the decaying netherworld of Tartarus
 You need three runes to open the Realm of Zot!
 
 ゾットの領域に進むにはルーンが3つ必要だ！
+%%%%
+magically reinforced
+
+魔法により強化された
 %%%%
 ############################## dat/des/sprint/zigsprint.des ##############################
 %%%%
@@ -22123,6 +22154,19 @@ Necromancy for Newbies
 
 初心者のための死霊術
 %%%%
+############################## dat/des/variable/ancient_champions.des ##############################
+%%%%
+Couldn't find a slave!
+
+%%%%
+As the champion is destroyed, a metal wall slides away!
+
+王者を倒すと、金属の壁が開いた！
+%%%%
+As the champion is destroyed, you hear a distant grinding noise.
+
+王者を倒すと、遠くで軋むような物音が聞こえた。
+%%%%
 ############################## dat/des/variable/cathedral_bats.des ##############################
 %%%%
 megabat
@@ -22132,6 +22176,12 @@ megabat
 A bat flies out of a crevice!
 
 裂け目からコウモリが飛び出した！
+%%%%
+############################## dat/des/variable/compat.des ##############################
+%%%%
+Several panes of glass retract into the floor.
+
+いくつかのガラスの壁が床に引っ込んでいった。
 %%%%
 ############################## dat/des/variable/float.des ##############################
 %%%%
@@ -22163,6 +22213,10 @@ The fountain becomes smaller until it vanishes.
 %%%%
 ############################## dat/des/variable/mini_monsters.des ##############################
 %%%%
+strange structure made of doors
+
+数多の扉で構成された奇妙な構造物
+%%%%
 microbat
 
 超小型コウモリ
@@ -22191,7 +22245,6 @@ Nature
 # ホルヘ・ルイス・ボルヘス『バベルの図書館』ネタらしい
 Dhcmrlchtdj
 
-
 %%%%
 Combed Thunderclap
 
@@ -22202,7 +22255,6 @@ Plaster Cramp
 漆喰クランプ
 %%%%
 Axaxaxas mlö
-
 
 %%%%
 Forking Paths
@@ -22217,6 +22269,12 @@ Sand
 
 砂
 %%%%
+############################## dat/dlua/lm_timed.lua ##############################
+%%%%
+The walls and floor vibrate strangely for a moment.
+
+壁と床が一瞬奇妙に振動した。
+%%%%
 ############################## dat/dlua/lm_tmsg.lua ##############################
 %%%%
 The walls and floor vibrate strangely for a moment.
@@ -22227,7 +22285,8 @@ The walls and floor vibrate strangely for a moment.
 %%%%
 The portal is engraved with runes symbolizing the primacy of the material over the divine. Those who enter it may find riches, but when they return, they will find that whatever gods they held dear have forgotten them in their absence.
 
-
+このポータルは神性に対する物性の優越を意味するルーンを刻まれている。
+それをくぐり抜けた者は財宝を目にするが、戻った時に自らが信仰していた神に忘れ去られてしまったことに気付くだろう。
 %%%%
 lose all piety
 
