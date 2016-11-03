@@ -4583,7 +4583,7 @@ bool explore_discoveries::prompt_stop() const
         mpr(msg);
 
     for (const string &marked : marked_feats)
-        mprf("Found %s", marked.c_str());
+        mprf(jtransc("Found %s"), marked.c_str());
 
     if (!es_flags)
         return marker_stop;
