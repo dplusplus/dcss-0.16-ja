@@ -1964,6 +1964,9 @@ string scorefile_entry::death_place(death_desc_verbosity verbosity) const
     if (verbosity == DDV_ONELINE || verbosity == DDV_TERSE)
         return " (" + level_id(branch, dlvl).describe_j() + ")";
 
+    if (verbose && death_type != KILLED_BY_QUITTING && death_type != KILLED_BY_WIZMODE)
+        place += "... ";
+
     if (verbose && death_time
         && !_hiscore_same_day(birth_time, death_time))
     {
@@ -1971,14 +1974,13 @@ string scorefile_entry::death_place(death_desc_verbosity verbosity) const
         place += "に";
     }
 
-    if (verbose && death_type != KILLED_BY_QUITTING && death_type != KILLED_BY_WIZMODE)
-        place += "...";
-
     // where did we die?
     place += prep_branch_level_name(level_id(branch, dlvl)) + "で";
 
     if (!mapdesc.empty())
         place += make_stringf(" (%s)", mapdesc.c_str());
+
+    place += _hiscore_newline_string();
 
     return place;
 }
