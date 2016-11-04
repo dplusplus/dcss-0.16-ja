@@ -906,6 +906,49 @@ damage
 
 , HP %d/%d
 %%%%
+Was a Favourite Plaything of Xom.
+
+ゾムのお気に入りの慰みものであった。
+%%%%
+Was a Plaything of Xom.
+
+ゾムの慰みものであった。
+%%%%
+Was %s of %s%s
+
+%sの%s%sであった。
+%%%%
+the Champion
+
+敬虔なる大司祭
+%%%%
+a High Priest
+
+大司祭
+%%%%
+an Elder
+
+高位の司祭
+%%%%
+a Priest
+
+司祭
+%%%%
+a Believer
+
+熱心な信者
+%%%%
+a Follower
+
+信者
+an Initiate
+
+入会者
+%%%%
+(penitent).
+
+(贖罪中)
+%%%%
 Succumbed to poison
 
 毒死

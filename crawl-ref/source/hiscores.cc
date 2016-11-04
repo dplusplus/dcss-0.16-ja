@@ -1876,7 +1876,7 @@ scorefile_entry::character_description(death_desc_verbosity verbosity) const
 
     bool verbose = verbosity == DDV_VERBOSE;
 
-    string desc;
+    string desc, desc2;
     // Please excuse the following bit of mess in the name of flavour ;)
     if (verbose)
     {
@@ -1912,38 +1912,43 @@ scorefile_entry::character_description(death_desc_verbosity verbosity) const
 
         ASSERT(birth_time);
         desc += _hiscore_date_string_j(birth_time);
-        desc += "にゲームを開始し、";
+        desc += "にゲームを開始し";
 
-        desc += _hiscore_newline_string();
+        desc2 += "、" + _hiscore_newline_string();
 
         if (race != SP_DEMIGOD && god != GOD_NO_GOD)
         {
             if (god == GOD_XOM)
             {
-                desc + make_stringf("Was a %sPlaything of Xom.",
-                                    (lvl >= 20) ? "Favourite " : "");
+                desc2 += jtrans(make_stringf("Was a %sPlaything of Xom.",
+                                            (lvl >= 20) ? "Favourite " : ""));
 
-                desc += _hiscore_newline_string();
+                desc2 += _hiscore_newline_string();
             }
             else
             {
                 // Not exactly the same as the religion screen, but
                 // good enough to fill this slot for now.
-                desc += make_stringf("Was %s of %s%s",
-                             (piety >= piety_breakpoint(5)) ? "the Champion" :
-                             (piety >= piety_breakpoint(4)) ? "a High Priest" :
-                             (piety >= piety_breakpoint(3)) ? "an Elder" :
-                             (piety >= piety_breakpoint(2)) ? "a Priest" :
-                             (piety >= piety_breakpoint(1)) ? "a Believer" :
-                             (piety >= piety_breakpoint(0)) ? "a Follower"
-                                                            : "an Initiate",
-                          god_name(god).c_str(),
-                             (penance > 0) ? " (penitent)." : ".");
+                desc2 += make_stringf(jtransc("Was %s of %s%s"),
+                              jtransc(god_name(god)), jtransc(
+                              (piety >= piety_breakpoint(5)) ? "the Champion" :
+                              (piety >= piety_breakpoint(4)) ? "a High Priest" :
+                              (piety >= piety_breakpoint(3)) ? "an Elder" :
+                              (piety >= piety_breakpoint(2)) ? "a Priest" :
+                              (piety >= piety_breakpoint(1)) ? "a Believer" :
+                              (piety >= piety_breakpoint(0)) ? "a Follower"
+                                                             : "an Initiate"),
+                              jtransc((penance > 0) ? " (penitent)." : ""));
 
-                desc += _hiscore_newline_string();
+                desc2 += _hiscore_newline_string();
             }
         }
     }
+
+    if (!desc2.empty())
+        desc += desc2;
+    else
+        desc += "た。";
 
     return sp2nbsp(desc);
 }
