@@ -624,8 +624,15 @@ static void _sdump_religion(dump_params &par)
             }
             else
             {
-                text += jtrans(god_name(you.religion));
-                text += "は" + jtransln(" demanding penance.\n");
+                string under_penance;
+
+                under_penance += jtrans(god_name(you.religion));
+                under_penance += "は" + jtransln(" demanding penance.\n");
+
+                if (par.se)
+                    under_penance = replace_all(under_penance, "ている。", "ていた。");
+
+                text += under_penance;
             }
         }
         else
