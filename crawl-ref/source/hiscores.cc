@@ -2236,7 +2236,7 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
         break;
 
     case KILLED_BY_WIZMODE:
-        desc += terse? "wizmode" : "Entered wizard mode";
+        desc += jtrans(terse? "wizmode" : "Entered wizard mode");
         break;
 
     case KILLED_BY_DRAINING:
