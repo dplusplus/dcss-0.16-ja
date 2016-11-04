@@ -2008,6 +2008,8 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
     if (oneline)
         desc = " ";
 
+    desc += death_description_with(verbosity);
+
     switch (death_type)
     {
     case KILLED_BY_MONSTER:
@@ -2591,113 +2593,6 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
             needs_damage = false;
             done_damage = true;
         }
-
-        if (death_type == KILLED_BY_LEAVING
-            || death_type == KILLED_BY_WINNING)
-        {
-            if (num_runes > 0)
-            {
-                desc += _hiscore_newline_string();
-
-                desc += make_stringf("... %s %d rune%s",
-                         (death_type == KILLED_BY_WINNING) ? "and" : "with",
-                          num_runes, (num_runes > 1) ? "s" : "");
-
-                if (!semiverbose
-                    && death_time > 0
-                    && !_hiscore_same_day(birth_time, death_time))
-                {
-                    desc += " on ";
-                    desc += _hiscore_date_string(death_time);
-                }
-
-                desc = _append_sentence_delimiter(desc, "!");
-                desc += _hiscore_newline_string();
-            }
-            else
-                desc = _append_sentence_delimiter(desc, ".");
-        }
-        else if (death_type != KILLED_BY_QUITTING
-                 && death_type != KILLED_BY_WIZMODE)
-        {
-            desc += _hiscore_newline_string();
-
-            if (death_type == KILLED_BY_MONSTER && !auxkilldata.empty())
-            {
-                if (!semiverbose)
-                {
-                    desc += make_stringf("... wielding %s",
-                             auxkilldata.c_str());
-                    needs_damage = true;
-                    desc += _hiscore_newline_string();
-                }
-                else
-                    desc += make_stringf(" (%s)", auxkilldata.c_str());
-            }
-            else if (needs_beam_cause_line)
-            {
-                if (!semiverbose)
-                {
-                    desc += (is_vowel(auxkilldata[0])) ? "... with an "
-                                                       : "... with a ";
-                    desc += auxkilldata;
-                    desc += _hiscore_newline_string();
-                    needs_damage = true;
-                }
-                else if (death_type == KILLED_BY_DRAINING
-                         || death_type == KILLED_BY_BURNING)
-                {
-                    desc += make_stringf(" (%s)", auxkilldata.c_str());
-                }
-            }
-            else if (needs_called_by_monster_line)
-            {
-                desc += make_stringf("... %s by %s",
-                         death_type == KILLED_BY_COLLISION ? "caused" :
-                         auxkilldata == "by angry trees"   ? "awakened"
-                                                           : "invoked",
-                         death_source_name.c_str());
-                desc += _hiscore_newline_string();
-                needs_damage = true;
-            }
-
-            if (!killerpath.empty())
-            {
-                vector<string> summoners = _xlog_split_fields(killerpath);
-
-                for (const auto &sumname : summoners)
-                {
-                    if (!semiverbose)
-                    {
-                        desc += "... " + sumname;
-                        desc += _hiscore_newline_string();
-                    }
-                    else
-                        desc += " (" + sumname;
-                }
-
-                if (semiverbose)
-                    desc += string(summoners.size(), ')');
-            }
-
-            if (!semiverbose)
-            {
-                if (needs_damage && !done_damage && damage > 0)
-                    desc += " " + damage_string();
-
-                if (needs_damage && !done_damage)
-                    desc += _hiscore_newline_string();
-
-                if (you.duration[DUR_PARALYSIS])
-                {
-                    desc += "... while paralysed";
-                    if (you.props.exists("paralysed_by"))
-                        desc += " by " + you.props["paralysed_by"].get_string();
-                    desc += _hiscore_newline_string();
-                }
-
-            }
-        }
     }
 
     if (!oneline)
@@ -2852,6 +2747,132 @@ string xlog_fields::xlog_line() const
     }
 
     return line;
+}
+
+string scorefile_entry::death_description_with(death_desc_verbosity verbosity) const
+{
+    bool needs_beam_cause_line = false;
+    bool needs_called_by_monster_line = false;
+    bool needs_damage = false;
+
+    const bool semiverbose = (verbosity == DDV_LOGVERBOSE);
+    const bool verbose = (verbosity == DDV_VERBOSE || semiverbose);
+
+    string desc;
+
+    if (verbose)
+    {
+        bool done_damage = (!semiverbose && needs_damage && damage > 0);
+
+        if (death_type == KILLED_BY_LEAVING
+            || death_type == KILLED_BY_WINNING)
+        {
+            if (num_runes > 0)
+            {
+                desc += _hiscore_newline_string();
+
+                desc += make_stringf("... %s %d rune%s",
+                         (death_type == KILLED_BY_WINNING) ? "and" : "with",
+                          num_runes, (num_runes > 1) ? "s" : "");
+
+                if (!semiverbose
+                    && death_time > 0
+                    && !_hiscore_same_day(birth_time, death_time))
+                {
+                    desc += " on ";
+                    desc += _hiscore_date_string(death_time);
+                }
+
+                desc = _append_sentence_delimiter(desc, "!");
+                desc += _hiscore_newline_string();
+            }
+            else
+                desc = _append_sentence_delimiter(desc, ".");
+        }
+        else if (death_type != KILLED_BY_QUITTING
+                 && death_type != KILLED_BY_WIZMODE)
+        {
+            desc += _hiscore_newline_string();
+
+            if (death_type == KILLED_BY_MONSTER && !auxkilldata.empty())
+            {
+                if (!semiverbose)
+                {
+                    desc += make_stringf("... wielding %s",
+                             auxkilldata.c_str());
+                    needs_damage = true;
+                    desc += _hiscore_newline_string();
+                }
+                else
+                    desc += make_stringf(" (%s)", auxkilldata.c_str());
+            }
+            else if (needs_beam_cause_line)
+            {
+                if (!semiverbose)
+                {
+                    desc += (is_vowel(auxkilldata[0])) ? "... with an "
+                                                       : "... with a ";
+                    desc += auxkilldata;
+                    desc += _hiscore_newline_string();
+                    needs_damage = true;
+                }
+                else if (death_type == KILLED_BY_DRAINING
+                         || death_type == KILLED_BY_BURNING)
+                {
+                    desc += make_stringf(" (%s)", auxkilldata.c_str());
+                }
+            }
+            else if (needs_called_by_monster_line)
+            {
+                desc += make_stringf("... %s by %s",
+                         death_type == KILLED_BY_COLLISION ? "caused" :
+                         auxkilldata == "by angry trees"   ? "awakened"
+                                                           : "invoked",
+                         death_source_name.c_str());
+                desc += _hiscore_newline_string();
+                needs_damage = true;
+            }
+
+            if (!killerpath.empty())
+            {
+                vector<string> summoners = _xlog_split_fields(killerpath);
+
+                for (const auto &sumname : summoners)
+                {
+                    if (!semiverbose)
+                    {
+                        desc += "... " + sumname;
+                        desc += _hiscore_newline_string();
+                    }
+                    else
+                        desc += " (" + sumname;
+                }
+
+                if (semiverbose)
+                    desc += string(summoners.size(), ')');
+            }
+
+            if (!semiverbose)
+            {
+                if (needs_damage && !done_damage && damage > 0)
+                    desc += " " + damage_string();
+
+                if (needs_damage && !done_damage)
+                    desc += _hiscore_newline_string();
+
+                if (you.duration[DUR_PARALYSIS])
+                {
+                    desc += "... while paralysed";
+                    if (you.props.exists("paralysed_by"))
+                        desc += " by " + you.props["paralysed_by"].get_string();
+                    desc += _hiscore_newline_string();
+                }
+
+            }
+        }
+    }
+
+    return desc;
 }
 
 ///////////////////////////////////////////////////////////////////////////////

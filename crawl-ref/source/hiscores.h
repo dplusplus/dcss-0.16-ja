@@ -194,6 +194,8 @@ private:
     string make_oneline(const string &s) const;
 
     void init_from(const scorefile_entry &other);
+
+    string death_description_with(death_desc_verbosity verbosity) const;
 };
 
 #endif  // HISCORES_H
