@@ -630,13 +630,15 @@ static void _sdump_religion(dump_params &par)
         }
         else
         {
-            text += "あなたは" + jtrans(describe_xom_favour());
+            string xom_favour =  jtransln(describe_xom_favour());
 
             if (par.se)
-                text += "だった。";
-            else
-                text += "だ。";
-            text += "\n";
+            {
+                xom_favour = replace_all(xom_favour, "だ。", "だった。");
+                xom_favour = replace_all(xom_favour, "た。", "ていた。");
+            }
+
+            text += xom_favour;
         }
     }
 
