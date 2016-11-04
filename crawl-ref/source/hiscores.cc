@@ -57,7 +57,7 @@
 #include "version.h"
 
 #define SCORE_VERSION "0.1"
-#define HISCORE_INDENT 25
+#define HISCORE_INDENT 13
 
 // enough memory allocated to snarf in the scorefile entries
 static unique_ptr<scorefile_entry> hs_list[SCORE_FILE_ENTRIES];
