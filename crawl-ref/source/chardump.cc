@@ -107,7 +107,13 @@ static string _trim_section(const string& section_text)
     if (trimmed_string(section_text).empty())
         return "";
 
-    return "\n" + trimmed_string(_multiline_trim(section_text)) + "\n";
+    string text = _multiline_trim(section_text);
+
+    // trim '\n'
+    text.erase(0, text.find_first_not_of("\n"));
+    text.erase(text.find_last_not_of("\n") + 1);
+
+    return "\n" + text + "\n";
 }
 
 struct dump_section_handler
