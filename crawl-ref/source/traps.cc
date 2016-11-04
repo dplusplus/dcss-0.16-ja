@@ -1703,7 +1703,7 @@ void trap_def::shoot_ammo(actor& act, bool was_known)
         {
             mprf(jtransc("%s shoots out and hits you!"), jtransc(shot.name(DESC_A)));
 
-            string n = name(DESC_A);
+            string n = name(DESC_PLAIN);
 
             // Needle traps can poison.
             if (poison)
