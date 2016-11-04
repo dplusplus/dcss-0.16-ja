@@ -92,7 +92,7 @@ static bool _write_dump(const string &fname, dump_params &,
 
 static string _multiline_trim(const string &text)
 {
-    vector<string> lines = split_string("\n", text, false);
+    vector<string> lines = split_string("\n", text, false, true);
     for(int i = 0, size = lines.size(); i < size; ++i)
     {
         string s = nbsp2sp(lines[i]);
