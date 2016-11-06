@@ -2564,16 +2564,9 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
     case KILLED_BY_CLUMSINESS:
         if (terse || oneline)
         {
-            desc += " (";
-            desc += auxkilldata;
+            desc += "(";
+            desc += jtrans(auxkilldata);
             desc += ")";
-        }
-        else
-        {
-            desc += "\n";
-            desc += indent;
-            desc += "... caused by ";
-            desc += auxkilldata;
         }
         break;
 
@@ -2768,8 +2761,10 @@ string scorefile_entry::death_description_with(death_desc_verbosity verbosity) c
     bool needs_called_by_monster_line = false;
     bool needs_damage = false;
 
+    const bool terse   = (verbosity == DDV_TERSE);
     const bool semiverbose = (verbosity == DDV_LOGVERBOSE);
     const bool verbose = (verbosity == DDV_VERBOSE || semiverbose);
+    const bool oneline = (verbosity == DDV_ONELINE);
 
     string desc;
 
@@ -2883,6 +2878,22 @@ string scorefile_entry::death_description_with(death_desc_verbosity verbosity) c
 
             }
         }
+    }
+
+    switch (death_type)
+    {
+    case KILLED_BY_STUPIDITY:
+    case KILLED_BY_WEAKNESS:
+    case KILLED_BY_CLUMSINESS:
+        if (!terse && !oneline && !auxkilldata.empty())
+        {
+            desc += _hiscore_newline_string();
+            desc += jtrans(auxkilldata) + "によって";
+        }
+        break;
+
+    default:
+        break;
     }
 
     return desc;

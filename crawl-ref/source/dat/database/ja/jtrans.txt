@@ -886,6 +886,10 @@ the pandemonium lord
 
 (幻影)
 %%%%
+unknown source
+
+よく分からない原因
+%%%%
 The game lasted %s (%d turns).
 
 ゲームの所要時間: %s (%dターン)
