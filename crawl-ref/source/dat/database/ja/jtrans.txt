@@ -1179,7 +1179,7 @@ spore
 %%%%
 Killed by an exploding
 
-の爆発を受けて死んだ
+の巻き起こした爆発を受けて死んだ
 %%%%
 smitten by Shining One
 
