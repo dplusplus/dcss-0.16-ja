@@ -1985,6 +1985,14 @@ string scorefile_entry::death_place(death_desc_verbosity verbosity) const
     return place;
 }
 
+static string jtrans_zap_name(const string& name)
+{
+    if (tagged_jtrans_has_key("[zap]", name))
+        return tagged_jtrans("[zap]", name);
+    else
+        return jtrans(name);
+}
+
 /**
  * Describes the cause of the player's death.
  *
@@ -2369,7 +2377,7 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
             if (auxkilldata.empty())
                 desc += jtrans("beam");
             else
-                desc += auxkilldata;
+                desc += jtrans_zap_name(auxkilldata);
 
             desc += "で死んだ";
         }
