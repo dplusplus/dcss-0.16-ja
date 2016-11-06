@@ -2057,7 +2057,7 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
             else
                 desc += jtrans("poison");
             if (!auxkilldata.empty())
-                desc += " (" + auxkilldata + ")";
+                desc += "(" + jtrans(auxkilldata) + ")";
         }
         else if (auxkilldata.empty()
                  && death_source_name.find("poison") != string::npos)
