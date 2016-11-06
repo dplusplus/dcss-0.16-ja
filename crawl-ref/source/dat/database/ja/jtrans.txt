@@ -1207,7 +1207,7 @@ fell downstairs
 %%%%
 Fell down a flight of stairs
 
-階段から落下して
+階段から落下した
 %%%%
 fell through a gate
 

@@ -2450,10 +2450,16 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
         break;
 
     case KILLED_BY_FALLING_DOWN_STAIRS:
-        desc += jtrans(terse? "fell downstairs" : "Fell down a flight of stairs");
+    {
+        string falldown_text = jtrans(terse? "fell downstairs" : "Fell down a flight of stairs");
+
+        if (final_hp <= 0)
+            falldown_text = replace_all(falldown_text, "落下した", "落下して死んだ");
+        desc += falldown_text;
+
         needs_damage = true;
         break;
-
+    }
     case KILLED_BY_FALLING_THROUGH_GATE:
         desc += jtrans(terse ? "fell through a gate" : "Fell down through a gate");
         needs_damage = true;
