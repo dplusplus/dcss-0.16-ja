@@ -2410,6 +2410,13 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
         }
         else
         {
+            if (!auxkilldata.empty()) {
+                if (auxkilldata == "set off by themself")
+                    desc += "自ら";
+                else  if(auxkilldata == "set off by their pet")
+                    desc += "ペットの";
+            }
+
             if (death_source_name.empty())
                 desc += jtrans("spore");
             else
@@ -2616,14 +2623,6 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
             }
             desc += _hiscore_newline_string();
         }
-    }
-
-    if (death_type == KILLED_BY_SPORE && !terse && !auxkilldata.empty())
-    {
-        desc += "... ";
-        desc += auxkilldata;
-        desc += "\n";
-        desc += "             ";
     }
 
     if (terse)
