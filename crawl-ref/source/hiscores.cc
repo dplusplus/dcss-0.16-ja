@@ -34,6 +34,7 @@
 #include "initfile.h"
 #include "itemprop.h"
 #include "items.h"
+#include "japanese.h"
 #include "jobs.h"
 #include "kills.h"
 #include "libutil.h"
@@ -1856,11 +1857,11 @@ string scorefile_entry::single_cdesc() const
 static string _append_sentence_delimiter(const string &sentence,
                                          const string &delimiter)
 {
-    if (sentence.empty())
+    if (sentence.empty() || delimiter.empty())
         return sentence;
 
     const char lastch = sentence[sentence.length() - 1];
-    if (lastch == '!' || lastch == '.')
+    if (lastch == '!' || lastch == '.' || ends_with(sentence, delimiter))
         return sentence;
 
     return sentence + delimiter;
@@ -2615,10 +2616,10 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
             || death_type == KILLED_BY_WINNING)
         {
             // TODO: strcat "after reaching level %d"; for LEAVING
-            if (verbosity == DDV_NORMAL)
+            if (verbosity == DDV_NORMAL || verbose)
             {
                 desc = _append_sentence_delimiter(desc,
-                                                  num_runes > 0? "!" : ".");
+                                                  num_runes > 0? "！" : "");
             }
             desc += _hiscore_newline_string();
         }
@@ -2778,24 +2779,22 @@ string scorefile_entry::death_description_with(death_desc_verbosity verbosity) c
             if (num_runes > 0)
             {
                 desc += _hiscore_newline_string();
-
-                desc += make_stringf("... %s %d rune%s",
-                         (death_type == KILLED_BY_WINNING) ? "and" : "with",
-                          num_runes, (num_runes > 1) ? "s" : "");
+                desc += "... ";
 
                 if (!semiverbose
                     && death_time > 0
                     && !_hiscore_same_day(birth_time, death_time))
                 {
-                    desc += " on ";
-                    desc += _hiscore_date_string(death_time);
+                    desc += _hiscore_date_string_j(death_time);
+                    desc += "に";
                 }
 
-                desc = _append_sentence_delimiter(desc, "!");
-                desc += _hiscore_newline_string();
+                if (death_type == KILLED_BY_WINNING)
+                    desc += make_stringf("%d%sのルーンと", num_runes,
+                                         general_counter_suffix(num_runes));
+                else
+                    desc += make_stringf(jtransc("... %s %d rune%s"), num_runes);
             }
-            else
-                desc = _append_sentence_delimiter(desc, ".");
         }
         else if (death_type != KILLED_BY_QUITTING
                  && death_type != KILLED_BY_WIZMODE)

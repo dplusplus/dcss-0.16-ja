@@ -1265,6 +1265,10 @@ Succumbed to a manticore's barbed spikes
 
 マンティコアの逆棘で傷ついて死んだ
 %%%%
+... %s %d rune%s
+
+%dつのルーンを手にして
+%%%%
 ############################## invent.cc ##############################
 %%%%
 (holding %s)
