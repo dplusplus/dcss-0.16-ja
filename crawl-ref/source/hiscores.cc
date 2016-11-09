@@ -2004,7 +2004,6 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
 {
     bool needs_beam_cause_line = false;
     bool needs_called_by_monster_line = false;
-    bool needs_damage = false;
 
     const bool terse   = (verbosity == DDV_TERSE);
     const bool semiverbose = (verbosity == DDV_LOGVERBOSE);
@@ -2608,6 +2607,19 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
             needs_damage = false;
             done_damage = true;
         }
+
+        if (death_type != KILLED_BY_LEAVING && death_type != KILLED_BY_WINNING &&
+            death_type != KILLED_BY_QUITTING && death_type != KILLED_BY_WIZMODE)
+        {
+            if (!semiverbose)
+            {
+                if (needs_damage && !done_damage && damage > 0)
+                    desc += " " + damage_string();
+
+                if (needs_damage && !done_damage)
+                    desc += _hiscore_newline_string();
+            }
+        }
     }
 
     if (!oneline)
@@ -2760,7 +2772,6 @@ string scorefile_entry::death_description_with(death_desc_verbosity verbosity) c
 {
     bool needs_beam_cause_line = false;
     bool needs_called_by_monster_line = false;
-    bool needs_damage = false;
 
     const bool terse   = (verbosity == DDV_TERSE);
     const bool semiverbose = (verbosity == DDV_LOGVERBOSE);
@@ -2769,10 +2780,10 @@ string scorefile_entry::death_description_with(death_desc_verbosity verbosity) c
 
     string desc;
 
+    needs_damage = false;
+
     if (verbose)
     {
-        bool done_damage = (!semiverbose && needs_damage && damage > 0);
-
         if (death_type == KILLED_BY_LEAVING
             || death_type == KILLED_BY_WINNING)
         {
@@ -2799,19 +2810,17 @@ string scorefile_entry::death_description_with(death_desc_verbosity verbosity) c
         else if (death_type != KILLED_BY_QUITTING
                  && death_type != KILLED_BY_WIZMODE)
         {
-            desc += _hiscore_newline_string();
-
             if (death_type == KILLED_BY_MONSTER && !auxkilldata.empty())
             {
                 if (!semiverbose)
                 {
-                    desc += make_stringf("... wielding %s",
+                    desc += make_stringf(jtransc("... wielding %s"),
                              auxkilldata.c_str());
                     needs_damage = true;
                     desc += _hiscore_newline_string();
                 }
                 else
-                    desc += make_stringf(" (%s)", auxkilldata.c_str());
+                    desc += make_stringf("%sを手にした", auxkilldata.c_str());
             }
             else if (needs_beam_cause_line)
             {
@@ -2861,20 +2870,16 @@ string scorefile_entry::death_description_with(death_desc_verbosity verbosity) c
 
             if (!semiverbose)
             {
-                if (needs_damage && !done_damage && damage > 0)
-                    desc += " " + damage_string();
-
-                if (needs_damage && !done_damage)
-                    desc += _hiscore_newline_string();
-
                 if (you.duration[DUR_PARALYSIS])
                 {
-                    desc += "... while paralysed";
+                    desc += "... ";
                     if (you.props.exists("paralysed_by"))
-                        desc += " by " + you.props["paralysed_by"].get_string();
+                        desc += jtrans(you.props["paralysed_by"].get_string())
+                              + "によって麻痺させられた間に";
+                    else
+                        desc += jtrans("... while paralysed");
                     desc += _hiscore_newline_string();
                 }
-
             }
         }
     }

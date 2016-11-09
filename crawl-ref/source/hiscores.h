@@ -128,6 +128,8 @@ private:
 
     mutable unique_ptr<xlog_fields> fields;
 
+    mutable bool needs_damage;
+
 public:
     scorefile_entry();
     scorefile_entry(int damage, mid_t death_source, int death_type,

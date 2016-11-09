@@ -1269,6 +1269,14 @@ Succumbed to a manticore's barbed spikes
 
 %dつのルーンを手にして
 %%%%
+... wielding %s
+
+... %sを手にした
+%%%%
+... while paralysed
+
+麻痺している間に
+%%%%
 ############################## invent.cc ##############################
 %%%%
 (holding %s)
