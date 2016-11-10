@@ -2000,6 +2000,11 @@ static string jtrans_zap_name(const string& name)
  * @param verbosity     The verbosity of the description.
  * @return              A description of the cause of death.
  */
+static bool _is_you(const string &source)
+{
+    return (source == "you") || source == jtrans("you");
+}
+
 string scorefile_entry::death_description(death_desc_verbosity verbosity) const
 {
     bool needs_beam_cause_line = false;
@@ -2068,13 +2073,14 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
                 desc += "(" + jtrans(auxkilldata) + ")";
         }
         else if (auxkilldata.empty()
-                 && death_source_name.find("poison") != string::npos)
+                 && (death_source_name.find("poison") != string::npos ||
+                     death_source_name.find("毒") != string::npos))
         {
             desc += death_source_name + jtrans("Succumbed to ");
         }
         else
         {
-            desc += jtrans((death_source_name == "you") ? "their own" : death_source_name)
+            desc += jtrans(_is_you(death_source_name) ? "their own" : death_source_name)
                   + "の"
                   + jtrans(auxkilldata.empty() ? "poison" : auxkilldata)
                   + jtrans("Succumbed to ");
@@ -2085,10 +2091,10 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
         ASSERT(!auxkilldata.empty()); // there are no nameless clouds
         if (terse)
             if (death_source_name.empty())
-                desc += auxkilldata + jtrans("cloud of ");
+                desc += jtrans(auxkilldata) + jtrans("cloud of ");
             else
-                desc += auxkilldata + jtrans("cloud of ") + " [" +
-                        death_source_name == "you" ? "自ら" : death_source_name
+                desc += jtrans(auxkilldata) + jtrans("cloud of ") + " [" +
+                    (_is_you(death_source_name) ? "自分" : death_source_name)
                         + "]";
         else
         {
