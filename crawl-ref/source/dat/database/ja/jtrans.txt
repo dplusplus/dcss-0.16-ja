@@ -868,7 +868,7 @@ their own shadow
 %%%%
 themself
 
-自業自得
+自分自身
 %%%%
 (shapeshifter)
 
@@ -985,13 +985,17 @@ Killed %s
 
 %sで死んだ
 %%%%
+Killed by themself
+
+自殺した
+%%%%
 Killed by
 
 で死んだ
 %%%%
 Killed from afar by
 
-に撃たれて死んだ
+撃たれて死んだ
 %%%%
 Turned to ash by lava
 
@@ -1276,6 +1280,14 @@ Succumbed to a manticore's barbed spikes
 ... while paralysed
 
 麻痺している間に
+%%%%
+awakened
+
+呼び覚まされた
+%%%%
+invoked
+
+引き起こされた
 %%%%
 ############################## invent.cc ##############################
 %%%%
@@ -6492,7 +6504,7 @@ out of sight
 %%%%
 Hit by %s thrown by %s
 
-%sが投げた%sに命中した
+%sが投げた%sに当たった
 %%%%
 %s throws you!
 
@@ -11078,11 +11090,11 @@ You can't quiver worn items.
 %%%%
 Shot with a%s %s by %s
 
-%sの%sに撃たれた
+%sに%sを撃たれた
 %%%%
 Hit by a%s %s thrown by %s
 
-%sの投げた%sに当たった
+%sが投げた%sに当たった
 %%%%
 %s is repelled.
 

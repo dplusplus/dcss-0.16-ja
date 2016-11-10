@@ -129,6 +129,8 @@ private:
     mutable unique_ptr<xlog_fields> fields;
 
     mutable bool needs_damage;
+    mutable bool needs_beam_cause_line;
+    mutable bool needs_called_by_monster_line;
 
 public:
     scorefile_entry();
@@ -197,7 +199,10 @@ private:
 
     void init_from(const scorefile_entry &other);
 
+private:
     string death_description_with(death_desc_verbosity verbosity) const;
+    string beam_cause_line(bool semiverbose) const;
+    string called_by_monster_line() const;
 };
 
 #endif  // HISCORES_H
