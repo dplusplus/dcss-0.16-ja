@@ -1,11 +1,21 @@
 %%%%
 Fighting
 
+# Fighting skill increases your accuracy and damage in hand-to-hand combat, and
+# also increases your maximum health.
 戦闘スキルはあなたの命中と近接戦闘のダメージを増加させる。
 また、最大HPも増加させる。
 %%%%
 Short Blades
 
+# Short Blades are more effective than any other weapon type at stabbing helpless
+# foes.
+
+# Being skilled with Short Blades will allow you to attack more quickly with all
+# weapons of this type, as well as increasing your accuracy and damage with them.
+
+# Being skilled with Short Blades increases your effectiveness with Long Blades,
+# and vice versa.
 短剣は敵に不意打ちを仕掛けた際に、他の武器の種類よりも大きな効果を得られる。
 
 短剣スキルに熟練すると、短剣の攻撃速度が上がるだけでなく、
@@ -16,6 +26,12 @@ Short Blades
 %%%%
 Long Blades
 
+# Being skilled with Long Blades will allow you to attack more quickly with all
+# weapons of this type, as well as increasing your accuracy and damage with them.
+
+# Being skilled with Long Blades increases your effectiveness with Short Blades,
+# and vice versa.
+
 長剣スキルに熟練すると、長剣の攻撃速度が上がるだけでなく、
 命中率とダメージも増加させることができる。
 
@@ -23,6 +39,15 @@ Long Blades
 （その逆もしかり）
 %%%%
 Axes
+
+# Axes cleave through multiple enemies with a single swing, hitting foes in an
+# arc around the wielder.
+
+# Being skilled with Axes will allow you to attack more quickly with all weapons
+# of this type, as well as increasing your accuracy and damage with them.
+
+# Being skilled with Axes increases your effectiveness with Maces & Flails and
+# Polearms, and vice versa.
 
 斧は一回の攻撃で、攻撃者を中心とする円弧内にいる複数の敵を
 同時に叩き斬る事ができる。
@@ -35,6 +60,12 @@ Axes
 %%%%
 Maces & Flails
 
+# Being skilled with Maces & Flails will allow you to attack more quickly with
+# all weapons of this type, as well as increasing your accuracy and damage with
+# them.
+
+# Being skilled with Maces & Flails increases your effectiveness with Axes and
+# Staves, and vice versa.
 鈍器スキルに熟練すると、鈍器の攻撃速度が上がるだけでなく、
 命中率とダメージも増加させることができる。
 
@@ -43,6 +74,13 @@ Maces & Flails
 %%%%
 Polearms
 
+# Polearms can be evoked with ‘v’ to attack enemies from two spaces away.
+
+# Being skilled with Polearms will allow you to attack more quickly with all
+# weapons of this type, as well as increasing your accuracy and damage with them.
+
+# Being skilled with Polearms increases your effectiveness with Axes and Staves,
+# and vice versa.
 長柄武器は、「V」キーを押下すると一マス離れた敵を攻撃することができる。
 
 長柄武器スキルに熟練すると、長柄武器の攻撃速度が上がるだけでなく、
@@ -53,6 +91,14 @@ Polearms
 %%%%
 Staves
 
+# Staves require a relatively low amount of skill to be used most effectively,
+# although they lack the high damage potential of some other weapon classes.
+
+# Being skilled with Staves will allow you to attack more quickly with all
+# weapons of this type, as well as increasing your accuracy and damage with them.
+
+# Being skilled with Staves increases your effectiveness with Maces & Flails and
+# Polearms, and vice versa.
 棒術は、比較的低いスキルレベルでも効果的に扱える。
 しかし、他のいくつかの武器スキルにはある「高ダメージを
 与えられるようになる成長性」に欠けている。
@@ -65,6 +111,11 @@ Staves
 %%%%
 Slings
 
+# Being skilled with Slings will let you deal more damage when using the
+# appropriate launcher and ammunition.
+
+# Being skilled with Slings increases your effectiveness in Throwing, and vice
+# versa.
 スリングスキルに熟練すると、スリングと適切な矢弾を使用した際に、
 より多くのダメージを与えられるようになる。
 
@@ -72,16 +123,27 @@ Slings
 （その逆もしかり）
 %%%%
 Bows
-
+# Being skilled with Bows will let you deal more damage when using the
+# appropriate launcher and ammunition.
 弓スキルに熟練すると、弓と適切な矢弾を使用した際に、
 より多くのダメージを与えられるようになる。
 %%%%
 Crossbows
 
+# Being skilled with Crossbows will let you deal more damage when using the
+# appropriate launcher and ammunition.
 クロスボウスキルに熟練すると、クロスボウと適切な矢弾を使用した際に、
 より多くのダメージを与えられるようになる。
 %%%%
 Throwing
+
+# Training Throwing will make thrown weapons (such as javelins) and blowguns more
+# effective. In particular, it makes weapons of returning more likely to return
+# to their thrower, and makes certain magical needles more likely to have an
+# effect when fired from a blowgun.
+
+# Being skilled in Throwing increases your effectiveness with Slings, and vice
+# versa.
 
 投擲スキルに熟練すると、ジャベリンなどの投擲武器や吹き矢がより効果的になる。
 帰還効果の付いた投擲武器が戻ってくる可能性が高くなり、
@@ -92,15 +154,29 @@ Throwing
 %%%%
 Armour
 
+# Armour skill increases the AC gained by wearing heavy armour, and it also helps
+# lessen the hindrance of heavy armour on melee combat and spellcasting.
 甲冑スキルは重鎧を装備することによって得られるACを増加させ、
 そして近接戦闘と呪文詠唱に対しての重鎧の妨害を軽減するのに役にたつ。
 %%%%
 Dodging
 
+# The Dodging skill will affect your chance of dodging an attack, be it melee,
+# ranged or magical. Certain types of attack cannot be dodged, however, such as
+# enchantments (which must be resisted) and explosions.
 躱し身スキルは近接攻撃、遠距離攻撃、魔法を避けるチャンスをあなたに与える。
 しかしながら呪術や爆発といった特定の種類の攻撃については回避することができない。
 %%%%
 Stealth
+
+# By training Stealth, you can make it less likely that monsters will notice you
+# if they are asleep or otherwise unalert, and increase your chances of monsters
+# losing track of you after you leave their vision. Note that monsters become
+# more suspicious and observant as you descend.
+
+# Stealth skill, along with the weapon skill for your equipped weapon, also
+# governs the likelihood of doing a great amount of damage when attacking a
+# distracted or helpless creature, as well as the amount of extra damage dealt.
 
 隠密スキルに熟練すると、眠っていたりこちらに気づいていないモンスターが
 あなたに気づく可能性が低くなり、敵に見つかったとしても敵の視覚内から出れば、
@@ -111,34 +187,32 @@ Stealth
 不意打ちが発生する確率とその追加ダメージ量は、
 隠密スキルと装備している武器のスキルによって左右される。
 %%%%
-Stabbing
-
-不意打ちは取り乱したり、無力な敵に(通常短剣を使って)攻撃したとき、
-多くの追加ダメージを与えるだけでなく、
-与える追加ダメージの大きさを左右するスキルだ。いくつかの神々は、
-これを非難することがある。
-# 存在しない？
-%%%%
-Traps
-
-罠スキルの訓練を積んだキャラクターはより彼または彼女の周囲に注意深くなり、
-それらを解除できるようになるのはもちろん、より速く罠に気付くようになる。
-# 存在しない？
-%%%%
 Shields
 
+# A high Shields skill helps you block melee attacks or projectiles (both magical
+# and non-magical) with your equipped shield. Some attacks, such as penetrating
+# bolts, cannot be blocked at all.
 高い盾スキルはあなたが盾(もしくは魔法で生成された盾)を装備することによって、
 近接攻撃や(魔法や非魔法両方の)発射物をブロックするのに役立つ。
 貫通するボルトのようないくつかの攻撃については全くブロックすることができない。
 %%%%
 Unarmed Combat
 
+# Being skilled in Unarmed Combat increases your accuracy, damage and attack
+# speed in melee combat when barehanded. It also allows you to occasionally punch
+# with your off hand as an additional melee attack, provided your hand is free to
+# do so.
 徒手格闘スキルに熟練すると、素手での近接戦闘の命中率、ダメージ、
 攻撃速度が増加する。また、あなたの手が自由であるならば、
 あなたは時たま追加攻撃として非利き手でパンチが行える。
 %%%%
 Spellcasting
 
+# Being skilled in Spellcasting slightly increases the success rate and spell
+# power of all spells, along with increasing your magical reserves and reducing
+# the effects of spell hunger.
+
+# Training Spellcasting also gives you more spell slots to spend on new spells.
 呪文詠唱スキルに熟練すると、全ての呪文の発動成功率と魔法威力が少量増加し
 満腹度の消費量が軽減されMPも増加する。
 
@@ -146,6 +220,16 @@ Spellcasting
 %%%%
 Conjurations
 
+# Conjurations are battle oriented spells, which often work by conjuring up a
+# chunk of short-lived matter and propelling it towards the victim to deal direct
+# damage. Being skilled in Conjurations usually increases the damage and accuracy
+# of such spells, and sometimes affects their range or the size of the area
+# affected.
+
+# Being skilled in Conjurations increases the success rate and spell power of
+# spells in this school. Many spells belong to a combination of several schools,
+# in which case spellcasting success and power will depend on the average skill
+# in these schools.
 妖術は、戦闘志向の呪文で、
 妖術によって作り出した、一時的にしか存在できない特殊な物質を飛ばし
 対象に直撃させる事でダメージを与える。
@@ -158,6 +242,16 @@ Conjurations
 %%%%
 Hexes
 
+# Hexes try to bestow various enchantments on nearby things. While none do direct
+# damage, being ensorcelled can effectively take an opponent out of combat,
+# although they often require overcoming an opponent's resistance to hostile
+# enchantments to have an effect. Being skilled in Hexes will help overcome this
+# resistance.
+
+# Being skilled in Hexes increases the success rate and spell power of spells in
+# this school. Many spells belong to a combination of several schools, in which
+# case spellcasting success and power will depend on the average skill in these
+# schools.
 呪術は対象に様々な魔法効果を与える事を試みる。
 どれも直接ダメージを与える事はできないが、
 対象の持つ魔法防御をすり抜けて魔法効果を与えられると
@@ -170,6 +264,13 @@ Hexes
 %%%%
 Charms
 
+# Charms provide you with a number of self-enhancing auras. Training Charms skill
+# will often increase the duration or effectiveness of these auras.
+
+# Being skilled in Charms increases the success rate and spell power of spells in
+# this school. Many spells belong to a combination of several schools, in which
+# case spellcasting success and power will depend on the average skill in these
+# schools.
 加護は、自己強化を施す多くのオーラを与えてくれる。
 加護スキルに熟練すると、多くの場合はオーラの持続時間または有効性が増加する。
 
@@ -179,6 +280,17 @@ Charms
 %%%%
 Summonings
 
+# Summonings deals with summoning creatures from another plane of reality to join
+# your army or distract your foes. Increasing Summonings skill may have a number
+# of effects depending on the spell, such as longer duration, more powerful
+# allies, or lower chances of creating hostile creatures. Note that summoned
+# beings don't leave corpses and don't give experience when killed, and their
+# equipment is as ephemeral as they are.
+
+# Being skilled in Summonings increases the success rate and spell power of
+# spells in this school. Many spells belong to a combination of several schools,
+# in which case spellcasting success and power will depend on the average skill
+# in these schools.
 召喚術は異次元の生物を扱い、あなたと共に戦い敵の注意を引きつける。
 召喚術スキルに熟練すると、召喚した生物が強力になる、効果時間が伸びる、
 敵対的な生物を呼び出してしまう確率が低下するなど
@@ -192,6 +304,15 @@ Summonings
 %%%%
 Necromancy
 
+# Necromancy is the art of draining and gaining life, although most often
+# associated with zombies and other undead. As such, Necromancy spells have a
+# wide range of effects, ranging from spells to create or control the undead to
+# spells granting unholy healing in various forms.
+
+# Being skilled in Necromancy increases the success rate and spell power of
+# spells in this school. Many spells belong to a combination of several schools,
+# in which case spellcasting success and power will depend on the average skill
+# in these schools.
 死霊術は、生命を奪い取る技術である。
 だが、ほとんどの場合、死者のゾンビや不死のアンデッドなどと関連付けられている。
 このように死霊術の呪文は、アンデッドの作成や制御、
@@ -203,6 +324,14 @@ Necromancy
 %%%%
 Translocations
 
+# Translocations focus on the spatial movement of beings or objects, including
+# useful spells to translocate yourself over short distances quickly or to
+# transport your enemies away from you.
+
+# Being skilled in Translocations increases the success rate and spell power of
+# spells in this school. Many spells belong to a combination of several schools,
+# in which case spellcasting success and power will depend on the average skill
+# in these schools.
 転移術は、生物や物体の空間的な移動に焦点を当てており、
 短距離を瞬間移動するものや、敵を遠ざけるものなどの便利な呪文がある。
 
@@ -212,6 +341,14 @@ Translocations
 %%%%
 Transmutations
 
+# Transmutations deal with changing shapes. Many Transmutations involve changing
+# your own form, but the school also contains spells to cause changes in your
+# enemies, or to transform objects around you.
+
+# Being skilled in Transmutations increases the success rate and spell power of
+# spells in this school. Many spells belong to a combination of several schools,
+# in which case spellcasting success and power will depend on the average skill
+# in these schools.
 変異術は形状変化を扱う。
 変異術の多くは、自身の形態を変化させるものだが、
 中には敵に変化を引き起こす呪文や、周辺の物体を変化させる呪文も存在する。
@@ -222,6 +359,13 @@ Transmutations
 %%%%
 Fire Magic
 
+# Fire Magic focuses mainly on dealing fire damage over long distances, with many
+# effective Conjurations.
+
+# Being skilled in Fire Magic increases the success rate and spell power of
+# spells in this school. Many spells belong to a combination of several schools,
+# in which case spellcasting success and power will depend on the average skill
+# in these schools.
 炎の魔術は、遠距離の対象に炎ダメージを与える事に焦点を当てている。
 妖術と相性が良い。
 
@@ -231,6 +375,13 @@ Fire Magic
 %%%%
 Ice Magic
 
+# Ice Magic contains a range of direct damage spells, as well as some defensive
+# effects such as spells to craft temporary shields and armour from ice.
+
+# Being skilled in Ice Magic increases the success rate and spell power of spells
+# in this school. Many spells belong to a combination of several schools, in
+# which case spellcasting success and power will depend on the average skill in
+# these schools.
 氷の魔術は、一定の範囲に直接ダメージを与える呪文を習得できる。
 それだけではなく、一時的に氷から盾や鎧を作り出す防御的な呪文もある。
 
@@ -240,6 +391,15 @@ Ice Magic
 %%%%
 Air Magic
 
+# Air Magic provides spells to deal damage directly with the wind, as well as
+# noisy but powerful lightning Conjurations. It also provides some utility
+# spells, such as Charms to call the wind to assist your movement or protect you
+# from projectile attacks.
+
+# Being skilled in Air Magic increases the success rate and spell power of spells
+# in this school. Many spells belong to a combination of several schools, in
+# which case spellcasting success and power will depend on the average skill in
+# these schools.
 風の魔術は、大きな騒音はあるものの強力な稲妻を伴う嵐を呼び起こして
 直接ダメージを与える呪文を習得できる。
 また、風を呼び起こし移動を補助するものや、射撃から身を守るものなどの
@@ -251,6 +411,15 @@ Air Magic
 %%%%
 Earth Magic
 
+# Earth Magic contains spells able to deal large amounts of direct physical
+# damage, which cannot be resisted like fire, cold and lightning damage can. It
+# is also linked with some Transmutations, with spells to liquefy the earth
+# around you, or to turn your enemies to stone.
+
+# Being skilled in Earth Magic increases the success rate and spell power of
+# spells in this school. Many spells belong to a combination of several schools,
+# in which case spellcasting success and power will depend on the average skill
+# in these schools.
 地の魔術は、直接物理的なダメージを与える呪文が多くあり、
 これらは炎や冷気と雷のように抵抗することはできない。
 また、周囲の地面を液状化させるものや、敵を石化させるものなどの一部の呪文は、
@@ -262,14 +431,25 @@ Earth Magic
 %%%%
 Poison Magic
 
-毒の魔術は、多くの野生動物に対して非常に効果的な呪文を習得できる。
+# Poison Magic provides spells which are highly effective against many natural
+# creatures.
 
+# Being skilled in Poison Magic increases the success rate and spell power of
+# spells in this school. Many spells belong to a combination of several schools,
+# in which case spellcasting success and power will depend on the average skill
+# in these schools.
+毒の魔術は、多くの野生動物に対して非常に効果的な呪文を習得できる。
 毒の魔術スキルを鍛えると、この系統の呪文の成功率と魔法威力が増加する。
 多くの呪文は、いくつかの系統との組み合わせになっており、
 その場合には、呪文の成功率と魔法威力はそれらの系統のスキルの平均値に依存する。
 %%%%
 Invocations
 
+# Your Invocations skill affects the likelihood that an attempt to use a divine
+# ability will be successful, and often the power of such abilities.
+
+# The Invocations skill also affects your magical reserves, but to a lesser
+# degree than the Spellcasting skill, and only the highest contribution is used.
 祈祷スキルは、神の能力を使用した時の成功確率と効果量に影響を与える。
 
 祈祷スキルは呪文詠唱スキルほどではないがMPに影響を与えるものの、
@@ -277,6 +457,13 @@ MPの増加は効果が最も大きいもののどれか一つのみしか適用
 %%%%
 Evocations
 
+# Evocations is all about using magical items like wands, decks or other uncommon
+# nobjects. The higher your skill, the more likely a positive outcome is when
+# evoking items. High skill may also let you determine the amount of charges a
+# zapped wand has left.
+
+# The Evocations skill also affects your magical reserves, but to a lesser degree
+# than the Spellcasting skill, and only the highest contribution is used.
 発動スキルは、魔法アイテムの杖、デッキや珍品の使用に関するものである。
 発動スキルに熟練すると、それらの魔法アイテムを使用した際に、
 良い結果が出る確率が高くなる。
