@@ -2201,7 +2201,7 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
 
     case KILLED_BY_LAVA:
         if (terse)
-            desc += "lava";
+            desc += jtrans("lava");
         else
         {
             if (race == SP_MUMMY)
