@@ -2253,7 +2253,7 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
 
     case KILLED_BY_TRAP:
         if (terse)
-            desc += auxkilldata.c_str();
+            desc += jtrans(auxkilldata);
         else
         {
             desc += make_stringf(jtransc("Killed by triggering %s"),
@@ -2365,7 +2365,7 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
     case KILLED_BY_ROTTING:
         desc += jtrans(terse ? "rotting" : "Rotted away");
         if (!auxkilldata.empty())
-            desc += " (" + auxkilldata + ")";
+            desc += " (" + jtrans(auxkilldata) + ")";
         if (!death_source_desc().empty())
             desc += " (" + death_source_desc() + ")";
         break;
@@ -2396,7 +2396,7 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
             if (auxkilldata.empty())
                 desc += jtrans("bolt");
             else
-                desc += auxkilldata;
+                desc += jtrans(auxkilldata);
 
             desc += "で死んだ";
         }
@@ -2477,7 +2477,7 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
 
     case KILLED_BY_SOMETHING:
         if (!auxkilldata.empty())
-            desc += auxkilldata + (terse ? "" : jtrans("Killed by "));
+            desc += jtrans(auxkilldata) + (terse ? "" : jtrans("Killed by "));
         else
             desc += jtrans(terse ? "died" : "Died");
         needs_damage = true;
@@ -2530,7 +2530,7 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
                 if (!isupper(auxkilldata[0]) && auxkilldata.find("the ") != 0)
                     desc += is_vowel(auxkilldata[0]) ? "an " : "a ";
 
-                desc += auxkilldata;
+                desc += jtrans(auxkilldata);
             }
             desc += "に触れて死んだ";
         }
