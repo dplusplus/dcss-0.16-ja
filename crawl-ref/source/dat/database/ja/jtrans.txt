@@ -941,6 +941,7 @@ a Believer
 a Follower
 
 信者
+%%%%
 an Initiate
 
 入会者
