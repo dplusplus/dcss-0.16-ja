@@ -6196,7 +6196,7 @@ Unholy energy fills the air.
 %%%%
 by vampiric draining
 
-ヴァンパイアの吸血により
+ヴァンパイアの吸血によって
 %%%%
 draws life force from you and is healed!
 
@@ -6212,7 +6212,7 @@ draws life force from %s and is healed!
 %%%%
 by Freeze
 
-凍結により
+凍結によって
 %%%%
 attempts to bespell you!
 
@@ -6260,7 +6260,7 @@ The water swirls and strikes %s!
 %%%%
 by the raging water
 
-荒れ狂う水流により
+荒れ狂う水流によって
 %%%%
 The air twists around and violently strikes you in flight!
 
@@ -6276,7 +6276,7 @@ is struck by the twisting air!
 %%%%
 by the air
 
-烈風により
+烈風によって
 %%%%
 Something smites you!
 
@@ -6288,7 +6288,7 @@ is smitten.
 %%%%
 by divine providence
 
-神意により
+神意によって
 %%%%
 Something feeds on your intellect!
 
@@ -13812,7 +13812,7 @@ You shudder.
 %%%%
 by Shatter
 
-粉砕の呪文によって
+粉砕によって
 %%%%
 The dungeon shakes around %s!
 
@@ -13933,10 +13933,6 @@ The %s shatters!
 You shatter!
 
 あなたは粉砕された！
-%%%%
-by Lee's Rapid Deconstruction
-
-リーの瞬間解体術によって
 %%%%
 %s shatters!
 
@@ -14226,7 +14222,7 @@ an exploding lurking horror
 %%%%
 by torment
 
-苦痛によって
+邪悪なる苦痛によって
 %%%%
 ############################## spl-miscast.cc ##############################
 %%%%
