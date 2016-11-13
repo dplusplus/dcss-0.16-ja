@@ -201,8 +201,8 @@ private:
 
 private:
     string death_description_with(death_desc_verbosity verbosity) const;
-    string beam_cause_line(bool semiverbose) const;
-    string called_by_monster_line() const;
+    string beam_cause_line(death_desc_verbosity verbosity) const;
+    string called_by_monster_line(death_desc_verbosity verbosity) const;
 };
 
 #endif  // HISCORES_H

@@ -2161,7 +2161,7 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
             }
             else
             {
-                desc += called_by_monster_line();
+                desc += called_by_monster_line(verbosity);
 
                 if (ends_with(jtrans(auxkilldata), "によって"))
                     desc += jtrans(auxkilldata) + "死んだ";
@@ -2177,19 +2177,19 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
             if (semiverbose)
             {
                 if (death_source_name == "you")
-                    desc += jtrans("Killed by themself") + beam_cause_line(semiverbose);
+                    desc += jtrans("Killed by themself") + beam_cause_line(verbosity);
                 else
                     desc += jtrans(death_source_desc()) + jtrans("Killed by ")
-                          + beam_cause_line(semiverbose);
+                          + beam_cause_line(verbosity);
             }
             else if (!terse)
             {
                 if (death_source_name == "you")
                     desc += jtrans("themself") + "を"
-                          + beam_cause_line(semiverbose) + "撃って死んだ";
+                          + beam_cause_line(verbosity) + "撃って死んだ";
                 else
                     desc += jtrans(death_source_desc()) + "に"
-                          + beam_cause_line(semiverbose) + jtrans("Killed from afar by ");
+                          + beam_cause_line(verbosity) + jtrans("Killed from afar by ");
             }
 
             if (!auxkilldata.empty())
@@ -2300,7 +2300,7 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
                 desc += death_source_desc() + "に";
 
                 if (!semiverbose)
-                    desc += beam_cause_line(semiverbose);
+                    desc += beam_cause_line(verbosity);
                 if (!auxkilldata.empty())
                     needs_beam_cause_line = true;
             }
@@ -2310,7 +2310,7 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
             desc += jtrans("Drained of all life");
 
             if (semiverbose)
-                desc += beam_cause_line(semiverbose);
+                desc += beam_cause_line(verbosity);
         }
         break;
 
@@ -2330,7 +2330,7 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
         {
             desc += death_source_desc() + "に";
             if (!semiverbose)
-                desc += beam_cause_line(semiverbose);
+                desc += beam_cause_line(verbosity);
             desc += jtrans("Incinerated by ");
 
             if (!auxkilldata.empty())
@@ -2340,7 +2340,7 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
             desc += jtrans("Burnt to a crisp");
 
         if (semiverbose)
-            desc += beam_cause_line(semiverbose);
+            desc += beam_cause_line(verbosity);
         needs_damage = true;
         break;
 
@@ -2926,35 +2926,60 @@ string scorefile_entry::death_description_with(death_desc_verbosity verbosity) c
     return desc;
 }
 
-string scorefile_entry::beam_cause_line(bool semiverbose) const
+string scorefile_entry::beam_cause_line(death_desc_verbosity verbosity) const
 {
+    const bool terse   = (verbosity == DDV_TERSE);
+    const bool semiverbose = (verbosity == DDV_LOGVERBOSE);
+    const bool verbose = (verbosity == DDV_VERBOSE || semiverbose);
     string desc;
 
     if (auxkilldata.empty())
         return desc;
-    else if (!semiverbose)
+
+
+    if (!terse && verbose &&
+        (death_type != KILLED_BY_MONSTER || auxkilldata.empty()) &&
+        death_type != KILLED_BY_LEAVING &&
+        death_type != KILLED_BY_WINNING &&
+        death_type != KILLED_BY_QUITTING &&
+        death_type != KILLED_BY_WIZMODE)
     {
-        string zap_text = jtrans_zap_name(auxkilldata);
-        desc += zap_text + (ends_with(zap_text, "ワンド") ? "で" : "を");
-        needs_damage = true;
-    }
-    else if (death_type == KILLED_BY_DRAINING ||
-             death_type == KILLED_BY_BURNING)
-    {
-        desc += make_stringf(" (%s)", jtrans_zap_name(auxkilldata).c_str());
+        if (!semiverbose)
+        {
+            string zap_text = jtrans_zap_name(auxkilldata);
+            desc += zap_text + (ends_with(zap_text, "ワンド") ? "で" : "を");
+            needs_damage = true;
+        }
+        else if (death_type == KILLED_BY_DRAINING ||
+                 death_type == KILLED_BY_BURNING)
+        {
+            desc += make_stringf(" (%s)", jtrans_zap_name(auxkilldata).c_str());
+        }
     }
 
     return desc;
 }
 
-string scorefile_entry::called_by_monster_line() const
+string scorefile_entry::called_by_monster_line(death_desc_verbosity verbosity) const
 {
+    const bool terse   = (verbosity == DDV_TERSE);
+    const bool semiverbose = (verbosity == DDV_LOGVERBOSE);
+    const bool verbose = (verbosity == DDV_VERBOSE || semiverbose);
     string desc;
 
-    desc += death_source_name + "によって";
-    desc += jtrans(auxkilldata == "by angry trees" ? "awakened"
-                                                   : "invoked");
-    needs_damage = true;
+    if (!terse && verbose &&
+        (death_type != KILLED_BY_MONSTER || auxkilldata.empty()) &&
+        death_type != KILLED_BY_LEAVING &&
+        death_type != KILLED_BY_WINNING &&
+        death_type != KILLED_BY_QUITTING &&
+        death_type != KILLED_BY_WIZMODE &&
+        needs_beam_cause_line)
+    {
+        desc += death_source_name + "によって";
+        desc += jtrans(auxkilldata == "by angry trees" ? "awakened"
+                                                       : "invoked");
+        needs_damage = true;
+    }
 
     return desc;
 }
