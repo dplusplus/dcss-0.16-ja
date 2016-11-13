@@ -2019,7 +2019,7 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
     if (oneline)
         desc = " ";
 
-    desc += death_description_with(verbosity);
+    desc += death_description_prefix(verbosity);
 
     switch (death_type)
     {
@@ -2823,7 +2823,7 @@ string xlog_fields::xlog_line() const
     return line;
 }
 
-string scorefile_entry::death_description_with(death_desc_verbosity verbosity) const
+string scorefile_entry::death_description_prefix(death_desc_verbosity verbosity) const
 {
     const bool terse   = (verbosity == DDV_TERSE);
     const bool semiverbose = (verbosity == DDV_LOGVERBOSE);
