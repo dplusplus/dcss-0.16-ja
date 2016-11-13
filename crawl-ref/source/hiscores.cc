@@ -2365,10 +2365,10 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
 
     case KILLED_BY_XOM:
         if (terse)
-            desc += "xom";
+            desc += jtrans("xom");
         else
             desc += auxkilldata.empty() ? jtrans("Killed for Xom's enjoyment")
-                                        : auxkilldata + jtrans("Killed by ");
+                                        : jtrans(auxkilldata) + jtrans("Killed by ");
         needs_damage = true;
         break;
 
