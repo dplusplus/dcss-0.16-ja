@@ -2328,7 +2328,10 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
             desc += jtrans("burnt");
         else if (!death_source_desc().empty())
         {
-            desc += death_source_desc() + jtrans("Incinerated by ");
+            desc += death_source_desc() + "に";
+            if (!semiverbose)
+                desc += beam_cause_line(semiverbose);
+            desc += jtrans("Incinerated by ");
 
             if (!auxkilldata.empty())
                 needs_beam_cause_line = true;
@@ -2336,6 +2339,8 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
         else
             desc += jtrans("Burnt to a crisp");
 
+        if (semiverbose)
+            desc += beam_cause_line(semiverbose);
         needs_damage = true;
         break;
 
