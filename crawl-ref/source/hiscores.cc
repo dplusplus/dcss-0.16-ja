@@ -2533,6 +2533,11 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
         break;
 
     case KILLED_BY_DIVINE_WRATH:
+        if (!death_source_name.empty())
+        {
+            needs_called_by_monster_line = true;
+            desc += called_by_monster_line(verbosity);
+        }
         if (terse)
             desc += jtrans("divine wrath");
         else
@@ -2540,19 +2545,11 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
             if (auxkilldata.empty())
                 desc += jtrans("divine wrath");
             else
-            {
-                // Lugonu's touch or "the <retribution> of <deity>";
-                // otherwise it's a beam
-                if (!isupper(auxkilldata[0]) && auxkilldata.find("the ") != 0)
-                    desc += is_vowel(auxkilldata[0]) ? "an " : "a ";
-
                 desc += jtrans(auxkilldata);
-            }
+
             desc += "に触れて死んだ";
         }
         needs_damage = true;
-        if (!death_source_name.empty())
-            needs_called_by_monster_line = true;
         break;
 
     case KILLED_BY_DISINT:
