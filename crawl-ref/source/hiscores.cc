@@ -2557,10 +2557,17 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
             desc += jtrans("disintegration");
         else
         {
+            if (!semiverbose)
+                desc += beam_cause_line(verbosity);
+
             if (death_source_name == "you")
                 desc += jtrans("Blew themself up");
             else
                 desc += death_source_desc() + jtrans("Blown up by ");
+
+            if (semiverbose)
+                desc += beam_cause_line(verbosity);
+
             needs_beam_cause_line = true;
         }
 
