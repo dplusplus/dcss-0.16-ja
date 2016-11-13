@@ -1131,7 +1131,7 @@ Killed by wild magic
 %%%%
 Killed %s%s
 
-%s死んだ
+%s%s死んだ
 %%%%
 Killed for Xom's enjoyment
 

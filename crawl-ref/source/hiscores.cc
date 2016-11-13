@@ -2354,9 +2354,9 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
             else
             {
                 // A lot of sources for this case... some have "by" already.
-                desc += make_stringf("Killed %s%s",
-                          (auxkilldata.find("by ") != 0) ? "by " : "",
-                          auxkilldata.c_str());
+                desc += make_stringf(jtransc("Killed %s%s"),
+                          jtransc(auxkilldata),
+                          (auxkilldata.find("by ") != 0) ? "によって" : "");
             }
         }
 
