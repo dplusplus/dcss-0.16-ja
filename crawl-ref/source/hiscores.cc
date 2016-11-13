@@ -2429,7 +2429,7 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
             else
                 desc += jtrans_zap_name(auxkilldata);
 
-            desc += "で死んだ";
+            desc += "に当たって死んだ";
         }
         needs_damage = true;
         break;
