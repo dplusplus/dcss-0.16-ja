@@ -1151,7 +1151,15 @@ shot self
 %%%%
 Killed themself with
 
-自らを射撃して死んだ
+自らに当てて死んだ
+%%%%
+bad targeting
+
+狙いを外し
+%%%%
+a badly aimed
+
+の狙いを外し
 %%%%
 reflected bolt
 

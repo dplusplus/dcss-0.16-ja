@@ -2384,7 +2384,13 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
         if (terse)
             desc += jtrans("shot self");
         else
+        {
+            if (auxkilldata.empty())
+                desc += jtrans("bad targeting");
+            else
+                desc += jtrans_zap_name(auxkilldata) + jtrans("a badly aimed");
             desc += jtrans("Killed themself with ");
+        }
 
         needs_damage = true;
         break;
