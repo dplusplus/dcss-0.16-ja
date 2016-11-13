@@ -2443,9 +2443,9 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
             if (auxkilldata.empty())
                 desc += jtrans("a beam");
             else
-                desc += auxkilldata;
+                desc += jtrans_zap_name(auxkilldata);
 
-            desc += "で撃って死んだ";
+            desc += "を当てて死んだ";
         }
         needs_damage = true;
         break;
