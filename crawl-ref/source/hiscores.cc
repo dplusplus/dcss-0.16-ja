@@ -2597,10 +2597,11 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
 
     case KILLED_BY_COLLISION:
         if (terse)
-            desc += auxkilldata + "との衝突";
+            desc += jtrans(auxkilldata) + "との衝突";
         else
         {
-            desc += auxkilldata + "と衝突して死んだ";
+            desc += called_by_monster_line(verbosity);
+            desc += jtrans(auxkilldata) + "と衝突して死んだ";
             needs_called_by_monster_line = true;
         }
         needs_damage = true;
