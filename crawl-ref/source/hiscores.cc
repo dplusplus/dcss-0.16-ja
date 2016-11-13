@@ -2299,13 +2299,18 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
             {
                 desc += death_source_desc() + "に";
 
+                if (!semiverbose)
+                    desc += beam_cause_line(semiverbose);
                 if (!auxkilldata.empty())
                     needs_beam_cause_line = true;
             }
             else if (!auxkilldata.empty())
-                desc += auxkilldata + "に";
+                desc += jtrans(auxkilldata) + "に";
 
             desc += jtrans("Drained of all life");
+
+            if (semiverbose)
+                desc += beam_cause_line(semiverbose);
         }
         break;
 
