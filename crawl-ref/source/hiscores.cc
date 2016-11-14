@@ -2864,19 +2864,6 @@ string scorefile_entry::death_description_prefix(death_desc_verbosity verbosity)
         else if (death_type != KILLED_BY_QUITTING
                  && death_type != KILLED_BY_WIZMODE)
         {
-            if (death_type == KILLED_BY_MONSTER && !auxkilldata.empty())
-            {
-                if (!semiverbose)
-                {
-                    desc += make_stringf(jtransc("... wielding %s"),
-                             auxkilldata.c_str());
-                    needs_damage = true;
-                    desc += _hiscore_newline_string();
-                }
-                else
-                    desc += make_stringf("%sを手にした", auxkilldata.c_str());
-            }
-
             if (!killerpath.empty())
             {
                 vector<string> summoners = _xlog_split_fields(killerpath);
@@ -2894,6 +2881,19 @@ string scorefile_entry::death_description_prefix(death_desc_verbosity verbosity)
 
                 if (semiverbose)
                     desc += string(summoners.size(), ')');
+            }
+
+            if (death_type == KILLED_BY_MONSTER && !auxkilldata.empty())
+            {
+                if (!semiverbose)
+                {
+                    desc += make_stringf(jtransc("... wielding %s"),
+                             auxkilldata.c_str());
+                    needs_damage = true;
+                    desc += _hiscore_newline_string();
+                }
+                else
+                    desc += make_stringf("%sを手にした", auxkilldata.c_str());
             }
 
             if (!semiverbose)
