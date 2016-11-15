@@ -109,7 +109,7 @@ static void _mons_summon_monster_illusion(monster* caster,
         clone->props[CLONE_SLAVE_KEY] = clone_id;
         foe->props[CLONE_MASTER_KEY] = clone_id;
         mons_add_blame(clone,
-                       "woven by " + caster->name(DESC_THE));
+                       caster->name(DESC_THE) + jtrans("woven by "));
         if (!clone->has_ench(ENCH_ABJ))
             clone->mark_summoned(6, true, MON_SUMM_CLONE);
         clone->summoner = caster->mid;

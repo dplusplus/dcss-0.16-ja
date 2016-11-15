@@ -533,8 +533,8 @@ bool trap_def::weave_shadow(const actor& triggerer)
 
     const string triggerer_name = triggerer.is_player() ?
                                         "the player character" :
-                                        triggerer.name(DESC_A, true);
-    const string blame = "triggered by " + triggerer_name;
+                                        triggerer.name(DESC_PLAIN, true);
+    const string blame = jtrans(triggerer_name) + jtrans("triggered by ");
     mons_add_blame(leader, blame);
 
     for (monster_iterator mi; mi; ++mi)

@@ -311,6 +311,10 @@ forbids your reflecting this monster.
 
 はモンスターを鏡に映すのを禁じた。
 %%%%
+mirrored by the player character
+
+あなたに鏡でコピーされた
+%%%%
 You reflect %s with the mirror, and the mirror shatters!
 
 あなたが%sの姿を映すと、鏡は粉々に砕けた！

@@ -2867,20 +2867,25 @@ string scorefile_entry::death_description_prefix(death_desc_verbosity verbosity)
             if (!killerpath.empty())
             {
                 vector<string> summoners = _xlog_split_fields(killerpath);
+                reverse(summoners.begin(), summoners.end());
 
-                for (const auto &sumname : summoners)
+                for (auto sumname : summoners)
                 {
+                    string::size_type pos;
+                    if ((pos = sumname.rfind("attached to")) != string::npos)
+                    {
+                        sumname.erase(pos);
+                        sumname += "の";
+                    }
+
                     if (!semiverbose)
                     {
                         desc += "... " + sumname;
                         desc += _hiscore_newline_string();
                     }
                     else
-                        desc += " (" + sumname;
+                        desc += sumname;
                 }
-
-                if (semiverbose)
-                    desc += string(summoners.size(), ')');
             }
 
             if (death_type == KILLED_BY_MONSTER && !auxkilldata.empty())

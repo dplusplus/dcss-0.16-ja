@@ -6556,6 +6556,10 @@ an eerie melody
 %%%%
 ############################## mon-clone.cc ##############################
 %%%%
+woven by
+
+の生み出した
+%%%%
 %s seems to step out of %s!
 
 %sは%sから抜け出したようだ！
@@ -6669,6 +6673,14 @@ By Zin's power, the prism's explosion is contained.
 By Zin's power, the bennu's fires are quelled.
 
 ジンの御業により、ベンヌの炎の威力は抑えられた。
+%%%%
+hexed by the player character
+
+あなたに呪われた
+%%%%
+hexed by
+
+に呪われた
 %%%%
 By Zin's power, the fiery explosion is contained.
 
@@ -7766,6 +7778,38 @@ Couldn't find a path from (%d,%d) to (%d,%d).
 stairwell
 
 階段
+%%%%
+led by
+
+に率いられた
+%%%%
+summoned by
+
+に召喚された
+%%%%
+animated by
+
+に蘇らされた
+%%%%
+called from beyond by
+
+にあの世から呼び出された
+%%%%
+transmuted by
+
+に変化させられた
+%%%%
+attached to
+
+# jtrans()で訳さず別処理
+%%%%
+created by
+
+に生み出された
+%%%%
+the player character
+
+あなた
 %%%%
 %s is enraged by your holy aura!
 
@@ -18721,6 +18765,10 @@ All of a sudden the net rips apart!
 drifts right through the net!
 
 は網をすり抜けた！
+%%%%
+triggered by
+
+の発動した
 %%%%
 Shadows whirl around %s...
 
