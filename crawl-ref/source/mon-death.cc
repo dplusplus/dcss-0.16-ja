@@ -1316,9 +1316,9 @@ static bool _explode_monster(monster* mons, killer_type killer,
         // This might need to change if monsters ever get the ability to cast
         // Inner Flame...
         if (agent && agent->is_player())
-            mons_add_blame(mons, jtrans("hexed by the player character"));
+            mons_add_blame(mons, "hexed by the player character");
         else if (agent)
-            mons_add_blame(mons, agent->name(DESC_A, true) + jtrans("hexed by "));
+            mons_add_blame(mons, "hexed by " + agent->name(DESC_A, true));
         mons->flags    |= MF_EXPLODE_KILL;
         sanct_msg       = "By Zin's power, the fiery explosion "
                           "is contained.";

@@ -2048,7 +2048,7 @@ static spret_type _phantom_mirror()
     mon->mark_summoned(dur, true, SPELL_PHANTOM_MIRROR);
 
     mon->summoner = MID_PLAYER;
-    mons_add_blame(mon, jtrans("mirrored by the player character"));
+    mons_add_blame(mon, "mirrored by the player character");
     mon->add_ench(ENCH_PHANTOM_MIRROR);
     mon->add_ench(mon_enchant(ENCH_DRAINED,
                               div_rand_round(mon->get_experience_level(), 3),
