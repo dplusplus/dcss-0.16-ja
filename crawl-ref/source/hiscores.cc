@@ -1265,6 +1265,36 @@ static bool _strip_to(string &str, const char *infix)
     return false;
 }
 
+static bool _strip_to_ikiller(string &str)
+{
+    const string stripped_strings[] = {
+        "mirrored by ", // evoke.cc
+        "called by ", // mon-cast.cc, mon-place.cc
+        "woven by ", // mon-clone.cc, mon-place.cc
+        "hexed by ", // mon-death.cc
+        "led by ", // mon-place.cc
+        "summoned by ",
+        "animated by ",
+        "called from beyond by ",
+        "transmuted by ",
+        "attached to ",
+        "created by ",
+        "triggered by ", // traps.cc
+    };
+
+    string::size_type pos;
+    for (auto s: stripped_strings)
+    {
+        if ((pos = str.rfind(jtrans(s))) != string::npos)
+        {
+            str.erase(pos);
+            return true;
+        }
+    }
+
+    return false;
+}
+
 void scorefile_entry::init_death_cause(int dam, mid_t dsrc,
                                        int dtype, const char *aux,
                                        const char *dsrc_name)
@@ -1359,8 +1389,7 @@ void scorefile_entry::init_death_cause(int dam, mid_t dsrc,
             const CrawlVector& blame = mons->props["blame"].get_vector();
 
             indirectkiller = blame[blame.size() - 1].get_string();
-            _strip_to(indirectkiller, " by ");
-            _strip_to(indirectkiller, "ed to "); // "attached to" and similar
+            _strip_to_ikiller(indirectkiller);
 
             killerpath = "";
 
@@ -2635,6 +2664,9 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
     // TODO: Eventually, get rid of "..." for cases where the text fits.
     if (terse)
     {
+        if (!killerpath.empty())
+            desc += "[" + indirectkiller + "]";
+
         if (death_type == KILLED_BY_MONSTER && !auxkilldata.empty())
         {
             desc += "/";
@@ -2645,9 +2677,6 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
             desc += "/" + terse_beam_cause();
         else if (needs_called_by_monster_line)
             desc += death_source_name;
-
-        if (!killerpath.empty())
-            desc += "[" + indirectkiller + "]";
 
         if (needs_damage && damage > 0)
             desc += " " + damage_string(true);
