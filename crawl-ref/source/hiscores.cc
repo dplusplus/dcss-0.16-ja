@@ -1265,36 +1265,6 @@ static bool _strip_to(string &str, const char *infix)
     return false;
 }
 
-static bool _strip_to_ikiller(string &str)
-{
-    const string stripped_strings[] = {
-        "mirrored by ", // evoke.cc
-        "called by ", // mon-cast.cc, mon-place.cc
-        "woven by ", // mon-clone.cc, mon-place.cc
-        "hexed by ", // mon-death.cc
-        "led by ", // mon-place.cc
-        "summoned by ",
-        "animated by ",
-        "called from beyond by ",
-        "transmuted by ",
-        "attached to ",
-        "created by ",
-        "triggered by ", // traps.cc
-    };
-
-    string::size_type pos;
-    for (auto s: stripped_strings)
-    {
-        if ((pos = str.rfind(jtrans(s))) != string::npos)
-        {
-            str.erase(pos);
-            return true;
-        }
-    }
-
-    return false;
-}
-
 void scorefile_entry::init_death_cause(int dam, mid_t dsrc,
                                        int dtype, const char *aux,
                                        const char *dsrc_name)
@@ -1389,7 +1359,8 @@ void scorefile_entry::init_death_cause(int dam, mid_t dsrc,
             const CrawlVector& blame = mons->props["blame"].get_vector();
 
             indirectkiller = blame[blame.size() - 1].get_string();
-            _strip_to_ikiller(indirectkiller);
+            _strip_to(indirectkiller, " by ");
+            _strip_to(indirectkiller, "ed to "); // "attached to" and similar
 
             killerpath = "";
 
