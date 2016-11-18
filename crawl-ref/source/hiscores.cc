@@ -1982,8 +1982,6 @@ string scorefile_entry::death_place(death_desc_verbosity verbosity) const
     if (!mapdesc.empty())
         place += make_stringf(" (%s)", mapdesc.c_str());
 
-    place += _hiscore_newline_string();
-
     return place;
 }
 
