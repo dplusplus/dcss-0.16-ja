@@ -2823,6 +2823,81 @@ string xlog_fields::xlog_line() const
     return line;
 }
 
+static tuple<string, string> _split_blame(const string& blame)
+{
+    const string ed_to = "ed to ", by = " by ";
+    string::size_type pos;
+
+    if ((pos = blame.find(ed_to)) != string::npos)
+        return make_tuple(blame.substr(0, pos + ed_to.length()),
+                          blame.substr(pos + ed_to.length()));
+    else if ((pos = blame.find(by)) != string::npos)
+        return make_tuple(blame.substr(0, pos + by.length()),
+                          blame.substr(pos + by.length()));
+    else
+        return make_tuple("bugged by", "unknown reason");
+}
+
+static string _blame_chain_string(vector<string> &fields)
+{
+    if (fields.empty())
+        return "";
+
+    vector<tuple<string, string>> blames;
+
+    for (auto field : fields)
+        blames.push_back(_split_blame(field));
+
+    // 2段目に"hexed by ～"が来る場合以外逆順に変更
+    // props["blame"]に3要素以上入る例は無いかよほど限られてるので無視
+    if (blames.size() > 1 && !starts_with(get<0>(blames[1]), "hexed by"))
+        reverse(fields.begin(), fields.end());
+
+    // (animated by the player character (hexed by the player character))
+    // └→あなたに蘇らされ呪われた
+    // (created by the royal jelly (hexed by the player character))
+    // └→『ロイヤルジェリー』に生み出されあなたに呪われた
+    string text, old_blamed;
+    for (auto tpl : blames)
+    {
+        string prefix, blamed;
+        tie(prefix, blamed) = tpl;
+
+        if (!starts_with(prefix, "hexed by"))
+        {
+            string::size_type pos;
+            if ((pos = text.rfind("れた")) != string::npos)
+            {
+                text.erase(pos);
+                text += "れ";
+            }
+            else if ((pos = text.rfind("した")) != string::npos)
+            {
+                text.erase(pos);
+                text += "し";
+            }
+        }
+
+        if (blamed == old_blamed)
+        {
+            string jprefix = jtrans(prefix);
+            if (starts_with(jprefix, "の"))
+                jprefix.erase(0, strlen("の"));
+            else if (starts_with(jprefix, "に"))
+                jprefix.erase(0, strlen("に"));
+            text += jprefix;
+        }
+        else
+            text += jtrans(blamed) + jtrans(prefix);
+
+        old_blamed = blamed;
+    }
+    if (!ends_with(text, "た"))
+        text += "た";
+
+    return text;
+}
+
 string scorefile_entry::death_description_prefix(death_desc_verbosity verbosity) const
 {
     const bool terse   = (verbosity == DDV_TERSE);
@@ -2867,25 +2942,15 @@ string scorefile_entry::death_description_prefix(death_desc_verbosity verbosity)
             if (!killerpath.empty())
             {
                 vector<string> summoners = _xlog_split_fields(killerpath);
-                reverse(summoners.begin(), summoners.end());
 
-                for (auto sumname : summoners)
+                if (!semiverbose)
                 {
-                    string::size_type pos;
-                    if ((pos = sumname.rfind("attached to")) != string::npos)
-                    {
-                        sumname.erase(pos);
-                        sumname += "の";
-                    }
-
-                    if (!semiverbose)
-                    {
-                        desc += "... " + sumname;
-                        desc += _hiscore_newline_string();
-                    }
-                    else
-                        desc += sumname;
+                    desc += "... ";
+                    desc += _blame_chain_string(summoners);
+                    desc += _hiscore_newline_string();
                 }
+                else
+                    desc += _blame_chain_string(summoners);
             }
 
             if (death_type == KILLED_BY_MONSTER && !auxkilldata.empty())
