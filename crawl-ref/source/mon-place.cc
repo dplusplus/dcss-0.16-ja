@@ -1741,7 +1741,7 @@ static monster* _place_monster_aux(const mgen_data &mg, const monster *leader,
         blame_prefix = "created by ";
 
     if (!mg.non_actor_summoner.empty())
-        mons_add_blame(mon, jtrans(mg.non_actor_summoner) + jtrans(blame_prefix));
+        mons_add_blame(mon, blame_prefix + mg.non_actor_summoner);
     // NOTE: The summoner might be dead if the summoned is placed by a
     // beam which killed the summoner first (like fire vortexes placed
     // by the Fire Storm spell); a deceased summoner's mindex might also
@@ -1753,11 +1753,12 @@ static monster* _place_monster_aux(const mgen_data &mg, const monster *leader,
         ASSERT(mg.summoner->alive());
         mon->summoner = mg.summoner->mid;
         if (mg.summoner->is_player())
-            mons_add_blame(mon, jtrans("the player character") + jtrans(blame_prefix));
+            mons_add_blame(mon, blame_prefix + "the player character");
         else
         {
             const monster* sum = mg.summoner->as_monster();
-            mons_add_blame(mon, (sum->full_name(DESC_A, true) + jtrans(blame_prefix)));
+            mons_add_blame(mon, (blame_prefix
+                                 + sum->full_name(DESC_A, true)));
             if (sum->props.exists("blame"))
             {
                 const CrawlVector& oldblame = sum->props["blame"].get_vector();
