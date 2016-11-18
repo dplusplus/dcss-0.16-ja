@@ -6558,7 +6558,7 @@ an eerie melody
 %%%%
 woven by
 
-の生み出した
+が作り出した
 %%%%
 %s seems to step out of %s!
 
@@ -7785,7 +7785,7 @@ led by
 %%%%
 summoned by
 
-に召喚された
+によって召喚された
 %%%%
 animated by
 
@@ -7801,7 +7801,8 @@ transmuted by
 %%%%
 attached to
 
-# jtrans()で訳さず別処理
+の
+# tentacle attached to kraken → クラーケンの触手
 %%%%
 created by
 

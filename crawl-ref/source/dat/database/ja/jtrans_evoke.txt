@@ -315,6 +315,10 @@ mirrored by the player character
 
 あなたに鏡でコピーされた
 %%%%
+mirrored by
+
+鏡でコピーされた
+%%%%
 You reflect %s with the mirror, and the mirror shatters!
 
 あなたが%sの姿を映すと、鏡は粉々に砕けた！
