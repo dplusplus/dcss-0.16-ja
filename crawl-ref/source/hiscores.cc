@@ -2403,6 +2403,8 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
         {
             if (!death_source_name.empty() && !oneline && !semiverbose)
             {
+                desc += _hiscore_newline_string();
+                desc += "... ";
                 desc += death_source_name + "に跳ね返された";
                 needs_damage = false;
             }
@@ -2939,6 +2941,8 @@ string scorefile_entry::death_description_prefix(death_desc_verbosity verbosity)
         else if (death_type != KILLED_BY_QUITTING
                  && death_type != KILLED_BY_WIZMODE)
         {
+            desc += _hiscore_newline_string();
+
             if (!killerpath.empty())
             {
                 vector<string> summoners = _xlog_split_fields(killerpath);
@@ -2990,6 +2994,7 @@ string scorefile_entry::death_description_prefix(death_desc_verbosity verbosity)
         if (!terse && !oneline && !auxkilldata.empty())
         {
             desc += _hiscore_newline_string();
+            desc += "... ";
             desc += jtrans(auxkilldata) + "によって";
         }
         break;
