@@ -17200,6 +17200,14 @@ Escaped into the Abyss
 
 アビスに脱出した
 %%%%
+In your confused state, you trip and fall down the stairs.
+
+あなたは混乱しつつ、階段を転がり落ちた。
+%%%%
+In your confused state, you trip and fall through the gate.
+
+あなたは混乱しつつ、門をくぐって向こう側に転がり込んだ。
+%%%%
 You plunge deeper into the Abyss.
 
 あなたはアビスの更なる深みに沈んでいった。
