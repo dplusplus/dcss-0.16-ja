@@ -49,7 +49,7 @@ The displeasure of Elyvilon
 %%%%
 The touch of Lugonu
 
-ルゴヌの接触
+ルゴヌの御手
 %%%%
 The wrath of Beogh
 
@@ -274,6 +274,10 @@ You suddenly feel drained of magical energy!
 's wrath finds you!
 
 はあなたに怒りをぶつけた！
+%%%%
+Lugonu's touch
+
+ルゴヌの御手
 %%%%
 makes you draw from the Deck of Punishment.
 
