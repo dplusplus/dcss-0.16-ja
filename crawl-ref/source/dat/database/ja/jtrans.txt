@@ -6689,6 +6689,7 @@ By Zin's power, the fiery explosion is contained.
 %%%%
 exploding inner flame
 
+内なる炎の爆発
 %%%%
 ignited by themself
 
