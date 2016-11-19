@@ -1483,6 +1483,14 @@ static bool _write_dump(const string &fname, dump_params &par, bool quiet)
     return succeeded;
 }
 
+static string _ltrim_nbsp(const string& text)
+{
+    string str;
+    str = nbsp2sp(text);
+    str.erase(0, str.find_first_not_of(" "));
+    return str;
+}
+
 void display_notes()
 {
     formatted_scroller scr;
@@ -1494,7 +1502,7 @@ void display_notes()
     for (const Note &note : note_list)
     {
         string prefix = note.describe(true, true, false);
-        string suffix = note.describe(false, false, true);
+        string suffix = _ltrim_nbsp(note.describe(false, false, true));
         int colwidth_turn = note.describe(true, false, false).length();
         int colwidth_place = MAX_NOTE_PLACE_LEN + 2;
         if (suffix.empty())
