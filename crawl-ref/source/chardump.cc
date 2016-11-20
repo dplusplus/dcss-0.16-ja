@@ -647,8 +647,8 @@ static void _sdump_religion(dump_params &par)
 
             if (par.se)
             {
-                xom_favour = replace_all(xom_favour, "だ。", "だった。");
                 xom_favour = replace_all(xom_favour, "た。", "ていた。");
+                xom_favour = replace_all(xom_favour, "だ。", "だった。");
             }
 
             text += xom_favour;
@@ -1027,6 +1027,9 @@ static void _sdump_hiscore(dump_params &par)
         return;
 
     string hiscore = "    " + hiscores_format_single_long(*(par.se), true);
+
+    hiscore += "\n[tmsg=" + par.se->short_kill_message() + "]"
+             + "\n[vmsg=" + par.se->long_kill_message() + "]";
 
     par.text += _trim_section(hiscore);
 }
