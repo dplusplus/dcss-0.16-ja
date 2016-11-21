@@ -221,7 +221,7 @@ book of maledictions
 %%%%
 book of minor magic
 
-この魔法書は様々な領域からいくつかの初歩的な魔法をまとめている。
+この魔法書は様々な領域からいくつかの有用で初歩的な魔法をまとめている。
 偉大な魔法使いたちの多くも、無名のうちはこの本を熟読しているのだ。
 %%%%
 book of necromancy
@@ -262,7 +262,7 @@ book of the dragon
 %%%%
 book of the earth
 
-この本を、大地を統べる者へと捧ぐ。
+熟練した地の精霊使いのための魔法書だ。
 %%%%
 book of the sky
 
@@ -673,7 +673,7 @@ leather armour
 lightning rod
 
 この魔法棒は、連続した使用により、広い範囲に放電することができる。
-この性質故に、単発の使用は効果的ではない。。
+この性質故に、単発の使用は効果的ではない。
 なお、連続の使用による放電増幅の制御はできない。
 %%%%
 long sword
@@ -768,9 +768,36 @@ pearl dragon hide
 そのままの形では多くの保護をもたらさないが、
 魔法的な手段によって素晴らしい鎧を作るのに使われる。
 %%%%
+phantom mirror
+
+付近に居る者を写すことで対象の分身を作り上げることができる手鏡だ。なお、
+一度使用するとこの手鏡は壊れてしまう。分身が存在できる時間は、
+使用者の魔道具を扱う技術と対象の魔法耐性により変動する。
+この手鏡によって映し出された分身は、対象よりもわずかに能力が劣っている。
+%%%%
+phial of floods
+
+友好的な水の精霊が宿る魔法の小瓶だ。
+蓋を開けることで対象を押しのけるほどの激流が吹き出し、
+水の精霊たちを操ることを可能にする。
+%%%%
+plate armour
+
+硬い金属で造られた、全身を覆う重鎧だ。非常に高い防御力を得られる。
+%%%%
+poisonous chunk of flesh
+
+<chunk of flesh>
+%%%%
 potion of agility
 
 これは魔法の水薬だ。これは飲んだ者の器用さと回避力を著しく増加させる。
+%%%%
+potion of ambrosia
+
+幽体蛾によって作られた奇妙な物質だ。服用することにより、
+体力と魔力の再生、及び混乱状態を引き起こす。
+再生と混乱は根本的には同じ作用のため、混乱状態が解けると再生も止まる。
 %%%%
 potion of beneficial mutation
 
@@ -782,13 +809,16 @@ potion of berserk rage
 %%%%
 potion of blood
 
-A potion containing the essence of life. It is vital for all living creatures,
-as well as some undead ones. It can also provide nutrition for those capable of
-eating meat.
+生物が生きるために必要不可欠な液体だが、一部の死者もこれを必要としている。
 %%%%
 potion of brilliance
 
 これは魔法の水薬だ。これは飲んだ者の知力と魔力を著しく増加させる。
+%%%%
+potion of cancellation
+
+これは魔法の水薬だ。
+これは飲んだ者の体に宿る魔法の効力を、良性、悪性を問わずに打ち消す。
 %%%%
 potion of confusion
 
@@ -799,10 +829,19 @@ potion of cure mutation
 
 これは水薬だ。これはあなたを悩ませる変異のいくつかを除去する。
 %%%%
+potion of curing
+
+これは水薬だ。これは飲んだ者の傷をわずかに癒し、病気や朦朧状態を治療する。
+また、十分な体力を確保して飲んだ場合には、体の腐敗を治療することもできる。
+%%%%
 potion of decay
 
 これは衰弱と腐敗の呪いがかかった液体だ。
 これはあなたの肉体に急速な腐敗を引き起こす。
+%%%%
+potion of degeneration
+
+腕力、知力、器用の一時的な衰えを引き起こす危険な有害物質だ。
 %%%%
 potion of experience
 
@@ -812,9 +851,25 @@ potion of flight
 
 これは水薬だ。これは飲んだ者に大きな浮力を与える。
 %%%%
+potion of heal wounds
+
+これは魔法の水薬だ。これは飲んだ者の傷を瞬く間に治癒する。
+また、十分な体力を確保して飲んだ場合には、体の腐敗を治療することもできる。
+%%%%
 potion of invisibility
 
 これは水薬だ。これは他の者の視覚からあなたを隠蔽する。
+%%%%
+potion of lignification
+
+これを飲んだ者は一時的に樹木と化してしまう。
+毒や負のエネルギーの影響を受けなくなり、強靭な枝で武器を振るうことが出来るが、
+一時的に防具の恩恵を得られなくなる。また、その形態は深く根を張るので、
+テレポートや瞬間移動も不可能になる。
+%%%%
+potion of magic
+
+これは水薬だ。これは飲んだ者の魔力を回復する。
 %%%%
 potion of might
 
@@ -836,9 +891,18 @@ potion of resistance
 
 これは水薬だ。これはあなたに一時的な四大元素と毒の耐性を与える。
 %%%%
+potion of restore abilities
+
+これは水薬だ。これは飲んだ者の一時的な能力の減少を回復する。
+また、呼吸阻害状態を治癒することもできる。
+%%%%
 potion of slowing
 
 これは水薬だ。これはあなたの動作を遅くする。
+%%%%
+potion of haste
+
+これは魔法の水薬だ。これは飲んだ者はさらに素早く行動できる。
 %%%%
 quad damage
 
