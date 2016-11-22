@@ -340,7 +340,7 @@ NORETURN void end_game(scorefile_entry &se)
     cprintf("%s", hiscore.c_str());
 
     cprintf(sp2nbsp("\n" + jtransln("Best Crawlers - %s\n")).c_str(),
-            crawl_state.game_type_name().c_str());
+            jtransc(crawl_state.game_type_name()));
 
     // "- 5" gives us an extra line in case the description wraps on a line.
     hiscores_print_list(get_number_of_lines() - lines - 5);
