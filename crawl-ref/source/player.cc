@@ -5216,7 +5216,7 @@ bool slow_player(int turns)
     {
         if (you.duration[DUR_SLOW] == 0)
         {
-            // 原文は"You feel yourself speed down."だが
+            // 原文は"You feel yourself slow down."だが
             // 加速終了時と同一なためベタ書き
             // (無印DC準拠)
             mpr("あなたは動きが遅くなった。");
@@ -5341,7 +5341,7 @@ void dec_haste_player(int delay)
     {
         if (!you.duration[DUR_BERSERK])
         {
-        // 原文は"You feel yourself speed down."だが
+        // 原文は"You feel yourself slow down."だが
         // 減速時と同一なためベタ書き
         // (無印DC準拠)
             mpr_nojoin(MSGCH_DURATION, "あなたの加速はなくなった。");
