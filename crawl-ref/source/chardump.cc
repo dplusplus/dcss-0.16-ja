@@ -1028,9 +1028,6 @@ static void _sdump_hiscore(dump_params &par)
 
     string hiscore = "    " + hiscores_format_single_long(*(par.se), true);
 
-    hiscore += "\n[tmsg=" + par.se->short_kill_message() + "]"
-             + "\n[vmsg=" + par.se->long_kill_message() + "]";
-
     par.text += _trim_section(hiscore);
 }
 
