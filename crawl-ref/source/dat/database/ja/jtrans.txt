@@ -217,7 +217,7 @@ Goodbye, %s.
 %%%%
 Best Crawlers - %s
 
-冒険者の殿堂 - %s
+スコアランキング: %s
 %%%%
 You can find your morgue file in the '%s' directory.
 
@@ -17416,6 +17416,18 @@ Too many matches; use a more specific search.
 %s comes into view.
 
 %sに遭遇した。
+%%%%
+Tutorial
+
+チュートリアル
+%%%%
+Arena
+
+アリーナ
+%%%%
+Zot Defence
+
+ゾットディフェンス
 %%%%
 ############################## status.cc ##############################
 %%%%
