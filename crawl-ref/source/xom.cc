@@ -757,9 +757,8 @@ static void _xom_make_item(object_class_type base, int subtype, int power)
 
     _try_brand_switch(thing_created);
 
-    static char gift_buf[100];
-    snprintf(gift_buf, sizeof(gift_buf), jtransc("god gift: %s"),
-             mitm[thing_created].name(DESC_PLAIN).c_str());
+    string gift_buf = make_stringf(jtransc("god gift: %s"),
+                                   mitm[thing_created].name(DESC_PLAIN).c_str());
     take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, gift_buf), true);
 
     canned_msg(MSG_SOMETHING_APPEARS);
@@ -783,9 +782,8 @@ static void _xom_acquirement(object_class_type force_class)
 
     _try_brand_switch(item_index);
 
-    static char gift_buf[100];
-    snprintf(gift_buf, sizeof(gift_buf), jtransc("god gift: %s"),
-             mitm[item_index].name(DESC_PLAIN).c_str());
+    string gift_buf = make_stringf(jtransc("god gift: %s"),
+                                   mitm[item_index].name(DESC_PLAIN).c_str());
     take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, gift_buf), true);
 
     stop_running();
@@ -1188,10 +1186,9 @@ static int _xom_send_allies(int sever, bool debug = false)
         god_speaks(GOD_XOM, jtransc(_get_xom_speech("multiple summons")));
 
         // Take a note.
-        static char summ_buf[80];
-        snprintf(summ_buf, sizeof(summ_buf), jtransc("summons %d friendly demon%s"),
-                 num_actually_summoned,
-                 num_actually_summoned > 1 ? "s" : "");
+        string summ_buf = make_stringf(jtransc("summons %d friendly demon%s"),
+                                       num_actually_summoned,
+                                       num_actually_summoned > 1 ? "s" : "");
 
         take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, summ_buf), true);
 
@@ -1218,9 +1215,8 @@ static int _xom_send_one_ally(int sever, bool debug = false)
         god_speaks(GOD_XOM, jtransc(_get_xom_speech("single summon")));
 
         // Take a note.
-        static char summ_buf[80];
-        snprintf(summ_buf, sizeof(summ_buf), jtransc("summons friendly %s"),
-                 summons->name(DESC_PLAIN).c_str());
+        string summ_buf = make_stringf(jtransc("summons friendly %s"),
+                                       summons->name(DESC_PLAIN).c_str());
         take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, summ_buf), true);
 
         return XOM_GOOD_SINGLE_ALLY;
@@ -1272,11 +1268,8 @@ static int _xom_polymorph_nearby_monster(bool helpful, bool debug = false)
                     new_name = "something unseen";
 
                 // Take a note.
-                static char poly_buf[120];
-                snprintf(poly_buf, sizeof(poly_buf), jtransc("polymorph %s -> %s"),
-                         jtransc(old_name), jtransc(new_name));
-
-                string poly = poly_buf;
+                string poly = make_stringf(jtransc("polymorph %s -> %s"),
+                                           jtransc(old_name), jtransc(new_name));
 #ifdef NOTE_DEBUG_XOM
                 poly += " (";
                 poly += (powerup ? "upgrade" : "downgrade");
@@ -1731,8 +1724,7 @@ static int _xom_give_mutations(bool good, bool debug = false)
 
         const int num_tries = random2(4) + 1;
 
-        static char mut_buf[80];
-        snprintf(mut_buf, sizeof(mut_buf), jtransc("give %smutation%s"),
+        string mut_buf = make_stringf(jtransc("give %smutation%s"),
 #ifdef NOTE_DEBUG_XOM
                  good ? "良性" : "ランダムな",
 #else
@@ -1842,9 +1834,8 @@ static int _xom_throw_divine_lightning(bool debug = false)
     }
 
     // Take a note.
-    static char lightning_buf[80];
-    snprintf(lightning_buf, sizeof(lightning_buf),
-             jtransc("divine lightning%s"), protection ? jtransc(" (protected)") : "");
+    string lightning_buf = make_stringf(jtransc("divine lightning%s"),
+                                        protection ? jtransc(" (protected)") : "");
     take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, lightning_buf), true);
 
     return XOM_GOOD_LIGHTNING;
@@ -2164,9 +2155,8 @@ static int _xom_enchant_monster(bool helpful, bool debug = false)
     enchant_actor_with_flavour(mon, 0, ench);
 
     // Take a note.
-    static char ench_buf[80];
-    snprintf(ench_buf, sizeof(ench_buf), "enchant monster %s",
-             helpful ? "(good)" : "(bad)");
+    string ench_buf = make_stringf("enchant monster %s",
+                                   helpful ? "(good)" : "(bad)");
     take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, jtrans(ench_buf)),
               true);
 
@@ -3166,10 +3156,9 @@ static int _xom_draining_torment_effect(int sever, bool debug = false)
 
         // Take a note.
         const char* sstr[3] = { "腕力", "知力", "器用" };
-        static char stat_buf[80];
-        snprintf(stat_buf, sizeof(stat_buf), jtransc("stat loss: -%d %s (%d/%d)"),
-                 sstr[stat], loss, you.stat(stat), you.max_stat(stat));
-
+        string stat_buf = make_stringf(jtransc("stat loss: -%d %s (%d/%d)"),
+                                       sstr[stat], loss,
+                                       you.stat(stat), you.max_stat(stat));
         take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, stat_buf), true);
 
         return XOM_BAD_STATLOSS;
@@ -3201,9 +3190,8 @@ static int _xom_draining_torment_effect(int sever, bool debug = false)
             torment_player(0, TORMENT_XOM);
 
             // Take a note.
-            static char torment_buf[80];
-            snprintf(torment_buf, sizeof(torment_buf),
-                     jtransc("torment (%d/%d hp)"), you.hp, you.hp_max);
+            string torment_buf = make_stringf(jtransc("torment (%d/%d hp)"),
+                                              you.hp, you.hp_max);
             take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, torment_buf), true);
 
             return XOM_BAD_TORMENT;
@@ -3273,11 +3261,10 @@ static int _xom_summon_hostiles(int sever, bool debug = false)
 
     if (num_summoned > 0)
     {
-        static char summ_buf[80];
-        snprintf(summ_buf, sizeof(summ_buf),
-                 jtransc("summons %d hostile %s%s"),
-                 num_summoned, jtransc(shadow_creatures ? "shadow creature" : "demon"),
-                 num_summoned > 1 ? "s" : "");
+        string summ_buf = make_stringf(jtransc("summons %d hostile %s%s"),
+                                       num_summoned,
+                                       jtransc(shadow_creatures ? "shadow creature" : "demon"),
+                                       num_summoned > 1 ? "s" : "");
         take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, summ_buf), true);
 
         rc = true;
@@ -3768,9 +3755,8 @@ int xom_acts(bool niceness, int sever, int tension, bool debug)
         = you.mutation;
 
 #ifdef NOTE_DEBUG_XOM
-    static char xom_buf[100];
-    snprintf(xom_buf, sizeof(xom_buf), "xom_acts(%s, %d, %d), mood: %d",
-             (niceness ? "true" : "false"), sever, tension, you.piety);
+    string xom_buf = make_stringf("xom_acts(%s, %d, %d), mood: %d",
+                                  (niceness ? "true" : "false"), sever, tension, you.piety));
     take_note(Note(NOTE_MESSAGE, 0, 0, xom_buf), true);
 #endif
 
