@@ -750,20 +750,20 @@ static void _sdump_inventory(dump_params &par)
 
             switch (i)
             {
-            case OBJ_WEAPONS:    text += "\n手持ち武器";       break;
-            case OBJ_MISSILES:   text += "\n矢弾・石弾その他"; break;
-            case OBJ_ARMOUR:     text += "\n防具";             break;
-            case OBJ_WANDS:      text += "\nワンド";           break;
-            case OBJ_FOOD:       text += "\n食べ物";           break;
-            case OBJ_SCROLLS:    text += "\n巻物";             break;
-            case OBJ_JEWELLERY:  text += "\n装飾品";           break;
-            case OBJ_POTIONS:    text += "\n水薬";             break;
-            case OBJ_BOOKS:      text += "\n魔法書/虎の巻";    break;
-            case OBJ_STAVES:     text += "\n魔法の杖";         break;
-            case OBJ_RODS:       text += "\nロッド";           break;
-            case OBJ_ORBS:       text += "\nゾットのオーブ";   break;
-            case OBJ_MISCELLANY: text += "\n発動用のアイテム"; break;
-            case OBJ_CORPSES:    text += "\n死体";             break;
+            case OBJ_WEAPONS:    text += "\n[近接武器]";         break;
+            case OBJ_MISSILES:   text += "\n[矢弾・石弾その他]"; break;
+            case OBJ_ARMOUR:     text += "\n[防具]";             break;
+            case OBJ_WANDS:      text += "\n[ワンド]";           break;
+            case OBJ_FOOD:       text += "\n[食料品]";           break;
+            case OBJ_SCROLLS:    text += "\n[巻物]";             break;
+            case OBJ_JEWELLERY:  text += "\n[装飾品]";           break;
+            case OBJ_POTIONS:    text += "\n[薬]";               break;
+            case OBJ_BOOKS:      text += "\n[魔法書/虎の巻]";    break;
+            case OBJ_STAVES:     text += "\n[魔法の杖]";         break;
+            case OBJ_RODS:       text += "\n[ロッド]";           break;
+            case OBJ_ORBS:       text += "\n[ゾットのオーブ]";   break;
+            case OBJ_MISCELLANY: text += "\n[発動用のアイテム]"; break;
+            case OBJ_CORPSES:    text += "\n[死体]";             break;
 
             default:
                 die("Bad item class");
