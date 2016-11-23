@@ -38,6 +38,9 @@ Staff of Wucad Mu
 使用することで使用者の精神を傷つける危険性をも孕んでいる。
 この能力は使用者の発動スキルに依存している。
 %%%%
+Vampire's Tooth
+
+%%%%
 Scythe of Curses
 
 この武器には恐ろしく非常に腹立たしい呪いがかかっている。
@@ -46,10 +49,19 @@ Sceptre of Torment
 
 この忌まわしい武器は、地獄の拷問具だ。
 %%%%
+Sword of Zonguldrok
+
+%%%%
 Sword of Cerebov
 
 薄気味の悪い炎がこの捩れた刃を包んでいる。
 この悪魔のような威力は攻撃を受けた者の火の耐性をいくらか焼却する。
+%%%%
+Staff of Dispater
+
+%%%%
+Sceptre of Asmodeus
+
 %%%%
 faerie dragon armour
 
@@ -66,23 +78,32 @@ scimitar of Flaming Death
 
 煙たい！
 %%%%
-mace of Brilliance
+eveningstar "Brilliance"
 
 このメイスはダンジョンを明るく照らすが、
 あなたの存在を敵に察知されやすくするだろう。
 放たれる輝きはアンデッドの天敵であり、姿を隠した者たちの策謀を打ち砕く。
 %%%%
+demon blade "Leech"
+
+%%%%
 dagger of Chilly Death
 
 サファイアでできているダガーだ。
+%%%%
+dagger "Morg"
+
 %%%%
 scythe "Finisher"
 
 戦闘を目的に特別に造られた、長く鋭い大鎌だ。
 %%%%
-sling "Punk"
+greatsling "Punk"
 
 奇妙な青い皮で作られたスリングだ。
+%%%%
+bow of Krishna "Sharnga"
+
 %%%%
 giant club "Skullcrusher"
 
@@ -100,7 +121,7 @@ sword of Jihad
 この剣は輝けるものが彼の信徒に贈ったものだという。
 これは装備するものとその生命ある従者を血に飢えた怒りを引き起こすことで悪名高い。
 %%%%
-crossbow "Hellfire"
+arbalest "Hellfire"
 
 地獄の炎で鍛えられた燃え上がるクロスボウだ。これから放たれた矢は名前の通り、
 弱い地獄の業火に包まれる。
@@ -118,9 +139,18 @@ spear of the Botono
 真に邪悪かつ有害な代物である。
 この武器を身に付ける愚を犯すものは呪術を詠唱するための力を得る。
 %%%%
+trident of the Octopus King
+
+%%%%
 mithril axe "Arga"
 
 ミスリル製の美しい斧だ。おそらくドワーフの英雄のいずれかが落としたものだろう。
+%%%%
+Elemental Staff
+
+%%%%
+heavy crossbow "Sniper"
+
 %%%%
 longbow "Piercer"
 
@@ -134,6 +164,9 @@ lance "Wyrmbane"
 
 強力なドラゴンに致命打を与えるたびに力を増していく魔力を持ったランスだ。
 強力な力を帯びるほど、この槍にふさわしい相手を見つけることが難しくなっていく。
+%%%%
+Spriggan's Knife
+
 %%%%
 plutonium sword
 
@@ -150,6 +183,9 @@ great mace "Undeadhunter"
 そのリッチははるか昔に死を迎えたにもかかわらず、
 アンデッドに死を振りまく彼の武器はとても有名であったといわれている。しかし、
 このメイスはその最後の一振りであろう。
+%%%%
+whip "Snakebite"
+
 %%%%
 knife of Accuracy
 
@@ -247,6 +283,9 @@ mask of the Dragon
 堅いが柔軟な皮でできた一風変わった青い兜だ。
 これをつけたものはまるでドラゴンのような容貌になる。
 %%%%
+robe of Night
+
+%%%%
 armour of the Dragon King
 
 遥か昔、
@@ -276,10 +315,16 @@ ratskin cloak
 着用するには少し不恰好で馬鹿げた見た目だが、
 あらゆるネズミによる危害からの素晴らしい保護をもたらす。
 %%%%
+shield of the gong
+
+%%%%
 amulet of the Air
 
 この青空の色をした護符は強力な風の魔術によって、着用者に様々な保護をもたらす。
 しかし、着用者の動きを安定させる手段が欠けているようだ。
+%%%%
+ring of Shadows
+
 %%%%
 amulet of Cekugob
 
@@ -317,6 +362,9 @@ brooch of Shielding
 robe of Clouds
 
 まるで雲のように軽い素材で作られたローブだ。
+%%%%
+hat of Pondering
+
 %%%%
 obsidian axe
 
@@ -387,10 +435,34 @@ boots of the spider
 
 アラクネに求婚しようとするものによって作られた奇抜な一足のブーツだ。
 %%%%
+dark maul
+
+%%%%
 hat of the High Council
 
 古代の魔法大戦の遺物だ。数世紀後、
 これには今もかつて日々の魔法の訓練の基礎とされていた、
 残存する呪術と魔力の効果に満ちている。しかし、この帽子の力を制御できた魔術師は、
 これが魔法の力を強化するものであることを知るだろう。
+%%%%
+arc blade
+
+%%%%
+demon whip "Spellbinder"
+
+%%%%
+lajatang of Order
+
+%%%%
+great mace "Firestarter"
+
+%%%%
+orange crystal plate armour
+
+%%%%
+Majin-Bo
+
+%%%%
+quick blades "Gyre" and "Gimble"
+
 %%%%
