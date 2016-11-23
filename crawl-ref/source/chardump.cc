@@ -215,7 +215,7 @@ static void _sdump_header(dump_params &par)
     else
         type += " DCSS";
 
-    text += " " + type + " version " + Version::Long;
+    text += " " + type + " 日本語版 " + Version::Long;
 #ifdef USE_TILE_LOCAL
     text += " (tiles)";
 #elif defined(USE_TILE_WEB)
@@ -226,7 +226,7 @@ static void _sdump_header(dump_params &par)
 #else
     text += " (console)";
 #endif
-    text += " character file.\n\n";
+    text += " " + jtransln("character file.\n") + "\n";
 
     par.text += _trim_section(text);
 }
