@@ -10592,7 +10592,7 @@ Trog's vigour flows through your veins.
 %%%%
 You pass out from exhaustion.
 
-あなたは疲労から回復した。
+あなたは疲労のあまり気絶してしまった。
 %%%%
 You are exhausted.
 
