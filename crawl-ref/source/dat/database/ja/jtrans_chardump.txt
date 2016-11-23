@@ -1,4 +1,8 @@
 %%%%
+character file.
+
+キャラクター情報
+%%%%
 You %svisited %d branch
 
 あなたは迷宮の分岐のうち%d
