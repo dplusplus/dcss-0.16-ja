@@ -205,7 +205,7 @@ Your body crumbles into a pile of gold.
 %%%%
 Char dump unsuccessful! Sorry about that.
 
-キャラクターダンプに失敗しました！ 申し訳ありません。
+残念ながらキャラクタ情報のファイル出力に失敗しました。
 %%%%
 Save macros?
 
@@ -3978,19 +3978,19 @@ Alright, then stay!
 %%%%
 You are a level %d %s %s.
 
-あなたはレベル%dの%sの%sだ。
+あなたはレベル%dの%sで職業は%sです。
 %%%%
 You are %d%% of the way to level %d.
 
-レベル%dまでに要する経験値が%d%%貯まっている。
+レベル%dまでに要する経験値が%d%%貯まっています。
 %%%%
 I'm sorry, level %d is as high as you can go.
 
-申し訳ありませんが、あなたが到達できるのはレベル%dまでです。
+残念ながら、レベル%dが到達可能な最高レベルです。
 %%%%
 With the way you've been playing, I'm surprised you got this far.
 
-あなたがこんなところまで到達できるとは驚きです。
+ここまで生き延びるとは、あなたの手腕には驚きを禁じえません。
 %%%%
 You'll get an extra life in %d.%02d levels' worth of XP.
 
@@ -19684,7 +19684,7 @@ Make book fixed [t]heme or fixed [l]evel?
 %%%%
 Value of which artefact?
 
-どのアーティファクトの価値を表示しますか？
+どのアーティファクトの強度を見ますか？
 %%%%
 That item is not an artefact!
 
@@ -19692,7 +19692,7 @@ That item is not an artefact!
 %%%%
 Make an artefact out of which item?
 
-どのアイテムをランダムアーティファクト化しますか？
+どのアイテムをアーティファクト化しますか？
 %%%%
 That item is already an unrandom artefact.
 
