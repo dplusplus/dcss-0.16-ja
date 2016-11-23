@@ -571,7 +571,8 @@ static void _sdump_messages(dump_params &par)
 
 static void _sdump_screenshot(dump_params &par)
 {
-    par.text += _trim_section(screenshot());
+    string text = "周辺の様子:\n\n" + screenshot();
+    par.text += _trim_section(text);
 }
 
 static void _sdump_notes(dump_params &par)
