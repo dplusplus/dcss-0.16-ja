@@ -166,7 +166,7 @@ Action
 %%%%
 Char dumped successfully.
 
-キャラクターダンプに成功しました。
+キャラクター情報のファイル出力に成功しました。
 %%%%
 Turn   | Place    | Note
 

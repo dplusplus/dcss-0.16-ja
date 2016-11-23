@@ -301,7 +301,7 @@ This spell isn't strong enough to banish yourself.
 %%%%
 by nerve-wracking pain
 
-神経を壊すような苦痛によって
+神経を冒す苦痛によって
 %%%%
 Your body is wracked with pain!
 
