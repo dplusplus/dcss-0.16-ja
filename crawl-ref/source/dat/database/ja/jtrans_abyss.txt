@@ -1,4 +1,8 @@
 %%%%
+was cast into the Abyss!
+
+アビスへと追放された！
+%%%%
 You are banished to a different region of the Abyss.
 
 あなたはアビスの別の領域へと追放された。

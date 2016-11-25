@@ -210,7 +210,7 @@ static void _decrement_petrification(int delay)
         // flesh when not petrified
         const string flesh_equiv = get_form()->flesh_equivalent.empty() ?
                                             "元の姿" :
-                                            get_form()->flesh_equivalent;
+            tagged_jtrans("[form]", get_form()->flesh_equivalent);
 
         mprf(MSGCH_DURATION, jtransc("You turn to %s and can move again."),
              jtransc(flesh_equiv));
@@ -710,9 +710,9 @@ static void _decrement_durations()
                               coinflip(), "You flicker for a moment."))
     {
         if (you.invisible())
-            mprf(MSGCH_DURATION, "You feel more conspicuous.");
+            mpr_nojoin(MSGCH_DURATION, jtrans("You feel more conspicuous."));
         else
-            mprf(MSGCH_DURATION, "You flicker back into view.");
+            mpr_nojoin(MSGCH_DURATION, jtrans("You flicker back into view."));
         you.attribute[ATTR_INVIS_UNCANCELLABLE] = 0;
     }
 

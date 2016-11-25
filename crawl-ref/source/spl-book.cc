@@ -455,7 +455,7 @@ static void _index_book(item_def& book, spells_to_books &book_hash,
 
 static string _transform_name()
 {
-    return jtrans(transform_name() + string(" form"));
+    return jtrans(transform_name() + string("-form"));
 }
 
 static bool _get_mem_list(spell_list &mem_spells,
@@ -1029,10 +1029,10 @@ bool forget_spell_from_book(spell_type spell, const item_def* book)
 
     prompt += make_stringf(jtransc("Forgetting %s from %s will destroy the book%s! "
                                    "Are you sure?"),
-                           tagged_jtransc("[spell]", spell_title(spell)),
                            book->name(DESC_THE).c_str(),
+                           tagged_jtransc("[spell]", spell_title(spell)),
                            jtransc(you_worship(GOD_SIF_MUNA)
-                                   ? " and put you under penance" : ""));
+                                   ? " and put you under penance" : "る"));
 
     // Deactivate choice from tile inventory.
     mouse_control mc(MOUSE_MODE_MORE);
@@ -1964,6 +1964,8 @@ bool make_book_theme_randart(item_def &book,
     if (!owner.empty())
     {
         name = jtrans(owner) + "の";
+        name = replace_all(name, "『", "");
+        name = replace_all(name, "』", "");
         book.props["is_named"].get_bool() = true;
     }
     else
@@ -1971,7 +1973,7 @@ bool make_book_theme_randart(item_def &book,
 
     string bookname = "";
     if (!title.empty())
-        bookname = title;
+        bookname = jtrans(title);
     else
     {
         // Sometimes use a completely random title.
@@ -2134,7 +2136,7 @@ void make_book_Kiku_gift(item_def &book, bool first)
     name += getRandNameString("book_name") + " ";
     string type_name = getRandNameString("Necromancy");
     if (type_name.empty())
-        name += "Necromancy";
+        name += tagged_jtrans("[skill]", "Necromancy");
     else
         name += type_name;
     set_artefact_name(book, name);

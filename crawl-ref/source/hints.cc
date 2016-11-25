@@ -2619,7 +2619,7 @@ void learned_something_new(hints_event_type seen_what, coord_def gc)
 #else
         text << glyph_to_tagstr(get_mons_glyph(*mi)) << " is a ";
 #endif
-        text << mi->proper_name(DESC_PLAIN).c_str() << ". ";
+        text << mi->proper_name_en(DESC_PLAIN).c_str() << ". ";
 
         text << "While <w>technically</w> a monster, it's more like "
                 "dungeon furniture, since it's harmless and doesn't move. "

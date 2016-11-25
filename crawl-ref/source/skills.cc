@@ -266,20 +266,21 @@ static void _change_skill_level(skill_type exsk, int n)
     // are you drained/crosstrained/ash'd in the relevant skill?
     const bool specify_base = you.skill(exsk, 1) != you.skill(exsk, 1, true);
     if (you.skills[exsk] == 27)
-        mprf(MSGCH_INTRINSIC_GAIN, "You have mastered %s!", skill_name(exsk));
+        mprf(MSGCH_INTRINSIC_GAIN, jtransc("You have mastered %s!"),
+             tagged_jtransc("[skill]", skill_name(exsk)));
     else if (abs(n) == 1 && you.num_turns)
     {
         mprf(MSGCH_INTRINSIC_GAIN, jtransc("Your %s%s skill %s to level %d!"),
-             specify_base ? "もともとの" : "",
-             jtransc(skill_name(exsk)),
+             specify_base ? "補正無しの" : "",
+             tagged_jtransc("[skill]", skill_name(exsk)),
              you.skills[exsk], jtransc((n > 0) ? "increases" : "decreases"));
     }
     else if (you.num_turns)
     {
         mprf(MSGCH_INTRINSIC_GAIN, jtransc("Your %s%s skill %s %d levels and is now "
                                            "at level %d!"),
-             specify_base ? "もともとの" : "",
-             jtransc(skill_name(exsk)),
+             specify_base ? "補正無しの" : "",
+             tagged_jtransc("[skill]", skill_name(exsk)),
              abs(n), jtransc((n > 0) ? "gained" : "lost"),
              you.skills[exsk]);
     }
@@ -453,7 +454,9 @@ static void _check_abil_skills()
 
 string skill_names(const skill_set &skills)
 {
-    return comma_separated_fn(begin(skills), end(skills), skill_name);
+    return to_separated_fn(begin(skills), end(skills),
+                           [] (const skill_type &st) { return tagged_jtrans("[skill]", skill_name(st)); },
+                           "、", "、", "そして");
 }
 
 static void _check_start_train()
@@ -479,7 +482,8 @@ static void _check_start_train()
             ++it;
 
     if (!skills.empty())
-        mprf("You resume training %s.", skill_names(skills).c_str());
+        mprf(jtransc("You resume training %s."),
+             skill_names(skills).c_str());
 
     you.start_train.clear();
 }
@@ -508,7 +512,8 @@ static void _check_stop_train()
 
     if (!skills.empty())
     {
-        mprf("You stop training %s.", skill_names(skills).c_str());
+        mprf(jtransc("You stop training %s."),
+             skill_names(skills).c_str());
         check_selected_skills();
     }
 
@@ -694,7 +699,7 @@ bool check_selected_skills()
 
     if (trainable_skill)
     {
-        mpr("You need to enable at least one skill for training.");
+        mpr(jtrans("You need to enable at least one skill for training."));
         more();
         reset_training();
         skill_menu();
@@ -705,7 +710,7 @@ bool check_selected_skills()
     if (could_train && !you.received_noskill_warning)
     {
         you.received_noskill_warning = true;
-        mpr("You cannot train any new skill.");
+        mpr(jtrans("You cannot train any new skill."));
     }
 
     return false;
@@ -1170,29 +1175,28 @@ skill_type str_to_skill(const string &skill)
 
 static string _stk_adj_cap()
 {
-    return species_name(Skill_Species, false, true);
+    return jtrans(species_name(Skill_Species, false, true));
 }
 
 static string _stk_genus_cap()
 {
-    return species_name(Skill_Species, true, false);
+    return jtrans(species_name(Skill_Species, true, false));
 }
 
 static string _stk_genus_nocap()
 {
-    string s = _stk_genus_cap();
-    return lowercase(s);
+    return _stk_genus_cap();
 }
 
 static string _stk_genus_short_cap()
 {
-    return Skill_Species == SP_DEMIGOD ? "God" :
+    return Skill_Species == SP_DEMIGOD ? jtrans("God") :
            _stk_genus_cap();
 }
 
 static string _stk_walker()
 {
-    return species_walking_verb(Skill_Species) + "er";
+    return jtrans(species_walking_verb(Skill_Species)) + "者";
 }
 
 static string _stk_weight()
@@ -1228,6 +1232,11 @@ static string _stk_weight()
     }
 }
 
+static string _stk_weight_j()
+{
+    return tagged_jtrans("[title]", _stk_weight());
+}
+
 static skill_title_key_t _skill_title_keys[] =
 {
     stk("Adj", _stk_adj_cap),
@@ -1235,7 +1244,7 @@ static skill_title_key_t _skill_title_keys[] =
     stk("genus", _stk_genus_nocap),
     stk("Genus_Short", _stk_genus_short_cap),
     stk("Walker", _stk_walker),
-    stk("Weight", _stk_weight),
+    stk("Weight", _stk_weight_j),
 };
 
 static string _replace_skill_keys(const string &text)
@@ -1258,7 +1267,7 @@ static string _replace_skill_keys(const string &text)
 
         ASSERT(!value.empty());
 
-        res << jtrans(value);
+        res << tagged_jtrans("[title]", value);
 
         last = end + 1;
     }
@@ -1382,10 +1391,8 @@ string skill_title_by_rank(skill_type best_skill, uint8_t skill_rank,
     }
 
     {
-        result = jtrans(result);
-
         unwind_var<species_type> sp(Skill_Species, species);
-        result = _replace_skill_keys(result);
+        result = _replace_skill_keys(tagged_jtrans("[title]", result));
     }
 
     return result.empty() ? string("Invalid Title")
@@ -1686,7 +1693,7 @@ void dump_skills(string &text)
                                  you.train[i] == 2 ? '*' :
                                  you.train[i]      ? '+' :
                                                      '-',
-                                 chop_string(jtrans(skill_name(static_cast<skill_type>(i))) + "スキル", 14).c_str(),
+                                 chop_string(tagged_jtrans("[skill]", skill_name(static_cast<skill_type>(i))) + "スキル", 16).c_str(),
                                  lvl.c_str(),
                                  real != cur
                                      ? make_stringf("(%.*f)",

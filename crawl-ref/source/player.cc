@@ -117,8 +117,8 @@ static void _moveto_maybe_repel_stairs()
         if (slide_feature_over(you.pos()))
         {
             mprf(jtransc("%s slides away as you move %s it!"),
-                 jtransc(prep),
-                 jtransc(stair_str));
+                 jtransc(stair_str),
+                 jtransc(prep));
 
             if (player_in_a_dangerous_place() && one_chance_in(5))
                 xom_is_stimulated(25);
@@ -152,7 +152,7 @@ bool check_moveto_cloud(const coord_def& p, const string &move_verb,
         if (prompted)
             *prompted = true;
         string prompt = make_stringf(jtransc("Really %s into that cloud of %s?"),
-                                     jtransc(cloud_type_name(ctype)));
+                                     cloud_type_name_j(ctype).c_str());
         learned_something_new(HINT_CLOUD_WARNING);
 
         if (!yesno(prompt.c_str(), false, 'n'))
@@ -3266,8 +3266,8 @@ void level_change(bool skip_attribute_increase)
                             {
                                 mpr_nojoin(MSGCH_MUTATION, jtrans("You feel monstrous as "
                                                                   "your demonic heritage exerts itself."));
-                                mark_milestone("monstrous", "discovered their "
-                                               "monstrous ancestry!");
+                                mark_milestone("monstrous", jtrans("discovered their "
+                                               "monstrous ancestry!"));
                             }
                             break;
                         }
@@ -3513,8 +3513,13 @@ void adjust_level(int diff, bool just_xp)
     if (you.experience_level + diff < 1)
         you.experience = 0;
     else if (you.experience_level + diff >= max_exp_level)
-        you.experience = max(you.experience,
-                exp_needed(max_exp_level));
+    {
+        const unsigned needed = exp_needed(max_exp_level);
+        // Level gain when already at max should never reduce player XP;
+        // but level loss (diff < 0) should.
+        if (diff < 0 || you.experience < needed)
+            you.experience = needed;
+    }
     else
     {
         while (diff < 0 && you.experience >=
@@ -4765,7 +4770,7 @@ void contaminate_player(int change, bool controlled, bool msg)
         {
             mpr_nojoin((change > 0) ? MSGCH_WARN : MSGCH_RECOVERY,
                        make_stringf(jtransc("You feel %s contaminated with magical energies."),
-                                    (change > 0) ? "重くなったった" : "軽くなった"));
+                                    (change > 0) ? "重くなった" : "軽くなった"));
         }
 
         if (change > 0)
@@ -5211,7 +5216,7 @@ bool slow_player(int turns)
     {
         if (you.duration[DUR_SLOW] == 0)
         {
-            // 原文は"You feel yourself speed down."だが
+            // 原文は"You feel yourself slow down."だが
             // 加速終了時と同一なためベタ書き
             // (無印DC準拠)
             mpr("あなたは動きが遅くなった。");
@@ -5336,7 +5341,7 @@ void dec_haste_player(int delay)
     {
         if (!you.duration[DUR_BERSERK])
         {
-        // 原文は"You feel yourself speed down."だが
+        // 原文は"You feel yourself slow down."だが
         // 減速時と同一なためベタ書き
         // (無印DC準拠)
             mpr_nojoin(MSGCH_DURATION, "あなたの加速はなくなった。");
@@ -5943,17 +5948,16 @@ string player_save_info::short_desc() const
     if (!qualifier.empty())
         desc << "[" << qualifier << "] ";
 
-    desc << name << ", a level " << experience_level << ' '
-         << species_name << ' ' << class_name;
+    if (religion != GOD_NO_GOD)
+        desc << jtrans(god_name) << "の信徒にして";
 
-    if (religion == GOD_JIYVA)
-        desc << " of " << god_name << " " << jiyva_second_name;
-    else if (religion != GOD_NO_GOD)
-        desc << " of " << god_name;
+    desc << "レベル" << experience_level << "の"
+         << jtrans(species_name) << "の" << jtrans(class_name)
+         << "『" << name << "』";
 
 #ifdef WIZARD
     if (wizard)
-        desc << " (WIZ)";
+        desc << " (ウィザードモード)";
 #endif
 
     return desc.str();
@@ -6065,7 +6069,7 @@ static const string felid_shout_verbs[] = {"meow", "yowl", "caterwaul"};
 string player::shout_verb(bool directed) const
 {
     if (!get_form()->shout_verb.empty())
-        return get_form()->shout_verb;
+        return tagged_jtrans("[form]", get_form()->shout_verb);
 
     const int screaminess = max(player_mutation_level(MUT_SCREAM) - 1, 0);
 
@@ -6983,13 +6987,13 @@ string player::no_tele_reason(bool calc_unid, bool blinking) const
     vector<string> problems;
 
     if (duration[DUR_DIMENSION_ANCHOR])
-        problems.emplace_back("locked down by Dimension Anchor");
+        problems.emplace_back(jtrans("locked down by Dimension Anchor"));
 
     if (form == TRAN_TREE)
-        problems.emplace_back("held in place by your roots");
+        problems.emplace_back(jtrans("held in place by your roots"));
 
     if (crawl_state.game_is_zotdef() && orb_haloed(pos()))
-        problems.emplace_back("in the halo of the Orb");
+        problems.emplace_back(jtrans("in the halo of the Orb"));
 
     const bool stasis_block = stasis_blocks_effect(calc_unid, nullptr);
     vector<item_def> notele_items;
@@ -7005,10 +7009,10 @@ string player::no_tele_reason(bool calc_unid, bool blinking) const
             if (item.base_type == OBJ_WEAPONS)
             {
                 problems.push_back(make_stringf(jtransc("wielding %s"),
-                                                jtransc(item.name(DESC_A))));
+                                                jtransc(item.name(DESC_A, false, false, false))));
             }
             else
-                worn_notele.push_back(item.name(DESC_A));
+                worn_notele.push_back(item.name(DESC_A, false, false, false));
 
             if (item.base_type == OBJ_JEWELLERY && jewellery_is_amulet(item))
                 amulet_handled = true;
@@ -7021,7 +7025,7 @@ string player::no_tele_reason(bool calc_unid, bool blinking) const
             {
                 item_def *amulet = slot_item(EQ_AMULET);
                 ASSERT(amulet);
-                worn_notele.push_back(amulet->name(DESC_A));
+                worn_notele.push_back(amulet->name(DESC_A, false, false, false));
                 found_nonartefact = !is_artefact(*amulet);
             }
             //...but we also don't want to report "buggy stasis" from it.
@@ -7032,7 +7036,7 @@ string player::no_tele_reason(bool calc_unid, bool blinking) const
         {
             problems.push_back(
                 make_stringf(jtransc("wearing %s %s preventing teleportation"),
-                             worn_notele.size(),
+                             to_stringc(worn_notele.size()),
                              general_counter_suffix(worn_notele.size()),
                              jtransc(found_nonartefact ? "items": "artefacts")));
         }
@@ -7041,7 +7045,7 @@ string player::no_tele_reason(bool calc_unid, bool blinking) const
             problems.push_back(
                 make_stringf(jtransc("wearing %s"),
                              to_separated_line(worn_notele.begin(),
-                                               worn_notele.end(), true, "、", "、", "、および").c_str()));
+                                               worn_notele.end(), true, "を装備、および").c_str()));
         }
 
         if (stasis_block && !found_stasis)
@@ -7056,8 +7060,8 @@ string player::no_tele_reason(bool calc_unid, bool blinking) const
         return ""; // no problem
 
     return make_stringf(jtransc("You cannot teleport because you are %s."),
-                        comma_separated_line(problems.begin(),
-                                             problems.end()).c_str());
+                        to_separated_line(problems.begin(), problems.end(),
+                                          false, "、および", "、", "、").c_str());
 }
 
 /**
@@ -8195,12 +8199,12 @@ void player::set_gold(int amount)
                 if (gold >= cost && old_gold < cost)
                 {
                     mprf(MSGCH_GOD, jtransc("You now have enough gold to %s."),
-                         god_gain_power_messages[you.religion][i]);
+                         jtransc(god_gain_power_messages[you.religion][i]));
                 }
                 else if (old_gold >= cost && gold < cost)
                 {
                     mprf(MSGCH_GOD, jtransc("You no longer have enough gold to %s."),
-                         god_gain_power_messages[you.religion][i]);
+                         jtransc(god_gain_power_messages[you.religion][i]));
                 }
             }
         }
@@ -8248,7 +8252,7 @@ bool player::attempt_escape(int attempts)
     if (roll_dice(4 + escape_attempts, 8 + div_rand_round(strength(), 4))
         >= roll_dice(5, 8 + div_rand_round(themonst->get_hit_dice(), 4)))
     {
-        mprf(jtransc("You escape %s's grasp."), jtransc(themonst->name(DESC_PLAIN, true)));
+        mprf(jtransc("You escape %s's grasp."), jtransc(themonst->name(DESC_THE, true)));
 
         // Stun the monster to prevent it from constricting again right away.
         themonst->speed_increment -= 5;
@@ -8378,7 +8382,7 @@ static string _constriction_description()
             cinfo += "\n";
 
         cinfo += make_stringf(jtransc("You are being %s by %s."),
-                      jtransc(monster_by_mid(you.constricted_by)->name(DESC_PLAIN)));
+                      jtransc(monster_by_mid(you.constricted_by)->name(DESC_A)));
     }
 
     if (you.constricting && !you.constricting->empty())
@@ -8727,7 +8731,7 @@ void player_open_door(coord_def doorpos)
 
         if (!door_open_prompt.empty())
         {
-            door_open_prompt += " (y/N)";
+            door_open_prompt = jtrans(door_open_prompt) + " (y/N)";
             if (!yesno(door_open_prompt.c_str(), true, 'n', true, false))
             {
                 if (is_exclude_root(doorpos))
@@ -8749,8 +8753,8 @@ void player_open_door(coord_def doorpos)
 
         if (!ignore_exclude && is_exclude_root(doorpos))
         {
-            string prompt = make_stringf("This %s%s is marked as excluded! "
-                                         "Open it anyway?", adj, noun);
+            string prompt = make_stringf(jtransc("This %s%s is marked as excluded! "
+                                                 "Open it anyway?"), jtransc(adj), jtransc(noun));
 
             if (!yesno(prompt.c_str(), true, 'n', true, false))
             {
@@ -8781,35 +8785,37 @@ void player_open_door(coord_def doorpos)
         {
             if (!berserk_open.empty())
             {
-                berserk_open += ".";
-                mprf(berserk_open.c_str(), adj, noun);
+                berserk_open = jtrans(berserk_open) + "。";
+                mprf(berserk_open.c_str(), jtransc(adj), jtransc(noun));
             }
             else
-                mprf(jtransc("The %s%s flies open!"), adj, noun);
+                mprf(jtransc("The %s%s flies open!"), jtransc(adj), jtransc(noun));
         }
         else
         {
             if (!berserk_open.empty())
             {
                 if (!berserk_adjective.empty())
-                    berserk_open += " " + berserk_adjective;
+                    berserk_open = replace_all(jtrans(berserk_open),
+                                               "あなたは",
+                                               "あなたは" + jtrans(berserk_adjective)) + "！";
                 else
-                    berserk_open += ".";
-                mprf(MSGCH_SOUND, berserk_open.c_str(), adj, noun);
+                    berserk_open = jtrans(berserk_open) + "。";
+                mprf(MSGCH_SOUND, berserk_open.c_str(), jtransc(adj), jtransc(noun));
             }
             else
-                mprf(MSGCH_SOUND, jtransc("The %s%s flies open with a bang!"), adj, noun);
+                mprf(MSGCH_SOUND, jtransc("The %s%s flies open with a bang!"), jtransc(adj), jtransc(noun));
             noisy(15, you.pos());
         }
     }
     else if (one_chance_in(skill) && !silenced(you.pos()))
     {
         if (!door_open_creak.empty())
-            mprf(MSGCH_SOUND, door_open_creak.c_str(), adj, noun);
+            mprf(MSGCH_SOUND, jtransc(door_open_creak), jtransc(adj), jtransc(noun));
         else
         {
             mprf(MSGCH_SOUND, jtransc("As you open the %s%s, it creaks loudly!"),
-                 adj, noun);
+                 jtransc(adj), jtransc(noun));
         }
         noisy(10, you.pos());
     }
@@ -8821,17 +8827,17 @@ void player_open_door(coord_def doorpos)
             if (!door_airborne.empty())
                 verb = door_airborne.c_str();
             else
-                verb = jtransc("You reach down and open the %s%s.");
+                verb = "You reach down and open the %s%s.";
         }
         else
         {
             if (!door_open_verb.empty())
                 verb = door_open_verb.c_str();
             else
-                verb = jtransc("You open the %s%s.");
+                verb = "You open the %s%s.";
         }
 
-        mprf(verb, adj, noun);
+        mprf(jtransc(verb), jtransc(adj), jtransc(noun));
     }
 
     vector<coord_def> excludes;
@@ -8939,26 +8945,28 @@ void player_close_door(coord_def doorpos)
         {
             if (!berserk_close.empty())
             {
-                berserk_close += ".";
-                mprf(berserk_close.c_str(), adj, noun);
+                berserk_close = jtrans(berserk_close) + "。";
+                mprf(berserk_close.c_str(), jtransc(adj), jtransc(noun));
             }
             else
-                mprf(jtransc("You slam the %s%s shut!"), adj, noun);
+                mprf(jtransc("You slam the %s%s shut!"), jtransc(adj), jtransc(noun));
         }
         else
         {
             if (!berserk_close.empty())
             {
                 if (!berserk_adjective.empty())
-                    berserk_close += " " + berserk_adjective;
+                    berserk_close = replace_all(jtrans(berserk_close),
+                                                "あなたは",
+                                                "あなたは" + jtrans(berserk_adjective)) + "！";
                 else
-                    berserk_close += ".";
-                mprf(MSGCH_SOUND, berserk_close.c_str(), adj, noun);
+                    berserk_close = jtrans(berserk_close) + "。";
+                mprf(MSGCH_SOUND, berserk_close.c_str(), jtransc(adj), jtransc(noun));
             }
             else
             {
                 mprf(MSGCH_SOUND, jtransc("you slam the %s%s shut with a bang!"),
-                                  adj, noun);
+                                  jtransc(adj), jtransc(noun));
             }
 
             noisy(15, you.pos());
@@ -8967,11 +8975,11 @@ void player_close_door(coord_def doorpos)
     else if (one_chance_in(skill) && !silenced(you.pos()))
     {
         if (!door_close_creak.empty())
-            mprf(MSGCH_SOUND, door_close_creak.c_str(), adj, noun);
+            mprf(MSGCH_SOUND, jtransc(door_close_creak), jtransc(adj), jtransc(noun));
         else
         {
             mprf(MSGCH_SOUND, jtransc("As you close the %s%s, it creaks loudly!"),
-                              adj, noun);
+                              jtransc(adj), jtransc(noun));
         }
 
         noisy(10, you.pos());
@@ -8984,17 +8992,17 @@ void player_close_door(coord_def doorpos)
             if (!door_airborne.empty())
                 verb = door_airborne.c_str();
             else
-                verb = jtransc("You reach down and close the %s%s.");
+                verb = "You reach down and close the %s%s.";
         }
         else
         {
             if (!door_close_verb.empty())
                 verb = door_close_verb.c_str();
             else
-                verb = jtransc("You close the %s%s.");
+                verb = "You close the %s%s.";
         }
 
-        mprf(verb, adj, noun);
+        mprf(jtransc(verb), jtransc(adj), jtransc(noun));
     }
 
     vector<coord_def> excludes;

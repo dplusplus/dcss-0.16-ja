@@ -579,6 +579,10 @@ slave
 
 奴隷
 %%%%
+freed slave
+
+解放奴隷
+%%%%
 hell knight
 
 地獄の騎士
@@ -622,10 +626,6 @@ shapeshifter
 glowing shapeshifter
 
 暴走した変身能力者
-%%%%
-shaped shifter
-
-変身能力者
 %%%%
 Killer Klown
 
@@ -882,7 +882,7 @@ wight
 %%%%
 skeletal warrior
 
-骸骨戦士
+骸骨の戦士
 %%%%
 ancient champion
 
@@ -929,6 +929,10 @@ goliath beetle
 boulder beetle
 
 岩石の甲虫
+%%%%
+boring beetle
+
+穿孔の甲虫
 %%%%
 death scarab
 
@@ -1376,7 +1380,7 @@ adder
 %%%%
 water moccasin
 
-ヌママムシ
+沼マムシ
 %%%%
 black mamba
 
@@ -1608,7 +1612,7 @@ electric eel
 # '@'
 Hellbinder
 
-地獄に繋がれし者
+地獄に繋がれしもの
 %%%%
 Cloud Mage
 
@@ -1638,23 +1642,23 @@ demonspawn
 %%%%
 monstrous demonspawn
 
-恐るべき血族
+怪物じみた血族
 %%%%
 gelid demonspawn
 
-凍り付く血族
+凍てつく血族
 %%%%
 infernal demonspawn
 
-極悪非道の血族
+業火の血族
 %%%%
 putrid demonspawn
 
-堕落した血族
+腐敗した血族
 %%%%
 torturous demonspawn
 
-拷問の血族
+苦痛の血族
 %%%%
 blood saint
 
@@ -1879,17 +1883,9 @@ pillar of salt
 
 塩の柱
 %%%%
-shaped pillar of salt
-
-形の塩の柱
-%%%%
 block of ice
 
 氷の塊
-%%%%
-shaped block of ice
-
-形の氷の塊
 %%%%
 diamond obelisk
 
@@ -2029,7 +2025,15 @@ the Lernaean hydra
 
 『レルネーのヒドラ』
 %%%%
+Lernaean hydra
+
+『レルネーのヒドラ』
+%%%%
 the Serpent of Hell
+
+『地獄のサーペント』
+%%%%
+Serpent of Hell
 
 『地獄のサーペント』
 %%%%
@@ -2316,46 +2320,4 @@ Asmodeus
 Ereshkigal
 
 『エレシュキガル』
-%%%%
-############################## other ##############################
-%%%%
-spectral
-
-幽体の
-%%%%
-ghost
-
-幽霊
-%%%%
-illusion
-
-幻影
-%%%%
-helpless
-
-哀れな
-%%%%
-submerged
-
-水中の
-%%%%
-ghostly
-
-霊体の
-%%%%
-sensed
-
-感知済みの
-%%%%
-active
-
-活発な
-%%%%
--headed
-
-首
-%%%%
-something
-
-何か
 %%%%

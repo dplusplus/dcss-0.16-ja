@@ -321,6 +321,8 @@ function ($, comm, enums, map_knowledge, messages, options) {
                 $("#stats_time_caption").text("時間:");
                 $("#stats_weapon").prev().text("手持武器:");
                 $("#stats_quiver").prev().text("射撃準備:");
+
+                $("#more").text("--続く--");
             }
             else
             {
@@ -345,7 +347,7 @@ function ($, comm, enums, map_knowledge, messages, options) {
             else
                 species_god += player.species + " of " + player.god;
         }
-        if (player.god == "Xom")
+        if (player.god == "Xom" || player.god == "ゾム")
         {
             if (player.piety_rank >=0)
             {
@@ -355,6 +357,8 @@ function ($, comm, enums, map_knowledge, messages, options) {
             else
                 $("#stats_piety").text("......"); // very special plaything
         }
+        else if (player.god == "Gozag" || player.god == "ゴザーグ")
+            $("#stats_piety").text("");
         else if ((player.piety_rank > 0 || player.god != "")
                  && player.god != "Gozag")
         {

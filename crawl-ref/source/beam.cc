@@ -610,7 +610,7 @@ void bolt::initialise_fire()
             && (!mon || !mon->observable()))
         {
             mprf(jtransc("%s appears from out of thin air!"),
-                 jtransc(name));
+                 tagged_jtransc("[zap]", name));
         }
     }
 
@@ -776,9 +776,9 @@ void bolt::fake_flavour()
     else if (real_flavour == BEAM_CRYSTAL && flavour == BEAM_CRYSTAL)
     {
         flavour = coinflip() ? BEAM_FIRE : BEAM_COLD;
-        hit_verb = (flavour == BEAM_FIRE) ? "burns" :
-                   (flavour == BEAM_COLD) ? "freezes"
-                                          : "bugs";
+        hit_verb = "を" + jtrans((flavour == BEAM_FIRE) ? "burns" :
+                                 (flavour == BEAM_COLD) ? "freezes"
+                                                        : "bugs");
     }
 }
 
@@ -1236,6 +1236,14 @@ void bolt::fire()
     }
 }
 
+static string jtrans_zap_name(const string& name, const string& tag = "[zap]")
+{
+    if (tagged_jtrans_has_key(tag, name))
+        return tagged_jtrans(tag, name);
+    else
+        return jtrans(name);
+}
+
 void bolt::do_fire()
 {
     initialise_fire();
@@ -1309,7 +1317,7 @@ void bolt::do_fire()
         if (flavour != BEAM_VISUAL && !was_seen && seen && !is_tracer)
         {
             mprf(jtransc("%s appears from out of your range of vision."),
-                 jtransc(name));
+                 jtrans_zap_name(name).c_str());
         }
 
         // Reset chaos beams so that it won't be considered an invisible
@@ -3277,10 +3285,8 @@ bool bolt::misses_player()
             hit_verb = engulfs ? "をとりまいた" : "に命中した";
         if (flavour != BEAM_VISUAL)
             mprf(jtransc("The %s %s you!"),
-                 tagged_jtrans_has_key("[zap]", name) ?
-                 tagged_jtransc("[zap]", name) :
-                 jtransc(name),
-                 hit_verb.c_str());
+                 jtrans_zap_name(name).c_str(),
+                 jtransc(hit_verb));
         return false;
     }
 
@@ -3324,23 +3330,21 @@ bool bolt::misses_player()
             {
                 mprf(jtransc("Your %s reflects the %s!"),
                      you.shield()->name(DESC_PLAIN).c_str(),
-                     jtransc(name));
+                     jtrans_zap_name(name).c_str());
                 reflect();
             }
             else if (pierces_shields())
             {
                 penet = true;
                 mprf(jtransc("The %s pierces through your %s!"),
-                     jtransc(name),
+                     jtrans_zap_name(name).c_str(),
                      jtransc(you.shield() ? you.shield()->name(DESC_PLAIN).c_str()
                                           : "shielding"));
             }
             else
             {
                 mprf(jtransc("You block the %s."),
-                     tagged_jtrans_has_key("[zap]", name) ?
-                     tagged_jtransc("[zap]", name) :
-                     jtransc(name));
+                     jtrans_zap_name(name).c_str());
                 finish_beam();
             }
             you.shield_block_succeeded(agent());
@@ -3363,20 +3367,19 @@ bool bolt::misses_player()
 
     if (!_test_beam_hit(real_tohit, dodge_less, pierce, 0, r))
         mprf(jtransc("The %s misses you."),
-             tagged_jtrans_has_key("[zap]", name) ?
-             tagged_jtransc("[zap]", name) :
-             jtransc(name));
+             jtrans_zap_name(name).c_str());
     else if (defl && !_test_beam_hit(real_tohit, dodge_less, pierce, defl, r))
     {
         // active voice to imply stronger effect
         mprf(jtransc(defl == 1 ? "The %s is repelled." : "You deflect the %s!"),
-             jtransc(name));
+             jtrans_zap_name(name).c_str());
         you.ablate_deflection();
     }
     else if (!_test_beam_hit(real_tohit, dodge, pierce, defl, r))
     {
         mprf(jtransc("You momentarily phase out as the %s "
-                     "passes through you."), jtransc(name));
+                     "passes through you."),
+             jtrans_zap_name(name).c_str());
     }
     else
     {
@@ -3386,9 +3389,12 @@ bool bolt::misses_player()
             hit_verb = engulfs ? "をとりまいた" : "に命中した";
 
         if (_test_beam_hit(real_tohit, dodge_more, pierce, defl, r))
-            mprf(jtransc("The %s %s you!"), tagged_jtransc("[zap]", name), hit_verb.c_str());
+            mprf(jtransc("The %s %s you!"),
+                 jtrans_zap_name(name).c_str(),
+                 jtransc(hit_verb));
         else
-            mprf(jtransc("Helpless, you fail to dodge the %s."), jtransc(name));
+            mprf(jtransc("Helpless, you fail to dodge the %s."),
+                 jtrans_zap_name(name).c_str());
 
         miss = false;
     }
@@ -3869,7 +3875,9 @@ void bolt::affect_player()
         {
             if (hit_verb.empty())
                 hit_verb = engulfs ? "をとりまいた" : "に命中した";
-            mprf(jtransc("The %s %s you!"), tagged_jtransc("[zap]", name), hit_verb.c_str());
+            mprf(jtransc("The %s %s you!"),
+                 jtrans_zap_name(name).c_str(),
+                 jtransc(hit_verb));
         }
 
         // Irresistible portion of resistable effect; must happen before MR
@@ -4641,7 +4649,7 @@ void bolt::knockback_actor(actor *act, int dam)
         {
             mprf(jtransc("%s %s knocked back by the %s."),
                  jtransc(act->name(DESC_THE)),
-                 jtransc(name));
+                 jtrans_zap_name(name).c_str());
         }
     }
 
@@ -4716,12 +4724,13 @@ bool bolt::attempt_block(monster* mon)
                 {
                     mprf(jtransc("%s reflects the %s off %s %s!"),
                          jtransc(mon->name(DESC_THE)),
-                         jtransc(name),
+                         jtrans_zap_name(name).c_str(),
                          jtransc(shield->name(DESC_PLAIN).c_str()));
                     ident_reflector(shield);
                 }
                 else if (you.see_cell(pos()))
-                    mprf(jtransc("The %s bounces off of thin air!"), jtransc(name));
+                    mprf(jtransc("The %s bounces off of thin air!"),
+                         jtrans_zap_name(name).c_str());
 
                 reflect();
             }
@@ -4729,7 +4738,7 @@ bool bolt::attempt_block(monster* mon)
             {
                 rc = false;
                 mprf(jtransc("The %s pierces through %s %s!"),
-                     jtransc(name),
+                     jtrans_zap_name(name).c_str(),
                      jtransc(mon->name(DESC_THE)),
                      jtransc(shield ? shield->name(DESC_PLAIN).c_str()
                                     : "shielding"));
@@ -4737,7 +4746,8 @@ bool bolt::attempt_block(monster* mon)
             else if (you.see_cell(pos()))
             {
                 mprf(jtransc("%s blocks the %s."),
-                     jtransc(mon->name(DESC_THE)), jtransc(name));
+                     jtransc(mon->name(DESC_THE)),
+                     jtrans_zap_name(name).c_str());
                 finish_beam();
             }
 
@@ -4774,7 +4784,9 @@ void bolt::affect_monster(monster* mon)
     if (flavour == BEAM_WATER && mon->type == MONS_WATER_ELEMENTAL && !is_tracer)
     {
         if (you.see_cell(mon->pos()))
-            mprf(jtransc("The %s passes through %s."), jtransc(name), jtransc(mon->name(DESC_THE)));
+            mprf(jtransc("The %s passes through %s."),
+                 jtrans_zap_name(name).c_str(),
+                 jtransc(mon->name(DESC_THE)));
     }
 
     if (ignores_monster(mon))
@@ -4820,9 +4832,9 @@ void bolt::affect_monster(monster* mon)
             if (mons_near(mon))
             {
                 mprf(jtransc("The %s %s %s."),
-                     tagged_jtrans_has_key("[zap]", name) ?
-                     tagged_jtransc("[zap]", name) : jtransc(name),
-                     jtransc(mon->name(DESC_THE)), hit_verb.c_str());
+                     jtrans_zap_name(name).c_str(),
+                     jtransc(mon->name(DESC_THE)),
+                     jtransc(hit_verb));
             }
             else if (heard && !noise_msg.empty())
                 mprf(MSGCH_SOUND, "%s", jtransc(noise_msg));
@@ -4915,8 +4927,7 @@ void bolt::affect_monster(monster* mon)
         // If the PLAYER cannot see the monster, don't tell them anything!
         if (mon->observable() && name != "burst of metal fragments")
         {
-            string bolt_name = tagged_jtrans_has_key("[zap]", name) ?
-                tagged_jtrans("[zap]", name) : jtrans(name);
+            string bolt_name = jtrans_zap_name(name);
 
             // if it would have hit otherwise...
             if (_test_beam_hit(beam_hit, rand_ev, pierce, 0, r))
@@ -4978,7 +4989,7 @@ void bolt::affect_monster(monster* mon)
             hit_verb = engulfs ? "をとりまいた" : "に命中した";
 
         mprf(jtransc("The %s %s %s."),
-             tagged_jtransc("[zap]", name),
+             jtrans_zap_name(name).c_str(),
              mon->name(DESC_THE).c_str(),
              jtransc(hit_verb));
 
@@ -4990,7 +5001,8 @@ void bolt::affect_monster(monster* mon)
     else if (!silenced(you.pos()) && flavour == BEAM_MISSILE
              && YOU_KILL(thrower))
     {
-        mprf(MSGCH_SOUND, jtransc("The %s hits something."), jtransc(name));
+        mprf(MSGCH_SOUND, jtransc("The %s hits something."),
+             jtrans_zap_name(name).c_str());
     }
 
     if (final > 0)
@@ -5643,7 +5655,7 @@ mon_resist_type bolt::apply_enchantment_to_monster(monster* mon)
             if (you.can_see(mon))
             {
                 mprf(jtransc("%s magical defenses are stripped away."),
-                     jtransc(mon->name(DESC_PLAIN)));
+                     jtransc(mon->name(DESC_ITS)));
                 obvious_effect = true;
             }
         }
@@ -5675,7 +5687,7 @@ mon_resist_type bolt::apply_enchantment_to_monster(monster* mon)
             if (you.can_see(mon))
             {
                 mprf(jtransc("The poison in %s body grows stronger."),
-                     mon->name(DESC_PLAIN).c_str());
+                     mon->name(DESC_ITS).c_str());
             }
         }
 
@@ -6009,7 +6021,7 @@ bool bolt::explode(bool show_more, bool hole_in_the_middle)
         if (!is_tracer && you.see_cell(pos()) && !name.empty())
         {
             mprf(MSGCH_GOD, jtransc("By Zin's power, the %s is contained."),
-                 jtransc(name));
+                 jtrans_zap_name(name).c_str());
             return true;
         }
         return false;

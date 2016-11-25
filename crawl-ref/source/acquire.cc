@@ -1507,7 +1507,7 @@ bool acquirement(object_class_type class_wanted, int agent,
         { OBJ_ARMOUR,     "鎧・服" },
         { OBJ_JEWELLERY,  "装飾品" },
         { OBJ_BOOKS,      "魔法書" },
-        { OBJ_STAVES,     "魔法の杖" },
+        { OBJ_STAVES,     "魔法の杖・ロッド" },
         { OBJ_WANDS,      "ワンド" },
         { OBJ_MISCELLANY, "発動アイテム" },
         { OBJ_FOOD,       0 }, // amended below

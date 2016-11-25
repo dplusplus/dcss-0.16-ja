@@ -55,7 +55,7 @@ bool yesno(const char *str, bool safe, int safeanswer, bool clear_after,
     if (interrupt_delays && !crawl_state.is_repeating_cmd())
         interrupt_activity(AI_FORCE_INTERRUPT);
 
-    string prompt = make_stringf("%s ", str ? str : "Buggy prompt?");
+    string prompt = make_stringf("%s ", str ? jtransc(str) : "Buggy prompt?");
 
 #ifdef TOUCH_UI
     Popup *pop = new Popup(prompt);
@@ -202,7 +202,7 @@ int yesnoquit(const char* str, bool safe, int safeanswer, bool allow_all,
     mouse_control mc(MOUSE_MODE_YESNO);
 
     string prompt =
-    make_stringf("%s%s ", str ? str : "Buggy prompt?",
+    make_stringf("%s%s ", str ? jtransc(str) : "Buggy prompt?",
                  _list_allowed_keys(alt_yes, alt_yes2,
                                     safe, allow_all).c_str());
     while (true)
@@ -287,11 +287,11 @@ int prompt_for_quantity(const char *prompt)
 // If !nonneg, then it returns an integer, and 0 on fail
 //
 //---------------------------------------------------------------
-int prompt_for_int(const char *prompt, bool nonneg)
+int prompt_for_int(const string &prompt, bool nonneg)
 {
     char specs[80];
 
-    msgwin_get_line(prompt, specs, sizeof(specs));
+    msgwin_get_line(jtrans(prompt), specs, sizeof(specs));
 
     if (specs[0] == '\0')
         return nonneg ? -1 : 0;
@@ -305,7 +305,7 @@ int prompt_for_int(const char *prompt, bool nonneg)
     return ret;
 }
 
-double prompt_for_float(const char* prompt)
+double prompt_for_float(const string &prompt)
 {
     char specs[80];
 

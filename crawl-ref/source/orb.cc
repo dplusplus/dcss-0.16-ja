@@ -60,13 +60,13 @@ void orb_pickup_noise(const coord_def& where, int loudness, const char* msg, con
         if (msg)
             mprf(MSGCH_ORB, "%s", jtransc(msg));
         else
-            mprf(MSGCH_ORB, "The orb lets out a hideous shriek!");
+            mpr_nojoin(MSGCH_ORB, jtrans("The orb lets out a hideous shriek!"));
     }
     else
     {
         if (msg2)
             mprf(MSGCH_ORB, "%s", jtransc(msg2));
         else
-            mprf(MSGCH_ORB, "The orb lets out a furious burst of light!");
+            mpr_nojoin(MSGCH_ORB, jtrans("The orb lets out a furious burst of light!"));
     }
 }

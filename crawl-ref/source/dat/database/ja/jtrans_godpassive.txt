@@ -3,6 +3,10 @@ You hear a distant slurping noise.
 
 あなたは遠くで物を食べる音を耳にした。
 %%%%
+You feel a little less hungry.
+
+あなたは少し腹がふくれたような気がした。
+%%%%
 Your %s %s is bound but not your %s %s.
 
 あなたの%sは呪縛されているが、%sは呪縛されていない。
@@ -30,4 +34,36 @@ You are %s bound in magic.
 You are %s bound.
 
 あなたは%s。
+%%%%
+Your resistance to fire fades away.
+
+あなたの火への耐性は薄れていった。
+%%%%
+Your resistance to cold fades away.
+
+あなたの冷気への耐性は薄れていった。
+%%%%
+Your resistance to electricity fades away.
+
+あなたの電撃への耐性は薄れていった。
+%%%%
+Your resistance to physical damage fades away.
+
+あなたの物理ダメージへの耐性は薄れていった。
+%%%%
+You feel %sprotected from fire.
+
+あなたは%s火炎への耐性が強まったようだ。
+%%%%
+You feel %sprotected from cold.
+
+あなたは%s冷気への耐性が強まったようだ。
+%%%%
+You feel %sprotected from electricity.
+
+あなたは%s電気への耐性が強まったようだ。
+%%%%
+You feel %sprotected from physical attacks.
+
+あなたは%s物理ダメージへの耐性が強まったようだ。
 %%%%

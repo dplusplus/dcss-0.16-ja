@@ -175,7 +175,7 @@ _battle_or_war_
 
 #killing
 # Blood-Lust
-血に飢えた
+血に飢えし
 
 # Joyful Slaughter
 快楽殺人者
@@ -547,7 +547,7 @@ _people_name_
 怨敵
 
 # Priest
-僧侶
+司祭
 
 # Madman
 狂人
@@ -906,7 +906,7 @@ _chaos_name_
 仲裁
 
 # the Extremes
-緊急状態
+極限状況
 
 # Disorder
 障害

@@ -110,7 +110,7 @@ function wizlab_setup (e)
 end
 
 function wizlab_milestone (e, wizlab_desc)
-    crawl.mark_milestone("br.enter", "entered " .. wizlab_desc .. ".", "parent")
+    crawl.mark_milestone("br.enter", crawl.jtrans(wizlab_desc) .. "に突入した", "parent")
     crawl.take_note(crawl.jtrans(wizlab_desc) .. "に突入した")
 end
 
@@ -358,7 +358,7 @@ function wizlab_wucad_msgfn(data, triggerable, triggerer, marker, ev)
     crawl.mpr("かすかな苦痛のうめき声がうずくまった人影から漏れた。その姿は急速に薄れつつある。", "talk_visual")
     data.trig = true
   elseif data.spot == 6 then
-    crawl.mpr("灰色の修行僧が泉の周りに集っている。彼らは黙し、互いに目を向けない。", "talk_visual")
+    crawl.mpr("灰色の修行僧が噴水の周りに集っている。彼らは黙し、互いに目を向けない。", "talk_visual")
     data.trig = true
   elseif data.spot == 7 then
     crawl.mpr("人影が静かに座って瞑想している。それはあなたを見つけるやいなや激しい身振りをし、そして消え失せた。", "talk_visual")
@@ -1951,7 +1951,7 @@ SUBST:      7 = 4, 8 = 5, df = 6, eg = 3
 :           set_feature_name("stone_wall", "black wall")
 :           set_feature_name("rock_wall", "carved rock wall")
 epilogue{{
-            wizlab_milestone(_G, "地獄に縛られしもの『" .. wizname .. "』の大広間")
+            wizlab_milestone(_G, "地獄に繋がれしもの『" .. wizname .. "』の大広間")
 }}
 MAP
 cccccccccccccccccccccccccccccccccccccccccccccc

@@ -12,6 +12,7 @@
 #include <string>
 #include <vector>
 
+#include "database.h"
 #include "format.h"
 #ifdef USE_TILE
  #include "tiledoll.h"
@@ -602,7 +603,7 @@ public:
     virtual const coord_def& get_min_coord() const { return m_min_coord; }
     virtual const coord_def& get_max_coord() const { return m_max_coord; }
 
-    virtual void set_description_text(const string& text) { m_description = text; }
+    virtual void set_description_text(const string& text) { m_description = jtrans(text); }
     virtual const string& get_description_text() const { return m_description; }
 
 #ifdef USE_TILE_LOCAL

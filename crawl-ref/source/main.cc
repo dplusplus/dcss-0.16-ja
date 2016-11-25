@@ -657,7 +657,7 @@ static void _take_starting_note()
             << "『" << you.your_name << "』"
             << "がオーブを探す冒険を始めた";
     take_note(Note(NOTE_MESSAGE, 0, 0, notestr.str().c_str()));
-    mark_milestone("begin", "began the quest for the Orb.");
+    mark_milestone("begin", jtrans("began the quest for the Orb."));
 
     notestr.str("");
     notestr.clear();
@@ -1939,7 +1939,12 @@ static void _do_cycle_quiver(int dir)
 static void _do_list_gold()
 {
     if (shopping_list.empty())
-        mprf(jtransc("You have %d gold piece%s."), you.gold, you.gold != 1 ? "s" : "");
+    {
+        if (you.gold > 0)
+            mprf(jtransc("You have %d gold piece%s."), you.gold, you.gold != 1 ? "s" : "");
+        else
+            mpr("あなたは一枚も金貨を持っていない。");
+    }
     else
         shopping_list.display();
 }
@@ -2807,7 +2812,7 @@ static void _open_door(coord_def move)
         if (door_veto_message.empty())
             mpr(jtrans("The door is shut tight!"));
         else
-            mpr(door_veto_message);
+            mpr(jtrans(door_veto_message));
         if (you.confused())
             you.turn_is_over = true;
 
@@ -3090,14 +3095,10 @@ static void _move_player(coord_def move)
             string prompt = "あなたは混乱しており、";
 
             if (dangerous != DNGN_FLOOR)
-                prompt += (dangerous == DNGN_LAVA ? "lava" : "deep water");
+                prompt += jtrans(dangerous == DNGN_LAVA ? "lava" : "deep water");
             else
             {
                 string name = bad_mons->name(DESC_PLAIN);
-                if (name.find("the ") == 0)
-                    name.erase(0, 4);
-                if (bad_adj.find("your") != 0)
-                    bad_adj = "the " + bad_adj;
                 prompt += jtrans(bad_adj) + name + jtrans(bad_suff);
             }
             prompt += "のそばに立っています。それでも移動しますか？";
@@ -3107,7 +3108,7 @@ static void _move_player(coord_def move)
 
             monster* targ = monster_at(you.pos() + move);
             if (targ && !targ->wont_attack() && you.can_see(targ))
-                prompt += " " + jtrans(" (Use ctrl+direction to attack without moving)");
+                prompt += "\n " + jtrans(" (Use ctrl+direction to attack without moving)");
 
             if (!crawl_state.disables[DIS_CONFIRMATIONS]
                 && !yesno(prompt.c_str(), false, 'n'))

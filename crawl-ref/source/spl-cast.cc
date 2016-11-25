@@ -808,7 +808,7 @@ bool cast_a_spell(bool check_range, spell_type spell)
     {
         string prompt = make_stringf(jtransc("The spell is %s to cast%s "
                                              "Continue anyway?"),
-                                     fail_severity_adjs[severity],
+                                     jtransc(fail_severity_adjs[severity]),
                                      severity > 1 ? "！ " : "。");
 
         if (!yesno(prompt.c_str(), false, 'n'))
@@ -953,7 +953,7 @@ static void _spellcasting_side_effects(spell_type spell, god_type god,
 */
 bool spell_is_uncastable(spell_type spell, string &msg, bool temp, bool evoked)
 {
-    msg = spell_uselessness_reason(spell, temp, true, evoked);
+    msg = jtrans(spell_uselessness_reason(spell, temp, true, evoked));
     return msg != "";
 }
 
@@ -1205,10 +1205,10 @@ vector<string> desc_success_chance(const monster_info& mi, int pow)
     vector<string> descs;
     const int mr = mi.res_magic();
     if (mr == MAG_IMMUNE)
-        descs.push_back("magic immune");
+        descs.push_back(jtrans("magic immune"));
     else
     {
-        descs.push_back(make_stringf("chance %d%%",
+        descs.push_back(make_stringf(jtransc("chance %d%%"),
                                      hex_success_chance(mr, pow, 100)).c_str());
     }
     return descs;
@@ -1546,6 +1546,11 @@ static spret_type _do_cast(spell_type spell, int powc,
     }
 
     const coord_def target = spd.isTarget ? beam.target : you.pos() + spd.delta;
+    if (spell == SPELL_FREEZE || spell == SPELL_VAMPIRIC_DRAINING)
+    {
+        if (!adjacent(you.pos(), target))
+            return SPRET_ABORT;
+    }
 
     switch (spell)
     {

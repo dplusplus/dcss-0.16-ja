@@ -265,11 +265,11 @@ string jpluralise(const string &name, const char *prefix, const char *suffix)
 
 static const char * const _pronoun_declension_j[][NUM_PRONOUN_CASES] =
 {
-    // subj     poss        refl          obj
-    { "それ",   "その",     "それ自身",   "それを"   }, // neuter
-    { "彼",     "彼の",     "彼自身",     "彼を"     }, // masculine
-    { "彼女",   "彼女の",   "彼女自身",   "彼女を"   }, // feminine
-    { "あなた", "あなたの", "あなた自身", "あなたを" }, // 2nd person
+    // subj     poss        refl        obj
+    { "それ",   "その",     "自ら",     "それを"   }, // neuter
+    { "彼",     "彼の",     "彼自身",   "彼を"     }, // masculine
+    { "彼女",   "彼女の",   "彼女自身", "彼女を"   }, // feminine
+    { "あなた", "あなたの", "自分自身", "あなたを" }, // 2nd person
 };
 
 const char *decline_pronoun_j(gender_type gender, pronoun_type variant)
@@ -320,4 +320,73 @@ string thing_do_grammar_j(description_level_type dtype, bool add_stop,
     default:
         return desc;
     }
+}
+
+string get_desc_quantity_j(const int quant, const int total, string whose)
+{
+    if (total == quant)
+        return whose;
+    else if (quant == 1)
+        return whose + "のうちの一つ";
+    else if (quant == 2)
+        return whose + "のうちの二つ";
+    else if (quant >= total * 3 / 4)
+        return whose + "のほとんど";
+    else
+        return whose + "のうちいくつか";
+}
+
+string jconj_verb(const string& verb, jconj conj)
+{
+    string v = verb;
+
+    switch(conj)
+    {
+        // 必要に応じて随時追加
+    case JCONJ_IRRE:
+        break;
+    case JCONJ_CONT:
+        break;
+    case JCONJ_TERM:
+        break;
+    case JCONJ_ATTR:
+        break;
+    case JCONJ_HYPO:
+        break;
+    case JCONJ_IMPR:
+        break;
+    case JCONJ_PERF:
+        v = replace_all(v, "立てる", "立てた");
+        v = replace_all(v, "鳴く", "鳴いた");
+        v = replace_all(v, "放つ", "放った");
+        v = replace_all(v, "吠える", "吠えた");
+        break;
+    case JCONJ_PASS:
+        v = replace_all(v, "を追放した", "が追放された"); // _takenote_kill_verb()
+        v = replace_all(v, "を中立化した", "が中立化させられた");
+        v = replace_all(v, "を隷属させた", "が隷属させられた");
+        v = replace_all(v, "をスライムに変えた", "がスライムに変えられた");
+        v = replace_all(v, "を殺した", "が殺された");
+        break;
+    case JCONJ_PRES:
+        v = replace_all(v, "射撃した", "射撃する");
+    }
+
+    return v;
+}
+
+string jnumber_for_hydra_heads(int heads)
+{
+    ASSERT((0 < heads) && (heads <= 27)); // for Lernaean hydra
+
+    string nums[10] = {"", "一", "二", "三", "四", "五", "六", "七", "八", "九"};
+    string num;
+
+    if(heads >= 20)
+        num += nums[heads / 10];
+    if(heads >= 10)
+        num += "十";
+    num += nums[heads % 10];
+
+    return num;
 }

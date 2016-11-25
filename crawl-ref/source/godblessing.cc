@@ -8,6 +8,7 @@
 #include "godblessing.h"
 
 #include "artefact.h"
+#include "database.h"
 #include "env.h"
 #include "itemprop.h"
 #include "items.h"
@@ -347,7 +348,7 @@ static string _beogh_bless_armour(monster* mon)
     {
         _gift_armour_to_orc(mon);
         if (mon->inv[MSLOT_ARMOUR] != NON_ITEM)
-            return "armour";
+            return "防具を授けた";
         dprf("Couldn't give armour to an orc!"); //?
         return "";
     }
@@ -642,7 +643,7 @@ static string _bless_with_healing(monster* follower)
     {
         balms = _blessing_balms(follower);
         if (balms)
-            blessing = "divine balms";
+            blessing = jtrans("divine balms");
         else
             dprf("Couldn't apply balms.");
     }
@@ -657,8 +658,8 @@ static string _bless_with_healing(monster* follower)
     if (healing)
     {
         if (balms)
-            blessing += " and ";
-        blessing += "healing";
+            blessing = replace_all(blessing, "注いだ", "注ぎ、そして");
+        blessing += jtrans("healing");
     }
     else
         dprf("Couldn't heal monster.");
@@ -684,8 +685,8 @@ static void _display_god_blessing(monster* follower, god_type god,
     string whom = you.can_see(follower) ? follower->name(DESC_THE)
     : "a follower";
 
-    simple_god_message(make_stringf(" blesses %s with %s.",
-                                    whom.c_str(), blessing.c_str()).c_str(),
+    simple_god_message(make_stringf(jtransc(" blesses %s with %s."),
+                                    jtransc(whom), jtransc(blessing)).c_str(),
                        god);
 
 #ifndef USE_TILE_LOCAL
@@ -737,8 +738,8 @@ static bool _beogh_bless_follower(monster* follower, bool force)
         if (coinflip())
             _beogh_blessing_reinforcements();
 
-        delayed_monster_done("Beogh blesses you with "
-                              "reinforcements.", "");
+        delayed_monster_done(jtrans("Beogh blesses you with "
+                                    "reinforcements."), "");
 
         // Return true, even though the reinforcements might
         // not be placed.
@@ -803,13 +804,13 @@ static string _tso_bless_duration(monster* follower)
     string blessing = "";
     if (friendliness)
     {
-        blessing += "friendliness";
+        blessing += jtrans("friendliness");
         if (more_time)
-            blessing += " and ";
+            blessing = replace_all(blessing, "深めた", "深め、");
     }
 
     if (more_time)
-        blessing += "more time in this world";
+        blessing += jtrans("more time in this world");
 
     return blessing;
 }

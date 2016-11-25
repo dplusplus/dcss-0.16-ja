@@ -36,6 +36,7 @@ int max_cloud_damage(cloud_type cl_type, int power = -1);
 int actor_apply_cloud(actor *act);
 
 string cloud_name_at_index(int cloudno);
+string cloud_name_at_index_j(int cloudno);
 string cloud_type_name(cloud_type type, bool terse = true);
 string cloud_type_name_j(cloud_type type, bool terse = true);
 cloud_type cloud_name_to_type(const string &name);

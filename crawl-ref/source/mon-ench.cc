@@ -222,12 +222,12 @@ void monster::add_enchantment_effect(const mon_enchant &ench, bool quiet)
             if (type == MONS_AIR_ELEMENTAL)
             {
                 mprf(jtransc("%s merges itself into the air."),
-                     jtransc(name(DESC_PLAIN, true)));
+                     jtransc(name(DESC_THE, true)));
             }
             else if (type == MONS_TRAPDOOR_SPIDER)
             {
                 mprf(jtransc("%s hides itself under the floor."),
-                     jtransc(name(DESC_PLAIN, true)));
+                     jtransc(name(DESC_A, true)));
             }
             else if (seen_context == SC_SURFACES)
             {
@@ -240,7 +240,7 @@ void monster::add_enchantment_effect(const mon_enchant &ench, bool quiet)
                 // to happen mostly (only?) for fish. -- 1KB
             }
             else if (crawl_state.game_is_arena())
-                mprf(jtransc("%s submerges."), jtransc(name(DESC_PLAIN, true)));
+                mprf(jtransc("%s submerges."), jtransc(name(DESC_A, true)));
         }
 
         // Pacified monsters leave the level when they submerge.
@@ -307,7 +307,7 @@ void monster::add_enchantment_effect(const mon_enchant &ench, bool quiet)
                 mprf(jtransc(friendly() ?
                              "You detect the %s %s." :
                              "You can no longer detect the %s %s."),
-                     ench.ench == ENCH_HEXED ? "呪われた" :
+                     ench.ench == ENCH_HEXED ? "呪縛された" :
                      ench.ench == ENCH_CHARM ? "魅了された"
                                              : "買収された",
                      name(DESC_PLAIN, true).c_str());
@@ -627,7 +627,7 @@ void monster::remove_enchantment_effect(const mon_enchant &me, bool quiet)
             && !friendly() && !you.duration[DUR_TELEPATHY])
         {
             if (!quiet)
-                mprf(jtransc("%s appears from thin air!"), jtransc(name(DESC_PLAIN, true)));
+                mprf(jtransc("%s appears from thin air!"), jtransc(name(DESC_A, true)));
 
             autotoggle_autopickup(false);
             handle_seen_interrupt(this);
@@ -651,7 +651,7 @@ void monster::remove_enchantment_effect(const mon_enchant &me, bool quiet)
                 else
                     mprf(jtransc("%s is no longer %s."), jtransc(name(DESC_THE, true)),
                          me.ench == ENCH_CHARM   ? "魅了されて"
-                         : me.ench == ENCH_HEXED ? "呪われて"
+                         : me.ench == ENCH_HEXED ? "呪縛されて"
                                                  : "買収されて");
 
                 mprf(jtransc(friendly() ? "You can once again detect the %s."
@@ -712,11 +712,11 @@ void monster::remove_enchantment_effect(const mon_enchant &me, bool quiet)
     if (!quiet)
         {
             if (visible_to(&you))
-                simple_monster_message(this, " stops glowing.");
+                simple_monster_message(this, jtransc(" stops glowing."));
             else if (has_ench(ENCH_INVIS) && mons_near(this))
             {
                 mprf(jtransc("%s stops glowing and disappears."),
-                     name(DESC_THE, true).c_str());
+                     jtransc(name(DESC_THE, true)));
             }
         }
         break;
@@ -818,13 +818,13 @@ void monster::remove_enchantment_effect(const mon_enchant &me, bool quiet)
                 if (type == MONS_AIR_ELEMENTAL)
                 {
                     mprf(channel, jtransc("%s forms itself from the air!"),
-                                  jtransc(name(DESC_PLAIN, true)));
+                                  jtransc(name(DESC_THE, true)));
                 }
                 else if (type == MONS_TRAPDOOR_SPIDER)
                 {
                     mprf(channel,
                          jtransc("%s leaps out from its hiding place under the floor!"),
-                         jtransc(name(DESC_PLAIN, true)));
+                         jtransc(name(DESC_A, true)));
                 }
                 else if (type == MONS_LOST_SOUL)
                 {
@@ -832,7 +832,7 @@ void monster::remove_enchantment_effect(const mon_enchant &me, bool quiet)
                                   jtransc(name(DESC_A)));
                 }
                 else if (crawl_state.game_is_arena())
-                    mprf(jtransc("%s surfaces."), jtransc(name(DESC_PLAIN, true)));
+                    mprf(jtransc("%s surfaces."), jtransc(name(DESC_A, true)));
             }
         }
         else if (mons_near(this)
@@ -970,7 +970,7 @@ void monster::remove_enchantment_effect(const mon_enchant &me, bool quiet)
 
     case ENCH_CONTROL_WINDS:
         if (!quiet && you.can_see(this))
-            mprf(jtransc("The winds cease moving at %s will."), jtransc(name(DESC_ITS)));
+            mprf(jtransc("The winds cease moving at %s will."), jtransc(name(DESC_PLAIN)));
         break;
 
     case ENCH_TOXIC_RADIANCE:
@@ -1444,7 +1444,7 @@ static void _merfolk_avatar_song(monster* mons)
             if (you.see_cell(mons->pos()))
             {
                 mprf(jtransc("Shadowy forms rise from the deep at %s song!"),
-                     jtransc(mons->name(DESC_PLAIN)));
+                     jtransc(mons->name(DESC_ITS)));
             }
             mons->props["merfolk_avatar_call"].get_bool() = true;
         }
@@ -1731,7 +1731,7 @@ void monster::apply_enchantment(const mon_enchant &me)
                         mon->add_ench(mon_enchant(ENCH_FEAR, dur + random2(20),
                                                   me.agent()));
                         if (visible_to(&you))
-                            mprf(jtransc("%s catches fire!"), jtransc(mon->name(DESC_PLAIN)));
+                            mprf(jtransc("%s catches fire!"), jtransc(mon->name(DESC_A)));
                         behaviour_event(mon, ME_SCARE, me.agent());
                         xom_is_stimulated(100);
                     }
@@ -1758,9 +1758,9 @@ void monster::apply_enchantment(const mon_enchant &me)
             if (you.can_see(this))
             {
                 if (type == MONS_PILLAR_OF_SALT)
-                    mprf(jtransc("%s crumbles away."), jtransc(name(DESC_PLAIN, false)));
+                    mprf(jtransc("%s crumbles away."), jtransc(name(DESC_THE, false)));
                 else if (type == MONS_BLOCK_OF_ICE)
-                    mprf(jtransc("%s melts away."), jtransc(name(DESC_PLAIN, false)));
+                    mprf(jtransc("%s melts away."), jtransc(name(DESC_THE, false)));
                 else
                 {
                     mprf(jtransc("A nearby %s withers and dies."),
@@ -1964,7 +1964,7 @@ void monster::apply_enchantment(const mon_enchant &me)
             if (you.can_see(this))
             {
                 mprf(jtransc("The winds around %s start to calm down."),
-                     jtransc(name(DESC_PLAIN)));
+                     jtransc(name(DESC_THE)));
             }
         }
         break;
@@ -2017,7 +2017,7 @@ void monster::apply_enchantment(const mon_enchant &me)
             if (you.can_see(this))
             {
                 mprf(jtransc("%s word of recall is interrupted."),
-                     jtransc(name(DESC_PLAIN)));
+                     jtransc(name(DESC_ITS)));
             }
             break;
         }

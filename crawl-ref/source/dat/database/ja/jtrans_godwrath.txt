@@ -1,0 +1,393 @@
+%%%%
+The wrath of Zin
+
+ジンの怒り
+%%%%
+The wrath of the Shining One
+
+# unused
+%%%%
+The malice of Kikubaaqudgha
+
+キクバークッグァの悪意
+%%%%
+The anger of Yredelemnul
+
+イレデレンヌルの憤り
+%%%%
+The capriciousness of Xom
+
+ゾムの気紛れ
+%%%%
+The wrath of Vehumet
+
+ヴェフメットの怒り
+%%%%
+The fury of Okawaru
+
+オカワルの激怒
+%%%%
+The fury of Makhleb
+
+マクレブの激怒
+%%%%
+The will of Sif Muna
+
+シフ・ムーナの意志
+%%%%
+The fiery rage of Trog
+
+トログの赫怒
+%%%%
+The wrath of Nemelex Xobeh
+
+ネメレクス・ソベーの怒り
+%%%%
+The displeasure of Elyvilon
+
+エリヴィロンの不満
+%%%%
+The touch of Lugonu
+
+ルゴヌの御手
+%%%%
+The wrath of Beogh
+
+ベオの怒り
+%%%%
+The vengeance of Jiyva
+
+ジーヴァの報復
+%%%%
+The enmity of Fedhas Madash
+
+フェダス・マダシュの恨み
+%%%%
+The meddling of Cheibriados
+
+ケイブリアドスの干渉
+%%%%
+The doom of Ashenzari
+
+# unused
+%%%%
+The darkness of Dithmenos
+
+ディスメノスの闇
+%%%%
+The greed of Gozag
+
+# unused
+%%%%
+The adversity of Qazlal
+
+クァズラルの災厄
+%%%%
+The disappointment of Ru
+
+ルーの失望
+%%%%
+sends the divine host to punish you for your evil ways!
+
+は邪悪な行いをしたあなたに神の軍勢を差し向けた！
+%%%%
+'s divine host fails to appear.
+
+の軍勢は現れなかった。
+%%%%
+booms out: "Take the path of righteousness! REPENT!"
+
+の声が轟き渡った: 『正しき道を歩むのだ！ 悔やむがいい！』
+%%%%
+You feel the Shining One's silent rage upon you!
+
+あなたは輝けるものの声なき怒りをその身に感じた。
+%%%%
+draws some chaos from your body!
+
+はあなたの体から混沌を抜き取った。
+%%%%
+Zin's wrath
+
+ジンの怒り
+%%%%
+rids your body of chaos!
+
+はあなたの体の混沌を除去した！
+%%%%
+recites the Axioms of Law to you!
+
+はあなたに法理を説いた！
+%%%%
+sends a famine down upon you!
+
+はあなたに飢餓をもたらした！
+%%%%
+booms out: "Turn to the light! REPENT!"
+
+の声が轟き渡った: 『光へと回帰せよ！ 悔やむがいい！』
+%%%%
+dulls one of your weapons.
+
+はあなたの持つ武器の一つを劣化させた。
+%%%%
+dulls your weapons.
+
+はあなたの持つ武器を劣化させた。
+%%%%
+'s displeasure finds you.
+
+はあなたに不満をぶつけた。
+%%%%
+adjusts the clock.
+
+は時計の針をいじった。
+%%%%
+You lose track of time.
+
+あなたは時間がどれくらい経ったか分からなくなった。
+%%%%
+You feel the world leave you behind!
+
+あなたは周りのすべてに置いていかれるような感覚がした！
+%%%%
+Time shudders.
+
+時間が振動した。
+%%%%
+makes up for lost time.
+
+は失った時間の埋め合わせをした。
+%%%%
+rains destruction down upon you!
+
+は破壊の雨をあなたに降らせた！
+%%%%
+has no time to deal with you just now.
+
+は今のところあなたに構っている暇はないようだ。
+%%%%
+sends minions to punish you.
+
+はあなたを懲罰するため使徒たちを遣わした。
+%%%%
+sends a minion to punish you.
+
+はあなたを懲罰するため使徒を遣わした。
+%%%%
+'s minions fail to arrive.
+
+の使徒は来なかった。
+%%%%
+You hear Kikubaaqudgha cackling.
+
+あなたはキクバークッグァの笑い声を耳にした。
+%%%%
+Kikubaaqudgha's malice focuses upon you.
+
+キクバークッグァはあなたに悪意を向けた。
+%%%%
+sends servants to punish you.
+
+はあなたを懲罰するため従僕たちを遣わした。
+%%%%
+sends a servant to punish you.
+
+はあなたを懲罰するため従僕を遣わした。
+%%%%
+'s servants fail to arrive.
+
+の従僕は来なかった。
+%%%%
+'s anger turns toward you for a moment.
+
+の憤りが一瞬あなたに向けられた。
+%%%%
+sends monsters to punish you.
+
+はあなたを懲罰するためモンスターの群れを遣わした。
+%%%%
+sends a monster to punish you.
+
+はあなたを懲罰するためモンスターを遣わした。
+%%%%
+has no time to punish you... now.
+
+は今のところあなたを懲罰している暇はないようだ。
+%%%%
+'s voice booms out, "Feel my wrath!"
+
+の声が轟き渡った: 『我が怒りを受けよ！』
+%%%%
+divine retribution from Trog
+
+トログの天罰
+%%%%
+You suddenly pass out!
+
+あなたは突然意識を失った！
+%%%%
+You suddenly feel exhausted!
+
+あなたは突然疲労困憊した！
+%%%%
+You feel Trog's fiery rage upon you!
+
+あなたはトログの赫怒をその身に感じた！
+%%%%
+throws an implement of electrocution at you.
+
+はあなたに電撃の武器を投げつけた。
+%%%%
+throws implements of electrocution at you.
+
+はあなたに電撃の武器をいくつか投げつけた。
+%%%%
+sends forth an army of orcs.
+
+はオークの軍勢を差し向けた。
+%%%%
+is still gathering forces against you.
+
+はあなたに差し向ける軍勢を手配中だ。
+%%%%
+sends forces against you!
+
+はあなたに手勢を差し向けた。
+%%%%
+'s forces are busy with other wars.
+
+の軍勢は別の戦いで忙しい。
+%%%%
+'s wrath finds you.
+
+はあなたに怒りをぶつけた。
+%%%%
+divine retribution from Sif Muna
+
+シフ・ムーナの天罰
+%%%%
+You suddenly feel drained of magical energy!
+
+あなたは突然魔力を吸われたような気がした！
+%%%%
+'s wrath finds you!
+
+はあなたに怒りをぶつけた！
+%%%%
+Lugonu's touch
+
+ルゴヌの御手
+%%%%
+makes you draw from the Deck of Punishment.
+
+はあなたに懲罰のデッキからカードを引かせた。
+%%%%
+You feel Jiyva alter your body.
+
+ジーヴァがあなたの体を変容させたような気がした。
+%%%%
+Jiyva's wrath
+
+ジーヴァの怒り
+%%%%
+'s putrescence saturates %s!
+
+は%sをスライムへと変えた！
+%%%%
+Mutagenic energy floods into your body!
+
+変異性のエネルギーがあなたの体を満たしている！
+%%%%
+Some slimes ooze up out of the ground!
+
+スライムの群れが地面からにじみ出した！
+%%%%
+The ground quivers slightly.
+
+地面が少し振動した。
+%%%%
+invokes the elements against you.
+
+はあなたに自然の精霊たちをけしかけた。
+%%%%
+Plants grow around you in an ominous manner.
+
+あなたの周囲の植物が不気味に成長した。
+%%%%
+produces spores.
+
+は胞子を放った。
+%%%%
+calls forth shadows to punish you.
+
+はあなたに影の群れを差し向けた。
+%%%%
+fails to incite the shadows against you.
+
+はあなたに影の群れを差し向けるのに失敗した。
+%%%%
+weaves monsters from the shadows.
+
+は影からモンスターの群れを生み出した。
+%%%%
+fails to weave monsters from the shadows.
+
+は影からモンスターの群れを生み出すことに失敗した。
+%%%%
+You feel overwhelmed by the shadows around you.
+
+あなたは周囲を取りまく影の群れに圧倒された。
+%%%%
+tears the shadows away from you.
+
+はあなたから影を奪い去った。
+%%%%
+incites the elements against you!
+
+はあなたに自然の精霊たちをけしかけた！
+%%%%
+fails to incite the elements against you.
+
+はあなたに自然の精霊たちをけしかけるのに失敗した。
+%%%%
+strips away your elemental protection.
+
+はあなたが受けていた精霊の加護を剥ぎとった。
+%%%%
+fails to strip away your elemental protection.
+
+はあなたが受けている精霊の加護を奪うのに失敗した。
+%%%%
+causes a mighty clap of thunder!
+
+は轟く雷鳴を引き起こした！
+%%%%
+The divine experience confuses you!
+
+神の手によりあなたは混乱した！
+%%%%
+The divine experience leaves you feeling exhausted!
+
+神の手によりあなたは疲労困憊した！
+%%%%
+Beogh is angry!
+
+ベオは怒った！
+%%%%
+"Mortal, I have averted the wrath of %s... this time."
+
+『定命の者よ、今回は%sの怒りを逸らしてやろう……』
+%%%%
+blasts you with cleansing flame!
+
+は浄化の炎をあなたに浴びせた！
+%%%%
+smitten by
+
+に打擲された
+%%%%
+smites you!
+
+はあなたに打擲の一撃を浴びせた！
+%%%%

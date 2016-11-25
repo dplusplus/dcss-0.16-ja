@@ -502,7 +502,7 @@ void actor::end_constriction(mid_t whom, bool intentional, bool quiet)
         if (intentional)
         {
             mprf(jtransc("%s %s %s grip on %s."),
-                 name(DESC_THE).c_str(),
+                 jtransc(name(DESC_THE)),
                  jtransc(constrictee->name(DESC_THE)),
                  jtransc("release"));
         }
@@ -510,7 +510,7 @@ void actor::end_constriction(mid_t whom, bool intentional, bool quiet)
         {
             mprf(jtransc("%sは%sの締めつけから逃れた。"),
                  jtransc(constrictee->name(DESC_THE)),
-                 name(DESC_THE).c_str());
+                 jtransc(name(DESC_THE)));
         }
     }
 }
@@ -890,12 +890,12 @@ void actor::collide(coord_def newpos, const actor *agent, int pow)
     {
         if (!can_pass_through_feat(grd(newpos)))
         {
-            mprf("%s %s into %s!",
-                 jtransc(name(DESC_THE)), "ぶつかった",
+            mprf(jtransc("%s %s into %s!"),
+                 jtransc(name(DESC_THE)),
                  jtransc(env.map_knowledge(newpos).known()
-                 ? feature_description_at(newpos, false, DESC_THE, false)
-                       .c_str()
-                 : "something"));
+                         ? feature_description_at(newpos, false, DESC_THE, false).c_str()
+                         : "something"),
+                 "ぶつかった");
         }
         else
         {

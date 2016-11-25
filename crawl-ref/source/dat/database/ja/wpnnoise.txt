@@ -64,8 +64,11 @@ w:28
 w:2
 @_instrumental_noises_@
 
+# w:20
+# SOUND:You hear @weapon_noise@
 w:20
-SOUND:You hear @weapon_noise@
+SOUND:あなたは@weapon_noise@
+
 
 ###############################################################################
 # Weapon chatter.
@@ -249,82 +252,120 @@ w:20
 weapon_noise
 
 ############ dungeon noises ############
-a shout.
+# a shout.
+叫び声を耳にした。
 
-an angry hiss.
+# an angry hiss.
+険悪なシューッという音を耳にした。
 
-a high-pitched scream!
+# a high-pitched scream!
+甲高い叫び声を耳にした！
 
-a roar!
+# a roar!
+咆哮を耳にした！
 
-a hideous shriek!
+# a hideous shriek!
+おぞましい金切り声を耳にした!
 
-a piteous moan.
+# a piteous moan.
+痛ましいうめき声を耳にした。
 
-a screech!
+# a screech!
+ギャーギャー鳴く声を耳にした！
 
-a bellow!
+# a bellow!
+唸り声を耳にした！
 
-a loud, deep croak!
+# a loud, deep croak!
+やかましくゲコゲコ鳴く声を耳にした！
 
-an angry buzzing noise.
+# an angry buzzing noise.
+剣呑なブンブンいう音を耳にした。
 
-a splashing noise.
+# a splashing noise.
+水のはねる音を耳にした。
 
-a sizzling sound.
+# a sizzling sound.
+ジュージューという音を耳にした。
 
-a loud clanging noise!
+# a loud clanging noise!
+雑音が鳴り響くのを聞いた！
 
-a grinding noise.
+# a grinding noise.
+軋むような音を耳にした。
 
-a mighty clap of thunder!
+# a mighty clap of thunder!
+轟く雷鳴を耳にした！
 
-a hideous screaming!
+# a hideous screaming!
+耳障りな金切り声を耳にした！
 
-a bark!
+# a bark!
+吠え声を耳にした！
 
-a rumbling sound.
+# a rumbling sound.
+ゴロゴロという音を耳にした。
 
-a crunching sound.
+# a crunching sound.
+何かをバリバリ噛み砕く音を耳にした。
 
-a distant "Zot"!
+# a distant "Zot"!
+遠くに『ゾット』の声を聞いた！
 
-the distant roaring of an enraged frog.
+# the distant roaring of an enraged frog.
+遠くでカエルが猛烈に鳴く声を耳にした。
 
 ############ other noises, usually not found in the dungeon ############
-a knock.
+# a knock.
+ノックの音を耳にした。
 
-a voice calling your name.
+# a voice calling your name.
+自分の名前を呼ぶ声を耳にした。
 
-a very strange noise.
+# a very strange noise.
+とても奇妙な物音を耳にした。
 
-someone snoring.
+# someone snoring.
+誰かのいびきを耳にした。
 
-someone calling for help!
+# someone calling for help!
+誰かが助けを呼ぶ声を耳にした！
 
-strange voices.
+# strange voices.
+奇妙な声を耳にした。
 
-maniacal laughter.
+# maniacal laughter.
+狂気の笑い声を聞いた。
 
-snatches of song.
+# snatches of song.
+何かの曲の断片を耳にした。
 
-a twanging sound.
+# a twanging sound.
+楽器がポロロンと鳴る音を耳にした。
 
-the chiming of a distant gong.
+# the chiming of a distant gong.
+遠くで銅鑼が鳴る音を耳にした。
 
-the tinkle of an enormous bell.
+# the tinkle of an enormous bell.
+大きな鐘がガランガランと鳴る音を耳にした。
 
-an echo.
+# an echo.
+反響する音が聞こえた。
 
-the wailing of sirens.
+# the wailing of sirens.
+はセイレーンの泣き声を耳にした。
 
-a flourish of trumpets!
+# a flourish of trumpets!
+ラッパの音を耳にした！
 
-a strangely pleasant explosion.
+# a strangely pleasant explosion.
+奇妙で愉快な爆発音を耳にした。
 
-distant weeping.
+# distant weeping.
+遠くですすり泣く声を耳にした。
 
-a muffled joke.
+# a muffled joke.
+よく聞き取れない笑い話を耳にした。
 
 ###############################################################################
 ###############################################################################
@@ -795,9 +836,11 @@ _rare_speaking_no_tension_
 w:1
 @The_weapon@ snarls, "Dear diary, yet another boring day with @player_name@..."
 
-@The_weapon@ says, "In my experience, @player_genus_plural@ are mediocre at best."
+# @The_weapon@ says, "In my experience, @player_genus_plural@ are mediocre at best."
+@The_weapon@は『経験からすると、ひいき目に見ても@player_genus@は平凡だ』と言った。
 
-@The_weapon@ groans, "Among all @player_genus_plural@, @player_name@ is the worst."
+# @The_weapon@ groans, "Among all @player_genus_plural@, @player_name@ is the worst."
+@The_weapon@『@player_genus_plural@の中でも、@player_name@が最低だ』とうめいた。
 
 @The_weapon@ says, "Unhand me, foul miscreant!"
 

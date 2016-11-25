@@ -19,6 +19,7 @@
 #include "itemprop.h"
 #include "items.h"
 #include "item_use.h"
+#include "japanese.h"
 #include "makeitem.h"
 #include "message.h"
 #include "notes.h"
@@ -45,10 +46,10 @@ static bool _confirm_pray_sacrifice(god_type god)
             && needs_handle_warning(*si, OPER_PRAY, penance))
         {
             string prompt = "Really sacrifice stack with ";
-            prompt += si->name(DESC_A);
-            prompt += " in it?";
+            prompt += jtrans(si->name(DESC_PLAIN));
+            prompt += "に積まれたアイテムを捧げますか？";
             if (penance)
-                prompt += " This could place you under penance!";
+                prompt += " " + jtrans("This could place you under penance!");
 
             if (!yesno(prompt.c_str(), false, 'n'))
             {
@@ -145,7 +146,7 @@ static bool _bless_weapon(god_type god, brand_type brand, colour_t colour)
     calc_mp(); // in case the old brand was antimagic,
     you.redraw_armour_class = true; // protection,
     you.redraw_evasion = true;      // or evasion
-    string desc = old_name + " "
+    string desc = old_name + "は"
                 + jtrans(god == GOD_SHINING_ONE   ? "blessed by the Shining One" :
                          god == GOD_LUGONU        ? "corrupted by Lugonu" :
                          god == GOD_KIKUBAAQUDGHA ? "bloodied by Kikubaaqudgha"
@@ -394,12 +395,12 @@ int zin_tithe(const item_def& item, int quant, bool quiet, bool converting)
         }
         taken = tithe;
         you.attribute[ATTR_DONATIONS] += tithe;
-        mprf("You pay a tithe of %d gold.", tithe);
+        mprf(jtransc("You pay a tithe of %d gold."), tithe);
 
         if (item.plus == 1) // seen before worshipping Zin
         {
             tithe = 0;
-            simple_god_message(" ignores your late donation.");
+            simple_god_message(jtransc(" ignores your late donation."));
         }
         // A single scroll can give you more than D:1-18, Lair and Orc
         // together, limit the gains.  You're still required to pay from
@@ -521,9 +522,9 @@ static bool _zin_donate_gold()
  */
 static void _ashenzari_sac_scroll(const item_def& item)
 {
-    mprf("%s flickers black.",
-         get_desc_quantity(1, item.quantity,
-                           item.name(DESC_THE)).c_str());
+    mprf(jtransc("%s flickers black."),
+         get_desc_quantity_j(1, item.quantity,
+                             item.name(DESC_THE)).c_str());
 
     const int wpn_weight = 3;
     const int jwl_weight = (you.species != SP_OCTOPODE) ? 3 : 9;
@@ -560,7 +561,7 @@ static void _ashenzari_sac_scroll(const item_def& item)
         int it = items(false, OBJ_SCROLLS, scroll_type, 0);
         if (it == NON_ITEM)
         {
-            mpr("You feel the world is against you.");
+            mpr(jtrans("You feel the world is against you."));
             return;
         }
 
@@ -571,8 +572,8 @@ static void _ashenzari_sac_scroll(const item_def& item)
             destroy_item(it, true); // can't happen
     }
 
-    mprf("%s appear.", comma_separated_line(scroll_names.begin(),
-                                            scroll_names.end()).c_str());
+    mprf(jtransc("%s appear."), to_separated_line(scroll_names.begin(),
+                                                  scroll_names.end()).c_str());
 }
 
 static piety_gain_t _sac_corpse(const item_def& item)
@@ -707,7 +708,7 @@ static bool _offer_items()
         // Ignore {!D} inscribed items.
         if (!check_warning_inscriptions(item, OPER_DESTROY))
         {
-            mpr("Won't sacrifice {!D} inscribed item.");
+            mpr(jtrans("Won't sacrifice {!D} inscribed item."));
             i = next;
             continue;
         }
@@ -717,7 +718,7 @@ static bool _offer_items()
                 || item_needs_autopickup(item)
                     && GOD_ASHENZARI != you.religion))
         {
-            const string msg = "Really sacrifice " + item.name(DESC_A) + "?";
+            const string msg = jtrans("Really sacrifice ") + item.name(DESC_A) + "を捧げますか？";
 
             if (!yesno(msg.c_str(), false, 'n'))
             {
@@ -750,11 +751,11 @@ static bool _offer_items()
     if (num_sacced == 0 && num_disliked > 0)
     {
         if (god_likes_fresh_corpses(you.religion))
-            simple_god_message(" only cares about fresh corpses!");
+            simple_god_message(jtransc(" only cares about fresh corpses!"));
         else if (you_worship(GOD_BEOGH))
-            simple_god_message(" only cares about orcish remains!");
+            simple_god_message(jtransc(" only cares about orcish remains!"));
         else if (you_worship(GOD_ASHENZARI))
-            simple_god_message(" can corrupt only scrolls of remove curse.");
+            simple_god_message(jtransc(" can corrupt only scrolls of remove curse."));
     }
 
     return num_sacced > 0;

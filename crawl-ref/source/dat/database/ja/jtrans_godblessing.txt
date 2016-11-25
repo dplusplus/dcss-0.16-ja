@@ -1,0 +1,61 @@
+%%%%
+uncursed armament
+
+装備の呪いを解いた
+%%%%
+superior armament
+
+その武器を強化した
+%%%%
+ammunition
+
+矢弾を授けた
+%%%%
+ranged armament
+
+飛び道具を授けた
+%%%%
+armament
+
+武器を授けた
+%%%%
+a shield
+
+盾を授けた
+%%%%
+improved armour
+
+その防具を強化した
+%%%%
+divine balms
+
+聖なる香油を注いだ
+%%%%
+healing
+
+その傷を癒した
+%%%%
+a follower
+
+従者
+%%%%
+blesses %s with %s.
+
+は%sを祝福し、%s。
+%%%%
+Beogh blesses you with reinforcements.
+
+ベオはあなたを祝福し、増援のオークたちを遣わした。
+%%%%
+priesthood
+
+自らの司祭へと任命した
+%%%%
+friendliness
+
+あなたとの親睦を深めた
+%%%%
+more time in this world
+
+さらに長い間現世にいられるようにした
+%%%%

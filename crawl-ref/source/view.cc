@@ -318,8 +318,8 @@ void update_monsters_in_view()
         }
 
         bool warning = false;
-        string warning_msg = you_worship(GOD_ZIN) ? "Zin warns you:"
-                                                  : "Ashenzari warns you:";
+        string warning_msg = jtrans(you_worship(GOD_ZIN) ? "Zin warns you:"
+                                                         : "Ashenzari warns you:");
         warning_msg += " ";
         for (const monster* mon : monsters)
         {
@@ -344,28 +344,41 @@ void update_monsters_in_view()
             if (size == 1)
                 monname = mon->pronoun(PRONOUN_SUBJECTIVE);
             else if (mon->type == MONS_DANCING_WEAPON)
-                monname = "There";
+            {
+                warning_msg += "そこには";
+                if (you_worship(GOD_ZIN))
+                {
+                    warning_msg += jtrans(" a foul ");
+                    if (mon->has_ench(ENCH_GLOWING_SHAPESHIFTER))
+                        warning_msg += "暴走した";
+                    warning_msg += jtrans("shapeshifter");
+                    warning_msg += "がいる。";
+                }
+                else
+                    warning_msg += get_monster_equipment_desc(mi, DESC_IDENTIFIED,
+                                                              DESC_NONE);
+                continue;
+            }
             else if (types[mon->type] == 1)
                 monname = mon->full_name(DESC_THE);
             else
                 monname = mon->full_name(DESC_A);
             warning_msg += uppercase_first(monname);
 
-            warning_msg += " is";
+            warning_msg += "は";
             if (you_worship(GOD_ZIN))
             {
-                warning_msg += " a foul ";
+                warning_msg += jtrans(" a foul ");
                 if (mon->has_ench(ENCH_GLOWING_SHAPESHIFTER))
-                    warning_msg += "glowing ";
-                warning_msg += "shapeshifter";
+                    warning_msg += "暴走した";
+                warning_msg += jtrans("shapeshifter");
             }
             else
             {
-                warning_msg += " "
-                               + get_monster_equipment_desc(mi, DESC_IDENTIFIED,
+                warning_msg += get_monster_equipment_desc(mi, DESC_IDENTIFIED,
                                                             DESC_NONE);
             }
-            warning_msg += ".";
+            warning_msg += "だ。";
         }
         if (warning)
         {
@@ -403,10 +416,10 @@ void update_monsters_in_view()
             }
             if (mons.size() > 0)
             {
-                string msg = make_stringf("Gozag incites %s against you.",
+                string msg = make_stringf(jtransc("Gozag incites %s against you."),
                                           mon_count.describe().c_str());
                 if (strwidth(msg) >= get_number_of_cols() - 2)
-                    msg = "Gozag incites your enemies against you.";
+                    msg = jtrans("Gozag incites your enemies against you.");
                 mprf(MSGCH_GOD, GOD_GOZAG, "%s", msg.c_str());
                 for (monster *mon : mons)
                     gozag_incite(mon);
@@ -624,7 +637,7 @@ bool magic_mapping(int map_radius, int proportion, bool suppress_msg,
     if (!suppress_msg)
     {
         if (did_map)
-            mpr("You feel aware of your surroundings.");
+            mpr(jtrans("You feel aware of your surroundings."));
         else
             canned_msg(MSG_DISORIENTED);
 
@@ -632,19 +645,20 @@ bool magic_mapping(int map_radius, int proportion, bool suppress_msg,
 
         if (num_altars > 0)
         {
-            sensed.push_back(make_stringf("%d altar%s", num_altars,
+            sensed.push_back(make_stringf(jtransc("%d altar%s"), num_altars,
                                           num_altars > 1 ? "s" : ""));
         }
 
         if (num_shops_portals > 0)
         {
             const char* plur = num_shops_portals > 1 ? "s" : "";
-            sensed.push_back(make_stringf("%d shop%s/portal%s",
+            sensed.push_back(make_stringf(jtransc("%d shop%s/portal%s"),
                                           num_shops_portals, plur, plur));
         }
 
         if (!sensed.empty())
-            mpr_comma_separated_list("You sensed ", sensed);
+            mpr("あなたは" + to_separated_line(sensed.begin(), sensed.end())
+                           + "を見つけた。");
     }
 
     return did_map;

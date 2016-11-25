@@ -1151,7 +1151,7 @@ VISUAL:@The_monster@はぷるぷる揺れている。
 'l'
 
 # @The_monster@ hisses menacingly.
-@The_monster@威嚇のシューッという音を立てている。
+@The_monster@は威嚇のシューッという音を立てている。
 %%%%
 'r'
 
@@ -1438,7 +1438,7 @@ VISUAL:@The_monster@はあまりにも小さく囁いたので何を言ったか
 VISUAL:一瞬@the_monster@を見失った。
 
 # @The_monster@ whispers, "Be very very quiet, I'm hunting @player_genus_plural@." @player_only@
-@The_monster@は『シーッ、静かに！ @player_genus_plural@狩りだ！』と囁いた。
+@The_monster@は『シーッ、静かに！ @player_genus@狩りだ！』と囁いた。
 # よくある言い回しのようだがよく分からない。意訳
 
 # VISUAL:For a moment, @the_monster@ blends into the shadows.
@@ -1750,10 +1750,10 @@ Gozag player ghost
 VISUAL:@The_monster@は金貨の詰まった財布をあなたに見せびらかした。
 
 # @The_monster@ says, "You're as good as gold."
-@The_monster@は『』と言った。
+@The_monster@は『とってもいい子、金貨みたいに』と言った。
 
 # @The_monster@ says, "I guess you can't buy your way into a good afterlife."
-@The_monster@は『』と言った。 says, "I guess you can't buy your way into a good afterlife."
+@The_monster@は『地獄の沙汰も金次第、とはいかんぞ』と言った。
 %%%%
 Jiyva player ghost
 
@@ -4707,9 +4707,11 @@ VISUAL:@The_monster@ is momentarily distracted by a flea in @possessive@ coat.
 
 @The_monster@ @_Grum_verb_@, "You're dog chow, @player_name@!"
 
-@The_monster@ asks, "What kind of bones do @player_genus_plural@ have? My dogs are dying to find out." @player_only@
+# @The_monster@ asks, "What kind of bones do @player_genus_plural@ have? My dogs are dying to find out." @player_only@
+@The_monster@は『@player_genus@の骨は一体どんな感じなんだ？ 俺の犬が欲しがってるんだ』と尋ねた。 @player_only@
 
-@The_monster@ says @to_foe@, "What's my secret? I feed my dogs @player_genus_plural@. It makes their fur nice and shiny." @player_only@
+# @The_monster@ says @to_foe@, "What's my secret? I feed my dogs @player_genus_plural@. It makes their fur nice and shiny." @player_only@
+@The_monster@は@to_foe@に『秘密にしてることは何かって？ @player_genus@を犬に食わせるんだ。毛皮が光っていい感じになるぜ』と言った。 @player_only@
 
 @The_monster@ looks @at_foe@ and @_Grum_verb_@, "Time to put down the runt of the litter."
 
@@ -7520,21 +7522,28 @@ w:4
 # on sight
 beogh_converted_orc_reaction_sight
 
-@The_monster@ stares at you in amazement and kneels.
+# @The_monster@ stares at you in amazement and kneels.
+@The_monster@は驚きの表情であなたを見つつひざまずいた。
 
-@The_monster@ relaxes @possessive@ fighting stance and smiles at you.
+# @The_monster@ relaxes @possessive@ fighting stance and smiles at you.
+@The_monster@は戦闘態勢を解き、あなたに微笑みかけた。
 
-@The_monster@ falls on @possessive@ knees before you.
+# @The_monster@ falls on @possessive@ knees before you.
+@The_monster@はあなたの前にひざまずいた。
 %%%%
 beogh_converted_orc_speech_sight
 
-@Subjective@ shouts, "I'll follow thee gladly!"
+# @Subjective@ shouts, "I'll follow thee gladly!"
+@Subjective@は『喜んでそなたにお仕えいたします！』と叫んだ。
 
-@Subjective@ shouts, "Surely Beogh must have sent you!"
+# @Subjective@ shouts, "Surely Beogh must have sent you!"
+@Subjective@は『ベオがあなたを遣わしたに違いない！』と叫んだ。
 
-@Subjective@ asks, "Are you our saviour?"
+# @Subjective@ asks, "Are you our saviour?"
+@Subjective@は『あなたが私たちの救世主なのですか？』と尋ねた。
 
-@Subjective@ says, "I'm so glad you are here now."
+# @Subjective@ says, "I'm so glad you are here now."
+@Subjective@は『お目にかかれて光栄です』と言った。
 %%%%
 # through battle
 beogh_converted_orc_reaction_battle

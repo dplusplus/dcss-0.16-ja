@@ -15,6 +15,7 @@
 #include "database.h"
 #include "english.h"
 #include "hiscores.h"
+#include "japanese.h"
 #include "message.h"
 #include "mutation.h"
 #include "options.h"
@@ -301,24 +302,19 @@ string Note::describe(bool when, bool where, bool what) const
             result << "ジンに金貨" << first << "枚を寄付した";
             break;
         case NOTE_GAIN_SKILL:
-            result << jtransc(skill_name(static_cast<skill_type>(first))) << "スキルが"
-                      "レベル" << second << "に到達した";
+            result << tagged_jtransc("[skill]", skill_name(static_cast<skill_type>(first)))
+                   << "スキルがレベル" << second << "に到達した";
             break;
         case NOTE_LOSE_SKILL:
-            result << jtransc(skill_name(static_cast<skill_type>(first))) << "スキルが"
-                      "レベル" << second << "に減少した";
+            result << tagged_jtransc("[skill]", skill_name(static_cast<skill_type>(first)))
+                   << "スキルがレベル" << second << "に減少した";
             break;
         case NOTE_SEEN_MONSTER:
-            if (what && first == MONS_PANDEMONIUM_LORD)
-                result << jtrans(" the pandemonium lord") << "『" << name << "』に遭遇した";
-            else
-                result << name << "に遭遇した";
+            result << name << "に遭遇した";
             break;
         case NOTE_DEFEAT_MONSTER:
             if (second)
-                result << name << "(仲間)" << desc;
-            else if (what && first == MONS_PANDEMONIUM_LORD)
-                result << jtrans(" the pandemonium lord") << "『" << name << "』" << desc;
+                result << "仲間の" << name << jconj_verb(desc, JCONJ_PASS);
             else
                 result << name << desc;
             break;
@@ -359,7 +355,7 @@ string Note::describe(bool when, bool where, bool what) const
             result << Options.user_note_prefix << name;
             break;
         case NOTE_MESSAGE:
-            result << name;
+            result << jtrans(name);
             break;
         case NOTE_SEEN_FEAT:
             result << name << "を見つけた";
@@ -378,7 +374,10 @@ string Note::describe(bool when, bool where, bool what) const
 #endif
             break;
         case NOTE_PARALYSIS:
-            result << name << "に" << first << "ターン麻痺させられた";
+            if (name == "you")
+                result << first << "ターン麻痺した";
+            else
+                result << jtrans(name) << "に" << first << "ターン麻痺させられた";
             break;
         case NOTE_NAMED_ALLY:
             result << name << "が仲間になった";
@@ -392,8 +391,9 @@ string Note::describe(bool when, bool where, bool what) const
                    << "の呪文の知識を授ける提案をした";
             break;
         case NOTE_FOCUS_CARD:
-            result << "特化のカードを引いた: " << name << "スキルがレベル" << first << "に増加し、"
-                   << desc << "スキルがレベル" << second << "に減少した";
+            result << tagged_jtrans("[card]", "Focus") << "のカードを引いた: "
+                   << name << "が" << first << "に増加するかわりに"
+                   << desc << "が" << second << "に減少した";
             break;
         default:
             result << "Buggy note description: unknown note type";
@@ -401,11 +401,6 @@ string Note::describe(bool when, bool where, bool what) const
         }
     }
 
-    if (type == NOTE_SEEN_MONSTER || type == NOTE_DEFEAT_MONSTER)
-    {
-        if (what && first == MONS_PANDEMONIUM_LORD)
-            result << " the pandemonium lord";
-    }
     return result.str();
 }
 
@@ -423,25 +418,20 @@ void Note::check_milestone() const
         if (br != -1 && br != BRANCH_WIZLAB)
         {
             ASSERT_RANGE(br, 0, NUM_BRANCHES);
-            string branch = place.describe(true, false);
-
-            if (branch.find("The ") == 0)
-                branch[0] = tolower(branch[0]);
+            string branch = place.describe_j(true, false);
 
             if (dep == 1)
             {
                 mark_milestone(br == BRANCH_ZIGGURAT ? "zig.enter" : "br.enter",
-                               "entered " + branch + ".", "parent");
+                               branch + "に突入した", "parent");
             }
             else if (dep == _dungeon_branch_depth(br)
                      || br == BRANCH_ZIGGURAT)
             {
-                string level = place.describe(true, true);
-                if (level.find("Level ") == 0)
-                    level[0] = tolower(level[0]);
+                string level = place.describe_j(true, true);
 
                 mark_milestone(br == BRANCH_ZIGGURAT ? "zig" : "br.end",
-                               "reached " + level + ".");
+                               level + "に到達した");
             }
         }
     }
@@ -520,7 +510,7 @@ void load_notes(reader& inf)
 void make_user_note()
 {
     char buf[400];
-    bool validline = !msgwin_get_line("Enter note: ", buf, sizeof(buf));
+    bool validline = !msgwin_get_line(jtrans("Enter note: ") + " ", buf, sizeof(buf));
     if (!validline || (!*buf))
         return;
     Note unote(NOTE_USER_NOTE);

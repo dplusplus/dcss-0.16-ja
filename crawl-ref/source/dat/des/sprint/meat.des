@@ -186,11 +186,11 @@
     if triggerer.type == "monster_dies" then
       crawl.more()
       crawl.mpr("<red>" .. border_top .. "" ..
-      "--                    </red><lightred>You have destroyed The Meatlord.</lightred><red>                      --\n" ..
+      crawl.jtransln("--                    </red><lightred>You have destroyed The Meatlord.</lightred><red>                      --\n") ..
       "" .. border_bottom .. "</red>")
       crawl.more()
       crawl.mpr("<red>" .. border_top .. "" ..
-      "--                        </red><lightred>You will die a champion.</lightred><red>                          --\n" ..
+      crawl.jtransln("--                        </red><lightred>You will die a champion.</lightred><red>                          --\n") ..
       "" .. border_bottom .. "</red>")
       crawl.more()
       crawl.mpr("The Orb of Zot has appeared underneath you.", "orb")

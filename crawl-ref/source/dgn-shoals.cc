@@ -1078,7 +1078,7 @@ void shoals_release_tide(monster* mons)
         if (player_can_hear(mons->pos()))
         {
             mprf(MSGCH_SOUND, jtransc("The tide is released from %s call."),
-                 jtransc(mons->name(DESC_PLAIN, true)));
+                 jtransc(mons->name(DESC_YOUR, true)));
             if (you.see_cell(mons->pos()))
                 flash_view_delay(UA_MONSTER, ETC_WATER, 150);
         }

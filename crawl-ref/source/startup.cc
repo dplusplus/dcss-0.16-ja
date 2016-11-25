@@ -391,7 +391,7 @@ static void _construct_game_modes_menu(MenuScroller* menu)
 #else
     tmp = new TextItem();
 #endif
-    text = "Dungeon Crawl";
+    text = jtrans("Dungeon Crawl");
     tmp->set_text(text);
     tmp->set_fg_colour(WHITE);
     tmp->set_highlight_colour(WHITE);
@@ -410,7 +410,7 @@ static void _construct_game_modes_menu(MenuScroller* menu)
 #else
     tmp = new TextItem();
 #endif
-    text = "Tutorial for Dungeon Crawl";
+    text = jtrans("Tutorial for Dungeon Crawl");
     tmp->set_text(text);
     tmp->set_fg_colour(WHITE);
     tmp->set_highlight_colour(WHITE);
@@ -429,7 +429,7 @@ static void _construct_game_modes_menu(MenuScroller* menu)
 #else
     tmp = new TextItem();
 #endif
-    text = "Hints Mode for Dungeon Crawl";
+    text = jtrans("Hints Mode for Dungeon Crawl");
     tmp->set_text(text);
     tmp->set_fg_colour(WHITE);
     tmp->set_highlight_colour(WHITE);
@@ -448,7 +448,7 @@ static void _construct_game_modes_menu(MenuScroller* menu)
 #else
     tmp = new TextItem();
 #endif
-    text = "Dungeon Sprint";
+    text = jtrans("Dungeon Sprint");
     tmp->set_text(text);
     tmp->set_fg_colour(WHITE);
     tmp->set_highlight_colour(WHITE);
@@ -466,7 +466,7 @@ static void _construct_game_modes_menu(MenuScroller* menu)
 #else
     tmp = new TextItem();
 #endif
-    text = "Instructions";
+    text = jtrans("Instructions");
     tmp->set_text(text);
     tmp->set_fg_colour(WHITE);
     tmp->set_highlight_colour(WHITE);
@@ -484,7 +484,7 @@ static void _construct_game_modes_menu(MenuScroller* menu)
 #else
     tmp = new TextItem();
 #endif
-    text = "The Arena";
+    text = jtrans("The Arena");
     tmp->set_text(text);
     tmp->set_fg_colour(WHITE);
     tmp->set_highlight_colour(WHITE);
@@ -502,7 +502,7 @@ static void _construct_game_modes_menu(MenuScroller* menu)
 #else
     tmp = new TextItem();
 #endif
-    text = "High Scores";
+    text = jtrans("High Scores");
     tmp->set_text(text);
     tmp->set_fg_colour(WHITE);
     tmp->set_highlight_colour(WHITE);
@@ -523,7 +523,7 @@ static void _add_newgame_button(MenuScroller* menu, int num_chars)
 #else
     TextItem* tmp = new TextItem();
 #endif
-    tmp->set_text("New Game");
+    tmp->set_text(jtrans("New Game"));
     tmp->set_bounds(coord_def(1, 1), coord_def(1, 2));
     tmp->set_fg_colour(WHITE);
     tmp->set_highlight_colour(WHITE);
@@ -658,8 +658,8 @@ again:
 
     tmp = new NoSelectTextItem();
 
-    string text = "Use the up/down keys to select the type of game or load a "
-                  "character.";
+    string text = jtrans("Use the up/down keys to select the type of game or load a "
+                         "character.");
 #ifdef USE_TILE_LOCAL
     if (tiles.is_using_small_layout())
         text += " ";
@@ -672,7 +672,7 @@ again:
     // TODO: this should include a description of that character.
     if (_game_defined(defaults))
         text += ", Tab to repeat the last game's choice";
-    text += ".\n";
+    text += "してください。\n";
     tmp->set_text(text);
     tmp->set_bounds(coord_def(1, help_start), coord_def(max_col - 1, help_end));
     freeform->attach_item(tmp);

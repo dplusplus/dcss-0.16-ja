@@ -1,11 +1,11 @@
 %%%%
 You hear a mighty clap of thunder!
 
-あなたは激しい雷鳴を聞いた！
+あなたは轟く雷鳴を耳にした！
 %%%%
 %s appears from out of thin air!
 
-%sがどこからともなく現れた！
+%sがいきなり目の前に現れた！
 %%%%
 burns
 
@@ -153,7 +153,7 @@ looks frightened!
 %%%%
 looks rather confused.
 
-は混乱したようだ。
+は混乱しているようだ。
 %%%%
 submits to your will.
 
@@ -201,7 +201,11 @@ The orb of energy explodes!
 %%%%
 %s life force is offered up.
 
-%sの生命力が抜き取られた。
+%s生命力が抜き取られた。
+%%%%
+by a malign offering
+
+悪意の供物によって
 %%%%
 %s %s healed.
 
@@ -295,6 +299,10 @@ This spell isn't strong enough to banish yourself.
 
 この呪文はあなたを追放するほど強力ではない。
 %%%%
+by nerve-wracking pain
+
+神経を冒す苦痛によって
+%%%%
 Your body is wracked with pain!
 
 あなたの肉体は苦痛を受けている！
@@ -306,6 +314,10 @@ Pain shoots through your body!
 You convulse!
 
 あなたは身もだえした！
+%%%%
+by dispel undead
+
+アンデッドの解呪によって
 %%%%
 You are blasted!
 
@@ -407,7 +419,7 @@ The %s pierces through %s %s!
 
 %sは%sの%sをすり抜けた！
 %%%%
-%s block the %s.
+%s blocks the %s.
 
 %sは%sを防いだ。
 %%%%
@@ -426,14 +438,6 @@ The %s passes through %s.
 The %s %s %s.
 
 %sは%s%s。
-%%%%
-The %s is repelled.
-
-%sは弾かれた。
-%%%%
-You deflect the %s!
-
-あなたは%sを逸らした！
 %%%%
 The %s hits something.
 
@@ -458,10 +462,6 @@ is blasted.
 looks drowsy...
 
 はまどろんでいる……
-%%%%
-seems to speed up.
-
-は動きが速くなったようだ。
 %%%%
 seems to grow stronger.
 
@@ -517,7 +517,7 @@ is firmly anchored in space.
 %%%%
 The poison in %s body grows stronger.
 
-%sの体内の毒が強まった。
+%s体内の毒が強まった。
 %%%%
 grows more vulnerable to poison.
 
@@ -525,7 +525,7 @@ grows more vulnerable to poison.
 %%%%
 suddenly seems more agile.
 
-は突然俊敏になったようだ。
+は突然機敏になったようだ。
 %%%%
 seems less certain of their magic.
 

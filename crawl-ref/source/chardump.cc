@@ -90,6 +90,32 @@ static void _sdump_lua(dump_params &);
 static bool _write_dump(const string &fname, dump_params &,
                         bool print_dump_path = false);
 
+static string _multiline_trim(const string &text)
+{
+    vector<string> lines = split_string("\n", text, false, true);
+    for(int i = 0, size = lines.size(); i < size; ++i)
+    {
+        string s = nbsp2sp(lines[i]);
+        lines[i] = trim_string_right(s);
+    }
+
+    return comma_separated_line(lines.begin(), lines.end(), "\n", "\n");
+}
+
+static string _trim_section(const string& section_text)
+{
+    if (trimmed_string(section_text).empty())
+        return "";
+
+    string text = _multiline_trim(section_text);
+
+    // trim '\n'
+    text.erase(0, text.find_first_not_of("\n"));
+    text.erase(text.find_last_not_of("\n") + 1);
+
+    return "\n" + text + "\n";
+}
+
 struct dump_section_handler
 {
     const char *name;
@@ -182,35 +208,37 @@ bool dump_char(const string &fname, bool quiet, bool full_id,
 
 static void _sdump_header(dump_params &par)
 {
+    string text;
     string type = crawl_state.game_type_name();
     if (type.empty())
         type = CRAWL;
     else
         type += " DCSS";
 
-    par.text += " " + type + " version " + Version::Long;
+    text += " " + type + " 日本語版 " + Version::Long;
 #ifdef USE_TILE_LOCAL
-    par.text += " (tiles)";
+    text += " (tiles)";
 #elif defined(USE_TILE_WEB)
     if (::tiles.is_controlled_from_web())
-        par.text += " (webtiles)";
+        text += " (webtiles)";
     else
-        par.text += " (console)";
+        text += " (console)";
 #else
-    par.text += " (console)";
+    text += " (console)";
 #endif
-    par.text += " character file.\n\n";
+    text += " " + jtransln("character file.\n") + "\n";
+
+    par.text += _trim_section(text);
 }
 
 static void _sdump_stats(dump_params &par)
 {
-    par.text += dump_overview_screen(par.full_id);
-    par.text += "\n";
+    par.text += _trim_section(dump_overview_screen(par.full_id));
 }
 
 static void _sdump_hunger(dump_params &par)
 {
-    string text = "あなたは" + string(hunger_level()) + "。\n\n";
+    string text = "あなたは" + string(hunger_level()) + "。";
 
     if (par.se)
     {
@@ -219,14 +247,17 @@ static void _sdump_hunger(dump_params &par)
         text = replace_all(text, "いる。", "いた。");
     }
 
-    par.text += text;
+    par.text += _trim_section(text);
 }
 
 static void _sdump_transform(dump_params &par)
 {
-    string &text(par.text);
+    string text;
     if (you.form)
-        text += get_form()->get_description(par.se) + "\n\n";}
+        text += get_form()->get_description(par.se);
+
+    par.text += _trim_section(text);
+}
 
 static branch_type single_portals[] =
 {
@@ -291,11 +322,11 @@ static void _sdump_visits(dump_params &par)
         int num_zigs = place_info.num_visits;
         text += make_stringf(jtransc("You %s%s %d ziggurat"),
                              num_zigs,
-                             (num_zigs == you.zigs_completed) ? "踏破し、"
-                                                              : "に行き、");
+                             (num_zigs == you.zigs_completed) ? "を踏破し"
+                                                              : "に行き");
 
         if (num_zigs != you.zigs_completed && you.zigs_completed)
-            text += make_stringf(" (completing %d)", you.zigs_completed);
+            text += make_stringf(jtransc(" (completing %d)"), you.zigs_completed);
 
         text += make_stringf(jtransc(", and %s %d of %s levels"),
                              place_info.levels_seen);
@@ -311,7 +342,7 @@ static void _sdump_visits(dump_params &par)
         place_info = you.get_place_info(br);
         if (!place_info.num_visits)
             continue;
-        string name = branches[br].shortname;
+        string name = tagged_jtrans("[branch]", branches[br].shortname);
         if (place_info.num_visits > 1)
             name += make_stringf(jtransc(" (%d times)"), place_info.num_visits);
         misc_portals.push_back(name);
@@ -333,7 +364,7 @@ static void _sdump_visits(dump_params &par)
         text = replace_all(text, "ている。", "た。");
     }
 
-    par.text += text;
+    par.text += _trim_section(text);
 }
 
 static void _sdump_gold(dump_params &par)
@@ -377,9 +408,12 @@ static void _sdump_gold(dump_params &par)
                              you.attribute[ATTR_MISC_SPENDING]);
     }
 
-    if (lines > 0)
-        par.text += "\n";
-    par.text += text;
+    if (par.se)
+    {
+        text = replace_all(text, "ている。", "ていた。");
+    }
+
+    par.text += _trim_section(text);
 }
 
 static void _sdump_misc(dump_params &par)
@@ -390,8 +424,6 @@ static void _sdump_misc(dump_params &par)
     _sdump_transform(par);
     _sdump_visits(par);
     _sdump_gold(par);
-
-    par.text += "\n";
 }
 
 #define TO_PERCENT(x, y) (100.0f * (static_cast<float>(x)) / (static_cast<float>(y)))
@@ -429,7 +461,7 @@ static string _sdump_turns_place_info(PlaceInfo place_info, string name = "")
 
 static void _sdump_turns_by_place(dump_params &par)
 {
-    string &text(par.text);
+    string text;
 
     vector<PlaceInfo> all_visited = you.get_all_place_info(true);
 
@@ -463,7 +495,7 @@ static void _sdump_turns_by_place(dump_params &par)
     text += "               ";
     text += "+-------+-------+-------+-------+-------+----------------------\n";
 
-    text += "\n";
+    par.text += _trim_section(text);
 }
 
 static void _sdump_newline(dump_params &par)
@@ -473,7 +505,10 @@ static void _sdump_newline(dump_params &par)
 
 static void _sdump_separator(dump_params &par)
 {
-    par.text += string(79, '-') + "\n";
+    if (!ends_with(par.text, "\n"))
+        par.text += "\n";
+
+    par.text += string(79, '-');
 }
 
 #ifdef CLUA_BINDINGS
@@ -523,34 +558,38 @@ string munge_description(string inStr)
 
 static void _sdump_messages(dump_params &par)
 {
+    string text;
     // A little message history:
     if (Options.dump_message_count > 0)
     {
-        par.text += jtransln("Message History\n\n");
-        par.text += get_last_messages(Options.dump_message_count);
+        text += jtransln("Message History\n\n");
+        text += get_last_messages(Options.dump_message_count);
     }
+
+    par.text += _trim_section(text);
 }
 
 static void _sdump_screenshot(dump_params &par)
 {
-    par.text += screenshot();
-    par.text += "\n";
+    string text = "周辺の様子:\n\n" + screenshot();
+    par.text += _trim_section(text);
 }
 
 static void _sdump_notes(dump_params &par)
 {
-    string &text(par.text);
+    string text;
     if (note_list.empty())
         return;
 
-    text += jtransln("notes header");
+    text += jtransln("Notes\nTurn   | Place    | Note\n");
     text += "--------------------------------------------------------------\n";
     for (const Note &note : note_list)
     {
         text += note.describe();
         text += "\n";
     }
-    text += "\n";
+
+    par.text += _trim_section(text);
 }
 
  //---------------------------------------------------------------
@@ -560,19 +599,20 @@ static void _sdump_notes(dump_params &par)
  //---------------------------------------------------------------
 static void _sdump_location(dump_params &par)
 {
+    string text;
     if (you.depth == 0 && player_in_branch(BRANCH_DUNGEON))
-        par.text += jtrans("You escaped");
+        text += jtrans("You escaped");
     else if (par.se)
-        par.text += "あなたは" + prep_branch_level_name() + "にいた";
+        text += "あなたは" + prep_branch_level_name() + "にいた";
     else
-        par.text += "あなたは" + prep_branch_level_name() + "にいる";
+        text += "あなたは" + prep_branch_level_name() + "にいる";
 
-    par.text += "。\n";
+    par.text += _trim_section(text + "。");
 }
 
 static void _sdump_religion(dump_params &par)
 {
-    string &text(par.text);
+    string text;
     if (!you_worship(GOD_NO_GOD))
     {
         text += "あなたは" + jtrans(god_name(you.religion)) + "を";
@@ -591,21 +631,32 @@ static void _sdump_religion(dump_params &par)
             }
             else
             {
-                text += jtrans(god_name(you.religion));
-                text += "は" + jtransln(" demanding penance.\n");
+                string under_penance;
+
+                under_penance += jtrans(god_name(you.religion));
+                under_penance += "は" + jtransln(" demanding penance.\n");
+
+                if (par.se)
+                    under_penance = replace_all(under_penance, "ている。", "ていた。");
+
+                text += under_penance;
             }
         }
         else
         {
-            text += "あなたは" + jtrans(describe_xom_favour());
+            string xom_favour =  jtransln(describe_xom_favour());
 
             if (par.se)
-                text += "だった。";
-            else
-                text += "だ。";
-            text += "\n";
+            {
+                xom_favour = replace_all(xom_favour, "た。", "ていた。");
+                xom_favour = replace_all(xom_favour, "だ。", "だった。");
+            }
+
+            text += xom_favour;
         }
     }
+
+    par.text += _trim_section(text);
 }
 
 static bool _dump_item_origin(const item_def &item)
@@ -664,8 +715,7 @@ static void _sdump_inventory(dump_params &par)
 {
     int i, j;
 
-    string &text(par.text);
-    string text2;
+    string text, text2;
 
     int inv_class2[NUM_OBJECT_CLASSES];
     int inv_count = 0;
@@ -700,20 +750,20 @@ static void _sdump_inventory(dump_params &par)
 
             switch (i)
             {
-            case OBJ_WEAPONS:    text += "\n手持ち武器";       break;
-            case OBJ_MISSILES:   text += "\n矢弾・石弾その他"; break;
-            case OBJ_ARMOUR:     text += "\n防具";             break;
-            case OBJ_WANDS:      text += "\nワンド";           break;
-            case OBJ_FOOD:       text += "\n食べ物";           break;
-            case OBJ_SCROLLS:    text += "\n巻物";             break;
-            case OBJ_JEWELLERY:  text += "\n装飾品";           break;
-            case OBJ_POTIONS:    text += "\n水薬";             break;
-            case OBJ_BOOKS:      text += "\n魔法書";           break;
-            case OBJ_STAVES:     text += "\n魔法の杖";         break;
-            case OBJ_RODS:       text += "\nロッド";           break;
-            case OBJ_ORBS:       text += "\nゾットのオーブ";   break;
-            case OBJ_MISCELLANY: text += "\n発動用のアイテム"; break;
-            case OBJ_CORPSES:    text += "\n死体";             break;
+            case OBJ_WEAPONS:    text += "\n[近接武器]";         break;
+            case OBJ_MISSILES:   text += "\n[矢弾・石弾その他]"; break;
+            case OBJ_ARMOUR:     text += "\n[防具]";             break;
+            case OBJ_WANDS:      text += "\n[ワンド]";           break;
+            case OBJ_FOOD:       text += "\n[食料品]";           break;
+            case OBJ_SCROLLS:    text += "\n[巻物]";             break;
+            case OBJ_JEWELLERY:  text += "\n[装飾品]";           break;
+            case OBJ_POTIONS:    text += "\n[薬]";               break;
+            case OBJ_BOOKS:      text += "\n[魔法書/虎の巻]";    break;
+            case OBJ_STAVES:     text += "\n[魔法の杖]";         break;
+            case OBJ_RODS:       text += "\n[ロッド]";           break;
+            case OBJ_ORBS:       text += "\n[ゾットのオーブ]";   break;
+            case OBJ_MISCELLANY: text += "\n[発動用のアイテム]"; break;
+            case OBJ_CORPSES:    text += "\n[死体]";             break;
 
             default:
                 die("Bad item class");
@@ -731,10 +781,7 @@ static void _sdump_inventory(dump_params &par)
                 inv_count--;
 
                 if (origin_describable(you.inv[j]) && _dump_item_origin(you.inv[j]))
-                {
                     text2 = "\n" "   (" + origin_desc(you.inv[j]) + ")";
-                    text += replace_all(text2, "。", "");
-                }
 
                 if (is_dumpable_artefact(you.inv[j])
                     || Options.dump_book_spells
@@ -748,7 +795,8 @@ static void _sdump_inventory(dump_params &par)
             }
         }
     }
-    text += "\n";
+
+    par.text += _trim_section(text);
 }
 
 //---------------------------------------------------------------
@@ -758,12 +806,13 @@ static void _sdump_inventory(dump_params &par)
 //---------------------------------------------------------------
 static void _sdump_skills(dump_params &par)
 {
-    string &text(par.text);
+    string text;
 
     text += jtransln("Skills:\n");
 
     dump_skills(text);
-    text += "\n";
+
+    par.text += _trim_section(text);
 }
 
 //---------------------------------------------------------------
@@ -828,7 +877,7 @@ static void _sdump_spells(dump_params &par)
                 spell_line += " - ";
                 spell_line += tagged_jtrans("[spell]", spell_title(spell));
 
-                spell_line = chop_string(spell_line, 29);
+                spell_line = chop_string(spell_line, 30);
                 spell_line += " ";
 
                 bool already = false;
@@ -843,15 +892,15 @@ static void _sdump_spells(dump_params &par)
                     }
                 }
 
-                spell_line = chop_string(spell_line, 41);
+                spell_line = chop_string(spell_line, 42);
 
                 spell_line += spell_power_string(spell);
 
-                spell_line = chop_string(spell_line, 53);
+                spell_line = chop_string(spell_line, 54);
 
                 spell_line += failure_rate_to_string(raw_spell_fail(spell));
 
-                spell_line = chop_string(spell_line, 61);
+                spell_line = chop_string(spell_line, 62);
 
                 spell_line += make_stringf("%d       ", spell_difficulty(spell));
 
@@ -872,12 +921,12 @@ static void _sdump_spells(dump_params &par)
         text = replace_all(text, "いる:", "いた:");
     }
 
-    par.text += text;
+    par.text += _trim_section(text);
 }
 
 static void _sdump_kills(dump_params &par)
 {
-    par.text += replace_all(you.kills->kill_info(), "\n\n\n", "\n\n");
+    par.text += _trim_section(you.kills->kill_info());
 }
 
 static string _sdump_kills_place_info(PlaceInfo place_info, string name = "")
@@ -925,7 +974,7 @@ static string _sdump_kills_place_info(PlaceInfo place_info, string name = "")
 
 static void _sdump_kills_by_place(dump_params &par)
 {
-    string &text(par.text);
+    string text;
 
     vector<PlaceInfo> all_visited = you.get_all_place_info(true);
 
@@ -962,15 +1011,15 @@ static void _sdump_kills_by_place(dump_params &par)
 
     if (!result.empty())
         text += header + result + footer + "\n";
+
+    par.text += _trim_section(text);
 }
 
 static void _sdump_overview(dump_params &par)
 {
     string overview =
         formatted_string::parse_string(overview_description_string(false));
-    trim_string(overview);
-    par.text += overview;
-    par.text += "\n\n";
+    par.text += _trim_section(overview);
 }
 
 static void _sdump_hiscore(dump_params &par)
@@ -978,32 +1027,36 @@ static void _sdump_hiscore(dump_params &par)
     if (!par.se)
         return;
 
-    string hiscore = hiscores_format_single_long(*(par.se), true);
-    trim_string(hiscore);
-    par.text += hiscore;
-    par.text += "\n\n";
+    string hiscore = "    " + hiscores_format_single_long(*(par.se), true);
+
+    par.text += _trim_section(hiscore);
 }
 
 static void _sdump_monster_list(dump_params &par)
 {
-    string monlist = mpr_monster_list(par.se);
+    string monlist = mpr_monster_list(par.se), text;
     trim_string(monlist);
     while (!monlist.empty())
-        par.text += wordwrap_line(monlist, 80) + "\n";
-    par.text += "\n";
+        text += wordwrap_line(monlist, 80) + "\n";
+
+    par.text += _trim_section(text);
 }
 
 static void _sdump_vault_list(dump_params &par)
 {
+    string text;
+
     if (par.full_id || par.se
 #ifdef WIZARD
         || you.wizard
 #endif
      )
     {
-        par.text += "Vault maps used:\n";
-        par.text += dump_vault_maps();
+        text += jtransln("Vault maps used:\n");
+        text += dump_vault_maps();
     }
+
+    par.text += _trim_section(text);
 }
 
 static bool _sort_by_first(pair<int, FixedVector<int, 28> > a,
@@ -1142,6 +1195,8 @@ static string _describe_action_subtype(caction_type type, int subtype)
 
 static void _sdump_action_counts(dump_params &par)
 {
+    string text;
+
     if (you.action_count.empty())
         return;
     int max_lt = (min<int>(you.max_level, 27) - 1) / 3;
@@ -1150,14 +1205,14 @@ static void _sdump_action_counts(dump_params &par)
     if (max_lt)
         max_lt++;
 
-    par.text += make_stringf("\n%-29s", chop_stringc(jtrans("Action"), 29));
+    text += make_stringf("\n%-29s", chop_stringc(jtrans("Action"), 29));
     for (int lt = 0; lt < max_lt; lt++)
-        par.text += make_stringf(" | %2d-%2d", lt * 3 + 1, lt * 3 + 3);
-    par.text += " ||  " + jtrans("total");
-    par.text += "\n------------------------------";
+        text += make_stringf(" | %2d-%2d", lt * 3 + 1, lt * 3 + 3);
+    text += " ||  " + jtrans("total");
+    text += "\n------------------------------";
     for (int lt = 0; lt < max_lt; lt++)
-        par.text += "+-------";
-    par.text += "++-------\n";
+        text += "+-------";
+    text += "++-------\n";
 
     for (int cact = 0; cact < NUM_CACTIONS; cact++)
     {
@@ -1181,38 +1236,41 @@ static void _sdump_action_counts(dump_params &par)
         {
             if (ac == action_vec.begin())
             {
-                par.text += _describe_action(caction_type(cact));
-                par.text += ": ";
+                text += _describe_action(caction_type(cact));
+                text += ": ";
             }
             else
-                par.text += "          ";
-            par.text += chop_string(_describe_action_subtype(caction_type(cact), ac->first), 19);
+                text += "          ";
+            text += chop_string(_describe_action_subtype(caction_type(cact), ac->first), 19);
             for (int lt = 0; lt < max_lt; lt++)
             {
                 int ltotal = 0;
                 for (int i = lt * 3; i < lt * 3 + 3; i++)
                     ltotal += ac->second[i];
                 if (ltotal)
-                    par.text += make_stringf(" |%6d", ltotal);
+                    text += make_stringf(" |%6d", ltotal);
                 else
-                    par.text += " |      ";
+                    text += " |      ";
             }
-            par.text += make_stringf(" ||%6d", ac->second[27]);
-            par.text += "\n";
+            text += make_stringf(" ||%6d", ac->second[27]);
+            text += "\n";
         }
     }
-    par.text += "\n";
+
+    par.text += _trim_section(text);
 }
 
 static void _sdump_mutations(dump_params &par)
 {
-    string &text(par.text);
+    string text;
 
     if (how_mutated(true, false))
     {
         text += (formatted_string::parse_string(describe_mutations(false)));
         text += "\n";
     }
+
+    par.text += _trim_section(text);
 }
 
 // ========================================================================
@@ -1378,6 +1436,11 @@ void dump_map(const char* fname, bool debug, bool dist)
     fclose(fp);
 }
 
+static string _trim_dump(const string &dump_text)
+{
+    return trimmed_string(dump_text) + "\n";
+}
+
 static bool _write_dump(const string &fname, dump_params &par, bool quiet)
 {
     bool succeeded = false;
@@ -1403,7 +1466,7 @@ static bool _write_dump(const string &fname, dump_params &par, bool quiet)
 
     if (handle != nullptr)
     {
-        string dump = replace_all(par.text, " ", " "); // replace no-break space to space
+        string dump = _trim_dump(nbsp2sp(par.text));
 
         fputs(OUTS(dump), handle);
         fclose(handle);
@@ -1421,6 +1484,14 @@ static bool _write_dump(const string &fname, dump_params &par, bool quiet)
     return succeeded;
 }
 
+static string _ltrim_nbsp(const string& text)
+{
+    string str;
+    str = nbsp2sp(text);
+    str.erase(0, str.find_first_not_of(" "));
+    return str;
+}
+
 void display_notes()
 {
     formatted_scroller scr;
@@ -1428,11 +1499,13 @@ void display_notes()
     scr.set_more();
     scr.set_tag("notes");
     scr.set_highlighter(new MenuHighlighter);
-    scr.set_title(new MenuEntry("Turn   | Place    | Note"));
+    scr.set_title(new MenuEntry(jtrans("Turn   | Place    | Note")));
     for (const Note &note : note_list)
     {
         string prefix = note.describe(true, true, false);
-        string suffix = note.describe(false, false, true);
+        string suffix = _ltrim_nbsp(note.describe(false, false, true));
+        int colwidth_turn = note.describe(true, false, false).length();
+        int colwidth_place = MAX_NOTE_PLACE_LEN + 2;
         if (suffix.empty())
             continue;
 
@@ -1448,8 +1521,9 @@ void display_notes()
         scr.add_entry(new MenuEntry(prefix + parts[0]));
         for (unsigned int j = 1; j < parts.size(); ++j)
         {
-            scr.add_entry(new MenuEntry(string(prefix.length()-2, ' ') +
-                                        string("| ") + parts[j]));
+            scr.add_entry(new MenuEntry(string(colwidth_turn, ' ') + "|" +
+                                        string(colwidth_place, ' ') + "| " +
+                                        parts[j]));
         }
     }
     scr.show();

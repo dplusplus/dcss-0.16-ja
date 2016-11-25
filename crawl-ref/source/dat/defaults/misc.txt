@@ -9,9 +9,8 @@ runrest_ignore_monster += ^wandering mushroom$:1
 
 sort_menus += inv: true : equipped, freshness, charged
 
-note_items    += rod of, acquirement, running, of Zot
-note_messages += Your scales start
-note_messages += protects you from harm
-note_messages += You fall through a shaft
-note_messages += You dive into a shaft
-note_monsters += orb of fire, ancient lich, Sigmund
+note_items    += のロッド, 獲得の, 俊足の, ゾットの
+note_messages += あなたの鱗は成熟して.*になった。
+note_messages += があなたを危害から護った！
+note_messages += あなたは縦穴に.*落ちた！
+note_monsters += 炎の球体, 太古のリッチ, 『シグムンド』

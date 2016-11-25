@@ -1959,7 +1959,7 @@ static void _grand_avatar_act(monster* mons)
             fire_tracer(mons, beam);
             if (mons_should_fire(beam))
             {
-                simple_monster_message(mons, " fires!");
+                simple_monster_message(mons, jtransc(" fires!"));
                 beam.fire();
                 mons->lose_energy(EUT_SPECIAL);
                 grand_avatar_reset(mons);
@@ -2206,7 +2206,7 @@ void handle_monster_move(monster* mons)
         if (bernoulli(gold, 3.0/100.0))
         {
             simple_monster_message(mons,
-                    " is distracted by the nearby gold.");
+                                   jtransc(" is distracted by the nearby gold."));
             mons->add_ench(
                 mon_enchant(ENCH_GOLD_LUST, 1, nullptr,
                             random_range(1, 5) * BASELINE_DELAY));
@@ -3338,7 +3338,7 @@ static void _mons_open_door(monster* mons, const coord_def &pos)
 
         if (!you.can_see(mons))
         {
-            mprf("何か目に見えないものが%s", open_str.c_str());
+            mprf(jtransc("Something unseen %s"), open_str.c_str());
             interrupt_activity(AI_FORCE_INTERRUPT);
         }
         else if (!you_are_delayed())

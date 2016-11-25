@@ -114,7 +114,7 @@ static string _item_inscription(const item_def &item, bool ident, bool equipped)
     vector<string> insparts;
 
     if (!ident && !equipped && item_type_tried(item))
-        insparts.push_back(_tried_inscription(item));
+        insparts.push_back(jtrans(_tried_inscription(item)));
 
     if (const char *orig = _interesting_origin(item))
     {
@@ -138,10 +138,10 @@ static string _item_inscription(const item_def &item, bool ident, bool equipped)
     if (insparts.empty())
         return "";
 
-    return make_stringf(" {%s}",
-                        comma_separated_line(begin(insparts),
-                                             end(insparts),
-                                             ", ").c_str());
+    return sp2nbsp(make_stringf(" {%s}",
+                                comma_separated_line(begin(insparts),
+                                                     end(insparts),
+                                                     ", ").c_str()));
 }
 
 string item_def::name(description_level_type descrip, bool terse, bool ident,
@@ -937,6 +937,13 @@ const char* potion_type_name(int potiontype)
     }
 }
 
+const char* potion_type_name_j(int potiontype)
+{
+    string jname = jtrans(string("potion of ") + potion_type_name(potiontype));
+
+    return replace_all(jname, "の薬", "").c_str();
+}
+
 static const char* scroll_type_name(int scrolltype)
 {
     switch (static_cast<scroll_type>(scrolltype))
@@ -1150,6 +1157,13 @@ const char* rune_type_name(short p)
     case RUNE_GLOORX_VLOQ: return "dark";
     default:               return "buggy";
     }
+}
+
+const char* rune_type_name_j(short p)
+{
+    string jname = jtrans(rune_type_name(p) + string(" rune of Zot"));
+
+    return replace_all(jname, "のルーン", "").c_str();
 }
 
 const char* deck_rarity_name(deck_rarity_type rarity)
@@ -1440,12 +1454,13 @@ string ghost_brand_name(int brand)
 {
     // XXX: deduplicate these special cases
     if (brand == SPWPN_VAMPIRISM)
-        return "a vampiric weapon";
+        return jtrans("a vampiric weapon");
     if (brand == SPWPN_ANTIMAGIC)
-        return "an antimagic weapon";
+        return jtrans("an antimagic weapon");
     if (brand == SPWPN_VORPAL)
-        return "a vorpal weapon"; // can't use brand_type_name
-    return make_stringf("a weapon of %s", brand_type_name(brand, false));
+        return jtrans("a vorpal weapon"); // can't use brand_type_name
+    return make_stringf(jtransc("a weapon of %s"),
+                        jtransc(string("of ") + brand_type_name(brand, false)));
 }
 
 string ego_type_string(const item_def &item, bool terse, int override_brand)
@@ -1587,7 +1602,7 @@ static void _name_deck(const item_def &deck, description_level_type desc,
     buff << " {";
     // A marked deck!
     if (top_card_is_known(deck))
-        buff << jtrans(card_name(top_card(deck)));
+        buff << tagged_jtrans("[card]", card_name(top_card(deck))) << "のカード";
 
     // How many cards have been drawn, or how many are left.
     if (deck.used_count != 0)
@@ -1596,11 +1611,9 @@ static void _name_deck(const item_def &deck, description_level_type desc,
             buff << ", ";
 
         if (deck.used_count > 0)
-            buff << "drawn: ";
+            buff << abs(deck.used_count) << "枚消費";
         else
-            buff << "left: ";
-
-        buff << abs(deck.used_count) << "枚";
+            buff << "残り" << abs(deck.used_count) << "枚";
     }
 
     buff << "}";
@@ -1666,13 +1679,13 @@ static void _name_deck_en(const item_def &deck, description_level_type desc,
  * prefixed.)
  */
 static string _curse_prefix(const item_def &weap, description_level_type desc,
-                            bool terse, bool ident, iflags_t ignore_flags)
+                            bool terse, bool ident, iflags_t ignore_flags, bool ja = false)
 {
     if (!_know_curse(weap, desc, ident, ignore_flags) || terse)
         return "";
 
     if (weap.cursed())
-        return jtrans("cursed");
+        return ja ? jtrans("cursed") : "cursed ";
 
     if (!Options.show_uncursed)
         return "";
@@ -1688,7 +1701,7 @@ static string _curse_prefix(const item_def &weap, description_level_type desc,
     if (!ident && !item_type_known(weap)
         || !is_artefact(weap))
     {
-        return jtrans("uncursed");
+        return ja ? jtrans("uncursed") : "uncursed ";
     }
     return "";
 }
@@ -1846,7 +1859,7 @@ static string _name_weapon(const item_def &weap, description_level_type desc,
     const bool know_ego =    _know_ego(weap, desc, ident, ignore_flags);
 
     const string curse_prefix
-        = _curse_prefix(weap, desc, terse, ident, ignore_flags);
+        = _curse_prefix(weap, desc, terse, ident, ignore_flags, true);
     const string plus_text = know_pluses ? _plus_suffix(weap) : "";
 
     if (desc == DESC_BASENAME)
@@ -1909,7 +1922,7 @@ static string _name_weapon(const item_def &weap, description_level_type desc,
     const string cosmetic_text
         = show_cosmetic ? _cosmetic_text(weap, ignore_flags) : "";
     const string ego_prefix
-        = _ego_prefix(weap, desc, terse, ident, ignore_flags);
+        = _ego_prefix(weap, desc, false, ident, ignore_flags);
     const string curse_suffix
         = know_curse && weap.cursed() && terse ? " " + jtrans("(curse)") :  "";
     return curse_prefix + cosmetic_text + ego_prefix
@@ -1990,8 +2003,7 @@ static string _name_weapon_en(const item_def &weap, description_level_type desc,
 
     const string cosmetic_text
         = show_cosmetic ? _cosmetic_text(weap, ignore_flags) : "";
-    const string ego_prefix
-        = _ego_prefix(weap, desc, terse, ident, ignore_flags);
+    const string ego_prefix = _ego_prefix_en(weap, desc, terse, ident, ignore_flags);
     const string ego_suffix = know_ego ? _ego_suffix(weap, terse) : "";
     const string curse_suffix
         = know_curse && weap.cursed() && terse ? " (curse)" :  "";
@@ -2087,6 +2099,12 @@ string item_def::name_aux(description_level_type desc, bool terse, bool ident,
         if (is_artefact(*this) && !dbname && !basename)
         {
             buff << jtrans(get_artefact_name(*this));
+            if (know_pluses
+                        && !((armour_is_hide(*this)
+                              || sub_type == ARM_QUICKSILVER_DRAGON_ARMOUR)
+                             && plus == 0))
+                buff << make_stringf(" (%+d)", plus);
+
             break;
         }
 
@@ -2136,10 +2154,26 @@ string item_def::name_aux(description_level_type desc, bool terse, bool ident,
                     buff << jtrans(item_base_name(*this));
                 }
                 else {
+                    buff << jtrans(string("of ") + armour_ego_name(*this, false));
                     buff << jtrans(item_base_name(*this));
+
+                    // Don't list hides or QDA as +0.
+                    if (know_pluses
+                        && !((armour_is_hide(*this)
+                              || sub_type == ARM_QUICKSILVER_DRAGON_ARMOUR)
+                             && plus == 0))
+                    {
+                        buff << make_stringf(" (%+d)", plus);
+                    }
+
+                    if (know_curse && cursed() && terse)
+                        buff << " " << jtrans("(curse)");
+
                     buff << " {";
                     buff << armour_ego_name(*this, terse);
                     buff << "}";
+
+                    break;
                 }
             } else
                 buff << jtrans(item_base_name(*this));
@@ -2213,7 +2247,7 @@ string item_def::name_aux(description_level_type desc, bool terse, bool ident,
             static const char *potion_colours[] =
             {
 #if TAG_MAJOR_VERSION == 34
-                "clear",
+                "透明な",
 #endif
                 "青い", "黒い", "銀色の", "青緑の", "紫の", "オレンジ色の",
                 "漆黒の", "赤い", "黄色い", "緑色の", "茶色の", "ルビー色の", "白い",
@@ -2301,9 +2335,6 @@ string item_def::name_aux(description_level_type desc, bool terse, bool ident,
                 buff << jtrans("cursed");
             else if (Options.show_uncursed && desc != DESC_PLAIN
                      && (!is_randart || !know_type)
-                     && (!ring_has_pluses(*this) || !know_pluses)
-                     // If the item is worn, its curse status is known,
-                     // no need to belabour the obvious.
                      && get_equip_slot(this) == -1)
             {
                 buff << jtrans("uncursed");
@@ -2378,9 +2409,17 @@ string item_def::name_aux(description_level_type desc, bool terse, bool ident,
     case OBJ_BOOKS:
         if (is_random_artefact(*this) && !dbname && !basename)
         {
-            buff << "魔法書『" << get_artefact_name(*this) << "』";
-            if (!know_type)
-                buff << jtrans("book");
+            if (know_type)
+            {
+                buff << "魔法書『"
+                     << get_artefact_name(*this)
+                     << "』";
+            }
+            else
+            {
+                buff << get_artefact_name(*this)
+                     << jtrans("book");
+            }
             break;
         }
         if (basename)
@@ -2394,7 +2433,8 @@ string item_def::name_aux(description_level_type desc, bool terse, bool ident,
         else
         {
             if (item_typ == BOOK_MANUAL)
-                buff << jtrans(skill_name(static_cast<skill_type>(plus))) << jtrans("manual of");
+                buff << tagged_jtrans("[skill]", skill_name(static_cast<skill_type>(plus)))
+                     << jtrans("manual of");
             else
                 buff << jtrans(sub_type_string(*this, !dbname));
         }
@@ -2491,12 +2531,12 @@ string item_def::name_aux(description_level_type desc, bool terse, bool ident,
 
         uint64_t name_type, name_flags = 0;
 
-        const string _name  = get_corpse_name(*this, &name_flags);
+        string _name  = get_corpse_name(*this, &name_flags);
         const bool   shaped = starts_with(_name, "shaped ");
         name_type = (name_flags & MF_NAME_MASK);
 
         if (!_name.empty() && name_type == MF_NAME_ADJECTIVE)
-            buff << jtrans(_name) << "の";
+            buff << jtrans(_name);
 
         if ((name_flags & MF_NAME_SPECIES) && name_type == MF_NAME_REPLACE)
             buff << jtrans(_name) << "の";
@@ -2514,7 +2554,14 @@ string item_def::name_aux(description_level_type desc, bool terse, bool ident,
             && !(name_flags & MF_NAME_SPECIES) && name_type != MF_NAME_SUFFIX
             && !dbname)
         {
-            buff << jtrans(_name) << "の";
+            _name = jtrans(_name);
+
+            // escape "オークのオークの『ブロルク』の死体"
+            string::size_type found;
+            if((found = _name.find("『")) != string::npos)
+                _name = _name.substr(found);
+
+            buff << _name << "の";
         }
 
         if (item_typ == CORPSE_BODY)
@@ -3265,7 +3312,7 @@ void identify_healing_pots()
 
     if (ident_count == 1 && tried_count == 1)
     {
-        mpr("You have identified the last healing potion.");
+        mpr(jtrans("You have identified the last healing potion."));
         if (set_ident_type(OBJ_POTIONS, POT_CURING, ID_KNOWN_TYPE))
             pack_item_identify_message(OBJ_POTIONS, POT_CURING);
         if (set_ident_type(OBJ_POTIONS, POT_HEAL_WOUNDS, ID_KNOWN_TYPE))

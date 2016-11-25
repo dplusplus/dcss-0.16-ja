@@ -188,7 +188,7 @@
 [spell]Chain of Chaos
 
 # obsolete?
-Chain of Chaos
+連鎖する混沌
 %%%%
 [spell]Chain Lightning
 
@@ -324,7 +324,7 @@ Chain of Chaos
 [spell]Debugging Ray
 
 # for debug
-Debugging Ray
+デバッグ光線
 %%%%
 [spell]Deflect Missiles
 
@@ -374,7 +374,7 @@ Debugging Ray
 %%%%
 [spell]Dragon's Call
 
-ドラゴンの召喚
+ドラゴンの呼び声
 %%%%
 [spell]Drain Life
 
@@ -492,7 +492,7 @@ Debugging Ray
 %%%%
 [spell]Frenzy
 
-Frenzy
+凶暴化
 %%%%
 [spell]Fulminant Prism
 
@@ -874,7 +874,7 @@ Frenzy
 [spell]Sap Magic
 
 # monster only
-Sap Magic
+魔法の阻害
 %%%%
 [spell]Scattershot
 
@@ -903,7 +903,7 @@ Sap Magic
 [spell]Shadow Bolt
 
 # obsolete?
-Shadow Bolt
+影の矢
 %%%%
 [spell]Shadow Creatures
 
@@ -911,8 +911,7 @@ Shadow Bolt
 %%%%
 [spell]Shadow Shard
 
-# obsolete?
-Shadow Shard
+影の欠片
 %%%%
 [spell]Shatter
 
@@ -1065,8 +1064,7 @@ Shadow Shard
 %%%%
 [spell]Summon Dragon
 
-# obsolete
-Summon Dragon
+ドラゴンの召喚
 %%%%
 [spell]Summon Drakes
 
@@ -1081,7 +1079,7 @@ Summon Dragon
 [spell]Summon Emperor Scorpions
 
 # obsolete?
-Summon Emperor Scopions
+皇帝サソリの召喚
 %%%%
 [spell]Summon Eyeballs
 
@@ -1103,17 +1101,17 @@ Summon Emperor Scopions
 %%%%
 [spell]Summon Guardian Golem
 
-ゴーレムの番人の召喚
+守護者のゴーレムの召喚
 %%%%
 [spell]Summon Hell Beast
 
 # monster only
-Summon Hell Beast
+地獄の獣人の召喚
 %%%%
 [spell]Summon Holies
 
 # obsolete
-Summon Holies
+神聖なるものの召喚
 %%%%
 [spell]Summon Horrible Things
 
@@ -1130,7 +1128,7 @@ Summon Holies
 [spell]Summon Illusion
 
 # obsolete?
-Summon Illusion
+幻影の召喚
 %%%%
 [spell]Summon Iron Elementals
 

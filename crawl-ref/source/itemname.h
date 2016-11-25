@@ -139,6 +139,7 @@ item_kind item_kind_by_name(const string &name);
 vector<string> item_name_list_for_glyph(unsigned glyph);
 
 const char* rune_type_name(short p);
+const char* rune_type_name_j(short p);
 
 bool   is_named_corpse(const item_def &corpse);
 string get_corpse_name(const item_def &corpse, uint64_t *name_type = nullptr);
@@ -152,5 +153,6 @@ string ego_type_string(const item_def &item, bool terse = false, int override_br
 string ghost_brand_name(int brand);
 
 const char* potion_type_name(int potiontype);  //used in xom.cc
+const char* potion_type_name_j(int potiontype);
 const char* jewellery_effect_name(int jeweltype) PURE; //used in l_item.cc
 #endif

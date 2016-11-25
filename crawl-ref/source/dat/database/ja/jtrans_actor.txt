@@ -9,7 +9,7 @@ wall
 %%%%
 %s %s %s grip on %s.
 
-%sは%sを締め付けから%s。
+%sは%sを締めつけから%s。
 %%%%
 release
 
@@ -45,7 +45,7 @@ barely %s.
 %%%%
 easily %s.
 
-それを楽々とやり過ごした。
+はそれを楽々とやり過ごした。
 %%%%
 %s with almost no effort.
 
@@ -58,6 +58,10 @@ easily %s.
 %s %s into %s!
 
 %sは%sに%s！
+%%%%
+something
+
+何か
 %%%%
 %s violently %s moving!
 

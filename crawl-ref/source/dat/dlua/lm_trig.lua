@@ -534,7 +534,7 @@ end
 
 function message_at_spot(msg, channel, repeated, props)
   local tm = TriggerableMessage:new
-      { msg = msg, channel = channel, repeated = repeated, props = props }
+      { msg = crawl.jtrans(msg), channel = channel, repeated = repeated, props = props }
 
   tm:add_triggerer( DgnTriggerer:new { type   = "player_move" } )
 

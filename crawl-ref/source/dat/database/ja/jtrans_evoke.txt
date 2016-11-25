@@ -1,4 +1,56 @@
 %%%%
+You cannot attack while held in a net.
+
+網で拘束されている間は攻撃できない。
+%%%%
+You cannot attack while caught in a web.
+
+蜘蛛の巣に巻き付かれている間は攻撃できない。
+%%%%
+Attack whom?
+
+どれを攻撃しますか？
+%%%%
+Your weapon cannot reach that far!
+
+あなたの武器はそこまで届かない！
+%%%%
+You swing wildly and hit a wall.
+
+あなたは勢いよく振り回して壁を叩いた。
+%%%%
+There's a wall in the way.
+
+そこには壁がある。
+%%%%
+You could not reach far enough!
+
+そんなに遠くには届かない！
+%%%%
+You reach to attack!
+
+あなたは攻撃を届かせた！
+%%%%
+%s is in the way.
+
+%sが途中にいる。
+%%%%
+Something you can't see
+
+なにか目に見えないもの
+%%%%
+You swing wildly%s
+
+あなたは勢いよく振り回し
+%%%%
+and almost hit yourself!
+
+て自分に当てそうになった！
+%%%%
+You attack empty space.
+
+あなたは何もないところを攻撃した。
+%%%%
 You can't produce a sound!
 
 あなたは音を立てることができない！
@@ -14,6 +66,14 @@ You produce a hideous howling noise!
 Nothing answers your call.
 
 あなたの呼びかけに応える者はいなかった。
+%%%%
+These balls have not yet been approved for use by djinn.
+
+# obsolete
+%%%%
+(OOC: they're supposed to work, but need a redesign.)
+
+# obsolete
 %%%%
 You lack the intelligence to focus on the shapes in the ball.
 
@@ -91,6 +151,38 @@ This wand has %d charge%s left.
 
 このワンドの使用回数は残り%d回だ。
 %%%%
+Charge which item?
+
+どのアイテムに充填しますか？
+%%%%
+Choose an item to recharge, or Esc to abort.
+
+再充填するアイテムを選択するか、Escキーで中断してください。
+%%%%
+and now has %d charge%s
+
+。残りの使用回数は%d回だ
+%%%%
+%s %s for a moment%s.
+
+%sは一瞬%s%s。
+%%%%
+It has %d charges and is fully charged.
+
+残り使用回数は最大の%d回まで充填された。
+%%%%
+%s glows for a moment.
+
+%sは一瞬輝いた。
+%%%%
+You have finished your manual of %s and toss it away.
+
+あなたは%sの虎の巻を読破し、それを放り投げた。
+%%%%
+%lu skills
+
+%lu種のスキル
+%%%%
 You open the lid...
 
 あなたは蓋を開いた……
@@ -101,7 +193,7 @@ You open the lid...
 %%%%
 ...but nothing happens.
 
-……しかし何事も起こらなかった！
+……しかし何事も起こらなかった。
 %%%%
 ...and something leaps out!
 
@@ -218,6 +310,14 @@ The reflection would only feel hate for you!
 forbids your reflecting this monster.
 
 はモンスターを鏡に映すのを禁じた。
+%%%%
+mirrored by the player character
+
+あなたに鏡でコピーされた
+%%%%
+mirrored by
+
+鏡でコピーされた
 %%%%
 You reflect %s with the mirror, and the mirror shatters!
 

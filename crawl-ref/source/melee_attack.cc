@@ -267,7 +267,7 @@ bool melee_attack::handle_phase_dodged()
             mprf(jtransc("%s momentarily %s out as %s "
                          "attack passes through %s%s"),
                  jtransc(defender->name(DESC_THE)),
-                 jtransc(atk_name(DESC_PLAIN)),
+                 jtransc(atk_name(DESC_ITS)),
                  defender->pronoun(PRONOUN_OBJECTIVE).c_str(),
                  attack_strength_punctuation(damage_done).c_str());
         }
@@ -390,6 +390,26 @@ void melee_attack::apply_black_mark_effects()
  *
  * Returns true if combat should continue, false if it should end here.
  */
+
+string _melee_attack_particle(const string& verb)
+{
+    if (verb == "sucker-punch" || // 予想外の殴打を加えた
+        verb == "karate-kick" || // 空手の蹴りを放った
+        verb == "release spore at" || // 胞子を振りまいた
+        verb == "touch" || // 触れた
+        verb == "headbutt" || // 頭突きをした
+        verb == "pounce on") // 襲いかかった
+        return "に";
+    else if (verb == "eye-gouge" || // 眼を抉った
+             verb == "kneecap" || // 膝を狙って攻撃した
+             verb == "eviscerate") // 内臓をくりぬいた
+        return "の";
+    else if (verb == "wrestle") // 取っ組み合いをした
+        return "と";
+    else
+        return "を";
+}
+
 bool melee_attack::handle_phase_hit()
 {
     did_hit = true;
@@ -484,9 +504,10 @@ bool melee_attack::handle_phase_hit()
                       : attacker->conj_verb(mons_attack_verb());
 
         // TODO: Clean this up if possible, checking atype for do / does is ugly
-        mprf("%sは%sを%sが、損傷を与えなかった。",
+        mprf("%sは%s%s%sが、損傷を与えなかった。",
              jtransc(attacker->name(DESC_THE)),
              jtransc(defender_name(true)),
+             _melee_attack_particle(attack_verb).c_str(),
              jtransc(attack_verb));
     }
 
@@ -554,8 +575,8 @@ bool melee_attack::handle_phase_damaged()
             if (needs_message)
             {
                 mprf(jtransc("%s shroud bends %s attack away%s"),
-                     jtransc(def_name(DESC_PLAIN)),
-                     jtransc(atk_name(DESC_PLAIN)),
+                     jtransc(def_name(DESC_ITS)),
+                     jtransc(atk_name(DESC_ITS)),
                      attack_strength_punctuation(damage_done).c_str());
             }
             did_hit = false;
@@ -572,7 +593,7 @@ bool melee_attack::handle_phase_damaged()
     {
         mprf(defender->is_player() ? MSGCH_WARN : MSGCH_PLAIN,
              jtransc("%s shroud falls apart!"),
-             jtransc(def_name(DESC_PLAIN)));
+             jtransc(def_name(DESC_ITS)));
     }
 
     return true;
@@ -670,7 +691,7 @@ static void _hydra_consider_devouring(monster &defender)
     {
         // handle this carefully, so the player knows what's going on
         mprf(jtransc("You spit out %s as %s twists & changes in your mouth!"),
-             jtransc(defender.name(DESC_PLAIN)),
+             jtransc(defender.name(DESC_THE)),
              defender.pronoun(PRONOUN_SUBJECTIVE).c_str());
         return;
     }
@@ -1259,13 +1280,14 @@ bool melee_attack::player_aux_test_hit()
     if (to_hit >= phaseless_evasion && defender_visible)
     {
         mprf(jtransc("Your %s passes through %s as %s momentarily phases out."),
-             jtransc(string("auxname ") + aux_attack),
+             tagged_jtransc("[auxname]", aux_attack),
              jtransc(defender->name(DESC_THE)),
              defender->pronoun(PRONOUN_SUBJECTIVE).c_str());
     }
     else
     {
-        mprf(jtransc("Your %s misses %s."), jtransc(string("auxname ") + aux_attack),
+        mprf(jtransc("Your %s misses %s."),
+             tagged_jtransc("[auxname]", aux_attack),
              jtransc(defender->name(DESC_THE)));
     }
 
@@ -1426,7 +1448,7 @@ bool melee_attack::player_aux_apply(unarmed_attack_type atk)
 
             antimagic_affects_defender(damage_done * 32);
             mprf(jtransc("You drain %s %s."),
-                 jtransc(defender->name(DESC_THE)),
+                 jtransc(defender->name(DESC_ITS)),
                  jtransc(spell_user ? "magic" : "power"));
 
             if (you.magic_points != you.max_magic_points
@@ -1449,8 +1471,9 @@ bool melee_attack::player_aux_apply(unarmed_attack_type atk)
     else // no damage was done
     {
         mprf(jtransc("You %s %s%s."),
-             jtransc(aux_verb),
              jtransc(defender->name(DESC_THE)),
+             _melee_attack_particle(aux_verb).c_str(),
+             jtransc(aux_verb),
              jtransc(you.can_see(defender) ? ", but do no damage" : ""));
     }
 
@@ -1467,6 +1490,7 @@ void melee_attack::player_announce_aux_hit()
 {
     mprf(jtransc("You %s %s%s%s"),
          jtransc(defender->name(DESC_THE)),
+         _melee_attack_particle(aux_verb).c_str(),
          jtransc(aux_verb),
          attack_strength_punctuation(damage_done).c_str(),
          debug_damage_number().c_str());
@@ -1491,11 +1515,16 @@ string melee_attack::player_why_missed()
                                                  : string("armour"));
 
         if (armour_miss && !shield_miss)
-            return "あなたの" + armour_name + "は敵の攻撃を防いだ。";
+            return make_stringf("あなたは自分の%sが邪魔で%sを攻撃できなかった。",
+                                armour_name.c_str(),
+                                jtransc(defender->name(DESC_PLAIN)));
         else if (shield_miss && !armour_miss)
-            return "あなたの盾は敵の攻撃を防いだ。";
+            return make_stringf("あなたは自分の盾が邪魔で%sを攻撃できなかった。",
+                                jtransc(defender->name(DESC_PLAIN)));
         else
-            return "あなたの盾と" + armour_name + "は敵の攻撃を防いだ。";
+            return make_stringf("あなたは自分の盾と%sが邪魔で%sを攻撃できなかった。",
+                                armour_name.c_str(),
+                                jtransc(defender->name(DESC_PLAIN)));
     }
 
     return "あなたは" + jtrans(defender->name(DESC_THE))
@@ -1712,7 +1741,7 @@ void melee_attack::set_attack_verb(int damage)
             {
                 {"crush",   "like a grape"},
                 {"beat",    "like a drum"},
-                {"hammer",  "like a gong"},
+                {"叩いた",  "like a gong"},
                 {"pound",   "like an anvil"},
                 {"flatten", "like a pancake"}
             };
@@ -2140,7 +2169,7 @@ void melee_attack::decapitate(int dam_type)
         if (defender_visible)
         {
             mprf(jtransc("%s %s %s last head off!"),
-                 jtransc(atk_name(DESC_PLAIN)),
+                 jtransc(atk_name(DESC_THE)),
                  jtransc(defender_name(true)),
                  verb);
         }
@@ -2166,7 +2195,7 @@ void melee_attack::decapitate(int dam_type)
     if (defender_visible)
     {
         mprf(jtransc("%s %s one of %s heads off!"),
-             jtransc(atk_name(DESC_PLAIN)),
+             jtransc(atk_name(DESC_THE)),
              jtransc(defender_name(true)),
              verb);
     }
@@ -2274,8 +2303,8 @@ void melee_attack::apply_staff_damage()
             special_damage_message =
                 make_stringf(
                     jtransc("%s freeze%s %s!"),
-                    jtransc(attacker->name(DESC_PLAIN)),
-                    jtransc(defender->name(DESC_PLAIN)));
+                    jtransc(attacker->name(DESC_THE)),
+                    jtransc(defender->name(DESC_THE)));
             special_damage_flavour = BEAM_COLD;
         }
         break;
@@ -2289,8 +2318,8 @@ void melee_attack::apply_staff_damage()
             special_damage_message =
                 make_stringf(
                     jtransc("%s crush%s %s!"),
-                    jtransc(attacker->name(DESC_PLAIN)),
-                    jtransc(defender->name(DESC_PLAIN)));
+                    jtransc(attacker->name(DESC_THE)),
+                    jtransc(defender->name(DESC_THE)));
         }
         break;
 
@@ -2305,8 +2334,8 @@ void melee_attack::apply_staff_damage()
             special_damage_message =
                 make_stringf(
                     jtransc("%s burn%s %s!"),
-                    jtransc(attacker->name(DESC_PLAIN)),
-                    jtransc(defender->name(DESC_PLAIN)));
+                    jtransc(attacker->name(DESC_THE)),
+                    jtransc(defender->name(DESC_THE)));
             special_damage_flavour = BEAM_FIRE;
         }
         break;
@@ -2336,7 +2365,7 @@ void melee_attack::apply_staff_damage()
             special_damage_message =
                 make_stringf(
                     jtransc("%s convulse%s in agony!"),
-                    jtransc(defender->name(DESC_PLAIN)));
+                    jtransc(defender->name(DESC_THE)));
 
             attacker->god_conduct(DID_NECROMANCY, 4);
         }
@@ -2419,7 +2448,7 @@ bool melee_attack::attack_warded_off()
         if (needs_message)
         {
             mprf(jtransc("%s tries to attack %s, but flinches away."),
-                 jtransc(atk_name(DESC_PLAIN)),
+                 jtransc(atk_name(DESC_THE)),
                  jtransc(defender_name(true)));
         }
         return true;
@@ -2435,8 +2464,8 @@ bool melee_attack::attack_ignores_shield(bool verbose)
         if (needs_message && verbose)
         {
             mprf(jtransc("%s blade passes through %s shield."),
-                 jtransc(atk_name(DESC_PLAIN)),
-                 jtransc(def_name(DESC_PLAIN)));
+                 jtransc(atk_name(DESC_ITS)),
+                 jtransc(def_name(DESC_ITS)));
             return true;
         }
     }
@@ -2548,16 +2577,18 @@ void melee_attack::announce_hit()
     if (attacker->is_monster())
     {
         // 不可視モンスターに対しては｢何かが～｣にする。
-        const char* fmt = you.can_see(attacker) ? "%sは%sを%s%s%s%s"
-                                                : "%sが%sを%s%s%s%s";
+        const char* fmt = you.can_see(attacker) ? "%sは%s%s%s%s%s%s"
+                                                : "%sが%s%s%s%s%s%s";
+        const string verb = mons_attack_verb();
 
         mprf(fmt,
              jtransc(atk_name(DESC_THE)),
              jtransc(defender_name(true)),
+             _melee_attack_particle(verb).c_str(),
              mons_attack_desc().c_str(),
-             jtransc(attacker->conj_verb(mons_attack_verb())),
-             debug_damage_number().c_str(),
-             attack_strength_punctuation(damage_done).c_str());
+             jtransc(verb),
+             attack_strength_punctuation(damage_done).c_str(),
+             debug_damage_number().c_str());
     }
     else
     {
@@ -2567,12 +2598,14 @@ void melee_attack::announce_hit()
             verb_degree = " " + verb_degree;
         }
 
-        mprf("あなたは%s%sを%s%s%s%s",
+        mprf("あなたは%s%s%s%s%s%s%s",
              jtransc(defender->name(DESC_THE)),
              jtransc(verb_degree),
+             _melee_attack_particle(attack_verb).c_str(),
              jtransc(verb_degree2),
-             jtransc(attack_verb), debug_damage_number().c_str(),
-             attack_strength_punctuation(damage_done).c_str());
+             jtransc(attack_verb),
+             attack_strength_punctuation(damage_done).c_str(),
+             debug_damage_number().c_str());
     }
 }
 
@@ -2610,7 +2643,7 @@ bool melee_attack::mons_do_poison()
     if (needs_message)
     {
         mprf(jtransc("%s poisons %s!"),
-             jtransc(atk_name(DESC_PLAIN)),
+             jtransc(atk_name(DESC_THE)),
              jtransc(defender_name(true)));
         if (force)
         {
@@ -2808,8 +2841,8 @@ void melee_attack::mons_apply_attack_flavour()
         if (one_chance_in(4))
         {
             defender->malmutate(you.can_see(attacker) ?
-                apostrophise(attacker->name(DESC_PLAIN)) + " mutagenic touch" :
-                "mutagenic touch");
+                attacker->name(DESC_PLAIN) + "による" + jtrans(" mutagenic touch") :
+                jtrans("mutagenic touch"));
         }
         break;
 
@@ -2858,7 +2891,6 @@ void melee_attack::mons_apply_attack_flavour()
         {
             mprf(jtransc("%sは%sを凍りつかせた%s"),
                  jtransc(atk_name(DESC_THE)),
-                 attacker->conj_verb("freeze").c_str(),
                  jtransc(defender_name(true)),
                  attack_strength_punctuation(special_damage).c_str());
 
@@ -3068,10 +3100,9 @@ void melee_attack::mons_apply_attack_flavour()
 
         if (needs_message && special_damage)
         {
-            mprf("%s %s %s%s",
-                 atk_name(DESC_THE).c_str(),
-                 attacker->conj_verb("sear").c_str(),
-                 defender_name(true).c_str(),
+            mprf("%sは%sの体を灼いた%s",
+                 jtransc(atk_name(DESC_THE)),
+                 jtransc(defender_name(true)),
                  attack_strength_punctuation(special_damage).c_str());
 
         }
@@ -3087,10 +3118,10 @@ void melee_attack::mons_apply_attack_flavour()
 
             if (you.can_see(attacker) || you.can_see(defender))
             {
-                mprf("%s drains %s %s.",
-                     attacker->name(DESC_THE).c_str(),
-                     defender->pronoun(PRONOUN_POSSESSIVE).c_str(),
-                     spell_user ? "magic" : "power");
+                mprf(jtransc("%s drains %s %s."),
+                     jtransc(attacker->name(DESC_THE)),
+                     jtransc(defender->name(DESC_ITS)),
+                     jtransc(spell_user ? "magic" : "power"));
             }
 
             monster* vine = attacker->as_monster();
@@ -3102,9 +3133,9 @@ void melee_attack::mons_apply_attack_flavour()
                 mon_enchant me = vine->get_ench(ENCH_ANTIMAGIC);
                 vine->lose_ench_duration(me, random2(damage_done) + 1);
                 simple_monster_message(attacker->as_monster(),
-                                       spell_user
-                                       ? " looks very invigorated."
-                                       : " looks invigorated.");
+                                       jtransc(spell_user
+                                               ? " looks very invigorated."
+                                               : " looks invigorated."));
             }
         }
         break;
@@ -3152,10 +3183,9 @@ void melee_attack::mons_apply_attack_flavour()
 
             if (needs_message)
             {
-                mprf("%s %s %s in water!",
-                     atk_name(DESC_THE).c_str(),
-                     attacker->conj_verb("engulf").c_str(),
-                     defender_name(true).c_str());
+                mprf(jtransc("%s %s %s in water!"),
+                     jtransc(atk_name(DESC_THE)),
+                     jtransc(defender_name(true)));
             }
         }
 
@@ -3175,10 +3205,9 @@ void melee_attack::mons_apply_attack_flavour()
 
         if (needs_message && special_damage)
         {
-            mprf("%s %s %s!",
-                    atk_name(DESC_THE).c_str(),
-                    attacker->conj_verb("burn").c_str(),
-                    defender_name(true).c_str());
+            mprf("%sは%sを燃やした！",
+                 jtransc(atk_name(DESC_THE)),
+                 jtransc(defender_name(true)));
 
             _print_resist_messages(defender, special_damage, BEAM_FIRE);
         }
@@ -3212,8 +3241,8 @@ void melee_attack::mons_apply_attack_flavour()
 
             if (needs_message && visible_effect)
             {
-                mprf("%s magical defenses are stripped away!",
-                     def_name(DESC_ITS).c_str());
+                mprf(jtransc("%s magical defenses are stripped away!"),
+                     jtransc(def_name(DESC_ITS)));
             }
         }
         break;
@@ -3240,11 +3269,10 @@ void melee_attack::mons_apply_attack_flavour()
 
             if (needs_message)
             {
-                mprf("%s %s %s%s",
-                    atk_name(DESC_THE).c_str(),
-                    attacker->conj_verb("drown").c_str(),
-                    defender_name(true).c_str(),
-                    attack_strength_punctuation(special_damage).c_str());
+                mprf("%sは%sを溺れさせた%s",
+                     jtransc(atk_name(DESC_THE)),
+                     jtransc(defender_name(true)),
+                     attack_strength_punctuation(special_damage).c_str());
             }
         }
         break;
@@ -3262,8 +3290,8 @@ void melee_attack::mons_apply_attack_flavour()
         {
             if (needs_message)
             {
-                mprf("The air around %s erupts in flames!",
-                    defender_name(false).c_str());
+                mprf(jtransc("The air around %s erupts in flames!"),
+                     jtransc(defender_name(false)));
 
                 for (adjacent_iterator ai(defender->pos()); ai; ++ai)
                 {
@@ -3310,7 +3338,7 @@ void melee_attack::do_passive_freeze()
         if (!hurted)
             return;
 
-        simple_monster_message(mon, " is very cold.");
+        simple_monster_message(mon, jtransc(" is very cold."));
 
 #ifndef USE_TILE_LOCAL
         flash_monster_colour(mon, LIGHTBLUE, 200);
@@ -3353,7 +3381,7 @@ void melee_attack::do_passive_heat()
         if (!hurted)
             return;
 
-        simple_monster_message(mon, " is singed by your heat.");
+        simple_monster_message(mon, jtransc(" is singed by your heat."));
 
 #ifndef USE_TILE
         flash_monster_colour(mon, LIGHTRED, 200);
@@ -3383,8 +3411,8 @@ void melee_attack::mons_do_eyeball_confusion()
         if (mon->check_res_magic(ench_pow) <= 0
             && mons_class_is_confusable(mon->type))
         {
-            mprf("The eyeballs on your body gaze at %s.",
-                 mon->name(DESC_THE).c_str());
+            mprf(jtransc("The eyeballs on your body gaze at %s."),
+                 jtransc(mon->name(DESC_THE)));
 
             if (!mon->check_clarity(false))
             {
@@ -3418,7 +3446,7 @@ void melee_attack::do_spines()
                 return;
 
             simple_monster_message(attacker->as_monster(),
-                                   " is struck by your spines.");
+                                   jtransc(" is struck by your spines."));
 
             attacker->hurt(&you, hurt);
         }
@@ -3446,11 +3474,9 @@ void melee_attack::do_spines()
                 return;
             if (you.can_see(defender) || attacker->is_player())
             {
-                mprf("%s %s struck by %s %s.", attacker->name(DESC_THE).c_str(),
-                     attacker->conj_verb("are").c_str(),
-                     defender->name(DESC_ITS).c_str(),
-                     defender->type == MONS_BRIAR_PATCH ? "thorns"
-                                                        : "spines");
+                mprf(jtransc("%s %s struck by %s %s."),
+                     jtransc(attacker->name(DESC_THE)),
+                     jtransc(defender->name(DESC_ITS)));
             }
             attacker->hurt(defender, hurt, BEAM_MISSILE, KILLED_BY_SPINES);
         }
@@ -3474,7 +3500,7 @@ void melee_attack::emit_foul_stench()
             && !cell_is_solid(mon->pos())
             && env.cgrid(mon->pos()) == EMPTY_CLOUD)
         {
-            mpr("You emit a cloud of foul miasma!");
+            mpr(jtrans("You emit a cloud of foul miasma!"));
             place_cloud(CLOUD_MIASMA, mon->pos(), 5 + random2(6), &you);
         }
     }
@@ -3580,8 +3606,8 @@ bool melee_attack::do_knockback(bool trample)
     {
         if (needs_message)
         {
-            mprf("%s %s %s ground!",
-                 defender_name(false).c_str(),
+            mprf(jtransc("%s %s %s ground!"),
+                 jtransc(defender_name(false)),
                  defender->conj_verb("hold").c_str(),
                  defender->pronoun(PRONOUN_POSSESSIVE).c_str());
         }
@@ -3592,8 +3618,8 @@ bool melee_attack::do_knockback(bool trample)
     if (needs_message)
     {
         const string verb = defender->airborne() ? "are shoved" : "stumble";
-        mprf("%s %s backwards!",
-             defender_name(false).c_str(),
+        mprf(jtransc("%s %s backwards!"),
+             jtransc(defender_name(false)),
              defender->conj_verb(verb).c_str());
     }
 
@@ -3870,14 +3896,14 @@ bool melee_attack::_player_vampire_draws_blood(const monster* mon, const int dam
     // Now print message, need biting unless already done (never for bat form!)
     if (needs_bite_msg && you.form != TRAN_BAT)
     {
-        mprf("You bite %s, and draw %s blood!",
-             mon->name(DESC_THE, true).c_str(),
+        mprf(jtransc("You bite %s, and draw %s blood!"),
+             jtransc(mon->name(DESC_THE, true)),
              mon->pronoun(PRONOUN_POSSESSIVE).c_str());
     }
     else
     {
-        mprf("You draw %s blood!",
-             apostrophise(mon->name(DESC_THE, true)).c_str());
+        mprf(jtransc("You draw %s blood!"),
+             jtransc(mon->name(DESC_THE, true)));
     }
 
     // Regain hp.
@@ -3896,7 +3922,7 @@ bool melee_attack::_player_vampire_draws_blood(const monster* mon, const int dam
         if (heal > 0 && !you.duration[DUR_DEATHS_DOOR])
         {
             inc_hp(heal);
-            mprf("You feel %sbetter.", (you.hp == you.hp_max) ? "much " : "");
+            mprf(jtransc("You feel %sbetter."), (you.hp == you.hp_max) ? "さらに" : "");
         }
     }
 

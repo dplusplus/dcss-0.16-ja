@@ -2,6 +2,8 @@ language = ja
 show_more = false
 travel_delay = -1
 
+# dump_order += turns_by_place,kills_by_place,vaults
+
 ##### Crawl Init file ###############################################
 # For descriptions of all options, as well as some more in-depth information
 # on setting them, consult the file

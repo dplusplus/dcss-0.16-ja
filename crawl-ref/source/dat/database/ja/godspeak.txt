@@ -18,8 +18,9 @@ Xom general effect
 # "Let's try an experiment, hmmm?"
 『実験してみようか？ ふーむ？』
 
-w:1
+# w:1
 # "I wonder... What does this button do?"
+w:1
 『さて……このボタンで何が起こるんだろうな？』
 %%%%
 ##############################
@@ -28,7 +29,7 @@ w:1
 Xom general gift
 
 # Xom grants you a gift!
-ゾムはあなたに贈物を与えた！
+ゾムはあなたに贈り物を授けた！
 
 # "Here."
 『ほれ』
@@ -72,7 +73,7 @@ Xom multiple summons
 『我が子らよ、この定命の者に仕えよ』
 
 # Xom grants you some temporary aid.
-ゾムはあなたに一時的な救援をいくつか与えた。
+ゾムはあなたにいくらかの増援を一時的に与えた。
 
 # Xom momentarily opens a gate.
 ゾムは一時的に門を開いた。
@@ -90,7 +91,7 @@ Xom scenery
 ゾムは周囲の光景に文句を言った。
 
 # Xom alters the dungeon around you.
-ゾムはあなたの周囲のダンジョンを変化させた。
+ゾムはあなたの周囲の地形を変化させた。
 
 # "There, this looks better."
 『どうだ、この方が見栄えが良いだろう』
@@ -151,8 +152,9 @@ Xom major miscast effect
 # Xom giggles.
 ゾムはクスクス笑った。
 
-w:1
+# w:1
 # "Running a series of toy crash tests now."
+w:1
 『おもちゃの衝突実験の始まりだ』
 %%%%
 Xom rearrange the pieces
@@ -248,8 +250,9 @@ Xom banishment
 %%%%
 Xom revert own banishment
 
-w:30
+# w:30
 # "Kidding!"
+w:30
 『冗談だ！』
 
 # "On second thought, though..."
@@ -287,14 +290,16 @@ Xom chaos upgrade
 Xom noise
 
 # Xom makes a sudden noise! You hear @weapon_noise@
-ゾムは突然騒音を鳴らした！ あなたは@weapon_noise@を聞いた。
+ゾムは突然騒音を鳴らした！ あなたは@weapon_noise@
 
-w:1
+# w:1
 # "Boo!"
+w:1
 ゾムは野次り声を上げた。
 
-w:1
+# w:1
 # Xom does a drum roll.
+w:1
 ゾムはドラムを鳴らした。
 %%%%
 Xom blink monsters
@@ -353,7 +358,7 @@ Xom spell effect
 Xom colour smoke trail
 
 # "Go forth and redecorate, my child!"
-『行け！ そして改装するのだ！ 我が子よ！』
+『行け！ そして飾り立てるのだ！ 我が子よ！』
 
 # "This place needs a little more atmosphere."
 『この空間にはもっと空気が必要だな』
@@ -371,7 +376,7 @@ Xom vitrification
 壁の構造が突然変化した。
 
 # Xom alters the dungeon around you.
-ゾムはあなたの周りを変化させた。
+ゾムはあなたの周囲の地形を変化させた。
 %%%%
 # strengthens friendlies, weakens hostiles
 Xom good monster polymorph
@@ -424,7 +429,7 @@ Xom random mutations
 Xom snakes to sticks
 
 # Xom transforms those around you.
-ゾムはあなたの周囲を変化させた。
+ゾムはあなたの周囲のものを変化させた。
 
 # "I like them better like this."
 『私はこっちの方が好みだ』
@@ -461,8 +466,9 @@ Xom fake destruction
 # Xom gives a demonstration of destructive might.
 ゾムは破壊の力を見せつけた。
 
-w:1
+# w:1
 # "Let it end in hellfire!"
+w:1
 『地獄の業火で燃え尽きるがいい！』
 %%%%
 Xom accidental homicide
@@ -599,8 +605,9 @@ Xom boring death
 # "It's all fun and games until someone loses an eye."
 『誰かが目を突くまでは、なにもかも楽しい』
 
-w:1
+# w:1
 # "It's not fun and games unless someone loses an eye."
+w:1
 『誰かが目を突かない限り、なにもかも楽しくない』
 %%%%
 # Xom laughing
@@ -611,7 +618,7 @@ Xom laughter
 ゾムは高笑いをした！
 
 # Xom roars with laughter!
-ゾムは笑いながら吠えた！
+ゾムは高々と笑い声を上げた！
 
 # Xom thinks this is hilarious!
 ゾムは陽気なようだ！
@@ -640,7 +647,7 @@ Xom laughter
 # Xom titters!
 ゾムはけらけら笑った！
 
-Xom chuckles heartily!
+# Xom chuckles heartily!
 ゾムは心からくすくす笑った！
 
 # Xom chortles!
@@ -702,7 +709,7 @@ Beogh idol other
 ベオはあなたの種族に呪いを放った。
 
 # Beogh curses everyone not orcish, especially @player_genus_plural@.
-ベオはオーク以外の全ての種族、とりわけ@player_genus_plural@を呪った。
+ベオはオーク以外の全ての種族、とりわけ@player_genus@を呪った。
 
 # Beogh swears eternal hatred towards @player_god@.
 ベオは@player_god@に向かって永遠の憎悪を誓った。
@@ -740,8 +747,9 @@ the Shining One holy other
 # The Shining One says, "Martyrs are remembered forever."
 輝けるものは言った：『殉教者は永久に記憶される』
 
-w:1
+# w:1
 # The Shining One says, "An eye for an eye, a tooth for a tooth."
+w:1
 輝けるものは言った：『目には目を、歯には歯を』
 %%%%
 ##########################################
@@ -792,12 +800,14 @@ Xom prayer
 # You hear crickets chirping.
 あなたはコオロギが囀る音を聞いた。
 
-w:1
+# w:1
 # You feel someone pinching you. As you turn, you see no one.
+w:1
 あなたは誰かがあなたをつまんだと感じた。振り返ると誰もいなかった。
 
-w:1
+# w:1
 # Xom says: Amen!
+w:1
 ゾムは言った：『アーメン！』
 %%%%
 _trout_species_
@@ -849,8 +859,9 @@ _trout_species_rare_
 # a challenging
 やりがいのある
 
-w:2
+# w:2
 # a kilgore
+w:2
 キルゴアの
 %%%%
 _xom_child_
@@ -908,16 +919,19 @@ Gozag prayer
 # Gozag says: The world belongs to the rich.
 ゴザーグは言った：『世界は金持ちのものだ』
 
-w:4
+# w:4
 # Gozag says: Eat the poor!
+w:4
 ゴザーグは言った：『貧乏人を食い物にしろ！』
 
-w:3
+# w:3
 # Gozag says: Kill the poor!
+w:3
 ゴザーグは言った：『貧乏人を殺せ！』
 
-w:3
+# w:3
 # Gozag says: Defeat the poor!
+w:3
 ゴザーグは言った：『貧乏人を叩きのめせ！』
 
 # Gozag says: No better sound than the ting-a-ling of coins.
@@ -950,24 +964,29 @@ w:3
 # Gozag says: Cash is king!
 ゴザーグは言った：『現金こそ最上なり！』
 
-w:5
+# w:5
 # Gozag says: Gold! Gold! Gold!
+w:5
 ゴザーグは言った：『金！ 金！ 金だ！』
 
-w:1
+# w:1
 # Gozag says: Your prayer is important. Please continue to hold.
+w:1
 ゴザーグは言った：『あなたの祈りは重要だ。そのまま続けなさい』
 
-w:1
+# w:1
 # Gozag says: Please join the back of the queue.
+w:1
 ゴザーグは言った：『列の後ろに並んでください』
 
-w:1
+# w:1
 # Gozag says: This prayer may be monitored for quality assurance.
+w:1
 ゴザーグは言った：『礼拝は品質保証のため監視されています』
 
-w:1
+# w:1
 # Gozag says: For potions, speak 1 now.
+w:1
 ゴザーグは言った：『薬が欲しければ、1を押しなさい』
 %%%%
 ######################################
@@ -1058,7 +1077,6 @@ Lugonu newgame
 
 #Lugonu says: Depart the Abyss and spread corruption, my servant!
 #<lightgrey>(use the <w>a</w>bility menu to exit the Abyss)</lightgrey>
-
 ルゴヌは言った：『我がしもべよ、アビスを出でて崩壊を拡散するのだ！』
 <lightgrey> ※a)bility メニューからアビスを脱出できます。</lightgrey>
 %%%%
@@ -1158,7 +1176,7 @@ Yredelemnul penance
 Yredelemnul welcome
 
 # Yredelemnul says: Carry the black torch! Rouse the idle dead!
-イレデレンヌルは言った：『黒き松明を運べ！ 死体の偶像を喚起せよ！』
+イレデレンヌルは言った：『黒き松明を運べ！ 動かぬ死体を呼び起こせ！』
 %%%%
 Zin penance
 
@@ -1171,5 +1189,5 @@ Zin penance
 Zin welcome
 
 # Zin says: Spread the light, my child.
-ジンは言った：『我が信徒よ、光の版図を広めよ』
+ジンは言った：『わが信徒よ、光の版図を広めよ』
 %%%%

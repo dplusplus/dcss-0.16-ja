@@ -44,7 +44,7 @@
 #include "unicode.h"
 #include "viewmap.h"
 
-#define MAX_BRANCH_ABBREV_SIZE (strwidth("タルタロス:7"))
+#define MAX_BRANCH_ABBREV_SIZE (strwidth("ゾットの領域:5"))
 
 // Global
 StashTracker StashTrack;
@@ -403,7 +403,7 @@ string Stash::stash_item_name(const item_def &item)
 
     if (item.stash_freshness <= _min_rot(item))
     {
-        name += " (gone by now)";
+        name += " " + jtrans("(gone by now)");
         return name;
     }
 
@@ -412,7 +412,7 @@ string Stash::stash_item_name(const item_def &item)
         return name;
 
     if (item.stash_freshness <= 0)
-        name += " (skeletalised by now)";
+        name += " " + jtrans("(skeletalised by now)");
 
     return name;
 }

@@ -8,6 +8,7 @@
 #include "dbg-util.h"
 
 #include "artefact.h"
+#include "database.h"
 #include "directn.h"
 #include "dungeon.h"
 #include "libutil.h"
@@ -25,7 +26,7 @@ monster_type debug_prompt_for_monster()
 {
     char specs[1024];
 
-    mprf(MSGCH_PROMPT, "Which monster by name? ");
+    mpr_nojoin(MSGCH_PROMPT, jtrans("Which monster by name? ") + " ");
     if (!cancellable_get_line_autohist(specs, sizeof specs))
     {
         if (specs[0] == '\0')
@@ -346,7 +347,7 @@ void debug_dump_mon(const monster* mon, bool recurse)
     }
 }
 
-skill_type debug_prompt_for_skill(const char *prompt)
+skill_type debug_prompt_for_skill(const string &prompt)
 {
     char specs[80];
     msgwin_get_line_autohist(prompt, specs, sizeof(specs));

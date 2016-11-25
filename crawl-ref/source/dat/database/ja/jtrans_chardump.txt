@@ -1,4 +1,8 @@
 %%%%
+character file.
+
+キャラクター情報
+%%%%
 You %svisited %d branch
 
 あなたは迷宮の分岐のうち%d
@@ -25,7 +29,7 @@ You %svisited %d bazaar
 %%%%
 You %s%s %d ziggurat
 
-あなたは%d回
+あなたは%d回ジグラット%s
 %%%%
 (completing %d)
 
@@ -92,14 +96,18 @@ table legend turns by place
  F = この場所で階層間でない自動移動を行って費やしたターンをあなたが訪れた
      階層の数で割ったもの
 %%%%
+Total
+
+全体
+%%%%
 Message History
 
 メッセージ履歴:
 %%%%
-notes header
+Notes\nTurn   | Place    | Note
 
 行動履歴:
-ターン | 場所          | 行動
+ターン | 場所           | 行動
 %%%%
 You escaped
 
@@ -107,7 +115,7 @@ You escaped
 %%%%
 demanding penance.
 
-罪の償いを求めている。
+懺悔を求めている。
 %%%%
 You aren't carrying anything.
 
@@ -123,7 +131,7 @@ Skills:
 %%%%
 Your Spells              Type           Power        Failure   Level  Hunger
 
-呪文名                    種類         威力    失敗率 レベル 満腹度消費
+呪文名                     種類         威力   失敗率   レベル 満腹度消費
 %%%%
 table legend kills by place
 
@@ -148,6 +156,10 @@ table legend kills by place
  E = ゲーム全体においてこの場所で得た経験値のパーセンテージ
  F = この場所で得た経験値をあなたが訪れた階層の数で割ったもの
 %%%%
+Vault maps used:
+
+使用された特殊マップ名:
+%%%%
 Deck
 
 デッキ
@@ -156,11 +168,11 @@ Action
 
 行動
 %%%%
-total
-
-全体
-%%%%
 Char dumped successfully.
 
-キャラクターダンプに成功しました。
+キャラクター情報のファイル出力に成功しました。
+%%%%
+Turn   | Place    | Note
+
+ターン | 場所           | 行動
 %%%%

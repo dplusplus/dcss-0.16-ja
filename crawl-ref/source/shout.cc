@@ -22,6 +22,7 @@
 #include "ghost.h"
 #include "godabil.h"
 #include "hints.h"
+#include "japanese.h"
 #include "jobs.h"
 #include "libutil.h"
 #include "macro.h"
@@ -35,6 +36,7 @@
 #include "state.h"
 #include "stringutil.h"
 #include "terrain.h"
+#include "transform.h"
 #include "view.h"
 
 static noise_grid _noise_grid;
@@ -409,7 +411,7 @@ void item_noise(const item_def &item, string msg, int loudness)
     if (msg.empty()) // give default noises
     {
         channel = MSGCH_SOUND;
-        msg = "You hear a strange noise.";
+        msg = jtrans("You hear a strange noise.");
     }
 
     // Replace weapon references.  Can't use DESC_THE because that includes
@@ -423,13 +425,13 @@ void item_noise(const item_def &item, string msg, int loudness)
     // replace references to player name and god
     msg = replace_all(msg, "@player_name@", you.your_name);
     msg = replace_all(msg, "@player_god@",
-                      you_worship(GOD_NO_GOD) ? "atheism"
-                      : god_name(you.religion, coinflip()));
+                      jtrans(you_worship(GOD_NO_GOD) ? "atheism"
+                      : god_name(you.religion, coinflip())));
     msg = replace_all(msg, "@player_genus@", species_name(you.species, true));
     msg = replace_all(msg, "@a_player_genus@",
                           article_a(species_name(you.species, true)));
     msg = replace_all(msg, "@player_genus_plural@",
-                      pluralise(species_name(you.species, true)));
+                      jpluralise(species_name(you.species, true), "", "たち"));
 
     msg = maybe_pick_random_substring(msg);
     msg = maybe_capitalise_substring(msg);
@@ -535,6 +537,16 @@ static void _set_allies_withdraw(const coord_def &target)
 
 static string _want_to_shout_verb(const string& verb)
 {
+    if (!get_form()->shout_verb.empty())
+    {
+        string v = get_form()->shout_verb;
+        v = replace_all(v, "立てる", "立てたい");
+        v = replace_all(v, "鳴く", "鳴きたい");
+        v = replace_all(v, "放つ", "放ちたい");
+        v = replace_all(v, "吠える", "吠えたい");
+        return v;
+    }
+
     if (verb == "shout")
         return "大声を上げたい";
     else if (verb == "yell")
@@ -582,6 +594,7 @@ void yell(const actor* mon)
     dist targ;
 
     const string shout_verb = you.shout_verb(mon != nullptr);
+    const string shouted_verb = jconj_verb(shout_verb, JCONJ_PERF);
     const string want_to_shout_verb = _want_to_shout_verb(shout_verb);
     string cap_shout = shout_verb;
     cap_shout[0] = toupper(cap_shout[0]);
@@ -615,14 +628,17 @@ void yell(const actor* mon)
         mprf(jtransc("You %s%s at %s!"),
              you.duration[DUR_RECITE] ? (mon->name(DESC_THE) + "に").c_str()
                                       : (mon->name(DESC_THE) + "に向かって").c_str(),
-             you.duration[DUR_RECITE] ? " your recitation" : "",
-             shout_verb.c_str());
+             jtransc(you.duration[DUR_RECITE] ? " your recitation" : ""),
+             jtransc(shout_verb));
         noisy(noise_level, you.pos());
         return;
     }
 
     mpr_nojoin(MSGCH_PROMPT, jtrans("What do you say?"));
-    mpr_nojoin(MSGCH_PLAIN, " t - " + _shout_verb_at_present_tense(shout_verb) + "！\n");
+    if (!get_form()->shout_verb.empty())
+        mpr_nojoin(MSGCH_PLAIN, " t - " + shout_verb + "！\n");
+    else
+        mpr_nojoin(MSGCH_PLAIN, " t - " + _shout_verb_at_present_tense(shout_verb) + "！\n");
 
     if (!you.berserk())
     {
@@ -654,7 +670,7 @@ void yell(const actor* mon)
     case 't':
         mprf(MSGCH_SOUND, jtransc("You %s%s!"),
              jtransc(you.berserk() ? " wildly" : " for attention"),
-             jtransc(shout_verb));
+             jtransc(shouted_verb));
         noisy(noise_level, you.pos());
         zin_recite_interrupt();
         you.turn_is_over = true;

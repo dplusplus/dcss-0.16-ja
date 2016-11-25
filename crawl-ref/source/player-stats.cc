@@ -275,7 +275,7 @@ void jiyva_stat_action()
         }
     if (choices)
     {
-        simple_god_message("'s power touches on your attributes.");
+        simple_god_message(jtransc("'s power touches on your attributes."));
         modify_stat(static_cast<stat_type>(stat_up_choice), 1, true);
         modify_stat(static_cast<stat_type>(stat_down_choice), -1, true);
     }
@@ -535,7 +535,7 @@ bool lose_stat(stat_type which_stat, int stat_loss, bool force,
     }
 
     mprf(stat_loss > 0 ? MSGCH_WARN : MSGCH_PLAIN,
-         jtransc(make_stringf("You feel %%ss%%ss%s.",
+         jtransc(make_stringf("You feel %%s%%s %s.",
                               stat_desc(which_stat, SD_LOSS))),
          jtransc(stat_loss > 0 ? "" : " for a moment"),
          jtransc(stat_loss > 0 && player_sust_abil(false) ? "somewhat " : ""));

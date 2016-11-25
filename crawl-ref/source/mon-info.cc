@@ -23,6 +23,7 @@
 #include "ghost.h"
 #include "itemname.h"
 #include "itemprop.h"
+#include "japanese.h"
 #include "libutil.h"
 #include "los.h"
 #include "message.h"
@@ -40,6 +41,7 @@
 #ifdef USE_TILE
 #include "tilepick.h"
 #endif
+#include "transform.h"
 #include "traps.h"
 
 static monster_info_flags ench_to_mb(const monster& mons, enchant_type ench)
@@ -779,7 +781,7 @@ monster_info::monster_info(const monster* m, int milev)
         actor * const constrictor = actor_by_mid(m->constricted_by);
         if (constrictor)
         {
-            constrictor_name = jtrans(constrictor->name(DESC_PLAIN, true))
+            constrictor_name = jtrans(constrictor->name(DESC_A, true))
                 + jtrans((m->held == HELD_MONSTER ? "held by "
                                                   : "constricted by "));
         }
@@ -794,7 +796,7 @@ monster_info::monster_info(const monster* m, int milev)
         {
             if (const actor* const constrictee = actor_by_mid(entry.first))
             {
-                constricting_name.push_back(jtrans(constrictee->name(DESC_PLAIN, true))
+                constricting_name.push_back(jtrans(constrictee->name(DESC_A, true))
                                             + gerund);
             }
         }
@@ -868,7 +870,7 @@ string monster_info::_core_name() const
     else if (nametype == MONS_LERNAEAN_HYDRA)
         s = jtrans("Lernaean hydra"); // TODO: put this into mon-data.h
     else if (nametype == MONS_ROYAL_JELLY)
-        s = jtrans("royal jelly");
+        s = jtrans("the royal jelly");
     else if (mons_species(nametype) == MONS_SERPENT_OF_HELL)
         s = jtrans("Serpent of Hell");
     else if (invalid_monster_type(nametype) && nametype != MONS_PROGRAM_BUG)
@@ -888,7 +890,7 @@ string monster_info::_core_name() const
             break;
         case MONS_UGLY_THING:
         case MONS_VERY_UGLY_THING:
-            s = jtrans(ugly_thing_colour_name(_colour) + " ") + s;
+            s = jtrans(ugly_thing_colour_name(_colour)) + s;
             break;
 
         case MONS_DRACONIAN_CALLER:
@@ -899,7 +901,7 @@ string monster_info::_core_name() const
         case MONS_DRACONIAN_KNIGHT:
         case MONS_DRACONIAN_SCORCHER:
             if (base_type != MONS_NO_MONSTER)
-                s = jtrans(draconian_colour_name(base_type) + " ") + s;
+                s = jtrans(draconian_colour_name(base_type)) + s;
             break;
 
         case MONS_BLOOD_SAINT:
@@ -908,7 +910,7 @@ string monster_info::_core_name() const
         case MONS_CORRUPTER:
         case MONS_BLACK_SUN:
             if (base_type != MONS_NO_MONSTER)
-                s = jtrans(demonspawn_base_name(base_type) + " ") + s;
+                s = jtrans(demonspawn_base_name(base_type)) + s;
             break;
 
         case MONS_DANCING_WEAPON:
@@ -931,7 +933,7 @@ string monster_info::_core_name() const
             s = mname + "の" + jtrans("illusion");
             break;
         case MONS_PANDEMONIUM_LORD:
-            s = mname;
+            s = jtrans(" the pandemonium lord") + "『" + mname + "』";
             break;
         default:
             break;
@@ -940,9 +942,37 @@ string monster_info::_core_name() const
 
     //XXX: Hack to get poly'd TLH's name on death to look right.
     if (is(MB_NAME_SUFFIX) && type != MONS_LERNAEAN_HYDRA)
-        s += " " + mname;
+    {
+        if (mname == "necromancer" || // big kobold necromancer
+            mname == "captain" || // vault guard captain
+            mname == "wizard" || // oklob plant|sapling xxx
+            mname == "conjurer" ||
+            mname == "summoner" ||
+            mname == "shifter" ||
+            mname == "meteorologist" ||
+            mname == "demonologist" ||
+            mname == "annihilator" ||
+            mname == "priest")
+            s += "の" + jtrans(mname);
+        else
+            s += jtrans(mname);
+    }
     else if (is(MB_NAME_ADJECTIVE))
-        s = mname + " " + s;
+    {
+        if (mname == "apprentice") // apprentice kobold demonologist
+            s = replace_all(s, "の", "の" + jtrans(mname));
+        else if(mname == "conjurer" || // conjurer statue
+                mname == "fire elementalist" || // sprint_mu
+                mname == "water elementalist" ||
+                mname == "air elementalist" ||
+                mname == "earth elementalist" ||
+                mname == "zot")
+            s = jtrans(mname) + "の" + s;
+        else if(mname == "giant") // giant anaconda
+            s = "巨大" + s;
+        else
+            s = jtrans(mname) + s;
+    }
 
     return s;
 }
@@ -1075,6 +1105,21 @@ string monster_info::_apply_adjusted_description(description_level_type desc,
     return apply_description(desc, s);
 }
 
+string monster_info::_apply_adjusted_description_j(description_level_type desc,
+                                                 const string& s) const
+{
+    if (desc == DESC_ITS)
+        desc = DESC_THE;
+
+    if (is(MB_NAME_THE) && desc == DESC_A)
+        desc = DESC_THE;
+
+    if (attitude == ATT_FRIENDLY && desc == DESC_THE)
+        desc = DESC_YOUR;
+
+    return apply_description_j(desc, s);
+}
+
 string monster_info::common_name(description_level_type desc) const
 {
     const string core = _core_name();
@@ -1110,7 +1155,10 @@ string monster_info::common_name(description_level_type desc) const
     {
         ASSERT(num_heads > 0);
 
-        ss << num_heads << jtrans("-headed ");
+        if (type == MONS_LERNAEAN_HYDRA || ends_with(mname, "Lernaean hydra"))
+            ss << jnumber_for_hydra_heads(num_heads) << "の首を持つ";
+        else
+            ss << jnumber_for_hydra_heads(num_heads) << jtrans("-headed ");
     }
 
     if (mons_class_is_chimeric(type))
@@ -1121,7 +1169,7 @@ string monster_info::common_name(description_level_type desc) const
             && (me = get_monster_data(u.ghost.acting_part)))
         {
             // Specify an acting head
-            ss << "の持つ" << me->name << "の頭";
+            ss << "に生えた" << jtrans(me->name) << "の頭";
         }
         else
             // Suffix parts in brackets
@@ -1178,13 +1226,18 @@ string monster_info::common_name(description_level_type desc) const
         // If momentarily in original form, don't display "shaped
         // shifter".
         if (mons_genus(type) != MONS_SHAPESHIFTER)
-            ss << "に変身した" << jtrans("shaped shifter");
+            ss << jtrans("shaped shifter");
     }
 
-    string s = ss.str();
+    string s;
+    // only respect unqualified if nothing was added ("Sigmund" or "The spectral Sigmund")
+    if (!is(MB_NAME_UNQUALIFIED) || has_proper_name() || ss.str() != core)
+        s = _apply_adjusted_description_j(desc, ss.str());
+    else
+        s = ss.str();
 
     if (desc == DESC_ITS)
-        s = apostrophise(s);
+        s += "の";
 
     return s;
 }
@@ -1239,7 +1292,7 @@ string monster_info::common_name_en(description_level_type desc) const
             && (me = get_monster_data(u.ghost.acting_part)))
         {
             // Specify an acting head
-            ss << "に生えた" << me->name << "の頭";
+            ss << "'s " << me->name << " head";
         }
         else
             // Suffix parts in brackets
@@ -1323,12 +1376,25 @@ string monster_info::proper_name(description_level_type desc) const
     if (has_proper_name())
     {
         if (desc == DESC_ITS)
-            return apostrophise(mname);
+            return mname + "の";
         else
             return mname;
     }
     else
         return common_name(desc);
+}
+
+string monster_info::proper_name_en(description_level_type desc) const
+{
+    if (has_proper_name())
+    {
+        if (desc == DESC_ITS)
+            return apostrophise(mname);
+        else
+            return mname;
+    }
+    else
+        return common_name_en(desc);
 }
 
 string monster_info::full_name(description_level_type desc, bool use_comma) const
@@ -1338,7 +1404,18 @@ string monster_info::full_name(description_level_type desc, bool use_comma) cons
 
     if (has_proper_name())
     {
-        string s = mname + (use_comma ? ", the " : " the ") + common_name();
+        string bra = "『", ket = "』";
+        string stripped_mname = replace_all(mname, ket, "");
+        string::size_type found;
+
+        if ((found = mname.find(bra, 0)) != string::npos)
+        {
+            stripped_mname.replace(0, found + bra.length(), "");
+            bra = "の" + bra;
+        }
+
+        string s = common_name() + bra + stripped_mname + ket;
+
         if (desc == DESC_ITS)
             s += "の";
         return s;
@@ -1495,7 +1572,7 @@ static string _verbose_info0(const monster_info& mi)
     if (mi.is(MB_INNER_FLAME))
         return "内炎";
     if (mi.is(MB_DUMB))
-        return "沈黙";
+        return "茫然自失";
     if (mi.is(MB_PARALYSED))
         return "麻痺";
     if (mi.is(MB_CAUGHT))
@@ -1624,7 +1701,7 @@ void monster_info::to_string(int count, string& desc, int& desc_colour,
     if (count != 1)
         out << count << "体の";
     if (adj)
-        out << jtrans(adj);
+        out << tagged_jtrans("[adj]", adj);
     out << full;
 
 #ifdef DEBUG_DIAGNOSTICS
@@ -1650,9 +1727,9 @@ void monster_info::to_string(int count, string& desc, int& desc_colour,
         colour_type = _MLC_NEUTRAL;
         break;
     case ATT_STRICT_NEUTRAL:
-         out << " (fellow slime)";
-         colour_type = _MLC_STRICT_NEUTRAL;
-         break;
+        out << " " << jtrans(" (fellow slime)");
+        colour_type = _MLC_STRICT_NEUTRAL;
+        break;
     case ATT_HOSTILE:
         // out << " (hostile)";
         switch (threat)
@@ -1683,16 +1760,16 @@ vector<string> monster_info::attributes() const
     vector<string> v;
 
     if (is(MB_BERSERK))
-        v.emplace_back("berserk");
+        v.emplace_back("バーサーク中");
     if (is(MB_HASTED) || is(MB_BERSERK))
     {
         if (!is(MB_SLOWED))
-            v.emplace_back("fast");
+            v.emplace_back("加速中");
         else
-            v.emplace_back("fast+slow");
+            v.emplace_back("加減速中");
     }
     else if (is(MB_SLOWED))
-        v.emplace_back("slow");
+        v.emplace_back("減速中");
     if (is(MB_STRONG) || is(MB_BERSERK))
         v.emplace_back("unusually strong");
 
@@ -1744,14 +1821,12 @@ vector<string> monster_info::attributes() const
         v.emplace_back("inspiring fear");
     if (is(MB_BREATH_WEAPON))
     {
-        v.push_back(string("catching ")
-                    + pronoun(PRONOUN_POSSESSIVE) + " breath");
+        v.emplace_back("catching its breath");
     }
     if (is(MB_WITHDRAWN))
     {
         v.emplace_back("regenerating health quickly");
-        v.push_back(string("protected by ")
-                    + pronoun(PRONOUN_POSSESSIVE) + " shell");
+        v.emplace_back("protected by its shell");
     }
     if (is(MB_DAZED))
         v.emplace_back("dazed");
@@ -1789,7 +1864,7 @@ vector<string> monster_info::attributes() const
     if (is(MB_FLAYED))
         v.emplace_back("covered in terrible wounds");
     if (is(MB_WEAK))
-        v.emplace_back("weak");
+        v.emplace_back("弱体化中");
     if (is(MB_DIMENSION_ANCHOR))
         v.emplace_back("unable to translocate");
     if (is(MB_CONTROL_WINDS))
@@ -1845,7 +1920,7 @@ string monster_info::wounds_description_sentence() const
     if (wounds.empty())
         return "";
     else
-        return string(pronoun(PRONOUN_SUBJECTIVE)) + " is " + wounds + ".";
+        return string(pronoun(PRONOUN_SUBJECTIVE)) + "は" + wounds + "。";
 }
 
 string monster_info::wounds_description(bool use_colour) const
@@ -1859,6 +1934,10 @@ string monster_info::wounds_description(bool use_colour) const
         const int col = channel_to_colour(MSGCH_MONSTER_DAMAGE, dam);
         desc = colour_string(desc, col);
     }
+    desc = replace_all(desc, "傷ついた", "傷ついている");
+    desc = replace_all(desc, "傷つかなかった", "無傷");
+    desc = replace_all(desc, "死にかけている", "死にかけ");
+
     return desc;
 }
 
@@ -1874,7 +1953,7 @@ string monster_info::constriction_description() const
     }
 
     string constricting = comma_separated_line(constricting_name.begin(),
-                                               constricting_name.end());
+                                               constricting_name.end(), ", ");
 
     if (constricting != "")
     {

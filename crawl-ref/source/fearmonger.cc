@@ -9,6 +9,7 @@
 
 #include "areas.h"
 #include "coord.h"
+#include "database.h"
 #include "env.h"
 #include "fprop.h"
 #include "monster.h"
@@ -22,11 +23,11 @@ bool player::add_fearmonger(const monster* mon)
     {
         if (can_see(mon))
         {
-            mprf("%s's aura of fear is muted, and has no effect on you.",
-                 mon->name(DESC_THE).c_str());
+            mprf(jtransc("%s's aura of fear is muted, and has no effect on you."),
+                 jtransc(mon->name(DESC_THE)));
         }
         else
-            mpr("The fearful aura is strangely muted, and has no effect on you.");
+            mpr(jtrans("The fearful aura is strangely muted, and has no effect on you."));
 
         return false;
     }
@@ -35,8 +36,8 @@ bool player::add_fearmonger(const monster* mon)
     {
         set_duration(DUR_AFRAID, 7, 12);
         fearmongers.push_back(mon->mid);
-        mprf(MSGCH_WARN, "You are terrified of %s!",
-                         mon->name(DESC_THE).c_str());
+        mprf(MSGCH_WARN, jtransc("You are terrified of %s!"),
+                         jtransc(mon->name(DESC_THE)));
     }
     else
     {
@@ -116,7 +117,7 @@ void player::fearmongers_check_noise(int loudness, bool axe)
 
     if (loudness >= 20 && beheld())
     {
-        mpr("For a moment, your terror fades away!");
+        mpr(jtrans("For a moment, your terror fades away!"));
         clear_fearmongers();
         _removed_fearmonger();
     }
@@ -178,7 +179,7 @@ void player::_removed_fearmonger(bool quiet)
     {
         duration[DUR_AFRAID] = 0;
         if (!quiet)
-            mprf(MSGCH_DURATION, "You are no longer terrified.");
+            mpr_nojoin(MSGCH_DURATION, jtrans("You are no longer terrified."));
     }
 }
 

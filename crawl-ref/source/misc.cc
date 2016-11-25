@@ -276,7 +276,7 @@ bool i_feel_safe(bool announce, bool want_move, bool just_monsters,
                 if (announce)
                 {
                     mprf(MSGCH_WARN, jtransc("You're standing in a cloud of %s!"),
-                         cloud_type_name(type).c_str());
+                         jtransc(cloud_type_name_j(type)));
                 }
                 return false;
             }
@@ -306,7 +306,13 @@ bool i_feel_safe(bool announce, bool want_move, bool just_monsters,
     if (visible.size() == 1)
     {
         const monster& m = *visible[0];
-        msg = make_stringf(jtransc("%s is nearby!"), m.name(DESC_A).c_str());
+        string name = m.name(DESC_PLAIN);
+
+        if (name != "竜巻")
+            msg = make_stringf(jtransc("%s is nearby!"), m.name(DESC_A).c_str());
+        else
+            msg = name + "が近くにある！";
+
     }
     else if (visible.size() > 1)
         msg = "There are monsters nearby!";
@@ -554,7 +560,7 @@ bool bad_attack(const monster *mon, string& adj, string& suffix,
     {
         if (god_hates_attacking_friend(you.religion, mon))
         {
-            adj = "あなたの従者";
+            adj = "あなたの従者である";
 
             monster_info mi(mon, MILEV_NAME);
 
@@ -567,7 +573,7 @@ bool bad_attack(const monster *mon, string& adj, string& suffix,
 
             monster_info mi(mon, MILEV_NAME);
             if (mi.is(MB_NAME_UNQUALIFIED))
-                adj += "従者";
+                adj += "従者である";
         }
 
         return true;
@@ -617,13 +623,7 @@ bool stop_attack_prompt(const monster* mon, bool beam_attack,
     if (!bad_attack(mon, adj, suffix, penance, attack_pos, check_landing_only))
         return false;
 
-    // Listed in the form: "your rat", "Blork the orc".
-    string mon_name = mon->name(DESC_PLAIN);
-    if (!mon_name.find("the ")) // no "your the royal jelly" nor "the the RJ"
-        mon_name.erase(0, 4);
-    if (adj.find("your"))
-        adj = "the " + adj;
-    mon_name = adj + mon_name;
+    string mon_name = adj + mon->name(DESC_PLAIN);
     string verb;
     if (beam_attack)
     {
@@ -753,7 +753,7 @@ void swap_with_monster(monster* mon_to_swap)
     // If it was submerged, it surfaces first.
     mon.del_ench(ENCH_SUBMERGED);
 
-    mprf(jtransc("You swap places with %s."), jtransc(mon.name(DESC_PLAIN)));
+    mprf(jtransc("You swap places with %s."), jtransc(mon.name(DESC_THE)));
 
     mon.move_to_pos(you.pos(), true, true);
 
@@ -840,7 +840,7 @@ void entered_malign_portal(actor* act)
     if (you.can_see(act))
     {
         mprf(jtransc("%s %s twisted violently and ejected from the portal!"),
-             jtransc(act->name(DESC_PLAIN)), act->conj_verb("be").c_str());
+             jtransc(act->name(DESC_THE)), act->conj_verb("be").c_str());
     }
 
     act->blink(false);
@@ -908,7 +908,12 @@ string counted_monster_list::describe(description_level_type desc,
         if (i != list.begin())
         {
             ++i;
-            out += (i == list.end() ? "そして" : "、");
+            if (prev(i, 2) == list.begin() && i == list.end())
+                out += "と";
+            else if (i != list.end())
+                out += "、";
+            else
+                out += "、そして";
         }
         else
             ++i;

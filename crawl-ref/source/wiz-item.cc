@@ -15,6 +15,7 @@
 #include "art-enum.h"
 #include "cio.h"
 #include "coordit.h"
+#include "database.h"
 #include "dbg-util.h"
 #include "decks.h"
 #include "env.h"
@@ -74,7 +75,7 @@ static void _make_all_books()
 void wizard_create_spec_object_by_name()
 {
     char buf[1024];
-    mprf(MSGCH_PROMPT, "Enter name of item (or ITEM spec): ");
+    mpr_nojoin(MSGCH_PROMPT, jtrans("Enter name of item (or ITEM spec): ") + " ");
     if (cancellable_get_line_autohist(buf, sizeof buf) || !*buf)
     {
         canned_msg(MSG_OK);
@@ -85,7 +86,7 @@ void wizard_create_spec_object_by_name()
     create_item_named(buf, you.pos(), &error);
     if (!error.empty())
     {
-        mprf(MSGCH_ERROR, "Error: %s", error.c_str());
+        mprf(MSGCH_ERROR, jtransc("Error: %s"), error.c_str());
         return;
     }
 }
@@ -105,12 +106,12 @@ void wizard_create_spec_object()
 
     do
     {
-        mprf(MSGCH_PROMPT, ") - weapons     ( - missiles  [ - armour  / - wands    ?  - scrolls");
-        mprf(MSGCH_PROMPT, "= - jewellery   ! - potions   : - books   | - staves   \\  - rods");
-        mprf(MSGCH_PROMPT, "} - miscellany  X - corpses   %% - food    $ - gold     0  - the Orb");
-        mprf(MSGCH_PROMPT, "ESC - exit");
+        mpr_nojoin(MSGCH_PROMPT, jtrans(") - weapons     ( - missiles  [ - armour  / - wands    ?  - scrolls"));
+        mpr_nojoin(MSGCH_PROMPT, jtrans("= - jewellery   ! - potions   : - books   | - staves   \\  - rods"));
+        mpr_nojoin(MSGCH_PROMPT, jtrans("} - miscellany  X - corpses   %% - food    $ - gold     0  - the Orb"));
+        mpr_nojoin(MSGCH_PROMPT, jtrans("ESC - exit"));
 
-        msgwin_prompt("What class of item? ");
+        msgwin_prompt(jtrans("What class of item? "));
 
         keyin = towupper(get_ch());
 
@@ -131,7 +132,7 @@ void wizard_create_spec_object()
     thing_created = get_mitm_slot();
     if (thing_created == NON_ITEM)
     {
-        mpr("Could not allocate item.");
+        mpr(jtrans("Could not allocate item."));
         return;
     }
 
@@ -144,7 +145,7 @@ void wizard_create_spec_object()
     }
     else if (class_wanted == OBJ_GOLD)
     {
-        int amount = prompt_for_int("How much gold? ", true);
+        int amount = prompt_for_int((jtrans("How much gold? ") + " ").c_str(), true);
         if (amount <= 0)
         {
             canned_msg(MSG_OK);
@@ -161,7 +162,7 @@ void wizard_create_spec_object()
 
         if (mon == MONS_NO_MONSTER || mon == MONS_PROGRAM_BUG)
         {
-            mpr("No such monster.");
+            mpr(jtrans("No such monster."));
             return;
         }
 
@@ -177,7 +178,7 @@ void wizard_create_spec_object()
 
         if (mons_is_draconian_job(mon))
         {
-            mpr("You can't make a draconian corpse by its background.");
+            mpr(jtrans("You can't make a draconian corpse by its background."));
             mon = MONS_DRACONIAN;
         }
 
@@ -185,21 +186,21 @@ void wizard_create_spec_object()
         dummy.type = mon;
 
         if (mons_genus(mon) == MONS_HYDRA)
-            dummy.num_heads = prompt_for_int("How many heads? ", false);
+            dummy.num_heads = prompt_for_int((jtrans("How many heads? ") + " ").c_str(), false);
 
         if (fill_out_corpse(&dummy, dummy.type,
                             mitm[thing_created], true) == MONS_NO_MONSTER)
         {
-            mpr("Failed to create corpse.");
+            mpr(jtrans("Failed to create corpse."));
             mitm[thing_created].clear();
             return;
         }
     }
     else
     {
-        string prompt = "What type of item? ";
+        string prompt = jtrans("What type of item? ") + " ";
         if (class_wanted == OBJ_BOOKS)
-            prompt += "(\"all\" for all) ";
+            prompt += jtrans("(\"all\" for all) ") + " ";
         msgwin_get_line_autohist(prompt, specs, sizeof(specs));
 
         string temp = specs;
@@ -221,7 +222,7 @@ void wizard_create_spec_object()
 
         if (!get_item_by_name(&mitm[thing_created], specs, class_wanted, true))
         {
-            mpr("No such item.");
+            mpr(jtrans("No such item."));
 
             // Clean up item
             destroy_item(thing_created);
@@ -250,7 +251,7 @@ static void _tweak_randart(item_def &item)
 {
     if (item_is_equipped(item))
     {
-        mprf(MSGCH_PROMPT, "You can't tweak the randart properties of an equipped item.");
+        mpr_nojoin(MSGCH_PROMPT, jtrans("You can't tweak the randart properties of an equipped item."));
         return;
     }
     else
@@ -293,7 +294,7 @@ static void _tweak_randart(item_def &item)
     }
     mprf(MSGCH_PROMPT, "%s", prompt.c_str());
 
-    mprf(MSGCH_PROMPT, "Change which field? ");
+    mpr_nojoin(MSGCH_PROMPT, jtrans("Change which field? ") + " ");
 
     int keyin = toalower(get_ch());
     unsigned int  choice;
@@ -318,20 +319,20 @@ static void _tweak_randart(item_def &item)
     switch (artp_potential_value_types(prop))
     {
     case ARTP_VAL_BOOL:
-        mprf(MSGCH_PROMPT, "Toggling %s to %s.", artp_name(prop),
-             props[prop] ? "off" : "on");
+        mprf(MSGCH_PROMPT, jtransc("Toggling %s to %s."), artp_name(prop),
+             jtransc(props[prop] ? "off" : "on"));
         artefact_set_property(item, static_cast<artefact_prop_type>(prop),
                              !props[prop]);
         break;
 
     case ARTP_VAL_POS:
      {
-        mprf(MSGCH_PROMPT, "%s was %d.", artp_name(prop), props[prop]);
-        const int val = prompt_for_int("New value? ", true);
+        mprf(MSGCH_PROMPT, jtransc("%s was %d."), artp_name(prop), props[prop]);
+        const int val = prompt_for_int((jtrans("New value? ") + " ").c_str(), true);
 
         if (val < 0)
         {
-            mprf(MSGCH_PROMPT, "Value for %s must be non-negative",
+            mprf(MSGCH_PROMPT, jtransc("Value for %s must be non-negative"),
                  artp_name(prop));
             return;
         }
@@ -341,8 +342,8 @@ static void _tweak_randart(item_def &item)
       }
     case ARTP_VAL_ANY:
       {
-        mprf(MSGCH_PROMPT, "%s was %d.", artp_name(prop), props[prop]);
-        const int val = prompt_for_int("New value? ", false);
+        mprf(MSGCH_PROMPT, jtransc("%s was %d."), artp_name(prop), props[prop]);
+        const int val = prompt_for_int((jtrans("New value? ") + " ").c_str(), false);
         artefact_set_property(item, static_cast<artefact_prop_type>(prop),
                              val);
         break;
@@ -355,7 +356,7 @@ void wizard_tweak_object()
     char specs[50];
     int keyin;
 
-    int item = prompt_invent_item("Tweak which item? ", MT_INVLIST, -1);
+    int item = prompt_invent_item((jtrans("Tweak which item? ") + " ").c_str(), MT_INVLIST, -1);
 
     if (prompt_failed(item))
         return;
@@ -409,11 +410,11 @@ void wizard_tweak_object()
         }
 
         if (keyin != 'e')
-            mprf("Old value: %" PRId64" (0x%04" PRIx64")", old_val, old_val);
+            mprf("現在の値: %" PRId64" (0x%04" PRIx64")", old_val, old_val);
         else
-            mprf("Old value: 0x%08" PRIx64, old_val);
+            mprf("現在の値: 0x%08" PRIx64, old_val);
 
-        msgwin_get_line("New value? ", specs, sizeof(specs));
+        msgwin_get_line((jtrans("New value? ") + " ").c_str(), specs, sizeof(specs));
         if (specs[0] == '\0')
             return;
 
@@ -425,7 +426,7 @@ void wizard_tweak_object()
             && (!you.inv[item].props.exists(KNOWN_PROPS_KEY)
              || !you.inv[item].props.exists(ARTEFACT_PROPS_KEY)))
         {
-            mpr("You can't set this flag on a non-artefact.");
+            mpr(jtrans("You can't set this flag on a non-artefact."));
             continue;
         }
 
@@ -464,7 +465,7 @@ static bool _make_book_randart(item_def &book)
 
     do
     {
-        mprf(MSGCH_PROMPT, "Make book fixed [t]heme or fixed [l]evel? ");
+        mpr_nojoin(MSGCH_PROMPT, jtrans("Make book fixed [t]heme or fixed [l]evel? ") + " ");
         type = toalower(getchk());
     }
     while (type != 't' && type != 'l');
@@ -477,13 +478,13 @@ static bool _make_book_randart(item_def &book)
 
 void wizard_value_artefact()
 {
-    int i = prompt_invent_item("Value of which artefact?", MT_INVLIST, -1);
+    int i = prompt_invent_item((jtrans("Value of which artefact?") + " ").c_str(), MT_INVLIST, -1);
 
     if (!prompt_failed(i))
     {
         const item_def& item(you.inv[i]);
         if (!is_artefact(item))
-            mpr("That item is not an artefact!");
+            mpr(jtrans("That item is not an artefact!"));
         else
             mpr(debug_art_val_str(item));
     }
@@ -544,8 +545,8 @@ void wizard_create_all_artefacts()
 
 void wizard_make_object_randart()
 {
-    int i = prompt_invent_item("Make an artefact out of which item?",
-                                MT_INVLIST, -1);
+    int i = prompt_invent_item(jtransc("Make an artefact out of which item?"),
+                               MT_INVLIST, -1);
 
     if (prompt_failed(i))
         return;
@@ -554,13 +555,13 @@ void wizard_make_object_randart()
 
     if (is_unrandom_artefact(item))
     {
-        mpr("That item is already an unrandom artefact.");
+        mpr(jtrans("That item is already an unrandom artefact."));
         return;
     }
 
     if (!_item_type_can_be_artefact(item.base_type))
     {
-        mpr("That item cannot be turned into an artefact.");
+        mpr(jtrans("That item cannot be turned into an artefact."));
         return;
     }
 
@@ -585,16 +586,16 @@ void wizard_make_object_randart()
         item.props.clear();
     }
 
-    mprf(MSGCH_PROMPT, "Fake item as gift from which god (ENTER to leave alone): ");
+    mpr_nojoin(MSGCH_PROMPT, jtrans("Fake item as gift from which god (ENTER to leave alone): ") + " ");
     char name[80];
     if (!cancellable_get_line(name, sizeof(name)) && name[0])
     {
         god_type god = str_to_god(name, false);
         if (god == GOD_NO_GOD)
-            mpr("No such god, leaving item origin alone.");
+            mpr(jtrans("No such god, leaving item origin alone."));
         else
         {
-            mprf("God gift of %s.", god_name(god, false).c_str());
+            mprf(jtransc("God gift of %s."), jtransc(god_name(god, false)));
             item.orig_monnum = -god;
         }
     }
@@ -603,13 +604,13 @@ void wizard_make_object_randart()
     {
         if (!_make_book_randart(item))
         {
-            mpr("Failed to turn book into randart.");
+            mpr(jtrans("Failed to turn book into randart."));
             return;
         }
     }
     else if (!make_item_randart(item, true))
     {
-        mpr("Failed to turn item into randart.");
+        mpr(jtrans("Failed to turn item into randart."));
         return;
     }
 
@@ -635,7 +636,7 @@ static bool _item_type_can_be_cursed(int type)
 
 void wizard_uncurse_item()
 {
-    const int i = prompt_invent_item("(Un)curse which item?", MT_INVLIST, -1);
+    const int i = prompt_invent_item(jtransc("(Un)curse which item?"), MT_INVLIST, -1);
 
     if (!prompt_failed(i))
     {
@@ -646,13 +647,13 @@ void wizard_uncurse_item()
         else if (_item_type_can_be_cursed(item.base_type))
             do_curse_item(item);
         else
-            mpr("That type of item cannot be cursed.");
+            mpr(jtrans("That type of item cannot be cursed."));
     }
 }
 
 void wizard_identify_pack()
 {
-    mpr("You feel a rush of knowledge.");
+    mpr(jtrans("You feel a rush of knowledge."));
     identify_inventory();
     you.wield_change  = true;
     you.redraw_quiver = true;
@@ -660,7 +661,7 @@ void wizard_identify_pack()
 
 void wizard_unidentify_pack()
 {
-    mpr("You feel a rush of antiknowledge.");
+    mpr(jtrans("You feel a rush of antiknowledge."));
     for (int i = 0; i < ENDOFPACK; ++i)
     {
         item_def& item = you.inv[i];
@@ -696,7 +697,7 @@ void wizard_unidentify_pack()
 
 void wizard_list_items()
 {
-    mpr("Item stacks (by location and top item):");
+    mpr(jtrans("Item stacks (by location and top item):"));
     for (int i = 0; i < MAX_ITEMS; ++i)
     {
         item_def &item(mitm[i]);
@@ -707,12 +708,12 @@ void wizard_list_items()
         {
             mprf("(%2d,%2d): %s%s", item.pos.x, item.pos.y,
                  item.name(DESC_PLAIN, false, false, false).c_str(),
-                 item.flags & ISFLAG_MIMIC ? " mimic" : "");
+                 item.flags & ISFLAG_MIMIC ? "のミミック" : "");
         }
     }
 
-    mpr("");
-    mpr("Floor items (stacks only show top item):");
+    mpr(" ");
+    mpr(jtrans("Floor items (stacks only show top item):"));
 
     const coord_def start(1,1), end(GXM-1, GYM-1);
     for (rectangle_iterator ri(start, end); ri; ++ri)
@@ -722,7 +723,7 @@ void wizard_list_items()
         {
             mprf("%3d at (%2d,%2d): %s%s", item, ri->x, ri->y,
                  mitm[item].name(DESC_PLAIN, false, false, false).c_str(),
-                 mitm[item].flags & ISFLAG_MIMIC ? " mimic" : "");
+                 mitm[item].flags & ISFLAG_MIMIC ? "のミミック" : "");
         }
     }
 }
@@ -737,15 +738,15 @@ static void _debug_acquirement_stats(FILE *ostat)
     int p = get_mitm_slot(11);
     if (p == NON_ITEM)
     {
-        mpr("Too many items on level.");
+        mpr(jtrans("Too many items on level."));
         return;
     }
     mitm[p].base_type = OBJ_UNASSIGNED;
 
     clear_messages();
-    mpr("[a] Weapons [b] Armours [c] Jewellery      [d] Books");
-    mpr("[e] Staves  [f] Wands   [g] Miscellaneous  [h] Food");
-    mprf(MSGCH_PROMPT, "What kind of item would you like to get acquirement stats on? ");
+    mpr(jtrans("[a] Weapons [b] Armours [c] Jewellery      [d] Books"));
+    mpr(jtrans("[e] Staves  [f] Wands   [g] Miscellaneous  [h] Food"));
+    mpr_nojoin(MSGCH_PROMPT, jtrans("What kind of item would you like to get acquirement stats on? ") + " ");
 
     object_class_type type;
     const int keyin = toalower(get_ch());
@@ -764,7 +765,7 @@ static void _debug_acquirement_stats(FILE *ostat)
         return;
     }
 
-    const int num_itrs = prompt_for_int("How many iterations? ", true);
+    const int num_itrs = prompt_for_int((jtrans("How many iterations? ") + " ").c_str(), true);
 
     if (num_itrs == 0)
     {
@@ -790,7 +791,7 @@ static void _debug_acquirement_stats(FILE *ostat)
         if (kbhit())
         {
             getchk();
-            mpr("Stopping early due to keyboard input.");
+            mpr(jtrans("Stopping early due to keyboard input."));
             break;
         }
 
@@ -800,7 +801,7 @@ static void _debug_acquirement_stats(FILE *ostat)
             || item_index == NON_ITEM
             || !mitm[item_index].defined())
         {
-            mpr("Acquirement failed, stopping early.");
+            mpr(jtrans("Acquirement failed, stopping early."));
             break;
         }
 
@@ -850,39 +851,40 @@ static void _debug_acquirement_stats(FILE *ostat)
         if (curr_percent > last_percent)
         {
             clear_messages();
-            mprf("%2d%% done.", curr_percent);
+            mprf(jtransc("%2d%% done."), curr_percent);
             last_percent = curr_percent;
         }
     }
 
     if (total_quant == 0 || acq_calls == 0)
     {
-        mpr("No items generated.");
+        mpr(jtrans("No items generated."));
         return;
     }
 
     // Print acquirement base type.
-    fprintf(ostat, "Acquiring %s for:\n\n",
-            type == OBJ_WEAPONS    ? "weapons" :
-            type == OBJ_ARMOUR     ? "armour"  :
-            type == OBJ_JEWELLERY  ? "jewellery" :
-            type == OBJ_BOOKS      ? "books" :
-            type == OBJ_STAVES     ? "staves" :
-            type == OBJ_WANDS      ? "wands" :
-            type == OBJ_MISCELLANY ? "misc. items" :
-            type == OBJ_FOOD       ? "food"
+    fprintf(ostat, (jtrans("Acquiring %s for:\n\n") + "\n\n").c_str(),
+            type == OBJ_WEAPONS    ? "武器" :
+            type == OBJ_ARMOUR     ? "防具"  :
+            type == OBJ_JEWELLERY  ? "装飾品" :
+            type == OBJ_BOOKS      ? "魔法書/虎の巻" :
+            type == OBJ_STAVES     ? "杖・ロッド" :
+            type == OBJ_WANDS      ? "ワンド" :
+            type == OBJ_MISCELLANY ? "発動アイテム" :
+            type == OBJ_FOOD       ? "食料"
                                    : "buggy items");
 
     // Print player species/profession.
     string godname = "";
     if (!you_worship(GOD_NO_GOD))
-        godname += " of " + god_name(you.religion);
+        godname += " (" + jtrans(god_name(you.religion)) + "の信徒)";
 
-    fprintf(ostat, "%s %s, Level %d %s %s%s\n\n",
-            you.your_name.c_str(), player_title().c_str(),
+    fprintf(ostat, (jtrans("%s %s, Level %d %s %s%s\n\n") + "\n\n").c_str(),
+            player_title(false).c_str(),
+            you.your_name.c_str(),
             you.experience_level,
-            species_name(you.species).c_str(),
-            you.class_name.c_str(), godname.c_str());
+            jtransc(species_name(you.species)),
+            jtransc(you.class_name), godname.c_str());
 
     // Print player equipment.
     const int e_order[] =
@@ -907,17 +909,17 @@ static void _debug_acquirement_stats(FILE *ostat)
             const item_def& item = you.inv[item_idx];
             const bool melded    = !player_wearing_slot(e_order[i]);
 
-            fprintf(ostat, "%-7s: %s %s\n", equip_slot_to_name(eqslot),
-                    item.name(DESC_PLAIN, true).c_str(),
+            fprintf(ostat, "%-7s: %s %s\n", chop_stringc(equip_slot_to_name(eqslot), 9),
+                    nbsp2sp(item.name(DESC_PLAIN, true)).c_str(),
                     melded ? "(melded)" : "");
             naked = false;
         }
     }
     if (naked)
-        fprintf(ostat, "Not wearing or wielding anything.\n");
+        fprintf(ostat, jtranslnc("Not wearing or wielding anything.\n"));
 
     // Also print the skills, in case they matter.
-    string skills = "\nSkills:\n";
+    string skills = "\n" + jtransln("Skills:\n");
     dump_skills(skills);
     fprintf(ostat, "%s\n\n", skills.c_str());
 
@@ -966,25 +968,25 @@ static void _debug_acquirement_stats(FILE *ostat)
             if (disc & SPTYP_DIVINATION)
                 continue;
 
-            fprintf(ostat, "%-13s:  %2d/%2d spells unseen\n",
+            fprintf(ostat, jtranslnc("%-13s:  %2d/%2d spells unseen\n"),
                     spelltype_long_name(disc),
                     unseen_spells[d], total_spells[d]);
         }
     }
 
-    fprintf(ostat, "\nAcquirement called %d times, total quantity = %d\n\n",
+    fprintf(ostat, ("\n" + jtrans("Acquirement called %d times, total quantity = %d") + "\n\n").c_str(),
             acq_calls, total_quant);
 
-    fprintf(ostat, "%5.2f%% artefacts.\n",
+    fprintf(ostat, jtranslnc("%5.2f%% artefacts.\n"),
             100.0 * (float) num_arts / (float) acq_calls);
 
     if (type == OBJ_WEAPONS)
     {
-        fprintf(ostat, "Maximum combined pluses: %d\n", max_plus);
-        fprintf(ostat, "Average combined pluses: %5.2f\n\n",
+        fprintf(ostat, jtranslnc("Maximum combined pluses: %d\n"), max_plus);
+        fprintf(ostat, (jtrans("Average combined pluses: %5.2f\n\n") + "\n\n").c_str(),
                 (float) total_plus / (float) acq_calls);
 
-        fprintf(ostat, "Egos (including artefacts):\n");
+        fprintf(ostat, jtranslnc("Egos (including artefacts):\n"));
 
         const char* names[] =
         {
@@ -1039,11 +1041,11 @@ static void _debug_acquirement_stats(FILE *ostat)
     }
     else if (type == OBJ_ARMOUR)
     {
-        fprintf(ostat, "Maximum plus: %d\n", max_plus);
-        fprintf(ostat, "Average plus: %5.2f\n\n",
+        fprintf(ostat, jtranslnc("Maximum plus: %d\n"), max_plus);
+        fprintf(ostat, (jtrans("Average plus: %5.2f\n\n") + "\n\n").c_str(),
                 (float) total_plus / (float) acq_calls);
 
-        fprintf(ostat, "Egos (excluding artefacts):\n");
+        fprintf(ostat, jtranslnc("Egos (excluding artefacts):\n"));
 
         const char* names[] =
         {
@@ -1093,7 +1095,7 @@ static void _debug_acquirement_stats(FILE *ostat)
         if (subtype_quants[BOOK_RANDART_THEME]
             + subtype_quants[BOOK_RANDART_LEVEL] > 0)
         {
-            fprintf(ostat, "Primary disciplines/levels of randart books:\n");
+            fprintf(ostat, jtranslnc("Primary disciplines/levels of randart books:\n"));
 
             const char* names[] =
             {
@@ -1137,7 +1139,7 @@ static void _debug_acquirement_stats(FILE *ostat)
         if (subtype_quants[BOOK_MANUAL] > 0)
         {
             const int mannum = subtype_quants[BOOK_MANUAL];
-            fprintf(ostat, "\nManuals:\n");
+            fprintf(ostat, ("\n" + jtransln("Manuals:\n")).c_str());
             for (skill_type sk = SK_FIRST_SKILL; sk <= SK_LAST_SKILL; ++sk)
             {
                 const int k = 200 + sk;
@@ -1195,7 +1197,7 @@ static void _debug_acquirement_stats(FILE *ostat)
     }
     fprintf(ostat, "-----------------------------------------\n\n");
 
-    mpr("Results written into 'items.stat'.");
+    mpr(jtrans("Results written into 'items.stat'."));
 }
 
 /**
@@ -1211,7 +1213,7 @@ static int _median(vector<int> &counts)
 static void _debug_rap_stats(FILE *ostat)
 {
     const int inv_index
-        = prompt_invent_item("Generate randart stats on which item?",
+        = prompt_invent_item(jtransc("Generate randart stats on which item?"),
                              MT_INVLIST, -1);
 
     if (prompt_failed(inv_index))
@@ -1228,7 +1230,7 @@ static void _debug_rap_stats(FILE *ostat)
 
     if (!make_item_randart(item))
     {
-        mpr("Can't make a randart out of that type of item.");
+        mpr(jtrans("Can't make a randart out of that type of item."));
         return;
     }
 
@@ -1258,7 +1260,7 @@ static void _debug_rap_stats(FILE *ostat)
         if (kbhit())
         {
             getchk();
-            mpr("Stopping early due to keyboard input.");
+            mpr(jtrans("Stopping early due to keyboard input."));
             break;
         }
 
@@ -1330,7 +1332,7 @@ static void _debug_rap_stats(FILE *ostat)
 
     }
 
-    fprintf(ostat, "Randarts generated: %d valid, %d invalid\n\n",
+    fprintf(ostat, (jtrans("Randarts generated: %d valid, %d invalid\n\n") + "\n\n").c_str(),
             num_randarts, bad_randarts);
 
     int total_good_props = 0, total_bad_props = 0;
@@ -1343,16 +1345,16 @@ static void _debug_rap_stats(FILE *ostat)
     // assumption: all props are good or bad
     const int total_props = total_good_props + total_bad_props;
 
-    fprintf(ostat, "max # of props = %d, mean = %5.2f, median = %d\n",
+    fprintf(ostat, jtranslnc("max # of props = %d, mean = %5.2f, median = %d\n"),
             max_props, (float) total_props / (float) num_randarts,
             _median(total_prop_counts));
-    fprintf(ostat, "max # of good props = %d, mean = %5.2f, median = %d\n",
+    fprintf(ostat, jtranslnc("max # of good props = %d, mean = %5.2f, median = %d\n"),
             max_good_props, (float) total_good_props / (float) num_randarts,
             _median(good_prop_counts));
-    fprintf(ostat, "max # of bad props = %d, mean = %5.2f, median = %d\n",
+    fprintf(ostat, jtranslnc("max # of bad props = %d, mean = %5.2f, median = %d\n"),
             max_bad_props, (float) total_bad_props / (float) num_randarts,
             _median(bad_prop_counts));
-    fprintf(ostat, "max (good - bad) props = %d, avg # = %5.2f\n\n",
+    fprintf(ostat, (jtrans("max (good - bad) props = %d, avg # = %5.2f\n\n") + "\n\n").c_str(),
             max_balance_props,
             (float) total_balance_props / (float) num_randarts);
 
@@ -1440,7 +1442,7 @@ static void _debug_rap_stats(FILE *ostat)
     }
 
     fprintf(ostat, "\n-----------------------------------------\n\n");
-    mpr("Results written into 'items.stat'.");
+    mpr(jtrans("Results written into 'items.stat'."));
 }
 
 void debug_item_statistics()
@@ -1453,7 +1455,7 @@ void debug_item_statistics()
         return;
     }
 
-    mpr("Generate stats for: [a] acquirement [b] randart properties");
+    mpr(jtrans("Generate stats for: [a] acquirement [b] randart properties"));
     flush_prev_message();
 
     const int keyin = toalower(get_ch());
@@ -1471,11 +1473,11 @@ void debug_item_statistics()
 
 void wizard_draw_card()
 {
-    msg::streams(MSGCH_PROMPT) << "Which card? " << endl;
+    msg::streams(MSGCH_PROMPT) << (jtrans("Which card? ") + " ") << endl;
     char buf[80];
     if (cancellable_get_line_autohist(buf, sizeof buf))
     {
-        mpr("Unknown card.");
+        mpr(jtrans("Unknown card."));
         return;
     }
 
@@ -1496,7 +1498,7 @@ void wizard_draw_card()
         }
     }
     if (!found_card)
-        mpr("Unknown card.");
+        mpr(jtrans("Unknown card."));
 }
 
 void wizard_identify_all_items()

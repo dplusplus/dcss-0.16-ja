@@ -400,7 +400,7 @@ string describe_mutations(bool center_title)
                 msg += " continuously";
             msg += ".\n";
 
-            result += jtrans(msg);
+            result += jtransln(msg);
             have_any = true;
         }
         break;
@@ -515,7 +515,7 @@ string describe_mutations(bool center_title)
         result += jtransln("You are amphibious.\n");
         result += _annotate_form_based(
             make_stringf(jtransc("You can wear up to %s rings at the same time."),
-                you.has_usable_tentacles(false)),
+                         to_stringc(you.has_usable_tentacles(false))).c_str(),
             !get_form()->slot_available(EQ_RING_EIGHT));
         result += _annotate_form_based(
             jtrans("You can use your tentacles to constrict many enemies at once."),
@@ -768,10 +768,10 @@ static void _display_vampire_attributes()
         {"苦痛への耐性     ", "           ", "           ", "       ", "       ", "           ", " +    "},
 
         {"\n<w>変異能力</w>\n"
-         "蝙蝠の躯         ", "×          ", "×          ", "○      ", "○      ", "○          ", "その他"},
+         "蝙蝠の躯         ", "×         ", "×         ", "○     ", "○     ", "○         ", "その他"},
 
         {"他の変異能力・\n"
-         "バーサーク       ", "○          ", "○          ", "×      ", "×      ", "×          ", "×    "}
+         "バーサーク       ", "○         ", "○         ", "×     ", "×     ", "×         ", "×    "}
     };
 
     int current = 0;
@@ -815,7 +815,7 @@ static void _display_vampire_attributes()
     result += jtrans(_vampire_Ascreen_footer);
 
     formatted_scroller attrib_menu;
-    attrib_menu.add_text(result);
+    attrib_menu.add_text(sp2nbsp(result));
 
     attrib_menu.show();
     if (attrib_menu.getkey() == '!'
@@ -1626,7 +1626,7 @@ bool mutate(mutation_type which_mutation, const string &reason, bool failMsg,
                 else
                     break;
                 mprf(MSGCH_MUTATION, "%s",
-                     replace_all(mdef.gain[you.mutation[mutat]-1], "腕",
+                     replace_all(jtrans(mdef.gain[you.mutation[mutat]-1]), "腕",
                                  arms).c_str());
                 gain_msg = false;
             }
@@ -1642,7 +1642,7 @@ bool mutate(mutation_type which_mutation, const string &reason, bool failMsg,
                 else
                     break;
                 mprf(MSGCH_MUTATION, "%s",
-                     replace_all(mdef.gain[you.mutation[mutat]-1], "片腕",
+                     replace_all(jtrans(mdef.gain[you.mutation[mutat]-1]), "片腕",
                                  hands).c_str());
                 gain_msg = false;
             }
@@ -1670,7 +1670,7 @@ bool mutate(mutation_type which_mutation, const string &reason, bool failMsg,
         notify_stat_change();
 
         if (gain_msg)
-            mprf(MSGCH_MUTATION, "%s", mdef.gain[you.mutation[mutat]-1]);
+            mprf(MSGCH_MUTATION, "%s", jtransc(mdef.gain[you.mutation[mutat]-1]));
 
         // Do post-mutation effects.
         switch (mutat)
@@ -1739,7 +1739,7 @@ bool mutate(mutation_type which_mutation, const string &reason, bool failMsg,
         if (mutclass != MUTCLASS_TEMPORARY)
         {
             take_note(Note(NOTE_GET_MUTATION, mutat, you.mutation[mutat],
-                           reason.c_str()));
+                           jtransc(reason)));
         }
         else
         {
@@ -1828,7 +1828,7 @@ static bool _delete_single_mutation_level(mutation_type mutat,
     notify_stat_change();
 
     if (lose_msg)
-        mprf(MSGCH_MUTATION, "%s", mdef.lose[you.mutation[mutat]]);
+        mprf(MSGCH_MUTATION, "%s", jtransc(mdef.lose[you.mutation[mutat]]));
 
     // Do post-mutation effects.
     if (mutat == MUT_FRAIL || mutat == MUT_ROBUST
@@ -1840,7 +1840,7 @@ static bool _delete_single_mutation_level(mutation_type mutat,
         calc_mp();
 
     if (!transient)
-        take_note(Note(NOTE_LOSE_MUTATION, mutat, you.mutation[mutat], reason.c_str()));
+        take_note(Note(NOTE_LOSE_MUTATION, mutat, you.mutation[mutat], jtransc(reason)));
 
     if (you.hp <= 0)
     {
@@ -2054,7 +2054,7 @@ string mutation_desc(mutation_type mut, int level, bool colour,
     if (mut == MUT_ICEMAIL)
     {
         ostringstream ostr;
-        ostr << mdef.have[0] << player_icemail_armour_class() << ").";
+        ostr << jtrans(mdef.have[0]) << player_icemail_armour_class() << ")";
         result = ostr.str();
     }
     else if (mut == MUT_DEFORMED && is_useless_skill(SK_ARMOUR))
@@ -2520,7 +2520,7 @@ static bool _balance_demonic_guardian()
             && !one_chance_in(3)
             && !mons->has_ench(ENCH_LIFE_TIMER))
         {
-            mprf(jtransc("%s %s!"), jtransc(mons->name(DESC_PLAIN)),
+            mprf(jtransc("%s %s!"), jtransc(mons->name(DESC_THE)),
                  summoned_poof_msg(*mons).c_str());
             monster_die(*mons, KILL_NONE, NON_MONSTER);
         }

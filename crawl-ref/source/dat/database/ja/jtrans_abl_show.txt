@@ -69,9 +69,9 @@ Spit Acid
 酸の唾液
 #{ ABIL_SPIT_ACID, "Spit Acid", 0, 0, 125, 0, 0, ABFLAG_BREATH},
 %%%%
-#Fly
+Fly
 
-#飛行
+飛行
 #{ ABIL_FLY, "Fly", 3, 0, 100, 0, 0, ABFLAG_NONE},
 %%%%
 Stop Flying
@@ -481,7 +481,7 @@ Stop Recall
 %%%%
 Shadow Step
 
-影移動
+影渡り
 #{ ABIL_DITHMENOS_SHADOW_STEP, "Shadow Step",
 %%%%
 Shadow Form
@@ -1028,11 +1028,11 @@ Sorry, you can't do that.
 %%%%
 Ability - do what?                 Cost                          Failure
 
-能力 - どれを使用しますか？              コスト                    成功率
+能力 - どれを使用しますか？              コスト                    失敗率
 %%%%
 Ability - describe what?           Cost                          Failure
 
-能力 - どの説明を見ますか？              コスト                    成功率
+能力 - どの説明を見ますか？              コスト                    失敗率
 %%%%
 Press '<w>!</w>' or '<w>?</w>' to toggle between ability selection and description.
 

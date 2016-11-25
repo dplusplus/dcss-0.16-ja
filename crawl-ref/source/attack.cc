@@ -1567,7 +1567,7 @@ bool attack::attack_shield_blocked(bool verbose)
             mprf(jtransc("%s %s %s attack."),
                  jtransc(defender_name(false)),
                  jtransc(attacker == defender ? "its own"
-                                              : atk_name(DESC_PLAIN).c_str()));
+                                              : atk_name(DESC_ITS).c_str()));
         }
 
         defender->shield_block_succeeded(attacker);
@@ -1901,7 +1901,8 @@ void attack::calc_elemental_brand_damage(beam_type flavour,
             "%sは%sを%s%s",
             jtransc(what ? what : atk_name(DESC_THE)),
             // Don't allow reflexive if the subject wasn't the attacker.
-            jtransc(defender_name(!what)),
+            (jtrans(defender_name(!what)) +
+             (verb == string("melt") ? "の体" : "")).c_str(),
             jtransc(what ? conjugate_verb(verb, false)
                          : attacker->conj_verb(verb)),
             attack_strength_punctuation(special_damage).c_str());

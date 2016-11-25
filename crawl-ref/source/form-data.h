@@ -102,7 +102,7 @@ static const form_entry formdata[] =
     5, 7, 0, true, 0, 10, 12,
     SPWPN_FREEZING, WHITE, "", DEFAULT_VERBS,
     FC_DEFAULT, FC_ENABLE, FC_FORBID, true, false,
-    "", 0, "front paw", "paw", "bow your head before", "ice"
+    "", 0, "front paw", "paw", "bow your head before", "氷の獣の姿"
 },
 
 {
@@ -111,7 +111,7 @@ static const form_entry formdata[] =
     EQF_PHYSICAL, MR_RES_POISON,
     DEFAULT_DURATION, 10, 0, SIZE_GIANT, 15, 6,
     16, 0, 0, true, 0, 10, -1,
-    SPWPN_NORMAL, GREEN, "Teeth and claws", { "hit", "claw", "bite", "maul" },
+    SPWPN_NORMAL, GREEN, "Teeth and claws", { "hit", "claw", "bite", "めちゃめちゃにした" },
     FC_ENABLE, FC_FORBID, FC_ENABLE, true, false,
     "roar", 6, "foreclaw", "", "bow your head before", "flesh"
 },
@@ -229,7 +229,7 @@ static const form_entry formdata[] =
     0, 0, 0, true, 0, 0, 3,
     SPWPN_NORMAL, MAGENTA, "", DEFAULT_VERBS,
     FC_DEFAULT, FC_FORBID, FC_FORBID, true, true,
-    "", 0, "", "", "", "shadow"
+    "", 0, "", "", "", "影の姿"
 },
 
 {

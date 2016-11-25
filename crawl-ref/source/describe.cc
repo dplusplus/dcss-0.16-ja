@@ -367,10 +367,10 @@ string artefact_inscription(const item_def& item)
     const vector<string> propnames = _randart_propnames(item);
 
     string insc = comma_separated_line(propnames.begin(), propnames.end(),
-                                       " ", " ");
+                                       " ", " ");
     if (!insc.empty() && insc[insc.length() - 1] == ',')
         insc.erase(insc.length() - 1);
-    return insc;
+    return sp2nbsp(insc);
 }
 
 void add_inscription(item_def &item, string inscrip)
@@ -799,9 +799,9 @@ static string _describe_demon(const string& name, flight_type fly)
                 description << jtrans(" It smells delicious!");
                 break;
             case 3:
-                description << jtrans(" It smells like rotting flesh")
+                description << jtrans(string(" It smells like rotting flesh")
                              + (you.species == SP_GHOUL ? " - yum!"
-                                                        : ".");
+                                                        : "."));
                 break;
             }
         }
@@ -814,7 +814,7 @@ static string _describe_demon(const string& name, flight_type fly)
 
 void append_weapon_stats(string &description, const item_def &item)
 {
-    description += "\n" + jtrans("Base accuracy: ") + " ";
+    description += "\n" + jtrans("Base accuracy: ") + " ";
     _append_value(description, property(item, PWPN_HIT), true);
     description += "　";
 
@@ -822,15 +822,15 @@ void append_weapon_stats(string &description, const item_def &item)
     const int ammo_type = fires_ammo_type(item);
     const int ammo_dam = ammo_type == MI_NONE ? 0 :
                                                 ammo_type_damage(ammo_type);
-    description += jtrans("Base damage:") + " ";
+    description += jtrans("Base damage:") + " ";
     _append_value(description, base_dam + ammo_dam, false);
     description += "　";
 
-    description += jtrans("Base attack delay:") + " ";
+    description += jtrans("Base attack delay:") + " ";
     _append_value(description, property(item, PWPN_SPEED) / 10.0f, false);
     description += "　";
 
-    description += jtrans("Minimum delay:") + " ";
+    description += jtrans("Minimum delay:") + " ";
     _append_value(description, weapon_min_delay(item) / 10.0f, false);
 
     if (item_attack_skill(item) == SK_SLINGS)
@@ -839,6 +839,8 @@ void append_weapon_stats(string &description, const item_def &item)
                                            base_dam +
                                            ammo_type_damage(MI_SLING_BULLET));
     }
+
+    description = sp2nbsp(description);
 }
 
 static string _handedness_string(const item_def &item)
@@ -1000,7 +1002,7 @@ static string _describe_weapon(const item_def &item, bool verbose)
             if (is_range_weapon(item))
             {
                 description += "この武器から放たれた";
-                description += ammo_name(item);
+                description += jtrans(ammo_name(item));
                 description += jtrans(" fired from it inflicts extra damage.");
             }
             else
@@ -1101,7 +1103,7 @@ static string _describe_weapon(const item_def &item, bool verbose)
 
         description +=
             make_stringf(jtransc(" '%s' category. "),
-                         skill == SK_FIGHTING ? "buggy" : jtransc(skill_name(skill)));
+                         skill == SK_FIGHTING ? "buggy" : tagged_jtransc("[skill]", skill_name(skill)));
 
         description += jtrans(_handedness_string(item));
 
@@ -1195,7 +1197,7 @@ static string _describe_ammo(const item_def &item)
             break;
 #if TAG_MAJOR_VERSION == 34
         case SPMSL_SICKNESS:
-            description += "It has been contaminated by something likely to cause disease.";
+            description += jtrans("It has been contaminated by something likely to cause disease.");
             break;
 #endif
         case SPMSL_FRENZY:
@@ -1244,12 +1246,12 @@ static string _describe_ammo(const item_def &item)
 
 void append_armour_stats(string &description, const item_def &item)
 {
-    description += "\n" + jtrans("\nBase armour rating: ") + " ";
+    description += "\n" + jtrans("\nBase armour rating: ") + " ";
     _append_value(description, property(item, PARM_AC), false);
-    description += "       ";
+    description += "       ";
 
     const int evp = property(item, PARM_EVASION);
-    description += jtrans("Encumbrance rating: ") + " ";
+    description += jtrans("Encumbrance rating: ") + " ";
     _append_value(description, -evp / 10, false);
 
     // only display player-relevant info if the player exists
@@ -1259,17 +1261,21 @@ void append_armour_stats(string &description, const item_def &item)
                                                    "will give the following: %d AC"),
                                            you.base_ac_from(item));
     }
+
+    description = sp2nbsp(description);
 }
 
 void append_shield_stats(string &description, const item_def &item)
 {
-    description += "\n" + jtrans("\nBase shield rating:") + " ";
+    description += "\n" + jtrans("\nBase shield rating:") + " ";
     _append_value(description, property(item, PARM_AC), false);
-    description += "       ";
+    description += "       ";
 
-    description += "\n" + jtrans("\nSkill to remove penalty:") + " ";
+    description += "\n" + jtrans("\nSkill to remove penalty:") + " ";
     _append_value(description, you.get_shield_skill_to_offset_penalty(item),
             false);
+
+    description = sp2nbsp(description);
 }
 
 void append_missile_info(string &description, const item_def &item)
@@ -2062,7 +2068,7 @@ string get_item_description(const item_def &item, bool verbose,
     }
 
     if (verbose && origin_describable(item))
-        description << "\n\n" << origin_desc(item);
+        description << "\n\n" << origin_desc(item, true);
 
     // This information is obscure and differs per-item, so looking it up in
     // a docs file you don't know to exist is tedious.  On the other hand,
@@ -2131,7 +2137,7 @@ void get_feature_desc(const coord_def &pos, describe_info &inf)
 
     // suppress this if the feature changed out of view
     if (!marker_desc.empty() && grd(pos) == feat)
-        long_desc += marker_desc;
+        long_desc += sp2nbsp(marker_desc);
 
     // Display branch descriptions on the entries to those branches.
     if (feat_is_stair(feat))
@@ -2703,7 +2709,7 @@ void inscribe_item(item_def &item, bool msgwin)
 static void _adjust_item(item_def &item)
 {
     _safe_newline();
-    string prompt = "<cyan>Adjust to which letter? </cyan>";
+    string prompt = jtrans("<cyan>Adjust to which letter? </cyan>");
     formatted_string::parse_string(prompt).display();
     const int keyin = getch_ck();
     // TODO: CK_RESIZE?
@@ -2888,7 +2894,7 @@ static string _player_spell_desc(spell_type spell, const item_def* item)
                      + "\n";
     }
 
-    return description;
+    return sp2nbsp(description);
 }
 
 
@@ -3172,8 +3178,8 @@ static string _describe_chimera(const monster_info& mi)
     {
         const monster_type leggy_part =
             get_chimera_part(&mi, mi.props["chimera_legs"].get_int());
-        description += apply_description(DESC_A,
-                                         get_monster_data(leggy_part)->name);
+        description += apply_description_j(DESC_A,
+                                           get_monster_data(leggy_part)->name);
 
         description += "の肢";
         if (has_wings)
@@ -3443,9 +3449,11 @@ static void _add_energy_to_string(int speed, int energy, string what,
 
     const int act_speed = (speed * 10) / energy;
     if (act_speed > 10)
-        fast.push_back(tagged_jtrans("[adj]", _speed_description(act_speed)) + jtrans(what));
+        fast.push_back(tagged_jtrans("[adj]", _speed_description(act_speed))
+                       + jconj_verb(jtrans(what), JCONJ_PRES));
     if (act_speed < 10)
-        slow.push_back(tagged_jtrans("[adj]", _speed_description(act_speed)) + jtrans(what));
+        slow.push_back(tagged_jtrans("[adj]", _speed_description(act_speed))
+                       + jconj_verb(jtrans(what), JCONJ_PRES));
 }
 
 
@@ -3691,6 +3699,7 @@ static string _monster_stat_description(const monster_info& mi)
     bool did_speed = false;
     if (speed != 10 && speed != 0)
     {
+        did_speed = true;
         result << uppercase_first(pronoun) << jtrans(" is ") << jtrans(mi.speed_description())
                << "。\n";
     }
@@ -3718,54 +3727,53 @@ static string _monster_stat_description(const monster_info& mi)
         if (mons_class_itemuse(mi.type) >= MONUSE_STARTING_EQUIPMENT)
             _add_energy_to_string(speed, me.item, "uses items", fast, slow);
 
-        const string pronoun_is = "。\n" + pronoun + "は";
+        const string pronoun_is = pronoun + "は";
+        const string nlpronoun_is = "。\n" + pronoun_is;
 
         if (speed >= 10)
         {
             if (did_speed && fast.size() == 1)
-                result << " and " << fast[0];
+                result << pronoun_is<< fast[0];
             else if (!fast.empty())
             {
                 if (did_speed)
                     result << "、";
                 result << comma_separated_line(fast.begin(), fast.end(),
-                                               pronoun_is,
-                                               pronoun_is);
+                                               nlpronoun_is,
+                                               nlpronoun_is);
             }
             if (!slow.empty())
             {
                 if (did_speed || !fast.empty())
                     result << "が、";
                 result << comma_separated_line(slow.begin(), slow.end(),
-                                               pronoun_is,
-                                               pronoun_is);
+                                               nlpronoun_is,
+                                               nlpronoun_is);
             }
         }
         else if (speed < 10)
         {
             if (did_speed && slow.size() == 1)
-                result << " and " << slow[0];
+                result << pronoun_is << slow[0];
             else if (!slow.empty())
             {
                 if (did_speed)
                     result << "、";
                 result << comma_separated_line(slow.begin(), slow.end(),
-                                               pronoun_is,
-                                               pronoun_is);
+                                               nlpronoun_is,
+                                               nlpronoun_is);
             }
             if (!fast.empty())
             {
                 if (did_speed || !slow.empty())
                     result << "が、";
                 result << comma_separated_line(fast.begin(), fast.end(),
-                                               pronoun_is,
-                                               pronoun_is);
+                                               nlpronoun_is,
+                                               nlpronoun_is);
             }
         }
         result << "。\n";
     }
-    else if (did_speed)
-        result << "。\n";
 
     // Can the monster fly, and how?
     // This doesn't give anything away since no (very) ugly things can
@@ -4336,24 +4344,16 @@ string get_ghost_description(const monster_info &mi, bool concise)
         break;
     }
 
-    gstr << jtrans(skill_title_by_rank(mi.u.ghost.best_skill,
-                                       mi.u.ghost.best_skill_rank,
-                                       gspecies,
-                                       str, dex, mi.u.ghost.religion))
+    gstr << tagged_jtrans("[skill]",
+                          skill_title_by_rank(mi.u.ghost.best_skill,
+                                              mi.u.ghost.best_skill_rank,
+                                              gspecies,
+                                              str, dex, mi.u.ghost.religion))
          << "として名の知れた"
-         << jtrans(_xl_rank_name(mi.u.ghost.xl_rank));
-
-    if (concise)
-    {
-        gstr << get_species_abbrev(gspecies)
-             << get_job_abbrev(mi.u.ghost.job);
-    }
-    else
-    {
-        gstr << jtrans(species_name(gspecies))
-             << "の"
-             << jtrans(get_job_name(mi.u.ghost.job));
-    }
+         << jtrans(_xl_rank_name(mi.u.ghost.xl_rank))
+         << jtrans(species_name(gspecies))
+         << "の"
+         << jtrans(get_job_name(mi.u.ghost.job));
 
     if (mi.u.ghost.religion != GOD_NO_GOD)
     {

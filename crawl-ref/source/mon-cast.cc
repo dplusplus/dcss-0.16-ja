@@ -2740,7 +2740,7 @@ static bool _place_druids_call_beast(const monster* druid, monster* beast,
         }
 
         // Assign blame (for statistical purposes, mostly)
-        mons_add_blame(beast, druid->name(DESC_A, true) + jtrans("called by "));
+        mons_add_blame(beast, "called by " + druid->name(DESC_A, true));
 
         return true;
     }
@@ -5010,9 +5010,16 @@ static void _cast_flay(monster* source, actor *defender)
         }
     }
 
+    // Due to Deep Dwarf damage shaving, the player may take less than the intended
+    // amount of damage. Keep track of the actual amount of damage done by comparing
+    // hp before and after the player is hurt; use this as the actual value for
+    // flay damage to prevent the player from regaining extra hp when it wears off
+
+    const int orig_hp = defender->stat_hp();
+
     defender->hurt(source, damage_taken, BEAM_NONE,
                    KILLED_BY_MONSTER, "", "flay_damage", true);
-    defender->props["flay_damage"].get_int() += damage_taken;
+    defender->props["flay_damage"].get_int() += orig_hp - defender->stat_hp();
 
     vector<coord_def> old_blood;
     CrawlVector &new_blood = defender->props["flay_blood"].get_vector();
@@ -7169,8 +7176,7 @@ void mons_cast_noise(monster* mons, const bolt &pbolt,
     if (targeted)
         _speech_fill_target(targ_prep, target, mons, pbolt, gestured);
 
-    msg = replace_all(msg, "@at@",     targ_prep);
-    msg = replace_all(msg, "@target@", target);
+    msg = replace_all(msg, "@target@", jtrans(target));
 
     string beam_name;
     if (!targeted)
@@ -7180,7 +7186,7 @@ void mons_cast_noise(monster* mons, const bolt &pbolt,
     else
         beam_name = pbolt.get_short_name();
 
-    msg = replace_all(msg, "@beam@", beam_name);
+    msg = replace_all(msg, "@beam@", tagged_jtrans("[zap]", beam_name));
 
     const msg_channel_type chan =
         (unseen              ? MSGCH_SOUND :

@@ -126,7 +126,7 @@ static void _monster_spellbooks(const monster_info &mi,
     if (num_books == 0)
         return;
 
-    const string set_name = type == MON_SPELL_WIZARD ? "Book" : "Set";
+    const string set_name = jtrans(type == MON_SPELL_WIZARD ? "Book" : "Set");
 
     // Loop through books and display spells/abilities for each of them
     for (size_t i = 0; i < num_books; ++i)
@@ -394,7 +394,7 @@ static void _describe_book(const spellbook_contents &book,
         }
 
         string schools =
-            source_item->base_type == OBJ_RODS ? jtrans("Evocations")
+            source_item->base_type == OBJ_RODS ? tagged_jtrans("[skill]", "Evocations")
                                                : _spell_schools(spell);
         description.cprintf("%s%d\n",
                             chop_string(schools, 30).c_str(),

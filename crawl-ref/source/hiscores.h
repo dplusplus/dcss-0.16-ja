@@ -128,6 +128,10 @@ private:
 
     mutable unique_ptr<xlog_fields> fields;
 
+    mutable bool needs_damage;
+    mutable bool needs_beam_cause_line;
+    mutable bool needs_called_by_monster_line;
+
 public:
     scorefile_entry();
     scorefile_entry(int damage, mid_t death_source, int death_type,
@@ -194,6 +198,11 @@ private:
     string make_oneline(const string &s) const;
 
     void init_from(const scorefile_entry &other);
+
+private:
+    string death_description_prefix(death_desc_verbosity verbosity) const;
+    string beam_cause_line(death_desc_verbosity verbosity) const;
+    string called_by_monster_line(death_desc_verbosity verbosity) const;
 };
 
 #endif  // HISCORES_H

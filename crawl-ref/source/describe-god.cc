@@ -361,9 +361,9 @@ string god_title(god_type which_god, species_type which_species, int piety)
         title = divine_title[which_god][_piety_level(piety)];
 
     //XXX: unify with stuff in skills.cc
-    title = replace_all(title, "@Genus@", species_name(which_species, true, false));
-    title = replace_all(title, "@Adj@", species_name(which_species, false, true));
-    title = replace_all(title, "@Walking@", (species_walking_verb(which_species) + "ing"));
+    title = replace_all(title, "@Genus@", jtrans(species_name(which_species, true, false)));
+    title = replace_all(title, "@Adj@", jtrans(species_name(which_species, false, true)));
+    title = replace_all(title, "@Walking@", jtrans(species_walking_verb(which_species)));
 
     return title;
 }
@@ -382,9 +382,9 @@ static string _describe_ash_skill_boost()
     ostringstream desc;
     desc.setf(ios::left);
     desc << "<white>";
-    desc << setw(18) << "Bound part";
-    desc << setw(30) << "Boosted skills";
-    desc << "Bonus\n";
+    desc << align_left(jtrans("Bound part"), 18);
+    desc << align_left(jtrans("Boosted skills"), 30);
+    desc << jtransln("Bonus\n");
     desc << "</white>";
 
     for (int i = ET_WEAPON; i < NUM_ET; i++)
@@ -392,11 +392,10 @@ static string _describe_ash_skill_boost()
         if (you.bondage[i] <= 0 || i == ET_SHIELD && you.bondage[i] == 3)
             continue;
 
-        desc << setw(18);
         if (i == ET_WEAPON && you.bondage[i] == 3)
-            desc << "Hands";
+            desc << align_left(jtrans("Hands"), 18);
         else
-            desc << bondage_parts[i];
+            desc << align_left(jtrans(bondage_parts[i]), 18);
 
         string skills;
         map<skill_type, int8_t> boosted_skills = ash_get_boosted_skills(eq_type(i));
@@ -423,20 +422,20 @@ static string _describe_ash_skill_boost()
             // the same level.
             ASSERT(bonus == it->second);
             if (it->first == SK_CONJURATIONS)
-                skills += "Magic schools";
+                skills += jtrans("Magic schools");
             else
-                skills += skill_name(it->first);
+                skills += tagged_jtrans("[skill]", skill_name(it->first));
 
             if (boosted_skills.size() > 2)
                 skills += ", ";
             else if (boosted_skills.size() == 2)
-                skills += " and ";
+                skills += "および";
 
             boosted_skills.erase(it++);
         }
 
-        desc << setw(30) << skills;
-        desc << bonus_level[bonus -1] << "\n";
+        desc << align_left(skills + "スキル", 30);
+        desc << jtransln(bonus_level[bonus -1]);
     }
 
     return desc.str();
@@ -545,7 +544,7 @@ static string _describe_branch_bribability()
         ret += line + "\n";
     }
 
-    return ret;
+    return sp2nbsp(ret);
 }
 
 /**
@@ -897,7 +896,7 @@ static void _describe_god_powers(god_type which_god, int numcols)
                                                  "partially";
 
             cprintf(jtranslnc("%s %s shields you from negative energy."),
-                    jtransc(god_name(which_god)), how);
+                    jtransc(god_name(which_god)), jtransc(how));
         }
     }
     else if (which_god == GOD_TROG)
@@ -1116,7 +1115,7 @@ void describe_god(god_type which_god, bool give_title)
 {
     if (which_god == GOD_NO_GOD) //mv: No god -> say it and go away.
     {
-        mpr("You are not religious.");
+        mpr(jtrans("You are not religious."));
         return;
     }
 

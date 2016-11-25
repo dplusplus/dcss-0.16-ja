@@ -32,14 +32,14 @@ function callback.trog_wizard_convert_wizard(data, triggerable,
 
     dgn.place_cloud(_x, _y, "flame", 15)
     local mons = dgn.mons_at(_x, _y)
-    if mons and mons.base_name == "wizard" then
-        crawl.god_speaks("Trog", "Flames erupt from the bowels of the wizard! "
-                              .. "Trog roars with satisfaction!")
+    if mons and mons.base_name == crawl.jtrans("wizard") then
+        crawl.god_speaks("Trog", crawl.jtransln("Flames erupt from the bowels of the wizard! ")
+                              .. crawl.jtrans("Trog roars with satisfaction!"))
     else
-        crawl.god_speaks("Trog", "Flames erupt from the wizard's "
-                              .. (mons and "" or "empty ")
-                              .. "cell! "
-                              .. "Trog roars with frustration!")
+        crawl.god_speaks("Trog", crawl.jtrans("Flames erupt from the wizard's ")
+                              .. (mons and "立っている" or "いない")
+                              .. crawl.jtransln("cell! ")
+                              .. crawl.jtrans("Trog roars with frustration!"))
     end
     data.triggered = true
   end

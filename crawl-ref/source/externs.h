@@ -333,6 +333,7 @@ struct cloud_struct
     void set_killer(killer_type _killer);
 
     string cloud_name(const string &default_name = "", bool terse = false) const;
+    string cloud_name_j(const string &default_name = "", bool terse = false) const;
     void announce_actor_engulfed(const actor *engulfee,
                                  bool beneficial = false) const;
 
@@ -408,6 +409,7 @@ public:
 
     string describe(bool long_name = false, bool with_number = true) const;
     string describe_j(bool long_name = false, bool with_number = true) const;
+    string describe_abbrev_j(bool long_name = false, bool with_number = true) const;
 
     void clear()
     {

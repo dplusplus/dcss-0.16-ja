@@ -162,7 +162,7 @@ bool deviant_route_warning::warn_continue_travel(
 
     target = dest;
     const string prompt = make_stringf(jtransc("Have to go through %s. Continue?"),
-                                       deviant.describe().c_str());
+                                       deviant.describe_j(true).c_str());
     // If the user says "Yes, shut up and take me there", we won't ask
     // again for that destination. If the user says "No", we will
     // prompt again.
@@ -872,7 +872,7 @@ void explore_pickup_event(int did_pickup, int tried_pickup)
         if (explore_stopped_pos == you.pos())
         {
             const string prompt =
-                make_stringf("Could not pick up %s here; shall I ignore %s?",
+                make_stringf(jtransc("Could not pick up %s here; shall I ignore %s?"),
                              tried_pickup == 1? "an item" : "some items",
                              tried_pickup == 1? "it" : "them");
 
@@ -2238,18 +2238,18 @@ static int _prompt_travel_branch(int prompt_flags)
                         && is_random_subbranch((branch_type)i)
                         && you.wizard) // don't leak mimics
                     {
-                        msg += "Branch not generated this game. ";
+                        msg += jtrans("Branch not generated this game. ");
                     }
 
                     if (target.entry_stairs == NUM_FEATURES
                         && br[i] != BRANCH_DUNGEON)
                     {
-                        msg += "Branch has no entry stairs. ";
+                        msg += jtrans("Branch has no entry stairs. ");
                     }
 
                     if (!msg.empty())
                     {
-                        msg += "Go there anyway?";
+                        msg += jtrans("Go there anyway?");
                         if (!yesno(msg.c_str(), true, 'n'))
                             return ID_CANCEL;
                     }
@@ -2620,7 +2620,7 @@ void start_translevel_travel(const level_pos &pos)
         {
             if (!_loadlev_populate_stair_distances(pos))
             {
-                mpr("Level memory is imperfect, aborting.");
+                mpr(jtrans("Level memory is imperfect, aborting."));
                 return ;
             }
         }
@@ -2628,7 +2628,7 @@ void start_translevel_travel(const level_pos &pos)
             _populate_stair_distances(pos);
     }
 
-    trans_travel_dest = _get_trans_travel_dest(level_target);
+    trans_travel_dest = _get_trans_travel_dest_j(level_target);
 
     if (!i_feel_safe(true, true))
         return;
@@ -3228,6 +3228,27 @@ string level_id::describe_j(bool long_name, bool with_number) const
             // decapitalise 'the'
             if (result.find("The") == 0)
                 result[0] = 't';
+            result = make_stringf("%sの%d階",
+                                  result.c_str(), depth);
+        }
+        else if (depth)
+            result = make_stringf("%s:%d", result.c_str(), depth);
+        else
+            result = make_stringf("%s:$", result.c_str());
+    }
+    return result;
+}
+
+string level_id::describe_abbrev_j(bool long_name, bool with_number) const
+{
+    string result = tagged_jtrans("[branch]",
+                    (long_name ? branches[branch].longname
+                               : branches[branch].abbrevname_j));
+
+    if (with_number && brdepth[branch] != 1)
+    {
+        if (long_name)
+        {
             result = make_stringf("%sの%d階",
                                   result.c_str(), depth);
         }
@@ -4432,9 +4453,9 @@ void explore_discoveries::add_item(const item_def &i)
     string itemname = get_menu_colour_prefix_tags(i, DESC_A);
     monster* mon = monster_at(i.pos);
     if (mon && mons_species(mon->type) == MONS_BUSH)
-        itemname += " (under bush)";
+        itemname += " " + jtrans("(under bush)");
     else if (mon && mon->type == MONS_PLANT)
-        itemname += " (under plant)";
+        itemname += " " + jtrans("(under plant)");
 
     items.emplace_back(itemname, i);
 
@@ -4510,16 +4531,20 @@ template <class C> void explore_discoveries::say_any(
 
     if (has_duplicates(coll.begin(), coll.end()))
     {
-        mprf("%d%sの%sを見つけた。", size, general_counter_suffix(size),
-                                     jtransc(category));
+        mprf(jtransc("Found %s %s."),
+             to_stringc(size),
+             general_counter_suffix(size),
+             jtransc(category));
         return;
     }
 
     const string message = to_separated_line(coll.begin(), coll.end()) + jtrans("Found");
 
     if (strwidth(message) >= get_number_of_cols())
-        mprf("%d%sの%sを見つけた。", size, general_counter_suffix(size),
-                                     jtransc(category));
+        mprf(jtransc("Found %s %s."),
+             to_stringc(size),
+             general_counter_suffix(size),
+             jtransc(category));
     else
         mpr(message);
 }
@@ -4541,9 +4566,10 @@ vector<string> explore_discoveries::apply_quantities(
             things.push_back(nt.name);
         else
         {
-            things.push_back(number_in_words(nt.thing)
-                             + " "
-                             + pluralise(nt.name, feature_plural_qualifiers));
+            things.push_back(make_stringf("%d%sの%s",
+                                          nt.thing,
+                                          general_counter_suffix(nt.thing),
+                                          jtransc(nt.name)));
         }
     }
     return things;
@@ -4557,7 +4583,7 @@ bool explore_discoveries::prompt_stop() const
         mpr(msg);
 
     for (const string &marked : marked_feats)
-        mprf("Found %s", marked.c_str());
+        mprf(jtransc("Found %s"), marked.c_str());
 
     if (!es_flags)
         return marker_stop;

@@ -51,7 +51,7 @@ dire flail
 
 大型フレイル
 %%%%
-eveningster
+eveningstar
 
 イブニングスター
 %%%%
@@ -69,7 +69,7 @@ giant spiked club
 %%%%
 dagger
 
-短剣
+ダガー
 %%%%
 quick blade
 

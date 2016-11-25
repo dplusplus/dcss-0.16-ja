@@ -149,6 +149,14 @@ void player_quiver::empty_quiver(ammo_t ammo_type)
     you.redraw_quiver = true;
 }
 
+static string _jtrans_quivering_for(const string& key)
+{
+    if(tagged_jtrans_has_key("[skill]", key))
+        return tagged_jtrans("[skill]", key);
+    else
+        return jtrans(key);
+}
+
 void quiver_item(int slot)
 {
     const item_def item = you.inv[slot];
@@ -161,12 +169,12 @@ void quiver_item(int slot)
 
     you.m_quiver->set_quiver(you.inv[slot], t);
     mprf(jtransc("Quivering %s for %s."), you.inv[slot].name(DESC_INVENTORY).c_str(),
-         jtransc(
+         _jtrans_quivering_for(
              t == AMMO_THROW    ? "throwing" :
              t == AMMO_BLOWGUN  ? "blowguns" :
              t == AMMO_SLING    ? "slings" :
              t == AMMO_BOW      ? "bows" :
-                                  "crossbows"));
+                                  "crossbows").c_str());
 }
 
 void choose_item_for_quiver()

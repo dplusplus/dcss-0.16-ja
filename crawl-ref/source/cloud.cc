@@ -1599,6 +1599,14 @@ string cloud_name_at_index(int cloudno)
         return cloud_type_name(env.cloud[cloudno].type);
 }
 
+string cloud_name_at_index_j(int cloudno)
+{
+    if (!env.cloud[cloudno].name.empty())
+        return env.cloud[cloudno].name;
+    else
+        return cloud_type_name_j(env.cloud[cloudno].type);
+}
+
 string cloud_type_name(cloud_type type, bool terse)
 {
     if (type <= CLOUD_NONE || type >= NUM_CLOUD_TYPES)
@@ -1766,6 +1774,14 @@ string cloud_struct::cloud_name(const string &defname,
                               cloud_type_name(type, terse);
 }
 
+string cloud_struct::cloud_name_j(const string &defname,
+                                     bool terse) const
+{
+    return !name.empty()    ? name :
+           !defname.empty() ? defname :
+                              cloud_type_name_j(type, terse);
+}
+
 void cloud_struct::announce_actor_engulfed(const actor *act,
                                            bool beneficial) const
 {
@@ -1782,7 +1798,7 @@ void cloud_struct::announce_actor_engulfed(const actor *act,
     {
         mprf(jtransc("%s %s in %s."),
              jtransc(act->name(DESC_THE)),
-             cloud_name().c_str(),
+             jtransc(cloud_name_j()),
              beneficial ? "浸っている"
                         : "包まれている");
         return;

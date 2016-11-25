@@ -12,6 +12,7 @@
 
 #include "artefact.h"
 #include "chardump.h"
+#include "database.h"
 #include "dbg-util.h"
 #include "describe.h"
 #include "env.h"
@@ -590,8 +591,11 @@ bool chardump_parser::parse()
 
 void wizard_load_dump_file()
 {
+    mpr(jtrans("cannot load dump file"));
+    return;
+
     char filename[80];
-    msgwin_get_line_autohist("Which dump file? ", filename, sizeof(filename));
+    msgwin_get_line_autohist((jtrans("Which dump file? ") + " ").c_str(), filename, sizeof(filename));
 
     if (filename[0] == '\0')
         canned_msg(MSG_OK);

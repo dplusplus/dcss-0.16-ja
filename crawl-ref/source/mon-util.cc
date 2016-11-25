@@ -1552,25 +1552,8 @@ bool mons_enslaved_soul(const monster* mon)
 bool name_zombie(monster* mon, monster_type mc, const string &mon_name)
 {
     mon->mname = mon_name;
-
-    // Special case for Blork the orc: shorten his name to "Blork" to
-    // avoid mentions of "Blork the orc the orc zombie".
-    if (mc == MONS_BLORK_THE_ORC)
-        mon->mname = "Blork";
-    // Also for the Lernaean hydra: treat Lernaean as an adjective to
-    // avoid mentions of "the Lernaean hydra the X-headed hydra zombie".
-    else if (mc == MONS_LERNAEAN_HYDRA)
-    {
-        mon->mname = "Lernaean";
-        mon->flags |= MF_NAME_ADJECTIVE;
-    }
-    // Also for the Enchantress: treat Enchantress as an adjective to
-    // avoid mentions of "the Enchantress the spriggan zombie".
-    else if (mc == MONS_THE_ENCHANTRESS)
-    {
-        mon->mname = "Enchantress";
-        mon->flags |= MF_NAME_ADJECTIVE;
-    }
+    if (mons_is_unique(mc))
+        mon->flags |= MF_NAME_REPLACE;
 
     if (starts_with(mon->mname, "shaped "))
         mon->flags |= MF_NAME_SUFFIX;
@@ -2682,16 +2665,6 @@ string mons_type_name(monster_type mc, description_level_type desc)
 {
     string result;
 
-    if (!mons_is_unique(mc))
-    {
-        switch (desc)
-        {
-        case DESC_THE:       result = "the "; break;
-        case DESC_A:         result = "a ";   break;
-        case DESC_PLAIN: default:             break;
-        }
-    }
-
     switch (mc)
     {
     case RANDOM_MONSTER:
@@ -2729,17 +2702,6 @@ string mons_type_name(monster_type mc, description_level_type desc)
     }
 
     result += me->name;
-
-    // Vowel fix: Change 'a orc' to 'an orc'..
-    if (result.length() >= 3
-        && (result[0] == 'a' || result[0] == 'A')
-        && result[1] == ' '
-        && is_vowel(result[2])
-        // XXX: Hack
-        && !starts_with(&result[2], "one-"))
-    {
-        result.insert(1, "n");
-    }
 
     return result;
 }
@@ -2779,7 +2741,7 @@ bool give_monster_proper_name(monster* mon, bool orcs_only)
     mon->mname = _get_proper_monster_name(mon);
 
     if (mon->friendly())
-        take_note(Note(NOTE_NAMED_ALLY, 0, 0, mon->mname.c_str()));
+        take_note(Note(NOTE_NAMED_ALLY, 0, 0, mon->full_name(DESC_PLAIN).c_str()));
 
     return mon->is_named();
 }
@@ -3878,20 +3840,14 @@ static string _replace_god_name(god_type god, bool need_verb = false,
     string result;
 
     if (god == GOD_NO_GOD)
-        result = capital ? "You" : "you";
+        result = jtrans(capital ? "You" : "you");
     else if (god == GOD_NAMELESS)
-        result = capital ? "Your god" : "your god";
+        result = jtrans(capital ? "Your god" : "your god");
     else
-    {
-        const string godname = god_name(god, false);
-        result = capital ? uppercase_first(godname) : godname;
-    }
+        result = jtrans(god_name(god, false));
 
     if (need_verb)
-    {
-        result += ' ';
-        result += conjugate_verb("be", god == GOD_NO_GOD);
-    }
+        result += "は";
 
     return result;
 }
@@ -3985,9 +3941,9 @@ string do_mon_str_replacements(const string &in_msg, const monster* mons,
 
     // FIXME: Handle player_genus in case it was not generalised to foe_genus.
     msg = replace_all(msg, "@a_player_genus@",
-                      article_a(species_name(you.species, true)));
-    msg = replace_all(msg, "@player_genus@", species_name(you.species, true));
-    msg = replace_all(msg, "@player_genus_plural@", pluralise(species_name(you.species, true)));
+                      jtrans(species_name(you.species, true)));
+    msg = replace_all(msg, "@player_genus@", jtrans(species_name(you.species, true)));
+    msg = replace_all(msg, "@player_genus_plural@", jpluralise(species_name(you.species, true), "", "たち"));
 
     string foe_species;
 
@@ -3995,13 +3951,14 @@ string do_mon_str_replacements(const string &in_msg, const monster* mons,
         ;
     else if (foe->is_player())
     {
-        foe_species = species_name(you.species, true);
+        foe_species = jtrans(species_name(you.species, true));
 
-        msg = _replace_speech_tag(msg, " @to_foe@", "");
-        msg = _replace_speech_tag(msg, " @at_foe@", "");
-
-        msg = _replace_speech_tag(msg, " @to_foe@", "");
-        msg = _replace_speech_tag(msg, " @at_foe@", "");
+        msg = _replace_speech_tag(msg, "@to_foe@に向かって", "");
+        msg = _replace_speech_tag(msg, "@at_foe@に向かって", "");
+        msg = _replace_speech_tag(msg, "@to_foe@に", "");
+        msg = _replace_speech_tag(msg, "@at_foe@に", "");
+        msg = _replace_speech_tag(msg, "@to_foe@を", "");
+        msg = _replace_speech_tag(msg, "@at_foe@を", "");
 
         msg = replace_all(msg, "@player_only@", "");
         msg = replace_all(msg, " @foe,@", ",");
@@ -4009,16 +3966,16 @@ string do_mon_str_replacements(const string &in_msg, const monster* mons,
         msg = replace_all(msg, "@player", "@foe");
         msg = replace_all(msg, "@Player", "@Foe");
 
-        msg = replace_all(msg, "@foe_possessive@", "your");
-        msg = replace_all(msg, "@foe@", "you");
-        msg = replace_all(msg, "@Foe@", "You");
+        msg = replace_all(msg, "@foe_possessive@", jtrans("your"));
+        msg = replace_all(msg, "@foe@", jtrans("you"));
+        msg = replace_all(msg, "@Foe@", jtrans("You"));
 
         msg = replace_all(msg, "@foe_name@", you.your_name);
-        msg = replace_all(msg, "@foe_species@", species_name(you.species));
+        msg = replace_all(msg, "@foe_species@", jtrans(species_name(you.species)));
         msg = replace_all(msg, "@foe_genus@", foe_species);
-        msg = replace_all(msg, "@Foe_genus@", uppercase_first(foe_species));
+        msg = replace_all(msg, "@Foe_genus@", foe_species);
         msg = replace_all(msg, "@foe_genus_plural@",
-                          pluralise(species_name(you.species, true)));
+                          jpluralise(species_name(you.species, true), "", "たち"));
     }
     else
     {
@@ -4036,40 +3993,35 @@ string do_mon_str_replacements(const string &in_msg, const monster* mons,
         else
             foe_name = foe->name(DESC_THE);
 
-        string prep = "at";
-        if (s_type == S_SILENT || s_type == S_SHOUT || s_type == S_NORMAL)
-            prep = "to";
-        msg = replace_all(msg, "@says@ @to_foe@", "@says@ " + prep + " @foe@");
+        msg = _replace_speech_tag(msg, "@to_foe@", "@foe@に");
+        msg = _replace_speech_tag(msg, "@at_foe@", "@foe@に");
 
-        msg = _replace_speech_tag(msg, " @to_foe@", " to @foe@");
-        msg = _replace_speech_tag(msg, " @at_foe@", " at @foe@");
-
-        msg = replace_all(msg, "@foe,@", "@foe@,");
-        msg = replace_all(msg, "@foe_possessive@", "@foe@'s");
-        msg = replace_all(msg, "@foe@", foe_name);
-        msg = replace_all(msg, "@Foe@", uppercase_first(foe_name));
+        msg = replace_all(msg, "@foe_possessive@", "@foe@の");
+        msg = replace_all(msg, "@foe@", jtrans(foe_name));
+        msg = replace_all(msg, "@Foe@", jtrans(foe_name));
 
         if (m_foe->is_named())
-            msg = replace_all(msg, "@foe_name@", foe->name(DESC_PLAIN, true));
+            msg = replace_all(msg, "@foe_name@", jtrans(foe->name(DESC_PLAIN, true)));
 
         string species = mons_type_name(mons_species(m_foe->type), DESC_PLAIN);
 
-        msg = replace_all(msg, "@foe_species@", species);
+        msg = replace_all(msg, "@foe_species@", jtrans(species));
 
-        string genus = mons_type_name(mons_genus(m_foe->type), DESC_PLAIN);
+        string genus = jtrans(mons_type_name(mons_genus(m_foe->type), DESC_PLAIN));
 
         msg = replace_all(msg, "@foe_genus@", genus);
-        msg = replace_all(msg, "@Foe_genus@", uppercase_first(genus));
-        msg = replace_all(msg, "@foe_genus_plural@", pluralise(genus));
+        msg = replace_all(msg, "@Foe_genus@", genus);
+        msg = replace_all(msg, "@foe_genus_plural@", genus + "たち");
 
         foe_species = genus;
     }
+    msg = replace_all(msg, "@null@", ""); // erase spacer
 
     description_level_type nocap = DESC_THE, cap = DESC_THE;
 
     if (mons->is_named() && you.can_see(mons))
     {
-        const string name = mons->name(DESC_THE);
+        const string name = jtrans(mons->name(DESC_THE));
 
         msg = replace_all(msg, "@the_something@", name);
         msg = replace_all(msg, "@The_something@", name);
@@ -4084,10 +4036,10 @@ string do_mon_str_replacements(const string &in_msg, const monster* mons,
         nocap = DESC_PLAIN;
         cap   = DESC_PLAIN;
 
-        msg = replace_all(msg, "@the_something@", "your @the_something@");
-        msg = replace_all(msg, "@The_something@", "Your @The_something@");
-        msg = replace_all(msg, "@the_monster@",   "your @the_monster@");
-        msg = replace_all(msg, "@The_monster@",   "Your @the_monster@");
+        msg = replace_all(msg, "@the_something@", "あなたの@the_something@");
+        msg = replace_all(msg, "@The_something@", "あなたの@The_something@");
+        msg = replace_all(msg, "@the_monster@",   "あなたの@the_monster@");
+        msg = replace_all(msg, "@The_monster@",   "あなたの@the_monster@");
     }
 
     if (you.see_cell(mons->pos()))
@@ -4096,13 +4048,13 @@ string do_mon_str_replacements(const string &in_msg, const monster* mons,
         if (feat_is_solid(feat) || feat >= NUM_FEATURES)
             msg = replace_all(msg, "@surface@", "buggy surface");
         else if (feat == DNGN_LAVA)
-            msg = replace_all(msg, "@surface@", "lava");
+            msg = replace_all(msg, "@surface@", jtrans("lava"));
         else if (feat_is_water(feat))
-            msg = replace_all(msg, "@surface@", "water");
+            msg = replace_all(msg, "@surface@", jtrans("water"));
         else if (feat_is_altar(feat))
-            msg = replace_all(msg, "@surface@", "altar");
+            msg = replace_all(msg, "@surface@", jtrans("altar"));
         else
-            msg = replace_all(msg, "@surface@", "ground");
+            msg = replace_all(msg, "@surface@", jtrans("ground"));
 
         msg = replace_all(msg, "@feature@", raw_feature_description(mons->pos()));
     }
@@ -4112,28 +4064,24 @@ string do_mon_str_replacements(const string &in_msg, const monster* mons,
         msg = replace_all(msg, "@feature@", "buggy unseen feature");
     }
 
-    string something = mons->name(DESC_PLAIN);
-    msg = replace_all(msg, "@something@",   something);
-    msg = replace_all(msg, "@a_something@", mons->name(DESC_A));
-    msg = replace_all(msg, "@the_something@", mons->name(nocap));
-
-    something[0] = toupper(something[0]);
-    msg = replace_all(msg, "@Something@",   something);
-    msg = replace_all(msg, "@A_something@", mons->name(DESC_A));
-    msg = replace_all(msg, "@The_something@", mons->name(cap));
+    string something = jtrans(mons->name(DESC_PLAIN));
+    msg = replace_all(msg, "@something@", something);
+    msg = replace_all(msg, "@a_something@", jtrans(mons->name(DESC_A)));
+    msg = replace_all(msg, "@the_something@", jtrans(mons->name(nocap)));
+    msg = replace_all(msg, "@Something@", something);
+    msg = replace_all(msg, "@A_something@", jtrans(mons->name(DESC_A)));
+    msg = replace_all(msg, "@The_something@", jtrans(mons->name(nocap)));
 
     // Player name.
     msg = replace_all(msg, "@player_name@", you.your_name);
 
     string plain = mons->name(DESC_PLAIN);
     msg = replace_all(msg, "@monster@",     plain);
-    msg = replace_all(msg, "@a_monster@",   mons->name(DESC_A));
-    msg = replace_all(msg, "@the_monster@", mons->name(nocap));
-
-    plain[0] = toupper(plain[0]);
+    msg = replace_all(msg, "@a_monster@",   jtrans(mons->name(DESC_A)));
+    msg = replace_all(msg, "@the_monster@", jtrans(mons->name(nocap)));
     msg = replace_all(msg, "@Monster@",     plain);
-    msg = replace_all(msg, "@A_monster@",   mons->name(DESC_A));
-    msg = replace_all(msg, "@The_monster@", mons->name(cap));
+    msg = replace_all(msg, "@A_monster@",   jtrans(mons->name(DESC_A)));
+    msg = replace_all(msg, "@The_monster@", jtrans(mons->name(nocap)));
 
     msg = replace_all(msg, "@Subjective@",
                       mons->pronoun(PRONOUN_SUBJECTIVE));
@@ -4153,7 +4101,7 @@ string do_mon_str_replacements(const string &in_msg, const monster* mons,
     string part_str   = mons->hand_name(false, &can_plural);
 
     msg = replace_all(msg, "@hand@", part_str);
-    msg = replace_all(msg, "@Hand@", uppercase_first(part_str));
+    msg = replace_all(msg, "@Hand@", part_str);
 
     if (!can_plural)
         part_str = "NO PLURAL HANDS";
@@ -4161,13 +4109,13 @@ string do_mon_str_replacements(const string &in_msg, const monster* mons,
         part_str = mons->hand_name(true);
 
     msg = replace_all(msg, "@hands@", part_str);
-    msg = replace_all(msg, "@Hands@", uppercase_first(part_str));
+    msg = replace_all(msg, "@Hands@", part_str);
 
     can_plural = false;
     part_str   = mons->arm_name(false, &can_plural);
 
     msg = replace_all(msg, "@arm@", part_str);
-    msg = replace_all(msg, "@Arm@", uppercase_first(part_str));
+    msg = replace_all(msg, "@Arm@", part_str);
 
     if (!can_plural)
         part_str = "NO PLURAL ARMS";
@@ -4175,13 +4123,13 @@ string do_mon_str_replacements(const string &in_msg, const monster* mons,
         part_str = mons->arm_name(true);
 
     msg = replace_all(msg, "@arms@", part_str);
-    msg = replace_all(msg, "@Arms@", uppercase_first(part_str));
+    msg = replace_all(msg, "@Arms@", part_str);
 
     can_plural = false;
     part_str   = mons->foot_name(false, &can_plural);
 
     msg = replace_all(msg, "@foot@", part_str);
-    msg = replace_all(msg, "@Foot@", uppercase_first(part_str));
+    msg = replace_all(msg, "@Foot@", part_str);
 
     if (!can_plural)
         part_str = "NO PLURAL FEET";
@@ -4189,7 +4137,7 @@ string do_mon_str_replacements(const string &in_msg, const monster* mons,
         part_str = mons->foot_name(true);
 
     msg = replace_all(msg, "@feet@", part_str);
-    msg = replace_all(msg, "@Feet@", uppercase_first(part_str));
+    msg = replace_all(msg, "@Feet@", part_str);
 
     if (foe != nullptr)
     {
@@ -4227,17 +4175,17 @@ string do_mon_str_replacements(const string &in_msg, const monster* mons,
     {
         msg = replace_all(msg, "@a_God@", "a god");
         msg = replace_all(msg, "@A_God@", "A god");
-        const string possessive = mons->pronoun(PRONOUN_POSSESSIVE) + " god";
+        const string possessive = mons->pronoun(PRONOUN_POSSESSIVE) + jtrans(" god");
         msg = replace_all(msg, "@possessive_God@", possessive);
-        msg = replace_all(msg, "@Possessive_God@", uppercase_first(possessive));
+        msg = replace_all(msg, "@Possessive_God@", possessive);
 
-        msg = replace_all(msg, "@my_God@", "my God");
-        msg = replace_all(msg, "@My_God@", "My God");
+        msg = replace_all(msg, "@my_God@", jtrans("my God"));
+        msg = replace_all(msg, "@My_God@", jtrans("My God"));
     }
     else
     {
-        const string godname = god_name(mons->god);
-        const string godcap = uppercase_first(godname);
+        const string godname = jtrans(god_name(mons->god));
+        const string godcap = godname;
         msg = replace_all(msg, "@a_God@", godname);
         msg = replace_all(msg, "@A_God@", godcap);
         msg = replace_all(msg, "@possessive_God@", godname);
@@ -4295,8 +4243,6 @@ string do_mon_str_replacements(const string &in_msg, const monster* mons,
     }
     else
         msg = replace_all(msg, "@says@", jtrans(sound_list[s_type]));
-
-    msg = apostrophise_fixup(msg);
 
     msg = maybe_capitalise_substring(msg);
 
@@ -5038,7 +4984,7 @@ string get_damage_level_string(mon_holy_type holi, mon_dam_level_type mdam)
     {
     case MDAM_ALMOST_DEAD:
         ss << "ほとんど";
-        ss << (wounded_damaged(holi) ? "破壊されかけている" : "死にかけだ");
+        ss << (wounded_damaged(holi) ? "破壊されかけている" : "死にかけている");
         return ss.str();
     case MDAM_SEVERELY_DAMAGED:
         ss << "ひどく";

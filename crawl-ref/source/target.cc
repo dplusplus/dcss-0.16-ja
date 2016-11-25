@@ -7,6 +7,7 @@
 
 #include "coord.h"
 #include "coordit.h"
+#include "database.h"
 #include "english.h"
 #include "env.h"
 #include "fight.h"
@@ -21,8 +22,8 @@
 static string _wallmsg(coord_def c)
 {
     ASSERT(map_bounds(c)); // there'd be an information leak
-    const char *wall = feat_type_name(grd(c));
-    return "There is " + article_a(wall) + " there.";
+    string wall = feat_type_name(grd(c));
+    return "ここには" + wall + "がある。";
 }
 
 bool targetter::set_aim(coord_def a)
@@ -128,11 +129,11 @@ bool targetter_beam::valid_aim(coord_def a)
     if (a != origin && !cell_see_cell(origin, a, LOS_NO_TRANS))
     {
         if (agent->see_cell(a))
-            return notify_fail("There's something in the way.");
-        return notify_fail("You cannot see that place.");
+            return notify_fail(jtrans("There's something in the way."));
+        return notify_fail(jtrans("You cannot see that place."));
     }
     if ((origin - a).abs() > range2)
-        return notify_fail("Out of range.");
+        return notify_fail(jtrans("Out of range."));
     return true;
 }
 
@@ -312,11 +313,11 @@ bool targetter_smite::valid_aim(coord_def a)
     {
         // Scrying/glass/tree/grate.
         if (agent && agent->see_cell(a))
-            return notify_fail("There's something in the way.");
-        return notify_fail("You cannot see that place.");
+            return notify_fail(jtrans("There's something in the way."));
+        return notify_fail(jtrans("You cannot see that place."));
     }
     if ((origin - a).abs() > range2)
-        return notify_fail("Out of range.");
+        return notify_fail(jtrans("Out of range."));
     if (!affects_walls && cell_is_solid(a))
         return notify_fail(_wallmsg(a));
     return true;
@@ -390,7 +391,7 @@ bool targetter_fragment::valid_aim(coord_def a)
     if (!setup_fragmentation_beam(tempbeam, pow, agent, a, false,
                                   true, true, nullptr, temp, temp))
     {
-        return notify_fail("You cannot affect that.");
+        return notify_fail(jtrans("You cannot affect that."));
     }
     return true;
 }
@@ -447,14 +448,14 @@ targetter_reach::targetter_reach(const actor* act, reach_type ran) :
 bool targetter_reach::valid_aim(coord_def a)
 {
     if (!cell_see_cell(origin, a, LOS_DEFAULT))
-        return notify_fail("You cannot see that place.");
+        return notify_fail(jtrans("You cannot see that place."));
     if (!agent->see_cell_no_trans(a))
-        return notify_fail("You can't get through.");
+        return notify_fail(jtrans("You can't get through."));
 
     int dist = (origin - a).abs();
 
     if (dist > range)
-        return notify_fail("You can't reach that far!");
+        return notify_fail(jtrans("You can't reach that far!"));
 
     return true;
 }
@@ -519,7 +520,7 @@ static bool _cloudable(coord_def loc, bool avoid_clouds)
 bool targetter_cloud::valid_aim(coord_def a)
 {
     if (agent && (origin - a).abs() > range2)
-        return notify_fail("Out of range.");
+        return notify_fail(jtrans("Out of range."));
     if (!map_bounds(a)
         || agent
            && origin != a
@@ -527,15 +528,15 @@ bool targetter_cloud::valid_aim(coord_def a)
     {
         // Scrying/glass/tree/grate.
         if (agent && agent->see_cell(a))
-            return notify_fail("There's something in the way.");
-        return notify_fail("You cannot see that place.");
+            return notify_fail(jtrans("There's something in the way."));
+        return notify_fail(jtrans("You cannot see that place."));
     }
     if (cell_is_solid(a))
         return notify_fail(_wallmsg(a));
     if (agent)
     {
         if (env.cgrid(a) != EMPTY_CLOUD && avoid_clouds)
-            return notify_fail("There's already a cloud there.");
+            return notify_fail(jtrans("There's already a cloud there."));
         ASSERT(_cloudable(a, avoid_clouds));
     }
     return true;
@@ -604,7 +605,7 @@ targetter_splash::targetter_splash(const actor* act)
 bool targetter_splash::valid_aim(coord_def a)
 {
     if (agent && grid_distance(origin, a) > 1)
-        return notify_fail("Out of range.");
+        return notify_fail(jtrans("Out of range."));
     return true;
 }
 
@@ -651,12 +652,12 @@ targetter_los::targetter_los(const actor *act, los_type _los,
 bool targetter_los::valid_aim(coord_def a)
 {
     if ((a - origin).abs() > range_max2)
-        return notify_fail("Out of range.");
+        return notify_fail(jtrans("Out of range."));
     // If this message ever becomes used, please improve it.  I did not
     // bother adding complexity just for monsters and "hit allies" prompts
     // which don't need it.
     if (!is_affected(a))
-        return notify_fail("The effect is blocked.");
+        return notify_fail(jtrans("The effect is blocked."));
     return true;
 }
 
@@ -692,11 +693,11 @@ bool targetter_thunderbolt::valid_aim(coord_def a)
     {
         // Scrying/glass/tree/grate.
         if (agent->see_cell(a))
-            return notify_fail("There's something in the way.");
-        return notify_fail("You cannot see that place.");
+            return notify_fail(jtrans("There's something in the way."));
+        return notify_fail(jtrans("You cannot see that place."));
     }
     if ((origin - a).abs() > range2)
-        return notify_fail("Out of range.");
+        return notify_fail(jtrans("Out of range."));
     return true;
 }
 
@@ -809,11 +810,11 @@ bool targetter_spray::valid_aim(coord_def a)
     if (a != origin && !cell_see_cell(origin, a, LOS_NO_TRANS))
     {
         if (agent->see_cell(a))
-            return notify_fail("There's something in the way.");
-        return notify_fail("You cannot see that place.");
+            return notify_fail(jtrans("There's something in the way."));
+        return notify_fail(jtrans("You cannot see that place."));
     }
     if ((origin - a).abs() > range2)
-        return notify_fail("Out of range.");
+        return notify_fail(jtrans("Out of range."));
     return true;
 }
 
@@ -883,34 +884,34 @@ bool targetter_shadow_step::valid_aim(coord_def a)
     ray_def ray;
 
     if (origin == a)
-        return notify_fail("You cannot target yourself.");
+        return notify_fail(jtrans("You cannot target yourself."));
     else if ((origin - a).abs() > range2)
-        return notify_fail("Out of range.");
+        return notify_fail(jtrans("Out of range."));
     else if (!cell_see_cell(origin, a, LOS_NO_TRANS))
     {
         if (agent->see_cell(a))
-            return notify_fail("There's something in the way.");
+            return notify_fail(jtrans("There's something in the way."));
         else
-            return notify_fail("You cannot see that place.");
+            return notify_fail(jtrans("You cannot see that place."));
     }
     else if (cell_is_solid(a))
-        return notify_fail("There's something in the way.");
+        return notify_fail(jtrans("There's something in the way."));
     else if (!find_ray(agent->pos(), a, ray, opc_solid_see))
-        return notify_fail("There's something in the way.");
+        return notify_fail(jtrans("There's something in the way."));
     else if (!has_additional_sites(a))
     {
         switch (no_landing_reason)
         {
         case BLOCKED_MOVE:
         case BLOCKED_OCCUPIED:
-            return notify_fail("There is no safe place near that"
-                               " location.");
+            return notify_fail(jtrans("There is no safe place near that"
+                                      " location."));
         case BLOCKED_PATH:
-            return notify_fail("There's something in the way.");
+            return notify_fail(jtrans("There's something in the way."));
         case BLOCKED_NO_TARGET:
-            return notify_fail("There isn't a shadow there.");
+            return notify_fail(jtrans("There isn't a shadow there."));
         case BLOCKED_MOBILE:
-            return notify_fail("That shadow isn't sufficiently still.");
+            return notify_fail(jtrans("That shadow isn't sufficiently still."));
         case BLOCKED_NONE:
             die("buggy no_landing_reason");
         }
@@ -1134,11 +1135,11 @@ bool targetter_cone::valid_aim(coord_def a)
     {
         // Scrying/glass/tree/grate.
         if (agent->see_cell(a))
-            return notify_fail("There's something in the way.");
-        return notify_fail("You cannot see that place.");
+            return notify_fail(jtrans("There's something in the way."));
+        return notify_fail(jtrans("You cannot see that place."));
     }
     if ((origin - a).abs() > range2)
-        return notify_fail("Out of range.");
+        return notify_fail(jtrans("Out of range."));
     return true;
 }
 
@@ -1227,11 +1228,11 @@ bool targetter_shotgun::valid_aim(coord_def a)
     if (a != origin && !cell_see_cell(origin, a, LOS_NO_TRANS))
     {
         if (agent->see_cell(a))
-            return notify_fail("There's something in the way.");
-        return notify_fail("You cannot see that place.");
+            return notify_fail(jtrans("There's something in the way."));
+        return notify_fail(jtrans("You cannot see that place."));
     }
     if ((origin - a).abs() > range2)
-        return notify_fail("Out of range.");
+        return notify_fail(jtrans("Out of range."));
     return true;
 }
 

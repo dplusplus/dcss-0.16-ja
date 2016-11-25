@@ -203,14 +203,14 @@ public:
 
     void set_prompt()
     {
-        string prompt = "Describe which? ";
+        string prompt = jtrans("Describe which? ");
 
         if (toggleable_sort)
         {
             if (sort_alpha)
-                prompt += "(CTRL-S to sort by monster toughness)";
+                prompt += jtrans("(CTRL-S to sort by monster toughness)");
             else
-                prompt += "(CTRL-S to sort by name)";
+                prompt += jtrans("(CTRL-S to sort by name)");
         }
         set_title(new MenuEntry(prompt, MEL_TITLE));
     }
@@ -517,29 +517,23 @@ static string _spell_sources(const spell_type spell)
     }
 
     if (books.empty() && rods.empty())
-        return "\n\nThis spell is not found in any books or rods.";
+        return "\n\n" + jtrans("This spell is not found in any books or rods.");
 
     string desc;
 
     if (!books.empty())
     {
-        desc += "\n\nThis spell can be found in the following book";
-        if (books.size() > 1)
-            desc += "s";
-        desc += ":\n ";
+        desc += "\n\n" + jtransln("This spell can be found in the following book") + " ";
         desc += comma_separated_line(books.begin(), books.end(), "\n ", "\n ");
     }
 
     if (!rods.empty())
     {
-        desc += "\n\nThis spell can be found in the following rod";
-        if (rods.size() > 1)
-            desc += "s";
-        desc += ":\n ";
+        desc += "\n\n" + jtransln("This spell can be found in the following rod") + " ";
         desc += comma_separated_line(rods.begin(), rods.end(), "\n ", "\n ");
     }
 
-    return desc;
+    return sp2nbsp(desc);
 }
 
 /**
@@ -988,7 +982,7 @@ static int _describe_card(const string &key, const string &suffix,
     const string card_name = key.substr(0, key.size() - suffix.size());
     const card_type card = name_to_card(card_name);
     ASSERT(card != NUM_CARDS);
-    return _describe_key(key, suffix, footer, which_decks(card) + "\n");
+    return _describe_key(key, suffix, footer, "\n" + which_decks(card) + "\n");
 }
 
 /**
@@ -1007,8 +1001,8 @@ static int _describe_cloud(const string &key, const string &suffix,
     ASSERT(cloud != NUM_CLOUD_TYPES);
 
     const string extra_info = is_opaque_cloud_type(cloud) ?
-        "\nThis cloud is opaque; one tile will not block vision, but "
-        "multiple will."
+        "\n" + jtrans("This cloud is opaque; one tile will not block vision, but "
+                      "multiple will.")
         : "";
     return _describe_key(key, suffix, footer, extra_info);
 }
@@ -1162,18 +1156,18 @@ static string _prompt_for_regex(const LookupType &lookup_type, string &err)
 {
     const string type = lowercase_string(lookup_type.type);
     const string extra = lookup_type.supports_glyph_lookup() ?
-        make_stringf(" Enter a single letter to list %s displayed by that"
-                     " symbol.", pluralise(type).c_str()) :
+        " " + make_stringf(jtransc(" Enter a single letter to list %s displayed by that"
+                                   " symbol."), pluralise(type).c_str()) :
         "";
     mprf(MSGCH_PROMPT,
-         "Describe a %s; partial names and regexps are fine.%s",
+         jtransc("Describe a %s; partial names and regexps are fine.%s"),
          type.c_str(), extra.c_str());
 
-    mprf(MSGCH_PROMPT, "Describe what? ");
+    mpr_nojoin(MSGCH_PROMPT, jtrans("Describe what? "));
     char buf[80];
     if (cancellable_get_line(buf, sizeof(buf)) || buf[0] == '\0')
     {
-        err = "Okay, then.";
+        err = jtrans("Okay, then.");
         return "";
     }
 
@@ -1277,7 +1271,7 @@ static bool _find_description(string &response)
     // not actually sure how to trigger this branch...
     if (want_regex && regex.empty())
     {
-        response = "Description must contain at least one non-space.";
+        response = jtrans("Description must contain at least one non-space.");
         return true;
     }
 
@@ -1332,5 +1326,5 @@ void keyhelp_query_descriptions()
     }
 
     viewwindow();
-    mpr("Okay, then.");
+    mpr(jtrans("Okay, then."));
 }

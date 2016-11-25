@@ -12,7 +12,7 @@
 
 #include "player.h"
 
-#define MAX_NOTE_PLACE_LEN (strwidth("ジグラット:27"))
+#define MAX_NOTE_PLACE_LEN (strwidth("ゾットの領域:5"))
 
 class reader;
 class writer;

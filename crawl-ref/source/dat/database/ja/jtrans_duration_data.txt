@@ -200,7 +200,7 @@ You are mighty.
 
 麻痺
 %%%%
-[dur]palalysed
+[dur]paralysed
 
 麻痺中
 %%%%
@@ -210,15 +210,15 @@ You are paralysed.
 %%%%
 [dur]Stone
 
-石像
+石化
 %%%%
 [dur]petrified
 
-石像状態
+石化状態
 %%%%
 You are petrified.
 
-あなたは石像と化している。
+あなたは石化してしまった。
 %%%%
 [dur]Petr
 

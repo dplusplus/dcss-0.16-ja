@@ -304,12 +304,12 @@ Searing Breath cast
 
 # @The_monster@ breathes @beam@ @at@ @target@.
 @The_monster@は@target@に向かって@beam@を放った。
-%%%%%
+%%%%
 Electrical Bolt cast
 
 # @The_monster@ shoots out a bolt of @beam@ @at@ @target@!
 @The_monster@は@target@に向かって@beam@を放った。
-%%%%%
+%%%%
 Spit Lava cast
 
 # @The_monster@ spits lava @at@ @target@.
@@ -481,7 +481,7 @@ Lehudib's Crystal Spear the Serpent of Hell cast
 Mennas cast
 
 # VISUAL:@The_monster@ gestures frantically.
-VISUAL:@The_monster@半狂乱の身振りをした。
+VISUAL:@The_monster@は半狂乱の身振りをした。
 %%%%
 ########################################################################
 # Individual monsters
@@ -668,7 +668,7 @@ ghost moth cast
 unseen ghost moth cast targeted
 
 # You feel you are being watched by something. @player_only@
-あなたは何かに見られているような気がした。 @player_only@
+あなたは何かに見られているような気がした。@player_only@
 %%%%
 golden eye cast targeted
 
@@ -930,7 +930,7 @@ non-humanoid wizard cast targeted
 # @The_monster@ stares @at@ @target@ and mumbles some strange words.
 @The_monster@は@target@をにらみつけ、奇妙な文句を呟いた。
 
-@The_monster@ casts a spell @at@ @target@.
+# @The_monster@ casts a spell @at@ @target@.
 @The_monster@は@target@に向かって呪文を唱えた。
 %%%%
 non-humanoid wizard cast
@@ -949,7 +949,7 @@ unseen non-humanoid wizard cast
 wizard cast targeted
 
 # @The_monster@ gestures @at@ @target@ while chanting.
-@The_monster@ gestures @at@ @target@ while chanting.
+@The_monster@は呪文を唱えながら@target@に向かって身振りをした。
 
 # @The_monster@ points @at@ @target@ and mumbles some strange words.
 @The_monster@は@target@を指さして奇妙なつぶやき声を上げた。

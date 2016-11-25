@@ -155,10 +155,7 @@ static TextDB AllDBs[] =
            "jtrans_chardump.txt",
            "jtrans_character.txt",
            "jtrans_cloud.txt",
-           /*
            "jtrans_command.txt",
-           "jtrans_dactions.txt",
-           */
            "jtrans_decks.txt",
            "jtrans_delay.txt",
            "jtrans_describe.txt",
@@ -175,13 +172,14 @@ static TextDB AllDBs[] =
            "jtrans_file.txt",
            "jtrans_fineff.txt",
            "jtrans_food.txt",
-           "jtrans_godabil.txt",
-           "jtrans_godcompanions.txt",
            */
+           "jtrans_godabil.txt",
+           "jtrans_godblessing.txt",
            "jtrans_godconduct.txt",
            "jtrans_godname.txt",
            "jtrans_godpassive.txt",
            "jtrans_godprayer.txt",
+           "jtrans_godwrath.txt",
            "jtrans_autofight_lua.txt",
            "jtrans_magicspell.txt",
            "jtrans_monster_name.txt",
@@ -997,7 +995,11 @@ string jtrans(const string &key, const bool linefeed)
     if (key == "") return "";
 
     string tmp_key(key);
-    string text = _query_database(JtransDB, trim_string(tmp_key), true, true);
+
+    tmp_key = trim_string(tmp_key);
+    tmp_key = replace_all(tmp_key, "\n", "\\n");
+
+    string text = _query_database(JtransDB, tmp_key, true, true);
 
     if (text == "") return key;
 

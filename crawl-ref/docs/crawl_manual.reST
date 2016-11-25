@@ -10,7 +10,7 @@ Manual
 ########################################
 
 ****************************************
-A. Overview
+A. 概要(未訳)
 ****************************************
 
 Crawl is a fun game in the grand tradition of similar games like Rogue, Hack and
@@ -54,7 +54,7 @@ You can ask for help and there will always be someone to watch your game and
 give hints if you happen to play on a server.
 
 ****************************************
-B. Starting screen
+B. 起動画面(未訳)
 ****************************************
 
 At the Crawl start screen, you will be presented with various game modes, a list
@@ -158,7 +158,7 @@ Ctrl-O
   gives an overview of the parts of the dungeon you have discovered so far
 
 ****************************************
-C. Attributes and stats
+C. 能力値(未訳)
 ****************************************
 
 The stat area to the right of the playing map shows a lot of information. It
@@ -272,7 +272,7 @@ ability to spit poison or the magical power to turn invisible granted by a ring.
 These are accessed through the 'a' command.
 
 ****************************************
-D. Exploring the dungeon
+D. ダンジョンの探索(未訳)
 ****************************************
 
 Movement
@@ -451,7 +451,7 @@ can use keymaps and macros. See macros_guide.txt in the docs/ directory, or read
 it from the in-game help menu.
 
 ****************************************
-E. Experience and skills
+E. 経験レベルおよびスキル(未訳)
 ****************************************
 
 When you kill monsters, you gain experience points (XP). You receive less XP
@@ -507,7 +507,7 @@ progress in this area. When you are carrying it, experience used to practise the
 given skill will have twice the usual effect for a while.
 
 ****************************************
-F. Monsters
+F. モンスター(未訳)
 ****************************************
 
 In the caverns of Crawl, you will find a great variety of creatures, most of
@@ -587,7 +587,7 @@ The details screen shows:
     prevented by silence and affected by antimagic.
 
 ****************************************
-G. Items
+G. アイテム(未訳)
 ****************************************
 
 In the dungeons of Crawl there are many different kinds of normal and magical
@@ -940,7 +940,7 @@ enchantment, though):
 :other armours: embroidered.
 
 ****************************************
-H. Spellcasting
+H. 呪文の詠唱(未訳)
 ****************************************
 
 Magical spells are a very important part of surviving in the dungeon. Every
@@ -1000,7 +1000,7 @@ Be careful of magic-using enemies! Some of them can use magic just as well as
 you, if not better, and often use it intelligently.
 
 ****************************************
-I. Targeting
+I. 照準合わせ(未訳)
 ****************************************
 
 When throwing something, evoking certain wands, or casting spells, you are asked
@@ -1041,7 +1041,7 @@ you will be asked for confirmation.
 Finally, the ':' key allows you to hide the path of your spell/wand/missile.
 
 ****************************************
-J. Religion
+J. 信仰(未訳)
 ****************************************
 
 There are a number of gods, demons and other assorted powers who will accept
@@ -1076,7 +1076,7 @@ If you like to start the game with a religion, choose your background from
 Berserker, Chaos Knight or Abyssal Knight.
 
 ****************************************
-K. Mutations
+K. 突然変異(未訳)
 ****************************************
 
 Although it would doubtless be a nice thing if you could remain genetically
@@ -1118,7 +1118,7 @@ Some mutations are only temporary and will dissipate after slaying more enemies.
 These are listed in purple on the list of mutations, and marked as temporary.
 
 ****************************************
-L. Licence, contact, history
+L. ライセンス、連絡先および歴史(未訳)
 ****************************************
 
 Licence
@@ -1177,7 +1177,7 @@ The object of your quest in Crawl (the Orb of Zot) was taken from Wizard's
 Castle, a text adventure written in BASIC.
 
 ****************************************
-M. Macros, options, performance
+M. マクロおよびオプション設定(未訳)
 ****************************************
 
 Crawl supports redefining keys via key maps. This is useful when your keyboard
@@ -1211,7 +1211,7 @@ a few measures which may improve the situation:
   - try playing in console mode rather than tiles
 
 ****************************************
-N. Philosophy (pas de faq)
+N. ゲームの方向性(未訳)
 ****************************************
 
 In a nutshell: This game aims to be a tactical fantasy-themed dungeon crawl. We
@@ -1395,11 +1395,11 @@ are not deficits: there's more than one way out, and successfully escaping is
 exciting for anyone.
 
 ########################################
-Appendices
+付表
 ########################################
 
 ****************************************
-1. List of character species
+1. 種族一覧(未訳)
 ****************************************
 
 .. note:: Use 'A' to check for which particular peculiarities a species might
@@ -1840,7 +1840,7 @@ Pale Draconians
   Evocations.
 
 ****************************************
-2. List of character backgrounds
+2. ゲーム開始時の職業一覧(未訳)
 ****************************************
 
 In your quest, you play as one of a large number of different types of
@@ -1988,7 +1988,7 @@ Elementalists
     is a mixed bag, with destructive, defensive and utility spells available.
 
 ****************************************
-3. List of skills
+3. スキル一覧(未訳)
 ****************************************
 
 Here is a description of the skills you may have. You can check your current
@@ -2152,7 +2152,7 @@ Evocations
   Invocations or Evocations is used.
 
 ****************************************
-4. List of keys and commands
+4. コマンド詳細一覧(未訳)
 ****************************************
 
 Main screen
@@ -2734,7 +2734,7 @@ Shift-direction
   Fire straight in that direction.
 
 ****************************************
-5. List of enchantments
+5. ステータス表記一覧(未訳)
 ****************************************
 
 The stats area has room for showing the enchantments which you currently enjoy
@@ -2964,7 +2964,7 @@ There are several more enchantment messages for various spells. The description
 of the spell causing the enchantment will explain these.
 
 ****************************************
-6. Inscriptions
+6. アイテムへの銘の効果(未訳)
 ****************************************
 
 You can use the { command to manually inscribe items; alternatively, you can

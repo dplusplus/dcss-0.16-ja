@@ -38,9 +38,9 @@ function TimedMessaging:init(tmarker, cm, verbose)
 
   if not self.ranges and not self.visible and not self.messages then
     self.ranges = {
-      { 5000, 'stately ' }, { 4000, '' },
-      { 2500, 'brisk ' },   { 1500, 'urgent ' },
-      { 0, 'frantic ' }
+      { 5000, '荘厳な' }, { 4000, '' },
+      { 2500, '爽快な' },   { 1500, '切迫した' },
+      { 0, '半狂乱の' }
     }
   end
 

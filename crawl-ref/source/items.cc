@@ -77,6 +77,7 @@
 #include "throw.h"
 #include "travel.h"
 #include "unwind.h"
+#include "unicode.h"
 #include "viewchar.h"
 #include "view.h"
 #include "xom.h"
@@ -208,7 +209,7 @@ static int _cull_items()
 
     // XXX: Not the prettiest of messages, but the player
     // deserves to know whenever this kicks in. -- bwr
-    mprf(MSGCH_WARN, "Too many items on level, removing some.");
+    mpr_nojoin(MSGCH_WARN, jtrans("Too many items on level, removing some."));
 
     // Rules:
     //  1. Don't cleanup anything nearby the player
@@ -998,7 +999,7 @@ void origin_set_inventory(void (*oset)(item_def &item))
 
 static string _milestone_rune(const item_def &item)
 {
-    return string("found ") + item.name(DESC_A) + ".";
+    return item.name(DESC_A) + "を手に入れた";
 }
 
 static void _milestone_check(const item_def &item)
@@ -1006,7 +1007,7 @@ static void _milestone_check(const item_def &item)
     if (item_is_rune(item))
         mark_milestone("rune", _milestone_rune(item));
     else if (item_is_orb(item))
-        mark_milestone("orb", "found the Orb of Zot!");
+        mark_milestone("orb", jtrans("found the Orb of Zot!"));
 }
 
 static void _check_note_item(item_def &item)
@@ -1055,7 +1056,7 @@ static string _origin_monster_name(const item_def &item)
         return "player ghost";
     else if (monnum == MONS_PANDEMONIUM_LORD)
         return "pandemonium lord";
-    return mons_type_name(monnum, DESC_PLAIN);
+    return mons_type_name(monnum, DESC_A);
 }
 
 static string _origin_place_desc(const item_def &item)
@@ -1155,6 +1156,7 @@ static string _base_type_string(const item_def &item)
         case ARM_PEARL_DRAGON_ARMOUR:
         case ARM_SHADOW_DRAGON_ARMOUR:
         case ARM_QUICKSILVER_DRAGON_ARMOUR:
+        case ARM_CRYSTAL_PLATE_ARMOUR:
             return "armour";
         case ARM_CENTAUR_BARDING:
             return "馬甲";
@@ -1197,7 +1199,11 @@ static string _base_type_string(const item_def &item)
         else
             return "ring";
     case OBJ_POTIONS: return "potion";
-    case OBJ_BOOKS: return "book";
+    case OBJ_BOOKS:
+        if (item.sub_type == BOOK_MANUAL)
+            return "manual";
+        else
+            return "book";
     case OBJ_STAVES: return "staff";
     case OBJ_RODS: return "rod";
     case OBJ_ORBS: return "orb";
@@ -1212,7 +1218,7 @@ static string _base_type_string(const item_def &item)
     }
 }
 
-string origin_desc(const item_def &item)
+string origin_desc(const item_def &item, bool add_stop)
 {
     if (!origin_describable(item))
         return "";
@@ -1232,18 +1238,18 @@ string origin_desc(const item_def &item)
                 desc += jtrans("You bought " + _article_it(item) + " in a shop ");
                 break;
             case IT_SRC_START:
-                desc += "Buggy Original Equipment: ";
+                desc += jtrans("Buggy Original Equipment: ");
                 break;
             case AQ_SCROLL:
                 desc += jtrans("You acquired " + _article_it(item) + " ");
                 break;
 #if TAG_MAJOR_VERSION == 34
             case AQ_CARD_GENIE:
-                desc += "You drew the Genie ";
+                desc += jtrans("You drew the Genie ");
                 break;
 #endif
             case AQ_WIZMODE:
-                desc += "Your wizardly powers created "+ _article_it(item)+ " ";
+                desc += jtrans("Your wizardly powers created "+ _article_it(item)+ " ");
                 break;
             default:
                 if (iorig > GOD_NO_GOD && iorig < NUM_GODS)
@@ -1254,7 +1260,7 @@ string origin_desc(const item_def &item)
                 else
                 {
                     // Bug really.
-                    desc += "You stumbled upon " + _article_it(item) + " ";
+                    desc += jtrans("You stumbled upon " + _article_it(item) + " ");
                 }
                 break;
             }
@@ -1271,7 +1277,11 @@ string origin_desc(const item_def &item)
         desc += jtrans("You found " + _article_it(item) + " ");
 
     string basename = jtrans(_base_type_string(item));
-    return make_stringf(desc.c_str(), _origin_place_desc(item).c_str(), basename.c_str());
+    string text = make_stringf(desc.c_str(), _origin_place_desc(item).c_str(), basename.c_str());
+
+    if (add_stop) text += "。";
+
+    return text;
 }
 
 /**
@@ -1689,7 +1699,7 @@ void get_gold(const item_def& item, int quant, bool quiet)
                             ? make_stringf(" (新たに%d枚入手)", quant)
                             : "";
 
-        mprf(jtransc("You now have %d gold piece%s."),
+        mprf(jtransc("You now have %d gold piece%s%s."),
              you.gold, gain.c_str());
         learned_something_new(HINT_SEEN_GOLD);
     }
@@ -1717,7 +1727,7 @@ static bool _put_item_in_inv(item_def& it, int quant_got, bool quiet, bool& put_
     if (it.base_type == OBJ_ORBS && crawl_state.game_is_zotdef()
         && runes_in_pack() < 15)
     {
-        mpr("You must possess at least fifteen runes to touch the sacred Orb which you defend.");
+        mpr(jtrans("You must possess at least fifteen runes to touch the sacred Orb which you defend."));
         return true;
     }
 
@@ -2406,7 +2416,7 @@ bool drop_item(int item_dropped, int quant_drop)
     {
         if (!Options.easy_unequip)
         {
-            mpr("You will have to take that off first.");
+            mpr(jtrans("You will have to take that off first."));
             return false;
         }
 
@@ -2420,7 +2430,7 @@ bool drop_item(int item_dropped, int quant_drop)
         && you.inv[item_dropped].base_type == OBJ_WEAPONS
         && you.inv[item_dropped].cursed())
     {
-        mprf("%s is stuck to you!", you.inv[item_dropped].name(DESC_THE).c_str());
+        mprf(jtransc("%s is stuck to you!"), you.inv[item_dropped].name(DESC_THE).c_str());
         return false;
     }
 
@@ -2429,7 +2439,7 @@ bool drop_item(int item_dropped, int quant_drop)
         if (item_dropped == you.equip[i] && you.equip[i] != -1)
         {
             if (!Options.easy_unequip)
-                mpr("You will have to take that off first.");
+                mpr(jtrans("You will have to take that off first."));
             else if (check_warning_inscriptions(you.inv[item_dropped],
                                                 OPER_TAKEOFF))
             {
@@ -4109,14 +4119,15 @@ static void _rune_from_specs(const char* _specs, item_def &item)
         string line;
         for (int i = 0; i < NUM_RUNE_TYPES; i++)
         {
-            line += make_stringf("[%c] %-10s ", i + 'a', rune_type_name(i));
+            line += make_stringf("[%c] %-10s ", i + 'a',
+                                 chop_string(rune_type_name_j(i), 10).c_str());
             if (i % 5 == 4 || i == NUM_RUNE_TYPES - 1)
             {
                 mprf(MSGCH_PROMPT, "%s", line.c_str());
                 line.clear();
             }
         }
-        mprf(MSGCH_PROMPT, "Which rune (ESC to exit)? ");
+        mpr_nojoin(MSGCH_PROMPT, jtrans("Which rune (ESC to exit)? "));
 
         int keyin = toalower(get_ch());
 
@@ -4186,11 +4197,11 @@ static void _deck_from_specs(const char* _specs, item_def &item,
 
     while (item.sub_type == MISC_DECK_UNKNOWN)
     {
-        mprf(MSGCH_PROMPT,
-             "[a] escape     [b] destruction [c] summoning [d] wonders");
-        mprf(MSGCH_PROMPT,
-             "[e] war         [f] changes  [g] defence");
-        mpr("Which deck (ESC to exit)? ");
+        mpr_nojoin(MSGCH_PROMPT,
+                   jtrans("[a] escape     [b] destruction [c] summoning [d] wonders"));
+        mpr_nojoin(MSGCH_PROMPT,
+                   jtrans("[e] war         [f] changes  [g] defence"));
+        mpr(jtrans("Which deck (ESC to exit)? "));
 
         const int keyin = toalower(get_ch());
 
@@ -4242,7 +4253,7 @@ static void _deck_from_specs(const char* _specs, item_def &item,
     {
         while (true)
         {
-            mprf(MSGCH_PROMPT, "[a] plain [b] ornate [c] legendary? (ESC to exit)");
+            mpr_nojoin(MSGCH_PROMPT, jtrans("[a] plain [b] ornate [c] legendary? (ESC to exit)"));
 
             int keyin = toalower(get_ch());
 
@@ -4485,7 +4496,7 @@ bool get_item_by_name(item_def *item, const char* specs,
                 item->skill = skill;
             else
             {
-                mpr("Sorry, no books on that skill today.");
+                mpr(jtrans("Sorry, no books on that skill today."));
                 item->skill = SK_FIGHTING; // Was probably that anyway.
             }
             item->skill_points = random_range(2000, 3000);
@@ -4525,8 +4536,8 @@ bool get_item_by_name(item_def *item, const char* specs,
         if (is_blood_potion(*item))
         {
             const char* prompt;
-            prompt = "# turns away from rotting? "
-                     "[ENTER for fully fresh] ";
+            prompt = "腐敗するまで何ターンを指定しますか？ "
+                     "[Enterで最大ターンになります] ";
             int age = prompt_for_int(prompt, false);
 
             if (age <= 0)
@@ -4898,9 +4909,9 @@ object_class_type get_item_mimic_type()
         mprf("[%c] %s ", letter, item_class_name(cls, true));
         choices[letter++] = cls;
     }
-    mprf("[%c] random", letter);
+    mprf(jtransc("[%c] random"), letter);
     choices[letter] = OBJ_RANDOM;
-    mprf(MSGCH_PROMPT, "\nWhat kind of item mimic? ");
+    mpr_nojoin(MSGCH_PROMPT, "\n" + jtrans("What kind of item mimic? "));
     const int keyin = toalower(get_ch());
 
     if (!choices.count(keyin))
@@ -4988,7 +4999,7 @@ static void _identify_last_item(item_def &item)
     const string class_name = item.base_type == OBJ_JEWELLERY ?
                                     item_base_name(item) :
                                     item_class_name(item.base_type, true);
-    mprf("You have identified the last %s.", class_name.c_str());
+    mprf(jtransc("You have identified the last %s."), jtransc(class_name));
 
     if (in_inventory(item))
     {

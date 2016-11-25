@@ -167,5 +167,7 @@ string make_file_time(time_t when);
 
 string sp2nbsp(const string &s);
 #define sp2nbspc(s) (sp2nbsp(s).c_str())
+string nbsp2sp(const string &s);
+#define nbsp2spc(s) (nbsp2sp(s).c_str())
 
 #endif

@@ -143,11 +143,11 @@ void jiyva_slurp_message(int js)
     if (js != JS_NONE)
     {
         if (js & JS_FOOD)
-            mpr("You feel a little less hungry.");
+            mpr(jtrans("You feel a little less hungry."));
         if (js & JS_MP)
-            mpr("You feel your power returning.");
+            mpr(jtrans("You feel your power returning."));
         if (js & JS_HP)
-            mpr("You feel a little better.");
+            mpr(jtrans("You feel a little better."));
     }
 }
 
@@ -321,7 +321,7 @@ string ash_describe_bondage(int flags, bool level)
         else
         {
             // FIXME: what if you sacrificed a hand?
-            desc = make_stringf(jtransc("Your %s %s is bound but not your %s %s."),
+            desc = make_stringf(jtranslnc("Your %s %s is bound but not your %s %s."),
                                 jtransc(you.bondage[ET_WEAPON] ? "weapon" : "shield"),
                                 jtransc(you.bondage[ET_WEAPON] ? "shield" : "weapon"));
         }
@@ -821,31 +821,31 @@ void qazlal_element_adapt(beam_type flavour, int strength)
 
     if (what != BEAM_FIRE && you.duration[DUR_QAZLAL_FIRE_RES])
     {
-        mprf(MSGCH_DURATION, "Your resistance to fire fades away.");
+        mpr_nojoin(MSGCH_DURATION, jtrans("Your resistance to fire fades away."));
         you.duration[DUR_QAZLAL_FIRE_RES] = 0;
     }
 
     if (what != BEAM_COLD && you.duration[DUR_QAZLAL_COLD_RES])
     {
-        mprf(MSGCH_DURATION, "Your resistance to cold fades away.");
+        mpr_nojoin(MSGCH_DURATION, jtrans("Your resistance to cold fades away."));
         you.duration[DUR_QAZLAL_COLD_RES] = 0;
     }
 
     if (what != BEAM_ELECTRICITY && you.duration[DUR_QAZLAL_ELEC_RES])
     {
-        mprf(MSGCH_DURATION, "Your resistance to electricity fades away.");
+        mpr_nojoin(MSGCH_DURATION, jtrans("Your resistance to electricity fades away."));
         you.duration[DUR_QAZLAL_ELEC_RES] = 0;
     }
 
     if (what != BEAM_MISSILE && you.duration[DUR_QAZLAL_AC])
     {
-        mprf(MSGCH_DURATION, "Your resistance to physical damage fades away.");
+        mpr_nojoin(MSGCH_DURATION, jtrans("Your resistance to physical damage fades away."));
         you.duration[DUR_QAZLAL_AC] = 0;
         you.redraw_armour_class = true;
     }
 
-    mprf(MSGCH_GOD, "You feel %sprotected from %s.",
-         you.duration[dur] > 0 ? "more " : "", descript.c_str());
+    mpr_nojoin(MSGCH_GOD, make_stringf(jtransc(make_stringf("You feel %%sprotected from %s.", descript.c_str())),
+                                       you.duration[dur] > 0 ? "さらに" : ""));
 
     you.increase_duration(dur, 10 * strength, 80);
 

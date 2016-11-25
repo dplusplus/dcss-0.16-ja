@@ -632,9 +632,9 @@ string player::foot_name(bool plural, bool *can_plural) const
 
     const string singular = _foot_name_singular(can_plural);
     if (plural && *can_plural)
-        return pluralise(singular);
+        return jpluralise(singular, "両");
 
-    return singular;
+    return jtrans(singular);
 }
 
 string player::arm_name(bool plural, bool *can_plural) const

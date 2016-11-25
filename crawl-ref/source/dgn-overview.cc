@@ -216,7 +216,8 @@ string overview_description_string(bool display)
 {
     string disp;
 
-    disp += "                        ";
+    if (display)
+        disp += "                        ";
     disp += jtransln("<white>Dungeon Overview and Level Annotations</white>\n");
     disp += _get_branches(display);
     disp += _get_altars(display);
@@ -259,8 +260,18 @@ static string _get_seen_branches(bool display)
             lid = find_deepest_explored(lid);
 
             string entry_desc;
+            branch_type br = NUM_BRANCHES;
             for (auto lvl : stair_level[branch])
-                entry_desc += " " + lvl.describe_j(false, true);
+            {
+                if (entry_desc.empty())
+                    entry_desc += lvl.describe_abbrev_j(false, true);
+                else if (br == lvl.branch)
+                    entry_desc += make_stringf(",%d", lvl.depth);
+                else
+                    entry_desc += " " + lvl.describe_abbrev_j(false, true);
+
+                br = lvl.branch;
+            }
 
             // "D" is a little too short here.
             const char *brname = (branch == BRANCH_DUNGEON
@@ -268,11 +279,12 @@ static string _get_seen_branches(bool display)
                                   : it->abbrevname);
 
             snprintf(buffer, sizeof buffer,
-                "<yellow>%*s</yellow> <darkgrey>(%d/%d)</darkgrey>%s",
+                jtransc("<yellow>%*s</yellow> <darkgrey>(%d/%d)</darkgrey>%s"),
                 branch == root_branch ? -7 : 7,
-                chop_string(tagged_jtrans("[branch]", brname), 10).c_str(), lid.depth, brdepth[branch],
-                branch != BRANCH_DUNGEON ? make_stringf("%-11s", chop_string(entry_desc, 11).c_str()).c_str()
-                                         : "         ");
+                chop_stringc(tagged_jtrans("[branch]", brname), 12),
+                chop_stringc(make_stringf("(%d/%d)", lid.depth, brdepth[branch]), 7),
+                branch != BRANCH_DUNGEON ? chop_stringc(entry_desc, 6)
+                                         : "      ");
 
             disp += buffer;
             num_printed_branches++;
@@ -328,28 +340,28 @@ static string _get_unseen_branches()
                 if (it->mindepth != it->maxdepth)
                 {
                     snprintf(buffer, sizeof buffer,
-                        "<darkgrey>%6s: %s:%d-%d</darkgrey>",
-                            tagged_jtransc("[branch]", it->abbrevname),
-                            tagged_jtransc("[branch]", branches[parent].abbrevname),
+                        "<darkgrey>%12s: %s:%d-%d</darkgrey>",
+                            chop_stringc(tagged_jtrans("[branch]", it->abbrevname), 12),
+                            tagged_jtransc("[branch]", branches[parent].abbrevname_j),
                             it->mindepth,
                             it->maxdepth);
                 }
                 else
                 {
                     snprintf(buffer, sizeof buffer,
-                        "<darkgrey>%6s: %s:%d</darkgrey>",
-                            tagged_jtransc("[branch]", it->abbrevname),
-                            tagged_jtransc("[branch]", branches[parent].abbrevname),
+                        "<darkgrey>%12s: %s:%d</darkgrey>",
+                            chop_stringc(tagged_jtrans("[branch]", it->abbrevname), 12),
+                            tagged_jtransc("[branch]", branches[parent].abbrevname_j),
                             it->mindepth);
                 }
 
                 disp += buffer;
                 num_printed_branches++;
 
-                disp += (num_printed_branches % 4) == 0
+                disp += (num_printed_branches % 3) == 0
                         ? "\n"
                         // Each branch entry takes up 27 spaces
-                        : string(27 + 21 - strwidth(buffer), ' ');
+                        : string(27 + 19 - strwidth(buffer), ' ');
             }
         }
     }
@@ -756,7 +768,7 @@ void mark_corrupted_level(level_id li)
 {
     if (!level_annotations[li].empty())
         level_annotations[li] += ", ";
-    level_annotations[li] += "corrupted";
+    level_annotations[li] += jtrans("corrupted");
 }
 
 ////////////////////////////////////////////////////////////////////////

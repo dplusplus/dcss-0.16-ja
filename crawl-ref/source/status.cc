@@ -103,9 +103,10 @@ static void _mark_expiring(status_info* inf, bool expiring)
     if (expiring)
     {
         if (!inf->short_text.empty())
-            inf->short_text += " (expiring)";
+            inf->short_text = tagged_jtrans("[dur]", inf->short_text)
+                            + jtrans(" (expiring)");
         if (!inf->long_text.empty())
-            inf->long_text = "Expiring: " + inf->long_text;
+            inf->long_text = jtrans("Expiring: ") + " " + inf->long_text;
     }
 }
 
@@ -294,7 +295,7 @@ bool fill_status_info(int status, status_info* inf)
 
     case DUR_CONFUSING_TOUCH:
     {
-        inf->long_text = you.hands_act("are", "glowing red.");
+        inf->long_text = jtrans("Your") + you.hand_name(true) + jtrans("are glowing red.");
         break;
     }
 
@@ -303,11 +304,11 @@ bool fill_status_info(int status, status_info* inf)
         // Might be better to handle this with an extra virtual status.
         const bool exp = dur_expiring(DUR_FIRE_SHIELD);
         if (exp)
-            inf->long_text += "Expiring: ";
-        inf->long_text += "You are surrounded by a ring of flames.\n";
+            inf->long_text += "継続中: ";
+        inf->long_text += jtransln("You are surrounded by a ring of flames.\n");
         if (exp)
-            inf->long_text += "Expiring: ";
-        inf->long_text += "You are immune to clouds of flame.";
+            inf->long_text += "継続中: ";
+        inf->long_text += jtrans("You are immune to clouds of flame.");
         break;
     }
 
@@ -336,7 +337,7 @@ bool fill_status_info(int status, status_info* inf)
         string skills = manual_skill_names();
         if (!skills.empty())
         {
-            inf->short_text = jtrans(manual_skill_names(true)) + "を習得中";
+            inf->short_text = manual_skill_names(true) + "を習得中";
             inf->long_text = "あなたは" + jtrans(skills) + "を習得中だ。";
         }
         break;
@@ -353,7 +354,7 @@ bool fill_status_info(int status, status_info* inf)
         else if (you.duration[DUR_SURE_BLADE] >  5 * BASELINE_DELAY)
             desc = "";
         else
-            desc = "weak";
+            desc = "weak ";
         inf->long_text = "You have a " + desc + "bond with your blade.";
         break;
     }
@@ -568,13 +569,14 @@ bool fill_status_info(int status, status_info* inf)
 
             inf->light_text = "Bribe";
             inf->short_text = make_stringf("[%s]を買収中",
-                                           comma_separated_line(places.begin(),
-                                                                places.end(),
-                                                                ", ", ", ")
-                                                                .c_str());
+                                           comma_separated_fn(places.begin(),
+                                                              places.end(),
+                                                              [] (const string &s) { return tagged_jtrans("[branch]", s); },
+                                                              ", ", ", ").c_str());
             inf->long_text = "あなたは"
-                             + to_separated_line(places.begin(),
-                                                    places.end())
+                             + to_separated_fn(places.begin(),
+                                               places.end(),
+                                               [] (const string &s) { return tagged_jtrans("[branch]", s); })
                              + "を買収している。";
         }
         break;
@@ -897,8 +899,8 @@ static void _describe_transform(status_info* inf)
         return;
 
     const Form * const form = get_form();
-    inf->light_text = form->short_name;
-    inf->short_text = form->get_long_name();
+    inf->light_text = tagged_jtrans("[form]", form->short_name);
+    inf->short_text = jtrans(form->get_long_name());
     inf->long_text = form->get_description();
 
     const bool vampbat = (you.species == SP_VAMPIRE && you.form == TRAN_BAT);

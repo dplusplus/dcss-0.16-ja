@@ -66,7 +66,7 @@ KFEAT:  B = food shop name:Jack type:Jerk-a-riffic suffix:Jerky count:10 ; \
 KFEAT:  C = distillery shop type:Miraculous suffix:Elixirs count:10 \
             greed:50 ; potion of mutation
 : local smithy = string.gsub(crawl.make_name(), " ", "_")
-: kfeat("D = armour shop name:The_Legendary_" .. smithy .. " \
+: kfeat("D = armour shop name:伝説の" .. smithy .. " \
 :        type:Legendary suffix:Smithy count:10 greed:40 ;\
 :        damaged plate armour ego:none | damaged chain mail ego:none |\
 :        damaged long sword ego:none | damaged shield ego:none |\

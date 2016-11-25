@@ -619,7 +619,7 @@ static const like_response OKAWARU_KILL = {
         {
             mprf(MSGCH_GOD, you.religion,
                  jtransc("<white>%s is honoured by your kill.</white>"),
-                 uppercase_first(god_name(you.religion)).c_str());
+                 jtransc(god_name(you.religion)));
         }
         else if (piety > 9) // might still be miniscule
             simple_god_message(jtransc(" accepts your kill."));

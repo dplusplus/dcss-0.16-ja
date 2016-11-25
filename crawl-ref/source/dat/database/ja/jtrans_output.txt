@@ -7,11 +7,11 @@ Nothing quivered
 
 (射撃準備していない)
 %%%%
-friendly
+[adj]friendly
 
 友好的な
 %%%%
-neutral
+[adj]neutral
 
 中立的な
 %%%%
@@ -38,34 +38,6 @@ neutral
 <darkgrey>(%s restricted)</darkgrey>
 
 <darkgrey>(%sは制限されている)</darkgrey>
-%%%%
-immune to hostile enchantments
-
-敵対的な魔法に対し無効化
-%%%%
-not resistant to hostile enchantments
-
-敵対的な魔法に対し耐性を持たない
-%%%%
-somewhat resistant to hostile enchantments
-
-敵対的な魔法に対しいくらか耐性を持つ
-%%%%
-very resistant to hostile enchantments
-
-敵対的な魔法に対しかなり耐性を持つ
-%%%%
-extremely resistant to hostile enchantments
-
-敵対的な魔法に対しきわめて耐性を持つ
-%%%%
-incredibly resistant to hostile enchantments
-
-敵対的な魔法に対し信じがたいほど耐性を持つ
-%%%%
-almost entirely resistant to hostile enchantments
-
-敵対的な魔法に対しほとんど全てを無効化
 %%%%
 extremely unstealthy
 
@@ -110,6 +82,34 @@ incredibly stealthy
 uncannily stealthy
 
 異常なまでに隠密性が高い
+%%%%
+immune to hostile enchantments
+
+敵対的な魔法に対し無効化
+%%%%
+not resistant to hostile enchantments
+
+敵対的な魔法に対し耐性を持たない
+%%%%
+somewhat resistant to hostile enchantments
+
+敵対的な魔法に対しいくらか耐性を持つ
+%%%%
+very resistant to hostile enchantments
+
+敵対的な魔法に対しかなり耐性を持つ
+%%%%
+extremely resistant to hostile enchantments
+
+敵対的な魔法に対しきわめて耐性を持つ
+%%%%
+incredibly resistant to hostile enchantments
+
+敵対的な魔法に対し信じがたいほど耐性を持つ
+%%%%
+almost entirely resistant to hostile enchantments
+
+敵対的な魔法に対しほとんど全てを無効化
 %%%%
 <w>%s:</w> %d/%d rune: %s
 

@@ -12,6 +12,7 @@
 #include "bloodspatter.h"
 #include "coordit.h"
 #include "dactions.h"
+#include "database.h"
 #include "directn.h"
 #include "english.h"
 #include "env.h"
@@ -184,12 +185,12 @@ void mirror_damage_fineff::fire()
 
     if (att == MID_PLAYER)
     {
-        mpr("Your damage is reflected back at you!");
+        mpr(jtrans("Your damage is reflected back at you!"));
         ouch(damage, KILLED_BY_MIRROR_DAMAGE);
     }
     else if (def == MID_PLAYER)
     {
-        simple_god_message(" mirrors your injury!");
+        simple_god_message(jtransc(" mirrors your injury!"));
 #ifndef USE_TILE_LOCAL
         flash_monster_colour(monster_by_mid(att), RED, 200);
 #endif
@@ -203,7 +204,7 @@ void mirror_damage_fineff::fire()
     }
     else
     {
-        simple_monster_message(monster_by_mid(att), " suffers a backlash!");
+        simple_monster_message(monster_by_mid(att), jtransc(" suffers a backlash!"));
         attack->hurt(defender(), damage);
     }
 }
@@ -296,26 +297,26 @@ void trj_spawn_fineff::fire()
     if (trj)
     {
         const string monnam = trj->name(DESC_THE);
-        mprf("%s shudders%s.", monnam.c_str(),
+        mprf(jtransc("%s shudders%s."), monnam.c_str(), jtransc(
              spawned >= 5 ? " alarmingly" :
              spawned >= 3 ? " violently" :
-             spawned > 1 ? " vigorously" : "");
+             spawned > 1 ? " vigorously" : ""));
 
         if (spawned == 1)
-            mprf("%s spits out another jelly.", monnam.c_str());
+            mprf(jtransc("%s spits out another jelly."), monnam.c_str());
         else
         {
-            mprf("%s spits out %s more jellies.",
+            mprf(jtransc("%s spits out %s more jellies."),
                  monnam.c_str(),
-                 number_in_words(spawned).c_str());
+                 to_stringc(spawned));
         }
     }
     else if (spawned == 1)
-        mpr("One of the royal jelly's fragments survives.");
+        mpr(jtrans("One of the royal jelly's fragments survives."));
     else
     {
-        mprf("The dying royal jelly spits out %s more jellies.",
-             number_in_words(spawned).c_str());
+        mprf(jtransc("The dying royal jelly spits out %s more jellies."),
+             to_stringc(spawned));
     }
 }
 
@@ -384,7 +385,7 @@ void starcursed_merge_fineff::fire()
         if (mergee && mergee->alive() && mergee->type == MONS_STARCURSED_MASS)
         {
             simple_monster_message(mon,
-                    " shudders and is absorbed by its neighbour.");
+                    jtransc(" shudders and is absorbed by its neighbour."));
             _do_merge_masses(mon, mergee);
             return;
         }
@@ -427,7 +428,7 @@ void starcursed_merge_fineff::fire()
 
             if (moved)
             {
-                simple_monster_message(mon, " shudders and withdraws towards its neighbour.");
+                simple_monster_message(mon, jtransc(" shudders and withdraws towards its neighbour."));
                 mon->speed_increment -= 10;
             }
         }
@@ -475,11 +476,11 @@ void shock_serpent_discharge_fineff::fire()
 
     if (serpent && you.can_see(serpent))
     {
-        mprf("%s electric aura discharges%s!", serpent->name(DESC_ITS).c_str(),
-             power < 4 ? "" : " violently");
+        mprf(jtransc("%s electric aura discharges%s!"), serpent->name(DESC_ITS).c_str(),
+             jtransc(power < 4 ? "" : " violently"));
     }
     else if (pause)
-        mpr("The air sparks with electricity!");
+        mpr(jtrans("The air sparks with electricity!"));
 
     // FIXME: should merge the messages.
     for (actor *act : targets)
@@ -491,7 +492,7 @@ void shock_serpent_discharge_fineff::fire()
         amount = act->apply_ac(amount, 0, AC_HALF);
 
         if (you.see_cell(act->pos()))
-            mprf("The lightning shocks %s.", act->name(DESC_THE).c_str());
+            mprf(jtransc("The lightning shocks %s."), jtransc(act->name(DESC_THE)));
         act->hurt(serpent, amount, BEAM_ELECTRICITY, KILLED_BY_BEAM,
                   "a shock serpent", "electric aura");
     }
@@ -500,7 +501,7 @@ void shock_serpent_discharge_fineff::fire()
 void delayed_action_fineff::fire()
 {
     if (final_msg)
-        mpr(final_msg);
+        mpr(jtrans(final_msg));
     add_daction(action);
 }
 
@@ -530,7 +531,7 @@ void rakshasa_clone_fineff::fire()
     if (you.can_see(rakshasa))
     {
         mprf(MSGCH_MONSTER_SPELL,
-             "The injured %s weaves a defensive illusion!",
+             jtransc("The injured %s weaves a defensive illusion!"),
              rakshasa->name(DESC_PLAIN).c_str());
     }
 }

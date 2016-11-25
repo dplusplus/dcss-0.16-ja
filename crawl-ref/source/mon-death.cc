@@ -548,18 +548,10 @@ static void _hints_inspect_kill()
 
 static string _milestone_kill_verb(killer_type killer)
 {
-    return killer == KILL_BANISHED ? "banished" :
-           killer == KILL_PACIFIED ? "pacified" :
-           killer == KILL_ENSLAVED ? "enslaved" :
-           killer == KILL_SLIMIFIED ? "slimified" : "killed";
-}
-
-static string _takenote_kill_verb(killer_type killer)
-{
     return killer == KILL_BANISHED ? "を追放した" :
            killer == KILL_PACIFIED ? "を中立化した" :
            killer == KILL_ENSLAVED ? "を隷属させた" :
-           killer == KILL_SLIMIFIED ? "をスライムに変えた" : "を殺した";
+           killer == KILL_SLIMIFIED ? "をスライムに変えた" : "を倒した";
 }
 
 void record_monster_defeat(monster* mons, killer_type killer)
@@ -574,14 +566,15 @@ void record_monster_defeat(monster* mons, killer_type killer)
     {
         take_note(Note(NOTE_DEFEAT_MONSTER, mons->type, mons->friendly(),
                        mons->full_name(DESC_A).c_str(),
-                       _takenote_kill_verb(killer)));
+                       _milestone_kill_verb(killer)));
     }
     if (mons->type == MONS_PLAYER_GHOST)
     {
         monster_info mi(mons);
-        string milestone = _milestone_kill_verb(killer) + " the ghost of ";
-        milestone += get_ghost_description(mi, true);
-        milestone += ".";
+        string milestone;
+        milestone += mi.mname;
+        milestone += jtrans(" the ghost of ");
+        milestone += _milestone_kill_verb(killer);
         mark_milestone("ghost", milestone);
     }
     // Or summoned uniques, which a summoned ghost is treated as {due}
@@ -590,10 +583,8 @@ void record_monster_defeat(monster* mons, killer_type killer)
              && !testbits(mons->flags, MF_SPECTRALISED))
     {
         mark_milestone("uniq",
-                       _milestone_kill_verb(killer)
-                       + " "
-                       + mons->name(DESC_THE, true)
-                       + ".");
+                       mons->name(DESC_THE, true)
+                       + _milestone_kill_verb(killer));
     }
 }
 
@@ -1437,7 +1428,7 @@ static void _monster_die_cloud(const monster* mons, bool corpse, bool silent,
     if (cell_is_solid(mons->pos()))
         return;
 
-    string prefix = " ";
+    string prefix = "";
     if (corpse)
     {
         if (!mons_class_can_leave_corpse(mons_species(mons->type)))
@@ -1446,12 +1437,12 @@ static void _monster_die_cloud(const monster* mons, bool corpse, bool silent,
         prefix = jtrans("'s corpse ");
     }
 
-    string msg = summoned_poof_msg(mons) + "！";
+    string msg = "は" + summoned_poof_msg(mons) + "！";
 
     cloud_type cloud = CLOUD_NONE;
-    if (msg.find("smoke") != string::npos)
+    if (msg.find("煙") != string::npos)
         cloud = random_smoke_type();
-    else if (msg.find("chaos") != string::npos)
+    else if (msg.find("混沌") != string::npos)
         cloud = CLOUD_CHAOS;
 
     if (!silent)
@@ -2369,7 +2360,7 @@ int monster_die(monster* mons, killer_type killer,
                     }
                     else
                     {
-                        string msg = summoned_poof_msg(mons) + "！";
+                        string msg = "は" + summoned_poof_msg(mons) + "！";
                         simple_monster_message(mons, msg.c_str());
                     }
                 }
@@ -2505,7 +2496,7 @@ int monster_die(monster* mons, killer_type killer,
         pikel_band_neutralise();
     }
     else if (mons->is_named() && mons->friendly() && killer != KILL_RESET)
-        take_note(Note(NOTE_ALLY_DEATH, 0, 0, mons->mname.c_str()));
+        take_note(Note(NOTE_ALLY_DEATH, 0, 0, mons->full_name(DESC_PLAIN).c_str()));
     else if (mons_is_tentacle_head(mons_base_type(mons)))
     {
         if (destroy_tentacles(mons)
@@ -2724,9 +2715,7 @@ int monster_die(monster* mons, killer_type killer,
                                         ? mons->props["old_heads"].get_int()
                                         : mons->number;
             unwind_var<unsigned int> number(mons->number, num);
-            const string message = "は" +
-                                   mons->pronoun(PRONOUN_POSSESSIVE) +
-                                   "本来の姿に戻り、後には" +
+            const string message = "は本来の姿に戻り、後には" +
                                    mons->pronoun(PRONOUN_SUBJECTIVE) +
                                    "の死体が残った。";
             simple_monster_message(mons, message.c_str());
@@ -2804,7 +2793,7 @@ void heal_flayed_effect(actor* act, bool quiet, bool blood_only)
         if (you.can_see(act) && !quiet)
         {
             mprf(jtransc("The terrible wounds on %s body vanish."),
-                 act->name(DESC_ITS).c_str());
+                 jtransc(act->name(DESC_ITS)));
         }
 
         act->heal(act->props["flay_damage"].get_int());
@@ -3140,7 +3129,7 @@ void pikel_band_neutralise()
     else if (visible_slaves > 1)
         final_msg = "With Pikel's spell broken, the former slaves thank you for their freedom.";
 
-    delayed_action_fineff::schedule(DACT_PIKEL_SLAVES, jtransc(final_msg));
+    delayed_action_fineff::schedule(DACT_PIKEL_SLAVES, final_msg);
 }
 
 /**
@@ -3202,7 +3191,7 @@ void hogs_to_humans()
                         "original forms!";
     }
 
-    kirke_death_fineff::schedule(jtransc(final_msg));
+    kirke_death_fineff::schedule(final_msg);
 }
 
 /**

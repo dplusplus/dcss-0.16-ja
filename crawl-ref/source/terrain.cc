@@ -684,6 +684,24 @@ void get_door_description(int door_size, const char** adjective, const char** no
     *noun = descriptions[idx+1];
 }
 
+void get_door_description_en(int door_size, const char** adjective, const char** noun)
+{
+    const char* descriptions[] =
+    {
+        "miniscule " , "buggy door",
+        ""           , "door",
+        "large "     , "door",
+        ""           , "gate",
+        "huge"       , "gate",
+    };
+
+    int max_idx = static_cast<int>(ARRAYSZ(descriptions) - 2);
+    const unsigned int idx = min(door_size*2, max_idx);
+
+    *adjective = descriptions[idx];
+    *noun = descriptions[idx+1];
+}
+
 coord_def get_random_stair()
 {
     vector<coord_def> st;
@@ -1604,7 +1622,7 @@ string feat_preposition(dungeon_feature_type feat, bool active, const actor* who
     if (dir == CMD_GO_UPSTAIRS && feat_is_escape_hatch(feat))
     {
         if (active)
-            return "下";
+            return "所";
         else
             return "上";
     }
@@ -1612,7 +1630,7 @@ string feat_preposition(dungeon_feature_type feat, bool active, const actor* who
     if (airborne)
     {
         if (active)
-            return "上";
+            return "上空";
         else
             return "下";
     }
@@ -1808,7 +1826,7 @@ const char* feat_type_name(dungeon_feature_type feat)
     if (feat_is_statuelike(feat))
         return "石像";
     if (feat_is_water(feat))
-        return "たまり";
+        return "水たまり";
     if (feat_is_lava(feat))
         return "溶岩";
     if (feat_is_altar(feat))
@@ -1824,7 +1842,7 @@ const char* feat_type_name(dungeon_feature_type feat)
     if (feat == DNGN_ENTER_SHOP || feat == DNGN_ABANDONED_SHOP)
         return "店";
     if (feat_is_fountain(feat))
-        return "泉";
+        return "噴水";
     if (feat == DNGN_UNSEEN)
         return "unknown terrain";
     return "床";

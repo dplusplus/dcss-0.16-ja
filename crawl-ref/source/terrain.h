@@ -93,6 +93,8 @@ void slime_wall_damage(actor* act, int delay);
 
 void get_door_description(int door_size, const char** adjective,
                           const char** noun);
+void get_door_description_en(int door_size, const char** adjective,
+                             const char** noun);
 bool feat_destroys_item(dungeon_feature_type feat, const item_def &item, bool noisy = false);
 bool feat_virtually_destroys_item(dungeon_feature_type feat, const item_def &item, bool noisy = false);
 
