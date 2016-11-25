@@ -9,6 +9,7 @@
 #include "database.h"
 #include "japanese.h"
 #include "stringutil.h"
+#include "itemprop.h"
 
 const char * counter_suffix_weapon(const item_def& item)
 {
