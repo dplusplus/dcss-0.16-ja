@@ -1,3 +1,4 @@
+%%%%
 ############################################################
 # As of Stone Soup 0.3 the previously hardcoded monster
 # speech has been outsourced. This makes changing existing
