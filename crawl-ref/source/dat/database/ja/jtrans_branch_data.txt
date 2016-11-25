@@ -2,347 +2,433 @@
 [branch]Dungeon
 
 迷宮
+
 %%%%
 [branch]the Dungeon
 
 迷宮
+
 %%%%
 [branch]D
 
 迷宮
+
 %%%%
 [branch]Temple
 
 寺院
+
 %%%%
 [branch]the Ecumenical Temple
 
 諸宗派の寺院
+
 %%%%
 [branch]Orcish Mines
 
 オークの坑道
+
 %%%%
 [branch]the Orcish Mines
 
 オークの坑道
+
 %%%%
 [branch]Orc
 
 オーク
+
 %%%%
 [branch]Elven Halls
 
 エルフの大広間
+
 %%%%
 [branch]the Elven Halls
 
 エルフの大広間
+
 %%%%
 [branch]Elf
 
 エルフ
+
 %%%%
 [branch]Dwarven Hall
 
 ドワーフの大広間
+
 %%%%
 [branch]the Dwarven Hall
 
 ドワーフの大広間
+
 %%%%
 [branch]Dwarf
 
 ドワーフ
+
 %%%%
 [branch]Lair
 
 獣の棲み処
+
 %%%%
 [branch]the Lair of Beasts
 
 獣の棲み処
+
 %%%%
 [branch]Swamp
 
 沼
+
 %%%%
 [branch]the Swamp
 
 沼
+
 %%%%
 [branch]Shoals
 
 浅瀬
+
 %%%%
 [branch]the Shoals
 
 浅瀬
+
 %%%%
 [branch]Snake Pit
 
 蛇穴
+
 %%%%
 [branch]the Snake Pit
 
 蛇穴
+
 %%%%
 [branch]Snake
 
 蛇
+
 %%%%
 [branch]Spider Nest
 
 蜘蛛の穴ぐら
+
 %%%%
 [branch]the Spider Nest
 
 蜘蛛の穴ぐら
+
 %%%%
 [branch]Spider
 
 蜘蛛
+
 %%%%
 [branch]Slime Pits
 
 スライムの穴ぐら
+
 %%%%
 [branch]the Pits of Slime
 
 スライムの穴ぐら
+
 %%%%
 [branch]Slime
 
 スライム
+
 %%%%
 [branch]Vaults
 
 宝物庫
+
 %%%%
 [branch]the Vaults
 
 宝物庫
+
 %%%%
 [branch]Hall of Blades
 
 刃の広間
+
 %%%%
 [branch]the Hall of Blades
 
 刃の広間
+
 %%%%
 [branch]Blade
 
 刃の広間
+
 %%%%
 [branch]Crypt
 
 地下墓地
+
 %%%%
 [branch]the Crypt
 
 地下墓地
+
 %%%%
 [branch]Tomb
 
 霊廟
+
 %%%%
 [branch]the Tomb of the Ancients
 
 太古の霊廟
+
 %%%%
 [branch]Hell
 
 地獄
+
 %%%%
 [branch]the Vestibule of Hell
 
 地獄の入り口
+
 %%%%
 Welcome to Hell!\nPlease enjoy your stay.
 
 地獄へようこそ！
 どうぞお楽しみください。
+
 %%%%
 [branch]Dis
 
 ディース
+
 %%%%
 [branch]the Iron City of Dis
 
 鉄の都ディース
+
 %%%%
 [branch]Gehenna
 
 ゲヘナ
+
 %%%%
 [branch]Geh
 
 ゲヘナ
+
 %%%%
 [branch]Cocytus
 
 コキュートス
+
 %%%%
 [branch]Coc
 
 コキュートス
+
 %%%%
 [branch]Tartarus
 
 タルタロス
+
 %%%%
 [branch]Tar
 
 タルタロス
+
 %%%%
 [branch]Zot
 
 ゾットの領域
+
 %%%%
 [branch]the Realm of Zot
 
 ゾットの領域
+
 %%%%
 [branch]Forest
 
 森
+
 %%%%
 [branch]the Enchanted Forest
 
 魔法の森
+
 %%%%
 [branch]Abyss
 
 アビス
+
 %%%%
 [branch]the Abyss
 
 アビス
+
 %%%%
 [branch]Pandemonium
 
 パンデモニウム
+
 %%%%
 [branch]Pan
 
 万魔殿
+
 %%%%
 You enter the halls of Pandemonium!\nTo return, you must find a gate leading back.
 
 あなたはパンデモニウムの大広間に突入した！
 迷宮へと戻るには、ここから脱出する門を探さねばならない。
+
 %%%%
 [branch]Ziggurat
 
 ジグラット
+
 %%%%
 [branch]a ziggurat
 
 ジグラット
+
 %%%%
 [branch]Zig
 
 ジグラット
+
 %%%%
 You land on top of a ziggurat so tall you cannot make out the ground.
 
 あなたはジグラットのはるか頂上へと舞い降りた。地面がよく見えないほどの高さだ。
+
 %%%%
 [branch]Labyrinth
 
 ラビリンス
+
 %%%%
 [branch]a labyrinth
 
 ラビリンス
+
 %%%%
 [branch]Lab
 
 ラビリンス
+
 %%%%
 As you enter the labyrinth, previously moving walls settle noisily into place.\nYou hear the metallic echo of a distant snort before it fades into the rock.
 
 あなたがラビリンスに突入すると、それまで動いていた壁が騒音を立てつつその場に据え付けられた。
 遠くの方から牛の鼻息の金属的な反響音が岩壁に吸い込まれていくのが聞こえる。
+
 %%%%
 [branch]Bazaar
 
 バザール
+
 %%%%
 [branch]a bazaar
 
 バザール
+
 %%%%
 You enter an inter-dimensional bazaar!
 
 あなたは次元を旅する商隊のバザールに遭遇した！
+
 %%%%
 [branch]Trove
 
 埋蔵庫
+
 %%%%
 [branch]a treasure trove
 
 宝の埋蔵庫
+
 %%%%
 [branch]Sewer
 
 下水道
+
 %%%%
 [branch]a sewer
 
 下水道
+
 %%%%
 [branch]Ossuary
 
 納骨堂
+
 %%%%
 [branch]an ossuary
 
 納骨堂
+
 %%%%
 [branch]Bailey
 
 濠城
+
 %%%%
 [branch]a bailey
 
 濠城
+
 %%%%
 [branch]Ice Cave
 
 氷の洞穴
+
 %%%%
 [branch]an ice cave
 
 氷の洞穴
+
 %%%%
 [branch]IceCv
 
 氷の洞穴
+
 %%%%
 [branch]Volcano
 
 火山
+
 %%%%
 [branch]a volcano
 
 火山
+
 %%%%
 [branch]Wizlab
 
 魔術研究所
+
 %%%%
 [branch]a wizard's laboratory
 
 魔術研究所
+
 %%%%
 [branch]Depths
 
 深層
+
 %%%%
 [branch]the Depths
 
 深層
+
 %%%%

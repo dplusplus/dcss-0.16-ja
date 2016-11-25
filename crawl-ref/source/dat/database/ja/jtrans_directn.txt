@@ -1,893 +1,1120 @@
 %%%%
 ############################## describe.cc ##############################
+
+
 %%%%
 dart trap
 
 # obsolete
+
 %%%%
 arrow trap
 
 弓矢の罠
+
 %%%%
 spear trap
 
 槍の罠
+
 %%%%
 teleport trap
 
 テレポートの罠
+
 %%%%
 permanent teleport trap
 
 テレポートの永続罠
+
 %%%%
 alarm trap
 
 警報の罠
+
 %%%%
 blade trap
 
 刃の罠
+
 %%%%
 bolt trap
 
 クロスボウの罠
+
 %%%%
 net trap
 
 網の罠
+
 %%%%
 Zot trap
 
 ゾットの罠
+
 %%%%
 needle trap
 
 針の罠
+
 %%%%
 shaft
 
 縦穴
+
 %%%%
 passage of Golubria
 
 ゴルブリアの通り道
+
 %%%%
 pressure plate
 
 足踏みスイッチ
+
 %%%%
 web
 
 蜘蛛の巣
+
 %%%%
 gas trap
 
 # obsolete
+
 %%%%
 shadow trap
 
 影の怪物の罠
+
 %%%%
 dormant shadow trap
 
 影の怪物の罠(停止中)
+
 %%%%
 ############################## directn.cc ##############################
+
+
 %%%%
 Press: ? - help
 
 入力: ? - ヘルプ
+
 %%%%
 , v - describe
 
 , v - 解説表示
+
 %%%%
 , . - travel
 
 , . - 自動移動
+
 %%%%
 , g - get item
 
 , g - アイテムを拾う
+
 %%%%
 , Shift-Dir - straight line
 
 , Shift+方向 - 方向のみ指定
+
 %%%%
 , Dir - move target cursor
 
 , 方向 - カーソル移動
+
 %%%%
 No monsters, items or features are visible.
 
 視界内にはモンスターやアイテム、および特別な地形は存在しない。
+
 %%%%
 Monsters
 
 モンスター
+
 %%%%
 Features
 
 地形
+
 %%%%
 (select to target/travel, '!' to examine):
 
 (各キーで対象に照準を合わせるか、もしくは移動します。'!'で解説モードに切り替え)
+
 %%%%
 (select to examine, '!' to target/travel):
 
 (各キーで対象の解説文を表示します。'!'で照準/移動モードに切り替え)
+
 %%%%
 , keeping you mesmerised
 
 , あなたを魅了している
+
 %%%%
 (not visited)
 
 (まだ通過していない)
+
 %%%%
 Move the cursor around to observe a square.
 
 区画を調べるには周辺にカーソルを動かしてください。
+
 %%%%
 There's something in the way.
 
 その方向には何かがある。
+
 %%%%
 Sorry, you can't target what you can't see.
 
 残念ながら、見えないところを標的にはできない。
+
 %%%%
 That would be overly suicidal.
 
 それは自殺行為だ。
+
 %%%%
 Really target yourself?
 
 本当に自分自身を狙いますか？
+
 %%%%
 Sorry, you can't target yourself.
 
 残念ながら、自分自身を標的にはできない。
+
 %%%%
 Are you sure you want to fizzle?
 
 本当に取りやめますか？
+
 %%%%
 All monsters which could be auto-targeted are covered by a wall or statue which interrupts your line of fire, even though it doesn't interrupt your line of sight.
 
 自動照準指定可能なすべてのモンスターは射線を遮る壁もしくは像に防護される(それが視界を遮らない場合でも)
+
 %%%%
 To return to the main mode, press <w>Escape</w>.
 
 メインモードに戻るには、<w>Esc</w> キーを押してください。
+
 %%%%
 You can't see any item there.
 
 ここにはアイテムは見つからない。
+
 %%%%
 Marked for pickup.
 
 拾うように設定しました。
+
 %%%%
 Targeting interrupted by HUP signal.
 
 HUPシグナルにより照準作業を中断しました。
+
 %%%%
 Out of range.
 
 範囲外です。
+
 %%%%
 silenced
 
 静寂に包まれている
+
 %%%%
 Disturbance
 
 障害物
+
 %%%%
 Aim
 
 照準
+
 %%%%
 There is something else lying underneath.
 
 さらにその下に何かがある。
+
 %%%%
 This spell doesn't need a beam path
 
 この呪文は光線状に射出されない。
+
 %%%%
 Your target is gone.
 
 対象物はどこかに行った。
+
 %%%%
 Trying to run portal debug at %d/%d...
 
 # for debug
+
 %%%%
 Got result: %s!
 
 # for debug
+
 %%%%
 Brought monster down to 1 HP.
 
 モンスターのHPを1にしました。
+
 %%%%
 You cannot set exclusions on this level.
 
 この階では立入禁止区域を設定できません。
+
 %%%%
 Placed new exclusion.
 
 新たな立入禁止区域を設定した。
+
 %%%%
 Removed exclusion.
 
 立入禁止区域を解除した。
+
 %%%%
 Reduced exclusion size to a single square.
 
 立入禁止区域をこのマスに限定した。
+
 %%%%
 [unseen terrain]
 
 [視界外の地形]
+
 %%%%
 There is a cloud of
 
 ここには
+
 %%%%
 You can't see that place.
 
 その場所は見えない。
+
 %%%%
 There is
 
 ここには
+
 %%%%
 here.
 
 がある。
+
 %%%%
 There is an entrance to
 
 ここには
+
 %%%%
 Beware, the minotaur awaits!
 
 気をつけろ、ミノタウロスが待ち受けているぞ！
+
 %%%%
 , spattered with blood
 
 血の飛び散った
+
 %%%%
 , covered with glowing mold
 
 輝く苔に覆われた
+
 %%%%
 , covered with mold
 
 苔に覆われた
+
 %%%%
 [adj]open
 
 開かれた
+
 %%%%
 [adj]runed
 
 ルーンで封印された
+
 %%%%
 [adj]sealed
 
 封印の印が刻まれた
+
 %%%%
 [adj]closed
 
 閉じられた
+
 %%%%
 an abandoned shop
 
 打ち捨てられた店
+
 %%%%
 sleepwalking
 
 夢遊病
+
 %%%%
 resting
 
 休息中
+
 %%%%
 fleeing
 
 逃走中
+
 %%%%
 hasn't noticed you
 
 あなたに気づいていない
+
 %%%%
 clinging
 
 壁にくっついている
+
 %%%%
 mesmerising
 
 あなたを魅了中
+
 %%%%
 peaceful
 
 平和的
+
 %%%%
 indifferent
 
 冷淡
+
 %%%%
 summoned
 
 一時的に召喚中
+
 %%%%
 durably summoned
 
 永続的に召喚中
+
 %%%%
 expiring
 
 召喚の時間切れが近い
+
 %%%%
 haloed
 
 光輪に照らされている
+
 %%%%
 umbra
 
 影の帳に包まれている
+
 %%%%
 possessable
 
 魂の隷属準備中
+
 %%%%
 disembodied soul
 
 肉体から分離した魂
+
 %%%%
 reflecting injuries
 
 痛み分け状態
+
 %%%%
 inner flame
 
 内なる炎
+
 %%%%
 fire blocked by
 
 射線が
+
 %%%%
 is clinging to the wall.
 
 は壁にくっついている。
+
 %%%%
 You are mesmerised by her song.
 
 あなたは彼女の歌に魅了されている。
+
 %%%%
 appears to be
 
 は
+
 %%%%
 is fleeing.
 
 は逃走している。
+
 %%%%
 doesn't appear to have noticed you.
 
 はあなたに気づいていないようだ。
+
 %%%%
 is friendly.
 
 は友好的だ。
+
 %%%%
 seems to be peaceful towards you.
 
 はあなたに対し平和的なようだ。
+
 %%%%
 is indifferent to you.
 
 はあなたに冷淡なようだ。
+
 %%%%
 has been summoned
 
 は召喚されて
+
 %%%%
 , and is expiring
 
 おり、もうすぐ時間切れになる
+
 %%%%
 but will not time out
 
 いるが、時間切れにならない
+
 %%%%
 .
 
 。
+
 %%%%
 is illuminated by a divine halo.
 
 は神気の光輪に照らされている。
+
 %%%%
 is wreathed by an umbra.
 
 は影の帳に包まれている。
+
 %%%%
 is mindless.
 
 は精神構造を持たない。
+
 %%%%
 is chaotic.
 
 は混沌に身を置いている。
+
 %%%%
 soul is ripe for the taking.
 
 は魂の隷属を受ける準備ができている。
+
 %%%%
 is a disembodied soul.
 
 肉体から分離した魂だ。
+
 %%%%
 is reflecting injuries back at attackers.
 
 は自らが受けた傷を攻撃者に返す。
+
 %%%%
 is filled with an inner flame.
 
 は内なる炎に満たされている。
+
 %%%%
 charmed
 
 仲間
+
 %%%%
 friendly
 
 友好的
+
 %%%%
 insane
 
 狂気
+
 %%%%
 neutral
 
 中立的
+
 %%%%
 a wand
 
 ワンド
+
 %%%%
 lies inside a sanctuary
 
 聖域に指定されて
+
 %%%%
 is shrouded in silence
 
 静寂に包まれて
+
 %%%%
 is lit by a halo
 
 光輪に照らされて
+
 %%%%
 is wreathed by an umbra
 
 影の帳に包まれて
+
 %%%%
 is liquefied
 
 液状化して
+
 %%%%
 is covered in magical glow
 
 魔力により輝いて
+
 %%%%
 is bathed in translocation energy
 
 転移術のエネルギーにさらされて
+
 %%%%
 This square %s.
 
 この場所は%s
+
 %%%%
 There is a cloud of %s here.
 
 ここには%sがある。
+
 %%%%
 You see %s here.
 
 ここには%sがある。
+
 %%%%
 You.
 
 あなた自身
+
 %%%%
 There is a non-visible %smonster here.
 
 ここには目に見えない%sモンスターがいる。
+
 %%%%
 exposed by water
 
 が水によって居場所を察知された
+
 %%%%
 exposed by cloud
 
 が雲によって居場所を察知された
+
 %%%%
 There is a strange disturbance in the water here.
 
 ここでは奇妙な水の流れが渦巻いている。
+
 %%%%
 There is a strange disturbance in the cloud here.
 
 ここでは奇妙な雲の流れが渦巻いている。
+
 %%%%
 %s is out of range.
 
 %sは範囲外だ。
+
 %%%%
 (<w>Right-click</w> for more information.)
 
 (さらなる情報を得るには<w>右クリック</w>してください)
+
 %%%%
 (Press <w>v</w> for more information.)
 
 (さらなる情報を得るには <w>v</w> キーを押してください)
+
 %%%%
 (Right-click for more information.)
 
 (さらなる情報を得るには右クリックしてください)
+
 %%%%
 (Press 'v' for more information.)
 
 (さらなる情報を得るには 'v' キーを押してください)
+
 %%%%
 ############################## feature-data.h ##############################
+
+
 %%%%
 explore horizon
 
 # explore horizon
+
 %%%%
 closed door
 
 閉じられた扉
+
 %%%%
 runed door
 
 ルーンで封印された扉
+
 %%%%
 sealed door
 
 封印の印が刻まれた扉
+
 %%%%
 tree
 
 木
+
 %%%%
 metal wall
 
 金属の壁
+
 %%%%
 wall of green crystal
 
 緑水晶の壁
+
 %%%%
 rock wall
 
 岩の壁
+
 %%%%
 wall of the weird stuff which makes up Pandemonium
 
 パンデモニウムを構成する不気味な素材の壁
+
 %%%%
 slime covered rock wall
 
 スライムに覆われた岩の壁
+
 %%%%
 stone wall
 
 石の壁
+
 %%%%
 unnaturally hard rock wall
 
 異常に硬い岩の壁
+
 %%%%
 translucent rock wall
 
 半透明の岩の壁
+
 %%%%
 translucent stone wall
 
 半透明の石の壁
+
 %%%%
 translucent unnaturally hard rock wall
 
 異常に硬い半透明の岩の壁
+
 %%%%
 iron grate
 
 鉄格子
+
 %%%%
 the open sea
 
 広大な海
+
 %%%%
 the endless lava
 
 終わりなき溶岩沼
+
 %%%%
 orcish idol
 
 オークの像
+
 %%%%
 idol of Beogh
 
 ベオの偶像
+
 %%%%
 granite statue
 
 花崗岩の像
+
 %%%%
 portal to somewhere
 
 どこかに続くポータル
+
 %%%%
 some lava
 
 溶岩
+
 %%%%
 some deep water
 
 深い水脈
+
 %%%%
 some shallow water
 
 浅い水脈
+
 %%%%
 floor
 
 地面
+
 %%%%
 collapsed entrance
 
 崩壊した入口
+
 %%%%
 open door
 
 開いた扉
+
 %%%%
 mechanical trap
 
 機械仕掛けの罠
+
 %%%%
 shop
 
 店
+
 %%%%
 abandoned shop
 
 放棄された店
+
 %%%%
 empty arch of ancient stone
 
 古代の石で造られたアーチ
+
 %%%%
 detected shop or portal
 
 感知済みの店またはポータル
+
 %%%%
 stone staircase leading down
 
 石の下り階段
+
 %%%%
 stone staircase leading up
 
 石の上り階段
+
 %%%%
 escape hatch in the floor
 
 床の脱出ハッチ
+
 %%%%
 escape hatch in the ceiling
 
 天井の脱出ハッチ
+
 %%%%
 labyrinth entrance
 
 ラビリンスへの入口
+
 %%%%
 gateway to the Iron City of Dis
 
 鉄の都ディースへの門
+
 %%%%
 gateway to the ashen valley of Gehenna
 
 灰の谷ゲヘナへの門
+
 %%%%
 gateway to the freezing wastes of Cocytus
 
 コキュートスの凍れる荒野への門
+
 %%%%
 gateway to the decaying netherworld of Tartarus
 
 タルタロスの腐朽地獄への門
+
 %%%%
 gateway to Hell
 
 地獄への門
+
 %%%%
 gateway back into the Dungeon
 
 ダンジョンへ戻る門
+
 %%%%
 one-way gate to the infinite horrors of the Abyss
 
 アビスの無限地獄への門
+
 %%%%
 exit through the horrors of the Abyss
 
 アビスを通じた脱出の門
+
 %%%%
 gateway leading out of the Abyss
 
 アビスからの出口の門
+
 %%%%
 one-way gate leading to the halls of Pandemonium
 
 パンデモニウムの大広間へと続く門
+
 %%%%
 gate leading to another region of Pandemonium
 
 パンデモニウムの別領域への門
+
 %%%%
 gate leading out of Pandemonium
 
 パンデモニウムからの出口の門
+
 %%%%
 gate to the Vaults
 
 宝物庫への門
+
 %%%%
 gate leading back out of this place
 
 ここから脱出する門
+
 %%%%
 gate to the Realm of Zot
 
 ゾットの領域への門
+
 %%%%
 gateway to a ziggurat
 
 ジグラットへの門
+
 %%%%
 flickering gateway to a bazaar
 
 バザールへ続くきらきら光る門
+
 %%%%
 gateway to a bazaar
 
 バザールへの門
+
 %%%%
 portal to a secret trove of treasure
 
 秘密の埋蔵庫へのポータル
+
 %%%%
 glowing drain
 
 輝く排水口
+
 %%%%
 sand-covered staircase
 
 砂に覆われた階段
+
 %%%%
 flagged portal
 
 旗の立てられたポータル
+
 %%%%
 frozen archway
 
 凍てついたアーチ
+
 %%%%
 dark tunnel
 
 薄暗い隧道
+
 %%%%
 magical portal
 
 魔法のポータル
+
 %%%%
 ice covered gate leading back out of this place
 
 ここから脱出する氷に覆われた門
+
 %%%%
 rocky tunnel leading out of this place
 
 ここから脱出する岩のトンネル
+
 %%%%
 portal leading out of this place
 
 ここから脱出するポータル
+
 %%%%
 staircase leading out of the dungeon
 
 ダンジョンの出口の階段
+
 %%%%
 staircase to the Slime Pits
 
 スライムの穴ぐらへの階段
+
 %%%%
 staircase back to the Lair
 
 獣の棲み処へ戻る階段
+
 %%%%
 staircase to the Orcish Mines
 
 オークの坑道への階段
+
 %%%%
 staircase back to the Dungeon
 
 ダンジョンへ戻る出口の階段
+
 %%%%
 staircase to the Lair
 
 獣の棲み処への階段
+
 %%%%
 staircase to the Crypt
 
 地下墓地への階段
+
 %%%%
 staircase back to the Vaults
 
 宝物庫へ戻る出口の階段
+
 %%%%
 staircase to the Ecumenical Temple
 
 諸宗派の寺院への階段
+
 %%%%
 staircase to the Snake Pit
 
 蛇穴への階段
+
 %%%%
 staircase to the Elven Halls
 
 エルフの大広間への階段
+
 %%%%
 staircase back to the Mines
 
 オークの坑道へ戻る出口の階段
+
 %%%%
 staircase to the Tomb
 
 霊廟への階段
+
 %%%%
 staircase back to the Crypt
 
 地下墓地へ戻る出口の階段
+
 %%%%
 staircase to the Swamp
 
 沼への階段
+
 %%%%
 staircase to the Shoals
 
 浅瀬への階段
+
 %%%%
 hole to the Spider Nest
 
 蜘蛛の穴ぐらの入口
+
 %%%%
 crawl-hole back to the Lair
 
 獣の棲み処へ戻る出口
+
 %%%%
 staircase to the Depths
 
 深層への階段
+
 %%%%
 detected altar
 
@@ -896,514 +1123,657 @@ detected altar
 glowing silver altar of Zin
 
 『ジン』の輝く銀の祭壇
+
 %%%%
 glowing golden altar of the Shining One
 
 『輝けるもの』の輝く黄金の祭壇
+
 %%%%
 ancient bone altar of Kikubaaqudgha
 
 『キクバークッグァ』の古代の骨で造られた祭壇
+
 %%%%
 basalt altar of Yredelemnul
 
 『イレデレンヌル』の玄武岩で造られた祭壇
+
 %%%%
 shimmering altar of Xom
 
 『ゾム』の微光が揺らめく祭壇
+
 %%%%
 radiant altar of Vehumet
 
 『ヴェフメット』の輝きを放つ祭壇
+
 %%%%
 iron altar of Okawaru
 
 『オカワル』の鉄の祭壇
+
 %%%%
 burning altar of Makhleb
 
 『マクレブ』の炎を上げる祭壇
+
 %%%%
 deep blue altar of Sif Muna
 
 『シフ・ムーナ』の紺碧の祭壇
+
 %%%%
 bloodstained altar of Trog
 
 『トログ』の血に染まった祭壇
+
 %%%%
 sparkling altar of Nemelex Xobeh
 
 『ネメレクス・ソベー』の煌く祭壇
+
 %%%%
 white marble altar of Elyvilon
 
 『エリヴィロン』の白い大理石の祭壇
+
 %%%%
 corrupted altar of Lugonu
 
 『ルゴヌ』の崩壊した祭壇
+
 %%%%
 roughly hewn altar of Beogh
 
 『ベオ』の乱暴に刻み造られた祭壇
+
 %%%%
 viscous altar of Jiyva
 
 『ジーヴァ』の粘着性の祭壇
+
 %%%%
 blossoming altar of Fedhas
 
 『フェダス』の芽吹きに覆われた祭壇
+
 %%%%
 snail-covered altar of Cheibriados
 
 『ケイブリアドス』の蝸牛にまみれた祭壇
+
 %%%%
 shattered altar of Ashenzari
 
 『アシェンザリ』の砕け落ちた祭壇
+
 %%%%
 shadowy altar of Dithmenos
 
 『ディスメノス』の影のように黒い祭壇
+
 %%%%
 opulent altar of Gozag
 
 『ゴザーグ』の絢爛たる祭壇
+
 %%%%
 stormy altar of Qazlal
 
 『クァズラル』の嵐を巻き起こす祭壇
+
 %%%%
 sacrificial altar of Ru
 
 『ルー』の生贄の祭壇
+
 %%%%
 fountain of clear blue water
 
 澄んだ青い水の噴水
+
 %%%%
 fountain of sparkling water
 
 煌く水の噴水
+
 %%%%
 fountain of blood
 
 血の噴水
+
 %%%%
 dry fountain
 
 涸れた噴水
+
 %%%%
 short-range portal
 
 短距離のポータル
+
 %%%%
 sealed passage leading up
 
 封印された上り経路
+
 %%%%
 sealed passage leading down
 
 封印された下り経路
+
 %%%%
 gateway leading deeper into the Abyss
 
 アビスの深層への門
+
 %%%%
 ############################## spl-goditem.cc ##############################
+
+
 %%%%
 a gleaming silver wall
 
 薄く光る白銀の壁
+
 %%%%
 ############################## dat/des/altar/overflow.des ##############################
+
+
 %%%%
 golden statue
 
 黄金の像
+
 %%%%
 Platinum Reserve
 
 プラチナ取引所
+
 %%%%
 wall of white crystal
 
 白水晶の壁
+
 %%%%
 Purification Station
 
 浄化局
+
 %%%%
 silver wall
 
 白銀の壁
+
 %%%%
 ############################## dat/des/arrival/*.des ##############################
+
+
 %%%%
 dead tree
 
 朽ち木
+
 %%%%
 adventurer's gravestone
 
 冒険者の墓石
+
 %%%%
 granite stump
 
 花崗岩の台座
+
 %%%%
 ############################## dat/des/branches/elf.des ##############################
+
+
 %%%%
 Elven Fire
 
 エルフの炎の店
+
 %%%%
 ############################## dat/des/builder/shop.des ##############################
+
+
 %%%%
 Serpentskin Sales
 
 蛇毒専門店
+
 %%%%
 Pet Rocks
 
 石ころ専門店
+
 %%%%
 Blood Bar
 
 血液バー
+
 %%%%
 Off-Brand Ammunition
 
 飛び道具専門店
+
 %%%%
 Blasphemy Boutique
 
 冒涜的ブティック
+
 %%%%
 Evil Emporium
 
 邪悪百貨店
+
 %%%%
 Profane Products
 
 涜神雑貨店
+
 %%%%
 Sacrilege Store
 
 罰当たり商店
+
 %%%%
 Wicked Wares
 
 不道徳のお店
+
 %%%%
 Hallowed Reliquary
 
 神聖納骨堂
+
 %%%%
 Specialty Armours
 
 特別製装身具店
+
 %%%%
 Demolitions Depot
 
 危険物貯蔵庫
+
 %%%%
 Elemental Accessories
 
 精霊の装身具店
+
 %%%%
 Quality Used Wands
 
 使用済みワンド店
+
 %%%%
 One-of-a-Kind Books
 
 個性派書店
+
 %%%%
 ############################## dat/des/branches/*.des ##############################
+
+
 %%%%
 # coc
-ice-covered rock wall
 
+ice-covered rock wall
 氷で覆われた岩壁
+
 %%%%
 ice-covered stone wall
 
 氷で覆われた石壁
+
 %%%%
 Frost-covered floor
 
 霜に覆われた床
+
 %%%%
 # crypt
-sarcophagus
 
+sarcophagus
 古代の石棺
+
 %%%%
 gravestone
 
 墓石
+
 %%%%
 # depths
-a gravestone
 
+a gravestone
 墓石
+
 %%%%
 # depths_encompass
-iron statue
 
+iron statue
 鉄の像
+
 %%%%
 # geh
-Ashen ground
 
+Ashen ground
 灰の積もった地面
+
 %%%%
 tempered metal wall
 
 強化金属壁
+
 %%%%
 # lair
-elephant-shaped statue
 
+elephant-shaped statue
 象の像
+
 %%%%
 # pan
-weirdly glowing ball
 
+weirdly glowing ball
 奇妙に輝く球体
+
 %%%%
 # slime
-rune carved stone wall
 
+rune carved stone wall
 ルーンの彫られた石壁
+
 %%%%
 # vaults
-heavily etched metal wall
 
+heavily etched metal wall
 鮮明に壁画の描かれた金属壁
+
 %%%%
 heavily etched wall of green crystal
 
 鮮明に壁画の描かれた緑水晶の壁
+
 %%%%
 ############################## dat/des/portals/*.des ##############################
+
+
 %%%%
 # bazaar
-wall of crystal
 
+wall of crystal
 水晶の壁
+
 %%%%
 # icecave
-ice covered rock wall
 
+ice covered rock wall
 氷で覆われた岩壁
+
 %%%%
 ice choked empty arch of ancient stone
 
 氷に閉ざされている古代の石で造られたアーチ
+
 %%%%
 Some ice crusted shallow water
 
 氷の浮かんだ浅い水脈
+
 %%%%
 Some ice crusted deep water
 
 氷の浮かんだ深い水脈
+
 %%%%
 # sewer
-large window
 
+large window
 大きな窓
+
 %%%%
 # volcano
-rock-blocked tunnel
 
+rock-blocked tunnel
 岩でふさがれたトンネル
+
 %%%%
 glass window
 
 ガラス張りの窓
+
 %%%%
 # wizlab
-crystal clear mirror
 
+crystal clear mirror
 水晶製の透明な鏡
+
 %%%%
 strange generator
 
 奇妙な動力装置
+
 %%%%
 glistening fountain
 
 きらめく噴水
+
 %%%%
 black marble wall
 
 黒大理石の壁
+
 %%%%
 marble floor
 
 大理石の床
+
 %%%%
 rose-covered archway
 
 薔薇に覆われたアーチ
+
 %%%%
 vine-covered statue
 
 蔓に覆われた石像
+
 %%%%
 crumbling stone wall
 
 崩れた石壁
+
 %%%%
 the grass-covered ground
 
 草で覆われた地面
+
 %%%%
 strange rock wall
 
 風変わりな石壁
+
 %%%%
 highly decorated stone wall
 
 ごてごてに飾られた石壁
+
 %%%%
 rough-hewn floor
 
 荒削りの床
+
 %%%%
 Viscous fluid
 
 粘り気のある液体
+
 %%%%
 sinewy wall
 
 筋骨隆々たる肉の壁
+
 %%%%
 thin membrane
 
 薄い膜組織の壁
+
 %%%%
 pulsating floor
 
 脈打つ床
+
 %%%%
 Zonguldrok's gravestone
 
 ゾングルドルックの墓石
+
 %%%%
 autumnal tree
 
 紅葉の樹木
+
 %%%%
 strange statue
 
 奇妙な石像
+
 %%%%
 The dimension's edge
 
 次元の境界線
+
 %%%%
 damp floor
 
 湿っぽい床
+
 %%%%
 black wall
 
 真っ黒な壁
+
 %%%%
 carved rock wall
 
 彫刻のある岩壁
+
 %%%%
 ############################## dat/des/serial/*.des ##############################
+
+
 %%%%
 broken pillar
 
 崩壊した柱
+
 %%%%
 ############################## dat/des/sprint/arena_sprint.des ##############################
+
+
 %%%%
 spawn point
 
 出発ポイント
+
 %%%%
 Identification Station
 
 鑑定局
+
 %%%%
 Must-Have Magic
 
 おすすめ魔法の店
+
 %%%%
 Do-It-Yourself Clinic
 
 DIY病院
+
 %%%%
 Advanced Armour
 
 特別製防具店
+
 %%%%
 Basic Armour
 
 通常防具店
+
 %%%%
 Bee Food
 
 蜂のおやつ店
+
 %%%%
 Staff Store
 
 杖専門店
+
 %%%%
 Weapon Rack
 
 武器倉庫
+
 %%%%
 Bottled Wisdom
 
 瓶詰めの知識店
+
 %%%%
 Premium Goods
 
 高級品店
+
 %%%%
 Miscellaneous Merchandise
 
 雑貨屋
+
 %%%%
 ############################## dat/des/variable/float.des ##############################
+
+
 %%%%
 sealed sarcophagus
 
 封印された古代の石棺
+
 %%%%
 ############################## dat/des/variable/grated_community.des ##############################
+
+
 %%%%
 Slaves and Accessories
 
 隷属の小道具店
+
 %%%%
 Jerk-a-riffic Jerky
 
 おいしいジャーキー店
+
 %%%%
 Miraculous Elixirs
 
 不思議な霊薬店
+
 %%%%
 Legendary Smithy
 
 伝説の鍛冶屋
+
 %%%%
 ############################## dat/des/tutorial/*.des ##############################
+
+
 %%%%
 Exit from the tutorial
 
 チュートリアルの出口
+
 %%%%

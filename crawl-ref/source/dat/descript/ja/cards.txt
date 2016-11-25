@@ -2,12 +2,15 @@
 the Stairs card
 
 (まだこのカードが出たらバグである)
+
 %%%%
 a buggy card
 
 (もしこの文章が見えたらバグである。)
+
 %%%%
 a very buggy card
 
 (もしこの文章が見えたらバグである。)
+
 %%%%

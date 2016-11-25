@@ -4,6 +4,7 @@ Centaur
 # Swift, strong and bulky, Centaurs are particularly skilled with ranged
 # weaponry.
 敏速でたくましく大きな体のセントールは飛び道具を扱う技能に特に長けている。
+
 %%%%
 Deep Dwarf
 
@@ -11,17 +12,20 @@ Deep Dwarf
 # are very resilient to damage and carry tools to heal.
 闇ドワーフは地下深くに住み、自然に治癒することができない。
 しかし彼らはとても損傷に強く、傷を治す道具を持っている。
+
 %%%%
 Deep Elf
 
 # The most magic-affine elf, but also the most fragile.
 魔法の使用に熟達しているエルフだが、非常に軟弱である。
+
 %%%%
 Demigod
 
 # They will never follow a god, but Demigods make up for this with divine
 # attributes and health.
 この種族は決して神を信奉しないが、並外れた能力値と体力でそれを補っている。
+
 %%%%
 Demonspawn
 
@@ -29,6 +33,7 @@ Demonspawn
 # they grow.
 悪魔の血族は半人、半悪魔の存在である。
 彼らは育つにつれ強力な悪魔の変異を得る。
+
 %%%%
 Draconian
 
@@ -36,6 +41,7 @@ Draconian
 # a colour.
 ドラコニアンは万能の混血種である。
 彼らは成長してレベル7に到達すると固有の色が発現する。
+
 %%%%
 Felid
 
@@ -43,6 +49,7 @@ Felid
 # manipulation or the use of armour or weapons.
 優れた知覚を持ち、何度も生き返る猫だ。しかし高度な道具や武器、
 防具を扱うことができない。
+
 %%%%
 Formicid
 
@@ -50,6 +57,7 @@ Formicid
 # strong and they live in a state of permanent stasis.
 フォーミシッドは掘削に長けた人間型のアリである。
 その手足は並外れて力強く、恒久的な停滞の状態に身を置いている。
+
 %%%%
 Ghoul
 
@@ -57,11 +65,13 @@ Ghoul
 # eat, hacking away with their claws.
 永遠なる腐敗を宣告されたアンデッドだ。彼らは常に腐った食料を探し回り、
 その鉤爪で切り刻む。
+
 %%%%
 Gargoyle
 
 # Made of living stone, Gargoyles have a preternatural affinity for the earth.
 ガーゴイルは生ける石で作られており、大地と異常なまでの親和性を持つ。
+
 %%%%
 Halfling
 
@@ -69,11 +79,13 @@ Halfling
 # to mutagenic effects.
 ハーフリングは小さいが頑丈で、スリングの使用に卓越している。
 彼らは突然変異への抵抗力を持つ。
+
 %%%%
 High Elf
 
 # Proud elves, who can cast spells as well as they can fight with the sword.
 呪文の詠唱だけでなく剣を持って戦うことができる、誇り高きエルフだ。
+
 %%%%
 Hill Orc
 
@@ -81,16 +93,19 @@ Hill Orc
 # most, orcs are very proud and many of them feel superior.
 オークは近接戦闘が得意で、攻撃魔法を少しかじっている。
 オークはとても高慢でうぬぼれている者が多く、大多数から嫌われている。
+
 %%%%
 Human
 
 # Mundane and average.
 普通で平凡な種族だ。
+
 %%%%
 Kobold
 
 # Kobolds are small, mischievous and a little fragile, but multi-talented.
 コボルドは小型であり、いたずら好きで軟弱だが、多様な才能を持っている。
+
 %%%%
 Merfolk
 
@@ -98,6 +113,7 @@ Merfolk
 # strong combatants, and adept at using magic to assist in battle.
 半人半魚の水棲の民は水陸両生である。彼らは強い闘士で、
 支援魔法の使用に熟達している。
+
 %%%%
 Minotaur
 
@@ -105,12 +121,14 @@ Minotaur
 # close and ranged combat.
 雄牛の頭を持つ、巨大で力強い人型生物だ。
 彼らはあらゆる近接・射撃による戦闘に優れている。
+
 %%%%
 Mummy
 
 # An undead figure covered in bandages and embalming fluids, compelled to walk by
 # an ancient curse.
 包帯と防腐液に覆われたアンデッドの姿だ。それは古代の呪いによって動かされている。
+
 %%%%
 Naga
 
@@ -118,6 +136,7 @@ Naga
 # like that of a snake. They move slowly but are naturally resilient.
 胸から上が人間で、下半身は鱗のある蛇のような混血種だ。
 彼らの移動は遅いが、生まれつき頑強である。
+
 %%%%
 Octopode
 
@@ -125,6 +144,7 @@ Octopode
 # armour fits them.
 水陸両生の頭足類だ。彼らは8つの指輪を身に付けることができるが、
 ほとんどの防具を装備することができない。
+
 %%%%
 Ogre
 
@@ -132,6 +152,7 @@ Ogre
 # with the basics of magic, however.
 巨大で力強く、ほとんど獣のように思われている。
 しかしオーガは魔術の基礎に精通している。
+
 %%%%
 Spriggan
 
@@ -139,6 +160,7 @@ Spriggan
 # and spellcasters.
 とても小さく、とても虚弱で、とてもすばしっこい種族だ。
 スプリガンは暗殺や呪文詠唱に優れている。
+
 %%%%
 Tengu
 
@@ -146,6 +168,7 @@ Tengu
 # fragile, but they learn to fly swiftly later on.
 戦いを好む鳥人間で、武器も呪文も扱う。彼らはずいぶん軟弱だが、
 後に高速な飛行を習得する。
+
 %%%%
 Troll
 
@@ -153,12 +176,14 @@ Troll
 # They're always hungry.
 トロルは巨大で凶暴で、躊躇うことなく全てを鉤爪で引き裂こうとしている。
 彼らは常に空腹である。
+
 %%%%
 Vampire
 
 # Shifting between the states of life and undeath, Vampires are accomplished
 # stabbers and casters.
 生者と死者の間をさまよう吸血鬼は暗殺技能と魔法に長けている。
+
 %%%%
 Vine Stalker
 
@@ -166,4 +191,5 @@ Vine Stalker
 # Their magical reserves absorb damage, and they pack a magic-restoring bite.
 虚弱な共生生物である歩き蔓は道具や薬によって回復することができない。
 魔力によってダメージを軽減し、同時に魔力を吸い取る噛みつきを行う。
+
 %%%%

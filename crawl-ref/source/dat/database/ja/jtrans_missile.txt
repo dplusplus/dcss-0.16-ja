@@ -2,36 +2,45 @@
 needle
 
 吹き矢針
+
 %%%%
 stone
 
 石
+
 %%%%
 arrow
 
 矢
+
 %%%%
 bolt
 
 クロスボウの矢
+
 %%%%
 large rock
 
 大岩
+
 %%%%
 sling bullet
 
 スリングの弾
+
 %%%%
 javelin
 
 ジャベリン
+
 %%%%
 throwing net
 
 投げ網
+
 %%%%
 tomahawk
 
 トマホーク
+
 %%%%

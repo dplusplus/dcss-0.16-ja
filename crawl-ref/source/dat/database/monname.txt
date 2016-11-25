@@ -1,4 +1,6 @@
+%%%%
 ##########################################################
+
 # monname.txt: lookup monster names
 #
 # This file contains a list of names for monster names.
@@ -28,214 +30,135 @@
 # or less likely.
 #
 ##########################################################
+
 %%%%
 orc name
 
 w:14
 @_beogh_name_@
-
 w:12
 @_orcish_name_@
-
 w:45
 @_other_orcish_name_@
+
 %%%%
 # some specials for orcish priests
-orc high priest name
 
+orc high priest name
 @orc priest name@
+
 %%%%
 orc priest name
 
 # Watch out! :p
 w:1
 Judas
-
 w:50
 @orc name@
+
 %%%%
 # Obvious references to Beogh
+
 # (17 at last count)
 _beogh_name_
-
 Arbeogh
-
 Bogbarth
-
 # slavic name, meaning "god's gift" :)
 Bogdan
-
 Bogdar
-
 Bogbrand
-
 Bogfrid
-
 Boghold
-
 Bogmar
-
 Bogric
-
 Bogrim
-
 Bogwald
-
 Bogward
-
 Bogwik
-
 Korbok
-
 Marbaugh
-
 Morbeogh
-
 Orbeogh
-
 Warbeogh
+
 %%%%
 # Obvious references to orcs in general
+
 # (extremely subjective, and 16 at last count)
 _orcish_name_
-
 Alork
-
 Borgk
-
 Boruk
-
 Geork
-
 Horkud
-
 Marbork
-
 Milork
-
 Ogrik
-
 Okrist
-
 Oreg
-
 Orgrim
-
 Orik
-
 Orkrul
-
 Orkwin
-
 Oruk
-
 Urtork
+
 %%%%
 # Other
+
 # (52 at last count)
 _other_orcish_name_
-
 Agrik
-
 Arbolt
-
 Argrim
-
 Arkwar
-
 Beowulf
-
 Berold
-
 Bladwarg
-
 Blodwig
-
 Boderik
-
 Boldo
-
 Bolgrim
-
 Borgoth
-
 Borgun
-
 Brandogh
-
 Brunolf
-
 Dorog
-
 Garbold
-
 Gorbash
-
 Gorg
-
 Gorm
-
 Grimold
-
 Harm
-
 Hawl
-
 Herok
-
 Hilgar
-
 Jorge
-
 Koronagh
-
 Learuk
-
 Margrim
-
 Morguth
-
 Morun
-
 Murdo
-
 Norbak
-
 Nordag
-
 Ognian
-
 Olfik
-
 Olfrun
-
 Ortolf
-
 Rocco
-
 Spirok
-
 Syrus
-
 Thorok
-
 Ugbert
-
 Ugrim
-
 Wardok
-
 Wargath
-
 Wargrak
-
 Warrok
-
 Worak
-
 Wulfoc
-
 Zartorak
-
 Zorug
+
 %%%%

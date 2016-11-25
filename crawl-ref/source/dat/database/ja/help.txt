@@ -29,6 +29,7 @@ pick-up
 <w>,</w>コマンドは<w>drop_filter</w>オプションを参照するため、アイテムの選択の幅を狭めることに
 注意すること。
 デフォルトでは価値の無いアイテムが<w>drop_filter</w>に指定されている。
+
 %%%%
 known-menu
 
@@ -75,6 +76,7 @@ known-menu
 
 %%%%
 stash-search.prompt
+
 　
 <h>Searching the stash-tracker</h>
 　
@@ -144,6 +146,7 @@ boolean OR, and <<<< >> for grouping.
 　
 For instance, to find rings (jewellery) but not ring mail you could use:
 <w>ring && !!mail</w>
+
 %%%%
 level-map
 
@@ -181,10 +184,14 @@ level-map
 <w>Ctrl+F</w>       : レベルマップを忘れる。
 <w>Ctrl+U</w>       : 忘れたレベルマップを復帰させる。{{
 if you.wizard() then
-    return "\n\n"
-          .. "<h>ウィザードコマンド</h>\n"
+    return "
+
+"
+          .. "<h>ウィザードコマンド</h>
+"
           .. "<w>T</w>            : カーソル位置にテレポートする。"
 end }}
+
 %%%%
 interlevel-travel.branch.prompt
 
@@ -201,6 +208,7 @@ interlevel-travel.branch.prompt
  <w>Ctrl-P</w> : ここから上に位置する分岐へと階層を指定して移動する。
  <w>*</w>      : (指定済みのがあれば)中間地点の一覧を見る。
  <w>0</w>-<w>9</w>    : 指定した番号の中間地点に移動する。
+
 %%%%
 interlevel-travel.depth.prompt
 
@@ -213,6 +221,7 @@ interlevel-travel.depth.prompt
  <w>-</w> or <w>p</w> : 初期値を上に位置する分岐に変更する。
  <w>$</w>      : 初期値をこの分岐で到達した最も深い階層に変更する。
  <w>^</w>      : 初期値をこの分岐の入口に変更する。
+
 %%%%
 butchering
 
@@ -226,6 +235,7 @@ butchering
 　
 <h>タイル版の注意点</h>
 タイル版の場合、死体を<w>Shift + 左クリック</w>で解体/採血できる。
+
 %%%%
 skill-menu
 
@@ -235,7 +245,7 @@ skill-menu
 このスキル経験値はスキルの訓練に使用される。あなたはこのスキル画面で訓練するスキルを
 選択できる。
 各スキルはそれを使用できる状況においてのみ訓練できる。
-詳しくは下記の｢訓練の制限｣の項を読むこと。
+詳しくは下記の「訓練の制限」の項を読むこと。
 　
 各スキルの文字を押すことにより、スキル訓練の内容を切り替えることができる。
 　
@@ -271,7 +281,6 @@ skill-menu
 <w>_</w> :   スキルの修正を表示/非表示する。
 　
                                    <h>訓練の制限</h>
-
 戦闘、投擲、甲冑、躱し身、隠密、徒手格闘、呪文詠唱スキルはいつでも訓練できる。
 他のスキルについては以下の通り:
 　
@@ -282,4 +291,5 @@ skill-menu
 ・魔術スキルは対応する魔術領域の呪文を学んでいる必要がある。
 ・死霊術スキルはキクバークッグァを信仰することによっても訓練できる。
 ・祈祷スキルは神を信仰し能力を得る必要がある。
+
 %%%%
