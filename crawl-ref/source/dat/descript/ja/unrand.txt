@@ -40,6 +40,12 @@ Staff of Wucad Mu
 %%%%
 Vampire's Tooth
 
+# This ivory-like dagger looks like it could have been crafted from the tooth of
+# some enormous predatory creature. It is lethally vampiric, and restores a
+# greater portion of life to its user than other vampiric weapons.
+この牙のような形のダガーは何らかの巨大な肉食獣の歯から作られたようにも見える。
+強烈な吸血の力を帯びており、他の吸血の武器よりも多くの回復力をその使用者に
+もたらしてくれる。
 %%%%
 Scythe of Curses
 
@@ -51,6 +57,10 @@ Sceptre of Torment
 %%%%
 Sword of Zonguldrok
 
+# This dreadful weapon is used at the user's peril. Those slain in its presence
+# are reanimated by its power and forced to fight on.
+この恐るべき武器は使用者の危機に際し力を発揮する。
+その刃に倒れた者は剣の力により蘇らされ、戦いを強いられることとなる。
 %%%%
 Sword of Cerebov
 
@@ -59,9 +69,21 @@ Sword of Cerebov
 %%%%
 Staff of Dispater
 
+# This legendary item can unleash the fires of Hell. All but Dispater will find
+# the flames sear their own flesh, as well - but since when have such details
+# stopped anyone in their quest for power?
+この伝説的なアイテムは地獄の火を解き放つ力を持つ。
+ディスペータ以外の者が振るったとき、その者は炎が自らの体を灼いていくことに気付くだろう。
+――しかし、そのような些細なことが力を求める者にとって障害となることがあっただろうか？
 %%%%
 Sceptre of Asmodeus
 
+# This sceptre carries some of the powers of the arch-fiend Asmodeus. Evoking it
+# can summon fiery demons from their infernal home to do your bidding, although
+# they will not remain enslaved for long.
+この王笏には大悪魔『アスモデウス』の力が込められている。
+その力を発揮すると、あなたの命に従わせるべく火を操る悪魔を地獄から召喚することができる。
+とはいえ、その忠誠は長くは続かないだろう。
 %%%%
 faerie dragon armour
 
@@ -86,6 +108,10 @@ eveningstar "Brilliance"
 %%%%
 demon blade "Leech"
 
+# This weapon drives its owner's mind into a narrow purpose: gorging on drained
+# life force. It is unerringly vampiric, draining life every time it strikes.
+この武器は所有者の精神を操り、生命力をたっぷりと吸い取るという目的に注力させる。
+その様はまさしく吸血鬼そのものであり、攻撃するごとに生命力を奪っていく。
 %%%%
 dagger of Chilly Death
 
@@ -93,6 +119,11 @@ dagger of Chilly Death
 %%%%
 dagger "Morg"
 
+# An ugly rusty dagger. Many years ago it was the property of a powerful mage
+# called Boris. He got lost in the Dungeon while seeking the Orb.
+醜く錆びついた短剣だ。
+遙か昔、このダガーはボリスという名の力あるメイジの所有物だった。
+彼はオーブを捜し求めていたが、ダンジョンで行方知れずになった。
 %%%%
 scythe "Finisher"
 
@@ -104,6 +135,12 @@ greatsling "Punk"
 %%%%
 bow of Krishna "Sharnga"
 
+# A wonderful golden longbow that once belonged to a god of distant lands. It can
+# fire as fast as thought and hurl divine arrows of terrible power — though,
+# sadly, none seem to be available here.
+はるか遠くの地の神がかつて手にしていた素晴らしい黄金のロングボウだ。
+それは思考の速さでの射撃を可能とし、猛烈なる威力の神の矢を放つ――しかし、
+残念なことに、この地ではその能力を使える者はいないようだ。
 %%%%
 giant club "Skullcrusher"
 
@@ -141,6 +178,10 @@ spear of the Botono
 %%%%
 trident of the Octopus King
 
+# This trident was stolen many years ago from the Octopus King's garden. Luckily,
+# he seems to be in no hurry to get it back.
+これは何年もの昔、蛸の王の庭園から持ち去られたトライデントだ。
+幸運なことに、彼はすぐに取り戻そうとするつもりはないようだ。
 %%%%
 mithril axe "Arga"
 
@@ -148,9 +189,19 @@ mithril axe "Arga"
 %%%%
 Elemental Staff
 
+# This powerful staff used to belong to the leader of the Guild of Five Elements.
+# In addition to the protection it provides, those skilled in Evocations may
+# use it to discharge powerful blasts of elemental energy with their strikes.
+この強力な杖はかつて五元素のギルドの長が所有していたものだ。
+その杖がもたらす保護に加え、発動スキルに長けたものが振るうことで精霊のエネルギーの
+激しい奔流を解き放つこともできる。
 %%%%
 heavy crossbow "Sniper"
 
+# A huge crossbow made of some black material. It is highly damaging, but
+# extremely cumbersome to load.
+何か黒い材質で作られた巨大なクロスボウだ。
+威力こそ大きいものの、再装填するのに非常に扱いづらい。
 %%%%
 longbow "Piercer"
 
@@ -167,6 +218,11 @@ lance "Wyrmbane"
 %%%%
 Spriggan's Knife
 
+# This dainty little knife was made by Spriggans, or for Spriggans, or possibly
+# from Spriggans. Anyway, it's in some way associated with those fey folk.
+このちっぽけなナイフはスプリガンが作ったものか、スプリガンのために作られたものか、
+はたまたスプリガンから作られたものか。
+いずれにせよ、何らかの形でかの気まぐれな種族と関わりのあるものだ。
 %%%%
 plutonium sword
 
@@ -186,6 +242,10 @@ great mace "Undeadhunter"
 %%%%
 whip "Snakebite"
 
+# A double-ended whip made from the cured hides of black mambas, and enchanted
+# with toxins ranging from ordinary venoms to asphyxiating curare.
+ブラックマンバの皮を加工して作られた先端が二つに分かれている鞭で、通常の毒から
+窒息性のクラーレ毒まで様々な毒素が付与されている。
 %%%%
 knife of Accuracy
 
@@ -285,6 +345,12 @@ mask of the Dragon
 %%%%
 robe of Night
 
+# A long black robe made of strange glossy material. It seems to shroud its
+# wearer in darkness. According to legend, it was the gift of Ratri the Goddess
+# of the Night to one of her followers.
+光沢を帯びる不思議な素材で作られた長くて黒いローブだ。
+その着用者を闇の中に覆い隠すだろう。
+伝説によれば、このローブは夜の女神ラートリーからある信徒への贈り物だ。
 %%%%
 armour of the Dragon King
 
@@ -317,6 +383,14 @@ ratskin cloak
 %%%%
 shield of the gong
 
+#This is a heavy bronze gong that can be worn as a shield. According to certain
+#mystics, beating on such a gong can grant you spiritual protection.
+#
+#And this shield will surely be heard!
+盾としても使える、重量のある青銅製の銅鑼だ。
+とある神秘術者によると、このような銅鑼を打ち鳴らすことで霊的な保護が得られるそうだ。
+
+もちろん、この盾の音はあたりの者の耳に入ることだろう！
 %%%%
 amulet of the Air
 
@@ -325,6 +399,12 @@ amulet of the Air
 %%%%
 ring of Shadows
 
+# A black ring that can make its wearer one with the shadows. It creates a dark
+# umbra that surrounds the wearer and increases stealth greatly, and it makes you
+# and your enemies alike harder to hit.
+着用者を影と一体化させることのできる黒い指輪だ。
+それは着用者を覆う暗い影の帳を生み出し、隠密性を著しく高め、あなたとあなたの敵の
+双方において攻撃が当たりにくくする。
 %%%%
 amulet of Cekugob
 
@@ -365,6 +445,12 @@ robe of Clouds
 %%%%
 hat of Pondering
 
+# The favorite hat of the slug wizard Gastronok, stained with reddish slime and
+# enchanted to aid in his arcane pondering. It has been specially enchanted to
+# protect against the effects of salt.
+ナメクジの魔法使いガストロノクのお気に入りの帽子だ。
+赤みを帯びたどろどろが染みついており、秘術についての彼の思索を助ける魔法の効果がある。
+また、塩よけのための特別の魔法がかけられている。
 %%%%
 obsidian axe
 
@@ -437,6 +523,12 @@ boots of the spider
 %%%%
 dark maul
 
+# This large iron-shod maul is specialised for dealing massively powerful blows.
+# Alas, such power comes at a price: the maul's head is so heavy it takes forever
+# to lift it up for another swing.
+この鉄をはめられた大槌は相手に強力な一撃を振るうことに特化したものである。
+残念ながらその威力にはそれだけの代償がある――この大槌の頭部分は非常に重いため、
+次の一撃を繰り出すべく持ち上げるのにはとても長い時間がかかるのだ。
 %%%%
 hat of the High Council
 
@@ -447,22 +539,62 @@ hat of the High Council
 %%%%
 arc blade
 
+# A blade somehow crafted from pure electricity. Striking an enemy with it
+# occasionally unleashes a static discharge.
+純粋な電気から何らかの方法で形成された刃だ。
+これで敵を攻撃すると、帯びていた電気を解き放つことがある。
 %%%%
 demon whip "Spellbinder"
 
+# A weapon said to have once been used to keep unruly imprisoned wizards in line;
+# it violently disrupts their ability to use magic, inflicting wild and
+# unpredictable magical effects on those it strikes.
+反抗的な魔法使いの囚人を一列に並べるために使われていたと言われている武器だ。
+それは魔法を操る能力を著しく乱し、鞭打った相手に予想も付かぬ暴走した魔法の
+効果をもたらす。
 %%%%
 lajatang of Order
 
+# Long ago Zin bestowed this gift upon a favoured worshipper. It became the
+# most prized weapon of the many priests of Zin; after their order was destroyed,
+# it fell into disuse and vanished from history.
+遠い昔ジンが見目麗しき一人の信者にこの品物を授け、ジンの数多の司祭のうちで珍重
+される武器となった。
+彼らの体制が崩壊した後はこの武器は用いられなくなり、歴史から消え去ることとなった。
 %%%%
 great mace "Firestarter"
 
+# This weapon is imbued with potent fire magic, and fills those it strikes with
+# inner flame.
+この武器は火の魔力が吹き込まれており、これで打撃した相手を内なる炎で満たす。
 %%%%
 orange crystal plate armour
 
+# Carved from transparent orange crystal, this armour provides remarkable
+# protection for both mind and body. A skilled user can even channel psychic
+# energies through the crystal itself. However, it's rather heavy...
+透明な橙水晶を削って作られたこの鎧は、精神と肉体の両方においてめざましい
+防護をもたらす。
+熟練した着用者は水晶そのものを通して肉体の活力を引き出すこともできる。
+とはいえ、この鎧は少々重すぎる……
 %%%%
 Majin-Bo
 
+# The Majin-Bo is actually a mighty demon, tricked and trapped in this form long
+# ago. To survive, she now offers tremendous arcane power at a small price: a
+# tiny portion of the caster’s life essence, taken alongside the magic used every
+# time its wielder casts a spell. Of course - the demon is more than happy to
+# suck the life from others, as well.
+魔神棒の実体は遠い昔に罠にかけられこの形に封じられてしまった強大な悪魔だ。
+生きる手段として、彼女は途方もない術力をささいな対価 ―持ち主が魔法を唱えるたびに
+吸い取るほんのわずかな生命力― で提供する。
+もちろん、悪魔は持ち主以外から生命力を吸い取ることに異存はない。
 %%%%
 quick blades "Gyre" and "Gimble"
 
+# Two quick blades joined by a chain. Swinging one compels the wielder to swing
+# the other, as if they have minds of their own.
+鎖で繋がれた二振りのクイックブレードだ。
+あたかもそれらに意思が宿っているかのように、片方を振ると装備者はもう片方をも振る
+ことが強いられる。
 %%%%
