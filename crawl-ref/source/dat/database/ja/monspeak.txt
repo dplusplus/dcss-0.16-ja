@@ -1,3 +1,4 @@
+%%%%
 ############################################################
 # This file contains the messages of monsters that "talk"
 # to the player, or at least the biggest part there-of.
@@ -6583,7 +6584,6 @@ w:5
 w:5
 @_Vashnia_nonnaga_@
 %%%%
-
 related Vashnia
 
 @_Vashnia_common_@

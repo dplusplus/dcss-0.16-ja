@@ -1,3 +1,4 @@
+%%%%
 ###############################################################################
 # Voices of fleeing monsters.
 # 'flee' is for when they start running.

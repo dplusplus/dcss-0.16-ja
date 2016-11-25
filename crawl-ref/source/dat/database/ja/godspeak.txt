@@ -1,3 +1,4 @@
+%%%%
 ############################################################
 # godspeak.txt contains the messages for divine speech.
 #
