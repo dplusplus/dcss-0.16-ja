@@ -2870,7 +2870,7 @@ static string _blame_chain_string(vector<string> &fields)
         string prefix, blamed;
         tie(prefix, blamed) = tpl;
 
-        if (!starts_with(prefix, "hexed by"))
+        if (starts_with(prefix, "hexed by"))
         {
             string::size_type pos;
             if ((pos = text.rfind("れた")) != string::npos)
