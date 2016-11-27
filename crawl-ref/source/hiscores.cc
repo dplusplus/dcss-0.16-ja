@@ -2853,7 +2853,7 @@ static string _blame_chain_string(vector<string> &fields)
 
     // 2段目に"hexed by ～"が来る場合以外逆順に変更
     // props["blame"]に3要素以上入る例は無いかよほど限られてるので無視
-    if (blames.size() > 0 && (!starts_with(get<0>(blames[1]), "hexed by")))
+    if (blames.size() > 1 && (!starts_with(get<0>(blames[1]), "hexed by")))
         reverse(blames.begin(), blames.end());
 
     if (blames.size() > 1 && (starts_with(get<0>(blames[0]), "summoned by") &&
