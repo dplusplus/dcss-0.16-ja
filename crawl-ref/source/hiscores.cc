@@ -2846,12 +2846,19 @@ static string _blame_chain_string(vector<string> &fields)
     vector<tuple<string, string>> blames;
 
     for (auto field : fields)
+    {
+        field[0] = tolower(field[0]);
         blames.push_back(_split_blame(field));
+    }
 
     // 2段目に"hexed by ～"が来る場合以外逆順に変更
     // props["blame"]に3要素以上入る例は無いかよほど限られてるので無視
-    if (blames.size() > 1 && !starts_with(get<0>(blames[1]), "hexed by"))
-        reverse(fields.begin(), fields.end());
+    if (blames.size() > 0 && (!starts_with(get<0>(blames[1]), "hexed by")))
+        reverse(blames.begin(), blames.end());
+
+    if (blames.size() > 1 && (starts_with(get<0>(blames[0]), "summoned by") &&
+                              starts_with(get<0>(blames[1]), "triggered by")))
+        reverse(blames.begin(), blames.end());
 
     // (animated by the player character (hexed by the player character))
     // └→あなたに蘇らされ呪われた
