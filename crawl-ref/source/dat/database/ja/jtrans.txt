@@ -18789,6 +18789,10 @@ drifts right through the net!
 
 は網をすり抜けた！
 %%%%
+a shadow trap
+
+影の怪物の罠
+%%%%
 triggered by
 
 の発動した
