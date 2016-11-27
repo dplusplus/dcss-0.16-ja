@@ -2636,7 +2636,7 @@ string scorefile_entry::death_description(death_desc_verbosity verbosity) const
     if (terse)
     {
         if (!killerpath.empty())
-            desc += "[" + indirectkiller + "]";
+            desc += "[" + jtrans(indirectkiller) + "]";
 
         if (death_type == KILLED_BY_MONSTER && !auxkilldata.empty())
         {
