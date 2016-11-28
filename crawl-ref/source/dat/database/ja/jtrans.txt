@@ -4532,7 +4532,6 @@ impale
 
 突き刺した
 %%%%
-%%%%
 like the proverbial pig
 
 豚の丸焼きのように
@@ -22394,7 +22393,6 @@ Nature
 %%%%
 # ホルヘ・ルイス・ボルヘス『バベルの図書館』ネタらしい
 Dhcmrlchtdj
-
 %%%%
 Combed Thunderclap
 
