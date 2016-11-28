@@ -2727,6 +2727,7 @@ Your rugged brown scales recede somewhat.
 あなたの頑丈な茶色の鱗がいくらか消え去った。
 %%%%
 rugged, brown scales (+AC, +HP)
+
 %%%%
 # MUT_SLIMY_GREEN_SCALES
 slimy green scales

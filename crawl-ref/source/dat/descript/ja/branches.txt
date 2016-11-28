@@ -1,5 +1,42 @@
 %%%%
+Dungeon
+
+It is still a mystery how this bizarre place was created. Some claim that it is
+the playground of bored gods, whereas others maintain that it was shaped by all
+kinds of species who fled the overworld and shunned the light. No matter what
+its origin, this deep cavern is filled with riches unheard of as well as with
+ample dangers to any intruder. Few have escaped alive, and even fewer have kept
+some sliver of sanity sufficient to tell the tale.
+
+The dungeon is 15 levels deep, but, honestly, this is only the beginning.
+%%%%
+Temple
+
+The Ecumenical Temple is a place of peace and refuge from the insanity of the
+dungeon. It usually contains altars to most of the known gods. It is located
+between the levels 4 and 7 of the main dungeon.
+%%%%
+Orcish Mines
+
+These bustling goldmines are filled with orcs, their humanoid labourers, and
+piles of freshly mined gold. Enterprising merchants have set up trading posts
+to help relieve the orcs of the latter. Prospective customers should be warned:
+the haphazard manner in which orcs dig their mineshafts has resulted in a
+complex and treacherous tangle of chambers, in which it is easy to be trapped.
+
+They are filled with the noise of industry, and thus all sounds travel less
+far.
+
+The Orcish Mines are four levels deep and contain the entrance to the Elven
+Halls.
+%%%%
 Elven Halls
+#This is the realm of the deep elves, a race that turned their backs on the sun
+#long ago. Their halls are filled with riches, but a deadly welcome awaits any
+#would-be robbers. In their long seclusion, the deep elves have perfected dark
+#sorceries of a power the orcs can only dream of!
+#
+#The Elven Halls are three levels deep.
 
 多くのエルフ族はこのような薄暗い地下に根城を構えたりはしない、
 この場所の主は闇エルフだ。この大広間には多くの財宝があるが、
@@ -8,6 +45,13 @@ Elven Halls
 エルフの大広間は3の階層からなる。
 %%%%
 Lair
+#Most adventurers find the Lair of Beasts to be an exciting change of climate.
+#And indeed, there is something to be said about getting gored, mauled and eaten
+#rather than sliced, burnt or stabbed.
+#
+#It is filled with the noise of nature, and thus all sounds travel less far.
+#
+#The Lair is eight levels deep and contains the stairs to three more branches.
 
 多くの冒険者は周囲の環境の急激な変化にそこが獣の巣窟であることに気づくだろう。
 事実、ここには利器を扱うのではなく、牙をつきたて、爪で切り裂き、
@@ -15,7 +59,222 @@ Lair
 
 獣の棲み処は8の階層からなる。獣の棲み処は3つの分岐と繋がっている。
 %%%%
+Swamp
+
+A swampy wasteland, the Swamp is filled with ooze, muck, flies and large
+slavering carnivorous monsters.
+
+The Swamp is five levels deep and contains the decaying rune. A dungeon
+features only one of the Swamp and Shoals branches. If the Swamp is present,
+the entrance is located between Lair:3 and Lair:6.
+%%%%
+Shoals
+
+The exotic underground beaches of the Shoals make up a few small islands in a
+seemingly endless sea. The merfolk have made it their home, alongside many
+dreaded sea creatures.
+
+It is filled with the noise of the sea breaking on sand, and thus all sounds
+travel less far.
+
+The Shoals are five levels deep and contain the barnacled rune. A dungeon
+features only one of the Shoals and Swamp branches. If the Shoals are present,
+the entrance is located between Lair:3 and Lair:6.
+%%%%
+Snake Pit
+
+The corridors of the Snake Pit are home to all varieties of serpent, and are
+inhabited by a society of powerful nagas and salamanders.
+
+The Snake Pit is five levels deep and contains the serpentine rune. A dungeon
+features only one of the Snake Pit and Spider Nest branches. If the Snake Pit
+is present, the entrance is located between Lair:3 and Lair:6.
+%%%%
+Spider Nest
+
+The crumbling, web-choked caverns of the Spider Nest are packed with poisonous
+arthropods and assorted creepy-crawlies.
+
+The Spider Nest is five levels deep and contains the gossamer rune. A dungeon
+features only one of the Spider Nest and Snake Pit branches. If the Spider Nest
+is present, the entrance is located between Lair:3 and Lair:6.
+%%%%
+Slime Pits
+
+The Slime Pits are the amorphous realm of acids, jellies and slimes. Even the
+walls drip with painful acid, growing ever more caustic as one travels deeper.
+Any trace of intelligent beings has long been dissolved. Still, there are
+rumours of great treasures deep down, hidden safely away in secret chambers
+without door or window.
+
+The only noise here is the occasional drip of acid, and thus all sounds travel
+further.
+
+The Slime Pits are six levels deep and contain the slimy rune. The entry is
+between Lair:6 and Lair:8.
+%%%%
+Vaults
+
+Possibly constructed by some powerful madman, the Vaults are said to be home to
+great treasures. The blood spattered liberally around the entrance suggests
+that there is a certain amount of violence, too.
+
+The Vaults are five levels deep and contain the silver rune, as well as the
+entrances to two more branches. They can only be entered while carrying at
+least one rune of Zot. The entrance can be found on either level 13 or 14 of
+the main dungeon.
+%%%%
+Crypt
+
+The Crypt is a huge repository for the ancient dead. The air is chill and
+fetid, the walls cold and damp. Bones are strewn liberally everywhere, and
+every noise echoes worryingly, violating the overbearing silence of the grave.
+
+It is suffused with the silence of the grave, and thus all sounds travel
+further.
+
+The Crypt is three levels deep, and contains the entrance to the Tomb. Its entry
+is either on Vaults:2 or Vaults:3.
+%%%%
+Tomb
+
+The Tomb of the Ancients is a place of damnation, of horrors animated by the
+vilest necromancy. The list of those who have returned from this place of pure
+death is exceedingly short.
+
+It is suffused with the silence of the grave, and thus all sounds travel much
+further.
+
+The Tomb is three levels deep and contains the golden rune. Its entry is on
+Crypt:3.
+%%%%
+Hell
+
+The hallway to the four hells is guarded by Geryon. The Vestibule of Hell
+contains portals to Dis, Gehenna, Cocytus and Tartarus.
+
+Portals to the Vestibule of Hell are found abundantly in the Depths.
+%%%%
+Dis
+
+Who will stand the test of iron?
+
+Dis is seven levels deep and contains the iron rune. It can be accessed via the
+Vestibule of Hell.
+%%%%
+Gehenna
+
+Gehenna is a realm of flames, lava and hellfire.
+
+Gehenna is seven levels deep and contains the obsidian rune. It can be accessed
+via the Vestibule of Hell.
+%%%%
+Cocytus
+
+Cocytus is a grim and frost-bitten wasteland.
+
+Cocytus is seven levels deep and contains the icy rune. It can be accessed via
+the Vestibule of Hell.
+%%%%
+Tartarus
+
+Tartarus is a decaying netherworld. Over time, the undead, demons and devils of
+this place drain the life from any who dare to enter.
+
+Tartarus is seven levels deep and contains the bone rune. It can be accessed
+via the Vestibule of Hell.
+%%%%
+Zot
+
+The Realm of Zot is a region of the dungeon that is so terrifying, so full of
+madness, frenzy and lunacy, that it has been locked securely against random
+trespassers. Only the most demented adventurers would dare gather the required
+keys, break the seal and penetrate deeper — all in the vain hope for a fabled
+artefact no one has ever laid eyes on before.
+
+The Realm of Zot is five levels deep and can only be entered when carrying at
+least three runes.
+%%%%
+Abyss
+
+The Abyss is a truly bizarre place, ever-changing and twisted. It is filled
+with all sorts of monsters, mostly of demonic nature, whose common aim is to
+feast on intruders. It is also the garbage dump for many sorcerers, who delight
+in sending would-be champions like you to these proving grounds of madness.
+Reportedly, there is some structure to the chaos, as Lugonu seems to concoct
+schemes around this place and its denizens.
+
+The Abyss consists of five infinite levels. The abyssal rune can be found from
+the third level onwards, and is more common at greater depths. The Abyss can be
+purposefully reached through portals in the Depths. Portals back to the dungeon
+are scattered throughout the Abyss, and are found more commonly at greater
+depths or while carrying the abyssal rune.
+%%%%
+Pandemonium
+
+Pandemonium is an infinite realm of pain and suffering. While there are many
+treasures to be found within, they are guarded by cruel demons and even
+crueller demon lords.
+
+Pandemonium is endless. Portals leading there are found in the Depths. Note
+that getting back might be more difficult.
+
+No fewer than five runes can be found in Pandemonium:
+ • a fiery rune in the well-heated realm of Cerebov
+ • a glowing rune in the contaminated domain of Mnoleg
+ • a magical rune guarded by the arcane powers of Lom Lobon and his minions
+ • a dark rune in the shadowy abode of Gloorx Vloq
+ • a demonic rune existing in multiple places, owned by less famous lords
+%%%%
+Ziggurat
+
+A ziggurat is a strange tower constructed of twenty seven levels of
+incrementally larger combat arenas, each containing greater wealth and even
+greater danger than the last. Beware, for a ziggurat is not a place for the
+faint of heart: even the bravest and most skilled adventurers have met their
+ends in one. While a portal to safety will be present on every level, once
+left, a ziggurat cannot be re-entered.
+
+One ziggurat is guaranteed in the Depths, and further ones can be found
+in Pandemonium. These towers and their contents will react violently to
+those that can conquer them, and scale up according to how many ziggurats
+an adventurer has completed.
+
+It can only be entered when carrying at least two runes of Zot.
+%%%%
+Labyrinth
+
+The labyrinth is a complex, ever-shifting maze designed by subtle and malicious
+minds for reasons long lost to history. Old stories say that the labyrinth was
+constructed as a prison for a fearsome minotaur. More recent stories say this
+beast dwells there still, guarding the labyrinth's sole exit — as well as a
+rich hoard of treasure taken from the bodies of foolish adventurers.
+%%%%
+Bazaar
+
+While some merchants set up shop in the dungeon, others travel in caravans from
+place to place. The bazaars of these intinerant traders feature a number of
+different shops and often have better stock than the sedentary ones, sometimes
+even at a bargain.
+%%%%
+Trove
+
+Once upon a time, an enterprising thief and wizard created a system of portals
+leading into the secret treasure troves and chambers of the rich. Too scared to
+loot them himself, he instead charged an extortionate fee for entry to anyone
+who wanted to rifle through them.
+
+The items inside this trove are likely to be useful, but beware: the wizard is
+long dead, and even while alive he never offered a money-back guarantee.
+%%%%
 Sewer
+#Every inhabited place needs to dispose of its waste products. The Dungeon too
+#has its stinking sewers and drains, full of filthy water and ignored by most
+#but used as hideaways by the disgusting and the desperate. Old tales speak of
+#dangerous creatures stalking through the foul-smelling green water, preying on
+#each other without mercy. The tales also allude to valuable items accidentally
+#washed into the drainage tunnels, forgotten and left to grow mouldy in the damp
+#caverns.
 
 遍く人の住むところには廃棄物を処理する場所が必要だ。
 このダンジョンにも汚水に満たされ異臭を放つ下水道と排水溝があり、
@@ -25,10 +284,52 @@ Sewer
 誤って排水管に流してしまった価値ある物品が忘れられ、
 カビの生えるままにされていることも仄めかされている。
 %%%%
+Ossuary
+
+The ossuary is a small tomb containing the remains and grave goods of some
+distant relatives of the pharaohs, along with the corpses of their retainers
+and household animals. It is undoubtedly riddled with many traps, and its
+undead denizens are unlikely to take kindly to looting.
+%%%%
+Bailey
+
+The bailey is the still-occupied and well-guarded fortress of an orcish lord.
+The treasures within are protected by both physical barriers and large numbers
+of well-armed humanoid warriors.
+%%%%
+Ice Cave
+
+The ice cave is a desolate cavern shaped from solid ice and filled with the
+echoes of bestial howls. The intricate carvings and statues which once lined
+its walls have been warped and obscured by centuries of slow melting and
+refreezing.
+%%%%
 Volcano
+#Built from enormous blocks of obsidian, this sweltering chamber may once have
+#served as a temple to some strange deity, or perhaps the dwelling of a mighty
+#fire giant. The air shimmers with oppressive heat, and the dull roar of the
+#volcano's heart never ceases.
 
 黒曜石の巨岩から作られた茹だるように暑い空間は、
 かつては幾分変わった神の祭壇であったか、
 おそらくは強力なファイアジャイアントのねぐらとして用いられたものだろう。
 耐え難い暑さに大気は揺らめき、火山の心臓は鈍い轟きを止めることはないだろう。
+%%%%
+Wizlab
+
+In ages past, the most powerful mages would frequently find or construct small
+realms sealed off from the rest of the world, where they could isolate
+themselves in the pursuit of ever-greater magical knowledge and power. The
+mages are long gone, but many of their arcane laboratories still exist, filled
+with the results of their experiments. Those willing to explore these
+laboratories may find powerful magical treasures, but be warned: any wizard
+capable of constructing such a realm deserved their reputation.
+%%%%
+Depths
+
+The Depths are the deepest part of the dungeon proper, subject to the
+corrupting influence of the Realm of Zot without being considered a part of it.
+
+The Depths are five levels deep and can be entered from the lowest floor of the
+Dungeon.
 %%%%
