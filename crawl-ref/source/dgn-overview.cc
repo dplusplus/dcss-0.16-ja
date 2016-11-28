@@ -216,7 +216,8 @@ string overview_description_string(bool display)
 {
     string disp;
 
-    disp += "                        ";
+    if (display)
+        disp += "                        ";
     disp += jtransln("<white>Dungeon Overview and Level Annotations</white>\n");
     disp += _get_branches(display);
     disp += _get_altars(display);

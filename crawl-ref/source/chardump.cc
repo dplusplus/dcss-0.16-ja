@@ -107,7 +107,13 @@ static string _trim_section(const string& section_text)
     if (trimmed_string(section_text).empty())
         return "";
 
-    return "\n" + trimmed_string(_multiline_trim(section_text)) + "\n";
+    string text = _multiline_trim(section_text);
+
+    // trim '\n'
+    text.erase(0, text.find_first_not_of("\n"));
+    text.erase(text.find_last_not_of("\n") + 1);
+
+    return "\n" + text + "\n";
 }
 
 struct dump_section_handler
@@ -209,7 +215,7 @@ static void _sdump_header(dump_params &par)
     else
         type += " DCSS";
 
-    text += " " + type + " version " + Version::Long;
+    text += " " + type + " 日本語版 " + Version::Long;
 #ifdef USE_TILE_LOCAL
     text += " (tiles)";
 #elif defined(USE_TILE_WEB)
@@ -220,7 +226,7 @@ static void _sdump_header(dump_params &par)
 #else
     text += " (console)";
 #endif
-    text += " character file.\n\n";
+    text += " " + jtransln("character file.\n") + "\n";
 
     par.text += _trim_section(text);
 }
@@ -565,7 +571,8 @@ static void _sdump_messages(dump_params &par)
 
 static void _sdump_screenshot(dump_params &par)
 {
-    par.text += _trim_section(screenshot());
+    string text = "周辺の様子:\n\n" + screenshot();
+    par.text += _trim_section(text);
 }
 
 static void _sdump_notes(dump_params &par)
@@ -641,8 +648,8 @@ static void _sdump_religion(dump_params &par)
 
             if (par.se)
             {
-                xom_favour = replace_all(xom_favour, "だ。", "だった。");
                 xom_favour = replace_all(xom_favour, "た。", "ていた。");
+                xom_favour = replace_all(xom_favour, "だ。", "だった。");
             }
 
             text += xom_favour;
@@ -743,20 +750,20 @@ static void _sdump_inventory(dump_params &par)
 
             switch (i)
             {
-            case OBJ_WEAPONS:    text += "\n手持ち武器";       break;
-            case OBJ_MISSILES:   text += "\n矢弾・石弾その他"; break;
-            case OBJ_ARMOUR:     text += "\n防具";             break;
-            case OBJ_WANDS:      text += "\nワンド";           break;
-            case OBJ_FOOD:       text += "\n食べ物";           break;
-            case OBJ_SCROLLS:    text += "\n巻物";             break;
-            case OBJ_JEWELLERY:  text += "\n装飾品";           break;
-            case OBJ_POTIONS:    text += "\n水薬";             break;
-            case OBJ_BOOKS:      text += "\n魔法書/虎の巻";    break;
-            case OBJ_STAVES:     text += "\n魔法の杖";         break;
-            case OBJ_RODS:       text += "\nロッド";           break;
-            case OBJ_ORBS:       text += "\nゾットのオーブ";   break;
-            case OBJ_MISCELLANY: text += "\n発動用のアイテム"; break;
-            case OBJ_CORPSES:    text += "\n死体";             break;
+            case OBJ_WEAPONS:    text += "\n[近接武器]";         break;
+            case OBJ_MISSILES:   text += "\n[矢弾・石弾その他]"; break;
+            case OBJ_ARMOUR:     text += "\n[防具]";             break;
+            case OBJ_WANDS:      text += "\n[ワンド]";           break;
+            case OBJ_FOOD:       text += "\n[食料品]";           break;
+            case OBJ_SCROLLS:    text += "\n[巻物]";             break;
+            case OBJ_JEWELLERY:  text += "\n[装飾品]";           break;
+            case OBJ_POTIONS:    text += "\n[薬]";               break;
+            case OBJ_BOOKS:      text += "\n[魔法書/虎の巻]";    break;
+            case OBJ_STAVES:     text += "\n[魔法の杖]";         break;
+            case OBJ_RODS:       text += "\n[ロッド]";           break;
+            case OBJ_ORBS:       text += "\n[ゾットのオーブ]";   break;
+            case OBJ_MISCELLANY: text += "\n[発動用のアイテム]"; break;
+            case OBJ_CORPSES:    text += "\n[死体]";             break;
 
             default:
                 die("Bad item class");
@@ -1020,7 +1027,7 @@ static void _sdump_hiscore(dump_params &par)
     if (!par.se)
         return;
 
-    string hiscore = hiscores_format_single_long(*(par.se), true);
+    string hiscore = "    " + hiscores_format_single_long(*(par.se), true);
 
     par.text += _trim_section(hiscore);
 }
@@ -1477,6 +1484,14 @@ static bool _write_dump(const string &fname, dump_params &par, bool quiet)
     return succeeded;
 }
 
+static string _ltrim_nbsp(const string& text)
+{
+    string str;
+    str = nbsp2sp(text);
+    str.erase(0, str.find_first_not_of(" "));
+    return str;
+}
+
 void display_notes()
 {
     formatted_scroller scr;
@@ -1488,7 +1503,7 @@ void display_notes()
     for (const Note &note : note_list)
     {
         string prefix = note.describe(true, true, false);
-        string suffix = note.describe(false, false, true);
+        string suffix = _ltrim_nbsp(note.describe(false, false, true));
         int colwidth_turn = note.describe(true, false, false).length();
         int colwidth_place = MAX_NOTE_PLACE_LEN + 2;
         if (suffix.empty())

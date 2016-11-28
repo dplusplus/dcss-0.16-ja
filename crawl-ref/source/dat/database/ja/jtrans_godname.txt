@@ -65,7 +65,6 @@ Jiyva
 %%%%
 # Jiyva lastname
 
-
 %%%%
 Kikubaaqudgha
 

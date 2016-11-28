@@ -533,7 +533,7 @@ bool trap_def::weave_shadow(const actor& triggerer)
 
     const string triggerer_name = triggerer.is_player() ?
                                         "the player character" :
-                                        triggerer.name(DESC_A, true);
+                                        triggerer.name(DESC_PLAIN, true);
     const string blame = "triggered by " + triggerer_name;
     mons_add_blame(leader, blame);
 

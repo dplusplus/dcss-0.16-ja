@@ -1,3 +1,4 @@
+%%%%
 ###############################################################################
 # wpnnoise.txt contains the messages of randart weapons with the noise property
 # and of the noisy unrandart items, like the Singing Sword. To make an entry
@@ -1795,3 +1796,4 @@ erotic
 
 w:1
 moving
+%%%%

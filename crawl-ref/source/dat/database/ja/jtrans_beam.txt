@@ -203,6 +203,10 @@ The orb of energy explodes!
 
 %s生命力が抜き取られた。
 %%%%
+by a malign offering
+
+悪意の供物によって
+%%%%
 %s %s healed.
 
 %sは回復した。
@@ -295,6 +299,10 @@ This spell isn't strong enough to banish yourself.
 
 この呪文はあなたを追放するほど強力ではない。
 %%%%
+by nerve-wracking pain
+
+神経を冒す苦痛によって
+%%%%
 Your body is wracked with pain!
 
 あなたの肉体は苦痛を受けている！
@@ -306,6 +314,10 @@ Pain shoots through your body!
 You convulse!
 
 あなたは身もだえした！
+%%%%
+by dispel undead
+
+アンデッドの解呪によって
 %%%%
 You are blasted!
 

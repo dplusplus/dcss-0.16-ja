@@ -205,7 +205,7 @@ Your body crumbles into a pile of gold.
 %%%%
 Char dump unsuccessful! Sorry about that.
 
-キャラクターダンプに失敗しました！ 申し訳ありません。
+残念ながらキャラクタ情報のファイル出力に失敗しました。
 %%%%
 Save macros?
 
@@ -217,7 +217,7 @@ Goodbye, %s.
 %%%%
 Best Crawlers - %s
 
-冒険者の殿堂 - %s
+スコアランキング: %s
 %%%%
 You can find your morgue file in the '%s' directory.
 
@@ -868,7 +868,7 @@ their own shadow
 %%%%
 themself
 
-自業自得
+自分自身
 %%%%
 (shapeshifter)
 
@@ -885,6 +885,10 @@ the pandemonium lord
 (illusionary)
 
 (幻影)
+%%%%
+unknown source
+
+よく分からない原因
 %%%%
 The game lasted %s (%d turns).
 
@@ -941,6 +945,7 @@ a Believer
 a Follower
 
 信者
+%%%%
 an Initiate
 
 入会者
@@ -981,13 +986,17 @@ Killed %s
 
 %sで死んだ
 %%%%
+Killed by themself
+
+自殺した
+%%%%
 Killed by
 
 で死んだ
 %%%%
 Killed from afar by
 
-に撃たれて死んだ
+撃たれて死んだ
 %%%%
 Turned to ash by lava
 
@@ -1111,7 +1120,7 @@ burnt
 %%%%
 Incinerated by
 
-に焼き殺された
+焼き殺された
 %%%%
 Burnt to a crisp
 
@@ -1123,7 +1132,7 @@ Killed by wild magic
 %%%%
 Killed %s%s
 
-%s死んだ
+%s%s死んだ
 %%%%
 Killed for Xom's enjoyment
 
@@ -1143,7 +1152,15 @@ shot self
 %%%%
 Killed themself with
 
-自らを射撃して死んだ
+自らに当てて死んだ
+%%%%
+bad targeting
+
+狙いを外し
+%%%%
+a badly aimed
+
+の狙いを外し
 %%%%
 reflected bolt
 
@@ -1171,7 +1188,7 @@ suicidal targeting
 %%%%
 Shot themself with
 
-自らを
+自らに
 %%%%
 spore
 
@@ -1179,7 +1196,7 @@ spore
 %%%%
 Killed by an exploding
 
-の爆発を受けて死んだ
+の巻き起こした爆発を受けて死んだ
 %%%%
 smitten by Shining One
 
@@ -1207,7 +1224,7 @@ fell downstairs
 %%%%
 Fell down a flight of stairs
 
-階段から落下して
+階段から落下した
 %%%%
 fell through a gate
 
@@ -1260,6 +1277,26 @@ barbs
 Succumbed to a manticore's barbed spikes
 
 マンティコアの逆棘で傷ついて死んだ
+%%%%
+... %s %d rune%s
+
+%dつのルーンを手にして
+%%%%
+... wielding %s
+
+... %sを手にした
+%%%%
+... while paralysed
+
+麻痺している間に
+%%%%
+awakened
+
+呼び覚まされた
+%%%%
+invoked
+
+引き起こされた
 %%%%
 ############################## invent.cc ##############################
 %%%%
@@ -3941,19 +3978,19 @@ Alright, then stay!
 %%%%
 You are a level %d %s %s.
 
-あなたはレベル%dの%sの%sだ。
+あなたはレベル%dの%sで職業は%sです。
 %%%%
 You are %d%% of the way to level %d.
 
-レベル%dまでに要する経験値が%d%%貯まっている。
+レベル%dまでに要する経験値が%d%%貯まっています。
 %%%%
 I'm sorry, level %d is as high as you can go.
 
-申し訳ありませんが、あなたが到達できるのはレベル%dまでです。
+残念ながら、レベル%dが到達可能な最高レベルです。
 %%%%
 With the way you've been playing, I'm surprised you got this far.
 
-あなたがこんなところまで到達できるとは驚きです。
+ここまで生き延びるとは、あなたの手腕には驚きを禁じえません。
 %%%%
 You'll get an extra life in %d.%02d levels' worth of XP.
 
@@ -4494,7 +4531,6 @@ puncture
 impale
 
 突き刺した
-%%%%
 %%%%
 like the proverbial pig
 
@@ -6168,7 +6204,7 @@ Unholy energy fills the air.
 %%%%
 by vampiric draining
 
-ヴァンパイアの吸血により
+ヴァンパイアの吸血によって
 %%%%
 draws life force from you and is healed!
 
@@ -6184,7 +6220,7 @@ draws life force from %s and is healed!
 %%%%
 by Freeze
 
-凍結により
+凍結によって
 %%%%
 attempts to bespell you!
 
@@ -6232,7 +6268,7 @@ The water swirls and strikes %s!
 %%%%
 by the raging water
 
-荒れ狂う水流により
+荒れ狂う水流によって
 %%%%
 The air twists around and violently strikes you in flight!
 
@@ -6248,7 +6284,7 @@ is struck by the twisting air!
 %%%%
 by the air
 
-烈風により
+烈風によって
 %%%%
 Something smites you!
 
@@ -6260,7 +6296,7 @@ is smitten.
 %%%%
 by divine providence
 
-神意により
+神意によって
 %%%%
 Something feeds on your intellect!
 
@@ -6476,7 +6512,7 @@ out of sight
 %%%%
 Hit by %s thrown by %s
 
-%sが投げた%sに命中した
+%sが投げた%sに当たった
 %%%%
 %s throws you!
 
@@ -6519,6 +6555,10 @@ an eerie melody
 奇妙なメロディ
 %%%%
 ############################## mon-clone.cc ##############################
+%%%%
+woven by
+
+が作り出した
 %%%%
 %s seems to step out of %s!
 
@@ -6634,12 +6674,21 @@ By Zin's power, the bennu's fires are quelled.
 
 ジンの御業により、ベンヌの炎の威力は抑えられた。
 %%%%
+hexed by the player character
+
+あなたに呪われた
+%%%%
+hexed by
+
+に呪われた
+%%%%
 By Zin's power, the fiery explosion is contained.
 
 ジンの御業により、燃えさかる爆発の威力は抑えられた。
 %%%%
 exploding inner flame
 
+内なる炎の爆発
 %%%%
 ignited by themself
 
@@ -7730,6 +7779,39 @@ Couldn't find a path from (%d,%d) to (%d,%d).
 stairwell
 
 階段
+%%%%
+led by
+
+に率いられた
+%%%%
+summoned by
+
+によって召喚された
+%%%%
+animated by
+
+に蘇らされた
+%%%%
+called from beyond by
+
+にあの世から呼び出された
+%%%%
+transmuted by
+
+に変化させられた
+%%%%
+attached to
+
+の
+# tentacle attached to kraken → クラーケンの触手
+%%%%
+created by
+
+に生み出された
+%%%%
+the player character
+
+あなた
 %%%%
 %s is enraged by your holy aura!
 
@@ -10509,7 +10591,7 @@ Trog's vigour flows through your veins.
 %%%%
 You pass out from exhaustion.
 
-あなたは疲労から回復した。
+あなたは疲労のあまり気絶してしまった。
 %%%%
 You are exhausted.
 
@@ -11062,11 +11144,11 @@ You can't quiver worn items.
 %%%%
 Shot with a%s %s by %s
 
-%sの%sに撃たれた
+%sに%sを撃たれた
 %%%%
 Hit by a%s %s thrown by %s
 
-%sの投げた%sに当たった
+%sが投げた%sに当たった
 %%%%
 %s is repelled.
 
@@ -13784,7 +13866,7 @@ You shudder.
 %%%%
 by Shatter
 
-粉砕の呪文によって
+粉砕によって
 %%%%
 The dungeon shakes around %s!
 
@@ -13905,10 +13987,6 @@ The %s shatters!
 You shatter!
 
 あなたは粉砕された！
-%%%%
-by Lee's Rapid Deconstruction
-
-リーの瞬間解体術によって
 %%%%
 %s shatters!
 
@@ -14198,7 +14276,7 @@ an exploding lurking horror
 %%%%
 by torment
 
-苦痛によって
+邪悪なる苦痛によって
 %%%%
 ############################## spl-miscast.cc ##############################
 %%%%
@@ -17121,6 +17199,14 @@ Escaped into the Abyss
 
 アビスに脱出した
 %%%%
+In your confused state, you trip and fall down the stairs.
+
+あなたは混乱しつつ、階段を転がり落ちた。
+%%%%
+In your confused state, you trip and fall through the gate.
+
+あなたは混乱しつつ、門をくぐって向こう側に転がり込んだ。
+%%%%
 You plunge deeper into the Abyss.
 
 あなたはアビスの更なる深みに沈んでいった。
@@ -17329,6 +17415,18 @@ Too many matches; use a more specific search.
 %s comes into view.
 
 %sに遭遇した。
+%%%%
+Tutorial
+
+チュートリアル
+%%%%
+Arena
+
+アリーナ
+%%%%
+Zot Defence
+
+ゾットディフェンス
 %%%%
 ############################## status.cc ##############################
 %%%%
@@ -18690,6 +18788,14 @@ drifts right through the net!
 
 は網をすり抜けた！
 %%%%
+a shadow trap
+
+影の怪物の罠
+%%%%
+triggered by
+
+の発動した
+%%%%
 Shadows whirl around %s...
 
 影が%sの周りを取り囲んだ……
@@ -19581,7 +19687,7 @@ Make book fixed [t]heme or fixed [l]evel?
 %%%%
 Value of which artefact?
 
-どのアーティファクトの価値を表示しますか？
+どのアーティファクトの強度を見ますか？
 %%%%
 That item is not an artefact!
 
@@ -19589,7 +19695,7 @@ That item is not an artefact!
 %%%%
 Make an artefact out of which item?
 
-どのアイテムをランダムアーティファクト化しますか？
+どのアイテムをアーティファクト化しますか？
 %%%%
 That item is already an unrandom artefact.
 
@@ -22287,7 +22393,6 @@ Nature
 %%%%
 # ホルヘ・ルイス・ボルヘス『バベルの図書館』ネタらしい
 Dhcmrlchtdj
-
 %%%%
 Combed Thunderclap
 

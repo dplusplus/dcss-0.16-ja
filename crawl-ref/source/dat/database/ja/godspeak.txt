@@ -1,3 +1,4 @@
+%%%%
 ############################################################
 # godspeak.txt contains the messages for divine speech.
 #
@@ -1189,5 +1190,5 @@ Zin penance
 Zin welcome
 
 # Zin says: Spread the light, my child.
-ジンは言った：『我が信徒よ、光の版図を広めよ』
+ジンは言った：『わが信徒よ、光の版図を広めよ』
 %%%%

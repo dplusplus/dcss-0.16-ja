@@ -202,8 +202,8 @@ void list_armour()
                        (i == EQ_SHIELD)      ? "盾" :
                        (i == EQ_BODY_ARMOUR) ? "鎧/服" :
                        (i == EQ_BOOTS ?
-                       (you.species == SP_CENTAUR ? "馬甲" :
-                           you.species == SP_NAGA ? "具装"
+                       (you.species == SP_CENTAUR
+                        || you.species == SP_NAGA ? "下肢"
                                                   : "靴")
                                              : "unknown"));
 

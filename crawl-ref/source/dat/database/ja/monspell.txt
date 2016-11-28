@@ -1,3 +1,4 @@
+%%%%
 # This file contains the messages used to "announce" a spell, like
 # "The wizard mumbles some strange words."  The messages are looked
 # up in the following order by the following keys:
