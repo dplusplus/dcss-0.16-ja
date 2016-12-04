@@ -41,8 +41,8 @@ Felid
 
 # These many-lived cats possess sentience, but are incapable of advanced item
 # manipulation or the use of armour or weapons.
-優れた知覚を持ち、何度も生き返る猫だ。しかし高度な道具や武器、
-防具を扱うことができない。
+優れた知覚を持ち、何度も生き返る猫だ。
+しかし高度な道具や武器、防具を扱うことができない。
 %%%%
 Formicid
 
@@ -90,14 +90,14 @@ Human
 Kobold
 
 # Kobolds are small, mischievous and a little fragile, but multi-talented.
-コボルドは小型であり、いたずら好きで軟弱だが、多様な才能を持っている。
+コボルドは小型であり、いたずら好きで体が貧弱だが、多様な才能を持っている。
 %%%%
 Merfolk
 
 # Half fish, half human, Merfolk are citizens of both water and land. They are
 # strong combatants, and adept at using magic to assist in battle.
-半人半魚の水棲の民は水陸両生である。彼らは強い闘士で、
-支援魔法の使用に熟達している。
+半人半魚の水棲の民は水陸両生である。
+彼らは強い闘士で、支援魔法の使用に熟達している。
 %%%%
 Minotaur
 
