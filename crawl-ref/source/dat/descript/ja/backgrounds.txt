@@ -10,8 +10,8 @@ Air Elementalist
 
 # Air Elementalists have learned the Shock spell. Later on, their book of Air
 # provides them with flexibility to survive.
-風の精霊使いは電撃の呪文を習得している。やがて、
-その風の魔法書は柔軟に生き延びる術をもたらすだろう。
+風の精霊使いは電撃の呪文を習得している。
+彼らの手にする風の魔法書は、柔軟に生き延びる術を後々もたらすだろう。
 %%%%
 Arcane Marksman
 
@@ -37,8 +37,8 @@ Berserker
 
 # Berserkers believe in Trog, the magic-hating god of frenzy. Not much can stop a
 # raging berserker early on, apart from hubris.
-狂戦士は魔法を憎む怒りの神トログを信じている。思い上がりは別にして、
-早くから激怒した狂戦士を止めることはできない。
+狂戦士は魔法を憎む怒りの神トログを信じている。
+序盤において怒れる狂戦士を止めるものは、自らの傲慢をおいて他にいない。
 %%%%
 Chaos Knight
 
@@ -58,14 +58,14 @@ Earth Elementalist
 # spell's power. More earthen spells are in their book of Geomancy.
 地の精霊使いは砂の突風の呪文を知っており、
 呪文の力を強化するためにいくらかの石を持っている。
-その地占術の魔法書にはさらに大地を操る呪文が書かれている。
+彼らの持つ地占術の魔法書にはさらに大地を操る呪文が書かれている。
 %%%%
 Enchanter
 
 # Enchanters use spells from the book of Maledictions to incapacitate their foes,
 # and are equipped with an enchanted dagger.
 呪術師は敵を無力化する呪詛の魔法書の呪文を使い、
-魔力を帯びたダガーを備えている。
+強化されたダガーを備えている。
 %%%%
 Fighter
 
@@ -129,8 +129,8 @@ Transmuter
 
 # Transmuters shift their form to fight in a beast's shape. They can turn sticks
 # into snakes as well.
-変異術師は小変異の魔法書を持って出発する。自らの体を変化させる魔法を会得するほか、
-棒きれを蛇に変えることもできる。
+変異術師は戦うために自らの体を獣の形へと変化させる。
+また、棒切れを蛇に変えることもできる。
 %%%%
 Venom Mage
 
