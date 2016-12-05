@@ -143,27 +143,26 @@ book of annihilations
 book of battle
 #A book of spells used by skalds, whose battle songs grant them magical help.
 
-スカルドが使用する呪文書だ。その戦いの詩歌は彼らに魔法の助けを授ける。
+吟遊詩人が使用する呪文書だ。その戦いの詩歌は彼らに魔法の助けを授ける。
 %%%%
 book of beasts
 #A book of spells focused on the magical production of beasts, with pages made
 #from animal skins and covers lined with teeth.
 
-この魔法書は獣の力を授かることに着目している。ページは動物の皮で出来ており、
-表紙には肉食獣の物であろう鋭い歯を装飾として施している。
+この魔法書は魔法によって獣を生み出すことに着目している。
+ページは動物の皮でできており、表紙は動物の歯で縁取られている。
 %%%%
 book of burglary
 #A book containing many diverse spells useful for theft, breaking and entering,
 #and other miscellaneous larceny.
 
-この本には殺生以外の様々な悪行を幇助するための魔法が書き連ねられている。
+窃盗や侵入、その他そういった行為に有用な様々な魔法を含む本だ。
 %%%%
 book of callings
 #An introductory text on the magical summoning of beasts and beings from other
 #realms.
 
-異空間から他者を呼び出す魔法の入門書だ。この本を学ぶことにより、
-番犬や低級悪魔程度の、比較的小さな存在を召喚することができる。
+異次元から獣やその他の存在を魔法によって召喚するための入門書だ。
 %%%%
 book of cantrips
 #A book containing a small selection of very basic magic spells, intended for
@@ -182,15 +181,17 @@ book of changes
 #of legs. The text is full of reassurances that this kind of thing doesn't
 #happen anymore.
 
-変異術の初歩について学べる魔法書だ。文章と共に丁寧なイラストが付随している。
-たとえば、人間の胴体から8本のクモの足が飛び出た魔法使い、鼻が鋭い剣と化した者、
-足がおぞましい触手に変化してしまった者など、魔法の運用に失敗した者たちの末路が描かれている。
-これらの失敗例を教訓として学べるあなたは幸せ者だ。同じ道を辿らぬよう注意せよ。
+変異術に関しての学生向けの入門書だ。
+学院初期の試行錯誤の歴史において、半人半蜘蛛になってしまったり、鼻が鋭い刃と
+化したり、足がタコのような触手に変化してしまった魔術師を描いた豊富なイラストが
+付随している。
+また、文章にはそのようなことは二度と起こらないと保証するただし書きがびっしりと
+書かれている。
 %%%%
 book of clouds
 #A book of magic spells for creating an assortment of clouds.
 
-この本には雲や気体を自在に操る魔法が綴られている。
+この本には雲や気体を生み出す魔法が綴られている。
 %%%%
 book of conjurations
 #A book containing an introduction to the destructive magical arts of
@@ -203,15 +204,16 @@ book of control
 #browse it sometimes find it hard to take their minds off the sigils and runes
 #inside.
 
-他者の心と体、及び空間を操るための魔法書だ。しかしそれらを自在に操ろうと試みた時、
-それがいかに難しい行為なのかを実感できるだろう。
+精神や肉体、そして空間さえも支配する魔法の呪文を収めた書だ。
+この書を読んだ者は、しばしば中に描かれた紋章やルーンが意識から離れなくなって
+しまっていることに気づく。
 %%%%
 book of death
 #A ghoulishly illuminated manuscript containing dark spells of Necromancy,
 #written with inks distilled from corpses. Each page is filled with grotesque
 #art depicting scenes of disgusting decay and horrifying death.
 
-邪悪な力を秘めるこの本は、死体から抽出されたインクが使われている。
+死体から抽出されたインクが使われている、残忍さに彩られた死霊術の写本だ。
 それぞれのページには、数々のおぞましい死の光景が芸術的に描かれている。
 %%%%
 book of debilitation
@@ -254,14 +256,15 @@ book of envenomations
 # written by Olgreb, the infamous Venom Mage, who murdered many of his rivals by
 # sending them highly poisonous copies as gifts. Current editions are fortunately
 # harmless.
-毒々しい緑色の装飾を施された魔法書だ。著者は、かの有名な毒術師オルグレブである。
-彼はこの本に実際に毒を仕込み贈答することで、多数の魔術師を殺害したという逸話がある。
-幸いにもそれ以降に刷られた当魔法書には、そういった悪質な罠は仕掛けられていない。
+毒々しい緑色に輝く魔法書だ。
+この本はかの悪名高き毒術師オルグレブによって最初に執筆された。彼はこの本の
+写しに実際に毒を仕込み贈答することで、多数の魔術師を殺害したという逸話がある。
+現代の版では、幸いにもそういった悪質な罠は仕掛けられていない。
 %%%%
 book of fire
 
 # A book containing advanced spells in the elemental school of Fire.
-この本には火炎術に熟練した魔術師向けの強力な魔法が記されている。
+この本には強力な火炎術の魔法が記されている。
 %%%%
 book of fixed level
 #A book of magic spells.
@@ -278,35 +281,37 @@ book of flames
 # The standard text used in arcane academies by students of the elemental magic
 # of Fire. The pages are inscribed with sigils of flame that glow with flickering
 # light to read by.
-火炎術を学ぶ者が一番最初に手渡される魔法書だ。ページは暖かな炎の光で照らされ、
-暗がりでのあなたの読書を助ける。
+魔法学院で火炎術を学ぶ学生のための標準教科書だ。
+ページには炎の紋章が記されており、ゆらめく光を放つことで読書するのを助ける。
 %%%%
 book of frost
 
 # A book of magic spells, often used as an introduction to the elemental magics
 # of Ice. The mystic runes are written in a flowing, jagged style, reminiscent of
 # frost covering a window.
-魔法における氷の領域の代名詞としてもたびたび用いられる魔法書だ。
-表紙に施される雪の結晶をモチーフにした神秘的な模様は、窓を覆い隠す霜のように不透明な色だ。
+氷の術の入門書としてしばしば用いられる魔法書だ。
+神秘的なルーンが流暢かつギザギザな形で記されており、窓を覆う霜を連想させる。
 %%%%
 book of geomancy
 
 # A book containing basic spells involving the element of Earth. The pages appear
 # to be made of thin sheets of mica.
-この魔法書を読むことによって、僅かながら大地の力を授かることができる。
-各ページは薄く加工された雲母石のシートで作られている。
+大地の力にまつわる初級の魔法を収めた魔法書だ。
+各ページは薄く加工された雲母石のシートで作られているようだ。
 %%%%
 book of hinderance
 
 # A mystic manual dedicated to the art of slowing the minds and bodies of one's
 # foes, written in a cramped, nearly incomprehensible script on very rigid pages.
-対象の心体を衰弱させるための魔法を集めた本だ。
+敵対する者の精神と肉体を鈍磨させる技術に特化した魔法書だ。
+板のように曲げづらいページに、読みにくくほとんど理解不能な文字で記されている。
 %%%%
 book of ice
 
 # A book of advanced magical spells using the element of Ice. The pages are
 # covered in flakes of frost.
-高度な氷領域の魔法を記した本だ。冷気を帯びており、全てのページが霜で覆われている。
+高度な氷領域の魔法を記した本だ。
+冷気を帯びており、全てのページが霜で覆われている。
 %%%%
 book of maledictions
 #This spellbook teaches Enchanters how to weaken and confound their enemies with
@@ -328,8 +333,8 @@ book of minor magic
 
 # A spellbook containing a variety of simple but useful magical incantations.
 # Many prominent spellcasters used this book to begin their arcane studies.
-この魔法書は様々な領域からいくつかの有用で初歩的な魔法をまとめている。
-偉大な魔法使いたちの多くも、無名のうちはこの本を熟読しているのだ。
+この魔法書はいくつもの初歩的ながら有用な魔法を収めている。
+偉大な魔法使いたちの多くも、駆け出しの頃はこの本を使っていたのだ。
 %%%%
 book of necromancy
 #A macabre book of magic spells, often the very first grimoire a beginning
@@ -346,7 +351,8 @@ book of party tricks
 
 # This book contains a number of fun spells guaranteed to liven up any wizarding
 # party, as well as a number of toasts, jokes, and party games.
-この本には、宴会やパーティーなどを盛り上げるための陽気な魔法が収録されている。
+この本には魔術師どうしでの宴会や乾杯、余興を盛り上げるための楽しげな魔法が
+収録されている。
 %%%%
 book of power
 #A book of powerful magic spells, coveted by ambitious wizards who seek to gain
@@ -384,8 +390,8 @@ book of the dragon
 # A magical book of spells which allow some command over dragons and their
 # aspects. Every page has a lavish illustration of a different variety of dragon,
 # both real and imaginary.
-ドラゴンにまつわる呪文を集めた魔法書だ。全てのページにおいて、
-実在するドラゴンと空想上のドラゴンの双方が迫力のあるタッチで描かれている。
+ドラゴンにまつわる呪文を集めた魔法書だ。
+どのページにも様々な種類のドラゴンが、実在非実在を問わず豊富に描かれている。
 %%%%
 book of the earth
 
@@ -396,14 +402,14 @@ book of the sky
 
 # A magical book containing powerful elemental spells of Air. The coruscating
 # runes within are written in flickering lightning.
-強力な大気を味方に付ける者だけが扱える魔法書だ。
-中に施された魔法により、常に稲妻を纏っている。
+強力な風の精霊術を収めた魔法書だ。
+本の中のルーンはぴかぴかと光る稲妻で描かれている。
 %%%%
 book of the tempests
 
 # This book contains magic spells which command some of the most destructive
 # forces of nature.
-この本には自然と調和した破壊的な魔法の数々が記されている。
+この魔法書には自然界の猛威を操る魔法が記されている。
 %%%%
 book of the warp
 #A book of Translocations spells for experienced Warpers. Some of its pages seem
@@ -468,7 +474,7 @@ broad axe
 
 # A war axe improved with langets, spikes, a lengthed haft and a single-bladed
 # crescent head.
-ウォーアックスをさらに大きく、長く、丈夫に改良した湾曲する片刃を持つ斧だ。
+ウォーアックスの各部位を改良し、柄を長くして、三日月型の片刃を付けた斧だ。
 %%%%
 buckler
 #A small piece of wood and metal, to be strapped on one arm for defence. It is
@@ -515,8 +521,8 @@ club
 # A heavy piece of wood. While clubs are rather primitive weapons, bashing
 # someone's skull in with one remains a very popular and effective means of
 # dispute resolution.
-重量感のある粗野な木の棒だ。目に見える通り原始的な武器だが、
-これで相手の頭蓋骨を叩き割ることは、依然として非常に一般的で効果的な戦闘手段だ。
+重量がある木の棒だ。棍棒は原始的な武器ではあるが、
+これで相手の頭蓋骨を叩き割ることは依然として非常に一般的で効果的な戦闘手段だ。
 %%%%
 corpse
 #A corpse. You can butcher it to produce edible meat chunks.
@@ -539,7 +545,7 @@ crystal plate armour
 cutlass
 
 # A broad curved short sword.
-広い刃渡りを持つ湾曲した短剣だ。
+幅広で湾曲した刃渡りを持つショートソードだ。
 %%%%
 dagger
 
@@ -561,18 +567,19 @@ deck of defence
 
 # A deck of magical cards, most of which defend the user from harm in various
 # ways.
-使用者を害から守る魔法が込められたカードのデッキだ。
+使用者を様々な方法で危害から守る魔法が込められたカードのデッキだ。
 %%%%
 deck of destruction
 
 # A deck of magical cards, most of which hurl death and destruction at one's foes
 # (or, if unlucky, at oneself).
-攻撃的な魔法が込められたカードのデッキだ。(稀にその効果は使用者自身に降りかかる)
+敵に死と破壊を振りまく魔法が主に込められたカードのデッキだ。
+(稀にその効果は使用者自身に降りかかる)
 %%%%
 deck of escape
 
 # A deck of magical cards, mainly dealing with various forms of escape.
-使用者を緊急時に退避させるための魔法が込められたカードのデッキだ。
+主に使用者を緊急時に退避させるための魔法が込められたカードのデッキだ。
 %%%%
 deck of oddities
 
@@ -583,17 +590,17 @@ deck of oddities
 deck of punishment
 
 # A deck of magical cards which wreak havoc on the user.
-使用者を混沌に陥れる危険なカードで構成されたデッキだ。
+使用者を混沌に陥れる危険な魔法が込められたカードのデッキだ。
 %%%%
 deck of summoning
 
 # A deck of magical cards, depicting a range of weird and wondrous creatures.
-使用者の周囲に様々な生物を召喚する魔法が込められたカードのデッキだ。
+奇怪で驚くべき生物が描かれた魔法のカードのデッキだ。
 %%%%
 deck of war
 
 # A deck of magical cards which are useful before and during battle.
-戦況を有利にするための魔法が込められたカードのデッキだ。
+戦闘前の準備に、もしくは戦闘の最中に役立つ魔法が込められたカードのデッキだ。
 %%%%
 deck of wonders
 
@@ -619,7 +626,7 @@ demon whip
 dire flail
 
 # A flail with long spikes and a heavier head.
-幾多の長い棘に覆われる重い球体をぶら下げたフレイルだ。
+打撃部をさらに重くして長い棘を付けたフレイルだ。
 %%%%
 disc of storms
 #This extremely powerful item can unleash a destructive storm of electricity.
@@ -631,15 +638,15 @@ disc of storms
 %%%%
 double sword
 
-A magical weapon with two razor-sharp blades.
-2つの鋭い刃を持つ魔法の武器だ。
+# A magical weapon with two razor-sharp blades.
+二つの鋭い刃を持つ魔法の武器だ。
 %%%%
 eggplant
 
 # A rotten eggplant which you can throw at the Crawl developers. It's a bug if
 # you ever see this message.
-訳：腐ったナス。当ゲームの開発陣に投げつけて使う。
-    このメッセージが表示されている場合、それはバグです。
+このゲームの開発陣に投げつけて使う腐ったナスだ。
+(※このメッセージが表示されている場合、それはバグです。)
 %%%%
 eudemon blade
 #A sacred blade from the forges of Heaven, inhabited by a good spirit. It is a
@@ -658,8 +665,8 @@ executioner's axe
 
 # A fearsome weapon covered in dried blood and crude engravings of torture and
 # death, bearing an enormous axehead.
-乾いた血で汚れている恐ろしい武器だ。一切の装飾が施されていないこの大斧は、
-対象に苦痛と死を与えることだけを目的に作られた。
+乾いた血にまみれ全面に苦悶と死の図案を粗く彫られた恐ろしい武器で、
+巨大な斧刃を備えている。
 %%%%
 falchion
 
@@ -671,16 +678,16 @@ fan of gales
 # An enchanted fan inhabited by benevolent air spirits. Swinging the fan
 # unleashes a blast of wind around the bearer and sets the spirits free to sweep
 # away the bearer's enemies.
-友好的な風の精霊が宿る扇だ。これをひとたび扇ぐだけで、
-周囲に強い風が巻き起こり、風の精霊たちを自由に操ることを可能にする。
+友好的な風の精霊が宿る扇だ。これを扇ぐと周囲に強い風が巻き起こり、
+敵を排除すべく風の精霊たちが解き放たれる。
 %%%%
 fen folio
 
 # A collection of spells once used by the great swamp civilizations. Their towers
 # have crumbled and decayed, but this book remains, pages flecked with peat
 # and moss.
-かつて沼を中心に栄えた文明によって書かれた魔法書だ。彼らの文明は衰退してしまったが、
-泥炭と苔に覆われたこの本は彼らの遺物として、今もなお人の手を転々としている。
+かつて広大な沼を中心に栄えた文明において使われていた魔法書だ。
+彼らの文明は崩壊し衰退してしまったが、泥炭と苔の染みついたこの本はいまだ現存している。
 %%%%
 fire dragon armour
 #Armour made from the scales of a fire-breathing dragon. It provides great
@@ -703,7 +710,7 @@ fire dragon hide
 flail
 
 # A mace with a short chain connecting the head to the haft.
-柄の先端に、鉄球が鎖で繋がれたメイスだ。
+柄と打撃部が短い鎖で繋がれたメイスだ。
 %%%%
 fruit
 
@@ -713,7 +720,7 @@ fruit
 giant club
 
 # A giant lump of wood.
-とても巨大な木の棍棒だ。
+巨大な木の棍棒だ。
 %%%%
 giant spiked club
 #A giant lump of wood with sharp spikes at one end.
@@ -754,10 +761,10 @@ grand grimoire
 # their will the terrible things from betwixt the planes. Many have been the
 # unwary souls, however, who have toyed with this tome and been driven mad by
 # unimaginable eldritch horrors.
-この本には、強大な力を持つ召喚術師が、
-異次元の怪物たちをいかなる方法で自らの意思通りに操れるかが書かれている。
-しかし、この本を扱おうとした者の多くが、
-想像を絶する怪物たちのおぞましき姿に精神を蝕まれ狂ってしまった。
+この本には、強大な力を持つ召喚術師が、異次元の怪物たちをいかなる方法で自らの
+意志通りに操れるかが記されている。
+しかし、不注意にもこの書物をぞんざいに扱った多くの者たちが想像を絶する
+怪物たちのおぞましき姿に精神を蝕まれ狂ってしまった。
 %%%%
 grape
 
@@ -773,8 +780,8 @@ greatsling
 # A large piece of cloth and leather, reinforced with a rigid frame for extra
 # rock-lobbing power. Does more damage when launching purpose-made projectiles,
 # rather than stones found on the floor.
-殺傷力の更なる向上のために、より大きな素材で作られたスリングだ。
-効率的なダメージを与えるためには、石ころよりも専用の弾を使うことが推奨される。
+大きな布や革を硬い骨組みで補強し、殺傷力の更なる向上を目指したスリングだ。
+床に落ちている石ころより、専用の弾を使うことでより大きな殺傷力が期待できる。
 %%%%
 great sword
 
@@ -785,7 +792,7 @@ halberd
 
 # A polearm consisting of an axe blade topped with a spike, mounted on a long
 # shaft.
-この槍は突くだけでなく、斧のような刃で敵を断つこともできる。
+長い軸の先に棘の生えた斧刃が付いた長柄武器だ。
 %%%%
 hammer
 
@@ -801,7 +808,8 @@ hand crossbow
 
 # A compact piece of machinery, used for firing bolts. It takes some time to load
 # and fire.
-片手でも扱える機械弓だ。一発ごとに手動で矢を装填する必要がある。
+専用の矢を撃ち出すための小型の器械だ。
+矢を装填して射撃するには少し時間がかかる。
 %%%%
 hat
 
@@ -827,7 +835,8 @@ hunting sling
 # A piece of cloth and leather for launching stones. Does more damage when
 # launching purpose-made projectiles, rather than rocks found on the floor.
 # Adequate for hunting small game, like rabbits or goblins.
-布切れと皮紐でできた投石器だ。専用の弾を使うことでより大きな殺傷力が期待できる。
+布切れと皮紐でできた投石器だ。
+床に落ちている石ころより、専用の弾を使うことでより大きな殺傷力が期待できる。
 主にウサギやゴブリンなどの小さな獲物を仕留めるのに適している。
 %%%%
 ice dragon armour
@@ -835,7 +844,8 @@ ice dragon armour
 # Armour made from the scales of a cold-breathing dragon. It provides great
 # protection from the effects of cold while rendering its wearer more susceptible
 # to the effects of fire.
-冷気を吐くドラゴンの鱗で造られた鎧だ。これは冷気に対する強力な保護効果をもたらすが
+冷気を吐くドラゴンの鱗で作られた鎧だ。
+これは冷気に対する強力な保護効果をもたらすが、
 着用者は火の影響によって傷つきやすくなってしまう。
 %%%%
 ice dragon hide
@@ -851,12 +861,13 @@ ice dragon hide
 iron rod
 
 # This rod allows its wielder to fire powerful blasts of metallic shrapnel.
-この魔法棒は、金属の破片を含む強力な爆風を発することができる。
+このロッドを手に持つことで、金属の破片の奔流を放つことができる。
 %%%%
 javelin
 
 # This lightweight spear is designed for throwing and can cause serious injury.
-投げて使うように設計された軽量の槍だ。突き刺さった者に致命傷を与えることができる。
+投げて使うように設計された軽量の槍だ。
+突き刺さった者に重傷を与えることができる。
 {{
     if you.race() == "Halfling"
         or you.race() == "Kobold"
@@ -881,50 +892,52 @@ lamp of fire
 # A magical lamp inhabited by benevolent fire spirits. Unlatching the case sets
 # the spirits free to dance about in a blaze upon the bearer's enemies.
 友好的な火の精霊が宿る魔法のランプだ。留め金を外すことにより、
-使用者と敵対する者に爆炎が吹き込み、火の精霊たちを自由に操ることを可能にする。
+使用者と敵対する者に爆炎を浴びせ、火の精霊たちが解き放たれる。
 %%%%
 lantern of shadows
 
 # An unholy device which calls forth flickering shadows to assist its wielder. It
 # shrouds the wielder in unnatural darkness, making them unstealthy and
 # significantly reducing the power of their spells.
-この邪悪な魔法具はあなたを影で覆い隠す。その不自然な暗闇の中では、
-武器を振るうことも魔法を唱えることもままならないだろう。
+これを手に持つ者を援護するべくゆらめく影を呼び出す忌まわしき魔法具だ。
+周囲を不自然な暗闇で覆い隠すが、その中では隠密性が下がり、
+魔法の威力が著しく減衰させられる。
 %%%%
 large rock
 
-# A very large and very heavy stone. {{
+# A very large and very heavy stone.
 とても大きくとても重い岩だ。 {{
-    if you.race() == "Ogre"
-       or you.race() == "Troll"
+   if you.race() == "Ogre"
+      or you.race() == "Troll"
    then
-       return ""
+      return ""
    else
-   --  return "Exceptional strength is needed even to carry one, and " ..
-   --         "only large creatures are capable of throwing it."
-       return "持ち運ぶことすら容易でない大岩だが、"
-              "相応に巨大な体躯の持ち主ならば敵に投げつけることも可能だろう。"
+   -- return "Exceptional strength is needed even to carry one, and " ..
+   --        "only large creatures are capable of throwing it."
+      return "持ち運ぶことすら並外れた力を要する大岩だが、" ..
+             "相応に巨大な体躯の持ち主ならば敵に投げつけることも可能だろう。"
    end
 }}
 %%%%
 large shield
 
-# A large piece of wood and metal, to be strapped on one arm for defence. {{
-より大きな木材と金属で作られた盾だ。片手で扱うことができる。 {{
+# A large piece of wood and metal, to be strapped on one arm for defence.
+より大きな木材と金属で作られた盾だ。片手で扱うことができる。
+{{
     if you.race() == "Ogre"
        or you.race() == "Troll"
        or you.race() == "Naga"
        or you.race() == "Centaur"
        or you.race() == "Formicid"
     then
-    --  return "It looks like it would fit you well."
-        return "あなたに相応しい防具だろう。"
+       -- return "It looks like it would fit you well."
+       return "あなたにふさわしい防具だろう。"
     else
-    --  return "It is very cumbersome to wear, and, without a great " ..
-    --         "deal of training, greatly slows the rate at which a " ..
-    --         "warrior attacks."
-        return "これを扱うには相当な鍛錬を要するが、"
-               "鍛錬を怠る者がこの盾を持ったまま武器を振るうのは非常に難しいだろう。"
+       -- return "It is very cumbersome to wear, and, without a great " ..
+       --        "deal of training, greatly slows the rate at which a " ..
+       --        "warrior attacks."
+       return "これの装備は非常に扱いづらく、" ..
+              "厳しく鍛錬を積まなければ、武器を振る速さが著しく遅くなってしまう。"
     end
 }}
 %%%%
@@ -943,9 +956,11 @@ lightning rod
 # sustained, and can be redirected to new targets by evoking the rod in
 # subsequent turns (failing to do so will release the trigger). The rod takes a
 # moment to warm up, making short bursts rather ineffective.
-この魔法棒は、連続した使用により、広い範囲に放電することができる。
-この性質故に、単発の使用は効果的ではない。
-なお、連続の使用による放電増幅の制御はできない。
+このロッドで電撃を連続して浴びせることができる。
+具体的には、一度発動した直後のターンにロッドを再発動して別の方向を狙うことで、
+広範囲に放電することができる。
+(そうしなければ引き金を放して単発の電撃を撃ったのと同じになる)
+このロッドは威力が上がるのに時間がかかるため、単発の使用は効果的ではない。
 %%%%
 long sword
 
@@ -969,13 +984,13 @@ lychee
 mace
 
 # A short club with a metal head.
-金属で作られた小型の鈍器だ。
+金属の打撃部を持つ小型の棍棒だ。
 %%%%
 manual
 
 # A valuable book which allows one to practise a certain skill more efficiently
 # when carried.
-あなたのスキルをの成長を促進する貴重な本だ。持ち歩くだけで効果がある。
+持ち歩くことで、特定のスキルの成長をさらに促進する貴重な本だ。
 %%%%
 meat ration
 #A filling ration of dried and preserved meats.
@@ -985,7 +1000,7 @@ meat ration
 morningstar
 
 # A mace with a head covered in short spikes.
-敵を殴打する部分が短い棘で覆われた鈍器だ。
+敵を殴打する部分が短い棘で覆われたメイスだ。
 %%%%
 mottled dragon armour
 
@@ -996,15 +1011,16 @@ mottled dragon armour
 斑紋ドラゴンの皮で造られた鎧だ。
 これは他の上位種ドラゴンの皮から造られた鎧ほど強固ではないが、
 それらよりは軽量で、着用者の行動を阻害しない。
-また、非常に滑らかなこの素材は、粘着性の炎も水のように流れ落ちる。
+また非常に滑らかなこの素材は、粘着性の炎も水のように流れ落とす。
 %%%%
 mottled dragon hide
 
 # The weirdly-patterned scaly skin of a mottled dragon. It may be turned into
 # proper armour by magical means. Its smooth surface lets sticky flames flow off
 # it like water.
-奇妙な模様に彩られた斑紋ドラゴンの皮だ。魔法の力を与えることで適切な鎧になる。
-また、非常に滑らかなこの素材は、粘着性の炎も水のように流れ落ちる。
+奇妙な模様に彩られた斑紋ドラゴンの皮だ。
+魔法の力を与えることでちゃんとした鎧になる。
+その滑らかさゆえ、粘着性の炎も水のように流れ落とす。
 %%%%
 mutagenic chunk of flesh
 
@@ -1021,16 +1037,16 @@ necronomicon
 # tried to study this tome, only to find themselves entangled within necromantic
 # forces they could not hope to control.
 これは邪悪で強大な力を秘められた、とても貴重な本だ。
-幾多の魔法使いが死霊術の極意をこの本から得ようとしたが、
-解読すらもままならなかったという。
+幾多の向こう見ずな魔法使いがこの本を研究しようとしたが、
+制御できない黒魔術の力に取り込まれる結果となってしまった。
 %%%%
 needle
 
 # A thin piece of metal, typically coated in some harmful substance. When
 # launched from a blowgun it can deliver its toxins into the bloodstream of a
 # living or demonic being.
-有害な薬を塗られた毒針だ。専用の筒で吹き放つことで、
-主に生者や悪魔に遠距離から毒を盛ることができる。
+有害な薬を塗られた金属の針だ。専用の筒で吹き放つことで、
+生者や悪魔に対し毒を盛ることができる。
 %%%%
 orange
 
@@ -1076,8 +1092,8 @@ phantom mirror
 # decreases with the magic resistance of the target. It is, invariably, slightly
 # weaker than the creature it mirrors.
 付近に居る者を写すことで対象の分身を作り上げることができる手鏡だ。なお、
-一度使用するとこの手鏡は壊れてしまう。分身が存在できる時間は、
-使用者の魔道具を扱う技術と対象の魔法耐性により変動する。
+一度使用するとこの手鏡は壊れてしまう。分身が存在できる時間は使用者の発動スキル
+によって増加するが、対象の魔法耐性が高いと減少する。
 この手鏡によって映し出された分身は、対象よりもわずかに能力が劣っている。
 %%%%
 phial of floods
@@ -1086,8 +1102,7 @@ phial of floods
 # unleashes a torrent of water from the phial and sets free the water spirits
 # that dwell within it.
 友好的な水の精霊が宿る魔法の小瓶だ。
-蓋を開けることで対象を押しのけるほどの激流が吹き出し、
-水の精霊たちを操ることを可能にする。
+栓を開けることで対象を押しのけるほどの激流が吹き出し、水の精霊たちを解き放つ。
 %%%%
 plate armour
 
@@ -1110,9 +1125,9 @@ potion of ambrosia
 # A strange substance, produced by ghost moths. Consuming it causes regeneration
 # of health and magic, along with total befuddlement. The two effects are
 # fundamentally linked - the regeneration ends the moment the confusion does.
-幽体蛾によって作られた奇妙な物質だ。服用することにより、
-体力と魔力の再生、及び混乱状態を引き起こす。
-再生と混乱は根本的には同じ作用のため、混乱状態が解けると再生も止まる。
+幽体蛾によって作られた奇妙な物質だ。
+服用することにより、体力と魔力の再生、及び混乱状態を引き起こす。
+この再生と混乱は根本的に結びついているため、混乱状態が解けると再生も止まる。
 %%%%
 potion of beneficial mutation
 #A potion which gives you a supposedly good mutation.
@@ -1127,7 +1142,7 @@ potion of berserk rage
 potion of blood
 
 # A potion containing the essence of life. Vampires find it... vital.
-生物が生きるために必要不可欠な液体だが、一部の死者もこれを必要としている。
+生物が生きるために必要不可欠な液体だが、吸血鬼もある意味で必要としている。
 %%%%
 potion of brilliance
 #A magic potion which greatly increases the intelligence and magical power of
@@ -1138,8 +1153,8 @@ potion of brilliance
 potion of cancellation
 
 # A potion which ends most magical effects, good or bad, affecting you.
-これは魔法の水薬だ。
-これは飲んだ者の体に宿る魔法の効力を、良性、悪性を問わずに打ち消す。
+あなたの体に影響を及ぼしているほとんどの魔法の効力を、良性、悪性を問わずに
+打ち消す水薬だ。
 %%%%
 potion of confusion
 
@@ -1156,7 +1171,7 @@ potion of curing
 
 # A potion which heals some wounds, clears the mind and cures diseases. If it is
 # used when one is at or near full health, it can also slightly repair rotting.
-これは水薬だ。これは飲んだ者の傷をわずかに癒し、病気や朦朧状態を治療する。
+これを飲んだ者の傷をわずかに癒し、病気や混乱状態を治療する水薬だ。
 また、十分な体力を確保して飲んだ場合には、体の腐敗を治療することもできる。
 %%%%
 potion of decay
@@ -1169,7 +1184,7 @@ potion of decay
 potion of degeneration
 
 # A noxious concoction which reduces strength, intelligence or dexterity.
-腕力、知力、器用の一時的な衰えを引き起こす危険な有害物質だ。
+腕力、知力、器用さの一時的な衰えを引き起こす危険な有害物質だ。
 %%%%
 potion of experience
 #A truly wonderful and very rare drink.
@@ -1186,7 +1201,7 @@ potion of heal wounds
 # A magical healing elixir which causes wounds to close and heal almost
 # instantly. If it is used when one is at or near full health, it can also repair
 # rotting.
-これは魔法の水薬だ。これは飲んだ者の傷を瞬く間に治癒する。
+これを飲んだ者の傷をふさぎ、瞬く間に治癒する魔法の霊薬だ。
 また、十分な体力を確保して飲んだ場合には、体の腐敗を治療することもできる。
 %%%%
 potion of invisibility
@@ -1199,15 +1214,14 @@ potion of lignification
 # A potion which temporarily transforms the imbiber into an animated tree with
 # branches capable of holding weapons. Such a tree is very resilient, although it
 # is rooted in place for the duration and cannot teleport.
-これを飲んだ者は一時的に樹木と化してしまう。
-毒や負のエネルギーの影響を受けなくなり、強靭な枝で武器を振るうことが出来るが、
-一時的に防具の恩恵を得られなくなる。また、その形態は深く根を張るので、
-テレポートや瞬間移動も不可能になる。
+これを飲んだ者を、枝で武器を持つこともできるうごめく樹木と変えてしまう水薬だ。
+この樹の体はとても頑丈だが、変化している間は地面に根を張っているため
+テレポートや瞬間移動はできなくなる。
 %%%%
 potion of magic
 
 # A valuable potion which grants an infusion of magical energy.
-これは水薬だ。これは飲んだ者の魔力を回復する。
+これを飲んだ者の魔力を回復する貴重な水薬だ。
 %%%%
 potion of might
 #A magic potion which greatly increases the strength and physical power of one
@@ -1241,7 +1255,7 @@ potion of restore abilities
 
 # A potion which restores the abilities of one who drinks it. It may also be used
 # to restore breath after using a breath weapon.
-これは水薬だ。これは飲んだ者の一時的な能力の減少を回復する。
+これを飲んだ者の一時的な能力の減少を回復する水薬だ。
 また、呼吸阻害状態を治癒することもできる。
 %%%%
 potion of slowing
@@ -1252,7 +1266,7 @@ potion of slowing
 potion of haste
 
 # An enchanted beverage which speeds the actions of anyone who drinks it.
-これは魔法の水薬だ。これは飲んだ者はさらに素早く行動できる。
+これを飲んだ者の行動を加速する魔法の飲料だ。
 %%%%
 quad damage
 #A mysterious item resembling a rune of some kind. Once evoked, it will make the
