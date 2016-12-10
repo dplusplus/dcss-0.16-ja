@@ -3,79 +3,96 @@ See you next game!
 
 次のゲームでお会いしましょう！
 %%%%
+hint new level with spellcasting without hints mode
+
+#                 text << "Gaining an experience level allows you to learn more "
+#                         "difficult spells. However, you don't have any level "
+#                         "two spells in your current spellbook, so you'll just "
+#                         "have to keep exploring!";
+経験レベルを上げることでさらに高度な呪文を習得することが可能になります。
+しかしながら、 あなたが所持している魔法書にはレベル2の呪文は収められていないため、
+今は探索を続けてください！
+%%%%
+hint new level with spellcasting use tile
+
+#             text << "Gaining an experience level allows you to learn more "
+#                     "difficult spells. Time to memorise your second spell "
+#                     "with <w>%</w>"
+# #ifdef USE_TILE
+#                  << " or by <w>clicking</w> on it in the memorisation tab"
+# #endif
+#                  << ".";
+経験レベルを上げることでさらに高度な呪文を習得することが可能になります。
+<w>[%]</w>を押すか、呪文記憶タブの中の目的の呪文アイコンを<w>クリック</w>して2つめの呪文を習得してください。
+%%%%
+hint new level with spellcasting
+
+経験レベルを上げることでさらに高度な呪文を習得することが可能になります。
+<w>[%]</w>を押して2つめの呪文を習得してください。
+%%%%
 hint new level
 
-#         text << "Well done! Reaching a new experience level is always a "
-#                 "nice event: you get more health and magic points, and "
-#                 "occasionally increases to your attributes: strength, "
-#                 "intelligence, and dexterity.";
+#             text << "Well done! Reaching a new experience level is always a "
+#                     "nice event: you get more health and magic points, and "
+#                     "occasionally increases to your attributes (strength, "
+#                     "intelligence, dexterity).";
 よくできました！ レベルが上がることはいつだってよい出来事です。
-HPやMPが増加し、 時には腕力や知力、 器用さといった能力値が上昇することもあります。
+HPやMPが増加し、 時には能力値(腕力、知力、器用さ)が上昇することもあります。
 %%%%
 hint new level magic char
 
-#             text << "\nGaining an experience level also lets you learn more "
-#                     "difficult spells. You can memorise a second spell "
-#                     "with <w>%</w>"
-# #ifdef USE_TILE
-#                     ", or by <w>clicking</w> on it in the memorisation tab"
-# #endif
-#                     ".";
-経験レベルを上げることでさらに高度な呪文を習得することが可能になります。
-<w>[%]</w>を押すか、呪文記憶タブの中の目的の呪文アイコンを<w>クリック</w>して2つめの呪文を習得できます。
+#             text << "\nAlso, new experience levels let you learn more spells "
+#                     "(the Spellcasting skill also does this). For now, you "
+#                     "should try to memorise the second spell of your "
+#                     "starting book with <w>%a</w>, which can then be zapped "
+#                     "with <w>%b</w>.";
+また、経験レベル(もしくは呪文詠唱スキルレベル)が上がるとさらなる呪文を習得することが可能になります。
+初期本に収められた2つめの呪文を覚えるために<w>[%a]</w>を押しましょう。
+そうすると<w>[%b]</w>を押して呪文を行使することができます。
 %%%%
 hint new level magic char use tile
 
-経験レベルを上げることでさらに高度な呪文を習得することが可能になります。
-<w>[%]</w>を押して2つめの呪文を習得できます。
-%%%%
-hint skill raise use tile web
-
-#         text << "One of your skills just reached a milestone. The skills you "
-#                 "use are automatically trained whenever you gain experience, "
-#                 "by killing monsters. By default, experience goes to skills "
-#                 "you actively use. To view or manage your skills, "
-# #ifdef USE_TILE_WEB
-#                 "type <w>%</w>.";
-# #else
-#                 "<console>type <w>%</w>.</console>"
-#                 "<tiles>click on the skill tab in the bottom-right.</tiles>";
-# #endif
-あなたの持っているスキルが一定値に達しました。
-使用しているスキルはモンスターを倒して経験値を得ることによって自動的に鍛錬されます。
-通常、 スキル経験値はあなたが積極的に用いているスキルから優先的に割り振られます。
-スキル経験値の様子を閲覧する、 または割り振りを管理するには<w>[%]</w>を押してください。
+#             text << " Memorising is also possible by doing a <w>left "
+#                     "click</w> on the book in your inventory, or by clicking "
+#                     "on the <w>spellbook tab</w> to the left of your "
+#                     "inventory.";
+呪文の記憶はインベントリパネルの魔法書アイコンを<w>クリック</w>したり、
+インベントリパネルの横の<w>魔法書タブ</w>をクリックすることによっても可能です。
 %%%%
 hint skill raise
 
+#         text << "One of your skills just passed a whole integer point. The "
+#                 "skills you use are automatically trained whenever you gain "
+#                 "experience (by killing monsters). By default, experience goes "
+#                 "towards skills you actively use, although you may choose "
+#                 "otherwise. To view or manage your skill set, type <w>%</w>.";
 あなたの持っているスキルが一定値に達しました。
-使用しているスキルはモンスターを倒して経験値を得ることによって自動的に鍛錬されます。
-通常、スキル経験値はあなたが積極的に用いているスキルから優先的に割り振られます。
-スキル経験値の様子を閲覧する、 または割り振りを管理するには
-<console><w>[%]</w>を押してください。</console>
-<tiles>画面右下の'スキル'タブをクリックしてください。</tiles>
+使用しているスキルは(モンスターを倒して)経験値を得ることによって自動的に鍛錬されます。
+通常、 スキル経験値はあなたが積極的に用いているスキルから優先的に割り振られますが、
+別の方式を選択することもできます。
+スキル経験値の様子を閲覧する、 または割り振りを管理するには<w>[%]</w>を押してください。
 %%%%
 hint choose stat
 
-#         text << "Every third level, you get to choose an attribute to raise: "
-#                 "strength, intelligence, or dexterity.\n"
-#                 "<w>Strength</w> makes heavy armour less cumbersome and "
-#                 "slightly increases weapon damage.\n"
-#                 "<w>Intelligence</w> makes your spells more reliable and "
-#                 "powerful.\n"
-#                 "<w>Dexterity</w> increases your evasion and stealth.";
+#         text << "Every third level you get to choose a stat to raise: "
+#                 "Strength, Intelligence, or Dexterity. "
+#                 "<w>Strength</w> affects your effectiveness in combat "
+#                 "and makes it easier to wear heavy armour. "
+#                 "<w>Intelligence</w> makes it easier to cast spells and "
+#                 "reduces the amount by which you hunger when you do so. "
+#                 "<w>Dexterity</w> increases your evasion "
+#                 "and stealth.\n";
 レベルが3の倍数になるごとに、 腕力・知力・器用さの中から選んで能力値を上昇させることができます。
-<w>腕力</w>は重鎧の扱いが楽になり、 武器によるダメージをある程度上昇させます。
-<w>知力</w>はあなたの唱える魔法をより頼もしく、 強力にすることができます。
+<w>腕力</w>は戦闘におけるあなたの能力に影響し、重鎧を着るのが楽になります。
+<w>知力</w>は呪文を唱えやすくし、その結果消費する満腹度の量を抑えます。
 <w>器用さ</w>はあなたの回避能力や隠密性を高めます。
 %%%%
 hint you cursed
 
 #         text << "Cursed equipment, once worn or wielded, cannot be dropped or "
-#                 "removed. Scrolls of remove curse will remove all curses "
-#                 "from your current equipment.";
+#                 "removed. Curses can be removed by reading certain scrolls.";
 呪われている装備品を一度装備すると、 床に置いたり装備を外すことができなくなります。
-解呪の巻物によって今装備しているアイテムの呪いをまとめて解くことができます。
+呪いは特定の巻物を唱えることによって解呪できます。
 %%%%
 hint removed curse
 
@@ -109,17 +126,17 @@ hint healing potions
 あなたのHPは危険なまでに低下しています。
 逃げるか、HPを回復する薬を飲むか、あるいはその両方を行うのがよいでしょう。
 %%%%
-hint new ability item flying use tile local
+hint new ability item flying use tile
 
 #             text << "Flight will allow you to cross deep water or lava. To "
-#                     "activate it, select the corresponding ability in the "
-#                     "ability menu (<w>%</w>"
-# #ifdef USE_TILE_LOCAL
+#                     "activate it, select the corresponding ability in the ability "
+#                     "menu (<w>%</w>"
+# #ifdef USE_TILE
 #                     " or via <w>mouseclick</w> in the <w>command panel</w>"
 # #endif
-#                     "). Once flying, keep an eye on the status line and "
-#                     "messages, as most forms of flight have a limited "
-#                     "duration.";
+#                     "). Once flying, keep an eye on the status line and messages "
+#                     "as it will eventually time out and may cause you to fall "
+#                     "into water and drown.";
 飛行能力によって、 溶岩や深い水の上を渡ることができるようになります。
 能力を発動するには、 能力メニュー(<w>[%]</w> もしくは <w>コマンドパネル</w>を<w>[クリック]</w>)を開いて能力を選択してください。
 一度飛行したら、ステータス行やメッセージを見逃さないようにしましょう。
@@ -129,14 +146,14 @@ hint new ability item flying
 
 飛行能力によって、 溶岩や深い水の上を渡ることができるようになります。
 能力を発動するには、 能力メニュー(<w>[%]</w>)を開いて能力を選択してください。
-一度飛行したら、 ステータス行やメッセージを見逃さないようにしましょう。
-ほとんどの手段では限られた時間しか飛ぶことができません。
+一度飛行したら、 時間切れ間近を示すステータス行やメッセージでの表示を見逃さないようにしてください。
+水の中に落ちて溺死してしまうことがあります。
 %%%%
-hint item resistances use tile local
+hint item resistances use tile
 
 #         text << "Equipping this item affects your resistances. Check the "
 #                 "overview screen (<w>%</w>"
-# #ifdef USE_TILE_LOCAL
+# #ifdef USE_TILE
 #                 " or click on the <w>character overview button</w> in the "
 #                 "command panel"
 # #endif
@@ -149,14 +166,14 @@ hint item resistances
 このアイテムを装備するとあなたの耐性に影響を与えます。
 キャラクター概要画面(<w>[%]</w>)で詳しい情報をチェックしましょう。
 %%%%
-hint spell miscast use tile local
+hint spell miscast use tile
 
 #             text << "Miscasting a spell can have nasty consequences, "
 #                     "particularly for the more difficult spells. Your chance "
 #                     "of successfully casting a spell increases with your magic "
 #                     "skills, and can also be improved with the help of some "
 #                     "items. Use the <w>%</w> command "
-# #ifdef USE_TILE_LOCAL
+# #ifdef USE_TILE
 #                     "or mouse over the spell tiles "
 # #endif
 #                     "to check your current failure rates.";
