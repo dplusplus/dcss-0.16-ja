@@ -375,7 +375,7 @@ w:15
 @_sky_or_light_@の
 
 w:20
-@_number_or_qualifier_@ @_thing_names_@の
+@_number_or_qualifier_@@_thing_names_@の
 
 @_discomfort_weapon_@の
 
