@@ -1789,12 +1789,21 @@ void learned_something_new(hints_event_type seen_what, coord_def gc)
         {
             if (!crawl_state.game_is_hints())
             {
+                text << jtrans("hint new level with spellcasting without hints mode");
+                /*
                 text << "Gaining an experience level allows you to learn more "
                         "difficult spells. However, you don't have any level "
                         "two spells in your current spellbook, so you'll just "
                         "have to keep exploring!";
+                */
                 break;
             }
+#ifdef USE_TILE
+            text << jtrans("hint new level with spellcasting use tile");
+#else
+            text << jtrans("hint new level with spellcasting");
+#endif
+            /*
             text << "Gaining an experience level allows you to learn more "
                     "difficult spells. Time to memorise your second spell "
                     "with <w>%</w>"
@@ -1802,28 +1811,38 @@ void learned_something_new(hints_event_type seen_what, coord_def gc)
                  << " or by <w>clicking</w> on it in the memorisation tab"
 #endif
                  << ".";
+            */
             cmd.push_back(CMD_MEMORISE_SPELL);
         }
         else
         {
+            text << jtrans("hint new level");
+            /*
             text << "Well done! Reaching a new experience level is always a "
                     "nice event: you get more health and magic points, and "
                     "occasionally increases to your attributes (strength, "
                     "intelligence, dexterity).";
+            */
         }
 
         if (Hints.hints_type == HINT_MAGIC_CHAR)
         {
+            text << "\n" + jtrans("hint new level magic char");
+            /*
             text << "\nAlso, new experience levels let you learn more spells "
                     "(the Spellcasting skill also does this). For now, you "
                     "should try to memorise the second spell of your "
                     "starting book with <w>%a</w>, which can then be zapped "
                     "with <w>%b</w>.";
+            */
 #ifdef USE_TILE
+            text << " " + jtrans("hint new level magic char use tile");
+            /*
             text << " Memorising is also possible by doing a <w>left "
                     "click</w> on the book in your inventory, or by clicking "
                     "on the <w>spellbook tab</w> to the left of your "
                     "inventory.";
+            */
 #endif
             cmd.push_back(CMD_MEMORISE_SPELL);
             cmd.push_back(CMD_CAST_SPELL);
@@ -1831,13 +1850,14 @@ void learned_something_new(hints_event_type seen_what, coord_def gc)
         break;
 
     case HINT_SKILL_RAISE:
-
+        text << jtrans("hint skill raise");
+        /*
         text << "One of your skills just passed a whole integer point. The "
                 "skills you use are automatically trained whenever you gain "
                 "experience (by killing monsters). By default, experience goes "
                 "towards skills you actively use, although you may choose "
                 "otherwise. To view or manage your skill set, type <w>%</w>.";
-
+        */
         cmd.push_back(CMD_DISPLAY_SKILLS);
         break;
 
@@ -1868,6 +1888,8 @@ void learned_something_new(hints_event_type seen_what, coord_def gc)
         break;
 
     case HINT_CHOOSE_STAT:
+        jtrans("hint choose stat");
+        /*
         text << "Every third level you get to choose a stat to raise: "
                 "Strength, Intelligence, or Dexterity. "
                 "<w>Strength</w> affects your effectiveness in combat "
@@ -1876,6 +1898,7 @@ void learned_something_new(hints_event_type seen_what, coord_def gc)
                 "reduces the amount by which you hunger when you do so. "
                 "<w>Dexterity</w> increases your evasion "
                 "and stealth.\n";
+        */
         break;
 
     case HINT_YOU_ENCHANTED:
@@ -1923,13 +1946,19 @@ void learned_something_new(hints_event_type seen_what, coord_def gc)
         break;
 
     case HINT_YOU_CURSED:
+        jtrans("hint you cursed");
+        /*
         text << "Cursed equipment, once worn or wielded, cannot be dropped or "
                 "removed. Curses can be removed by reading certain scrolls.";
+        */
         break;
 
     case HINT_REMOVED_CURSE:
+        jtrans("hint removed curse");
+        /*
         text << "The curses on your worn equipment have been removed, so you "
                 "can now unequip any previously cursed items.";
+        */
         break;
 
     case HINT_YOU_HUNGRY:
@@ -1956,6 +1985,12 @@ void learned_something_new(hints_event_type seen_what, coord_def gc)
         break;
 
     case HINT_MULTI_PICKUP:
+#ifdef USE_TILE
+        text << jtrans("hint multi pickup use tile");
+#else
+        text << jtrans("hint multi pickup");
+#endif
+        /*
         text << "There are a lot of items here. You choose what to pick up "
                 "from a menu: type <w>%</w> "
 #ifdef USE_TILE
@@ -1963,6 +1998,7 @@ void learned_something_new(hints_event_type seen_what, coord_def gc)
 #endif
                 "to enter the pickup menu. To leave the menu, confirm your "
                 "selection with <w>Enter</w>.";
+        */
         cmd.push_back(CMD_PICKUP);
         break;
 
@@ -2108,8 +2144,11 @@ void learned_something_new(hints_event_type seen_what, coord_def gc)
         break;
 
     case HINT_HEALING_POTIONS:
+        jtrans("hint healing potions");
+        /*
         text << "Your health is getting dangerously low. Retreating and/or "
                 "quaffing a potion of heal wounds or curing might be a good idea.";
+        */
         break;
 
     case HINT_NEED_HEALING:
@@ -2266,6 +2305,12 @@ void learned_something_new(hints_event_type seen_what, coord_def gc)
         // tutorial.
         if (you.evokable_flight())
         {
+#ifdef USE_TILE
+            jtrans("hint new ability item flying use tile");
+#else
+            jtrans("hint new ability item flying");
+#endif
+            /*
             text << "Flight will allow you to cross deep water or lava. To "
                     "activate it, select the corresponding ability in the ability "
                     "menu (<w>%</w>"
@@ -2275,6 +2320,7 @@ void learned_something_new(hints_event_type seen_what, coord_def gc)
                     "). Once flying, keep an eye on the status line and messages "
                     "as it will eventually time out and may cause you to fall "
                     "into water and drown.";
+            */
         }
         else
         {
@@ -2289,6 +2335,12 @@ void learned_something_new(hints_event_type seen_what, coord_def gc)
         break;
 
     case HINT_ITEM_RESISTANCES:
+#ifdef USE_TILE
+            jtrans("hint item resistances use tile");
+#else
+            jtrans("hint item resistances");
+#endif
+        /*
         text << "Equipping this item affects your resistances. Check the "
                 "overview screen (<w>%</w>"
 #ifdef USE_TILE
@@ -2296,6 +2348,7 @@ void learned_something_new(hints_event_type seen_what, coord_def gc)
                 "command panel"
 #endif
                 ") for details.";
+        */
         cmd.push_back(CMD_RESISTS_SCREEN);
         break;
 
@@ -2653,6 +2706,12 @@ void learned_something_new(hints_event_type seen_what, coord_def gc)
 
         if (!crawl_state.game_is_hints())
         {
+#ifdef USE_TILE
+            text << jtrans("hint spell miscast use tile");
+#else
+            text << jtrans("hint spell miscast");
+#endif
+            /*
             text << "Miscasting a spell can have nasty consequences, "
                     "particularly for the more difficult spells. Your chance "
                     "of successfully casting a spell increases with your magic "
@@ -2662,6 +2721,7 @@ void learned_something_new(hints_event_type seen_what, coord_def gc)
                     "or mouse over the spell tiles "
 #endif
                     "to check your current failure rates.";
+            */
             cmd.push_back(CMD_DISPLAY_SPELLS);
             break;
         }
@@ -2868,8 +2928,11 @@ void learned_something_new(hints_event_type seen_what, coord_def gc)
         cmd.push_back(CMD_WAIT);
         break;
     case HINT_ANIMATE_CORPSE_SKELETON:
+        text << jtrans("hint animate corpse skeleton");
+        /*
         text << "As long as a monster has a skeleton, Animate Skeleton also "
                 "works on unskeletalized corpses.";
+        */
         break;
     default:
         text << "You've found something new (but I don't know what)!";
@@ -4241,7 +4304,7 @@ void tutorial_msg(const char *key, bool end)
     text = untag_tiles_console(text);
 
     if (end)
-        screen_end_game(text);
+        screen_end_game(sp2nbsp(text));
 
     // "\n" to preserve indented parts, the rest is unwrapped, or split into
     // paragraphs by "\n\n", split_string() will ignore the empty line.
