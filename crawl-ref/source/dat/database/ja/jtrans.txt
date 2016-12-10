@@ -20262,7 +20262,7 @@ or (S)atiated
 
 (S)満腹
 %%%%
-(S)atiated, (F)ull or (E)ngorged
+, (S)atiated, (F)ull or (E)ngorged
 
 (S)普通 (F)満腹 (E)腹一杯
 %%%%

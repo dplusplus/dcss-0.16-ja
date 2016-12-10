@@ -375,9 +375,9 @@ void wizard_set_hunger_state()
     string hunger_prompt =
         jtrans("Set hunger state to s(T)arving, (N)ear starving, (H)ungry") + " ";
     if (you.species == SP_GHOUL)
-        hunger_prompt += " or (S)atiated";
+        hunger_prompt += jtrans(" or (S)atiated");
     else
-        hunger_prompt += ", (S)atiated, (F)ull or (E)ngorged";
+        hunger_prompt += jtrans(", (S)atiated, (F)ull or (E)ngorged");
 
     mprf(MSGCH_PROMPT, "%s", hunger_prompt.c_str());
 
