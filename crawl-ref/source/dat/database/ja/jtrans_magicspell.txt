@@ -902,7 +902,6 @@
 %%%%
 [spell]Shadow Bolt
 
-# obsolete?
 影の矢
 %%%%
 [spell]Shadow Creatures
@@ -1078,7 +1077,6 @@
 %%%%
 [spell]Summon Emperor Scorpions
 
-# obsolete?
 皇帝サソリの召喚
 %%%%
 [spell]Summon Eyeballs
@@ -1110,7 +1108,6 @@
 %%%%
 [spell]Summon Holies
 
-# obsolete
 神聖なるものの召喚
 %%%%
 [spell]Summon Horrible Things
@@ -1127,7 +1124,6 @@
 %%%%
 [spell]Summon Illusion
 
-# obsolete?
 幻影の召喚
 %%%%
 [spell]Summon Iron Elementals
