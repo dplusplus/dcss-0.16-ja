@@ -180,11 +180,11 @@ static string _list_allowed_keys(char yes1, char yes2, bool lowered = false,
                                  bool allow_all = false)
 {
     string result = " [";
-    result += (lowered ? "(y)es" : "(Y)es");
+    result += (lowered ? "(y)はい" : "(Y)はい");
     result += _list_alternative_yes(yes1, yes2, lowered);
+    result += (lowered ? "/(n)いいえ/(q)キャンセル" : "/(N)いいえ/(Q)キャンセル");
     if (allow_all)
-        result += (lowered? "/(a)ll" : "/(A)ll");
-    result += (lowered ? "/(n)o/(q)uit" : "/(N)o/(Q)uit");
+        result += (lowered? "/(a)全部" : "/(A)全部");
     result += "]";
 
     return result;
