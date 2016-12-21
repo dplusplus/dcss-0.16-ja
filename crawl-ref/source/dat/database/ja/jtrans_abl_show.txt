@@ -702,6 +702,102 @@ None
 
 なし
 %%%%
+This ability costs:
+
+能力の使用に要するコスト:
+%%%%
+Max MP :
+
+最大MP :
+%%%%
+MP     :
+
+MP :
+%%%%
+Max HP :
+
+最大HP :
+%%%%
+HP     :
+
+HP :
+%%%%
+Hunger :
+
+満腹値 :
+%%%%
+Piety  : variable
+
+信仰値 : 場合による
+%%%%
+Piety  : extremely large
+
+信仰値 : 特大
+%%%%
+Piety  : large
+
+信仰値 : 大
+%%%%
+Piety  : moderate
+
+信仰値 : 中
+%%%%
+Piety  : small
+
+信仰値 : 小
+%%%%
+Gold   :
+
+料金 :
+%%%%
+free
+
+無料
+%%%%
+variable
+
+時価
+%%%%
+nothing.
+
+なし
+%%%%
+You must catch your breath between uses of this ability.
+
+この能力を使うときには満足に呼吸ができる状態でないといけない。
+%%%%
+It takes some time before being effective.
+
+この能力は効力を発揮するまでにいくらか時間がかかる。
+%%%%
+Using this ability will hurt you.
+
+この能力を用いると苦痛をその身に受ける。
+%%%%
+It cannot be used when exhausted.
+
+この能力は疲労している間は使うことができない。
+%%%%
+It is instantaneous.
+
+この能力は即座に効果を発揮する。
+%%%%
+You can use it even if confused.
+
+この能力は混乱している最中でも使用できる。
+%%%%
+It will lower your experience level by one when used.
+
+この能力を使用すると経験レベルが1下がる。
+%%%%
+It will temporarily drain your strength, intelligence or dexterity when used.
+
+この能力を使用すると一時的に腕力、知力、器用さといった能力値が消耗する。
+%%%%
+It will temporarily drain your skills when used.
+
+この能力を使用すると一時的にスキルが消耗する。
+%%%%
 No description found.
 
 この能力の説明は見つからなかった。

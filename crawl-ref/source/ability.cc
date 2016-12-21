@@ -816,10 +816,10 @@ const string make_cost_description(ability_type ability)
 
 static string _get_piety_amount_str(int value)
 {
-    return value > 15 ? "特大" :
-           value > 10 ? "大" :
-           value > 5  ? "中" :
-                        "小";
+    return value > 15 ? "extremely large" :
+           value > 10 ? "large" :
+           value > 5  ? "moderate" :
+                        "small";
 }
 
 static const string _detailed_cost_description(ability_type ability)
@@ -830,24 +830,24 @@ static const string _detailed_cost_description(ability_type ability)
     string str;
 
     bool have_cost = false;
-    ret << "This ability costs: ";
+    ret << jtrans("This ability costs: ");
 
     if (abil.mp_cost > 0)
     {
         have_cost = true;
         if (abil.flags & ABFLAG_PERMANENT_MP)
-            ret << "\nMax MP : ";
+            ret << "\n" << jtrans("Max MP : ") << " ";
         else
-            ret << "\nMP     : ";
+            ret << "\n" << jtrans("MP     : ") << " ";
         ret << abil.mp_cost;
     }
     if (abil.hp_cost)
     {
         have_cost = true;
         if (abil.flags & ABFLAG_PERMANENT_HP)
-            ret << "\nMax HP : ";
+            ret << "\n" << jtrans("Max HP : ") << " ";
         else
-            ret << "\nHP     : ";
+            ret << "\n" << jtrans("HP     : ") << " ";
         ret << abil.hp_cost.cost(you.hp_max);
     }
     if (abil.zp_cost)
@@ -862,65 +862,68 @@ static const string _detailed_cost_description(ability_type ability)
             || you.hunger_state > HS_STARVING))
     {
         have_cost = true;
-        ret << "\nHunger : ";
+        ret << "\n" << jtrans("Hunger : ") << " ";
         ret << hunger_cost_string(abil.food_cost + abil.food_cost / 2);
     }
 
     if (abil.piety_cost || abil.flags & ABFLAG_PIETY)
     {
+        string piety_amount = "Piety  : ";
+
         have_cost = true;
-        ret << "\nPiety  : ";
         if (abil.flags & ABFLAG_PIETY)
-            ret << "variable";
+            piety_amount += jtrans("variable");
         else
         {
             int avgcost = abil.piety_cost.base + abil.piety_cost.add / 2;
-            ret << _get_piety_amount_str(avgcost);
+            piety_amount += _get_piety_amount_str(avgcost);
         }
+
+        ret << "\n" << jtrans(piety_amount);
     }
 
     if (abil.flags & ABFLAG_GOLD)
     {
         have_cost = true;
-        ret << "\nGold   : ";
+        ret << "\n" << jtrans("Gold   : ") << " ";
         int gold_amount = get_gold_cost(ability);
         if (gold_amount)
             ret << gold_amount;
         else if (ability == ABIL_GOZAG_POTION_PETITION)
-            ret << "free";
+            ret << jtrans("free");
         else
-            ret << "variable";
+            ret << "時価";
     }
 
     if (!have_cost)
-        ret << "nothing.";
+        ret << jtrans("nothing.");
 
     if (abil.flags & ABFLAG_BREATH)
-        ret << "\nYou must catch your breath between uses of this ability.";
+        ret << "\n" << jtrans("You must catch your breath between uses of this ability.");
 
     if (abil.flags & ABFLAG_DELAY)
-        ret << "\nIt takes some time before being effective.";
+        ret << "\n" << jtrans("It takes some time before being effective.");
 
     if (abil.flags & ABFLAG_PAIN)
-        ret << "\nUsing this ability will hurt you.";
+        ret << "\n" << jtrans("Using this ability will hurt you.");
 
     if (abil.flags & ABFLAG_EXHAUSTION)
-        ret << "\nIt cannot be used when exhausted.";
+        ret << "\n" << jtrans("It cannot be used when exhausted.");
 
     if (abil.flags & ABFLAG_INSTANT)
-        ret << "\nIt is instantaneous.";
+        ret << "\n" << jtrans("It is instantaneous.");
 
     if (abil.flags & ABFLAG_CONF_OK)
-        ret << "\nYou can use it even if confused.";
+        ret << "\n" << jtrans("You can use it even if confused.");
 
     if (abil.flags & ABFLAG_LEVEL_DRAIN)
-        ret << "\nIt will lower your experience level by one when used.";
+        ret << "\n" << jtrans("It will lower your experience level by one when used.");
 
     if (abil.flags & ABFLAG_STAT_DRAIN)
-        ret << "\nIt will temporarily drain your strength, intelligence or dexterity when used.";
+        ret << "\n" << jtrans("It will temporarily drain your strength, intelligence or dexterity when used.");
 
     if (abil.flags & ABFLAG_SKILL_DRAIN)
-        ret << "\nIt will temporarily drain your skills when used.";
+        ret << "\n" << jtrans("It will temporarily drain your skills when used.");
 
     return ret.str();
 }
