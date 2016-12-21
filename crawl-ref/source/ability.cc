@@ -1360,12 +1360,25 @@ vector<const char*> get_ability_names()
     return result;
 }
 
+static inline string _spacer(const int length)
+{
+    return length < 0 ? "" : string(length, ' ');
+}
+
 // XXX: should this be in describe.cc?
 string get_ability_desc(const ability_type ability)
 {
-    const string& name = ability_name(ability);
+    string name_en = ability_name(ability);
+    string name = jtrans(name_en);
 
-    string lookup = getLongDescription(name + " ability");
+    if (strwidth(name) + strwidth(name_en) + 5 > get_number_of_cols())
+        name_en = "";
+
+    const string spacer = _spacer(get_number_of_cols() - strwidth(name)
+                                                       - strwidth(name_en) - 1);
+    const string title = name + spacer + name_en;
+
+    string lookup = getLongDescription(name_en + " ability");
 
     if (lookup.empty()) // Nothing found?
         lookup = jtrans("No description found.") + "\n";
@@ -1377,14 +1390,14 @@ string get_ability_desc(const ability_type ability)
     }
 
     ostringstream res;
-    res << name << "\n\n" << lookup << "\n"
+    res << title << "\n\n" << lookup << "\n"
         << _detailed_cost_description(ability);
 
-    const string quote = getQuoteString(name + " ability");
+    const string quote = getQuoteString(name_en + " ability");
     if (!quote.empty())
         res << "\n\n" << quote;
 
-    return res.str();
+    return sp2nbsp(res.str());
 }
 
 static void _print_talent_description(const talent& tal)
