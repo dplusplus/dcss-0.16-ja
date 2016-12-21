@@ -6121,7 +6121,7 @@ string ru_sac_text(ability_type sac)
     {
         ASSERT(sacrifice_muts.size() == 1);
         const mutation_type mut = AS_MUT(sacrifice_muts[0]);
-        return make_stringf(" (%sの変異)", jtransc(mutation_name(mut)));
+        return make_stringf(" (%s)", jtransc(mutation_name(mut)));
     }
 
     // "Tloc/Fire/Ice"
