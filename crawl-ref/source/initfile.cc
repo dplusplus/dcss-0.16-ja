@@ -1161,6 +1161,8 @@ void game_options::reset_options()
     aliases.clear();
     variables.clear();
     constants.clear();
+
+    vanilla_randart_name = false;
 }
 
 void game_options::clear_cset_overrides()
@@ -3874,6 +3876,7 @@ void game_options::read_option_line(const string &str, bool runscript)
     else BOOL_OPTION(arena_dump_msgs_all);
     else BOOL_OPTION(arena_list_eq);
     else INT_OPTION(fail_severity_to_confirm, -1, 3);
+    else BOOL_OPTION(vanilla_randart_name);
 
     // Catch-all else, copies option into map
     else if (runscript)

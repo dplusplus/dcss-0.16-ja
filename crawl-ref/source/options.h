@@ -486,6 +486,8 @@ public:
 #endif
 #endif // USE_TILE
 
+    bool        vanilla_randart_name;
+
     typedef map<string, string> opt_map;
     opt_map     named_options;          // All options not caught above are
                                         // recorded here.
