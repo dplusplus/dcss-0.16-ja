@@ -407,7 +407,7 @@ static string _special_keys_to_string_for_macro_trigger(int key)
  * Serialises a key sequence into a string of the format described
  * above.
  */
-static string vtostr(const keyseq &seq)
+static string vtostr(const keyseq &seq, bool display_only = false)
 {
     ostringstream s;
 
@@ -429,9 +429,13 @@ static string vtostr(const keyseq &seq)
         {
             if (key == KEY_MACRO_MORE_PROTECT)
                 s << "\\{!more}";
+            else if (display_only)
+                s << _special_keys_to_string_for_macro_trigger(key);
             else
             {
-                s << _special_keys_to_string_for_macro_trigger(key);
+                char buff[20];
+                snprintf(buff, sizeof(buff), "\\{%d}", key);
+                s << buff;
             }
         }
         else if (key == '\\')
@@ -1018,7 +1022,7 @@ void macro_add_query()
     mouse_control mc(MOUSE_MODE_MACRO);
     key = _getch_mul();
 
-    msgwin_reply(vtostr(key));
+    msgwin_reply(vtostr(key, true));
 
     if (mapref.count(key) && !mapref[key].empty())
     {
@@ -1039,7 +1043,7 @@ void macro_add_query()
         {
             mprf(jtransc("Cleared %s '%s' => '%s'."),
                  jtransc(macro_type),
-                 vtostr(key).c_str(),
+                 vtostr(key, true).c_str(),
                  vtostr(mapref[key]).c_str());
             macro_del(mapref, key);
             crawl_state.unsaved_macros = true;
@@ -1060,7 +1064,7 @@ void macro_add_query()
         {
             mprf(jtransc("Deleted %s for '%s'."),
                  jtransc(macro_type),
-                 vtostr(key).c_str());
+                 vtostr(key, true).c_str());
         }
         else
             canned_msg(MSG_OK);
@@ -1070,7 +1074,7 @@ void macro_add_query()
         macro_add(mapref, key, action);
         mprf(jtransc("Created %s '%s' => '%s'."),
              jtransc(macro_type),
-             vtostr(key).c_str(), vtostr(action).c_str());
+             vtostr(key, true).c_str(), vtostr(action).c_str());
     }
 
     crawl_state.unsaved_macros = true;
