@@ -347,8 +347,7 @@ static keyseq parse_keyseq(string s)
 static string _special_keys_to_string_for_macro_trigger(int key)
 {
     const bool shift = (key >= CK_SHIFT_UP && key <= CK_SHIFT_PGDN);
-    const bool ctrl  = (key >= CK_CTRL_UP && key <= CK_CTRL_PGDN) ||
-                       (-21 <= key && key <= 4) ;
+    const bool ctrl  = (key >= CK_CTRL_UP && key <= CK_CTRL_PGDN);
 
     string cmd = "";
 
@@ -359,12 +358,9 @@ static string _special_keys_to_string_for_macro_trigger(int key)
     }
     else if (ctrl)
     {
-        if (key < -21 || 4 < key)
-            key -= (CK_CTRL_UP - CK_UP);
+        key -= (CK_CTRL_UP - CK_UP);
         cmd = "Ctrl-";
     }
-
-    int fnkey = CK_F1 - key + 1;
 
     switch (key)
     {
@@ -386,18 +382,27 @@ static string _special_keys_to_string_for_macro_trigger(int key)
     case CK_F1:  case CK_F2:  case CK_F3:  case CK_F4:
     case CK_F5:  case CK_F6:  case CK_F7:  case CK_F8:
     case CK_F9:  case CK_F10: case CK_F11: case CK_F12:
+    {
+        int fnkey = CK_F1 - key + 1;
         if (1 <= fnkey && fnkey <= 12)
-        {
             cmd += make_stringf("[F%d]", fnkey);
-            break;
-        }
-       // fall through
+        break;
+    }
+#define CASE_CTRL(CH) case CONTROL(CH): cmd += string("Ctrl-") + CH; break;
+    CASE_CTRL('A'); CASE_CTRL('B'); CASE_CTRL('C'); CASE_CTRL('D');
+    CASE_CTRL('E'); CASE_CTRL('F');
+    //no CONTROL-G (duplicate to ESCAPE)
+    //no CONTROL-H (duplicate to CK_BKSP)
+    CASE_CTRL('I'); CASE_CTRL('J'); CASE_CTRL('K'); CASE_CTRL('L');
+    //no CONTROL-M (duplicate to CK_ENTER)
+    CASE_CTRL('N'); CASE_CTRL('O'); CASE_CTRL('P'); CASE_CTRL('Q');
+    CASE_CTRL('R'); CASE_CTRL('S'); CASE_CTRL('T'); CASE_CTRL('U');
+    CASE_CTRL('V'); CASE_CTRL('W'); CASE_CTRL('X'); CASE_CTRL('Y');
+    CASE_CTRL('Z');
+#undef CASE_CTRL
 
     default:
-        if (-21 <= key && key <= 4)
-            cmd += make_stringf("%c", static_cast<char>(key + 96));
-        else
-            cmd += make_stringf("%d", key);
+        cmd += make_stringf("%d", key);
     }
 
     return cmd;
