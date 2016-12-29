@@ -505,7 +505,7 @@ static string _describe_branch_bribability()
                 line += "(オーク)              ";
                 break;
             case BRANCH_ELF:
-                line += "(エルフ               ";
+                line += "(エルフ)              ";
                 break;
             case BRANCH_SNAKE:
                 line += "(ナーガ/サラマンダー) ";
