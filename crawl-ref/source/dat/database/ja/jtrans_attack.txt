@@ -89,7 +89,7 @@ There is a sudden explosion of sparks!
 %%%%
 %s draws strength from your injuries!
 
-%はあなたの傷口から力を吸い取った！
+%sはあなたの傷口から力を吸い取った！
 %%%%
 %s is healed.
 
