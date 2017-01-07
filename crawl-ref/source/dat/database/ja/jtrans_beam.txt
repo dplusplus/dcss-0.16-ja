@@ -293,7 +293,7 @@ Strange energies course through your body.
 %%%%
 Your will is overpowered!
 
-あなたの意志が打ち勝った！
+あなたの意志は打ちのめされた！
 %%%%
 This spell isn't strong enough to banish yourself.
 
