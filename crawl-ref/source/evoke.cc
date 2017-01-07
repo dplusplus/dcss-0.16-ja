@@ -1839,7 +1839,7 @@ static bool _stone_of_tremors()
     noisy(15, you.pos());
 
     bolt rubble;
-    rubble.name       = "falling rubble";
+    rubble.name       = jtrans("falling rubble");
     rubble.range      = 1;
     rubble.hit        = 10 + you.skill_rdiv(SK_EVOCATIONS, 1, 2);
     rubble.damage     = dice_def(3, 5 + you.skill(SK_EVOCATIONS));

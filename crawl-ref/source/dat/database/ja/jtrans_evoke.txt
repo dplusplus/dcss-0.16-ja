@@ -271,6 +271,10 @@ The dungeon trembles and rubble falls from the walls!
 
 迷宮が揺れ、壁が崩れ落ちた。
 %%%%
+falling rubble
+
+落ちてきた瓦礫
+%%%%
 The door collapses!
 
 扉が崩れた！
