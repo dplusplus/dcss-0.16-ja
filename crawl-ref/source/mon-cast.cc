@@ -5969,7 +5969,7 @@ void mons_cast(monster* mons, bolt pbolt, spell_type spell_cast,
                 // "Enchant" the player.
                 slugform = getSpeakString("gastronok_debuff");
                 if (!slugform.empty()
-                    && (slugform.find("legs") == string::npos
+                    && ((slugform.find("legs") == string::npos || slugform.find("脚") == string::npos)
                         || _legs_msg_applicable()))
                 {
                     mpr(slugform);
