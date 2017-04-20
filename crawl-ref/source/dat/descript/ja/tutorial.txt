@@ -965,15 +965,15 @@ tutorial5 dungeon_overview
 %%%%
 tutorial5 altar
 
-# You can pray on an altar with <input>$cmd[CMD_GO_DOWNSTAIRS]</input>
-# <localtiles> (or by <input>left clicking</input> on your character)</localtiles>
-# to get an idea what a god offers you, and to join the faith. If
-# you press <input>!</input><localtiles> or
+# You can pray on an altar with <input>$cmd[CMD_PRAY]</input><localtiles> (or by
+# <input>clicking in the command panel</input> or <input>left clicking</input>
+# on your character)</localtiles> to get an idea what a god offers you, and to
+# join the faith. If you press <input>!</input><localtiles> or
 # <input>rightclick</input></localtiles> on the religion screen, you can see a
 # more detailed description.
 
 # Confirm your choice with an uppercase <input>Y</input>.
-祭壇の上で<input>$cmd[CMD_GO_UPSTAIRS] または $cmd[CMD_GO_DOWNSTAIRS]</input>を押す<localtiles>
+祭壇の上で<input>$cmd[CMD_PRAY]</input>を押す<localtiles>
 (または<input>コマンドパネル内をクリック</input>するか、 プレイヤーキャラを<input>クリック</input>)
 </localtiles>と、 その神があなたにどのような恩恵をもたらすのか知ることができ、 入信することができます。
 その画面を表示している際に、 <input>!</input>を押す<localtiles>か、 または<input>右クリック</input>する</localtiles>ことで、
@@ -1079,9 +1079,9 @@ tutorial5 exit
 #                                  <cyan>Press <input>any key</input> to clear this screen...</cyan>
 :nowrap
 <yellow>信仰関連のコマンド</yellow>
-  <input>$cmd[CMD_GO_UPSTAIRS] または $cmd[CMD_GO_DOWNSTAIRS]</input>  祭壇に祈りを捧げ入信する、 死体を捧げる
-  <input>$cmd[CMD_USE_ABILITY]</input>           神の力を行使する (<w>a</w>bility)
-  <input>$cmd[CMD_DISPLAY_RELIGION]</input>           あなたの信仰の評価を確認する<localtiles>
+  <input>$cmd[CMD_PRAY]</input>  祭壇に祈りを捧げ入信する、 死体を捧げる
+  <input>$cmd[CMD_USE_ABILITY]</input>  神の力を行使する (<w>a</w>bility)
+  <input>$cmd[CMD_DISPLAY_RELIGION]</input>  あなたの信仰の評価を確認する<localtiles>
   キャラクターを<input>右クリック</input>することでも信仰画面が表示されます。</localtiles>
 
 <yellow>休息</yellow>
