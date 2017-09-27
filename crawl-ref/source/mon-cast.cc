@@ -2349,8 +2349,7 @@ static bool _make_monster_angry(const monster* mon, monster* targ, bool actual)
         {
             mprf(jtransc("%s calls on %s to defend %s!"),
                  jtransc(mon->name(DESC_THE)),
-                 jtransc(targ->name(DESC_THE)),
-                 jtransc(mon->pronoun(PRONOUN_OBJECTIVE)));
+                 jtransc(targ->name(DESC_THE)));
         }
         else
             mprf(jtransc("%s goads %s on!"), jtransc(mon->name(DESC_THE)),

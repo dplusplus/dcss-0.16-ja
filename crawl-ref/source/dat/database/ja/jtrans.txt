@@ -6132,7 +6132,7 @@ angered by no foe
 %%%%
 %s calls on %s to defend %s!
 
-%sは%sを守るように%sに命令した！
+%sは自分を守るように%sに命令した！
 %%%%
 %s goads %s on!
 
