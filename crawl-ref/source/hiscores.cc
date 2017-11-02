@@ -495,21 +495,6 @@ void show_hiscore_table()
     }
 }
 
-// Trying to supply an appropriate verb for the attack type. -- bwr
-static const char *_range_type_verb(const char *const aux)
-{
-    if (strncmp(aux, "Shot ", 5) == 0)                // launched
-        return "shot";
-    else if (aux[0] == 0                                // unknown
-             || strncmp(aux, "Hit ", 4) == 0          // thrown
-             || strncmp(aux, "volley ", 7) == 0)      // manticore spikes
-    {
-        return "hit from afar";
-    }
-
-    return "blasted";                                 // spells, wands
-}
-
 string hiscores_format_single(const scorefile_entry &se)
 {
     return se.hiscore_line(scorefile_entry::DDV_ONELINE);
@@ -525,17 +510,6 @@ static bool _hiscore_same_day(time_t t1, time_t t2)
     struct tm *d2  = TIME_FN(&t2);
 
     return d2->tm_mday == day && d2->tm_mon == mon && d2->tm_year == year;
-}
-
-static string _hiscore_date_string(time_t time)
-{
-    struct tm *date = TIME_FN(&time);
-
-    const char *mons[12] = { "Jan", "Feb", "Mar", "Apr", "May", "June",
-                             "July", "Aug", "Sept", "Oct", "Nov", "Dec" };
-
-    return make_stringf("%s %d, %d", mons[date->tm_mon], date->tm_mday,
-                                     date->tm_year + 1900);
 }
 
 static string _hiscore_date_string_j(time_t time)

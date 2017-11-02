@@ -4017,7 +4017,7 @@ string do_mon_str_replacements(const string &in_msg, const monster* mons,
     }
     msg = replace_all(msg, "@null@", ""); // erase spacer
 
-    description_level_type nocap = DESC_THE, cap = DESC_THE;
+    description_level_type nocap = DESC_THE;
 
     if (mons->is_named() && you.can_see(mons))
     {
@@ -4034,7 +4034,6 @@ string do_mon_str_replacements(const string &in_msg, const monster* mons,
              && you.can_see(mons))
     {
         nocap = DESC_PLAIN;
-        cap   = DESC_PLAIN;
 
         msg = replace_all(msg, "@the_something@", "あなたの@the_something@");
         msg = replace_all(msg, "@The_something@", "あなたの@The_something@");

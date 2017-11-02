@@ -1652,7 +1652,7 @@ bool is_dumpable_artefact(const item_def &item)
 // get_item_description
 //
 //---------------------------------------------------------------
-string _spacer(const int length)
+static string _spacer(const int length)
 {
     return length < 0 ? "" : string(length, ' ');
 }

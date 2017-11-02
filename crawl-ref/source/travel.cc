@@ -4552,12 +4552,6 @@ template <class C> void explore_discoveries::say_any(
 vector<string> explore_discoveries::apply_quantities(
     const vector< named_thing<int> > &v) const
 {
-    static const char *feature_plural_qualifiers[] =
-    {
-        " leading ", " back to ", " to ", " of ", " in ", " out of",
-        " from ", " back into ", nullptr
-    };
-
     vector<string> things;
     for (int i = 0, size = v.size(); i < size; ++i)
     {

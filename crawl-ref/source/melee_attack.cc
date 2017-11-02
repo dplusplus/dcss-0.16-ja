@@ -391,7 +391,7 @@ void melee_attack::apply_black_mark_effects()
  * Returns true if combat should continue, false if it should end here.
  */
 
-string _melee_attack_particle(const string& verb)
+static string _melee_attack_particle(const string& verb)
 {
     if (verb == "sucker-punch" || // 予想外の殴打を加えた
         verb == "karate-kick" || // 空手の蹴りを放った
