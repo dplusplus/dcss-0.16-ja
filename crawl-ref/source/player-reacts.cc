@@ -466,18 +466,19 @@ static void _handle_recitation(int step)
 
     if (step == 0)
     {
-        string speech = zin_recite_text(you.attribute[ATTR_RECITE_SEED],
-                                        you.attribute[ATTR_RECITE_TYPE], -1);
-        string closure;
+        string speech = make_stringf(jtransc("You finish reciting %s"),
+                                     zin_recite_text(you.attribute[ATTR_RECITE_SEED],
+                                                     you.attribute[ATTR_RECITE_TYPE], -1).c_str());
+
         if (one_chance_in(9))
         {
-            closure = getSpeakString("recite_closure");
+            string closure = getSpeakString("recite_closure");
             if (!closure.empty() && one_chance_in(3))
             {
                 speech += closure;
             }
         }
-        mprf(MSGCH_DURATION, jtransc("You finish reciting %s"), speech.c_str());
+        mprf(MSGCH_DURATION, speech.c_str());
         mpr(jtrans("You feel short of breath."));
         you.increase_duration(DUR_BREATH_WEAPON, random2(10) + random2(30));
     }
