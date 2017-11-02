@@ -236,6 +236,9 @@ bool check_moveto_terrain(const coord_def& p, const string &move_verb,
         if (prompted)
             *prompted = true;
 
+        if (msg != "")
+            prompt = msg + "\n";
+
         prompt += jtrans(need_expiration_warning(DUR_FLIGHT, p)
             ? " while you are losing your buoyancy?"
             : " while your transformation is expiring?");
