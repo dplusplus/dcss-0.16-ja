@@ -3371,9 +3371,9 @@ static string _monster_attacks_description(const monster_info& mi)
         if (!attack_flavours.count(af))
         {
             attack_flavours.insert(af);
-            const char * const desc = jtransc(_describe_attack_flavour(af));
+            const char * const desc = _describe_attack_flavour(af);
             if (desc[0]) // non-empty
-                attack_descs.push_back(desc);
+                attack_descs.push_back(jtrans(desc));
         }
 
         if (attack.type == AT_REACH_STING)
