@@ -564,16 +564,16 @@ static bool _check_description_cycle(god_desc_type gdesc)
     const char* place = nullptr;
     switch (gdesc)
     {
-        case GDESC_OVERVIEW: place = jtransc("<w>Overview</w>|Powers|Wrath"); break;
-        case GDESC_DETAILED: place = jtransc("Overview|<w>Powers</w>|Wrath"); break;
-        case GDESC_WRATH:    place = jtransc("Overview|Powers|<w>Wrath</w>"); break;
+        case GDESC_OVERVIEW: place = "<w>Overview</w>|Powers|Wrath"; break;
+        case GDESC_DETAILED: place = "Overview|<w>Powers</w>|Wrath"; break;
+        case GDESC_WRATH:    place = "Overview|Powers|<w>Wrath</w>"; break;
         default: die("Unknown god description type!");
     }
     formatted_string::parse_string(make_stringf("[<w>!</w>/<w>^</w>"
 #ifdef USE_TILE_LOCAL
                                    "|<w>Right-click</w>"
 #endif
-    "]: %s", place)).display();
+    "]: %s", jtransc(place))).display();
 
     mouse_control mc(MOUSE_MODE_MORE);
 
