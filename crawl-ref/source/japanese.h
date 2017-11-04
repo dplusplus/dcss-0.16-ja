@@ -8,6 +8,7 @@
 #define JAPANESE_H
 
 #include "enum.h"
+#include "itemprop-enum.h"
 
 enum jconj
 {

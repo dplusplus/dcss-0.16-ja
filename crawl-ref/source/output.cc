@@ -1100,9 +1100,9 @@ static void _print_status_lights(int y)
                     CPRINTF("%s", tagged_jtransc("[dur]", lights[i_light].text));
                 }
                 else if ((int)lights.size() > crawl_view.hudsz.x / 2)
-                    CPRINTF("%.1s", tagged_jtrasnc("[dur]", lights[i_light].text));
+                    CPRINTF("%.1s", tagged_jtransc("[dur]", lights[i_light].text));
                 else
-                    CPRINTF("%.1s ", tagged_jtransc("[dur]", lights[i_light]));
+                    CPRINTF("%.1s ", tagged_jtransc("[dur]", lights[i_light].text));
                 ++i_light;
             }
         }
