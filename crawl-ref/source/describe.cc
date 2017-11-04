@@ -3417,7 +3417,8 @@ static string _monster_spells_description(const monster_info& mi)
     formatted_string description;
     describe_spellset(monster_spellset(mi), nullptr, description);
     description.cprintf("\n");
-    description.cprintf(jtranslnc("Select a spell to read its description.\n"));
+    description.cprintf(jtranslnc("Select a spell to read its description."));
+    description.cprintf("\n");
     return description.tostring();
 }
 
