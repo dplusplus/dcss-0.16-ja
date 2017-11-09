@@ -11628,6 +11628,7 @@ provide lesser healing for yourself
 自らに小さき癒しを使うこと
 %%%%
 heal and attempt to pacify others
+
 他者を癒やし友好化を試みること
 %%%%
 purify yourself
