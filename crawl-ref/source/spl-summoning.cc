@@ -901,7 +901,7 @@ static void _animate_weapon(int pow, actor* target, bool force_friendly)
         if (!you_worship(GOD_ELYVILON))
             simple_god_message(jtransc(" booms: How dare you animate that foul thing!"));
         else
-            simple_god_message("animate foul thing elyvilon");
+            simple_god_message(jtransc("animate foul thing elyvilon"));
         did_god_conduct(why, 10, true, mons);
     }
 }
