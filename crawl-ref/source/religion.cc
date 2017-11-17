@@ -2299,8 +2299,12 @@ void dock_piety(int piety_loss, int penance)
     {
         if (last_penance_lecture != you.num_turns)
         {
-            god_speaks(you.religion,
-                       jtransc("\"You will pay for your transgression, mortal!\""));
+            string msg = jtrans("\"You will pay for your transgression, mortal!\"");
+
+            if(you_worship(GOD_ELYVILON))
+               msg = replace_all(msg, "贖え", "贖いなさい");
+
+            god_speaks(you.religion, msg.c_str());
         }
         last_penance_lecture = you.num_turns;
         _inc_penance(penance);
