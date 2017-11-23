@@ -18979,7 +18979,7 @@ You found %s!
 %%%%
 You struggle to detach yourself from the web.
 
-あなたはなんとか自分自身を蜘蛛の巣から引きはがした。
+あなたはなんとか自分自身を蜘蛛の巣から引きはがそうとしている。
 %%%%
 You slice the net and break free!
 
