@@ -2133,12 +2133,12 @@ void make_book_Kiku_gift(item_def &book, bool first)
 
     string name = jtrans("Kikubaaqudgha's ");
     book.props["is_named"].get_bool() = true;
-    name += getRandNameString("book_name") + " ";
     string type_name = getRandNameString("Necromancy");
     if (type_name.empty())
         name += tagged_jtrans("[skill]", "Necromancy");
     else
         name += type_name;
+    name += getRandNameString("book_name");
     set_artefact_name(book, name);
 }
 
