@@ -3609,7 +3609,7 @@ string get_monster_equipment_desc(const monster_info& mi,
     if (mi.type != MONS_DANCING_WEAPON && mi.type != MONS_SPECTRAL_WEAPON)
         weap = _describe_monster_weapon(mi, level == DESC_IDENTIFIED);
     else if (level == DESC_IDENTIFIED)
-        return " " + mi.full_name(DESC_A);
+        return mi.full_name(DESC_A);
 
     // Print the rest of the equipment only for full descriptions.
     if (level == DESC_WEAPON)
