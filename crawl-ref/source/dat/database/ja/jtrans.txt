@@ -22051,8 +22051,9 @@ The Unspeakable
 
 --                       </red><lightred>あなたは肉の王者を倒した。</lightred><red>                         --
 %%%%
---                    </red><lightred>あなたが新たなるチャンピオンだ。</lightred><red>                      --
+--                        </red><lightred>You will die a champion.</lightred><red>                          --
 
+--                    </red><lightred>あなたが新たなるチャンピオンだ。</lightred><red>                      --
 %%%%
 The Orb of Zot has appeared underneath you.
 
