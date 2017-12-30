@@ -221,7 +221,8 @@ string item_def::name(description_level_type descrip, bool terse, bool ident,
     }
     else if (is_artefact(*this) && special == UNRAND_OCTOPUS_KING_RING)
     {
-        buff << "★";
+        if (descrip != DESC_DBNAME && descrip != DESC_BASENAME && descrip != DESC_QUALNAME)
+            buff << "★";
     }
     else if (quantity > 1)
     {
