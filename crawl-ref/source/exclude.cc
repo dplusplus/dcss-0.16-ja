@@ -515,7 +515,7 @@ void set_exclude(const coord_def &p, int radius, bool autoexcl, bool vaultexcl,
         {
             const int cl = env.cgrid(p);
             if (env.cgrid(p) != EMPTY_CLOUD)
-                exc->desc = cloud_name_at_index_j(cl);
+                exc->desc = cloud_name_at_index_j(cl) + " cloud";
         }
         else if (exc->radius == radius)
             return;
@@ -558,7 +558,7 @@ void set_exclude(const coord_def &p, int radius, bool autoexcl, bool vaultexcl,
         {
             const int cl = env.cgrid(p);
             if (env.cgrid(p) != EMPTY_CLOUD)
-                desc = cloud_name_at_index_j(cl);
+                desc = cloud_name_at_index_j(cl) + " cloud";
         }
 
         curr_excludes.add_exclude(p, radius, autoexcl, desc, vaultexcl);
@@ -599,7 +599,7 @@ string exclude_set::get_exclusion_desc()
         travel_exclude &ex = entry.second;
 
         // Don't count cloud exclusions.
-        if (strstr(ex.desc.c_str(), "cloud"))
+        if (ends_with(ex.desc, " cloud"))
             continue;
 
         // Don't duplicate if there's already an annotation from unique monsters.
