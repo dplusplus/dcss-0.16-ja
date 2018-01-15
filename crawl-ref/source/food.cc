@@ -266,7 +266,7 @@ static string _how_hungry()
     if (you.hunger_state > HS_SATIATED)
         return "満腹な";
     else if (you.species == SP_VAMPIRE)
-        return "乾いている";
+        return "渇いている";
     return "空腹な";
 }
 
