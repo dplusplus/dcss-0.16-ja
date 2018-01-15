@@ -257,8 +257,8 @@ NORETURN void end_game(scorefile_entry &se)
                 }
                 else
                 {
-                    simple_god_message(" rasps: \"You have failed me! "
-                                       "Welcome... death!\"");
+                    simple_god_message(jtransc(" rasps: \"You have failed me! "
+                                               "Welcome... death!\""));
                 }
                 break;
             }
