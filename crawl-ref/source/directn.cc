@@ -3443,8 +3443,8 @@ static string _get_monster_desc(const monster_info& mi)
     if (mi.is(MB_SLEEPING) || mi.is(MB_DORMANT))
     {
         text += pronoun + jtrans("appears to be")
-                + (mi.is(MB_CONFUSED) ? "sleepwalking"
-                        : "resting")
+                + jtrans(mi.is(MB_CONFUSED) ? "sleepwalking"
+                                            : "resting")
                           + "のようだ。\n";
     }
     // Applies to both friendlies and hostiles
