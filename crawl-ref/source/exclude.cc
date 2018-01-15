@@ -660,6 +660,7 @@ string exclude_set::get_exclusion_desc()
     if (count_other > 0)
     {
         desc.push_back(make_stringf(jtransc("%d %sexclusion%s"),
+                                    count_other,
                                     count_other > 1 ? "群" : ""));
     }
     else if (desc.empty())
