@@ -799,24 +799,23 @@ static void _update_unique_annotation(level_id level)
 
 static string unique_name(monster* mons)
 {
+    string name_en = mons->name_en(DESC_PLAIN, true);
     string name = mons->name(DESC_PLAIN, true);
     if (mons->type == MONS_PLAYER_GHOST)
         name += "(" + short_ghost_description(mons, true) + ")";
     else
     {
-        if (strstr(name.c_str(), "royal jelly")
-            || strstr(name.c_str(), "Royal Jelly"))
-        {
-            name = "Royal Jelly";
-        }
-        if (strstr(name.c_str(), "Lernaean hydra"))
-            name = "Lernaean hydra";
-        if (strstr(name.c_str(), "Serpent of Hell"))
-            name = "Serpent of Hell";
-        if (strstr(name.c_str(), "Blork"))
-            name = "Blork the orc";
+        if (strstr(name_en.c_str(), "royal jelly") ||
+            strstr(name_en.c_str(), "Royal Jelly"))
+            name = jtrans("the Royal Jelly");
+        if (strstr(name_en.c_str(), "Lernaean hydra"))
+            name = jtrans("Lernaean hydra");
+        if (strstr(name_en.c_str(), "Serpent of Hell"))
+            name = jtrans("Serpent of Hell");
+        if (strstr(name_en.c_str(), "Blork"))
+            name = jtrans("Blork the orc");
     }
-    return jtrans(name);
+    return name;
 }
 
 void set_unique_annotation(monster* mons, const level_id level)
