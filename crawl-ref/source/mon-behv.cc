@@ -1312,7 +1312,7 @@ void behaviour_event(monster* mon, mon_event_type event, const actor *src,
             break;
         }
 
-        msg = getSpeakString(mon->name(DESC_PLAIN) + " flee");
+        msg = getSpeakString(mon->name_en(DESC_PLAIN) + " flee");
 
         // Assume monsters know where to run from, even if player is
         // invisible.
