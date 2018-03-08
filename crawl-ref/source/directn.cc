@@ -3575,7 +3575,7 @@ string get_monster_equipment_desc(const monster_info& mi,
                 attributes.emplace_back(jtrans("expiring"));
 
             string str = comma_separated_line(attributes.begin(),
-                                              attributes.end());
+                                              attributes.end(), ", ");
 
             if (mi.type == MONS_DANCING_WEAPON
                 || mi.type == MONS_PANDEMONIUM_LORD
