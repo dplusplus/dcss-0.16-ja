@@ -19382,6 +19382,28 @@ Returning to normal view.
 
 通常表示に戻りました。
 %%%%
+############################## viewmap.cc ##############################
+%%%%
+(Press <w>?</w> for help)
+
+(<w>?</w> でヘルプ表示)
+%%%%
+Level map cleared.
+
+階層のマップを消去しました。
+%%%%
+Remembered map restored.
+
+記録済みのマップを修復しました。
+%%%%
+No remembered map.
+
+記録されたマップはありません。
+%%%%
+You can't annotate this level.
+
+この階層に注釈を付けることはできません。
+%%%%
 ############################## wiz-dgn.cc ##############################
 %%%%
 Can't go down from the bottom of a branch.
