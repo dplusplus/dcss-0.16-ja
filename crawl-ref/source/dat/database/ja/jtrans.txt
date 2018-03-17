@@ -17377,6 +17377,14 @@ Sigmund v Jessica
 
 %s%s (%uゴールド)
 %%%%
+(Shop is empty)
+
+(店に何も売っていません)
+%%%%
+(Shop contents are unknown)
+
+(品揃えは未確認です)
+%%%%
 I'll no longer ignore what I see on this square.
 
 %%%%

@@ -937,7 +937,7 @@ bool ShopInfo::show_menu(const level_pos &place,
     if (items.empty())
     {
         MenuEntry *me = new MenuEntry(
-                visited? "  (Shop is empty)" : "  (Shop contents are unknown)",
+                "  " + jtrans(visited ? "  (Shop is empty)" : "  (Shop contents are unknown)"),
                 MEL_ITEM,
                 0,
                 0);
@@ -1068,10 +1068,11 @@ void ShopInfo::write(FILE *f, bool identify) const
                 fprintf(f, "    %s\n", OUTS(desc));
         }
     }
-    else if (visited)
-        fprintf(f, "  (Shop is empty)\n");
     else
-        fprintf(f, "  (Shop contents are unknown)\n");
+    {
+        fprintf(f, "%s", ("  " + jtransln(visited ? "(Shop is empty)\n"
+                                                  : "(Shop contents are unknown)\n")).c_str());
+    }
 
     activate_notes(note_status);
 }
