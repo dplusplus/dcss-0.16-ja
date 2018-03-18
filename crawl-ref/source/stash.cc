@@ -1334,6 +1334,7 @@ void LevelStashes::get_matching_stashes(
         vector<stash_search_result> &results) const
 {
     string lplace = "{" + m_place.describe() + "}";
+    string lplace_j = "{" + m_place.describe_j() + "}";
 
     // a single digit or * means we're searching for waypoints' content.
     const string s = search.tostring();
@@ -1354,7 +1355,8 @@ void LevelStashes::get_matching_stashes(
         if (entry.second.enabled)
         {
             stash_search_result res;
-            if (entry.second.matches_search(lplace, search, res))
+            if (entry.second.matches_search(lplace, search, res) ||
+                entry.second.matches_search(lplace_j, search, res))
             {
                 res.pos.id = m_place;
                 results.push_back(res);
@@ -1365,7 +1367,8 @@ void LevelStashes::get_matching_stashes(
     for (const ShopInfo &shop : m_shops)
     {
         stash_search_result res;
-        if (shop.matches_search(lplace, search, res))
+        if (shop.matches_search(lplace, search, res) ||
+            shop.matches_search(lplace_j, search, res))
         {
             res.pos.id = m_place;
             results.push_back(res);
