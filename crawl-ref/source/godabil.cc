@@ -2802,7 +2802,7 @@ static bool _prompt_amount(int max, int& selected, const string& prompt)
     selected = max;
     while (true)
     {
-        msg::streams(MSGCH_PROMPT) << prompt << " (" << max << " max) " << endl;
+        msg::streams(MSGCH_PROMPT) << prompt << " (最大" << max << ") " << endl;
 
         const int keyin = get_ch();
 
