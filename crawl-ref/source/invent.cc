@@ -1591,9 +1591,9 @@ bool check_old_item_warning(const item_def& item,
 
     switch (oper)
     {
-    case OPER_WIELD: prompt += "を手放しますか？";
-    case OPER_WEAR:  prompt += "を脱ぎますか？";
-    case OPER_PUTON: prompt += "を外しますか？";
+    case OPER_WIELD: prompt += "を手放しますか？" ; break;
+    case OPER_WEAR:  prompt += "を脱ぎますか？" ; break;
+    case OPER_PUTON: prompt += "を外しますか？" ; break;
     default: return true;
     }
 
