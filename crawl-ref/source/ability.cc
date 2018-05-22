@@ -2701,7 +2701,7 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
         {
             // "Your [hand(s)] get{s} new energy."
             mprf(MSGCH_DURATION, "%s",
-                 you.hands_act("手に入れた", "更なる力").c_str());
+                 you.hands_act("手にした", "更なる力").c_str());
         }
         else
             mpr_nojoin(MSGCH_DURATION, jtrans("You can now deal lightning-fast blows."));
