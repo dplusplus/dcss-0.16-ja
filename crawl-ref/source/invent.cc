@@ -1611,7 +1611,7 @@ static string _operation_verb(operation_types oper)
     case OPER_DROP:           return "置き";
     case OPER_EAT:            return you.species == SP_VAMPIRE ?
                                       "血を飲み" : "食べ";
-    case OPER_TAKEOFF:        return "装備を外し";
+    case OPER_TAKEOFF:        return "脱ぎ";
     case OPER_WEAR:           return "装備し";
     case OPER_PUTON:          return "身につけ";
     case OPER_REMOVE:         return "外し";
