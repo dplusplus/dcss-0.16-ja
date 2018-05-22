@@ -151,7 +151,7 @@ bennu
 %%%%
 caustic shrike
 
-腐食性の百舌
+焼酸の百舌
 %%%%
 shard shrike
 
