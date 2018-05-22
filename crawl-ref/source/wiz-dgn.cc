@@ -458,7 +458,7 @@ bool debug_make_trap(const coord_def& pos)
         mprf(jtransc("Created %s, marked it undiscovered."),
              jtransc((trap == TRAP_RANDOM)
                 ? "a random trap"
-                : env.trap[env.tgrid(you.pos())].name(DESC_A).c_str()));
+                : env.trap[env.tgrid(you.pos())].name(DESC_PLAIN).c_str()));
     }
     else
         mpr(jtrans("Could not create trap - too many traps on level."));
