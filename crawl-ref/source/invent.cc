@@ -1587,7 +1587,7 @@ bool check_old_item_warning(const item_def& item,
         return true;
 
     // now ask
-    prompt += old_item.name(DESC_INVENTORY);
+    prompt += (" " + old_item.name(DESC_INVENTORY) + " ");
 
     switch (oper)
     {
@@ -1824,7 +1824,7 @@ bool check_warning_inscriptions(const item_def& item,
                          you.duration[DUR_SLOW] ? "slowed" : "hasted"));
         }
 
-        prompt += (in_inventory(item) ? " " + item.name(DESC_INVENTORY)
+        prompt += (in_inventory(item) ? (" " + item.name(DESC_INVENTORY) + " ")
                                       : item.name(DESC_A)) + "を"
                 + _operation_verb(oper);
 

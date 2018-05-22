@@ -1536,7 +1536,7 @@ The bond with your blade fades away.
 %%%%
 Really unwield %s?
 
-本当に%sを手放しますか？
+本当に %s を手放しますか？
 %%%%
 You can't wear anything.
 
@@ -11116,7 +11116,7 @@ Nothing suitable (ignored '=f'-inscribed item on '%c').
 %%%%
 Quivering %s for %s.
 
-%sを%s用に準備した。
+%s を%s用に準備した。
 %%%%
 blowguns
 

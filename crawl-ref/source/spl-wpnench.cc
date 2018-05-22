@@ -244,7 +244,7 @@ spret_type brand_weapon(brand_type which_brand, int power, bool fail)
     if (dangerous_disto)
     {
         const string prompt =
-              "本当に" + weapon.name(DESC_INVENTORY) + "に魔力をかけますか？";
+              "本当に " + weapon.name(DESC_INVENTORY) + " に魔力をかけますか？";
         if (!yesno(prompt.c_str(), false, 'n'))
         {
             canned_msg(MSG_OK);
