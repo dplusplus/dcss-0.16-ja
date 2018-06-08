@@ -1317,13 +1317,13 @@ spmsl silver desc
 # be handled by those it affects.
 
 銀は混沌に染まった全ての存在を焼き尽くす。
-この%sは通常のものと比べると、混沌の存在や魔力で変異した存在に対するダメージが75%増しになる。
+この%sは通常のものと比べると、混沌なる存在や魔術により変異した存在に対するダメージが75%増しになる。
 また、変異の度合いが高まるにつれてさらなるダメージを与える。
 銀に影響を受けるものであっても銀の%sを扱えることに注意すること。
 %%%%
 Base armour rating:
 
-アーマーレート:
+基本防具レート:
 %%%%
 Encumbrance rating:
 
@@ -1331,11 +1331,11 @@ Encumbrance rating:
 %%%%
 Base shield rating:
 
-盾の防御レート:
+盾の基本防御レート:
 %%%%
 Skill to remove penalty:
 
-盾装備時のペナルティ:
+ペナルティ除去に必要なスキルレベル:
 %%%%
 Wearing mundane armour of this type will give the following: %d AC
 
